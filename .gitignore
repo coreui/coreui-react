@@ -1,0 +1,6 @@
+.DS_Store
+.idea
+package-lock.json
+
+# Folders to ignore
+node_modules

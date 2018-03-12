@@ -1,0 +1,6 @@
+{
+  "name": "AppAside",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Aside.js"
+}
