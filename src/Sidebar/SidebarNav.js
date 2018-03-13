@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { Badge, Nav, NavItem, NavLink as RsNavLink } from 'reactstrap';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import 'react-perfect-scrollbar/dist/css/styles.css';
 
 const propTypes = {
   children: PropTypes.node,
@@ -62,11 +64,15 @@ class AppSidebarNav extends Component {
   // nav type
   navType(item, idx) {
     return (
-      item.title ? this.navTitle(item, idx) :
-        item.divider ? this.navDivider(item, idx) :
-          item.label ? this.navLabel(item, idx) :
-            item.children ? this.navDropdown(item, idx) :
-              this.navItem(item, idx)
+      item.title
+        ? this.navTitle(item, idx)
+        : item.divider
+        ? this.navDivider(item, idx)
+        : item.label
+          ? this.navLabel(item, idx)
+          : item.children
+            ? this.navDropdown(item, idx)
+            : this.navItem(item, idx)
     );
   }
 
@@ -92,7 +98,8 @@ class AppSidebarNav extends Component {
     const classes = {
       item: classNames('hidden-cn', item.class),
       link: classNames('nav-label', item.class ? item.class : ''),
-      icon: classNames('nav-icon',
+      icon: classNames(
+        'nav-icon',
         !item.icon ? 'fa fa-circle' : item.icon,
         item.label.variant ? `text-${item.label.variant}` : '',
         item.label.class ? item.label.class : '',
@@ -134,13 +141,11 @@ class AppSidebarNav extends Component {
     return (
       <NavItem key={key} className={classes.item}>
         {
-          this.isExternal(url) ?
-            <RsNavLink href={url} className={classes.link} active>
-              <i className={classes.icon} />{item.name}{this.navBadge(item.badge)}
-            </RsNavLink> :
-            <NavLink to={url} className={classes.link} activeClassName="active" onClick={this.hideMobile}>
-              <i className={classes.icon} />{item.name}{this.navBadge(item.badge)}
-            </NavLink>
+          this.isExternal(url) ? <RsNavLink href={url} className={classes.link} active>
+            <i className={classes.icon} />{item.name}{this.navBadge(item.badge)}
+          </RsNavLink> : <NavLink to={url} className={classes.link} activeClassName="active" onClick={this.hideMobile}>
+            <i className={classes.icon} />{item.name}{this.navBadge(item.badge)}
+          </NavLink>
         }
       </NavItem>
     );
@@ -168,11 +173,11 @@ class AppSidebarNav extends Component {
 
     // sidebar-nav root
     return (
-      <nav className={navClasses} {...attributes}>
+      <PerfectScrollbar className={navClasses} {...attributes}>
         <Nav>
           {children || this.navList(navConfig.items)}
         </Nav>
-      </nav>
+      </PerfectScrollbar>
     );
   }
 }

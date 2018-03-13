@@ -16,13 +16,13 @@ const defaultProps = {
 
 class AppSidebarMinimizer extends Component {
   sidebarMinimize(e) {
-    e.preventDefault();
+    // e.preventDefault();
 
     document.body.classList.toggle('sidebar-minimized');
   }
 
   brandMinimize(e) {
-    e.preventDefault();
+    // e.preventDefault();
 
     document.body.classList.toggle('brand-minimized');
   }
@@ -30,15 +30,10 @@ class AppSidebarMinimizer extends Component {
   render() {
     const { className, children, tag: Tag, type, ...attributes } = this.props;
 
-    const classes = classNames(className, 'sidebar-minimizer');
+    const classes = classNames(className, 'sidebar-minimizer', 'mt-auto');
 
     return (
-      <Tag
-        className={classes}
-        type={type}
-        {...attributes}
-        onClick={(event) => { this.sidebarMinimize(event); this.brandMinimize(event); }}
-      >
+      <Tag className={classes} type={type} {...attributes} onClick={(event) => { this.sidebarMinimize(event); this.brandMinimize(event); }} >
         {children}
       </Tag>
     );

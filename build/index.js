@@ -15888,7 +15888,7 @@ var _Sidebar = __webpack_require__(81);
 
 var _Sidebar2 = _interopRequireDefault(_Sidebar);
 
-var _SidebarNav = __webpack_require__(86);
+var _SidebarNav = __webpack_require__(82);
 
 var _SidebarNav2 = _interopRequireDefault(_SidebarNav);
 
@@ -15950,12 +15950,6 @@ var _classnames2 = _interopRequireDefault(_classnames);
 var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _reactPerfectScrollbar = __webpack_require__(82);
-
-var _reactPerfectScrollbar2 = _interopRequireDefault(_reactPerfectScrollbar);
-
-__webpack_require__(85);
 
 var _Shared = __webpack_require__(6);
 
@@ -16080,11 +16074,7 @@ var AppSidebar = function (_Component) {
       return _react2.default.createElement(
         Tag,
         _extends({ className: classes }, attributes),
-        _react2.default.createElement(
-          _reactPerfectScrollbar2.default,
-          null,
-          children
-        )
+        children
       );
     }
   }]);
@@ -16108,7 +16098,291 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _scrollbar = __webpack_require__(83);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(22);
+
+var _reactstrap = __webpack_require__(19);
+
+var _classnames = __webpack_require__(3);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactPerfectScrollbar = __webpack_require__(83);
+
+var _reactPerfectScrollbar2 = _interopRequireDefault(_reactPerfectScrollbar);
+
+__webpack_require__(86);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var propTypes = {
+  children: _propTypes2.default.node,
+  className: _propTypes2.default.string,
+  navConfig: _propTypes2.default.any,
+  navFunc: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.string]),
+  isOpen: _propTypes2.default.bool,
+  staticContext: _propTypes2.default.any,
+  tag: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.string])
+};
+
+var defaultProps = {
+  tag: 'nav',
+  navConfig: {
+    items: [{
+      name: 'Dashboard',
+      url: '/dashboard',
+      icon: 'icon-speedometer',
+      badge: { variant: 'info', text: 'NEW' }
+    }]
+  },
+  isOpen: false
+};
+
+var AppSidebarNav = function (_Component) {
+  _inherits(AppSidebarNav, _Component);
+
+  function AppSidebarNav(props) {
+    _classCallCheck(this, AppSidebarNav);
+
+    var _this = _possibleConstructorReturn(this, (AppSidebarNav.__proto__ || Object.getPrototypeOf(AppSidebarNav)).call(this, props));
+
+    _this.handleClick = _this.handleClick.bind(_this);
+    _this.activeRoute = _this.activeRoute.bind(_this);
+    _this.hideMobile = _this.hideMobile.bind(_this);
+    return _this;
+  }
+
+  _createClass(AppSidebarNav, [{
+    key: 'handleClick',
+    value: function handleClick(e) {
+      e.preventDefault();
+      e.target.parentElement.classList.toggle('open');
+    }
+  }, {
+    key: 'activeRoute',
+    value: function activeRoute(routeName, props) {
+      return props.location.pathname.indexOf(routeName) > -1 ? 'nav-item nav-dropdown open' : 'nav-item nav-dropdown';
+    }
+  }, {
+    key: 'hideMobile',
+    value: function hideMobile() {
+      if (document.body.classList.contains('sidebar-show')) {
+        document.body.classList.toggle('sidebar-show');
+      }
+    }
+
+    // nav list
+
+  }, {
+    key: 'navList',
+    value: function navList(items) {
+      var _this2 = this;
+
+      return items.map(function (item, index) {
+        return _this2.navType(item, index);
+      });
+    }
+
+    // nav type
+
+  }, {
+    key: 'navType',
+    value: function navType(item, idx) {
+      return item.title ? this.navTitle(item, idx) : item.divider ? this.navDivider(item, idx) : item.label ? this.navLabel(item, idx) : item.children ? this.navDropdown(item, idx) : this.navItem(item, idx);
+    }
+
+    // nav list section title
+
+  }, {
+    key: 'navTitle',
+    value: function navTitle(title, key) {
+      var classes = (0, _classnames2.default)('nav-title', title.class);
+      return _react2.default.createElement(
+        'li',
+        { key: key, className: classes },
+        this.navWrapper(title),
+        ' '
+      );
+    }
+
+    // simple wrapper for nav-title item
+
+  }, {
+    key: 'navWrapper',
+    value: function navWrapper(item) {
+      return item.wrapper && item.wrapper.element ? _react2.default.createElement(item.wrapper.element, item.wrapper.attributes, item.name) : item.name;
+    }
+
+    // nav list divider
+
+  }, {
+    key: 'navDivider',
+    value: function navDivider(divider, key) {
+      var classes = (0, _classnames2.default)('divider', divider.class);
+      return _react2.default.createElement('li', { key: key, className: classes });
+    }
+
+    // nav label with nav link
+
+  }, {
+    key: 'navLabel',
+    value: function navLabel(item, key) {
+      var classes = {
+        item: (0, _classnames2.default)('hidden-cn', item.class),
+        link: (0, _classnames2.default)('nav-label', item.class ? item.class : ''),
+        icon: (0, _classnames2.default)('nav-icon', !item.icon ? 'fa fa-circle' : item.icon, item.label.variant ? 'text-' + item.label.variant : '', item.label.class ? item.label.class : '')
+      };
+      return this.navLink(item, key, classes);
+    }
+
+    // nav dropdown
+
+  }, {
+    key: 'navDropdown',
+    value: function navDropdown(item, key) {
+      var classIcon = (0, _classnames2.default)('nav-icon', item.icon);
+      return _react2.default.createElement(
+        'li',
+        { key: key, className: this.activeRoute(item.url, this.props) },
+        _react2.default.createElement(
+          'a',
+          { className: 'nav-link nav-dropdown-toggle', href: '#', onClick: this.handleClick },
+          _react2.default.createElement('i', { className: classIcon }),
+          item.name
+        ),
+        _react2.default.createElement(
+          'ul',
+          { className: 'nav-dropdown-items' },
+          this.navList(item.children)
+        )
+      );
+    }
+
+    // nav item with nav link
+
+  }, {
+    key: 'navItem',
+    value: function navItem(item, key) {
+      var classes = {
+        item: (0, _classnames2.default)(item.class),
+        link: (0, _classnames2.default)('nav-link', item.variant ? 'nav-link-' + item.variant : ''),
+        icon: (0, _classnames2.default)('nav-icon', item.icon)
+      };
+      return this.navLink(item, key, classes);
+    }
+
+    // nav link
+
+  }, {
+    key: 'navLink',
+    value: function navLink(item, key, classes) {
+      var url = item.url ? item.url : '';
+      return _react2.default.createElement(
+        _reactstrap.NavItem,
+        { key: key, className: classes.item },
+        this.isExternal(url) ? _react2.default.createElement(
+          _reactstrap.NavLink,
+          { href: url, className: classes.link, active: true },
+          _react2.default.createElement('i', { className: classes.icon }),
+          item.name,
+          this.navBadge(item.badge)
+        ) : _react2.default.createElement(
+          _reactRouterDom.NavLink,
+          { to: url, className: classes.link, activeClassName: 'active', onClick: this.hideMobile },
+          _react2.default.createElement('i', { className: classes.icon }),
+          item.name,
+          this.navBadge(item.badge)
+        )
+      );
+    }
+
+    // badge addon to NavItem
+
+  }, {
+    key: 'navBadge',
+    value: function navBadge(badge) {
+      if (badge) {
+        var classes = (0, _classnames2.default)(badge.class);
+        return _react2.default.createElement(
+          _reactstrap.Badge,
+          { className: classes, color: badge.variant },
+          badge.text
+        );
+      }
+      return null;
+    }
+  }, {
+    key: 'isExternal',
+    value: function isExternal(url) {
+      var link = url ? url.substring(0, 4) : '';
+      return link === 'http';
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          className = _props.className,
+          children = _props.children,
+          isOpen = _props.isOpen,
+          Tag = _props.tag,
+          navConfig = _props.navConfig,
+          staticContext = _props.staticContext,
+          attributes = _objectWithoutProperties(_props, ['className', 'children', 'isOpen', 'tag', 'navConfig', 'staticContext']);
+
+      var navClasses = (0, _classnames2.default)(className, 'sidebar-nav');
+
+      // sidebar-nav root
+      return _react2.default.createElement(
+        _reactPerfectScrollbar2.default,
+        _extends({ className: navClasses }, attributes),
+        _react2.default.createElement(
+          _reactstrap.Nav,
+          null,
+          children || this.navList(navConfig.items)
+        )
+      );
+    }
+  }]);
+
+  return AppSidebarNav;
+}(_react.Component);
+
+AppSidebarNav.propTypes = propTypes;
+AppSidebarNav.defaultProps = defaultProps;
+
+exports.default = AppSidebarNav;
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _scrollbar = __webpack_require__(84);
 
 var _scrollbar2 = _interopRequireDefault(_scrollbar);
 
@@ -16118,7 +16392,7 @@ exports.default = _scrollbar2.default;
 module.exports = exports['default'];
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16136,7 +16410,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _propTypes = __webpack_require__(1);
 
-var _perfectScrollbar = __webpack_require__(84);
+var _perfectScrollbar = __webpack_require__(85);
 
 var _perfectScrollbar2 = _interopRequireDefault(_perfectScrollbar);
 
@@ -16272,7 +16546,7 @@ ScrollBar.propTypes = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17584,288 +17858,10 @@ PerfectScrollbar.prototype.removePsClasses = function removePsClasses () {
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(22);
-
-var _reactstrap = __webpack_require__(19);
-
-var _classnames = __webpack_require__(3);
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _propTypes = __webpack_require__(1);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var propTypes = {
-  children: _propTypes2.default.node,
-  className: _propTypes2.default.string,
-  navConfig: _propTypes2.default.any,
-  navFunc: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.string]),
-  isOpen: _propTypes2.default.bool,
-  staticContext: _propTypes2.default.any,
-  tag: _propTypes2.default.oneOfType([_propTypes2.default.func, _propTypes2.default.string])
-};
-
-var defaultProps = {
-  tag: 'nav',
-  navConfig: {
-    items: [{
-      name: 'Dashboard',
-      url: '/dashboard',
-      icon: 'icon-speedometer',
-      badge: { variant: 'info', text: 'NEW' }
-    }]
-  },
-  isOpen: false
-};
-
-var AppSidebarNav = function (_Component) {
-  _inherits(AppSidebarNav, _Component);
-
-  function AppSidebarNav(props) {
-    _classCallCheck(this, AppSidebarNav);
-
-    var _this = _possibleConstructorReturn(this, (AppSidebarNav.__proto__ || Object.getPrototypeOf(AppSidebarNav)).call(this, props));
-
-    _this.handleClick = _this.handleClick.bind(_this);
-    _this.activeRoute = _this.activeRoute.bind(_this);
-    _this.hideMobile = _this.hideMobile.bind(_this);
-    return _this;
-  }
-
-  _createClass(AppSidebarNav, [{
-    key: 'handleClick',
-    value: function handleClick(e) {
-      e.preventDefault();
-      e.target.parentElement.classList.toggle('open');
-    }
-  }, {
-    key: 'activeRoute',
-    value: function activeRoute(routeName, props) {
-      return props.location.pathname.indexOf(routeName) > -1 ? 'nav-item nav-dropdown open' : 'nav-item nav-dropdown';
-    }
-  }, {
-    key: 'hideMobile',
-    value: function hideMobile() {
-      if (document.body.classList.contains('sidebar-show')) {
-        document.body.classList.toggle('sidebar-show');
-      }
-    }
-
-    // nav list
-
-  }, {
-    key: 'navList',
-    value: function navList(items) {
-      var _this2 = this;
-
-      return items.map(function (item, index) {
-        return _this2.navType(item, index);
-      });
-    }
-
-    // nav type
-
-  }, {
-    key: 'navType',
-    value: function navType(item, idx) {
-      return item.title ? this.navTitle(item, idx) : item.divider ? this.navDivider(item, idx) : item.label ? this.navLabel(item, idx) : item.children ? this.navDropdown(item, idx) : this.navItem(item, idx);
-    }
-
-    // nav list section title
-
-  }, {
-    key: 'navTitle',
-    value: function navTitle(title, key) {
-      var classes = (0, _classnames2.default)('nav-title', title.class);
-      return _react2.default.createElement(
-        'li',
-        { key: key, className: classes },
-        this.navWrapper(title),
-        ' '
-      );
-    }
-
-    // simple wrapper for nav-title item
-
-  }, {
-    key: 'navWrapper',
-    value: function navWrapper(item) {
-      return item.wrapper && item.wrapper.element ? _react2.default.createElement(item.wrapper.element, item.wrapper.attributes, item.name) : item.name;
-    }
-
-    // nav list divider
-
-  }, {
-    key: 'navDivider',
-    value: function navDivider(divider, key) {
-      var classes = (0, _classnames2.default)('divider', divider.class);
-      return _react2.default.createElement('li', { key: key, className: classes });
-    }
-
-    // nav label with nav link
-
-  }, {
-    key: 'navLabel',
-    value: function navLabel(item, key) {
-      var classes = {
-        item: (0, _classnames2.default)('hidden-cn', item.class),
-        link: (0, _classnames2.default)('nav-label', item.class ? item.class : ''),
-        icon: (0, _classnames2.default)('nav-icon', !item.icon ? 'fa fa-circle' : item.icon, item.label.variant ? 'text-' + item.label.variant : '', item.label.class ? item.label.class : '')
-      };
-      return this.navLink(item, key, classes);
-    }
-
-    // nav dropdown
-
-  }, {
-    key: 'navDropdown',
-    value: function navDropdown(item, key) {
-      var classIcon = (0, _classnames2.default)('nav-icon', item.icon);
-      return _react2.default.createElement(
-        'li',
-        { key: key, className: this.activeRoute(item.url, this.props) },
-        _react2.default.createElement(
-          'a',
-          { className: 'nav-link nav-dropdown-toggle', href: '#', onClick: this.handleClick },
-          _react2.default.createElement('i', { className: classIcon }),
-          item.name
-        ),
-        _react2.default.createElement(
-          'ul',
-          { className: 'nav-dropdown-items' },
-          this.navList(item.children)
-        )
-      );
-    }
-
-    // nav item with nav link
-
-  }, {
-    key: 'navItem',
-    value: function navItem(item, key) {
-      var classes = {
-        item: (0, _classnames2.default)(item.class),
-        link: (0, _classnames2.default)('nav-link', item.variant ? 'nav-link-' + item.variant : ''),
-        icon: (0, _classnames2.default)('nav-icon', item.icon)
-      };
-      return this.navLink(item, key, classes);
-    }
-
-    // nav link
-
-  }, {
-    key: 'navLink',
-    value: function navLink(item, key, classes) {
-      var url = item.url ? item.url : '';
-      return _react2.default.createElement(
-        _reactstrap.NavItem,
-        { key: key, className: classes.item },
-        this.isExternal(url) ? _react2.default.createElement(
-          _reactstrap.NavLink,
-          { href: url, className: classes.link, active: true },
-          _react2.default.createElement('i', { className: classes.icon }),
-          item.name,
-          this.navBadge(item.badge)
-        ) : _react2.default.createElement(
-          _reactRouterDom.NavLink,
-          { to: url, className: classes.link, activeClassName: 'active', onClick: this.hideMobile },
-          _react2.default.createElement('i', { className: classes.icon }),
-          item.name,
-          this.navBadge(item.badge)
-        )
-      );
-    }
-
-    // badge addon to NavItem
-
-  }, {
-    key: 'navBadge',
-    value: function navBadge(badge) {
-      if (badge) {
-        var classes = (0, _classnames2.default)(badge.class);
-        return _react2.default.createElement(
-          _reactstrap.Badge,
-          { className: classes, color: badge.variant },
-          badge.text
-        );
-      }
-      return null;
-    }
-  }, {
-    key: 'isExternal',
-    value: function isExternal(url) {
-      var link = url ? url.substring(0, 4) : '';
-      return link === 'http';
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          className = _props.className,
-          children = _props.children,
-          isOpen = _props.isOpen,
-          Tag = _props.tag,
-          navConfig = _props.navConfig,
-          staticContext = _props.staticContext,
-          attributes = _objectWithoutProperties(_props, ['className', 'children', 'isOpen', 'tag', 'navConfig', 'staticContext']);
-
-      var navClasses = (0, _classnames2.default)(className, 'sidebar-nav');
-
-      // sidebar-nav root
-      return _react2.default.createElement(
-        'nav',
-        _extends({ className: navClasses }, attributes),
-        _react2.default.createElement(
-          _reactstrap.Nav,
-          null,
-          children || this.navList(navConfig.items)
-        )
-      );
-    }
-  }]);
-
-  return AppSidebarNav;
-}(_react.Component);
-
-AppSidebarNav.propTypes = propTypes;
-AppSidebarNav.defaultProps = defaultProps;
-
-exports.default = AppSidebarNav;
 
 /***/ }),
 /* 87 */
@@ -18180,14 +18176,14 @@ var AppSidebarMinimizer = function (_Component) {
   _createClass(AppSidebarMinimizer, [{
     key: 'sidebarMinimize',
     value: function sidebarMinimize(e) {
-      e.preventDefault();
+      // e.preventDefault();
 
       document.body.classList.toggle('sidebar-minimized');
     }
   }, {
     key: 'brandMinimize',
     value: function brandMinimize(e) {
-      e.preventDefault();
+      // e.preventDefault();
 
       document.body.classList.toggle('brand-minimized');
     }
@@ -18203,18 +18199,13 @@ var AppSidebarMinimizer = function (_Component) {
           type = _props.type,
           attributes = _objectWithoutProperties(_props, ['className', 'children', 'tag', 'type']);
 
-      var classes = (0, _classnames2.default)(className, 'sidebar-minimizer');
+      var classes = (0, _classnames2.default)(className, 'sidebar-minimizer', 'mt-auto');
 
       return _react2.default.createElement(
         Tag,
-        _extends({
-          className: classes,
-          type: type
-        }, attributes, {
-          onClick: function onClick(event) {
+        _extends({ className: classes, type: type }, attributes, { onClick: function onClick(event) {
             _this2.sidebarMinimize(event);_this2.brandMinimize(event);
-          }
-        }),
+          } }),
         children
       );
     }

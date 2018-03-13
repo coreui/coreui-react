@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-import 'react-perfect-scrollbar/dist/css/styles.css';
 import { sidebarCssClasses } from '../Shared';
 
 const propTypes = {
@@ -80,9 +78,7 @@ class AppSidebar extends Component {
     // sidebar-nav root
     return (
       <Tag className={classes} {...attributes}>
-        <PerfectScrollbar>
-          {children}
-        </PerfectScrollbar>
+        {children}
       </Tag>
     );
   }
