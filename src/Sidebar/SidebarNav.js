@@ -64,15 +64,11 @@ class AppSidebarNav extends Component {
   // nav type
   navType(item, idx) {
     return (
-      item.title
-        ? this.navTitle(item, idx)
-        : item.divider
-        ? this.navDivider(item, idx)
-        : item.label
-          ? this.navLabel(item, idx)
-          : item.children
-            ? this.navDropdown(item, idx)
-            : this.navItem(item, idx)
+      item.title ? this.navTitle(item, idx)
+        : item.divider ? this.navDivider(item, idx)
+          : item.label ? this.navLabel(item, idx)
+            : item.children ? this.navDropdown(item, idx)
+              : this.navItem(item, idx)
     );
   }
 
@@ -115,8 +111,7 @@ class AppSidebarNav extends Component {
     const classIcon = classNames('nav-icon', item.icon);
     return (
       <li key={key} className={this.activeRoute(item.url, this.props)}>
-        <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick}><i className={classIcon} />{item.name}
-        </a>
+        <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick}><i className={classIcon} />{item.name}</a>
         <ul className="nav-dropdown-items">
           {this.navList(item.children)}
         </ul>
@@ -141,11 +136,13 @@ class AppSidebarNav extends Component {
     return (
       <NavItem key={key} className={classes.item}>
         {
-          this.isExternal(url) ? <RsNavLink href={url} className={classes.link} active>
-            <i className={classes.icon} />{item.name}{this.navBadge(item.badge)}
-          </RsNavLink> : <NavLink to={url} className={classes.link} activeClassName="active" onClick={this.hideMobile}>
-            <i className={classes.icon} />{item.name}{this.navBadge(item.badge)}
-          </NavLink>
+          this.isExternal(url) ?
+            <RsNavLink href={url} className={classes.link} active>
+              <i className={classes.icon} />{item.name}{this.navBadge(item.badge)}
+            </RsNavLink> :
+            <NavLink to={url} className={classes.link} activeClassName="active" onClick={this.hideMobile}>
+              <i className={classes.icon} />{item.name}{this.navBadge(item.badge)}
+            </NavLink>
         }
       </NavItem>
     );
@@ -156,7 +153,8 @@ class AppSidebarNav extends Component {
     if (badge) {
       const classes = classNames(badge.class);
       return (
-        <Badge className={classes} color={badge.variant}>{badge.text}</Badge>);
+        <Badge className={classes} color={badge.variant}>{badge.text}</Badge>
+      );
     }
     return null;
   }
