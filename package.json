@@ -1,14 +1,14 @@
 {
   "name": "@coreui/react",
-  "version": "2.0.0-alpha",
+  "version": "2.0.0-alpha.5",
   "description": "CoreUI React Bootstrap 4 components",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
-    "css",
-    "es",
-    "lib",
-    "umd"
+    "css/",
+    "es/",
+    "lib/",
+    "umd/"
   ],
   "scripts": {
     "build": "nwb build-react-component",
