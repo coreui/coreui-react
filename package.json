@@ -1,54 +1,52 @@
 {
-  "name": "@coreui/react-dev",
-  "version": "2.0.0-alpha.0",
+  "name": "@coreui/react",
+  "version": "2.0.0-alpha",
   "description": "CoreUI React Bootstrap 4 components",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com:coreui/react.git"
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "css",
+    "es",
+    "lib",
+    "umd"
+  ],
+  "scripts": {
+    "build": "nwb build-react-component",
+    "clean": "nwb clean-module && nwb clean-demo",
+    "start": "nwb serve-react-demo",
+    "test": "nwb test-react",
+    "test:coverage": "nwb test-react --coverage",
+    "test:watch": "nwb test-react --server"
   },
   "dependencies": {
     "bootstrap": "4.0.0",
     "classnames": "^2.2.5",
     "flag-icon-css": "^3.0.0",
     "font-awesome": "4.7.0",
-    "prop-types": "^15.6.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
     "react-perfect-scrollbar": "^1.0.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.1",
-    "react-transition-group": "2.2.1",
     "reactstrap": "5.0.0-beta",
     "simple-line-icons": "2.4.1"
   },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.6.1",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "eslint": "^4.18.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.7.0",
-    "eslint-plugin-standard": "^3.0.1"
-  },
   "peerDependencies": {
-    "react": "^15.3.0 || ^16.0.0",
-    "react-dom": "^15.3.0 || ^16.0.0"
+    "react": "16.x"
+  },
+  "devDependencies": {
+    "nwb": "0.21.x",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "author": "",
+  "homepage": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coreui/react.git"
   },
   "bugs": {
     "url": "https://github.com/coreui/react/issues"
   },
-  "main": "build/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch",
-    "build": "webpack",
-    "lint-fix": "eslint src --fix",
-    "lint": "eslint src"
-  }
+  "keywords": [
+    "react-component"
+  ]
 }
