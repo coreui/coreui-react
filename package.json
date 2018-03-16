@@ -36,8 +36,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
-  "author": "",
-  "homepage": "",
+  "author": "Łukasz Holeczek",
+  "homepage": "http://coreui.io",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -47,6 +47,10 @@
     "url": "https://github.com/coreui/react/issues"
   },
   "keywords": [
-    "react-component"
+  "coreui", 
+  "react", 
+  "bootstrap",
+  "framework", 
+  "responsive"
   ]
 }
