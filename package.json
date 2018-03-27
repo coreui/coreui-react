@@ -41,10 +41,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/coreui/react.git"
+    "url": "https://github.com/coreui/coreui-react.git"
   },
   "bugs": {
-    "url": "https://github.com/coreui/react/issues"
+    "url": "https://github.com/coreui/coreui-react/issues"
   },
   "keywords": [
   "coreui", 
