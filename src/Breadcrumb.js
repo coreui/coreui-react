@@ -31,15 +31,15 @@ const BreadcrumbsItem = ({ match }) => {
   const routeName = findRouteName(match.url);
   if (routeName) {
     return (
-      match.isExact ? (
+      match.isExact ? 
         <BreadcrumbItem active>{routeName}</BreadcrumbItem>
-      ) : (
+       : 
         <BreadcrumbItem>
           <Link to={match.url || ''}>
             {routeName}
           </Link>
         </BreadcrumbItem>
-      )
+      
     );
   }
   return null;
@@ -65,13 +65,13 @@ const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   appRoutes: PropTypes.any,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 const defaultProps = {
   tag: 'div',
   className: '',
-  appRoutes: [{ path: '/', exact: true, name: 'Home', component: null }],
+  appRoutes: [{ path: '/', exact: true, name: 'Home', component: null }]
 };
 
 class AppBreadcrumb extends Component {

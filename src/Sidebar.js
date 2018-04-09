@@ -13,7 +13,7 @@ const propTypes = {
   isOpen: PropTypes.bool,
   offCanvas: PropTypes.bool,
   staticContext: PropTypes.any,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 const defaultProps = {
@@ -23,7 +23,7 @@ const defaultProps = {
   fixed: false,
   minimized: false,
   isOpen: false,
-  offCanvas: false,
+  offCanvas: false
 };
 
 class AppSidebar extends Component {
