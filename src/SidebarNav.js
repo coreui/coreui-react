@@ -13,7 +13,7 @@ const propTypes = {
   navFunc: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   isOpen: PropTypes.bool,
   staticContext: PropTypes.any,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 const defaultProps = {
@@ -24,10 +24,10 @@ const defaultProps = {
         name: 'Dashboard',
         url: '/dashboard',
         icon: 'icon-speedometer',
-        badge: { variant: 'info', text: 'NEW' },
-      }],
+        badge: { variant: 'info', text: 'NEW' }
+      }]
   },
-  isOpen: false,
+  isOpen: false
 };
 
 class AppSidebarNav extends Component {
@@ -75,18 +75,18 @@ class AppSidebarNav extends Component {
   // nav list section title
   navTitle(title, key) {
     const classes = classNames('nav-title', title.class);
-    return (<li key={key} className={classes}>{this.navWrapper(title)} </li>);
+    return <li key={key} className={classes}>{this.navWrapper(title)} </li>;
   }
 
   // simple wrapper for nav-title item
   navWrapper(item) {
-    return (item.wrapper && item.wrapper.element ? (React.createElement(item.wrapper.element, item.wrapper.attributes, item.name)) : item.name);
+    return item.wrapper && item.wrapper.element ? React.createElement(item.wrapper.element, item.wrapper.attributes, item.name) : item.name;
   }
 
   // nav list divider
   navDivider(divider, key) {
     const classes = classNames('divider', divider.class);
-    return (<li key={key} className={classes} />);
+    return <li key={key} className={classes} />;
   }
 
   // nav label with nav link
@@ -99,7 +99,7 @@ class AppSidebarNav extends Component {
         !item.icon ? 'fa fa-circle' : item.icon,
         item.label.variant ? `text-${item.label.variant}` : '',
         item.label.class ? item.label.class : '',
-      ),
+      )
     };
     return (
       this.navLink(item, key, classes)
@@ -123,7 +123,7 @@ class AppSidebarNav extends Component {
     const classes = {
       item: classNames(item.class),
       link: classNames('nav-link', item.variant ? `nav-link-${item.variant}` : ''),
-      icon: classNames('nav-icon', item.icon),
+      icon: classNames('nav-icon', item.icon)
     };
     return (
       this.navLink(item, key, classes)

@@ -6,12 +6,12 @@ const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  type: PropTypes.string,
+  type: PropTypes.string
 };
 
 const defaultProps = {
   tag: 'button',
-  type: 'button',
+  type: 'button'
 };
 
 class AppSidebarMinimizer extends Component {

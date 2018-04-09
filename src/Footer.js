@@ -6,12 +6,12 @@ const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   fixed: PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 const defaultProps = {
   tag: 'footer',
-  fixed: false,
+  fixed: false
 };
 
 class AppFooter extends Component {

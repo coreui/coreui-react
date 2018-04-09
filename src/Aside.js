@@ -11,7 +11,7 @@ const propTypes = {
   hidden: PropTypes.bool,
   isOpen: PropTypes.bool,
   offCanvas: PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 const defaultProps = {
@@ -20,7 +20,7 @@ const defaultProps = {
   fixed: false,
   hidden: false,
   isOpen: false,
-  offCanvas: true,
+  offCanvas: true
 };
 
 class AppAside extends Component {

@@ -5,22 +5,22 @@ import classNames from 'classnames';
 const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 const defaultProps = {
-  tag: 'div',
+  tag: 'div'
 };
 
 class AppSidebarForm extends Component {
   render() {
     const { className, children, tag: Tag, ...attributes } = this.props;
     const classes = classNames(className, 'sidebar-form');
-    const form = children ? (
+    const form = children ? 
       <Tag className={classes} {...attributes} >
         {children}
       </Tag>
-    ) : (null);
+     : null;
 
     return (
       form

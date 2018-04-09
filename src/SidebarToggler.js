@@ -10,14 +10,14 @@ const propTypes = {
   display: PropTypes.any,
   mobile: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  type: PropTypes.string,
+  type: PropTypes.string
 };
 
 const defaultProps = {
   display: 'lg',
   mobile: false,
   tag: 'button',
-  type: 'button',
+  type: 'button'
 };
 
 class AppSidebarToggler extends Component {
@@ -48,9 +48,9 @@ class AppSidebarToggler extends Component {
     const classes = classNames(className, 'navbar-toggler');
 
     return (
-      <button type="button" className={classes} {...attributes} onClick={this.sidebarToggle}>
+      <Tag type="button" className={classes} {...attributes} onClick={this.sidebarToggle}>
         {children || <span className="navbar-toggler-icon" />}
-      </button>
+      </Tag>
     );
   }
 }

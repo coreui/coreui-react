@@ -10,14 +10,14 @@ const propTypes = {
   display: PropTypes.any,
   mobile: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  type: PropTypes.string,
+  type: PropTypes.string
 };
 
 const defaultProps = {
   display: 'lg',
   mobile: false,
   tag: 'button',
-  type: 'button',
+  type: 'button'
 };
 
 class AppAsideToggler extends Component {
@@ -51,10 +51,10 @@ class AppAsideToggler extends Component {
 
     return (
       <button
-        type="button"
-        className={classes}
-        {...attributes}
-        onClick={this.asideToggle}
+          type="button"
+          className={classes}
+          {...attributes}
+          onClick={this.asideToggle}
       >
         {children || <span className="navbar-toggler-icon" />}
       </button>
