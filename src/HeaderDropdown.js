@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import {
-  Dropdown,
-} from 'reactstrap';
+import { Dropdown } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 const propTypes = {
   children: PropTypes.node,
+  direction: PropTypes.string
 };
 
-const defaultProps = {};
+const defaultProps = {
+  direction: 'down'
+};
 
 class AppHeaderDropdown extends Component {
   constructor(props) {
