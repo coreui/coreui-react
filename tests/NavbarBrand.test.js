@@ -10,8 +10,9 @@ import AppNavbarBrand from 'src/NavbarBrand';
 describe('AppNavbarBrand', () => {
   it('renders anchor with class="navbar-brand"', () => {
     expect(render(<AppNavbarBrand
-      full={{ src: logo, width: 89, height: 25, alt: 'CoreUI Logo' }}
-      minimized={{ src: sygnet, width: 30, height: 30, alt: 'CoreUI Logo' }}
+      brand={{ src: logo, width: 89, height: 25, alt: 'CoreUI Brand' }}
+      full={{ src: logo, width: 89, height: 25, alt: 'CoreUI Full' }}
+      minimized={{ src: sygnet, width: 30, height: 30, alt: 'CoreUI Minimized' }}
     />)).toContain('class="navbar-brand"');
   });
 });

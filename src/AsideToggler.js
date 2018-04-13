@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { asideMenuCssClasses } from './Shared/index';
-import { ToggleClasses } from './Shared/toggle-classes';
+import toggleClasses from './Shared/toggle-classes';
 
 const propTypes = {
   children: PropTypes.node,
@@ -40,7 +40,7 @@ class AppAsideToggler extends Component {
       if (display && asideMenuCssClasses.indexOf(cssTemplate) > -1) {
         cssClass = cssTemplate;
       }
-      ToggleClasses(cssClass, asideMenuCssClasses);
+      toggleClasses(cssClass, asideMenuCssClasses);
     }
   }
 
@@ -54,7 +54,7 @@ class AppAsideToggler extends Component {
           type="button"
           className={classes}
           {...attributes}
-          onClick={this.asideToggle}
+          onClick={(event)=>this.asideToggle(event)}
       >
         {children || <span className="navbar-toggler-icon" />}
       </button>

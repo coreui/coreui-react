@@ -31,15 +31,14 @@ const BreadcrumbsItem = ({ match }) => {
   const routeName = findRouteName(match.url);
   if (routeName) {
     return (
-      match.isExact ? 
+      match.isExact ?
         <BreadcrumbItem active>{routeName}</BreadcrumbItem>
-       : 
+       :
         <BreadcrumbItem>
           <Link to={match.url || ''}>
             {routeName}
           </Link>
         </BreadcrumbItem>
-      
     );
   }
   return null;
