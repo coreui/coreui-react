@@ -18,7 +18,7 @@ describe('AppSidebar', () => {
   it('calls componentDidMount', () => {
     spy(AppSidebar.prototype, 'componentDidMount');
 
-    const wrapper = mount(<AppSidebar fixed display="lg" />);
-    expect(AppSidebar.prototype.componentDidMount.calledOnce).toEqual(true);
+    const wrapper = mount(<AppSidebar fixed display="lg" compact minimized offCanvas />);
+    expect(AppSidebar.prototype.componentDidMount.calledOnce).toBe(true);
   });
 })
