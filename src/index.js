@@ -12,4 +12,5 @@ export AppSidebarHeader from './SidebarHeader';
 export AppSidebarMinimizer from './SidebarMinimizer';
 export AppSidebarNav from './SidebarNav';
 export AppSidebarToggler from './SidebarToggler';
+export AppSwitch from './Switch';
 export AppLayout from './Shared';
