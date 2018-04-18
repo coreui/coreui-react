@@ -23,9 +23,9 @@ class AppHeader extends Component {
     if (fixed) { document.body.classList.add('header-fixed'); }
   }
 
-  breakpoint(breakpoint) {
-    return breakpoint || '';
-  }
+  // breakpoint(breakpoint) {
+  //   return breakpoint || '';
+  // }
 
   render() {
     const { className, children, fixed, tag: Tag, ...attributes } = this.props;
