@@ -84,8 +84,7 @@ class AppSwitch extends Component {
 
     return (
       <label className={classes}>
-        <input type={type} className={inputClasses} onChange={this.toggle} checked={this.state.checked} defaultChecked={defaultChecked} name={name}
-               required={required} disabled={disabled} value={value} />
+        <input type={type} className={inputClasses} onChange={this.toggle} checked={this.state.checked} name={name} required={required} disabled={disabled} value={value} />
         <span className={sliderClasses} data-checked={dataOn} data-unchecked={dataOff}></span>
       </label>
     );
