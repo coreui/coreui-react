@@ -9,4 +9,8 @@ describe('SidebarFooter', () => {
     expect(render(<SidebarFooter>test</SidebarFooter>))
     .toContain('<div class="sidebar-footer">test</div>')
   })
+  it('renders no div with class="sidebar-footer"', () => {
+    expect(render(<SidebarFooter></SidebarFooter>))
+    .toNotContain('<div class="sidebar-footer"></div>')
+  })
 })
