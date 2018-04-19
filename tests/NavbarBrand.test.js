@@ -15,4 +15,13 @@ describe('AppNavbarBrand', () => {
       minimized={{ src: sygnet, width: 30, height: 30, alt: 'CoreUI Minimized' }}
     />)).toContain('class="navbar-brand"');
   });
+  it('renders anchor with class="navbar-brand"', () => {
+    expect(render(<AppNavbarBrand
+      brand={{ }}
+    />)).toContain('class="navbar-brand"');
+  });
+  it('renders anchor with class="navbar-brand"', () => {
+    expect(render(<AppNavbarBrand />)).toContain('class="navbar-brand"');
+  });
+
 });

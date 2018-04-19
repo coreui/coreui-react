@@ -82,7 +82,11 @@ class AppBreadcrumb extends Component {
   }
 
   render() {
-    const { className, children, appRoutes, tag: Tag, ...attributes } = this.props;
+    const { className, tag: Tag, ...attributes } = this.props;
+
+    delete attributes.children
+    delete attributes.appRoutes
+
     const classes = classNames(className);
 
     return (

@@ -62,7 +62,13 @@ class AppAside extends Component {
   }
 
   render() {
-    const { className, children, display, fixed, hidden, offCanvas, isOpen, tag: Tag, ...attributes } = this.props;
+    const { className, children, tag: Tag, ...attributes } = this.props;
+
+    delete attributes.display
+    delete attributes.fixed
+    delete attributes.hidden
+    delete attributes.offCanvas
+    delete attributes.isOpen
 
     const classes = classNames(className, 'aside-menu');
 

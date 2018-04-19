@@ -2,7 +2,7 @@ import expect from 'expect'
 import React from 'react'
 import {renderToStaticMarkup as render} from 'react-dom/server'
 
-import { configure, mount } from 'enzyme'
+import { configure, mount, shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { spy } from 'sinon'
 
@@ -12,7 +12,7 @@ configure({ adapter: new Adapter() });
 
 describe('AppAside', () => {
   it('renders aside with class="aside-menu"', () => {
-    expect(render(<AppAside fixed hidden display="lg">aside</AppAside>))
+    expect(render(<AppAside fixed hidden offCanvas display="lg">aside</AppAside>))
     .toContain('<aside class="aside-menu">aside</aside>')
   });
   it('calls componentDidMount', () => {
@@ -20,5 +20,15 @@ describe('AppAside', () => {
 
     const wrapper = mount(<AppAside fixed hidden display="lg" />);
     expect(AppAside.prototype.componentDidMount.calledOnce).toEqual(true);
+  });
+  it('should call isHidden()', () => {
+    const isHidden = spy(AppAside.prototype, 'isHidden');
+    shallow(<AppAside />);
+    expect(isHidden.called).toBe(true);
+  });
+  it('should call isOffCanvas()', () => {
+    const isOffCanvas = spy(AppAside.prototype, 'isOffCanvas');
+    shallow(<AppAside offCanvas={false}/>);
+    expect(isOffCanvas.called).toBe(true);
   });
 })

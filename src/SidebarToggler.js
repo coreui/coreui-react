@@ -43,7 +43,10 @@ class AppSidebarToggler extends Component {
   }
 
   render() {
-    const { className, children, mobile, tag: Tag, display, ...attributes } = this.props;
+    const { className, children, tag: Tag, ...attributes } = this.props;
+
+    delete attributes.mobile
+    delete attributes.display
 
     const classes = classNames(className, 'navbar-toggler');
 

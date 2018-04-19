@@ -20,9 +20,7 @@ class AppSidebarMinimizer extends Component {
 
     this.handleClick = this.handleClick.bind(this);
   }
-  sidebarMinimize(e) {
-    // e.preventDefault();
-
+  sidebarMinimize() {
     document.body.classList.toggle('sidebar-minimized');
     const sidebar = document.querySelector('.sidebar-nav')
     if (sidebar) {
@@ -31,9 +29,7 @@ class AppSidebarMinimizer extends Component {
     }
   }
 
-  brandMinimize(e) {
-    // e.preventDefault();
-
+  brandMinimize() {
     document.body.classList.toggle('brand-minimized');
   }
 

@@ -2,7 +2,7 @@ import expect from 'expect'
 import React from 'react'
 import {renderToStaticMarkup as render} from 'react-dom/server'
 
-import { configure, mount } from 'enzyme'
+import { configure, mount, shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { spy } from 'sinon'
 
@@ -21,4 +21,10 @@ describe('AppFooter', () => {
     const wrapper = mount(<AppFooter fixed display="lg" />);
     expect(AppFooter.prototype.componentDidMount.calledOnce).toEqual(true);
   });
+  it('should call isFixed()', () => {
+    const isFixed = spy(AppFooter.prototype, 'isFixed');
+    shallow(<AppFooter />);
+    expect(isFixed.called).toBe(true);
+  });
+
 })
