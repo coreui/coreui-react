@@ -28,7 +28,9 @@ class AppHeader extends Component {
   // }
 
   render() {
-    const { className, children, fixed, tag: Tag, ...attributes } = this.props;
+    const { className, children, tag: Tag, ...attributes } = this.props;
+
+    delete attributes.fixed
 
     const classes = classNames(className, 'app-header', 'navbar');
 

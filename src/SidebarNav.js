@@ -165,7 +165,11 @@ class AppSidebarNav extends Component {
   }
 
   render() {
-    const { className, children, isOpen, tag: Tag, navConfig, staticContext, ...attributes } = this.props;
+    const { className, children, navConfig, ...attributes } = this.props;
+
+    delete attributes.isOpen
+    delete attributes.staticContext
+    delete attributes.Tag
 
     const navClasses = classNames(className, 'sidebar-nav');
 

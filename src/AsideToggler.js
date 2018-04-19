@@ -45,19 +45,23 @@ class AppAsideToggler extends Component {
   }
 
   render() {
-    const { className, children, mobile, tag: Tag, display, ...attributes } = this.props;
+    const { className, children, type, tag: Tag, ...attributes } = this.props;
+
+    delete attributes.display
+    delete attributes.mobile
+    delete attributes.display
 
     const classes = classNames(className, 'navbar-toggler');
 
     return (
-      <button
-          type="button"
+      <Tag
+          type={type}
           className={classes}
           {...attributes}
           onClick={(event)=>this.asideToggle(event)}
       >
         {children || <span className="navbar-toggler-icon" />}
-      </button>
+      </Tag>
     );
   }
 }
