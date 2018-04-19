@@ -5,20 +5,23 @@ import classNames from 'classnames';
 const propTypes = {
   color: PropTypes.string,
   label: PropTypes.bool,
-  outline: PropTypes.bool,
-  outlineAlt: PropTypes.bool,
-  pill: PropTypes.bool,
-  size: PropTypes.string,
+  outline: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.oneOf(['', 'alt'])
+  ]),
+  size: PropTypes.oneOf(['', 'lg', 'sm']),
   checked: PropTypes.bool,
   defaultChecked: PropTypes.bool,
   defaultValue: PropTypes.any,
+  value: PropTypes.string,
   disabled: PropTypes.bool,
   form: PropTypes.any,
-  indeterminate: PropTypes.any,
   name: PropTypes.string,
   required: PropTypes.bool,
-  type: PropTypes.string,
-  value: PropTypes.string,
+  onChange: PropTypes.func,
+  type: PropTypes.oneOf(['checkbox', 'radio']),
+  variant: PropTypes.oneOf(['', '3d', 'pill']),
   className: PropTypes.string,
   dataOn: PropTypes.string,
   dataOff: PropTypes.string,
@@ -28,14 +31,13 @@ const defaultProps = {
   color: 'secondary',
   label: false,
   outline: false,
-  outlineAlt: false,
-  pill: false,
   size: '',
   checked: false,
   defaultChecked: false,
   disabled: false,
   required: false,
   type: 'checkbox',
+  variant: '',
   dataOn: 'On',
   dataOff: 'Off',
 };
@@ -43,33 +45,38 @@ const defaultProps = {
 class AppSwitch extends Component {
   constructor(props) {
     super(props);
-    this.toggle = this.toggle.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.state = {
       checked: this.props.defaultChecked || this.props.checked,
+      selected: []
     };
   }
 
-  toggle(event) {
+  onChange(event) {
     const target = event.target;
     this.setState({
       checked: target.checked,
-    });
+    })
+
+    if (this.props.onChange) {
+      this.props.onChange(event);
+    }
   }
 
   render() {
-    const { className, checked, disabled, color, defaultChecked, name, label, outline, outlineAlt, pill, size, required, type, value, dataOn, dataOff, ...attributes } = this.props;
+    const { className, disabled, color, name, label, outline, size, required, type, value, dataOn, dataOff, variant, ...attributes } = this.props;
 
-    const outlined = outline || outlineAlt;
-
-    const variant = `switch${outlined ? '-outline' : ''}-${color}${outlineAlt ? '-alt' : ''}`;
+    delete attributes.checked
+    delete attributes.defaultChecked
+    delete attributes.onChange
 
     const classes = classNames(
       className,
       'switch',
       label ? 'switch-label' : false,
-      pill ? 'switch-pill' : false,
       size ? `switch-${size}` : false,
-      variant,
+      variant ? `switch-${variant}` : false,
+      `switch${outline ? '-outline' : ''}-${color}${outline==='alt' ? '-alt' : ''}`,
       'form-check-label',
     );
 
@@ -84,7 +91,7 @@ class AppSwitch extends Component {
 
     return (
       <label className={classes}>
-        <input type={type} className={inputClasses} onChange={this.toggle} checked={this.state.checked} name={name} required={required} disabled={disabled} value={value} />
+        <input type={type} className={inputClasses} onChange={this.onChange} checked={this.state.checked} name={name} required={required} disabled={disabled} value={value} {...attributes} />
         <span className={sliderClasses} data-checked={dataOn} data-unchecked={dataOff}></span>
       </label>
     );
