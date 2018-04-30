@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0-beta.2",
   "description": "CoreUI React Bootstrap 4 components",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -21,7 +21,7 @@
     "lint": "eslint src"
   },
   "dependencies": {
-    "@coreui/coreui": "^2.0.0-beta.10",
+    "@coreui/coreui": "^2.0.0-rc.1",
     "bootstrap": "^4.1.0",
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
@@ -45,7 +45,7 @@
     "nwb": "^0.21.5",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "sinon": "^4.5.0"
+    "sinon": "^5.0.1"
   },
   "author": "Łukasz Holeczek",
   "homepage": "http://coreui.io",
