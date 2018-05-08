@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { Container, Nav, NavItem, NavLink, Badge, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Container, Nav, NavItem, NavLink, Badge, DropdownToggle, DropdownMenu } from 'reactstrap';
 
 import {
   AppAside,
@@ -27,7 +27,7 @@ import logo from '../../assets/img/brand/logo.svg'
 import sygnet from '../../assets/img/brand/sygnet.svg'
 import avatar from '../../assets/img/avatars/6.jpg'
 
-class Full extends Component {
+class DefaultLayout extends Component {
   render() {
     return (
       <div className="app">
@@ -88,12 +88,13 @@ class Full extends Component {
             Aside
           </AppAside>
         </div>
-        <AppFooter fixed>
+        <AppFooter>
           <span><a href="https://coreui.io">CoreUI</a> &copy; 2018 creativeLabs.</span>
-          <span className="ml-auto">Powered by <a href="https://coreui.io/react">CoreUI for React</a></span> </AppFooter>
+          <span className="ml-auto">Powered by <a href="https://coreui.io/react">CoreUI for React</a></span>
+        </AppFooter>
       </div>
     );
   }
 }
 
-export default Full;
+export default DefaultLayout;

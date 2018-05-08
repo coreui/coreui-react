@@ -13,7 +13,7 @@ import './scss/style.css'
 // import '../node_modules/@coreui/styles/scss/_dropdown-menu-right.scss';
 
 // Containers
-import Full from './containers/Full/Full.js';
+import Full from './containers/DefaultLayout/DefaultLayout.js';
 
 // import { renderRoutes } from 'react-router-config';
 
