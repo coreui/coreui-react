@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "2.0.0-rc.0",
+  "version": "2.0.0-rc.1",
   "description": "CoreUI React Bootstrap 4 components",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -21,7 +21,7 @@
     "lint": "eslint src"
   },
   "dependencies": {
-    "@coreui/coreui": "^2.0.0-rc.2",
+    "@coreui/coreui": "^2.0.0",
     "bootstrap": "^4.1.1",
     "classnames": "^2.2.5",
     "core-js": "^2.5.6",
