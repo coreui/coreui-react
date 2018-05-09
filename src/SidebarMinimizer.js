@@ -24,8 +24,9 @@ class AppSidebarMinimizer extends Component {
     document.body.classList.toggle('sidebar-minimized');
     const sidebar = document.querySelector('.sidebar-nav')
     if (sidebar) {
-      sidebar.classList.toggle('ps');
-      sidebar.classList.toggle('scrollbar-container');
+      const toggleOn = sidebar.classList.toggle('ps');
+      sidebar.classList.toggle('scrollbar-container', toggleOn);
+      sidebar.classList.toggle('ps--active-y', toggleOn);
     }
   }
 
