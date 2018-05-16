@@ -40,13 +40,13 @@ class DefaultLayout extends Component {
           <AppSidebarToggler className="d-md-down-none" display="lg" />
           <Nav className="ml-auto" navbar>
             <NavItem className="d-md-down-none">
-              <NavLink href="#"><i className="icon-bell"></i><Badge pill color="danger">5</Badge></NavLink>
+              <NavLink href="#"><i className="cui-bell icons font-xl d-block"></i><Badge pill color="danger">5</Badge></NavLink>
             </NavItem>
             <NavItem className="d-md-down-none">
-              <NavLink href="#"><i className="icon-list"></i></NavLink>
+              <NavLink href="#"><i className="cui-list icons icons font-xl d-block"></i></NavLink>
             </NavItem>
             <NavItem className="d-md-down-none">
-              <NavLink href="#"><i className="icon-location-pin"></i></NavLink>
+              <NavLink href="#"><i className="cui-location-pin icons icons font-xl d-block"></i></NavLink>
             </NavItem>
             <AppHeaderDropdown>
               <DropdownToggle nav>
@@ -89,7 +89,7 @@ class DefaultLayout extends Component {
           </AppAside>
         </div>
         <AppFooter>
-          <span><a href="https://coreui.io">CoreUI</a> &copy; 2018 creativeLabs.</span>
+          <span><a href="https://coreui.io">CoreUI</a> &copy; 2018 creativeLabs</span>
           <span className="ml-auto">Powered by <a href="https://coreui.io/react">CoreUI for React</a></span>
         </AppFooter>
       </div>

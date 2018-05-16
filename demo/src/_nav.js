@@ -3,7 +3,7 @@ export default {
     {
       name: 'Dashboard',
       url: '/dashboard',
-      icon: 'icon-speedometer',
+      icon: 'cui-speedometer icons',
       badge: {
         variant: 'info',
         text: 'NEW'
