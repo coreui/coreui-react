@@ -6,12 +6,12 @@ const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   fixed: PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 const defaultProps = {
   tag: 'header',
-  fixed: false,
+  fixed: false
 };
 
 class AppHeader extends Component {
@@ -23,12 +23,14 @@ class AppHeader extends Component {
     if (fixed) { document.body.classList.add('header-fixed'); }
   }
 
-  breakpoint(breakpoint) {
-    return breakpoint || '';
-  }
+  // breakpoint(breakpoint) {
+  //   return breakpoint || '';
+  // }
 
   render() {
-    const { className, children, fixed, tag: Tag, ...attributes } = this.props;
+    const { className, children, tag: Tag, ...attributes } = this.props;
+
+    delete attributes.fixed
 
     const classes = classNames(className, 'app-header', 'navbar');
 

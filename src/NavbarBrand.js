@@ -8,11 +8,11 @@ const propTypes = {
   className: PropTypes.string,
   brand: PropTypes.any,
   full: PropTypes.any,
-  minimized: PropTypes.any,
+  minimized: PropTypes.any
 };
 
 const defaultProps = {
-  tag: 'a',
+  tag: 'a'
 };
 
 class AppNavbarBrand extends Component {
@@ -35,12 +35,12 @@ class AppNavbarBrand extends Component {
   navbarBrandImg(props, classBrand, key) {
     return (
       <img
-        src={this.imgSrc(props)}
-        width={this.imgWidth(props)}
-        height={this.imgHeight(props)}
-        alt={this.imgAlt(props)}
-        className={classBrand}
-        key={key.toString()}
+          src={this.imgSrc(props)}
+          width={this.imgWidth(props)}
+          height={this.imgHeight(props)}
+          alt={this.imgAlt(props)}
+          className={classBrand}
+          key={key.toString()}
       />
     );
   }

@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import {
-  Dropdown,
-} from 'reactstrap';
+import { Dropdown } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 const propTypes = {
   children: PropTypes.node,
+  direction: PropTypes.string
 };
 
-const defaultProps = {};
+const defaultProps = {
+  direction: 'down'
+};
 
 class AppHeaderDropdown extends Component {
   constructor(props) {
@@ -16,13 +17,13 @@ class AppHeaderDropdown extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      dropdownOpen: false,
+      dropdownOpen: false
     };
   }
 
   toggle() {
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen,
+      dropdownOpen: !this.state.dropdownOpen
     });
   }
 

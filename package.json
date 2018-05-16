@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -15,13 +15,15 @@
       "url": "https://github.com/xidedix"
     }
   ],
+  "homepage": "https://coreui.io",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
-    "css",
-    "es",
-    "lib",
-    "umd"
+    "css/",
+    "es/",
+    "lib/",
+    "umd/",
+    "README.md"
   ],
   "scripts": {
     "build": "nwb build-react-component",
@@ -29,35 +31,52 @@
     "start": "nwb serve-react-demo",
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
-    "test:watch": "nwb test-react --server"
+    "test:watch": "nwb test-react --server",
+    "lint": "eslint src"
   },
   "dependencies": {
-    "bootstrap": "4.0.0",
+    "@coreui/coreui": "^2.0.0",
+    "bootstrap": "^4.1.1",
     "classnames": "^2.2.5",
+    "core-js": "^2.5.6",
+    "prop-types": "^15.6.1",
     "flag-icon-css": "^3.0.0",
-    "font-awesome": "4.7.0",
-    "react-perfect-scrollbar": "^1.0.0",
+    "font-awesome": "^4.7.0",
+    "react-perfect-scrollbar": "^1.1.1",
     "react-router-dom": "^4.2.2",
-    "reactstrap": "5.0.0-beta",
-    "simple-line-icons": "2.4.1"
+    "reactstrap": "^6.0.1",
+    "simple-line-icons": "^2.4.1"
   },
   "peerDependencies": {
     "react": "16.x"
   },
   "devDependencies": {
-    "nwb": "0.21.x",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "babel-eslint": "^8.2.3",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.19.1",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-react": "^7.7.0",
+    "nwb": "^0.21.5",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "sinon": "^5.0.7"
   },
-  "homepage": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/coreui/react.git"
+    "url": "https://github.com/coreui/coreui-react.git"
   },
   "bugs": {
-    "url": "https://github.com/coreui/react/issues"
+    "url": "https://github.com/coreui/coreui-react/issues"
   },
   "keywords": [
-    "react-component"
+    "coreui",
+    "react",
+    "bootstrap",
+    "framework",
+    "responsive",
+    "layout",
+    "component",
+    "components"
   ]
 }

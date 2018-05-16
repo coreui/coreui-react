@@ -6,25 +6,37 @@ const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  type: PropTypes.string,
+  type: PropTypes.string
 };
 
 const defaultProps = {
   tag: 'button',
-  type: 'button',
+  type: 'button'
 };
 
 class AppSidebarMinimizer extends Component {
-  sidebarMinimize(e) {
-    // e.preventDefault();
+  constructor(props) {
+    super(props);
 
+    this.handleClick = this.handleClick.bind(this);
+  }
+  sidebarMinimize() {
     document.body.classList.toggle('sidebar-minimized');
+    const sidebar = document.querySelector('.sidebar-nav')
+    if (sidebar) {
+      const toggleOn = sidebar.classList.toggle('ps');
+      sidebar.classList.toggle('scrollbar-container', toggleOn);
+      sidebar.classList.toggle('ps--active-y', toggleOn);
+    }
   }
 
-  brandMinimize(e) {
-    // e.preventDefault();
-
+  brandMinimize() {
     document.body.classList.toggle('brand-minimized');
+  }
+
+  handleClick(e) {
+    this.sidebarMinimize(e)
+    this.brandMinimize(e)
   }
 
   render() {
@@ -33,7 +45,7 @@ class AppSidebarMinimizer extends Component {
     const classes = classNames(className, 'sidebar-minimizer', 'mt-auto');
 
     return (
-      <Tag className={classes} type={type} {...attributes} onClick={(event) => { this.sidebarMinimize(event); this.brandMinimize(event); }} >
+      <Tag className={classes} type={type} {...attributes} onClick={(event)=>this.handleClick(event)} >
         {children}
       </Tag>
     );

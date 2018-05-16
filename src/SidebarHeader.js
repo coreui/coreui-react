@@ -5,22 +5,22 @@ import classNames from 'classnames';
 const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 const defaultProps = {
-  tag: 'div',
+  tag: 'div'
 };
 
 class AppSidebarHeader extends Component {
   render() {
     const { className, children, tag: Tag, ...attributes } = this.props;
     const classes = classNames(className, 'sidebar-header');
-    const header = children ? (
+    const header = children ? 
       <Tag className={classes} {...attributes} >
         {children}
       </Tag>
-    ) : (null);
+     : null;
 
     return (
       header

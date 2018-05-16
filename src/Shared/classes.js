@@ -3,7 +3,7 @@ export const sidebarCssClasses = [
   'sidebar-sm-show',
   'sidebar-md-show',
   'sidebar-lg-show',
-  'sidebar-xl-show',
+  'sidebar-xl-show'
 ];
 
 export const asideMenuCssClasses = [
@@ -11,5 +11,5 @@ export const asideMenuCssClasses = [
   'aside-menu-sm-show',
   'aside-menu-md-show',
   'aside-menu-lg-show',
-  'aside-menu-xl-show',
+  'aside-menu-xl-show'
 ];

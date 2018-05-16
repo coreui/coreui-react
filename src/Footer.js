@@ -6,12 +6,12 @@ const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   fixed: PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 const defaultProps = {
   tag: 'footer',
-  fixed: false,
+  fixed: false
 };
 
 class AppFooter extends Component {
@@ -30,7 +30,9 @@ class AppFooter extends Component {
   }
 
   render() {
-    const { className, children, fixed, tag: Tag, ...attributes } = this.props;
+    const { className, children, tag: Tag, ...attributes } = this.props;
+
+    delete attributes.fixed
 
     const classes = classNames(className, 'app-footer');
 

@@ -11,7 +11,7 @@ const propTypes = {
   hidden: PropTypes.bool,
   isOpen: PropTypes.bool,
   offCanvas: PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 const defaultProps = {
@@ -20,7 +20,7 @@ const defaultProps = {
   fixed: false,
   hidden: false,
   isOpen: false,
-  offCanvas: true,
+  offCanvas: true
 };
 
 class AppAside extends Component {
@@ -62,7 +62,13 @@ class AppAside extends Component {
   }
 
   render() {
-    const { className, children, display, fixed, hidden, offCanvas, isOpen, tag: Tag, ...attributes } = this.props;
+    const { className, children, tag: Tag, ...attributes } = this.props;
+
+    delete attributes.display
+    delete attributes.fixed
+    delete attributes.hidden
+    delete attributes.offCanvas
+    delete attributes.isOpen
 
     const classes = classNames(className, 'aside-menu');
 

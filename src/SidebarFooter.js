@@ -5,11 +5,11 @@ import classNames from 'classnames';
 const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 const defaultProps = {
-  tag: 'div',
+  tag: 'div'
 };
 
 class AppSidebarFooter extends Component {
@@ -17,11 +17,11 @@ class AppSidebarFooter extends Component {
     const { className, children, tag: Tag, ...attributes } = this.props;
 
     const classes = classNames(className, 'sidebar-footer');
-    const footer = children ? (
+    const footer = children ? 
       <Tag className={classes} {...attributes} >
         {children}
       </Tag>
-    ) : (null);
+     : null;
 
     return (
       footer
