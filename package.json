@@ -1,7 +1,20 @@
 {
   "name": "@coreui/react",
-  "version": "2.0.0-alpha",
+  "version": "2.0.0-alpha.1",
   "description": "CoreUI React Bootstrap 4 components",
+  "license": "MIT",
+  "author": {
+    "name": "Łukasz Holeczek",
+    "url": "http://holeczek.pl",
+    "github": "https://github.com/mrholek",
+    "twitter": "https://twitter.com/lukaszholeczek"
+  },
+  "contributors": [
+    {
+      "name": "Andrzej Kopański",
+      "url": "https://github.com/xidedix"
+    }
+  ],
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -36,9 +49,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
-  "author": "",
   "homepage": "",
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/coreui/react.git"
