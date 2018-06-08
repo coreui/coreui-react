@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -35,16 +35,16 @@
     "lint": "eslint src"
   },
   "dependencies": {
-    "@coreui/coreui": "^2.0.1",
-    "@coreui/icons": "^0.1.1",
-    "classnames": "^2.2.5",
-    "core-js": "^2.5.6",
+    "@coreui/icons": "^0.2.0",
+    "classnames": "^2.2.6",
+    "core-js": "^2.5.7",
     "prop-types": "^15.6.1",
     "react-perfect-scrollbar": "^1.1.1",
-    "react-router-dom": "^4.2.2",
-    "reactstrap": "^6.0.1"
+    "react-router-dom": "^4.3.1",
+    "reactstrap": "^6.1.0"
   },
   "peerDependencies": {
+    "@coreui/coreui": "^2.0.2",
     "react": "16.x"
   },
   "devDependencies": {
@@ -52,12 +52,12 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.19.1",
-    "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-react": "^7.8.2",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-react": "^7.9.1",
     "nwb": "^0.21.5",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "sinon": "^5.0.7"
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "sinon": "5.0.7"
   },
   "repository": {
     "type": "git",
