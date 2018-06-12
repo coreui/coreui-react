@@ -38,6 +38,7 @@
     "@coreui/icons": "^0.2.0",
     "classnames": "^2.2.6",
     "core-js": "^2.5.7",
+    "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
     "react-perfect-scrollbar": "^1.1.1",
     "react-router-dom": "^4.3.1",
