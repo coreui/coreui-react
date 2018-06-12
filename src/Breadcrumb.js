@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import _ from 'lodash';
 
 let routes;
 
@@ -20,11 +21,7 @@ const getPaths = (pathname) => {
 };
 
 const findRouteName = (url) => {
-  const aroute = routes.find(route => route.path === url);
-  if (aroute && aroute.name) {
-    return aroute.name;
-  }
-  return null;
+  return _.result(_.find(routes, {root: url}), 'name');
 };
 
 const BreadcrumbsItem = ({ match }) => {
@@ -50,9 +47,19 @@ BreadcrumbsItem.propTypes = {
   })
 };
 
+const getPath = (root, path = null) => {
+  const paths = ['', root];
+
+  if (path) paths[2] = path;
+
+  return paths.join('/');
+};
+
 const Breadcrumbs = (args) => {
-  const paths = getPaths(args.location.pathname);
-  const items = paths.map((path, i) => <Route key={i.toString()} path={path} component={BreadcrumbsItem} />);
+  const paths = getPaths(args.location.pathname.replace(getPath(args.root), ''));
+  const items = paths.map((path, i) => <Route key={i.toString()}
+                                              path={getPath(args.root, path.substring(1))}
+                                              component={BreadcrumbsItem} />);
   return (
     <Breadcrumb>
       {items}
@@ -64,13 +71,15 @@ const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   appRoutes: PropTypes.any,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  root: PropTypes.string
 };
 
 const defaultProps = {
   tag: 'div',
   className: '',
-  appRoutes: [{ path: '/', exact: true, name: 'Home', component: null }]
+  appRoutes: [{ path: '/', exact: true, name: 'Home', component: null }],
+  root: '/'
 };
 
 class AppBreadcrumb extends Component {
@@ -84,8 +93,8 @@ class AppBreadcrumb extends Component {
   render() {
     const { className, tag: Tag, ...attributes } = this.props;
 
-    delete attributes.children
-    delete attributes.appRoutes
+    delete attributes.children;
+    delete attributes.appRoutes;
 
     const classes = classNames(className);
 
