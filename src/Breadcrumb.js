@@ -1,36 +1,37 @@
-import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import React, {Component} from 'react';
+import {Route, Link} from 'react-router-dom';
+import {Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import _ from 'lodash';
 
-let routes;
+const getPaths = (pathname, root) => {
+  const paths = [root];
+  if (pathname === root) return paths;
 
-const getPaths = (pathname) => {
-  const paths = ['/'];
+  let pathnameSliced=pathname;
+  if (root !== '/')
+    pathnameSliced = pathname.slice(root.length);
 
-  if (pathname === '/') return paths;
-
-  pathname.split('/').reduce((prev, curr) => {
-    const currPath = `${prev}/${curr}`;
+  pathnameSliced.split('/').reduce((prev, curr) => {
+    const currPath = prev == '' ? curr : `${prev}/${curr}`;
     paths.push(currPath);
     return currPath;
   });
   return paths;
 };
 
-const findRouteName = (url) => {
-  return _.result(_.find(routes, {root: url}), 'name');
+const findRouteName = (url, routes) => {
+  return _.result(_.find(routes, {path: url}), 'name');
 };
 
-const BreadcrumbsItem = ({ match }) => {
-  const routeName = findRouteName(match.url);
+const BreadcrumbsItem = ({match, routes}) => {
+  const routeName = findRouteName(match.url, routes);
   if (routeName) {
     return (
       match.isExact ?
         <BreadcrumbItem active>{routeName}</BreadcrumbItem>
-       :
+        :
         <BreadcrumbItem>
           <Link to={match.url || ''}>
             {routeName}
@@ -44,22 +45,24 @@ const BreadcrumbsItem = ({ match }) => {
 BreadcrumbsItem.propTypes = {
   match: PropTypes.shape({
     url: PropTypes.string
-  })
+  }),
+  path: PropTypes.string,
+  routes: PropTypes.any
 };
 
 const getPath = (root, path = null) => {
-  const paths = ['', root];
-
-  if (path) paths[2] = path;
-
-  return paths.join('/');
+  if (root == path || !path)
+    return root;
+  else
+    return [root, path].join(root == '/' ? '' : '/');
 };
 
 const Breadcrumbs = (args) => {
-  const paths = getPaths(args.location.pathname.replace(getPath(args.root), ''));
+  const paths = getPaths(args.location.pathname, args.root);
   const items = paths.map((path, i) => <Route key={i.toString()}
-                                              path={getPath(args.root, path.substring(1))}
-                                              component={BreadcrumbsItem} />);
+                                              path={getPath(args.root, path)}
+                                              render={props => <BreadcrumbsItem {...props}
+                                                                                routes={args.appRoutes}/>}/>);
   return (
     <Breadcrumb>
       {items}
@@ -78,29 +81,26 @@ const propTypes = {
 const defaultProps = {
   tag: 'div',
   className: '',
-  appRoutes: [{ path: '/', exact: true, name: 'Home', component: null }],
+  appRoutes: [{path: '/', exact: true, name: 'Home', component: null}],
   root: '/'
 };
 
 class AppBreadcrumb extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { routes: props.appRoutes };
-    routes = this.state.routes;
-  }
-
   render() {
-    const { className, tag: Tag, ...attributes } = this.props;
+    const {className, tag: Tag, root, ...attributes} = this.props;
 
     delete attributes.children;
-    delete attributes.appRoutes;
 
     const classes = classNames(className);
 
+    let processedRoot = root;
+    if (root !== '/')
+      if (root.slice(-1) == '/')
+        processedRoot = root.slice(0, -1);
+
     return (
       <Tag className={classes}>
-        <Route path="/:path" component={Breadcrumbs} {...attributes} />
+        <Route path="/:path" render={props => <Breadcrumbs {...props} root={processedRoot} {...attributes} />}/>
       </Tag>
     );
   }
