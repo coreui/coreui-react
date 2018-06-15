@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -35,7 +35,7 @@
     "lint": "eslint src"
   },
   "dependencies": {
-    "@coreui/icons": "^0.3.0",
+    "@coreui/icons": "0.2.0",
     "classnames": "^2.2.6",
     "core-js": "^2.5.7",
     "prop-types": "^15.6.1",
