@@ -35,7 +35,7 @@
     "lint": "eslint src"
   },
   "dependencies": {
-    "@coreui/icons": "^0.2.0",
+    "@coreui/icons": "^0.3.0",
     "classnames": "^2.2.6",
     "core-js": "^2.5.7",
     "prop-types": "^15.6.1",
@@ -54,10 +54,10 @@
     "eslint": "^4.19.1",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-react": "^7.9.1",
-    "nwb": "^0.21.5",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "sinon": "5.0.7"
+    "nwb": "^0.22.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "sinon": "^5.0.7"
   },
   "repository": {
     "type": "git",
