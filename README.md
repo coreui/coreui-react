@@ -1,4 +1,4 @@
-## @coreui/react v2 for [CoreUI for React.js](https://coreui.io/react/)
+## @coreui/react v2 for [CoreUI for React](https://coreui.io/react/)
 
 [![npm package][npm-badge]][npm]
 [![npm next][npm-next]][npm]
@@ -20,8 +20,6 @@
 [circleci-badge]: https://circleci.com/gh/coreui/react/tree/master.svg?style=shield 
 [circleci]: https://circleci.com/gh/coreui/react/tree/master.svg?style=shield 
 
-_@coreui/react v2_ :construction:
-- work in progress :warning:
 - bootstrapped with [nwb](https://github.com/insin/nwb) toolkit
 
 #### `npm run` scripts
