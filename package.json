@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -38,7 +38,7 @@
     "@coreui/icons": "0.2.0",
     "classnames": "^2.2.6",
     "core-js": "^2.5.7",
-    "prop-types": "^15.6.1",
+    "prop-types": "^15.6.2",
     "react-perfect-scrollbar": "^1.1.1",
     "react-router-dom": "^4.3.1",
     "reactstrap": "^6.1.0"
