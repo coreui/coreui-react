@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, matchPath } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -20,11 +20,8 @@ const getPaths = (pathname) => {
 };
 
 const findRouteName = (url) => {
-  const aroute = routes.find(route => route.path === url);
-  if (aroute && aroute.name) {
-    return aroute.name;
-  }
-  return null;
+  const aroute = routes.find(route => matchPath(url, {path: route.path, exact: route.exact}));
+  return (aroute && aroute.name) ? aroute.name : null
 };
 
 const BreadcrumbsItem = ({ match }) => {
