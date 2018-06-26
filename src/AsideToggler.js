@@ -49,7 +49,6 @@ class AppAsideToggler extends Component {
 
     delete attributes.display
     delete attributes.mobile
-    delete attributes.display
 
     const classes = classNames(className, 'navbar-toggler');
 
