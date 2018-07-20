@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { sidebarCssClasses } from './Shared';
+import ClickOutHandler from 'react-onclickout'
+import 'element-closest'
 
 const propTypes = {
   children: PropTypes.node,
@@ -35,6 +37,7 @@ class AppSidebar extends Component {
     this.isMinimized = this.isMinimized.bind(this);
     this.isOffCanvas = this.isOffCanvas.bind(this);
     this.displayBreakpoint = this.displayBreakpoint.bind(this);
+    this.hideMobile = this.hideMobile.bind(this);
   }
 
   componentDidMount() {
@@ -70,6 +73,19 @@ class AppSidebar extends Component {
     document.body.classList.add(cssClass);
   }
 
+  hideMobile() {
+    if (document.body.classList.contains('sidebar-show')) {
+      document.body.classList.remove('sidebar-show');
+    }
+  }
+
+  onClickOut(e) {
+    if (!e.target.closest('[data-sidebar-toggler]')) {
+      this.hideMobile();
+    }
+
+  }
+
   render() {
     const { className, children, tag: Tag, ...attributes } = this.props;
 
@@ -85,9 +101,11 @@ class AppSidebar extends Component {
 
     // sidebar-nav root
     return (
-      <Tag className={classes} {...attributes}>
-        {children}
-      </Tag>
+      <ClickOutHandler onClickOut={(e) => {this.onClickOut(e)}}>
+        <Tag className={classes} {...attributes}>
+          {children}
+        </Tag>
+      </ClickOutHandler>
     );
   }
 }

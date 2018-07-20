@@ -38,17 +38,19 @@
     "@coreui/icons": "0.2.0",
     "classnames": "^2.2.6",
     "core-js": "^2.5.7",
+    "element-closest": "^2.0.2",
     "prop-types": "^15.6.2",
+    "react-onclickout": "^2.0.8",
     "react-perfect-scrollbar": "^1.1.1",
     "react-router-dom": "^4.3.1",
-    "reactstrap": "^6.1.0"
+    "reactstrap": "^6.3.0"
   },
   "peerDependencies": {
     "@coreui/coreui": "^2.0.2",
     "react": "16.x"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.5",
+    "babel-eslint": "^8.2.6",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.19.1",
