@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { sidebarCssClasses } from './Shared/index';
+import { sidebarCssClasses, validBreakpoints, checkBreakpoint } from './Shared/index';
 import toggleClasses from './Shared/toggle-classes';
 
 const propTypes = {
@@ -28,18 +28,16 @@ class AppSidebarToggler extends Component {
 
   sidebarToggle(e) {
     e.preventDefault();
+    this.toggle();
+  }
 
-    if (this.props.mobile) {
-      document.body.classList.toggle('sidebar-show');
-    } else {
-      const display = this.props.display;
-      const cssTemplate = `sidebar-${display}-show`;
-      let [cssClass] = sidebarCssClasses[0];
-      if (display && sidebarCssClasses.indexOf(cssTemplate) > -1) {
-        cssClass = cssTemplate;
-      }
-      toggleClasses(cssClass, sidebarCssClasses);
+  toggle(force) {
+    const [display, mobile] = [this.props.display, this.props.mobile]
+    let cssClass = sidebarCssClasses[0]
+    if (!mobile && display && checkBreakpoint(display, validBreakpoints)) {
+      cssClass = `sidebar-${display}-show`
     }
+    toggleClasses(cssClass, sidebarCssClasses, force)
   }
 
   render() {
@@ -51,7 +49,7 @@ class AppSidebarToggler extends Component {
     const classes = classNames(className, 'navbar-toggler');
 
     return (
-      <Tag type="button" className={classes} {...attributes} onClick={(event)=>this.sidebarToggle(event)}>
+      <Tag type="button" className={classes} {...attributes} onClick={(event)=>this.sidebarToggle(event)} data-sidebar-toggler>
         {children || <span className="navbar-toggler-icon" />}
       </Tag>
     );

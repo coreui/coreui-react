@@ -63,6 +63,14 @@ class AppSwitch extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.checked !== prevProps.checked) {
+      this.setState({
+        checked: this.props.checked
+      })
+    }
+  }
+
   render() {
     const { className, disabled, color, name, label, outline, size, required, type, value, dataOn, dataOff, variant, ...attributes } = this.props;
 

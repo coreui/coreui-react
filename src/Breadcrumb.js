@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
-import {Route, Link} from 'react-router-dom';
-import {Breadcrumb, BreadcrumbItem} from 'reactstrap';
+import React, { Component } from 'react';
+import { Route, Link, matchPath } from 'react-router-dom';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import _ from 'lodash';
 
 const getPaths = (pathname, root) => {
   const paths = [root];
@@ -22,7 +21,8 @@ const getPaths = (pathname, root) => {
 };
 
 const findRouteName = (url, routes) => {
-  return _.result(_.find(routes, {path: url}), 'name');
+  const aroute = routes.find(route => matchPath(url, {path: route.path, exact: route.exact}));
+  return (aroute && aroute.name) ? aroute.name : null
 };
 
 const BreadcrumbsItem = ({match, routes}) => {
