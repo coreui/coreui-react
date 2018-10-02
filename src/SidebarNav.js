@@ -173,9 +173,12 @@ class AppSidebarNav extends Component {
 
     const navClasses = classNames(className, 'sidebar-nav');
 
+    // ToDo: find better rtl fix
+    const isRtl = getComputedStyle(document.querySelector('html')).direction === 'rtl'
+
     // sidebar-nav root
     return (
-      <PerfectScrollbar className={navClasses} {...attributes} option={{ suppressScrollX: true }} >
+      <PerfectScrollbar className={navClasses} {...attributes} option={{ suppressScrollX: !isRtl }} >
         <Nav>
           {children || this.navList(navConfig.items)}
         </Nav>
