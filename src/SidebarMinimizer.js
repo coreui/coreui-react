@@ -20,14 +20,27 @@ class AppSidebarMinimizer extends Component {
 
     this.handleClick = this.handleClick.bind(this);
   }
+
+  componentDidMount() {
+    const isMinimized = document.body.classList.contains('sidebar-minimized');
+    this.togglePs(!isMinimized)
+  }
+
   sidebarMinimize() {
-    document.body.classList.toggle('sidebar-minimized');
+    const isMinimized = document.body.classList.toggle('sidebar-minimized');
+    this.togglePs(!isMinimized)
+  }
+
+  togglePs(toggle) {
     const sidebar = document.querySelector('.sidebar-nav')
     if (sidebar) {
-      const toggleOn = sidebar.classList.toggle('ps');
-      sidebar.classList.toggle('scrollbar-container', toggleOn);
-      sidebar.classList.toggle('ps--active-y', toggleOn);
+      if (toggle) {
+        sidebar.classList.add('ps', 'ps-container', 'ps--active-y')
+      } else {
+        sidebar.classList.remove('ps', 'ps-container', 'ps--active-y')
+      }
     }
+
   }
 
   brandMinimize() {
