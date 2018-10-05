@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { asideMenuCssClasses } from './Shared/index';
+import { asideMenuCssClasses, validBreakpoints, checkBreakpoint } from './Shared/index';
 import toggleClasses from './Shared/toggle-classes';
 
 const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  defaultOpen: PropTypes.bool,
   display: PropTypes.any,
   mobile: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -14,6 +15,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  defaultOpen: false,
   display: 'lg',
   mobile: false,
   tag: 'button',
@@ -28,27 +30,30 @@ class AppAsideToggler extends Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    this.toggle(this.props.defaultOpen)
+  }
+
+  toggle (force) {
+    const [display, mobile] = [this.props.display, this.props.mobile];
+    let cssClass = asideMenuCssClasses[0];
+    if (!mobile && display && checkBreakpoint(display, validBreakpoints)) {
+      cssClass = `aside-menu-${display}-show`
+    }
+    toggleClasses(cssClass, asideMenuCssClasses, force)
+  }
+
   asideToggle(e) {
     e.preventDefault();
-
-    if (this.props.mobile) {
-      document.body.classList.toggle('aside-menu-show');
-    } else {
-      const display = this.props.display;
-      const cssTemplate = `aside-menu-${display}-show`;
-      let [cssClass] = asideMenuCssClasses[0];
-      if (display && asideMenuCssClasses.indexOf(cssTemplate) > -1) {
-        cssClass = cssTemplate;
-      }
-      toggleClasses(cssClass, asideMenuCssClasses);
-    }
+    this.toggle()
   }
 
   render() {
     const { className, children, type, tag: Tag, ...attributes } = this.props;
 
-    delete attributes.display
-    delete attributes.mobile
+    delete attributes.defaultOpen;
+    delete attributes.display;
+    delete attributes.mobile;
 
     const classes = classNames(className, 'navbar-toggler');
 
