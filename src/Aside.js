@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { asideMenuCssClasses } from './Shared';
+import { asideMenuCssClasses, checkBreakpoint, validBreakpoints } from './Shared';
+import toggleClasses from './Shared/toggle-classes';
 
 const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   display: PropTypes.string,
   fixed: PropTypes.bool,
-  hidden: PropTypes.bool,
   isOpen: PropTypes.bool,
   offCanvas: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
@@ -18,7 +18,6 @@ const defaultProps = {
   tag: 'aside',
   display: '',
   fixed: false,
-  hidden: false,
   isOpen: false,
   offCanvas: true
 };
@@ -28,20 +27,14 @@ class AppAside extends Component {
     super(props);
 
     this.isFixed = this.isFixed.bind(this);
-    this.isHidden = this.isHidden.bind(this);
     this.isOffCanvas = this.isOffCanvas.bind(this);
     this.displayBreakpoint = this.displayBreakpoint.bind(this);
   }
 
   componentDidMount() {
     this.isFixed(this.props.fixed);
-    this.isHidden(this.props.hidden);
     this.isOffCanvas(this.props.offCanvas);
     this.displayBreakpoint(this.props.display);
-  }
-
-  isHidden(hidden) {
-    if (hidden) { document.body.classList.add('aside-menu-hidden'); }
   }
 
   isFixed(fixed) {
@@ -53,12 +46,10 @@ class AppAside extends Component {
   }
 
   displayBreakpoint(display) {
-    const cssTemplate = `aside-menu-${display}-show`;
-    let [cssClass] = asideMenuCssClasses[0];
-    if (display && asideMenuCssClasses.indexOf(cssTemplate) > -1) {
-      cssClass = cssTemplate;
+    if (display && checkBreakpoint(display, validBreakpoints)) {
+      const cssClass = `aside-menu-${display}-show`
+      toggleClasses(cssClass, asideMenuCssClasses, true)
     }
-    document.body.classList.add(cssClass);
   }
 
   render() {
@@ -66,7 +57,6 @@ class AppAside extends Component {
 
     delete attributes.display
     delete attributes.fixed
-    delete attributes.hidden
     delete attributes.offCanvas
     delete attributes.isOpen
 

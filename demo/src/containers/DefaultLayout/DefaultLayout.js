@@ -84,7 +84,7 @@ class DefaultLayout extends Component {
               </Switch>
             </Container>
           </main>
-          <AppAside fixed hidden display="lg">
+          <AppAside fixed>
             Aside
           </AppAside>
         </div>

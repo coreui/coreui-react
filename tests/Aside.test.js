@@ -12,19 +12,14 @@ configure({ adapter: new Adapter() });
 
 describe('AppAside', () => {
   it('renders aside with class="aside-menu"', () => {
-    expect(render(<AppAside fixed hidden offCanvas display="lg">aside</AppAside>))
+    expect(render(<AppAside fixed offCanvas display="lg">aside</AppAside>))
     .toContain('<aside class="aside-menu">aside</aside>')
   });
   it('calls componentDidMount', () => {
     spy(AppAside.prototype, 'componentDidMount');
 
-    const wrapper = mount(<AppAside fixed hidden display="lg" />);
+    const wrapper = mount(<AppAside fixed />);
     expect(AppAside.prototype.componentDidMount.calledOnce).toEqual(true);
-  });
-  it('should call isHidden()', () => {
-    const isHidden = spy(AppAside.prototype, 'isHidden');
-    shallow(<AppAside />);
-    expect(isHidden.called).toBe(true);
   });
   it('should call isOffCanvas()', () => {
     const isOffCanvas = spy(AppAside.prototype, 'isOffCanvas');
