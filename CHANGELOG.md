@@ -1,5 +1,10 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
+##### `v2.0.9`
+- feat(Sidebar): badge on parent dropdown - thanks @jeff-nz
+- fix(SidebarNav): handleClick() target->currentTarget open
+- chore(demo): style.css update to `@coreui/coreui v2.0.15`
+
 ##### `v2.0.8`
 - refactor(SidebarMinimizer): extract `togglePs` method
 - refactor(SidebarMinimizer): for use `togglePs` method
