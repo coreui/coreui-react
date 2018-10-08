@@ -41,7 +41,7 @@ class AppSidebarNav extends Component {
 
   handleClick(e) {
     e.preventDefault();
-    e.target.parentElement.classList.toggle('open');
+    e.currentTarget.parentElement.classList.toggle('open');
   }
 
   activeRoute(routeName, props) {
@@ -111,7 +111,7 @@ class AppSidebarNav extends Component {
     const classIcon = classNames('nav-icon', item.icon);
     return (
       <li key={key} className={this.activeRoute(item.url, this.props)}>
-        <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick}><i className={classIcon} />{item.name}</a>
+        <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick}><i className={classIcon} />{item.name}{this.navBadge(item.badge)}</a>
         <ul className="nav-dropdown-items">
           {this.navList(item.children)}
         </ul>
