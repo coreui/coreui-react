@@ -41,7 +41,7 @@ class AppSidebarNav extends Component {
 
   handleClick(e) {
     e.preventDefault();
-    e.target.parentElement.classList.toggle('open');
+    e.currentTarget.parentElement.classList.toggle('open');
   }
 
   activeRoute(routeName, props) {
