@@ -11656,6 +11656,10 @@ canvas {
   margin-top: 2px;
 }
 
+.sidebar .nav-link.nav-dropdown-toggle .badge {
+  margin-right: 16px;
+}
+
 .sidebar .nav-link.active {
   color: #fff;
   background: #3a4248;
