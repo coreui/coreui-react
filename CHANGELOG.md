@@ -4,7 +4,7 @@
 - feat(SidebarNav): navLink `attributes` - optional JS object with valid JS API naming:
   - valid attributes: `rel`, `target`, `hidden`, `disabled`, etc...
   - item example:
-      ```json
+      ```js
       {
         name: 'Try CoreUI PRO',
         url: 'https://coreui.io/pro/react/',
