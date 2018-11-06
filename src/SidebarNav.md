@@ -35,7 +35,8 @@ tag | `nav`
     variant: 'info',
     text: 'NEW',
     class: ''                   // optional
-  }
+  },
+  attributes: { target: '_blank', rel: "noreferrer noopener", disabled: false, hidden: false }, // (v2.1.0 up) optional valid JS object with JS API naming
 },
 ````
 - item with `children` array - works like `nav-dropdown-toggle` with `nav-dropdown-items`
