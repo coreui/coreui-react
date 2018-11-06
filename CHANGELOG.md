@@ -1,5 +1,25 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
+##### `v2.1.0`
+- feat(SidebarNav): navLink `attributes` - optional JS object with valid JS API naming:
+  - valid attributes: `rel`, `target`, `hidden`, `disabled`, etc...
+  - item example:
+      ```json
+      {
+        name: 'Try CoreUI PRO',
+        url: 'https://coreui.io/pro/react/',
+        icon: 'cui-layers icons',
+        variant: 'danger',
+        attributes: { target: '_blank', rel: "noopener" },
+      },
+      ```
+- update `@coreui/coreui` to `2.1.0` - sidebar-nav-link-disabled-*
+- chore: update `react-perfect-scrollbar` to `1.4.2`
+- chore: update `eslint` to `5.8.0`
+- chore: update `react` to `16.6.0`
+- chore: update `react-dom` to `16.6.0`
+- chore(demo): style.css update to `@coreui/coreui v2.1.0`, navLink `disabled` example
+
 ##### `v2.0.9`
 - feat(Sidebar): badge on parent dropdown - thanks @jeff-nz
 - fix(SidebarNav): handleClick() target->currentTarget open
