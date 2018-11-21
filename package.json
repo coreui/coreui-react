@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -52,13 +52,13 @@
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.6.0",
-    "eslint": "^5.8.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "eslint": "^5.9.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-react": "^7.11.1",
     "nwb": "^0.23.0",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "sinon": "^5.1.1"
   },
   "repository": {
