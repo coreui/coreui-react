@@ -37,8 +37,7 @@
   "dependencies": {
     "@coreui/icons": "0.3.0",
     "classnames": "^2.2.6",
-    "core-js": "^2.5.7",
-    "element-closest": "^2.0.2",
+    "core-js": "^2.6.1",
     "prop-types": "^15.6.2",
     "react-onclickout": "^2.0.8",
     "react-perfect-scrollbar": "^1.4.2",

@@ -26,8 +26,6 @@ import 'core-js/es7/object'
 // Used for reflect-metadata in JIT. If you use AOT (and only Angular decorators), you can remove.
 // import 'core-js/es7/reflect'
 
-import 'element-closest'
-
 // CustomEvent() constructor functionality in IE9, IE10, IE11
 (function () {
 
