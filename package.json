@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -37,8 +37,7 @@
   "dependencies": {
     "@coreui/icons": "0.3.0",
     "classnames": "^2.2.6",
-    "core-js": "^2.5.7",
-    "element-closest": "^2.0.2",
+    "core-js": "^2.6.1",
     "prop-types": "^15.6.2",
     "react-onclickout": "^2.0.8",
     "react-perfect-scrollbar": "^1.4.2",
@@ -51,14 +50,14 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.7.0",
-    "eslint": "^5.9.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "eslint": "^5.10.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-react": "^7.11.1",
     "nwb": "^0.23.0",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "sinon": "^5.1.1"
   },
   "repository": {
