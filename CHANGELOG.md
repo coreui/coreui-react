@@ -1,24 +1,33 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
+##### `v2.1.2`
+- refactor: remove `element-closest` dependency issue #37 #50
+- chore: update `core-js` to `2.6.1`
+- chore: update `enzyme` to `3.8.0`
+- chore: update `enzyme-adapter-react-16` to `1.7.1`
+- chore: update `eslint` to `5.10.0`
+- chore: update `react` to `16.7.0`
+- chore: update `react-dom` to `16.7.0`
+
 ##### `v2.1.1`
-chore: update `enzyme-adapter-react-16` to `1.7.0`
-chore: update `eslint` to `5.9.0`
-chore: update `react-dom` to `16.6.3`
-chore: update `react` to `16.6.3`
+- chore: update `enzyme-adapter-react-16` to `1.7.0`
+- chore: update `eslint` to `5.9.0`
+- chore: update `react-dom` to `16.6.3`
+- chore: update `react` to `16.6.3`
 
 ##### `v2.1.0`
 - feat(SidebarNav): navLink `attributes` - optional JS object with valid JS API naming:
   - valid attributes: `rel`, `target`, `hidden`, `disabled`, etc...
   - item example:
-      ```js
-      {
-        name: 'Try CoreUI PRO',
-        url: 'https://coreui.io/pro/react/',
-        icon: 'cui-layers icons',
-        variant: 'danger',
-        attributes: { target: '_blank', rel: "noopener" },
-      },
-      ```
+    ```
+    {
+    name: 'Try CoreUI PRO',
+    url: 'https://coreui.io/pro/react/',
+    icon: 'cui-layers icons',
+    variant: 'danger',
+    attributes: { target: '_blank', rel: "noopener" },
+    },
+    ```
 - update `@coreui/coreui` to `2.1.0` - sidebar-nav-link-disabled-*
 - chore: update `react-perfect-scrollbar` to `1.4.2`
 - chore: update `eslint` to `5.8.0`
