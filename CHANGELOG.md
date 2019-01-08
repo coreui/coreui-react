@@ -1,5 +1,13 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
+##### `v2.1.3`
+- chore: update `@coreui/coreui` to `^2.1.5`
+- chore: update `reactstrap` to `^7.0.2`
+- chore: update `react-perfect-scrollbar` to `^1.4.4`
+- chore: update `react-router-dom` to `^4.3.1`
+- chore: update `eslint` to `^5.12.0`
+- chore: update `eslint-plugin-react` to `^7.12.3`
+
 ##### `v2.1.2`
 - refactor: remove `element-closest` dependency issue #37 #50
 - chore: update `core-js` to `2.6.1`
