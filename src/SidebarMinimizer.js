@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import LayoutHelper from './Shared/layout/layout'
+
 const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
@@ -23,33 +25,11 @@ class AppSidebarMinimizer extends Component {
 
   componentDidMount() {
     const isMinimized = document.body.classList.contains('sidebar-minimized');
-    this.togglePs(!isMinimized)
+    LayoutHelper.sidebarPSToggle(!isMinimized)
   }
 
-  sidebarMinimize() {
-    const isMinimized = document.body.classList.toggle('sidebar-minimized');
-    this.togglePs(!isMinimized)
-  }
-
-  togglePs(toggle) {
-    const sidebar = document.querySelector('.sidebar-nav')
-    if (sidebar) {
-      if (toggle) {
-        sidebar.classList.add('ps', 'ps-container', 'ps--active-y')
-      } else {
-        sidebar.classList.remove('ps', 'ps-container', 'ps--active-y')
-      }
-    }
-
-  }
-
-  brandMinimize() {
-    document.body.classList.toggle('brand-minimized');
-  }
-
-  handleClick(e) {
-    this.sidebarMinimize(e)
-    this.brandMinimize(e)
+  handleClick() {
+    LayoutHelper.sidebarToggle()
   }
 
   render() {

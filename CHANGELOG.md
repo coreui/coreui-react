@@ -1,5 +1,25 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
+##### `v2.1.4`
+- fix(Sidebar): *How to set left sidebar is minimized as default* [#145](https://github.com/coreui/coreui-free-react-admin-template/issues/145)
+- refactor(Layout): LayoutHelper germ
+- refactor(Sidabar): use static methods from `LayoutHelper` 
+- refactor(SidabarMinimizer): use static methods from `LayoutHelper` 
+- chore: update demo css
+
+###### dependencies update
+- update `@coreui/coreui` to `^2.1.7`
+- update `core-js` to `^2.6.5`
+- update `prop-types` to `^15.7.2`
+- update `reactstrap` to `^7.1.0`
+- update `enzyme` to `^3.9.0`
+- update `enzyme-adapter-react-16` to `^1.9.1`
+- update `eslint` to `^5.14.1`
+- update `eslint-plugin-import` to `^2.16.0`
+- update `eslint-plugin-react` to `^7.12.4`
+- update `react` to `^16.8.2`
+- update `react-dom` to `^16.8.2`
+
 ##### `v2.1.3`
 - chore: update `@coreui/coreui` to `^2.1.5`
 - chore: update `reactstrap` to `^7.0.2`

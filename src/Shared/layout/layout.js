@@ -1,29 +1,31 @@
-// import { toggleClasses } from '../toggle-classes';
+class LayoutHelper {
 
-class Layout {
-  static sidebarToggle() {
-
+  static sidebarToggle(toggle) {
+    const minimize = arguments.length ? toggle : !document.body.classList.contains('sidebar-minimized');
+    this.sidebarMinimize(minimize);
+    this.brandMinimize(minimize);
+    this.sidebarPSToggle(!minimize);  /*remove PS on sidebar minimized*/
   }
 
-  static sidebarMinimize() {
-    document.body.classList.toggle('sidebar-minimized');
+  static sidebarMinimize(force) {
+    return document.body.classList.toggle('sidebar-minimized', force);
   }
 
-  static mobileSidebarToggle() {
-    document.body.classList.toggle('sidebar-mobile-show');
+  static brandMinimize(force) {
+    document.body.classList.toggle('brand-minimized', force);
   }
 
-  static sidebarOffCanvasClose() {
-
-  }
-
-  static brandMinimize() {
-    document.body.classList.toggle('brand-minimized');
-  }
-
-  static asideToggleDirective() {
-
+  //  sidebar perfect scrollbar
+  static sidebarPSToggle(toggle) {
+    const sidebar = document.querySelector('.sidebar-nav');
+    if (sidebar) {
+      if (toggle) {
+        sidebar.classList.add('ps', 'ps-container', 'ps--active-y');
+      } else {
+        sidebar.classList.remove('ps', 'ps-container', 'ps--active-y');
+      }
+    }
   }
 }
 
-export default Layout;
+export default LayoutHelper;
