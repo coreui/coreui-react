@@ -2,9 +2,9 @@
 
 ##### `v2.1.4`
 - fix(Sidebar): *How to set left sidebar is minimized as default* [#145](https://github.com/coreui/coreui-free-react-admin-template/issues/145)
-- refactor(Layout): LayoutHelper germ
-- refactor(Sidabar): use static methods from `LayoutHelper` 
-- refactor(SidabarMinimizer): use static methods from `LayoutHelper` 
+- refactor(Layout): `LayoutHelper` germ
+- refactor(Sidebar): use static methods of `LayoutHelper` 
+- refactor(SidebarMinimizer): use static methods of `LayoutHelper` 
 - chore: update demo css
 
 ###### dependencies update
