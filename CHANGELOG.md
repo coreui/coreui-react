@@ -1,5 +1,16 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
+##### `v2.1.5`
+- fix: iOS 9 Safari sidebar toggle force issue #61 - thanks @Tubek
+- refactor(toggle-classes): keep `force` for the toggle method  
+- refactor(layout): drop second parameter for `classList.toggle()`  
+
+###### dependencies update
+- update `enzyme-adapter-react-16` to `^1.10.0`
+- update `eslint` to `^5.15.1`
+- update `react` to `^16.8.3`
+- update `react-dom` to `^16.8.3`
+
 ##### `v2.1.4`
 - fix(Sidebar): *How to set left sidebar is minimized as default* [#145](https://github.com/coreui/coreui-free-react-admin-template/issues/145)
 - refactor(Layout): `LayoutHelper` germ
