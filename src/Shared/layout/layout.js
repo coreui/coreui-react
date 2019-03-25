@@ -24,9 +24,13 @@ class LayoutHelper {
     const sidebar = document.querySelector('.sidebar-nav');
     if (sidebar) {
       if (toggle) {
-        sidebar.classList.add('ps', 'ps-container', 'ps--active-y');
+        sidebar.classList.add('ps');
+        sidebar.classList.add('ps-container');
+        sidebar.classList.add('ps--active-y');
       } else {
-        sidebar.classList.remove('ps', 'ps-container', 'ps--active-y');
+        sidebar.classList.remove('ps');
+        sidebar.classList.remove('ps-container');
+        sidebar.classList.remove('ps--active-y');
       }
     }
   }

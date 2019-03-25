@@ -1,5 +1,16 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
+##### `v2.1.6`
+- fix(LayoutHelper) Multiple arguments for add() & remove() - ie issue 
+- fix: lock `react-router-dom` to `~4.3.1`
+
+###### dependencies update
+- update `react-router-dom` to `~4.3.1`
+- update `enzyme-adapter-react-16` to `^1.11.2`
+- update `eslint` to `^5.15.3`
+- update `react` to `^16.8.5`
+- update `react-dom` to `^16.8.5`
+
 ##### `v2.1.5`
 - fix: iOS 9 Safari sidebar toggle force issue #61 - thanks @Tubek
 - refactor(toggle-classes): keep `force` for the toggle method  
