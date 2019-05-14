@@ -1,5 +1,19 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
+##### `v2.1.7`
+- maintenance release for use with:
+  - react-router `v4.3.x`
+  - reactstrap `v7.x`
+- update demo styles `@coreui/coreui` to `v2.1.9`
+###### dependencies update
+- update `react-perfect-scrollbar` to `^1.5.2`
+- update `enzyme-adapter-react-16` to `^1.13.0`
+- update `eslint` to `^5.16.0`
+- update `eslint-plugin-import` to `^2.17.2`
+- update `eslint-plugin-react` to `^7.13.0`
+- update `react` to `^16.8.6`
+- update `react-dom` to `^16.8.6`
+
 ##### `v2.1.6`
 - fix(LayoutHelper) Multiple arguments for add() & remove() - ie issue 
 - fix: lock `react-router-dom` to `~4.3.1`
