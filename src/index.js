@@ -1,6 +1,7 @@
 export AppAside from './Aside';
 export AppAsideToggler from './AsideToggler';
 export AppBreadcrumb from './Breadcrumb';
+export AppBreadcrumb2 from './Breadcrumb2';
 export AppFooter from './Footer';
 export AppHeader from './Header';
 export AppHeaderDropdown from './HeaderDropdown';
@@ -11,5 +12,6 @@ export AppSidebarForm from './SidebarForm';
 export AppSidebarHeader from './SidebarHeader';
 export AppSidebarMinimizer from './SidebarMinimizer';
 export AppSidebarNav from './SidebarNav';
+export AppSidebarNav2 from './SidebarNav2';
 export AppSidebarToggler from './SidebarToggler';
 export AppSwitch from './Switch';

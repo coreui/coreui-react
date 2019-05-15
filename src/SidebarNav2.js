@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import { Badge, Nav, NavItem, NavLink as RsNavLink } from 'reactstrap';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -13,7 +12,8 @@ const propTypes = {
   navFunc: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   isOpen: PropTypes.bool,
   staticContext: PropTypes.any,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  router: PropTypes.any
 };
 
 const defaultProps = {
@@ -27,10 +27,11 @@ const defaultProps = {
         badge: { variant: 'info', text: 'NEW' }
       }]
   },
-  isOpen: false
+  isOpen: false,
+  router: {RsNavLink}
 };
 
-class AppSidebarNav extends Component {
+class AppSidebarNav2 extends Component {
   constructor(props) {
     super(props);
 
@@ -46,8 +47,8 @@ class AppSidebarNav extends Component {
 
   activeRoute(routeName, props) {
     return props.location.pathname.indexOf(routeName) > -1
-      ? 'nav-item nav-dropdown open'
-      : 'nav-item nav-dropdown';
+        ? 'nav-item nav-dropdown open'
+        : 'nav-item nav-dropdown';
   }
 
   hideMobile() {
@@ -64,11 +65,11 @@ class AppSidebarNav extends Component {
   // nav type
   navType(item, idx) {
     return (
-      item.title ? this.navTitle(item, idx)
-        : item.divider ? this.navDivider(item, idx)
-          : item.label ? this.navLabel(item, idx)
-            : item.children ? this.navDropdown(item, idx)
-              : this.navItem(item, idx)
+        item.title ? this.navTitle(item, idx)
+            : item.divider ? this.navDivider(item, idx)
+            : item.label ? this.navLabel(item, idx)
+                : item.children ? this.navDropdown(item, idx)
+                    : this.navItem(item, idx)
     );
   }
 
@@ -95,14 +96,14 @@ class AppSidebarNav extends Component {
       item: classNames('hidden-cn', item.class),
       link: classNames('nav-label', item.class ? item.class : ''),
       icon: classNames(
-        'nav-icon',
-        !item.icon ? 'fa fa-circle' : item.icon,
-        item.label.variant ? `text-${item.label.variant}` : '',
-        item.label.class ? item.label.class : '',
+          'nav-icon',
+          !item.icon ? 'fa fa-circle' : item.icon,
+          item.label.variant ? `text-${item.label.variant}` : '',
+          item.label.class ? item.label.class : '',
       )
     };
     return (
-      this.navLink(item, key, classes)
+        this.navLink(item, key, classes)
     );
   }
 
@@ -110,12 +111,12 @@ class AppSidebarNav extends Component {
   navDropdown(item, key) {
     const classIcon = classNames('nav-icon', item.icon);
     return (
-      <li key={key} className={this.activeRoute(item.url, this.props)}>
-        <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick}><i className={classIcon} />{item.name}{this.navBadge(item.badge)}</a>
-        <ul className="nav-dropdown-items">
-          {this.navList(item.children)}
-        </ul>
-      </li>);
+        <li key={key} className={this.activeRoute(item.url, this.props)}>
+          <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick}><i className={classIcon} />{item.name}{this.navBadge(item.badge)}</a>
+          <ul className="nav-dropdown-items">
+            {this.navList(item.children)}
+          </ul>
+        </li>);
   }
 
   // nav item with nav link
@@ -126,32 +127,33 @@ class AppSidebarNav extends Component {
       icon: classNames('nav-icon', item.icon)
     };
     return (
-      this.navLink(item, key, classes)
+        this.navLink(item, key, classes)
     );
   }
 
   // nav link
   navLink(item, key, classes) {
-    const url = item.url ? item.url : '';
+    const url = item.url || '';
     const itemIcon = <i className={classes.icon} />
     const itemBadge = this.navBadge(item.badge)
     const attributes = item.attributes || {}
+    const NavLink = this.props.router.NavLink || RsNavLink
     return (
-      <NavItem key={key} className={classes.item}>
-        { attributes.disabled ?
-            <RsNavLink href={""} className={classes.link} {...attributes}>
-              {itemIcon}{item.name}{itemBadge}
-            </RsNavLink>
-         :
-          this.isExternal(url) ?
-            <RsNavLink href={url} className={classes.link} active {...attributes}>
-              {itemIcon}{item.name}{itemBadge}
-            </RsNavLink> :
-            <NavLink to={url} className={classes.link} activeClassName="active" onClick={this.hideMobile} {...attributes}>
-              {itemIcon}{item.name}{itemBadge}
-            </NavLink>
-        }
-      </NavItem>
+        <NavItem key={key} className={classes.item}>
+          { attributes.disabled ?
+              <RsNavLink href={""} className={classes.link} {...attributes}>
+                {itemIcon}{item.name}{itemBadge}
+              </RsNavLink>
+              :
+              this.isExternal(url) || NavLink === RsNavLink ?
+                  <RsNavLink href={url} className={classes.link} active {...attributes}>
+                    {itemIcon}{item.name}{itemBadge}
+                  </RsNavLink> :
+                  <NavLink to={url} className={classes.link} activeClassName="active" onClick={this.hideMobile} {...attributes}>
+                    {itemIcon}{item.name}{itemBadge}
+                  </NavLink>
+          }
+        </NavItem>
     );
   }
 
@@ -160,7 +162,7 @@ class AppSidebarNav extends Component {
     if (badge) {
       const classes = classNames(badge.class);
       return (
-        <Badge className={classes} color={badge.variant}>{badge.text}</Badge>
+          <Badge className={classes} color={badge.variant}>{badge.text}</Badge>
       );
     }
     return null;
@@ -177,6 +179,7 @@ class AppSidebarNav extends Component {
     delete attributes.isOpen
     delete attributes.staticContext
     delete attributes.Tag
+    delete attributes.router
 
     const navClasses = classNames(className, 'sidebar-nav');
 
@@ -185,16 +188,16 @@ class AppSidebarNav extends Component {
 
     // sidebar-nav root
     return (
-      <PerfectScrollbar className={navClasses} {...attributes} options={{ suppressScrollX: !isRtl }} >
-        <Nav>
-          {children || this.navList(navConfig.items)}
-        </Nav>
-      </PerfectScrollbar>
+        <PerfectScrollbar className={navClasses} {...attributes} options={{ suppressScrollX: !isRtl }} >
+          <Nav>
+            {children || this.navList(navConfig.items)}
+          </Nav>
+        </PerfectScrollbar>
     );
   }
 }
 
-AppSidebarNav.propTypes = propTypes;
-AppSidebarNav.defaultProps = defaultProps;
+AppSidebarNav2.propTypes = propTypes;
+AppSidebarNav2.defaultProps = defaultProps;
 
-export default AppSidebarNav;
+export default AppSidebarNav2;

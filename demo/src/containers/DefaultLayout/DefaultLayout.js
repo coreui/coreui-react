@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import * as router from 'react-router-dom';
 import { Container, Nav, NavItem, NavLink, Badge, DropdownToggle, DropdownMenu } from 'reactstrap';
 
 import {
   AppAside,
   AppAsideToggler,
-  AppBreadcrumb,
+  AppBreadcrumb2 as AppBreadcrumb,
   AppFooter,
   AppHeader,
   AppHeaderDropdown,
@@ -15,7 +16,7 @@ import {
   AppSidebarForm,
   AppSidebarHeader,
   AppSidebarMinimizer,
-  AppSidebarNav,
+  AppSidebarNav2 as AppSidebarNav,
   AppSidebarToggler,
 } from '../../../../src';
 // sidebar nav config
@@ -64,13 +65,14 @@ class DefaultLayout extends Component {
           <AppSidebar fixed display="lg">
             <AppSidebarHeader />
             <AppSidebarForm />
-            <AppSidebarNav navConfig={navigation} {...this.props} />
+            {/*<AppSidebarNav navConfig={navigation} {...this.props} />*/}
+            <AppSidebarNav navConfig={navigation} {...this.props} router={router}/>
             <AppSidebarFooter />
             <AppSidebarMinimizer />
           </AppSidebar>
           <main className="main">
-            <AppBreadcrumb appRoutes={routes}>
-            </AppBreadcrumb>
+            {/*<AppBreadcrumb appRoutes={routes}/>*/}
+            <AppBreadcrumb appRoutes={routes} router={router}/>
             <Container fluid>
               <Switch>
                 {routes.map((route, idx) => {
