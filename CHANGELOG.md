@@ -1,5 +1,49 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
+##### `v2.5.0`
+- BREAKING CHANGE release for use with `react-router-dom v5`
+  - feat(Breadcrumb2): mandatory prop `router` :boom: see: [Breadcrumb](./src/Breadcrumb.md)
+  - feat(SidebarNav2): mandatory prop `router` :boom: see: [SidebarNav](./src/SidebarNav.md)
+- refactor: demo update
+- refactor(SidebarNav): rename `options` prop for PerfectScrollbar 
+
+###### dependencies update
+- update `react-router-dom` to `^5.0.0` -> moved to `peerDependencies`
+
+__BREAKING CHANGES:__ :boom:
+- removed `react-router-dom` from `dependencies`
+- deprecate 'Breadcrumb' in favour of `Breadcrumb2`
+- deprecate 'SidebarNav' in favour of `SidebarNav2`
+
+usage in `DefaultLayout.js`:
+```jsx
+import * as router from 'react-router-dom';
+import { 
+AppBreadcrumb2 as AppBreadcrumb
+AppSidebarNav2 as AppSidebarNav
+} from '@coreui/react';
+// routes config
+import routes from '../../routes.js';
+```
+
+```html
+...
+<div className="app-body">
+  <AppSidebar fixed display="lg">
+    <AppSidebarNav navConfig={navigation} {...this.props} router={router}/>
+    <AppSidebarMinimizer />
+  </AppSidebar>
+  <main className="main">
+    <AppBreadcrumb appRoutes={routes} router={router}></AppBreadcrumb>
+    ...
+  </main>
+  ...
+</div>
+...
+```
+
+---
+
 ##### `v2.1.7`
 - maintenance release for use with:
   - react-router `v4.3.x`
