@@ -109,9 +109,14 @@ class AppSidebarNav extends Component {
   // nav dropdown
   navDropdown(item, key) {
     const classIcon = classNames('nav-icon', item.icon);
+    const attributes = JSON.parse(JSON.stringify(item.attributes || {}));
+    const classes = classNames('nav-link', 'nav-dropdown-toggle', item.class, attributes.class);
+    delete attributes.class;
     return (
       <li key={key} className={this.activeRoute(item.url, this.props)}>
-        <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick}><i className={classIcon} />{item.name}{this.navBadge(item.badge)}</a>
+        <a className={classes} href="#" onClick={this.handleClick} {...attributes}><i className={classIcon}/>
+          {item.name}{this.navBadge(item.badge)}
+        </a>
         <ul className="nav-dropdown-items">
           {this.navList(item.children)}
         </ul>
@@ -132,14 +137,14 @@ class AppSidebarNav extends Component {
 
   // nav link
   navLink(item, key, classes) {
-    const url = item.url ? item.url : '';
+    const url = item.url || '';
     const itemIcon = <i className={classes.icon} />
     const itemBadge = this.navBadge(item.badge)
     const attributes = item.attributes || {}
     return (
       <NavItem key={key} className={classes.item}>
         { attributes.disabled ?
-            <RsNavLink href={""} className={classes.link} {...attributes}>
+            <RsNavLink href={''} className={classes.link} {...attributes}>
               {itemIcon}{item.name}{itemBadge}
             </RsNavLink>
          :
@@ -181,7 +186,7 @@ class AppSidebarNav extends Component {
     const navClasses = classNames(className, 'sidebar-nav');
 
     // ToDo: find better rtl fix
-    const isRtl = getComputedStyle(document.querySelector('html')).direction === 'rtl'
+    const isRtl = getComputedStyle(document.documentElement).direction === 'rtl'
 
     // sidebar-nav root
     return (
