@@ -3,6 +3,7 @@
 ##### `v2.5.1`
 
 - fix(SidebarNav): add missing `class` and `attributes` to navDropdown item 
+- fix(HeaderDropdown): add missing Dropdown.propTypes
 
 ###### dependencies update
 - update `core-js` to `^2.6.8`
