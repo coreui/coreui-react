@@ -4,6 +4,7 @@
 
 - fix(SidebarNav): add missing `class` and `attributes` to navDropdown item 
 - fix(HeaderDropdown): add missing Dropdown.propTypes
+- refactor(demo): AppHeaderDropdown remove style right auto
 
 ###### dependencies update
 - update `core-js` to `^2.6.8`

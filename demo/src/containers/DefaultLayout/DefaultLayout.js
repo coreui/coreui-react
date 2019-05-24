@@ -16,6 +16,7 @@ import {
   AppSidebarForm,
   AppSidebarHeader,
   AppSidebarMinimizer,
+  // AppSidebarNav as AppSidebarNav,
   AppSidebarNav2 as AppSidebarNav,
   AppSidebarToggler,
 } from '../../../../src';
@@ -53,7 +54,7 @@ class DefaultLayout extends Component {
               <DropdownToggle nav>
                 <img src={avatar} className="img-avatar" alt="admin@bootstrapmaster.com" />
               </DropdownToggle>
-              <DropdownMenu right style={{ right: 'auto', height: '400px' }}>
+              <DropdownMenu right style={{ height: '400px' }}>
                 AppHeaderDropdown
               </DropdownMenu>
             </AppHeaderDropdown>
@@ -91,7 +92,7 @@ class DefaultLayout extends Component {
           </AppAside>
         </div>
         <AppFooter>
-          <span><a href="https://coreui.io">CoreUI</a> &copy; 2018 creativeLabs</span>
+          <span><a href="https://coreui.io">CoreUI</a> &copy; 2019 creativeLabs</span>
           <span className="ml-auto">Powered by <a href="https://coreui.io/react">CoreUI for React</a></span>
         </AppFooter>
       </div>
