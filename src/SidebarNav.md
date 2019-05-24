@@ -58,6 +58,8 @@ router | inject `react-router-dom@5` object | _mandatory for @coreui/react ^2.5.
   name: 'Icons',
   url: '/icons',
   icon: 'icon-star',
+  class: 'text-uppercase',             // (v2.5.1 up) optional
+  attributes: { class: 'bg-success' }, // (v2.5.1 up) optional valid JS object with JS API naming,
   children: [
     {
       name: 'Flags',     // item options apply

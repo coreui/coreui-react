@@ -47,8 +47,8 @@ class AppSidebarNav2 extends Component {
 
   activeRoute(routeName, props) {
     return props.location.pathname.indexOf(routeName) > -1
-        ? 'nav-item nav-dropdown open'
-        : 'nav-item nav-dropdown';
+      ? 'nav-item nav-dropdown open'
+      : 'nav-item nav-dropdown';
   }
 
   hideMobile() {
@@ -65,11 +65,11 @@ class AppSidebarNav2 extends Component {
   // nav type
   navType(item, idx) {
     return (
-        item.title ? this.navTitle(item, idx)
-            : item.divider ? this.navDivider(item, idx)
-            : item.label ? this.navLabel(item, idx)
-                : item.children ? this.navDropdown(item, idx)
-                    : this.navItem(item, idx)
+      item.title ? this.navTitle(item, idx)
+        : item.divider ? this.navDivider(item, idx)
+          : item.label ? this.navLabel(item, idx)
+            : item.children ? this.navDropdown(item, idx)
+              : this.navItem(item, idx)
     );
   }
 
@@ -96,27 +96,32 @@ class AppSidebarNav2 extends Component {
       item: classNames('hidden-cn', item.class),
       link: classNames('nav-label', item.class ? item.class : ''),
       icon: classNames(
-          'nav-icon',
-          !item.icon ? 'fa fa-circle' : item.icon,
-          item.label.variant ? `text-${item.label.variant}` : '',
-          item.label.class ? item.label.class : '',
+        'nav-icon',
+        !item.icon ? 'fa fa-circle' : item.icon,
+        item.label.variant ? `text-${item.label.variant}` : '',
+        item.label.class ? item.label.class : '',
       )
     };
     return (
-        this.navLink(item, key, classes)
+      this.navLink(item, key, classes)
     );
   }
 
   // nav dropdown
   navDropdown(item, key) {
     const classIcon = classNames('nav-icon', item.icon);
+    const attributes = JSON.parse(JSON.stringify(item.attributes || {}));
+    const classes = classNames('nav-link', 'nav-dropdown-toggle', item.class, attributes.class);
+    delete attributes.class;
     return (
-        <li key={key} className={this.activeRoute(item.url, this.props)}>
-          <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick}><i className={classIcon} />{item.name}{this.navBadge(item.badge)}</a>
-          <ul className="nav-dropdown-items">
-            {this.navList(item.children)}
-          </ul>
-        </li>);
+      <li key={key} className={this.activeRoute(item.url, this.props)}>
+        <a className={classes} href="#" onClick={this.handleClick} {...attributes}><i className={classIcon}/>
+          {item.name}{this.navBadge(item.badge)}
+        </a>
+        <ul className="nav-dropdown-items">
+          {this.navList(item.children)}
+        </ul>
+      </li>);
   }
 
   // nav item with nav link
@@ -127,7 +132,7 @@ class AppSidebarNav2 extends Component {
       icon: classNames('nav-icon', item.icon)
     };
     return (
-        this.navLink(item, key, classes)
+      this.navLink(item, key, classes)
     );
   }
 
@@ -139,21 +144,21 @@ class AppSidebarNav2 extends Component {
     const attributes = item.attributes || {}
     const NavLink = this.props.router.NavLink || RsNavLink
     return (
-        <NavItem key={key} className={classes.item}>
-          { attributes.disabled ?
-              <RsNavLink href={""} className={classes.link} {...attributes}>
-                {itemIcon}{item.name}{itemBadge}
-              </RsNavLink>
-              :
-              this.isExternal(url) || NavLink === RsNavLink ?
-                  <RsNavLink href={url} className={classes.link} active {...attributes}>
-                    {itemIcon}{item.name}{itemBadge}
-                  </RsNavLink> :
-                  <NavLink to={url} className={classes.link} activeClassName="active" onClick={this.hideMobile} {...attributes}>
-                    {itemIcon}{item.name}{itemBadge}
-                  </NavLink>
-          }
-        </NavItem>
+      <NavItem key={key} className={classes.item}>
+        { attributes.disabled ?
+            <RsNavLink href={''} className={classes.link} {...attributes}>
+              {itemIcon}{item.name}{itemBadge}
+            </RsNavLink>
+         :
+          this.isExternal(url) || NavLink === RsNavLink ?
+            <RsNavLink href={url} className={classes.link} active {...attributes}>
+              {itemIcon}{item.name}{itemBadge}
+            </RsNavLink> :
+            <NavLink to={url} className={classes.link} activeClassName="active" onClick={this.hideMobile} {...attributes}>
+              {itemIcon}{item.name}{itemBadge}
+            </NavLink>
+        }
+      </NavItem>
     );
   }
 
@@ -162,7 +167,7 @@ class AppSidebarNav2 extends Component {
     if (badge) {
       const classes = classNames(badge.class);
       return (
-          <Badge className={classes} color={badge.variant}>{badge.text}</Badge>
+        <Badge className={classes} color={badge.variant}>{badge.text}</Badge>
       );
     }
     return null;
@@ -184,15 +189,15 @@ class AppSidebarNav2 extends Component {
     const navClasses = classNames(className, 'sidebar-nav');
 
     // ToDo: find better rtl fix
-    const isRtl = getComputedStyle(document.querySelector('html')).direction === 'rtl'
+    const isRtl = getComputedStyle(document.documentElement).direction === 'rtl'
 
     // sidebar-nav root
     return (
-        <PerfectScrollbar className={navClasses} {...attributes} options={{ suppressScrollX: !isRtl }} >
-          <Nav>
-            {children || this.navList(navConfig.items)}
-          </Nav>
-        </PerfectScrollbar>
+      <PerfectScrollbar className={navClasses} {...attributes} options={{ suppressScrollX: !isRtl }} >
+        <Nav>
+          {children || this.navList(navConfig.items)}
+        </Nav>
+      </PerfectScrollbar>
     );
   }
 }

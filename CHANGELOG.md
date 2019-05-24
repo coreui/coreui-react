@@ -1,5 +1,16 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
+##### `v2.5.1`
+
+- fix(SidebarNav): add missing `class` and `attributes` to navDropdown item 
+- fix(HeaderDropdown): add missing Dropdown.propTypes
+- refactor(demo): AppHeaderDropdown remove style right auto
+
+###### dependencies update
+- update `core-js` to `^2.6.8`
+- update `enzyme-adapter-react-16` to `^1.13.1`
+- update `webpack-dev-server` to `^3.4.1`
+
 ##### `v2.5.0`
 - BREAKING CHANGE release for use with `react-router-dom v5`
   - feat(Breadcrumb2): mandatory prop `router` :boom: see: [Breadcrumb](./src/Breadcrumb.md)

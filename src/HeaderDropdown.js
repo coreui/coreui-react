@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   children: PropTypes.node,
-  direction: PropTypes.string
+  direction: PropTypes.string,
+  ...Dropdown.propTypes
 };
 
 const defaultProps = {

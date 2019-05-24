@@ -40,7 +40,7 @@
       "createClass": "createReactClass", // Regex for Component Factory to use,
       // default to "createReactClass"
       "pragma": "React",  // Pragma to use, default to "React"
-      "version": "16.5", // React version, default to the latest React stable release
+      "version": "16.8", // React version, default to the latest React stable release
       "flowVersion": "0.81" // Flow version
     },
     "propWrapperFunctions": [ "forbidExtraProps" ] // The names of any functions used to wrap the
