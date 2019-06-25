@@ -74,9 +74,8 @@ class AppSwitch extends Component {
   render() {
     const { className, disabled, color, name, label, outline, size, required, type, value, dataOn, dataOff, variant, ...attributes } = this.props;
 
-    delete attributes.checked
-    delete attributes.defaultChecked
-    delete attributes.onChange
+    if(attributes.hasOwnProperty('checked'))
+        delete attributes.defaultChecked;
 
     const classes = classNames(
       className,
@@ -97,9 +96,12 @@ class AppSwitch extends Component {
       'switch-slider',
     );
 
+    const change = this.props.onChange || this.onChange;
+    const checked = this.props.hasOwnProperty('checked')  ? this.props.checked : this.state.checked;
+
     return (
       <label className={classes}>
-        <input type={type} className={inputClasses} onChange={this.onChange} checked={this.state.checked} name={name} required={required} disabled={disabled} value={value} {...attributes} />
+        <input type={type} className={inputClasses} onChange={change} checked={checked} name={name} required={required} disabled={disabled} value={value} {...attributes} />
         <span className={sliderClasses} data-checked={dataOn} data-unchecked={dataOff}></span>
       </label>
     );
