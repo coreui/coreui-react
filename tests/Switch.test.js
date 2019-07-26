@@ -60,8 +60,8 @@ describe('AppSwitch', () => {
         expect(onChangeMock.called).toBe(true);
       });
 
-      it('should call onChange()', () => {
-        const onChange = spy(AppSwitch.prototype, 'onChange');
+      it('should call handleChange()', () => {
+        const onChange = spy(AppSwitch.prototype, 'handleChange');
         const event = { target: { checked: true } };
         const wrapper = shallow(<AppSwitch label size="lg" />);
         expect(wrapper.find('input').props().checked).toBe(false);
