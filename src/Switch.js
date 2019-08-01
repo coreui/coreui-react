@@ -33,9 +33,9 @@ const defaultProps = {
   outline: false,
   size: '',
   checked: false,
-  defaultChecked: false,
-  disabled: false,
-  required: false,
+  defaultChecked: undefined,
+  disabled: undefined,
+  required: undefined,
   type: 'checkbox',
   variant: '',
   dataOn: 'On',
@@ -45,35 +45,54 @@ const defaultProps = {
 class AppSwitch extends Component {
   constructor(props) {
     super(props);
-    this.onChange = this.onChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
     this.state = {
+      uncontrolled: !!this.props.defaultChecked,
       checked: this.props.defaultChecked || this.props.checked,
       selected: []
     };
   }
 
-  onChange(event) {
-    const target = event.target;
+  toggleState(check) {
     this.setState({
-      checked: target.checked,
+      checked: check
     })
+  }
+
+  handleChange(event) {
+    const target = event.target;
+    this.toggleState(target.checked)
 
     if (this.props.onChange) {
       this.props.onChange(event);
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.checked !== prevProps.checked) {
-      this.setState({
-        checked: this.props.checked
-      })
+  handleKeyDown(event) {
+    if (event.key === ' ') {
+      event.preventDefault();
+    }
+  }
+
+  handleKeyUp(event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      this.toggleState(!this.state.checked);
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (!this.state.uncontrolled && (this.props.checked !== prevState.checked)) {
+      this.toggleState(this.props.checked)
     }
   }
 
   render() {
     const { className, disabled, color, name, label, outline, size, required, type, value, dataOn, dataOff, variant, ...attributes } = this.props;
 
+    const tabindex = attributes.tabIndex
+    delete attributes.tabIndex
     delete attributes.checked
     delete attributes.defaultChecked
     delete attributes.onChange
@@ -98,8 +117,19 @@ class AppSwitch extends Component {
     );
 
     return (
-      <label className={classes}>
-        <input type={type} className={inputClasses} onChange={this.onChange} checked={this.state.checked} name={name} required={required} disabled={disabled} value={value} {...attributes} />
+      <label className={classes} tabIndex={tabindex} onKeyUp={this.handleKeyUp} onKeyDown={this.handleKeyDown}>
+        <input type={type}
+               className={inputClasses}
+               onChange={this.handleChange}
+               checked={this.state.checked}
+               name={name}
+               required={required}
+               disabled={disabled}
+               value={value}
+               aria-checked={this.state.checked}
+               aria-disabled={disabled}
+               aria-readonly={disabled}
+               {...attributes} />
         <span className={sliderClasses} data-checked={dataOn} data-unchecked={dataOff}></span>
       </label>
     );

@@ -1,7 +1,23 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
-##### `v2.5.1`
+##### `v2.5.2`
+- fix(Switch): does not provide any keyboard accessibility - thanks @roastery-zz close #44
+- fix(Switch): checked props and state out of sync - thanks @gravitymedianet @jinixx
+- fix(Switch): uncontrolled mode with defaultChecked 
 
+###### dependencies update
+- update `core-js` to `^2.6.9`
+- update `react-perfect-scrollbar` to `^1.5.3`
+- update `reactstrap` to `^8.0.1"
+- update `babel-eslint` to `^10.0.2`
+- update `enzyme` to `^3.10.0`
+- update `enzyme-adapter-react-16` to `^1.14.0`
+- update `eslint-plugin-import` to `^2.18.2`
+- update `eslint-plugin-react` to `^7.14.3`
+- update `react-router-dom` to `^5.0.1`
+- update `webpack-dev-server` to `^3.7.2`
+
+##### `v2.5.1`
 - fix(SidebarNav): add missing `class` and `attributes` to navDropdown item 
 - fix(HeaderDropdown): add missing Dropdown.propTypes
 - refactor(demo): AppHeaderDropdown remove style right auto
