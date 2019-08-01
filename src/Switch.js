@@ -33,9 +33,9 @@ const defaultProps = {
   outline: false,
   size: '',
   checked: false,
-  defaultChecked: false,
-  disabled: false,
-  required: false,
+  defaultChecked: undefined,
+  disabled: undefined,
+  required: undefined,
   type: 'checkbox',
   variant: '',
   dataOn: 'On',
@@ -49,6 +49,7 @@ class AppSwitch extends Component {
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
     this.state = {
+      uncontrolled: !!this.props.defaultChecked,
       checked: this.props.defaultChecked || this.props.checked,
       selected: []
     };
@@ -82,7 +83,7 @@ class AppSwitch extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.checked !== prevState.checked) {
+    if (!this.state.uncontrolled && (this.props.checked !== prevState.checked)) {
       this.toggleState(this.props.checked)
     }
   }
