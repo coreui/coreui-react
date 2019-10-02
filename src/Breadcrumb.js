@@ -28,6 +28,7 @@ const BreadcrumbsItem = ({ match }) => {
   const routeName = findRouteName(match.url);
   if (routeName) {
     return (
+        // eslint-disable-next-line react/prop-types
       match.isExact ?
         <BreadcrumbItem active>{routeName}</BreadcrumbItem>
        :

@@ -1,5 +1,17 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
+##### `v2.5.3`
+- fix(SidebarNav): add missing `itemAttr` to item/item with children (optional)
+- chore: update demo styles `@coreui/coreui` to `v2.1.12`
+ 
+###### dependencies update
+- update `react` to `^16.10.1`
+- update `react-dom` to `^16.10.1`
+- update `react-router-dom` to `^5.1.2`
+- update `babel-eslint` to `^10.0.3`
+- update `eslint-plugin-react` to `^7.15.1`
+- update `webpack-dev-server` to `^3.8.1`
+
 ##### `v2.5.2`
 - fix(Switch): does not provide any keyboard accessibility - thanks @roastery-zz close #44
 - fix(Switch): checked props and state out of sync - thanks @gravitymedianet @jinixx
