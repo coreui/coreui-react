@@ -49,7 +49,8 @@ router | inject `react-router-dom@5` object | _mandatory for @coreui/react ^2.5.
     text: 'NEW',
     class: ''                   // optional
   },
-  attributes: { target: '_blank', rel: "noreferrer noopener", disabled: false, hidden: false }, // (v2.1.0 up) optional valid JS object with JS API naming
+  attributes: { target: '_blank', rel: "noreferrer noopener", disabled: false, hidden: false }, // (v2.1.0 up) link html attributes - optional valid JS object with JS API naming
+  itemAttr: { id: 'item-1'},    // item html attributes - optional
 },
 ```
 - item with `children` array - works like `nav-dropdown-toggle` with `nav-dropdown-items`
@@ -59,7 +60,8 @@ router | inject `react-router-dom@5` object | _mandatory for @coreui/react ^2.5.
   url: '/icons',
   icon: 'icon-star',
   class: 'text-uppercase',             // (v2.5.1 up) optional
-  attributes: { class: 'bg-success' }, // (v2.5.1 up) optional valid JS object with JS API naming,
+  attributes: { class: 'bg-success' }, // (v2.5.1 up) nav-dropdown link html attributes - optional valid JS object with JS API naming,
+  itemAttr: { id: 'drop-1' },          // (v2.5.3 up) item html attributes - optional
   children: [
     {
       name: 'Flags',     // item options apply

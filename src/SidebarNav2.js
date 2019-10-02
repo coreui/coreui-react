@@ -57,6 +57,10 @@ class AppSidebarNav2 extends Component {
     }
   }
 
+  getAttribs(attributes) {
+    return JSON.parse(JSON.stringify(attributes || {}));
+  }
+
   // nav list
   navList(items) {
     return items.map((item, index) => this.navType(item, index));
@@ -110,11 +114,14 @@ class AppSidebarNav2 extends Component {
   // nav dropdown
   navDropdown(item, key) {
     const classIcon = classNames('nav-icon', item.icon);
-    const attributes = JSON.parse(JSON.stringify(item.attributes || {}));
+    const attributes = this.getAttribs(item.attributes);
     const classes = classNames('nav-link', 'nav-dropdown-toggle', item.class, attributes.class);
     delete attributes.class;
+    const itemAttr = this.getAttribs(item.itemAttr);
+    const liClasses = classNames(this.activeRoute(item.url, this.props), itemAttr.class)
+    delete itemAttr.class;
     return (
-      <li key={key} className={this.activeRoute(item.url, this.props)}>
+      <li key={key} className={liClasses} {...itemAttr}>
         <a className={classes} href="#" onClick={this.handleClick} {...attributes}><i className={classIcon}/>
           {item.name}{this.navBadge(item.badge)}
         </a>
@@ -141,10 +148,15 @@ class AppSidebarNav2 extends Component {
     const url = item.url || '';
     const itemIcon = <i className={classes.icon} />
     const itemBadge = this.navBadge(item.badge)
-    const attributes = item.attributes || {}
+    const attributes = this.getAttribs(item.attributes)
+    classes.link = classNames(classes.link, attributes.class)
+    delete attributes.class;
+    const itemAttr = this.getAttribs(item.itemAttr)
+    classes.item = classNames(classes.item, itemAttr.class)
+    delete itemAttr.class;
     const NavLink = this.props.router.NavLink || RsNavLink
     return (
-      <NavItem key={key} className={classes.item}>
+      <NavItem key={key} className={classes.item} {...itemAttr}>
         { attributes.disabled ?
             <RsNavLink href={''} className={classes.link} {...attributes}>
               {itemIcon}{item.name}{itemBadge}

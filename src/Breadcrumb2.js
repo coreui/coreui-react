@@ -30,6 +30,7 @@ const BreadcrumbsItem2 = ({ match }) => {
   const Link = router.Link;
   if (routeName) {
     return (
+        // eslint-disable-next-line react/prop-types
       match.isExact ?
         <BreadcrumbItem active>{routeName}</BreadcrumbItem>
        :
