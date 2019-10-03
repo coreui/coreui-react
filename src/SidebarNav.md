@@ -36,6 +36,7 @@ router | inject `react-router-dom@5` object | _mandatory for @coreui/react ^2.5.
   },
 },
 ```
+
 - item:
 ```json5
 {
@@ -53,6 +54,50 @@ router | inject `react-router-dom@5` object | _mandatory for @coreui/react ^2.5.
   itemAttr: { id: 'item-1'},    // item html attributes - optional
 },
 ```
+
+__React Router Link `url`__
+
+`url: string` - a string representation of the Link location, created by concatenating the location’s pathname, search, and hash properties.  
+`url: object` - (^2.5.4 up) an object that can have any of the following properties.
+- `pathname`: a string representing the path to link to.
+- `search`: a string representation of query parameters.
+- `hash`: a hash to put in the URL, e.g. #a-hash.
+- `state`: state to persist to the location. 
+
+`url: function` - (^2.5.4 up) a function to which current location is passed as an argument and which should return location representation as a string or as an object
+
+__React Router Link props to pass in `attributes` object:__  
+`replace: bool` - when true, clicking the link will replace the current entry in the history stack instead of adding a new one.  
+`innerRef: function` - allows access to the underlying `ref` of the component    
+`innerRef: RefObject` - get the underlying `ref` of the component with `React.createRef()`
+
+`others` - you can also pass props you’d like to be on the <a> such as a `title`, `id`, etc.
+
+__React Router NavLink props to pass in `attributes` object:__  
+`activeStyle: object` - the styles to apply to the element when it is active.  
+`exact: bool` - when true, the active class/style will only be applied if the location is matched exactly.  
+`strict: bool` - when true, the trailing slash on a location’s pathname will be taken into consideration when determining if the location matches the current URL.
+
+```json5
+{
+  name: 'Dashboard',
+  url: { 
+    pathname: '/dashboard', 
+    search: '?name=search&period=today', 
+    state: { fromDashboard: true }
+  },
+  icon: 'icon-speedometer',
+  attributes: { 
+    replace: true, 
+    activeStyle: { textTransform: 'uppercase' }, 
+    id: 'link-1', 
+    title: 'Dashboard', 
+  }
+}
+```
+
+---
+
 - item with `children` array - works like `nav-dropdown-toggle` with `nav-dropdown-items`
 ```json5
 {

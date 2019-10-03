@@ -13,7 +13,8 @@ const propTypes = {
   isOpen: PropTypes.bool,
   staticContext: PropTypes.any,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  router: PropTypes.any
+  router: PropTypes.any,
+  props: PropTypes.any
 };
 
 const defaultProps = {
@@ -79,7 +80,7 @@ class AppSidebarNav2 extends Component {
 
   // nav list section title
   navTitle(title, key) {
-    const classes = classNames('nav-title', title.class);
+    const classes = classNames('nav-title', title.class, title.className);
     return <li key={key} className={classes}>{this.navWrapper(title)} </li>;
   }
 
@@ -90,7 +91,7 @@ class AppSidebarNav2 extends Component {
 
   // nav list divider
   navDivider(divider, key) {
-    const classes = classNames('divider', divider.class);
+    const classes = classNames('divider', divider.class, divider.className);
     return <li key={key} className={classes} />;
   }
 
@@ -115,11 +116,13 @@ class AppSidebarNav2 extends Component {
   navDropdown(item, key) {
     const classIcon = classNames('nav-icon', item.icon);
     const attributes = this.getAttribs(item.attributes);
-    const classes = classNames('nav-link', 'nav-dropdown-toggle', item.class, attributes.class);
+    const classes = classNames('nav-link', 'nav-dropdown-toggle', item.class, attributes.class, attributes.className);
     delete attributes.class;
+    delete attributes.className;
     const itemAttr = this.getAttribs(item.itemAttr);
-    const liClasses = classNames(this.activeRoute(item.url, this.props), itemAttr.class)
+    const liClasses = classNames(this.activeRoute(item.url, this.props), itemAttr.class, itemAttr.className)
     delete itemAttr.class;
+    delete itemAttr.className;
     return (
       <li key={key} className={liClasses} {...itemAttr}>
         <a className={classes} href="#" onClick={this.handleClick} {...attributes}><i className={classIcon}/>
@@ -149,11 +152,13 @@ class AppSidebarNav2 extends Component {
     const itemIcon = <i className={classes.icon} />
     const itemBadge = this.navBadge(item.badge)
     const attributes = this.getAttribs(item.attributes)
-    classes.link = classNames(classes.link, attributes.class)
+    classes.link = classNames(classes.link, attributes.class, attributes.className)
     delete attributes.class;
+    delete attributes.className;
     const itemAttr = this.getAttribs(item.itemAttr)
-    classes.item = classNames(classes.item, itemAttr.class)
+    classes.item = classNames(classes.item, itemAttr.class, itemAttr.className)
     delete itemAttr.class;
+    delete itemAttr.className;
     const NavLink = this.props.router.NavLink || RsNavLink
     return (
       <NavItem key={key} className={classes.item} {...itemAttr}>
@@ -162,7 +167,7 @@ class AppSidebarNav2 extends Component {
               {itemIcon}{item.name}{itemBadge}
             </RsNavLink>
          :
-          this.isExternal(url) || NavLink === RsNavLink ?
+          this.isExternal(url, this.props) || NavLink === RsNavLink ?
             <RsNavLink href={url} className={classes.link} active {...attributes}>
               {itemIcon}{item.name}{itemBadge}
             </RsNavLink> :
@@ -177,7 +182,7 @@ class AppSidebarNav2 extends Component {
   // badge addon to NavItem
   navBadge(badge) {
     if (badge) {
-      const classes = classNames(badge.class);
+      const classes = classNames(badge.class, badge.className);
       return (
         <Badge className={classes} color={badge.variant}>{badge.text}</Badge>
       );
@@ -185,9 +190,14 @@ class AppSidebarNav2 extends Component {
     return null;
   }
 
-  isExternal(url) {
-    const link = url ? url.substring(0, 4) : '';
-    return link === 'http';
+  isExternal(url, props) {
+    const linkType = typeof url;
+    const link =
+        linkType === 'string' ? url :
+          linkType === 'object' && url.pathname ? url.pathname :
+            linkType === 'function' && typeof url(props.location) === 'string'  ? url(props.location) :
+              linkType === 'function' && typeof url(props.location) === 'object' ? url(props.location).pathname : '' ;
+    return link.substring(0, 4) === 'http';
   }
 
   render() {
