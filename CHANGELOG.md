@@ -1,5 +1,8 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
+##### `v2.5.4`
+- fix(SidebarNav): allow location object as navConfig item url parameter
+
 ##### `v2.5.3`
 - fix(SidebarNav): add missing `itemAttr` to item/item with children (optional)
 - chore: update demo styles `@coreui/coreui` to `v2.1.12`
