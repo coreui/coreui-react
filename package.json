@@ -35,32 +35,32 @@
     "lint": "eslint src"
   },
   "dependencies": {
-    "@coreui/icons": "0.3.0",
     "classnames": "^2.2.6",
-    "core-js": "^2.6.9",
+    "core-js": "^2.6.11",
     "prop-types": "^15.7.2",
     "react-onclickout": "^2.0.8",
-    "react-perfect-scrollbar": "^1.5.3",
-    "reactstrap": "^8.0.1"
+    "react-perfect-scrollbar": "~1.5.8"
   },
   "peerDependencies": {
-    "@coreui/coreui": "^2.1.12",
-    "react": "^16.10.1",
-    "react-router-dom": "^5.1.2"
+    "@coreui/coreui": "^2.1.16",
+    "react": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "mutationobserver-shim": "^0.3.3"
   },
   "devDependencies": {
+    "@coreui/icons": "~0.3.0",
     "babel-eslint": "^10.0.3",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^5.16.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-react": "^7.15.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-react": "^7.18.3",
     "nwb": "^0.23.0",
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "sinon": "^5.1.1",
-    "webpack-dev-server": "^3.8.1"
+    "reactstrap": "^8.4.1",
+    "sinon": "^5.1.1"
   },
   "repository": {
     "type": "git",
