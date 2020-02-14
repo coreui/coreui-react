@@ -4,6 +4,9 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import 'react-perfect-scrollbar/dist/css/styles.css';
+import '../css/scrollbar.css';
+
+import LayoutHelper from './Shared/layout/layout'
 
 const propTypes = {
   children: PropTypes.node,
@@ -39,17 +42,26 @@ class AppSidebarNav2 extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.activeRoute = this.activeRoute.bind(this);
     this.hideMobile = this.hideMobile.bind(this);
+
+    this.changes = null;
+    this.state = { sidebarMinimized: false }
   }
+
+  _scrollBarRef = null;
 
   handleClick(e) {
     e.preventDefault();
     e.currentTarget.parentElement.classList.toggle('open');
   }
 
-  activeRoute(routeName, props) {
+  isActiveRoute(routeName, props) {
     return props.location.pathname.indexOf(routeName) > -1
-      ? 'nav-item nav-dropdown open'
-      : 'nav-item nav-dropdown';
+  }
+
+  activeRoute(routeName, props) {
+    return this.isActiveRoute(routeName, props) ?
+      'nav-item nav-dropdown open' :
+      'nav-item nav-dropdown';
   }
 
   hideMobile() {
@@ -148,6 +160,7 @@ class AppSidebarNav2 extends Component {
 
   // nav link
   navLink(item, key, classes) {
+    const ref = React.createRef();
     const url = item.url || '';
     const itemIcon = <i className={classes.icon} />
     const itemBadge = this.navBadge(item.badge)
@@ -171,7 +184,7 @@ class AppSidebarNav2 extends Component {
             <RsNavLink href={url} className={classes.link} active {...attributes}>
               {itemIcon}{item.name}{itemBadge}
             </RsNavLink> :
-            <NavLink to={url} className={classes.link} activeClassName="active" onClick={this.hideMobile} {...attributes}>
+            <NavLink to={url} className={classes.link} activeClassName="active" onClick={() => this.hideMobile(ref)} ref={ref} {...attributes}>
               {itemIcon}{item.name}{itemBadge}
             </NavLink>
         }
@@ -200,6 +213,45 @@ class AppSidebarNav2 extends Component {
     return link.substring(0, 4) === 'http';
   }
 
+  observeDomMutations() {
+    if (window.MutationObserver) {
+
+      // eslint-disable-next-line
+      this.changes = new MutationObserver((mutations) => {
+
+        const isSidebarMinimized = document.body.classList.contains('sidebar-minimized') || false
+        this.setState({ sidebarMinimized: isSidebarMinimized })
+
+        LayoutHelper.sidebarPSToggle(!isSidebarMinimized)
+
+      });
+      const element = document.body;
+      this.changes.observe(element, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+    }
+    window.addEventListener('resize', this.onResize);
+  }
+
+  onResize() {
+    LayoutHelper.sidebarPSToggle(true)
+  }
+
+  componentDidMount() {
+    this.observeDomMutations()
+  }
+
+  componentWillUnmount() {
+    try {
+      this.changes.disconnect()
+      window.removeEventListener('resize', this.onResize);
+    } catch (ignore) {
+      // eslint-disable-next-line
+      console.warn('CoreUI SidebarNav failed to disconnect from MutationObserver', ignore)
+    }
+  }
+
   render() {
     const { className, children, navConfig, ...attributes } = this.props;
 
@@ -208,18 +260,17 @@ class AppSidebarNav2 extends Component {
     delete attributes.Tag
     delete attributes.router
 
-    const navClasses = classNames(className, 'sidebar-nav');
+    const navClasses = classNames(className, 'sidebar-nav')
 
-    // ToDo: find better rtl fix
-    const isRtl = getComputedStyle(document.documentElement).direction === 'rtl'
+    const options = Object.assign({}, { suppressScrollX: true, suppressScrollY: this.state.sidebarMinimized })
 
     // sidebar-nav root
     return (
-      <PerfectScrollbar className={navClasses} {...attributes} options={{ suppressScrollX: !isRtl }} >
-        <Nav>
-          {children || this.navList(navConfig.items)}
-        </Nav>
-      </PerfectScrollbar>
+        <PerfectScrollbar className={navClasses} {...attributes} options={options} ref = {(ref) => { this._scrollBarRef = ref; }} >
+          <Nav>
+            {children || this.navList(navConfig.items)}
+          </Nav>
+        </PerfectScrollbar>
     );
   }
 }

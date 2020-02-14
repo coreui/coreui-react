@@ -1,0 +1,18 @@
+/* rtl fix */
+.ps__rtl .ps__rail-y {
+    left: 0px !important;
+    right: unset;
+}
+*[dir="rtl"] .ps__rail-y {
+    left: 0px !important;
+    right: unset;
+}
+
+.ps__rtl .ps__thumb-y {
+    left: 2px;
+    right: unset;
+}
+*[dir="rtl"] .ps__thumb-y {
+  left: 2px;
+  right: unset;
+}
