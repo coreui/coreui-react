@@ -1,5 +1,9 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
+##### `v2.5.5`
+- fix(SidebarNav): perfect scrollbar issue on sidebar minimized / rtl
+- chore: dependencies update and config refactor
+
 ##### `v2.5.4`
 - fix(SidebarNav): allow location object as navConfig item url parameter
 
