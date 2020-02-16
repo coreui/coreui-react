@@ -1,1 +1,5 @@
-
+/*Styles*/
+/*CoreUI Icons Set*/
+@import '~@coreui/icons/css/all.css';
+/*Import Flag Icons Set*/
+@import './scss/style.css';

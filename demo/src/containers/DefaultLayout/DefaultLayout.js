@@ -1,100 +1,201 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import * as router from 'react-router-dom';
-import { Container, Nav, NavItem, NavLink, Badge, DropdownToggle, DropdownMenu } from 'reactstrap';
+import classNames from 'classnames';
 
 import {
-  AppAside,
-  AppAsideToggler,
-  AppBreadcrumb2 as AppBreadcrumb,
-  AppFooter,
-  AppHeader,
-  AppHeaderDropdown,
-  AppNavbarBrand,
-  AppSidebar,
-  AppSidebarFooter,
-  AppSidebarForm,
-  AppSidebarHeader,
-  AppSidebarMinimizer,
-  // AppSidebarNav as AppSidebarNav,
-  AppSidebarNav2 as AppSidebarNav,
-  AppSidebarToggler,
+  CContainer,
+  CAside,
+  CFooter,
+  CHeader,
+  CSidebar,
+  CSidebarFooter,
+  CSidebarForm,
+  CSidebarHeader,
+  CSidebarMinimizer,
+  CBreadcrumb,
+  CSidebarNav,
+  CNav,
+  CTabContent,
+  CProgress,
+  CNavItem,
+  CNavLink,
+  CTabPane,
+  CListGroup,
+  CListGroupItem,
+  CSwitch,
+  CLabel,
+  CInput,
+  CSidebarBrand,
+  CSidebarDivider,
+  CSidebarTitle
 } from '../../../../src';
-// sidebar nav config
-import navigation from '../../_nav.js';
-// routes config
-import routes from '../../routes.js';
 
-import logo from '../../assets/img/brand/logo.svg'
-import sygnet from '../../assets/img/brand/sygnet.svg'
-import avatar from '../../assets/img/avatars/6.jpg'
+// routes config
+import routes from '../../routes';
+
+const DefaultSidebar = React.lazy(() => import('./DefaultSidebar'));
+const DefaultAside = React.lazy(() => import('./DefaultAside'));
+const DefaultFooter = React.lazy(() => import('./DefaultFooter'));
+const DefaultHeader = React.lazy(() => import('./DefaultHeader'));
 
 class DefaultLayout extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.toggleSidebar = this.toggleSidebar.bind(this);
+    this.toggleSidebarMobile = this.toggleSidebarMobile.bind(this);
+    this.minimizeSidebar = this.minimizeSidebar.bind(this);
+    this.closeSidebar = this.closeSidebar.bind(this);
+    this.toggleAside = this.toggleAside.bind(this);
+    this.toggleTheme = this.toggleTheme.bind(this);
+    this.state = {
+      isAsideOpen: false,
+      isSidebarOpen: 'responsive',
+      isSidebarMinimized: false,
+      themeDark: false,
+      sidebarMobile: false,
+      sidebarDisplay: 'sm'
+    };
+  }
+
+  loading = () => <div className="animated fadeIn pt-1 text-center"><div className="sk-spinner sk-spinner-pulse"></div></div>;
+
+  signOut(e) {
+    e.preventDefault()
+    this.props.history.push('/login')
+  }
+
+/*
+this.$root.$on('toggle-sidebar', () => {
+     const sidebarOpened = this.show === true || this.show === 'responsive'
+     this.show = sidebarOpened ? false : 'responsive'
+   })
+   this.$root.$on('toggle-sidebar-mobile', () => {
+     const sidebarClosed = this.show === 'responsive' || this.show === false
+     this.show = sidebarClosed ? true : 'responsive'
+   })
+   */
+
+  toggleSidebar(display, mobile) {
+    //alert('sidebar')
+    const sidebarOpened = this.state.isSidebarOpen === true || this.state.isSidebarOpen === 'responsive'
+    this.setState({
+      isSidebarOpen: sidebarOpened ? false : 'responsive',
+    });
+    /*
+    this.setState({
+      isSidebarOpen: this.state.isSidebarOpen ? false : 'responsive',
+      sidebarDisplay: display ? true : false,
+      sidebarMobile: mobile ? true : false
+    });
+    */
+  }
+
+  toggleSidebarMobile(display, mobile) {
+    const sidebarClosed = this.state.isSidebarOpen === 'responsive' || this.state.isSidebarOpen === false
+    //alert('sidebarMobile '+(sidebarClosed ? true : 'responsive'))
+    this.setState({
+      isSidebarOpen: sidebarClosed ? true : 'responsive',
+    });
+    /*
+    this.setState({
+      isSidebarOpen: this.state.isSidebarOpen ? false : 'responsive',
+      sidebarDisplay: display ? true : false,
+      sidebarMobile: mobile ? true : false
+    });
+    */
+  }
+
+  minimizeSidebar() {
+    this.setState({
+      isSidebarMinimized: !this.state.isSidebarMinimized
+    });
+  }
+
+  closeSidebar() {
+    this.setState({
+      isSidebarOpen: 'responsive',
+    });
+  }
+
+  toggleAside(e) {
+    e.preventDefault();
+    this.setState({
+      isAsideOpen: !this.state.isAsideOpen
+    });
+  }
+
+  toggleTheme() {
+    this.setState({
+      themeDark: !this.state.themeDark
+    });
+  }
+
   render() {
+
+    // dark theme
+    const classes = classNames(
+    'c-app c-default-layout',
+    this.state.themeDark ? 'c-dark-theme' : false
+    );
+
     return (
-      <div className="app">
-        <AppHeader fixed>
-          <AppSidebarToggler className="d-lg-none" display="md" mobile />
-          <AppNavbarBrand
-            full={{ src: logo, width: 89, height: 25, alt: 'CoreUI Logo' }}
-            minimized={{ src: sygnet, width: 30, height: 30, alt: 'CoreUI Logo' }}
-          />
-          <AppSidebarToggler className="d-md-down-none" display="lg" />
-          <Nav className="ml-auto" navbar>
-            <NavItem className="d-md-down-none">
-              <NavLink href="#"><i className="cui-bell icons font-xl d-block"></i><Badge pill color="danger">5</Badge></NavLink>
-            </NavItem>
-            <NavItem className="d-md-down-none">
-              <NavLink href="#"><i className="cui-list icons icons font-xl d-block"></i></NavLink>
-            </NavItem>
-            <NavItem className="d-md-down-none">
-              <NavLink href="#"><i className="cui-location-pin icons icons font-xl d-block"></i></NavLink>
-            </NavItem>
-            <AppHeaderDropdown>
-              <DropdownToggle nav>
-                <img src={avatar} className="img-avatar" alt="admin@bootstrapmaster.com" />
-              </DropdownToggle>
-              <DropdownMenu right style={{ height: '400px' }}>
-                AppHeaderDropdown
-              </DropdownMenu>
-            </AppHeaderDropdown>
-          </Nav>
-          <AppAsideToggler className="d-md-down-none" />
-          <AppAsideToggler className="d-lg-none" mobile />
-        </AppHeader>
-        <div className="app-body">
-          <AppSidebar fixed display="lg">
-            <AppSidebarHeader />
-            <AppSidebarForm />
-            {/*<AppSidebarNav navConfig={navigation} {...this.props} />*/}
-            <AppSidebarNav navConfig={navigation} {...this.props} router={router}/>
-            <AppSidebarFooter />
-            <AppSidebarMinimizer />
-          </AppSidebar>
-          <main className="main">
-            {/*<AppBreadcrumb appRoutes={routes}/>*/}
-            <AppBreadcrumb appRoutes={routes} router={router}/>
-            <Container fluid>
-              <Switch>
-                {routes.map((route, idx) => {
-                    return route.component ? (<Route key={idx} path={route.path} exact={route.exact} name={route.name} render={props => (
-                        <route.component {...props} />
-                      )} />)
-                      : (null);
-                  },
-                )}
-                <Redirect from="/" to="/dashboard" />
-              </Switch>
-            </Container>
-          </main>
-          <AppAside fixed>
-            Aside
-          </AppAside>
+      <div className={classes}>
+        <DefaultSidebar
+          sidebarShow={this.state.isSidebarOpen}
+          sidebarMinimize={this.state.isSidebarMinimized}
+          sidebarDisplay={this.state.sidebarDisplay}
+          sidebarMobile={this.state.sidebarMobile}
+          onChange={this.closeSidebar}
+          location={this.props.location}
+        />
+        <DefaultAside
+          sidebarShow={this.state.isAsideOpen}
+          toggleAside={this.toggleAside}
+        />
+        <div className="c-wrapper">
+          <CHeader withSubheader>
+            <Suspense  fallback={this.loading()}>
+              <DefaultHeader
+                onLogout={e=>this.signOut(e)}
+                toggleSidebar={this.toggleSidebar}
+                toggleSidebarMobile={this.toggleSidebarMobile}
+                toggleAside={this.toggleAside}
+                toggleTheme={this.toggleTheme}
+              />
+            </Suspense>
+          </CHeader>
+          <div className="c-body">
+            <main className="c-main">
+              <CContainer fluid>
+                <Suspense fallback={this.loading()}>
+                  <Switch>
+                    {routes.map((route, idx) => {
+                      return route.component ? (
+                        <Route
+                          key={idx}
+                          path={route.path}
+                          exact={route.exact}
+                          name={route.name}
+                          render={props => (
+                            <route.component {...props} />
+                          )} />
+                      ) : (null);
+                    })}
+                    <Redirect from="/" to="/dashboard" />
+                  </Switch>
+                </Suspense>
+              </CContainer>
+            </main>
+          </div>
         </div>
-        <AppFooter>
-          <span><a href="https://coreui.io">CoreUI</a> &copy; 2019 creativeLabs</span>
-          <span className="ml-auto">Powered by <a href="https://coreui.io/react">CoreUI for React</a></span>
-        </AppFooter>
+        <CFooter>
+          <Suspense fallback={this.loading()}>
+            <DefaultFooter />
+          </Suspense>
+        </CFooter>
       </div>
     );
   }

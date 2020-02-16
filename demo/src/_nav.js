@@ -3,7 +3,7 @@ export default {
     {
       name: 'Dashboard',
       url: '/dashboard',
-      icon: 'cui-speedometer icons',
+      icon: 'cil-speedometer',
       badge: {
         variant: 'info',
         text: 'NEW'
@@ -12,13 +12,13 @@ export default {
     {
       name: 'Disabled',
       url: '/dashboard',
-      icon: 'cui-ban icons',
+      icon: 'cil-ban',
       attributes: { disabled: true },
     },
     {
       name: 'Download CoreUI',
       url: 'https://coreui.io/react/',
-      icon: 'cui-cloud-download icons',
+      icon: 'cil-cloud-download',
       class: 'mt-auto',
       variant: 'success',
       attributes: { target: '_blank', rel: "noopener" },
@@ -26,7 +26,7 @@ export default {
     {
       name: 'Try CoreUI PRO',
       url: 'https://coreui.io/pro/react/',
-      icon: 'cui-layers icons',
+      icon: 'cil-layers',
       variant: 'danger',
       attributes: { target: '_blank', rel: "noopener" },
     },
