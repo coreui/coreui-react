@@ -2,8 +2,6 @@
 
 ##### Layout components
 
-- [Aside](./Aside.md)
-- [AsideToggler](./AsideToggler.md)
 - [Breadcrumb](./Breadcrumb.md)
 - [Footer](./Footer.md)
 - [Header](./Header.md)
@@ -21,6 +19,3 @@
 
 ##### Installation:
 `npm install @coreui/react`
-
-##### Import
-`import { AppAside } from '@coreui/react'`

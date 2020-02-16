@@ -1,0 +1,17 @@
+.transparent {
+  opacity: 0.4;
+}
+.icon-transition {
+  -webkit-transition: transform 0.3s;
+  transition: transform 0.3s;
+}
+.arrow-position {
+  right: 0;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.rotate-icon {
+  -ms-transform: translateY(-50%) rotate(-180deg);
+  transform: translateY(-50%) rotate(-180deg);
+}

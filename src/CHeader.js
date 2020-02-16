@@ -1,0 +1,52 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import {tagPropType, mapToCssModules} from './Shared/helper.js';
+
+//component - CoreUI / CHeader
+
+const CHeader = props=>{
+
+  const {
+    tag: Tag,
+    className,
+    //
+    innerRef,
+    fixed,
+    colorScheme,
+    withSubheader,
+    ...attributes
+  } = props;
+
+  // render
+
+  const classes = classNames(className,
+  'c-header',
+  'c-header-'+colorScheme,
+  fixed ? 'c-header-fixed' : null,
+  withSubheader ? 'c-header-with-subheader' : null);
+
+  return (
+    <Tag className={classes} {...attributes} ref={innerRef} />
+  );
+
+}
+
+CHeader.propTypes = {
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  className: PropTypes.string,
+  children: PropTypes.node,
+  //
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  fixed: PropTypes.bool,
+  withSubheader: PropTypes.bool,
+  colorScheme: PropTypes.string,
+};
+
+CHeader.defaultProps = {
+  tag: 'header',
+  fixed: true,
+  colorScheme: 'light'
+};
+
+export default CHeader;
