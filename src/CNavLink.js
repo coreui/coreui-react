@@ -34,7 +34,9 @@ CNavLink.propTypes = {
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  href: PropTypes.string,
+  to: PropTypes.string
 };
 
 CNavLink.defaultProps = {

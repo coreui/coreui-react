@@ -13,8 +13,7 @@ const CCollapse = props=>{
     custom,
     //
     toggle,
-    show,
-    ...attributes
+    show
   } = props;
 
   const [isOpen, setIsOpen] = useState(props.defaultOpen || false);
@@ -57,7 +56,7 @@ const CCollapse = props=>{
 
   //render
 
-  return <CCollapseCustom {...attributes} how={show} {...omit(props, omitKeys)} />;
+  return <CCollapseCustom show={show} {...omit(props, omitKeys)} />;
 
 }
 
