@@ -81,8 +81,6 @@ const CSidebar = props=>{
 
   compData.nextRender = true;
 
-  //console.log(isOpen);
-
   // render
 
   const haveResponsiveClass = breakpoint && isOpen === 'responsive'

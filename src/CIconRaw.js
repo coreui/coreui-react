@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {mapToCssModules} from './Shared/helper.js';
+import {mapToCssModules, colog} from './Shared/helper.js';
 import style from './CIcon.module.css';
 
 //component - CoreUI / CIconRaw
@@ -46,7 +46,7 @@ const CIconRaw = props=>{
         React.icons[iconName] :
           React.icons['cil'+iconName] ?
             React.icons['cil'+iconName] :
-              console.log('Not existing icon: '+iconName)
+              colog('Not existing icon: '+iconName)
     }
     return content;
   })();

@@ -51,50 +51,6 @@ const CWidgetDropdown = props=>{
     </CCard>
   )
 
-  //
-
-  const onToggle = ()=>{
-    setIsOpen(!isOpen);
-    toggle && toggle(isOpen);
-  }
-
-  const progress = { style: '', color: color, value: value };
-  const card = { style: '', bgColor: '' };
-
-  if (variant === 'inverse') {
-    progress.style = 'progress-white';
-    progress.color = '';
-    card.style = 'text-white';
-    card.bgColor = 'bg-' + color;
-  }
-
-  const classes = mapToCssModules(classNames(
-    className,
-    card.style,
-    card.bgColor
-  ), cssModule);
-  progress.style = classNames('progress-xs my-3', progress.style);
-
-  return (
-    <CCard {...attributes} custom className={classes}>
-      <CCardBody>
-        <CButtonGroup className="float-right">
-          <CDropdown custom id='card1' show={isOpen} toggle={onToggle}>
-            <CDropdownToggle caret className="p-0" />
-            <CDropdownMenu right>
-              <CDropdownItem>Action</CDropdownItem>
-              <CDropdownItem>Another action</CDropdownItem>
-              <CDropdownItem>Something else here</CDropdownItem>
-            </CDropdownMenu>
-          </CDropdown>
-        </CButtonGroup>
-        <div className="h4 m-0">{header}</div>
-        <div>{mainText}</div>
-      </CCardBody>
-      <div>{children}</div>
-    </CCard>
-  );
-
 }
 
 CWidgetDropdown.propTypes = {

@@ -32,8 +32,6 @@ const CIcon = props=>{
     }
   }
 
-  //gdy modulowo sa zdefiniowane np Button - musialbyby miec wszystkie bo zostana przetlumaczone
-
   if (type=='svg'){
     return (
       <CIconRaw {...attributes} name={name} size={size} className={className} />

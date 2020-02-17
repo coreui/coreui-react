@@ -88,44 +88,6 @@ const CWidgetBrand = props=>{
     </CCard>
   )
 
-
-  const data = dataBox();
-  const variant = data.variant;
-
-  if (!variant || ['facebook', 'twitter', 'linkedin', 'google-plus'].indexOf(variant) < 0) {
-    return (null);
-  }
-
-  const back = 'bg-' + variant;
-  const icon = 'my-4 icon text-white fa fa-' + variant;
-  const keys = Object.keys(data);
-  const vals = Object.values(data);
-
-  const classCard = 'card';
-  const classCardHeader = classNames(`${classCard}-header`, back, 'content-center');
-  const classCardBody = classNames(`${classCard}-body`, 'row text-center');
-  //const classes = mapToCssModules(classNames(classCard, className), cssModule);
-
-  return (
-    <CCard {...attributes} custom className={classes}>
-      <CCardHeader className={classCardHeader}>
-        <i className={icon}></i>
-        {children}
-      </CCardHeader>
-      <CCardBody className={classCardBody}>
-        <div className="col">
-          <div className="text-value-xl">{vals[1]}</div>
-          <div className="text-uppercase text-muted small">{keys[1]}</div>
-        </div>
-        <div className="vr"></div>
-        <div className="col">
-          <div className="text-value-xl">{vals[2]}</div>
-          <div className="text-uppercase text-muted small">{keys[2]}</div>
-        </div>
-      </CCardBody>
-    </CCard>
-  );
-
 }
 
 CWidgetBrand.propTypes = {

@@ -139,7 +139,6 @@ const CModal = props=>{
     }
     if (CModal.openCount <= 1) {
       const modalOpenClassName = mapToCssModules('modal-open', props.cssModule);
-      // Use regex to prevent matching `modal-open` as part of a different class, e.g. `my-modal-opened`
       const modalOpenClassNameRegex = new RegExp(`(^| )${modalOpenClassName}( |$)`);
       document.body.className = document.body.className.replace(modalOpenClassNameRegex, ' ').trim();
     }
@@ -156,7 +155,6 @@ const CModal = props=>{
   // effect
 
   useEffect(() => {
-    //did mount
     if (props.onEnter) {
       props.onEnter();
     }

@@ -214,6 +214,11 @@ const mapToCssModules = (className = '', cssModule = globalCssModule)=>{
     .join(' ');
 }
 
+export function colog() {
+  if (process.env.NODE_ENV === 'development')
+    console.log.apply(this, arguments);
+}
+
 let warned = {};
 export function warnOnce(message) {
   if (!warned[message]) {

@@ -32,7 +32,6 @@ const CCarouselItem = props=>{
   }
 
   const onEntering = (node, isAppearing)=>{
-    // getting this variable triggers a reflow
     const offsetHeight = node.offsetHeight;
     setStartAnimation(true);
     props.onEntering(node, isAppearing);

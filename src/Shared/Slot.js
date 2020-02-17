@@ -10,19 +10,8 @@ const Slot = (props)=>{
     ...attributes
   } = props;
 
-  //Context.slotData = attributes;
-
-  //console.log(attributes);
-
-  //alert(attributes.length);
-  /*
-  var clonedElementWithMoreProps = React.cloneElement(
-    children,
-    attributes
-  );
-  */
-
   return content?content:children?children:'';
+  
 }
 
 export default Slot;
