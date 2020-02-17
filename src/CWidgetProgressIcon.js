@@ -41,7 +41,7 @@ const CWidgetProgressIcon = props=>{
   progress.style = classNames('progress-xs mt-3 mb-0', progress.style);
 
   return (
-    <CCard className={classes} {...attributes}>
+    <CCard {...attributes} className={classes}>
       <div className="h1 text-muted text-right mb-4">
         <i className={card.icon}></i>
       </div>
@@ -58,6 +58,7 @@ CWidgetProgressIcon.propTypes = {
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   header: PropTypes.string,
   icon: PropTypes.string,
   color: PropTypes.string,
@@ -67,7 +68,7 @@ CWidgetProgressIcon.propTypes = {
 
 CWidgetProgressIcon.defaultProps = {
   header: '87.500',
-  icon: 'icon-people',
+  icon: 'cil-people',
   color: 'info',
   value: '25',
   children: 'Visitors',

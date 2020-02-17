@@ -60,7 +60,7 @@ const CWidgetIcon = props=>{
   };
 
   return (
-    <CCard custom {...attributes}>
+    <CCard {...attributes} custom>
       <CCardBody className={card.classes} {...attributes}>
         <div>
           {blockIcon(card.icon)}
@@ -81,6 +81,7 @@ CWidgetIcon.propTypes = {
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   header: PropTypes.string,
   mainText: PropTypes.string,
   icon: PropTypes.string,

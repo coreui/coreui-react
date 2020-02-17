@@ -11,6 +11,7 @@ import CCarouselCaption from './CCarouselCaption';
 const CCarousel = props=>{
 
   const {
+    //
     custom,
     autoPlay,
     indicators,

@@ -15,6 +15,7 @@ const CSidebar = props=>{
     tag: Tag,
     children,
     className,
+    //
     innerRef,
     breakpoint,
     show,
@@ -32,8 +33,13 @@ const CSidebar = props=>{
   } = props;
 
   const [isOpen, setIsOpen] = useState(show);
-  const compData = useRef({reRender:false}).current;
-  const ref = useRef();
+  const compData = useRef({reRender:false, ref: {}}).current;
+
+  //let ref={};
+  const reference = (r)=>{
+    compData.ref.current = r;
+    innerRef && innerRef(r);
+  }
 
   //methods
 
@@ -42,7 +48,7 @@ const CSidebar = props=>{
     onChange && onChange('close');
   }
   const isOnMobile = ()=>{
-    return Boolean(getComputedStyle(ref.current).getPropertyValue('--is-mobile'))
+    return Boolean(getComputedStyle(compData.ref.current).getPropertyValue('--is-mobile'))
   }
   const onSidebarClick = (e)=>{
     const hiddingElementClicked = e.target.className.includes && e.target.className.includes('c-sidebar-nav-link')
@@ -113,7 +119,7 @@ const CSidebar = props=>{
           dropdownMode: dropdownMode,
           state
         }}>
-          <Tag {...attributes} className={classes} ref={ref} onClick={onSidebarClick}>
+          <Tag {...attributes} className={classes} ref={reference} onClick={onSidebarClick}>
             {children}
           </Tag>
         </Context.Provider>
@@ -125,7 +131,7 @@ const CSidebar = props=>{
         dropdownMode: dropdownMode,
         state
       }}>
-        <Tag {...attributes} className={classes} ref={ref} onClick={onSidebarClick}>
+        <Tag {...attributes} className={classes} ref={reference} onClick={onSidebarClick}>
           {children}
         </Tag>
       </Context.Provider>

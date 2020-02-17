@@ -12,7 +12,6 @@ const CHeaderNavLink = props=>{
     className,
     cssModule,
     //
-    innerRef,
     ...attributes
   } = props;
 
@@ -24,7 +23,7 @@ const CHeaderNavLink = props=>{
   ), cssModule);
 
   return (
-    <CLink {...attributes} className={classes} ref={innerRef} />
+    <CLink {...attributes} className={classes} />
   );
 
 }

@@ -45,7 +45,7 @@ const CPopover = props=>{
     <CTooltipPopoverWrapper
       {...attributes}
       toggle={toggle}
-      isOpen={show}
+      show={show}
       className={popperClasses}
       innerClassName={classes}
     />

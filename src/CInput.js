@@ -27,10 +27,8 @@ const CInput = props=>{
   let fields = useRef({}).current;
 
   const getRef = (ref)=>{
-    if (props.innerRef) {
-      props.innerRef(ref);
-    }
     fields.ref = ref;
+    innerRef && innerRef(ref);
   }
 
   const focus = ()=>{

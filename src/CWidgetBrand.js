@@ -107,7 +107,7 @@ const CWidgetBrand = props=>{
   //const classes = mapToCssModules(classNames(classCard, className), cssModule);
 
   return (
-    <CCard custom {...attributes} className={classes}>
+    <CCard {...attributes} custom className={classes}>
       <CCardHeader className={classCardHeader}>
         <i className={icon}></i>
         {children}
@@ -133,8 +133,9 @@ CWidgetBrand.propTypes = {
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   dataBox: PropTypes.func,
-
+  //old
   color: PropTypes.string,
   rightHeader: PropTypes.string,
   rightFooter: PropTypes.string,

@@ -12,36 +12,6 @@ import {
 
 // global
 
-export const propTypes = {
-  className: PropTypes.string,
-  cssModule: PropTypes.object,
-  //
-  innerRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.string,
-    PropTypes.object
-  ]),
-  placement: PropTypes.oneOf(PopperPlacements),
-  target: targetPropType.isRequired,
-  container: targetPropType,
-  isOpen: PropTypes.bool,
-  disabled: PropTypes.bool,
-  hideArrow: PropTypes.bool,
-  boundariesElement: PropTypes.oneOfType([PropTypes.string, DOMElement]),
-  innerClassName: PropTypes.string,
-  arrowClassName: PropTypes.string,
-  toggle: PropTypes.func,
-  autohide: PropTypes.bool,
-  placementPrefix: PropTypes.string,
-  delay: PropTypes.oneOfType([
-    PropTypes.shape({ show: PropTypes.number, hide: PropTypes.number }),
-    PropTypes.number
-  ]),
-  modifiers: PropTypes.object,
-  offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  trigger: PropTypes.string,
-};
-
 const DEFAULT_DELAYS = {
   show: 0,
   hide: 250
@@ -62,7 +32,7 @@ const CTooltipPopoverWrapper = props=>{
     innerRef,
     innerClassName,
     target,
-    isOpen,
+    show: isOpen,
     hideArrow,
     boundariesElement,
     placement,
@@ -281,20 +251,20 @@ const CTooltipPopoverWrapper = props=>{
 
   //render
 
-  fields.isOpen = props.isOpen;
+  fields.isOpen = props.show;
   fields.autohide = props.autohide;
   fields.trigger = props.trigger;
   fields.delay = props.delay;
   fields.toggle = props.toggle;
   fields.disabled = props.disabled;
 
-  if (!props.isOpen) {
+  if (!props.show) {
     return null;
   }
 
   updateTarget();
 
-  const attributes = omit(props, Object.keys(propTypes));
+  const attributes = omit(props, Object.keys(CTooltipPopoverWrapper.propTypes));
   const popperClasses = mapToCssModules(className, cssModule);
   const classes = mapToCssModules(innerClassName, cssModule);
 
@@ -302,7 +272,7 @@ const CTooltipPopoverWrapper = props=>{
     <CPopperContent
       className={popperClasses}
       target={target}
-      isOpen={isOpen}
+      show={isOpen}
       hideArrow={hideArrow}
       boundariesElement={boundariesElement}
       placement={placement}
@@ -329,10 +299,34 @@ const CTooltipPopoverWrapper = props=>{
 
 }
 
-CTooltipPopoverWrapper.propTypes = propTypes;
+CTooltipPopoverWrapper.propTypes = {
+  className: PropTypes.string,
+  cssModule: PropTypes.object,
+  //
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  placement: PropTypes.oneOf(PopperPlacements),
+  target: targetPropType.isRequired,
+  container: targetPropType,
+  show: PropTypes.bool,
+  disabled: PropTypes.bool,
+  hideArrow: PropTypes.bool,
+  boundariesElement: PropTypes.oneOfType([PropTypes.string, DOMElement]),
+  innerClassName: PropTypes.string,
+  arrowClassName: PropTypes.string,
+  toggle: PropTypes.func,
+  autohide: PropTypes.bool,
+  placementPrefix: PropTypes.string,
+  delay: PropTypes.oneOfType([
+    PropTypes.shape({ show: PropTypes.number, hide: PropTypes.number }),
+    PropTypes.number
+  ]),
+  modifiers: PropTypes.object,
+  offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  trigger: PropTypes.string,
+};
 
 CTooltipPopoverWrapper.defaultProps = {
-  isOpen: false,
+  show: false,
   hideArrow: false,
   autohide: false,
   delay: DEFAULT_DELAYS,

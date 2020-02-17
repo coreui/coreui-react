@@ -43,9 +43,9 @@ const CTooltip = props=>{
 
   return (
     <CTooltipPopoverWrapper
-      toggle={toggle}
-      isOpen={show}
       {...attributes}
+      toggle={toggle}
+      show={show}
       className={popperClasses}
       innerClassName={classes}
     />
@@ -57,6 +57,7 @@ CTooltip.propTypes = {
   ...CTooltipPopoverWrapper.propTypes,
   custom: PropTypes.bool,
   //
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   defaultOpen: PropTypes.bool
 }
 

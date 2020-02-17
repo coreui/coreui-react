@@ -26,7 +26,7 @@ const CButtonToolbar = props=>{
   ), cssModule);
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef}/>
+    <Tag {...attributes} className={classes} ref={innerRef} />
   );
 
 }

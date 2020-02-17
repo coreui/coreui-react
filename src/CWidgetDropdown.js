@@ -76,7 +76,7 @@ const CWidgetDropdown = props=>{
   progress.style = classNames('progress-xs my-3', progress.style);
 
   return (
-    <CCard custom className={classes} {...attributes}>
+    <CCard {...attributes} custom className={classes}>
       <CCardBody>
         <CButtonGroup className="float-right">
           <CDropdown custom id='card1' show={isOpen} toggle={onToggle}>
@@ -102,12 +102,13 @@ CWidgetDropdown.propTypes = {
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   header: PropTypes.string,
   text: PropTypes.string,
   color: PropTypes.string,
   toggle: PropTypes.func,
   dropdownSlot: PropTypes.node,
-
+  //old
   mainText: PropTypes.string,
   smallText: PropTypes.string,
   value: PropTypes.string,

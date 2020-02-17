@@ -49,6 +49,7 @@ const CPopperContent = props=>{
 
   const getRef = ref=>{
     fields._element = ref;
+    props.innerRef && props.innerRef();
   }
 
   const handlePlacementChange = data=>{
@@ -82,7 +83,8 @@ const CPopperContent = props=>{
       className,
       cssModule,
       //
-      isOpen,
+      innerRef,
+      show,
       flip,
       target,
       offset,
@@ -138,7 +140,7 @@ const CPopperContent = props=>{
 
   setTargetNode(getTarget(props.target));
 
-  if (props.isOpen) {
+  if (props.show) {
     return props.container === 'inline' ?
       renderChildren() :
       ReactDOM.createPortal((<div ref={getRef}>{renderChildren()}</div>), getContainerNode());
@@ -154,11 +156,12 @@ CPopperContent.propTypes = {
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   placement: PropTypes.string,
   placementPrefix: PropTypes.string,
   arrowClassName: PropTypes.string,
   hideArrow: PropTypes.bool,
-  isOpen: PropTypes.bool.isRequired,
+  show: PropTypes.bool.isRequired,
   offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   fallbackPlacement: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   flip: PropTypes.bool,
@@ -172,7 +175,7 @@ CPopperContent.defaultProps = {
   boundariesElement: 'scrollParent',
   placement: 'auto',
   hideArrow: false,
-  isOpen: false,
+  show: false,
   offset: 0,
   fallbackPlacement: 'flip',
   flip: true,

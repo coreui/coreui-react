@@ -38,20 +38,20 @@ const CCustomInput = props=>{
   ), cssModule);
 
   if (type === 'select') {
-    return <select {...attributes} ref={innerRef} className={classNames(validationClassNames, customClass)}>{children}</select>;
+    return <select {...attributes} className={classNames(validationClassNames, customClass)} ref={innerRef}>{children}</select>;
   }
 
   if (type === 'file') {
     return (
-      <div className={customClass} {...wrapperProps}>
-        <input {...attributes} ref={innerRef} className={classNames(validationClassNames, mapToCssModules('custom-file-input', cssModule))} />
+      <div className={customClass} {...wrapperProps} ref={innerRef}>
+        <input {...attributes} className={classNames(validationClassNames, mapToCssModules('custom-file-input', cssModule))} />
         <label className={mapToCssModules('custom-file-label', cssModule)} htmlFor={attributes.id}>{label || 'Choose file'}</label>
       </div>
     );
   }
 
   if (type !== 'checkbox' && type !== 'radio' && type !== 'switch') {
-    return <input {...attributes} ref={innerRef} className={classNames(validationClassNames, customClass)} />;
+    return <input {...attributes} className={classNames(validationClassNames, customClass)} ref={innerRef} />;
   }
 
   const wrapperClasses = classNames(
@@ -67,8 +67,8 @@ const CCustomInput = props=>{
       <input
         {...attributes}
         type={type === 'switch' ? 'checkbox' : type}
-        ref={innerRef}
         className={classNames(validationClassNames, mapToCssModules('custom-control-input', cssModule))}
+        ref={innerRef}
       />
       <label className={mapToCssModules('custom-control-label', cssModule)} htmlFor={attributes.id}>{label}</label>
       {children}

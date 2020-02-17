@@ -42,7 +42,7 @@ const CWidgetProgress = props=>{
   progress.style = classNames('progress-xs my-3', progress.style);
 
   return (
-    <CCard className={classes} {...attributes}>
+    <CCard {...attributes} className={classes}>
       <div className="h4 m-0">{header}</div>
       <div>{mainText}</div>
       <CProgress className={progress.style} color={progress.color} value={progress.value} />
@@ -58,6 +58,7 @@ CWidgetProgress.propTypes = {
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   header: PropTypes.string,
   mainText: PropTypes.string,
   smallText: PropTypes.string,

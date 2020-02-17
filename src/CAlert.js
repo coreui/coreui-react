@@ -15,7 +15,6 @@ const CAlert = props=>{
     cssModule,
     custom,
     //
-    innerRef,
     toggle,
     transition,
     closeAriaLabel,
@@ -61,7 +60,7 @@ const CAlert = props=>{
   return (
     <CFade {...attributes} {...alertTransition} tag={Tag} className={classes} in={show} role="alert">
       {!custom ?
-        <button type="button" className={closeClasses} aria-label={closeAriaLabel} onClick={toggle} {...closeProps} ref={innerRef}>
+        <button type="button" className={closeClasses} aria-label={closeAriaLabel} onClick={toggle} {...closeProps}>
           <span aria-hidden="true">{iconSlot}</span>
         </button>
         : null}

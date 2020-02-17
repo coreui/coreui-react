@@ -112,7 +112,7 @@ const CToast = props=>{
     );
 
   return (
-    <Tag {...attributes} onMouseOver={onMouseOver} onMouseOut={onMouseOut} className={classes} />
+    <Tag {...attributes} onMouseOver={onMouseOver} onMouseOut={onMouseOut} className={classes} ref={innerRef} />
   );
 
 }

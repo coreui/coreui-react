@@ -42,7 +42,6 @@ const CDropdownMenu = props=>{
       'show': context.isOpen,
     }
   ), cssModule);
-  //dash
 
   let Tag = tag;
 

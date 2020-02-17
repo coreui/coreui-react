@@ -15,49 +15,11 @@ function noop() { }
 
 const FadePropTypes = PropTypes.shape(CFade.propTypes);
 
-const propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  cssModule: PropTypes.object,
-  //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  isOpen: PropTypes.bool,
-  autoFocus: PropTypes.bool,
-  centered: PropTypes.bool,
-  size: PropTypes.string,
-  toggle: PropTypes.func,
-  keyboard: PropTypes.bool,
-  role: PropTypes.string,
-  labelledBy: PropTypes.string,
-  backdrop: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.oneOf(['static'])
-  ]),
-  onEnter: PropTypes.func,
-  onExit: PropTypes.func,
-  onOpened: PropTypes.func,
-  onClosed: PropTypes.func,
-  wrapClassName: PropTypes.string,
-  modalClassName: PropTypes.string,
-  backdropClassName: PropTypes.string,
-  contentClassName: PropTypes.string,
-  external: PropTypes.node,
-  fade: PropTypes.bool,
-  zIndex: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
-  backdropTransition: FadePropTypes,
-  modalTransition: FadePropTypes
-};
-
-const propsToOmit = Object.keys(propTypes);
-
 //component - CoreUI / CModal
 
 const CModal = props=>{
 
-  const [isOpen, setIsOpen] = useState(props.isOpen);
+  const [isOpen, setIsOpen] = useState(props.show);
 
   const fields = useRef({
     _element: null,
@@ -137,7 +99,7 @@ const CModal = props=>{
   }
 
   const handleEscape = e=>{
-    if (props.isOpen && props.keyboard && e.keyCode === 27 && props.toggle) {
+    if (props.show && props.keyboard && e.keyCode === 27 && props.toggle) {
       e.preventDefault();
       e.stopPropagation();
       props.toggle(e);
@@ -233,7 +195,7 @@ const CModal = props=>{
   // render
 
   const renderModalDialog = ()=>{
-    const attributes = omit(props, propsToOmit);
+    const attributes = omit(props, Object.keys(CModal.propTypes));
     const dialogBaseClass = 'modal-dialog';
     return (
       <div
@@ -260,8 +222,8 @@ const CModal = props=>{
 
   }
 
-  if (props.isOpen && !fields.lastProps.isOpen){
-    setState(isOpen, props.isOpen, setIsOpen);
+  if (props.show && !fields.lastProps.show){
+    setState(isOpen, props.show, setIsOpen);
   }
   if (!fields.firstRender){
     if (isOpen && !fields.lastIsOpen){
@@ -277,7 +239,7 @@ const CModal = props=>{
       wrapClassName,
       modalClassName,
       backdropClassName,
-      isOpen,
+      show: isOpen,
       backdrop,
       role,
       labelledBy,
@@ -348,10 +310,44 @@ const CModal = props=>{
 
 }
 
-CModal.propTypes = propTypes;
+CModal.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  cssModule: PropTypes.object,
+  //
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  show: PropTypes.bool,
+  autoFocus: PropTypes.bool,
+  centered: PropTypes.bool,
+  size: PropTypes.string,
+  toggle: PropTypes.func,
+  keyboard: PropTypes.bool,
+  role: PropTypes.string,
+  labelledBy: PropTypes.string,
+  backdrop: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf(['static'])
+  ]),
+  onEnter: PropTypes.func,
+  onExit: PropTypes.func,
+  onOpened: PropTypes.func,
+  onClosed: PropTypes.func,
+  wrapClassName: PropTypes.string,
+  modalClassName: PropTypes.string,
+  backdropClassName: PropTypes.string,
+  contentClassName: PropTypes.string,
+  external: PropTypes.node,
+  fade: PropTypes.bool,
+  zIndex: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
+  backdropTransition: FadePropTypes,
+  modalTransition: FadePropTypes
+};
 
 CModal.defaultProps = {
-  isOpen: false,
+  show: false,
   autoFocus: true,
   centered: false,
   role: 'dialog',

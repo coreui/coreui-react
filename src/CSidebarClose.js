@@ -32,7 +32,9 @@ const CSidebarClose = props=>{
 
 CSidebarClose.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string
+  className: PropTypes.string,
+  //
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string])
 };
 
 CSidebarClose.defaultProps = {

@@ -10,15 +10,12 @@ export const Context = React.createContext({});
 //component - CoreUI / CPopperContentWrapper
 
 class CPopperContentWrapper extends React.Component {
-
   getChildContext(){
     return this.context;
   }
-
   render(){
     return this.props.children;
   }
-
 }
 
 CPopperContentWrapper.contextType = Context;
@@ -38,6 +35,7 @@ const CDropdownCustom = props=>{
     className,
     cssModule,
     //
+    innerRef,
     dropup,
     show,
     group,
@@ -50,14 +48,18 @@ const CDropdownCustom = props=>{
   } = omit(props, ['toggle', 'disabled', 'inNavbar', 'direction']);
 
   const fields = useRef({
-    firstRender: true
+    firstRender: true,
+    ref: {current: null}
   }).current;
 
-  const ref = useRef(null);
+  const reference = (r)=>{
+    fields.ref.current = r;
+    innerRef && innerRef(r);
+  }
 
   const getContainer = ()=>{
     if (fields._$container) return fields._$container;
-    fields._$container = ReactDOM.findDOMNode(ref.current);
+    fields._$container = ReactDOM.findDOMNode(fields.ref.current);
     return fields._$container;
   }
 
@@ -224,7 +226,7 @@ const CDropdownCustom = props=>{
       inNavbar: props.inNavbar,
     }}>
       <CPopperContentWrapper>
-        <Manager {...attributes} className={classes} onKeyDown={handleKeyDown} ref={ref} />
+        <Manager {...attributes} className={classes} onKeyDown={handleKeyDown} ref={reference} />
       </CPopperContentWrapper>
     </Context.Provider>
   );

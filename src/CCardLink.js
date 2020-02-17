@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import CLink from './CLink';
 
 //component - CoreUI / CCardLink
 
@@ -12,7 +13,6 @@ const CCardLink = props=>{
     className,
     cssModule,
     //
-    innerRef,
     ...attributes
   } = props;
 
@@ -24,7 +24,7 @@ const CCardLink = props=>{
   ), cssModule);
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
+    <CLink {...attributes} className={classes} />
   );
 
 }
@@ -38,7 +38,6 @@ CCardLink.propTypes = {
 };
 
 CCardLink.defaultProps = {
-  tag: 'a'
 };
 
 export default CCardLink;

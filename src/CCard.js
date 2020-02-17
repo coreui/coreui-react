@@ -84,6 +84,7 @@ CCard.propTypes = {
   cssModule: PropTypes.object,
   custom: PropTypes.bool,
   //
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   align: PropTypes.string,
   color: PropTypes.string,
   borderColor: PropTypes.string,
@@ -91,7 +92,6 @@ CCard.propTypes = {
   accentColor: PropTypes.string,
   bodyClassName: PropTypes.string,
   bodyProps: PropTypes.object,
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   headerSlot: PropTypes.node,
   footerSlot: PropTypes.node
 }

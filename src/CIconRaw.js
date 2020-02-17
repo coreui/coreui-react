@@ -42,7 +42,11 @@ const CIconRaw = props=>{
     if (content) {
       return content
     } else if (React.icons) {
-      return React.icons[iconName] ? React.icons[iconName] : console.log(iconName)
+      return React.icons[iconName] ?
+        React.icons[iconName] :
+          React.icons['cil'+iconName] ?
+            React.icons['cil'+iconName] :
+              console.log('Not existing icon: '+iconName)
     }
     return content;
   })();

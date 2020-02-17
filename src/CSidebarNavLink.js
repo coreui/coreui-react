@@ -44,7 +44,7 @@ const CSidebarNavLink = props=>{
       badgeClassName
     );
     return (
-      <CLink className={classes} {...attributes}>
+      <CLink {...attributes} className={classes}>
         {icon?<CIcon className="c-sidebar-nav-icon" {...iconProps} />:''}
         {fontIcon?<i className={iconClasses} />:''}
         {children}
@@ -54,7 +54,7 @@ const CSidebarNavLink = props=>{
   }
 
   return (
-    <CLink className={classes} {...attributes} />
+    <CLink {...attributes} className={classes}/>
   );
 
 }
@@ -64,6 +64,7 @@ CSidebarNavLink.propTypes = {
   className: PropTypes.string,
   custom: PropTypes.bool,
   //
+  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
   icon: PropTypes.oneOfType(['string', 'object']),
   label: PropTypes.bool,
   fontIcon: PropTypes.string,

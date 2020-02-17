@@ -604,11 +604,7 @@ CDataTable.propTypes = {
   cssModule: PropTypes.object,
   //custom: PropTypes.bool,
   //
-  innerRef: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string,
-    PropTypes.func,
-  ]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   overTableSlot: PropTypes.node,
   colNameSlot: PropTypes.node,
   columnHeaderSlot: PropTypes.array,

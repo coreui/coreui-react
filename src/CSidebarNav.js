@@ -68,7 +68,7 @@ const CSidebarNav = props=>{
       icon = {item.icon}
       to = {item.url}
       badge = {badgeProps}
-      linkClassName={props.location.pathname.indexOf(item.url)>-1 ? 'c-active' : null}
+      linkClassName={props.location&&props.location.pathname.indexOf(item.url)>-1 ? 'c-active' : null}
       linkProps={{disabled}}
       >
         {item.name}
@@ -115,8 +115,8 @@ const CSidebarNav = props=>{
   // select nav type
   const navType = (item, idx)=>{
     return (
-      item.title ? navTitle(item, idx) //+
-        : item.divider ? navDivider(item, idx) //+
+      item.title ? navTitle(item, idx)
+        : item.divider ? navDivider(item, idx)
           : item.label ? navLabel(item, idx)
             : item.children ? navDropdown(item, idx)
               : navItem(item, idx)
@@ -145,14 +145,11 @@ const CSidebarNav = props=>{
   // sidebar-nav root
 
   return (
-    <PerfectScrollbar option={{ suppressScrollX: !isRtl }} >
-      <Tag {...attributes} className={navClasses} ref={innerRef}>
+      <PerfectScrollbar options={{ suppressScrollX: !isRtl }} className={navClasses} ref={innerRef} component={Tag} {...attributes}>
         {navConfig.items ? navList(navConfig.items) : null}
         {children}
-      </Tag>
-    </PerfectScrollbar>
+      </PerfectScrollbar>
   );
-
 }
 
 CSidebarNav.propTypes = {
@@ -166,15 +163,7 @@ CSidebarNav.propTypes = {
 
 CSidebarNav.defaultProps = {
   tag: 'ul',
-  navConfig: {
-    items: [
-      {
-        name: 'Dashboard',
-        url: '/dashboard',
-        icon: 'icon-speedometer',
-        badge: { variant: 'info', text: 'NEW' }
-      }]
-  }
+  navConfig: {}
 };
 
 export default CSidebarNav;

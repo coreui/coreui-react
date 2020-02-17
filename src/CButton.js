@@ -68,9 +68,9 @@ const CButton = props=>{
     type={(Tag === 'button' && attributes.onClick) ? 'button' : undefined}
     {...attributes}
     className={classes}
-    ref={innerRef}
     onClick={onClick}
     aria-label={ariaLabel || defaultAriaLabel}
+    ref={innerRef}
     children={textHtml ? textHtml : children}
   />;
 
