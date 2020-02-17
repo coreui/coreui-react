@@ -155,7 +155,7 @@ this.$root.$on('toggle-sidebar', () => {
           sidebarShow={this.state.isAsideOpen}
           toggleAside={this.toggleAside}
         />
-        <div className="c-wrapper">
+        <div className="c-wrapper c-fixed-components">
           <CHeader withSubheader>
             <Suspense  fallback={this.loading()}>
               <DefaultHeader
@@ -190,12 +190,12 @@ this.$root.$on('toggle-sidebar', () => {
               </CContainer>
             </main>
           </div>
+          <CFooter>
+            <Suspense fallback={this.loading()}>
+              <DefaultFooter />
+            </Suspense>
+          </CFooter>
         </div>
-        <CFooter>
-          <Suspense fallback={this.loading()}>
-            <DefaultFooter />
-          </Suspense>
-        </CFooter>
       </div>
     );
   }
