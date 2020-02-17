@@ -6,25 +6,24 @@ import { configure, mount, shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { spy } from 'sinon'
 
-import AppHeader from 'src/Header'
-import AppFooter from '../src/Footer';
+import CHeader from 'src/CHeader'
 
 configure({ adapter: new Adapter() });
 
-describe('AppHeader', () => {
-  it('renders header with class="app-header"', () => {
-    expect(render(<AppHeader fixed />))
-    .toContain('<header class="app-header navbar"></header>')
+describe('CHeader', () => {
+  it('renders header with class="c-header"', () => {
+    expect(render(<CHeader fixed />))
+    .toContain('<header class="c-header"></header>')
   });
   it('calls componentDidMount', () => {
-    spy(AppHeader.prototype, 'componentDidMount');
+    spy(CHeader.prototype, 'componentDidMount');
 
-    const wrapper = mount(<AppHeader fixed/>);
-    expect(AppHeader.prototype.componentDidMount.calledOnce).toEqual(true);
+    const wrapper = mount(<CHeader fixed/>);
+    expect(CHeader.prototype.componentDidMount.calledOnce).toEqual(true);
   });
   it('should call isFixed()', () => {
-    const isFixed = spy(AppHeader.prototype, 'isFixed');
-    shallow(<AppHeader />);
+    const isFixed = spy(CHeader.prototype, 'isFixed');
+    shallow(<CHeader />);
     expect(isFixed.called).toBe(true);
   });
 })

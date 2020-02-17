@@ -6,24 +6,24 @@ import { configure, mount, shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { spy } from 'sinon'
 
-import AppSidebar from 'src/Sidebar'
+import CSidebar from 'src/CSidebar'
 
 configure({ adapter: new Adapter() });
 
-describe('AppSidebar', () => {
-  it('renders sidebar with class="sidebar"', () => {
-    expect(render(<AppSidebar fixed display="lg" />))
-    .toContain('<div class="sidebar"></div>')
+describe('CSidebar', () => {
+  it('renders sidebar with class="c-sidebar"', () => {
+    expect(render(<CSidebar fixed display="lg" />))
+    .toContain('<div class="c-sidebar"></div>')
   });
   it('calls componentDidMount', () => {
-    spy(AppSidebar.prototype, 'componentDidMount');
+    spy(CSidebar.prototype, 'componentDidMount');
 
-    const wrapper = mount(<AppSidebar fixed display="lg" compact minimized offCanvas />);
-    expect(AppSidebar.prototype.componentDidMount.calledOnce).toBe(true);
+    const wrapper = mount(<CSidebar fixed display="lg" compact minimized offCanvas />);
+    expect(CSidebar.prototype.componentDidMount.calledOnce).toBe(true);
   });
   it('should call isFixed()', () => {
-    const isFixed = spy(AppSidebar.prototype, 'isFixed');
-    shallow(<AppSidebar />);
+    const isFixed = spy(CSidebar.prototype, 'isFixed');
+    shallow(<CSidebar />);
     expect(isFixed.called).toBe(true);
   });
 })

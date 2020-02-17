@@ -30,13 +30,14 @@
     "README.md"
   ],
   "scripts": {
-    "build": "nwb build-react-component",
+    "build": "nwb build-react-component --copy-files --no-demo",
     "clean": "nwb clean-module && nwb clean-demo",
     "start": "nwb serve-react-demo",
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "link": "npm link && link.sh"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -49,6 +50,7 @@
   "peerDependencies": {
     "@coreui/coreui": "3.0.0-rc.0",
     "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "mutationobserver-shim": "^0.3.3"
   },
@@ -65,12 +67,12 @@
     "lodash.isobject": "^3.0.2",
     "lodash.tonumber": "^4.0.3",
     "nwb": "^0.23.0",
-    "react": "^16.12.0",
     "react-app-polyfill": "^1.0.6",
-    "react-dom": "^16.12.0",
     "react-popper": "^0.10.4",
-    "react-router-dom": "^5.1.2",
-    "sinon": "^5.1.1"
+    "sinon": "^5.1.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2"
   },
   "repository": {
     "type": "git",

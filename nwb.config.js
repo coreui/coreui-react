@@ -6,7 +6,9 @@ module.exports = {
       global: 'CoreUIReact',
       externals: {
         react: 'React',
-        'react-router': 'ReactRouter'
+        'react-dom': 'ReactDom',
+        'react-router': 'ReactRouter',
+        'react-router-dom': 'ReactRouterDom',
       }
     }
   }

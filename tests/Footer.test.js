@@ -6,24 +6,24 @@ import { configure, mount, shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { spy } from 'sinon'
 
-import AppFooter from 'src/Footer'
+import CFooter from 'src/CFooter'
 
 configure({ adapter: new Adapter() });
 
-describe('AppFooter', () => {
-  it('renders footer with class="app-footer"', () => {
-    expect(render(<AppFooter />))
-    .toContain('<footer class="app-footer"></footer>')
+describe('CFooter', () => {
+  it('renders footer with class="c-footer"', () => {
+    expect(render(<CFooter />))
+    .toContain('<footer class="c-footer"></footer>')
   });
   it('calls componentDidMount', () => {
-    spy(AppFooter.prototype, 'componentDidMount');
+    spy(CFooter.prototype, 'componentDidMount');
 
-    const wrapper = mount(<AppFooter fixed display="lg" />);
-    expect(AppFooter.prototype.componentDidMount.calledOnce).toEqual(true);
+    const wrapper = mount(<CFooter fixed display="lg" />);
+    expect(CFooter.prototype.componentDidMount.calledOnce).toEqual(true);
   });
   it('should call isFixed()', () => {
-    const isFixed = spy(AppFooter.prototype, 'isFixed');
-    shallow(<AppFooter />);
+    const isFixed = spy(CFooter.prototype, 'isFixed');
+    shallow(<CFooter />);
     expect(isFixed.called).toBe(true);
   });
 
