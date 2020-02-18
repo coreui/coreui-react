@@ -63,13 +63,26 @@ const CSidebarNav = props=>{
       disabled = true;
     }
 
+    let classes;
+    if (item.class)
+      classes = item.class;
+    else {
+      classes = '';
+    }
+
+    let linkProps = {disabled};
+    if (isExternal(item.url))
+      linkProps['href'] = item.url;
+    else
+      linkProps['to'] = item.url;
+
     return <CSidebarNavItem
+      className={classes}
       key={key}
       icon = {item.icon}
-      to = {item.url}
       badge = {badgeProps}
       linkClassName={props.location&&props.location.pathname.indexOf(item.url)>-1 ? 'c-active' : null}
-      linkProps={{disabled}}
+      linkProps={linkProps}
       >
         {item.name}
       </CSidebarNavItem>

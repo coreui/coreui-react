@@ -188,7 +188,7 @@ const CDropdownCustom = props=>{
   fields.disabled = props.disabled;
   fields.isOpen = props.show;
 
-  const direction = (props.direction === 'down') ? 'up' : props.direction;
+  const direction = props.direction; //(props.direction === 'down' && dropup) ? 'up' :
 
   attributes.tag = attributes.tag || (inNav ? 'li' : 'div');
 
@@ -221,7 +221,7 @@ const CDropdownCustom = props=>{
     <Context.Provider value={{
       toggle: props.toggle,
       isOpen: props.show,
-      direction: (props.direction === 'down') ? 'up' : props.direction,
+      direction: props.direction, //(props.direction === 'down' && props.dropup) ? 'up' :
       inNavbar: props.inNavbar,
     }}>
       <CPopperContentWrapper>

@@ -1,8 +1,5 @@
 import React, {useState, useEffect, useRef, useMemo} from 'react';
 import PropTypes from 'prop-types';
-//import classNames from 'classnames';
-//import Chart from 'react-chartjs-2';
-//import { Bar, Doughnut, Line, Pie, Polar, Radar } from 'react-chartjs-2';
 import Chart from 'chart.js'
 import { customTooltips } from '@coreui/coreui-chartjs/dist/js/coreui-chartjs.js'
 import "@coreui/coreui-chartjs/dist/css/coreui-chartjs.css";
@@ -29,7 +26,7 @@ const CCharts = props=>{
   const ref = useRef();
 
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-//  const type = ''
+  // const type = ''
 
   // methods
 

@@ -44,6 +44,8 @@ const CSidebar = props=>{
   //methods
 
   const closeSidebar = ()=>{
+    if (isOpen==='responsive')
+    return;
     setIsOpen('responsive');
     onChange && onChange('close');
   }
