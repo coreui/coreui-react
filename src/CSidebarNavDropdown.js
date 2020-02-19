@@ -1,7 +1,7 @@
 import React, {useState, useContext, useMemo, useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import CIcon from '@coreui/icons-react';
+import { CIcon } from '@coreui/icons-react';
 
 import {Context} from './CSidebar';
 

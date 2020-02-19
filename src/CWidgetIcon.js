@@ -7,7 +7,7 @@ import {mapToCssModules, omit, pick, TransitionPropTypeKeys, TransitionTimeouts,
 import CCard from './CCard';
 import CCardBody from './CCardBody';
 import CCardFooter from './CCardFooter';
-import {CIcon} from '@coreui/icons-react';
+import { CIcon } from '@coreui/icons-react';
 
 //component - CoreUI / CWidgetIcon
 

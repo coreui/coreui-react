@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import CLink from './CLink';
 import CBadge from './CBadge';
-import CIcon from '@coreui/icons-react';
+import { CIcon } from '@coreui/icons-react';
 
 //component - CoreUI / CSidebarNavLink
 
