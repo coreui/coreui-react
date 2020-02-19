@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0-alpha.2",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -51,7 +51,8 @@
     "react-transition-group": "^4.3.0"
   },
   "peerDependencies": {
-    "@coreui/coreui": "3.0.0-rc.0",
+    "@coreui/coreui": "^3.0.0-rc.3",
+    "@coreui/icons-react": "^1.0.0-alpha.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",

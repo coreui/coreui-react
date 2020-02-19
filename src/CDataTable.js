@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {tagPropType, mapToCssModules} from './Shared/helper.js';
 import Slot from './Shared/Slot';
-import CIcon from './CIcon';
+import CIcon from '@coreui/icons-react';
 import CSpinner from './CSpinner';
 import CPagination from './CPagination';
 import style from './CDataTable.module.css';

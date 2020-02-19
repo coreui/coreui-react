@@ -9,6 +9,7 @@ module.exports = {
         'react-dom': 'ReactDom',
         'react-router': 'ReactRouter',
         'react-router-dom': 'ReactRouterDom',
+        '@coreui/icons-react': 'CoreUIIconsReact'
       }
     }
   }

@@ -7,8 +7,7 @@ import {mapToCssModules, omit, pick, TransitionPropTypeKeys, TransitionTimeouts,
 import CCard from './CCard';
 import CProgress from './CProgress';
 import CCardBody from './CCardBody';
-//import CCardHeader from './CCardHeader';
-//import CCardFooter from './CCardFooter';
+import {CIcon} from '@coreui/icons-react';
 
 //component - CoreUI / CWidget4
 
@@ -28,7 +27,7 @@ const CWidgetProgressIcon = props=>{
   } = props;
 
   const progress = { style: '', color: color, value: value };
-  const card = { style: '', bgColor: '', icon: 'icon '+icon };
+  const card = { style: '', bgColor: '', icon: icon };
 
   if (invert) {
     progress.style = 'progress-white';
@@ -42,8 +41,8 @@ const CWidgetProgressIcon = props=>{
 
   return (
     <CCard {...attributes} className={classes}>
-      <div className="h1 text-muted text-right mb-4">
-        <i className={card.icon}></i>
+      <div className="text-muted text-right mb-4">
+        <CIcon name={card.icon} size="xl" />
       </div>
       <div className="text-value-lg">{header}</div>
       <small className="text-muted text-uppercase font-weight-bold">{children}</small>

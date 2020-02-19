@@ -5,10 +5,9 @@ import classNames from 'classnames';
 import {mapToCssModules, omit, pick, TransitionPropTypeKeys, TransitionTimeouts, tagPropType} from './Shared/helper.js';
 //
 import CCard from './CCard';
-//import CProgress from './CProgress';
 import CCardBody from './CCardBody';
-//import CCardHeader from './CCardHeader';
 import CCardFooter from './CCardFooter';
+import {CIcon} from '@coreui/icons-react';
 
 //component - CoreUI / CWidgetIcon
 
@@ -40,8 +39,8 @@ const CWidgetIcon = props=>{
   lead.classes = classNames(lead.style, 'text-' + card.color);
 
   const blockIcon = function (icon) {
-    const classes = classNames(icon, 'bg-' + card.color, padding.icon, 'font-2xl mr-3 float-left');
-    return (<i className={classes}></i>);
+    const classes = classNames('bg-' + card.color, 'text-white', padding.icon, 'mr-3 float-left');
+    return <div className={classes}><CIcon name={icon} /></div>
   };
 
   const cardFooter = function () {
@@ -52,7 +51,7 @@ const CWidgetIcon = props=>{
             <span className="small font-weight-bold">
               View More
             </span>
-            <i className="fa fa-angle-right float-right font-lg"></i>
+            <CIcon className="float-right" name="cil-chevron-right" size="lg" />
           </a>
         </CCardFooter>
       );
@@ -89,13 +88,12 @@ CWidgetIcon.propTypes = {
   variant: PropTypes.string,
   footer: PropTypes.bool,
   link: PropTypes.string,
-  children: PropTypes.node,
 };
 
 CWidgetIcon.defaultProps = {
   header: '$1,999.50',
   mainText: 'Widget title',
-  icon: 'fa fa-cogs',
+  icon: 'cil-settings',
   color: 'primary',
   variant: '0',
   link: '#',

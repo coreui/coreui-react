@@ -51,17 +51,32 @@ const CSidebarNav = props=>{
     if (item.badge){
       badgeProps={
         text: item.badge.text,
-        color: item.badge.variant
+        color: item.badge.variant,
+        className: item.badge.class
       }
     }
     else {
       badgeProps={};
     }
 
+
+    let linkProps;
+    //
+    if (item.attributes){
+      linkProps = item.attributes;
+      //replace, innerRef (func, object)
+      //activeStyle, exact: bool, strict: bool
+    }
+    else {
+      linkProps = {};
+    }
+    //
     let disabled = false;
     if (item.attributes && item.attributes.disabled){
       disabled = true;
     }
+    disabled && (linkProps['disabled'] = disabled);
+
 
     let classes;
     if (item.class)
@@ -70,13 +85,20 @@ const CSidebarNav = props=>{
       classes = '';
     }
 
-    let linkProps = {disabled};
     if (isExternal(item.url))
       linkProps['href'] = item.url;
     else
       linkProps['to'] = item.url;
 
+    let compProps;
+    if (item.itemAttr)
+      compProps = item.itemAttr;
+    else {
+      compProps = {}
+    }
+
     return <CSidebarNavItem
+      {...compProps}
       className={classes}
       key={key}
       icon = {item.icon}

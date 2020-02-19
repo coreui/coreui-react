@@ -6,7 +6,7 @@ import {mapToCssModules, omit, pick, TransitionPropTypeKeys, TransitionTimeouts,
 //
 import CCard from './CCard';
 import CCardBody from './CCardBody';
-import CIcon from './CIcon';
+import CIcon from '@coreui/icons-react';
 import CButtonGroup from './CButtonGroup';
 import CDropdownToggle from './CDropdownToggle';
 import CDropdownMenu from './CDropdownMenu';

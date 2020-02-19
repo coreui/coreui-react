@@ -19,6 +19,7 @@ const CSidebarNavItem = props=>{
     ///
     icon,
     to,
+    href,
     badge,
     ...attributes
   } = props;
@@ -38,6 +39,7 @@ const CSidebarNavItem = props=>{
 
   !link && (link={})
   icon && (link.icon = icon);
+  !to && href && (link.href = href);
   to && (link.to = to);
   badge && (link.badgeProps = badge);
 
