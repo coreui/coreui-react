@@ -1,3 +1,3 @@
-npm link ../coreui-pro-react-admin-template/node_modules/react
-npm link ../coreui-pro-react-admin-template/node_modules/react-dom
-npm link ../coreui-pro-react-admin-template/node_modules/react-router-dom
+npm link ../pro/node_modules/react
+npm link ../pro/node_modules/react-dom
+npm link ../pro/node_modules/react-router-dom

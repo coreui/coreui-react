@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {tagPropType, mapToCssModules} from './Shared/helper.js';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 //component - CoreUI / CLink
 
@@ -49,7 +49,7 @@ const CLink = props=>{
 
   return (
     to ?
-      <Link to={to} {...attributes} className={classes} ref={innerRef} /> :
+      <NavLink to={to} {...attributes} className={classes} ref={innerRef} /> :
         <a href={href2} {...attributes} className={classes} onClick={onClick} ref={innerRef} />
   );
 
