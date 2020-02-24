@@ -12,7 +12,6 @@ const CNavLink = props=>{
     className,
     cssModule,
     //
-    innerRef,
     ...attributes
   } = props;
 

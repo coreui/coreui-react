@@ -33,6 +33,7 @@ const CButtonClose = props=>{
 
 CButtonClose.propTypes = {
   tag: tagPropType,
+  children: PropTypes.node,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import {mapToCssModules} from './Shared/helper.js';
 import {NavLink} from 'react-router-dom';
 
 //component - CoreUI / CLink
@@ -63,7 +63,8 @@ CLink.propTypes = {
   active: PropTypes.bool,
   disabled: PropTypes.bool,
   href: PropTypes.string,
-  to: PropTypes.string
+  to: PropTypes.string,
+  onClick: PropTypes.func
 };
 
 CLink.defaultProps = {

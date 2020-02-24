@@ -29,7 +29,6 @@ const CTooltipPopoverWrapper = props=>{
     className,
     cssModule,
     //
-    innerRef,
     innerClassName,
     target,
     show: isOpen,
@@ -285,14 +284,13 @@ const CTooltipPopoverWrapper = props=>{
     >
       <div
         {...attributes}
-        ref={getRef}
         className={classes}
         role="tooltip"
         aria-hidden={isOpen}
         onMouseOver={onMouseOverTooltipContent}
         onMouseLeave={onMouseLeaveTooltipContent}
         onKeyDown={onEscKeyDown}
-        ref={innerRef}
+        ref={getRef}
       />
     </CPopperContent>
   );

@@ -13,7 +13,7 @@ const CToastHeader = props=>{
     cssModule,
     //
     innerRef,
-    closeButton,
+    //closeButton,
     ...attributes
   } = props;
 

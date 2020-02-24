@@ -9,7 +9,6 @@ import CLink from './CLink';
 const CCardLink = props=>{
 
   const {
-    tag: Tag,
     className,
     cssModule,
     //

@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import {tagPropType} from './Shared/helper.js';
 import Slot from './Shared/Slot';
 import { CIcon } from '@coreui/icons-react';
 import CSpinner from './CSpinner';
@@ -50,8 +50,8 @@ const CDataTable = props=>{
     loading,
     change,
     onChange,
-    customContent,
-    ...attributes
+    //customContent,
+    //...attributes
   } = props;
 
   //Object.assign(style, cssModule)
@@ -68,7 +68,7 @@ const CDataTable = props=>{
   });
   const [tableFilterState, setTableFilterState] = useState(tableFilterValue);
   const [columnFilterState, setColumnFilterState] = useState({});
-  const [page, setPage] = useState(activePage || 1);
+  /*const [page, setPage] = useState(activePage || 1);*/
   const [passedItems, setPassedItems] = useState(items || []);
 
   // functions
@@ -270,13 +270,11 @@ const CDataTable = props=>{
     setPerPageItems(itemsPerPage);
   }, [itemsPerPage]);
 
-  //sorterValue
-  /*
+  //sorterValue ?
   useMemo(()=>{
     const asc = sorterValue.asc === false ? false : true;
     setSorterState(Object.assign({}, { asc, column: sorterValue.column }));
   }, [sorterValue]);
-  */
 
   //tableFilterValue
   useMemo(()=>{
@@ -284,12 +282,10 @@ const CDataTable = props=>{
     setTableFilterState(tableFilterValue);
   }, [tableFilterValue]);
 
-  //columnFilterValue
-  /*
+  //columnFilterValue ?
   useMemo(()=>{
     setColumnFilterState(Object.assign({}, columnFilterValue));
   }, [columnFilterValue]);
-  */
 
   //items
   useMemo(()=>{
@@ -479,7 +475,7 @@ const CDataTable = props=>{
                     key={'details' + itemIndex}
                   >
                     <td
-                      colspan={colspan}
+                      colSpan={colspan}
                       className="p-0"
                       style={{border:'none !important'}}
                     >

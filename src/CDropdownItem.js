@@ -90,6 +90,7 @@ CDropdownItem.propTypes = {
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   color: PropTypes.string,
+  href: PropTypes.string,
   divider: PropTypes.bool,
   header: PropTypes.bool,
   active: PropTypes.bool,

@@ -80,8 +80,9 @@ const CDropdownToggle = props=>{
           className={classes}
           onClick={onClick}
           aria-expanded={context.isOpen}
-          children={children}
-        />
+        >
+          {children}
+        </Tag>
       );
     else
       return (
@@ -90,9 +91,10 @@ const CDropdownToggle = props=>{
           className={classes}
           onClick={onClick}
           aria-expanded={context.isOpen}
-          children={children}
           ref={innerRef}
-        />
+        >
+          {children}
+        </Tag>
       );
   }
 
@@ -103,9 +105,10 @@ const CDropdownToggle = props=>{
       component={Tag}
       onClick={onClick}
       aria-expanded={context.isOpen}
-      children={children}
       ref={innerRef}
-    />
+    >
+      {children}
+    </Target>
   );
 
 }

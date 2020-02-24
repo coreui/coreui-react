@@ -17,7 +17,7 @@ const CDropdown = props=>{
 
   //custom
 
-  const [isOpen, setIsOpen] = useState(props.defaultOpen || false);
+  const [isOpen, setIsOpen] = useState(defaultOpen || false);
 
   if (!custom){
     const userToggle = toggle;

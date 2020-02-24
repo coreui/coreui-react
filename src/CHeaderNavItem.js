@@ -32,19 +32,24 @@ const CHeaderNavItem = props=>{
   if (!custom){
     return (
       <Tag {...attributes} className={classes} ref={innerRef}>
-        <CHeaderNavLink {...linkProps} className={linkClassName} to={to} children={children} />
+        <CHeaderNavLink {...linkProps} className={linkClassName} to={to}>
+          {children}
+        </CHeaderNavLink>
       </Tag>
     );
   }
 
   return (
-    <Tag {...attributes} className={classes} children={children} ref={innerRef} />
+    <Tag {...attributes} className={classes} ref={innerRef}>
+      {children}
+    </Tag>
   );
 
 }
 
 CHeaderNavItem.propTypes = {
   tag: tagPropType,
+  children: PropTypes.node,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   custom: PropTypes.bool,

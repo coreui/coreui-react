@@ -36,6 +36,7 @@ const CSidebarBrand = props=>{
     return brand.alt ? brand.alt : '';
   }
   const navbarBrandImg = (props, classBrand, key)=>{
+    /*
     const {
       src,
       width,
@@ -43,6 +44,7 @@ const CSidebarBrand = props=>{
       height,
       ...attributes
     } = props;
+    */
     return (
       <img
           src={imgSrc(props)}
@@ -50,7 +52,7 @@ const CSidebarBrand = props=>{
           height={imgHeight(props)}
           alt={imgAlt(props)}
           className={classBrand}
-          {...attributes}
+          {...props}
           key={key.toString()}
       />
     );

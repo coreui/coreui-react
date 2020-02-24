@@ -46,9 +46,13 @@ const CSidebarNavItem = props=>{
   return (
     !custom ?
       <Tag className={classes} {...attributes} ref={innerRef}>
-        <CSidebarNavLink className={linkClasses} {...link} children={children} />
+        <CSidebarNavLink className={linkClasses} {...link}>
+          {children}
+        </CSidebarNavLink>
       </Tag> :
-      <Tag className={classes} {...attributes} ref={innerRef} children={children} />
+      <Tag className={classes} {...attributes} ref={innerRef}>
+        {children}
+      </Tag>
   );
 
 }
@@ -62,6 +66,8 @@ CSidebarNavItem.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   linkClassName: PropTypes.string,
   linkProps: PropTypes.object,
+  to: PropTypes.string,
+  href: PropTypes.string,
   ///
   icon: PropTypes.oneOfType(['string', 'object']),
   badge: PropTypes.object,

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {tagPropType, mapToCssModules, deprecated} from './Shared/helper.js';
+import {tagPropType, mapToCssModules} from './Shared/helper.js';
 import CCardBody from './CCardBody';
 import CCardHeader from './CCardHeader';
 import CCardFooter from './CCardFooter';
@@ -62,7 +62,9 @@ const CCard = props=>{
     );
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} children={children}/>
+    <Tag {...attributes} className={classes} ref={innerRef}>
+      {children}
+    </Tag>
   );
 
 }

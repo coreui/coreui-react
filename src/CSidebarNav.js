@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import 'react-perfect-scrollbar/dist/css/styles.css';
-import CBadge from './CBadge';
 import CSidebarNavTitle from './CSidebarNavTitle';
 import CSidebarNavDivider from './CSidebarNavDivider';
 import CSidebarNavDropdown from './CSidebarNavDropdown';
 import CSidebarNavItem from './CSidebarNavItem';
-import CSidebarNavLink from './CSidebarNavLink';
 
 //component - CoreUI / CSidebarNav
 
@@ -191,6 +189,8 @@ CSidebarNav.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   children: PropTypes.node,
   className: PropTypes.string,
+  //
+  location: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   navConfig: PropTypes.any

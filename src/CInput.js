@@ -1,7 +1,7 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {mapToCssModules, deprecated, warnOnce, tagPropType} from './Shared/helper.js';
+import {mapToCssModules, warnOnce, tagPropType} from './Shared/helper.js';
 
 //component - CoreUI / CInput
 
@@ -15,7 +15,6 @@ const CInput = props=>{
     innerRef,
     type,
     bsSize,
-    state,
     valid,
     invalid,
     addon,
@@ -24,6 +23,7 @@ const CInput = props=>{
     ...attributes
   } = props;
 
+  /*
   let fields = useRef({}).current;
 
   const getRef = (ref)=>{
@@ -36,6 +36,7 @@ const CInput = props=>{
       fields.ref.focus();
     }
   }
+  */
 
   // render
 
@@ -118,7 +119,8 @@ CInput.propTypes = {
   valid: PropTypes.bool,
   invalid: PropTypes.bool,
   plaintext: PropTypes.bool,
-  addon: PropTypes.bool
+  addon: PropTypes.bool,
+  static: PropTypes.bool
 };
 
 CInput.defaultProps = {

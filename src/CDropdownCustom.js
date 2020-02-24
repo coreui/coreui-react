@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {tagPropType, mapToCssModules, omit, keyCodes, deprecated} from './Shared/helper.js';
+import {tagPropType, mapToCssModules, omit, keyCodes} from './Shared/helper.js';
 import {Manager} from 'react-popper';
 
 export const Context = React.createContext({});
@@ -17,6 +17,10 @@ class CPopperContentWrapper extends React.Component {
     return this.props.children;
   }
 }
+
+CPopperContentWrapper.propTypes = {
+  children: PropTypes.node
+};
 
 CPopperContentWrapper.contextType = Context;
 
@@ -170,8 +174,8 @@ const CDropdownCustom = props=>{
 
   useEffect(() => {
     if (fields.firstRender){
-      return;
-    };
+      return
+    }
     handleProps();
   }, [props.show]);
 

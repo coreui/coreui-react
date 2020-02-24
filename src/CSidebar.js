@@ -1,7 +1,6 @@
 import React, {useState, useRef, useMemo, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {sidebarCssClasses} from './Shared';
 import ClickOutHandler from 'react-onclickout'
 import './Shared/element-closest'
 
@@ -62,7 +61,7 @@ const CSidebar = props=>{
       closeSidebar()
     }
   }
-  const onClickOut = e=>{
+  const onClickOut = ()=>{
     if (compData.reRender){
       return;
     }
@@ -100,6 +99,7 @@ const CSidebar = props=>{
     size ? `c-sidebar-${size}` : null
   );
 
+  /*
   const clickOutClasses = classNames(
     'c-sidebar-backdrop',
     isOpen ? 'd-show' : 'd-none'
@@ -107,6 +107,7 @@ const CSidebar = props=>{
   const style = {
     background: isOpen? 'black' : 'white'
   }
+  */
 
   const state = {
     minimize: minimize && !unfoldable

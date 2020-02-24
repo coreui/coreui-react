@@ -107,6 +107,7 @@ CCarousel.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   items: PropTypes.array,
   indicators: PropTypes.bool,
+  defaultOpen: PropTypes.bool,
   controls: PropTypes.bool,
   autoPlay: PropTypes.bool,
   activeIndex: PropTypes.number,

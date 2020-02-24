@@ -71,8 +71,9 @@ const CButton = props=>{
     onClick={onClick}
     aria-label={ariaLabel || defaultAriaLabel}
     ref={innerRef}
-    children={textHtml ? textHtml : children}
-  />;
+  >
+    {textHtml ? textHtml : children}
+  </Tag>
 
 }
 

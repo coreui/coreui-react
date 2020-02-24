@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {mapToCssModules, omit, pick, TransitionPropTypeKeys, TransitionTimeouts, tagPropType} from './Shared/helper.js';
+import {mapToCssModules, tagPropType} from './Shared/helper.js';
 import CEmbedObject from './CEmbedObject';
 
 //component - CoreUI / CEmbed

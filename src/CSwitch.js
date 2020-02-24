@@ -8,7 +8,6 @@ const CSwitch = props=>{
 
   let {
     className,
-    cssModule,
     //
     innerRef,
     type,
@@ -30,7 +29,7 @@ const CSwitch = props=>{
 
   const fields = useRef({firstRender: true}).current;
   const [checked, setChecked] = useState(props.defaultChecked || props.checked);
-  const [selected, setSelected] = useState([]);
+  //const [selected, setSelected] = useState([]);
 
   //effect - update
   useEffect(() => {

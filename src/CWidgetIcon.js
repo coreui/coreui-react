@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import {mapToCssModules, omit, pick, TransitionPropTypeKeys, TransitionTimeouts, tagPropType} from './Shared/helper.js';
+import {mapToCssModules} from './Shared/helper.js';
 //
 import CCard from './CCard';
 import CCardBody from './CCardBody';
@@ -14,7 +14,6 @@ import { CIcon } from '@coreui/icons-react';
 const CWidgetIcon = props=>{
 
   const {
-    children,
     className,
     cssModule,
     //

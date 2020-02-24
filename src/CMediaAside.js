@@ -15,13 +15,14 @@ const CMediaAside = props=>{
     cssModule,
     //
     innerRef,
-    asideImageProps,
+    //asideImageProps,
     asideVerticalPosition,
     asideRight,
     addAsideMargin,
     ...attributes
   } = props;
 
+  /*
   const computedAsideImageProps = ()=>{
     return Object.assign(
       {
@@ -32,6 +33,7 @@ const CMediaAside = props=>{
       asideImageProps || {}
     )
   }
+  */
 
   const context = useContext(Context);
 

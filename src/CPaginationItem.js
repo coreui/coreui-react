@@ -41,12 +41,18 @@ const CPaginationItem = props=>{
   if (!custom){
     return (
       <Tag {...attributes} className={classes} ref={innerRef}>
-        <CPaginationLink className={linkClasses} {...linkProps} children={children} />
+        <CPaginationLink className={linkClasses} {...linkProps}>
+          {children}
+        </CPaginationLink>
       </Tag>
     );
   }
 
-  return (<Tag {...attributes} className={classes} children={children} ref={innerRef} />);
+  return (
+    <Tag {...attributes} className={classes} ref={innerRef}>
+      {children}
+    </Tag>
+  );
 
 }
 

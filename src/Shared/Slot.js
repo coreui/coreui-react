@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react';
 
 //export const Context = React.createContext({});
 
@@ -6,12 +6,11 @@ const Slot = (props)=>{
 
   const {
     content,
-    children,
-    ...attributes
+    children
   } = props;
 
   return content?content:children?children:'';
-  
+
 }
 
 export default Slot;

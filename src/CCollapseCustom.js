@@ -29,7 +29,6 @@ const CCollapseCustom = props=>{
     className,
     cssModule,
     //
-    innerRef,
     show,
     navbar,
     ...otherProps

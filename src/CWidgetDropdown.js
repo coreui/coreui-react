@@ -1,17 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
-import {mapToCssModules, omit, pick, TransitionPropTypeKeys, TransitionTimeouts, tagPropType} from './Shared/helper.js';
 //
 import CCard from './CCard';
 import CCardBody from './CCardBody';
-import { CIcon } from '@coreui/icons-react';
-import CButtonGroup from './CButtonGroup';
-import CDropdownToggle from './CDropdownToggle';
-import CDropdownMenu from './CDropdownMenu';
-import CDropdownItem from './CDropdownItem';
-import CDropdown from './CDropdown';
 import Slot from './Shared/Slot.js';
 
 //component - CoreUI / CWidgetDropdown
@@ -20,23 +12,15 @@ const CWidgetDropdown = props=>{
 
   const {
     children,
-    className,
-    cssModule,
     //
     header,
     text,
     color,
-    toggle,
     dropdownSlot,
 
     mainText,
-    smallText,
-    value,
-    variant,
     ...attributes
   } = props;
-
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <CCard {...attributes} custom className="text-white" color={color}>

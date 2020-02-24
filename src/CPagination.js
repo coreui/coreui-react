@@ -31,8 +31,8 @@ const CPagination = props=>{
     nextButtonHtml,
     lastButtonHtml,
     hideDots,
-    hideArrows,
-    hideDoubleArrows,
+    //hideArrows,
+    //hideDoubleArrows,
     listTag: ListTag,
     'aria-label': label,
     listProps,
@@ -85,7 +85,9 @@ const CPagination = props=>{
       paginationClick
     }}>
       <Tag {...attributes} className={classes} aria-label={label} ref={innerRef}>
-        <ListTag className={listClasses} children={autoChildren||children} {...listProps}/>
+        <ListTag className={listClasses} {...listProps}>
+          {autoChildren||children}
+        </ListTag>
       </Tag>
     </Context.Provider>
   );

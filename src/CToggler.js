@@ -63,6 +63,7 @@ const CToggler = props=>{
 
 CToggler.propTypes = {
   tag: tagPropType,
+  children: PropTypes.node,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   custom: PropTypes.bool,

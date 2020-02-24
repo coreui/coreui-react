@@ -92,6 +92,7 @@ CImg.propTypes = {
   block: PropTypes.bool,
   fluid: PropTypes.bool,
   fluidGrow: PropTypes.bool,
+  active: PropTypes.bool,
   shape: PropTypes.string,//oneOf(['', 'rounded']),
   thumbnail: PropTypes.bool,
   align: PropTypes.oneOf(['', 'left', 'right', 'center']),

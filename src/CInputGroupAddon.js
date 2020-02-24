@@ -30,13 +30,17 @@ const CInputGroupAddon = props=>{
   if (typeof children === 'string') {
     return (
       <Tag {...attributes} className={classes}>
-        <CInputGroupText children={children} {...inputProps}/>
+        <CInputGroupText {...inputProps}>
+          {children}
+        </CInputGroupText>
       </Tag>
     );
   }
 
   return (
-    <Tag {...attributes} className={classes} children={children} ref={innerRef} />
+    <Tag {...attributes} className={classes} ref={innerRef}>
+      {children}
+    </Tag>
   );
 
 }

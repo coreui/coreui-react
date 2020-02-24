@@ -39,13 +39,17 @@ const CNavItem = props=>{
   if (!custom){
     return (
       <Tag {...attributes} className={classes} ref={innerRef}>
-        <CNavLink {...linkProps} className={linkClasses} to={to} href={href} children={children} />
+        <CNavLink {...linkProps} className={linkClasses} to={to} href={href}>
+          {children}
+        </CNavLink>
       </Tag>
     );
   }
 
   return (
-      <Tag {...attributes} className={classes} ref={innerRef} children={children} />
+      <Tag {...attributes} className={classes} ref={innerRef}>
+        {children}
+      </Tag>
   );
 
 }
@@ -54,6 +58,7 @@ CNavItem.propTypes = {
   tag: tagPropType,
   className: PropTypes.string,
   cssModule: PropTypes.object,
+  children: PropTypes.node,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   active: PropTypes.bool,

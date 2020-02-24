@@ -67,6 +67,8 @@ CCollapse.propTypes = {
   defaultOpen: PropTypes.bool,
   toggler: PropTypes.string,
   toggleEvents: PropTypes.arrayOf(PropTypes.string),
+  toggle: PropTypes.func,
+  show: PropTypes.bool
 };
 
 CCollapse.defaultProps = {

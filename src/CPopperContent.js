@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import {Arrow, Popper as ReactPopper} from 'react-popper';
 import {getTarget, targetPropType, mapToCssModules, DOMElement, tagPropType} from './Shared/helper.js';
-import CFade from './CFade';
 
 export const Context = React.createContext({});
 
@@ -17,6 +16,10 @@ class CPopperContentWrapper extends React.Component {
   render(){
     return this.props.children;
   }
+}
+
+CPopperContentWrapper.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 CPopperContentWrapper.contextType = Context;
@@ -83,16 +86,15 @@ const CPopperContent = props=>{
       className,
       cssModule,
       //
-      innerRef,
-      show,
+      //show,
       flip,
-      target,
+      //target,
       offset,
       fallbackPlacement,
       placementPrefix,
       arrowClassName: _arrowClassName,
       hideArrow,
-      container,
+      //container,
       modifiers,
       boundariesElement,
       ...attributes
@@ -137,6 +139,27 @@ const CPopperContent = props=>{
     );
 
   }
+
+  renderChildren.propTypes = {
+    tag: tagPropType,
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    cssModule: PropTypes.object,
+    //
+    innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+    placement: PropTypes.string,
+    placementPrefix: PropTypes.string,
+    arrowClassName: PropTypes.string,
+    hideArrow: PropTypes.bool,
+    show: PropTypes.bool.isRequired,
+    offset: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    fallbackPlacement: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+    flip: PropTypes.bool,
+    container: targetPropType,
+    target: targetPropType.isRequired,
+    modifiers: PropTypes.object,
+    boundariesElement: PropTypes.oneOfType([PropTypes.string, DOMElement]),
+  };
 
   setTargetNode(getTarget(props.target));
 

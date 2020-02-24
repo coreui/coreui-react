@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
 import {Route, Link, matchPath} from 'react-router-dom';
 import CBreadcrumbCustom from './CBreadcrumbCustom';
 import CBreadcrumbItem from './CBreadcrumbItem';
@@ -45,7 +44,8 @@ const CBreadcrumbRouteItem = ({ match }) => {
 
 CBreadcrumbRouteItem.propTypes = {
   match: PropTypes.shape({
-    url: PropTypes.string
+    url: PropTypes.string,
+    isExact: PropTypes.bool
   })
 };
 
@@ -80,7 +80,6 @@ const CBreadcrumbRouter = args=>{
 const CBreadcrumb = props=>{
 
   const {
-    tag: Tag,
     children,
     className,
     custom,
@@ -126,6 +125,7 @@ CBreadcrumb.propTypes = {
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   appRoutes: PropTypes.any,
+  match: PropTypes.object,
   routesProps: PropTypes.object
 };
 

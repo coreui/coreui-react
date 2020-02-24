@@ -64,9 +64,10 @@ const CProgress = props=>{
       aria-valuenow={value}
       aria-valuemin="0"
       aria-valuemax={max}
-      children={showPercentage?percent+'%': showValue?value: children}
       {...barProps}
-    />
+    >
+      {showPercentage?percent+'%': showValue?value: children}
+    </div>
   );
 
   if (bar) {
@@ -80,7 +81,9 @@ const CProgress = props=>{
     style = {};
 
   return (
-    <Tag {...attributes} style={style} className={progressClasses} children={ProgressBar} ref={innerRef} />
+    <Tag {...attributes} style={style} className={progressClasses} ref={innerRef}>
+      {ProgressBar}
+    </Tag>
   );
 
 }
