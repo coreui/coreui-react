@@ -94,7 +94,7 @@ CWidgetBrand.propTypes = {
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  dataBox: PropTypes.func,
+  //dataBox: PropTypes.func,
   //old
   color: PropTypes.string,
   rightHeader: PropTypes.string,
@@ -106,7 +106,7 @@ CWidgetBrand.propTypes = {
 };
 
 CWidgetBrand.defaultProps = {
-  dataBox: () => ({ variant: 'facebook', friends: '-', feeds: '-' }),
+  //dataBox: () => ({ variant: 'facebook', friends: '-', feeds: '-' }),
 };
 
 export default CWidgetBrand;

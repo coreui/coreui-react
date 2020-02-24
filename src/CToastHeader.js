@@ -36,12 +36,12 @@ CToastHeader.propTypes = {
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
-  closeButton: PropTypes.bool
+  //closeButton: PropTypes.bool
 };
 
 CToastHeader.defaultProps = {
   tag: 'div',
-  closeButton: true
+  //closeButton: true
 };
 
 export default CToastHeader;

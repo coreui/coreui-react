@@ -50,7 +50,7 @@ CWidgetDropdown.propTypes = {
   dropdownSlot: PropTypes.node,
   //old
   mainText: PropTypes.string,
-  smallText: PropTypes.string,
+  //smallText: PropTypes.string,
   value: PropTypes.string,
   variant: PropTypes.string,
 };
@@ -59,7 +59,7 @@ CWidgetDropdown.defaultProps = {
   header: '89.9%',
   text: 'text',
   mainText: 'Widget title',
-  smallText: 'Widget helper text',
+  //smallText: 'Widget helper text',
   // color: '',
   value: '25',
   variant: '',

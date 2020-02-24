@@ -68,7 +68,7 @@ const CDataTable = props=>{
   });
   const [tableFilterState, setTableFilterState] = useState(tableFilterValue);
   const [columnFilterState, setColumnFilterState] = useState({});
-  /*const [page, setPage] = useState(activePage || 1);*/
+  const [page, setPage] = useState(activePage || 1);
   const [passedItems, setPassedItems] = useState(items || []);
 
   // functions
@@ -270,11 +270,13 @@ const CDataTable = props=>{
     setPerPageItems(itemsPerPage);
   }, [itemsPerPage]);
 
-  //sorterValue ?
+  //sorterValue
+  /*
   useMemo(()=>{
     const asc = sorterValue.asc === false ? false : true;
     setSorterState(Object.assign({}, { asc, column: sorterValue.column }));
   }, [sorterValue]);
+  */
 
   //tableFilterValue
   useMemo(()=>{
@@ -282,10 +284,12 @@ const CDataTable = props=>{
     setTableFilterState(tableFilterValue);
   }, [tableFilterValue]);
 
-  //columnFilterValue ?
+  //columnFilterValue
+  /*
   useMemo(()=>{
     setColumnFilterState(Object.assign({}, columnFilterValue));
   }, [columnFilterValue]);
+  */
 
   //items
   useMemo(()=>{
