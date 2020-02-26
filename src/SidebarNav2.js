@@ -49,8 +49,12 @@ class AppSidebarNav2 extends Component {
 
   _scrollBarRef = null;
 
-  handleClick(e) {
-    e.preventDefault();
+  handleClick(e, item) {
+    if (item.attributes && typeof item.attributes.onClick  === 'function' && !this.isActiveRoute(item.url, this.props)) {
+      item.attributes.onClick(e, item)
+    } else {
+      e.preventDefault();
+    }
     e.currentTarget.parentElement.classList.toggle('open');
   }
 
@@ -71,7 +75,7 @@ class AppSidebarNav2 extends Component {
   }
 
   getAttribs(attributes) {
-    return JSON.parse(JSON.stringify(attributes || {}));
+    return {...attributes};
   }
 
   // nav list
@@ -132,14 +136,21 @@ class AppSidebarNav2 extends Component {
     delete attributes.class;
     delete attributes.className;
     const itemAttr = this.getAttribs(item.itemAttr);
-    const liClasses = classNames(this.activeRoute(item.url, this.props), itemAttr.class, itemAttr.className)
+    const liClasses = classNames('nav-item', 'nav-dropdown', itemAttr.class, itemAttr.className);
     delete itemAttr.class;
     delete itemAttr.className;
+    const NavLink = this.props.router.NavLink || RsNavLink;
+
     return (
-      <li key={key} className={liClasses} {...itemAttr}>
-        <a className={classes} href="#" onClick={this.handleClick} {...attributes}><i className={classIcon}/>
+      <li key={key} className={classNames(liClasses, {'open': this.isActiveRoute(item.url, this.props)})} {...itemAttr}>
+        <NavLink activeClassName='open'
+                 className={classes}
+                 to={item.url || ''}
+                 {...attributes}
+                 onClick={(e) => this.handleClick(e, item)}>
+          <i className={classIcon}/>
           {item.name}{this.navBadge(item.badge)}
-        </a>
+        </NavLink>
         <ul className="nav-dropdown-items">
           {this.navList(item.children)}
         </ul>
