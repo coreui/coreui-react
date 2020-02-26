@@ -120,6 +120,29 @@ __React Router NavLink props to pass in `attributes` object:__
   ]
 }
 ```
+To override default behavior of `nav-dropdown toggle` and navigate to `url` use custom `onClick` method:
+```json5
+{
+  name: 'Base',
+  url: '/base',
+  icon: 'icon-puzzle',
+  attributes: {onClick: (e, item)=>{ console.log(e, item) }}, // (v2.5.6 up) optional
+  children: []
+}
+``` 
+For active route consistency, you can set redirect on partial routes in `src/routes.js`: 
+```js
+import { Redirect } from 'react-router-dom';
+...
+const routes = [
+  ...
+  { path: '/base', exact: true, name: 'Base', component: () => <Redirect to={'/base/cards'}/> },
+  { path: '/base/cards', name: 'Cards', component: Cards },
+  { path: '/base/forms', name: 'Forms', component: Forms },
+  ...
+]
+```
+
 - divider:
 ```json5
 {

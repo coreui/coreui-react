@@ -1,5 +1,12 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
+##### `v2.5.6`
+- fix(SidebarNav): navigate to route on AppSideBarNav parent menu click - thanx @regimani #98 
+
+###### dependencies update
+- update `react` to `^16.13.0`
+- update `react-dom` to `^16.13.0`
+
 ##### `v2.5.5`
 - fix(SidebarNav): perfect scrollbar issue on sidebar minimized / rtl
 - chore: dependencies update and config refactor
