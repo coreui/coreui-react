@@ -323,8 +323,6 @@ const CDataTable = props=>{
     paginationProps = {}
   }
 
-  console.log(scopedSlots);
-
   return (
     <>
     <div ref={innerRef}>
