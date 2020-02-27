@@ -1,9 +1,9 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useMemo,  } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {tagPropType} from './Shared/helper.js';
+import {tagPropType, mapToCssModules} from './Shared/helper.js';
 import Slot from './Shared/Slot';
-import { CIcon } from '@coreui/icons-react';
+import CIcon from '../coreui-icons/CIcon';
 import CSpinner from './CSpinner';
 import CPagination from './CPagination';
 import style from './CDataTable.module.css';
@@ -26,6 +26,7 @@ const CDataTable = props=>{
     captionSlot,
     underTableSlot,
     colNameSlot,
+    scopedSlots,
     fields,
     pagination,
     activePage,
@@ -50,8 +51,9 @@ const CDataTable = props=>{
     loading,
     change,
     onChange,
-    //customContent,
-    //...attributes
+    customContent,
+    sorterValue,
+    columnFilterValue
   } = props;
 
   //Object.assign(style, cssModule)
@@ -101,7 +103,7 @@ const CDataTable = props=>{
   const headerStyles = (index)=>{
     let style = {}
     if (isSortable(index)) {
-      style['cursor']='pointer;';
+      style['cursor']='pointer';
     }
     if (fields && fields[index] && fields[index]._style) {
       let r = fields[index]._style.split(':');
@@ -271,12 +273,10 @@ const CDataTable = props=>{
   }, [itemsPerPage]);
 
   //sorterValue
-  /*
   useMemo(()=>{
     const asc = sorterValue.asc === false ? false : true;
     setSorterState(Object.assign({}, { asc, column: sorterValue.column }));
   }, [sorterValue]);
-  */
 
   //tableFilterValue
   useMemo(()=>{
@@ -285,11 +285,9 @@ const CDataTable = props=>{
   }, [tableFilterValue]);
 
   //columnFilterValue
-  /*
   useMemo(()=>{
     setColumnFilterState(Object.assign({}, columnFilterValue));
   }, [columnFilterValue]);
-  */
 
   //items
   useMemo(()=>{
@@ -318,10 +316,17 @@ const CDataTable = props=>{
 
   compData.firstRun = false;
 
-  let scopedSlots = {}; //+
+  let paginationProps;
+  if (typeof pagination === 'object')
+    paginationProps = {...pagination}
+  else {
+    paginationProps = {}
+  }
+
+  console.log(scopedSlots);
 
   return (
-    <React.Fragment>
+    <>
     <div ref={innerRef}>
       {
         itemsPerPageSelect || tableFilter ?
@@ -343,7 +348,7 @@ const CDataTable = props=>{
           {
             itemsPerPageSelect ?
             <div
-              className={'col-sm-6 p-0' + !tableFilter ? 'offset-sm-6' : ''}
+              className={'col-sm-6 p-0' + (!tableFilter ? 'offset-sm-6' : '')}
             >
               <div className="form-inline justify-content-sm-end">
                 <label className="mr-2">Items per page:</label>
@@ -437,12 +442,12 @@ const CDataTable = props=>{
           }
         </thead>
         <tbody
-          style={clickableRows ? 'cursor:pointer;': null}
+          style={clickableRows ? {cursor: 'pointer'} : null}
           className="position-relative"
         >
           {currentItems.map((item, itemIndex)=>{
             return (
-              <React.Fragment>
+              <>
               <tr
                 className={classNames(item._classes)}
                 tabIndex={clickableRows ? 0 : null}
@@ -454,9 +459,7 @@ const CDataTable = props=>{
                     if (scopedSlots[colName])
                       return(
                         <Slot
-                          content={colNameSlot}
-                          item={item}
-                          index={itemIndex + firstItemIndex}
+                          content={scopedSlots[colName](item, itemIndex + firstItemIndex)}
                         />
                       )
                     else
@@ -475,23 +478,21 @@ const CDataTable = props=>{
                 scopedSlots.details?
                   <tr
                     className="p-0"
-                    style={{border:'none !important'}}
+                    style={{border: 'none !important'}}
                     key={'details' + itemIndex}
                   >
                     <td
                       colSpan={colspan}
                       className="p-0"
-                      style={{border:'none !important'}}
+                      style={{border: 'none !important'}}
                     >
                       <Slot
-                        content={detailsSlot}
-                        item={item}
-                        index={itemIndex + firstItemIndex}
+                        content={scopedSlots.details(item, itemIndex + firstItemIndex)}
                       />
                     </td>
                   </tr>:''
               }
-              </React.Fragment>
+              </>
             )
           })}
           {
@@ -584,15 +585,16 @@ const CDataTable = props=>{
 
     {
       //:activePage.sync="page"
+      //v-bind={typeof pagination === 'object' ? {...pagination} : null}
       pagination ?
         <CPagination
           style={{display: totalPages > 0 ? 'inline' : 'none'}}
           pages={totalPages}
-          v-bind={typeof pagination === 'object' ? {...pagination} : null}
+          {...paginationProps}
         />:''
     }
 
-    </React.Fragment>
+    </>
   )
 
 }
@@ -606,14 +608,15 @@ CDataTable.propTypes = {
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   overTableSlot: PropTypes.node,
-  colNameSlot: PropTypes.node,
+  colNameSlot: PropTypes.node,//?
   columnHeaderSlot: PropTypes.array,
   sortingIconSlot: PropTypes.node,
   columnFilterSlot: PropTypes.node,
-  detailsSlot: PropTypes.node,
+  detailsSlot: PropTypes.node,//?
   noItemViewSlot: PropTypes.node,
   captionSlot: PropTypes.node,
   underTableSlot: PropTypes.node,
+  scopedSlots: PropTypes.object,
   fields: PropTypes.array,
   pagination: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   activePage: PropTypes.number,
@@ -637,7 +640,9 @@ CDataTable.propTypes = {
   itemsPerPageSelect: PropTypes.bool,
   loading: PropTypes.bool,
   change: PropTypes.func, //+
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  sorterValue: PropTypes.object,
+  columnFilterValue: PropTypes.object
 }
 
 CDataTable.defaultProps = {
@@ -645,6 +650,9 @@ CDataTable.defaultProps = {
   responsive: true,
   columnHeaderSlot: [],
   columnFilterSlot: [],
+  sorterValue: {}
 }
+
+CDataTable.Context = React.createContext({});
 
 export default CDataTable;
