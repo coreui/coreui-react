@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {tagPropType, mapToCssModules} from './Shared/helper.js';
 import Slot from './Shared/Slot';
-import CIcon from '../coreui-icons/CIcon';
 import CSpinner from './CSpinner';
 import CPagination from './CPagination';
 import style from './CDataTable.module.css';
+import {CIcon} from '@coreui/icons-react';
 
 //component - CoreUI / CTable
 
@@ -324,7 +324,7 @@ const CDataTable = props=>{
   }
 
   return (
-    <>
+    <React.Fragment>
     <div ref={innerRef}>
       {
         itemsPerPageSelect || tableFilter ?
@@ -445,7 +445,7 @@ const CDataTable = props=>{
         >
           {currentItems.map((item, itemIndex)=>{
             return (
-              <>
+              <React.Fragment>
               <tr
                 className={classNames(item._classes)}
                 tabIndex={clickableRows ? 0 : null}
@@ -458,6 +458,7 @@ const CDataTable = props=>{
                       return(
                         <Slot
                           content={scopedSlots[colName](item, itemIndex + firstItemIndex)}
+                          key={index}
                         />
                       )
                     else
@@ -490,7 +491,7 @@ const CDataTable = props=>{
                     </td>
                   </tr>:''
               }
-              </>
+              </React.Fragment>
             )
           })}
           {
@@ -592,7 +593,7 @@ const CDataTable = props=>{
         />:''
     }
 
-    </>
+    </React.Fragment>
   )
 
 }
