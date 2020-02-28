@@ -1,5 +1,8 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
+##### `v2.5.7`
+- fix(SidebarNav): add missing alternative icon config object
+
 ##### `v2.5.6`
 - fix(SidebarNav): navigate to route on AppSideBarNav parent menu click - thanx @regimani #98 
 

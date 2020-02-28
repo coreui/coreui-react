@@ -55,6 +55,17 @@ router | inject `react-router-dom@5` object | _mandatory for @coreui/react ^2.5.
 },
 ```
 
+- item.icon: string (css class string for <i> tag)
+```json5
+icon: 'icon-speedometer' // css class string for <i> tag
+```
+- item.icon: { class, innerText, attributes }  
+  (v2.5.7 up alternative icon config object)
+```json5
+icon: { class: 'material-icons', innerText: 'insert_emoticon', attributes: { title: 'smiley' }} 
+```
+---
+
 __React Router Link `url`__
 
 `url: string` - a string representation of the Link location, created by concatenating the location’s pathname, search, and hash properties.  
