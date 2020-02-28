@@ -130,7 +130,7 @@ class AppSidebarNav2 extends Component {
 
   // nav dropdown
   navDropdown(item, key) {
-    const classIcon = classNames('nav-icon', item.icon);
+    const itemIcon = this.navIcon(item)
     const attributes = this.getAttribs(item.attributes);
     const classes = classNames('nav-link', 'nav-dropdown-toggle', item.class, attributes.class, attributes.className);
     delete attributes.class;
@@ -148,8 +148,7 @@ class AppSidebarNav2 extends Component {
                  to={item.url || ''}
                  {...attributes}
                  onClick={(e) => this.handleClick(e, item)}>
-          <i className={classIcon}/>
-          {item.name}{this.navBadge(item.badge)}
+          {itemIcon}{item.name}{this.navBadge(item.badge)}
         </NavLink>
         <ul className="nav-dropdown-items">
           {this.navList(item.children)}
@@ -169,11 +168,26 @@ class AppSidebarNav2 extends Component {
     );
   }
 
+  navIcon(item) {
+    const icon = item.icon;
+    const iconObject = (typeof icon === 'object' && (icon !== null)) ? {iconClass: icon.class, iconClassName: icon.className, ...icon} : { iconClass: icon };
+    const {iconClass, iconClassName, innerText, img, attributes} = iconObject;
+    const iconAttr = {...attributes};
+    delete iconAttr.class;
+    delete iconAttr.className;
+    delete iconAttr.img;
+    const iconImg = img && img.src ? img : null;
+    const iconInner = innerText || null;
+    const classIcon = classNames('nav-icon', iconClass, iconClassName);
+    const iconComponent = iconImg ? <img {...iconAttr} className={classIcon} src={iconImg.src} /> : <i {...iconAttr} className={classIcon}>{iconInner}</i>
+    return (iconComponent)
+  }
+
   // nav link
   navLink(item, key, classes) {
     const ref = React.createRef();
     const url = item.url || '';
-    const itemIcon = <i className={classes.icon} />
+    const itemIcon = this.navIcon(item)
     const itemBadge = this.navBadge(item.badge)
     const attributes = this.getAttribs(item.attributes)
     classes.link = classNames(classes.link, attributes.class, attributes.className)
