@@ -13,7 +13,6 @@ const CToastHeader = props=>{
     cssModule,
     //
     innerRef,
-    //closeButton,
     ...attributes
   } = props;
 
@@ -35,13 +34,11 @@ CToastHeader.propTypes = {
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
-  //closeButton: PropTypes.bool
+  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object])
 };
 
 CToastHeader.defaultProps = {
-  tag: 'div',
-  //closeButton: true
+  tag: 'div'
 };
 
 export default CToastHeader;
