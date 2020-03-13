@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo,  } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {tagPropType, mapToCssModules} from './Shared/helper.js';
