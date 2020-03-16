@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "3.0.0-alpha.4",
+  "version": "3.0.0-alpha.5",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -61,13 +61,13 @@
   "devDependencies": {
     "@coreui/coreui-chartjs": "^2.0.0-beta.0",
     "@coreui/icons": "^1.0.1",
-    "babel-eslint": "^10.0.3",
+    "babel-eslint": "^10.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-react": "^7.18.3",
-    "nwb": "^0.24.2",
+    "eslint-plugin-react": "^7.19.0",
+    "nwb": "^0.24.3",
     "react-app-polyfill": "^1.0.6",
     "react-popper": "^0.10.4",
     "sinon": "^5.1.1"
