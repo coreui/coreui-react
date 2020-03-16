@@ -69,7 +69,7 @@ CSidebarNavItem.propTypes = {
   to: PropTypes.string,
   href: PropTypes.string,
   ///
-  icon: PropTypes.oneOfType(['string', 'object']),
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   badge: PropTypes.object,
 };
 
