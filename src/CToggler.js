@@ -35,7 +35,7 @@ const CToggler = props=>{
 
   //render
 
-  const togglerType = inNavbar ? 'c-navbar' : inHeader ? 'c-header' : null;
+  const togglerType = inNavbar ? 'navbar' : inHeader ? 'header' : null;
 
   const classes = mapToCssModules(classNames(
     className,
