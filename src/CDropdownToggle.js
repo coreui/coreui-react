@@ -24,7 +24,7 @@ const CDropdownToggle = props=>{
     togglerHtml,
     ...attributes
   } = props;
-
+  
   const context = useContext(Context);
 
   const onClick = e=>{

@@ -229,12 +229,7 @@ const CDropdownCustom = props=>{
       inNavbar: props.inNavbar,
     }}>
       <CPopperContentWrapper>
-        <Manager
-          {...attributes}
-          className={classes}
-          onKeyDown={handleKeyDown}
-          ref={reference}
-      />
+        <Manager {...attributes} className={classes} onKeyDown={handleKeyDown} ref={reference} />
       </CPopperContentWrapper>
     </Context.Provider>
   );

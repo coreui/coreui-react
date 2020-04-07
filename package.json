@@ -48,6 +48,7 @@
     "prop-types": "^15.7.2",
     "react-onclickout": "^2.0.8",
     "react-perfect-scrollbar": "~1.5.8",
+    "react-popper": "^2.1.0",
     "react-transition-group": "^4.3.0"
   },
   "peerDependencies": {
@@ -69,7 +70,6 @@
     "eslint-plugin-react": "^7.19.0",
     "nwb": "^0.24.3",
     "react-app-polyfill": "^1.0.6",
-    "react-popper": "^0.10.4",
     "sinon": "^5.1.1"
   },
   "repository": {

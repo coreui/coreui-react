@@ -5,9 +5,12 @@ import classNames from 'classnames';
 import {Arrow, Popper as ReactPopper} from 'react-popper';
 import {getTarget, targetPropType, mapToCssModules, DOMElement, tagPropType} from './Shared/helper.js';
 
+
 export const Context = React.createContext({});
 
 //component - CoreUI / CPopperContentWrapper
+// new popper
+
 
 class CPopperContentWrapper extends React.Component {
   getChildContext(){
@@ -34,27 +37,21 @@ const CPopperContent = props=>{
 
   const [placement, setPlacement] = useState();
 
-  const fields = useRef({
-    firstRender: true
-  }).current;
+  const fields = useRef({firstRender: true}).current;
 
   const setTargetNode = node=>{
     fields.targetNode = node;
   }
-
   const getTargetNode = ()=>{
     return fields.targetNode;
   }
-
   const getContainerNode = ()=>{
     return getTarget(props.container);
   }
-
   const getRef = ref=>{
     fields._element = ref;
     props.innerRef && props.innerRef();
   }
-
   const handlePlacementChange = data=>{
     if (placement !== data.placement) {
       setPlacement(data.placement);
@@ -75,6 +72,7 @@ const CPopperContent = props=>{
     fields.firstRender = false;
   },
   []);
+
 
   //render
 
@@ -129,8 +127,71 @@ const CPopperContent = props=>{
         setTargetNode: setTargetNode,
         getTargetNode: getTargetNode,
       }}}>
-        <CPopperContentWrapper>
-          <ReactPopper
+
+      </Context.Provider>
+    );
+
+    /*
+    https://github.com/popperjs/react-popper
+
+    manager - wrapper, komunikacja
+    popper - okno // The Popper component accepts the properties children, placement, modifiers and strategy.
+    reference - klikacz
+    //
+    z createPortal - przenosi
+    virtualReferenceElement - gdy przekazujemy referencje
+
+
+    import { Manager, Reference, Popper } from 'react-popper';
+    const Example = () => (
+      <Manager>
+        <Reference>
+          {({ ref }) => (
+            <button type="button" ref={ref}>
+              Reference element
+            </button>
+          )}
+        </Reference>
+        <Popper placement="right">
+          {({ ref, style, placement, arrowProps }) => (
+            <div ref={ref} style={style} data-placement={placement}>
+              Popper element
+              <div ref={arrowProps.ref} style={arrowProps.style} />
+            </div>
+          )}
+        </Popper>
+      </Manager>
+
+    //
+
+    <Context.Provider value={{popperManager: {
+      setTargetNode: setTargetNode,
+      getTargetNode: getTargetNode,
+    }}}>
+      <CPopperContentWrapper>
+        <ReactPopper
+          modifiers={extendedModifiers}
+          {...attributes}
+          component={tag}
+          className={popperClassName}
+          x-placement={placement || attributes.placement}
+        >
+          {children}
+          {!hideArrow && <Arrow className={arrowClassName} />}
+        </ReactPopper>
+      </CPopperContentWrapper>
+    </Context.Provider>
+
+    Core
+
+info:
+
+Komponent			{ }					użycie
+
+
+CPopperContent		Arrow, Popper			CDropdownCustom, CPopperTargetHelper, CTooltipPopoverWrapper
+
+	<ReactPopper
             modifiers={extendedModifiers}
             {...attributes}
             component={tag}
@@ -139,10 +200,54 @@ const CPopperContent = props=>{
           >
             {children}
             {!hideArrow && <Arrow className={arrowClassName} />}
-          </ReactPopper>
-        </CPopperContentWrapper>
-      </Context.Provider>
-    );
+        </ReactPopper>
+//
+modifiers = {
+      offset: { offset },
+      flip: { enabled: flip, behavior: fallbackPlacement },
+      preventOverflow: { boundariesElement },
+      update: {
+        enabled: true,
+        order: 950,
+        fn: handlePlacementChange,
+      },
+      ...modifiers,
+};
+
+
+CDropdownCustom		Manager				CDropdown, CDropdownItem, CDopdownMenu, CDropdownToggle, CToggler
+
+	<Manager {...attributes} className={classes} onKeyDown={handleKeyDown} ref={reference} />
+
+
+CDropdownMenu		Popper				CWidgetSimple
+
+     <Tag
+      tabIndex="-1"
+      role="menu"
+      {...attributes}
+      aria-hidden={!context.isOpen}
+      className={classes}
+      x-placement={attributes.placement}
+      ref={innerRef}
+     />
+
+
+CDropdownToggle		Target				CWidgetSimple
+
+     <Target
+      {...attributes}
+      className={classes}
+      component={Tag}
+      onClick={onClick}
+      aria-expanded={context.isOpen}
+      ref={innerRef}
+    >
+      {children}
+    </Target>
+
+
+  */
 
   }
 
