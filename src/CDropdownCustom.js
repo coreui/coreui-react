@@ -194,7 +194,8 @@ const CDropdownCustom = props=>{
 
   const direction = props.direction; //(props.direction === 'down' && dropup) ? 'up' :
 
-  attributes.tag = attributes.tag || (inNav ? 'li' : 'div');
+  //attributes.tag
+  let Tag = attributes.tag || (inNav ? 'li' : 'div');
 
   let subItemIsActive = false;
 
@@ -228,6 +229,27 @@ const CDropdownCustom = props=>{
       direction: props.direction, //(props.direction === 'down' && props.dropup) ? 'up' :
       inNavbar: props.inNavbar,
     }}>
+      <Tag
+        {...attributes}
+        className={classes}
+        onKeyDown={handleKeyDown}
+        ref={reference}
+      >
+        <Manager>
+          {props.children}
+        </Manager>
+      </Tag>
+    </Context.Provider>
+  );
+
+  /*
+  return (
+    <Context.Provider value={{
+      toggle: props.toggle,
+      isOpen: props.show,
+      direction: props.direction, //(props.direction === 'down' && props.dropup) ? 'up' :
+      inNavbar: props.inNavbar,
+    }}>
       <CPopperContentWrapper>
         <Manager
           {...attributes}
@@ -238,6 +260,7 @@ const CDropdownCustom = props=>{
       </CPopperContentWrapper>
     </Context.Provider>
   );
+  */
 
 }
 

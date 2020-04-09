@@ -31,7 +31,11 @@ const CDropdown = props=>{
 
   //render
 
-  return <CDropdownCustom {...attributes} show={show} toggle={toggle} />;
+  return <CDropdownCustom
+    {...attributes}
+    show={show}
+    toggle={toggle}
+  />;
 
 }
 

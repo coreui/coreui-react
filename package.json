@@ -40,6 +40,7 @@
     "link": "npm link && link.sh"
   },
   "dependencies": {
+    "@popperjs/core": "^2.2.1",
     "classnames": "^2.2.6",
     "core-js": "^3.6.4",
     "lodash.isfunction": "^3.0.9",

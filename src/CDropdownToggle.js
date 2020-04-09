@@ -2,9 +2,10 @@ import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {tagPropType, mapToCssModules} from './Shared/helper.js';
-import {Target} from 'react-popper';
+import {Reference} from 'react-popper';
 import CButton from './CButton';
 import {Context} from './CDropdownCustom';
+import CHeaderNavLink from './CHeaderNavLink';
 
 //component - CoreUI / CDropdownToggle
 
@@ -14,6 +15,7 @@ const CDropdownToggle = props=>{
     className,
     color,
     cssModule,
+
     //
     innerRef,
     caret,
@@ -24,7 +26,7 @@ const CDropdownToggle = props=>{
     togglerHtml,
     ...attributes
   } = props;
-  
+
   const context = useContext(Context);
 
   const onClick = e=>{
@@ -99,6 +101,24 @@ const CDropdownToggle = props=>{
   }
 
   return (
+    <Reference>
+      {({ ref }) => (
+        <Tag
+          ref={ref}
+          {...attributes}
+          className={classes}
+          onClick={onClick}
+          aria-expanded={context.isOpen}
+          ref={innerRef}
+        >
+          {children}
+        </Tag>
+      )}
+    </Reference>
+  );
+
+  /*
+  return (
     <Target
       {...attributes}
       className={classes}
@@ -110,7 +130,7 @@ const CDropdownToggle = props=>{
       {children}
     </Target>
   );
-
+  */
 }
 
 CDropdownToggle.propTypes = {

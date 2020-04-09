@@ -39,12 +39,12 @@ const CToggler = props=>{
 
   const classes = mapToCssModules(classNames(
     className,
-    togglerType ? `${togglerType}-toggler` : null,
+    togglerType ? `c-${togglerType}-toggler` : null,
   ), cssModule);
 
   if (!custom){
     const classesTrigger = mapToCssModules(classNames(
-      togglerType ? `${togglerType}-toggler-icon` : null,
+      togglerType ? `c-${togglerType}-toggler-icon` : null,
     ), cssModule);
     return (
       <Tag {...attributes} className={classes} onClick={onClick}>
