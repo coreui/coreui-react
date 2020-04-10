@@ -1,70 +1,57 @@
-import React, {useState} from 'react';
+import React, {useCallback} from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import CTooltipPopoverWrapper from './CTooltipPopoverWrapper';
+import CTooltip from './CTooltip.js'
+import 'tippy.js/dist/border.css';
+import './CPopover.css'
+import { renderToString } from 'react-dom/server'
 
 //component - CoreUI / CPopover
+const template = `<h3 class="popover-header">H</h3><div class="popover-body">C</div>`
+const generateContent = (content, header) => {
+  return template.replace('H', renderToString(header))
+                 .replace('C', renderToString(content))
+}
 
-const CPopover = props=>{
+const CPopover = props => {
 
   let {
-    custom,
     //
-    toggle,
-    show,
-    defaultOpen,
-    ...attributes
+    header,
+    children,
+    content,
+    ...config
   } = props;
 
-  const [isOpen, setIsOpen] = useState(defaultOpen || false);
-
-  if (!custom){
-    const userToggle = toggle;
-    toggle = (e)=>{
-      setIsOpen(!isOpen);
-      if (userToggle)
-        userToggle(e);
-    }
-    show = isOpen;
+  const computedContent = useCallback(
+    generateContent(content, header),
+    [content, header]
+  );
+  const advancedOptions = {
+    ...(config ? config.advancedOptions || {}: {}),
+    allowHTML: true,
+    theme: 'cpopover'
+  }
+  const computedConfig = {
+    ...config,
+    advancedOptions
   }
 
-  //render
-
-  const popperClasses = classNames(
-    'popover',
-    'show',
-    props.className
-  );
-
-  const classes = classNames(
-    'popover-inner',
-    props.innerClassName
-  );
-
   return (
-    <CTooltipPopoverWrapper
-      {...attributes}
-      toggle={toggle}
-      show={show}
-      className={popperClasses}
-      innerClassName={classes}
-    />
+    <CTooltip content={computedContent} {...computedConfig}>
+      {children}
+    </CTooltip>
   );
 
 }
 
 CPopover.propTypes = {
-  ...CTooltipPopoverWrapper.propTypes,
-  custom: PropTypes.bool,
-  //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  defaultOpen: PropTypes.bool,
+  children: PropTypes.node,
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  header: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
 }
 
 CPopover.defaultProps = {
-  placement: 'right',
-  placementPrefix: 'bs-popover',
-  trigger: 'click',
+  content: ''
 };
 
 export default CPopover;

@@ -11,7 +11,6 @@ const CDropdownMenu = props=>{
 
   const {
     className,
-    children,
     cssModule,
     right,
     tag,
@@ -45,48 +44,29 @@ const CDropdownMenu = props=>{
   ), cssModule);
 
   let Tag = tag;
-  let placement;
-  let myModifiers = modifiers;
 
   if (persist || (context.isOpen && !context.inNavbar)) {
     Tag = Popper;
     const position1 = directionPositionMap[context.direction] || 'bottom';
     const position2 = right ? 'end' : 'start';
-    placement = `${position1}-${position2}`;
-    //attributes.component = tag;
-    myModifiers = !flip ? {
+    attributes.placement = `${position1}-${position2}`;
+    attributes.component = tag;
+    attributes.modifiers = !flip ? {
       ...modifiers,
       ...noFlipModifier,
     } : modifiers;
   }
 
-  /*
-  x-placement={attributes.placement}
-  //ref={innerRef}
-  */
   return (
     <Tag
-      placement = {placement}
-      modifiers = {myModifiers}
-    >
-      {({ ref, style, placement, arrowProps }) => {
-        //console.log(style, children);
-        return (
-          <div
-            {...attributes}
-            tabIndex="-1"
-            role="menu"
-            aria-hidden={!context.isOpen}
-            className={classes}
-
-            ref={innerRef}
-            data-placement={placement}
-          >
-            {children}
-          </div>
-        )}
-      }
-    </Tag>
+      tabIndex="-1"
+      role="menu"
+      {...attributes}
+      aria-hidden={!context.isOpen}
+      className={classes}
+      x-placement={attributes.placement}
+      ref={innerRef}
+    />
   );
 
 }

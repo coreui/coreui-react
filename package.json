@@ -50,10 +50,11 @@
     "react-onclickout": "^2.0.8",
     "react-perfect-scrollbar": "~1.5.8",
     "react-popper": "^2.1.0",
-    "react-transition-group": "^4.3.0"
+    "react-transition-group": "^4.3.0",
+    "tippy.js": "^6.1.1"
   },
   "peerDependencies": {
-    "@coreui/coreui": "^3.0.0-rc.3",
+    "@coreui/coreui": "^3.0.0",
     "@coreui/icons-react": "^1.0.0-alpha.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

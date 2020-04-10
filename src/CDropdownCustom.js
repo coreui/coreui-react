@@ -7,30 +7,6 @@ import {Manager} from 'react-popper';
 
 export const Context = React.createContext({});
 
-//component - CoreUI / CPopperContentWrapper
-
-class CPopperContentWrapper extends React.Component {
-  getChildContext(){
-    return this.context;
-  }
-  render(){
-    return this.props.children;
-  }
-}
-
-CPopperContentWrapper.propTypes = {
-  children: PropTypes.node
-};
-
-CPopperContentWrapper.contextType = Context;
-
-CPopperContentWrapper.childContextTypes = {
-  toggle: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  direction: PropTypes.oneOf(['up', 'down', 'left', 'right']).isRequired,
-  inNavbar: PropTypes.bool.isRequired
-};
-
 //component - CoreUI / CDropdownCustom
 
 const CDropdownCustom = props=>{
@@ -241,26 +217,6 @@ const CDropdownCustom = props=>{
       </Tag>
     </Context.Provider>
   );
-
-  /*
-  return (
-    <Context.Provider value={{
-      toggle: props.toggle,
-      isOpen: props.show,
-      direction: props.direction, //(props.direction === 'down' && props.dropup) ? 'up' :
-      inNavbar: props.inNavbar,
-    }}>
-      <CPopperContentWrapper>
-        <Manager
-          {...attributes}
-          className={classes}
-          onKeyDown={handleKeyDown}
-          ref={reference}
-      />
-      </CPopperContentWrapper>
-    </Context.Provider>
-  );
-  */
 
 }
 
