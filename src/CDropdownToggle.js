@@ -102,7 +102,6 @@ const CDropdownToggle = props=>{
     <Reference>
       {({ ref }) => (
         <Tag
-          ref={ref}
           {...attributes}
           className={classes}
           onClick={onClick}

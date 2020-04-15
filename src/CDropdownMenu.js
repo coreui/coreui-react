@@ -58,34 +58,48 @@ const CDropdownMenu = props=>{
       ...modifiers,
       ...noFlipModifier,
     } : modifiers;
+
+    /*
+    x-placement={attributes.placement}
+    */
+    return (
+      <Tag
+        placement = {placement}
+        modifiers = {myModifiers}
+      >
+        {({ ref, style, placement, arrowProps }) => {
+          //console.log(style, children);
+          return (
+            <div
+              {...attributes}
+              tabIndex="-1"
+              role="menu"
+              aria-hidden={!context.isOpen}
+              className={classes}
+
+              ref={innerRef}
+              data-placement={placement}
+            >
+              {children}
+            </div>
+          )}
+        }
+      </Tag>
+    );
+
   }
 
-  /*
-  x-placement={attributes.placement}
-  //ref={innerRef}
-  */
   return (
     <Tag
-      placement = {placement}
-      modifiers = {myModifiers}
+      tabIndex="-1"
+      role="menu"
+      {...attributes}
+      aria-hidden={!context.isOpen}
+      className={classes}
+      x-placement={attributes.placement}
+      ref={innerRef}
     >
-      {({ ref, style, placement, arrowProps }) => {
-        //console.log(style, children);
-        return (
-          <div
-            {...attributes}
-            tabIndex="-1"
-            role="menu"
-            aria-hidden={!context.isOpen}
-            className={classes}
-
-            ref={innerRef}
-            data-placement={placement}
-          >
-            {children}
-          </div>
-        )}
-      }
+      {children}
     </Tag>
   );
 
