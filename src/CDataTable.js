@@ -445,12 +445,11 @@ const CDataTable = props=>{
         >
           {currentItems.map((item, itemIndex)=>{
             return (
-              <React.Fragment>
+              <React.Fragment key={itemIndex}>
               <tr
                 className={classNames(item._classes)}
                 tabIndex={clickableRows ? 0 : null}
                 onClick={()=>{rowClicked(item, itemIndex + firstItemIndex)}}
-                key={itemIndex}
               >
                 {
                   rawColumnNames.map((colName, index)=>{
@@ -512,7 +511,7 @@ const CDataTable = props=>{
                     </div>
                   </Slot>
                 </td>
-              </tr>:''
+              </tr>:null
           }
         </tbody>
         {
@@ -543,14 +542,14 @@ const CDataTable = props=>{
                                 content="$options.icons.cilArrowTop"
                                 className={classNames(iconClasses(index))}
                               />
-                            </Slot>:''
+                            </Slot>:null
                         }
                       </th>
                     )
                   })
                 }
               </tr>
-            </tfoot> : ''
+            </tfoot> : null
         }
         <Slot content={captionSlot} />
       </table>
@@ -575,7 +574,7 @@ const CDataTable = props=>{
                 <CSpinner color="success"/>
               </div>
             </div>
-          </Slot>:''
+          </Slot>:null
       }
 
     </div>
@@ -590,7 +589,7 @@ const CDataTable = props=>{
           style={{display: totalPages > 0 ? 'inline' : 'none'}}
           pages={totalPages}
           {...paginationProps}
-        />:''
+        />:null
     }
 
     </React.Fragment>

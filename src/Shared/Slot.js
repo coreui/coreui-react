@@ -9,7 +9,7 @@ const Slot = (props)=>{
     children
   } = props;
 
-  return content?content:children?children:'';
+  return content?content:children?children:null;
 
 }
 
