@@ -1,17 +1,14 @@
-import React, {useState, useRef, useMemo, useEffect} from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import ClickOutHandler from 'react-onclickout'
-import './Shared/element-closest'
+import React, {useState, useRef, useMemo, useEffect} from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
-export const Context = React.createContext({});
+export const Context = React.createContext({})
 
 //component - CoreUI / CSidebar
 
 const CSidebar = props=>{
 
   const {
-    tag: Tag,
     children,
     className,
     //
@@ -27,30 +24,75 @@ const CSidebar = props=>{
     colorScheme,
     overlaid,
     dropdownMode,
-    onChange,
+    onShowUpdate,
     ...attributes
-  } = props;
+  } = props
 
-  const [isOpen, setIsOpen] = useState(show);
-  const compData = useRef({reRender:false, ref: {}}).current;
+  const key = useState(Math.random().toString(36).substr(2))[0]
 
-  //let ref={};
-  const reference = (r)=>{
-    compData.ref.current = r;
-    innerRef && innerRef(r);
+  const [isOpen, setIsOpen] = useState(show)
+
+  const node = useRef({}).current
+  const reference = (r) => {
+    node.current = r
+    innerRef && innerRef(r)
   }
+  // useEffect(()=>{
+  //   compData.reRender = false
+  // })
+
+
+  // compData.nextRender = true
+
+  useMemo(() => {
+    setIsOpen(show)
+  }, [show])
+
+  useEffect(() => {
+    isOpen === true ? createBackdrop() : removeBackdrop()
+    return () => removeBackdrop()
+  }, [isOpen])
 
   //methods
+  const sidebarCloseListener = (e) => {
+    if (
+      document.getElementById(key + 'backdrop') &&
+      !node.current.contains(e.target)
+    ) {
+      closeSidebar()
+    }
+  }
 
-  const closeSidebar = ()=>{
-    if (isOpen==='responsive')
-    return;
-    setIsOpen('responsive');
-    onChange && onChange('close');
+  const createBackdrop = () => {
+    const backdrop = document.createElement('div')
+    if (overlaid) {
+      document.addEventListener('click', sidebarCloseListener, true)
+    } else {
+      backdrop.addEventListener('click', closeSidebar)
+    }
+    backdrop.className = 'c-sidebar-backdrop c-show'
+    backdrop.id = key + 'backdrop'
+    document.body.appendChild(backdrop)
   }
+
+  const removeBackdrop = () => {
+    const backdrop = document.getElementById(key + 'backdrop')
+    if (backdrop) {
+      document.removeEventListener('click', sidebarCloseListener)
+      backdrop.removeEventListener('click', closeSidebar)
+      document.body.removeChild(backdrop)
+    }
+  }
+
+  const closeSidebar = () => {
+    setIsOpen(overlaid ? false : 'responsive')
+    onShowUpdate && onShowUpdate(isOpen)
+  }
+
   const isOnMobile = ()=>{
-    return Boolean(getComputedStyle(compData.ref.current).getPropertyValue('--is-mobile'))
+    return Boolean(getComputedStyle(node.current).getPropertyValue('--is-mobile'))
   }
+
   const onSidebarClick = (e)=>{
     const hiddingElementClicked = e.target.className.includes && e.target.className.includes('c-sidebar-nav-link')
     if (
@@ -61,26 +103,6 @@ const CSidebar = props=>{
       closeSidebar()
     }
   }
-  const onClickOut = ()=>{
-    if (compData.reRender){
-      return;
-    }
-    closeSidebar()
-  }
-
-  useMemo(()=>{
-    if (compData.nextRender){
-      compData.reRender = true;
-      setIsOpen(show);
-    }
-  },[show]);
-
-  useEffect(()=>{
-    compData.reRender = false;
-  })
-
-
-  compData.nextRender = true;
 
   // render
 
@@ -97,51 +119,31 @@ const CSidebar = props=>{
     minimize && unfoldable ? 'c-sidebar-unfoldable' : null,
     overlaid ? 'c-sidebar-overlaid' : null,
     size ? `c-sidebar-${size}` : null
-  );
-
-  /*
-  const clickOutClasses = classNames(
-    'c-sidebar-backdrop',
-    isOpen ? 'd-show' : 'd-none'
-  );
-  const style = {
-    background: isOpen? 'black' : 'white'
-  }
-  */
+  )
 
   const state = {
     minimize: minimize && !unfoldable
   }
 
-  if (isOpen)
-    return (
-      <ClickOutHandler onClickOut={onClickOut}>
-        <Context.Provider value={{
-          dropdownMode: dropdownMode,
-          state
-        }}>
-          <Tag {...attributes} className={classes} ref={reference} onClick={onSidebarClick}>
-            {children}
-          </Tag>
-        </Context.Provider>
-      </ClickOutHandler>
-    );
-  else
-    return (
-      <Context.Provider value={{
-        dropdownMode: dropdownMode,
-        state
-      }}>
-        <Tag {...attributes} className={classes} ref={reference} onClick={onSidebarClick}>
-          {children}
-        </Tag>
-      </Context.Provider>
-    );
+  return (
+    <Context.Provider value={{
+      dropdownMode: dropdownMode,
+      state
+    }}>
+      <div
+        {...attributes}
+        className={classes}
+        ref={reference}
+        onClick={onSidebarClick}
+      >
+        {children}
+      </div>
+    </Context.Provider>
+  )
 
 }
 
 CSidebar.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   children: PropTypes.node,
   className: PropTypes.string,
   //
@@ -151,23 +153,24 @@ CSidebar.propTypes = {
   overlaid: PropTypes.bool,
   breakpoint: PropTypes.oneOf([false, '', 'sm', 'md', 'lg', 'xl']),
   minimize: PropTypes.bool,
-  show: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  show: PropTypes.oneOf(['', true, false, 'responsive']),
   size: PropTypes.oneOf(['', 'sm', 'lg', 'xl']),
   hideOnMobileClick: PropTypes.bool,
   aside: PropTypes.bool,
   colorScheme: PropTypes.string,
-  dropdownMode: PropTypes.oneOf(['', 'openActive', 'close', 'closeInactive', 'noAction']),
-  onChange: PropTypes.func
-};
+  dropdownMode: PropTypes.oneOf([
+    '', 'openActive', 'close', 'closeInactive', 'noAction'
+  ]),
+  onShowUpdate: PropTypes.func
+}
 
 CSidebar.defaultProps = {
-  tag: 'div',
   fixed: true,
   breakpoint: 'lg',
   show: 'responsive',
   hideOnMobileClick: true,
   colorScheme: 'dark',
   dropdownMode: 'openActive',
-};
+}
 
-export default CSidebar;
+export default CSidebar
