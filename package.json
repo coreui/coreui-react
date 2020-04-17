@@ -26,6 +26,8 @@
     "css/",
     "es/",
     "lib/",
+    "src/",
+    "tests/",
     "umd/",
     "README.md"
   ],
