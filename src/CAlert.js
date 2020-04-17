@@ -1,107 +1,109 @@
-import React, {useState} from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
-import CFade from './CFade';
+import React, { useState, useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
+import CFade from './CFade'
 
 //component - CoreUI / CAlert
-
-const CAlert = props=>{
-
+const CAlert = props => {
   let {
-    tag: Tag,
     children,
     className,
     cssModule,
-    custom,
     //
-    toggle,
+    onShowUpdate,
+    closeButton,
     transition,
-    closeAriaLabel,
-    closeClassName,
     color,
     fade,
     show,
-    iconSlot,
-    closeProps,
     ...attributes
-  } = props;
+  } = props
 
   //render
-
   const classes = mapToCssModules(classNames(
     className,
     'alert',
-    `alert-${color}`,
-    { 'alert-dismissible': toggle }
-  ), cssModule);
-
-  const closeClasses = mapToCssModules(classNames('close', closeClassName), cssModule);
-
+    {
+      [`alert-${color}`]: color,
+      'alert-dismissible': closeButton
+    }
+  ), cssModule)
+  
   const alertTransition = {
     ...CFade.defaultProps,
     ...transition,
     baseClass: fade ? transition.baseClass : '',
-    timeout: fade ? transition.timeout : 0,
-  };
-
-  const [isOpen, setIsOpen] = useState(true);
-
-  if (!custom){
-    let userToggle = toggle;
-    toggle = ()=>{
-      setIsOpen(!isOpen);
-      if (userToggle)
-        userToggle();
-    };
-    show = isOpen;
+    timeout: fade ? transition.timeout : 0
   }
+  const [isOpen, setIsOpen] = useState(show)
+  
+  useEffect(() => {
+    setIsOpen(show)
+  }, [show])
+
+  let timeout = useRef(null)
+
+  useEffect(() => {
+    if (onShowUpdate) {
+      onShowUpdate(isOpen)
+    }
+    clearTimeout(timeout.current)
+    if (typeof isOpen === 'number' && isOpen > 0) {
+      timeout.current = setTimeout(() => {
+        setIsOpen(isOpen - 1)
+      }, 1000)
+    }
+    return () => clearTimeout(timeout)
+  }, [isOpen])
 
   return (
-    <CFade {...attributes} {...alertTransition} tag={Tag} className={classes} in={show} role="alert">
-      {!custom ?
-        <button type="button" className={closeClasses} aria-label={closeAriaLabel} onClick={toggle} {...closeProps}>
-          <span aria-hidden="true">{iconSlot}</span>
-        </button>
-        : null}
+    <CFade 
+      {...alertTransition} 
+      tag="div"
+      className={classes} 
+      in={Boolean(isOpen)} 
+      role="alert"
+      {...attributes} 
+    >
       {children}
+      {
+        closeButton ?
+          <button 
+            type="button" 
+            className="close"
+            aria-label="Close"
+            onClick={() => setIsOpen(false)} 
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+          : null
+      }
     </CFade>
-  );
-
+  )
 }
-
 CAlert.propTypes = {
-  tag: tagPropType,
   children: PropTypes.node,
   className: PropTypes.string,
   cssModule: PropTypes.object,
-  custom: PropTypes.bool,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  toggle: PropTypes.func,
-  closeClassName: PropTypes.string,
-  closeProps: PropTypes.object,
-  closeAriaLabel: PropTypes.string,
+  onShowUpdate: PropTypes.func,
+  closeButton: PropTypes.bool,
   color: PropTypes.string,
   fade: PropTypes.bool,
-  show: PropTypes.bool,
+  show: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   transition: PropTypes.shape(CFade.propTypes),
-  iconSlot: PropTypes.node
-};
-
+}
 CAlert.defaultProps = {
   tag: 'div',
   //
-  color: 'success',
   show: true,
-  closeAriaLabel: 'Close',
   fade: true,
   transition: {
     ...CFade.defaultProps,
     unmountOnExit: true,
-  },
-  iconSlot: <React.Fragment>&times;</React.Fragment>
-};
-
+  }
+}
 //export
-export default CAlert;
+export default CAlert
