@@ -1,85 +1,70 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { tagPropType, mapToCssModules } from './Shared/helper.js'
+import CLink from './CLink'
 //component - CoreUI / CButton
 
-const CButton = props=>{
+const CButton = props => {
 
   let {
     tag: Tag,
-    children,
     className,
     cssModule,
     //
     innerRef,
+    onClick,
+    disabled,
     active,
-    'aria-label': ariaLabel,
     block,
-    close,
     color,
     size,
-    textHtml,
     pressed,
     shape,
     variant,
     ...attributes
-  } = props;
+  } = props
 
-  const onClick = e=>{
-    if (props.disabled) {
-      e.preventDefault();
-      return;
-    }
-    if (props.onClick) {
-      props.onClick(e);
-    }
-  }
+  const click = e => onClick && onClick(e)
+
+  const isLink = attributes.to || attributes.href
 
   //render
-
-  if (close && typeof children === 'undefined') {
-    children = <span aria-hidden>×</span>;
-  }
-
-  const btnColor = `btn${variant ? '-'+variant : ''}-${color}`;
-
   const classes = mapToCssModules(classNames(
     className,
-    { close },
-    close || 'btn',
-    close || btnColor,
+    'btn',
+    variant || color ? `btn${variant ? '-' + variant : ''}-${color}` : false,
     size ? `btn-${size}` : false,
     block ? 'btn-block' : false,
     shape ? `btn-${shape}` : false,
     pressed ? 'btn-pressed' : false,
-    { 'active': active,
-    'disabled': props.disabled }
-  ), cssModule);
+    { 'active': active && !isLink,
+    'disabled': disabled && !isLink }
+  ), cssModule)
 
-  if (attributes.href && Tag === 'button') {
-    Tag = 'a';
+
+  if (isLink) {
+    return <CLink
+      {...attributes}
+      active={active}
+      className={classes}
+      onClick={click}
+      innerRef={innerRef}
+    />
+  } else {
+    return <Tag
+      className={classes}
+      type="button"
+      disabled={disabled}
+      {...attributes}
+      onClick={click}
+      ref={innerRef}
+    />
   }
-
-  const defaultAriaLabel = close ? 'Close' : null;
-
-  return <Tag
-    type={(Tag === 'button' && attributes.onClick) ? 'button' : undefined}
-    {...attributes}
-    className={classes}
-    onClick={onClick}
-    aria-label={ariaLabel || defaultAriaLabel}
-    ref={innerRef}
-  >
-    {textHtml ? textHtml : children}
-  </Tag>
-
 }
 
 CButton.propTypes = {
   tag: tagPropType,
-  children: PropTypes.node,
   cssModule: PropTypes.object,
   className: PropTypes.string,
   //
@@ -89,18 +74,15 @@ CButton.propTypes = {
   shape: PropTypes.string,
   variant: PropTypes.oneOf(['', 'ghost', 'outline']),
   color: PropTypes.string,
-  close: PropTypes.bool,
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
   size: PropTypes.string,
   pressed: PropTypes.bool,
-  textHtml: PropTypes.string,
-  'aria-label': PropTypes.string,
-};
+}
 
 CButton.defaultProps = {
   tag: 'button'
-};
+}
 
 //export
-export default CButton;
+export default CButton
