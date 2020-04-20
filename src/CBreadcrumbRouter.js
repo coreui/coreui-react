@@ -20,9 +20,9 @@ const getPaths = pathname => {
 
 const CBreadcrumbRouteItem = ({name, path}, currPath) => {
   if (path === currPath) {
-    return <CBreadcrumbItem active>{name}</CBreadcrumbItem>
+    return <CBreadcrumbItem key={path} active>{name}</CBreadcrumbItem>
   } else {
-    return <CBreadcrumbItem>
+    return <CBreadcrumbItem key={path}>
       <Link to={path}>
         {name}
       </Link>
