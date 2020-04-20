@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "3.0.0-alpha.5",
+  "version": "3.0.0-alpha.6",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -42,26 +42,26 @@
     "link": "npm link && link.sh"
   },
   "dependencies": {
-    "@popperjs/core": "^2.2.1",
+    "@popperjs/core": "^2.3.3",
     "classnames": "^2.2.6",
-    "core-js": "^3.6.4",
+    "core-js": "^3.6.5",
     "lodash.isfunction": "^3.0.9",
     "lodash.isobject": "^3.0.2",
     "lodash.tonumber": "^4.0.3",
     "prop-types": "^15.7.2",
     "react-onclickout": "^2.0.8",
     "react-perfect-scrollbar": "~1.5.8",
-    "react-popper": "^2.1.0",
+    "react-popper": "^2.2.2",
     "react-transition-group": "^4.3.0",
-    "tippy.js": "^6.1.1"
+    "tippy.js": "^6.2.0"
   },
   "peerDependencies": {
     "@coreui/coreui": "^3.0.0",
-    "@coreui/icons-react": "^1.0.0-alpha.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "@coreui/icons-react": "^1.0.0-alpha.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
-    "mutationobserver-shim": "^0.3.3"
+    "mutationobserver-shim": "^0.3.5"
   },
   "devDependencies": {
     "@coreui/coreui-chartjs": "^2.0.0-beta.0",
@@ -72,7 +72,7 @@
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-react": "^7.19.0",
-    "nwb": "^0.24.3",
+    "nwb": "^0.24.5",
     "react-app-polyfill": "^1.0.6",
     "sinon": "^5.1.1"
   },

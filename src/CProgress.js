@@ -97,7 +97,7 @@ CProgress.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   barClassName: PropTypes.string,
   barProps: PropTypes.object,
-  height: PropTypes.string,
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   bar: PropTypes.bool,
   multi: PropTypes.bool,
   value: PropTypes.oneOfType([
