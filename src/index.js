@@ -76,6 +76,7 @@ export {default as CCollapse} from './CCollapse';
 export {default as CTooltip} from './CTooltip';
 //export {default as CTooltipPopoverWrapper} from './CTooltipPopoverWrapper';
 export {default as CBreadcrumb} from './CBreadcrumb';
+export {default as CBreadcrumbRouter} from './CBreadcrumbRouter';
 export {default as CBreadcrumbItem} from './CBreadcrumbItem';
 export {default as CFooter} from './CFooter';
 export {default as CHeader} from './CHeader';
