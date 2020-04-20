@@ -20,7 +20,7 @@ const CSidebarClose = props=>{
   );
 
   return (
-    <CButtonClose {...attributes} className={classes}>
+    <CButtonClose {...attributes} buttonClass={classes}>
       <svg className="c-icon" width="24" height="24" viewBox="0 0 24 24">
         <title>x</title>
         <path d="M20.030 5.030l-1.061-1.061-6.97 6.97-6.97-6.97-1.061 1.061 6.97 6.97-6.97 6.97 1.061 1.061 6.97-6.97 6.97 6.97 1.061-1.061-6.97-6.97 6.97-6.97z"></path>

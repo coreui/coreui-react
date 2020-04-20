@@ -1,49 +1,53 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CButtonClose
 
-const CButtonClose = props=>{
+const CButtonClose = props => {
 
   const {
-    tag: Tag,
     children,
     className,
     cssModule,
     //
+    buttonClass,
     innerRef,
-    iconHtml,
     ...attributes
-  } = props;
+  } = props
 
   //render
 
   const classes = mapToCssModules(classNames(
-    'close',
+    buttonClass,
     className
-  ), cssModule);
+  ), cssModule)
 
   return (
-    <Tag {...attributes} aria-label="Close" className={classes} ref={innerRef}>{children||iconHtml}</Tag>
-  );
+    <button
+      className={classes}
+      aria-label="Close"
+      {...attributes} 
+      ref={innerRef}
+    >
+      { children || String.fromCharCode(215) }
+    </button>
+  )
 
 }
 
 CButtonClose.propTypes = {
-  tag: tagPropType,
   children: PropTypes.node,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
+  buttonClass: PropTypes.string,
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  iconHtml: PropTypes.oneOfType([PropTypes.node, PropTypes.string])//object
-};
+}
 
 CButtonClose.defaultProps = {
-  tag: 'button',
-  iconHtml: <React.Fragment>&times;</React.Fragment>
-};
+  buttonClass: 'close'
+}
 
-export default CButtonClose;
+export default CButtonClose
