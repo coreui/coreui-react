@@ -1,50 +1,48 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CButtonToolbar
 
 const CButtonToolbar = props=>{
 
   const {
-    tag: Tag,
     className,
     cssModule,
     //
     innerRef,
     justify,
     ...attributes
-  } = props;
+  } = props
 
   //render
 
   const classes = mapToCssModules(classNames(
     className,
-    justify ? 'justify-content-between' : false,
-    'btn-toolbar'
-  ), cssModule);
+    'btn-toolbar',
+    { [`justify-content-${justify}`]: justify }
+  ), cssModule)
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
-  );
+    <div 
+      className={classes}
+      role="toolbar"
+      aria-label="toolbar"
+      {...attributes} 
+      ref={innerRef} 
+    />
+  )
 
 }
 
 CButtonToolbar.propTypes = {
-  tag: tagPropType,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   role: PropTypes.string,
-  justify: PropTypes.bool,
-  'aria-label': PropTypes.string,
-};
+  justify: PropTypes.oneOf(['', 'start', 'end', 'between', 'center'])
+}
 
-CButtonToolbar.defaultProps = {
-  tag: 'div',
-  role: 'toolbar',
-};
-
-export default CButtonToolbar;
+export default CButtonToolbar
