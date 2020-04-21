@@ -7,8 +7,6 @@ export {default as CButtonClose} from './CButtonClose';
 export {default as CButtonGroup} from './CButtonGroup';
 export {default as CButtonToolbar} from './CButtonToolbar';
 export {default as CCard} from './CCard';
-export {default as CCardColumns} from './CCardColumn';
-export {default as CCardDeck} from './CCardDeck';
 export {default as CCardBody} from './CCardBody';
 export {default as CCardHeader} from './CCardHeader';
 export {default as CCardFooter} from './CCardFooter';
