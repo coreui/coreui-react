@@ -1,47 +1,41 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CCallout
 
-const CCallout = props=>{
+const CCallout = props => {
 
   const {
-    tag: Tag,
     className,
     cssModule,
     //
     innerRef,
     color,
     ...attributes
-  } = props;
+  } = props
 
   //render
 
   const classes = mapToCssModules(classNames(
     'c-callout',
-    'c-callout-'+color,
+    color ? 'c-callout-' + color : null,
     className
-  ), cssModule);
+  ), cssModule)
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
-  );
+    <div className={classes} {...attributes} ref={innerRef} />
+  )
 
 }
 
 CCallout.propTypes = {
-  tag: tagPropType,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   color: PropTypes.string
-};
+}
 
-CCallout.defaultProps = {
-  tag: 'div',
-};
-
-export default CCallout;
+export default CCallout
