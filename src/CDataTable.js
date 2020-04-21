@@ -127,18 +127,20 @@ const CDataTable = props=>{
     onChange && onChange('row-clicked', item, index);
   }
   const changeSort = (column, index)=>{
-    if (isSortable(index)) {
+    if (!isSortable(index)) {
       return
     }
     //if column changed or sort was descending change asc to true
     const state = sorterState
     const columnRepeated = state.column === column
     if (!sorter || !sorter.resetable) {
-      state.column = column
+      state.column = column;
     } else {
       state.column = columnRepeated && state.asc === false ? null : column
     }
     state.asc = !(columnRepeated && state.asc)
+    setSorterState({...state});
+    //console.log(state, sorterState);
     onChange && onChange('update:sorter-value', sorterState)
   }
   const paginationChange = (e)=>{
@@ -309,6 +311,7 @@ const CDataTable = props=>{
     change();
 
   // render
+  //alert('render');
 
   //custom
   //if (custom)
@@ -586,8 +589,30 @@ const CDataTable = props=>{
       //v-bind={typeof pagination === 'object' ? {...pagination} : null}
       pagination ?
         <CPagination
+          onClick={(e, type, n)=>{
+            //alert(type, n);
+            switch (type){
+              case 'number':
+                setPage(n);
+                break;
+              case 'next':
+                setPage(page+4);
+                break;
+              case 'previous':
+                setPage(page-4);
+                break;
+              case 'first':
+                setPage(1);
+                break;
+              case 'last':
+                setPage(totalPages);
+                break;
+            }
+          }}
+          pageMin={1}
+          pageMax={totalPages}
+          activePage={page}
           style={{display: totalPages > 0 ? 'inline' : 'none'}}
-          pages={totalPages}
           {...paginationProps}
         />:null
     }

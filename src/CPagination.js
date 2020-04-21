@@ -63,10 +63,18 @@ const CPagination = props=>{
 
   if (!custom){
     let list=[];
-    for (let i=pageFrom;i<=pageTo;i++)
+    let pageAutoFrom = pageFrom;
+    let pageAutoTo = pageTo;
+    if (!pageFrom || !pageTo){
+      pageAutoFrom = activePage-3;
+      pageAutoFrom < pageMin ? (pageAutoFrom = pageMin) : null;
+      pageAutoTo = activePage+3;
+      pageAutoTo > pageMax ? (pageAutoTo = pageMax) : null;
+    }
+    for (let i=pageAutoFrom;i<=pageAutoTo;i++)
       list.push(<CPaginationItem custom key={i} active={activePage==i?true:false}><CPaginationLink type="number" n={i}>{i}</CPaginationLink></CPaginationItem>);
-    const pagesBefore = pageFrom>pageMin;
-    const pagesAfter = pageTo<pageMax;
+    const pagesBefore = pageAutoFrom>pageMin;
+    const pagesAfter = pageAutoTo<pageMax;
     autoChildren = (
       <React.Fragment>
         {pagesBefore&&firstButtonHtml?<CPaginationItem custom><CPaginationLink type="first">{firstButtonHtml}</CPaginationLink></CPaginationItem>:''}
@@ -107,8 +115,6 @@ CPagination.propTypes = {
   pageFrom: PropTypes.number,
   pageTo: PropTypes.number,
   activePage: PropTypes.number,
-  size: PropTypes.string,
-  listTag: tagPropType,
   hideDots: PropTypes.bool,
   hideArrows: PropTypes.bool,
   hideDoubleArrows: PropTypes.bool,
@@ -116,6 +122,8 @@ CPagination.propTypes = {
   previousButtonHtml: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   nextButtonHtml: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   lastButtonHtml: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  size: PropTypes.string,
+  listTag: tagPropType,
   'aria-label': PropTypes.string,
   listClassName: PropTypes.string,
   listProps: PropTypes.object,
@@ -126,11 +134,10 @@ CPagination.defaultProps = {
   tag: 'nav',
   listTag: 'ul',
   'aria-label': 'pagination',
-  pageFrom: 2,
-  pageTo: 3,
   pageMin: 1,
   pageMax: 5,
   activePage: 2,
+  hideDots: true,
   firstButtonHtml: <React.Fragment>&laquo;</React.Fragment>,
   previousButtonHtml: <React.Fragment>&lsaquo;</React.Fragment>,
   nextButtonHtml: <React.Fragment>&rsaquo;</React.Fragment>,
