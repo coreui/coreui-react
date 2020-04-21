@@ -1,7 +1,7 @@
-import React, {useCallback} from 'react';
-import PropTypes from 'prop-types';
+import React, {useCallback} from 'react'
+import PropTypes from 'prop-types'
 import CTooltip from './CTooltip.js'
-import 'tippy.js/dist/border.css';
+import 'tippy.js/dist/border.css'
 import './CPopover.css'
 import { renderToString } from 'react-dom/server'
 
@@ -20,19 +20,20 @@ const CPopover = props => {
     children,
     content,
     ...config
-  } = props;
+  } = props
 
   const computedContent = useCallback(
     generateContent(content, header),
     [content, header]
-  );
+  )
+
   const advancedOptions = {
     ...(config ? config.advancedOptions || {}: {}),
-    allowHTML: true,
     theme: 'cpopover'
   }
+
   const computedConfig = {
-    ...config,
+    ...config, 
     advancedOptions
   }
 
@@ -40,8 +41,7 @@ const CPopover = props => {
     <CTooltip content={computedContent} {...computedConfig}>
       {children}
     </CTooltip>
-  );
-
+  )
 }
 
 CPopover.propTypes = {
@@ -50,8 +50,4 @@ CPopover.propTypes = {
   header: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
 }
 
-CPopover.defaultProps = {
-  content: ''
-};
-
-export default CPopover;
+export default CPopover

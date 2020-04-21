@@ -21,7 +21,7 @@ const CHeader = props=>{
 
   const classes = classNames(className,
   'c-header',
-  'c-header-'+colorScheme,
+  colorScheme ? 'c-header-' + colorScheme : null,
   fixed ? 'c-header-fixed' : null,
   withSubheader ? 'c-header-with-subheader' : null);
 

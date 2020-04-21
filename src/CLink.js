@@ -1,12 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {mapToCssModules} from './Shared/helper.js';
-import {NavLink} from 'react-router-dom';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
+import { NavLink } from 'react-router-dom'
 
 //component - CoreUI / CLink
-
-const CLink = props=>{
+const CLink = props => {
 
   const {
     className,
@@ -14,45 +13,42 @@ const CLink = props=>{
     //
     innerRef,
     active,
-    disabled,
     href,
-    to,
-    ...attributes
-  } = props;
+    onClick,
+    ...rest
+  } = props
 
-  let href2 = href;
-
-  const onClick = e=>{
-    if (props.disabled) {
-      e.preventDefault();
-      return;
-    }
-    if (href2 === '#') {
-      e.preventDefault();
-    }
-    if (props.onClick) {
-      props.onClick(e);
-    }
+  const to = rest ? rest.to : null
+  const click = e => {
+    if (!href && !to) {
+      e.preventDefault()
+    } 
+    onClick && onClick(e)
   }
 
   // render
 
   const classes = mapToCssModules(classNames(
     className,
-    active ? 'active' : null,
-    disabled ? 'disabled' : null
-  ), cssModule);
-
-  //<span {...attributes} className={classes} ref={innerRef} />
-
-  to || (href2 || (href2='#'));
-
-  return (
-    to ?
-      <NavLink to={to} {...attributes} className={classes} ref={innerRef} /> :
-        <a href={href2} {...attributes} className={classes} onClick={onClick} ref={innerRef} />
-  );
-
+    active ? 'active' : null
+  ), cssModule)
+  
+  return to ? (
+    <NavLink
+      {...rest}
+      className={classes}
+      onClick={click}
+      ref={innerRef}
+    />
+  ) : (
+    <a
+      href={href || '#'}
+      className={classes} 
+      {...rest}
+      onClick={click} 
+      ref={innerRef}
+    />
+  )
 }
 
 CLink.propTypes = {
@@ -61,13 +57,23 @@ CLink.propTypes = {
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   active: PropTypes.bool,
-  disabled: PropTypes.bool,
   href: PropTypes.string,
-  to: PropTypes.string,
-  onClick: PropTypes.func
-};
+  onClick: PropTypes.func,
+  ...NavLink.propTypes,
+  to: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.func])
+}
 
-CLink.defaultProps = {
-};
+CLink.sortAttributes = (attributesToSort) => {
+  const attributes = {}
+  const linkProps = {}
+  Object.entries(attributesToSort || {}).forEach(([key, value]) => {
+    if (Object.keys(CLink.propTypes).includes(key)) {
+      linkProps[key] = value
+    } else {
+      attributes[key] = value
+    }
+  })
+  return { linkProps, attributes }
+}
 
-export default CLink;
+export default CLink
