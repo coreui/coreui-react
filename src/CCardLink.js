@@ -1,42 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
-import CLink from './CLink';
+import React from 'react'
+import CLink from './CLink'
 
-//component - CoreUI / CCardLink
-
-const CCardLink = props=>{
-
-  const {
-    className,
-    cssModule,
-    //
-    ...attributes
-  } = props;
-
-  //render
-
-  const classes = mapToCssModules(classNames(
-    className,
-    'card-link'
-  ), cssModule);
-
+const CCardLink = props => {
   return (
-    <CLink {...attributes} className={classes} />
-  );
-
+    <CLink {...props} className={['card-link', props.className]}/>
+  )
 }
 
-CCardLink.propTypes = {
-  tag: tagPropType,
-  className: PropTypes.string,
-  cssModule: PropTypes.object,
-  //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-};
-
-CCardLink.defaultProps = {
-};
-
-export default CCardLink;
+export default CCardLink
