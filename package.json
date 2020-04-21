@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "3.0.0-alpha.6",
+  "version": "3.0.0-alpha.7",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -21,7 +21,7 @@
   ],
   "homepage": "https://coreui.io",
   "main": "lib/index.js",
-  "module": "src/index.js",
+  "module": "es/index.js",
   "files": [
     "css/",
     "es/",
