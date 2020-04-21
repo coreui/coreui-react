@@ -1,14 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CButtonGroup
 
-const CButtonGroup = props=>{
+const CButtonGroup = props => {
 
   const {
-    tag: Tag,
     className,
     cssModule,
     //
@@ -16,7 +15,7 @@ const CButtonGroup = props=>{
     size,
     vertical,
     ...attributes
-  } = props;
+  } = props
 
   //render
 
@@ -24,28 +23,26 @@ const CButtonGroup = props=>{
     className,
     size ? 'btn-group-' + size : false,
     vertical ? 'btn-group-vertical' : 'btn-group'
-  ), cssModule);
+  ), cssModule)
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
-  );
-
+    <div 
+      className={classes} 
+      role="group"
+      {...attributes} 
+      ref={innerRef} 
+    />
+  )
 }
 
 CButtonGroup.propTypes = {
-  tag: tagPropType,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  size: PropTypes.string,
-  vertical: PropTypes.bool,
-  role: PropTypes.string
-};
+  size: PropTypes.oneOf(['', 'sm', 'lg']),
+  vertical: PropTypes.bool
+}
 
-CButtonGroup.defaultProps = {
-  tag: 'div',
-  role: 'group',
-};
 
-export default CButtonGroup;
+export default CButtonGroup
