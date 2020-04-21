@@ -17,22 +17,13 @@ const CImg = props=>{
     thumbnail,
     shape,
     align,
-    alt,
     src,
     width,
     height,
     placeholderColor,
-    active,
     fluidGrow,
     ...attributes
   } = props;
-
-  // vars
-
-  const isActive = (()=>{
-      //active prop is present in CImgLazy component, here always undefined
-      return active !== false
-  })();
 
   const alignClass = (()=>{
     if (align === 'center') {
@@ -58,21 +49,20 @@ const CImg = props=>{
   ), cssModule);
 
   return (
-    src && isActive?
+    src ?
       <img
-        {...attributes}
         className={classes}
         src={src}
-        alt={alt}
         width={width}
         height={height}
+        {...attributes}
         ref={innerRef} /> :
       <svg
-        {...attributes}
         className={classes}
         width={width}
         height={height}
-        style={{'backgroundColor': isActive ? placeholderColor : 'transparent' }}
+        style={{'backgroundColor': placeholderColor }}
+        {...attributes}
         ref={innerRef}
       />
   );
@@ -81,7 +71,7 @@ const CImg = props=>{
 
 CImg.propTypes = {
   tag: tagPropType,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
@@ -92,7 +82,6 @@ CImg.propTypes = {
   block: PropTypes.bool,
   fluid: PropTypes.bool,
   fluidGrow: PropTypes.bool,
-  active: PropTypes.bool,
   shape: PropTypes.string,//oneOf(['', 'rounded']),
   thumbnail: PropTypes.bool,
   align: PropTypes.oneOf(['', 'left', 'right', 'center']),
