@@ -1,49 +1,73 @@
-import React, {useState} from 'react';
-import PropTypes from 'prop-types';
-import CDropdownCustom from './CDropdownCustom';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { tagPropType, mapToCssModules } from './Shared/helper.js'
+
+export const Context = React.createContext({})
 
 //component - CoreUI / CDropdown
 
-const CDropdown = props=>{
+const CDropdown = props => {
 
-  let {
-    custom,
+  const {
+    className,
+    cssModule,
+    tag,
     //
-    toggle,
-    show,
-    defaultOpen,
+    innerRef,
+    inNav,
     ...attributes
-  } = props;
+  } = props
 
-  //custom
 
-  const [isOpen, setIsOpen] = useState(defaultOpen || false);
+  const [reference, setReference] = useState()
+  const [isOpen, setIsOpen] = useState()
+  const [split, setSplit] = useState()
+  const [placement, setPlacement] = useState('')
 
-  if (!custom){
-    const userToggle = toggle;
-    show = isOpen;
-    toggle = ()=>{
-      setIsOpen(!isOpen);
-      if (userToggle)
-        userToggle();
-    }
+  const carretClass = placement.includes('top') ? 'dropup' :
+    placement.includes('right') ? 'dropright' :
+    placement.includes('left') ? 'dropleft' : 'dropdown'
+
+  const Tag = tag || (inNav ? 'li' : 'div')
+  const classes = mapToCssModules(classNames(
+    className,
+    // css classes not fully compatible yet
+    // carretClass,
+    { 'nav-item': inNav, 'btn-group': split }
+  ), cssModule)
+
+  if (split) {
+    console.log(className)
   }
 
-  //render
-
-  return <CDropdownCustom
-    {...attributes}
-    show={show}
-    toggle={toggle}
-  />;
-
+  return (
+    <Context.Provider value={{
+      isOpen,
+      setIsOpen,
+      reference,
+      setReference,
+      inNav,
+      setSplit,
+      setPlacement
+    }}>
+      <Tag
+        className={classes}
+        {...attributes}
+        ref={innerRef}
+      />
+    </Context.Provider>
+  )
 }
 
 CDropdown.propTypes = {
-  ...CDropdownCustom.propTypes,
-  custom: PropTypes.bool,
+  tag: tagPropType,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  cssModule: PropTypes.object,
   //
-  defaultOpen: PropTypes.bool,
-};
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  inNav: PropTypes.bool
+}
 
-export default CDropdown;
+export default CDropdown
