@@ -1,107 +1,85 @@
-import React, {useContext} from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {mapToCssModules, omit, tagPropType} from './Shared/helper.js';
-import {Context} from './CDropdownCustom';
+import React, { useContext } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules, tagPropType } from './Shared/helper.js'
+import { Context } from './CDropdown'
+import CLink from './CLink'
 
 //component - CoreUI / CDropdownItem
 
-const CDropdownItem = props=>{
+const CDropdownItem = props => {
 
   let {
-    tag: Tag,
+    tag,
     className,
     cssModule,
     //
     innerRef,
+    onClick,
     color,
     divider,
     header,
     active,
-    ...attributes
-  } = omit(props, ['toggle']);
+    disabled,
+    ...rest
+  } = props
 
-  const context = useContext(Context);
+  const { setIsOpen } = useContext(Context)
 
-  const onClick = e=>{
-    if (props.disabled || props.header || props.divider) {
-      e.preventDefault();
-      return;
-    }
-    if (props.onClick) {
-      props.onClick(e);
-    }
-    if (props.toggle) {
-      context.toggle(e);
+  const isClickableItem = !(disabled || header || divider)
+
+  const click = e => {
+    if (!isClickableItem) {
+      e.preventDefault()
+      return
+    } else {
+      onClick && onClick(e)
+      setIsOpen(false)
     }
   }
 
-  const getTabIndex = ()=>{
-    if (props.disabled || props.header || props.divider) {
-      return '-1';
-    }
-    return '0';
-  }
 
   //render
 
-  const tabIndex = getTabIndex();
-  const role = tabIndex > -1 ? 'menuitem' : undefined;
+  const tabIndex = isClickableItem ? -1 : null
+  const role = tabIndex === null ? 'menuitem' : undefined
 
   const classes = mapToCssModules(classNames(
     className,
-    header ? 'dropdown-header' : divider ? 'dropdown-divider' : 'dropdown-item',
-    active ? 'active' : null,
-    color ? 'bg-'+color : null,
-    {
-      disabled: attributes.disabled,
-    }
-  ), cssModule);
+    'dropdown-' + (header ? 'header' : divider ? 'divider' : 'item'),
+    active && 'active',
+    color && 'bg-' + color,
+    { disabled }
+  ), cssModule)
 
-  if (Tag === 'button') {
-    if (header) {
-      Tag = 'h6';
-    } else if (divider) {
-      Tag = 'div';
-    } else if (props.href) {
-      Tag = 'a';
-    }
-  }
+  const Tag = tag || (header || divider ? 'div' : CLink)
+
 
   return (
     <Tag
-      type={(Tag === 'button' && (attributes.onClick || props.toggle)) ? 'button' : undefined}
-      {...attributes}
+      className={classes}
       tabIndex={tabIndex}
       role={role}
-      className={classes}
-      onClick={onClick}
+      {...rest}
+      onClick={click}
       ref={innerRef}
     />
-  );
+  )
 
 }
 
 CDropdownItem.propTypes = {
   tag: tagPropType,
-  children: PropTypes.node,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   color: PropTypes.string,
-  href: PropTypes.string,
   divider: PropTypes.bool,
   header: PropTypes.bool,
-  active: PropTypes.bool,
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
-  toggle: PropTypes.bool
-};
+  active: PropTypes.bool
+}
 
-CDropdownItem.defaultProps = {
-  tag: 'button',
-  toggle: true
-};
-
-export default CDropdownItem;
+export default CDropdownItem

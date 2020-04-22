@@ -39,6 +39,8 @@ export {default as CPopoverHeader} from './CPopoverHeader';
 export {default as CProgress} from './CProgress';
 export {default as CPortal} from './CPortal';
 export {default as CDropdown} from './CDropdown';
+export {default as CDropdownDivider} from './CDropdownDivider';
+export {default as CDropdownHeader} from './CDropdownHeader';
 export {default as CDropdownItem} from './CDropdownItem';
 export {default as CDropdownMenu} from './CDropdownMenu';
 export {default as CDropdownToggle} from './CDropdownToggle';
