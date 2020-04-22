@@ -36,7 +36,7 @@ const CWidgetSimple = props=>{
   const classes = mapToCssModules(classNames(className, card.style, card.bgColor), cssModule);
 
   return (
-    <CCard {...attributes} custom className={classes}>
+    <CCard {...attributes} className={classes}>
       <CCardBody className="text-center">
         {/*
         <CButtonGroup className="float-right">

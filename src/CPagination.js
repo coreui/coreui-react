@@ -72,18 +72,18 @@ const CPagination = props=>{
       pageAutoTo > pageMax ? (pageAutoTo = pageMax) : null;
     }
     for (let i=pageAutoFrom;i<=pageAutoTo;i++)
-      list.push(<CPaginationItem custom key={i} active={activePage==i?true:false}><CPaginationLink type="number" n={i}>{i}</CPaginationLink></CPaginationItem>);
+      list.push(<CPaginationItem key={i} active={activePage==i?true:false}><CPaginationLink type="number" n={i}>{i}</CPaginationLink></CPaginationItem>);
     const pagesBefore = pageAutoFrom>pageMin;
     const pagesAfter = pageAutoTo<pageMax;
     autoChildren = (
       <React.Fragment>
-        {pagesBefore&&firstButtonHtml?<CPaginationItem custom><CPaginationLink type="first">{firstButtonHtml}</CPaginationLink></CPaginationItem>:''}
-        {pagesBefore&&previousButtonHtml?<CPaginationItem custom><CPaginationLink type="previous">{previousButtonHtml}</CPaginationLink></CPaginationItem>:''}
-        {!hideDots&&pagesBefore?<CPaginationItem custom><CPaginationLink type="less">...</CPaginationLink></CPaginationItem>:''}
+        {pagesBefore&&firstButtonHtml?<CPaginationItem><CPaginationLink type="first">{firstButtonHtml}</CPaginationLink></CPaginationItem>:''}
+        {pagesBefore&&previousButtonHtml?<CPaginationItem><CPaginationLink type="previous">{previousButtonHtml}</CPaginationLink></CPaginationItem>:''}
+        {!hideDots&&pagesBefore?<CPaginationItem><CPaginationLink type="less">...</CPaginationLink></CPaginationItem>:''}
         {list}
-        {!hideDots&&pagesAfter?<CPaginationItem custom><CPaginationLink type="more">...</CPaginationLink></CPaginationItem>:''}
-        {pagesAfter&&nextButtonHtml?<CPaginationItem custom><CPaginationLink type="next">{nextButtonHtml}</CPaginationLink></CPaginationItem>:''}
-        {pagesAfter&&lastButtonHtml?<CPaginationItem custom><CPaginationLink type="last">{lastButtonHtml}</CPaginationLink></CPaginationItem>:''}
+        {!hideDots&&pagesAfter?<CPaginationItem><CPaginationLink type="more">...</CPaginationLink></CPaginationItem>:''}
+        {pagesAfter&&nextButtonHtml?<CPaginationItem><CPaginationLink type="next">{nextButtonHtml}</CPaginationLink></CPaginationItem>:''}
+        {pagesAfter&&lastButtonHtml?<CPaginationItem><CPaginationLink type="last">{lastButtonHtml}</CPaginationLink></CPaginationItem>:''}
       </React.Fragment>
     )
   }
@@ -131,6 +131,7 @@ CPagination.propTypes = {
 };
 
 CPagination.defaultProps = {
+  custom: true,
   tag: 'nav',
   listTag: 'ul',
   'aria-label': 'pagination',

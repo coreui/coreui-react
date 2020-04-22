@@ -76,6 +76,7 @@ CToggler.propTypes = {
 };
 
 CToggler.defaultProps = {
+  custom: true,
   tag: 'button',
   type: 'button'
 };

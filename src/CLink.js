@@ -22,7 +22,7 @@ const CLink = props => {
   const click = e => {
     if (!href && !to) {
       e.preventDefault()
-    } 
+    }
     onClick && onClick(e)
   }
 
@@ -32,7 +32,7 @@ const CLink = props => {
     className,
     active ? 'active' : null
   ), cssModule)
-  
+
   return to ? (
     <NavLink
       {...rest}
@@ -43,9 +43,9 @@ const CLink = props => {
   ) : (
     <a
       href={href || '#'}
-      className={classes} 
+      className={classes}
       {...rest}
-      onClick={click} 
+      onClick={click}
       ref={innerRef}
     />
   )
@@ -61,7 +61,7 @@ CLink.propTypes = {
   onClick: PropTypes.func,
   ...NavLink.propTypes,
   to: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.func])
-}
+};
 
 CLink.sortAttributes = (attributesToSort) => {
   const attributes = {}

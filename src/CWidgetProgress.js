@@ -42,7 +42,7 @@ const CWidgetProgress = props=>{
   progress.style = classNames('progress-xs my-3', progress.style);
 
   return (
-    <CCard {...attributes} className={classes}>
+    <CCard {...attributes} className={classes} custom={false}>
       <div className="h4 m-0">{header}</div>
       <div>{mainText}</div>
       <CProgress className={progress.style} color={progress.color} value={progress.value} />

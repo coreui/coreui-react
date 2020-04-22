@@ -116,6 +116,7 @@ CSidebarBrand.propTypes = {
 };
 
 CSidebarBrand.defaultProps = {
+  custom: true,
   tag: 'div'
 };
 

@@ -65,6 +65,7 @@ CEmbed.propTypes = {
 };
 
 CEmbed.defaultProps = {
+  custom: true,
   tag: 'span',
   ratio: '16by9',
   type: 'iframe',

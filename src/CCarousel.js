@@ -102,6 +102,8 @@ const CCarousel = props=>{
 }
 
 CCarousel.propTypes = {
+  ...CCarouselCustom.propTypes,
+  //
   custom: PropTypes.bool,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
@@ -117,6 +119,7 @@ CCarousel.propTypes = {
 };
 
 CCarousel.defaultProps = {
+  custom: true,
   controls: true,
   indicators: true,
   autoPlay: true,

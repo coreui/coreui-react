@@ -118,6 +118,7 @@ const CBreadcrumb = props=>{
 }
 
 CBreadcrumb.propTypes = {
+  ...CBreadcrumbCustom.propTypes,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   children: PropTypes.node,
   className: PropTypes.string,
@@ -130,6 +131,7 @@ CBreadcrumb.propTypes = {
 };
 
 CBreadcrumb.defaultProps = {
+  custom: true,
   tag: 'div',
   className: '',
   appRoutes: [{ path: '/', exact: true, name: 'Home', component: null }]

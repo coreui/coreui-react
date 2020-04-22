@@ -135,6 +135,7 @@ CToast.propTypes = {
 };
 
 CToast.defaultProps = {
+  custom: true,
   tag: 'div',
   autohide: 1500,
   closeButton: true,

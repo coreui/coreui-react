@@ -44,7 +44,7 @@ const CWidgetBrand = props=>{
   );
 
   return (
-    <CCard {...attributes} custom>
+    <CCard {...attributes}>
       <CCardHeader
         className={classes}
       >

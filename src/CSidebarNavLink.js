@@ -73,6 +73,7 @@ CSidebarNavLink.propTypes = {
 };
 
 CSidebarNavLink.defaultProps = {
+  custom: true
 };
 
 export default CSidebarNavLink;

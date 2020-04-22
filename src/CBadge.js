@@ -24,7 +24,7 @@ const CBadge = props => {
   const classes = mapToCssModules(classNames(
     className,
     'badge',
-    { 
+    {
       [`badge-${color}`]: color,
       [`badge-${shape}`]: shape
     }
@@ -50,7 +50,7 @@ CBadge.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   color: PropTypes.string,
   shape: PropTypes.oneOf(['', 'pill'])
-}
+};
 
 CBadge.defaultProps = {
   tag: 'span'

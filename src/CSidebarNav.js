@@ -103,6 +103,7 @@ const CSidebarNav = props=>{
       badge = {badgeProps}
       linkClassName={props.location&&props.location.pathname.indexOf(item.url)>-1 ? 'c-active' : null}
       linkProps={linkProps}
+      custom={false}
       >
         {item.name}
       </CSidebarNavItem>
@@ -132,13 +133,14 @@ const CSidebarNav = props=>{
     )
 
     return <CSidebarNavItem
-      key={key}
-      linkClassName={classes}
-      linkProps={{
-        icon: item.icon ? item.icon : 'user',
-        to: item.url,
-        label: true
-      }}
+        key={key}
+        linkClassName={classes}
+        linkProps={{
+          icon: item.icon ? item.icon : 'user',
+          to: item.url,
+          label: true
+        }}
+        custom={false}
       >
         {item.name}
       </CSidebarNavItem>
