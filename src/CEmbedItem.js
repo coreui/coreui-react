@@ -3,24 +3,24 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { mapToCssModules, tagPropType } from './Shared/helper.js'
 
-//component - CoreUI / CEmbed
+//component - CoreUI / CEmbedItem
 
-const CEmbed = props => {
+const CEmbedItem = props => {
 
   const {
     tag: Tag,
     className,
     cssModule,
-    innerRef,
     //
-    ratio,
+    innerRef,
     ...attributes
   } = props
 
   //render
 
   const classes = mapToCssModules(classNames(
-    className, 'embed-responsive', `embed-responsive-${ratio}`
+    className,
+    'embed-responsive-item'
   ), cssModule)
 
   return (
@@ -29,18 +29,17 @@ const CEmbed = props => {
 
 }
 
-CEmbed.propTypes = {
+CEmbedItem.propTypes = {
   tag: tagPropType,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  ratio: PropTypes.oneOf(['21by9', '16by9', '4by3', '1by1']),
+  type: PropTypes.oneOf(['iframe', 'embed', 'video', 'object', 'img'])
 };
 
-CEmbed.defaultProps = {
-  tag: 'div',
-  ratio: '16by9'
+CEmbedItem.defaultProps = {
+  tag: 'iframe'
 }
 
-export default CEmbed
+export default CEmbedItem

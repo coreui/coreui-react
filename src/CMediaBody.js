@@ -1,44 +1,37 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CMediaBody
 
-const CMediaBody = props=>{
+const CMediaBody = props => {
 
   const {
-    tag: Tag,
     className,
     cssModule,
     //
     innerRef,
     ...attributes
-  } = props;
+  } = props
 
   //render
 
   const classes = mapToCssModules(classNames(
-    className,
-    'media-body'
-  ), cssModule);
+    'media-body', className
+  ), cssModule)
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
-  );
+    <div className={classes} {...attributes} ref={innerRef}/>
+  )
 
 }
 
 CMediaBody.propTypes = {
-  tag: tagPropType,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string])
 };
 
-CMediaBody.defaultProps = {
-  tag: 'div'
-};
-
-export default CMediaBody;
+export default CMediaBody

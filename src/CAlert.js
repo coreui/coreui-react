@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { mapToCssModules } from './Shared/helper.js'
 import CFade from './CFade'
+import CButtonClose from './CButtonClose'
 
 //component - CoreUI / CAlert
 const CAlert = props => {
@@ -67,18 +68,9 @@ const CAlert = props => {
       {...attributes}
     >
       {children}
-      {
-        closeButton ?
-          <button
-            type="button"
-            className="close"
-            aria-label="Close"
+      {closeButton && <CButtonClose
             onClick={() => setIsOpen(false)}
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-          : null
-      }
+          />}
     </CFade>
   )
 }

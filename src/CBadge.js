@@ -9,7 +9,7 @@ import CLink from './CLink'
 const CBadge = props => {
 
   let {
-    tag: Tag,
+    tag,
     className,
     cssModule,
     //
@@ -30,14 +30,11 @@ const CBadge = props => {
     }
   ), cssModule)
 
-  if (attributes.to || attributes.href) {
-    return (
-      <CLink {...attributes} className={classes} ref={innerRef} />
-    )
-  }
+  const Tag = attributes.to || attributes.href ? CLink : tag
+  const ref = { [`${typeof Tag === 'string' ? 'ref': 'innerRef'}`]: innerRef }
 
   return (
-    <Tag className={classes} {...attributes} ref={innerRef} />
+    <Tag className={classes} {...attributes} {...ref} />
   )
 
 }

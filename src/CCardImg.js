@@ -1,46 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import CImg from './CImg'
 
 //component - CoreUI / CCardImg
-
-const CCardImg = props=>{
-
-  const {
-    tag: Tag,
-    className,
-    cssModule,
-    //
-    innerRef,
-    placement,
-    ...attributes
-  } = props;
-
-  //render
-
-  const classes = mapToCssModules(classNames(
-    className,
-    placement ? `card-img-${placement}`: 'card-img'
-  ), cssModule);
-
+const CCardImg = props => {
+  const { variant, ...rest } = props
+  const classSuffix = variant !== 'full' ? `-${variant}` : ''
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
-  );
-
+    <CImg {...rest} className={[`card-img${classSuffix}`, rest.className]}/>
+  )
 }
 
 CCardImg.propTypes = {
-  tag: tagPropType,
-  className: PropTypes.string,
-  cssModule: PropTypes.object,
-  //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  placement: PropTypes.string
-};
+  variant: PropTypes.oneOf(['', 'top', 'bottom', 'full'])
+}
 
 CCardImg.defaultProps = {
-  tag: 'img'
-};
+  variant: 'full'
+}
 
-export default CCardImg;
+export default CCardImg

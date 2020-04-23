@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import {tagPropType, mapToCssModules} from './Shared/helper.js'
 
 //component - CoreUI / CCardGroup
 
@@ -16,18 +16,18 @@ const CCardGroup = props=>{
     deck,
     columns,
     ...attributes
-  } = props;
+  } = props
 
   //render
 
   const classes = mapToCssModules(classNames(
     className,
-    columns ? 'card-columns' : deck ? 'card-deck' : 'card-group'
-  ), cssModule);
+    `card-${columns ? 'columns' : deck ? 'deck' : 'group' }`
+  ), cssModule)
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
-  );
+    <Tag className={classes} {...attributes} ref={innerRef} />
+  )
 
 }
 
@@ -39,10 +39,10 @@ CCardGroup.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   deck: PropTypes.bool,
   columns: PropTypes.bool,
-};
+}
 
 CCardGroup.defaultProps = {
   tag: 'div'
-};
+}
 
-export default CCardGroup;
+export default CCardGroup

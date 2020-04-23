@@ -24,7 +24,7 @@ const CModalFooter = props=>{
   ), cssModule);
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
+    <Tag className={classes} {...attributes} ref={innerRef} />
   );
 
 }
@@ -38,7 +38,7 @@ CModalFooter.propTypes = {
 };
 
 CModalFooter.defaultProps = {
-  tag: 'div',
+  tag: 'footer'
 };
 
 export default CModalFooter;

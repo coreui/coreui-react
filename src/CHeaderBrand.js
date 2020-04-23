@@ -1,42 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from 'react'
+import CBrand from './CBrand'
 
 //component - CoreUI / CHeaderBrand
 
-const CHeaderBrand = props=>{
-
-  const {
-    tag: Tag,
-    className,
-    //
-    innerRef,
-    ...attributes
-  } = props;
-
-  //render
-
-  const classes = classNames(
-    className,
-    'c-header-brand'
-  );
-
+const CHeaderBrand = props => {
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
-  );
-
+    <CBrand {...props} className={['c-header-brand', props.className]}/>
+  )
 }
 
-CHeaderBrand.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  children: PropTypes.node,
-  className: PropTypes.string,
-  //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string])
-};
-
-CHeaderBrand.defaultProps = {
-  tag: 'img'
-};
-
-export default CHeaderBrand;
+export default CHeaderBrand

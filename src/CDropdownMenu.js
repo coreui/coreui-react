@@ -1,127 +1,107 @@
-import React, {useContext} from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
-import {Popper} from 'react-popper';
-import {Context} from './CDropdownCustom';
+import React, { useState, useEffect, useLayoutEffect, useContext } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
+import { Context } from './CDropdown'
+import { createPopper } from '@popperjs/core'
 
 //component - CoreUI / CDropdownMenu
 
-const CDropdownMenu = props=>{
+
+const CDropdownMenu = props => {
 
   const {
     className,
-    children,
     cssModule,
-    right,
-    tag,
-    flip,
+    show,
+    placement,
     modifiers,
-    persist,
     innerRef,
-    ...attributes
-  } = props;
+    ...rest
+  } = props
 
-  const noFlipModifier = { flip: { enabled: false } };
+  const { reference, isOpen, setIsOpen, setPlacement } = useContext(Context)
+  const [popperElement, setPopperElement] = useState(null)
+  const [popper, setPopper] = useState(null)
 
-  const directionPositionMap = {
-    up: 'top',
-    left: 'left',
-    right: 'right',
-    down: 'bottom',
-  };
+  innerRef && innerRef(popperElement)
 
-  const context = useContext(Context);
-
-  //render
+  useEffect(() => {
+    setIsOpen(show)
+    setPlacement(placement)
+  }, [show, placement])
 
   const classes = mapToCssModules(classNames(
     className,
     'dropdown-menu',
     {
-      'dropdown-menu-right': right,
-      'show': context.isOpen,
+      'show': isOpen,
     }
-  ), cssModule);
+  ), cssModule)
 
-  let Tag = tag;
-  let placement;
-  let myModifiers = modifiers;
+  useLayoutEffect(() => {
+    if (!reference) {
+      return
+    }
+    setPopper(createPopper(
+      reference,
+      popperElement,
+      {
+        placement,
+        modifiers: modifiers || []
+      }
+    ))
+   
+    return () => {
+      if (popper) {
+        popper.destroy()
+      }
+    }
+  }, [isOpen])
 
-  if (persist || (context.isOpen && !context.inNavbar)) {
-    Tag = Popper;
-    const position1 = directionPositionMap[context.direction] || 'bottom';
-    const position2 = right ? 'end' : 'start';
-    placement = `${position1}-${position2}`;
-    //attributes.component = tag;
-    myModifiers = !flip ? {
-      ...modifiers,
-      ...noFlipModifier,
-    } : modifiers;
-
-    /*
-    x-placement={attributes.placement}
-    */
-    return (
-      <Tag
-        placement = {placement}
-        modifiers = {myModifiers}
-      >
-        {({ ref, style, placement, arrowProps }) => {
-          //console.log(style, children);
-          return (
-            <div
-              {...attributes}
-              tabIndex="-1"
-              role="menu"
-              aria-hidden={!context.isOpen}
-              className={classes}
-
-              ref={innerRef}
-              data-placement={placement}
-            >
-              {children}
-            </div>
-          )}
-        }
-      </Tag>
-    );
-
+  const checkClose = (e) => {
+    if ([reference, popperElement].every(el => !el.contains(e.target))) {
+      setIsOpen(false)
+    }
   }
 
-  return (
-    <Tag
-      tabIndex="-1"
-      role="menu"
-      {...attributes}
-      aria-hidden={!context.isOpen}
-      className={classes}
-      x-placement={attributes.placement}
-      ref={innerRef}
-    >
-      {children}
-    </Tag>
-  );
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('click', checkClose)
+    }
+    return () => document.removeEventListener('click', checkClose)
+  }, [isOpen])
 
+  return (
+    <div
+      className={classes}
+      ref={setPopperElement}
+      role="menu"
+      aria-hidden={!isOpen}
+      {...rest}
+    />
+  )
 }
 
 
 CDropdownMenu.propTypes = {
-  tag: tagPropType,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  right: PropTypes.bool,
-  flip: PropTypes.bool,
-  modifiers: PropTypes.object,
-  persist: PropTypes.bool,
-};
+  modifiers: PropTypes.array,
+  show: PropTypes.bool,
+  placement: PropTypes.oneOf([
+    '', 'top-end', 'top', 'top-start',
+    'bottom-end', 'bottom', 'bottom-start',
+    'right-start', 'right', 'right-end',
+    'left-start', 'left', 'left-end'
+  ])
+}
 
 CDropdownMenu.defaultProps = {
-  tag: 'div',
-  flip: true,
-};
+  placement: 'bottom-start',
+}
 
-export default CDropdownMenu;
+export default CDropdownMenu

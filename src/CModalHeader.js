@@ -1,60 +1,39 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
-
+import React, { useContext } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { tagPropType, mapToCssModules } from './Shared/helper.js'
+import { Context } from './CModal'
+import CButtonClose from './CButtonClose'
 //component - CoreUI / CModalHeader
 
 const CModalHeader = props=>{
 
   const {
     tag: Tag,
-    children,
     className,
     cssModule,
     //
     innerRef,
-    toggle,
-    wrapTag: WrapTag,
-    closeAriaLabel,
-    charCode,
-    close,
-    mainClassName,
-    mainProps,
+    closeButton,
     ...attributes
-  } = props;
+  } = props
 
+  const { close } = useContext(Context)
+  
   //render
 
-  let closeButton;
 
   const classes = mapToCssModules(classNames(
     className,
     'modal-header'
-  ), cssModule);
-
-  const mainClasses = mapToCssModules(classNames(
-    mainClassName,
-    'modal-title'
-  ), cssModule);
-
-  if (!close && toggle) {
-    const closeIcon = typeof charCode === 'number' ? String.fromCharCode(charCode) : charCode;
-    closeButton = (
-      <button type="button" onClick={toggle} className={mapToCssModules('close', cssModule)} aria-label={closeAriaLabel}>
-        <span aria-hidden="true">{closeIcon}</span>
-      </button>
-    );
-  }
+  ), cssModule)
 
   return (
-    <WrapTag {...attributes} className={classes} ref={innerRef}>
-      <Tag className={mainClasses} {...mainProps}>
-        {children}
-      </Tag>
-      {close || closeButton}
-    </WrapTag>
-  );
+    <Tag className={classes} {...attributes} ref={innerRef}>
+      {props.children}
+      {closeButton && <CButtonClose onClick={close}/>}
+    </Tag>
+  )
 
 }
 
@@ -65,20 +44,11 @@ CModalHeader.propTypes = {
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  wrapTag: tagPropType,
-  toggle: PropTypes.func,
-  closeAriaLabel: PropTypes.string,
-  charCode: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  close: PropTypes.object,
-  mainClassName: PropTypes.string,
-  mainProps: PropTypes.object
+  closeButton: PropTypes.bool
 };
 
 CModalHeader.defaultProps = {
-  tag: 'h5',
-  wrapTag: 'div',
-  closeAriaLabel: 'Close',
-  charCode: 215
+  tag: 'header'
 };
 
-export default CModalHeader;
+export default CModalHeader

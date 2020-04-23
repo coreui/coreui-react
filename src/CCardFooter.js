@@ -1,11 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { tagPropType, mapToCssModules } from './Shared/helper.js'
+import { sharedPropTypes } from './CCard.js'
 
 //component - CoreUI / CCardFooter
 
-const CCardFooter = props=>{
+const CCardFooter = props => {
 
   const {
     tag: Tag,
@@ -13,19 +14,31 @@ const CCardFooter = props=>{
     cssModule,
     //
     innerRef,
+    color,
+    textColor,
+    borderColor,
+    align,
     ...attributes
-  } = props;
+  } = props
 
   //render
 
   const classes = mapToCssModules(classNames(
     className,
-    'card-footer'
-  ), cssModule);
+    'card-footer',
+    align ? `text-${align}` : false,
+    textColor ? `text-${textColor}` : false,
+    color ? `bg-${color}` : false,
+    borderColor ? `border-${borderColor}` : false
+  ), cssModule)
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
-  );
+    <Tag 
+      className={classes} 
+       {...attributes}
+      ref={innerRef} 
+    />
+  )
 
 }
 
@@ -35,10 +48,11 @@ CCardFooter.propTypes = {
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-};
+  ...sharedPropTypes
+}
 
 CCardFooter.defaultProps = {
   tag: 'footer'
-};
+}
 
-export default CCardFooter;
+export default CCardFooter

@@ -1,118 +1,90 @@
-import React, {useContext} from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
-import {Reference} from 'react-popper';
-import CButton from './CButton';
-import {Context} from './CDropdownCustom';
+import React, { useContext, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { tagPropType, mapToCssModules } from './Shared/helper.js'
+import CButton from './CButton'
+import CLink from './CLink'
+import { Context } from './CDropdown'
 
 //component - CoreUI / CDropdownToggle
 
-const CDropdownToggle = props=>{
+const CDropdownToggle = props => {
 
   const {
     className,
-    color,
     cssModule,
     //
     innerRef,
+    onClick,
     caret,
     split,
-    nav,
-    header,
     tag,
-    togglerHtml,
     ...attributes
-  } = props;
+  } = props
 
-  const context = useContext(Context);
+  const {
+    reference,
+    setReference,
+    isOpen,
+    setIsOpen,
+    inNav,
+    setSplit
+  } = useContext(Context)
+  
+  innerRef && innerRef(reference)
 
-  const onClick = e=>{
+  useEffect(() => {
+    setSplit(split)
+  })
+
+  const click = e => {
     if (props.disabled) {
-      e.preventDefault();
-      return;
+      return
     }
-    if (props.nav && !props.tag) {
-      e.preventDefault();
-    }
-    if (props.onClick) {
-      props.onClick(e);
-    }
-    context.toggle(e);
+    onClick && onClick(e)
+    setIsOpen(!isOpen)
   }
 
-  //render
-
-  const ariaLabel = attributes['aria-label'] || 'Toggle Dropdown';
+  const Tag = tag || (inNav ? CLink : CButton)
 
   const classes = mapToCssModules(classNames(
     className,
     {
-      'dropdown-toggle': caret || split,
-      'dropdown-toggle-split': split,
-      'nav-link': nav && !header,
-      'c-header-nav-link': nav && header
+      'dropdown-toggle': caret && !split && !tag && !inNav,
+      'nav-link': inNav
     }
-  ), cssModule);
+  ), cssModule)
 
-  const children = togglerHtml || attributes.children || <span className="sr-only">{ariaLabel}</span>;
+  const togglerAttrs = {
+    onClick: click,
+    'aria-expanded': isOpen ? 'true' : 'false',
+    'aria-haspopup': 'true',
+    'aria-label': 'Dropdown toggle',
+    [`${tag && typeof tag === 'string' ? 'ref' : 'innerRef'}`]: setReference
+  }
 
-  let Tag;
-  let isButton = false;
-
-  if (nav  && !tag) {
-    Tag = 'a';
-    attributes.href = '#';
-  } else if (!tag) {
-    Tag = CButton;
-    attributes.color = color;
-    attributes.cssModule = cssModule;
-    isButton = true;
+  if (split) {
+    return (
+      <>
+        <CButton {...attributes}>
+          {props.children}
+        </CButton>
+        <CButton
+          className='dropdown-toggle dropdown-toggle-split'
+          {...togglerAttrs}
+          {...attributes}
+        >{''}</CButton>
+      </>
+    )
   } else {
-    Tag = tag;
+    return (
+      <Tag
+        className={classes}
+        {...togglerAttrs}
+        {...attributes}
+      />
+    )
   }
-
-  if (context.inNavbar) {
-    if (isButton)
-      return (
-        <Tag
-          {...attributes}
-          className={classes}
-          onClick={onClick}
-          aria-expanded={context.isOpen}
-        >
-          {children}
-        </Tag>
-      );
-    else
-      return (
-        <Tag
-          {...attributes}
-          className={classes}
-          onClick={onClick}
-          aria-expanded={context.isOpen}
-          ref={innerRef}
-        >
-          {children}
-        </Tag>
-      );
-  }
-
-  return (
-    <Reference>
-      {({ ref }) => (
-        <Tag
-          {...attributes}
-          className={classes}
-          onClick={onClick}
-          aria-expanded={context.isOpen}
-          ref={innerRef}
-        >
-          {children}
-        </Tag>
-      )}
-    </Reference>
-  );
 }
 
 CDropdownToggle.propTypes = {
@@ -123,18 +95,13 @@ CDropdownToggle.propTypes = {
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   caret: PropTypes.bool,
-  color: PropTypes.string,
-  disabled: PropTypes.bool,
   onClick: PropTypes.func,
-  'aria-haspopup': PropTypes.bool,
   split: PropTypes.bool,
-  togglerHtml: PropTypes.node,
-  nav: PropTypes.bool,
-  header: PropTypes.bool,
-};
+  disabled: PropTypes.bool
+}
 
 CDropdownToggle.defaultProps = {
-  'aria-haspopup': true
-};
+  caret: true
+}
 
-export default CDropdownToggle;
+export default CDropdownToggle

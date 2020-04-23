@@ -20,7 +20,7 @@ const CLink = props => {
 
   const to = rest ? rest.to : null
   const click = e => {
-    if (!href && !to) {
+    if ((!href && !to) || href === '#') {
       e.preventDefault()
     }
     onClick && onClick(e)
@@ -52,7 +52,6 @@ const CLink = props => {
 }
 
 CLink.propTypes = {
-  className: PropTypes.string,
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
@@ -60,6 +59,7 @@ CLink.propTypes = {
   href: PropTypes.string,
   onClick: PropTypes.func,
   ...NavLink.propTypes,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   to: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.func])
 };
 
