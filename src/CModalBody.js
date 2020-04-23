@@ -24,7 +24,7 @@ const CModalBody = props=>{
   ), cssModule);
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
+    <Tag className={classes} {...attributes} ref={innerRef} />
   );
 
 }
