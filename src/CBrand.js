@@ -21,8 +21,9 @@ const CBrand = props => {
   const classes = mapToCssModules(classNames(className), cssModule)
 
   const Tag = attributes.to || attributes.href ? CLink : tag
+  const ref = { [`${typeof Tag === 'string' ? 'ref': 'innerRef'}`]: innerRef}
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
+    <Tag {...attributes} className={classes} {...ref} />
   )
 }
 

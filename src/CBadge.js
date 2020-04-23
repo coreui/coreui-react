@@ -31,8 +31,10 @@ const CBadge = props => {
   ), cssModule)
 
   const Tag = attributes.to || attributes.href ? CLink : tag
+  const ref = { [`${typeof Tag === 'string' ? 'ref': 'innerRef'}`]: innerRef }
+
   return (
-    <Tag className={classes} {...attributes} ref={innerRef} />
+    <Tag className={classes} {...attributes} {...ref} />
   )
 
 }

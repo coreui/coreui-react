@@ -24,7 +24,7 @@ const CHeaderNavLink = props => {
   ), cssModule)
 
   return (
-    <CLink className={classes} {...rest} ref={innerRef} />
+    <CLink className={classes} {...rest} innerRef={innerRef} />
   )
 
 }

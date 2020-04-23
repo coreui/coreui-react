@@ -53,6 +53,7 @@ const CDropdownItem = props => {
   ), cssModule)
 
   const Tag = tag || (header || divider ? 'div' : CLink)
+  const ref = { [`${typeof Tag === 'string' ? 'ref': 'innerRef'}`]: innerRef }
 
 
   return (
@@ -62,7 +63,7 @@ const CDropdownItem = props => {
       role={role}
       {...rest}
       onClick={click}
-      ref={innerRef}
+      {...ref}
     />
   )
 
