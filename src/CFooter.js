@@ -43,7 +43,7 @@ CFooter.propTypes = {
 
 CFooter.defaultProps = {
   tag: 'footer',
-  fixed: false
+  fixed: true
 };
 
 export default CFooter;
