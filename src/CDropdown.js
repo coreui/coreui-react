@@ -41,9 +41,14 @@ const CDropdown = props=>{
 
 CDropdown.propTypes = {
   ...CDropdownCustom.propTypes,
+  //
   custom: PropTypes.bool,
   //
   defaultOpen: PropTypes.bool,
 };
+
+CDropdown.defaultProps = {
+  custom: true
+}
 
 export default CDropdown;

@@ -46,7 +46,7 @@ const CSidebarNavItem = props=>{
   return (
     !custom ?
       <Tag className={classes} {...attributes} ref={innerRef}>
-        <CSidebarNavLink className={linkClasses} {...link}>
+        <CSidebarNavLink custom={false} className={linkClasses} {...link}>
           {children}
         </CSidebarNavLink>
       </Tag> :
@@ -74,6 +74,7 @@ CSidebarNavItem.propTypes = {
 };
 
 CSidebarNavItem.defaultProps = {
+  custom: true,
   tag: 'li'
 };
 

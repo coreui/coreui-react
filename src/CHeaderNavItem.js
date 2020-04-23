@@ -61,6 +61,7 @@ CHeaderNavItem.propTypes = {
 };
 
 CHeaderNavItem.defaultProps = {
+  custom: true,
   tag: 'li'
 };
 

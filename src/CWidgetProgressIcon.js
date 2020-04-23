@@ -39,7 +39,7 @@ const CWidgetProgressIcon = props=>{
   progress.style = classNames('progress-xs mt-3 mb-0', progress.style);
 
   return (
-    <CCard {...attributes} className={classes}>
+    <CCard {...attributes} className={classes} custom={false}>
       <div className="text-muted text-right mb-4">
         <CIcon name={card.icon} size="xl" />
       </div>

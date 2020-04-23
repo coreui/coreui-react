@@ -61,6 +61,8 @@ const CCollapse = props=>{
 }
 
 CCollapse.propTypes = {
+  ...CCollapseCustom.propTypes,
+  //
   custom: PropTypes.bool,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
@@ -72,7 +74,8 @@ CCollapse.propTypes = {
 };
 
 CCollapse.defaultProps = {
-  toggleEvents: defaultToggleEvents
+  toggleEvents: defaultToggleEvents,
+  custom: true
 };
 
 export default CCollapse;

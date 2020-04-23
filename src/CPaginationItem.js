@@ -71,6 +71,7 @@ CPaginationItem.propTypes = {
 };
 
 CPaginationItem.defaultProps = {
+  custom: true,
   tag: 'li',
   active: false
 };

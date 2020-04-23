@@ -29,7 +29,7 @@ const CAlert = props => {
       'alert-dismissible': closeButton
     }
   ), cssModule)
-  
+
   const alertTransition = {
     ...CFade.defaultProps,
     ...transition,
@@ -37,7 +37,7 @@ const CAlert = props => {
     timeout: fade ? transition.timeout : 0
   }
   const [isOpen, setIsOpen] = useState(show)
-  
+
   useEffect(() => {
     setIsOpen(show)
   }, [show])
@@ -58,22 +58,22 @@ const CAlert = props => {
   }, [isOpen])
 
   return (
-    <CFade 
-      {...alertTransition} 
+    <CFade
+      {...alertTransition}
       tag="div"
-      className={classes} 
-      in={Boolean(isOpen)} 
+      className={classes}
+      in={Boolean(isOpen)}
       role="alert"
-      {...attributes} 
+      {...attributes}
     >
       {children}
       {
         closeButton ?
-          <button 
-            type="button" 
+          <button
+            type="button"
             className="close"
             aria-label="Close"
-            onClick={() => setIsOpen(false)} 
+            onClick={() => setIsOpen(false)}
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -82,6 +82,7 @@ const CAlert = props => {
     </CFade>
   )
 }
+
 CAlert.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
@@ -94,7 +95,8 @@ CAlert.propTypes = {
   fade: PropTypes.bool,
   show: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   transition: PropTypes.shape(CFade.propTypes),
-}
+};
+
 CAlert.defaultProps = {
   tag: 'div',
   //

@@ -23,7 +23,7 @@ const CWidgetDropdown = props=>{
   } = props;
 
   return (
-    <CCard {...attributes} custom className="text-white" color={color}>
+    <CCard {...attributes} className="text-white" color={color}>
       <CCardBody className="pb-0 d-flex justify-content-between">
         <div>
           {header?<div className="text-value-lg">{header}</div>:''}

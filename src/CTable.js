@@ -82,6 +82,7 @@ CTable.propTypes = {
 };
 
 CTable.defaultProps = {
+  custom: true,
   tag: 'table',
   responsiveTag: 'div',
 };
