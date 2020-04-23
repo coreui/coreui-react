@@ -109,7 +109,7 @@ export {default as CToastBody} from './CToastBody';
 export {default as CToaster} from './CToaster';
 export {default as CCallout} from './CCallout';
 export {default as CEmbed} from './CEmbed';
-export {default as CEmbedObject} from './CEmbedObject';
+export {default as CEmbedItem} from './CEmbedItem';
 export {default as CLink} from './CLink';
 export {default as CToggler} from './CToggler';
 export {default as CImg} from './CImg';
