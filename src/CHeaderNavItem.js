@@ -1,67 +1,39 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
-import CHeaderNavLink from './CHeaderNavLink';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CHeaderNavItem
 
-const CHeaderNavItem = props=>{
+const CHeaderNavItem = props => {
 
   const {
-    tag: Tag,
-    children,
     className,
     cssModule,
-    custom,
     //
     innerRef,
-    to,
-    linkClassName,
-    linkProps,
     ...attributes
-  } = props;
+  } = props
 
   //render
 
   const classes = mapToCssModules(classNames(
     className,
-    'c-header-nav-item',
-  ), cssModule);
-
-  if (!custom){
-    return (
-      <Tag {...attributes} className={classes} ref={innerRef}>
-        <CHeaderNavLink {...linkProps} className={linkClassName} to={to}>
-          {children}
-        </CHeaderNavLink>
-      </Tag>
-    );
-  }
+    'c-header-nav-item'
+  ), cssModule)
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef}>
-      {children}
-    </Tag>
-  );
+    <li className={classes} {...attributes} ref={innerRef} />
+  )
 
 }
 
 CHeaderNavItem.propTypes = {
-  tag: tagPropType,
-  children: PropTypes.node,
   className: PropTypes.string,
   cssModule: PropTypes.object,
-  custom: PropTypes.bool,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  to: PropTypes.string,
-  linkClassName: PropTypes.string,
-  linkProps: PropTypes.object
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string])
 };
 
-CHeaderNavItem.defaultProps = {
-  tag: 'li'
-};
 
-export default CHeaderNavItem;
+export default CHeaderNavItem
