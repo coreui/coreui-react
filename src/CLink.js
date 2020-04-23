@@ -20,7 +20,7 @@ const CLink = props => {
 
   const to = rest ? rest.to : null
   const click = e => {
-    if (!href && !to) {
+    if ((!href && !to) || href === '#') {
       e.preventDefault()
     } 
     onClick && onClick(e)

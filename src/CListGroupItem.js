@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
-import CLink from './CLink';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { tagPropType, mapToCssModules } from './Shared/helper.js'
+import CLink from './CLink'
 
 //component - CoreUI / CListGroupItem
 
-const CListGroupItem = props=>{
+const CListGroupItem = props => {
 
   let {
     tag: Tag,
@@ -19,37 +19,31 @@ const CListGroupItem = props=>{
     action,
     color,
     accent,
-    ...attributes
-  } = props;
-
-  if (disabled) {
-    attributes.onClick = e=>{
-      e.preventDefault();
-    };
-  }
+    ...rest
+  } = props
 
   //render
 
   const classes = mapToCssModules(classNames(
-    className,
-    active ? 'active' : false,
-    disabled ? 'disabled' : false,
-    action||attributes.href||attributes.to||Tag=='button' ? 'list-group-item-action' : false,
-    color ? `list-group-item-${color}` : false,
-    accent ? `list-group-item-accent-${accent}` : false,
-    'list-group-item'
-  ), cssModule);
+    className, 'list-group-item',
+    {
+      'list-group-item-action': action||rest.href||rest.to||Tag=='button',
+      active,
+      disabled,
+      [`list-group-item-${color}`]: color,
+      [`list-group-item-accent-${accent}`]: accent
+    }
+  ), cssModule)
 
   if (props.href || props.to){
-    Tag = CLink;
     return (
-      <Tag {...attributes} className={classes} />
-    );
+      <CLink {...rest} className={classes} innerRef={innerRef}/>
+    )
   }
   else {
     return (
-      <Tag {...attributes} className={classes} ref={innerRef} />
-    );
+      <Tag {...rest} className={classes} ref={innerRef}/>
+    )
   }
 
 }
@@ -71,4 +65,4 @@ CListGroupItem.defaultProps = {
   tag: 'li'
 };
 
-export default CListGroupItem;
+export default CListGroupItem
