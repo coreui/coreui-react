@@ -49,7 +49,7 @@ const CCard = props=>{
         <CCardHeader>
           {headerSlot}
         </CCardHeader>
-        ): ''}
+      ): null}
         <CCardBody {...bodyProps} className={bodyClassName}>
           {children}
         </CCardBody>
@@ -57,7 +57,7 @@ const CCard = props=>{
         <CCardFooter>
           {footerSlot}
         </CCardFooter>
-        ): ''}
+      ): null}
       </Tag>
     );
 
@@ -99,7 +99,8 @@ CCard.propTypes = {
 }
 
 CCard.defaultProps = {
-  tag: 'div'
+  tag: 'div',
+  custom: true
 }
 
 export default CCard;
