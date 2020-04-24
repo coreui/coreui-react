@@ -32,9 +32,7 @@ const CDropdown = props => {
   const Tag = tag || (inNav ? 'li' : 'div')
   const classes = mapToCssModules(classNames(
     className,
-    // css classes not fully compatible yet
-    // carretClass,
-    'dropdown',
+    carretClass,
     { 'nav-item': inNav, 'btn-group': split, 'show': isOpen }
   ), cssModule)
 
