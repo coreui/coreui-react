@@ -34,7 +34,8 @@ const CDropdown = props => {
     className,
     // css classes not fully compatible yet
     // carretClass,
-    { 'nav-item': inNav, 'btn-group': split }
+    'dropdown',
+    { 'nav-item': inNav, 'btn-group': split, 'show': isOpen }
   ), cssModule)
 
   if (split) {
