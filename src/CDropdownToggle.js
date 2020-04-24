@@ -50,7 +50,7 @@ const CDropdownToggle = props => {
   const classes = mapToCssModules(classNames(
     className,
     {
-      'dropdown-toggle': caret && !split && !tag && !inNav,
+      'dropdown-toggle': caret && !split,
       'nav-link': inNav
     }
   ), cssModule)
