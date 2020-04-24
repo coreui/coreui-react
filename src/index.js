@@ -32,8 +32,6 @@ export {default as CSpinner} from './CSpinner';
 export {default as CTabPane} from './CTabPane';
 export {default as CTabContent} from './CTabContent';
 export {default as CPopover} from './CPopover';
-export {default as CPopoverBody} from './CPopoverBody';
-export {default as CPopoverHeader} from './CPopoverHeader';
 //export {default as CPopperContent} from './CPopperContent';
 //export {default as CPopperTargetHelper} from './CPopperTargetHelper';
 export {default as CProgress} from './CProgress';
