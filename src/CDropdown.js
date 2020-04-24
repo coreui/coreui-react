@@ -36,9 +36,6 @@ const CDropdown = props => {
     { 'nav-item': inNav, 'btn-group': split, 'show': isOpen }
   ), cssModule)
 
-  if (split) {
-    console.log(className)
-  }
 
   return (
     <Context.Provider value={{
