@@ -1,40 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 //component - CoreUI / CSidebarHeader
 
-const CSidebarHeader = props=>{
+const CSidebarHeader = props => {
 
   const {
     tag: Tag,
-    children,
     className,
     //
     innerRef,
     ...attributes
-  } = props;
+  } = props
 
   //render
 
-  const classes = classNames(
-    className,
-    'c-sidebar-header'
-  );
+  const classes = classNames('c-sidebar-header', className)
 
   return (
-    children ?
-      <Tag className={classes} {...attributes} ref={innerRef}>
-        {children}
-      </Tag>
-     : null
-  );
-
+    <Tag className={classes} {...attributes} ref={innerRef}/>
+  )
 }
 
 CSidebarHeader.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  children: PropTypes.node,
   className: PropTypes.string,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string])
@@ -44,4 +34,4 @@ CSidebarHeader.defaultProps = {
   tag: 'div'
 };
 
-export default CSidebarHeader;
+export default CSidebarHeader
