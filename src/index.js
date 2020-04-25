@@ -34,6 +34,7 @@ export {default as CTabPane} from './CTabPane';
 export {default as CTabContent} from './CTabContent';
 export {default as CPopover} from './CPopover';
 export {default as CProgress} from './CProgress';
+export {default as CProgressBar} from './CProgressBar';
 // export {default as CPortal} from './CPortal';
 export {default as CDropdown} from './CDropdown';
 export {default as CDropdownDivider} from './CDropdownDivider';

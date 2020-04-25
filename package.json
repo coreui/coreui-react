@@ -47,7 +47,6 @@
     "core-js": "^3.6.5",
     "lodash.isfunction": "^3.0.9",
     "lodash.isobject": "^3.0.2",
-    "lodash.tonumber": "^4.0.3",
     "prop-types": "^15.7.2",
     "react-onclickout": "^2.0.8",
     "react-perfect-scrollbar": "~1.5.8",
