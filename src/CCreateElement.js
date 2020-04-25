@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 
 const renderItem = (item, i) => {
   const { _tag: Tag, _children, ...rest } = item
-  const children = (_children || []).map((child, i) => {
+  const children = _children ? _children.map((child, i) => {
     return typeof child === 'object' ? renderItem(child, i) : child
-  })
-  return (<Tag key={Tag + i} {...rest}>{children}</Tag>)
+  }) : ''
+  return <Tag key={Tag + i} {...rest}>{children}</Tag>
 }
 
 //component - CoreUI / CCreateElement

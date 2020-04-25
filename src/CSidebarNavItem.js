@@ -36,7 +36,7 @@ const CSidebarNavItem = props => {
   const routerLinkProps = rest.to && { exact: true, activeClassName: 'c-active'}
   return (
     <li className={classes}>
-      { children && children.length ? children : 
+      { children || 
         <CLink
           className={linkClasses}
           {...routerLinkProps}
