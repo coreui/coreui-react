@@ -1,4 +1,4 @@
-import React, {useState, useRef, useMemo, useEffect} from 'react'
+import React, { useState, useRef, useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -25,6 +25,7 @@ const CSidebar = props=>{
     overlaid,
     dropdownMode,
     onShowUpdate,
+    onMinimizeUpdate,
     ...attributes
   } = props
 
@@ -37,10 +38,17 @@ const CSidebar = props=>{
     node.current = r
     innerRef && innerRef(r)
   }
-  // useEffect(()=>{
-  //   compData.reRender = false
-  // })
 
+
+  const [minimized, setIsMinimized] = useState(minimize)
+  useMemo(() => {
+    setIsMinimized(minimize)
+  }, [minimize])
+
+  const toggleMinimize = () => {
+    setIsMinimized(!minimized)
+    onMinimizeUpdate && onMinimizeUpdate(minimized)
+  }
 
   // compData.nextRender = true
 
@@ -115,20 +123,17 @@ const CSidebar = props=>{
     haveResponsiveClass ? `c-sidebar-${breakpoint}-show` : null,
     fixed && !overlaid ? 'c-sidebar-fixed' : null,
     aside ? 'c-sidebar-right' : null,
-    minimize && !unfoldable ? 'c-sidebar-minimized' : null,
-    minimize && unfoldable ? 'c-sidebar-unfoldable' : null,
+    minimized && !unfoldable ? 'c-sidebar-minimized' : null,
+    minimized && unfoldable ? 'c-sidebar-unfoldable' : null,
     overlaid ? 'c-sidebar-overlaid' : null,
     size ? `c-sidebar-${size}` : null
   )
 
-  const state = {
-    minimize: minimize && !unfoldable
-  }
-
   return (
     <Context.Provider value={{
-      dropdownMode: dropdownMode,
-      state
+      dropdownMode,
+      scrollbarExist: !minimized || unfoldable,
+      toggleMinimize
     }}>
       <div
         {...attributes}
@@ -161,7 +166,8 @@ CSidebar.propTypes = {
   dropdownMode: PropTypes.oneOf([
     '', 'openActive', 'close', 'closeInactive', 'noAction'
   ]),
-  onShowUpdate: PropTypes.func
+  onShowUpdate: PropTypes.func,
+  onMinimizeUpdate: PropTypes.func
 }
 
 CSidebar.defaultProps = {
