@@ -30,6 +30,7 @@ export {default as CPagination} from './CPagination';
 export {default as CPaginationItem} from './CPaginationItem';
 export {default as CPaginationLink} from './CPaginationLink';
 export {default as CSpinner} from './CSpinner';
+export {default as CTabs} from './CTabs';
 export {default as CTabPane} from './CTabPane';
 export {default as CTabContent} from './CTabContent';
 export {default as CPopover} from './CPopover';
