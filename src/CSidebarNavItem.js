@@ -1,81 +1,67 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import CSidebarNavLink from './CSidebarNavLink';
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { CLink, CBadge } from './index'
+import { CIcon } from '@coreui/icons-react'
+import { iconProps } from './CSidebarNavDropdown'
 //component - CoreUI / CSidebarNavItem
 
-const CSidebarNavItem = props=>{
+const CSidebarNavItem = props => {
 
   const {
-    tag: Tag,
     children,
     className,
-    custom,
     //
-    innerRef,
-    linkClassName,
-    linkProps,
-    ///
+    name,
     icon,
-    to,
-    href,
+    fontIcon,
     badge,
-    ...attributes
-  } = props;
-
-  let link = {...linkProps};
+    addLinkClass,
+    label,
+    ...rest
+  } = props
 
   //render
 
   const classes = classNames(
-    className,
-    'c-sidebar-nav-item'
-  );
+    'c-sidebar-nav-item',
+    className
+  )
 
   const linkClasses = classNames(
-    linkClassName
-  );
+    label ? 'c-sidebar-nav-label' : 'c-sidebar-nav-link',
+    addLinkClass
+  )
 
-  !link && (link={})
-  icon && (link.icon = icon);
-  !to && href && (link.href = href);
-  to && (link.to = to);
-  badge && (link.badgeProps = badge);
-
+  const routerLinkProps = rest.to && { exact: true, activeClassName: 'c-active'}
   return (
-    !custom ?
-      <Tag className={classes} {...attributes} ref={innerRef}>
-        <CSidebarNavLink custom={false} className={linkClasses} {...link}>
-          {children}
-        </CSidebarNavLink>
-      </Tag> :
-      <Tag className={classes} {...attributes} ref={innerRef}>
-        {children}
-      </Tag>
-  );
-
+    <li className={classes}>
+      { children && children.length ? children : 
+        <CLink
+          className={linkClasses}
+          {...routerLinkProps}
+          {...rest}
+        >
+          { icon && <CIcon {...iconProps(icon)}/>}
+          { fontIcon && <i className={`c-sidebar-nav-icon ${fontIcon}`}/>}
+          {name}
+          { badge && <CBadge {...{...badge, text: null}}>{badge.text}</CBadge>}
+        </CLink>
+      }
+  </li>
+  )
 }
 
 CSidebarNavItem.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   children: PropTypes.node,
   className: PropTypes.string,
-  custom: PropTypes.bool,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  linkClassName: PropTypes.string,
-  linkProps: PropTypes.object,
-  to: PropTypes.string,
-  href: PropTypes.string,
-  ///
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  fontIcon: PropTypes.string,
   badge: PropTypes.object,
+  addLinkClass: PropTypes.string,
+  label: PropTypes.bool,
+  name: PropTypes.string
 };
 
-CSidebarNavItem.defaultProps = {
-  custom: true,
-  tag: 'li'
-};
-
-export default CSidebarNavItem;
+export default CSidebarNavItem

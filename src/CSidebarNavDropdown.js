@@ -1,16 +1,31 @@
-import React, {useState, useContext, useMemo, useRef, useEffect} from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { CIcon } from '@coreui/icons-react';
+import React, { useState, useContext, useMemo } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { CIcon } from '@coreui/icons-react'
+import { useLocation } from 'react-router-dom'
 
-import {Context} from './CSidebar';
+import { Context } from './CSidebar'
+
+export const iconProps = (icon) => {
+  if (typeof icon === 'object') {
+    const key = icon.size ? 'className' : 'customClasses'
+    return {
+      ...icon,
+      [`${key}`]: icon.customClasses || `c-sidebar-nav-icon ${icon.className}`
+    }
+  } else {
+    return {
+      customClasses: 'c-sidebar-nav-icon',
+      name: icon
+    }
+  }
+}
 
 //component - CoreUI / CSidebarNavDropdown
 
-const CSidebarNavDropdown = props=>{
+const CSidebarNavDropdown = props => {
 
   const {
-    tag: Tag,
     children,
     className,
     //
@@ -19,96 +34,57 @@ const CSidebarNavDropdown = props=>{
     fontIcon,
     name,
     show,
-    toggle,
-    toggleItem,
     route,
     ...attributes
-  } = props;
+  } = props
 
-  const [isOpen, setIsOpen] = useState(show);
-  const compData = useRef({}).current;
+  const [isOpen, setIsOpen] = useState(show)
+  useMemo(() => {
+    setIsOpen(show)
+  }, [show])
 
-  // context
-  const context = useContext(Context);
+  const { dropdownMode } = useContext(Context)
 
-  let dropdownMode;
-
-  // methods
-
-  const onClick = (e)=>{
-    setIsOpen(!isOpen);
-    toggle && toggle(e);
-  }
-  const onItemClick = (e)=>{
-    toggleItem && toggleItem(e);
-  }
-
-  // computed
-
-  if (context.dropdownMode)
-    dropdownMode = context.dropdownMode;
-  else
-    dropdownMode = 'openActive';
-
-  //watch
-  //show
+  const path = useLocation().pathname
   useMemo(()=>{
-    if (compData.nextRender)
-      setIsOpen(show);
-  },[show]);
-  //dropdownMode
-  useMemo(()=>{
-    const mode = dropdownMode;
-    if (mode === 'close') {
-      setIsOpen(false);
-    } else if (mode === 'closeInactive' && route) {
-      setIsOpen(route.fullPath.includes(route));
-    }  else if (mode === 'openActive' && !isOpen && route) {
-      setIsOpen(route.fullPath.includes(route));
+    if (dropdownMode === 'close') {
+      setIsOpen(false)
+    } else if (dropdownMode === 'closeInactive' && route) {
+      setIsOpen(path.includes(route))
+    } else if (dropdownMode !== 'noAction' && !isOpen && route) {
+      setIsOpen(path.includes(route))
     }
-  },[route]);
+  }, [path])
 
-  //effect
-  useEffect(() => {
-    compData.nextRender = true;
-  }, []);
 
   //render
 
   const classes = classNames(
-    className,
     'c-sidebar-nav-dropdown',
-    isOpen ? 'c-show' : null
-  );
-
-  let iconProps;
-  if (typeof icon === 'object')
-    iconProps = icon;
-  else
-    iconProps = {name:icon};
-
+    isOpen && 'c-show',
+    className
+  )
+      
   const iconClasses = classNames(
     'c-sidebar-nav-icon',
-    fontIcon ? fontIcon : null
-  );
+    fontIcon
+  )
 
   return (
-    <Tag className={classes} {...attributes} ref={innerRef}>
-      <a className="c-sidebar-nav-dropdown-toggle" onClick={onClick}>
-        {icon ? <CIcon className="c-sidebar-nav-icon" {...iconProps} /> : ''}
-        {fontIcon ? <i className={iconClasses}></i> : ''}
-        {name}
+    <li className={classes} {...attributes} ref={innerRef}>
+      <a className="c-sidebar-nav-dropdown-toggle" onClick={() => setIsOpen(!isOpen)} >
+        { icon && <CIcon {...iconProps(icon)} /> }
+        { fontIcon && <i className={iconClasses}/> }
+        { name }
       </a>
-      <ul className="c-sidebar-nav-dropdown-items" onClick={onItemClick}>
+      <ul className="c-sidebar-nav-dropdown-items">
         {children}
       </ul>
-    </Tag>
-  );
-
+    </li>
+  )
 }
 
 CSidebarNavDropdown.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
   children: PropTypes.node,
   //
@@ -117,13 +93,8 @@ CSidebarNavDropdown.propTypes = {
   icon: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   fontIcon: PropTypes.string,
   show: PropTypes.bool,
-  toggle: PropTypes.func,
-  toggleItem: PropTypes.func,
   route: PropTypes.string
 };
 
-CSidebarNavDropdown.defaultProps = {
-  tag: 'li'
-};
 
-export default CSidebarNavDropdown;
+export default CSidebarNavDropdown

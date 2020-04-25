@@ -89,7 +89,6 @@ export {default as CSidebarBrand} from './CSidebarBrand';
 export {default as CSidebarNavDivider} from './CSidebarNavDivider';
 export {default as CSidebarNavTitle} from './CSidebarNavTitle';
 export {default as CSidebarNavItem} from './CSidebarNavItem';
-export {default as CSidebarNavLink} from './CSidebarNavLink';
 export {default as CSidebarNavDropdown} from './CSidebarNavDropdown';
 export {default as CSidebarFooter} from './CSidebarFooter';
 export {default as CSidebarForm} from './CSidebarForm';
