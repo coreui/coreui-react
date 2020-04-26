@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {mapToCssModules, TransitionTimeouts, TransitionStatuses, tagPropType} from './Shared/helper.js';
 import {Transition} from 'react-transition-group';
-import {Context} from './CCarouselCustom';
+import {Context} from './CCarousel';
 
 //component - CoreUI / CCarouselItem
 
