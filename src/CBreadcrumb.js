@@ -131,6 +131,7 @@ CBreadcrumb.propTypes = {
 };
 
 CBreadcrumb.defaultProps = {
+  ...CBreadcrumbCustom.defaultProps,
   custom: true,
   tag: 'div',
   className: '',

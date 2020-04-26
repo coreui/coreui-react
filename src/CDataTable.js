@@ -356,7 +356,7 @@ const CDataTable = props=>{
                 <select
                   className="form-control"
                   onChange={paginationChange}
-                  value={0}
+                  value={perPageItems}
                 >
                   <option value="" disabled hidden>
                     {perPageItems}
@@ -589,6 +589,7 @@ const CDataTable = props=>{
       //v-bind={typeof pagination === 'object' ? {...pagination} : null}
       pagination ?
         <CPagination
+          custom={false}
           onClick={(e, type, n)=>{
             //alert(type, n);
             switch (type){

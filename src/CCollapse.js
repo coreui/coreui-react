@@ -74,6 +74,7 @@ CCollapse.propTypes = {
 };
 
 CCollapse.defaultProps = {
+  ...CCollapseCustom.defaultProps,
   toggleEvents: defaultToggleEvents,
   custom: true
 };

@@ -48,6 +48,7 @@ CDropdown.propTypes = {
 };
 
 CDropdown.defaultProps = {
+  ...CDropdownCustom.defaultProps,
   custom: true
 }
 
