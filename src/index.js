@@ -71,6 +71,7 @@ export {default as CCarouselItem} from './CCarouselItem';
 export {default as CCarouselControl} from './CCarouselControl';
 export {default as CCarouselIndicators} from './CCarouselIndicators';
 export {default as CCarouselCaption} from './CCarouselCaption';
+export {default as CCarouselInner} from './CCarouselInner';
 export {default as CCollapse} from './CCollapse';
 export {default as CTooltip} from './CTooltip';
 export {default as CBreadcrumb} from './CBreadcrumb';

@@ -1,67 +1,67 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {mapToCssModules} from './Shared/helper.js';
+import { mapToCssModules } from './Shared/helper.js';
+
+import { Context } from './CCarousel'
 
 //component - CoreUI / CCarouselControl
 
-const CCarouselControl = props=>{
+const CCarouselControl = props => {
 
   const {
     className,
     cssModule,
+    children,
     //
     innerRef,
     direction,
-    onClickHandler,
-    directionText,
     ...attributes
-  } = props;
+  } = props
 
-  const onClick = e=>{
-    e.preventDefault();
-    onClickHandler();
+  const { state, setState, itemNumber, animating } = useContext(Context)
+
+  const onClick = () => {
+    if (animating) {
+      return
+    }
+    let newIdx
+    if (direction === 'next') {
+      newIdx = itemNumber === state[1] + 1 ? 0 : state[1] + 1
+    } else {
+      newIdx = state[1] === 0 ? itemNumber - 1 : state[1] - 1
+    }
+    setState([state[1], newIdx, direction])
   }
 
   //render
 
   const anchorClasses = mapToCssModules(classNames(
-    className,
-    `carousel-control-${direction}`
-  ), cssModule);
-
-  const iconClasses = mapToCssModules(classNames(
-    `carousel-control-${direction}-icon`
-  ), cssModule);
-
-  const screenReaderClasses = mapToCssModules(classNames(
-    'sr-only'
-  ), cssModule);
+    `carousel-control-${direction}`, className,
+  ), cssModule)
 
   return (
     <a
-      {...attributes}
       className={anchorClasses}
-      role="button"
-      tabIndex="0"
+      {...attributes}
       onClick={onClick}
       ref={innerRef}
     >
-      <span className={iconClasses} aria-hidden="true" />
-      <span className={screenReaderClasses}>{directionText || direction}</span>
+      { children || <span 
+        className={`carousel-control-${direction}-icon`} 
+        aria-label={direction} 
+      />}
     </a>
-  );
-
+  )
 }
 
 CCarouselControl.propTypes = {
   className: PropTypes.string,
   cssModule: PropTypes.object,
+  children: PropTypes.node,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   direction: PropTypes.oneOf(['prev', 'next']).isRequired,
-  onClickHandler: PropTypes.func.isRequired,
-  directionText: PropTypes.string
 };
 
-export default CCarouselControl;
+export default CCarouselControl

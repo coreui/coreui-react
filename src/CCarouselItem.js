@@ -1,66 +1,96 @@
-import React, {useState, useContext} from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {mapToCssModules, TransitionTimeouts, TransitionStatuses, tagPropType} from './Shared/helper.js';
-import {Transition} from 'react-transition-group';
-import {Context} from './CCarousel';
+import React, { useState, useContext, createRef, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
+import { Transition } from 'react-transition-group'
+import { Context } from './CCarousel'
 
 //component - CoreUI / CCarouselItem
+const getIndex = (el) => Array.from(el.parentNode.children).indexOf(el)
 
-const CCarouselItem = props=>{
+const getDirection = (state) => {
+  if (state[2]) {
+    return state[2] === 'next' ? 'right' : 'left'
+  } else {
+    return state[1] > state[0] ? 'right' : 'left'
+  }
+}
+
+const CCarouselItem = props => {
 
   const {
-    tag: Tag,
     children,
     className,
     cssModule,
     //
     innerRef,
-    in: isIn,
-    slide,
-    itemProps,
-    ...transitionProps
+    ...attributes
   } = props;
 
-  const context = useContext(Context);
+  const {
+    animate,
+    state,
+    itemNumber,
+    setItemNumber,
+    animating,
+    setAnimating
+  } = useContext(Context)
 
-  const [startAnimation, setStartAnimation] = useState(false);
+  const ref = createRef()
+  innerRef && innerRef(ref)
+  const [isIn, setIsIn] = useState()
 
-  const onEnter = (node, isAppearing)=>{
-    setStartAnimation(false);
-    props.onEnter(node, isAppearing);
+  useEffect(() => {
+    if (!itemNumber) {
+      setItemNumber(ref.current.parentNode.children.length)
+    }
+    setIsIn(state[1] === getIndex(ref.current))
+  }, [state])
+
+  const onEnter = () => {
+    setAnimating(false)
   }
 
-  const onEntering = (node, isAppearing)=>{
-    const offsetHeight = node.offsetHeight;
-    setStartAnimation(true);
-    props.onEntering(node, isAppearing);
-    return offsetHeight;
+  const onEntering = (node) => {
+    const offsetHeight = node.offsetHeight
+    setAnimating(true)
+    // return offsetHeight
   }
 
-  const onExit = node=>{
-    setStartAnimation(false);
-    props.onExit(node);
+  const onExit = () => {
+    setAnimating(false)
   }
 
-  const onExiting = node=>{
-    setStartAnimation(true);
-    node.dispatchEvent(new CustomEvent('slide.bs.carousel'));
-    props.onExiting(node);
+  const onExiting = () => {
+    setAnimating(true)
   }
 
-  const onExited = node=>{
-    node.dispatchEvent(new CustomEvent('slid.bs.carousel'));
-    props.onExited(node);
+  const onExited = () => {
+    setAnimating(false)
   }
+
 
   //render
+  if (!animate || state[0] === null) {
+    const itemClasses = mapToCssModules(classNames(
+      'carousel-item',
+      isIn && 'active',
+      className,
+    ), cssModule)
+    return (
+      <div 
+        className={itemClasses} 
+        ref={ref}
+        {...attributes}
+      >
+        {children}
+      </div>
+    )
+  }
 
   return (
     <Transition
-      {...transitionProps}
-      enter={slide}
-      exit={slide}
+      timeout={600}
       in={isIn}
       onEnter={onEnter}
       onEntering={onEntering}
@@ -69,49 +99,44 @@ const CCarouselItem = props=>{
       onExited={onExited}
     >
       {(status) => {
-        const {direction} = context;
-        const isActive = (status === TransitionStatuses.ENTERED) || (status === TransitionStatuses.EXITING);
-        const directionClassName = (status === TransitionStatuses.ENTERING || status === TransitionStatuses.EXITING) &&
-          startAnimation &&
-          (direction === 'right' ? 'carousel-item-left' : 'carousel-item-right');
-        const orderClassName = (status === TransitionStatuses.ENTERING) &&
-          (direction === 'right' ? 'carousel-item-next' : 'carousel-item-prev');
+        const direction = getDirection(state)
+        const isActive = (status === 'entered') || (status === 'exiting')
+        const directionClassName = (status === 'entering' || status === 'exiting') &&
+          animating &&
+          (direction === 'right' ? 'carousel-item-left' : 'carousel-item-right')
+
+        const orderClassName = (status === 'entering') &&
+          (direction === 'right' ? 'carousel-item-next' : 'carousel-item-prev')
+
         const itemClasses = mapToCssModules(classNames(
-          className,
           'carousel-item',
           isActive && 'active',
           directionClassName,
           orderClassName,
-        ), cssModule);
+          className,
+        ), cssModule)
+
         return (
-          <Tag {...itemProps} className={itemClasses} ref={innerRef}>
+          <div 
+            className={itemClasses} 
+            ref={ref}
+            {...attributes}
+          >
             {children}
-          </Tag>
-        );
+          </div>
+        )
       }}
     </Transition>
-  );
+  )
 
 }
 
 CCarouselItem.propTypes = {
-  ...Transition.propTypes,
-  tag: tagPropType,
   children: PropTypes.node,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  in: PropTypes.bool,
-  slide: PropTypes.bool,
-  itemProps: PropTypes.object,
 };
 
-CCarouselItem.defaultProps = {
-  ...Transition.defaultProps,
-  tag: 'div',
-  timeout: TransitionTimeouts.Carousel,
-  slide: true,
-};
-
-export default CCarouselItem;
+export default CCarouselItem
