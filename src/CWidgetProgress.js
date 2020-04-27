@@ -1,18 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
-import {mapToCssModules} from './Shared/helper.js';
-//
-import CCard from './CCard';
-import CProgress from './CProgress';
-//import CCardBody from './CCardBody';
-//import CCardHeader from './CCardHeader';
-//import CCardFooter from './CCardFooter';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
+import CProgress from './CProgress'
 
 //component - CoreUI / CWidgetProgress
-
-const CWidgetProgress = props=>{
+const CWidgetProgress = props => {
 
   const {
     children,
@@ -20,36 +13,36 @@ const CWidgetProgress = props=>{
     cssModule,
     //
     header,
-    mainText,
-    smallText,
+    text,
+    footer,
     color,
     value,
-    variant,
+    inverse,
     ...attributes
   } = props;
 
-  const progress = { style: '', color: color, value: value };
-  const card = { style: '', bgColor: '' };
-
-  if (variant === 'inverse') {
-    progress.style = 'progress-white';
-    progress.color = '';
-    card.style = 'text-white';
-    card.bgColor = 'bg-' + color;
-  }
-
-  const classes = mapToCssModules(classNames(className, card.style, card.bgColor), cssModule);
-  progress.style = classNames('progress-xs my-3', progress.style);
+  const classes = mapToCssModules(classNames(
+    'card', 
+    inverse ? [color && `bg-${color}`, 'text-white'] : '',
+    className
+  ), cssModule)
 
   return (
-    <CCard {...attributes} className={classes} custom={false}>
-      <div className="h4 m-0">{header}</div>
-      <div>{mainText}</div>
-      <CProgress className={progress.style} color={progress.color} value={progress.value} />
-      <small className="text-muted">{smallText}</small>
-      <div>{children}</div>
-    </CCard>
-  );
+    <div className={classes} {...attributes}>
+      <div className="card-body">
+        { header && <div className="h4 m-0">{header}</div>}
+        { text && <div>{text}</div>}
+        {
+          children || <CProgress
+            color={!inverse ? color : ''}
+            value={value}
+            className={`progress-xs my-3 mb-0 ${inverse ? 'progress-white' : ''}`}
+          />
+        }
+        { footer && <small className="text-muted">{footer}</small>}
+      </div>
+    </div>
+  )
 
 }
 
@@ -60,20 +53,15 @@ CWidgetProgress.propTypes = {
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   header: PropTypes.string,
-  mainText: PropTypes.string,
-  smallText: PropTypes.string,
+  text: PropTypes.string,
+  footer: PropTypes.string,
   color: PropTypes.string,
-  value: PropTypes.string,
-  variant: PropTypes.string,
+  value: PropTypes.number,
+  inverse: PropTypes.bool,
 };
 
 CWidgetProgress.defaultProps = {
-  header: '89.9%',
-  mainText: 'Widget title',
-  smallText: 'Widget helper text',
-  // color: '',
-  value: '25',
-  variant: ''
+  value: 25
 };
 
 export default CWidgetProgress;

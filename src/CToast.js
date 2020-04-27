@@ -1,150 +1,125 @@
-import React, {useState} from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
-import Slot from './Shared/Slot';
-import CToastHeader from './CToastHeader';
-import CToastBody from './CToastBody';
-import CButtonClose from './CButtonClose';
-import CFade from './CFade';
-import style from './CToast.module.css';
+import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
+import CFade from './CFade'
+import style from './CToast.module.css'
+
+export const Context = React.createContext({})
 
 //component - CoreUI / CToast
-
-const CToast = props=>{
+const CToast = props => {
 
   const {
-    tag: Tag,
     className,
     cssModule,
-    custom,
+    children,
     //
     innerRef,
     show,
-    header,
-    headerSlot,
     autohide,
-    closeButton,
     fade,
-    transition,
+    onStateChange,
     ...attributes
-  } = props;
+  } = props
 
-  const [shown, setShown] = useState(show);
+  const [state, setState] = useState(show)
+  const [timer, setTimer] = useState()
 
-  const transitionPar = {
-    ...CFade.defaultProps,
-    ...transition,
-    baseClass: fade ? transition.baseClass : '',
-    timeout: fade ? transition.timeout : 0,
-  };
+  useEffect(() => {
+    setState(show)
+  }, [show])
 
-  let timeout;
+  useEffect(() => {
+    if (state === true && autohide) {
+      setAutohide()
+    }
+    onStateChange && onStateChange(state)
+    return () => clearTimeout(timer)
+  }, [state])
 
-  const setAutohide = ()=>{
-    timeout = setTimeout(()=>{
-      setShown(false);
-    }, autohide);
+  const setAutohide = () => {
+    clearTimeout(timer)
+    setTimer(setTimeout(() => {
+      startAutohide()
+    }, autohide))
   }
 
-  const onMouseOver = ()=>{
-    clearTimeout(timeout);
-  }
-  const onMouseOut = ()=>{
-    if (autohide)
-      setAutohide();
-  }
-  const onClick = ()=>{
-    setShown(false);
+  const onMouseOver = () => {
+    if (state !== 'closing') {
+      state !== true && setState(true)
+      clearTimeout(timer)
+    }
   }
 
-  if (autohide){
-    setAutohide();
+  const onMouseOut = () => {
+    if (autohide && state !== 'closing') {
+      setAutohide()
+    }
+  }
+
+  const startAutohide = () => {
+    setState('hiding')
+    clearTimeout(timer)
+    setTimer(setTimeout(() => {
+      setState(false)
+    }, 2000))
+  }
+
+  const close = () => {
+    setState(fade ? 'closing' : false)
+    clearTimeout(timer)
+    fade && setTimer(setTimeout(() => {
+      setState(false)
+    }, 500))
   }
 
   // render
-
   const classes = mapToCssModules(classNames(
-    className,
-    'toast',
-    'mytoast',
-  ), Object.assign(style, cssModule));
+    'toast', className
+  ), cssModule)
 
-  if (!shown)
-    return null;
-
-  if (!custom)
-    return (
-      <CFade
-        {...attributes}
-        {...transitionPar}
-        tag={Tag}
-        className={classes}
-        in={true}
-        role="alert"
-        innerRef={innerRef}
-      >
-        <Tag
-          {...attributes}
-          aria-live="assertive"
-          aria-atomic="true"
-          onMouseOver={onMouseOver}
-          onMouseOut={onMouseOut}
-          className={classes}
-        >
-          <CToastHeader>
-          {
-            headerSlot || header?
-              <Slot content={headerSlot}>
-                <strong className="mr-auto">{header}</strong>
-              </Slot>:''
-          }
-          {
-            closeButton?
-              <CButtonClose className='ml-2 mb-1' onClick={onClick}/>:''
-          }
-          </CToastHeader>
-          <CToastBody>
-            {attributes.children}
-          </CToastBody>
-        </Tag>
-      </CFade>
-    );
+  const fadeClasses = classNames(
+    fade && style[`${state === 'hiding' ? 'slowfade' : 'fade' }`]
+  )
 
   return (
-    <Tag {...attributes} onMouseOver={onMouseOver} onMouseOut={onMouseOut} className={classes} ref={innerRef} />
-  );
-
+    <Context.Provider value={{ close }}>
+      {
+        state && <CFade
+          tag={'div'}
+          className={classes}   
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+          {...attributes}
+          in={state === true}
+          onMouseOver={onMouseOver}
+          onMouseOut={onMouseOut}
+          baseClass={fadeClasses}
+          innerRef={innerRef}
+        >
+          {children}
+        </CFade>
+      }  
+    </Context.Provider>
+  )
 }
 
 CToast.propTypes = {
-  tag: tagPropType,
   className: PropTypes.string,
   cssModule: PropTypes.object,
-  custom: PropTypes.bool,
+  children: PropTypes.node,
   //
-  headerSlot: PropTypes.node,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
   show: PropTypes.bool,
-  header: PropTypes.string,
   autohide: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
-  closeButton: PropTypes.bool,
   fade: PropTypes.bool,
-  transition: PropTypes.shape(CFade.propTypes),
-  role: PropTypes.string
+  onStateChange: PropTypes.func
 };
 
 CToast.defaultProps = {
-  custom: true,
-  tag: 'div',
-  autohide: 1500,
-  closeButton: true,
-  fade: true,
-  transition: {
-    ...CFade.defaultProps,
-    unmountOnExit: true,
-  },
-  role: 'alert',
+  fade: true
 };
 
-export default CToast;
+export default CToast

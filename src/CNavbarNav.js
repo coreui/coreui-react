@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { tagPropType, mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CNavbarNav
 
-const CNavbarNav = props=>{
+const CNavbarNav = props => {
 
   const {
     tag: Tag,
@@ -14,25 +14,22 @@ const CNavbarNav = props=>{
     //
     innerRef,
     ...attributes
-  } = props;
+  } = props
 
   //render
 
   const classes = mapToCssModules(classNames(
-    className,
-    'navbar-nav',
-    'nav'
-  ), cssModule);
+    'navbar-nav', className
+  ), cssModule)
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
-  );
+    <Tag className={classes} {...attributes} ref={innerRef}/>
+  )
 
 }
 
 CNavbarNav.propTypes = {
   tag: tagPropType,
-  children: PropTypes.node,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
@@ -43,4 +40,4 @@ CNavbarNav.defaultProps = {
   tag: 'ul'
 };
 
-export default CNavbarNav;
+export default CNavbarNav

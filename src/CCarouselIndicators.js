@@ -1,53 +1,49 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {mapToCssModules} from './Shared/helper.js';
+import React, { useContext } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
 
+import { Context } from './CCarousel'
 //component - CoreUI / CCarouselIndicators
 
-const CCarouselIndicators = props=>{
+const CCarouselIndicators = props => {
 
   const {
     className,
     cssModule,
     //
     innerRef,
-    items,
-    activeIndex,
-    onClickHandler,
-    itemProps,
+    indicatorsClass,
     ...attributes
-  } = props;
+  } = props
+
+  const { itemNumber, state, setState, animating } = useContext(Context)
 
   //render
-
   const listClasses = mapToCssModules(classNames(
-    className,
-    'carousel-indicators'
-  ), cssModule);
+    indicatorsClass, className
+  ), cssModule)
 
-  const indicators = items.map((item, idx) => {
-    const indicatorClasses = mapToCssModules(classNames(
-      { 'active': activeIndex === idx }
-    ), cssModule);
+  const indicators = Array.from({length: itemNumber}, (_, i) => i).map(key => {
     return (
       <li
-        key={`${item.key || Object.values(item).join('')}`}
-        onClick={(e) => {
-          e.preventDefault();
-          onClickHandler(idx);
+        key={`indicator${key}`}
+        onClick={() => {
+          !animating && key !== state[1] && setState([state[1], key])
         }}
-        className={indicatorClasses}
-        {...itemProps}
-      />);
-  });
+        className={state[1] === key ? 'active' : ''}
+      />)
+  })
 
   return (
-    <ol {...attributes} className={listClasses} ref={innerRef}>
+    <ol 
+      className={listClasses}
+      {...attributes}
+      ref={innerRef}
+    >
       {indicators}
     </ol>
-  );
-
+  )
 }
 
 CCarouselIndicators.propTypes = {
@@ -55,10 +51,11 @@ CCarouselIndicators.propTypes = {
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  items: PropTypes.array.isRequired,
-  activeIndex: PropTypes.number.isRequired,
-  onClickHandler: PropTypes.func.isRequired,
-  itemProps: PropTypes.object
+  indicatorsClass: PropTypes.string
 };
 
-export default CCarouselIndicators;
+CCarouselIndicators.defaultProps = {
+  indicatorsClass: 'carousel-indicators'
+};
+
+export default CCarouselIndicators

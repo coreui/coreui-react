@@ -21,8 +21,8 @@ const CCardGroup = props=>{
   //render
 
   const classes = mapToCssModules(classNames(
-    className,
-    `card-${columns ? 'columns' : deck ? 'deck' : 'group' }`
+    `card-${columns ? 'columns' : deck ? 'deck' : 'group' }`,
+    className
   ), cssModule)
 
   return (

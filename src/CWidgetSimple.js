@@ -1,18 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
-import {mapToCssModules} from './Shared/helper.js';
-//
-import CCard from './CCard';
-//import CProgress from './CProgress';
-import CCardBody from './CCardBody';
-//import CCardHeader from './CCardHeader';
-//import CCardFooter from './CCardFooter';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CWidgetSimple
-
-const CWidgetSimple = props=>{
+const CWidgetSimple = props => {
 
   const {
     children,
@@ -20,45 +12,24 @@ const CWidgetSimple = props=>{
     cssModule,
     //
     header,
-    mainText,
-    color,
-    variant,
+    text,
     ...attributes
   } = props;
 
-  const card = { style: '', bgColor: '' };
-
-  if (variant === 'inverse') {
-    card.style = 'text-white';
-    card.bgColor = 'bg-' + color;
-  }
-
-  const classes = mapToCssModules(classNames(className, card.style, card.bgColor), cssModule);
+  const classes = mapToCssModules(classNames(
+    'card', className
+  ), cssModule)
 
   return (
-    <CCard {...attributes} className={classes}>
-      <CCardBody className="text-center">
-        {/*
-        <CButtonGroup className="float-right">
-          <CButtonDropdown id='card1' isOpen={this.state.card1} toggle={() => { this.setState({ card1: !this.state.card1 }); }}>
-            <CDropdownToggle caret className="p-0" color="transparent">
-              <i className="icon-settings"></i>
-            </CDropdownToggle>
-            <CDropdownMenu right>
-              <CDropdownItem>Action</CDropdownItem>
-              <CDropdownItem>Another action</CDropdownItem>
-              <CDropdownItem>Something else here</CDropdownItem>
-            </CDropdownMenu>
-          </CButtonDropdown>
-        </CButtonGroup>
-        */}
-        <div className="text-muted small text-uppercase font-weight-bold">{header}</div>
-        <div className="text-value-xl py-3">{mainText}</div>
-        {children}
-      </CCardBody>
-    </CCard>
-  );
-
+    <div className={classes} {...attributes}>
+      <div className="card-body text-center">
+        { header && <div className="text-muted small text-uppercase font-weight-bold">
+          {header}</div>}
+        { text && <div className="h2 py-3">{text}</div>}
+        { children }
+      </div>
+    </div>
+  )
 }
 
 CWidgetSimple.propTypes = {
@@ -68,16 +39,7 @@ CWidgetSimple.propTypes = {
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   header: PropTypes.string,
-  mainText: PropTypes.string,
-  color: PropTypes.string,
-  variant: PropTypes.string,
+  text: PropTypes.string
 };
 
-CWidgetSimple.defaultProps = {
-  header: 'title',
-  mainText: 'text',
-  color: '',
-  variant: '',
-};
-
-export default CWidgetSimple;
+export default CWidgetSimple

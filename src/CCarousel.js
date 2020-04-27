@@ -1,129 +1,90 @@
-import React, {useState, useRef} from 'react';
-import PropTypes from 'prop-types';
-import CCarouselCustom from './CCarouselCustom';
-import CCarouselItem from './CCarouselItem';
-import CCarouselControl from './CCarouselControl';
-import CCarouselIndicators from './CCarouselIndicators';
-import CCarouselCaption from './CCarouselCaption';
+import React, {useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
+
+export const Context = React.createContext({});
 
 //component - CoreUI / CCarousel
 
-const CCarousel = props=>{
+const CCarousel = props => {
 
   const {
+    className,
+    cssModule,
     //
-    custom,
-    autoPlay,
-    indicators,
-    controls,
-    items,
-    goToIndex
+    innerRef,
+    autoSlide,
+    activeIndex,
+    animate,
+    onSlideChange,
+    ...attributes
   } = props;
 
-  const [activeIndex, setActiveIndex] = useState(props.defaultOpen || false);
+  const [state, setState] = useState([null, activeIndex])
+  const [itemNumber, setItemNumber] = useState(null)
+  const [animating, setAnimating] = useState()
 
-  const fields = useRef({animating: false}).current;
+  useEffect(() => {
+    setState([state[1], activeIndex])
+  }, [activeIndex])
 
-  if (!custom){
+  const [slide, setSlide] = useState()
 
-    const onExiting = ()=>{
-      fields.animating = true;
-    }
-
-    const onExited = ()=>{
-      fields.animating = false;
-    }
-
-    const next = ()=>{
-      if (fields.animating) return;
-      const nextIndex = activeIndex === props.items.length - 1 ? 0 : activeIndex + 1;
-      setActiveIndex(nextIndex);
-    }
-
-    const previous = ()=>{
-      if (fields.animating) return;
-      const nextIndex = activeIndex === 0 ? props.items.length - 1 : activeIndex - 1;
-      setActiveIndex(nextIndex);
-    }
-
-    const toIndex = newIndex=>{
-      if (fields.animating) return;
-      setActiveIndex(newIndex);
-    }
-
-    //render
-
-    const slides = items.map((item) => {
-      return (
-        <CCarouselItem
-          onExiting={onExiting}
-          onExited={onExited}
-          key={item.src}
-        >
-          <img className="d-block w-100" src={item.src} alt={item.altText} />
-          <CCarouselCaption captionText={item.caption} captionHeader={item.header || item.caption} />
-        </CCarouselItem>
-      );
-    });
-
-    return (
-      <CCarouselCustom
-        activeIndex={activeIndex}
-        next={next}
-        previous={previous}
-        ride={autoPlay ? 'carousel' : undefined}
-        {...props}
-      >
-        {indicators && <CCarouselIndicators
-          items={items}
-          activeIndex={props.activeIndex || activeIndex}
-          onClickHandler={goToIndex || toIndex}
-        />}
-        {slides}
-        {controls && <CCarouselControl
-          direction="prev"
-          directionText="Previous"
-          onClickHandler={props.previous || previous}
-        />}
-        {controls && <CCarouselControl
-          direction="next"
-          directionText="Next"
-          onClickHandler={props.next || next}
-        />}
-      </CCarouselCustom>
-    );
-
+  const setNext = () => {
+    reset()
+    autoSlide && setSlide(setTimeout(() => nextItem(), autoSlide))
+  }
+  const reset = () => clearTimeout(slide)
+  const nextItem = () => {
+    setState([state[1], itemNumber === state[1] + 1 ? 0 : state[1] + 1, 'next'])
   }
 
-  return (
-    <CCarouselCustom {...props}/>
-  );
+  useEffect(() => {
+    onSlideChange && onSlideChange(state[1])
+    setNext()
+    return () => reset()
+  }, [state])
 
+
+  const classes = mapToCssModules(classNames('carousel', className), cssModule)
+  return (
+    <div
+      className={classes}
+      onMouseEnter={reset}
+      onMouseLeave={setNext}
+      {...attributes}
+      ref={innerRef}
+    >
+      <Context.Provider value={{
+        state,
+        setState,
+        animate,
+        itemNumber,
+        setItemNumber,
+        animating,
+        setAnimating
+      }}>
+        {props.children}
+      </Context.Provider>
+    </div>
+  )
 }
 
 CCarousel.propTypes = {
-  ...CCarouselCustom.propTypes,
-  //
-  custom: PropTypes.bool,
+  cssModule: PropTypes.object,
+  className: PropTypes.string,
+  children: PropTypes.array,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  items: PropTypes.array,
-  indicators: PropTypes.bool,
-  defaultOpen: PropTypes.bool,
-  controls: PropTypes.bool,
-  autoPlay: PropTypes.bool,
   activeIndex: PropTypes.number,
-  next: PropTypes.func,
-  previous: PropTypes.func,
-  goToIndex: PropTypes.func
+  autoSlide: PropTypes.number,
+  animate: PropTypes.bool,
+  onSlideChange: PropTypes.func
 };
 
 CCarousel.defaultProps = {
-  ...CCarouselCustom.defaultProps,
-  custom: true,
-  controls: true,
-  indicators: true,
-  autoPlay: true,
+  activeIndex: 0
 };
 
-export default CCarousel;
+export default CCarousel

@@ -1,12 +1,6 @@
-.mytoast {
-  opacity: inherit;
-}
-.fade-enter-active {
+.fade {
   transition: opacity .5s;
 }
-.fade-leave-active {
+.slowfade {
   transition: opacity 2s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
 }

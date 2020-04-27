@@ -1,26 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
 
-import {mapToCssModules} from './Shared/helper.js';
-//
-import CCard from './CCard';
-//import CProgress from './CProgress';
-import CCardBody from './CCardBody';
-import CCardHeader from './CCardHeader';
-import Slot from './Shared/Slot.js';
-import CCol from './CCol';
+//component - CoreUI / CWidgetBrand
 
-//component - CoreUI / CWidget3
-
-const CWidgetBrand = props=>{
+const CWidgetBrand = props => {
 
   const {
     children,
     className,
     cssModule,
     //
-
     color,
     rightHeader,
     rightFooter,
@@ -29,63 +20,49 @@ const CWidgetBrand = props=>{
     addHeaderClasses,
     bodySlot,
     ...attributes
-  } = props;
+  } = props
 
   // render
 
-  const classes = mapToCssModules(
-    classNames(
-      className,
-      "content-center text-white p-0",
-      color ? `bg-${color}` : '',
+  const headerClasses = mapToCssModules(classNames(
+      'card-header content-center text-white p-0',
+      color && `bg-${color}`,
       addHeaderClasses
-    ),
-    cssModule
-  );
+  ),cssModule)
 
   return (
-    <CCard {...attributes}>
-      <CCardHeader
-        className={classes}
-      >
-        <Slot content={children} />
-      </CCardHeader>
-      <Slot content={bodySlot}>
-        <CCardBody className="row text-center">
-          <CCol>
+    <div className={`card ${className}`} {...attributes}>
+      <div className={headerClasses}>
+        {children}
+      </div>
+      { bodySlot ||
+        <div className="card-body row text-center">
+          <div className="col">
             {
-              rightHeader?
-                <div className="text-value-lg">
-                  {rightHeader}
-                </div>:''
+              rightHeader && <div className="text-value-lg">{rightHeader}</div>
             }
             {
-              rightFooter?
-                <div className="text-uppercase text-muted small">
-                  {rightFooter}
-                </div>:''
+              rightFooter && 
+              <div className="text-uppercase text-muted small">
+                {rightFooter}
+              </div>
             }
-          </CCol>
+          </div>
           <div className="c-vr"></div>
-          <CCol>
+          <div className="col">
             {
-              leftHeader?
-                <div className="text-value-lg">
-                  {rightHeader}
-                </div>:''
+              leftHeader && <div className="text-value-lg">{leftHeader}</div>
             }
             {
-              leftFooter?
-                <div className="text-uppercase text-muted small">
-                  {rightFooter}
-                </div>:''
+              leftFooter && <div className="text-uppercase text-muted small">
+                {leftFooter}
+              </div>
             }
-          </CCol>
-        </CCardBody>
-      </Slot>
-    </CCard>
+          </div>
+        </div>
+      }
+    </div>
   )
-
 }
 
 CWidgetBrand.propTypes = {
@@ -94,8 +71,6 @@ CWidgetBrand.propTypes = {
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  //dataBox: PropTypes.func,
-  //old
   color: PropTypes.string,
   rightHeader: PropTypes.string,
   rightFooter: PropTypes.string,
@@ -105,8 +80,4 @@ CWidgetBrand.propTypes = {
   bodySlot: PropTypes.node
 };
 
-CWidgetBrand.defaultProps = {
-  //dataBox: () => ({ variant: 'facebook', friends: '-', feeds: '-' }),
-};
-
-export default CWidgetBrand;
+export default CWidgetBrand

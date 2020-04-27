@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { mapToCssModules } from './Shared/helper.js'
 
-//component - CoreUI / CCarouselCaption
+//component - CoreUI / CCarouselInner
 
-const CCarouselCaption = props => {
+const CCarouselInner = props => {
 
   const {
     cssModule,
@@ -18,7 +18,7 @@ const CCarouselCaption = props => {
   //render
 
   const classes = mapToCssModules(classNames(
-    'carousel-caption',
+    'carousel-inner',
     className
   ), cssModule)
 
@@ -31,11 +31,11 @@ const CCarouselCaption = props => {
   )
 }
 
-CCarouselCaption.propTypes = {
+CCarouselInner.propTypes = {
   cssModule: PropTypes.object,
   className: PropTypes.string,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string])
 };
 
-export default CCarouselCaption
+export default CCarouselInner

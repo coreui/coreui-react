@@ -1,20 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {mapToCssModules, tagPropType} from './Shared/helper.js';
-
-const getExpandClass = expand=>{
-  if (expand === false) {
-    return false;
-  } else if (expand === true || expand === 'xs') {
-    return 'navbar-expand';
-  }
-  return `navbar-expand-${expand}`;
-};
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules, tagPropType } from './Shared/helper.js'
 
 //component - CoreUI / CNavbar
 
-const CNavbar = props=>{
+const CNavbar = props => {
 
   const {
     tag: Tag,
@@ -28,25 +19,24 @@ const CNavbar = props=>{
     sticky,
     color,
     ...attributes
-  } = props;
+  } = props
 
   //render
 
   const classes = mapToCssModules(classNames(
-    className,
-    'navbar',
-    getExpandClass(expandable),
+    'navbar', className,
     light ? 'navbar-light' : 'navbar-dark',
     {
+      [`navbar-expand${expandable===true ? '': `-${expandable}`}`]: expandable,
       [`bg-${color}`]: color,
       [`fixed-${fixed}`]: fixed,
-      [`sticky-${sticky}`]: sticky,
+      'sticky-top': sticky
     }
-  ), cssModule);
+  ), cssModule)
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
-  );
+    <Tag className={classes} {...attributes} ref={innerRef}/>
+  )
 
 }
 
@@ -58,14 +48,13 @@ CNavbar.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   light: PropTypes.bool,
   color: PropTypes.string,
-  fixed: PropTypes.string,
-  sticky: PropTypes.string,
+  fixed: PropTypes.oneOf(['', 'top', 'bottom']),
+  sticky: PropTypes.bool,
   expandable: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 };
 
 CNavbar.defaultProps = {
-  tag: 'nav',
-  expandable: false,
+  tag: 'nav'
 };
 
 export default CNavbar;

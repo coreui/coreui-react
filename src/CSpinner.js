@@ -1,66 +1,59 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { tagPropType, mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CSpinner
 
-const CSpinner = props=>{
+const CSpinner = props => {
 
   const {
     tag: Tag,
-    children,
     className,
     cssModule,
     //
     innerRef,
-    variant,
+    grow,
     size,
     color,
     ...attributes
-  } = props;
+  } = props
 
   //render
+  const type = grow ? 'grow' : 'border'
 
-  const classes = mapToCssModules(
-    classNames(
-      className,
-      `spinner-${variant}`,
-      size ? `spinner-${variant}-${size}` : false,
-      color ? `text-${color}` : false
-    ),
-    cssModule
-  );
+  const classes = mapToCssModules(classNames(
+    `spinner-${type}`,
+    size && `spinner-${type}-${size}`,
+    color && `text-${color}`,
+    className
+  ), cssModule)
 
   return (
-    <Tag {...attributes} className={classes} role="status" ref={innerRef}>
-      {
-        children &&
-        <span className={mapToCssModules('sr-only', cssModule)}>
-          {children}
-        </span>
-      }
-    </Tag>
-  );
-
+    <Tag 
+      className={classes} 
+      ariaHidden="false" 
+      ariaLabel="Loading" 
+      role="status" 
+      {...attributes}
+      ref={innerRef}
+    />
+  )
 }
 
 CSpinner.propTypes = {
   tag: tagPropType,
-  children: PropTypes.string,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  variant: PropTypes.string,
+  grow: PropTypes.bool,
   size: PropTypes.string,
   color: PropTypes.string
 };
 
 CSpinner.defaultProps = {
-  tag: 'div',
-  variant: 'border',
-  children: 'Loading...'
+  tag: 'div'
 };
 
-export default CSpinner;
+export default CSpinner

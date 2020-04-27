@@ -1,42 +1,34 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 //component - CoreUI / CSidebarNavTitle
 
-const CSidebarNavTitle = props=>{
+const CSidebarNavTitle = props => {
 
   const {
-    tag: Tag,
     className,
     //
     innerRef,
     ...attributes
-  } = props;
+  } = props
 
   //render
-
   const classes = classNames(
-    className,
-    'c-sidebar-nav-title'
-  );
+    'c-sidebar-nav-title',
+    className
+  )
 
   return (
-    <Tag className={classes} {...attributes} ref={innerRef} />
-  );
-
+    <li className={classes} {...attributes} ref={innerRef}/>
+  )
 }
 
 CSidebarNavTitle.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  children: PropTypes.node,
   className: PropTypes.string,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string])
 };
 
-CSidebarNavTitle.defaultProps = {
-  tag: 'li'
-};
 
-export default CSidebarNavTitle;
+export default CSidebarNavTitle

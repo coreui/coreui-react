@@ -1,63 +1,39 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
-//import {Context} from './CDropdownCustom';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { tagPropType, mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CToggler
 
-const CToggler = props=>{
+const CToggler = props => {
 
   const {
     tag: Tag,
     children,
     className,
     cssModule,
-    custom,
     //
     innerRef,
-    toggle,
     inHeader,
     inNavbar,
     ...attributes
   } = props;
 
-  //const context = useContext(Context);
-
-  //events
-  const onClick = e=>{
-    e.preventDefault();
-    //if (context.toggle)
-    //  context.toggle();
-    if (toggle)
-      toggle(e);
-  }
+  const typeAttr = Tag === 'button' ? { type: 'button' } : null
+  const type = inNavbar ? 'navbar' : inHeader ? 'c-header' : null 
+  const togglerClass = type ? `${type}-toggler` : ''
+  const iconClass = type ? `${togglerClass}-icon` : ''
 
   //render
-
-  const togglerType = inNavbar ? 'navbar' : inHeader ? 'header' : null;
-
   const classes = mapToCssModules(classNames(
-    className,
-    togglerType ? `c-${togglerType}-toggler` : null,
-  ), cssModule);
-
-  if (!custom){
-    const classesTrigger = mapToCssModules(classNames(
-      togglerType ? `c-${togglerType}-toggler-icon` : null,
-    ), cssModule);
-    return (
-      <Tag {...attributes} className={classes} onClick={onClick}>
-        <span className={classesTrigger} />
-      </Tag>
-    );
-  }
+    togglerClass, className,
+  ), cssModule)
 
   return (
-    <Tag {...attributes} className={classes} onClick={onClick} ref={innerRef}>
-      {children}
+    <Tag className={classes} {...typeAttr} {...attributes} ref={innerRef}>
+      {children || <span className={iconClass}/>}
     </Tag>
-  );
+  )
 
 }
 
@@ -66,19 +42,14 @@ CToggler.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   cssModule: PropTypes.object,
-  custom: PropTypes.bool,
   //
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
   inHeader: PropTypes.bool,
   inNavbar: PropTypes.bool,
-  type: PropTypes.string,
-  toggle: PropTypes.func
 };
 
 CToggler.defaultProps = {
-  custom: true,
-  tag: 'button',
-  type: 'button'
+  tag: 'button'
 };
 
-export default CToggler;
+export default CToggler

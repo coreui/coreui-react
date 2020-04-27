@@ -1,44 +1,56 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {mapToCssModules} from './Shared/helper.js';
-import CLink from './CLink';
+import React, { useContext, useState, createRef, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import CLink from './CLink'
 
-//component - CoreUI / CNavLink
+import { Context } from './CTabs'
 
-const CNavLink = props=>{
+const getIndex = (el) => Array.from(el.parentNode.children).indexOf(el)
+
+const getState = ({ current: el }) => {
+  const hasSiblings = el.parentElement.childNodes.length > 1
+  return el.dataset.id || getIndex(hasSiblings ? el : el.parentElement)
+}
+
+const CNavLink = props => {
 
   const {
+    innerRef,
     className,
-    cssModule,
-    //
-    ...attributes
-  } = props;
+    onClick,
+    ...rest
+  } = props
 
-  //render
+  const tabState = useContext(Context)
+  const actTab = (tabState || {}).active
+  const ref = createRef()
+  innerRef && innerRef(ref)
+  const [active, setActive] = useState()
 
-  const classes = mapToCssModules(classNames(
-    className,
-    'nav-link',
-  ), cssModule);
+  useEffect(() => {
+    typeof actTab !== 'undefined' && setActive(getState(ref) === actTab)
+  }, [actTab])
+
+  const click = (e) => {
+    onClick && onClick(e)
+    tabState && tabState.setActiveTab(getState(ref))
+  }
 
   return (
-    <CLink {...attributes} className={classes} />
-  );
-
+    <CLink 
+      active={active}
+      {...rest}
+      innerRef={ref}
+      onClick={click} 
+      className={['nav-link', className]}
+    />
+  )
 }
 
 CNavLink.propTypes = {
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  onClick: PropTypes.func,
-  href: PropTypes.string,
-  to: PropTypes.string
+  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
+  onClick: PropTypes.func
 };
 
-CNavLink.defaultProps = {
-};
-
-export default CNavLink;
+export default CNavLink
