@@ -1,77 +1,42 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
-import {mapToCssModules} from './Shared/helper.js';
-//
-import CCard from './CCard';
-import CCardBody from './CCardBody';
-import CCardFooter from './CCardFooter';
-import { CIcon } from '@coreui/icons-react';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CWidgetIcon
 
-const CWidgetIcon = props=>{
+const CWidgetIcon = props => {
 
   const {
     className,
     cssModule,
+    children,
     //
     header,
-    mainText,
-    icon,
+    text,
+    iconPadding,
     color,
-    footer,
-    link,
-    variant,
     ...attributes
   } = props;
 
-  const padding = (variant === '0' ? { card: 'p-3', icon: 'p-3' } : (variant === '1' ? {
-    card: 'p-0', icon: 'p-4', lead: 'pt-3',
-  } : { card: 'p-0', icon: 'p-4 px-5', lead: 'pt-3' }));
-
-  const card = { style: 'd-flex', color: color, icon: icon, classes: '' };
-  card.classes = mapToCssModules(classNames(className, card.style, padding.card, 'align-items-center'), cssModule);
-
-  const lead = { style: 'text-value', color: color, classes: '' };
-  lead.classes = classNames(lead.style, 'text-' + card.color);
-
-  const blockIcon = function (icon) {
-    const classes = classNames('bg-' + card.color, 'text-white', padding.icon, 'mr-3 float-left');
-    return <div className={classes}><CIcon name={icon} /></div>
-  };
-
-  const cardFooter = function () {
-    if (footer) {
-      return (
-        <CCardFooter className="px-3 py-2">
-          <a className="align-items-center btn-block d-flex justify-content-between text-muted" href={link}>
-            <span className="small font-weight-bold">
-              View More
-            </span>
-            <CIcon className="float-right" name="cil-chevron-right" size="lg" />
-          </a>
-        </CCardFooter>
-      );
-    }
-  };
+  const classes = mapToCssModules(classNames(
+    'card', color, className
+  ), cssModule)
 
   return (
-    <CCard {...attributes}>
-      <CCardBody className={card.classes} {...attributes}>
-        <div>
-          {blockIcon(card.icon)}
+    <div className={classes} {...attributes}>
+      <div className={`card-body d-flex align-items-center ${iconPadding ? 'p-3' : 'p-0'}`}>
+        <div className={`mr-3 text-white bg-${color} ${iconPadding ? 'p-3' : 'p-4'}`}>
+          {children}
         </div>
         <div>
-          <div className={lead.classes}>{header}</div>
-          <div className="text-muted text-uppercase font-weight-bold small">{mainText}</div>
+          {header && <div className={`text-value text-${color}`}>{header}</div>}
+          {text && <div className="text-muted text-uppercase font-weight-bold small">
+            {text}</div>}
         </div>
-      </CCardBody>
-      {cardFooter()}
-    </CCard>
-  );
-
+      </div>
+    </div>
+  )
 }
 
 CWidgetIcon.propTypes = {
@@ -81,21 +46,13 @@ CWidgetIcon.propTypes = {
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   header: PropTypes.string,
-  mainText: PropTypes.string,
-  icon: PropTypes.string,
-  color: PropTypes.string,
-  variant: PropTypes.string,
-  footer: PropTypes.bool,
-  link: PropTypes.string,
+  text: PropTypes.string,
+  iconPadding: PropTypes.bool,
+  color: PropTypes.string
 };
 
 CWidgetIcon.defaultProps = {
-  header: '$1,999.50',
-  mainText: 'Widget title',
-  icon: 'cil-settings',
-  color: 'primary',
-  variant: '0',
-  link: '#',
+  iconPadding: true
 };
 
-export default CWidgetIcon;
+export default CWidgetIcon
