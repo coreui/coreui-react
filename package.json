@@ -1,22 +1,18 @@
 {
   "name": "@coreui/react",
-  "version": "3.0.0-alpha.9",
+  "version": "3.0.0-alpha.10",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
-    "name": "Łukasz Holeczek",
-    "url": "http://holeczek.pl",
-    "github": "https://github.com/mrholek",
-    "twitter": "https://twitter.com/lukaszholeczek"
+    "name": "CoreUI",
+    "url": "https://coreui.io",
+    "github": "https://github.com/coreui",
+    "twitter": "https://twitter.com/core_ui"
   },
   "contributors": [
     {
-      "name": "Tomasz John",
-      "url": "https://github.com/thomasjohn"
-    },
-    {
-      "name": "Andrzej Kopański",
-      "url": "https://github.com/xidedix"
+      "name": "CoreUI Team",
+      "url": "https://github.com/orgs/coreui/people"
     }
   ],
   "homepage": "https://coreui.io",
@@ -52,7 +48,7 @@
     "react-perfect-scrollbar": "~1.5.8",
     "react-popper": "^2.2.2",
     "react-transition-group": "^4.3.0",
-    "tippy.js": "^6.2.0"
+    "tippy.js": "^6.2.2"
   },
   "peerDependencies": {
     "@coreui/coreui": "^3.0.0",
