@@ -1,40 +1,40 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-//
-import CCard from './CCard';
-import CCardBody from './CCardBody';
-import Slot from './Shared/Slot.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CWidgetDropdown
 
-const CWidgetDropdown = props=>{
+const CWidgetDropdown = props => {
 
   const {
     children,
+    className,
+    cssModule,
     //
     header,
-    text,
     color,
-    dropdownSlot,
-
-    mainText,
+    footerSlot,
+    text,
     ...attributes
   } = props;
 
-  return (
-    <CCard {...attributes} className="text-white" color={color}>
-      <CCardBody className="pb-0 d-flex justify-content-between">
-        <div>
-          {header?<div className="text-value-lg">{header}</div>:''}
-          {mainText?<div>{text}</div>:''}
-        </div>
-        <Slot content={dropdownSlot} />
-      </CCardBody>
-      {children}
-    </CCard>
-  )
+  const classes = mapToCssModules(classNames(
+    'card text-white', color && `bg-${color}`, className
+  ), cssModule)
 
+  return (
+    <div className={classes} {...attributes}>
+      <div className="card-body pb-0 d-flex justify-content-between">
+        <div>
+          { header && <div className="text-value-lg">{header}</div>}
+          { text && <div>{text}</div>}
+        </div>
+        { children }
+      </div>
+      { footerSlot }
+    </div>
+  )
 }
 
 CWidgetDropdown.propTypes = {
@@ -44,25 +44,9 @@ CWidgetDropdown.propTypes = {
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   header: PropTypes.string,
-  text: PropTypes.string,
   color: PropTypes.string,
-  toggle: PropTypes.func,
-  dropdownSlot: PropTypes.node,
-  //old
-  mainText: PropTypes.string,
-  //smallText: PropTypes.string,
-  value: PropTypes.string,
-  variant: PropTypes.string,
+  footerSlot: PropTypes.node,
+  text: PropTypes.string,
 };
 
-CWidgetDropdown.defaultProps = {
-  header: '89.9%',
-  text: 'text',
-  mainText: 'Widget title',
-  //smallText: 'Widget helper text',
-  // color: '',
-  value: '25',
-  variant: '',
-};
-
-export default CWidgetDropdown;
+export default CWidgetDropdown
