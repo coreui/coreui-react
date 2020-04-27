@@ -23,7 +23,8 @@ const CPagination = props=>{
     pageFrom,
     pageTo,
     pageMin,
-    pageMax,
+    pageMax: pageMaxProp,
+    pages,
     activePage,
     size,
     firstButtonHtml,
@@ -40,6 +41,7 @@ const CPagination = props=>{
     ...attributes
   } = props;
 
+  let pageMax;
 
   const paginationClick = (e, type, n)=>{
     onClick && onClick(e, type, n);
@@ -60,6 +62,8 @@ const CPagination = props=>{
   ), cssModule);
 
   let autoChildren;
+
+  pages ? pageMax = pageMin + pages - 1 : pageMax = pageMaxProp;
 
   if (!custom){
     let list=[];
@@ -112,6 +116,7 @@ CPagination.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   pageMin: PropTypes.number,
   pageMax: PropTypes.number,
+  pages: PropTypes.number,
   pageFrom: PropTypes.number,
   pageTo: PropTypes.number,
   activePage: PropTypes.number,
@@ -136,7 +141,7 @@ CPagination.defaultProps = {
   listTag: 'ul',
   'aria-label': 'pagination',
   pageMin: 1,
-  pageMax: 5,
+  pages: 5,
   activePage: 2,
   hideDots: true,
   firstButtonHtml: <React.Fragment>&laquo;</React.Fragment>,

@@ -119,6 +119,7 @@ CCarousel.propTypes = {
 };
 
 CCarousel.defaultProps = {
+  ...CCarouselCustom.defaultProps,
   custom: true,
   controls: true,
   indicators: true,
