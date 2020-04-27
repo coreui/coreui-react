@@ -15,17 +15,18 @@ const CBreadcrumb = props => {
     ...attributes
   } = props
 
-  const classes = mapToCssModules(classNames(className, 'breadcrumb'))
+  const classes = mapToCssModules(classNames(className, 'breadcrumb'), cssModule)
 
   //render
   return (
-    <ol {...attributes} className={classes} ref={innerRef}/>
+    <ol className={classes} {...attributes} ref={innerRef}/>
   )
 }
 
 CBreadcrumb.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
 }
