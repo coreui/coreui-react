@@ -80,7 +80,7 @@ export {default as CHeaderNav} from './CHeaderNav';
 export {default as CHeaderNavItem} from './CHeaderNavItem';
 export {default as CHeaderNavLink} from './CHeaderNavLink';
 export {default as CHeaderBrand} from './CHeaderBrand';
-export {default as CHeaderSubheader} from './CHeaderSubheader';
+export {default as CSubheader} from './CSubheader';
 export {default as CNavbarBrand} from './CNavbarBrand';
 export {default as CNavbarNav} from './CNavbarNav';
 export {default as CNavbarText} from './CNavbarText';
