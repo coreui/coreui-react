@@ -12,7 +12,7 @@ const CAlert = props => {
     className,
     cssModule,
     //
-    onShowUpdate,
+    onShowChange,
     closeButton,
     transition,
     color,
@@ -46,9 +46,7 @@ const CAlert = props => {
   let timeout = useRef(null)
 
   useEffect(() => {
-    if (onShowUpdate) {
-      onShowUpdate(isOpen)
-    }
+    onShowChange && onShowChange(isOpen)
     clearTimeout(timeout.current)
     if (typeof isOpen === 'number' && isOpen > 0) {
       timeout.current = setTimeout(() => {
@@ -81,7 +79,7 @@ CAlert.propTypes = {
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  onShowUpdate: PropTypes.func,
+  onShowChange: PropTypes.func,
   closeButton: PropTypes.bool,
   color: PropTypes.string,
   fade: PropTypes.bool,
