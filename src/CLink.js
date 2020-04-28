@@ -15,6 +15,7 @@ const CLink = props => {
     active,
     href,
     onClick,
+    disabled,
     ...rest
   } = props
 
@@ -23,14 +24,15 @@ const CLink = props => {
     if ((!href && !to) || href === '#') {
       e.preventDefault()
     }
-    onClick && onClick(e)
+    !disabled && onClick && onClick(e)
   }
 
   // render
 
   const classes = mapToCssModules(classNames(
-    className,
-    active ? 'active' : null
+    active && 'active',
+    disabled && 'disabled',
+    className
   ), cssModule)
 
   return to ? (
@@ -58,6 +60,7 @@ CLink.propTypes = {
   active: PropTypes.bool,
   href: PropTypes.string,
   onClick: PropTypes.func,
+  disabled: PropTypes.bool,
   ...NavLink.propTypes,
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   to: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.func])
