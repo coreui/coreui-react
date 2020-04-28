@@ -16,6 +16,7 @@ const CWidgetIcon = props => {
     text,
     iconPadding,
     color,
+    footerSlot,
     ...attributes
   } = props;
 
@@ -35,6 +36,7 @@ const CWidgetIcon = props => {
             {text}</div>}
         </div>
       </div>
+      { footerSlot }
     </div>
   )
 }
@@ -48,7 +50,8 @@ CWidgetIcon.propTypes = {
   header: PropTypes.string,
   text: PropTypes.string,
   iconPadding: PropTypes.bool,
-  color: PropTypes.string
+  color: PropTypes.string,
+  footerSlot: PropTypes.node
 };
 
 CWidgetIcon.defaultProps = {
