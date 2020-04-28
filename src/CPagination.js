@@ -1,148 +1,219 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
-import CPaginationItem from './CPaginationItem';
-import CPaginationLink from './CPaginationLink';
-
-export const Context = React.createContext({});
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
+import CLink from './CLink'
 
 //component - CoreUI / CPagination
-
-const CPagination = props=>{
+const CPagination = props => {
 
   const {
-    tag: Tag,
-    children,
     className,
     cssModule,
-    custom,
     //
     innerRef,
-    listClassName,
-    pageFrom,
-    pageTo,
-    pageMin,
-    pageMax,
+    addListClass,
     activePage,
     size,
-    firstButtonHtml,
-    previousButtonHtml,
-    nextButtonHtml,
-    lastButtonHtml,
-    hideDots,
-    //hideArrows,
-    //hideDoubleArrows,
-    listTag: ListTag,
-    'aria-label': label,
-    listProps,
-    onClick,
+    firstButton,
+    previousButton,
+    nextButton,
+    lastButton,
+    dots,
+    arrows,
+    doubleArrows,
+    limit,
+    pages,
+    align,
+    onActivePageChange,
     ...attributes
   } = props;
 
-
-  const paginationClick = (e, type, n)=>{
-    onClick && onClick(e, type, n);
-  }
+  useEffect(() => { 
+    pages < activePage && onActivePageChange(pages, true)
+  }, [pages])
 
   //render
-
-  const classes = mapToCssModules(classNames(
-    className
-  ), cssModule);
-
   const listClasses = mapToCssModules(classNames(
-    listClassName,
     'pagination',
-    {
-      [`pagination-${size}`]: !!size,
-    }
-  ), cssModule);
+    size && 'pagination-' + size,
+    'justify-content-' + align,
+    addListClass
+  ), cssModule)
 
-  let autoChildren;
+  const backArrowsClasses = mapToCssModules(classNames(
+    'page-item',
+    activePage === 1 && 'disabled'
+  ), cssModule)
 
-  if (!custom){
-    let list=[];
-    let pageAutoFrom = pageFrom;
-    let pageAutoTo = pageTo;
-    if (!pageFrom || !pageTo){
-      pageAutoFrom = activePage-3;
-      pageAutoFrom < pageMin ? (pageAutoFrom = pageMin) : null;
-      pageAutoTo = activePage+3;
-      pageAutoTo > pageMax ? (pageAutoTo = pageMax) : null;
+  const nextArrowsClasses = mapToCssModules(classNames(
+    'page-item',
+    activePage === pages && 'disabled'
+  ), cssModule)
+
+  const showDots = (() => {
+    return dots && limit > 4 && limit < pages
+  })()
+  const maxPrevItems = (() => {
+    return Math.floor((limit - 1) / 2)
+  })()
+  const maxNextItems = (() => {
+    return Math.ceil((limit - 1) / 2)
+  })()
+  const beforeDots = (() => {
+    return showDots && activePage > maxPrevItems + 1
+  })()
+  const afterDots = (() => {
+    return showDots && activePage < pages - maxNextItems
+  })()
+  const computedLimit = (() => {
+    return limit - afterDots - beforeDots
+  })()
+  const range = (() => {
+    return activePage + maxNextItems
+  })()
+  const lastItem = (() => {
+    return range >= pages ? pages : range - afterDots
+  })()
+  const itemsAmount = (() => {
+    return pages < computedLimit ? pages : computedLimit
+  })()
+  const items = (() => {
+    if (activePage - maxPrevItems <= 1) {
+      return Array.from({
+        length: itemsAmount
+      }, (v, i) => i + 1)
+    } else {
+      return Array.from({
+        length: itemsAmount
+      }, (v, i) => {
+        return lastItem - i
+      }).reverse()
     }
-    for (let i=pageAutoFrom;i<=pageAutoTo;i++)
-      list.push(<CPaginationItem key={i} active={activePage==i?true:false}><CPaginationLink type="number" n={i}>{i}</CPaginationLink></CPaginationItem>);
-    const pagesBefore = pageAutoFrom>pageMin;
-    const pagesAfter = pageAutoTo<pageMax;
-    autoChildren = (
-      <React.Fragment>
-        {pagesBefore&&firstButtonHtml?<CPaginationItem><CPaginationLink type="first">{firstButtonHtml}</CPaginationLink></CPaginationItem>:''}
-        {pagesBefore&&previousButtonHtml?<CPaginationItem><CPaginationLink type="previous">{previousButtonHtml}</CPaginationLink></CPaginationItem>:''}
-        {!hideDots&&pagesBefore?<CPaginationItem><CPaginationLink type="less">...</CPaginationLink></CPaginationItem>:''}
-        {list}
-        {!hideDots&&pagesAfter?<CPaginationItem><CPaginationLink type="more">...</CPaginationLink></CPaginationItem>:''}
-        {pagesAfter&&nextButtonHtml?<CPaginationItem><CPaginationLink type="next">{nextButtonHtml}</CPaginationLink></CPaginationItem>:''}
-        {pagesAfter&&lastButtonHtml?<CPaginationItem><CPaginationLink type="last">{lastButtonHtml}</CPaginationLink></CPaginationItem>:''}
-      </React.Fragment>
-    )
+  })()
+
+  const setPage = (number) => {
+    if (number !== activePage) {
+      onActivePageChange(number)
+    }
   }
 
   return (
-    <Context.Provider value={{
-      paginationClick
-    }}>
-      <Tag {...attributes} className={classes} aria-label={label} ref={innerRef}>
-        <ListTag className={listClasses} {...listProps}>
-          {autoChildren||children}
-        </ListTag>
-      </Tag>
-    </Context.Provider>
-  );
+    <nav
+      className={className}
+      aria-label="pagination"
+      {...attributes}
+      ref={innerRef}
+    >
+      <ul className={listClasses}>
+        { doubleArrows && 
+          <li className={backArrowsClasses}>
+            <CLink
+              className="page-link"
+              onClick={ () => setPage(1)}
+              aria-label="Go to first page"
+              aria-disabled={activePage === 1}
+            >
+              { firstButton }
+            </CLink>
+          </li>
+        }
+        { arrows && 
+          <li className={backArrowsClasses}>
+            <CLink
+              className="page-link"
+              onClick={ () => setPage(activePage - 1)}
+              aria-label="Go to previous page"
+              aria-disabled={activePage === 1}
+            >
+              { previousButton }
+            </CLink>
+          </li>
+        }
+        { beforeDots && 
+          <li role="separator" className="page-item disabled">
+            <span className="page-link">…</span>
+          </li>
+        } 
+        { items.map(i => {
+            return (
+            <li className={`${activePage===i ? 'active' : ''} page-item`} key={i}>
+              <CLink
+                className="page-link"
+                onClick={(e) => setPage(i, e)}
+                aria-label={activePage === i ? `Current page ${i}` : `Go to page ${i}`}
+              >{i}</CLink>
+            </li>)
+          })
+        }
+        { afterDots && 
+          <li role="separator" className="page-item disabled">
+            <span className="page-link">…</span>
+          </li>
+        }
+        { arrows && 
+          <li className={nextArrowsClasses}>
+            <CLink
+              className="page-link"
+              onClick={ () => setPage(activePage + 1)}
+              aria-label="Go to next page"
+              aria-disabled={activePage === pages}
+            >
+              { nextButton }
+            </CLink>
+          </li>
+        }
+        { doubleArrows && 
+          <li className={nextArrowsClasses}>
+            <CLink
+              className="page-link"
+              onClick={ () => setPage(pages)}
+              aria-label="Go to last page"
+              aria-disabled={activePage === pages}
+            >
+              { lastButton }
+            </CLink>
+          </li>
+        }
+      </ul>
+    </nav>
+  )
 
 }
 
 CPagination.propTypes = {
-  tag: tagPropType,
-  children: PropTypes.node,
   className: PropTypes.string,
   cssModule: PropTypes.object,
-  custom: PropTypes.bool,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  pageMin: PropTypes.number,
-  pageMax: PropTypes.number,
-  pageFrom: PropTypes.number,
-  pageTo: PropTypes.number,
   activePage: PropTypes.number,
-  hideDots: PropTypes.bool,
-  hideArrows: PropTypes.bool,
-  hideDoubleArrows: PropTypes.bool,
-  firstButtonHtml: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  previousButtonHtml: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  nextButtonHtml: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  lastButtonHtml: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  size: PropTypes.string,
-  listTag: tagPropType,
-  'aria-label': PropTypes.string,
-  listClassName: PropTypes.string,
-  listProps: PropTypes.object,
-  onClick: PropTypes.func
+  dots: PropTypes.bool,
+  arrows: PropTypes.bool,
+  doubleArrows: PropTypes.bool,
+  firstButton: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+  previousButton: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+  nextButton: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+  lastButton: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+  size: PropTypes.oneOf(['', 'sm', 'lg']),
+  align: PropTypes.oneOf(['start', 'center', 'end']),
+  addListClass: PropTypes.string,
+  limit: PropTypes.number,
+  pages: PropTypes.number,
+  onActivePageChange: PropTypes.func.isRequired
 };
 
 CPagination.defaultProps = {
-  custom: true,
-  tag: 'nav',
-  listTag: 'ul',
-  'aria-label': 'pagination',
-  pageMin: 1,
-  pageMax: 5,
-  activePage: 2,
-  hideDots: true,
-  firstButtonHtml: <React.Fragment>&laquo;</React.Fragment>,
-  previousButtonHtml: <React.Fragment>&lsaquo;</React.Fragment>,
-  nextButtonHtml: <React.Fragment>&rsaquo;</React.Fragment>,
-  lastButtonHtml: <React.Fragment>&raquo;</React.Fragment>,
+  activePage: 1,
+  dots: true,
+  arrows: true,
+  doubleArrows: true,
+  limit: 5,
+  firstButton: <>&laquo;</>,
+  previousButton: <>&lsaquo;</>,
+  nextButton: <>&rsaquo;</>,
+  lastButton: <>&raquo;</>,
+  align: 'start',
+  pages: 10
 };
 
-export default CPagination;
+export default CPagination
