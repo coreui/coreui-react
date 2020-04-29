@@ -8,7 +8,7 @@ const getIndex = (el) => Array.from(el.parentNode.children).indexOf(el)
 
 const getState = ({ current: el }) => {
   const hasSiblings = el.parentElement.childNodes.length > 1
-  return el.dataset.id || getIndex(hasSiblings ? el : el.parentElement)
+  return el.dataset.tab || getIndex(hasSiblings ? el : el.parentElement)
 }
 
 const CNavLink = props => {
