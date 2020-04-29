@@ -113,6 +113,7 @@ const CPagination = props => {
               onClick={ () => setPage(1)}
               aria-label="Go to first page"
               aria-disabled={activePage === 1}
+              disabled={activePage === 1}
             >
               { firstButton }
             </CLink>
@@ -125,6 +126,7 @@ const CPagination = props => {
               onClick={ () => setPage(activePage - 1)}
               aria-label="Go to previous page"
               aria-disabled={activePage === 1}
+              disabled={activePage === 1}
             >
               { previousButton }
             </CLink>
@@ -158,6 +160,7 @@ const CPagination = props => {
               onClick={ () => setPage(activePage + 1)}
               aria-label="Go to next page"
               aria-disabled={activePage === pages}
+              disabled={activePage === pages}
             >
               { nextButton }
             </CLink>
@@ -170,6 +173,7 @@ const CPagination = props => {
               onClick={ () => setPage(pages)}
               aria-label="Go to last page"
               aria-disabled={activePage === pages}
+              disabled={activePage === pages}
             >
               { lastButton }
             </CLink>
