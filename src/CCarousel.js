@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { mapToCssModules } from './Shared/helper.js'
@@ -29,13 +29,15 @@ const CCarousel = props => {
     setState([state[1], activeIndex])
   }, [activeIndex])
 
-  const [slide, setSlide] = useState()
+  const timeout = useRef()
 
   const setNext = () => {
     reset()
-    autoSlide && setSlide(setTimeout(() => nextItem(), autoSlide))
+    if (autoSlide) {
+      timeout.current = setTimeout(() => nextItem(), autoSlide)
+    } 
   }
-  const reset = () => clearTimeout(slide)
+  const reset = () => clearTimeout(timeout.current)
   const nextItem = () => {
     setState([state[1], itemNumber === state[1] + 1 ? 0 : state[1] + 1, 'next'])
   }

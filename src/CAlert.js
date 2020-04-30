@@ -43,7 +43,7 @@ const CAlert = props => {
     setIsOpen(show)
   }, [show])
 
-  let timeout = useRef(null)
+  let timeout = useRef()
 
   useEffect(() => {
     onShowChange && onShowChange(isOpen)
@@ -53,7 +53,7 @@ const CAlert = props => {
         setIsOpen(isOpen - 1)
       }, 1000)
     }
-    return () => clearTimeout(timeout)
+    return () => clearTimeout(timeout.current)
   }, [isOpen])
 
   return (
