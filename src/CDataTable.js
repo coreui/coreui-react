@@ -293,13 +293,13 @@ const CDataTable = props => {
   const currentItems = computedPage ? paginatedItems : sortedItems
 
   const tableFilterData = {
-    label: tableFilter.label || 'Filter:',
-    placeholder: tableFilter.placeholder || 'type string...'
+    label: (tableFilter && tableFilter.label) || 'Filter:',
+    placeholder: (tableFilter && tableFilter.placeholder) || 'type string...'
   }
 
   const paginationSelect = {
-    label: itemsPerPageSelect.label || 'Items per page:',
-    values: itemsPerPageSelect.values || [5, 10, 20, 50]
+    label: (itemsPerPageSelect && itemsPerPageSelect.label) || 'Items per page:',
+    values: (itemsPerPageSelect && itemsPerPageSelect.values) || [5, 10, 20, 50]
   }
 
   const noItemsText = (() => {
@@ -322,11 +322,12 @@ const CDataTable = props => {
   //items
   useMemo(() => {
     if (
+      items &&
       !compData.firstRun &&
       (items.length !== passedItems.length ||
       JSON.stringify(items) !== JSON.stringify(passedItems))
     ) {
-      setPassedItems(items || [])
+      setPassedItems(items)
       compData.changeItems = Math.random()
     }
   })
@@ -584,6 +585,7 @@ CDataTable.defaultProps = {
   responsive: true,
   columnHeaderSlot: {},
   columnFilterSlot: {},
+  scopedSlots: {},
   sorterValue: {},
   header: true
 }
