@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { tagPropType, mapToCssModules } from './Shared/helper.js';
+import { tagPropType, mapToCssModules } from './Shared/helper.js'
 import CLink from './CLink'
 
 //component - CoreUI / CBrand
@@ -23,7 +23,7 @@ const CBrand = props => {
   const Tag = attributes.to || attributes.href ? CLink : tag
   const ref = { [`${typeof Tag === 'string' ? 'ref': 'innerRef'}`]: innerRef}
   return (
-    <Tag {...attributes} className={classes} {...ref} />
+    <Tag className={classes} {...attributes} {...ref} />
   )
 }
 
