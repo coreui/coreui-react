@@ -1,11 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { tagPropType, mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CFormText
-
-const CFormText = props=>{
+const CFormText = props => {
 
   const {
     tag: Tag,
@@ -13,22 +12,19 @@ const CFormText = props=>{
     cssModule,
     innerRef,
     //
-    inline,
     color,
     ...attributes
-  } = props;
+  } = props
 
   //render
 
   const classes = mapToCssModules(classNames(
-    className,
-    !inline ? 'form-text' : false,
-    color ? `text-${color}` : false
-  ), cssModule);
+    'form-text', color && `text-${color}`, className
+  ), cssModule)
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
-  );
+    <Tag className={classes} {...attributes} ref={innerRef}/>
+  )
 
 }
 
@@ -39,13 +35,12 @@ CFormText.propTypes = {
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  inline: PropTypes.bool,
   color: PropTypes.string
 };
 
 CFormText.defaultProps = {
   tag: 'small',
-  color: 'muted',
+  color: 'muted'
 };
 
-export default CFormText;
+export default CFormText

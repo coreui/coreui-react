@@ -1,14 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CFormFeedback
 
-const CFormFeedback = props=>{
+const CFormFeedback = props => {
 
   const {
-    tag: Tag,
     className,
     cssModule,
     //
@@ -16,25 +15,19 @@ const CFormFeedback = props=>{
     valid,
     tooltip,
     ...attributes
-  } = props;
+  } = props
 
   //render
+  const validMode = tooltip ? 'tooltip' : 'feedback'
+  const classes = mapToCssModules(classNames(
+    valid ? `valid-${validMode}` : `invalid-${validMode}`,
+    className
+  ),cssModule)
 
-  const validMode = tooltip ? 'tooltip' : 'feedback';
-  const classes = mapToCssModules(
-    classNames(
-      className,
-      valid ? `valid-${validMode}` : `invalid-${validMode}`
-    ),
-    cssModule
-  );
-
-  return <Tag {...attributes} className={classes} ref={innerRef} />;
-
+  return <div className={classes} {...attributes} ref={innerRef} />
 }
 
 CFormFeedback.propTypes = {
-  tag: tagPropType,
   children: PropTypes.node,
   className: PropTypes.string,
   cssModule: PropTypes.object,
@@ -44,9 +37,6 @@ CFormFeedback.propTypes = {
   tooltip: PropTypes.bool
 };
 
-CFormFeedback.defaultProps = {
-  tag: 'div',
-  valid: undefined
-};
-
-export default CFormFeedback;
+// export const CValidFeedback = props => <CFormFeedback {...props} valid/>
+// export const CInvalidFeedback = props => <CFormFeedback {...props} valid={false}/>
+export default CFormFeedback

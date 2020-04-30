@@ -44,9 +44,17 @@ export {default as CForm} from './CForm';
 export {default as CFormFeedback} from './CFormFeedback';
 export {default as CFormGroup} from './CFormGroup';
 export {default as CFormText} from './CFormText';
-export {default as CInput} from './CInput';
+export {
+  CTextarea,
+  CInput,
+  CInputFile,
+  CInputCheckbox,
+  CInputRadio
+}
+from './CInput';
 export {default as CInputGroup} from './CInputGroup';
-export {default as CInputGroupAddon} from './CInputGroupAddon';
+export {CInputGroupPrepend} from './CInputGroupAddon';
+export {CInputGroupAppend} from './CInputGroupAddon';
 export {default as CInputGroupText} from './CInputGroupText';
 export {default as CListGroup} from './CListGroup';
 export {default as CListGroupItem} from './CListGroupItem';
