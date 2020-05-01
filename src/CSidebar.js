@@ -24,8 +24,8 @@ const CSidebar = props=>{
     colorScheme,
     overlaid,
     dropdownMode,
-    onShowUpdate,
-    onMinimizeUpdate,
+    onShowChange,
+    onMinimizeChange,
     ...attributes
   } = props
 
@@ -47,7 +47,7 @@ const CSidebar = props=>{
 
   const toggleMinimize = () => {
     setIsMinimized(!minimized)
-    onMinimizeUpdate && onMinimizeUpdate(minimized)
+    onMinimizeChange && onMinimizeChange(minimized)
   }
 
   // compData.nextRender = true
@@ -94,7 +94,7 @@ const CSidebar = props=>{
 
   const closeSidebar = () => {
     setIsOpen(overlaid ? false : 'responsive')
-    onShowUpdate && onShowUpdate(isOpen)
+    onShowChange && onShowChange(isOpen)
   }
 
   const isOnMobile = ()=>{
@@ -166,8 +166,8 @@ CSidebar.propTypes = {
   dropdownMode: PropTypes.oneOf([
     '', 'openActive', 'close', 'closeInactive', 'noAction'
   ]),
-  onShowUpdate: PropTypes.func,
-  onMinimizeUpdate: PropTypes.func
+  onShowChange: PropTypes.func,
+  onMinimizeChange: PropTypes.func
 }
 
 CSidebar.defaultProps = {

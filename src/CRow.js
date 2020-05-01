@@ -1,11 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { tagPropType, mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CRow
-
-const CRow = props=>{
+const CRow = props => {
 
   const {
     tag: Tag,
@@ -18,7 +17,7 @@ const CRow = props=>{
     alignHorizontal,
     alignVertical,
     ...attributes
-  } = props;
+  } = props
 
   //render
 
@@ -28,11 +27,11 @@ const CRow = props=>{
     alignHorizontal ? `justify-content-${alignHorizontal}` : null,
     alignVertical ? `align-${alignVertical}` : null,
     form ? 'form-row' : 'row'
-  ), cssModule);
+  ), cssModule)
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
-  );
+    <Tag className={classes} {...attributes} ref={innerRef}/>
+  )
 
 }
 
@@ -53,4 +52,4 @@ CRow.defaultProps = {
   gutters: true
 };
 
-export default CRow;
+export default CRow

@@ -17,7 +17,7 @@ const CSwitch = props => {
     variant,
     shape,
     checked,
-    onCheckedUpdate,
+    onCheckedChange,
     ...attributes
   } = props
 
@@ -26,7 +26,7 @@ const CSwitch = props => {
 
   const change = e => {
     setIsChecked(e.target.checked)
-    onCheckedUpdate && onCheckedUpdate(e.target.checked)
+    onCheckedChange && onCheckedChange(e.target.checked)
   }
 
   //render
@@ -75,7 +75,7 @@ CSwitch.propTypes = {
   checked: PropTypes.bool,
   labelOn: PropTypes.string,
   labelOff: PropTypes.string,
-  onCheckedUpdate: PropTypes.func
+  onCheckedChange: PropTypes.func
 };
 
 export default CSwitch

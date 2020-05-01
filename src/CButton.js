@@ -25,7 +25,7 @@ const CButton = props => {
     ...attributes
   } = props
 
-  const click = e => onClick && onClick(e)
+  const click = e => !disabled && onClick && onClick(e)
 
   const isLink = attributes.to || attributes.href
 
@@ -47,6 +47,7 @@ const CButton = props => {
     return <CLink
       {...attributes}
       active={active}
+      disabled={disabled}
       className={classes}
       onClick={click}
       innerRef={innerRef}

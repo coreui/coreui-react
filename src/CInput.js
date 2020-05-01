@@ -1,130 +1,154 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {mapToCssModules, warnOnce, tagPropType} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules, tagPropType } from './Shared/helper.js'
 
 //component - CoreUI / CInput
+const commonPropTypes = {
+  className: PropTypes.string,
+  cssModule: PropTypes.object,
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  valid: PropTypes.bool,
+  invalid: PropTypes.bool
+}
 
-const CInput = props=>{
+const CInput = props => {
 
   let {
-    tag,
     className,
     cssModule,
     //
     innerRef,
     type,
-    bsSize,
     valid,
     invalid,
-    addon,
-    static: staticInput,
     plaintext,
+    elementSize,
     ...attributes
-  } = props;
-
-  /*
-  let fields = useRef({}).current;
-
-  const getRef = (ref)=>{
-    fields.ref = ref;
-    innerRef && innerRef(ref);
-  }
-
-  const focus = ()=>{
-    if (fields.ref) {
-      fields.ref.focus();
-    }
-  }
-  */
+  } = props
 
   // render
-
-  const checkInput = ['radio', 'checkbox'].indexOf(type) > -1;
-  const isNotaNumber = new RegExp('\\D', 'g');
-
-  const fileInput = type === 'file';
-  const textareaInput = type === 'textarea';
-  const selectInput = type === 'select';
-  let Tag = tag || (selectInput || textareaInput ? type : 'input');
-
-  let formControlClass = 'form-control';
-
-  if (plaintext || staticInput) {
-    formControlClass = `${formControlClass}-plaintext`;
-    Tag = tag || 'input';
-  } else if (fileInput) {
-    formControlClass = `${formControlClass}-file`;
-  } else if (checkInput) {
-    if (addon) {
-      formControlClass = null;
-    } else {
-      formControlClass = 'form-check-input';
-    }
-  }
-
-  if (attributes.size && isNotaNumber.test(attributes.size)) {
-    warnOnce(
-      'Please use the prop "bsSize" instead of the "size" to bootstrap\'s input sizing.'
-    );
-    bsSize = attributes.size;
-    delete attributes.size;
-  }
-
   const classes = mapToCssModules(
-    classNames(
-      className,
-      invalid && 'is-invalid',
-      valid && 'is-valid',
-      bsSize ? `form-control-${bsSize}` : false,
-      formControlClass
-    ),
-    cssModule
-  );
+  classNames(
+    plaintext ? 'form-control-plaintext' : 'form-control',
+    elementSize && `form-control-${elementSize}`,
+    invalid && 'is-invalid',
+    valid && 'is-valid',
+    className
+  ), cssModule)
 
-  if (Tag === 'input' || (tag && typeof tag === 'function')) {
-    attributes.type = type;
-  }
-
-  if (
-    attributes.children &&
-    !(
-      plaintext ||
-      staticInput ||
-      type === 'select' ||
-      typeof Tag !== 'string' ||
-      Tag === 'select'
-    )
-  ) {
-    warnOnce(
-      `Input with a type of "${type}" cannot have children. Please use "value"/"defaultValue" instead.`
-    );
-    delete attributes.children;
-  }
-
-  return <Tag {...attributes} className={classes} ref={innerRef} />;
-
+  return <input className={classes} type={type} {...attributes} ref={innerRef}/>
 }
 
 CInput.propTypes = {
-  tag: tagPropType,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  cssModule: PropTypes.object,
-  //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  type: PropTypes.string,
-  size: PropTypes.string,
-  bsSize: PropTypes.string,
-  valid: PropTypes.bool,
-  invalid: PropTypes.bool,
+  ...commonPropTypes,
   plaintext: PropTypes.bool,
-  addon: PropTypes.bool,
-  static: PropTypes.bool
+  type: PropTypes.string,
+  elementSize: PropTypes.string
 };
 
 CInput.defaultProps = {
   type: 'text'
 };
 
-export default CInput;
+const CTextarea = props => {
+
+  let {
+    className,
+    cssModule,
+    //
+    innerRef,
+    valid,
+    invalid,
+    plaintext,
+    size,
+    ...attributes
+  } = props
+
+  // render
+  const classes = mapToCssModules(classNames(
+      plaintext ? 'form-control-plaintext' : 'form-control',
+      size && `form-control-${size}`,
+      invalid && 'is-invalid',
+      valid && 'is-valid',
+      className
+  ), cssModule)
+
+  return <textarea className={classes} {...attributes} ref={innerRef}/>
+}
+
+CTextarea.propTypes = {
+  ...commonPropTypes,
+  plaintext: PropTypes.bool,
+  size: PropTypes.string
+};
+
+const CInputFile = props => {
+
+  let {
+    className,
+    cssModule,
+    //
+    innerRef,
+    valid,
+    invalid,
+    custom,
+    ...attributes
+  } = props
+
+  // render
+
+  const classes = mapToCssModules(classNames(
+    custom ? 'custom-file-input' : 'form-control-file',
+    invalid && 'is-invalid',
+    valid && 'is-valid',
+    className
+  ), cssModule)
+
+  return <input className={classes} {...attributes} type="file" ref={innerRef}/>
+}
+
+CInputFile.propTypes = {
+  ...commonPropTypes,
+  custom: PropTypes.bool
+};
+
+const CInputCheckbox = props => {
+
+  let {
+    className,
+    cssModule,
+    //
+    innerRef,
+    valid,
+    invalid,
+    custom,
+    ...attributes
+  } = props
+
+  // render
+
+  const classes = mapToCssModules(classNames(
+    custom ? 'custom-control-input' : 'form-check-input',
+    invalid && 'is-invalid',
+    valid && 'is-valid',
+    className
+  ), cssModule)
+
+  return <input className={classes} type="checkbox" {...attributes} ref={innerRef}/>
+}
+
+CInputCheckbox.propTypes = {
+  ...commonPropTypes,
+  custom: PropTypes.bool
+};
+
+const CInputRadio = props => <CInputCheckbox {...props} type="radio"/> 
+
+export {
+  CInput,
+  CTextarea,
+  CInputFile,
+  CInputCheckbox,
+  CInputRadio
+}

@@ -3,44 +3,39 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { tagPropType, mapToCssModules } from './Shared/helper.js'
 
-//component - CoreUI / CFormText
-const CFormText = props => {
+//component - CoreUI / CSubheader
+const CSubheader = props => {
 
   const {
     tag: Tag,
     className,
     cssModule,
-    innerRef,
     //
-    color,
+    innerRef,
     ...attributes
   } = props
 
   //render
-
   const classes = mapToCssModules(classNames(
-    'form-text', color && `text-${color}`, className
+    'c-subheader',
+    className
   ), cssModule)
 
   return (
     <Tag className={classes} {...attributes} ref={innerRef}/>
   )
-
 }
 
-CFormText.propTypes = {
+CSubheader.propTypes = {
   tag: tagPropType,
-  children: PropTypes.node,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  color: PropTypes.string
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string])
 };
 
-CFormText.defaultProps = {
-  tag: 'small',
-  color: 'muted'
+CSubheader.defaultProps = {
+  tag: 'div'
 };
 
-export default CFormText
+export default CSubheader

@@ -32,8 +32,8 @@ const CSpinner = props => {
   return (
     <Tag 
       className={classes} 
-      ariaHidden="false" 
-      ariaLabel="Loading" 
+      aria-hidden="false" 
+      aria-label="Loading" 
       role="status" 
       {...attributes}
       ref={innerRef}

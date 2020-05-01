@@ -25,10 +25,7 @@ export {default as CJumbotron} from './CJumbotron';
 export {default as CLabel} from './CLabel';
 export {default as CMedia} from './CMedia';
 export {default as CMediaBody} from './CMediaBody';
-export {default as CMediaAside} from './CMediaAside';
 export {default as CPagination} from './CPagination';
-export {default as CPaginationItem} from './CPaginationItem';
-export {default as CPaginationLink} from './CPaginationLink';
 export {default as CSpinner} from './CSpinner';
 export {default as CTabs} from './CTabs';
 export {default as CTabPane} from './CTabPane';
@@ -47,9 +44,17 @@ export {default as CForm} from './CForm';
 export {default as CFormFeedback} from './CFormFeedback';
 export {default as CFormGroup} from './CFormGroup';
 export {default as CFormText} from './CFormText';
-export {default as CInput} from './CInput';
+export {
+  CTextarea,
+  CInput,
+  CInputFile,
+  CInputCheckbox,
+  CInputRadio
+}
+from './CInput';
 export {default as CInputGroup} from './CInputGroup';
-export {default as CInputGroupAddon} from './CInputGroupAddon';
+export {CInputGroupPrepend} from './CInputGroupAddon';
+export {CInputGroupAppend} from './CInputGroupAddon';
 export {default as CInputGroupText} from './CInputGroupText';
 export {default as CListGroup} from './CListGroup';
 export {default as CListGroupItem} from './CListGroupItem';
@@ -83,7 +88,7 @@ export {default as CHeaderNav} from './CHeaderNav';
 export {default as CHeaderNavItem} from './CHeaderNavItem';
 export {default as CHeaderNavLink} from './CHeaderNavLink';
 export {default as CHeaderBrand} from './CHeaderBrand';
-export {default as CHeaderSubheader} from './CHeaderSubheader';
+export {default as CSubheader} from './CSubheader';
 export {default as CNavbarBrand} from './CNavbarBrand';
 export {default as CNavbarNav} from './CNavbarNav';
 export {default as CNavbarText} from './CNavbarText';
@@ -100,7 +105,6 @@ export {default as CSidebarMinimizer} from './CSidebarMinimizer';
 export {default as CSidebarNav} from './CSidebarNav';
 export {default as CSidebarClose} from './CSidebarClose';
 export {default as CSwitch} from './CSwitch';
-export {default as CTable} from './CTable';
 export {default as CToast} from './CToast';
 export {default as CToastHeader} from './CToastHeader';
 export {default as CToastBody} from './CToastBody';

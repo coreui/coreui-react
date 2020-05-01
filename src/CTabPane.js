@@ -7,7 +7,7 @@ import { Context } from './CTabs.js'
 //component - CoreUI / CTabPane
 const getIndex = (el) => Array.from(el.parentNode.children).indexOf(el)
 
-const getState = r => r.current.id || getIndex(r.current)
+const getState = r => r.current.dataset.tab || getIndex(r.current)
 
 const CTabPane = props => {
 

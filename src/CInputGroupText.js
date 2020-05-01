@@ -1,11 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { tagPropType, mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CInputGroupText
-
-const CInputGroupText = props=>{
+const CInputGroupText = props => {
 
   const {
     tag: Tag,
@@ -14,18 +13,16 @@ const CInputGroupText = props=>{
     //
     innerRef,
     ...attributes
-  } = props;
+  } = props
 
   //render
-
   const classes = mapToCssModules(classNames(
-    className,
-    'input-group-text'
-  ), cssModule);
+    'input-group-text', className
+  ), cssModule)
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
-  );
+    <Tag className={classes} {...attributes} ref={innerRef}/>
+  )
 
 }
 
@@ -38,7 +35,7 @@ CInputGroupText.propTypes = {
 };
 
 CInputGroupText.defaultProps = {
-  tag: 'span'
+  tag: 'div'
 };
 
-export default CInputGroupText;
+export default CInputGroupText

@@ -6,7 +6,6 @@ import { Context } from './CDropdown'
 import CLink from './CLink'
 
 //component - CoreUI / CDropdownItem
-
 const CDropdownItem = props => {
 
   let {
@@ -26,34 +25,30 @@ const CDropdownItem = props => {
 
   const { setIsOpen } = useContext(Context)
 
-  const isClickableItem = !(disabled || header || divider)
+  const isItem = !(header || divider)
 
   const click = e => {
-    if (!isClickableItem) {
-      e.preventDefault()
+    if (disabled) {
       return
-    } else {
-      onClick && onClick(e)
-      setIsOpen(false)
     }
+    onClick && onClick(e)
+    isItem && setIsOpen(false)
   }
 
-
   //render
-
-  const tabIndex = isClickableItem ? -1 : null
+  const tabIndex = isItem && !disabled ? null : -1
   const role = tabIndex === null ? 'menuitem' : undefined
+  const Tag = tag || (!isItem ? 'div' : CLink)
+  const ref = { [`${typeof Tag === 'string' ? 'ref': 'innerRef'}`]: innerRef }
 
   const classes = mapToCssModules(classNames(
     className,
     'dropdown-' + (header ? 'header' : divider ? 'divider' : 'item'),
-    active && 'active',
+    { active },
     color && 'bg-' + color,
-    { disabled }
+    disabled && Tag !== CLink && 'disabled'
   ), cssModule)
 
-  const Tag = tag || (header || divider ? 'div' : CLink)
-  const ref = { [`${typeof Tag === 'string' ? 'ref': 'innerRef'}`]: innerRef }
 
 
   return (
@@ -61,12 +56,12 @@ const CDropdownItem = props => {
       className={classes}
       tabIndex={tabIndex}
       role={role}
+      disabled={disabled}
       {...rest}
       onClick={click}
       {...ref}
     />
   )
-
 }
 
 CDropdownItem.propTypes = {

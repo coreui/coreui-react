@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { mapToCssModules } from './Shared/helper.js'
@@ -24,31 +24,33 @@ const CToast = props => {
   } = props
 
   const [state, setState] = useState(show)
-  const [timer, setTimer] = useState()
+  const timeout = useRef()
 
   useEffect(() => {
     setState(show)
   }, [show])
+
+  //triggered on mount and destroy
+  useEffect(() => () => clearTimeout(timeout.current), [])
 
   useEffect(() => {
     if (state === true && autohide) {
       setAutohide()
     }
     onStateChange && onStateChange(state)
-    return () => clearTimeout(timer)
   }, [state])
 
   const setAutohide = () => {
-    clearTimeout(timer)
-    setTimer(setTimeout(() => {
+    clearTimeout(timeout.current)
+    timeout.current = setTimeout(() => {
       startAutohide()
-    }, autohide))
+    }, autohide)
   }
 
   const onMouseOver = () => {
     if (state !== 'closing') {
       state !== true && setState(true)
-      clearTimeout(timer)
+      clearTimeout(timeout.current)
     }
   }
 
@@ -60,18 +62,20 @@ const CToast = props => {
 
   const startAutohide = () => {
     setState('hiding')
-    clearTimeout(timer)
-    setTimer(setTimeout(() => {
+    clearTimeout(timeout.current)
+    timeout.current = setTimeout(() => {
       setState(false)
-    }, 2000))
+    }, 2000)
   }
 
   const close = () => {
     setState(fade ? 'closing' : false)
-    clearTimeout(timer)
-    fade && setTimer(setTimeout(() => {
-      setState(false)
-    }, 500))
+    clearTimeout(timeout.current)
+    if (fade) {
+      timeout.current = setTimeout(() => {
+        setState(false)
+      }, 500)
+    }
   }
 
   // render

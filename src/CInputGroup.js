@@ -1,38 +1,34 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CInputGroup
-
-const CInputGroup = props=>{
+const CInputGroup = props => {
 
   const {
-    tag: Tag,
     className,
     cssModule,
     //
     innerRef,
     size,
     ...attributes
-  } = props;
+  } = props
 
   //render
 
   const classes = mapToCssModules(classNames(
-    className,
     'input-group',
-    size ? `input-group-${size}` : null
-  ), cssModule);
+    size && `input-group-${size}`,
+    className
+  ), cssModule)
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef} />
-  );
-
+    <div className={classes} {...attributes} ref={innerRef}/>
+  )
 }
 
 CInputGroup.propTypes = {
-  tag: tagPropType,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
@@ -40,8 +36,4 @@ CInputGroup.propTypes = {
   size: PropTypes.string
 };
 
-CInputGroup.defaultProps = {
-  tag: 'div'
-};
-
-export default CInputGroup;
+export default CInputGroup

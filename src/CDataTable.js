@@ -1,31 +1,26 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
-import Slot from './Shared/Slot';
-import CSpinner from './CSpinner';
-import CPagination from './CPagination';
-import style from './CDataTable.module.css';
-import {CIcon} from '@coreui/icons-react';
+import React, { useState, useRef, useMemo } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import CPagination from './CPagination'
+import style from './CDataTable.module.css'
+import { CIcon } from '@coreui/icons-react'
+import { cilArrowTop, cilBan } from '@coreui/icons'
 
 //component - CoreUI / CTable
-
-const CDataTable = props=>{
+const CDataTable = props => {
 
   const {
-    children,
-    //custom,
     //
     innerRef,
     overTableSlot,
     columnHeaderSlot,
     sortingIconSlot,
     columnFilterSlot,
-    detailsSlot,
-    noItemViewSlot,
+    noItemsViewSlot,
+    noItemsView,
     captionSlot,
     underTableSlot,
-    colNameSlot,
+    theadTopSlot,
     scopedSlots,
     fields,
     pagination,
@@ -33,6 +28,7 @@ const CDataTable = props=>{
     itemsPerPage,
     items,
     sorter,
+    header,
     clickableRows,
     columnFilter,
     tableFilterValue,
@@ -41,50 +37,48 @@ const CDataTable = props=>{
     size,
     dark,
     striped,
-    fixed,
     hover,
     border,
     outlined,
     responsive,
     footer,
     itemsPerPageSelect,
-    loading,
-    change,
-    onChange,
-    customContent,
     sorterValue,
-    columnFilterValue
-  } = props;
+    columnFilterValue,
+    onRowClick,
+    onSorterValueChange,
+    onPaginationChange,
+    onColumnFilterChange,
+    onPagesChange,
+    onTableFilterChange,
+    onPageChange,
+    onFilteredItemsChange
+  } = props
 
-  //Object.assign(style, cssModule)
+  const compData = useRef({ firstRun: true }).current
 
-  const compData = useRef({firstRun:true}).current;
-
-  // vars
 
   //
-  const [perPageItems, setPerPageItems] = useState(itemsPerPage);
-  const [sorterState, setSorterState] = useState({
-    column: null,
-    asc: true
-  });
-  const [tableFilterState, setTableFilterState] = useState(tableFilterValue);
-  const [columnFilterState, setColumnFilterState] = useState({});
-  const [page, setPage] = useState(activePage || 1);
-  const [passedItems, setPassedItems] = useState(items || []);
+  const [perPageItems, setPerPageItems] = useState(itemsPerPage)
+  const [sorterState, setSorterState] = useState(sorterValue || {})
+  const [tableFilterState, setTableFilterState] = useState(tableFilterValue)
+  const [columnFilterState, setColumnFilterState] = useState(columnFilterValue || {})
+  const [page, setPage] = useState(activePage || 1)
+  const [passedItems, setPassedItems] = useState(items || [])
 
   // functions
 
-  const cellClass = (item, colName, index)=>{
-    let classes = [];
+  const cellClass = (item, colName, index) => {
+    let classes = []
     if (item._cellClasses && item._cellClasses[colName]) {
-      classes.push(item._cellClasses[colName]);
+      classes.push(item._cellClasses[colName])
     }
     if (fields && fields[index]._classes) {
-      classes.push(fields[index]._classes);
+      classes.push(fields[index]._classes)
     }
-    return classes;
+    return classes
   }
+
   const pretifyName = (name)=>{
     return name.replace(/[-_.]/g, ' ')
       .replace(/ +/g, ' ')
@@ -93,40 +87,41 @@ const CDataTable = props=>{
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ')
   }
-  const headerClass = (index)=>{
-    //const fields = this.fields ???
-    return fields && fields[index]._classes ? fields[index]._classes : ''
-  }
-  const isSortable = (index)=>{
-    return sorter && (!fields || fields[index].sorter !== false)
-  }
-  const headerStyles = (index)=>{
-    let style = {}
+
+  const headerClass = i => fields && fields[i]._classes && fields[i]._classes
+
+  const isSortable = i => sorter && fields && fields[i].sorter !== false
+
+  const headerStyles = (index) => {
+    let style = { verticalAlign: 'middle', overflow: 'hidden' }
     if (isSortable(index)) {
-      style['cursor']='pointer';
+      style.cursor='pointer'
     }
     if (fields && fields[index] && fields[index]._style) {
-      let r = fields[index]._style.split(':');
-      style[r[0]] = r[1].substr(0, r[1].length-2)
+      return {...style, ...fields[index]._style}
     }
     return style
   }
-  const getIconState = (index)=>{
+
+  const getIconState = index => {
     const direction = sorterState.asc ? 'asc' : 'desc'
     return rawColumnNames[index] === sorterState.column ? direction : 0
   }
-  const iconClasses = (index)=>{
+
+  const iconClasses = index => {
     const state = getIconState(index)
     return [
-      style['icon-transition position-absolute arrow-position'],
-      !state ? style['transparent'] : '',
-      state === 'desc' ? style['rotate-icon'] : ''
+      'position-absolute', style['icon-transition'], style['arrow-position'],
+      !state && style['transparent'],
+      state === 'desc' && style['rotate-icon']
     ]
   }
-  const rowClicked = (item, index)=>{
-    onChange && onChange('row-clicked', item, index);
+
+  const rowClicked = (item, index, e, detailsClick = false) => {
+    onRowClick && onRowClick(item, index, getClickedColumnName(e, detailsClick), e)
   }
-  const changeSort = (column, index)=>{
+
+  const changeSort = (column, index) => {
     if (!isSortable(index)) {
       return
     }
@@ -134,49 +129,73 @@ const CDataTable = props=>{
     const state = sorterState
     const columnRepeated = state.column === column
     if (!sorter || !sorter.resetable) {
-      state.column = column;
+      state.column = column
     } else {
       state.column = columnRepeated && state.asc === false ? null : column
     }
     state.asc = !(columnRepeated && state.asc)
-    setSorterState({...state});
-    //console.log(state, sorterState);
-    onChange && onChange('update:sorter-value', sorterState)
+    setSorterState({...state})
+    onSorterValueChange && onSorterValueChange(sorterState)
   }
-  const paginationChange = (e)=>{
-    onChange && onChange('pagination-change', Number(e.target.value));
-    setPerPageItems(Number(e.target.value))
+
+  const paginationChange = e => {
+    onPaginationChange && onPaginationChange(Number(e.target.value))
+    !itemsPerPageSelect.external && setPerPageItems(Number(e.target.value))
   }
+
   const columnFilterEvent = (colName, value, type)=>{
     const isLazy = columnFilter && columnFilter.lazy === true
     if (isLazy && type === 'input' || !isLazy && type === 'change') {
       return
     }
-    let state = {};
-    state[colName] = value;
-    setColumnFilterState({...columnFilterState, ...state});
-    onChange && onChange('update:column-filter-value', columnFilterState);
+    const newState = {...columnFilterState, [`${colName}`]: value }
+    setColumnFilterState(newState)
+    onColumnFilterChange && onColumnFilterChange(newState)
   }
-  const tableFilterChange = (value, type)=>{
+
+  const tableFilterChange = (value, type) => {
     const isLazy = tableFilter && tableFilter.lazy === true
     if (isLazy && type === 'input' || !isLazy && type === 'change') {
       return
     }
     setTableFilterState(value)
-    onChange && onChange('update:table-filter-value', tableFilterState);
+    onTableFilterChange && onTableFilterChange(value)
+  }
+
+  const getClickedColumnName = (e, detailsClick) => {
+    if (detailsClick) {
+      return 'details'
+    } else {
+      const children = Array.from(e.target.closest('tr').children)
+      const clickedCell = children.filter(child => child.contains(e.target))[0]
+      return rawColumnNames[children.indexOf(clickedCell)]
+    }
   }
 
   // computed
 
-  let generatedColumnNames = Object.keys(passedItems[0] || {}).filter(el => el.charAt(0) !== '_');
-  let rawColumnNames = (()=>{
+  const generatedColumnNames = (() => {
+    return Object.keys(passedItems[0] || {}).filter(el => el.charAt(0) !== '_')
+  })()
+
+  const rawColumnNames = (()=>{
     if (fields) {
       return fields.map(el => el.key || el)
     }
     return generatedColumnNames
-  })();
-  let columnFiltered = (()=>{
-    let items = passedItems.slice()
+  })()
+
+  useMemo(() => {
+    compData.columnFiltered = Math.random()
+  }, [
+    JSON.stringify(columnFilter),
+    JSON.stringify(columnFilterState),
+    rawColumnNames.join(''),
+    compData.changeItems
+  ])
+
+  const columnFiltered = useMemo(()=>{
+    let items = passedItems
     if (columnFilter && columnFilter.external) {
       return items
     }
@@ -189,458 +208,345 @@ const CDataTable = props=>{
       }
     })
     return items
-  })();
-  let filterableCols = (()=>{
-    return rawColumnNames.filter(name => {
-      return generatedColumnNames.includes(name)
-    })
-  })();
-  let tableFiltered = (()=>{
-    let items = columnFiltered.slice()
+  }, [compData.columnFiltered])
+
+  const tableFiltered = useMemo(()=>{
+    let items = columnFiltered
     if (!tableFilterState || (tableFilter && tableFilter.external)) {
       return items
     }
     const filter = tableFilterState.toLowerCase()
     const hasFilter = (item) => String(item).toLowerCase().includes(filter)
     items = items.filter(item => {
-      return filterableCols.filter(key => hasFilter(item[key])).length
+      return rawColumnNames.filter(key => hasFilter(item[key])).length
     })
     return items
-  })();
-  let sortedItems = (()=>{
+  }, [
+    compData.columnFiltered,
+    tableFilterState,
+    JSON.stringify(tableFilter)
+  ])
+
+  const sortedItems = useMemo(() => {
     const col = sorterState.column
     if (!col || !rawColumnNames.includes(col) || sorter.external) {
+      onFilteredItemsChange && onFilteredItemsChange(tableFiltered)
       return tableFiltered
     }
     //if values in column are to be sorted by numeric value they all have to be type number
     const flip = sorterState.asc ? 1 : -1
-    return tableFiltered.slice().sort((a,b) => {
-      return (a[col] > b[col]) ? 1 * flip : ((b[col] > a[col]) ? -1 * flip : 0)
+    const sorted = tableFiltered.slice().sort((item, item2) => {
+      const value = item[col]
+      const value2 = item2[col]
+      const a = typeof value === 'number' ? value : String(value).toLowerCase()
+      const b = typeof value2 === 'number' ? value2 : String(value2).toLowerCase()
+      return a > b ? 1 * flip : b > a ? -1 * flip : 0
     })
-  })();
-  let tableClasses = (()=>{
-    return [
-      'table',
-      addTableClasses,
-      {
-        [`table-${size}`]: size,
-        'table-dark': dark,
-        'table-striped': striped,
-        'b-table-fixed': fixed,
-        'table-hover': hover,
-        'table-bordered': border,
-        'border': outlined
-      }
-    ]
-  })();
-  let columnNames = (()=>{
+    !compData.firstRun && onFilteredItemsChange && onFilteredItemsChange(tableFiltered)
+    return sorted
+  }, [JSON.stringify(tableFiltered), JSON.stringify(sorterState), JSON.stringify(sorter)])
+
+  const tableClasses = [
+    'table',
+    {
+      [`table-${size}`]: size,
+      'table-dark': dark,
+      'table-striped': striped,
+      'table-hover': hover,
+      'table-bordered': border,
+      'border': outlined
+    },
+    addTableClasses
+  ]
+
+
+  const columnNames = useMemo(() => {
     if (fields) {
       return fields.map(f => {
         return f.label !== undefined ? f.label : pretifyName(f.key || f)
       })
     }
     return rawColumnNames.map(el => pretifyName(el))
-  })();
-  let sortingIconStyles = (()=>{
-    return {'position-relative pr-4' : sorter }
-  })();
-  let colspan = (()=>{
-    return rawColumnNames.length
-  })();
-  let totalPages = (()=>{
-    return Math.ceil((sortedItems.length) / perPageItems) || 1
-  })();
-  //
-  let computedPage = pagination ? page : activePage;
-  let firstItemIndex = (computedPage - 1) * perPageItems || 0;
-  let paginatedItems = sortedItems.slice(
-      firstItemIndex,
-      firstItemIndex + perPageItems
-    )
-  let currentItems = computedPage ? paginatedItems : sortedItems;
+  }, [fields, rawColumnNames])
 
-  let tableFilterData;
-  if (tableFilter)
-  tableFilterData = {
-    label: tableFilter.label || 'Filter:',
-    placeholder: tableFilter.placeholder || 'type string...'
+  const sortingIconStyles = sorter && 'position-relative pr-4'
+
+  const colspan = rawColumnNames.length
+
+  const totalPages = Math.ceil((sortedItems.length) / perPageItems) || 1
+  useMemo(() => {
+    !compData.firstRun && onPagesChange && onPagesChange(totalPages)
+  }, [totalPages])
+
+  const computedPage = useMemo(() => {
+    const compPage = pagination ? page : activePage
+    !compData.firstRun && onPageChange && onPageChange(compPage)
+    return compPage
+  }, [page, activePage, pagination])
+
+  const firstItemIndex = (computedPage - 1) * perPageItems || 0
+
+  const paginatedItems = sortedItems.slice(
+    firstItemIndex,
+    firstItemIndex + perPageItems
+  )
+  const currentItems = computedPage ? paginatedItems : sortedItems
+
+  const tableFilterData = {
+    label: (tableFilter && tableFilter.label) || 'Filter:',
+    placeholder: (tableFilter && tableFilter.placeholder) || 'type string...'
   }
+
+  const paginationSelect = {
+    label: (itemsPerPageSelect && itemsPerPageSelect.label) || 'Items per page:',
+    values: (itemsPerPageSelect && itemsPerPageSelect.values) || [5, 10, 20, 50]
+  }
+
+  const noItemsText = (() => {
+    const customValues = noItemsView || {}
+    if (passedItems.length) {
+      return customValues.noResults || 'No filtering results'
+    }
+    return customValues.noItems || 'No items'
+  })()
 
   // watch
+  useMemo(() => setPerPageItems(itemsPerPage), [itemsPerPage])
 
-  //itemsPerPage
-  useMemo(()=>{
-    if (compData.firstRun) return;
-    setPerPageItems(itemsPerPage);
-  }, [itemsPerPage]);
+  useMemo(() => setSorterState({ ...sorterValue }), [sorterValue])
 
-  //sorterValue
-  useMemo(()=>{
-    const asc = sorterValue.asc === false ? false : true;
-    setSorterState(Object.assign({}, { asc, column: sorterValue.column }));
-  }, [sorterValue]);
+  useMemo(() => setTableFilterState(tableFilterValue), [tableFilterValue])
 
-  //tableFilterValue
-  useMemo(()=>{
-    if (compData.firstRun) return;
-    setTableFilterState(tableFilterValue);
-  }, [tableFilterValue]);
-
-  //columnFilterValue
-  useMemo(()=>{
-    setColumnFilterState(Object.assign({}, columnFilterValue));
-  }, [columnFilterValue]);
+  useMemo(() => setColumnFilterState({...columnFilterValue}), [columnFilterValue])
 
   //items
-  useMemo(()=>{
-    compData.oldItems = items;
-    if (compData.firstRun) return;
-    if (items.length !== compData.oldItems.length ||
-      JSON.stringify(items) !== JSON.stringify(compData.oldItems)) {
-      setPassedItems(items||[]);
+  useMemo(() => {
+    if (
+      items &&
+      !compData.firstRun &&
+      (items.length !== passedItems.length ||
+      JSON.stringify(items) !== JSON.stringify(passedItems))
+    ) {
+      setPassedItems(items)
+      compData.changeItems = Math.random()
     }
-  }, [items]);
+  })
 
-  //totalPages
-  useMemo(()=>{
-    onChange && onChange('pages-change', totalPages);
-  }, [totalPages]);
 
-  //get render par
-  if (change)
-    change();
 
   // render
-  //alert('render');
+  compData.firstRun = false
 
-  //custom
-  //if (custom)
-  //  return (<CTableCustom {...attributes} custom={customContent}>{children}</CTableCustom>);
+  const paginationProps = typeof pagination === 'object' ? pagination : null
 
-  compData.firstRun = false;
-
-  let paginationProps;
-  if (typeof pagination === 'object')
-    paginationProps = {...pagination}
-  else {
-    paginationProps = {}
-  }
+  const headerContent = (
+  <tr>
+    {
+      columnNames.map((name, index)=>{
+        return (
+          <th
+            onClick={()=>{changeSort(rawColumnNames[index], index)}}
+            className={classNames([headerClass(index), sortingIconStyles])}
+            style={headerStyles(index)}
+            key={index}
+          >
+            { columnHeaderSlot[`${rawColumnNames[index]}`] ||
+              <div className="d-inline">{name}</div>
+            }
+            {
+              isSortable(index) &&
+              ((sortingIconSlot && sortingIconSlot(getIconState(index), iconClasses(index))) ||
+              <CIcon
+                customClasses={classNames(iconClasses(index))}
+                width={18}
+                content={cilArrowTop}
+              />)
+            }
+          </th>
+        )
+      })
+    }
+  </tr>)
 
   return (
-    <React.Fragment>
-    <div ref={innerRef}>
+<>
+<div ref={innerRef}>
+  {
+    (itemsPerPageSelect || tableFilter) &&
+    <div className="row my-2 mx-0">
       {
-        itemsPerPageSelect || tableFilter ?
-        <div className="row my-2 mx-0">
-          {
-            tableFilter ?
-            <div className="col-sm-6 form-inline p-0">
-              <label className="mr-2">{tableFilterData.label}</label>
-              <input
-                className="form-control table-filter"
-                type="text"
-                placeholder={tableFilterData.placeholder}
-                onInput={(e)=>{tableFilterChange(e.target.value, 'input')}}
-                onChange={(e)=>{tableFilterChange(e.target.value, 'change')}}
-                value={tableFilterState}
-              />
-            </div>:''
-          }
-          {
-            itemsPerPageSelect ?
-            <div
-              className={'col-sm-6 p-0' + (!tableFilter ? 'offset-sm-6' : '')}
+        tableFilter &&
+        <div className="col-sm-6 form-inline p-0">
+          <label className="mr-2">{tableFilterData.label}</label>
+          <input
+            className="form-control"
+            type="text"
+            placeholder={tableFilterData.placeholder}
+            onInput={(e)=>{tableFilterChange(e.target.value, 'input')}}
+            onChange={(e)=>{tableFilterChange(e.target.value, 'change')}}
+            value={tableFilterState || ''}
+          />
+        </div>
+      }
+      {
+        itemsPerPageSelect &&
+        <div className={'col-sm-6 p-0' + (!tableFilter && 'offset-sm-6')}>
+          <div className="form-inline justify-content-sm-end">
+            <label className="mr-2">{paginationSelect.label}</label>
+            <select
+              className="form-control"
+              onChange={paginationChange}
             >
-              <div className="form-inline justify-content-sm-end">
-                <label className="mr-2">Items per page:</label>
-                <select
-                  className="form-control"
-                  onChange={paginationChange}
-                  value={perPageItems}
-                >
-                  <option value="" disabled hidden>
-                    {perPageItems}
+              <option value="" disabled hidden>
+                {perPageItems}
+              </option>
+              { paginationSelect.values.map((number, key)=>{
+                return (
+                  <option
+                    val={number}
+                    key={key}
+                  >
+                    {number}
                   </option>
-                  {[5,10,20,50].map((number, key)=>{
-                    return (
-                      <option
-                        val={number}
-                        key={key}
-                      >
-                        {number}
-                      </option>
-                    )
-                  })}
-                </select>
-              </div>
-            </div>:''
-          }
-        </div>:''
+                )
+              })}
+            </select>
+          </div>
+        </div>
       }
     </div>
+  }
+</div>
 
-    <Slot content={overTableSlot} />
+{ overTableSlot }
 
-    <div className={`position-relative ${responsive ? 'table-responsive' : '' }`}>
-      <table className={classNames(tableClasses)}>
-        <thead>
-          <tr>
+<div className={`position-relative ${responsive && 'table-responsive' }`}>
+  <table className={classNames(tableClasses)}>
+    <thead>
+      { theadTopSlot }
+      { header && headerContent }
+      {
+        columnFilter && <tr className="table-sm">
+          {
+            rawColumnNames.map((colName, index)=>{
+              return (
+                <th className={classNames(headerClass(index))} key={index}>
+                  { columnFilterSlot[`${rawColumnNames[index]}`] ||
+                    ( fields && fields[index].filter !== false &&
+                      <input
+                        className="form-control form-control-sm"
+                        onInput={(e)=>{columnFilterEvent(colName, e.target.value, 'input')}}
+                        onChange={(e)=>{columnFilterEvent(colName, e.target.value, 'change')}}
+                        value={columnFilterState[colName] || ''}
+                      />)
+                  }
+                </th>
+              )
+            })
+          }
+        </tr>
+      }
+    </thead>
+    <tbody style={clickableRows && { cursor: 'pointer' }}>
+      { currentItems.map((item, itemIndex) => {
+        return (
+          <React.Fragment key={itemIndex}>
+          <tr
+            className={classNames(item._classes)}
+            tabIndex={clickableRows && 0}
+            onClick={(e)=>{rowClicked(item, itemIndex + firstItemIndex, e)}}
+          >
             {
-              columnNames.map((name, index)=>{
+              rawColumnNames.map((colName, index)=>{
                 return (
-                  <th
-                    onClick={()=>{changeSort(rawColumnNames[index], index)}}
-                    className={classNames([headerClass(index), sortingIconStyles])}
-                    style={headerStyles(index)}
-                    key={index}
-                  >
-                    <Slot content={columnHeaderSlot[`${rawColumnNames[index]}`]}>
-                      <div className="d-inline">{name}</div>
-                    </Slot>
-                    {
-                      isSortable(index)?
-                        <Slot
-                          content={sortingIconSlot}
-                          state={getIconState(index)}
-                          classes={iconClasses(index)}
-                        >
-                          <CIcon
-                            className={classNames(iconClasses(index))}
-                            width="18"
-                            content="$options.icons.cilArrowTop"
-                            name="cil-arrow-top"
-                          />
-                        </Slot>:''
-                    }
-                  </th>
-                )
+                  scopedSlots[colName] &&
+                  React.cloneElement(
+                    scopedSlots[colName](item, itemIndex + firstItemIndex),
+                    {'key': index}
+                  )
+                ) ||
+                <td
+                  className={classNames(cellClass(item, colName, index))}
+                  key={index}
+                >
+                  { String(item[colName]) }
+                </td>
               })
             }
           </tr>
           {
-            columnFilter ?
-              <tr className="table-sm">
-                {
-                  rawColumnNames.map((colName, index)=>{
-                    return (
-                      <th className={classNames(headerClass(index))} key={index}>
-                        <Slot content={columnFilterSlot[`${rawColumnNames[index]}`]}>
-                          {
-                            !fields || fields[index].filter !== false ?
-                              <input
-                                className="w-100 table-filter"
-                                onInput={(e)=>{columnFilterEvent(colName, e.target.value, 'input')}}
-                                onChange={(e)=>{columnFilterEvent(colName, e.target.value, 'change')}}
-                                value={columnFilterState[colName]}
-                              />:''
-                          }
-                        </Slot>
-                      </th>
-                    )
-                  })
-                }
-              </tr>:''
-          }
-        </thead>
-        <tbody
-          style={clickableRows ? {cursor: 'pointer'} : null}
-          className="position-relative"
-        >
-          {currentItems.map((item, itemIndex)=>{
-            return (
-              <React.Fragment key={itemIndex}>
-              <tr
-                className={classNames(item._classes)}
-                tabIndex={clickableRows ? 0 : null}
-                onClick={()=>{rowClicked(item, itemIndex + firstItemIndex)}}
+            scopedSlots.details &&
+            <tr
+              onClick={(e)=>{rowClicked(item, itemIndex + firstItemIndex, e, true)}}
+              className="p-0"
+              style={{border: 'none !important'}}
+              key={'details' + itemIndex}
+            >
+              <td
+                colSpan={colspan}
+                className="p-0"
+                style={{border: 'none !important'}}
               >
-                {
-                  rawColumnNames.map((colName, index)=>{
-                    if (scopedSlots[colName])
-                      return(
-                        <Slot
-                          content={scopedSlots[colName](item, itemIndex + firstItemIndex)}
-                          key={index}
-                        />
-                      )
-                    else
-                      return (
-                        <td
-                          className={classNames(cellClass(item, colName, index))}
-                          key={index}
-                        >
-                          {String(item[colName])}
-                        </td>
-                      )
-                  })
-                }
-              </tr>
-              {
-                scopedSlots.details?
-                  <tr
-                    className="p-0"
-                    style={{border: 'none !important'}}
-                    key={'details' + itemIndex}
-                  >
-                    <td
-                      colSpan={colspan}
-                      className="p-0"
-                      style={{border: 'none !important'}}
-                    >
-                      <Slot
-                        content={scopedSlots.details(item, itemIndex + firstItemIndex)}
-                      />
-                    </td>
-                  </tr>:''
-              }
-              </React.Fragment>
-            )
-          })}
-          {
-            !currentItems.length ?
-              <tr>
-                <td colSpan={colspan}>
-                  <Slot content={noItemViewSlot}>
-                    <div className="text-center my-5">
-                      <h2>
-                        {passedItems.length ? 'No filtering results ' : 'No items' }
-                        <CIcon
-                          width="30"
-                          name="cilBan"
-                          content="$options.icons.cilBan"
-                          className="text-danger mb-2"
-                        />
-                      </h2>
-                    </div>
-                  </Slot>
-                </td>
-              </tr>:null
+                { scopedSlots.details(item, itemIndex + firstItemIndex) }
+              </td>
+            </tr>
           }
-        </tbody>
-        {
-          footer && currentItems.length > 0 ?
-            <tfoot>
-              <tr>
-                {
-                  columnNames.map((name, index)=>{
-                    return(
-                      <th
-                        onClick={changeSort(rawColumnNames[index], index)}
-                        className={classNames([headerClass(index), sortingIconStyles])}
-                        style={headerStyles(index)}
-                        key={index}
-                      >
-                        <Slot content={columnHeaderSlot[`${rawColumnNames[index]}`]}>
-                          <div className="d-inline">{name}</div>
-                        </Slot>
-                        {
-                          isSortable(index) ?
-                            <Slot
-                              content={sortingIconSlot}
-                              state={getIconState(index)}
-                            >
-                              <CIcon
-                                width="18"
-                                name="cil-arrow-top"
-                                content="$options.icons.cilArrowTop"
-                                className={classNames(iconClasses(index))}
-                              />
-                            </Slot>:null
-                        }
-                      </th>
-                    )
-                  })
-                }
-              </tr>
-            </tfoot> : null
-        }
-        <Slot content={captionSlot} />
-      </table>
-
+          </React.Fragment>
+        )
+      })}
       {
-        loading ?
-          <Slot content={children}>
-            <div style={{
-              position: 'absolute',
-              left:'0',
-              top:'0',
-              bottom:'0',
-              right:'0',
-              backgroundColor:'rgb(255,255,255,0.4)'
-            }}>
-              <div style={{
-                position:'absolute',
-                bottom:'50%',
-                left:'50%',
-                transform:'translateX(-50%)'
-              }}>
-                <CSpinner color="success"/>
-              </div>
-            </div>
-          </Slot>:null
+        !currentItems.length &&
+        <tr>
+          <td colSpan={colspan}>
+            { noItemsViewSlot ||
+              <div className="text-center my-5">
+                <h2>
+                  { noItemsText }
+                  <CIcon
+                    width="30"
+                    name="cilBan"
+                    content={cilBan}
+                    className="text-danger mb-2"
+                  />
+                </h2>
+              </div>}
+          </td>
+        </tr>
       }
+    </tbody>
+    { footer && currentItems.length > 0 && <tfoot>{headerContent}</tfoot>}
+    { captionSlot }
+  </table>
+</div>
 
-    </div>
+{ underTableSlot }
 
-    <Slot content={underTableSlot} />
-
-    {
-      //:activePage.sync="page"
-      //v-bind={typeof pagination === 'object' ? {...pagination} : null}
-      pagination ?
-        <CPagination
-          custom={false}
-          onClick={(e, type, n)=>{
-            //alert(type, n);
-            switch (type){
-              case 'number':
-                setPage(n);
-                break;
-              case 'next':
-                setPage(page+4);
-                break;
-              case 'previous':
-                setPage(page-4);
-                break;
-              case 'first':
-                setPage(1);
-                break;
-              case 'last':
-                setPage(totalPages);
-                break;
-            }
-          }}
-          pageMin={1}
-          pageMax={totalPages}
-          activePage={page}
-          style={{display: totalPages > 0 ? 'inline' : 'none'}}
-          {...paginationProps}
-        />:null
-    }
-
-    </React.Fragment>
+{ pagination &&
+  <CPagination
+    {...paginationProps}
+    style={{display: totalPages > 0 ? 'inline' : 'none'}}
+    onActivePageChange={(page) => { setPage(page) }}
+    pages={totalPages}
+    activePage={page}
+  />
+}
+</>
   )
-
 }
 
 CDataTable.propTypes = {
-  tag: tagPropType,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  cssModule: PropTypes.object,
-  //custom: PropTypes.bool,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   overTableSlot: PropTypes.node,
-  colNameSlot: PropTypes.node,//?
-  columnHeaderSlot: PropTypes.array,
-  sortingIconSlot: PropTypes.node,
-  columnFilterSlot: PropTypes.node,
-  detailsSlot: PropTypes.node,//?
-  noItemViewSlot: PropTypes.node,
+  columnHeaderSlot: PropTypes.object,
+  sortingIconSlot: PropTypes.func,
+  columnFilterSlot: PropTypes.object,
+  noItemsViewSlot: PropTypes.node,
+  noItemsView: PropTypes.object,
   captionSlot: PropTypes.node,
   underTableSlot: PropTypes.node,
   scopedSlots: PropTypes.object,
+  theadTopSlot: PropTypes.node,
   fields: PropTypes.array,
   pagination: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   activePage: PropTypes.number,
@@ -655,28 +561,33 @@ CDataTable.propTypes = {
   size: PropTypes.string,
   dark: PropTypes.bool,
   striped: PropTypes.bool,
-  fixed: PropTypes.bool,
   hover: PropTypes.bool,
   border: PropTypes.bool,
   outlined: PropTypes.bool,
   responsive: PropTypes.bool,
   footer: PropTypes.bool,
-  itemsPerPageSelect: PropTypes.bool,
-  loading: PropTypes.bool,
-  change: PropTypes.func, //+
-  onChange: PropTypes.func,
+  itemsPerPageSelect: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   sorterValue: PropTypes.object,
-  columnFilterValue: PropTypes.object
+  columnFilterValue: PropTypes.object,
+  header: PropTypes.bool,
+  onRowClick: PropTypes.func,
+  onSorterValueChange: PropTypes.func,
+  onPaginationChange: PropTypes.func,
+  onColumnFilterChange: PropTypes.func,
+  onPagesChange: PropTypes.func,
+  onTableFilterChange: PropTypes.func,
+  onPageChange: PropTypes.func,
+  onFilteredItemsChange: PropTypes.func
 }
 
 CDataTable.defaultProps = {
   itemsPerPage: 10,
   responsive: true,
-  columnHeaderSlot: [],
-  columnFilterSlot: [],
-  sorterValue: {}
+  columnHeaderSlot: {},
+  columnFilterSlot: {},
+  scopedSlots: {},
+  sorterValue: {},
+  header: true
 }
 
-CDataTable.Context = React.createContext({});
-
-export default CDataTable;
+export default CDataTable

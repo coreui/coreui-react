@@ -1,63 +1,41 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
-import CInputGroupText from './CInputGroupText';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CInputGroupAddon
-
-const CInputGroupAddon = props=>{
+const CInputGroupAddon = props => {
 
   const {
-    tag: Tag,
     children,
     className,
     cssModule,
     //
     innerRef,
-    addonType,
-    inputProps,
+    prepend,
     ...attributes
-  } = props;
+  } = props
 
   //render
-
   const classes = mapToCssModules(classNames(
-    className,
-    'input-group-' + addonType
-  ), cssModule);
-
-  if (typeof children === 'string') {
-    return (
-      <Tag {...attributes} className={classes}>
-        <CInputGroupText {...inputProps}>
-          {children}
-        </CInputGroupText>
-      </Tag>
-    );
-  }
+    'input-group-' + (prepend ? 'prepend' : 'append'), className
+  ), cssModule)
 
   return (
-    <Tag {...attributes} className={classes} ref={innerRef}>
+    <div className={classes} {...attributes} ref={innerRef}>
       {children}
-    </Tag>
-  );
-
+    </div>
+  )
 }
 
 CInputGroupAddon.propTypes = {
-  tag: tagPropType,
   children: PropTypes.node,
   className: PropTypes.string,
   cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-  addonType: PropTypes.oneOf(['prepend', 'append']).isRequired,
-  inputProps: PropTypes.object
+  prepend: PropTypes.bool
 };
 
-CInputGroupAddon.defaultProps = {
-  tag: 'div'
-};
-
-export default CInputGroupAddon;
+export const CInputGroupAppend = props => <CInputGroupAddon {...props}/>
+export const CInputGroupPrepend = props => <CInputGroupAddon {...props} prepend/>
