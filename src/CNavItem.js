@@ -39,7 +39,6 @@ CNavItem.propTypes = {
 
 CNavItem.defaultProps = {
   tag: 'li',
-  custom: true
 };
 
 export default CNavItem
