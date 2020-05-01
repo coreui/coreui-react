@@ -20,11 +20,11 @@ const CTabs = props => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <Context.Provider value={{active, setActiveTab}}>
         {children}
       </Context.Provider>
-    </>
+    </React.Fragment>
   )
 }
 

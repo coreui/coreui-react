@@ -48,13 +48,13 @@ const CTooltip = props=>{
 
 
   return (
-    <>
+    <React.Fragment>
       {
         React.cloneElement(children, {
           'data-tooltip': key
         })
       }
-    </>
+    </React.Fragment>
   )
 }
 

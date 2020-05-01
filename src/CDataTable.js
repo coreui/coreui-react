@@ -369,7 +369,7 @@ const CDataTable = props => {
   </tr>)
 
   return (
-<>
+<React.Fragment>
 <div ref={innerRef}>
   {
     (itemsPerPageSelect || tableFilter) &&
@@ -530,7 +530,7 @@ const CDataTable = props => {
     activePage={page}
   />
 }
-</>
+</React.Fragment>
   )
 }
 

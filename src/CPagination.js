@@ -212,10 +212,10 @@ CPagination.defaultProps = {
   arrows: true,
   doubleArrows: true,
   limit: 5,
-  firstButton: <>&laquo;</>,
-  previousButton: <>&lsaquo;</>,
-  nextButton: <>&rsaquo;</>,
-  lastButton: <>&raquo;</>,
+  firstButton: <React.Fragment>&laquo;</React.Fragment>,
+  previousButton: <React.Fragment>&lsaquo;</React.Fragment>,
+  nextButton: <React.Fragment>&rsaquo;</React.Fragment>,
+  lastButton: <React.Fragment>&raquo;</React.Fragment>,
   align: 'start',
   pages: 10
 };

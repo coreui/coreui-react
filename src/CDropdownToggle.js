@@ -65,7 +65,7 @@ const CDropdownToggle = props => {
 
   if (split) {
     return (
-      <>
+      <React.Fragment>
         <CButton {...attributes}>
           {props.children}
         </CButton>
@@ -74,7 +74,7 @@ const CDropdownToggle = props => {
           {...togglerAttrs}
           {...attributes}
         >{''}</CButton>
-      </>
+      </React.Fragment>
     )
   } else {
     return (
