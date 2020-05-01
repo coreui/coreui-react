@@ -38,7 +38,7 @@
     "link": "npm link && link.sh"
   },
   "dependencies": {
-    "@popperjs/core": "^2.3.3",
+    "@popperjs/core": "^2.4.0",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5",
     "lodash.isfunction": "^3.0.9",
@@ -46,9 +46,9 @@
     "prop-types": "^15.7.2",
     "react-onclickout": "^2.0.8",
     "react-perfect-scrollbar": "~1.5.8",
-    "react-popper": "^2.2.2",
+    "react-popper": "^2.2.3",
     "react-transition-group": "^4.3.0",
-    "tippy.js": "^6.2.2"
+    "tippy.js": "^6.2.3"
   },
   "peerDependencies": {
     "@coreui/coreui": "^3.0.0",
