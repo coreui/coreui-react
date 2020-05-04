@@ -2,6 +2,7 @@ import React, { useState, useRef, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import CPagination from './CPagination'
+import CElementCover from './CElementCover'
 import style from './CDataTable.module.css'
 import { CIcon } from '@coreui/icons-react'
 import { cilArrowTop, cilBan } from '@coreui/icons'
@@ -21,7 +22,9 @@ const CDataTable = props => {
     captionSlot,
     underTableSlot,
     theadTopSlot,
+    loadingSlot,
     scopedSlots,
+    loading,
     fields,
     pagination,
     activePage,
@@ -522,6 +525,15 @@ const CDataTable = props => {
     { footer && currentItems.length > 0 && <tfoot>{headerContent}</tfoot>}
     { captionSlot }
   </table>
+  { loading && 
+    (loadingSlot || 
+    <CElementCover 
+      boundaries={[
+        { sides: ['top'], query: 'td' },
+        { sides: ['bottom'], query: 'tbody' }
+      ]}
+    />)
+  }
 </div>
 
 { underTableSlot }
@@ -552,6 +564,8 @@ CDataTable.propTypes = {
   underTableSlot: PropTypes.node,
   scopedSlots: PropTypes.object,
   theadTopSlot: PropTypes.node,
+  loadingSlot: PropTypes.node,
+  loading: PropTypes.bool,
   fields: PropTypes.array,
   pagination: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   activePage: PropTypes.number,
