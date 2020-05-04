@@ -1,4 +1,4 @@
-## @coreui/react v2 for [CoreUI for React](https://coreui.io/react/)
+## @coreui/react v3 for [CoreUI 3 for React](https://coreui.io/react/)
 
 [![npm package][npm-badge]][npm]
 [![npm next][npm-next]][npm]

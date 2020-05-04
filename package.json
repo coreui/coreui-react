@@ -1,22 +1,18 @@
 {
   "name": "@coreui/react",
-  "version": "3.0.0-alpha.9",
+  "version": "3.0.0-alpha.12",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
-    "name": "Łukasz Holeczek",
-    "url": "http://holeczek.pl",
-    "github": "https://github.com/mrholek",
-    "twitter": "https://twitter.com/lukaszholeczek"
+    "name": "CoreUI",
+    "url": "https://coreui.io",
+    "github": "https://github.com/coreui",
+    "twitter": "https://twitter.com/core_ui"
   },
   "contributors": [
     {
-      "name": "Tomasz John",
-      "url": "https://github.com/thomasjohn"
-    },
-    {
-      "name": "Andrzej Kopański",
-      "url": "https://github.com/xidedix"
+      "name": "CoreUI Team",
+      "url": "https://github.com/orgs/coreui/people"
     }
   ],
   "homepage": "https://coreui.io",
@@ -42,7 +38,7 @@
     "link": "npm link && link.sh"
   },
   "dependencies": {
-    "@popperjs/core": "^2.3.3",
+    "@popperjs/core": "^2.4.0",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5",
     "lodash.isfunction": "^3.0.9",
@@ -50,13 +46,13 @@
     "prop-types": "^15.7.2",
     "react-onclickout": "^2.0.8",
     "react-perfect-scrollbar": "~1.5.8",
-    "react-popper": "^2.2.2",
+    "react-popper": "^2.2.3",
     "react-transition-group": "^4.3.0",
-    "tippy.js": "^6.2.0"
+    "tippy.js": "^6.2.3"
   },
   "peerDependencies": {
     "@coreui/coreui": "^3.0.0",
-    "@coreui/icons-react": "^1.0.0-alpha.3",
+    "@coreui/icons-react": "^1.0.0-alpha.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",

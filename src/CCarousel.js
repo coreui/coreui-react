@@ -51,20 +51,20 @@ const CCarousel = props => {
 
   const classes = mapToCssModules(classNames('carousel', className), cssModule)
   return (
-    <div 
-      className={classes} 
-      onMouseEnter={reset} 
+    <div
+      className={classes}
+      onMouseEnter={reset}
       onMouseLeave={setNext}
       {...attributes}
       ref={innerRef}
     >
       <Context.Provider value={{
-        state, 
-        setState, 
-        animate, 
-        itemNumber, 
-        setItemNumber, 
-        animating, 
+        state,
+        setState,
+        animate,
+        itemNumber,
+        setItemNumber,
+        animating,
         setAnimating
       }}>
         {props.children}

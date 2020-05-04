@@ -362,7 +362,7 @@ const CDataTable = props => {
               <div className="d-inline">{name}</div>
             }
             {
-              isSortable(index) && 
+              isSortable(index) &&
               ((sortingIconSlot && sortingIconSlot(getIconState(index), iconClasses(index))) ||
               <CIcon
                 customClasses={classNames(iconClasses(index))}
@@ -377,7 +377,7 @@ const CDataTable = props => {
   </tr>)
 
   return (
-<>
+<React.Fragment>
 <div ref={innerRef}>
   {
     (itemsPerPageSelect || tableFilter) &&
@@ -439,7 +439,7 @@ const CDataTable = props => {
             rawColumnNames.map((colName, index)=>{
               return (
                 <th className={classNames(headerClass(index))} key={index}>
-                  { columnFilterSlot[`${rawColumnNames[index]}`] || 
+                  { columnFilterSlot[`${rawColumnNames[index]}`] ||
                     ( fields && fields[index].filter !== false &&
                       <input
                         className="form-control form-control-sm"
@@ -467,7 +467,7 @@ const CDataTable = props => {
             {
               rawColumnNames.map((colName, index)=>{
                 return (
-                  scopedSlots[colName] && 
+                  scopedSlots[colName] &&
                   React.cloneElement(
                     scopedSlots[colName](item, itemIndex + firstItemIndex),
                     {'key': index}
@@ -542,12 +542,12 @@ const CDataTable = props => {
   <CPagination
     {...paginationProps}
     style={{display: totalPages > 0 ? 'inline' : 'none'}}
-    onActivePageChange={(page) => { setPage(page) }} 
+    onActivePageChange={(page) => { setPage(page) }}
     pages={totalPages}
     activePage={page}
   />
 }
-</>
+</React.Fragment>
   )
 }
 

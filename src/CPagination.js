@@ -29,7 +29,7 @@ const CPagination = props => {
     ...attributes
   } = props;
 
-  useEffect(() => { 
+  useEffect(() => {
     pages < activePage && onActivePageChange(pages, true)
   }, [pages])
 
@@ -106,7 +106,7 @@ const CPagination = props => {
       ref={innerRef}
     >
       <ul className={listClasses}>
-        { doubleArrows && 
+        { doubleArrows &&
           <li className={backArrowsClasses}>
             <CLink
               className="page-link"
@@ -119,7 +119,7 @@ const CPagination = props => {
             </CLink>
           </li>
         }
-        { arrows && 
+        { arrows &&
           <li className={backArrowsClasses}>
             <CLink
               className="page-link"
@@ -132,11 +132,11 @@ const CPagination = props => {
             </CLink>
           </li>
         }
-        { beforeDots && 
+        { beforeDots &&
           <li role="separator" className="page-item disabled">
             <span className="page-link">…</span>
           </li>
-        } 
+        }
         { items.map(i => {
             return (
             <li className={`${activePage===i ? 'active' : ''} page-item`} key={i}>
@@ -148,12 +148,12 @@ const CPagination = props => {
             </li>)
           })
         }
-        { afterDots && 
+        { afterDots &&
           <li role="separator" className="page-item disabled">
             <span className="page-link">…</span>
           </li>
         }
-        { arrows && 
+        { arrows &&
           <li className={nextArrowsClasses}>
             <CLink
               className="page-link"
@@ -166,7 +166,7 @@ const CPagination = props => {
             </CLink>
           </li>
         }
-        { doubleArrows && 
+        { doubleArrows &&
           <li className={nextArrowsClasses}>
             <CLink
               className="page-link"
@@ -212,10 +212,10 @@ CPagination.defaultProps = {
   arrows: true,
   doubleArrows: true,
   limit: 5,
-  firstButton: <>&laquo;</>,
-  previousButton: <>&lsaquo;</>,
-  nextButton: <>&rsaquo;</>,
-  lastButton: <>&raquo;</>,
+  firstButton: <React.Fragment>&laquo;</React.Fragment>,
+  previousButton: <React.Fragment>&lsaquo;</React.Fragment>,
+  nextButton: <React.Fragment>&rsaquo;</React.Fragment>,
+  lastButton: <React.Fragment>&raquo;</React.Fragment>,
   align: 'start',
   pages: 10
 };

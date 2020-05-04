@@ -12,9 +12,9 @@ const renderItem = (item, i) => {
 //component - CoreUI / CCreateElement
 const CCreateElement = props => {
   return (
-    <>
+    <React.Fragment>
       {props.items && props.items.map((item, i) => renderItem(item, i))}
-    </>
+    </React.Fragment>
   )
 }
 
