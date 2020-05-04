@@ -145,10 +145,44 @@ CInputCheckbox.propTypes = {
 
 const CInputRadio = props => <CInputCheckbox {...props} type="radio"/> 
 
+const CSelect = props => {
+
+  let {
+    className,
+    cssModule,
+    //
+    innerRef,
+    valid,
+    invalid,
+    elementSize,
+    custom,
+    ...attributes
+  } = props
+
+  // render
+  const baseClass = custom ? 'custom-select' : 'form-control'
+  const classes = mapToCssModules(classNames(
+    baseClass,
+    elementSize && `${baseClass}-${elementSize}`,
+    invalid && 'is-invalid',
+    valid && 'is-valid',
+    className
+  ), cssModule)
+
+  return <select className={classes} {...attributes} ref={innerRef}/>
+}
+
+CSelect.propTypes = {
+  ...commonPropTypes,
+  elementSize: PropTypes. string,
+
+};
+
 export {
   CInput,
   CTextarea,
   CInputFile,
   CInputCheckbox,
-  CInputRadio
+  CInputRadio,
+  CSelect
 }
