@@ -55,7 +55,8 @@ const CDataTable = props => {
     onFilteredItemsChange
   } = props
 
-  const compData = useRef({ firstRun: true }).current
+  const compData = useRef(
+    { firstRun: true, columnFiltered: 0, changeItems: 0 }).current
 
 
   //
@@ -186,7 +187,7 @@ const CDataTable = props => {
   })()
 
   useMemo(() => {
-    compData.columnFiltered = Math.random()
+    compData.columnFiltered++
   }, [
     JSON.stringify(columnFilter),
     JSON.stringify(columnFilterState),
@@ -244,7 +245,11 @@ const CDataTable = props => {
     })
     !compData.firstRun && onFilteredItemsChange && onFilteredItemsChange(tableFiltered)
     return sorted
-  }, [JSON.stringify(tableFiltered), JSON.stringify(sorterState), JSON.stringify(sorter)])
+  }, [
+    JSON.stringify(tableFiltered), 
+    JSON.stringify(sorterState), 
+    JSON.stringify(sorter)
+  ])
 
   const tableClasses = [
     'table',
@@ -328,7 +333,7 @@ const CDataTable = props => {
       JSON.stringify(items) !== JSON.stringify(passedItems))
     ) {
       setPassedItems(items)
-      compData.changeItems = Math.random()
+      compData.changeItems++
     }
   })
 
