@@ -61,6 +61,9 @@ const CToast = props => {
   }
 
   const startAutohide = () => {
+    if (!fade) {
+      return setState(false)
+    }
     setState('hiding')
     clearTimeout(timeout.current)
     timeout.current = setTimeout(() => {
@@ -69,13 +72,14 @@ const CToast = props => {
   }
 
   const close = () => {
-    setState(fade ? 'closing' : false)
-    clearTimeout(timeout.current)
-    if (fade) {
-      timeout.current = setTimeout(() => {
-        setState(false)
-      }, 500)
+    if (!fade) {
+      return setState(false)
     }
+    setState('closing')
+    clearTimeout(timeout.current)
+    timeout.current = setTimeout(() => {
+      setState(false)
+    }, 500)
   }
 
   // render
@@ -84,7 +88,7 @@ const CToast = props => {
   ), cssModule)
 
   const fadeClasses = classNames(
-    fade && style[`${state === 'hiding' ? 'slowfade' : 'fade' }`]
+    fade ? style[`${state === 'hiding' ? 'slowfade' : 'fade' }`] : 'show'
   )
 
   return (
