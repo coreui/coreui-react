@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {mapToCssModules, tagPropType} from './Shared/helper.js';
-import isObject from 'lodash.isobject';
 
 const colWidths = ['xs', 'sm', 'md', 'lg', 'xl'];
 const stringOrNumberProp = PropTypes.oneOfType([PropTypes.number, PropTypes.string]);
@@ -50,7 +49,7 @@ const CCol = props=>{
       return;
     }
     const isXs = !i;
-    if (isObject(columnProp)) {
+    if (typeof columnProp === 'object') {
       const colSizeInterfix = isXs ? '-' : `-${colWidth}-`;
       const colClass = getColumnSizeClass(isXs, colWidth, columnProp.size);
 

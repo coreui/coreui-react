@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules, tagPropType } from './Shared/helper.js'
+import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CInput
 const commonPropTypes = {

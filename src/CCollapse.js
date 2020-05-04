@@ -1,7 +1,14 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {mapToCssModules, omit, pick, TransitionTimeouts, TransitionPropTypeKeys, TransitionStatuses, tagPropType} from './Shared/helper.js';
+import {
+  mapToCssModules,
+  omit,
+  pick,
+  TransitionTimeouts,
+  TransitionPropTypeKeys,
+  TransitionStatuses
+} from './Shared/helper.js';
 import {Transition} from 'react-transition-group';
 
 const transitionStatusToClassHash = {

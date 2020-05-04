@@ -52,9 +52,10 @@ const CCarouselItem = props => {
   }
 
   const onEntering = (node) => {
+    /* eslint-disable no-unused-vars */
     const offsetHeight = node.offsetHeight
     setAnimating(true)
-    // return offsetHeight
+    /* eslint-enable no-unused-vars */
   }
 
   const onExit = () => {

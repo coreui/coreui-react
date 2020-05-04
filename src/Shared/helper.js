@@ -126,11 +126,10 @@ const mapToCssModules = (className = '', cssModule = globalCssModule)=>{
     .join(' ');
 }
 
-
 function deprecated(propType, explanation) {
   return function validate(props, propName, componentName, ...rest) {
     if (props[propName] !== null && typeof props[propName] !== 'undefined') {
-      warnOnce(
+      console.error(
         `"${propName}" property of "${componentName}" has been deprecated.\n${explanation}`
       )
     }
