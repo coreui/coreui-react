@@ -49,7 +49,8 @@ export {
   CInput,
   CInputFile,
   CInputCheckbox,
-  CInputRadio
+  CInputRadio,
+  CSelect
 }
 from './CInput';
 export {default as CInputGroup} from './CInputGroup';
