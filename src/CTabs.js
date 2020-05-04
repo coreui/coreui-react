@@ -8,7 +8,8 @@ const CTabs = props => {
   const {
     children,
     activeTab,
-    onActiveTabChange
+    onActiveTabChange,
+    fade
   } = props
 
   const [active, setActive] = useState()
@@ -21,7 +22,7 @@ const CTabs = props => {
 
   return (
     <>
-      <Context.Provider value={{active, setActiveTab}}>
+      <Context.Provider value={{active, setActiveTab, fade}}>
         {children}
       </Context.Provider>
     </>
@@ -31,11 +32,13 @@ const CTabs = props => {
 CTabs.propTypes = {
   children: PropTypes.node,
   activeTab: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  onActiveTabChange: PropTypes.func
+  onActiveTabChange: PropTypes.func,
+  fade: PropTypes.bool
 };
 
 CTabs.defaultProps = {
-  activeTab: 0
-}
+  activeTab: 0,
+  fade: true
+};
 
 export default CTabs

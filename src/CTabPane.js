@@ -2,6 +2,8 @@ import React, { useState, useContext, createRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { mapToCssModules } from './Shared/helper.js'
+import CFade from './CFade'
+
 import { Context } from './CTabs.js'
 
 //component - CoreUI / CTabPane
@@ -26,7 +28,9 @@ const CTabPane = props => {
   innerRef && innerRef(ref)
   const [isActive, setIsActive] = useState(active)
 
-  useEffect(() => setIsActive(active || act === getState(ref)), [act, active])
+  useEffect(() => {
+    setIsActive(active !== undefined ? active : act === getState(ref))
+  }, [act, active])
 
   //render
   const classes = mapToCssModules(classNames(
@@ -36,7 +40,14 @@ const CTabPane = props => {
   ), cssModule)
 
   return (
-    <div className={classes} {...attributes} ref={ref}/>
+    <CFade
+      tag="div"
+      in={isActive}
+      baseClass={context.fade ? 'fade' : ''}
+      className={classes} 
+      {...attributes} 
+      innerRef={ref}
+    />
   )
 }
 
