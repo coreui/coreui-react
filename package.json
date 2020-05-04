@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "3.0.0-alpha.12",
+  "version": "3.0.0-alpha.13",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -41,12 +41,8 @@
     "@popperjs/core": "^2.4.0",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5",
-    "lodash.isfunction": "^3.0.9",
-    "lodash.isobject": "^3.0.2",
     "prop-types": "^15.7.2",
-    "react-onclickout": "^2.0.8",
     "react-perfect-scrollbar": "~1.5.8",
-    "react-popper": "^2.2.3",
     "react-transition-group": "^4.3.0",
     "tippy.js": "^6.2.3"
   },
@@ -65,11 +61,11 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
-    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-react": "^7.19.0",
     "nwb": "^0.24.5",
     "react-app-polyfill": "^1.0.6",
-    "sinon": "^5.1.1"
+    "sinon": "^9.0.2"
   },
   "repository": {
     "type": "git",
