@@ -1,11 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {mapToCssModules} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CFooter
-
-const CFooter = props=>{
+const CFooter = props => {
 
   const {
     tag: Tag,
@@ -15,20 +14,18 @@ const CFooter = props=>{
     innerRef,
     fixed,
     ...attributes
-  } = props;
+  } = props
 
   //render
-
   const classes = mapToCssModules(classNames(
-    className,
+    'c-footer',
     fixed ? 'c-footer-fixed' : null,
-    'c-footer'
-  ), cssModule);
+    className
+  ), cssModule)
 
   return (
-    <Tag className={classes} {...attributes} ref={innerRef} />
-  );
-
+    <Tag className={classes} {...attributes} ref={innerRef}/>
+  )
 }
 
 CFooter.propTypes = {
@@ -43,7 +40,7 @@ CFooter.propTypes = {
 
 CFooter.defaultProps = {
   tag: 'footer',
-  fixed: true
+  fixed: false
 };
 
-export default CFooter;
+export default CFooter
