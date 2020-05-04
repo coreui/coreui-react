@@ -18,6 +18,7 @@ export {default as CCardTitle} from './CCardTitle';
 export {default as CCardSubtitle} from './CCardSubtitle';
 export {default as CCardText} from './CCardText';
 export {default as CCreateElement} from './CCreateElement';
+export {default as CElementCover} from './CElementCover';
 export {default as CRow} from './CRow';
 export {default as CCol} from './CCol';
 export {default as CContainer} from './CContainer';
