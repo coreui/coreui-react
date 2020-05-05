@@ -4,14 +4,15 @@ import classNames from 'classnames'
 import { CLink, CBadge } from './index'
 import { CIcon } from '@coreui/icons-react'
 import { iconProps } from './CSidebarNavDropdown'
-//component - CoreUI / CSidebarNavItem
 
+//component - CoreUI / CSidebarNavItem
 const CSidebarNavItem = props => {
 
   const {
     children,
     className,
     //
+    innerRef,
     name,
     icon,
     fontIcon,
@@ -22,7 +23,6 @@ const CSidebarNavItem = props => {
   } = props
 
   //render
-
   const classes = classNames(
     'c-sidebar-nav-item',
     className
@@ -35,7 +35,7 @@ const CSidebarNavItem = props => {
 
   const routerLinkProps = rest.to && { exact: true, activeClassName: 'c-active'}
   return (
-    <li className={classes}>
+    <li className={classes} ref={innerRef}>
       { children || 
         <CLink
           className={linkClasses}
@@ -56,6 +56,7 @@ CSidebarNavItem.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   //
+  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   fontIcon: PropTypes.string,
   badge: PropTypes.object,
