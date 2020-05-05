@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import PerfectScrollbar from 'react-perfect-scrollbar'
+import CScrollbar from './CScrollbar'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import { Context } from './CSidebar'
-//component - CoreUI / CSidebarNav
 
+//component - CoreUI / CSidebarNav
 const CSidebarNav = props => {
 
   const {
@@ -22,17 +22,14 @@ const CSidebarNav = props => {
   //state
 
   const isRtl = getComputedStyle(document.querySelector('html')).direction === 'rtl'
-  return !scrollbarExist ?
-    <ul className={navClasses} {...attributes} ref={innerRef}>
-      {props.children}
-    </ul> : 
-    <PerfectScrollbar 
-      options={{ suppressScrollX: !isRtl }} 
-      className={navClasses} 
-      ref={innerRef} 
-      component="ul" 
-      {...attributes}
-    />
+  return <CScrollbar
+    settings={{ suppressScrollX: !isRtl }} 
+    className={navClasses} 
+    innerRef={innerRef}
+    switcher={scrollbarExist}
+    tag="ul" 
+    {...attributes}
+  />
 }
 
 CSidebarNav.propTypes = {
