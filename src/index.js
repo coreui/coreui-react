@@ -73,7 +73,6 @@ export {default as CModalFooter} from './CModalFooter';
 export {default as CModalTitle} from './CModalTitle';
 export {default as CDataTable} from './CDataTable';
 export {default as CFade} from './CFade';
-export {default as CCustomInput} from './CCustomInput';
 export {default as CNav} from './CNav';
 export {default as CNavItem} from './CNavItem';
 export {default as CNavLink} from './CNavLink';
