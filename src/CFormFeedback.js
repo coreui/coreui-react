@@ -37,6 +37,6 @@ CFormFeedback.propTypes = {
   tooltip: PropTypes.bool
 };
 
-// export const CValidFeedback = props => <CFormFeedback {...props} valid/>
-// export const CInvalidFeedback = props => <CFormFeedback {...props} valid={false}/>
+export const CValidFeedback = props => <CFormFeedback {...props} valid/>
+export const CInvalidFeedback = props => <CFormFeedback {...props} valid={false}/>
 export default CFormFeedback

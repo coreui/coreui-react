@@ -42,7 +42,11 @@ export {default as CDropdownItem} from './CDropdownItem';
 export {default as CDropdownMenu} from './CDropdownMenu';
 export {default as CDropdownToggle} from './CDropdownToggle';
 export {default as CForm} from './CForm';
-export {default as CFormFeedback} from './CFormFeedback';
+export {
+  CValidFeedback,
+  CInvalidFeedback
+}
+from './CFormFeedback';
 export {default as CFormGroup} from './CFormGroup';
 export {default as CFormText} from './CFormText';
 export {
