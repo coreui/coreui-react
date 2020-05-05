@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import CScrollbar from './CScrollbar'
-import 'react-perfect-scrollbar/dist/css/styles.css'
 import { Context } from './CSidebar'
 
 //component - CoreUI / CSidebarNav
