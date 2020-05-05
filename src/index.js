@@ -66,6 +66,7 @@ export {default as CModal} from './CModal';
 export {default as CModalBody} from './CModalBody';
 export {default as CModalHeader} from './CModalHeader';
 export {default as CModalFooter} from './CModalFooter';
+export {default as CModalTitle} from './CModalTitle';
 export {default as CDataTable} from './CDataTable';
 export {default as CFade} from './CFade';
 export {default as CCustomInput} from './CCustomInput';
