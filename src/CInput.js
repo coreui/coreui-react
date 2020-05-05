@@ -23,7 +23,8 @@ const CInput = props => {
     valid,
     invalid,
     plaintext,
-    elementSize,
+    size,
+    sizeHtml,
     ...attributes
   } = props
 
@@ -31,20 +32,27 @@ const CInput = props => {
   const classes = mapToCssModules(
   classNames(
     plaintext ? 'form-control-plaintext' : 'form-control',
-    elementSize && `form-control-${elementSize}`,
+    size && `form-control-${size}`,
     invalid && 'is-invalid',
     valid && 'is-valid',
     className
   ), cssModule)
 
-  return <input className={classes} type={type} {...attributes} ref={innerRef}/>
+  return <input 
+    className={classes} 
+    type={type}
+    {...attributes}
+    size={sizeHtml} 
+    ref={innerRef}
+  />
 }
 
 CInput.propTypes = {
   ...commonPropTypes,
   plaintext: PropTypes.bool,
   type: PropTypes.string,
-  elementSize: PropTypes.string
+  size: PropTypes.string,
+  sizeHtml: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 CInput.defaultProps = {
@@ -154,7 +162,8 @@ const CSelect = props => {
     innerRef,
     valid,
     invalid,
-    elementSize,
+    size,
+    sizeHtml,
     custom,
     ...attributes
   } = props
@@ -163,19 +172,24 @@ const CSelect = props => {
   const baseClass = custom ? 'custom-select' : 'form-control'
   const classes = mapToCssModules(classNames(
     baseClass,
-    elementSize && `${baseClass}-${elementSize}`,
+    size && `${baseClass}-${size}`,
     invalid && 'is-invalid',
     valid && 'is-valid',
     className
   ), cssModule)
 
-  return <select className={classes} {...attributes} ref={innerRef}/>
+  return <select 
+    className={classes} 
+    {...attributes} 
+    size={sizeHtml} 
+    ref={innerRef}
+  />
 }
 
 CSelect.propTypes = {
   ...commonPropTypes,
-  elementSize: PropTypes. string,
-
+  size: PropTypes.string,
+  sizeHtml: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 export {
