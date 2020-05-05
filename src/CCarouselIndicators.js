@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 
 import { Context } from './CCarousel'
 //component - CoreUI / CCarouselIndicators
@@ -10,7 +9,6 @@ const CCarouselIndicators = props => {
 
   const {
     className,
-    cssModule,
     //
     innerRef,
     indicatorsClass,
@@ -20,9 +18,9 @@ const CCarouselIndicators = props => {
   const { itemNumber, state, setState, animating } = useContext(Context)
 
   //render
-  const listClasses = mapToCssModules(classNames(
+  const listClasses = classNames(
     indicatorsClass, className
-  ), cssModule)
+  )
 
   const indicators = Array.from({length: itemNumber}, (_, i) => i).map(key => {
     return (
@@ -48,7 +46,6 @@ const CCarouselIndicators = props => {
 
 CCarouselIndicators.propTypes = {
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   indicatorsClass: PropTypes.string

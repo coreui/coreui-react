@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 
-let globalCssModule;
 
 /* eslint key-spacing: ["error", { afterColon: true, align: "value" }] */
 // These are all setup to match what is in the bootstrap _variables.scss
@@ -117,15 +116,6 @@ export function DOMElement(props, propName, componentName) {
   }
 }
 
-
-const mapToCssModules = (className = '', cssModule = globalCssModule)=>{
-  if (!cssModule) return className;
-  return className
-    .split(' ')
-    .map(c => cssModule[c] || c)
-    .join(' ');
-}
-
 function deprecated(propType, explanation) {
   return function validate(props, propName, componentName, ...rest) {
     if (props[propName] !== null && typeof props[propName] !== 'undefined') {
@@ -137,4 +127,4 @@ function deprecated(propType, explanation) {
   }
 }
 
-export { tagPropType, mapToCssModules, deprecated }
+export { tagPropType, deprecated }

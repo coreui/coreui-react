@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 
 export const Context = React.createContext({})
 //component - CoreUI / CModal
@@ -9,7 +8,6 @@ export const Context = React.createContext({})
 const CModal = props => {
 
   const {
-    cssModule,
     //
     innerRef,
     show,
@@ -58,34 +56,34 @@ const CModal = props => {
     }
   }
 
-  const modalClasses = mapToCssModules(classNames(
+  const modalClasses = classNames(
     'modal overflow-auto', {
       'fade': fade,
       'show': isOpen,
       'd-block': isOpen || isTransitioning,
       [`modal-${color}`]: color
     }
-  ), cssModule)
+  )
 
-  const dialogClasses = mapToCssModules(classNames(
+  const dialogClasses = classNames(
     'modal-dialog', {
       'modal-dialog-centered': centered,
       [`modal-${size}`]: size
     }
-  ), cssModule)
+  )
 
-  const contentClasses = mapToCssModules(classNames(
+  const contentClasses = classNames(
     'modal-content', {
       [`border-${borderColor}`]: borderColor,
     },
     addContentClass
-  ), cssModule)
+  )
 
-  const backdropClasses = mapToCssModules(classNames({
+  const backdropClasses = classNames({
     'modal-backdrop': true,
     'fade': fade,
     'show': isOpen || fade
-  }), cssModule)
+  })
 
   return (
     <div onClick={modalClick}>
@@ -112,7 +110,6 @@ const CModal = props => {
 CModal.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   show: PropTypes.bool,

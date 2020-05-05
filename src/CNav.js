@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { tagPropType, mapToCssModules } from './Shared/helper.js'
+import { tagPropType } from './Shared/helper.js'
 
 //component - CoreUI / CNav
 
@@ -10,7 +10,6 @@ const CNav = props => {
   const {
     tag: Tag,
     className,
-    cssModule,
     //
     innerRef,
     variant,
@@ -25,7 +24,7 @@ const CNav = props => {
 
   //render
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     'nav',
     vertical && verticalClass,
     {
@@ -35,7 +34,7 @@ const CNav = props => {
       [`card-header-${variant}`]: inCard && variant
     },
     className
-  ), cssModule)
+  )
 
   return (
     <Tag className={classes} {...attributes} ref={innerRef} />
@@ -46,7 +45,6 @@ const CNav = props => {
 CNav.propTypes = {
   tag: tagPropType,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   variant: PropTypes.oneOf(['', 'tabs', 'pills']),

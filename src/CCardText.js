@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import {tagPropType} from './Shared/helper.js';
 
 //component - CoreUI / CCardText
 
@@ -10,7 +10,6 @@ const CCardText = props=>{
   const {
     tag: Tag,
     className,
-    cssModule,
     //
     innerRef,
     ...attributes
@@ -18,10 +17,10 @@ const CCardText = props=>{
 
   //render
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     className,
     'card-text'
-  ), cssModule);
+  );
 
   return (
     <Tag {...attributes} className={classes} ref={innerRef} />
@@ -32,7 +31,6 @@ const CCardText = props=>{
 CCardText.propTypes = {
   tag: tagPropType,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
 };

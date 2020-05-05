@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { tagPropType, mapToCssModules } from './Shared/helper.js'
+import { tagPropType } from './Shared/helper.js'
 import CLink from './CLink'
 
 //component - CoreUI / CListGroupItem
@@ -11,7 +11,6 @@ const CListGroupItem = props => {
   let {
     tag: Tag,
     className,
-    cssModule,
     //
     innerRef,
     active,
@@ -24,7 +23,7 @@ const CListGroupItem = props => {
 
   //render
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     className, 'list-group-item',
     {
       'list-group-item-action': action||rest.href||rest.to||Tag=='button',
@@ -33,7 +32,7 @@ const CListGroupItem = props => {
       [`list-group-item-${color}`]: color,
       [`list-group-item-accent-${accent}`]: accent
     }
-  ), cssModule)
+  )
 
   if (props.href || props.to){
     return (
@@ -51,7 +50,6 @@ const CListGroupItem = props => {
 CListGroupItem.propTypes = {
   tag: tagPropType,
   className: PropTypes.any,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   active: PropTypes.bool,

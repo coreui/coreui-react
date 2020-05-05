@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules, tagPropType } from './Shared/helper.js'
+import { tagPropType } from './Shared/helper.js'
 import CCol from './CCol'
 
 //component - CoreUI / CLabel
@@ -10,7 +10,6 @@ const CLabel = props => {
   const {
     tag,
     className,
-    cssModule,
     //
     innerRef,
     hidden,
@@ -20,7 +19,7 @@ const CLabel = props => {
   } = props
 
   // render
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     hidden && 'sr-only',
     variant === 'custom-checkbox' && 'custom-control-label',
     variant === 'checkbox' && 'form-check-label',
@@ -28,7 +27,7 @@ const CLabel = props => {
     col && 'col-form-label',
     col && typeof col === 'string' && `col-form-label-${col}`,
     className
-  ), cssModule)
+  )
 
   const Tag = col ? CCol : tag
   const addLabelTag = col && { tag }
@@ -42,7 +41,6 @@ CLabel.propTypes = {
   tag: tagPropType,
   children: PropTypes.node,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   hidden: PropTypes.bool,

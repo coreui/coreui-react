@@ -65,7 +65,6 @@ const CSwitch = props => {
 
 CSwitch.propTypes = {
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   size: PropTypes.oneOf(['', 'lg', 'sm']),

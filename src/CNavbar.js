@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules, tagPropType } from './Shared/helper.js'
+import { tagPropType } from './Shared/helper.js'
 
 //component - CoreUI / CNavbar
 
@@ -10,7 +10,6 @@ const CNavbar = props => {
   const {
     tag: Tag,
     className,
-    cssModule,
     //
     innerRef,
     expandable,
@@ -23,7 +22,7 @@ const CNavbar = props => {
 
   //render
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     'navbar', className,
     light ? 'navbar-light' : 'navbar-dark',
     {
@@ -32,7 +31,7 @@ const CNavbar = props => {
       [`fixed-${fixed}`]: fixed,
       'sticky-top': sticky
     }
-  ), cssModule)
+  )
 
   return (
     <Tag className={classes} {...attributes} ref={innerRef}/>
@@ -43,7 +42,6 @@ const CNavbar = props => {
 CNavbar.propTypes = {
   tag: tagPropType,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   light: PropTypes.bool,

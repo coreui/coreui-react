@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 
 export const Context = React.createContext({});
 
@@ -11,7 +10,6 @@ const CCarousel = props => {
 
   const {
     className,
-    cssModule,
     //
     innerRef,
     autoSlide,
@@ -49,7 +47,7 @@ const CCarousel = props => {
   }, [state])
 
 
-  const classes = mapToCssModules(classNames('carousel', className), cssModule)
+  const classes = classNames('carousel', className)
   return (
     <div
       className={classes}
@@ -74,7 +72,6 @@ const CCarousel = props => {
 }
 
 CCarousel.propTypes = {
-  cssModule: PropTypes.object,
   className: PropTypes.string,
   children: PropTypes.array,
   //

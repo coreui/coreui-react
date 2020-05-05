@@ -1,14 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CCarouselInner
 
 const CCarouselInner = props => {
 
   const {
-    cssModule,
     className,
     //
     innerRef,
@@ -17,10 +15,10 @@ const CCarouselInner = props => {
 
   //render
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     'carousel-inner',
     className
-  ), cssModule)
+  )
 
   return (
     <div 
@@ -32,7 +30,6 @@ const CCarouselInner = props => {
 }
 
 CCarouselInner.propTypes = {
-  cssModule: PropTypes.object,
   className: PropTypes.string,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string])

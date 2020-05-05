@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { tagPropType, mapToCssModules } from './Shared/helper.js'
+import { tagPropType } from './Shared/helper.js'
 import CLink from './CLink'
 //component - CoreUI / CButton
 
@@ -10,7 +10,6 @@ const CButton = props => {
   let {
     tag: Tag,
     className,
-    cssModule,
     //
     innerRef,
     onClick,
@@ -30,7 +29,7 @@ const CButton = props => {
   const isLink = attributes.to || attributes.href
 
   //render
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     className,
     'btn',
     variant || color ? `btn${variant ? '-' + variant : ''}-${color}` : false,
@@ -40,7 +39,7 @@ const CButton = props => {
     pressed ? 'btn-pressed' : false,
     { 'active': active && !isLink,
     'disabled': disabled && !isLink }
-  ), cssModule)
+  )
 
 
   if (isLink) {
@@ -66,7 +65,6 @@ const CButton = props => {
 
 CButton.propTypes = {
   tag: tagPropType,
-  cssModule: PropTypes.object,
   className: PropTypes.string,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { tagPropType, mapToCssModules } from './Shared/helper.js'
+import { tagPropType } from './Shared/helper.js'
 
 //component - CoreUI / CCard
 
@@ -10,7 +10,6 @@ const CCard = props => {
   const {
     tag: Tag,
     className,
-    cssModule,
     //
     innerRef,
     color,
@@ -23,7 +22,7 @@ const CCard = props => {
 
   //render
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     className,
     'card',
     align ? `text-${align}` : false,
@@ -31,7 +30,7 @@ const CCard = props => {
     color ? `bg-${color}` : false,
     borderColor ? `border-${borderColor}` : false,
     accentColor ? `card-accent-${accentColor}` : false,
-  ), cssModule)
+  )
 
 
   return (
@@ -53,7 +52,6 @@ export const sharedPropTypes = {
 CCard.propTypes = {
   tag: tagPropType,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   accentColor: PropTypes.string,

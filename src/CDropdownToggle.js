@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { tagPropType, mapToCssModules } from './Shared/helper.js'
+import { tagPropType } from './Shared/helper.js'
 import CButton from './CButton'
 import CLink from './CLink'
 import { Context } from './CDropdown'
@@ -12,7 +12,6 @@ const CDropdownToggle = props => {
 
   const {
     className,
-    cssModule,
     //
     innerRef,
     onClick,
@@ -47,13 +46,13 @@ const CDropdownToggle = props => {
 
   const Tag = tag || (inNav ? CLink : CButton)
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     className,
     {
       'dropdown-toggle': caret && !split,
       'nav-link': inNav
     }
-  ), cssModule)
+  )
 
   const togglerAttrs = {
     onClick: click,
@@ -91,7 +90,6 @@ CDropdownToggle.propTypes = {
   tag: tagPropType,
   children: PropTypes.node,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   caret: PropTypes.bool,

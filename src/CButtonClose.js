@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CButtonClose
 
@@ -10,7 +9,6 @@ const CButtonClose = props => {
   const {
     children,
     className,
-    cssModule,
     //
     buttonClass,
     innerRef,
@@ -19,10 +17,10 @@ const CButtonClose = props => {
 
   //render
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     buttonClass,
     className
-  ), cssModule)
+  )
 
   return (
     <button
@@ -40,7 +38,6 @@ const CButtonClose = props => {
 CButtonClose.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   buttonClass: PropTypes.string,
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),

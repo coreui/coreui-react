@@ -1,14 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CCarouselCaption
 
 const CCarouselCaption = props => {
 
   const {
-    cssModule,
     className,
     //
     innerRef,
@@ -17,10 +15,10 @@ const CCarouselCaption = props => {
 
   //render
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     'carousel-caption',
     className
-  ), cssModule)
+  )
 
   return (
     <div 
@@ -32,7 +30,6 @@ const CCarouselCaption = props => {
 }
 
 CCarouselCaption.propTypes = {
-  cssModule: PropTypes.object,
   className: PropTypes.string,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string])

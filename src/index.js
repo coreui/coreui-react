@@ -128,6 +128,5 @@ export {default as CWidgetProgressIcon} from './CWidgetProgressIcon';
 export {default as CWidgetDropdown} from './CWidgetDropdown';
 export {default as CWidgetSimple} from './CWidgetSimple';
 
-import { mapToCssModules, tagPropType } from './Shared/helper'
-export { mapToCssModules }
+import { tagPropType } from './Shared/helper'
 export { tagPropType }

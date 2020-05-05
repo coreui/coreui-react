@@ -1,7 +1,6 @@
 import React, { useEffect, createRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 import CSpinner from './CSpinner'
 
 //component - CoreUI / CElementCover
@@ -9,7 +8,6 @@ const CElementCover = props => {
 
   const {
     className,
-    cssModule,
     children,
     //
     innerRef,
@@ -48,7 +46,7 @@ const CElementCover = props => {
   }, [JSON.stringify(getCustomBoundaries())])
 
   //render
-  const classes = mapToCssModules(classNames(className), cssModule)
+  const classes = classNames(className)
 
   const containerCoords = {
     top: 0,
@@ -88,7 +86,6 @@ const CElementCover = props => {
 CElementCover.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   boundaries: PropTypes.array,

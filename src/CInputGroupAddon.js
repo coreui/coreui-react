@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CInputGroupAddon
 const CInputGroupAddon = props => {
@@ -9,7 +8,6 @@ const CInputGroupAddon = props => {
   const {
     children,
     className,
-    cssModule,
     //
     innerRef,
     prepend,
@@ -17,9 +15,9 @@ const CInputGroupAddon = props => {
   } = props
 
   //render
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     'input-group-' + (prepend ? 'prepend' : 'append'), className
-  ), cssModule)
+  )
 
   return (
     <div className={classes} {...attributes} ref={innerRef}>
@@ -31,7 +29,6 @@ const CInputGroupAddon = props => {
 CInputGroupAddon.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   prepend: PropTypes.bool

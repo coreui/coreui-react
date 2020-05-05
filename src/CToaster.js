@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CToaster
 
@@ -9,7 +8,6 @@ const CToaster = props => {
 
   const {
     className,
-    cssModule,
     //
     innerRef,
     position,
@@ -18,11 +16,11 @@ const CToaster = props => {
 
   // inherit closeButton, autohide, fade??
   // render
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     'toaster',
     position && position !== 'static' && 'toaster-' + position,
     className
-  ), cssModule)
+  )
 
   return (
     <div className={classes} {...attributes} ref={innerRef}/>
@@ -31,7 +29,6 @@ const CToaster = props => {
 
 CToaster.propTypes = {
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
   position: PropTypes.oneOf([

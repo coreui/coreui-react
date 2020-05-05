@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import {tagPropType} from './Shared/helper.js';
 
 //component - CoreUI / CListGroupHeading
 
@@ -10,7 +10,6 @@ const CListGroupHeading = props=>{
   const {
     tag: Tag,
     className,
-    cssModule,
     //
     innerRef,
     ...attributes
@@ -18,10 +17,10 @@ const CListGroupHeading = props=>{
 
   // render
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     className,
     'list-group-item-heading'
-  ), cssModule);
+  );
 
   return (
     <Tag {...attributes} className={classes} ref={innerRef} />
@@ -32,7 +31,6 @@ const CListGroupHeading = props=>{
 CListGroupHeading.propTypes = {
   tag: tagPropType,
   className: PropTypes.any,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string])
 };

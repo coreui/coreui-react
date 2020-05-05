@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CBreadcrumbItem
 
@@ -9,7 +8,6 @@ const CBreadcrumbItem = props => {
 
   const {
     className,
-    cssModule,
     //
     innerRef,
     active,
@@ -18,11 +16,11 @@ const CBreadcrumbItem = props => {
 
   //render
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     className,
     active ? 'active' : false,
     'breadcrumb-item'
-  ), cssModule)
+  )
 
   return (
     <li 
@@ -38,7 +36,6 @@ const CBreadcrumbItem = props => {
 
 CBreadcrumbItem.propTypes = {
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   active: PropTypes.bool

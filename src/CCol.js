@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {mapToCssModules, tagPropType} from './Shared/helper.js';
+import {tagPropType} from './Shared/helper.js';
 
 const colWidths = ['xs', 'sm', 'md', 'lg', 'xl'];
 const stringOrNumberProp = PropTypes.oneOfType([PropTypes.number, PropTypes.string]);
@@ -31,7 +31,6 @@ const CCol = props=>{
   const {
     tag: Tag,
     className,
-    cssModule,
     //
     innerRef,
     widths,
@@ -53,11 +52,11 @@ const CCol = props=>{
       const colSizeInterfix = isXs ? '-' : `-${colWidth}-`;
       const colClass = getColumnSizeClass(isXs, colWidth, columnProp.size);
 
-      colClasses.push(mapToCssModules(classNames({
+      colClasses.push(classNames({
         [colClass]: columnProp.size || columnProp.size === '',
         [`order${colSizeInterfix}${columnProp.order}`]: columnProp.order || columnProp.order === 0,
         [`offset${colSizeInterfix}${columnProp.offset}`]: columnProp.offset || columnProp.offset === 0
-      }), cssModule));
+      }));
     } else {
       const colClass = getColumnSizeClass(isXs, colWidth, columnProp);
       colClasses.push(colClass);
@@ -68,10 +67,10 @@ const CCol = props=>{
     colClasses.push('col');
   }
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     className,
     colClasses
-  ), cssModule);
+  );
 
   return (
     <Tag {...attributes} className={classes} ref={innerRef} />
@@ -82,7 +81,6 @@ const CCol = props=>{
 CCol.propTypes = {
   tag: tagPropType,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   xs: columnProps,

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 import { Context } from './CDropdown'
 import { createPopper } from '@popperjs/core'
 
@@ -12,7 +11,6 @@ const CDropdownMenu = props => {
 
   const {
     className,
-    cssModule,
     show,
     placement,
     modifiers,
@@ -31,13 +29,13 @@ const CDropdownMenu = props => {
     setPlacement(placement)
   }, [show, placement])
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     className,
     'dropdown-menu',
     {
       'show': isOpen,
     }
-  ), cssModule)
+  )
 
   useLayoutEffect(() => {
     if (!reference) {
@@ -87,7 +85,6 @@ const CDropdownMenu = props => {
 CDropdownMenu.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   modifiers: PropTypes.array,

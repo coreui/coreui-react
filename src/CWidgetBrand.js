@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CWidgetBrand
 
@@ -10,7 +9,6 @@ const CWidgetBrand = props => {
   const {
     children,
     className,
-    cssModule,
     //
     color,
     rightHeader,
@@ -24,11 +22,11 @@ const CWidgetBrand = props => {
 
   // render
 
-  const headerClasses = mapToCssModules(classNames(
+  const headerClasses = classNames(
       'card-header content-center text-white p-0',
       color && `bg-${color}`,
       addHeaderClasses
-  ),cssModule)
+  )
 
   return (
     <div className={`card ${className}`} {...attributes}>
@@ -68,7 +66,6 @@ const CWidgetBrand = props => {
 CWidgetBrand.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   color: PropTypes.string,

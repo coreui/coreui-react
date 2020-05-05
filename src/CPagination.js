@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 import CLink from './CLink'
 
 //component - CoreUI / CPagination
@@ -9,7 +8,6 @@ const CPagination = props => {
 
   const {
     className,
-    cssModule,
     //
     innerRef,
     addListClass,
@@ -34,22 +32,22 @@ const CPagination = props => {
   }, [pages])
 
   //render
-  const listClasses = mapToCssModules(classNames(
+  const listClasses = classNames(
     'pagination',
     size && 'pagination-' + size,
     'justify-content-' + align,
     addListClass
-  ), cssModule)
+  )
 
-  const backArrowsClasses = mapToCssModules(classNames(
+  const backArrowsClasses = classNames(
     'page-item',
     activePage === 1 && 'disabled'
-  ), cssModule)
+  )
 
-  const nextArrowsClasses = mapToCssModules(classNames(
+  const nextArrowsClasses = classNames(
     'page-item',
     activePage === pages && 'disabled'
-  ), cssModule)
+  )
 
   const showDots = (() => {
     return dots && limit > 4 && limit < pages
@@ -187,7 +185,6 @@ const CPagination = props => {
 
 CPagination.propTypes = {
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   activePage: PropTypes.number,

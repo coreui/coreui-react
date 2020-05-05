@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { tagPropType, mapToCssModules } from './Shared/helper.js'
+import { tagPropType } from './Shared/helper.js'
 
 //component - CoreUI / CToggler
 
@@ -11,7 +11,6 @@ const CToggler = props => {
     tag: Tag,
     children,
     className,
-    cssModule,
     //
     innerRef,
     inHeader,
@@ -25,9 +24,9 @@ const CToggler = props => {
   const iconClass = type ? `${togglerClass}-icon` : ''
 
   //render
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     togglerClass, className,
-  ), cssModule)
+  )
 
   return (
     <Tag className={classes} {...typeAttr} {...attributes} ref={innerRef}>
@@ -41,7 +40,6 @@ CToggler.propTypes = {
   tag: tagPropType,
   children: PropTypes.node,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
   inHeader: PropTypes.bool,

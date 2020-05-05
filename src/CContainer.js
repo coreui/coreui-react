@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import {tagPropType} from './Shared/helper.js';
 
 //component - CoreUI / CContainer
 
@@ -10,7 +10,6 @@ const CContainer = props=>{
   const {
     tag: Tag,
     className,
-    cssModule,
     //
     innerRef,
     fluid,
@@ -19,10 +18,10 @@ const CContainer = props=>{
 
   //render
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     className,
     fluid ? 'container-fluid' : 'container'
-  ), cssModule);
+  );
 
   return (
     <Tag {...attributes} className={classes} ref={innerRef} />
@@ -33,7 +32,6 @@ const CContainer = props=>{
 CContainer.propTypes = {
   tag: tagPropType,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   fluid: PropTypes.bool

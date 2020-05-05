@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules, tagPropType } from './Shared/helper.js'
+import { tagPropType } from './Shared/helper.js'
 import { Context } from './CDropdown'
 import CLink from './CLink'
 
@@ -11,7 +11,6 @@ const CDropdownItem = props => {
   let {
     tag,
     className,
-    cssModule,
     //
     innerRef,
     onClick,
@@ -41,13 +40,13 @@ const CDropdownItem = props => {
   const Tag = tag || (!isItem ? 'div' : CLink)
   const ref = { [`${typeof Tag === 'string' ? 'ref': 'innerRef'}`]: innerRef }
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     className,
     'dropdown-' + (header ? 'header' : divider ? 'divider' : 'item'),
     { active },
     color && 'bg-' + color,
     disabled && Tag !== CLink && 'disabled'
-  ), cssModule)
+  )
 
 
 
@@ -67,7 +66,6 @@ const CDropdownItem = props => {
 CDropdownItem.propTypes = {
   tag: tagPropType,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   color: PropTypes.string,

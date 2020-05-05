@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 import { NavLink } from 'react-router-dom'
 
 //component - CoreUI / CLink
@@ -9,7 +8,6 @@ const CLink = props => {
 
   const {
     className,
-    cssModule,
     //
     innerRef,
     active,
@@ -29,11 +27,11 @@ const CLink = props => {
 
   // render
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     active && 'active',
     disabled && 'disabled',
     className
-  ), cssModule)
+  )
 
   return to ? (
     <NavLink
@@ -54,7 +52,6 @@ const CLink = props => {
 }
 
 CLink.propTypes = {
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   active: PropTypes.bool,

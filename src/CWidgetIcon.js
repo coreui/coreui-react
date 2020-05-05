@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CWidgetIcon
 
@@ -9,7 +8,6 @@ const CWidgetIcon = props => {
 
   const {
     className,
-    cssModule,
     children,
     //
     header,
@@ -20,9 +18,9 @@ const CWidgetIcon = props => {
     ...attributes
   } = props;
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     'card', color, className
-  ), cssModule)
+  )
 
   return (
     <div className={classes} {...attributes}>
@@ -44,7 +42,6 @@ const CWidgetIcon = props => {
 CWidgetIcon.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   header: PropTypes.string,

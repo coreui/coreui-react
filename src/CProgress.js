@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 import CProgressBar from './CProgressBar'
 
 export const Context = React.createContext({})
@@ -12,7 +11,6 @@ const CProgress = props => {
   const {
     children,
     className,
-    cssModule,
     //
     innerRef,
     size,
@@ -38,11 +36,11 @@ const CProgress = props => {
     value
   }
 
-  const progressClasses = mapToCssModules(classNames(
+  const progressClasses = classNames(
     'progress', 
     size && 'progress-' + size,
     className
-  ), cssModule)
+  )
 
   // render
   return (
@@ -62,7 +60,6 @@ const CProgress = props => {
 CProgress.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   size: PropTypes.string,

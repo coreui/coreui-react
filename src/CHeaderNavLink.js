@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 import CLink from './CLink'
 
 //component - CoreUI / CHeaderNavLink
@@ -10,7 +9,6 @@ const CHeaderNavLink = props => {
 
   const {
     className,
-    cssModule,
     //
     innerRef,
     ...rest
@@ -18,10 +16,10 @@ const CHeaderNavLink = props => {
 
   //render
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     className,
     'c-header-nav-link'
-  ), cssModule)
+  )
 
   return (
     <CLink className={classes} {...rest} innerRef={innerRef} />
@@ -31,7 +29,6 @@ const CHeaderNavLink = props => {
 
 CHeaderNavLink.propTypes = {
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string])
 };

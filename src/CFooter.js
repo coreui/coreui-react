@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CFooter
 const CFooter = props => {
@@ -9,7 +8,6 @@ const CFooter = props => {
   const {
     tag: Tag,
     className,
-    cssModule,
     //
     innerRef,
     fixed,
@@ -17,11 +15,11 @@ const CFooter = props => {
   } = props
 
   //render
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     'c-footer',
     fixed ? 'c-footer-fixed' : null,
     className
-  ), cssModule)
+  )
 
   return (
     <Tag className={classes} {...attributes} ref={innerRef}/>
@@ -32,7 +30,6 @@ CFooter.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   children: PropTypes.node,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   fixed: PropTypes.bool

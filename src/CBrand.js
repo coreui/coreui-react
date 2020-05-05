@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { tagPropType, mapToCssModules } from './Shared/helper.js'
+import { tagPropType } from './Shared/helper.js'
 import CLink from './CLink'
 
 //component - CoreUI / CBrand
@@ -10,7 +10,6 @@ const CBrand = props => {
   const {
     tag,
     className,
-    cssModule,
     //
     innerRef,
     ...attributes
@@ -18,7 +17,7 @@ const CBrand = props => {
 
   //render
 
-  const classes = mapToCssModules(classNames(className), cssModule)
+  const classes = classNames(className)
 
   const Tag = attributes.to || attributes.href ? CLink : tag
   const ref = { [`${typeof Tag === 'string' ? 'ref': 'innerRef'}`]: innerRef}
@@ -30,7 +29,6 @@ const CBrand = props => {
 CBrand.propTypes = {
   tag: tagPropType,
   children: PropTypes.node,
-  cssModule: PropTypes.object,
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string])

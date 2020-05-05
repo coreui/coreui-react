@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 import { CBreadcrumb, CBreadcrumbItem } from './index'
 import { Link, useLocation } from 'react-router-dom';
 
@@ -34,7 +33,6 @@ const CBreadcrumbRouter = props => {
 
   const {
     className,
-    cssModule,
     //
     innerRef,
     routes,
@@ -47,7 +45,7 @@ const CBreadcrumbRouter = props => {
 
   //render
 
-  const classes = mapToCssModules(classNames(className), cssModule)
+  const classes = classNames(className)
 
   return (
     <CBreadcrumb 
@@ -66,7 +64,6 @@ const CBreadcrumbRouter = props => {
 
 CBreadcrumbRouter.propTypes = {
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   routes: PropTypes.array

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {tagPropType, mapToCssModules} from './Shared/helper.js';
+import {tagPropType} from './Shared/helper.js';
 
 //component - CoreUI / CImg
 
@@ -9,7 +9,6 @@ const CImg = props=>{
 
   const {
     className,
-    cssModule,
     //
     innerRef,
     fluid,
@@ -38,7 +37,7 @@ const CImg = props=>{
 
   // render
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     className,
     alignClass,
     thumbnail ? 'img-thumbnail' : null,
@@ -46,7 +45,7 @@ const CImg = props=>{
     fluidGrow ? 'w-100' : null,
     block ? 'd-block' : null,
     shape ? shape : null,
-  ), cssModule);
+  );
 
   return (
     src ?
@@ -72,7 +71,6 @@ const CImg = props=>{
 CImg.propTypes = {
   tag: tagPropType,
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   src: PropTypes.string,

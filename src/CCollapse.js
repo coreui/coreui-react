@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {
-  mapToCssModules,
   omit,
   pick,
   TransitionTimeouts,
@@ -33,7 +32,6 @@ const CCollapse = props=>{
   const {
     children,
     className,
-    cssModule,
     //
     innerRef,
     show,
@@ -86,11 +84,11 @@ const CCollapse = props=>{
     >
       {(status) => {
         let collapseClass = getTransitionClass(status);
-        const classes = mapToCssModules(classNames(
+        const classes = classNames(
           className,
           collapseClass,
           navbar && 'navbar-collapse'
-        ), cssModule);
+        );
         const style = height === null ? null : { height };
         return (
           <div
@@ -115,7 +113,6 @@ CCollapse.propTypes = {
     PropTypes.node
   ]),
   className: PropTypes.node,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   show: PropTypes.bool,

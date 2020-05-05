@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 import CFade from './CFade'
 import style from './CToast.module.css'
 
@@ -12,7 +11,6 @@ const CToast = props => {
 
   const {
     className,
-    cssModule,
     children,
     //
     innerRef,
@@ -83,9 +81,9 @@ const CToast = props => {
   }
 
   // render
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     'toast', className
-  ), cssModule)
+  )
 
   const fadeClasses = classNames(
     fade ? style[`${state === 'hiding' ? 'slowfade' : 'fade' }`] : 'show'
@@ -116,7 +114,6 @@ const CToast = props => {
 
 CToast.propTypes = {
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   children: PropTypes.node,
   //
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),

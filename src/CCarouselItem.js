@@ -1,7 +1,6 @@
 import React, { useState, useContext, createRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 import { Transition } from 'react-transition-group'
 import { Context } from './CCarousel'
 
@@ -21,7 +20,6 @@ const CCarouselItem = props => {
   const {
     children,
     className,
-    cssModule,
     //
     innerRef,
     ...attributes
@@ -73,11 +71,11 @@ const CCarouselItem = props => {
 
   //render
   if (!animate || state[0] === null) {
-    const itemClasses = mapToCssModules(classNames(
+    const itemClasses = classNames(
       'carousel-item',
       isIn && 'active',
       className,
-    ), cssModule)
+    )
     return (
       <div 
         className={itemClasses} 
@@ -109,13 +107,13 @@ const CCarouselItem = props => {
         const orderClassName = (status === 'entering') &&
           (direction === 'right' ? 'carousel-item-next' : 'carousel-item-prev')
 
-        const itemClasses = mapToCssModules(classNames(
+        const itemClasses = classNames(
           'carousel-item',
           isActive && 'active',
           directionClassName,
           orderClassName,
           className,
-        ), cssModule)
+        )
 
         return (
           <div 
@@ -135,7 +133,6 @@ const CCarouselItem = props => {
 CCarouselItem.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
 };

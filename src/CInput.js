@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 
 //component - CoreUI / CInput
 const commonPropTypes = {
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   valid: PropTypes.bool,
   invalid: PropTypes.bool
@@ -16,7 +14,6 @@ const CInput = props => {
 
   let {
     className,
-    cssModule,
     //
     innerRef,
     type,
@@ -29,14 +26,14 @@ const CInput = props => {
   } = props
 
   // render
-  const classes = mapToCssModules(
+  const classes = 
   classNames(
     plaintext ? 'form-control-plaintext' : 'form-control',
     size && `form-control-${size}`,
     invalid && 'is-invalid',
     valid && 'is-valid',
     className
-  ), cssModule)
+  )
 
   return <input 
     className={classes} 
@@ -63,7 +60,6 @@ const CTextarea = props => {
 
   let {
     className,
-    cssModule,
     //
     innerRef,
     valid,
@@ -74,13 +70,13 @@ const CTextarea = props => {
   } = props
 
   // render
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
       plaintext ? 'form-control-plaintext' : 'form-control',
       size && `form-control-${size}`,
       invalid && 'is-invalid',
       valid && 'is-valid',
       className
-  ), cssModule)
+  )
 
   return <textarea className={classes} {...attributes} ref={innerRef}/>
 }
@@ -95,7 +91,6 @@ const CInputFile = props => {
 
   let {
     className,
-    cssModule,
     //
     innerRef,
     valid,
@@ -106,12 +101,12 @@ const CInputFile = props => {
 
   // render
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     custom ? 'custom-file-input' : 'form-control-file',
     invalid && 'is-invalid',
     valid && 'is-valid',
     className
-  ), cssModule)
+  )
 
   return <input className={classes} {...attributes} type="file" ref={innerRef}/>
 }
@@ -125,7 +120,6 @@ const CInputCheckbox = props => {
 
   let {
     className,
-    cssModule,
     //
     innerRef,
     valid,
@@ -136,12 +130,12 @@ const CInputCheckbox = props => {
 
   // render
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     custom ? 'custom-control-input' : 'form-check-input',
     invalid && 'is-invalid',
     valid && 'is-valid',
     className
-  ), cssModule)
+  )
 
   return <input className={classes} type="checkbox" {...attributes} ref={innerRef}/>
 }
@@ -157,7 +151,6 @@ const CSelect = props => {
 
   let {
     className,
-    cssModule,
     //
     innerRef,
     valid,
@@ -170,13 +163,13 @@ const CSelect = props => {
 
   // render
   const baseClass = custom ? 'custom-select' : 'form-control'
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     baseClass,
     size && `${baseClass}-${size}`,
     invalid && 'is-invalid',
     valid && 'is-valid',
     className
-  ), cssModule)
+  )
 
   return <select 
     className={classes} 

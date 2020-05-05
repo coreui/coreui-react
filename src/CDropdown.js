@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { tagPropType, mapToCssModules } from './Shared/helper.js'
+import { tagPropType } from './Shared/helper.js'
 
 export const Context = React.createContext({})
 
@@ -11,7 +11,6 @@ const CDropdown = props => {
 
   const {
     className,
-    cssModule,
     tag,
     //
     innerRef,
@@ -30,11 +29,11 @@ const CDropdown = props => {
     placement.includes('left') ? 'dropleft' : 'dropdown'
 
   const Tag = tag || (inNav ? 'li' : 'div')
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     className,
     carretClass,
     { 'nav-item': inNav, 'btn-group': split, 'show': isOpen }
-  ), cssModule)
+  )
 
 
   return (
@@ -60,7 +59,6 @@ CDropdown.propTypes = {
   tag: tagPropType,
   children: PropTypes.node,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   inNav: PropTypes.bool

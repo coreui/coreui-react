@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { mapToCssModules } from './Shared/helper.js';
 
 import { Context } from './CCarousel'
 
@@ -11,7 +10,6 @@ const CCarouselControl = props => {
 
   const {
     className,
-    cssModule,
     children,
     //
     innerRef,
@@ -36,9 +34,9 @@ const CCarouselControl = props => {
 
   //render
 
-  const anchorClasses = mapToCssModules(classNames(
+  const anchorClasses = classNames(
     `carousel-control-${direction}`, className,
-  ), cssModule)
+  )
 
   return (
     <a
@@ -57,7 +55,6 @@ const CCarouselControl = props => {
 
 CCarouselControl.propTypes = {
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   children: PropTypes.node,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),

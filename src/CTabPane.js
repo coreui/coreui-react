@@ -1,7 +1,6 @@
 import React, { useState, useContext, createRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 import CFade from './CFade'
 
 import { Context } from './CTabs.js'
@@ -15,7 +14,6 @@ const CTabPane = props => {
 
   const {
     className,
-    cssModule,
     //
     innerRef,
     active,
@@ -33,11 +31,11 @@ const CTabPane = props => {
   }, [act, active])
 
   //render
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     'tab-pane',
     { 'active': isActive },
     className
-  ), cssModule)
+  )
 
   return (
     <CFade
@@ -53,7 +51,6 @@ const CTabPane = props => {
 
 CTabPane.propTypes = {
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
   active: PropTypes.bool

@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { mapToCssModules } from './Shared/helper.js'
 import CProgress from './CProgress'
 
 //component - CoreUI / CWidgetProgress
@@ -10,7 +9,6 @@ const CWidgetProgress = props => {
   const {
     children,
     className,
-    cssModule,
     //
     header,
     text,
@@ -21,11 +19,11 @@ const CWidgetProgress = props => {
     ...attributes
   } = props;
 
-  const classes = mapToCssModules(classNames(
+  const classes = classNames(
     'card', 
     inverse ? [color && `bg-${color}`, 'text-white'] : '',
     className
-  ), cssModule)
+  )
 
   return (
     <div className={classes} {...attributes}>
@@ -49,7 +47,6 @@ const CWidgetProgress = props => {
 CWidgetProgress.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   header: PropTypes.string,

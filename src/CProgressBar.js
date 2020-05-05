@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import {  mapToCssModules } from './Shared/helper.js'
 import { Context } from './CProgress'
 //component - CoreUI / CProgressBar
 
@@ -13,7 +12,6 @@ const CProgressBar = directProps => {
   const {
     children,
     className,
-    cssModule,
     //
     innerRef,
     color,
@@ -28,13 +26,13 @@ const CProgressBar = directProps => {
   } = props
 
   // render
-  const progressBarClasses = mapToCssModules(classNames(
+  const progressBarClasses = classNames(
     'progress-bar',
     animated && 'progress-bar-animated',
     striped || animated && 'progress-bar-striped',
     color && `bg-${color}`,
     className
-  ), cssModule)
+  )
 
   const valLabel = Number(value).toFixed(precision)
   const percentLabel = Number((value / max) * 100).toFixed(precision) + '%'
@@ -58,7 +56,6 @@ const CProgressBar = directProps => {
 CProgressBar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  cssModule: PropTypes.object,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   value: PropTypes.number,
