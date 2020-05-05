@@ -41,7 +41,7 @@ const CTabPane = props => {
     <CFade
       tag="div"
       in={isActive}
-      baseClass={context.fade ? 'fade' : ''}
+      baseClass={context && context.fade ? 'fade' : ''}
       className={classes} 
       {...attributes} 
       innerRef={ref}
