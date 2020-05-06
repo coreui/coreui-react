@@ -29,7 +29,7 @@ const CProgressBar = directProps => {
   const progressBarClasses = classNames(
     'progress-bar',
     animated && 'progress-bar-animated',
-    striped || animated && 'progress-bar-striped',
+    (striped || animated) && 'progress-bar-striped',
     color && `bg-${color}`,
     className
   )
