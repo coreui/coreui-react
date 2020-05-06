@@ -58,6 +58,7 @@ const CSidebar = props=>{
 
   useEffect(() => {
     isOpen === true ? createBackdrop() : removeBackdrop()
+    onShowChange && onShowChange(isOpen)
     return () => removeBackdrop()
   }, [isOpen])
 
@@ -92,10 +93,7 @@ const CSidebar = props=>{
     }
   }
 
-  const closeSidebar = () => {
-    setIsOpen(overlaid ? false : 'responsive')
-    onShowChange && onShowChange(isOpen)
-  }
+  const closeSidebar = () => setIsOpen(overlaid ? false : 'responsive')
 
   const isOnMobile = ()=>{
     return Boolean(getComputedStyle(node.current).getPropertyValue('--is-mobile'))
