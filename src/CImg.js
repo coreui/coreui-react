@@ -1,11 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType} from './Shared/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { tagPropType } from './Shared/helper.js'
 
 //component - CoreUI / CImg
-
-const CImg = props=>{
+const CImg = props => {
 
   const {
     className,
@@ -22,30 +21,22 @@ const CImg = props=>{
     placeholderColor,
     fluidGrow,
     ...attributes
-  } = props;
+  } = props
 
-  const alignClass = (()=>{
-    if (align === 'center') {
-      return 'mx-auto'
-    } else if (align === 'right') {
-      return 'float-right'
-    } else if (align === 'left') {
-      return 'float-left'
-    }
-    return null
-  })();
+  const alignClass = align === 'center' ? 'mx-auto' : 
+                     align === 'right' ? 'float-right' :
+                     align === 'left' ? 'float-left' : ''
 
   // render
-
   const classes = classNames(
     className,
     alignClass,
-    thumbnail ? 'img-thumbnail' : null,
-    fluid || fluidGrow ? 'img-fluid' : null,
-    fluidGrow ? 'w-100' : null,
-    block ? 'd-block' : null,
-    shape ? shape : null,
-  );
+    thumbnail && 'img-thumbnail',
+    fluid || fluidGrow && 'img-fluid',
+    fluidGrow && 'w-100',
+    block && 'd-block',
+    shape
+  )
 
   return (
     src ?
@@ -55,7 +46,8 @@ const CImg = props=>{
         width={width}
         height={height}
         {...attributes}
-        ref={innerRef} /> :
+        ref={innerRef} 
+      /> :
       <svg
         className={classes}
         width={width}
@@ -64,7 +56,7 @@ const CImg = props=>{
         {...attributes}
         ref={innerRef}
       />
-  );
+  )
 
 }
 
@@ -74,7 +66,6 @@ CImg.propTypes = {
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   src: PropTypes.string,
-  alt: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   block: PropTypes.bool,
@@ -90,4 +81,4 @@ CImg.defaultProps = {
   placeholderColor: 'transparent'
 };
 
-export default CImg;
+export default CImg
