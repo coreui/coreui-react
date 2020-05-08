@@ -50,15 +50,14 @@ const CSwitch = props => {
         className={inputClasses} 
         type="checkbox" 
         onChange={change}
-        checked={isChecked}
+        checked={!!isChecked}
         {...attributes}
         ref={innerRef}
       />
-      <span 
-        className="c-switch-slider"
-        data-checked={labelOn} 
-        data-unchecked={labelOff}
-      ></span>
+      <span className="c-switch-slider"
+            data-checked={labelOn}
+            data-unchecked={labelOff}
+      />
     </label>
   )
 }
