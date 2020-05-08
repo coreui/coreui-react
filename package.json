@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "3.0.0-beta.1",
+  "version": "3.0.0-beta.2",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -43,7 +43,7 @@
     "core-js": "^3.6.5",
     "perfect-scrollbar": "^1.5.0",
     "prop-types": "^15.7.2",
-    "react-transition-group": "^4.3.0",
+    "react-transition-group": "^4.4.1",
     "tippy.js": "^6.2.3"
   },
   "peerDependencies": {
