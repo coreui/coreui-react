@@ -12,7 +12,6 @@ const CAlert = props => {
     //
     onShowChange,
     closeButton,
-    transition,
     color,
     fade,
     show,
@@ -30,11 +29,11 @@ const CAlert = props => {
   )
 
   const alertTransition = {
-    ...CFade.defaultProps,
-    ...transition,
-    baseClass: fade ? transition.baseClass : '',
-    timeout: fade ? transition.timeout : 0
+    baseClass: fade ? CFade.baseClass : '',
+    timeout: fade ? CFade.timeout : 0,
+    unmountOnExit: true
   }
+  
   const [isOpen, setIsOpen] = useState(show)
 
   useEffect(() => {
@@ -63,10 +62,8 @@ const CAlert = props => {
       role="alert"
       {...attributes}
     >
-      {children}
-      {closeButton && <CButtonClose
-            onClick={() => setIsOpen(false)}
-          />}
+      { children }
+      { closeButton && <CButtonClose onClick={() => setIsOpen(false)} />}
     </CFade>
   )
 }
@@ -81,18 +78,13 @@ CAlert.propTypes = {
   color: PropTypes.string,
   fade: PropTypes.bool,
   show: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-  transition: PropTypes.shape(CFade.propTypes),
 };
 
 CAlert.defaultProps = {
   tag: 'div',
   //
   show: true,
-  fade: true,
-  transition: {
-    ...CFade.defaultProps,
-    unmountOnExit: true,
-  }
-}
-//export
+  fade: true
+};
+
 export default CAlert
