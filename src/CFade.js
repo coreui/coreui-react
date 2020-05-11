@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { omit, pick, TransitionPropTypeKeys, TransitionTimeouts, tagPropType} from './Shared/helper.js';
-import {Transition} from 'react-transition-group';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { pickByKeys } from '@coreui/utils/src'
+import { TransitionPropTypeKeys, tagPropType } from './Shared/helper.js'
+import { Transition } from 'react-transition-group'
 
 //component - CoreUI / CFade
-
-const CFade = props=>{
+const CFade = props => {
 
   const {
     tag: Tag,
@@ -16,32 +16,33 @@ const CFade = props=>{
     innerRef,
     baseClass,
     baseClassActive,
-    ...attributes
-  } = props;
+    ...rest
+  } = props
 
   //render
-
-  const transitionProps = pick(attributes, TransitionPropTypeKeys);
-  const childProps = omit(attributes, TransitionPropTypeKeys);
+  const transitionProps = pickByKeys(rest, TransitionPropTypeKeys)
+  const childPropKeys = Object.keys(rest).filter(key => {
+    return !TransitionPropTypeKeys.includes(key)
+  })
+  const childProps = pickByKeys(rest, childPropKeys)
 
   return (
     <Transition {...transitionProps}>
       {(status) => {
-        const isActive = status === 'entered';
+        const isActive = status === 'entered'
         const classes = classNames(
           className,
           baseClass,
           isActive && baseClassActive
-        );
+        )
         return (
           <Tag className={classes} {...childProps} ref={innerRef}>
             {children}
           </Tag>
-        );
+        )
       }}
     </Transition>
-  );
-
+  )
 }
 
 CFade.propTypes = {
@@ -64,11 +65,11 @@ CFade.defaultProps = {
   //
   baseClass: 'fade',
   baseClassActive: 'show',
-  timeout: TransitionTimeouts.Fade,
+  timeout: 150,
   appear: true,
   enter: true,
   exit: true,
-  in: true,
+  in: true
 };
 
-export default CFade;
+export default CFade

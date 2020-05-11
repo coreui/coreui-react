@@ -1,33 +1,28 @@
-import React, {useState} from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {
-  omit,
-  pick,
-  TransitionTimeouts,
-  TransitionPropTypeKeys,
-  TransitionStatuses
-} from './Shared/helper.js';
-import {Transition} from 'react-transition-group';
+import React, {useState} from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { pickByKeys } from '@coreui/utils/src'
+import { TransitionPropTypeKeys } from './Shared/helper.js'
+import { Transition } from 'react-transition-group'
 
 const transitionStatusToClassHash = {
-  [TransitionStatuses.ENTERING]: 'collapsing',
-  [TransitionStatuses.ENTERED]: 'collapse show',
-  [TransitionStatuses.EXITING]: 'collapsing',
-  [TransitionStatuses.EXITED]: 'collapse',
+  entering: 'collapsing',
+  entered: 'collapse show',
+  exiting: 'collapsing',
+  exited: 'collapse'
 };
 
-const getTransitionClass = status=>{
-  return transitionStatusToClassHash[status] || 'collapse';
+const getTransitionClass = status => {
+  return transitionStatusToClassHash[status] || 'collapse'
 }
 
-const getHeight = node=>{
+const getHeight = node => {
   return node.scrollHeight;
 }
 
 //component - CoreUI / CCollapse
 
-const CCollapse = props=>{
+const CCollapse = props => {
 
   const {
     children,
@@ -36,7 +31,7 @@ const CCollapse = props=>{
     innerRef,
     show,
     navbar,
-    ...otherProps
+    ...rest
   } = props;
 
   const [height, setHeight] = useState(null);
@@ -68,9 +63,11 @@ const CCollapse = props=>{
   }
 
   //render
-
-  const transitionProps = pick(otherProps, TransitionPropTypeKeys);
-  const childProps = omit(otherProps, TransitionPropTypeKeys);
+  const transitionProps = pickByKeys(rest, TransitionPropTypeKeys)
+  const childPropKeys = Object.keys(rest).filter(attr => {
+    return !TransitionPropTypeKeys.includes(attr)
+  })
+  const childProps = pickByKeys(rest, childPropKeys)
 
   return (
     <Transition
@@ -83,13 +80,13 @@ const CCollapse = props=>{
       onExited={onExited}
     >
       {(status) => {
-        let collapseClass = getTransitionClass(status);
+        let collapseClass = getTransitionClass(status)
         const classes = classNames(
           className,
           collapseClass,
           navbar && 'navbar-collapse'
         );
-        const style = height === null ? null : { height };
+        const style = height === null ? null : { height }
         return (
           <div
             {...childProps}
@@ -99,11 +96,10 @@ const CCollapse = props=>{
           >
             {children}
           </div>
-        );
+        )
       }}
     </Transition>
-  );
-
+  )
 }
 
 CCollapse.propTypes = {
@@ -125,7 +121,7 @@ CCollapse.defaultProps = {
   appear: false,
   enter: true,
   exit: true,
-  timeout: TransitionTimeouts.Collapse,
+  timeout: 350,
 };
 
-export default CCollapse;
+export default CCollapse

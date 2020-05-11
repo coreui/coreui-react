@@ -1,33 +1,4 @@
-import PropTypes from 'prop-types';
-
-
-/* eslint key-spacing: ["error", { afterColon: true, align: "value" }] */
-// These are all setup to match what is in the bootstrap _variables.scss
-// https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss
-export const TransitionTimeouts = {
-  Fade:     150, // $transition-fade
-  Collapse: 350, // $transition-collapse
-  Modal:    300, // $modal-transition
-  Carousel: 600, // $carousel-transition
-};
-
-export const PopperPlacements = [
-  'auto-start',
-  'auto',
-  'auto-end',
-  'top-start',
-  'top',
-  'top-end',
-  'right-start',
-  'right',
-  'right-end',
-  'bottom-end',
-  'bottom',
-  'bottom-start',
-  'left-end',
-  'left',
-  'left-start',
-];
+import PropTypes from 'prop-types'
 
 // Duplicated Transition.propType keys to ensure that Reactstrap builds
 // for distribution properly exclude these keys for nested child HTML attributes
@@ -45,15 +16,8 @@ export const TransitionPropTypeKeys = [
   'onEntered',
   'onExit',
   'onExiting',
-  'onExited',
+  'onExited'
 ];
-
-export const TransitionStatuses = {
-  ENTERING: 'entering',
-  ENTERED:  'entered',
-  EXITING:  'exiting',
-  EXITED:   'exited',
-};
 
 export const canUseDOM = !!(
   typeof window !== 'undefined' &&
@@ -68,7 +32,7 @@ export const targetPropType = PropTypes.oneOfType([
   PropTypes.shape({ current: PropTypes.any }),
 ]);
 
-const tagPropType = PropTypes.oneOfType([
+export const tagPropType = PropTypes.oneOfType([
   PropTypes.func,
   PropTypes.string,
   PropTypes.shape({ $$typeof: PropTypes.symbol, render: PropTypes.func }),
@@ -78,30 +42,6 @@ const tagPropType = PropTypes.oneOfType([
     PropTypes.shape({ $$typeof: PropTypes.symbol, render: PropTypes.func }),
   ]))
 ]);
-
-export function omit(obj, omitKeys) {
-  const result = {};
-  Object.keys(obj).forEach(key => {
-    if (omitKeys.indexOf(key) === -1) {
-      result[key] = obj[key];
-    }
-  });
-  return result;
-}
-
-export function pick(obj, keys) {
-  const pickKeys = Array.isArray(keys) ? keys : [keys];
-  let length = pickKeys.length;
-  let key;
-  const result = {};
-
-  while (length > 0) {
-    length -= 1;
-    key = pickKeys[length];
-    result[key] = obj[key];
-  }
-  return result;
-}
 
 
 export function DOMElement(props, propName, componentName) {
@@ -116,7 +56,7 @@ export function DOMElement(props, propName, componentName) {
   }
 }
 
-function deprecated(propType, explanation) {
+export function deprecated(propType, explanation) {
   return function validate(props, propName, componentName, ...rest) {
     if (props[propName] !== null && typeof props[propName] !== 'undefined') {
       console.error(
@@ -126,5 +66,3 @@ function deprecated(propType, explanation) {
     return propType(props, propName, componentName, ...rest);
   }
 }
-
-export { tagPropType, deprecated }

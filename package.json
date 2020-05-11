@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.4.0",
+    "@coreui/utils": "1.2.4",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5",
     "perfect-scrollbar": "^1.5.0",

@@ -39,7 +39,6 @@ const CTabPane = props => {
 
   return (
     <CFade
-      tag="div"
       in={isActive}
       baseClass={context && context.fade ? 'fade' : ''}
       className={classes} 

@@ -56,7 +56,6 @@ const CAlert = props => {
   return (
     <CFade
       {...alertTransition}
-      tag="div"
       className={classes}
       in={Boolean(isOpen)}
       role="alert"

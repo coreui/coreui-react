@@ -93,7 +93,6 @@ const CToast = props => {
     <Context.Provider value={{ close }}>
       {
         state && <CFade
-          tag={'div'}
           className={classes}   
           role="alert"
           aria-live="assertive"
