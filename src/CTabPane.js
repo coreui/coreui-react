@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import CFade from './CFade'
 
 import { Context } from './CTabs.js'
+import { Context as FadeContext } from './CTabContent.js'
 
 //component - CoreUI / CTabPane
 const getIndex = (el) => Array.from(el.parentNode.children).indexOf(el)
@@ -11,7 +12,6 @@ const getIndex = (el) => Array.from(el.parentNode.children).indexOf(el)
 const getState = r => r.current.dataset.tab || getIndex(r.current)
 
 const CTabPane = props => {
-
   const {
     className,
     //
@@ -21,6 +21,7 @@ const CTabPane = props => {
   } = props
 
   const context = useContext(Context)
+  const fade = useContext(FadeContext)
   const act = (context || {}).active
   const ref = createRef()
   innerRef && innerRef(ref)
@@ -40,7 +41,7 @@ const CTabPane = props => {
   return (
     <CFade
       in={isActive}
-      baseClass={context && context.fade ? 'fade' : ''}
+      baseClass={fade ? 'fade' : ''}
       className={classes} 
       {...attributes} 
       innerRef={ref}
@@ -52,7 +53,7 @@ CTabPane.propTypes = {
   className: PropTypes.string,
   //
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
-  active: PropTypes.bool
-};
+  active: PropTypes.bool,
+}
 
 export default CTabPane
