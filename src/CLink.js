@@ -44,7 +44,7 @@ const CLink = props => {
     <a
       href={href || '#'}
       className={classes}
-      rel={rest.target === '_blank' && 'noopener norefferer'}
+      rel={rest.target === '_blank' ? 'noopener norefferer' : null}
       {...rest}
       onClick={click}
       ref={innerRef}
