@@ -44,6 +44,7 @@ const CLink = props => {
     <a
       href={href || '#'}
       className={classes}
+      rel={rest.target === '_blank' && 'noopener norefferer'}
       {...rest}
       onClick={click}
       ref={innerRef}
@@ -63,17 +64,17 @@ CLink.propTypes = {
   to: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.func])
 };
 
-CLink.sortAttributes = (attributesToSort) => {
-  const attributes = {}
-  const linkProps = {}
-  Object.entries(attributesToSort || {}).forEach(([key, value]) => {
-    if (Object.keys(CLink.propTypes).includes(key)) {
-      linkProps[key] = value
-    } else {
-      attributes[key] = value
-    }
-  })
-  return { linkProps, attributes }
-}
+// CLink.sortAttributes = (attributesToSort) => {
+//   const attributes = {}
+//   const linkProps = {}
+//   Object.entries(attributesToSort || {}).forEach(([key, value]) => {
+//     if (Object.keys(CLink.propTypes).includes(key)) {
+//       linkProps[key] = value
+//     } else {
+//       attributes[key] = value
+//     }
+//   })
+//   return { linkProps, attributes }
+// }
 
 export default CLink
