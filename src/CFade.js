@@ -46,7 +46,6 @@ const CFade = props => {
 }
 
 CFade.propTypes = {
-  ...Transition.propTypes,
   tag: tagPropType,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
@@ -57,10 +56,9 @@ CFade.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   baseClass: PropTypes.string,
   baseClassActive: PropTypes.string
-};
+}
 
 CFade.defaultProps = {
-  ...Transition.defaultProps,
   tag: 'div',
   //
   baseClass: 'fade',
@@ -70,6 +68,6 @@ CFade.defaultProps = {
   enter: true,
   exit: true,
   in: true
-};
+}
 
 export default CFade

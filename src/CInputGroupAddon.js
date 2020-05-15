@@ -34,5 +34,5 @@ CInputGroupAddon.propTypes = {
   prepend: PropTypes.bool
 };
 
-export const CInputGroupAppend = props => <CInputGroupAddon {...props}/>
+export const CInputGroupAppend = props => <CInputGroupAddon {...props} prepend={false}/>
 export const CInputGroupPrepend = props => <CInputGroupAddon {...props} prepend/>

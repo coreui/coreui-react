@@ -36,4 +36,3 @@ CFormFeedback.propTypes = {
 
 export const CValidFeedback = props => <CFormFeedback {...props} valid/>
 export const CInvalidFeedback = props => <CFormFeedback {...props} valid={false}/>
-export default CFormFeedback
