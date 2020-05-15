@@ -17,6 +17,7 @@
   ],
   "homepage": "https://coreui.io",
   "main": "lib/index.js",
+  "types": "src/index.d.ts",
   "module": "es/index.js",
   "files": [
     "css/",
