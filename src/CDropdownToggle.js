@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { tagPropType } from './Shared/helper.js'
+import { tagPropType } from './utils/helper.js'
 import CButton from './CButton'
 import CLink from './CLink'
 import { Context } from './CDropdown'

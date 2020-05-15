@@ -128,5 +128,5 @@ export {default as CWidgetProgressIcon} from './CWidgetProgressIcon';
 export {default as CWidgetDropdown} from './CWidgetDropdown';
 export {default as CWidgetSimple} from './CWidgetSimple';
 
-import { tagPropType } from './Shared/helper'
+import { tagPropType } from './utils/helper'
 export { tagPropType }

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { tagPropType } from './Shared/helper.js'
+import { tagPropType } from './utils/helper.js'
 
 //component - CoreUI / CRow
 const CRow = props => {

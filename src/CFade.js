@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { pickByKeys } from '@coreui/utils/src'
-import { TransitionPropTypeKeys, tagPropType } from './Shared/helper.js'
+import { TransitionPropTypeKeys, tagPropType } from './utils/helper.js'
 import { Transition } from 'react-transition-group'
 
 //component - CoreUI / CFade

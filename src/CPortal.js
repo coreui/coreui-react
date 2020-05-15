@@ -1,7 +1,7 @@
 // import {useEffect, useRef} from 'react';
 // import ReactDOM from 'react-dom';
 // import PropTypes from 'prop-types';
-// import {canUseDOM} from './Shared/helper.js';
+// import {canUseDOM} from './utils/helper.js';
 
 // //component - CoreUI / CPortal
 
