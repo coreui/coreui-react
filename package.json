@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "3.0.0-beta.2",
+  "version": "3.0.0-beta.3",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -18,7 +18,7 @@
   "homepage": "https://coreui.io",
   "main": "lib/index.js",
   "types": "src/index.d.ts",
-  "module": "es/index.js",
+  "module": "src/index.js",
   "files": [
     "css/",
     "es/",
@@ -31,7 +31,6 @@
   "scripts": {
     "build": "nwb build-react-component --copy-files --no-demo",
     "clean": "nwb clean-module && nwb clean-demo",
-    "start": "nwb serve-react-demo",
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server",
@@ -39,34 +38,31 @@
     "link": "npm link && link.sh"
   },
   "dependencies": {
-    "@popperjs/core": "^2.4.0",
+    "@popperjs/core": "~2.4.0",
+    "@coreui/icons": "^1.0.1",
+    "@coreui/icons-react": "^1.0.0-alpha.5",
     "@coreui/utils": "1.2.4",
-    "classnames": "^2.2.6",
-    "core-js": "^3.6.5",
-    "perfect-scrollbar": "^1.5.0",
-    "prop-types": "^15.7.2",
-    "react-transition-group": "^4.4.1",
-    "tippy.js": "^6.2.3"
+    "classnames": "~2.2.6",
+    "core-js": "~3.6.5",
+    "perfect-scrollbar": "~1.5.0",
+    "prop-types": "~15.7.2",
+    "react-transition-group": "~4.4.1",
+    "react-dom": "~16.13.1",
+    "react-router-dom": "~5.2.0",
+    "tippy.js": "~6.2.3"
   },
   "peerDependencies": {
     "@coreui/coreui": "^3.0.0",
-    "@coreui/icons-react": "^1.0.0-alpha.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.1.2",
-    "mutationobserver-shim": "^0.3.5"
+    "react": "^16.13.1"
   },
   "devDependencies": {
-    "@coreui/coreui-chartjs": "^2.0.0-beta.0",
-    "@coreui/icons": "^1.0.1",
     "babel-eslint": "^10.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "eslint": "^6.8.0",
+    "eslint": "^7.0.0",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-react": "^7.19.0",
-    "nwb": "^0.24.5",
-    "react-app-polyfill": "^1.0.6",
+    "eslint-plugin-react": "^7.20.0",
+    "nwb": "^0.24.6",
     "sinon": "^9.0.2"
   },
   "repository": {
