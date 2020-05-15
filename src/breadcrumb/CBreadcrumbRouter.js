@@ -39,9 +39,16 @@ const CBreadcrumbRouter = props => {
     ...attributes
   } = props;
 
-  const currPath = useLocation().pathname
-  const paths = getPaths(currPath)
-  const currRoutes = routes.filter(route => paths.includes(route.path))
+  let items = null
+  if (routes) {
+    const currPath = useLocation().pathname
+    const paths = getPaths(currPath)
+    const currRoutes = routes.filter(route => paths.includes(route.path))
+    items = currRoutes.map(route => {
+      return CBreadcrumbRouteItem(route, currPath)
+    })
+  }
+
 
   //render
 
@@ -53,11 +60,7 @@ const CBreadcrumbRouter = props => {
       {...attributes}
       ref={innerRef}
     >
-      {
-        currRoutes.map(route => {
-          return CBreadcrumbRouteItem(route, currPath)
-        })
-      }
+      {items}
     </CBreadcrumb>
   )
 }
