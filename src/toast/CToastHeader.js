@@ -1,0 +1,48 @@
+import React, { useContext } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import CButtonClose from '../button/CButtonClose'
+
+import { Context } from './CToast'
+
+//component - CoreUI / CToastHeader
+const CToastHeader = props => {
+
+  const {
+    className,
+    children,
+    //
+    innerRef,
+    closeButton,
+    ...attributes
+  } = props
+
+  const { close } = useContext(Context)
+  
+  //render
+  const classes = classNames(
+    'toast-header', className
+  )
+
+  return (
+    <div className={classes} {...attributes} ref={innerRef}>
+      { children }
+      { closeButton && 
+        <CButtonClose className="ml-auto" onClick={close}/>}
+    </div>
+  )
+}
+
+CToastHeader.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+  //
+  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
+  closeButton: PropTypes.bool
+};
+
+CToastHeader.defaultProps = {
+  closeButton: true
+};
+
+export default CToastHeader
