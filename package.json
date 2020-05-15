@@ -47,13 +47,13 @@
     "perfect-scrollbar": "~1.5.0",
     "prop-types": "~15.7.2",
     "react-transition-group": "~4.4.1",
-    "react-dom": "~16.13.1",
-    "react-router-dom": "~5.2.0",
     "tippy.js": "~6.2.3"
   },
   "peerDependencies": {
     "@coreui/coreui": "^3.0.0",
-    "react": "^16.13.1"
+    "react": "^16.13.1",
+    "react-dom": "~16.13.1",
+    "react-router-dom": "~5.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

@@ -121,6 +121,3 @@ export {default as CWidgetBrand} from './widgets/CWidgetBrand';
 export {default as CWidgetProgressIcon} from './widgets/CWidgetProgressIcon';
 export {default as CWidgetDropdown} from './widgets/CWidgetDropdown';
 export {default as CWidgetSimple} from './widgets/CWidgetSimple';
-
-import { tagPropType } from './utils/helper'
-export { tagPropType }
