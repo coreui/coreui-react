@@ -45,7 +45,11 @@ const CSidebarNavDropdown = props => {
 
   const { dropdownMode } = useContext(Context)
 
-  const path = useLocation().pathname
+  let path = ''
+  try {
+    path = useLocation().pathname
+  } catch (e) {}
+
   useMemo(()=>{
     if (dropdownMode === 'close') {
       setIsOpen(false)
