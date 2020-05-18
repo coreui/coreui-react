@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "core-js": "^2.6.11",
+    "core-js": "^3.0.0",
     "prop-types": "^15.7.2",
     "react-onclickout": "^2.0.8",
     "react-perfect-scrollbar": "~1.5.8"
