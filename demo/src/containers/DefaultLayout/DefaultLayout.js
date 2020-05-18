@@ -92,7 +92,7 @@ class DefaultLayout extends Component {
           </AppAside>
         </div>
         <AppFooter>
-          <span><a href="https://coreui.io">CoreUI</a> &copy; 2019 creativeLabs</span>
+          <span><a href="https://coreui.io">CoreUI</a> &copy; 2020 creativeLabs</span>
           <span className="ml-auto">Powered by <a href="https://coreui.io/react">CoreUI for React</a></span>
         </AppFooter>
       </div>

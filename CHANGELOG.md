@@ -1,5 +1,23 @@
 ### [@coreui/react](https://coreui.io/) changelog
 
+##### `v2.5.8`
+- chore(demo/polyfill): update to core-js v3
+
+###### dependencies update
+- update: `core-js` to `^3.6.5`
+- update: `react` to `^16.13.1`
+- update: `react-dom` to `^16.13.1`
+- update: `react-router-dom` to `^5.2.0`
+- update: `mutationobserver-shim` to `^0.3.5`
+- update: `eslint` to `^7.0.0`
+- update: `eslint-plugin-import` to `^2.20.2`
+- update: `eslint-plugin-react` to `^7.20.0`
+- update: `nwb` to `^0.24.7`
+- update: `react` to `^16.13.1`
+- update: `react-dom` to `^16.13.1`
+- update: `react-router-dom` to `^5.2.0`
+- update: `sinon` to `^9.0.2`
+
 ##### `v2.5.7`
 - fix(SidebarNav): add missing alternative icon config object
 
