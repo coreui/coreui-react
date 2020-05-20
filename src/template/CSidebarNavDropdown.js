@@ -1,7 +1,7 @@
 import React, { useState, useContext, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { CIcon } from '@coreui/icons-react'
+import { CIconRaw } from '@coreui/icons-react'
 import { useLocation } from 'react-router-dom'
 
 import { Context } from './CSidebar'
@@ -77,7 +77,7 @@ const CSidebarNavDropdown = props => {
   return (
     <li className={classes} {...attributes} ref={innerRef}>
       <a className="c-sidebar-nav-dropdown-toggle" onClick={() => setIsOpen(!isOpen)} >
-        { icon && <CIcon {...iconProps(icon)} /> }
+        { icon && <CIconRaw {...iconProps(icon)} /> }
         { fontIcon && <i className={iconClasses}/> }
         { name }
       </a>
