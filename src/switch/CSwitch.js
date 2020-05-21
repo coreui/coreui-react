@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 //component - CoreUI / CSwitch
-
 const CSwitch = props => {
 
   let {
@@ -16,18 +15,8 @@ const CSwitch = props => {
     labelOff,
     variant,
     shape,
-    checked,
-    onCheckedChange,
     ...attributes
   } = props
-
-  const [isChecked, setIsChecked] = useState(checked)
-  useEffect(() => setIsChecked(checked), [checked])
-
-  const change = e => {
-    setIsChecked(e.target.checked)
-    onCheckedChange && onCheckedChange(e.target.checked)
-  }
 
   //render
   const classes = classNames(
@@ -49,14 +38,13 @@ const CSwitch = props => {
       <input 
         className={inputClasses} 
         type="checkbox" 
-        onChange={change}
-        checked={!!isChecked}
         {...attributes}
         ref={innerRef}
       />
-      <span className="c-switch-slider"
-            data-checked={labelOn}
-            data-unchecked={labelOff}
+      <span 
+        className="c-switch-slider"
+        data-checked={labelOn}
+        data-unchecked={labelOff}
       />
     </label>
   )
@@ -70,10 +58,8 @@ CSwitch.propTypes = {
   shape: PropTypes.oneOf(['', 'pill', 'square']),
   variant: PropTypes.oneOf(['', '3d', 'opposite', 'outline']),
   color: PropTypes.string,
-  checked: PropTypes.bool,
   labelOn: PropTypes.string,
   labelOff: PropTypes.string,
-  onCheckedChange: PropTypes.func
-};
+}
 
 export default CSwitch
