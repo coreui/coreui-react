@@ -1,11 +1,11 @@
 /* rtl fix */
 .ps__rtl .ps__rail-y {
     left: 0px !important;
-    right: unset;
+    right: unset !important;
 }
 *[dir="rtl"] .ps__rail-y {
     left: 0px !important;
-    right: unset;
+    right: unset !important;
 }
 
 .ps__rtl .ps__thumb-y {
