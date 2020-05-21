@@ -32,6 +32,7 @@ const CSidebar = props=>{
   const key = useState(Math.random().toString(36).substr(2))[0]
 
   const [isOpen, setIsOpen] = useState(show)
+  const [openDropdown, setOpenDropdown] = useState()
 
   const node = useRef({}).current
   const reference = (r) => {
@@ -133,7 +134,9 @@ const CSidebar = props=>{
     <Context.Provider value={{
       dropdownMode,
       scrollbarExist: !minimized || unfoldable,
-      toggleMinimize
+      toggleMinimize,
+      openDropdown, 
+      setOpenDropdown
     }}>
       <div
         {...attributes}
@@ -176,7 +179,6 @@ CSidebar.defaultProps = {
   show: 'responsive',
   hideOnMobileClick: true,
   colorScheme: 'dark',
-  dropdownMode: 'openActive',
 }
 
 export default CSidebar

@@ -38,12 +38,23 @@ const CSidebarNavDropdown = props => {
     ...attributes
   } = props
 
+  const key = useState(Math.random().toString(36).substr(2))[0]
+
+  const { dropdownMode, openDropdown, setOpenDropdown } = useContext(Context)
+
   const [isOpen, setIsOpen] = useState(show)
   useMemo(() => {
     setIsOpen(show)
   }, [show])
 
-  const { dropdownMode } = useContext(Context)
+  useMemo(() => {
+    !dropdownMode && openDropdown !== key && setIsOpen(false)
+  }, [openDropdown])
+
+  const toggle = () => {
+    !dropdownMode && setOpenDropdown(isOpen ? null : key)
+    setIsOpen(!isOpen)
+  }
 
   let path = ''
   try {
@@ -55,7 +66,7 @@ const CSidebarNavDropdown = props => {
       setIsOpen(false)
     } else if (dropdownMode === 'closeInactive' && route) {
       setIsOpen(path.includes(route))
-    } else if (dropdownMode !== 'noAction' && !isOpen && route) {
+    } else if ((!dropdownMode || dropdownMode !== 'noAction') && !isOpen && route) {
       setIsOpen(path.includes(route))
     }
   }, [path])
@@ -76,7 +87,7 @@ const CSidebarNavDropdown = props => {
 
   return (
     <li className={classes} {...attributes} ref={innerRef}>
-      <a className="c-sidebar-nav-dropdown-toggle" onClick={() => setIsOpen(!isOpen)} >
+      <a className="c-sidebar-nav-dropdown-toggle" onClick={toggle} >
         { icon && <CIconRaw {...iconProps(icon)} /> }
         { fontIcon && <i className={iconClasses}/> }
         { name }
