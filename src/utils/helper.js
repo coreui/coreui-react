@@ -19,6 +19,13 @@ export const TransitionPropTypeKeys = [
   'onExited'
 ];
 
+export const CFadeProps = [
+  ...TransitionPropTypeKeys,
+  'baseClass',
+  'baseClassActive',
+  'tag'
+]
+
 export const canUseDOM = !!(
   typeof window !== 'undefined' &&
   window.document &&

@@ -2,6 +2,8 @@ import React, { useState, useContext, createRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import CFade from '../fade/CFade'
+import { omitByKeys } from '@coreui/utils/src'
+import { CFadeProps } from '../utils/helper.js'
 
 import { Context } from './CTabs.js'
 import { Context as FadeContext } from './CTabContent.js'
@@ -38,12 +40,14 @@ const CTabPane = props => {
     className
   )
 
+  const attrs = omitByKeys(attributes, CFadeProps)
+
   return (
     <CFade
       in={isActive}
       baseClass={fade ? 'fade' : ''}
       className={classes} 
-      {...attributes} 
+      {...attrs} 
       innerRef={ref}
     />
   )

@@ -1,6 +1,6 @@
-.fade {
+.toast-fade {
   transition: opacity .5s;
 }
-.slowfade {
+.toast-fade-slow {
   transition: opacity 2s;
 }

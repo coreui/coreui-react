@@ -2,7 +2,9 @@ import React, { useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import CFade from '../fade/CFade'
-import style from './CToast.module.css'
+import { omitByKeys } from '@coreui/utils/src'
+import { CFadeProps } from '../utils/helper.js'
+import './CToast.css'
 
 export const Context = React.createContext({})
 
@@ -81,14 +83,13 @@ const CToast = props => {
   }
 
   // render
-  const classes = classNames(
-    'toast', className
-  )
+  const classes = classNames('toast', className)
 
   const fadeClasses = classNames(
-    fade ? style[`${state === 'hiding' ? 'slowfade' : 'fade' }`] : 'show'
+    fade && (state === 'hiding' ? 'toast-fade-slow' : 'toast-fade')
   )
 
+  const attrs = omitByKeys(attributes, CFadeProps)
   return (
     <Context.Provider value={{ close }}>
       {
@@ -97,12 +98,12 @@ const CToast = props => {
           role="alert"
           aria-live="assertive"
           aria-atomic="true"
-          {...attributes}
           in={state === true}
           onMouseOver={onMouseOver}
           onMouseOut={onMouseOut}
           baseClass={fadeClasses}
           innerRef={innerRef}
+          {...attrs}
         >
           {children}
         </CFade>

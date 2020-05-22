@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import CFade from '../fade/CFade'
+import { omitByKeys } from '@coreui/utils/src'
+import { CFadeProps } from '../utils/helper.js'
 import CButtonClose from '../button/CButtonClose'
 
 //component - CoreUI / CAlert
@@ -53,13 +55,15 @@ const CAlert = props => {
     return () => clearTimeout(timeout.current)
   }, [isOpen])
 
+  const attrs = omitByKeys(attributes, CFadeProps)
+
   return (
     <CFade
       {...alertTransition}
       className={classes}
       in={Boolean(isOpen)}
       role="alert"
-      {...attributes}
+      {...attrs}
     >
       { children }
       { closeButton && <CButtonClose onClick={() => setIsOpen(false)} />}
@@ -80,8 +84,6 @@ CAlert.propTypes = {
 };
 
 CAlert.defaultProps = {
-  tag: 'div',
-  //
   show: true,
   fade: true
 };

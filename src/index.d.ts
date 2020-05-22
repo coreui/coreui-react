@@ -2,7 +2,7 @@ import React from 'react'
 
 type ChildElement = any
 
-interface CAlert extends CFade {
+interface CAlert {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -247,7 +247,7 @@ interface Transition {
   onExited?: Function;
 }
 
-interface CCollapse extends Transition {
+interface CCollapse {
   children?: ChildElement | Array<ChildElement>;
   className?: string;
   innerRef?: object | Function | string;
@@ -908,6 +908,17 @@ interface CSubheader {
   innerRef?: object | Function | string;
 }
 
+interface CSwitch {
+  className?: string
+  innerRef?: object | Function | string
+  size?: '' | 'lg' | 'sm'
+  color?: string 
+  labelOn?: string 
+  labelOff?: string
+  variant?: '' | '3d' | 'opposite' | 'outline'
+  shape?: '' | 'pill' | 'square'
+}
+
 interface CTabContent {
   children?: ChildElement;
   className?: string;
@@ -915,7 +926,7 @@ interface CTabContent {
   fade?: boolean;
 }
 
-interface CTabPane extends CFade {
+interface CTabPane {
   children?: ChildElement;
   className?: string;
   innerRef?: func | string | object;
@@ -928,7 +939,7 @@ interface CTabs {
   onActiveTabChange?: Function;
 }
 
-interface CToast extends CFade {
+interface CToast {
   className?: string;
   children?: ChildElement;
   innerRef?: func | string | object;
@@ -1137,6 +1148,7 @@ export declare const CSidebarNavItem: (props: CSidebarNavItem) => React.SFC<CSid
 export declare const CSidebarNavTitle: (props: CSidebarNavTitle) => React.SFC<CSidebarNavTitle>;
 export declare const CSpinner: (props: CSpinner) => React.SFC<CSpinner>;
 export declare const CSubheader: (props: CSubheader) => React.SFC<CSubheader>;
+export declare const CSwitch: (props: CSwitch) => React.SFC<CSwitch>;
 export declare const CTabContent: (props: CTabContent) => React.SFC<CTabContent>;
 export declare const CTabPane: (props: CTabPane) => React.SFC<CTabPane>;
 export declare const CTabs: (props: CTabs) => React.SFC<CTabs>;

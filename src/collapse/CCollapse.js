@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { pickByKeys } from '@coreui/utils/src'
+import { omitByKeys } from '@coreui/utils/src'
 import { TransitionPropTypeKeys } from '../utils/helper.js'
 import { Transition } from 'react-transition-group'
 
@@ -63,15 +63,10 @@ const CCollapse = props => {
   }
 
   //render
-  const transitionProps = pickByKeys(rest, TransitionPropTypeKeys)
-  const childPropKeys = Object.keys(rest).filter(attr => {
-    return !TransitionPropTypeKeys.includes(attr)
-  })
-  const childProps = pickByKeys(rest, childPropKeys)
+  const childProps = omitByKeys(rest, TransitionPropTypeKeys)
 
   return (
     <Transition
-      {...transitionProps}
       in={show}
       onEntering={onEntering}
       onEntered={onEntered}
