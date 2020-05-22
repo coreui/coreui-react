@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "3.0.0-beta.3",
+  "version": "3.0.0-beta.4",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -50,7 +50,6 @@
     "tippy.js": "~6.2.3"
   },
   "peerDependencies": {
-    "@coreui/coreui": "^3.0.0",
     "react": "^16.13.1",
     "react-dom": "~16.13.1",
     "react-router-dom": "~5.2.0"
