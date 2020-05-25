@@ -1,4 +1,9 @@
-import React, { useState, useContext, useMemo } from 'react'
+import React, {
+  useState,
+  useContext,
+  useEffect,
+  createRef
+} from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { CIconRaw } from '@coreui/icons-react'
@@ -22,7 +27,6 @@ export const iconProps = (icon) => {
 }
 
 //component - CoreUI / CSidebarNavDropdown
-
 const CSidebarNavDropdown = props => {
 
   const {
@@ -38,21 +42,22 @@ const CSidebarNavDropdown = props => {
     ...attributes
   } = props
 
-  const key = useState(Math.random().toString(36).substr(2))[0]
+  const ref = createRef()
+  innerRef && innerRef(ref)
 
   const { dropdownMode, openDropdown, setOpenDropdown } = useContext(Context)
 
   const [isOpen, setIsOpen] = useState(show)
-  useMemo(() => {
+  useEffect(() => {
     setIsOpen(show)
   }, [show])
 
-  useMemo(() => {
-    !dropdownMode && openDropdown !== key && setIsOpen(false)
+  useEffect(() => {
+    !dropdownMode && (!openDropdown || !ref.current.contains(openDropdown)) && setIsOpen(false)
   }, [openDropdown])
 
   const toggle = () => {
-    !dropdownMode && setOpenDropdown(isOpen ? null : key)
+    !dropdownMode && setOpenDropdown(isOpen ? null : ref.current)
     setIsOpen(!isOpen)
   }
 
@@ -61,7 +66,7 @@ const CSidebarNavDropdown = props => {
     path = useLocation().pathname
   } catch (e) {}
 
-  useMemo(()=>{
+  useEffect(() => {
     if (dropdownMode === 'close') {
       setIsOpen(false)
     } else if (dropdownMode === 'closeInactive' && route) {
@@ -73,7 +78,6 @@ const CSidebarNavDropdown = props => {
 
 
   //render
-
   const classes = classNames(
     'c-sidebar-nav-dropdown',
     isOpen && 'c-show',
@@ -86,7 +90,11 @@ const CSidebarNavDropdown = props => {
   )
 
   return (
-    <li className={classes} {...attributes} ref={innerRef}>
+    <li 
+      className={classes} 
+      {...attributes} 
+      ref={ref}
+    >
       <a className="c-sidebar-nav-dropdown-toggle" onClick={toggle} >
         { icon && <CIconRaw {...iconProps(icon)} /> }
         { fontIcon && <i className={iconClasses}/> }
