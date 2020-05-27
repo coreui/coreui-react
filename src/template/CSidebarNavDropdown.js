@@ -64,7 +64,9 @@ const CSidebarNavDropdown = props => {
   let path = ''
   try {
     path = useLocation().pathname
-  } catch (e) {}
+  } catch (e) {
+    console.warn(e)
+  }
 
   useEffect(() => {
     if (dropdownMode === 'close') {
