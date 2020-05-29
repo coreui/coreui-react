@@ -6,7 +6,7 @@ import React, {
 } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { CIconRaw } from '@coreui/icons-react'
+import CIcon from '@coreui/icons-react'
 import { useLocation } from 'react-router-dom'
 
 import { Context } from './CSidebar'
@@ -100,7 +100,7 @@ const CSidebarNavDropdown = props => {
       ref={ref}
     >
       <a className="c-sidebar-nav-dropdown-toggle" onClick={toggle} >
-        { icon && <CIconRaw {...iconProps(icon)} /> }
+        { icon && <CIcon {...iconProps(icon)} /> }
         { fontIcon && <i className={iconClasses}/> }
         { name }
       </a>

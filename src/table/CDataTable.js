@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import CPagination from '../pagination/CPagination'
 import CElementCover from '../element-cover/CElementCover'
 import style from './CDataTable.module.css'
-import { CIconRaw } from '@coreui/icons-react'
+import CIcon from '@coreui/icons-react'
 import { cilArrowTop, cilBan } from '@coreui/icons'
 
 //component - CoreUI / CTable
@@ -364,7 +364,7 @@ const CDataTable = props => {
             {
               isSortable(index) &&
               ((sortingIconSlot && sortingIconSlot(getIconState(index), iconClasses(index))) ||
-              <CIconRaw
+              <CIcon
                 customClasses={classNames(iconClasses(index))}
                 width={18}
                 content={cilArrowTop}
@@ -510,7 +510,7 @@ const CDataTable = props => {
               <div className="text-center my-5">
                 <h2>
                   { noItemsText }
-                  <CIconRaw
+                  <CIcon
                     width="30"
                     name="cilBan"
                     content={cilBan}

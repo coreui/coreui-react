@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { CLink, CBadge } from '../index'
-import { CIconRaw } from '@coreui/icons-react'
+import CIcon from '@coreui/icons-react'
 import { iconProps } from './CSidebarNavDropdown'
 
 //component - CoreUI / CSidebarNavItem
@@ -42,7 +42,7 @@ const CSidebarNavItem = props => {
           {...routerLinkProps}
           {...rest}
         >
-          { icon && <CIconRaw {...iconProps(icon)}/>}
+          { icon && <CIcon {...iconProps(icon)}/>}
           { fontIcon && <i className={`c-sidebar-nav-icon ${fontIcon}`}/>}
           {name}
           { badge && <CBadge {...{...badge, text: null}}>{badge.text}</CBadge>}
