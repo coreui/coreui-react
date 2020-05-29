@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import CFade from '../fade/CFade'
 
 export const Context = React.createContext({})
-//component - CoreUI / CModal
 
+//component - CoreUI / CModal
 const CModal = props => {
 
   const {
@@ -25,42 +26,32 @@ const CModal = props => {
     ...attributes
   } = props
 
-  const [isOpen, setIsOpen] = useState(false)
-  const [isTransitioning, setIsTransitioning] = useState()
-
+  const [isOpen, setIsOpen] = useState(show)
   const modalClick = e => e.target.dataset.modal && closeOnBackdrop && close()
 
   useEffect(() => {
-    if (!show && !isOpen) {
-      return
-    }
-    toggleShow(show)
-    return () => clearTimeout(isTransitioning)
+    setIsOpen(show)
   }, [show])
+
 
   const close = () => {
     onClose && onClose()
-    toggleShow(false)
+    setIsOpen(false)
   }
 
-  const toggleShow = (val) => {
-    if (show === isOpen) {
-      return
-    }
-    setTimeout(() => setIsOpen(val), 0)
-    if (fade) {
-      setIsTransitioning(setTimeout(() => {
-        setIsTransitioning(false)
-        val ? onOpened && onOpened() : onClosed && onClosed()
-      }, 150))
-    }
+  const onEntered = () => onOpened && onOpened()
+
+  const onExited = () => onClosed && onClosed()
+
+  const transitionProps = {
+    baseClass: fade ? 'fade d-block' : '',
+    baseClassActive: 'show',
+    timeout: fade ? 150 : 0,
+    unmountOnExit: true
   }
 
   const modalClasses = classNames(
     'modal overflow-auto', {
-      'fade': fade,
-      'show': isOpen,
-      'd-block': isOpen || isTransitioning,
       [`modal-${color}`]: color
     }
   )
@@ -87,22 +78,29 @@ const CModal = props => {
 
   return (
     <div onClick={modalClick}>
-      <div
+      <CFade
+        {...transitionProps}
+        in={Boolean(isOpen)}
+        onEntered={onEntered}
+        onExited={onExited}
         tabIndex="-1"
         role="dialog"
         className={modalClasses}
         data-modal={true}
       >
         <div className={dialogClasses} role="document">
-          <div {...attributes} className={contentClasses} ref={innerRef}>
+          <div
+            {...attributes} 
+            className={contentClasses} 
+            ref={innerRef}
+          >
             <Context.Provider value={{close}}>
               {props.children}
             </Context.Provider>
           </div>
         </div>
-      </div>
-      {backdrop && isOpen ? 
-      <div className={backdropClasses}></div> : ''}
+      </CFade>
+      { backdrop && isOpen && <div className={backdropClasses}></div> }
     </div>
   )
 }
@@ -110,7 +108,6 @@ const CModal = props => {
 CModal.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   show: PropTypes.bool,
   centered: PropTypes.bool,
@@ -124,12 +121,12 @@ CModal.propTypes = {
   closeOnBackdrop: PropTypes.bool,
   onClose: PropTypes.func,
   addContentClass: PropTypes.string
-};
+}
 
 CModal.defaultProps = {
   backdrop: true,
   fade: true,
   closeOnBackdrop: true
-};
+}
 
 export default CModal
