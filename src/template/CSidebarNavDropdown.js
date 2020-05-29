@@ -57,7 +57,9 @@ const CSidebarNavDropdown = props => {
   }, [openDropdown])
 
   const toggle = () => {
-    !dropdownMode && setOpenDropdown(isOpen ? null : ref.current)
+    !dropdownMode && setOpenDropdown(
+      isOpen ? ref.current.parentNode.closest('.c-sidebar-nav-dropdown') : ref.current
+    )
     setIsOpen(!isOpen)
   }
 
