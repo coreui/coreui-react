@@ -63,8 +63,6 @@ export {default as CJumbotron} from './jumbotron/CJumbotron';
 export {default as CLink} from './link/CLink';
 export {default as CListGroup} from './list-group/CListGroup';
 export {default as CListGroupItem} from './list-group/CListGroupItem';
-export {default as CListGroupItemHeading} from './list-group/CListGroupItemHeading';
-export {default as CListGroupItemText} from './list-group/CListGroupItemText';
 export {default as CMedia} from './media/CMedia';
 export {default as CMediaBody} from './media/CMediaBody';
 export {default as CModal} from './modal/CModal';

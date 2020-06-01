@@ -589,13 +589,6 @@ interface CListGroup {
   accent?: boolean;
 }
 
-interface CListGroupItemHeading {
-  children?: ChildElement;
-  tag?: any;
-  className?: any;
-  innerRef?: object | Function | string;
-}
-
 interface CListGroupItem extends CLink {
   tag?: any;
   className?: any;
@@ -605,13 +598,6 @@ interface CListGroupItem extends CLink {
   color?: string;
   accent?: string;
   action?: boolean;
-}
-
-interface CListGroupItemText {
-  children?: ChildElement;
-  tag?: any;
-  className?: any;
-  innerRef?: object | Function | string;
 }
 
 interface CMedia {
@@ -1114,9 +1100,7 @@ export declare const CLabel: (props: CLabel) => any;
 export declare const CLink: (props: CLink) => any;
 export declare const CCardLink: (props: CCardLink) => any;
 export declare const CListGroup: (props: CListGroup) => any;
-export declare const CListGroupItemHeading: (props: CListGroupItemHeading) => any;
 export declare const CListGroupItem: (props: CListGroupItem) => any;
-export declare const CListGroupItemText: (props: CListGroupItemText) => any;
 export declare const CMedia: (props: CMedia) => any;
 export declare const CMediaBody: (props: CMediaBody) => any;
 export declare const CModal: (props: CModal) => any;
