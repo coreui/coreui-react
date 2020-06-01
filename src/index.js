@@ -63,6 +63,17 @@ export {default as CJumbotron} from './jumbotron/CJumbotron';
 export {default as CLink} from './link/CLink';
 export {default as CListGroup} from './list-group/CListGroup';
 export {default as CListGroupItem} from './list-group/CListGroupItem';
+import React from 'react'
+const wrapper = props => {
+  console.warn('CListGroupItemText component is deprecated, please use div tag instead')
+  return <div {...props}></div>
+}
+const heading = props => {
+  console.warn('CListGroupItemHeading component is deprecated, please use h5 tag instead')
+  return <h5 {...props}></h5>
+}
+export { wrapper as CListGroupItemText};
+export { heading as CListGroupItemHeading};
 export {default as CMedia} from './media/CMedia';
 export {default as CMediaBody} from './media/CMediaBody';
 export {default as CModal} from './modal/CModal';
