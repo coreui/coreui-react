@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { pickByKeys, omitByKeys } from '@coreui/utils/src'
@@ -23,8 +23,10 @@ const CFade = props => {
   const transitionProps = pickByKeys(rest, TransitionPropTypeKeys)
   const childProps = omitByKeys(rest, TransitionPropTypeKeys)
 
+  const childRef = useRef()
+
   return (
-    <Transition {...transitionProps}>
+    <Transition {...transitionProps} nodeRef={childRef}>
       {(status) => {
         const isActive = status === 'entered'
         const classes = classNames(
