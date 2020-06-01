@@ -19,6 +19,7 @@ const CSidebarNavItem = props => {
     badge,
     addLinkClass,
     label,
+    color,
     ...rest
   } = props
 
@@ -30,6 +31,7 @@ const CSidebarNavItem = props => {
 
   const linkClasses = classNames(
     label ? 'c-sidebar-nav-label' : 'c-sidebar-nav-link',
+    color && `c-sidebar-nav-link-${color}`,
     addLinkClass
   )
 
@@ -55,14 +57,14 @@ const CSidebarNavItem = props => {
 CSidebarNavItem.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  //
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   fontIcon: PropTypes.string,
   badge: PropTypes.object,
   addLinkClass: PropTypes.string,
   label: PropTypes.bool,
-  name: PropTypes.string
-};
+  name: PropTypes.string,
+  color: PropTypes.string
+}
 
 export default CSidebarNavItem
