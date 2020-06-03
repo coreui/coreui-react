@@ -1,8 +1,9 @@
-import React from 'react'
+import { HTMLProps } from 'react'
 
 type ChildElement = any
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
-interface CAlert {
+interface CAlert extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -33,26 +34,26 @@ interface CHeaderBrand extends CBrand { }
 interface CNavbarBrand extends CBrand { }
 interface CSidebarBrand extends CBrand { }
 
-interface CBreadcrumb {
+interface CBreadcrumb extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CBreadcrumbItem {
+interface CBreadcrumbItem extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
   active?: boolean;
 }
 
-interface CBreadcrumbRouter {
+interface CBreadcrumbRouter extends HTMLProps<any> {
   className?: string;
   innerRef?: object | Function | string;
   routes?: Array<any>;
 }
 
-interface CButton extends CLink {
+interface CButton extends Omit<CLink, 'size'> {
   children?: ChildElement;
   tag?: any;
   className?: string;
@@ -68,14 +69,14 @@ interface CButton extends CLink {
   pressed?: boolean;
 }
 
-interface CButtonClose {
+interface CButtonClose extends HTMLProps<HTMLButtonElement> {
   children?: ChildElement;
   className?: string;
   buttonClass?: string;
   innerRef?: object | Function | string;
 }
 
-interface CButtonGroup {
+interface CButtonGroup extends Omit<HTMLProps<any>, 'size'> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -83,7 +84,7 @@ interface CButtonGroup {
   vertical?: boolean;
 }
 
-interface CButtonToolbar {
+interface CButtonToolbar extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -91,7 +92,7 @@ interface CButtonToolbar {
   justify?: '' | 'start' | 'end' | 'between' | 'center';
 }
 
-interface CCallout {
+interface CCallout extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -105,7 +106,7 @@ interface sharedCardProps {
   textColor?: string;
 }
 
-interface CCard extends sharedCardProps {
+interface CCard extends sharedCardProps, HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
@@ -113,21 +114,21 @@ interface CCard extends sharedCardProps {
   accentColor?: string;
 }
 
-interface CCardBody extends sharedCardProps {
+interface CCardBody extends sharedCardProps, HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CCardFooter extends sharedCardProps {
+interface CCardFooter extends sharedCardProps, HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CCardGroup {
+interface CCardGroup extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
@@ -136,7 +137,7 @@ interface CCardGroup {
   columns?: boolean;
 }
 
-interface CCardHeader extends sharedCardProps {
+interface CCardHeader extends sharedCardProps, HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
@@ -147,35 +148,35 @@ interface CCardImg extends CImg {
   variant?: '' | 'top' | 'bottom' | 'full';
 }
 
-interface CCardImgOverlay {
+interface CCardImgOverlay extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CCardSubtitle {
+interface CCardSubtitle extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CCardText {
+interface CCardText extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CCardTitle {
+interface CCardTitle extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CCarousel {
+interface CCarousel extends HTMLProps<any> {
   className?: string;
   children?: ChildElement;
   innerRef?: object | Function | string;
@@ -185,38 +186,44 @@ interface CCarousel {
   onSlideChange?: Function;
 }
 
-interface CCarouselCaption {
+interface CCarouselCaption extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CCarouselControl {
+interface CCarouselControl extends HTMLProps<any> {
   className?: string;
   children?: ChildElement;
   innerRef?: object | Function | string;
   direction: 'prev' | 'next';
 }
 
-interface CCarouselIndicators {
+interface CCarouselIndicators extends HTMLProps<any> {
   className?: string;
   innerRef?: object | Function | string;
   indicatorsClass?: string
 }
 
-interface CCarouselInner {
+interface CCarouselInner extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CCarouselItem {
+interface CCarouselItem extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CCol {
+type columnProps = boolean | number | string | {
+  size?: boolean | number | string,
+  order?: string | number,
+  offset?: string | number
+}
+
+interface CCol extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
@@ -247,7 +254,7 @@ interface Transition {
   onExited?: Function;
 }
 
-interface CCollapse {
+interface CCollapse extends HTMLProps<any> {
   children?: ChildElement | Array<ChildElement>;
   className?: string;
   innerRef?: object | Function | string;
@@ -255,7 +262,7 @@ interface CCollapse {
   navbar?: boolean;
 }
 
-interface CContainer {
+interface CContainer extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
@@ -315,7 +322,7 @@ interface CDataTable {
   onFilteredItemsChange?: Function;
 }
 
-interface CDropdown {
+interface CDropdown extends HTMLProps<any> {
   tag?: any;
   children?: ChildElement;
   className?: string;
@@ -336,16 +343,16 @@ interface CDropdownItem extends CLink {
   active?: boolean;
 }
 
-interface CDropdownMenu {
+interface CDropdownMenu extends HTMLProps<any> {
   children: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
   modifiers?: Array<any>;
   show?: boolean;
   placement?: '' | 'top-end' | 'top' | 'top-start' |
-    'bottom-end' | 'bottom' | 'bottom-start' |
-    'right-start' | 'right' | 'right-end' |
-    'left-start' | 'left' | 'left-end';
+  'bottom-end' | 'bottom' | 'bottom-start' |
+  'right-start' | 'right' | 'right-end' |
+  'left-start' | 'left' | 'left-end';
 }
 
 interface CDropdownToggle extends CButton {
@@ -359,7 +366,7 @@ interface CDropdownToggle extends CButton {
   disabled?: boolean;
 }
 
-interface CElementCover {
+interface CElementCover extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -367,7 +374,7 @@ interface CElementCover {
   opacity?: number;
 }
 
-interface CEmbed {
+interface CEmbed extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
@@ -375,7 +382,7 @@ interface CEmbed {
   ratio?: '21by9' | '16by9' | '4by3' | '1by1';
 }
 
-interface CEmbedItem {
+interface CEmbedItem extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
@@ -383,7 +390,7 @@ interface CEmbedItem {
   type?: 'iframe' | 'embed' | 'video' | 'object' | 'img';
 }
 
-interface CFade extends Transition{
+interface CFade extends Transition {
   tag?: any;
   children?: Array<ChildElement> | ChildElement;
   className?: string;
@@ -392,7 +399,7 @@ interface CFade extends Transition{
   baseClassActive?: string;
 }
 
-interface CFooter {
+interface CFooter extends HTMLProps<any> {
   tag?: Function | string;
   children?: ChildElement;
   className?: string;
@@ -400,7 +407,7 @@ interface CFooter {
   fixed?: boolean;
 }
 
-interface CForm {
+interface CForm extends HTMLProps<any> {
   tag?: any;
   children?: ChildElement;
   className?: string;
@@ -409,14 +416,14 @@ interface CForm {
   wasValidated?: boolean;
 }
 
-interface CValidFeedback {
+interface CValidFeedback extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
   tooltip?: boolean;
 }
 
-interface CInvalidFeedback extends CValidFeedback {}
+interface CInvalidFeedback extends CValidFeedback { }
 
 interface CFormGroup {
   children?: ChildElement;
@@ -428,7 +435,7 @@ interface CFormGroup {
   disabled?: boolean;
 }
 
-interface CFormText {
+interface CFormText extends HTMLProps<any> {
   tag?: any;
   children?: ChildElement;
   className?: string;
@@ -436,7 +443,7 @@ interface CFormText {
   color?: string;
 }
 
-interface CHeader {
+interface CHeader extends HTMLProps<any> {
   tag?: Function | string;
   className?: string;
   children?: ChildElement;
@@ -446,13 +453,13 @@ interface CHeader {
   colorScheme?: string;
 }
 
-interface CHeaderNav {
+interface CHeaderNav extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CHeaderNavItem {
+interface CHeaderNavItem extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -463,7 +470,7 @@ interface CHeaderNavLink extends CLink {
   innerRef?: object | Function | string;
 }
 
-interface CImg {
+interface CImg extends Omit<HTMLProps<any>, 'className'> {
   tag?: any;
   className?: string | Array<any>;
   innerRef?: object | Function | string;
@@ -486,57 +493,57 @@ interface sharedInputProps {
   invalid?: boolean;
 }
 
-interface CInput extends sharedInputProps {
+interface CInput extends sharedInputProps, Omit<HTMLProps<any>, 'size'> {
   plaintext?: boolean;
   type?: string;
   size?: string;
   sizeHtml?: string | number;
 }
 
-interface CTextarea extends sharedInputProps {
+interface CTextarea extends sharedInputProps, Omit<HTMLProps<any>, 'size'> {
   plaintext?: boolean;
   size?: string;
 }
 
-interface CInputFile extends sharedInputProps {
+interface CInputFile extends sharedInputProps, HTMLProps<any> {
   custom?: boolean;
 }
 
-interface CInputCheckbox extends sharedInputProps {
+interface CInputCheckbox extends sharedInputProps, HTMLProps<any> {
   custom?: boolean;
 }
 
-interface CInputRadio extends CInputCheckbox {}
+interface CInputRadio extends CInputCheckbox { }
 
-interface CSelect extends sharedInputProps {
+interface CSelect extends sharedInputProps, Omit<HTMLProps<any>, 'size'> {
   children?: ChildElement;
   size?: string;
   sizeHtml?: string | number;
 }
 
-interface CInputGroup {
+interface CInputGroup extends Omit<HTMLProps<any>, 'size'> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
   size?: string;
 }
 
-interface CInputGroupAppend {
+interface CInputGroupAppend extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CInputGroupPrepend {}
+interface CInputGroupPrepend extends CInputGroupAppend { }
 
-interface CInputGroupText {
+interface CInputGroupText extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CJumbotron {
+interface CJumbotron extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
@@ -544,7 +551,7 @@ interface CJumbotron {
   fluid?: boolean;
 }
 
-interface CLabel {
+interface CLabel extends HTMLProps<any> {
   tag?: any;
   children?: ChildElement;
   className?: string;
@@ -554,7 +561,7 @@ interface CLabel {
   col?: string | boolean;
 }
 
-interface NavLink {
+interface NavLink extends HTMLProps<HTMLAnchorElement> {
   to?: string | object | Function;
   replace?: boolean;
   component?: any;
@@ -566,20 +573,21 @@ interface NavLink {
   location?: object;
 }
 
-interface CLink extends NavLink {
+interface CLink extends Omit<NavLink, 'className' | 'onClick' | 'to'> {
   children?: ChildElement;
   innerRef?: object | Function | string;
   active?: boolean;
   href?: string;
   onClick?: Function;
   disabled?: boolean;
-  className ?: string | Array<any>;
-  to ?: object | string | number;
+  className?: string | Array<any>;
+  to?: object | string | number;
 }
 
-interface CCardLink extends CLink {}
 
-interface CListGroup {
+interface CCardLink extends CLink { }
+
+interface CListGroup extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
@@ -589,7 +597,7 @@ interface CListGroup {
   accent?: boolean;
 }
 
-interface CListGroupItem extends CLink {
+interface CListGroupItem extends Omit<CLink, 'action'> {
   tag?: any;
   className?: any;
   innerRef?: object | Function | string;
@@ -600,19 +608,19 @@ interface CListGroupItem extends CLink {
   action?: boolean;
 }
 
-interface CMedia {
+interface CMedia extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CMediaBody {
+interface CMediaBody extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CModal {
+interface CModal extends Omit<HTMLProps<any>, 'size'> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -630,21 +638,21 @@ interface CModal {
   addContentClass?: string;
 }
 
-interface CModalBody {
+interface CModalBody extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CModalFooter {
+interface CModalFooter extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CModalHeader {
+interface CModalHeader extends HTMLProps<any> {
   tag?: any;
   children?: ChildElement;
   className?: string;
@@ -652,14 +660,14 @@ interface CModalHeader {
   closeButton?: boolean;
 }
 
-interface CModalTitle {
+interface CModalTitle extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CNav {
+interface CNav extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
@@ -671,7 +679,7 @@ interface CNav {
   inCard?: boolean;
 }
 
-interface CNavbar {
+interface CNavbar extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
@@ -683,21 +691,21 @@ interface CNavbar {
   expandable?: boolean | string;
 }
 
-interface CNavbarNav {
+interface CNavbarNav extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CNavbarText {
+interface CNavbarText extends HTMLProps<any> {
   tag?: any;
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CNavItem {
+interface CNavItem extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
@@ -706,11 +714,11 @@ interface CNavItem {
 
 interface CNavLink extends CLink {
   className?: string;
-  innerRef?: func | string | object;
+  innerRef?: Function | string | object;
   onClick?: Function;
 }
 
-interface CPagination {
+interface CPagination extends Omit<HTMLProps<any>, 'size'> {
   className?: string;
   innerRef?: object | Function | string;
   activePage?: number;
@@ -734,9 +742,9 @@ interface CTooltip {
   content?: ChildElement;
   interactive?: boolean;
   placement?: '' | 'top-end' | 'top' | 'top-start' |
-    'bottom-end' | 'bottom' | 'bottom-start' |
-    'right-start' | 'right' | 'right-end' |
-    'left-start' | 'left' | 'left-end';
+  'bottom-end' | 'bottom' | 'bottom-start' |
+  'right-start' | 'right' | 'right-end' |
+  'left-start' | 'left' | 'left-end';
   trigger?: string;
   advancedOptions?: object;
 }
@@ -746,7 +754,7 @@ interface CPopover extends CTooltip {
   header?: ChildElement;
 }
 
-interface CProgress {
+interface CProgress extends Omit<HTMLProps<any>, 'size'> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -761,7 +769,7 @@ interface CProgress {
   showValue?: boolean;
 }
 
-interface CProgressBar {
+interface CProgressBar extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -775,7 +783,7 @@ interface CProgressBar {
   showValue?: boolean;
 }
 
-interface CRow {
+interface CRow extends Omit<HTMLProps<any>, 'form'> {
   children?: ChildElement;
   tag?: any;
   className?: string;
@@ -786,7 +794,7 @@ interface CRow {
   alignVertical?: string;
 }
 
-interface CScrollbar {
+interface CScrollbar extends HTMLProps<any> {
   tag?: Function | string;
   className?: string;
   settings?: object;
@@ -794,7 +802,7 @@ interface CScrollbar {
   innerRef?: object | Function | string;
 }
 
-interface CSidebar {
+interface CSidebar extends Omit<HTMLProps<any>, 'size'> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -813,44 +821,46 @@ interface CSidebar {
   onMinimizeChange?: Function;
 }
 
-interface CSidebarFooter {
+interface CSidebarClose extends CButtonClose { }
+
+interface CSidebarFooter extends HTMLProps<any> {
   children?: ChildElement;
   tag?: Function | string;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CSidebarForm {
+interface CSidebarForm extends HTMLProps<any> {
   children?: ChildElement;
   tag?: Function | string;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CSidebarHeader {
+interface CSidebarHeader extends HTMLProps<any> {
   children?: ChildElement;
   tag?: Function | string;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CSidebarMinimizer {
+interface CSidebarMinimizer extends HTMLProps<any> {
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CSidebarNav {
+interface CSidebarNav extends HTMLProps<any> {
   className?: string;
   children?: ChildElement;
   innerRef?: object | Function | string;
 }
 
-interface CSidebarNavDivider {
+interface CSidebarNavDivider extends HTMLProps<any> {
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CSidebarNavDropdown {
+interface CSidebarNavDropdown extends HTMLProps<any> {
   className?: string;
   children?: ChildElement;
   innerRef?: object | Function | string;
@@ -861,9 +871,9 @@ interface CSidebarNavDropdown {
   route?: string;
 }
 
-interface CSidebarNavItem extends CLink {
+interface CSidebarNavItem extends Omit<CLink, 'label'> {
   className?: string;
-  innerRef?: func | string | object;
+  innerRef?: Function | string | object;
   icon?: string | object;
   fontIcon?: string;
   badge?: object;
@@ -872,13 +882,13 @@ interface CSidebarNavItem extends CLink {
   name?: string;
 }
 
-interface CSidebarNavTitle {
+interface CSidebarNavTitle extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CSpinner {
+interface CSpinner extends Omit<HTMLProps<any>, 'size'> {
   tag?: any;
   className?: string;
   innerRef?: object | Function | string;
@@ -887,85 +897,85 @@ interface CSpinner {
   color?: string;
 }
 
-interface CSubheader {
+interface CSubheader extends HTMLProps<any> {
   children?: ChildElement;
   tag?: any;
   className?: string;
   innerRef?: object | Function | string;
 }
 
-interface CSwitch {
+interface CSwitch extends Omit<HTMLProps<any>, 'size'> {
   className?: string
   innerRef?: object | Function | string
   size?: '' | 'lg' | 'sm'
-  color?: string 
-  labelOn?: string 
+  color?: string
+  labelOn?: string
   labelOff?: string
   variant?: '' | '3d' | 'opposite' | 'outline'
   shape?: '' | 'pill' | 'square'
 }
 
-interface CTabContent {
+interface CTabContent extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
   fade?: boolean;
 }
 
-interface CTabPane {
+interface CTabPane extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
-  innerRef?: func | string | object;
+  innerRef?: Function | string | object;
   active?: boolean;
 }
 
-interface CTabs {
+interface CTabs extends HTMLProps<any> {
   children?: ChildElement;
   activeTab?: string | number;
   onActiveTabChange?: Function;
 }
 
-interface CToast {
+interface CToast extends HTMLProps<any> {
   className?: string;
   children?: ChildElement;
-  innerRef?: func | string | object;
+  innerRef?: Function | string | object;
   show?: boolean;
   autohide?: number | boolean;
   fade?: boolean;
   onStateChange?: Function;
 }
 
-interface CToastBody {
+interface CToastBody extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
-  innerRef?: func | string | object;
+  innerRef?: Function | string | object;
 }
 
-interface CToaster {
+interface CToaster extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: Function | string | object;
   position?: '' | 'static' | 'top-right' | 'top-left' | 'top-center' | 'top-full' |
-    'bottom-right' | 'bottom-left' | 'bottom-center' | 'bottom-full';
+  'bottom-right' | 'bottom-left' | 'bottom-center' | 'bottom-full';
 }
 
-interface CToastHeader {
+interface CToastHeader extends HTMLProps<any> {
   className?: string;
   children?: ChildElement;
-  innerRef?: func | string | object;
+  innerRef?: Function | string | object;
   closeButton?: boolean;
 }
 
-interface CToggler {
+interface CToggler extends HTMLProps<HTMLButtonElement> {
   tag?: any;
   children?: ChildElement;
   className?: string;
-  innerRef?: func | string | object;
+  innerRef?: Function | string | object;
   inHeader?: boolean;
   inNavbar?: boolean;
 }
 
-interface CWidgetBrand {
+interface CWidgetBrand extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -978,7 +988,7 @@ interface CWidgetBrand {
   bodySlot?: ChildElement;
 }
 
-interface CWidgetDropdown {
+interface CWidgetDropdown extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -988,7 +998,7 @@ interface CWidgetDropdown {
   text?: string;
 }
 
-interface CWidgetIcon {
+interface CWidgetIcon extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -999,7 +1009,7 @@ interface CWidgetIcon {
   footerSlot?: ChildElement;
 }
 
-interface CWidgetProgress {
+interface CWidgetProgress extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -1011,7 +1021,7 @@ interface CWidgetProgress {
   inverse?: boolean;
 }
 
-interface CWidgetProgressIcon {
+interface CWidgetProgressIcon extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -1023,7 +1033,7 @@ interface CWidgetProgressIcon {
   progressSlot?: ChildElement;
 }
 
-interface CWidgetSimple {
+interface CWidgetSimple extends HTMLProps<any> {
   children?: ChildElement;
   className?: string;
   innerRef?: object | Function | string;
@@ -1121,6 +1131,7 @@ export declare const CProgressBar: (props: CProgressBar) => any;
 export declare const CRow: (props: CRow) => any;
 export declare const CScrollbar: (props: CScrollbar) => any;
 export declare const CSidebar: (props: CSidebar) => any;
+export declare const CSidebarClose: (props: CSidebarClose) => any;
 export declare const CSidebarFooter: (props: CSidebarFooter) => any;
 export declare const CSidebarForm: (props: CSidebarForm) => any;
 export declare const CSidebarHeader: (props: CSidebarHeader) => any;
