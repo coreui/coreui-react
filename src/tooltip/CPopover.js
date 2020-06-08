@@ -1,8 +1,6 @@
 import React, {useCallback} from 'react'
 import PropTypes from 'prop-types'
 import CTooltip from './CTooltip.js'
-import 'tippy.js/dist/border.css'
-import './CPopover.css'
 import { renderToString } from 'react-dom/server'
 
 //component - CoreUI / CPopover
@@ -15,7 +13,6 @@ const generateContent = (content, header) => {
 const CPopover = props => {
 
   let {
-    //
     header,
     children,
     content,
