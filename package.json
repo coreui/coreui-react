@@ -35,7 +35,8 @@
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server",
     "lint": "eslint src",
-    "link": "npm link && link.sh"
+    "link": "npm link && link.sh",
+    "changelog": "auto-changelog --starting-version 3.0.0-rc.2"
   },
   "dependencies": {
     "@coreui/icons": "2.0.0-beta.3",
@@ -55,6 +56,7 @@
     "react-router-dom": "~5.2.0"
   },
   "devDependencies": {
+    "auto-changelog": "2.0.0",
     "babel-eslint": "^10.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
