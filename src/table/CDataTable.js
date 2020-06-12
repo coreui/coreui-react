@@ -20,6 +20,7 @@ const CDataTable = props => {
     noItemsViewSlot,
     noItemsView,
     captionSlot,
+    footerSlot,
     underTableSlot,
     theadTopSlot,
     loadingSlot,
@@ -523,6 +524,7 @@ const CDataTable = props => {
       }
     </tbody>
     { footer && currentItems.length > 0 && <tfoot>{headerContent}</tfoot>}
+    { footerSlot }
     { captionSlot }
   </table>
   { loading && 
@@ -561,6 +563,7 @@ CDataTable.propTypes = {
   noItemsViewSlot: PropTypes.node,
   noItemsView: PropTypes.object,
   captionSlot: PropTypes.node,
+  footerSlot: PropTypes.node,
   underTableSlot: PropTypes.node,
   scopedSlots: PropTypes.object,
   theadTopSlot: PropTypes.node,
