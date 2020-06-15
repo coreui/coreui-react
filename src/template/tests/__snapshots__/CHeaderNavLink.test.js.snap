@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CHeaderNavLink renders basic wrapper correctly 1`] = `
+<a
+  className="c-header-nav-link"
+  href="#"
+  onClick={[Function]}
+  rel={null}
+/>
+`;
+
+exports[`CHeaderNavLink renders customized wrapper correctly 1`] = `
+<a
+  className="class-name c-header-nav-link"
+  href="#"
+  onClick={[Function]}
+  rel={null}
+>
+  CHeaderNavLink
+</a>
+`;

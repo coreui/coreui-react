@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CToggler renders basic wrapper correctly 1`] = `
+<button
+  className=""
+  type="button"
+>
+  <span
+    className=""
+  />
+</button>
+`;
+
+exports[`CToggler renders customized wrapper correctly 1`] = `
+<button
+  className="navbar-toggler class-name"
+  type="button"
+>
+  CToggler
+</button>
+`;

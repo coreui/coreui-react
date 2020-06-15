@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSidebarClose renders basic wrapper correctly 1`] = `
+<button
+  aria-label="Close"
+  className="c-sidebar-close"
+>
+  <svg
+    className="c-icon"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+  >
+    <title>
+      x
+    </title>
+    <path
+      d="M20.030 5.030l-1.061-1.061-6.97 6.97-6.97-6.97-1.061 1.061 6.97 6.97-6.97 6.97 1.061 1.061 6.97-6.97 6.97 6.97 1.061-1.061-6.97-6.97 6.97-6.97z"
+    />
+  </svg>
+</button>
+`;

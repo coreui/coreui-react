@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CRow renders basic wrapper correctly 1`] = `
+<div
+  className="row"
+/>
+`;
+
+exports[`CRow renders customized wrapper correctly 1`] = `
+<div
+  className="class-name justify-content-right align-bottom form-row"
+>
+  CRow
+</div>
+`;

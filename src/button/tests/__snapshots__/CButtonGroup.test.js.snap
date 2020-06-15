@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CButtonGroup renders basic wrapper correctly 1`] = `
+<div
+  className="btn-group"
+  role="group"
+/>
+`;
+
+exports[`CButtonGroup renders customized wrapper correctly 1`] = `
+<div
+  className="class-name btn-group"
+  role="group"
+>
+  <button
+    className="btn"
+    onClick={[Function]}
+    type="button"
+  >
+    A
+  </button>
+  <button
+    className="btn"
+    onClick={[Function]}
+    type="button"
+  >
+    B
+  </button>
+</div>
+`;
+
+exports[`CButtonGroup renders customized wrapper correctly two 1`] = `
+<div
+  className="class-name btn-group-lg btn-group-vertical"
+  role="group"
+>
+  <button
+    className="btn"
+    onClick={[Function]}
+    type="button"
+  >
+    A
+  </button>
+  <button
+    className="btn"
+    onClick={[Function]}
+    type="button"
+  >
+    B
+  </button>
+</div>
+`;

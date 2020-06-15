@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CHeaderNav renders basic wrapper correctly 1`] = `
+<ul
+  className="c-header-nav"
+/>
+`;
+
+exports[`CHeaderNav renders customized wrapper correctly 1`] = `
+<ul
+  className="class-name c-header-nav"
+>
+  CHeaderNav
+</ul>
+`;

@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CBreadcrumb renders basic wrapper correctly 1`] = `
+<ol
+  className="breadcrumb"
+/>
+`;
+
+exports[`CBreadcrumb renders customized wrapper correctly 1`] = `
+<ol
+  className="class-name breadcrumb"
+>
+  <li
+    className="breadcrumb-item"
+    role="presentation"
+  >
+    item
+  </li>
+  <li
+    aria-current="page"
+    className="active breadcrumb-item"
+    role="presentation"
+  >
+    item 2
+  </li>
+</ol>
+`;

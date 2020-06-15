@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CToastBody renders basic wrapper correctly 1`] = `
+<div
+  className="toast-body"
+/>
+`;
+
+exports[`CToastBody renders customized wrapper correctly 1`] = `
+<div
+  className="toast-body class-name"
+>
+  CToastBody
+</div>
+`;

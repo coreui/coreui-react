@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CDropdownItem renders basic wrapper correctly 1`] = `
+<a
+  className="dropdown-item"
+  href="#"
+  onClick={[Function]}
+  rel={null}
+  role="menuitem"
+  tabIndex={null}
+/>
+`;
+
+exports[`CDropdownItem renders customized wrapper correctly 1`] = `
+<div
+  className="class-name dropdown-header active bg-warning disabled"
+  disabled={true}
+  onClick={[Function]}
+  tabIndex={-1}
+>
+  CDropdownItem
+</div>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSidebarFooter renders basic wrapper correctly 1`] = `
+<div
+  className="c-sidebar-footer"
+/>
+`;
+
+exports[`CSidebarFooter renders customized wrapper correctly 1`] = `
+<div
+  className="c-sidebar-footer class-name"
+>
+  CSidebarFooter
+</div>
+`;

@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CWidgetBrand renders basic wrapper correctly 1`] = `
+<div
+  className="card undefined"
+>
+  <div
+    className="card-header content-center text-white p-0"
+  />
+  <div
+    className="card-body row text-center"
+  >
+    <div
+      className="col"
+    />
+    <div
+      className="c-vr"
+    />
+    <div
+      className="col"
+    />
+  </div>
+</div>
+`;
+
+exports[`CWidgetBrand renders customized wrapper correctly 1`] = `
+<div
+  className="card class-name"
+>
+  <div
+    className="card-header content-center text-white p-0 bg-info header-classes"
+  >
+    CWidgetBrand
+  </div>
+  <div
+    className="card-body row text-center"
+  >
+    <div
+      className="col"
+    >
+      <div
+        className="text-value-lg"
+      >
+        rh
+      </div>
+      <div
+        className="text-uppercase text-muted small"
+      >
+        rf
+      </div>
+    </div>
+    <div
+      className="c-vr"
+    />
+    <div
+      className="col"
+    >
+      <div
+        className="text-value-lg"
+      >
+        lh
+      </div>
+      <div
+        className="text-uppercase text-muted small"
+      >
+        lf
+      </div>
+    </div>
+  </div>
+</div>
+`;

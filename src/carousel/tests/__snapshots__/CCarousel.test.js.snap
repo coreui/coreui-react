@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCarousel render full carousel 1`] = `
+<div
+  className="carousel"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <ol
+    className="carousel-indicators"
+  />
+  <div
+    className="carousel-inner"
+  >
+    <div
+      className="carousel-item"
+    >
+      Slide 1
+      <div
+        className="carousel-caption"
+      >
+        <h3>
+          Slide 1
+        </h3>
+        <p>
+          Slide 1
+        </p>
+      </div>
+    </div>
+    <div
+      className="carousel-item"
+    >
+      Slide 2
+      <div
+        className="carousel-caption"
+      >
+        <h3>
+          Slide 2
+        </h3>
+        <p>
+          Slide 2
+        </p>
+      </div>
+    </div>
+    <div
+      className="carousel-item"
+    >
+      Slide 3
+      <div
+        className="carousel-caption"
+      >
+        <h3>
+          Slide 3
+        </h3>
+        <p>
+          Slide 3
+        </p>
+      </div>
+    </div>
+  </div>
+  <a
+    className="carousel-control-prev"
+    onClick={[Function]}
+  >
+    <span
+      aria-label="prev"
+      className="carousel-control-prev-icon"
+    />
+  </a>
+  <a
+    className="carousel-control-next"
+    onClick={[Function]}
+  >
+    <span
+      aria-label="next"
+      className="carousel-control-next-icon"
+    />
+  </a>
+</div>
+`;
+
+exports[`CCarousel renders basic wrapper correctly 1`] = `
+<div
+  className="carousel"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+/>
+`;
+
+exports[`CCarousel renders customized wrapper correctly 1`] = `
+<div
+  className="carousel class-name"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+/>
+`;

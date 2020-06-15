@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CNav renders basic wrapper correctly 1`] = `
+<ul
+  className="nav"
+/>
+`;
+
+exports[`CNav renders customized wrapper correctly 1`] = `
+<ul
+  className="nav flex-column nav-pills nav-justified nav-fill card-header-pills class-name"
+>
+  CNav
+</ul>
+`;

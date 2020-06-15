@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CFormText renders basic wrapper correctly 1`] = `
+<small
+  className="form-text text-muted"
+/>
+`;
+
+exports[`CFormText renders customized wrapper correctly 1`] = `
+<small
+  className="form-text text-warning class-name"
+>
+  CFormText
+</small>
+`;

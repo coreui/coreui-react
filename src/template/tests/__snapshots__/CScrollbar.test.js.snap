@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CScrollbar renders basic wrapper correctly 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "position": "relative",
+    }
+  }
+/>
+`;
+
+exports[`CScrollbar renders customized wrapper correctly - switcher on 1`] = `
+<div>
+  <div
+    className="class-name"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    CScrollbar
+  </div>
+</div>
+`;

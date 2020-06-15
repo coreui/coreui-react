@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CNavbarText renders basic wrapper correctly 1`] = `
+<div
+  className="navbar-text"
+/>
+`;
+
+exports[`CNavbarText renders customized wrapper correctly 1`] = `
+<div
+  className="navbar-text class-name"
+>
+  CNavbarText
+</div>
+`;

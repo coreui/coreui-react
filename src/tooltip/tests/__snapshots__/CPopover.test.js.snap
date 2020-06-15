@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CPopover renders customized wrapper correctly 1`] = `
+<a
+  data-tooltip="2jynnlorl27"
+  href="#"
+>
+   Popover example 
+</a>
+`;

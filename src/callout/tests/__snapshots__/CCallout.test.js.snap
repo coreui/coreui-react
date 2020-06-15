@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCallout renders basic wrapper correctly 1`] = `
+<div
+  className="c-callout"
+/>
+`;
+
+exports[`CCallout renders customized wrapper correctly 1`] = `
+<div
+  className="c-callout c-callout-warning class-name"
+>
+  CCallout
+</div>
+`;

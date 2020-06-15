@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CHeader renders basic wrapper correctly 1`] = `
+<header
+  className="c-header c-header-light c-header-fixed"
+/>
+`;
+
+exports[`CHeader renders customized wrapper correctly 1`] = `
+<header
+  className="class-name c-header c-header-dark c-header-fixed c-header-with-subheader"
+>
+  CHeader
+</header>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CLabel renders basic wrapper correctly 1`] = `
+<label
+  className=""
+/>
+`;
+
+exports[`CLabel renders customized wrapper correctly 1`] = `
+<label
+  className="sr-only custom-file-label col-form-label class-name col"
+>
+  CLabel
+</label>
+`;

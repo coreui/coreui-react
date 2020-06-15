@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "3.0.2",
+  "version": "3.0.0-rc.1",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -36,11 +36,14 @@
     "test:watch": "nwb test-react --server",
     "lint": "eslint src",
     "link": "npm link && link.sh",
-    "changelog": "auto-changelog --starting-version 3.0.0-rc.2"
+    "jest:test": "jest",
+    "jest:coverage": "jest --coverage",
+    "jest:init": "jest init",
+    "jest:cache": "jest --clearCache"
   },
   "dependencies": {
-    "@coreui/icons": "2.0.0-beta.3",
-    "@coreui/icons-react": "^1.0.1",
+    "@coreui/icons": "^2.0.0-beta.3",
+    "@coreui/icons-react": "^1.0.0-beta.5",
     "@coreui/utils": "~1.3.1",
     "@popperjs/core": "~2.4.0",
     "classnames": "~2.2.6",
@@ -56,15 +59,38 @@
     "react-router-dom": "~5.2.0"
   },
   "devDependencies": {
-    "auto-changelog": "2.0.0",
+    "@babel/core": "*",
+    "@babel/plugin-proposal-class-properties": "*",
+    "@babel/preset-env": "*",
+    "@babel/preset-react": "*",
+    "@coreui/coreui-chartjs": "^2.0.0-beta.0",
+    "@coreui/icons": "^1.0.1",
+    "@coreui/icons-react": "^1.0.0-alpha.5",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "*",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "eslint": "^7.2.0",
-    "eslint-plugin-import": "^2.21.1",
+    "enzyme-to-json": "^3.5.0",
+    "eslint": "^7.1.0",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-react": "^7.20.0",
+    "expect": "^26.0.1",
+    "jest": "^26.0.1",
     "nwb": "^0.25.2",
+    "react": "^16.13.1",
+    "react-app-polyfill": "^1.0.6",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2",
+    "react-test-renderer": "^16.13.1",
     "sinon": "^9.0.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/tests/__mocks__/styleMock.js"
+    },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ]
   },
   "repository": {
     "type": "git",

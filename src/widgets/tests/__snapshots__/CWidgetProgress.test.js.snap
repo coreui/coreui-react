@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CWidgetProgress renders basic wrapper correctly 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card-body"
+  >
+    <div
+      className="progress progress-xs my-3 mb-0 "
+    >
+      <div
+        aria-valuemax={100}
+        aria-valuemin="0"
+        aria-valuenow={25}
+        className="progress-bar"
+        role="progressbar"
+        style={
+          Object {
+            "width": "25%",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CWidgetProgress renders customized wrapper correctly 1`] = `
+<div
+  className="card bg-info text-white class-name"
+>
+  <div
+    className="card-body"
+  >
+    <div
+      className="h4 m-0"
+    >
+      header
+    </div>
+    <div>
+      text
+    </div>
+    CWidgetProgress
+    <small
+      className="text-muted"
+    >
+      footer
+    </small>
+  </div>
+</div>
+`;

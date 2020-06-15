@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSidebarForm renders basic wrapper correctly 1`] = `
+<div
+  className="c-sidebar-form"
+/>
+`;
+
+exports[`CSidebarForm renders customized wrapper correctly 1`] = `
+<div
+  className="c-sidebar-form class-name"
+>
+  CSidebarForm
+</div>
+`;

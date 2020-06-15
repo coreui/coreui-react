@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCreateElement renders basic wrapper correctly 1`] = `
+<CSidebarNavItem
+  badge={
+    Object {
+      "color": "info",
+      "text": "NEW",
+    }
+  }
+  icon="cil-speedometer"
+  name="Dashboard"
+  to="/dashboard"
+>
+  
+</CSidebarNavItem>
+`;

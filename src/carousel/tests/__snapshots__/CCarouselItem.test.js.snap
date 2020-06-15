@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCarouselItem renders basic wrapper correctly 1`] = `
+<div
+  className="carousel-item"
+/>
+`;

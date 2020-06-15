@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSidebarMinimizer renders basic wrapper correctly 1`] = `
+<button
+  className="c-sidebar-minimizer"
+  type="button"
+/>
+`;
+
+exports[`CSidebarMinimizer renders customized wrapper correctly 1`] = `
+<button
+  className="c-sidebar-minimizer class-name"
+  type="button"
+>
+  CSidebarMinimizer
+</button>
+`;

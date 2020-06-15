@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSpinner renders basic wrapper correctly 1`] = `
+<div
+  aria-hidden="false"
+  aria-label="Loading"
+  className="spinner-border"
+  role="status"
+/>
+`;
+
+exports[`CSpinner renders customized wrapper correctly 1`] = `
+<div
+  aria-hidden="false"
+  aria-label="Loading"
+  className="spinner-grow spinner-grow-lg text-info class-name"
+  role="status"
+>
+  CSpinner
+</div>
+`;

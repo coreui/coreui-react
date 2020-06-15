@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CJumbotron renders basic wrapper correctly 1`] = `
+<div
+  className="jumbotron"
+/>
+`;
+
+exports[`CJumbotron renders customized wrapper correctly 1`] = `
+<div
+  className="class-name jumbotron jumbotron-fluid"
+>
+  CJumbotron
+</div>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CMediaBody renders basic wrapper correctly 1`] = `
+<div
+  className="media-body"
+/>
+`;
+
+exports[`CMediaBody renders customized wrapper correctly 1`] = `
+<div
+  className="media-body class-name"
+>
+  CMediaBody
+</div>
+`;

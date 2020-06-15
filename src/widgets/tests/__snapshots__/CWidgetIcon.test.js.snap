@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CWidgetIcon renders basic wrapper correctly 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card-body d-flex align-items-center p-3"
+  >
+    <div
+      className="mr-3 text-white bg-undefined p-3"
+    />
+    <div />
+  </div>
+</div>
+`;
+
+exports[`CWidgetIcon renders customized wrapper correctly 1`] = `
+<div
+  className="card info class-name"
+>
+  <div
+    className="card-body d-flex align-items-center p-3"
+  >
+    <div
+      className="mr-3 text-white bg-info p-3"
+    >
+      CWidgetIcon
+    </div>
+    <div>
+      <div
+        className="text-value text-info"
+      >
+        header
+      </div>
+      <div
+        className="text-muted text-uppercase font-weight-bold small"
+      >
+        text
+      </div>
+    </div>
+  </div>
+</div>
+`;

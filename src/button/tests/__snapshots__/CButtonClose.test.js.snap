@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CButtonClose renders basic wrapper correctly 1`] = `
+<button
+  aria-label="Close"
+  className="close"
+>
+  ×
+</button>
+`;
+
+exports[`CButtonClose renders customized wrapper correctly 1`] = `
+<button
+  aria-label="Close"
+  className="close class-name"
+>
+  CButtonClose
+</button>
+`;

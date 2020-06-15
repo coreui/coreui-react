@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CWidgetSimple renders basic wrapper correctly 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card-body text-center"
+  />
+</div>
+`;
+
+exports[`CWidgetSimple renders customized wrapper correctly 1`] = `
+<div
+  className="card class-name"
+>
+  <div
+    className="card-body text-center"
+  >
+    <div
+      className="text-muted small text-uppercase font-weight-bold"
+    >
+      header
+    </div>
+    <div
+      className="h2 py-3"
+    >
+      text
+    </div>
+    CWidgetSimple
+  </div>
+</div>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CToaster renders basic wrapper correctly 1`] = `
+<div
+  className="toaster toaster-top-right"
+/>
+`;
+
+exports[`CToaster renders customized wrapper correctly 1`] = `
+<div
+  className="toaster toaster-bottom-full class-name"
+>
+  CToaster
+</div>
+`;

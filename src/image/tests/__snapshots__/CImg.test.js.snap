@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CImg renders basic wrapper correctly 1`] = `
+<svg
+  className=""
+  style={
+    Object {
+      "backgroundColor": "transparent",
+    }
+  }
+/>
+`;
+
+exports[`CImg renders customized wrapper correctly 1`] = `
+<img
+  className="class-name float-right img-thumbnail w-100 d-block rounded"
+  height="250px"
+  src="src"
+  width="200px"
+/>
+`;

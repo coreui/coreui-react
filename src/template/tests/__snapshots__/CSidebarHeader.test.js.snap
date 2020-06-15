@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSidebarHeader renders basic wrapper correctly 1`] = `
+<div
+  className="c-sidebar-header"
+/>
+`;
+
+exports[`CSidebarHeader renders customized wrapper correctly 1`] = `
+<div
+  className="c-sidebar-header class-name"
+>
+  CSidebarHeader
+</div>
+`;

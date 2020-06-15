@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CListGroupItemHeading renders basic wrapper correctly 1`] = `
+<h5
+  className="list-group-item-heading"
+/>
+`;
+
+exports[`CListGroupItemHeading renders customized wrapper correctly 1`] = `
+<h5
+  className="list-group-item-heading class-name"
+>
+  CListGroupItemHeading
+</h5>
+`;

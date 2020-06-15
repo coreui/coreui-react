@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CModalFooter renders basic wrapper correctly 1`] = `
+<footer
+  className="modal-footer"
+/>
+`;
+
+exports[`CModalFooter renders customized wrapper correctly 1`] = `
+<footer
+  className="class-name modal-footer"
+>
+  CAlert
+</footer>
+`;

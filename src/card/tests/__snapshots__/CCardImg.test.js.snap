@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCardImg renders basic wrapper correctly 1`] = `
+<svg
+  className="card-img"
+  style={
+    Object {
+      "backgroundColor": "transparent",
+    }
+  }
+/>
+`;
+
+exports[`CCardImg renders customized wrapper correctly 1`] = `
+<svg
+  className="card-img-bottom class-name"
+  style={
+    Object {
+      "backgroundColor": "transparent",
+    }
+  }
+/>
+`;

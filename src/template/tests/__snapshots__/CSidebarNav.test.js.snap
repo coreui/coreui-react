@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSidebarNav renders basic wrapper correctly 1`] = `
+<ul
+  className="c-sidebar-nav h-100"
+  style={
+    Object {
+      "position": "relative",
+    }
+  }
+/>
+`;
+
+exports[`CSidebarNav renders customized wrapper correctly 1`] = `
+<ul
+  className="c-sidebar-nav h-100 class-name"
+  style={
+    Object {
+      "position": "relative",
+    }
+  }
+>
+  CSidebarNav
+</ul>
+`;

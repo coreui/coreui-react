@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSidebar renders basic wrapper correctly 1`] = `
+<div
+  className="c-sidebar c-sidebar-dark c-sidebar-lg-show c-sidebar-fixed"
+  onClick={[Function]}
+/>
+`;
+
+exports[`CSidebar renders customized wrapper correctly 1`] = `
+<div
+  className="c-sidebar c-sidebar-light c-sidebar-lg-show c-sidebar-right c-sidebar-unfoldable c-sidebar-overlaid c-sidebar-lg"
+  onClick={[Function]}
+>
+  CSidebar
+</div>
+`;
