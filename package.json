@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "3.0.2",
+  "version": "3.0.0-rc.1",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -36,11 +36,13 @@
     "test:watch": "nwb test-react --server",
     "lint": "eslint src",
     "link": "npm link && link.sh",
-    "changelog": "auto-changelog --starting-version 3.0.0-rc.2"
+    "storybook": "start-storybook"
   },
   "dependencies": {
-    "@coreui/icons": "2.0.0-beta.3",
-    "@coreui/icons-react": "^1.0.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "@coreui/icons": "^2.0.0-beta.3",
+    "@coreui/icons-react": "^1.0.0-beta.5",
     "@coreui/utils": "~1.3.1",
     "@popperjs/core": "~2.4.0",
     "classnames": "~2.2.6",
@@ -56,15 +58,23 @@
     "react-router-dom": "~5.2.0"
   },
   "devDependencies": {
-    "auto-changelog": "2.0.0",
+    "@babel/core": "^7.9.6",
+    "@coreui/coreui-chartjs": "^2.0.0-beta.0",
+    "@storybook/addon-knobs": "^5.3.19",
+    "@storybook/addon-storysource": "^5.3.19",
+    "@storybook/react": "^5.3.18",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "eslint": "^7.2.0",
-    "eslint-plugin-import": "^2.21.1",
+    "eslint": "^7.1.0",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-react": "^7.20.0",
     "nwb": "^0.25.2",
-    "sinon": "^9.0.2"
+    "react-app-polyfill": "^1.0.6",
+    "react-router-dom": "^5.2.0",
+    "sinon": "^9.0.2",
+    "webpack": "^4.43.0"
   },
   "repository": {
     "type": "git",
