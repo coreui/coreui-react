@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import CFade from '../fade/CFade'
+import { Transition } from 'react-transition-group'
 
 export const Context = React.createContext({})
+
+const getTransitionClass = s => {
+  return  s === 'entering' ? 'd-block' :
+          s === 'entered' ? 'show d-block' :
+          s === 'exiting' ? 'd-block' : ''
+}
 
 //component - CoreUI / CModal
 const CModal = props => {
 
   const {
-    //
     innerRef,
     show,
     centered,
@@ -43,15 +48,8 @@ const CModal = props => {
 
   const onExited = () => onClosed && onClosed()
 
-  const transitionProps = {
-    baseClass: fade ? 'fade d-block' : '',
-    baseClassActive: 'show',
-    timeout: fade ? 150 : 0,
-    unmountOnExit: true
-  }
-
   const modalClasses = classNames(
-    'modal overflow-auto', {
+    'modal overflow-auto fade', {
       [`modal-${color}`]: color
     }
   )
@@ -78,28 +76,41 @@ const CModal = props => {
 
   return (
     <div onClick={modalClick}>
-      <CFade
-        {...transitionProps}
+      <Transition
         in={Boolean(isOpen)}
         onEntered={onEntered}
         onExited={onExited}
-        tabIndex="-1"
-        role="dialog"
-        className={modalClasses}
-        data-modal={true}
+        timeout={fade ? 150 : 0}
       >
-        <div className={dialogClasses} role="document">
-          <div
-            {...attributes} 
-            className={contentClasses} 
-            ref={innerRef}
-          >
-            <Context.Provider value={{close}}>
-              {props.children}
-            </Context.Provider>
-          </div>
-        </div>
-      </CFade>
+        {(status) => {
+          let transitionClass = getTransitionClass(status)
+          const classes = classNames(
+            modalClasses,
+            transitionClass
+          )
+          return (
+            <div
+              tabIndex="-1"
+              role="dialog"
+              className={classes}
+              data-modal={true}
+            >
+              <div className={dialogClasses} role="document">
+                <div
+                  {...attributes} 
+                  className={contentClasses} 
+                  ref={innerRef}
+                >
+                  <Context.Provider value={{close}}>
+                    {props.children}
+                  </Context.Provider>
+                </div>
+              </div>
+            </div>
+          )
+        }}
+        
+      </Transition>
       { backdrop && isOpen && <div className={backdropClasses}></div> }
     </div>
   )
