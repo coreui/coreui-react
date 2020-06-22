@@ -7,8 +7,8 @@ All notable changes to this project will be documented in this file. Dates are d
 > 17 June 2020
 
 - chore: add auto-changelog [`dd56a22`](https://github.com/coreui/coreui-react/commit/dd56a22df2479371b33abc3802fb4f0406525fe1)
+- chore: 3.0.3 version release: update dependencies and changelog [`293c637`](https://github.com/coreui/coreui-react/commit/293c63726e1a477af657d6b13fa619cba3ecde2f)
 - fix: CModal: fix animations [`7740fce`](https://github.com/coreui/coreui-react/commit/7740fcee3583d0fd9324f23d1cd12f0c9914b19a)
-- fix: CBreadcrumbRouter: add route parameters support #118 [`6d8b59b`](https://github.com/coreui/coreui-react/commit/6d8b59b9cfa145a30f4e54832941ce28ef514e29)
 
 #### [3.0.2](https://github.com/coreui/coreui-react/compare/3.0.1...3.0.2)
 
