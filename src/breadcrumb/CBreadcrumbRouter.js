@@ -16,12 +16,12 @@ const getPaths = pathname => {
   return paths
 }
 
-const CBreadcrumbRouteItem = ({name, path}, currPath) => {
-  if (path === currPath) {
-    return <CBreadcrumbItem key={path} active>{name}</CBreadcrumbItem>
+const CBreadcrumbRouteItem = ({name, currPath}, fullCurrPath) => {
+  if (currPath === fullCurrPath) {
+    return <CBreadcrumbItem key={currPath} active>{name}</CBreadcrumbItem>
   } else {
-    return <CBreadcrumbItem key={path}>
-      <Link to={path}>
+    return <CBreadcrumbItem key={currPath}>
+      <Link to={currPath}>
         {name}
       </Link>
     </CBreadcrumbItem>
@@ -41,11 +41,12 @@ const CBreadcrumbRouter = props => {
   if (routes) {
     const currPath = useLocation().pathname
     const paths = getPaths(currPath)
-    const currRoutes = paths.map(path => {
-      return routes.find(route => matchPath(path, {
+    const currRoutes = paths.map(currPath => {
+      const route = routes.find(route => matchPath(currPath, {
         path: route.path,
         exact: route.exact
       }))
+      return { ...route, currPath }
     }).filter(route => route)
     items = currRoutes.map(route => {
       return CBreadcrumbRouteItem(route, currPath)
