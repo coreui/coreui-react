@@ -11,6 +11,7 @@ const getTransitionClass = s => {
           s === 'exiting' ? 'd-block' : ''
 }
 
+//animation fixes introduced thanks to Sirlordt
 //component - CoreUI / CModal
 const CModal = props => {
 
@@ -31,7 +32,7 @@ const CModal = props => {
     ...attributes
   } = props
 
-  const [isOpen, setIsOpen] = useState(show)
+  const [isOpen, setIsOpen] = useState(false)
   const modalClick = e => e.target.dataset.modal && closeOnBackdrop && close()
 
   useEffect(() => {
