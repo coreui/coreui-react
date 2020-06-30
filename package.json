@@ -39,7 +39,7 @@
     "changelog": "auto-changelog --starting-version 3.0.0-rc.2 --hide-credit"
   },
   "dependencies": {
-    "@coreui/icons": "2.0.0-beta.3",
+    "@coreui/icons": "2.0.0-beta.4",
     "@coreui/icons-react": "^1.0.1",
     "@coreui/utils": "~1.3.1",
     "@popperjs/core": "~2.4.2",
