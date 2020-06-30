@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.0.4](https://github.com/coreui/coreui-react/compare/3.0.3...3.0.4)
+
+> 22 June 2020
+
+- fix: CBreadcrumbRouter: fix assigning paths to items #118 [`7e2c87b`](https://github.com/coreui/coreui-react/commit/7e2c87bfeec6ee03661a5bb891bfe439fe26c0f4)
+- chore: 3.0.4 version release: update dependencies [`5eac06b`](https://github.com/coreui/coreui-react/commit/5eac06b6f6ee1cffaf02a7e2e3696b517f324e56)
+
 #### [3.0.3](https://github.com/coreui/coreui-react/compare/3.0.2...3.0.3)
 
 > 17 June 2020
