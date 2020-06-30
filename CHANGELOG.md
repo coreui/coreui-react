@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.0.5](https://github.com/coreui/coreui-react/compare/3.0.4...3.0.5)
+
+> 30 June 2020
+
+- chore: 3.0.5 version release: update [`422a4ce`](https://github.com/coreui/coreui-react/commit/422a4ce75b65760781daac9a0ec0971607cb74cb)
+- fix: CModal: fix animation when rendered through portal [`dd28a8d`](https://github.com/coreui/coreui-react/commit/dd28a8de426842684cbcd70e038b8dad7aa72bd1)
+
 #### [3.0.4](https://github.com/coreui/coreui-react/compare/3.0.3...3.0.4)
 
 > 22 June 2020
