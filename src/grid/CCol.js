@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {tagPropType} from '../utils/helper.js';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { tagPropType } from '../utils/helper.js'
 
-const colWidths = ['xs', 'sm', 'md', 'lg', 'xl'];
-const stringOrNumberProp = PropTypes.oneOfType([PropTypes.number, PropTypes.string]);
+
+const stringOrNumberProp = PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 const columnProps = PropTypes.oneOfType([
   PropTypes.bool,
   PropTypes.number,
@@ -14,19 +14,19 @@ const columnProps = PropTypes.oneOfType([
     order: stringOrNumberProp,
     offset: stringOrNumberProp
   })
-]);
+])
+
 const getColumnSizeClass = (isXs, colWidth, colSize) => {
   if (colSize === true || colSize === '') {
-    return isXs ? 'col' : `col-${colWidth}`;
+    return isXs ? 'col' : `col-${colWidth}`
   } else if (colSize === 'auto') {
-    return isXs ? 'col-auto' : `col-${colWidth}-auto`;
+    return isXs ? 'col-auto' : `col-${colWidth}-auto`
   }
-  return isXs ? `col-${colSize}` : `col-${colWidth}-${colSize}`;
+  return isXs ? `col-${colSize}` : `col-${colWidth}-${colSize}`
 };
 
 //component - CoreUI / CCol
-
-const CCol = props=>{
+const CCol = props => {
 
   const {
     tag: Tag,
@@ -35,46 +35,45 @@ const CCol = props=>{
     innerRef,
     widths,
     ...attributes
-  } = props;
+  } = props
 
   //render
 
-  const colClasses = [];
-
+  const colClasses = []
   widths.forEach((colWidth, i) => {
-    let columnProp = props[colWidth];
-    delete attributes[colWidth];
+    let columnProp = props[colWidth]
+    delete attributes[colWidth]
     if (!columnProp && columnProp !== '') {
-      return;
+      return
     }
-    const isXs = !i;
+    const isXs = !i
     if (typeof columnProp === 'object') {
-      const colSizeInterfix = isXs ? '-' : `-${colWidth}-`;
-      const colClass = getColumnSizeClass(isXs, colWidth, columnProp.size);
+      const colSizeInterfix = isXs ? '-' : `-${colWidth}-`
+      const colClass = getColumnSizeClass(isXs, colWidth, columnProp.size)
 
       colClasses.push(classNames({
         [colClass]: columnProp.size || columnProp.size === '',
         [`order${colSizeInterfix}${columnProp.order}`]: columnProp.order || columnProp.order === 0,
         [`offset${colSizeInterfix}${columnProp.offset}`]: columnProp.offset || columnProp.offset === 0
-      }));
+      }))
     } else {
-      const colClass = getColumnSizeClass(isXs, colWidth, columnProp);
-      colClasses.push(colClass);
+      const colClass = getColumnSizeClass(isXs, colWidth, columnProp)
+      colClasses.push(colClass)
     }
-  });
+  })
 
   if (!colClasses.length) {
-    colClasses.push('col');
+    colClasses.push('col')
   }
 
   const classes = classNames(
     className,
     colClasses
-  );
+  )
 
   return (
     <Tag {...attributes} className={classes} ref={innerRef} />
-  );
+  )
 
 }
 
@@ -88,12 +87,13 @@ CCol.propTypes = {
   md: columnProps,
   lg: columnProps,
   xl: columnProps,
+  xxl: columnProps,
   widths: PropTypes.array
-};
+}
 
 CCol.defaultProps = {
   tag: 'div',
-  widths: colWidths,
-};
+  widths: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl']
+}
 
-export default CCol;
+export default CCol

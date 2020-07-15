@@ -224,17 +224,19 @@ type columnProps = boolean | number | string | {
 }
 
 interface CCol extends HTMLProps<any> {
-  children?: ChildElement;
-  tag?: any;
-  className?: string;
-  innerRef?: object | Function | string;
-  xs?: columnProps;
-  sm?: columnProps;
-  md?: columnProps;
-  lg?: columnProps;
-  xl?: columnProps;
-  widths?: Array<any>;
+  children?: ChildElement
+  tag?: any
+  className?: string
+  innerRef?: object | Function | string
+  xs?: columnProps
+  sm?: columnProps
+  md?: columnProps
+  lg?: columnProps
+  xl?: columnProps
+  xxl?: columnProps
+  widths?: Array<any>
 }
+
 
 interface Transition {
   nodeRef?: any;
