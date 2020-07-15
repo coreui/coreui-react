@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.0.6](https://github.com/coreui/coreui-react/compare/3.0.5...3.0.6)
+
+> 15 July 2020
+
+- chore: 3.0.6 release - update dependencies [`86cdba4`](https://github.com/coreui/coreui-react/commit/86cdba439efcc0eba1dc795579e0f7c32c8475fa)
+- chore: dependencies update [`b49a95d`](https://github.com/coreui/coreui-react/commit/b49a95d19584356ef69cc174c6ba01a2f9144ee2)
+- chore: CCol: add 'xxl' breakpoint, clean component #128 [`4dd4704`](https://github.com/coreui/coreui-react/commit/4dd4704433e8bb3ab875a9db52cc31f67c010d27)
+
 #### [3.0.5](https://github.com/coreui/coreui-react/compare/3.0.4...3.0.5)
 
 > 30 June 2020
