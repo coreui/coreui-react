@@ -19,6 +19,7 @@ const CDropdownItem = props => {
     header,
     active,
     disabled,
+    keepOpen,
     ...rest
   } = props
 
@@ -31,7 +32,7 @@ const CDropdownItem = props => {
       return
     }
     onClick && onClick(e)
-    isItem && setIsOpen(false)
+    isItem && keepOpen && setIsOpen(false)
   }
 
   //render
@@ -73,7 +74,8 @@ CDropdownItem.propTypes = {
   header: PropTypes.bool,
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
-  active: PropTypes.bool
+  active: PropTypes.bool,
+  keepOpen: PropTypes.bool,
 }
 
 export default CDropdownItem
