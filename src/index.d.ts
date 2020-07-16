@@ -343,6 +343,7 @@ interface CDropdownItem extends CLink {
   disabled?: boolean;
   onClick?: Function;
   active?: boolean;
+  keepOpen?: boolean;
 }
 
 interface CDropdownMenu extends HTMLProps<any> {
