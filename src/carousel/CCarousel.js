@@ -75,7 +75,7 @@ CCarousel.propTypes = {
   className: PropTypes.string,
   children: PropTypes.array,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   activeIndex: PropTypes.number,
   autoSlide: PropTypes.number,
   animate: PropTypes.bool,

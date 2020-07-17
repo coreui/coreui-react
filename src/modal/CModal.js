@@ -123,7 +123,7 @@ const CModal = props => {
 CModal.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   show: PropTypes.bool,
   centered: PropTypes.bool,
   size: PropTypes.oneOf(['', 'sm', 'lg', 'xl']),

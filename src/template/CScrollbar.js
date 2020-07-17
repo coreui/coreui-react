@@ -62,7 +62,7 @@ CScrollbar.propTypes = {
   //
   settings: PropTypes.object,
   switcher: PropTypes.bool,
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string])
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
 };
 
 CScrollbar.defaultProps = {

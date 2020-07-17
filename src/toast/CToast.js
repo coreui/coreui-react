@@ -116,7 +116,7 @@ CToast.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
+  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   show: PropTypes.bool,
   autohide: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
   fade: PropTypes.bool,

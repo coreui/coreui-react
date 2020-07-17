@@ -30,7 +30,7 @@ const CHeaderNavLink = props => {
 CHeaderNavLink.propTypes = {
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string])
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
 };
 
 

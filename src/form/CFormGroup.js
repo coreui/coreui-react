@@ -40,7 +40,7 @@ CFormGroup.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   row: PropTypes.bool,
   variant: PropTypes.oneOf(['checkbox', 'custom-checkbox', 'custom-radio']),
   inline: PropTypes.bool,

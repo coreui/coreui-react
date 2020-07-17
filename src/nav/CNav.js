@@ -46,7 +46,7 @@ CNav.propTypes = {
   tag: tagPropType,
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   variant: PropTypes.oneOf(['', 'tabs', 'pills']),
   vertical: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   justified: PropTypes.bool,

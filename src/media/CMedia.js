@@ -25,7 +25,7 @@ const CMedia = props => {
 CMedia.propTypes = {
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
 export default CMedia

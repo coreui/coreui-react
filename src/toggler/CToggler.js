@@ -41,7 +41,7 @@ CToggler.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
+  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   inHeader: PropTypes.bool,
   inNavbar: PropTypes.bool,
 };

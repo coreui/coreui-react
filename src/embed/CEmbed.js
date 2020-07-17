@@ -32,7 +32,7 @@ CEmbed.propTypes = {
   tag: tagPropType,
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   ratio: PropTypes.oneOf(['21by9', '16by9', '4by3', '1by1']),
 };
 

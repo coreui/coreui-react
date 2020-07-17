@@ -555,7 +555,7 @@ const CDataTable = props => {
 
 CDataTable.propTypes = {
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   overTableSlot: PropTypes.node,
   columnHeaderSlot: PropTypes.object,
   sortingIconSlot: PropTypes.func,

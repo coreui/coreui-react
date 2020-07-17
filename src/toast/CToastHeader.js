@@ -37,7 +37,7 @@ CToastHeader.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
+  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   closeButton: PropTypes.bool
 };
 

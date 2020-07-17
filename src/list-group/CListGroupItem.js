@@ -51,7 +51,7 @@ CListGroupItem.propTypes = {
   tag: tagPropType,
   className: PropTypes.any,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   active: PropTypes.bool,
   disabled: PropTypes.bool,
   color: PropTypes.string,

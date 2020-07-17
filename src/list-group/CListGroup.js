@@ -45,7 +45,7 @@ CListGroup.propTypes = {
   tag: tagPropType,
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   flush: PropTypes.bool,
   horizontal: PropTypes.string,
   accent: PropTypes.bool

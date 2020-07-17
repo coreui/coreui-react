@@ -34,7 +34,7 @@ CJumbotron.propTypes = {
   tag: tagPropType,
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   fluid: PropTypes.bool
 };
 

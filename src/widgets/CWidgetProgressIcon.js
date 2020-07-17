@@ -48,7 +48,7 @@ CWidgetProgressIcon.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   header: PropTypes.string,
   text: PropTypes.string,
   color: PropTypes.string,

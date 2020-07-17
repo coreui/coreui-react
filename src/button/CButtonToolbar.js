@@ -37,7 +37,7 @@ const CButtonToolbar = props=>{
 CButtonToolbar.propTypes = {
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   role: PropTypes.string,
   justify: PropTypes.oneOf(['', 'start', 'end', 'between', 'center'])
 }

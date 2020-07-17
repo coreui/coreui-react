@@ -27,7 +27,7 @@ const CTabContent = props => {
 CTabContent.propTypes = {
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   fade: PropTypes.bool
 }
 

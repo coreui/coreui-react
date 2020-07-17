@@ -43,7 +43,7 @@ CNavbar.propTypes = {
   tag: tagPropType,
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   light: PropTypes.bool,
   color: PropTypes.string,
   fixed: PropTypes.oneOf(['', 'top', 'bottom']),

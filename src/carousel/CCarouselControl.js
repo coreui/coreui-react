@@ -57,7 +57,7 @@ CCarouselControl.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   direction: PropTypes.oneOf(['prev', 'next']).isRequired,
 };
 

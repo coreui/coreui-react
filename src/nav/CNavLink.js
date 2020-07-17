@@ -49,7 +49,7 @@ const CNavLink = props => {
 CNavLink.propTypes = {
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
+  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   onClick: PropTypes.func
 };
 

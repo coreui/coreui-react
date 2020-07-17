@@ -36,7 +36,7 @@ const CButtonGroup = props => {
 CButtonGroup.propTypes = {
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   size: PropTypes.oneOf(['', 'sm', 'lg']),
   vertical: PropTypes.bool
 }

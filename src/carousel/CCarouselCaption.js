@@ -32,7 +32,7 @@ const CCarouselCaption = props => {
 CCarouselCaption.propTypes = {
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string])
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
 };
 
 export default CCarouselCaption

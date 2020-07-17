@@ -67,7 +67,7 @@ CButton.propTypes = {
   tag: tagPropType,
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   active: PropTypes.bool,
   block: PropTypes.bool,
   shape: PropTypes.string,

@@ -135,7 +135,7 @@ const CCarouselItem = props => {
 CCarouselItem.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 }
 
 export default CCarouselItem

@@ -115,7 +115,7 @@ CSidebarNavDropdown.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   name: PropTypes.string,
   icon: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   fontIcon: PropTypes.string,

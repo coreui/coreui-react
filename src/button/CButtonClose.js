@@ -40,7 +40,7 @@ CButtonClose.propTypes = {
   className: PropTypes.string,
   //
   buttonClass: PropTypes.string,
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 }
 
 CButtonClose.defaultProps = {

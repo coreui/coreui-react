@@ -57,7 +57,7 @@ const CTabPane = props => {
 CTabPane.propTypes = {
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
+  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   active: PropTypes.bool,
 }
 

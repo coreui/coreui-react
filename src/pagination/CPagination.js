@@ -186,7 +186,7 @@ const CPagination = props => {
 CPagination.propTypes = {
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   activePage: PropTypes.number,
   dots: PropTypes.bool,
   arrows: PropTypes.bool,

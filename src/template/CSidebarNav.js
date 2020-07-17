@@ -35,7 +35,7 @@ CSidebarNav.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
 export default CSidebarNav

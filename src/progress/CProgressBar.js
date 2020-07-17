@@ -57,7 +57,7 @@ CProgressBar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   value: PropTypes.number,
   max: PropTypes.number,
   animated: PropTypes.bool,

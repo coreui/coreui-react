@@ -26,7 +26,7 @@ const CToastBody = props => {
 CToastBody.propTypes = {
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object])
+  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
 };
 
 export default CToastBody

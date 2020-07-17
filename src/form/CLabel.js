@@ -42,7 +42,7 @@ CLabel.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   hidden: PropTypes.bool,
   variant: PropTypes.oneOf(['custom-file', 'checkbox', 'custom-checkbox']),
   col: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])

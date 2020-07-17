@@ -57,7 +57,7 @@ const CSidebarNavItem = props => {
 CSidebarNavItem.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object]),
+  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   fontIcon: PropTypes.string,
   badge: PropTypes.object,

@@ -55,7 +55,7 @@ CFade.propTypes = {
   ]),
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   baseClass: PropTypes.string,
   baseClassActive: PropTypes.string
 }

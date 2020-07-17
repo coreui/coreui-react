@@ -54,7 +54,7 @@ const CLink = props => {
 
 CLink.propTypes = {
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   active: PropTypes.bool,
   href: PropTypes.string,
   onClick: PropTypes.func,

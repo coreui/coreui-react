@@ -86,7 +86,7 @@ CDropdownMenu.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   modifiers: PropTypes.array,
   show: PropTypes.bool,
   placement: PropTypes.oneOf([

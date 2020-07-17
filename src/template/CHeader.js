@@ -36,7 +36,7 @@ CHeader.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   fixed: PropTypes.bool,
   withSubheader: PropTypes.bool,
   colorScheme: PropTypes.string,

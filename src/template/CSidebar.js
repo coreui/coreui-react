@@ -155,7 +155,7 @@ CSidebar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   fixed: PropTypes.bool,
   unfoldable: PropTypes.bool,
   overlaid: PropTypes.bool,

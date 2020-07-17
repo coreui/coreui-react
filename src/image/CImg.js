@@ -64,7 +64,7 @@ CImg.propTypes = {
   tag: tagPropType,
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   src: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

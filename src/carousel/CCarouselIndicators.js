@@ -47,7 +47,7 @@ const CCarouselIndicators = props => {
 CCarouselIndicators.propTypes = {
   className: PropTypes.string,
   //
-  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   indicatorsClass: PropTypes.string
 };
 
