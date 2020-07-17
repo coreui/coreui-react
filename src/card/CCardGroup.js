@@ -32,7 +32,7 @@ const CCardGroup = props=>{
 
 CCardGroup.propTypes = {
   tag: tagPropType,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   deck: PropTypes.bool,

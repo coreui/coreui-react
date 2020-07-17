@@ -60,7 +60,7 @@ CLink.propTypes = {
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
   ...NavLink.propTypes,
-  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   to: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.func])
 };
 

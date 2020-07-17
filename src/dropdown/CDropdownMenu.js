@@ -84,7 +84,7 @@ const CDropdownMenu = props => {
 
 CDropdownMenu.propTypes = {
   children: PropTypes.node.isRequired,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   modifiers: PropTypes.array,

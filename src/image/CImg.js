@@ -62,7 +62,7 @@ const CImg = props => {
 
 CImg.propTypes = {
   tag: tagPropType,
-  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   src: PropTypes.string,

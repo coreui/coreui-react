@@ -42,7 +42,7 @@ const CSpinner = props => {
 
 CSpinner.propTypes = {
   tag: tagPropType,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   grow: PropTypes.bool,

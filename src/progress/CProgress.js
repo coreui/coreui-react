@@ -59,7 +59,7 @@ const CProgress = props => {
 
 CProgress.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   size: PropTypes.string,

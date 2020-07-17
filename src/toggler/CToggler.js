@@ -39,7 +39,7 @@ const CToggler = props => {
 CToggler.propTypes = {
   tag: tagPropType,
   children: PropTypes.node,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   //
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   inHeader: PropTypes.bool,

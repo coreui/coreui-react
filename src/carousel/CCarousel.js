@@ -72,7 +72,7 @@ const CCarousel = props => {
 }
 
 CCarousel.propTypes = {
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   children: PropTypes.array,
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),

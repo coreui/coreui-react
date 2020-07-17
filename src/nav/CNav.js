@@ -44,7 +44,7 @@ const CNav = props => {
 
 CNav.propTypes = {
   tag: tagPropType,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   variant: PropTypes.oneOf(['', 'tabs', 'pills']),

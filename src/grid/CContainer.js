@@ -31,7 +31,7 @@ const CContainer = props=>{
 
 CContainer.propTypes = {
   tag: tagPropType,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   fluid: PropTypes.bool

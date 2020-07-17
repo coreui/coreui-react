@@ -29,7 +29,7 @@ const CBrand = props => {
 CBrand.propTypes = {
   tag: tagPropType,
   children: PropTypes.node,
-  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
 };

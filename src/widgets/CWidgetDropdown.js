@@ -37,7 +37,7 @@ const CWidgetDropdown = props => {
 
 CWidgetDropdown.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   header: PropTypes.string,

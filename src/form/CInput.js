@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 //component - CoreUI / CInput
 const commonPropTypes = {
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   valid: PropTypes.bool,
   invalid: PropTypes.bool

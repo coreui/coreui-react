@@ -37,7 +37,7 @@ const CButtonClose = props => {
 
 CButtonClose.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   //
   buttonClass: PropTypes.string,
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),

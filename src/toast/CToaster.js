@@ -28,7 +28,7 @@ const CToaster = props => {
 }
 
 CToaster.propTypes = {
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   //
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   position: PropTypes.oneOf([

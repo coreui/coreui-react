@@ -75,7 +75,7 @@ const CAlert = props => {
 
 CAlert.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.array]),
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   onShowChange: PropTypes.func,
   closeButton: PropTypes.bool,

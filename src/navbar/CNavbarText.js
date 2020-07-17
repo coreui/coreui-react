@@ -29,7 +29,7 @@ const CNavbarText = props => {
 CNavbarText.propTypes = {
   tag: tagPropType,
   children: PropTypes.node,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
 };

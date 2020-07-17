@@ -113,7 +113,7 @@ const CToast = props => {
 }
 
 CToast.propTypes = {
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   children: PropTypes.node,
   //
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
