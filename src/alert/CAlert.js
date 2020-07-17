@@ -11,6 +11,7 @@ const CAlert = props => {
   let {
     children,
     className,
+    innerRef,
     //
     onShowChange,
     closeButton,
@@ -64,6 +65,7 @@ const CAlert = props => {
       in={Boolean(isOpen)}
       role="alert"
       {...attrs}
+      innerRef={innerRef}
     >
       { children }
       { closeButton && <CButtonClose onClick={() => setIsOpen(false)} />}
@@ -74,18 +76,17 @@ const CAlert = props => {
 CAlert.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   onShowChange: PropTypes.func,
   closeButton: PropTypes.bool,
   color: PropTypes.string,
   fade: PropTypes.bool,
   show: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-};
+}
 
 CAlert.defaultProps = {
   show: true,
   fade: true
-};
+}
 
 export default CAlert
