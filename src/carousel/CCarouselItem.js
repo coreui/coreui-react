@@ -1,4 +1,4 @@
-import React, { useState, useContext, createRef, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
@@ -20,10 +20,9 @@ const CCarouselItem = props => {
   const {
     children,
     className,
-    //
     innerRef,
     ...attributes
-  } = props;
+  } = props
 
   const {
     animate,
@@ -34,8 +33,9 @@ const CCarouselItem = props => {
     setAnimating
   } = useContext(Context)
 
-  const ref = createRef()
-  innerRef && innerRef(ref)
+  const ref = typeof innerRef === 'object' ? innerRef : useRef()
+  typeof innerRef === 'function' && innerRef(ref)
+
   const [isIn, setIsIn] = useState()
 
   useEffect(() => {
@@ -49,9 +49,9 @@ const CCarouselItem = props => {
     setAnimating(false)
   }
 
-  const onEntering = (node) => {
+  const onEntering = () => {
     /* eslint-disable no-unused-vars */
-    const offsetHeight = node.offsetHeight
+    const offsetHeight = ref.current.offsetHeight
     setAnimating(true)
     /* eslint-enable no-unused-vars */
   }
@@ -68,6 +68,7 @@ const CCarouselItem = props => {
     setAnimating(false)
   }
 
+  // const nodeRef = React.useRef()
 
   //render
   if (!animate || state[0] === null) {
@@ -96,6 +97,7 @@ const CCarouselItem = props => {
       onExit={onExit}
       onExiting={onExiting}
       onExited={onExited}
+      nodeRef={ref}
     >
       {(status) => {
         const direction = getDirection(state)
@@ -133,8 +135,7 @@ const CCarouselItem = props => {
 CCarouselItem.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
-};
+}
 
 export default CCarouselItem

@@ -23,10 +23,13 @@ const CFade = props => {
   const transitionProps = pickByKeys(rest, TransitionPropTypeKeys)
   const childProps = omitByKeys(rest, TransitionPropTypeKeys)
 
-  const childRef = useRef()
+  const ref = typeof innerRef === 'object' ? innerRef : useRef()
+  typeof innerRef === 'function' && innerRef(ref)
+
+
 
   return (
-    <Transition {...transitionProps} nodeRef={childRef}>
+    <Transition {...transitionProps} nodeRef={ref}>
       {(status) => {
         const isActive = status === 'entered'
         const classes = classNames(
@@ -35,7 +38,7 @@ const CFade = props => {
           isActive && baseClassActive
         )
         return (
-          <Tag className={classes} {...childProps} ref={innerRef}>
+          <Tag className={classes} {...childProps} ref={ref}>
             {children}
           </Tag>
         )

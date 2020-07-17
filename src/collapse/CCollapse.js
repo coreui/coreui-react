@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
@@ -24,20 +24,23 @@ const CCollapse = props => {
 
   const [height, setHeight] = useState()
 
-  const onEntering = node => {
-    setHeight(node.scrollHeight)
+  const ref = typeof innerRef === 'object' ? innerRef : useRef()
+  typeof innerRef === 'function' && innerRef(ref)
+
+  const onEntering = () => {
+    setHeight(ref.current.scrollHeight)
   }
 
   const onEntered = () => {
     setHeight(null)
   }
 
-  const onExit = node => {
-    setHeight(node.scrollHeight)
+  const onExit = () => {
+    setHeight(ref.current.scrollHeight)
   }
 
-  const onExiting = node => {
-    const _unused = node.offsetHeight // eslint-disable-line no-unused-vars
+  const onExiting = () => {
+    const _unused = ref.current.offsetHeight // eslint-disable-line no-unused-vars
     setHeight(0)
   }
 
@@ -58,6 +61,7 @@ const CCollapse = props => {
       onExit={onExit}
       onExiting={onExiting}
       onExited={onExited}
+      nodeRef={ref}
     >
       {(status) => {
         let collapseClass = getTransitionClass(status)
@@ -72,7 +76,7 @@ const CCollapse = props => {
             {...attributes}
             style={{ ...attributes.style, ...style }}
             className={classes}
-            ref={innerRef}
+            ref={ref}
           >
             {children}
           </div>
@@ -92,10 +96,6 @@ CCollapse.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.string]),
   show: PropTypes.bool,
   navbar: PropTypes.bool
-}
-
-CCollapse.defaultProps = {
-  show: false
 }
 
 export default CCollapse
