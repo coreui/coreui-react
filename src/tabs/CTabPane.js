@@ -1,4 +1,4 @@
-import React, { useState, useContext, createRef, useEffect } from 'react'
+import React, { useState, useContext, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import CFade from '../fade/CFade'
@@ -25,8 +25,9 @@ const CTabPane = props => {
   const context = useContext(Context)
   const fade = useContext(FadeContext)
   const act = (context || {}).active
-  const ref = createRef()
-  innerRef && innerRef(ref)
+  const ref = typeof innerRef === 'object' ? innerRef : useRef()
+  typeof innerRef === 'function' && innerRef(ref)
+  
   const [isActive, setIsActive] = useState(active)
 
   useEffect(() => {
