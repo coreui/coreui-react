@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
@@ -75,6 +75,7 @@ const CModal = props => {
     'show': isOpen || fade
   })
 
+  const nodeRef = useRef(null)
   return (
     <div onClick={modalClick}>
       <Transition
@@ -82,6 +83,7 @@ const CModal = props => {
         onEntered={onEntered}
         onExited={onExited}
         timeout={fade ? 150 : 0}
+        nodeRef={nodeRef}
       >
         {(status) => {
           let transitionClass = getTransitionClass(status)
@@ -95,6 +97,7 @@ const CModal = props => {
               role="dialog"
               className={classes}
               data-modal={true}
+              ref={nodeRef}
             >
               <div className={dialogClasses} role="document">
                 <div
