@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { isValidElement } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { CLink, CBadge } from '../index'
@@ -35,7 +35,7 @@ const CSidebarNavItem = props => {
     addLinkClass
   )
 
-  const routerLinkProps = rest.to && { exact: true, activeClassName: 'c-active'}
+  const routerLinkProps = rest.to && { exact: true, activeClassName: 'c-active' }
   return (
     <li className={classes} ref={innerRef}>
       { children || 
@@ -44,7 +44,7 @@ const CSidebarNavItem = props => {
           {...routerLinkProps}
           {...rest}
         >
-          { icon && <CIcon {...iconProps(icon)}/>}
+          { icon && isValidElement(icon) ? icon : <CIcon {...iconProps(icon)}/> }
           { fontIcon && <i className={`c-sidebar-nav-icon ${fontIcon}`}/>}
           {name}
           { badge && <CBadge {...{...badge, text: null}}>{badge.text}</CBadge>}
