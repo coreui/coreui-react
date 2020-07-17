@@ -59,7 +59,8 @@ const CDropdownToggle = props => {
     'aria-expanded': isOpen ? 'true' : 'false',
     'aria-haspopup': 'true',
     'aria-label': 'Dropdown toggle',
-    [`${tag && typeof tag === 'string' ? 'ref' : 'innerRef'}`]: setReference
+    [`${tag && typeof tag === 'string' ? 'ref' : 'innerRef'}`]: setReference,
+    'role': Tag === CButton ? null : 'button'
   }
 
   if (split) {
