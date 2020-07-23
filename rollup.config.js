@@ -4,9 +4,9 @@ import babel from '@rollup/plugin-babel'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 
-
 const external = ['react', 'react-dom', 'react-router-dom', 'react-dom/server']
 // const external = id => id.includes('@babel/runtime')
+
 const plugins = [
   babel({
     // Only transpile our source code
@@ -14,7 +14,7 @@ const plugins = [
     // Include the helpers in the bundle, at most one copy of each
     babelHelpers: 'runtime'
   }),
-    peerDepsExternal(),
+  peerDepsExternal(),
   resolve({
     // module: true,
     // browser: true,
