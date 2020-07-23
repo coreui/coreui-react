@@ -47,7 +47,8 @@ const CBreadcrumbRouter = props => {
         exact: route.exact
       }))
       return { ...route, currPath }
-    }).filter(route => route)
+    }).filter(route => route && route.name)
+    
     items = currRoutes.map(route => {
       return CBreadcrumbRouteItem(route, currPath)
     })
