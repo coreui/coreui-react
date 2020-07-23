@@ -35,7 +35,7 @@
     "test:watch": "nwb test-react --server",
     "lint": "eslint src",
     "link": "npm link && link.sh",
-    "changelog": "auto-changelog --starting-version 3.0.0-rc.2 --hide-credit",
+    "changelog": "auto-changelog --starting-version 3.0.0-rc.2 --commit-limit false --hide-credit",
     "build": "npm run build:lib && npm run build:esm",
     "build:lib": "rollup --environment BUNDLE:false --c --sourcemap",
     "build:esm": "cross-env BABEL_ENV=esm-dir babel src --out-dir es --copy-files"
