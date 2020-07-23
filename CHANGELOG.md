@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.1.0](https://github.com/coreui/coreui-react/compare/3.0.6...3.1.0)
+
+> 23 July 2020
+
+- chore: modify library build [`62194bb`](https://github.com/coreui/coreui-react/commit/62194bb147e9327037778f951936663c14dc28e3)
+- refactor: add full propTypes to className prop in components [`cd9c98a`](https://github.com/coreui/coreui-react/commit/cd9c98a890c9717db3a882e39ac3ccde9a711db6)
+- chore: 3.1.0 release: update dependencies [`174370e`](https://github.com/coreui/coreui-react/commit/174370e754abf484bc47fba0641b7a3732e16de0)
+
 #### [3.0.6](https://github.com/coreui/coreui-react/compare/3.0.5...3.0.6)
 
 > 15 July 2020
