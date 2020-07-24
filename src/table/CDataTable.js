@@ -5,7 +5,7 @@ import CPagination from '../pagination/CPagination'
 import CElementCover from '../element-cover/CElementCover'
 import style from './CDataTable.module.css'
 import CIcon from '@coreui/icons-react'
-import { cilArrowTop, cilBan } from '@coreui/icons'
+import { cilArrowTop, cilBan, cilFilterX } from '@coreui/icons'
 
 //component - CoreUI / CTable
 const CDataTable = props => {
@@ -37,6 +37,7 @@ const CDataTable = props => {
     columnFilter,
     tableFilterValue,
     tableFilter,
+    cleaner,
     addTableClasses,
     size,
     dark,
@@ -185,6 +186,15 @@ const CDataTable = props => {
     }
   }
 
+  const clean = () => {
+    setTableFilterState('')
+    setColumnFilterState({})
+    setSorterState({
+      column: "",
+      asc: true
+    })
+  }
+
   // computed
 
   const genCols = Object.keys(passedItems[0] || {}).filter(el => el.charAt(0) !== '_')
@@ -322,6 +332,16 @@ const CDataTable = props => {
     return customValues.noItems || 'No items'
   })()
 
+  const isFiltered = tableFilterState || sorterState.column ||
+                     Object.values(columnFilterState).join('')   
+
+  const cleanerProps = {
+    content: cilFilterX,
+    className: `ml-2 ${isFiltered ? 'text-danger' : 'transparent'}`,
+    role: isFiltered ? 'button' : null,
+    tabIndex: isFiltered ? 0 : null,
+  }
+
   // watch
   useMemo(() => setPerPageItems(itemsPerPage), [itemsPerPage])
 
@@ -384,26 +404,41 @@ const CDataTable = props => {
 <React.Fragment>
 <div ref={innerRef}>
   {
-    (itemsPerPageSelect || tableFilter) &&
+    (itemsPerPageSelect || tableFilter || cleaner) &&
     <div className="row my-2 mx-0">
       {
-        tableFilter &&
+        (tableFilter || cleaner) &&
         <div className="col-sm-6 form-inline p-0">
-          <label className="mr-2">{tableFilterData.label}</label>
-          <input
-            className="form-control"
-            type="text"
-            placeholder={tableFilterData.placeholder}
-            onInput={(e)=>{tableFilterChange(e.target.value, 'input')}}
-            onChange={(e)=>{tableFilterChange(e.target.value, 'change')}}
-            value={tableFilterState || ''}
-            aria-label="table filter input"
-          />
+          {
+            tableFilter &&
+            <>
+              <label className="mr-2">{tableFilterData.label}</label>
+              <input
+                className="form-control"
+                type="text"
+                placeholder={tableFilterData.placeholder}
+                onInput={(e)=>{tableFilterChange(e.target.value, 'input')}}
+                onChange={(e)=>{tableFilterChange(e.target.value, 'change')}}
+                value={tableFilterState || ''}
+                aria-label="table filter input"
+              />
+            </>
+          }
+          {
+            cleaner && (
+              typeof cleaner === 'function' ? cleaner(clean, isFiltered, cleanerProps) :
+              <CIcon
+                {...cleanerProps}
+                onClick={clean}
+              />
+            )
+          }
+          
         </div>
       }
       {
         itemsPerPageSelect &&
-        <div className={'col-sm-6 p-0' + (!tableFilter && 'offset-sm-6')}>
+        <div className={'col-sm-6 p-0' + (!(tableFilter || cleaner) && 'offset-sm-6')}>
           <div className="form-inline justify-content-sm-end">
             <label className="mr-2">{paginationSelect.label}</label>
             <select
@@ -585,6 +620,7 @@ CDataTable.propTypes = {
   columnFilter: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   tableFilterValue: PropTypes.string,
   tableFilter: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+  cleaner: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   addTableClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   size: PropTypes.string,
   dark: PropTypes.bool,

@@ -303,6 +303,7 @@ interface CDataTable {
   columnFilter?: boolean | object;
   tableFilterValue?: string;
   tableFilter?: boolean | object;
+  cleaner?: boolean | Function;
   addTableClasses?: string | Array<any> | object;
   size?: string;
   dark?: boolean;
