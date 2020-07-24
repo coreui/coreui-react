@@ -394,6 +394,7 @@ const CDataTable = props => {
             onInput={(e)=>{tableFilterChange(e.target.value, 'input')}}
             onChange={(e)=>{tableFilterChange(e.target.value, 'change')}}
             value={tableFilterState || ''}
+            aria-label="table filter input"
           />
         </div>
       }
@@ -405,6 +406,7 @@ const CDataTable = props => {
             <select
               className="form-control"
               onChange={paginationChange}
+              aria-label="changes number of visible items"
             >
               <option value="" disabled hidden>
                 {perPageItems}
@@ -444,9 +446,10 @@ const CDataTable = props => {
                     ( fields && fields[index].filter !== false &&
                       <input
                         className="form-control form-control-sm"
-                        onInput={(e)=>{columnFilterEvent(colName, e.target.value, 'input')}}
-                        onChange={(e)=>{columnFilterEvent(colName, e.target.value, 'change')}}
+                        onInput={e=>{columnFilterEvent(colName, e.target.value, 'input')}}
+                        onChange={e=>{columnFilterEvent(colName, e.target.value, 'change')}}
                         value={columnFilterState[colName] || ''}
+                        aria-label={`column name: '${colName}' filter input`}
                       />)
                   }
                 </th>
@@ -543,7 +546,7 @@ const CDataTable = props => {
 { pagination &&
   <CPagination
     {...paginationProps}
-    style={{display: totalPages > 0 ? 'inline' : 'none'}}
+    style={{display: totalPages > 1 ? 'inline' : 'none'}}
     onActivePageChange={(page) => { setPage(page) }}
     pages={totalPages}
     activePage={page}
