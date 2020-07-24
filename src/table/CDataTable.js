@@ -95,7 +95,15 @@ const CDataTable = props => {
 
   const headerClass = i => fields && fields[i]._classes && fields[i]._classes
 
-  const isSortable = i => sorter && fields && fields[i].sorter !== false
+  const isSortable = i => {
+    const isDataColumn = itemsDataColumns.includes(rawColumnNames[i])
+    return sorter && fields && fields[i].sorter !== false && isDataColumn 
+  }
+
+  const isFilterable = (colName, index) => {
+    const haveEnabledFilter = (!fields || fields[index].filter !== false)
+    return itemsDataColumns.includes(colName) && haveEnabledFilter
+  }
 
   const headerStyles = (index) => {
     let style = { verticalAlign: 'middle', overflow: 'hidden' }
@@ -179,23 +187,18 @@ const CDataTable = props => {
 
   // computed
 
-  const generatedColumnNames = (() => {
-    return Object.keys(passedItems[0] || {}).filter(el => el.charAt(0) !== '_')
-  })()
+  const genCols = Object.keys(passedItems[0] || {}).filter(el => el.charAt(0) !== '_')
 
-  const rawColumnNames = (()=>{
-    if (fields) {
-      return fields.map(el => el.key || el)
-    }
-    return generatedColumnNames
-  })()
+  const rawColumnNames = fields ? fields.map(el => el.key || el) : genCols
+
+  const itemsDataColumns = rawColumnNames.filter(name => genCols.includes(name))
 
   useMemo(() => {
     compData.columnFiltered++
   }, [
     JSON.stringify(columnFilter),
     JSON.stringify(columnFilterState),
-    rawColumnNames.join(''),
+    itemsDataColumns.join(''),
     compData.changeItems
   ])
 
@@ -206,7 +209,7 @@ const CDataTable = props => {
     }
     Object.entries(columnFilterState).forEach(([key, value]) => {
       const columnFilter = String(value).toLowerCase()
-      if (columnFilter && rawColumnNames.includes(key)) {
+      if (columnFilter && itemsDataColumns.includes(key)) {
         items = items.filter(item => {
           return String(item[key]).toLowerCase().includes(columnFilter)
         })
@@ -223,7 +226,7 @@ const CDataTable = props => {
     const filter = tableFilterState.toLowerCase()
     const hasFilter = (item) => String(item).toLowerCase().includes(filter)
     items = items.filter(item => {
-      return rawColumnNames.filter(key => hasFilter(item[key])).length
+      return itemsDataColumns.filter(key => hasFilter(item[key])).length
     })
     return items
   }, [
@@ -234,7 +237,7 @@ const CDataTable = props => {
 
   const sortedItems = useMemo(() => {
     const col = sorterState.column
-    if (!col || !rawColumnNames.includes(col) || sorter.external) {
+    if (!col || !itemsDataColumns.includes(col) || sorter.external) {
       onFilteredItemsChange && onFilteredItemsChange(tableFiltered)
       return tableFiltered
     }
@@ -443,7 +446,7 @@ const CDataTable = props => {
               return (
                 <th className={classNames(headerClass(index))} key={index}>
                   { columnFilterSlot[`${rawColumnNames[index]}`] ||
-                    ( fields && fields[index].filter !== false &&
+                    ( isFilterable(colName, index) &&
                       <input
                         className="form-control form-control-sm"
                         onInput={e=>{columnFilterEvent(colName, e.target.value, 'input')}}
