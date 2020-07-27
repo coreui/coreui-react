@@ -33,21 +33,35 @@ const CModal = props => {
   } = props
 
   const [isOpen, setIsOpen] = useState(false)
+  const [modalTrigger, setModalTrigger] = useState(false)
   const modalClick = e => e.target.dataset.modal && closeOnBackdrop && close()
 
   useEffect(() => {
     setIsOpen(show)
   }, [show])
 
+  const onKeypress = e => e.keyCode == '27' && close()
+
+  useEffect(() => {
+    isOpen && document.addEventListener('keydown', onKeypress)
+    return () => document.removeEventListener('keydown', onKeypress)
+  }, [isOpen])
 
   const close = () => {
     onClose && onClose()
     setIsOpen(false)
   }
 
-  const onEntered = () => onOpened && onOpened()
+  const onEntered = () => {
+    setModalTrigger(document.querySelector(':focus'))
+    nodeRef.current.focus()
+    onOpened && onOpened()
+  }
 
-  const onExited = () => onClosed && onClosed()
+  const onExited = () => {
+    modalTrigger && modalTrigger.focus()
+    onClosed && onClosed()
+  }
 
   const modalClasses = classNames(
     'modal overflow-auto fade', {
