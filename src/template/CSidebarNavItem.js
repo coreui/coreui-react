@@ -44,7 +44,7 @@ const CSidebarNavItem = props => {
           {...routerLinkProps}
           {...rest}
         >
-          { icon && isValidElement(icon) ? icon : <CIcon {...iconProps(icon)}/> }
+          { icon && (isValidElement(icon) ? icon : <CIcon {...iconProps(icon)}/>) }
           { fontIcon && <i className={`c-sidebar-nav-icon ${fontIcon}`}/>}
           {name}
           { badge && <CBadge {...{...badge, text: null}}>{badge.text}</CBadge>}
