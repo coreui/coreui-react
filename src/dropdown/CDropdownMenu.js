@@ -63,11 +63,17 @@ const CDropdownMenu = props => {
     }
   }
 
+  const onKeypress = e => e.keyCode == '27' && setIsOpen(false)
+
   useEffect(() => {
     if (isOpen) {
       document.addEventListener('click', checkClose)
+      document.addEventListener('keydown', onKeypress)
     }
-    return () => document.removeEventListener('click', checkClose)
+    return () => {
+      document.removeEventListener('click', checkClose)
+      document.removeEventListener('keydown', onKeypress) 
+    }
   }, [isOpen])
 
   return (
