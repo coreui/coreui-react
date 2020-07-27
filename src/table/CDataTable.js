@@ -101,11 +101,6 @@ const CDataTable = props => {
     return sorter && fields && fields[i].sorter !== false && isDataColumn 
   }
 
-  const isFilterable = (colName, index) => {
-    const haveEnabledFilter = (!fields || fields[index].filter !== false)
-    return itemsDataColumns.includes(colName) && haveEnabledFilter
-  }
-
   const headerStyles = (index) => {
     let style = { verticalAlign: 'middle', overflow: 'hidden' }
     if (isSortable(index)) {
@@ -481,7 +476,7 @@ const CDataTable = props => {
               return (
                 <th className={classNames(headerClass(index))} key={index}>
                   { columnFilterSlot[`${rawColumnNames[index]}`] ||
-                    ( isFilterable(colName, index) &&
+                    ( (!fields || fields[index].filter !== false) &&
                       <input
                         className="form-control form-control-sm"
                         onInput={e=>{columnFilterEvent(colName, e.target.value, 'input')}}
