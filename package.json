@@ -26,7 +26,8 @@
     "src/",
     "tests/",
     "umd/",
-    "README.md"
+    "README.md",
+    "npm-postinstall.js"
   ],
   "scripts": {
     "clean": "nwb clean-module && nwb clean-demo",
@@ -38,7 +39,8 @@
     "changelog": "auto-changelog --starting-version 3.0.0-rc.2 --commit-limit false --hide-credit",
     "build": "npm run build:lib && npm run build:esm",
     "build:lib": "rollup --environment BUNDLE:false --c --sourcemap",
-    "build:esm": "cross-env BABEL_ENV=esm-dir babel src --out-dir es --copy-files"
+    "build:esm": "cross-env BABEL_ENV=esm-dir babel src --out-dir es --copy-files",
+    "postinstall": "node npm-postinstall"
   },
   "dependencies": {
     "@babel/runtime": "^7.10.5",
