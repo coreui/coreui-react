@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.2.0](https://github.com/coreui/coreui-react/compare/3.1.0...3.2.0)
+
+> 28 July 2020
+
+- chore: fix changelog [`0c6b6cb`](https://github.com/coreui/coreui-react/commit/0c6b6cbb2ef18e5c48be345bdace9ba51595a0f0)
+- feat: CDataTable: add cleaner prop [`d0dba67`](https://github.com/coreui/coreui-react/commit/d0dba670cc49817e18f388fa80326d8b2141f6a7)
+- chore: add postinstall script [`acde502`](https://github.com/coreui/coreui-react/commit/acde5021d1925e901926171b3381a34809f8cea5)
+- refactor: CDataTable: disable filtering and sorting on non data columns [`2b134aa`](https://github.com/coreui/coreui-react/commit/2b134aa0d388b99ab33ea574748814d4effba32e)
+- chore: 3.2.0 release: update dependencies [`9c8e377`](https://github.com/coreui/coreui-react/commit/9c8e37729073471c9a48e532e830782dec5ae1a6)
+- feat: CModal: add autofucus and `esc` key support [`ecc4920`](https://github.com/coreui/coreui-react/commit/ecc4920a6dc72b5b7a34cd71a08ccdae5d3ca156)
+- refactor: CDataTable: small refactors [`407201e`](https://github.com/coreui/coreui-react/commit/407201eddf3ce77591484dd78d2faa8d81a526e5)
+- feat: CDrodownMenu: hide menu on `esc` [`c4fea1c`](https://github.com/coreui/coreui-react/commit/c4fea1c72777ff63a62cf9c04cbb59f90cee882c)
+- chore: update changelog [`f3d83c3`](https://github.com/coreui/coreui-react/commit/f3d83c3286f4db4ad6b2b18bc8203b2944381d61)
+- fix: CDataTable disable auto removing columnFilter [`a745c28`](https://github.com/coreui/coreui-react/commit/a745c286c60bdbb7b75c7db263c303c860865508)
+- fix: CBreadcrumbRouter: display route only if it has 'name' key [`e4d743d`](https://github.com/coreui/coreui-react/commit/e4d743da43a51584ddf34a54746b9bd9208df44e)
+- fix: CSidebarNavItem: do not render `icon` if prop is undefined #133 [`5fd72b0`](https://github.com/coreui/coreui-react/commit/5fd72b05def832894f9c6b1b166182d984b5068b)
+
 #### [3.1.0](https://github.com/coreui/coreui-react/compare/3.0.6...3.1.0)
 
 > 23 July 2020
