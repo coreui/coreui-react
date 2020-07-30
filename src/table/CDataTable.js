@@ -98,7 +98,7 @@ const CDataTable = props => {
 
   const isSortable = i => {
     const isDataColumn = itemsDataColumns.includes(rawColumnNames[i])
-    return sorter && fields && fields[i].sorter !== false && isDataColumn 
+    return sorter && (!fields || fields[i].sorter !== false) && isDataColumn 
   }
 
   const headerStyles = (index) => {
