@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.2.1](https://github.com/coreui/coreui-react/compare/3.2.0...3.2.1)
+
+> 30 July 2020
+
+- chore: 3.2.1 release: update dependencies [`40bba4d`](https://github.com/coreui/coreui-react/commit/40bba4db24b2c83416397c0b6e269a70df626641)
+- chore: update chengelog [`cebb691`](https://github.com/coreui/coreui-react/commit/cebb69100d950948baa9e305a865a0ac95bf89a4)
+- fix: CDataTable: fix isSortable method [`581e5a2`](https://github.com/coreui/coreui-react/commit/581e5a20019f8c4981e1a9ad1e9be30f46297789)
+
 #### [3.2.0](https://github.com/coreui/coreui-react/compare/3.1.0...3.2.0)
 
 > 28 July 2020
