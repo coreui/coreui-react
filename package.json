@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -53,7 +53,7 @@
     "perfect-scrollbar": "~1.5.0",
     "prop-types": "~15.7.2",
     "react-transition-group": "~4.4.1",
-    "tippy.js": "~6.2.5"
+    "tippy.js": "~6.2.6"
   },
   "peerDependencies": {
     "react": "^16.13.1",
@@ -81,7 +81,7 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^7.5.0",
     "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-react": "^7.20.4",
+    "eslint-plugin-react": "^7.20.5",
     "rollup": "^2.23.0",
     "rollup-plugin-peer-deps-external": "2.2.3",
     "rollup-plugin-postcss": "3.1.3",
