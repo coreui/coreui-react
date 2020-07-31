@@ -2,7 +2,8 @@ import React, {
   useState,
   useContext,
   useEffect,
-  createRef
+  createRef,
+  isValidElement
 } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
@@ -100,7 +101,7 @@ const CSidebarNavDropdown = props => {
       ref={ref}
     >
       <a className="c-sidebar-nav-dropdown-toggle" onClick={toggle} >
-        { icon && <CIcon {...iconProps(icon)} /> }
+        { icon && (isValidElement(icon)  ? icon : <CIcon {...iconProps(icon)}/>) }
         { fontIcon && <i className={iconClasses}/> }
         { name }
       </a>
@@ -121,7 +122,6 @@ CSidebarNavDropdown.propTypes = {
   fontIcon: PropTypes.string,
   show: PropTypes.bool,
   route: PropTypes.string
-};
-
+}
 
 export default CSidebarNavDropdown
