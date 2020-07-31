@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.2.2](https://github.com/coreui/coreui-react/compare/3.2.1...3.2.2)
+
+> 31 July 2020
+
+- chore: 3.2.2 release: update dependencies [`895f454`](https://github.com/coreui/coreui-react/commit/895f4545e0de72c103e1e20b082161c1f9fab1e5)
+- fix: CDataTable component fixes [`9dae2ab`](https://github.com/coreui/coreui-react/commit/9dae2ab32fc9dcc730b1214ecb777776f5346bf9)
+- fix: CSidebarNavDropdown: add possibility of component as `icon` [`03c4c32`](https://github.com/coreui/coreui-react/commit/03c4c3239f42b174c703f0ee5b0eef45761ceb9f)
+- chore: update changelog [`df6d3b9`](https://github.com/coreui/coreui-react/commit/df6d3b9664c72690a542a1804fcff9164cc80f42)
+
 #### [3.2.1](https://github.com/coreui/coreui-react/compare/3.2.0...3.2.1)
 
 > 30 July 2020
