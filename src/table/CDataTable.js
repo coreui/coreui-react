@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from 'react'
+import React, { useState, useRef, useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import CPagination from '../pagination/CPagination'
@@ -144,8 +144,11 @@ const CDataTable = props => {
     }
     state.asc = !(columnRepeated && state.asc)
     setSorterState({...state})
-    onSorterValueChange && onSorterValueChange(sorterState)
   }
+
+  useEffect(() => {
+    onSorterValueChange && onSorterValueChange(sorterState)
+  }, [JSON.stringify(sorterState)])
 
   const paginationChange = e => {
     onPaginationChange && onPaginationChange(Number(e.target.value))
@@ -159,8 +162,11 @@ const CDataTable = props => {
     }
     const newState = {...columnFilterState, [`${colName}`]: value }
     setColumnFilterState(newState)
-    onColumnFilterChange && onColumnFilterChange(newState)
   }
+
+  useEffect(() => {
+    onColumnFilterChange && onColumnFilterChange(columnFilterState)
+  }, [JSON.stringify(columnFilterState)])
 
   const tableFilterChange = (value, type) => {
     const isLazy = tableFilter && tableFilter.lazy === true
@@ -168,8 +174,11 @@ const CDataTable = props => {
       return
     }
     setTableFilterState(value)
-    onTableFilterChange && onTableFilterChange(value)
   }
+
+  useEffect(() => {
+    onTableFilterChange && onTableFilterChange(tableFilterState)
+  }, [tableFilterState])
 
   const getClickedColumnName = (e, detailsClick) => {
     if (detailsClick) {
@@ -239,11 +248,10 @@ const CDataTable = props => {
     tableFilterState,
     JSON.stringify(tableFilter)
   ])
-
+  
   const sortedItems = useMemo(() => {
     const col = sorterState.column
-    if (!col || !itemsDataColumns.includes(col) || sorter.external) {
-      onFilteredItemsChange && onFilteredItemsChange(tableFiltered)
+    if (!col || !itemsDataColumns.includes(col) || (sorter && sorter.external)) {
       return tableFiltered
     }
     //if values in column are to be sorted by numeric value they all have to be type number
@@ -255,13 +263,16 @@ const CDataTable = props => {
       const b = typeof value2 === 'number' ? value2 : String(value2).toLowerCase()
       return a > b ? 1 * flip : b > a ? -1 * flip : 0
     })
-    !compData.firstRun && onFilteredItemsChange && onFilteredItemsChange(tableFiltered)
     return sorted
   }, [
     JSON.stringify(tableFiltered), 
     JSON.stringify(sorterState), 
     JSON.stringify(sorter)
   ])
+
+  useEffect(() => {
+    !compData.firstRun && onFilteredItemsChange && onFilteredItemsChange(sortedItems)
+  }, [JSON.stringify(sortedItems)])
 
   const tableClasses = [
     'table',
