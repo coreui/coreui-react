@@ -101,7 +101,7 @@ const CSidebarNavDropdown = props => {
       ref={ref}
     >
       <a className="c-sidebar-nav-dropdown-toggle" onClick={toggle} >
-        { icon && (isValidElement(icon)  ? icon : <CIcon {...iconProps(icon)}/>) }
+        { icon && (isValidElement(icon) ? icon : <CIcon {...iconProps(icon)}/>) }
         { fontIcon && <i className={iconClasses}/> }
         { name }
       </a>
