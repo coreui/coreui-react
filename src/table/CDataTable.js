@@ -557,7 +557,7 @@ const CDataTable = props => {
             { noItemsViewSlot ||
               <div className="text-center my-5">
                 <h2>
-                  { noItemsText }
+                  { noItemsText + ' ' }
                   <CIcon
                     width="30"
                     name="cilBan"
