@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.2.3](https://github.com/coreui/coreui-react/compare/3.2.2...3.2.3)
+
+> 11 August 2020
+
+- chore: 3.2.3 version release - update dependencies [`f238624`](https://github.com/coreui/coreui-react/commit/f23862495a8a3d7e394108361dbee2d61dcb94fb)
+- chore: update changelog [`77a9487`](https://github.com/coreui/coreui-react/commit/77a94872ebdfcf235b29de8e7a3712db0bceb19c)
+- fix: CDataTable: fix wrong class assignment in itemsPerPageSelect #138 [`8425052`](https://github.com/coreui/coreui-react/commit/8425052d2c7cb4a431a1611977da98cc0f21b64c)
+
 #### [3.2.2](https://github.com/coreui/coreui-react/compare/3.2.1...3.2.2)
 
 > 31 July 2020
