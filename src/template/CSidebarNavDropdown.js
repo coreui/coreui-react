@@ -11,6 +11,7 @@ import CIcon from '@coreui/icons-react'
 import { useLocation } from 'react-router-dom'
 
 import { Context } from './CSidebar'
+export const DropdownContext = React.createContext({})
 
 export const iconProps = (icon) => {
   if (typeof icon === 'object') {
@@ -100,13 +101,20 @@ const CSidebarNavDropdown = props => {
       {...attributes} 
       ref={ref}
     >
-      <a className="c-sidebar-nav-dropdown-toggle" onClick={toggle} >
+      <a
+        className="c-sidebar-nav-dropdown-toggle" 
+        tabIndex="0"
+        onClick={toggle}
+        aria-label="menu dropdown"
+      >
         { icon && (isValidElement(icon) ? icon : <CIcon {...iconProps(icon)}/>) }
         { fontIcon && <i className={iconClasses}/> }
         { name }
       </a>
       <ul className="c-sidebar-nav-dropdown-items">
-        {children}
+        <DropdownContext.Provider value={{ isOpen }}>
+          {children}
+        </DropdownContext.Provider>
       </ul>
     </li>
   )
