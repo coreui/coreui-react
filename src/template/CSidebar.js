@@ -102,12 +102,13 @@ const CSidebar = props=>{
     return Boolean(getComputedStyle(node.current).getPropertyValue('--is-mobile'))
   }
 
-  const onSidebarClick = (e)=>{
-    const hiddingElementClicked = e.target.className.includes && e.target.className.includes('c-sidebar-nav-link')
+  const onSidebarClick = e => {
+    const sidebarItemClicked = String(e.target.className).includes('c-sidebar-nav-link')
+
     if (
-      hiddingElementClicked &&
+      sidebarItemClicked &&
       hideOnMobileClick &&
-      isOnMobile()
+      (isOnMobile() || overlaid)
     ) {
       closeSidebar()
     }
