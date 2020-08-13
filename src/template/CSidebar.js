@@ -75,7 +75,7 @@ const CSidebar = props=>{
   const createBackdrop = () => {
     const backdrop = document.createElement('div')
     if (overlaid) {
-      document.addEventListener('click', sidebarCloseListener, true)
+      document.addEventListener('click', sidebarCloseListener)
     } else {
       backdrop.addEventListener('click', closeSidebar)
     }
