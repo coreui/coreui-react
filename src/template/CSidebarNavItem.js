@@ -63,7 +63,7 @@ CSidebarNavItem.propTypes = {
   badge: PropTypes.object,
   addLinkClass: PropTypes.string,
   label: PropTypes.bool,
-  name: PropTypes.string,
+  name: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   color: PropTypes.string
 }
 
