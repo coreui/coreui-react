@@ -5,13 +5,11 @@ import classNames from 'classnames'
 export const Context = React.createContext({})
 
 //component - CoreUI / CSidebar
-
-const CSidebar = props=>{
+const CSidebar = props => {
 
   const {
     children,
     className,
-    //
     innerRef,
     breakpoint,
     show,
@@ -35,11 +33,10 @@ const CSidebar = props=>{
   const [openDropdown, setOpenDropdown] = useState()
 
   const node = useRef({}).current
-  const reference = (r) => {
+  const reference = r => {
     node.current = r
     innerRef && innerRef(r)
   }
-
 
   const [minimized, setIsMinimized] = useState(minimize)
   useMemo(() => {
@@ -51,8 +48,6 @@ const CSidebar = props=>{
     onMinimizeChange && onMinimizeChange(minimized)
   }
 
-  // compData.nextRender = true
-
   useMemo(() => {
     setIsOpen(show)
   }, [show])
@@ -63,7 +58,7 @@ const CSidebar = props=>{
   }, [isOpen])
 
   //methods
-  const sidebarCloseListener = (e) => {
+  const sidebarCloseListener = e => {
     if (
       document.getElementById(key + 'backdrop') &&
       !node.current.contains(e.target)
@@ -98,13 +93,12 @@ const CSidebar = props=>{
     setIsOpen(overlaid ? false : 'responsive')
   }
 
-  const isOnMobile = ()=>{
+  const isOnMobile = () => {
     return Boolean(getComputedStyle(node.current).getPropertyValue('--is-mobile'))
   }
 
   const onSidebarClick = e => {
     const sidebarItemClicked = String(e.target.className).includes('c-sidebar-nav-link')
-
     if (
       sidebarItemClicked &&
       hideOnMobileClick &&
@@ -115,20 +109,19 @@ const CSidebar = props=>{
   }
 
   // render
-
   const haveResponsiveClass = breakpoint && isOpen === 'responsive'
   const classes = classNames(
-    className,
     'c-sidebar',
-    colorScheme ? `c-sidebar-${colorScheme}` : null,
-    isOpen===true ? 'c-sidebar-show' : null,
-    haveResponsiveClass ? `c-sidebar-${breakpoint}-show` : null,
-    fixed && !overlaid ? 'c-sidebar-fixed' : null,
-    aside ? 'c-sidebar-right' : null,
-    minimized && !unfoldable ? 'c-sidebar-minimized' : null,
-    minimized && unfoldable ? 'c-sidebar-unfoldable' : null,
-    overlaid ? 'c-sidebar-overlaid' : null,
-    size ? `c-sidebar-${size}` : null
+    colorScheme && `c-sidebar-${colorScheme}`,
+    isOpen === true && 'c-sidebar-show',
+    haveResponsiveClass && `c-sidebar-${breakpoint}-show`,
+    fixed && !overlaid && 'c-sidebar-fixed',
+    aside && 'c-sidebar-right',
+    minimized && !unfoldable && 'c-sidebar-minimized',
+    minimized && unfoldable && 'c-sidebar-unfoldable',
+    overlaid && 'c-sidebar-overlaid',
+    size && `c-sidebar-${size}`,
+    className
   )
 
   return (
@@ -140,8 +133,8 @@ const CSidebar = props=>{
       setOpenDropdown
     }}>
       <div
-        {...attributes}
         className={classes}
+        {...attributes}
         ref={reference}
         onClick={onSidebarClick}
       >
@@ -155,7 +148,6 @@ const CSidebar = props=>{
 CSidebar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
-  //
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   fixed: PropTypes.bool,
   unfoldable: PropTypes.bool,
