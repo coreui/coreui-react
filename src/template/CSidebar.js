@@ -67,6 +67,10 @@ const CSidebar = props => {
     }
   }
 
+  const onKeydown = e => {
+    e.key.includes('Esc') && isAutoclosable() && closeSidebar()
+  }
+
   const createBackdrop = () => {
     const backdrop = document.createElement('div')
     if (overlaid) {
@@ -74,6 +78,7 @@ const CSidebar = props => {
     } else {
       backdrop.addEventListener('click', closeSidebar)
     }
+    document.addEventListener('keydown', onKeydown)
     backdrop.className = 'c-sidebar-backdrop c-show'
     backdrop.id = key + 'backdrop'
     document.body.appendChild(backdrop)
@@ -84,6 +89,7 @@ const CSidebar = props => {
     if (backdrop) {
       document.removeEventListener('click', sidebarCloseListener)
       backdrop.removeEventListener('click', closeSidebar)
+      document.removeEventListener('keydown', onKeydown)
       document.body.removeChild(backdrop)
     }
   }
@@ -97,13 +103,15 @@ const CSidebar = props => {
     return Boolean(getComputedStyle(node.current).getPropertyValue('--is-mobile'))
   }
 
+  const isAutoclosable = () => isOnMobile() || overlaid
+
   const onSidebarClick = e => {
     const sidebarItemClicked = String(e.target.className).includes('c-sidebar-nav-link')
     if (
-      sidebarItemClicked &&
-      hideOnMobileClick &&
-      (isOnMobile() || overlaid)
-    ) {
+        sidebarItemClicked && 
+        hideOnMobileClick &&
+        isAutoclosable()
+      ) {
       closeSidebar()
     }
   }
