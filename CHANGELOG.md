@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.3.0](https://github.com/coreui/coreui-react/compare/3.2.3...3.3.0)
+
+> 4 September 2020
+
+- fix: CSidebarNavItem/CSidebarNavDropdown: accessibility fixes #141 [`#141`](https://github.com/coreui/coreui-react/issues/141)
+- chore: 3.3.0 version release - update dependencies [`b3be47d`](https://github.com/coreui/coreui-react/commit/b3be47da28c8813e273bc00af73f552589c7e52f)
+- refactor: CSidebar: clearify component [`02b6b0d`](https://github.com/coreui/coreui-react/commit/02b6b0d3b3d60635f51cb6340200d88ca8610f93)
+- feat: CSidebar: close mobile/overlaid sidebar on 'esc' #141 [`4e35ed8`](https://github.com/coreui/coreui-react/commit/4e35ed83c9d14737e10fb732984f0f5f8ca4da49)
+- fix: CSidebar: close sidebar when click on `Item` in overlaid mode [`59d31b7`](https://github.com/coreui/coreui-react/commit/59d31b7a315c115891ef0be371decddd6d0af68d)
+- chore: update changelog [`5f71c83`](https://github.com/coreui/coreui-react/commit/5f71c8306e86fdea0097483a57475b5ddb7e43b5)
+- feat: CSidebarNavItem: allow passing nodes to 'name' prop #140 [`074c7e7`](https://github.com/coreui/coreui-react/commit/074c7e775543efc3a87c904f4c8704883127edb5)
+- fix: CSidebar: disable 'useCapture' in overlaid sidebar closing [`30e7004`](https://github.com/coreui/coreui-react/commit/30e7004dd8edb8e947048188911b8a20049375e8)
+- fix: CDataTable: add space in 'noItemsText' [`1d41870`](https://github.com/coreui/coreui-react/commit/1d41870ca606e0c628fc89854ad3aad6490cb839)
+
 #### [3.2.3](https://github.com/coreui/coreui-react/compare/3.2.2...3.2.3)
 
 > 11 August 2020
