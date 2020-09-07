@@ -35,7 +35,7 @@
     "changelog": "auto-changelog --starting-version 3.0.0-rc.2 --commit-limit false --hide-credit",
     "build": "npm run build:lib && npm run build:esm",
     "build:lib": "rollup --environment BUNDLE:false --c --sourcemap",
-    "build:esm": "cross-env BABEL_ENV=esm-dir babel src --out-dir es --copy-files",
+    "build:esm": "cross-env BABEL_ENV=esm-dir babel src --out-dir es --copy-files --no-copy-ignored",
     "postinstall": "node npm-postinstall",
     "storybook": "start-storybook",
     "jest:test": "cross-env BABEL_ENV=test jest",

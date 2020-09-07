@@ -1,4 +1,7 @@
 {
+  "ignore": [
+    "**/tests/**"
+  ],
   "presets": [
     [
       "@babel/env",
@@ -10,9 +13,7 @@
         }
       }
     ],
-    "@babel/react",
-    // ["env", {"modules": true}], 
-    //"react"
+    "@babel/react"
   ],
   "plugins": [
     "@babel/plugin-proposal-export-default-from", 
@@ -38,9 +39,13 @@
       "plugins": [["@babel/plugin-transform-runtime", { "useESModules": true }]]
     },
     "test": {
-       "presets": [
-         "@babel/env", "@babel/preset-react"
-       ]
+        "presets": [
+          "@babel/env", "@babel/preset-react"
+        ],
+        "plugins": [
+          "babel-plugin-dynamic-import-node",
+          // 'babel-plugin-transform-dynamic-import'
+        ]
      }
   }
 }
