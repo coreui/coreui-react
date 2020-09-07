@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCardHeader renders basic wrapper correctly 1`] = `
+<header
+  className="card-header"
+/>
+`;
+
+exports[`CCardHeader renders customized wrapper correctly 1`] = `
+<header
+  className="class-name card-header text-left text-info bg-warning border-danger"
+>
+  CCardHeader
+</header>
+`;

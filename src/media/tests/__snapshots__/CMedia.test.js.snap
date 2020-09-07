@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CMedia renders basic wrapper correctly 1`] = `
+<div
+  className="media"
+/>
+`;
+
+exports[`CMedia renders customized wrapper correctly 1`] = `
+<div
+  className="media class-name"
+>
+  CMedia
+</div>
+`;

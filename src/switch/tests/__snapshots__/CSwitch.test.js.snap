@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSwitch renders basic wrapper correctly 1`] = `
+<label
+  className="c-switch form-check-label"
+>
+  <input
+    className="c-switch-input c-form-check-input"
+    type="checkbox"
+  />
+  <span
+    className="c-switch-slider"
+  />
+</label>
+`;
+
+exports[`CSwitch renders customized wrapper correctly 1`] = `
+<label
+  className="c-switch form-check-label c-switch-label c-switch-lg c-switch-square c-switch-outline-info class-name"
+>
+  <input
+    checked={true}
+    className="c-switch-input c-form-check-input"
+    type="checkbox"
+  />
+  <span
+    className="c-switch-slider"
+    data-checked="label-on"
+    data-unchecked="label-off"
+  />
+</label>
+`;
+
+exports[`CSwitch renders customized wrapper correctly two 1`] = `
+<label
+  className="c-switch form-check-label c-switch-label c-switch-lg c-switch-square c-switch-info class-name"
+>
+  <input
+    checked={true}
+    className="c-switch-input c-form-check-input"
+    type="checkbox"
+  />
+  <span
+    className="c-switch-slider"
+    data-checked="label-on"
+    data-unchecked="label-off"
+  />
+</label>
+`;

@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CWidgetDropdown renders basic wrapper correctly 1`] = `
+<div
+  className="card text-white"
+>
+  <div
+    className="card-body pb-0 d-flex justify-content-between"
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`CWidgetDropdown renders customized wrapper correctly 1`] = `
+<div
+  className="card text-white bg-info class-name"
+>
+  <div
+    className="card-body pb-0 d-flex justify-content-between"
+  >
+    <div>
+      <div
+        className="text-value-lg"
+      >
+        header
+      </div>
+      <div>
+        text
+      </div>
+    </div>
+    CWidgetDropdown
+  </div>
+</div>
+`;

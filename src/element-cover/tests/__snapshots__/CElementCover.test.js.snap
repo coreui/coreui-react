@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CElementCover renders basic wrapper correctly 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "backgroundColor": "rgb(255,255,255,0.4)",
+      "bottom": 0,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "left": "50%",
+        "position": "absolute",
+        "top": "50%",
+        "transform": "translateX(-50%) translateY(-50%)",
+      }
+    }
+  >
+    <div
+      aria-hidden="false"
+      aria-label="Loading"
+      className="spinner-grow spinner-grow-lg text-primary"
+      role="status"
+    />
+  </div>
+</div>
+`;
+
+exports[`CElementCover renders customized wrapper correctly 1`] = `
+<div
+  className="class-name"
+  style={
+    Object {
+      "backgroundColor": "rgb(255,255,255,0.5)",
+      "bottom": 0,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  CElementCover
+</div>
+`;

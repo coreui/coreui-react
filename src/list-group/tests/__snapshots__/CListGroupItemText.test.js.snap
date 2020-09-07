@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CListGroupItemText renders basic wrapper correctly 1`] = `
+<p
+  className="list-group-item-text"
+/>
+`;
+
+exports[`CListGroupItemText renders customized wrapper correctly 1`] = `
+<p
+  className="list-group-item-text class-name"
+>
+  CListGroupItemText
+</p>
+`;

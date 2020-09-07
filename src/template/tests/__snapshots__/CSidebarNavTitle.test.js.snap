@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSidebarNavTitle renders basic wrapper correctly 1`] = `
+<li
+  className="c-sidebar-nav-title"
+/>
+`;
+
+exports[`CSidebarNavTitle renders customized wrapper correctly 1`] = `
+<li
+  className="c-sidebar-nav-title class-name"
+>
+  CSidebarNavTitle
+</li>
+`;

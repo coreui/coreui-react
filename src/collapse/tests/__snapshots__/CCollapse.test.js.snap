@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCollapse renders basic wrapper correctly 1`] = `
+<div
+  className="collapse"
+  style={
+    Object {
+      "height": undefined,
+    }
+  }
+/>
+`;
+
+exports[`CCollapse renders customized wrapper correctly 1`] = `
+<div
+  className="class-name collapse show navbar-collapse"
+  style={
+    Object {
+      "height": undefined,
+    }
+  }
+>
+  CCollapse
+</div>
+`;

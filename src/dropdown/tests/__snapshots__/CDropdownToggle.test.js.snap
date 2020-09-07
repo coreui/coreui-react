@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CDropdownToggle renders basic wrapper correctly 1`] = `
+<div
+  className="dropdown"
+>
+  <button
+    aria-expanded="false"
+    aria-haspopup="true"
+    aria-label="Dropdown toggle"
+    className="dropdown-toggle btn"
+    onClick={[Function]}
+    type="button"
+  />
+</div>
+`;
+
+exports[`CDropdownToggle renders customized wrapper correctly 1`] = `
+<div
+  className="dropdown"
+>
+  <button
+    aria-expanded="false"
+    aria-haspopup="true"
+    aria-label="Dropdown toggle"
+    className="class-name dropdown-toggle btn disabled"
+    disabled={true}
+    onClick={[Function]}
+    type="button"
+  >
+    CDropdownToggle
+  </button>
+</div>
+`;
+
+exports[`CDropdownToggle renders customized wrapper witch split 1`] = `
+<div
+  className="dropdown btn-group"
+>
+  <button
+    className="btn disabled"
+    disabled={true}
+    onClick={[Function]}
+    type="button"
+  >
+    CDropdownToggle
+  </button>
+  <button
+    aria-expanded="false"
+    aria-haspopup="true"
+    aria-label="Dropdown toggle"
+    className="dropdown-toggle dropdown-toggle-split btn disabled"
+    disabled={true}
+    onClick={[Function]}
+    type="button"
+  >
+    
+  </button>
+</div>
+`;

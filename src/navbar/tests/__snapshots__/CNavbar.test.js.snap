@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CNavbar renders basic wrapper correctly 1`] = `
+<nav
+  className="navbar navbar-dark"
+/>
+`;
+
+exports[`CNavbar renders customized wrapper correctly 1`] = `
+<nav
+  className="navbar class-name navbar-light navbar-expand bg-warning fixed-bottom sticky-top"
+>
+  CNavbar
+</nav>
+`;

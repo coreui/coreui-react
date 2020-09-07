@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CFormFeedback/CValidFeedback/CInvalidFeedback renders basic wrapper correctly CInvalidFeedback 1`] = `
+<div
+  className="invalid-feedback"
+/>
+`;
+
+exports[`CFormFeedback/CValidFeedback/CInvalidFeedback renders basic wrapper correctly CValidFeedback 1`] = `
+<div
+  className="valid-feedback"
+/>
+`;
+
+exports[`CFormFeedback/CValidFeedback/CInvalidFeedback renders customized wrapper correctly CInvalidFeedback 1`] = `
+<div
+  className="invalid-tooltip class-name"
+>
+  CInvalidFeedback
+</div>
+`;
+
+exports[`CFormFeedback/CValidFeedback/CInvalidFeedback renders customized wrapper correctly CValidFeedback 1`] = `
+<div
+  className="valid-tooltip class-name"
+>
+  CValidFeedback
+</div>
+`;

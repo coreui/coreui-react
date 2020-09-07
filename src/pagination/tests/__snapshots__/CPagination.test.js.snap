@@ -1,0 +1,520 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CPagination renders basic wrapper correctly 1`] = `
+<nav
+  aria-label="pagination"
+>
+  <ul
+    className="pagination justify-content-start"
+  >
+    <li
+      className="page-item disabled"
+    >
+      <a
+        aria-disabled={true}
+        aria-label="Go to first page"
+        className="disabled page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        «
+      </a>
+    </li>
+    <li
+      className="page-item disabled"
+    >
+      <a
+        aria-disabled={true}
+        aria-label="Go to previous page"
+        className="disabled page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        ‹
+      </a>
+    </li>
+    <li
+      className="active page-item"
+    >
+      <a
+        aria-label="Current page 1"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        1
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 2"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        2
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 3"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        3
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 4"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        4
+      </a>
+    </li>
+    <li
+      className="page-item disabled"
+      role="separator"
+    >
+      <span
+        className="page-link"
+      >
+        …
+      </span>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        aria-disabled={false}
+        aria-label="Go to next page"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        ›
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        aria-disabled={false}
+        aria-label="Go to last page"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        »
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`CPagination renders customized wrapper correctly 1`] = `
+<nav
+  aria-label="pagination"
+  className="class-name"
+>
+  <ul
+    className="pagination pagination-lg justify-content-end list-class"
+  >
+    <li
+      className="page-item"
+    >
+      <a
+        aria-disabled={false}
+        aria-label="Go to first page"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        first-button
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        aria-disabled={false}
+        aria-label="Go to previous page"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        previous-button
+      </a>
+    </li>
+    <li
+      className="page-item disabled"
+      role="separator"
+    >
+      <span
+        className="page-link"
+      >
+        …
+      </span>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 4"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        4
+      </a>
+    </li>
+    <li
+      className="active page-item"
+    >
+      <a
+        aria-label="Current page 5"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        5
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 6"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        6
+      </a>
+    </li>
+    <li
+      className="page-item disabled"
+      role="separator"
+    >
+      <span
+        className="page-link"
+      >
+        …
+      </span>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        aria-disabled={false}
+        aria-label="Go to next page"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        next-button
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        aria-disabled={false}
+        aria-label="Go to last page"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        last-button
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`CPagination renders customized wrapper correctly two 1`] = `
+<nav
+  aria-label="pagination"
+  className="class-name"
+>
+  <ul
+    className="pagination pagination-lg justify-content-end list-class"
+  >
+    <li
+      className="page-item"
+    >
+      <a
+        aria-disabled={false}
+        aria-label="Go to first page"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        first-button
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        aria-disabled={false}
+        aria-label="Go to previous page"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        previous-button
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 1"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        1
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 2"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        2
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 3"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        3
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 4"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        4
+      </a>
+    </li>
+    <li
+      className="active page-item"
+    >
+      <a
+        aria-label="Current page 5"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        5
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 6"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        6
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 7"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        7
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 8"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        8
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 9"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        9
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 10"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        10
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 11"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        11
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 12"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        12
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 13"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        13
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 14"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        14
+      </a>
+    </li>
+    <li
+      className=" page-item"
+    >
+      <a
+        aria-label="Go to page 15"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        15
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        aria-disabled={false}
+        aria-label="Go to next page"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        next-button
+      </a>
+    </li>
+    <li
+      className="page-item"
+    >
+      <a
+        aria-disabled={false}
+        aria-label="Go to last page"
+        className="page-link"
+        href="#"
+        onClick={[Function]}
+        rel={null}
+      >
+        last-button
+      </a>
+    </li>
+  </ul>
+</nav>
+`;

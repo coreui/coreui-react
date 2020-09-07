@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CListGroupItem renders basic wrapper correctly 1`] = `
+<li
+  className="list-group-item"
+/>
+`;
+
+exports[`CListGroupItem renders customized wrapper correctly 1`] = `
+<li
+  className="class-name list-group-item list-group-item-action active disabled list-group-item-warning list-group-item-accent-accent"
+>
+  CListGroupItem
+</li>
+`;
+
+exports[`CListGroupItem renders customized wrapper correctly two 1`] = `
+<a
+  className="class-name list-group-item list-group-item-action active disabled list-group-item-warning list-group-item-accent-accent"
+  href="href"
+  onClick={[Function]}
+  rel={null}
+>
+  CListGroupItem
+</a>
+`;

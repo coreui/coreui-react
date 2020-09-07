@@ -10,7 +10,9 @@
         }
       }
     ],
-    "@babel/react"
+    "@babel/react",
+    // ["env", {"modules": true}], 
+    //"react"
   ],
   "plugins": [
     "@babel/plugin-proposal-export-default-from", 
@@ -34,6 +36,11 @@
         "@babel/react"
       ],
       "plugins": [["@babel/plugin-transform-runtime", { "useESModules": true }]]
-    }
+    },
+    "test": {
+       "presets": [
+         "@babel/env", "@babel/preset-react"
+       ]
+     }
   }
 }

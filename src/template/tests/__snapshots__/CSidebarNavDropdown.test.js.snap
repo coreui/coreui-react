@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSidebarNavDropdown renders basic wrapper correctly 1`] = `
+<ul
+  className="c-sidebar-nav h-100"
+  style={
+    Object {
+      "position": "relative",
+    }
+  }
+>
+  <li
+    className="c-sidebar-nav-dropdown"
+  >
+    <a
+      className="c-sidebar-nav-dropdown-toggle"
+      onClick={[Function]}
+    />
+    <ul
+      className="c-sidebar-nav-dropdown-items"
+    />
+  </li>
+</ul>
+`;
+
+exports[`CSidebarNavDropdown renders customized wrapper correctly 1`] = `
+<li
+  className="c-sidebar-nav-dropdown class-name"
+>
+  <a
+    className="c-sidebar-nav-dropdown-toggle"
+    onClick={[Function]}
+  >
+    <svg
+      className="c-sidebar-nav-icon"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "undefined",
+        }
+      }
+      role="img"
+      viewBox="0 0 64 64"
+      xmlns="http://www.w3.org/2000/svg"
+    />
+    <i
+      className="c-sidebar-nav-icon font-icon"
+    />
+    name
+  </a>
+  <ul
+    className="c-sidebar-nav-dropdown-items"
+  >
+    CSidebarNavDropdown
+  </ul>
+</li>
+`;
+
+exports[`CSidebarNavDropdown renders customized wrapper correctly two 1`] = `
+<li
+  className="c-sidebar-nav-dropdown c-show class-name"
+>
+  <a
+    className="c-sidebar-nav-dropdown-toggle"
+    onClick={[Function]}
+  >
+    <svg
+      className="custom-classes"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "undefined",
+        }
+      }
+      role="img"
+      viewBox="0 0 64 64"
+      xmlns="http://www.w3.org/2000/svg"
+    />
+    <i
+      className="c-sidebar-nav-icon font-icon"
+    />
+    name
+  </a>
+  <ul
+    className="c-sidebar-nav-dropdown-items"
+  >
+    CSidebarNavDropdown
+  </ul>
+</li>
+`;

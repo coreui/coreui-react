@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CEmbed renders basic wrapper correctly 1`] = `
+<div
+  className="embed-responsive embed-responsive-16by9"
+/>
+`;
+
+exports[`CEmbed renders customized wrapper correctly 1`] = `
+<div
+  className="class-name embed-responsive embed-responsive-1by1"
+>
+  CEmbed
+</div>
+`;

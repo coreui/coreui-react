@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CBrand renders basic wrapper correctly 1`] = `
+<div
+  className=""
+/>
+`;
+
+exports[`CBrand renders customized wrapper correctly 1`] = `
+<a
+  className="class-name"
+  href="href"
+  onClick={[Function]}
+  rel={null}
+>
+  CBrand
+</a>
+`;

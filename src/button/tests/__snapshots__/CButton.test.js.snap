@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CButton renders basic wrapper correctly 1`] = `
+<button
+  className="btn"
+  onClick={[Function]}
+  type="button"
+/>
+`;
+
+exports[`CButton renders customized wrapper correctly 1`] = `
+<button
+  className="class-name btn btn-ghost-warning btn-lg btn-block btn-pill btn-pressed disabled"
+  disabled={true}
+  onClick={[Function]}
+  type="button"
+>
+  CAlert
+</button>
+`;
+
+exports[`CButton renders customized wrapper correctly two 1`] = `
+<a
+  className="active class-name btn btn-warning btn-lg btn-block btn-pill btn-pressed"
+  href="href"
+  onClick={[Function]}
+  rel={null}
+>
+  CButton
+</a>
+`;

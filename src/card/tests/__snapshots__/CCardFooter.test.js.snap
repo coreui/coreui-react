@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCardFooter renders basic wrapper correctly 1`] = `
+<footer
+  className="card-footer"
+/>
+`;
+
+exports[`CCardFooter renders customized wrapper correctly 1`] = `
+<footer
+  className="class-name card-footer text-left text-primary bg-info border-warning"
+>
+  CCardFooter
+</footer>
+`;

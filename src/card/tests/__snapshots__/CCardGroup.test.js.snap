@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCardGroup renders basic wrapper correctly 1`] = `
+<div
+  className="card-group"
+/>
+`;
+
+exports[`CCardGroup renders customized wrapper correctly 1`] = `
+<div
+  className="card-columns class-name"
+>
+  CCardGroup
+</div>
+`;
+
+exports[`CCardGroup renders customized wrapper correctly two 1`] = `
+<div
+  className="card-deck class-name"
+>
+  CCardGroup
+</div>
+`;

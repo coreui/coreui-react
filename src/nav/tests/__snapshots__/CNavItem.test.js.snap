@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CNavItem renders basic wrapper correctly 1`] = `
+<li
+  className="nav-item"
+/>
+`;
+
+exports[`CNavItem renders customized wrapper correctly 1`] = `
+<li
+  className="nav-item class-name"
+>
+  CNavItem
+</li>
+`;

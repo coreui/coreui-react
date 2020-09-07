@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCard renders basic wrapper correctly 1`] = `
+<div
+  className="card"
+/>
+`;
+
+exports[`CCard renders customized wrapper correctly 1`] = `
+<div
+  className="class-name card text-left text-primary bg-warning border-info card-accent-danger"
+>
+  CCard
+</div>
+`;

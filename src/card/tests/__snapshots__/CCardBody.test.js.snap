@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCardBody renders basic wrapper correctly 1`] = `
+<div
+  className="card-body"
+/>
+`;
+
+exports[`CCardBody renders customized wrapper correctly 1`] = `
+<div
+  className="class-name card-body text-right text-primary bg-warning border-info"
+>
+  CCardBody
+</div>
+`;

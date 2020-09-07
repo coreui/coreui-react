@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CNavLink renders basic wrapper correctly 1`] = `
+<a
+  className="nav-link"
+  href="#"
+  onClick={[Function]}
+  rel={null}
+/>
+`;
+
+exports[`CNavLink renders customized wrapper correctly 1`] = `
+<a
+  className="nav-link class-name"
+  href="#"
+  onClick={[Function]}
+  rel={null}
+>
+  CNavLink
+</a>
+`;

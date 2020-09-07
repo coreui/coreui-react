@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CButtonToolbar renders basic wrapper correctly 1`] = `
+<div
+  aria-label="toolbar"
+  className="btn-toolbar"
+  role="toolbar"
+/>
+`;
+
+exports[`CButtonToolbar renders customized wrapper correctly 1`] = `
+<div
+  aria-label="toolbar"
+  className="class-name btn-toolbar justify-content-between"
+  role="toolbar"
+>
+  CButtonToolbar
+</div>
+`;

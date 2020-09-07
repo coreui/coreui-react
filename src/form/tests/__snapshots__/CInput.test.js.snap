@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CInput renders basic wrapper correctly 1`] = `
+<input
+  className="form-control"
+  type="text"
+/>
+`;
+
+exports[`CInput renders customized wrapper correctly 1`] = `
+<input
+  className="form-control-plaintext form-control-lg is-invalid is-valid class-name"
+  size="200"
+  type="number"
+>
+  CInput
+</input>
+`;
+
+exports[`CInput-CInputCheckbox renders basic wrapper correctly 1`] = `
+<input
+  className="form-check-input"
+  type="checkbox"
+/>
+`;
+
+exports[`CInput-CInputCheckbox renders customized wrapper correctly 1`] = `
+<input
+  className="custom-control-input is-invalid is-valid class-name"
+  type="checkbox"
+>
+  CInputCheckbox
+</input>
+`;
+
+exports[`CInput-CInputFile renders basic wrapper correctly 1`] = `
+<input
+  className="form-control-file"
+  type="file"
+/>
+`;
+
+exports[`CInput-CInputFile renders customized wrapper correctly 1`] = `
+<input
+  className="custom-file-input is-invalid is-valid class-name"
+  type="file"
+>
+  CInputFile
+</input>
+`;
+
+exports[`CInput-CInputRadio renders basic wrapper correctly 1`] = `
+<input
+  className="form-check-input"
+  type="radio"
+/>
+`;
+
+exports[`CInput-CInputRadio renders customized wrapper correctly 1`] = `
+<input
+  className="custom-control-input is-invalid is-valid class-name"
+  type="radio"
+>
+  CInputRadio
+</input>
+`;
+
+exports[`CInput-CSelect renders basic wrapper correctly 1`] = `
+<select
+  className="form-control"
+/>
+`;
+
+exports[`CInput-CSelect renders customized wrapper correctly 1`] = `
+<select
+  className="custom-select custom-select-lg is-invalid is-valid class-name"
+  size="200"
+>
+  CSelect
+</select>
+`;
+
+exports[`CInput-CTextarea renders basic wrapper correctly 1`] = `
+<textarea
+  className="form-control"
+/>
+`;
+
+exports[`CInput-CTextarea renders customized wrapper correctly 1`] = `
+<textarea
+  className="form-control-plaintext form-control-lg is-invalid is-valid class-name"
+>
+  CTextarea
+</textarea>
+`;

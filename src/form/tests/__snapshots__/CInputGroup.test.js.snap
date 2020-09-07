@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CInputGroup renders basic wrapper correctly 1`] = `
+<div
+  className="input-group"
+/>
+`;
+
+exports[`CInputGroup renders customized wrapper correctly 1`] = `
+<div
+  className="input-group input-group-lg class-name"
+>
+  CInputGroup
+</div>
+`;

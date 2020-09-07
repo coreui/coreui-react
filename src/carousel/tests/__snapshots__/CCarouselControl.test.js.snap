@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCarouselControl renders basic wrapper correctly 1`] = `
+<a
+  className="carousel-control-next"
+  onClick={[Function]}
+>
+  <span
+    aria-label="next"
+    className="carousel-control-next-icon"
+  />
+</a>
+`;
+
+exports[`CCarouselControl renders customized wrapper correctly 1`] = `
+<a
+  className="carousel-control-prev class-name"
+  onClick={[Function]}
+>
+  <span
+    aria-label="prev"
+    className="carousel-control-prev-icon"
+  />
+</a>
+`;

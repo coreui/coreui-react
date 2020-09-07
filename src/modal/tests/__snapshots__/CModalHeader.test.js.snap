@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CModalHeader renders basic wrapper correctly 1`] = `
+<header
+  className="modal-header"
+/>
+`;
+
+exports[`CModalHeader renders customized wrapper correctly 1`] = `
+<header
+  className="class-name modal-header"
+>
+  CModalHeader
+  <button
+    aria-label="Close"
+    className="close"
+  >
+    ×
+  </button>
+</header>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CFormGroup renders basic wrapper correctly 1`] = `
+<div
+  className="form-group"
+/>
+`;
+
+exports[`CFormGroup renders customized wrapper correctly 1`] = `
+<div
+  className="custom-control custom-checkbox custom-control-inline disabled class-name"
+>
+  CFormGroup
+</div>
+`;

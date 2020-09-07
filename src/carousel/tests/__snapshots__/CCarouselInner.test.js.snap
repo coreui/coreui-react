@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCarouselInner renders basic wrapper correctly 1`] = `
+<div
+  className="carousel-inner"
+/>
+`;
+
+exports[`CCarouselInner renders customized wrapper correctly 1`] = `
+<div
+  className="carousel-inner class-name"
+/>
+`;

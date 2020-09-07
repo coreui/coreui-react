@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCarouselIndicators renders basic wrapper correctly 1`] = `
+<ol
+  className="carousel-indicators"
+/>
+`;
+
+exports[`CCarouselIndicators renders customized wrapper correctly 1`] = `
+<ol
+  className="carousel-indicators class-name"
+/>
+`;

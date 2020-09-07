@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSubheader renders basic wrapper correctly 1`] = `
+<div
+  className="c-subheader"
+/>
+`;
+
+exports[`CSubheader renders customized wrapper correctly 1`] = `
+<div
+  className="c-subheader class-name"
+>
+  CSubheader
+</div>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CModalTitle renders basic wrapper correctly 1`] = `
+<h5
+  className="modal-title"
+/>
+`;
+
+exports[`CModalTitle renders customized wrapper correctly 1`] = `
+<h5
+  className="modal-title class-name"
+>
+  CModalTitle
+</h5>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSidebarNavDivider renders basic wrapper correctly 1`] = `
+<li
+  className="c-sidebar-nav-divider"
+/>
+`;
+
+exports[`CSidebarNavDivider renders customized wrapper correctly 1`] = `
+<li
+  className="c-sidebar-nav-divider class-name"
+>
+  CSidebarNavDivider
+</li>
+`;

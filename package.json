@@ -30,10 +30,6 @@
     "npm-postinstall.js"
   ],
   "scripts": {
-    "clean": "nwb clean-module && nwb clean-demo",
-    "test": "nwb test-react",
-    "test:coverage": "nwb test-react --coverage",
-    "test:watch": "nwb test-react --server",
     "lint": "eslint src",
     "link": "npm link && link.sh",
     "changelog": "auto-changelog --starting-version 3.0.0-rc.2 --commit-limit false --hide-credit",
@@ -41,7 +37,11 @@
     "build:lib": "rollup --environment BUNDLE:false --c --sourcemap",
     "build:esm": "cross-env BABEL_ENV=esm-dir babel src --out-dir es --copy-files",
     "postinstall": "node npm-postinstall",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook",
+    "jest:test": "cross-env BABEL_ENV=test jest",
+    "jest:coverage": "jest --coverage",
+    "jest:init": "jest init",
+    "jest:cache": "jest --clearCache"
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
@@ -80,19 +80,34 @@
     "@storybook/addon-storysource": "^5.3.19",
     "@storybook/react": "^5.3.18",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "cross-env": "7.0.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.4",
+    "enzyme-to-json": "^3.5.0",
+    "expect": "^26.0.1",
     "eslint": "^7.8.1",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-react": "^7.20.6",
+    "jest": "^26.0.1",
+    "react": "^16.13.1",
+    "react-app-polyfill": "^1.0.6",
     "react-router-dom": "~5.2.0",
+    "react-test-renderer": "^16.13.1",
     "rollup": "^2.26.10",
     "rollup-plugin-peer-deps-external": "2.2.3",
     "rollup-plugin-postcss": "3.1.8",
     "sinon": "^9.0.3",
     "webpack": "^4.43.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/tests/__mocks__/styleMock.js"
+    },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ]
   },
   "repository": {
     "type": "git",

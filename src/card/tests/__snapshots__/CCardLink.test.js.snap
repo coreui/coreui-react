@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCardLink renders basic wrapper correctly 1`] = `
+<a
+  className="card-link"
+  href="#"
+  onClick={[Function]}
+  rel={null}
+/>
+`;
+
+exports[`CCardLink renders customized wrapper correctly 1`] = `
+<a
+  className="card-link class-name"
+  href="#"
+  onClick={[Function]}
+  rel={null}
+>
+  CCardLink
+</a>
+`;

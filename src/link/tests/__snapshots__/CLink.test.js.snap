@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CLink renders basic wrapper correctly 1`] = `
+<a
+  className=""
+  href="#"
+  onClick={[Function]}
+  rel={null}
+/>
+`;
+
+exports[`CLink renders customized wrapper correctly 1`] = `
+<a
+  className="active disabled class-name"
+  href="href"
+  onClick={[Function]}
+  rel={null}
+>
+  CLink
+</a>
+`;

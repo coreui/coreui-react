@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCardSubtitle renders basic wrapper correctly 1`] = `
+<h6
+  className="card-subtitle"
+/>
+`;
+
+exports[`CCardSubtitle renders customized wrapper correctly 1`] = `
+<h6
+  className="class-name card-subtitle"
+>
+  CCardSubtitle
+</h6>
+`;

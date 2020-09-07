@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CModalBody renders basic wrapper correctly 1`] = `
+<div
+  className="modal-body"
+/>
+`;
+
+exports[`CModalBody renders customized wrapper correctly 1`] = `
+<div
+  className="class-name modal-body"
+>
+  CModalBody
+</div>
+`;

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CBadge renders basic wrapper correctly 1`] = `
+<span
+  className="badge"
+/>
+`;
+
+exports[`CBadge renders customized wrapper correctly 1`] = `
+<a
+  className="class-name badge badge-warning badge-pill"
+  href="href"
+  onClick={[Function]}
+  rel={null}
+>
+  CBadge
+</a>
+`;

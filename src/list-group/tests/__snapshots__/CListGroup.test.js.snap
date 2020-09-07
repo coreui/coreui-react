@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CListGroup renders basic wrapper correctly 1`] = `
+<ul
+  className="list-group"
+  role="list-items"
+/>
+`;
+
+exports[`CListGroup renders customized wrapper correctly 1`] = `
+<ul
+  className="class-name list-group list-group-horizontal-horizontal list-group-flush list-group-accent"
+  role="list-items"
+>
+  CListGroup
+</ul>
+`;
