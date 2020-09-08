@@ -13,8 +13,10 @@ exports[`CSidebarNavDropdown renders basic wrapper correctly 1`] = `
     className="c-sidebar-nav-dropdown"
   >
     <a
+      aria-label="menu dropdown"
       className="c-sidebar-nav-dropdown-toggle"
       onClick={[Function]}
+      tabIndex="0"
     />
     <ul
       className="c-sidebar-nav-dropdown-items"
@@ -28,8 +30,10 @@ exports[`CSidebarNavDropdown renders customized wrapper correctly 1`] = `
   className="c-sidebar-nav-dropdown class-name"
 >
   <a
+    aria-label="menu dropdown"
     className="c-sidebar-nav-dropdown-toggle"
     onClick={[Function]}
+    tabIndex="0"
   >
     <svg
       className="c-sidebar-nav-icon"
@@ -60,8 +64,10 @@ exports[`CSidebarNavDropdown renders customized wrapper correctly two 1`] = `
   className="c-sidebar-nav-dropdown c-show class-name"
 >
   <a
+    aria-label="menu dropdown"
     className="c-sidebar-nav-dropdown-toggle"
     onClick={[Function]}
+    tabIndex="0"
   >
     <svg
       className="custom-classes"

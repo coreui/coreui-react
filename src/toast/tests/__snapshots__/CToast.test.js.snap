@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CToast renders basic wrapper correctly 1`] = `null`;
+
+exports[`CToast renders customized wrapper correctly 1`] = `
+<div
+  aria-atomic="true"
+  aria-live="assertive"
+  className="toast class-name toast-fade"
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  role="alert"
+>
+  CToast
+</div>
+`;

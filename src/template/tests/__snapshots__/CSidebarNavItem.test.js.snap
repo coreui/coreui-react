@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSidebarNavItem renders basic wrapper correctly 1`] = `
+<li
+  className="c-sidebar-nav-item"
+>
+  <a
+    className="c-sidebar-nav-link"
+    href="#"
+    onClick={[Function]}
+    rel={null}
+    tabIndex={0}
+  />
+</li>
+`;
+
+exports[`CSidebarNavItem renders customized wrapper correctly 1`] = `
+<li
+  className="c-sidebar-nav-item class-name"
+>
+  CSidebarNavItem
+</li>
+`;

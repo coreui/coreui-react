@@ -19,7 +19,6 @@ exports[`CModal renders basic wrapper correctly 1`] = `
       />
     </div>
   </div>
-  
 </div>
 `;
 
@@ -28,7 +27,7 @@ exports[`CModal renders customized wrapper correctly 1`] = `
   onClick={[Function]}
 >
   <div
-    className="modal overflow-auto fade modal-warning"
+    className="modal overflow-auto fade modal-warning d-block"
     data-modal={true}
     role="dialog"
     tabIndex="-1"
@@ -44,6 +43,8 @@ exports[`CModal renders customized wrapper correctly 1`] = `
       </div>
     </div>
   </div>
-  
+  <div
+    className="modal-backdrop fade show"
+  />
 </div>
 `;

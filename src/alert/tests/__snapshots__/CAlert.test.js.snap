@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CAlert renders basic wrapper correctly 1`] = `
+<div
+  className="alert fade"
+  role="alert"
+/>
+`;
+
+exports[`CAlert renders customized wrapper correctly 1`] = `
+<div
+  className="class-name alert alert-warning alert-dismissible fade"
+  role="alert"
+>
+  CAlert
+  <button
+    aria-label="Close"
+    className="close"
+    onClick={[Function]}
+  >
+    ×
+  </button>
+</div>
+`;

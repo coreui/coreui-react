@@ -10,6 +10,7 @@ exports[`CDropdownToggle renders basic wrapper correctly 1`] = `
     aria-label="Dropdown toggle"
     className="dropdown-toggle btn"
     onClick={[Function]}
+    role={null}
     type="button"
   />
 </div>
@@ -26,6 +27,7 @@ exports[`CDropdownToggle renders customized wrapper correctly 1`] = `
     className="class-name dropdown-toggle btn disabled"
     disabled={true}
     onClick={[Function]}
+    role={null}
     type="button"
   >
     CDropdownToggle
@@ -52,6 +54,7 @@ exports[`CDropdownToggle renders customized wrapper witch split 1`] = `
     className="dropdown-toggle dropdown-toggle-split btn disabled"
     disabled={true}
     onClick={[Function]}
+    role={null}
     type="button"
   >
     

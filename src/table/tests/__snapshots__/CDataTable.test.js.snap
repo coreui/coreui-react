@@ -1,0 +1,699 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CPopover renders basic wrapper correctly 1`] = `
+Array [
+  <div />,
+  <div
+    className="position-relative table-responsive"
+  >
+    <table
+      className="table"
+    >
+      <thead>
+        <tr />
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            colSpan={0}
+          >
+            <div
+              className="text-center my-5"
+            >
+              <h2>
+                No items 
+                <svg
+                  className="c-icon c-icon-custom-size text-danger mb-2"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<path fill='var(--ci-primary-color, currentColor)' d='M425.706,86.294A240,240,0,0,0,86.294,425.705,240,240,0,0,0,425.706,86.294ZM256,48A207.1,207.1,0,0,1,391.528,98.345L98.345,391.528A207.1,207.1,0,0,1,48,256C48,141.309,141.309,48,256,48Zm0,416a207.084,207.084,0,0,1-134.986-49.887l293.1-293.1A207.084,207.084,0,0,1,464,256C464,370.691,370.691,464,256,464Z' class='ci-primary'/>",
+                    }
+                  }
+                  role="img"
+                  viewBox="0 0 512 512"
+                  width="30"
+                  xmlns="http://www.w3.org/2000/svg"
+                />
+              </h2>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>,
+]
+`;
+
+exports[`CPopover renders customized wrapper correctly 1`] = `
+Array [
+  <div>
+    <div
+      className="row my-2 mx-0"
+    >
+      <div
+        className="col-sm-6 form-inline p-0"
+      >
+        <label
+          className="mr-2"
+        >
+          Filter:
+        </label>
+        <input
+          aria-label="table filter input"
+          className="form-control"
+          onChange={[Function]}
+          onInput={[Function]}
+          placeholder="type string..."
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="col-sm-6 p-0false"
+      >
+        <div
+          className="form-inline justify-content-sm-end"
+        >
+          <label
+            className="mr-2"
+          >
+            Items per page:
+          </label>
+          <select
+            aria-label="changes number of visible items"
+            className="form-control"
+            onChange={[Function]}
+          >
+            <option
+              disabled={true}
+              hidden={true}
+              value=""
+            >
+              3
+            </option>
+            <option
+              val={5}
+            >
+              5
+            </option>
+            <option
+              val={10}
+            >
+              10
+            </option>
+            <option
+              val={20}
+            >
+              20
+            </option>
+            <option
+              val={50}
+            >
+              50
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="position-relative table-responsive"
+  >
+    <table
+      className="table table-sm table-dark table-striped table-hover table-bordered border table-classes"
+    >
+      <thead>
+        <tr>
+          <th
+            className="position-relative pr-4"
+            onClick={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+                "overflow": "hidden",
+                "verticalAlign": "middle",
+                "width": "40%",
+              }
+            }
+          >
+            <div
+              className="d-inline"
+            >
+              Name
+            </div>
+            <svg
+              className="position-absolute"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<polygon fill='var(--ci-primary-color, currentColor)' points='390.624 150.625 256 16 121.376 150.625 144.004 173.252 240.001 77.254 240.001 495.236 272.001 495.236 272.001 77.257 367.996 173.252 390.624 150.625' class='ci-primary'/>",
+                }
+              }
+              role="img"
+              viewBox="0 0 512 512"
+              width={18}
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </th>
+          <th
+            className="position-relative pr-4"
+            onClick={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+                "overflow": "hidden",
+                "verticalAlign": "middle",
+              }
+            }
+          >
+            <div
+              className="d-inline"
+            >
+              Registered
+            </div>
+            <svg
+              className="position-absolute"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<polygon fill='var(--ci-primary-color, currentColor)' points='390.624 150.625 256 16 121.376 150.625 144.004 173.252 240.001 77.254 240.001 495.236 272.001 495.236 272.001 77.257 367.996 173.252 390.624 150.625' class='ci-primary'/>",
+                }
+              }
+              role="img"
+              viewBox="0 0 512 512"
+              width={18}
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </th>
+          <th
+            className="position-relative pr-4"
+            onClick={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+                "overflow": "hidden",
+                "verticalAlign": "middle",
+                "width": "20%",
+              }
+            }
+          >
+            <div
+              className="d-inline"
+            >
+              Role
+            </div>
+            <svg
+              className="position-absolute"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<polygon fill='var(--ci-primary-color, currentColor)' points='390.624 150.625 256 16 121.376 150.625 144.004 173.252 240.001 77.254 240.001 495.236 272.001 495.236 272.001 77.257 367.996 173.252 390.624 150.625' class='ci-primary'/>",
+                }
+              }
+              role="img"
+              viewBox="0 0 512 512"
+              width={18}
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </th>
+          <th
+            className="position-relative pr-4"
+            onClick={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+                "overflow": "hidden",
+                "verticalAlign": "middle",
+                "width": "20%",
+              }
+            }
+          >
+            <div
+              className="d-inline"
+            >
+              Status
+            </div>
+            <svg
+              className="position-absolute"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<polygon fill='var(--ci-primary-color, currentColor)' points='390.624 150.625 256 16 121.376 150.625 144.004 173.252 240.001 77.254 240.001 495.236 272.001 495.236 272.001 77.257 367.996 173.252 390.624 150.625' class='ci-primary'/>",
+                }
+              }
+              role="img"
+              viewBox="0 0 512 512"
+              width={18}
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </th>
+          <th
+            className="position-relative pr-4"
+            onClick={[Function]}
+            style={
+              Object {
+                "overflow": "hidden",
+                "verticalAlign": "middle",
+                "width": "1%",
+              }
+            }
+          >
+            <div
+              className="d-inline"
+            >
+              
+            </div>
+          </th>
+        </tr>
+        <tr
+          className="table-sm"
+        >
+          <th
+            className=""
+          >
+            <input
+              aria-label="column name: 'name' filter input"
+              className="form-control form-control-sm"
+              onChange={[Function]}
+              onInput={[Function]}
+              value=""
+            />
+          </th>
+          <th
+            className=""
+          >
+            <input
+              aria-label="column name: 'registered' filter input"
+              className="form-control form-control-sm"
+              onChange={[Function]}
+              onInput={[Function]}
+              value=""
+            />
+          </th>
+          <th
+            className=""
+          >
+            <input
+              aria-label="column name: 'role' filter input"
+              className="form-control form-control-sm"
+              onChange={[Function]}
+              onInput={[Function]}
+              value=""
+            />
+          </th>
+          <th
+            className=""
+          >
+            <input
+              aria-label="column name: 'status' filter input"
+              className="form-control form-control-sm"
+              onChange={[Function]}
+              onInput={[Function]}
+              value=""
+            />
+          </th>
+          <th
+            className=""
+          />
+        </tr>
+      </thead>
+      <tbody
+        style={
+          Object {
+            "cursor": "pointer",
+          }
+        }
+      >
+        <tr
+          className=""
+          onClick={[Function]}
+          tabIndex={0}
+        >
+          <td
+            className=""
+          >
+            Chetan Mohamed
+          </td>
+          <td
+            className=""
+          >
+            2018/02/01
+          </td>
+          <td
+            className=""
+          >
+            Admin
+          </td>
+          <td
+            class="bg-info"
+          >
+            Inactive
+          </td>
+          <td
+            className=""
+          >
+            undefined
+          </td>
+        </tr>
+        <tr
+          className=""
+          onClick={[Function]}
+          tabIndex={0}
+        >
+          <td
+            className=""
+          >
+            Derick Maximinus
+          </td>
+          <td
+            className=""
+          >
+            2018/03/01
+          </td>
+          <td
+            className=""
+          >
+            Member
+          </td>
+          <td
+            class="bg-info"
+          >
+            Pending
+          </td>
+          <td
+            className=""
+          >
+            undefined
+          </td>
+        </tr>
+        <tr
+          className=""
+          onClick={[Function]}
+          tabIndex={0}
+        >
+          <td
+            className=""
+          >
+            Friderik Dávid
+          </td>
+          <td
+            className=""
+          >
+            2018/01/21
+          </td>
+          <td
+            className=""
+          >
+            Staff
+          </td>
+          <td
+            class="bg-info"
+          >
+            Active
+          </td>
+          <td
+            className=""
+          >
+            undefined
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th
+            className="position-relative pr-4"
+            onClick={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+                "overflow": "hidden",
+                "verticalAlign": "middle",
+                "width": "40%",
+              }
+            }
+          >
+            <div
+              className="d-inline"
+            >
+              Name
+            </div>
+            <svg
+              className="position-absolute"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<polygon fill='var(--ci-primary-color, currentColor)' points='390.624 150.625 256 16 121.376 150.625 144.004 173.252 240.001 77.254 240.001 495.236 272.001 495.236 272.001 77.257 367.996 173.252 390.624 150.625' class='ci-primary'/>",
+                }
+              }
+              role="img"
+              viewBox="0 0 512 512"
+              width={18}
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </th>
+          <th
+            className="position-relative pr-4"
+            onClick={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+                "overflow": "hidden",
+                "verticalAlign": "middle",
+              }
+            }
+          >
+            <div
+              className="d-inline"
+            >
+              Registered
+            </div>
+            <svg
+              className="position-absolute"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<polygon fill='var(--ci-primary-color, currentColor)' points='390.624 150.625 256 16 121.376 150.625 144.004 173.252 240.001 77.254 240.001 495.236 272.001 495.236 272.001 77.257 367.996 173.252 390.624 150.625' class='ci-primary'/>",
+                }
+              }
+              role="img"
+              viewBox="0 0 512 512"
+              width={18}
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </th>
+          <th
+            className="position-relative pr-4"
+            onClick={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+                "overflow": "hidden",
+                "verticalAlign": "middle",
+                "width": "20%",
+              }
+            }
+          >
+            <div
+              className="d-inline"
+            >
+              Role
+            </div>
+            <svg
+              className="position-absolute"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<polygon fill='var(--ci-primary-color, currentColor)' points='390.624 150.625 256 16 121.376 150.625 144.004 173.252 240.001 77.254 240.001 495.236 272.001 495.236 272.001 77.257 367.996 173.252 390.624 150.625' class='ci-primary'/>",
+                }
+              }
+              role="img"
+              viewBox="0 0 512 512"
+              width={18}
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </th>
+          <th
+            className="position-relative pr-4"
+            onClick={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+                "overflow": "hidden",
+                "verticalAlign": "middle",
+                "width": "20%",
+              }
+            }
+          >
+            <div
+              className="d-inline"
+            >
+              Status
+            </div>
+            <svg
+              className="position-absolute"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<polygon fill='var(--ci-primary-color, currentColor)' points='390.624 150.625 256 16 121.376 150.625 144.004 173.252 240.001 77.254 240.001 495.236 272.001 495.236 272.001 77.257 367.996 173.252 390.624 150.625' class='ci-primary'/>",
+                }
+              }
+              role="img"
+              viewBox="0 0 512 512"
+              width={18}
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </th>
+          <th
+            className="position-relative pr-4"
+            onClick={[Function]}
+            style={
+              Object {
+                "overflow": "hidden",
+                "verticalAlign": "middle",
+                "width": "1%",
+              }
+            }
+          >
+            <div
+              className="d-inline"
+            >
+              
+            </div>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+    <div
+      className=""
+      style={
+        Object {
+          "backgroundColor": "rgb(255,255,255,0.4)",
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "left": "50%",
+            "position": "absolute",
+            "top": "50%",
+            "transform": "translateX(-50%) translateY(-50%)",
+          }
+        }
+      >
+        <div
+          aria-hidden="false"
+          aria-label="Loading"
+          className="spinner-grow spinner-grow-lg text-primary"
+          role="status"
+        />
+      </div>
+    </div>
+  </div>,
+  <nav
+    aria-label="pagination"
+    style={
+      Object {
+        "display": "inline",
+      }
+    }
+  >
+    <ul
+      className="pagination justify-content-start"
+    >
+      <li
+        className="page-item"
+      >
+        <a
+          aria-disabled={false}
+          aria-label="Go to first page"
+          className="page-link"
+          href="#"
+          onClick={[Function]}
+          rel={null}
+        >
+          «
+        </a>
+      </li>
+      <li
+        className="page-item"
+      >
+        <a
+          aria-disabled={false}
+          aria-label="Go to previous page"
+          className="page-link"
+          href="#"
+          onClick={[Function]}
+          rel={null}
+        >
+          ‹
+        </a>
+      </li>
+      <li
+        className=" page-item"
+      >
+        <a
+          aria-label="Go to page 1"
+          className="page-link"
+          href="#"
+          onClick={[Function]}
+          rel={null}
+        >
+          1
+        </a>
+      </li>
+      <li
+        className="active page-item"
+      >
+        <a
+          aria-label="Current page 2"
+          className="page-link"
+          href="#"
+          onClick={[Function]}
+          rel={null}
+        >
+          2
+        </a>
+      </li>
+      <li
+        className=" page-item"
+      >
+        <a
+          aria-label="Go to page 3"
+          className="page-link"
+          href="#"
+          onClick={[Function]}
+          rel={null}
+        >
+          3
+        </a>
+      </li>
+      <li
+        className="page-item"
+      >
+        <a
+          aria-disabled={false}
+          aria-label="Go to next page"
+          className="page-link"
+          href="#"
+          onClick={[Function]}
+          rel={null}
+        >
+          ›
+        </a>
+      </li>
+      <li
+        className="page-item"
+      >
+        <a
+          aria-disabled={false}
+          aria-label="Go to last page"
+          className="page-link"
+          href="#"
+          onClick={[Function]}
+          rel={null}
+        >
+          »
+        </a>
+      </li>
+    </ul>
+  </nav>,
+]
+`;

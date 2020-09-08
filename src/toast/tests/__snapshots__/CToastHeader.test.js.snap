@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CToastHeader renders basic wrapper correctly 1`] = `
+<div
+  className="toast-header"
+>
+  <button
+    aria-label="Close"
+    className="close ml-auto"
+  >
+    ×
+  </button>
+</div>
+`;
+
+exports[`CToastHeader renders customized wrapper correctly 1`] = `
+<div
+  className="toast-header class-name"
+>
+  CToastHeader
+  <button
+    aria-label="Close"
+    className="close ml-auto"
+  >
+    ×
+  </button>
+</div>
+`;
