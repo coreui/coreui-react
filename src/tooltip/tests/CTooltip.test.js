@@ -1,31 +1,48 @@
 import React from 'react'
 import { configure, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import renderer from 'react-test-renderer';
+import renderer from 'react-test-renderer'
 
 import CTooltip from '../CTooltip'
 
 configure({ adapter: new Adapter() })
 
+beforeAll(() => {
+  // Avoid `attachTo: document.body` Warning
+  const div = document.createElement('div')
+  div.setAttribute('id', 'container')
+  document.body.appendChild(div)
+})
+
+afterAll(() => {
+  const div = document.getElementById('container')
+  if (div) {
+    document.body.removeChild(div)
+  }
+})
+
 describe('CTooltip', () => {
   it('renders basic wrapper correctly', () => {
-    const component = renderer.create(<CTooltip>CTooltip</CTooltip>);
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot()
+    const wrapper = renderer.create(
+      <CTooltip content="tooltip">
+        <div>CTooltip</div>
+      </CTooltip>,
+      { attachTo: document.getElementById('container') }
+    )
+    expect(wrapper).toBeTruthy()
   })
   it('renders customized wrapper correctly', () => {
-    const componentCustomized = renderer.create(
-      <CTooltip
-        className='class-name'
-        content='content'
+    const wrapper = mount(<CTooltip
+        className="class-name"
+        content="content"
         interactive
-        placement='left-end'
-        trigger='trigger'
+        placement="left-end"
+        trigger="trigger"
       >
-        CTooltip
-      </CTooltip>
-    );
-    let tree = componentCustomized.toJSON();
-    expect(tree).toMatchSnapshot()
+        <div>CTooltip</div>
+      </CTooltip>,
+      { attachTo: document.getElementById('container') }
+    )
+    expect(wrapper).toBeTruthy()
   })
 })
