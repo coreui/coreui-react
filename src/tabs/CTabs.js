@@ -11,10 +11,12 @@ const CTabs = props => {
     onActiveTabChange
   } = props
 
-  const [active, setActive] = useState()
-  useEffect(() => setActive(activeTab), [activeTab])
+  const [active, setActive] = useState(0)
+  useEffect(() => {
+    activeTab !== undefined && setActive(activeTab)
+  }, [activeTab])
 
-  const setActiveTab = (tab) => {
+  const setActiveTab = tab => {
     onActiveTabChange && onActiveTabChange(tab)
     setActive(tab)
   }
@@ -32,10 +34,6 @@ CTabs.propTypes = {
   children: PropTypes.node,
   activeTab: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onActiveTabChange: PropTypes.func,
-}
-
-CTabs.defaultProps = {
-  activeTab: 0
 }
 
 export default CTabs
