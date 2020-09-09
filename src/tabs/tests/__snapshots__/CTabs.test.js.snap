@@ -1,0 +1,334 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CTabs render full tabs 1`] = `
+<CTabs
+  activeTab="home"
+>
+  <CNav
+    tag="ul"
+    variant="tabs"
+  >
+    <ul
+      className="nav nav-tabs"
+    >
+      <CNavItem
+        tag="li"
+      >
+        <li
+          className="nav-item"
+        >
+          <CNavLink
+            data-tab="home"
+          >
+            <CLink
+              active={true}
+              className={
+                Array [
+                  "nav-link",
+                  undefined,
+                ]
+              }
+              data-tab="home"
+              innerRef={
+                Object {
+                  "current": <a
+                    class="active nav-link"
+                    data-tab="home"
+                    href="#"
+                  >
+                    Home
+                  </a>,
+                }
+              }
+              onClick={[Function]}
+            >
+              <a
+                className="active nav-link"
+                data-tab="home"
+                href="#"
+                onClick={[Function]}
+                rel={null}
+              >
+                Home
+              </a>
+            </CLink>
+          </CNavLink>
+        </li>
+      </CNavItem>
+      <CNavItem
+        tag="li"
+      >
+        <li
+          className="nav-item"
+        >
+          <CNavLink
+            data-tab="profile"
+          >
+            <CLink
+              active={false}
+              className={
+                Array [
+                  "nav-link",
+                  undefined,
+                ]
+              }
+              data-tab="profile"
+              innerRef={
+                Object {
+                  "current": <a
+                    class="nav-link"
+                    data-tab="profile"
+                    href="#"
+                  >
+                    Profile
+                  </a>,
+                }
+              }
+              onClick={[Function]}
+            >
+              <a
+                className="nav-link"
+                data-tab="profile"
+                href="#"
+                onClick={[Function]}
+                rel={null}
+              >
+                Profile
+              </a>
+            </CLink>
+          </CNavLink>
+        </li>
+      </CNavItem>
+      <CNavItem
+        tag="li"
+      >
+        <li
+          className="nav-item"
+        >
+          <CNavLink
+            data-tab="messages"
+          >
+            <CLink
+              active={false}
+              className={
+                Array [
+                  "nav-link",
+                  undefined,
+                ]
+              }
+              data-tab="messages"
+              innerRef={
+                Object {
+                  "current": <a
+                    class="nav-link"
+                    data-tab="messages"
+                    href="#"
+                  >
+                    Messages
+                  </a>,
+                }
+              }
+              onClick={[Function]}
+            >
+              <a
+                className="nav-link"
+                data-tab="messages"
+                href="#"
+                onClick={[Function]}
+                rel={null}
+              >
+                Messages
+              </a>
+            </CLink>
+          </CNavLink>
+        </li>
+      </CNavItem>
+    </ul>
+  </CNav>
+  <CTabContent
+    fade={true}
+  >
+    <div
+      className="tab-content"
+    >
+      <CTabPane
+        data-tab="home"
+      >
+        <CFade
+          appear={true}
+          baseClass="fade"
+          baseClassActive="show"
+          className="tab-pane active"
+          data-tab="home"
+          enter={true}
+          exit={true}
+          in={true}
+          innerRef={
+            Object {
+              "current": <div
+                class="tab-pane active fade"
+                data-tab="home"
+              >
+                123
+              </div>,
+            }
+          }
+          tag="div"
+          timeout={150}
+        >
+          <Transition
+            appear={true}
+            enter={true}
+            exit={true}
+            in={true}
+            mountOnEnter={false}
+            nodeRef={
+              Object {
+                "current": <div
+                  class="tab-pane active fade"
+                  data-tab="home"
+                >
+                  123
+                </div>,
+              }
+            }
+            onEnter={[Function]}
+            onEntered={[Function]}
+            onEntering={[Function]}
+            onExit={[Function]}
+            onExited={[Function]}
+            onExiting={[Function]}
+            timeout={150}
+            unmountOnExit={false}
+          >
+            <div
+              className="tab-pane active fade"
+              data-tab="home"
+            >
+              123
+            </div>
+          </Transition>
+        </CFade>
+      </CTabPane>
+      <CTabPane
+        data-tab="profile"
+      >
+        <CFade
+          appear={true}
+          baseClass="fade"
+          baseClassActive="show"
+          className="tab-pane"
+          data-tab="profile"
+          enter={true}
+          exit={true}
+          in={false}
+          innerRef={
+            Object {
+              "current": <div
+                class="tab-pane fade"
+                data-tab="profile"
+              >
+                456
+              </div>,
+            }
+          }
+          tag="div"
+          timeout={150}
+        >
+          <Transition
+            appear={true}
+            enter={true}
+            exit={true}
+            in={false}
+            mountOnEnter={false}
+            nodeRef={
+              Object {
+                "current": <div
+                  class="tab-pane fade"
+                  data-tab="profile"
+                >
+                  456
+                </div>,
+              }
+            }
+            onEnter={[Function]}
+            onEntered={[Function]}
+            onEntering={[Function]}
+            onExit={[Function]}
+            onExited={[Function]}
+            onExiting={[Function]}
+            timeout={150}
+            unmountOnExit={false}
+          >
+            <div
+              className="tab-pane fade"
+              data-tab="profile"
+            >
+              456
+            </div>
+          </Transition>
+        </CFade>
+      </CTabPane>
+      <CTabPane
+        data-tab="messages"
+      >
+        <CFade
+          appear={true}
+          baseClass="fade"
+          baseClassActive="show"
+          className="tab-pane"
+          data-tab="messages"
+          enter={true}
+          exit={true}
+          in={false}
+          innerRef={
+            Object {
+              "current": <div
+                class="tab-pane fade"
+                data-tab="messages"
+              >
+                789
+              </div>,
+            }
+          }
+          tag="div"
+          timeout={150}
+        >
+          <Transition
+            appear={true}
+            enter={true}
+            exit={true}
+            in={false}
+            mountOnEnter={false}
+            nodeRef={
+              Object {
+                "current": <div
+                  class="tab-pane fade"
+                  data-tab="messages"
+                >
+                  789
+                </div>,
+              }
+            }
+            onEnter={[Function]}
+            onEntered={[Function]}
+            onEntering={[Function]}
+            onExit={[Function]}
+            onExited={[Function]}
+            onExiting={[Function]}
+            timeout={150}
+            unmountOnExit={false}
+          >
+            <div
+              className="tab-pane fade"
+              data-tab="messages"
+            >
+              789
+            </div>
+          </Transition>
+        </CFade>
+      </CTabPane>
+    </div>
+  </CTabContent>
+</CTabs>
+`;

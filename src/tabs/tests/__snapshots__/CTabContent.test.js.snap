@@ -1,11 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CTabContent renders basic wrapper correctly 1`] = `
-<div
-  className="tab-content"
-/>
-`;
-
 exports[`CTabContent renders customized wrapper correctly 1`] = `
 <div
   className="tab-content class-name"
