@@ -451,10 +451,8 @@ const CDataTable = props => {
               className="form-control"
               onChange={paginationChange}
               aria-label="changes number of visible items"
+              defaultValue={perPageItems}
             >
-              <option value="" disabled hidden>
-                {perPageItems}
-              </option>
               { paginationSelect.values.map((number, key)=>{
                 return (
                   <option
