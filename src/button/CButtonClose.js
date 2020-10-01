@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 //component - CoreUI / CButtonClose
 
-const CButtonClose = props => {
+const CButtonClose = (props) => {
 
   const {
     children,
@@ -15,7 +15,7 @@ const CButtonClose = props => {
     ...attributes
   } = props
 
-  //render
+  //render Component
 
   const classes = classNames(
     buttonClass,
