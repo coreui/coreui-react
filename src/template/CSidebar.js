@@ -95,8 +95,11 @@ const CSidebar = props => {
   }
 
   const closeSidebar = () => {
-    onShowChange && onShowChange(overlaid ? false : 'responsive')
-    setIsOpen(overlaid ? false : 'responsive')
+    if (typeof onShowChange === 'function') {
+      onShowChange(overlaid ? false : 'responsive')
+    } else {
+      setIsOpen(overlaid ? false : 'responsive')
+    }
   }
 
   const isOnMobile = () => {
