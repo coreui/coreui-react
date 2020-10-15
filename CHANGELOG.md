@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.3.1](https://github.com/coreui/coreui-react/compare/3.3.0...3.3.1)
+
+> 15 October 2020
+
+- chore: 3.3.1 release [`78d9d3b`](https://github.com/coreui/coreui-react/commit/78d9d3b60018d86f359f2890439a2462bd04a050)
+- chore: dependencies update [`fe004b4`](https://github.com/coreui/coreui-react/commit/fe004b4769018e3bb9cefa6c69a11587c8fe218a)
+- chore: update changelog [`2847bea`](https://github.com/coreui/coreui-react/commit/2847bea8698f9cd0040e3248a13de649a05f598c)
+- fix(CSidebar): onShowChange callback behavior overwritten for overlaid [`90290d2`](https://github.com/coreui/coreui-react/commit/90290d2446cedeb631c68b7e4f701763cca2b321)
+- fix(CSidebar): add missing xxl breakpoint [`509f85a`](https://github.com/coreui/coreui-react/commit/509f85ab833ea6db35569f56f1665dcf3b21f60f)
+
 #### [3.3.0](https://github.com/coreui/coreui-react/compare/3.2.3...3.3.0)
 
 > 4 September 2020
