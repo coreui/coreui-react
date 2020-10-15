@@ -160,7 +160,7 @@ CSidebar.propTypes = {
   fixed: PropTypes.bool,
   unfoldable: PropTypes.bool,
   overlaid: PropTypes.bool,
-  breakpoint: PropTypes.oneOf([false, '', 'sm', 'md', 'lg', 'xl']),
+  breakpoint: PropTypes.oneOf([false, '', 'sm', 'md', 'lg', 'xl', 'xxl']),
   minimize: PropTypes.bool,
   show: PropTypes.oneOf(['', true, false, 'responsive']),
   size: PropTypes.oneOf(['', 'sm', 'lg', 'xl']),
