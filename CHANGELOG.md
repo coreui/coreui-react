@@ -6,11 +6,11 @@ All notable changes to this project will be documented in this file. Dates are d
 
 > 15 October 2020
 
-- chore: 3.3.1 release [`78d9d3b`](https://github.com/coreui/coreui-react/commit/78d9d3b60018d86f359f2890439a2462bd04a050)
-- chore: dependencies update [`fe004b4`](https://github.com/coreui/coreui-react/commit/fe004b4769018e3bb9cefa6c69a11587c8fe218a)
-- chore: update changelog [`2847bea`](https://github.com/coreui/coreui-react/commit/2847bea8698f9cd0040e3248a13de649a05f598c)
-- fix(CSidebar): onShowChange callback behavior overwritten for overlaid [`90290d2`](https://github.com/coreui/coreui-react/commit/90290d2446cedeb631c68b7e4f701763cca2b321)
-- fix(CSidebar): add missing xxl breakpoint [`509f85a`](https://github.com/coreui/coreui-react/commit/509f85ab833ea6db35569f56f1665dcf3b21f60f)
+- chore: 3.3.1 version release [`abbe01f`](https://github.com/coreui/coreui-react/commit/abbe01f61b1c38cd764bb3e4ebbfa11ec10127a3)
+- chore: dependencies update [`93397ae`](https://github.com/coreui/coreui-react/commit/93397ae968cd4e11c6780b2ed7a00cacea74e2e9)
+- fix(CSidebar): onShowChange callback behavior overwritten for overlaid [`c463ea5`](https://github.com/coreui/coreui-react/commit/c463ea566e3b997d3926781f13273fcd66bf7065)
+- fix(CSidebar): add missing xxl breakpoint [`9c84573`](https://github.com/coreui/coreui-react/commit/9c84573511feeff615bee105a5cb2a0ced8fc5a6)
+- docs: add guides for github community [`50c7236`](https://github.com/coreui/coreui-react/commit/50c723698d2aff7a08654353d9d61cfa38701bd0)
 
 #### [3.3.0](https://github.com/coreui/coreui-react/compare/3.2.3...3.3.0)
 
