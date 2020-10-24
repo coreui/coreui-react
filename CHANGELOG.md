@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.3.2](https://github.com/coreui/coreui-react/compare/3.3.1...3.3.2)
+
+> 24 October 2020
+
+- chore: 3.3.2 version release [`fbf5379`](https://github.com/coreui/coreui-react/commit/fbf537971f7e83729832939ec979818d9a608dfe)
+- chore: dependencies update [`b3b5410`](https://github.com/coreui/coreui-react/commit/b3b54105bfc31cd60c84ce7418f5e1dced19ad6c)
+- test: fix test configuration, update snapshots [`81a4d7f`](https://github.com/coreui/coreui-react/commit/81a4d7f5f38cbee457ca4368fb1e40cbffb09cf8)
+- test: update tabs tests [`39b4284`](https://github.com/coreui/coreui-react/commit/39b4284b98cb507c6a83860f218f42a559d99532)
+- chore: delete test snapshots from es build [`b40c300`](https://github.com/coreui/coreui-react/commit/b40c300261b91c440543fbb477fc8ed6738cc2a9)
+- test: fix tooltip tests [`44839c9`](https://github.com/coreui/coreui-react/commit/44839c97fab34d645e424f33cec5e6bd18d525e3)
+- test: comment out some broken tests as todo [`64f7387`](https://github.com/coreui/coreui-react/commit/64f73871ff1c33f07adffc058c161e517db29167)
+- fix: CTabPane: fix 'active' prop, refactor component [`7fa04f8`](https://github.com/coreui/coreui-react/commit/7fa04f8311b7820e2b50a657d538f8d5a18c188e)
+- chore: exclude test files from es build [`cf34f54`](https://github.com/coreui/coreui-react/commit/cf34f549844d842d67e95da0f8ce98adc1e32549)
+- chore: update changelog [`edd558a`](https://github.com/coreui/coreui-react/commit/edd558a05dcbe7219cfdbff18b793c70b586147d)
+- chore: Merge branch 'dev-tests' into dev [`b47d3d5`](https://github.com/coreui/coreui-react/commit/b47d3d57de935dc753ed6b991828db067bdabcce)
+- chore: Merge branch 'dev-storybook' into dev [`27c4629`](https://github.com/coreui/coreui-react/commit/27c462980c3845d204c48f14eece0618b2021430)
+
 #### [3.3.1](https://github.com/coreui/coreui-react/compare/3.3.0...3.3.1)
 
 > 15 October 2020
