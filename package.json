@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "CoreUI React Bootstrap 4 components",
   "license": "MIT",
   "author": {
@@ -30,8 +30,8 @@
     "npm-postinstall.js"
   ],
   "scripts": {
+    "clean": "nwb clean-module && nwb clean-demo",
     "lint": "eslint src",
-    "link": "npm link && link.sh",
     "changelog": "auto-changelog --starting-version 3.0.0-rc.2 --commit-limit false --hide-credit",
     "build": "npm run build:lib && npm run build:esm",
     "build:lib": "rollup --environment BUNDLE:false --c --sourcemap",
@@ -44,7 +44,7 @@
     "jest:cache": "jest --clearCache"
   },
   "dependencies": {
-    "@babel/runtime": "^7.11.2",
+    "@babel/runtime": "^7.12.0",
     "@coreui/icons": "2.0.0-beta.5",
     "@coreui/icons-react": "^1.0.2",
     "@coreui/utils": "~1.3.1",
