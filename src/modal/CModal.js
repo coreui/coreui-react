@@ -29,6 +29,7 @@ const CModal = props => {
     onClosed,
     addContentClass,
     onClose,
+    scrollable,
     ...attributes
   } = props
 
@@ -71,6 +72,7 @@ const CModal = props => {
 
   const dialogClasses = classNames(
     'modal-dialog', {
+      'modal-dialog-scrollable': scrollable,
       'modal-dialog-centered': centered,
       [`modal-${size}`]: size
     }
@@ -115,8 +117,8 @@ const CModal = props => {
             >
               <div className={dialogClasses} role="document">
                 <div
-                  {...attributes} 
-                  className={contentClasses} 
+                  {...attributes}
+                  className={contentClasses}
                   ref={innerRef}
                 >
                   <Context.Provider value={{close}}>
@@ -127,7 +129,7 @@ const CModal = props => {
             </div>
           )
         }}
-        
+
       </Transition>
       { backdrop && isOpen && <div className={backdropClasses}></div> }
     </div>
@@ -142,14 +144,15 @@ CModal.propTypes = {
   centered: PropTypes.bool,
   size: PropTypes.oneOf(['', 'sm', 'lg', 'xl']),
   backdrop: PropTypes.bool,
-  color: PropTypes.string, 
+  color: PropTypes.string,
   borderColor: PropTypes.string,
   onOpened: PropTypes.func,
   onClosed: PropTypes.func,
   fade: PropTypes.bool,
   closeOnBackdrop: PropTypes.bool,
   onClose: PropTypes.func,
-  addContentClass: PropTypes.string
+  addContentClass: PropTypes.string,
+  scrollable: PropTypes.bool,
 }
 
 CModal.defaultProps = {
