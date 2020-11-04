@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.3.3](https://github.com/coreui/coreui-react/compare/3.3.2...3.3.3)
+
+> 4 November 2020
+
+- chore: dependencies update [`a53dbdc`](https://github.com/coreui/coreui-react/commit/a53dbdce08a200aacb52ab935b43dc480d85d327)
+- fix(Modal): missing className prop [`7bbc5fd`](https://github.com/coreui/coreui-react/commit/7bbc5fdd06d9a3de4cc56ac57e80dc4c4ef8fa45)
+- chore: 3.3.3 version release [`0022dc8`](https://github.com/coreui/coreui-react/commit/0022dc81ddf306aefdec0023d3c2f2c0cc8e7000)
+
 #### [3.3.2](https://github.com/coreui/coreui-react/compare/3.3.1...3.3.2)
 
 > 24 October 2020
