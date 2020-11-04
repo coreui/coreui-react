@@ -29,6 +29,7 @@ const CModal = props => {
     onClosed,
     addContentClass,
     onClose,
+    className,
     ...attributes
   } = props
 
@@ -66,7 +67,8 @@ const CModal = props => {
   const modalClasses = classNames(
     'modal overflow-auto fade', {
       [`modal-${color}`]: color
-    }
+    },
+    className
   )
 
   const dialogClasses = classNames(
