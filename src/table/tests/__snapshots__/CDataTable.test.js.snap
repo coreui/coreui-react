@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CPopover renders basic wrapper correctly 1`] = `
+exports[`CDataTable renders basic wrapper correctly 1`] = `
 Array [
   <div />,
   <div
@@ -44,7 +44,7 @@ Array [
 ]
 `;
 
-exports[`CPopover renders customized wrapper correctly 1`] = `
+exports[`CDataTable renders customized wrapper correctly 1`] = `
 Array [
   <div>
     <div
@@ -83,14 +83,8 @@ Array [
             aria-label="changes number of visible items"
             className="form-control"
             onChange={[Function]}
+            value={3}
           >
-            <option
-              disabled={true}
-              hidden={true}
-              value=""
-            >
-              3
-            </option>
             <option
               val={5}
             >

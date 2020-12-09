@@ -7,7 +7,7 @@ import CDataTable from '../CDataTable'
 
 configure({ adapter: new Adapter() })
 
-describe('CPopover', () => {
+describe('CDataTable', () => {
     it('renders basic wrapper correctly', () => {
         const component = renderer.create(<CDataTable/>);
         let tree = component.toJSON();
