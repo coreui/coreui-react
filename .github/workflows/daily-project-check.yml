@@ -1,0 +1,31 @@
+name: Daily project check
+
+on:
+  schedule:
+    # build runs every weekday at 6AM UTC
+    - cron: '0 6 * * 1-5'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, test and lint
+      run: |
+        npm i
+        npm run build
+        npm run jest:test
+        npm run lint
+      env:
+        CI: true

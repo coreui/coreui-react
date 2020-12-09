@@ -3,6 +3,7 @@
 [![npm package][npm-badge]][npm]
 [![npm next][npm-next]][npm]
 [![NPM downloads][npm-download]][npm]
+![Daily project check](https://github.com/coreui/coreui-react/workflows/Daily%20project%20check/badge.svg)
 
 [npm-badge]: https://img.shields.io/npm/v/@coreui/react.png?style=flat-square
 [npm-next]: https://img.shields.io/npm/v/@coreui/react/next.png?style=flat-square
