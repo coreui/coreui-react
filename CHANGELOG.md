@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.3.5](https://github.com/coreui/coreui-react/compare/3.3.4...3.3.5)
+
+> 9 December 2020
+
+- test: add github actions project check [`552a1fd`](https://github.com/coreui/coreui-react/commit/552a1fd7a7dfe5273f55ed1445e98651df80928e)
+- fix(CDataTable): missing select perPageItems initial value [`eaca895`](https://github.com/coreui/coreui-react/commit/eaca8955913fafe0f6100952e98ebf7afd34c32b)
+- chore: dependencies update [`41f3899`](https://github.com/coreui/coreui-react/commit/41f38999bb2e32c80d23a425c66cb79bca3ec363)
+
 #### [3.3.4](https://github.com/coreui/coreui-react/compare/3.3.3...3.3.4)
 
 > 26 November 2020
