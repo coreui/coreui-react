@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.3.6](https://github.com/coreui/coreui-react/compare/3.3.5...3.3.6)
+
+> 10 December 2020
+
+- fix(CWidgetBrand): addHeaderClass bad PropTypes [`d2c102b`](https://github.com/coreui/coreui-react/commit/d2c102b50f0b15a89a2a66334923798b267ddeea)
+- fix(stories): className [`ab3348a`](https://github.com/coreui/coreui-react/commit/ab3348a5aac8eb008c23a5cc6292a7836353a311)
+
 #### [3.3.5](https://github.com/coreui/coreui-react/compare/3.3.4...3.3.5)
 
 > 9 December 2020
