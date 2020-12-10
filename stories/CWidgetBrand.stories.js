@@ -40,7 +40,7 @@ return <>
           leftHeader={leftHeader}
           leftFooter={leftFooter}
         >
-          <p class="m-4">Some brand</p>
+          <p className="m-4">Some brand</p>
         </CWidgetBrand>
       </CCardBody>
     </CCard>

@@ -42,7 +42,7 @@ return <>
           text={_text}
         >
           <CDropdown
-            class="float-right"
+            className="float-right"
             color="transparent p-0"
             placement="bottom-end"
           >

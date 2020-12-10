@@ -13,7 +13,7 @@ addDecorator(story => (
         <CRow> 
             <CCol lg="12" xs="12">
                 <CCard lg="12" xs="12"> 
-                    <h1 class="ml-3">CoreUI</h1>
+                    <h1 className="ml-3">CoreUI</h1>
                 </CCard>
             </CCol>
             {story()}
