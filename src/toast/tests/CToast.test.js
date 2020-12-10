@@ -1,7 +1,8 @@
 import React from 'react'
 import { configure, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import renderer from 'react-test-renderer';
+import { create } from 'react-test-renderer';
+import { act } from 'react-dom/test-utils';
 
 import CToast from '../CToast'
 import CToaster from '../CToaster'
@@ -10,12 +11,12 @@ configure({ adapter: new Adapter() })
 
 describe('CToast', () => {
   it('renders basic wrapper correctly', () => {
-    const component = renderer.create(<CToast/>);
+    const component = create(<CToast/>);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot()
   })
   it('renders customized wrapper correctly', () => {
-    const componentCustomized = renderer.create(
+    const componentCustomized = create(
       <CToast
         className='class-name'
         show
@@ -44,7 +45,9 @@ describe('CToast', () => {
         </CToast>
       </CToaster>
     );
-    jest.runAllTimers()
+    act(() => {
+      jest.runAllTimers()
+    })
     console.log(component.html());
     expect(component.find(<CToast/>)).toHaveLength(0);
   })
@@ -64,7 +67,9 @@ describe('CToast', () => {
         </CToast>
       </CToaster>
     );
-    jest.runAllTimers()
+    act(() => {
+      jest.runAllTimers()
+    })
     console.log(component.html());
     expect(component.find(<CToast/>)).toHaveLength(0);
   })
