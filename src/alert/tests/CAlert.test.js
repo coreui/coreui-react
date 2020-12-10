@@ -1,7 +1,7 @@
 import React from 'react'
 //import { renderHook, act } from '@testing-library/react-hooks'
 import { configure, mount, shallow } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
 import renderer from 'react-test-renderer';
 
 import CAlert from '../CAlert'
