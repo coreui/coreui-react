@@ -73,7 +73,7 @@ CWidgetBrand.propTypes = {
   rightFooter: PropTypes.string,
   leftHeader: PropTypes.string,
   leftFooter: PropTypes.string,
-  addHeaderClasses: PropTypes.oneOfType([String, Array, Object]),
+  addHeaderClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   bodySlot: PropTypes.node
 };
 
