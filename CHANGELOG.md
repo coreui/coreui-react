@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.4.0-beta.0](https://github.com/coreui/coreui-react/compare/3.3.5...3.4.0-beta.0)
+
+> 10 December 2020
+
+- test: enzyme-adapter-react-17 temp fix [`9a93f26`](https://github.com/coreui/coreui-react/commit/9a93f2610254f5584eb5e8f70b34a8456b3a2dc8)
+- chore: update to React 17 and dependencies [`dc7e219`](https://github.com/coreui/coreui-react/commit/dc7e219546b6c2a41a060042ce619e84fb1140ae)
+- test(CToast): use act() from react-dom/test-utils [`fce83f8`](https://github.com/coreui/coreui-react/commit/fce83f810768ed67a27acc2f9b10c4e845d91092)
+- fix(stories): className [`ab3348a`](https://github.com/coreui/coreui-react/commit/ab3348a5aac8eb008c23a5cc6292a7836353a311)
+- test(CDataTable): snap update className fix [`d6e58d5`](https://github.com/coreui/coreui-react/commit/d6e58d5003426184e632071d9a8fe2e38b73baad)
+- fix(CWidgetBrand): addHeaderClass bad PropTypes [`937a713`](https://github.com/coreui/coreui-react/commit/937a71394614d8bd66524900fdd415d8dc6f5918)
+
 #### [3.3.5](https://github.com/coreui/coreui-react/compare/3.3.4...3.3.5)
 
 > 9 December 2020
