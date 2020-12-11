@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.4.0](https://github.com/coreui/coreui-react/compare/3.4.0-beta.0...3.4.0)
+
+> 11 December 2020
+
+- chore: dependencies update [`8b7abe8`](https://github.com/coreui/coreui-react/commit/8b7abe8716aec3aa3757a1e25067931253c14c6f)
+
 #### [3.4.0-beta.0](https://github.com/coreui/coreui-react/compare/3.3.6...3.4.0-beta.0)
 
 > 10 December 2020

@@ -1,7 +1,7 @@
 {
   "name": "@coreui/react",
-  "version": "3.4.0-beta.0",
-  "description": "CoreUI 3 React 17 Bootstrap 4 components",
+  "version": "3.4.0",
+  "description": "CoreUI React 17 Bootstrap 4 components",
   "license": "MIT",
   "author": {
     "name": "CoreUI",
