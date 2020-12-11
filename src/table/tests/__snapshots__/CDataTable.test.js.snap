@@ -335,7 +335,7 @@ Array [
             Admin
           </td>
           <td
-            class="bg-info"
+            className="bg-info"
           >
             Inactive
           </td>
@@ -366,7 +366,7 @@ Array [
             Member
           </td>
           <td
-            class="bg-info"
+            className="bg-info"
           >
             Pending
           </td>
@@ -397,7 +397,7 @@ Array [
             Staff
           </td>
           <td
-            class="bg-info"
+            className="bg-info"
           >
             Active
           </td>
