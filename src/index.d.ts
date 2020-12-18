@@ -348,6 +348,10 @@ interface CDropdownItem extends CLink {
   active?: boolean;
 }
 
+interface CDropdownDivider extends CDropdownItem { }
+
+interface CDropdownHeader extends CDropdownItem { }
+
 interface CDropdownMenu extends HTMLPropsNoClassName {
   children: ChildElement;
   className?: className;
@@ -1083,6 +1087,8 @@ export declare const CCreateElement: (props: CCreateElement) => any;
 export declare const CDataTable: (props: CDataTable) => any;
 export declare const CDropdown: (props: CDropdown) => any;
 export declare const CDropdownItem: (props: CDropdownItem) => any;
+export declare const CDropdownDivider: (props: CDropdownDivider) => any;
+export declare const CDropdownHeader: (props: CDropdownHeader) => any;
 export declare const CDropdownMenu: (props: CDropdownMenu) => any;
 export declare const CDropdownToggle: (props: CDropdownToggle) => any;
 export declare const CElementCover: (props: CElementCover) => any;
