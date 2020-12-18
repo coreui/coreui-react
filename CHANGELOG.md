@@ -2,11 +2,18 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.4.2](https://github.com/coreui/coreui-react/compare/3.4.1...3.4.2)
+
+> 18 December 2020
+
+- fix(CToast): add missing color prop [`f48c98c`](https://github.com/coreui/coreui-react/commit/f48c98cf7f66ed3089730fbb37da5d0c4a975563)
+
 #### [3.4.1](https://github.com/coreui/coreui-react/compare/3.4.0...3.4.1)
 
 > 18 December 2020
 
 - fix(index.d.ts): CDropdownDivider and CDropdownHeader not defined [`#170`](https://github.com/coreui/coreui-react/issues/170)
+- chore(release): 3.4.1 [`cdb9aa7`](https://github.com/coreui/coreui-react/commit/cdb9aa7e247fbfb7053a7ad1e9ca2917b2c6640b)
 - chore: dependencies update [`4ae0d80`](https://github.com/coreui/coreui-react/commit/4ae0d80405a4093bd8d1545a1ea7006f33665f9e)
 
 #### [3.4.0](https://github.com/coreui/coreui-react/compare/3.4.0-beta.0...3.4.0)
@@ -33,6 +40,7 @@ All notable changes to this project will be documented in this file. Dates are d
 > 10 December 2020
 
 - fix(CWidgetBrand): addHeaderClass bad PropTypes [`d2c102b`](https://github.com/coreui/coreui-react/commit/d2c102b50f0b15a89a2a66334923798b267ddeea)
+- 3.3.6 version release [`7fc09a3`](https://github.com/coreui/coreui-react/commit/7fc09a343da9b623548ebc99cddd5fe9bf40c956)
 - fix(stories): className [`ab3348a`](https://github.com/coreui/coreui-react/commit/ab3348a5aac8eb008c23a5cc6292a7836353a311)
 
 #### [3.3.5](https://github.com/coreui/coreui-react/compare/3.3.4...3.3.5)
@@ -40,6 +48,7 @@ All notable changes to this project will be documented in this file. Dates are d
 > 9 December 2020
 
 - test: add github actions project check [`552a1fd`](https://github.com/coreui/coreui-react/commit/552a1fd7a7dfe5273f55ed1445e98651df80928e)
+- 3.3.5 version release [`757f523`](https://github.com/coreui/coreui-react/commit/757f523cdac052fab1735d7ada274fc417d8021f)
 - fix(CDataTable): missing select perPageItems initial value [`eaca895`](https://github.com/coreui/coreui-react/commit/eaca8955913fafe0f6100952e98ebf7afd34c32b)
 - chore: dependencies update [`41f3899`](https://github.com/coreui/coreui-react/commit/41f38999bb2e32c80d23a425c66cb79bca3ec363)
 
@@ -48,6 +57,7 @@ All notable changes to this project will be documented in this file. Dates are d
 > 26 November 2020
 
 - chore: dependencies update [`7ded326`](https://github.com/coreui/coreui-react/commit/7ded3260c88bae4fda149cf2037c4f0cb5f75d9f)
+- chore: update changelog [`86cec07`](https://github.com/coreui/coreui-react/commit/86cec0727dc56160eadc71fb82b97dc5a460659b)
 - chore: 3.3.4 version release [`dea91fc`](https://github.com/coreui/coreui-react/commit/dea91fcac3e890c8ed3deeee5b386cf8d25547b4)
 
 #### [3.3.3](https://github.com/coreui/coreui-react/compare/3.3.2...3.3.3)
@@ -83,7 +93,6 @@ All notable changes to this project will be documented in this file. Dates are d
 - chore: dependencies update [`93397ae`](https://github.com/coreui/coreui-react/commit/93397ae968cd4e11c6780b2ed7a00cacea74e2e9)
 - fix(CSidebar): onShowChange callback behavior overwritten for overlaid [`c463ea5`](https://github.com/coreui/coreui-react/commit/c463ea566e3b997d3926781f13273fcd66bf7065)
 - fix(CSidebar): add missing xxl breakpoint [`9c84573`](https://github.com/coreui/coreui-react/commit/9c84573511feeff615bee105a5cb2a0ced8fc5a6)
-- docs: add guides for github community [`50c7236`](https://github.com/coreui/coreui-react/commit/50c723698d2aff7a08654353d9d61cfa38701bd0)
 
 #### [3.3.0](https://github.com/coreui/coreui-react/compare/3.2.3...3.3.0)
 
