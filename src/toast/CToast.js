@@ -19,6 +19,7 @@ const CToast = props => {
     show,
     autohide,
     fade,
+    color,
     onStateChange,
     ...attributes
   } = props
@@ -83,7 +84,13 @@ const CToast = props => {
   }
 
   // render
-  const classes = classNames('toast', className)
+  const classes = classNames(
+    {
+      toast: true,
+      [`toast-${color}`]: !!color
+    },
+    className
+  )
 
   const fadeClasses = classNames(
     fade && (state === 'hiding' ? 'toast-fade-slow' : 'toast-fade')
@@ -120,6 +127,7 @@ CToast.propTypes = {
   show: PropTypes.bool,
   autohide: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
   fade: PropTypes.bool,
+  color: PropTypes.string,
   onStateChange: PropTypes.func
 };
 

@@ -6,7 +6,7 @@ exports[`CToast renders customized wrapper correctly 1`] = `
 <div
   aria-atomic="true"
   aria-live="assertive"
-  className="toast class-name toast-fade"
+  className="toast toast-danger class-name toast-fade"
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   role="alert"

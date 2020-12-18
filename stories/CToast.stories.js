@@ -24,7 +24,18 @@ export const basic = () => {
   const autohide = boolean('Autohide', false, 'Other')
   const fade = boolean('Fade', true, 'Other')
   const closeButton = boolean('Close button', true, 'Other')
-
+  const colorOptions = [
+    'primary',
+    'secondary',
+    'success',
+    'warning',
+    'danger',
+    'info',
+    'light',
+    'dark',
+    ''
+  ]
+  const color = select('Color', colorOptions, '', 'Other')
 
   return <>
     <CCol lg="6" md="8" xs="12">
@@ -37,6 +48,7 @@ export const basic = () => {
               show={show}
               autohide={autohide}
               fade={fade}
+              color={color}
             >
               <CToastHeader closeButton={closeButton}>
                 Toast title

@@ -23,6 +23,7 @@ describe('CToast', () => {
         show
         autohide
         fade
+        color={'danger'}
       >
         CToast
       </CToast>

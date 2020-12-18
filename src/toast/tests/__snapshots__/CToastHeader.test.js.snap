@@ -6,7 +6,7 @@ exports[`CToastHeader renders basic wrapper correctly 1`] = `
 >
   <button
     aria-label="Close"
-    className="close ml-auto"
+    className="close mfs-auto"
   >
     ×
   </button>
@@ -20,7 +20,7 @@ exports[`CToastHeader renders customized wrapper correctly 1`] = `
   CToastHeader
   <button
     aria-label="Close"
-    className="close ml-auto"
+    className="close mfs-auto"
   >
     ×
   </button>

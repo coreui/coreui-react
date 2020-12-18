@@ -951,6 +951,7 @@ interface CToast extends HTMLPropsNoClassName {
   show?: boolean;
   autohide?: number | boolean;
   fade?: boolean;
+  color?: string;
   onStateChange?: Function;
 }
 

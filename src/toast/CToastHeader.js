@@ -28,7 +28,7 @@ const CToastHeader = props => {
     <div className={classes} {...attributes} ref={innerRef}>
       { children }
       { closeButton && 
-        <CButtonClose className="ml-auto" onClick={close}/>}
+        <CButtonClose className="mfs-auto" onClick={close}/>}
     </div>
   )
 }
