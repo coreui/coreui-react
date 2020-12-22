@@ -69,7 +69,7 @@ Array [
         />
       </div>
       <div
-        className="col-sm-6 p-0false"
+        className="col-sm-6 p-0 false"
       >
         <div
           className="form-inline justify-content-sm-end"

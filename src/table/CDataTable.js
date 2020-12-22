@@ -444,7 +444,7 @@ const CDataTable = props => {
       }
       {
         itemsPerPageSelect &&
-        <div className={'col-sm-6 p-0' + (!(tableFilter || cleaner) && ' offset-sm-6')}>
+        <div className={'col-sm-6 p-0 ' + (!(tableFilter || cleaner) && ' offset-sm-6')}>
           <div className="form-inline justify-content-sm-end">
             <label className="mr-2">{paginationSelect.label}</label>
             <select
