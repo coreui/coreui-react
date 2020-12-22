@@ -49,6 +49,7 @@ describe('CDataTable', () => {
         clickableRows
         columnFilter
         tableFilter
+        cleaner
         addTableClasses="table-classes"
         size="sm"
         dark

@@ -1,0 +1,18 @@
+.c-datatable-filter {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.c-datatable-filter label {
+  margin-bottom: 0;
+}
+.c-datatable-items-per-page {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+.c-datatable-items-per-page label {
+  margin-bottom: 0;
+}

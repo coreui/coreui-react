@@ -51,10 +51,10 @@ Array [
       className="row my-2 mx-0"
     >
       <div
-        className="col-sm-6 form-inline p-0"
+        className="col-sm-6 form-inline p-0 c-datatable-filter"
       >
         <label
-          className="mr-2"
+          className="mfe-2"
         >
           Filter:
         </label>
@@ -67,15 +67,29 @@ Array [
           type="text"
           value=""
         />
+        <svg
+          className="c-icon mfs-2 transparent"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<polygon fill='var(--ci-primary-color, currentColor)' points='40 16 40 53.828 109.024 136 150.815 136 76.896 48 459.51 48 304 242.388 304 401.373 241.373 464 240 464 240 368 208 368 208 496 254.627 496 336 414.627 336 253.612 496 53.612 496 16 40 16' class='ci-primary'/><polygon fill='var(--ci-primary-color, currentColor)' points='166.403 248.225 226.864 187.763 204.237 165.135 143.775 225.597 83.313 165.135 60.687 187.763 121.148 248.225 60.687 308.687 83.313 331.314 143.775 270.852 204.237 331.314 226.864 308.687 166.403 248.225' class='ci-primary'/>",
+            }
+          }
+          onClick={[Function]}
+          onKeyUp={[Function]}
+          role="img"
+          tabIndex={null}
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        />
       </div>
       <div
-        className="col-sm-6 p-0 false"
+        className="col-sm-6 p-0 "
       >
         <div
-          className="form-inline justify-content-sm-end"
+          className="form-inline justify-content-sm-end c-datatable-items-per-page"
         >
           <label
-            className="mr-2"
+            className="mfe-2"
           >
             Items per page:
           </label>

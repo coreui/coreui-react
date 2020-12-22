@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import CPagination from '../pagination/CPagination'
 import CElementCover from '../element-cover/CElementCover'
-import style from './CDataTable.module.css'
 import CIcon from '@coreui/icons-react'
 import { cilArrowTop, cilBan, cilFilterX } from '@coreui/icons'
+import style from './CDataTable.module.css'
+import './CDataTable.css'
 
 //component - CoreUI / CTable
 const CDataTable = props => {
@@ -343,7 +344,7 @@ const CDataTable = props => {
 
   const cleanerProps = {
     content: cilFilterX,
-    className: `ml-2 ${isFiltered ? 'text-danger' : 'transparent'}`,
+    className: `mfs-2 ${isFiltered ? 'text-danger' : 'transparent'}`,
     role: isFiltered ? 'button' : null,
     tabIndex: isFiltered ? 0 : null,
   }
@@ -414,11 +415,11 @@ const CDataTable = props => {
     <div className="row my-2 mx-0">
       {
         (tableFilter || cleaner) &&
-        <div className="col-sm-6 form-inline p-0">
+        <div className="col-sm-6 form-inline p-0 c-datatable-filter">
           {
             tableFilter &&
             <>
-              <label className="mr-2">{tableFilterData.label}</label>
+              <label className="mfe-2">{tableFilterData.label}</label>
               <input
                 className="form-control"
                 type="text"
@@ -436,6 +437,7 @@ const CDataTable = props => {
               <CIcon
                 {...cleanerProps}
                 onClick={clean}
+                onKeyUp={(event) => { if (event.key === 'Enter') clean() }}
               />
             )
           }
@@ -444,9 +446,9 @@ const CDataTable = props => {
       }
       {
         itemsPerPageSelect &&
-        <div className={'col-sm-6 p-0 ' + (!(tableFilter || cleaner) && ' offset-sm-6')}>
-          <div className="form-inline justify-content-sm-end">
-            <label className="mr-2">{paginationSelect.label}</label>
+        <div className={`col-sm-6 p-0 ${(tableFilter || cleaner) ? '' : 'offset-sm-6'}`}>
+          <div className="form-inline justify-content-sm-end c-datatable-items-per-page">
+            <label className="mfe-2">{paginationSelect.label}</label>
             <select
               className="form-control"
               onChange={paginationChange}
