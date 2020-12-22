@@ -2,11 +2,19 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.4.3](https://github.com/coreui/coreui-react/compare/3.4.2...3.4.3)
+
+> 22 December 2020
+
+- fix(CDataTable): correct itemsPerPageSelect padding [`#171`](https://github.com/coreui/coreui-react/pull/171)
+- fix(CDataTable): tableFilter and cleaner minor cleanup [`1b5079f`](https://github.com/coreui/coreui-react/commit/1b5079f76020d579d2edc00da20edec0956521bf)
+
 #### [3.4.2](https://github.com/coreui/coreui-react/compare/3.4.1...3.4.2)
 
 > 18 December 2020
 
 - fix(CToast): add missing color prop [`f48c98c`](https://github.com/coreui/coreui-react/commit/f48c98cf7f66ed3089730fbb37da5d0c4a975563)
+- chore(release): 3.4.2 [`939098f`](https://github.com/coreui/coreui-react/commit/939098f265dc9fe8d908995db369bae3f3c65ef9)
 
 #### [3.4.1](https://github.com/coreui/coreui-react/compare/3.4.0...3.4.1)
 
