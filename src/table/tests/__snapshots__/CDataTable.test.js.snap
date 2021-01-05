@@ -51,7 +51,7 @@ Array [
       className="row my-2 mx-0"
     >
       <div
-        className="col-sm-6 form-inline p-0 c-datatable-filter"
+        className="col-sm-6 form-inline flex-sm-nowrap p-0 c-datatable-filter"
       >
         <label
           className="mfe-2"

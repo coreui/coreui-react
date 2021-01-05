@@ -415,7 +415,7 @@ const CDataTable = props => {
     <div className="row my-2 mx-0">
       {
         (tableFilter || cleaner) &&
-        <div className="col-sm-6 form-inline p-0 c-datatable-filter">
+        <div className="col-sm-6 form-inline flex-sm-nowrap p-0 c-datatable-filter">
           {
             tableFilter &&
             <>

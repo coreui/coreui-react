@@ -10,7 +10,7 @@
 .c-datatable-items-per-page {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
 }
 .c-datatable-items-per-page label {
