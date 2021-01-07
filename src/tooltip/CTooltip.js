@@ -1,8 +1,8 @@
 import React, {useState, useEffect, useRef, useCallback} from 'react'
+import ReactDom from 'react-dom'
 import PropTypes from 'prop-types'
 import tippy from 'tippy.js'
 import 'tippy.js/dist/tippy.css'
-import { renderToString } from 'react-dom/server'
 
 //component - CoreUI / CTooltip
 const CTooltip = props=>{
@@ -14,53 +14,36 @@ const CTooltip = props=>{
     interactive,
     placement,
     trigger,
-    advancedOptions
+    advancedOptions,
+    unmountOnHide
   } = props
 
-  const computedContent = useCallback(
-    () => typeof content === 'string' ? content : renderToString(content),
-    [content]
-  )
-
-  const config = {
-    allowHTML: true,
-    content: computedContent,
-    interactive,
-    placement,
-    trigger,
-    ...advancedOptions
-  }
-
-  const key = useState(Math.random().toString(36).substr(2))[0]
-  const instance = useRef()
-  
-  useEffect(() => {
-    if (instance.current) {
-      instance.current.setProps(config)
-    }
-  })
-
-  useEffect(() => {
-    const node = document.querySelector(`[data-tooltip="${key}"]`)
-    instance.current = tippy(node, config)
-    return () => instance.current.destroy()
-  }, [key])
-
-
+  const el = React.useMemo(() => document.createElement("div"), [])
+  const ref = React.useRef(null);
+  const [visible, setVisible] = React.useState(false);
+  React.useEffect(() => {
+    if (!ref.current) return;
+    const instance = tippy(ref.current, {
+      interactive,
+      placement,
+      trigger,
+      ...advancedOptions
+      content: el,
+      onHidden: () => setVisible(false),
+      onShow: () => setVisible(true),
+    });
+    return () => instance.destroy();
+  },[]);
   return (
-    <React.Fragment>
-      {
-        React.cloneElement(children, {
-          'data-tooltip': key
-        })
-      }
-    </React.Fragment>
-  )
+    <>
+      {(visible || unmountOnHide === false) && ReactDom.createPortal(content, el)}
+      {React.cloneElement(children, { ref })}
+    </>
 }
 
 CTooltip.propTypes = {
   children: PropTypes.node,
-  content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  content: PropTypes.node,
   interactive: PropTypes.bool,
   placement: PropTypes.oneOf([
     '', 'top-end', 'top', 'top-start',
@@ -69,7 +52,8 @@ CTooltip.propTypes = {
     'left-start', 'left', 'left-end'
   ]),
   trigger: PropTypes.string,
-  advancedOptions: PropTypes.object
+  advancedOptions: PropTypes.object,
+  unmountOnHide: PropTypes.bool
 }
 
 CTooltip.defaultProps = {
