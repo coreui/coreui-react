@@ -645,6 +645,7 @@ interface CModal extends Omit< HTMLPropsNoClassName, 'size'> {
   closeOnBackdrop?: boolean;
   onClose?: Function;
   addContentClass?: string;
+  scrollable?: boolean;
 }
 
 interface CModalBody extends HTMLPropsNoClassName {
