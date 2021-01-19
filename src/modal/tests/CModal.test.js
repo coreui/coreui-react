@@ -34,6 +34,19 @@ describe('CModal', () => {
     let tree = componentCustomized.toJSON();
     expect(tree).toMatchSnapshot()
   })
+  it('renders modal dialog scrollable correctly', () => {
+    const componentCustomized = renderer.create(
+      <CModal
+        scrollable
+        color='danger'
+      >
+        CModal modal-dialog-scrollable
+      </CModal>
+    );
+    let tree = componentCustomized.toJSON();
+    expect(tree).toMatchSnapshot()
+  })
+
   it('run onClose function after click modal', () => {
     jest.useFakeTimers()
     const onClose = jest.fn();

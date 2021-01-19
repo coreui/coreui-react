@@ -51,6 +51,7 @@ export const basic = () => {
   const borderColor = select('Border color', borderColorOptions, '', 'Other')
   const fade = boolean('Fade', true, 'Other')
   const closeOnBackdrop = boolean('Close on backdrop', true, 'Other')
+  const scrollable = boolean('Scrollable document', true, 'Other')
 
   return <>
     <CCol lg="6" xs="12">
@@ -70,11 +71,13 @@ export const basic = () => {
             borderColor={borderColor}
             fade={fade}
             closeOnBackdrop={closeOnBackdrop}
-
+            scrollable={scrollable}
           >
             <CModalHeader closeButton>Modal title</CModalHeader>
             <CModalBody>
-              Lorem ipsum dolor...
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut luctus nibh eget dignissim sodales. Pellentesque a ex volutpat, vulputate augue vitae, ultricies est. Donec lacinia ullamcorper justo, ac mattis turpis tempus non. Sed a nisl quis est aliquam bibendum vitae at libero. Etiam dictum auctor lacus, at blandit libero consectetur non. Donec pulvinar ullamcorper hendrerit. Curabitur vulputate quam eu ligula viverra vestibulum. Praesent tempus ipsum eget orci consectetur, eget elementum mauris vehicula. Cras semper in ipsum et finibus. Donec eu est hendrerit, fermentum nibh ac, sagittis magna. Etiam id elit fermentum, egestas sem et, viverra metus.</p>
+              <p>Etiam a sem non massa volutpat hendrerit. Mauris condimentum sapien quis dignissim pellentesque. Quisque condimentum lacinia odio et interdum. Nam auctor tincidunt convallis. Vivamus euismod lectus eu arcu facilisis hendrerit. Mauris faucibus urna sit amet nisi volutpat, eu gravida ex elementum. Fusce sed eros vitae eros ultrices faucibus suscipit vel velit. Donec eu nunc ac nisl interdum sagittis ac a justo.</p>
+              <p>Nullam mollis pharetra sagittis. Ut porta lacus vitae sem mollis, ut venenatis dui porta. Morbi nec enim quis nibh pretium sollicitudin non ut augue. Etiam fermentum neque ligula, eu aliquam ante aliquet a. Morbi ut ultrices velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse efficitur eros in ipsum porta, id finibus odio tincidunt. Proin in consequat diam.</p>
             </CModalBody>
             <CModalFooter>
               <CButton
