@@ -2,12 +2,22 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.4.4](https://github.com/coreui/coreui-react/compare/3.4.3...3.4.4)
+
+> 19 January 2021
+
+- test(CModal): update test, snapshots and story [`c797328`](https://github.com/coreui/coreui-react/commit/c7973286896a7e354ba64ee7b81a78fbf35e19e4)
+- chore: dependencies update [`852c9c8`](https://github.com/coreui/coreui-react/commit/852c9c830108c303796ea677b890a614cdb38270)
+- added scrollable prop to CModal - uses modal-dialog-scrollable from Bootstrap [`1b3a019`](https://github.com/coreui/coreui-react/commit/1b3a019f12561b625567e805f4d489b3e79a1da1)
+- fix(CModal): add missing modal-dialog-scrollable - thanks @ljuborados [`9d480af`](https://github.com/coreui/coreui-react/commit/9d480afbe6d619c51abd152fc332b3c09974b2da)
+
 #### [3.4.3](https://github.com/coreui/coreui-react/compare/3.4.2...3.4.3)
 
 > 22 December 2020
 
 - fix(CDataTable): correct itemsPerPageSelect padding [`#171`](https://github.com/coreui/coreui-react/pull/171)
 - fix(CDataTable): tableFilter and cleaner minor cleanup [`1b5079f`](https://github.com/coreui/coreui-react/commit/1b5079f76020d579d2edc00da20edec0956521bf)
+- chore(release): 3.4.3 [`72497b6`](https://github.com/coreui/coreui-react/commit/72497b696f8f90694fc953c5d047511c14c351d1)
 
 #### [3.4.2](https://github.com/coreui/coreui-react/compare/3.4.1...3.4.2)
 
