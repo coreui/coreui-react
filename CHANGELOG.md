@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.4.5](https://github.com/coreui/coreui-react/compare/3.4.4...3.4.5)
+
+> 20 January 2021
+
+- chore: dependencies update [`136c5ba`](https://github.com/coreui/coreui-react/commit/136c5ba88d9e72c7e1443cf676d952778d6f9427)
+- fix(CModal): add scrollable attribute to type definitions - thanks @pehlert [`7d03dfc`](https://github.com/coreui/coreui-react/commit/7d03dfcb8c633951c6466e6022f051c419bd66c7)
+
 #### [3.4.4](https://github.com/coreui/coreui-react/compare/3.4.3...3.4.4)
 
 > 19 January 2021
@@ -9,6 +16,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - test(CModal): update test, snapshots and story [`c797328`](https://github.com/coreui/coreui-react/commit/c7973286896a7e354ba64ee7b81a78fbf35e19e4)
 - chore: dependencies update [`852c9c8`](https://github.com/coreui/coreui-react/commit/852c9c830108c303796ea677b890a614cdb38270)
 - added scrollable prop to CModal - uses modal-dialog-scrollable from Bootstrap [`1b3a019`](https://github.com/coreui/coreui-react/commit/1b3a019f12561b625567e805f4d489b3e79a1da1)
+- chore(release): 3.4.4 [`29b2471`](https://github.com/coreui/coreui-react/commit/29b2471f2ac5183f52e612306097bc8a75cf721b)
 - fix(CModal): add missing modal-dialog-scrollable - thanks @ljuborados [`9d480af`](https://github.com/coreui/coreui-react/commit/9d480afbe6d619c51abd152fc332b3c09974b2da)
 
 #### [3.4.3](https://github.com/coreui/coreui-react/compare/3.4.2...3.4.3)
