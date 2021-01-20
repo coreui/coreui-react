@@ -98,7 +98,7 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-test-renderer": "^17.0.1",
-    "rollup": "^2.37.0",
+    "rollup": "^2.37.1",
     "rollup-plugin-peer-deps-external": "~2.2.4",
     "rollup-plugin-postcss": "^4.0.0",
     "sinon": "^9.2.3",
