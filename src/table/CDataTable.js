@@ -589,11 +589,11 @@ const CDataTable = props => {
 
 { pagination &&
   <CPagination
-    {...paginationProps}
     style={{display: totalPages > 1 ? 'inline' : 'none'}}
     onActivePageChange={(page) => { setPage(page) }}
     pages={totalPages}
     activePage={page}
+    {...paginationProps}
   />
 }
 </React.Fragment>
