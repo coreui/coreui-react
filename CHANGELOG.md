@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [3.4.6](https://github.com/coreui/coreui-react/compare/3.4.5...3.4.6)
+
+> 15 March 2021
+
+- Fix for custom CPagination props [`9ed2c9f`](https://github.com/coreui/coreui-react/commit/9ed2c9fef09782f44c12cb4b3687fedba1725c1a)
+- chore: dependencies update [`82e5c9c`](https://github.com/coreui/coreui-react/commit/82e5c9c41fad851974b4c221ff45247145896e71)
+- chore: github workflows update [`147b761`](https://github.com/coreui/coreui-react/commit/147b761a74f6f43db2901c65285e1f7cf4cb969e)
+
 #### [3.4.5](https://github.com/coreui/coreui-react/compare/3.4.4...3.4.5)
 
 > 20 January 2021

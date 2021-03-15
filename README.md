@@ -3,8 +3,9 @@
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=CoreUI%20-%20Free%20Vue%20Admin%20Template%20&url=http://coreui.io/react/&hashtags=bootstrap,admin,template,dashboard,panel,free,angular,react,vue)  
 [![npm_latest][npm-coreui-react-badge-latest]][npm-coreui-react]
 [![npm next][npm-coreui-react-badge-next]][npm-coreui-react]
-[![NPM downloads][npm-coreui-react-download]][npm-coreui-react]
-[![Build](https://img.shields.io/github/workflow/status/coreui/coreui-react/Project%20check?style=flat-square)][coreui]  
+[![NPM downloads][npm-coreui-react-download]][npm-coreui-react]  
+[![Build](https://github.com/coreui/coreui-react/actions/workflows/project-check.yml/badge.svg)](https://github.com/coreui/coreui-react/actions/workflows/project-check.yml)
+[![Daily check](https://github.com/coreui/coreui-react/actions/workflows/daily-project-check.yml/badge.svg)](https://github.com/coreui/coreui-react/actions/workflows/daily-project-check.yml)  
 [![react](https://img.shields.io/badge/react-^17.0.1-lightgrey.svg?style=flat-square&logo=react)][coreui]
 
 [npm-coreui-react-download]: https://img.shields.io/npm/dm/@coreui/react.svg?style=flat-square
