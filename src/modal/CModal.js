@@ -31,6 +31,8 @@ const CModal = props => {
     onClose,
     className,
     scrollable,
+    mountOnEnter,
+    unmountOnExit,
     ...attributes
   } = props
 
@@ -102,6 +104,8 @@ const CModal = props => {
         onExited={onExited}
         timeout={fade ? 150 : 0}
         nodeRef={nodeRef}
+        mountOnEnter={mountOnEnter}
+        unmountOnExit={unmountOnExit}
       >
         {(status) => {
           let transitionClass = getTransitionClass(status)
@@ -155,12 +159,16 @@ CModal.propTypes = {
   onClose: PropTypes.func,
   addContentClass: PropTypes.string,
   scrollable: PropTypes.bool,
+  mountOnEnter: PropTypes.bool,
+  unmountOnExit: PropTypes.bool,
 }
 
 CModal.defaultProps = {
   backdrop: true,
   fade: true,
-  closeOnBackdrop: true
+  closeOnBackdrop: true,
+  mountOnEnter: false,
+  unmountOnExit: false,
 }
 
 export default CModal

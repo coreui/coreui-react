@@ -646,6 +646,8 @@ interface CModal extends Omit< HTMLPropsNoClassName, 'size'> {
   onClose?: Function;
   addContentClass?: string;
   scrollable?: boolean;
+  mountOnEnter?: boolean;
+  unmountOnExit?: boolean;
 }
 
 interface CModalBody extends HTMLPropsNoClassName {
