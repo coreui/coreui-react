@@ -51,7 +51,7 @@ Styles usage:
 See the GitHub [release history](https://github.com/coreui/coreui-react/releases).
 
 ### Contributing
-See [CONTRIBUTING.md](https://github.com/coreui/coreui-react/blob/master/CONTRIBUTING.md).
+See [CONTRIBUTING.md](https://github.com/coreui/coreui-react/blob/master/.github/CONTRIBUTING.md).
 
 ### Credits
 Some design ideas and solutions in this library inspired by [reactstrap library](https://reactstrap.github.io/)
