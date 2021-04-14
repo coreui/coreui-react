@@ -1,0 +1,54 @@
+---
+title: React Callout Component
+name: Callout
+description: React callout component provides presentation of content in a visually distinct manner. Includes a heading, icon and typically text-based content.
+menu: Components
+route: /components/callout
+---
+
+import { Playground, Props } from 'docz'
+import { CCallout } from './CCallout'
+
+## Examples
+
+Callout component is prepared for any length of text, as well as an optional elements like icons, headings, etc. For a styling, use one of the **required** contextual props (e.g., `color="success"`).
+
+<Playground>
+  <CCallout color="primary">
+    New to or unfamiliar with flexbox? Read this CSS Tricks flexbox guide for background, terminology, guidelines, and code snippets.
+  </CCallout>
+  <CCallout color="secondary">
+    New to or unfamiliar with flexbox? Read this CSS Tricks flexbox guide for background, terminology, guidelines, and code snippets.
+  </CCallout>
+  <CCallout color="success">
+    New to or unfamiliar with flexbox? Read this CSS Tricks flexbox guide for background, terminology, guidelines, and code snippets.
+  </CCallout>
+  <CCallout color="danger">
+    New to or unfamiliar with flexbox? Read this CSS Tricks flexbox guide for background, terminology, guidelines, and code snippets.
+  </CCallout>
+  <CCallout color="warning">
+    New to or unfamiliar with flexbox? Read this CSS Tricks flexbox guide for background, terminology, guidelines, and code snippets.
+  </CCallout>
+  <CCallout color="info">
+    New to or unfamiliar with flexbox? Read this CSS Tricks flexbox guide for background, terminology, guidelines, and code snippets.
+  </CCallout>
+  <CCallout color="light">
+    New to or unfamiliar with flexbox? Read this CSS Tricks flexbox guide for background, terminology, guidelines, and code snippets.
+  </CCallout>
+  <CCallout color="dark">
+    New to or unfamiliar with flexbox? Read this CSS Tricks flexbox guide for background, terminology, guidelines, and code snippets.
+  </CCallout>
+</Playground>
+
+<CCallout color="info">
+  <h5>Conveying meaning to assistive technologies</h5>
+  <p>
+    Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the `.visually-hidden` class.
+  </p>
+</CCallout>
+
+## API
+
+### CCallout
+
+<Props of={CCallout} />

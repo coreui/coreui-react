@@ -1,0 +1,20 @@
+import * as React from 'react'
+import { render /* ,screen */ /* ,fireEvent */ /* ,waitFor */ } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import { CCardHeader } from '../../../index'
+
+test('loads and displays CCardHeader component', async () => {
+  const { container } = render(<CCardHeader>Test</CCardHeader>)
+  expect(container).toMatchSnapshot()
+})
+
+test('CCardHeader customize', async () => {
+  const { container } = render(
+    <CCardHeader className="bazinga" component="h3">
+      Test
+    </CCardHeader>,
+  )
+  expect(container).toMatchSnapshot()
+  expect(container.firstChild).toHaveClass('bazinga')
+  expect(container.firstChild).toHaveClass('card-header')
+})

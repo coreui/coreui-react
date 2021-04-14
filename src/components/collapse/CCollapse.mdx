@@ -1,0 +1,100 @@
+---
+title: React Collapse Component
+name: Collapse
+description: React collapse component toggles the visibility of content across your project with a few classes and some scripts. Useful for a large amount of content.
+menu: Components
+route: /components/collapse
+---
+
+import { Playground, Props } from 'docz'
+import { useState } from 'react'
+import { CButton } from '../button/CButton.tsx'
+import { CCard } from '../card/CCard.tsx'
+import { CCardBody } from '../card/CCardBody.tsx'
+import { CCollapse } from './CCollapse.tsx'
+import { CRow } from '../grid/CRow.tsx'
+import { CCol } from '../grid/CCol.tsx'
+
+## How it works
+
+The collapse component is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. Collapsing an element will animate the `height` from its current value to `0`. Given how CSS handles animations, you cannot use `padding` on a `.collapse` element. Instead, use the class as an independent wrapping element.
+
+## Example
+
+You can use a link or a button component.
+
+<Playground>
+  {() => {
+    const [visible, setVisible] = useState(false)
+    return (
+      <>
+        <CButton href="#" onClick={() => setVisible(!visible)}>Link</CButton>
+        <CButton onClick={() => setVisible(!visible)}>Button</CButton>
+        <CCollapse visible={visible}>
+          <CCard className="mt-3">
+            <CCardBody>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson
+              ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+              sapiente ea proident.
+            </CCardBody>
+          </CCard>
+        </CCollapse>
+      </>
+    )
+  }}
+</Playground>
+
+## Multiple targets
+
+A `<CButton>` can show and hide multiple elements.
+
+<Playground>
+  {() => {
+    const [visibleA, setVisibleA] = useState(false)
+    const [visibleB, setVisibleB] = useState(false)
+    return (
+      <>
+        <CButton onClick={() => setVisibleA(!visibleA)}>Toggle first element</CButton>
+        <CButton onClick={() => setVisibleB(!visibleB)}>Toggle second element</CButton>
+        <CButton
+          onClick={() => {
+            setVisibleA(!visibleA)
+            setVisibleB(!visibleB)
+          }}
+        >
+          Toggle both elements
+        </CButton>
+        <CRow>
+          <CCol xs="6">
+            <CCollapse visible={visibleA}>
+              <CCard className="mt-3">
+                <CCardBody>
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                  richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                  cred nesciunt sapiente ea proident.
+                </CCardBody>
+              </CCard>
+            </CCollapse>
+          </CCol>
+          <CCol xs="6">
+            <CCollapse visible={visibleB}>
+              <CCard className="mt-3">
+                <CCardBody>
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                  richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                  cred nesciunt sapiente ea proident.
+                </CCardBody>
+              </CCard>
+            </CCollapse>
+          </CCol>
+        </CRow>
+      </>
+    )
+  }}
+</Playground>
+
+## API
+
+### CCollapse
+
+<Props of={CCollapse} />

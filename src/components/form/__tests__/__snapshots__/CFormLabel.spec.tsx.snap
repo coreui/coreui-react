@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CFormLabel customize className 1`] = `
+<div>
+  <label
+    class="form-label bazinga"
+  >
+    Test
+  </label>
+</div>
+`;
+
+exports[`CFormLabel customize className and classNameParent 1`] = `
+<div>
+  <label
+    class="classNameParent"
+  >
+    Test
+  </label>
+</div>
+`;
+
+exports[`loads and displays CFormLabel component 1`] = `
+<div>
+  <label
+    class="form-label"
+  >
+    Test
+  </label>
+</div>
+`;

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CFormControl customize 1`] = `
+<div>
+  <h3
+    class="form-control-plaintext form-control-color form-control-lg bazinga"
+    disabled=""
+    readonly=""
+    value="value"
+  />
+</div>
+`;
+
+exports[`CFormControl customize classNameParent 1`] = `
+<div>
+  <input
+    class="classNameParent"
+    type="text"
+  />
+</div>
+`;
+
+exports[`loads and displays CFormControl component 1`] = `
+<div>
+  <input
+    class="form-control"
+    type="text"
+  />
+</div>
+`;

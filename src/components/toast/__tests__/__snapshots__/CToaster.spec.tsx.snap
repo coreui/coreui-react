@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CToaster customize 1`] = `<div />`;
+
+exports[`loads and displays CToaster component 1`] = `<div />`;

@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CDropdown customize 1`] = `
+<div>
+  <li
+    class="nav-item dropdown show dropstart bazinga"
+  >
+    Test
+  </li>
+</div>
+`;
+
+exports[`CDropdown example 1`] = `
+<div>
+  <div
+    class="btn-group"
+  >
+    <button
+      aria-expanded="false"
+      class="btn btn-primary dropdown-toggle"
+      tabindex="0"
+      type="button"
+    >
+      Test
+    </button>
+  </div>
+</div>
+`;
+
+exports[`loads and displays CDropdown component 1`] = `
+<div>
+  <div
+    class="btn-group"
+  >
+    Test
+  </div>
+</div>
+`;

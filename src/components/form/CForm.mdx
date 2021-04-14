@@ -1,0 +1,125 @@
+---
+title: React Form Components
+name: Overview
+description: Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms.
+menu: Forms
+route: /forms/overview
+---
+
+import { Playground, Props } from 'docz'
+import { CButton } from '../button/CButton'
+import { CForm } from './CForm'
+import { CFormCheck } from './CFormCheck'
+import { CFormControl } from './CFormControl'
+import { CFormLabel } from './CFormLabel'
+import { CFormSelect } from './CFormSelect'
+import { CFormText } from './CFormText'
+import { CCol } from '../grid/CCol'
+import { CRow } from '../grid/CRow'
+
+## Overview
+
+CoreUI’s form controls expand on our Rebooted form styles with classes. Use these classes to opt into their customized displays for a more consistent rendering across browsers and devices.
+
+Be sure to use an appropriate `type` attribute on all inputs (e.g., `email` for email address or `number` for numerical information) to take advantage of newer input controls like email verification, number selection, and more.
+
+Here’s a quick example to demonstrate CoreUI’s form styles. Keep reading for documentation on required classes, form layout, and more.
+
+<Playground>
+  <CForm>
+    <div className="mb-3">
+      <CFormLabel htmlFor="exampleInputEmail1">Email address</CFormLabel>
+      <CFormControl type="email" id="exampleInputEmail1" aria-describedby="emailHelp" />
+      <CFormText id="emailHelp">We'll never share your email with anyone else.</CFormText>
+    </div>
+    <div className="mb-3">
+      <CFormLabel htmlFor="exampleInputPassword1">Email Password</CFormLabel>
+      <CFormControl type="password" id="exampleInputPassword1" />
+    </div>
+    <CFormCheck
+      className="mb-3"
+      label="Check me out"
+      onChange={(e) => {
+        console.log(e.target)
+      }}
+    />
+
+    <CButton type="submit" color="primary">
+      Submit
+    </CButton>
+  </CForm>
+</Playground>
+
+## Form text
+
+Block-level or inline-level form text can be created using `<CFormText>`.
+
+Associating form text with form controls
+Form text should be explicitly associated with the form control it relates to using the aria-describedby attribute. This will ensure that assistive technologies—such as screen readers—will announce this form text when the user focuses or enters the control.
+
+Form text below inputs can be styled with `<CFormText>`. If a block-level element will be used, a top margin is added for easy spacing from the inputs above.
+
+<Playground>
+  <CForm>
+    <div className="mb-3">
+      <CFormLabel htmlFor="inputPassword5">Password</CFormLabel>
+      <CFormControl type="password" id="inputPassword5" aria-describedby="passwordHelpBlock" />
+      <CFormText id="passwordHelpBlock">
+        Your password must be 8-20 characters long, contain letters and numbers, and must not
+        contain spaces, special characters, or emoji.
+      </CFormText>
+    </div>
+  </CForm>
+</Playground>
+
+Inline text can use any typical inline HTML element (be it a `<span>`, `<small>`, or something else) with nothing more than the `.form-text` class.
+
+<Playground>
+  <CRow className="g-3 align-items-center">
+    <CCol xs="auto">
+      <CFormLabel htmlFor="inputPassword6" className="col-form-label">Password</CFormLabel>
+    </CCol>
+    <CCol xs="auto">
+      <CFormControl type="password" id="inputPassword6" aria-describedby="passwordHelpInline" />
+    </CCol>
+    <CCol xs="auto">
+      <CFormText component="span" id="passwordHelpInline">
+        Must be 8-20 characters long.
+      </CFormText>
+    </CCol>
+  </CRow>
+</Playground>
+
+## Disabled forms
+
+Add the `disabled` boolean attribute on an input to prevent user interactions and make it appear lighter.
+
+```jsx
+<CFormLabel id="disabledInput" type="text" placeholder="Disabled input here..." disabled/>
+```
+
+Add the `disabled` attribute to a `<fieldset>` to disable all the controls within. Browsers treat all native form controls (`<input>`, `<select>`, and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them.
+
+However, if your form also includes custom button-like elements such as `<CButton>...</CButton>`, these will only be given a style of `pointer-events: none`, meaning they are still focusable and operable using the keyboard. In this case, you must manually modify these controls by adding `tabindex="-1"` to prevent them from receiving focus and `aria-disabled="disabled"` to signal their state to assistive technologies.
+
+<Playground>
+  <CForm>
+    <fieldset disabled>
+      <legend>Disabled fieldset example</legend>
+      <div className="mb-3">
+        <CFormLabel htmlFor="disabledTextInput">Disabled input</CFormLabel>
+        <CFormControl id="disabledTextInput" placeholder="Disabled input"/>
+      </div>
+      <div className="mb-3">
+        <CFormLabel htmlFor="disabledSelect">Disabled select menu</CFormLabel>
+        <CFormSelect id="disabledSelect">
+          <option>Disabled select</option>
+        </CFormSelect>
+      </div>
+      <div className="mb-3">
+        <CFormCheck id="disabledFieldsetCheck" label="Can't check this" disabled/>
+      </div>
+      <CButton type="submit">Submit</CButton>
+    </fieldset>
+  </CForm>
+</Playground>

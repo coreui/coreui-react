@@ -1,0 +1,80 @@
+---
+title: React Badge Component
+name: Badge
+description: React badge component is small count and labeling component.
+
+menu: Components
+route: /components/badge
+---
+
+import { Playground, Props } from 'docz'
+import { CBadge } from './CBadge.tsx'
+import { CButton } from './../button/CButton.tsx'
+
+## Example
+
+Badge component scales to suit the size of the parent element by using relative font sizing and `em` units.
+
+## Basic usage
+
+<Playground>
+  <h1>Example heading <CBadge color="secondary">New</CBadge></h1>
+  <h2>Example heading <CBadge color="secondary">New</CBadge></h2>
+  <h3>Example heading <CBadge color="secondary">New</CBadge></h3>
+  <h4>Example heading <CBadge color="secondary">New</CBadge></h4>
+  <h5>Example heading <CBadge color="secondary">New</CBadge></h5>
+  <h6>Example heading <CBadge color="secondary">New</CBadge></h6>
+</Playground>
+
+Badges can be used as part of links or buttons to provide a counter.
+
+<Playground>
+  <CButton color="primary">
+    Notifications <CBadge color="secondary">4</CBadge>
+  </CButton>
+</Playground>
+
+Remark that depending on how you use them, badges may be complicated for users of screen readers and related assistive technologies.
+
+Unless the context is clear, consider including additional context with a visually hidden piece of additional text.
+
+<Playground>
+  <CButton color="primary">
+    Profile <CBadge color="secondary">9</CBadge>
+    <span className="visually-hidden">unread messages</span>
+  </CButton>
+</Playground>
+
+## Contextual variations
+
+Add any of the below-mentioned `color` props to modify the presentation of a badge.
+
+<Playground>
+  <CBadge color="primary">primary</CBadge>
+  <CBadge color="success">success</CBadge>
+  <CBadge color="danger">danger</CBadge>
+  <CBadge color="warning">warning</CBadge>
+  <CBadge color="info">info</CBadge>
+  <CBadge color="light">light</CBadge>
+  <CBadge color="dark">dark</CBadge>
+</Playground>
+
+## Pill badges
+
+Apply the `shape="rounded-pill"` prop to make badges rounded.
+
+<Playground>
+  <CBadge color="primary" shape="rounded-pill">primary</CBadge>
+  <CBadge color="success" shape="rounded-pill">success</CBadge>
+  <CBadge color="danger" shape="rounded-pill">danger</CBadge>
+  <CBadge color="warning" shape="rounded-pill">warning</CBadge>
+  <CBadge color="info" shape="rounded-pill">info</CBadge>
+  <CBadge color="light" shape="rounded-pill">light</CBadge>
+  <CBadge color="dark" shape="rounded-pill">dark</CBadge>
+</Playground>
+
+## API
+
+### CBadge
+
+<Props of={CBadge} />

@@ -1,0 +1,38 @@
+@import "@coreui/coreui/scss/functions";
+@import "@coreui/coreui/scss/variables";
+@import "@coreui/coreui/scss/mixins";
+@import "@coreui/coreui/scss/utilities";
+
+.docs-example-row {
+  .row {
+    > .col,
+    > [class^="col-"] {
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      background-color: rgba(39, 41, 43, .03);
+      border: 1px solid rgba(39, 41, 43, .1);
+    }
+  }
+
+  .row + .row {
+    margin-top: 1rem;
+  }
+}
+
+.docs-example-row-flex-cols .row {
+  min-height: 10rem;
+  background-color: rgba(255, 0, 0, .1);
+}
+
+.docs-highlight {
+  // background-color: rgba($bd-purple, .15);
+  // border: 1px solid rgba($bd-purple, .15);
+}
+
+.wrapper {
+  width: 100%;
+  padding-left: var(--cui-sidebar-occupy-start, 0);
+  transform: translateZ(0);
+  will-change: auto;
+  @include transition(padding .15s);
+}

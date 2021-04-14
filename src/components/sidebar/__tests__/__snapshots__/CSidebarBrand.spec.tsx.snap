@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSidebarBrand customize 1`] = `
+<div>
+  <div
+    class="sidebar-brand bazinga"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`loads and displays CSidebarBrand component 1`] = `
+<div>
+  <div
+    class="sidebar-brand"
+    color="primary"
+  >
+    Test
+  </div>
+</div>
+`;

@@ -1,0 +1,101 @@
+{
+  "name": "@coreui/react-ts",
+  "version": "4.0.0-alpha.0",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
+  "scripts": {
+    "build": "rollup -c",
+    "docz:dev": "docz dev",
+    "docz:build": "docz build",
+    "docz:serve": "docz build && docz serve",
+    "lint": "eslint 'src/**/*.{js,ts,tsx}'",
+    "format": "prettier-standard --format",
+    "test": "jest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@babel/preset-typescript": "^7.12.7",
+    "@coreui/coreui": "^4.0.0-alpha.1",
+    "@emotion/react": "^11.1.4",
+    "@popperjs/core": "^2.6.0",
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-node-resolve": "^11.1.1",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
+    "@types/classnames": "^2.2.11",
+    "@types/jest": "^24.0.24",
+    "@types/prop-types": "^15.7.3",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/react-transition-group": "^4.4.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-typescript-to-proptypes": "^1.4.2",
+    "babel-preset-gatsby": "^0.11.0",
+    "classnames": "^2.2.6",
+    "core-js": "3",
+    "docz": "^2.3.1",
+    "dom-helpers": "^5.2.0",
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-jsdoc": "^31.6.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "gatsby-plugin-google-gtag": "^3.2.0",
+    "gatsby-plugin-sass": "^3.1.0",
+    "gatsby-plugin-sitemap": "^3.2.0",
+    "jest": "^24.9.0",
+    "node-sass": "^5.0.0",
+    "prettier": "^2.2.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-popper": "^2.2.4",
+    "react-router-dom": "^5.2.0",
+    "react-transition-group": "^4.4.1",
+    "rollup": "^2.38.2",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "standard": "^16.0.3",
+    "standard-prettier": "^1.0.1",
+    "ts-jest": "^24.2.0",
+    "typescript": "^4.1.3"
+  },
+  "peerDependencies": {
+    "react": "^17",
+    "react-dom": "^17",
+    "react-router-dom": "^5.2.0"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "jsdom",
+    "testPathIgnorePatterns": [
+      "dist/"
+    ]
+  },
+  "standard": {
+    "ignore": [
+      "node_modules/",
+      "dist/"
+    ],
+    "globals": [
+      "describe",
+      "it",
+      "test",
+      "expect",
+      "afterAll",
+      "jest"
+    ]
+  }
+}

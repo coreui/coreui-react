@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CModal customize 1`] = `
+<div>
+  <div>
+    <div
+      class="modal-backdrop show"
+    />
+    <div
+      class="modal fade bazinga show d-block"
+      role="dialog"
+      tabindex="-1"
+    >
+      <div
+        class="modal-dialog modal-dialog-centered modal-fullscreen-xl-down modal-dialog-scrollable modal-xl"
+      >
+        <div
+          class="modal-content"
+        >
+          Test
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`loads and displays CModal component 1`] = `
+<div>
+  <div>
+    <div
+      class="modal fade"
+      role="dialog"
+      tabindex="-1"
+    >
+      <div
+        class="modal-dialog"
+      >
+        <div
+          class="modal-content"
+        >
+          Test
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

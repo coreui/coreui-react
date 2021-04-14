@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CButtonClose customize 1`] = `
+<div>
+  <button
+    aria-label="Close"
+    class="btn btn-close btn-close-white bazinga"
+    disabled=""
+  >
+    Test
+  </button>
+</div>
+`;
+
+exports[`loads and displays CButtonClose component 1`] = `
+<div>
+  <button
+    aria-label="Close"
+    class="btn btn-close"
+  >
+    Test
+  </button>
+</div>
+`;

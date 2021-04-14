@@ -1,0 +1,40 @@
+---
+name: Sidebar
+description:
+menu: Components
+route: /components/sidebar
+---
+
+import { Playground, Props } from 'docz'
+import { CSidebar } from './CSidebar'
+import { CSidebarNav } from './CSidebarNav'
+import { CCreateNavItem } from './CCreateNavItem'
+import { CNavGroup } from '../nav/CNavGroup'
+import { CNavGroupItems } from '../nav/CNavGroupItems'
+import { CNavItem } from '../nav/CNavItem'
+import { CNavLink } from '../nav/CNavLink'
+
+import navigation from './_nav'
+
+## Example
+
+<Playground>
+  <CSidebar className="sidebar-show">
+    <CSidebarNav>
+      <CNavLink>aaa</CNavLink>
+      <CNavGroup toggler="group">
+        <CNavLink>g1</CNavLink>
+        <CNavLink>g2</CNavLink>
+        <CNavLink>g3</CNavLink>
+        <CNavGroup toggler="group-2">
+          <CNavLink>g1</CNavLink>
+          <CNavLink>g2</CNavLink>
+          <CNavLink>g3</CNavLink>
+        </CNavGroup>
+      </CNavGroup>
+      <CNavLink>bbb</CNavLink>
+      <CCreateNavItem items={navigation}/>
+      <CNavLink>ccc</CNavLink>
+    </CSidebarNav>
+  </CSidebar>
+</Playground>

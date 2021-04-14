@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CAlert customize 1`] = `
+<div>
+  <div
+    class="alert bg-secondary text-white alert-dismissible bazinga"
+    role="alert"
+    style="transition: opacity 150ms linear; opacity: 1;"
+  >
+    Test
+    <button
+      aria-label="Close"
+      class="btn btn-close"
+    />
+  </div>
+</div>
+`;
+
+exports[`loads and displays CAlert component 1`] = `
+<div>
+  <div
+    class="alert alert-primary"
+    role="alert"
+    style="transition: opacity 150ms linear; opacity: 1;"
+  >
+    Test
+  </div>
+</div>
+`;

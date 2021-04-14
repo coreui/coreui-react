@@ -1,0 +1,25 @@
+import * as React from 'react'
+import { render /* ,screen */ /* ,fireEvent */ /* ,waitFor */ } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import { CNavbarBrand } from '../../../index'
+
+test('loads and displays CNavbarBrand component', async () => {
+  const { container } = render(<CNavbarBrand>Test</CNavbarBrand>)
+  expect(container).toMatchSnapshot()
+})
+
+test('CNavbarBrand witch href', async () => {
+  const { container } = render(<CNavbarBrand href="/bazinga">Test</CNavbarBrand>)
+  expect(container).toMatchSnapshot()
+})
+
+test('CNavbarBrand customize', async () => {
+  const { container } = render(
+    <CNavbarBrand className="bazinga" component="h3" href="/bazinga">
+      Test
+    </CNavbarBrand>,
+  )
+  expect(container).toMatchSnapshot()
+  expect(container.firstChild).toHaveClass('navbar-brand')
+  expect(container.firstChild).toHaveClass('bazinga')
+})

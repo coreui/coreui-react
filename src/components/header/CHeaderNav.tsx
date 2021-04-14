@@ -1,0 +1,29 @@
+import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import classNames from 'classnames'
+
+export interface CHeaderNavProps extends HTMLAttributes<HTMLDivElement | HTMLUListElement> {
+  /**
+   * A string of all className you want applied to the component. [docs]
+   */
+  className?: string
+  /**
+   * Component used for the root node. Either a string to use a HTML element or a component. [docs]
+   *
+   * @default 'ul'
+   */
+  component?: string | ElementType
+}
+
+export const CHeaderNav = forwardRef<HTMLDivElement | HTMLUListElement, CHeaderNavProps>(
+  ({ children, component: Component = 'ul', className, ...rest }, ref) => {
+    const _className = classNames('header-nav', className)
+
+    return (
+      <Component className={_className} role="navigation" {...rest} ref={ref}>
+        {children}
+      </Component>
+    )
+  },
+)
+
+CHeaderNav.displayName = 'CHeaderNav'

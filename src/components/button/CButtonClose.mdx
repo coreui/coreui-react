@@ -1,0 +1,43 @@
+---
+title: React Close Button Component
+name: Close Button
+description: A generic close button component for dismissing content like modals and alerts.
+menu: Components
+route: /components/buttons
+---
+
+import { Playground, Props } from 'docz'
+import { CButtonClose } from './CButtonClose.tsx'
+
+## Example
+
+Provide an option to dismiss or close a component with `<CButtonClose>`. Default styling is limited, but highly customizable. Modify the Sass variables to replace the default `background-image`.
+
+<Playground>
+  <CButtonClose/>
+</Playground>
+
+## Disabled state
+
+Disabled close buttons change their `opacity`. We've also applied `pointer-events: none` and `user-select: none` to preventing hover and active states from triggering.
+
+<Playground>
+  <CButtonClose disabled/>
+</Playground>
+
+## White variant
+
+Change the default `<CButtonClose>` to be white with the `white` boolean property.
+
+<Playground>
+  <div className="bg-dark">
+    <CButtonClose white/>
+    <CButtonClose white disabled/>
+  </div>
+</Playground>
+
+## API
+
+### CButtonClose
+
+<Props of={CButtonClose} />

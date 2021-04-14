@@ -1,0 +1,145 @@
+import React, {
+  forwardRef,
+  HTMLAttributes,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react'
+import { createPortal } from 'react-dom'
+import classNames from 'classnames'
+
+import { Breakpoints } from '../Types'
+import { useForkedRef } from '../../utils/hooks'
+
+export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
+  /**
+   * A string of all className you want applied to the component. [docs]
+   */
+  className?: string
+  // hide?: boolean
+  narrow?: boolean
+  /**
+   * Method called before the hide animation has started. [docs]
+   */
+  onHide?: () => void
+  /**
+   * Method called before the show animation has started. [docs]
+   */
+  onShow?: () => void
+  overlaid?: boolean
+  position?: 'fixed' | 'sticky'
+  selfHiding?: Breakpoints | boolean
+  show?: boolean
+  unfoldable?: boolean
+}
+
+export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
+  (
+    {
+      children,
+      className,
+      narrow,
+      onHide,
+      onShow,
+      overlaid,
+      position,
+      selfHiding,
+      unfoldable,
+      show,
+      ...rest
+    },
+    ref,
+  ) => {
+    const sidebarRef = useRef<HTMLDivElement>(null)
+    const forkedRef = useForkedRef(ref, sidebarRef)
+    const [_show, setShow] = useState(show)
+    const [mobile, setMobile] = useState(false)
+
+    const isOnMobile = (element: React.RefObject<HTMLDivElement>) =>
+      Boolean(
+        element.current && getComputedStyle(element.current).getPropertyValue('--cui-is-mobile'),
+      )
+
+    useLayoutEffect(() => {
+      setMobile(isOnMobile(sidebarRef))
+    })
+
+    useEffect(() => {
+      setShow(show)
+      setMobile(isOnMobile(sidebarRef))
+    }, [show])
+
+    useEffect(() => {
+      setMobile(isOnMobile(sidebarRef))
+      _show && onShow && onShow()
+    }, [_show])
+
+    useEffect(() => {
+      window.addEventListener('mouseup', handleClickOutside)
+      sidebarRef.current && sidebarRef.current.addEventListener('mouseup', handleOnClick)
+      window.addEventListener('keyup', handleKeyup)
+
+      return () => {
+        window.removeEventListener('mouseup', handleClickOutside)
+        sidebarRef.current && sidebarRef.current.removeEventListener('mouseup', handleOnClick)
+        window.removeEventListener('keyup', handleKeyup)
+      }
+    })
+
+    const handleHide = () => {
+      if (_show) {
+        setShow(false)
+        onHide && onHide()
+      }
+    }
+
+    const handleKeyup = (event: Event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target as HTMLElement)) {
+        handleHide()
+      }
+    }
+    const handleClickOutside = (event: Event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target as HTMLElement)) {
+        handleHide()
+      }
+    }
+
+    const handleOnClick = (event: Event) => {
+      const target = event.target as HTMLAnchorElement
+      target &&
+        target.className.includes('nav-link') &&
+        !target.className.includes('nav-group-toggle') &&
+        mobile &&
+        handleHide()
+    }
+
+    const _className = classNames(
+      'sidebar',
+      {
+        'sidebar-narrow': narrow,
+        'sidebar-overlaid': overlaid,
+        [`sidebar-${position}`]: position,
+        [`sidebar-self-hiding${typeof selfHiding !== 'boolean' && '-' + selfHiding}`]: selfHiding,
+        'sidebar-narrow-unfoldable': unfoldable,
+        show: _show,
+      },
+      className,
+    )
+
+    return (
+      <>
+        <div className={_className} {...rest} ref={forkedRef}>
+          {children}
+        </div>
+        {typeof window !== 'undefined' &&
+          createPortal(
+            mobile && _show && <div className="sidebar-backdrop fade show"></div>,
+            document.body,
+          )}
+      </>
+    )
+  },
+)
+
+CSidebar.displayName = 'CSidebar'

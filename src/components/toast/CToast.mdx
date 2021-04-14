@@ -1,0 +1,66 @@
+---
+title: React Toast Component
+name: Toast
+description: Push notifications to your visitors with a toast, a lightweight and easily customizable alert message.
+menu: Components
+route: /components/toast
+---
+
+import { useState, useRef } from 'react'
+import { Playground, Props } from 'docz'
+import { CButton } from '../button/CButton.tsx'
+import { CToast } from './CToast.tsx'
+import { CToaster } from './CToaster.tsx'
+
+React toasts are lightweight notifications designed to mimic the push notifications that have been popularized by mobile and desktop operating systems. They’re built with flexbox, so they’re easy to align and position.
+
+## Overview
+
+Things to know when using the toast plugin:
+
+- Toasts are opt-in for performance reasons, so **you must initialize them yourself**.
+- Toasts will automatically hide if you do not specify `autohide: false`.
+
+## Examples
+
+### Basic
+
+To encourage extensible and predictable toasts, we recommend a header and body. Toast headers use `display: flex`, allowing easy alignment of content thanks to our margin and flexbox utilities.
+
+Toasts are as flexible as you need and have very little required markup. At a minimum, we require a single element to contain your "toasted" content and strongly encourage a dismiss button.
+
+<Playground>
+  <CToast
+    icon={
+      <svg
+        className="rounded me-2"
+        width="20"
+        height="20"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+        role="img"
+      >
+        <rect width="100%" height="100%" fill="#007aff"></rect>
+      </svg>
+    }
+    title="CoreUI for React.js"
+    time="7 min ago"
+    autohide={false}
+  >
+    Hello, world! This is a toast message.
+  </CToast>
+</Playground>
+
+<Playground>
+  {() => {
+    const [toast, addToast] = useState(0)
+    const toaster = useRef()
+    return (
+      <>
+        <CButton onClick={() => addToast({ title: 'test' })}>Send a toast</CButton>
+        <CToaster ref={toaster} push={toast} placement="top-end" />
+      </>
+    )
+  }}
+</Playground>

@@ -1,0 +1,127 @@
+---
+title: React Header Component
+name: Header
+description: Documentation and examples for the Header powerful, responsive navigation header. Includes support for branding, links, dropdowns, and more.
+
+menu: Components
+route: /components/header
+---
+
+import { Playground, Props } from 'docz'
+import { useState } from 'react'
+import { CContainer } from '../grid/CContainer.tsx'
+import { CCollapse } from '../collapse/CCollapse.tsx'
+import { CDropdown } from '../dropdown/CDropdown.tsx'
+import { CDropdownDivider } from '../dropdown/CDropdownDivider.tsx'
+import { CDropdownHeader } from '../dropdown/CDropdownHeader.tsx'
+import { CDropdownItem } from '../dropdown/CDropdownItem.tsx'
+import { CDropdownItemPlain } from '../dropdown/CDropdownItemPlain.tsx'
+import { CDropdownMenu } from '../dropdown/CDropdownMenu.tsx'
+import { CDropdownToggle } from '../dropdown/CDropdownToggle.tsx'
+import { CNav } from '../nav/CNav.tsx'
+import { CNavItem } from '../nav/CNavItem.tsx'
+import { CNavLink } from '../nav/CNavLink.tsx'
+import { CHeader } from './CHeader.tsx'
+import { CHeaderBrand } from './CHeaderBrand.tsx'
+import { CHeaderDivider } from './CHeaderDivider.tsx'
+import { CHeaderNav } from './CHeaderNav.tsx'
+import { CHeaderText } from './CHeaderText.tsx'
+import { CHeaderToggler } from './CHeaderToggler.tsx'
+
+## Example
+
+Here's what you need to know before getting started with the header:
+
+- Headers require a wrapping `.header` with `.header-expand{-sm|-md|-lg|-xl|-xxl}` for responsive collapsing and [color scheme](#color-schemes) classes.
+- Headers and their contents are fluid by default. Change the [container](#containers) to limit their horizontal width in different ways.
+- Use our [spacing](https://coreui.io/docs/utilities/spacing" >}}) and [flex](https://coreui.io/docs/4.0/utilities/flex) utility classes for controlling spacing and alignment within headers.
+- Headers are responsive by default, but you can easily modify them to change that. Responsive behavior depends on our Collapse JavaScript plugin.
+- Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every header to explicitly identify it as a landmark region for users of assistive technologies.
+- Indicate the current item by using `aria-current="page"` for the current page or `aria-current="true"` for the current item in a set.
+
+## Supported content
+
+Headers come with built-in support for a handful of sub-components. Choose from the following as needed:
+
+- `.header-brand` for your company, product, or project name.
+- `.header-nav` for a full-height and lightweight navigation (including support for dropdowns).
+- `.header-toggler` for use with our collapse plugin and other [navigation toggling](#responsive-behaviors) behaviors.
+- Flex and spacing utilities for any form controls and actions.
+- `.header-text` for adding vertically centered strings of text.
+- `.collapse.header-collapse` for grouping and hiding header contents by a parent breakpoint.
+
+Here's an example of all the sub-components included in a responsive light-themed header that automatically collapses at the `lg` (large) breakpoint.
+
+## Basic usage
+
+<Playground>
+  {() => {
+    const [visible, setVisible] = useState(false)
+    return (
+      <>
+        <CHeader>
+          <CContainer fluid>
+            <CHeaderBrand href="#">Header</CHeaderBrand>
+            <CHeaderToggler onClick={() => setVisible(!visible)} />
+            <CCollapse className="header-collapse" visible={visible}>
+              <CHeaderNav>
+                <CNavItem>
+                  <CNavLink href="#" active>
+                    Home
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="#">Link</CNavLink>
+                </CNavItem>
+                <CDropdown variant="nav-item">
+                  <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
+                  <CDropdownMenu>
+                    <CDropdownItem href="#">Action</CDropdownItem>
+                    <CDropdownItem href="#">Another action</CDropdownItem>
+                    <CDropdownDivider />
+                    <CDropdownItem href="#">Something else here</CDropdownItem>
+                  </CDropdownMenu>
+                </CDropdown>
+                <CNavItem>
+                  <CNavLink href="#" disabled>
+                    Disabled
+                  </CNavLink>
+                </CNavItem>
+              </CHeaderNav>
+              {/* <form className="d-flex">
+          <input className="form-control me-2" type="search" placeholder="Search">
+          <button className="btn btn-outline-success" type="submit">Search</button>
+        </form> */}
+            </CCollapse>
+          </CContainer>
+        </CHeader>
+      </>
+    )
+  }}
+</Playground>
+
+## API
+
+### CHeader
+
+<Props of={CHeader} />
+
+### CHeaderBrand
+
+<Props of={CHeaderBrand} />
+
+### CHeaderDivider
+
+<Props of={CHeaderDivider} />
+
+### CHeaderNav
+
+<Props of={CHeaderNav} />
+
+### CHeaderText
+
+<Props of={CHeaderText} />
+
+### CHeaderToggler
+
+<Props of={CHeaderToggler} />

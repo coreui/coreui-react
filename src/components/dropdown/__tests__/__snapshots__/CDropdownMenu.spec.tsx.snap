@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CDropdownMenu customize 1`] = `
+<div>
+  <div
+    class="btn-group show"
+  >
+    <div
+      aria-hidden="false"
+      class="dropdown-menu show bazinga"
+      role="menu"
+      style="position: absolute; left: 0px; top: 0px;"
+    >
+      Test
+    </div>
+  </div>
+</div>
+`;
+
+exports[`loads and displays CDropdownMenu component 1`] = `<div />`;

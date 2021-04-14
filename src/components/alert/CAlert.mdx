@@ -1,0 +1,133 @@
+---
+title: React Alert Component
+name: Alert
+description: React alert component gives contextual feedback information for common user operations. The alert component is delivered with a bunch of usable and adjustable alert messages.
+menu: Components
+route: /components/alert
+---
+
+import { Playground, Props } from 'docz'
+import { CCallout } from '../callout/CCallout'
+
+import { CAlert } from './CAlert.tsx'
+import { CAlertHeading } from './CAlertHeading.tsx'
+import { CAlertLink } from './CAlertLink.tsx'
+
+
+## Examples
+
+React Alert is prepared for any length of text, as well as an optional close button. For a styling, use one of the **required** contextual `color` props (e.g., `primary`). For inline dismissal, use the [dismissing prop](#dismissing).
+
+<Playground>
+  <CAlert color="primary">
+    A simple primary alert—check it out!
+  </CAlert>
+  <CAlert color="secondary">
+    A simple secondary alert—check it out!
+  </CAlert>
+  <CAlert color="success">
+    A simple success alert—check it out!
+  </CAlert>
+  <CAlert color="danger">
+    A simple danger alert—check it out!
+  </CAlert>
+  <CAlert color="warning">
+    A simple warning alert—check it out!
+  </CAlert>
+  <CAlert color="info">
+    A simple info alert—check it out!
+  </CAlert>
+  <CAlert color="light">
+    A simple light alert—check it out!
+  </CAlert>
+  <CAlert color="dark">
+    A simple dark alert—check it out!
+  </CAlert>
+</Playground>
+
+<CCallout color="info">
+  <h5>Conveying meaning to assistive technologies</h5>
+  <p>
+    Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the `.visually-hidden` class.
+  </p>
+</CCallout>
+
+## Link color
+
+Use the `<CAlertLink>` component to immediately give matching colored links inside any alert.
+
+<Playground>
+  <CAlert color="primary">
+    A simple primary alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
+  </CAlert>
+  <CAlert color="secondary">
+    A simple secondary alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
+  </CAlert>
+  <CAlert color="success">
+    A simple success alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
+  </CAlert>
+  <CAlert color="danger">
+    A simple danger alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
+  </CAlert>
+  <CAlert color="warning">
+    A simple warning alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
+  </CAlert>
+  <CAlert color="info">
+    A simple info alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
+  </CAlert>
+  <CAlert color="light">
+    A simple light alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
+  </CAlert>
+  <CAlert color="dark">
+    A simple dark alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
+  </CAlert>
+</Playground>
+
+## Additional content
+
+Alert can also incorporate supplementary components &amp; elements like heading, paragraph, and divider.
+
+<Playground>
+  <CAlert color="success">
+    <CAlertHeading tag="h4">Well done!</CAlertHeading>
+    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+    <hr />
+    <p className="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+  </CAlert>
+</Playground>
+
+## Dismissing
+
+Alerts can also be easily dismissed. Just add the `dismissible` prop.
+
+<Playground>
+  <CAlert
+    color="warning"
+    dismissible
+    onDismissed={() => {
+      alert("👋 Well, hi there! Thanks for dismissing me.");
+    }}
+  >
+    <strong>Go right ahead</strong> and click that dimiss over there on the right.
+  </CAlert>
+</Playground>
+
+<CCallout color="warning">
+  <p>
+    When an alert is dismissed, the element is completely removed from the page structure. If a keyboard user dismisses the alert using the close button, their focus will suddenly be lost and, depending on the browser, reset to the start of the page/document.
+  </p>
+</CCallout>
+
+## API
+
+### CAlert
+
+<Props of={CAlert} />
+
+### CAlertHeading
+
+<Props of={CAlertHeading} />
+
+### CAlertLink
+
+<Props of={CAlertLink} />

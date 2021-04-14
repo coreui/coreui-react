@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CNavItem customize 1`] = `
+<div>
+  <li
+    class="nav-item bazinga"
+  >
+    <h3
+      aria-current="page"
+      class="nav-link bazinga active disabled"
+      disabled=""
+      href="/bazinga"
+    >
+      Test
+    </h3>
+  </li>
+</div>
+`;
+
+exports[`CNavItem customize 2`] = `
+<div>
+  <li
+    class="nav-item bazinga"
+  >
+    <h3
+      aria-current="page"
+      class="nav-link bazinga active disabled"
+      disabled=""
+      href="/bazinga"
+    >
+      Test
+    </h3>
+  </li>
+</div>
+`;
+
+exports[`loads and displays CNavItem component 1`] = `
+<div>
+  <li
+    class="nav-item"
+  >
+    Test
+  </li>
+</div>
+`;

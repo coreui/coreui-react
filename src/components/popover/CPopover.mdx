@@ -1,0 +1,61 @@
+---
+title: React Popover Component
+name: Popover
+description: Documentation and examples for adding React popovers, like those found in iOS, to any element on your site.
+
+menu: Components
+route: /components/popover
+---
+
+import { Playground, Props } from 'docz'
+import { CPopover } from './CPopover.tsx'
+import { CButton } from './../button/CButton.tsx'
+
+## Example
+
+<Playground>
+  <CPopover
+    title="Popover title"
+    content="And here’s some amazing content. It’s very engaging. Right?"
+    placement="end"
+  >
+    <CButton color="danger" size="lg">Click to toggle popover</CButton>
+  </CPopover>
+</Playground>
+
+### Four directions
+
+Four options are available: top, right, bottom, and left aligned. Directions are mirrored when using CoreUI for React in RTL.
+
+<Playground>
+  <CPopover
+    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+    placement="top"
+  >
+    <CButton color="secondary">Popover on top</CButton>
+  </CPopover>
+  <CPopover
+    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+    placement="end"
+  >
+    <CButton color="secondary">Popover on right</CButton>
+  </CPopover>
+  <CPopover
+    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+    placement="bottom"
+  >
+    <CButton color="secondary">Popover on bottom</CButton>
+  </CPopover>
+  <CPopover
+    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+    placement="start"
+  >
+    <CButton color="secondary">Popover on left</CButton>
+  </CPopover>
+</Playground>
+
+## API
+
+### CPopover
+
+<Props of={CPopover} />
