@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://coreui.io/">
-    <img src="https://coreui.io/images/brand/coreui-signet.svg" alt="CoreUI logo" width="200">
+    <img src="https://coreui.io/images/brand/coreui-signet.svg" alt="CoreUI logo" width="200"/>
   </a>
 </p>
 
@@ -9,7 +9,7 @@
 <p align="center">
   React.js Components Library built on top of Bootstrap 5 and TypeScript.
   <br>
-  <a href="https://coreui.io/react/docs/4.0/"><strong>Explore CoreUI docs »</strong></a>
+  <a href="https://coreui.io/react/docs/4.0/getting-started/introduction"><strong>Explore CoreUI docs »</strong></a>
   <br>
   <br>
   <a href="https://github.com/coreui/coreui-react/issues/new?template=bug_report.md">Report bug</a>
@@ -98,7 +98,7 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 ## Documentation
 
-The documentation for the CoreUI & CoreUI PRO is hosted at our website [CoreUI](https://coreui.io/)
+The documentation for the CoreUI & CoreUI PRO is hosted at our website [CoreUI for React](https://coreui.io/react/docs/4.0/getting-started/introduction)
 
 ### Running documentation locally
 
