@@ -2,7 +2,7 @@ export default {
   title: 'CoreUI for React.js',
   public: '/public',
   base: '/react/docs/4.0/',
-  ignore: ['CHANGELOG.md'],
+  ignore: ['CHANGELOG.md', 'README.md'],
   typescript: true,
   menu: [
     {
