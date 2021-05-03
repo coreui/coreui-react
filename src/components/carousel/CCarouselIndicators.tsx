@@ -1,4 +1,5 @@
 import React, { FC, HTMLAttributes, useContext, RefObject } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Context } from './CCarousel'
 
@@ -7,14 +8,12 @@ export interface CCarouselIndicatorsProps extends HTMLAttributes<HTMLOListElemen
    * A string of all className you want applied to the base component. [docs]
    */
   className?: string
-
   /**
    * Inner ref of main element. [docs]
    *
    * @type RefObject<HTMLOListElement> | {(): void}
    */
   innerRef?: RefObject<HTMLOListElement> | { (): void }
-
   /**
    * Indicators section user classes. [docs]
    *
@@ -56,3 +55,11 @@ export const CCarouselIndicators: FC<CCarouselIndicatorsProps> = ({
     </ol>
   )
 }
+
+CCarouselIndicators.propTypes = {
+  className: PropTypes.string,
+  indicatorsClass: PropTypes.string,
+  innerRef: PropTypes.any, // TODO: check
+}
+
+CCarouselIndicators.displayName = 'CCarouselIndicators'

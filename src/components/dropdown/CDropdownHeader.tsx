@@ -1,4 +1,5 @@
 import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CDropdownHeaderProps extends HTMLAttributes<HTMLHeadingElement> {
@@ -8,6 +9,8 @@ export interface CDropdownHeaderProps extends HTMLAttributes<HTMLHeadingElement>
   className?: string
   /**
    * Component used for the root node. Either a string to use a HTML element or a component. [docs]
+   *
+   * @default 'h6'
    */
   component?: string | ElementType
 }
@@ -23,5 +26,11 @@ export const CDropdownHeader = forwardRef<HTMLHeadingElement, CDropdownHeaderPro
     )
   },
 )
+
+CDropdownHeader.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  component: PropTypes.elementType,
+}
 
 CDropdownHeader.displayName = 'CDropdownHeader'

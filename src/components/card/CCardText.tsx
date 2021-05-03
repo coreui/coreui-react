@@ -1,4 +1,5 @@
 import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CCardTextProps extends HTMLAttributes<HTMLParagraphElement> {
@@ -25,5 +26,11 @@ export const CCardText = forwardRef<HTMLParagraphElement, CCardTextProps>(
     )
   },
 )
+
+CCardText.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  component: PropTypes.elementType,
+}
 
 CCardText.displayName = 'CCardText'

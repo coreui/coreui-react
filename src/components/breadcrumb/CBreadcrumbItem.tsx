@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { CLink } from '../link/CLink'
@@ -32,5 +33,12 @@ export const CBreadcrumbItem = forwardRef<HTMLLIElement, CBreadcrumbItemProps>(
     )
   },
 )
+
+CBreadcrumbItem.propTypes = {
+  active: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  href: PropTypes.string,
+}
 
 CBreadcrumbItem.displayName = 'CBreadcrumbItem'

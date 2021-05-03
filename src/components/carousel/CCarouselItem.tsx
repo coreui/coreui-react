@@ -7,10 +7,10 @@ import React, {
   useRef,
   RefObject,
 } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Context } from './CCarousel'
 import { Transition } from 'react-transition-group'
-
 export interface CCarouselItemProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * A string of all className you want applied to the base component. [docs]
@@ -129,3 +129,11 @@ export const CCarouselItem: FC<CCarouselItemProps> = ({
     </Transition>
   )
 }
+
+CCarouselItem.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  innerRef: PropTypes.any,
+}
+
+CCarouselItem.displayName = 'CCarouselItem'

@@ -1,4 +1,5 @@
 import React, { FC, HTMLAttributes, RefObject } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CCarouselCaptionProps extends HTMLAttributes<HTMLDivElement> {
@@ -22,3 +23,10 @@ export const CCarouselCaption: FC<CCarouselCaptionProps> = ({ className, innerRe
 
   return <div className={classes} {...rest} ref={innerRef} />
 }
+
+CCarouselCaption.propTypes = {
+  className: PropTypes.string,
+  innerRef: PropTypes.any,
+}
+
+CCarouselCaption.displayName = 'CCarouselCaption'

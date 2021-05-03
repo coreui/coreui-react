@@ -7,6 +7,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Manager } from 'react-popper'
 
@@ -178,3 +179,18 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
     )
   },
 )
+
+CDropdown.propTypes = {
+  alignment: PropTypes.any, // TODO: refactor
+  children: PropTypes.node,
+  className: PropTypes.string,
+  component: PropTypes.elementType,
+  dark: PropTypes.bool,
+  direction: PropTypes.oneOf(['dropup', 'dropend', 'dropstart']),
+  placement: PropTypes.any, // TODO: refactor
+  popper: PropTypes.bool,
+  variant: PropTypes.oneOf(['btn-group', 'dropdown', 'nav-item']),
+  visible: PropTypes.bool,
+}
+
+CDropdown.displayName = 'CDropdown'

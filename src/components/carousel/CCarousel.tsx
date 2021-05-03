@@ -1,4 +1,5 @@
 import React, { FC, RefObject, HTMLAttributes, useState, useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CCarouselProps extends HTMLAttributes<HTMLDivElement> {
@@ -6,35 +7,30 @@ export interface CCarouselProps extends HTMLAttributes<HTMLDivElement> {
    * A string of all className you want applied to the base component. [docs]
    */
   className?: string
-
   /**
    * Inner ref of main element. [docs]
    *
    * @type RefObject<HTMLDivElement> | {():void}
    */
-  innerRef?: RefObject<HTMLDivElement> | { (): void }
-
+  innerRef?: RefObject<HTMLDivElement> | { (): void } // TODO: check
   /**
    * index of the active item. [docs]
    *
    * @type number
    */
   activeIndex?: number
-
   /**
    * Slide starts on beginning. [docs]
    *
    * @type number
    */
   autoSlide?: number
-
   /**
    * Set 'animate' variable for created context. [docs]
    *
    * @type boolean
    */
   animate?: boolean
-
   /**
    * On slide change callback. [docs]
    *
@@ -67,10 +63,6 @@ export const Context = React.createContext<ContextType>({
   setAnimating: (_) => {},
   setState: (_) => {},
 })
-
-// CCarousel.defaultProps = {
-//   activeIndex: 0
-// }
 
 export const CCarousel: FC<CCarouselProps> = ({
   className,
@@ -134,3 +126,15 @@ export const CCarousel: FC<CCarouselProps> = ({
     </div>
   )
 }
+
+CCarousel.propTypes = {
+  activeIndex: PropTypes.number,
+  animate: PropTypes.bool,
+  autoSlide: PropTypes.number,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  innerRef: PropTypes.any, // TODO: check
+  onSlideChange: PropTypes.func,
+}
+
+CCarousel.displayName = 'CCarousel'

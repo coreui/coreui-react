@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CBreadcrumbProps extends HTMLAttributes<HTMLOListElement> {
@@ -20,5 +21,10 @@ export const CBreadcrumb = forwardRef<HTMLOListElement, CBreadcrumbProps>(
     )
   },
 )
+
+CBreadcrumb.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+}
 
 CBreadcrumb.displayName = 'CBreadcrumb'

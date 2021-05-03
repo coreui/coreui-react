@@ -1,4 +1,5 @@
 import React, { ButtonHTMLAttributes, ElementType, forwardRef } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors, Shapes } from '../Types'
@@ -46,7 +47,7 @@ export interface CButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    *
    * @type 'sm' | 'lg'
    */
-  size?: 'sm' | 'lg' | string
+  size?: 'sm' | 'lg'
   /**
    * Specifies the type of button. Always specify the type attribute for the <button> element.
    * Different browsers may use different default types for the <button> element. [docs]
@@ -96,5 +97,16 @@ export const CButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, CButton
     )
   },
 )
+
+CButton.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  color: PropTypes.string,
+  component: PropTypes.elementType,
+  shape: PropTypes.string,
+  size: PropTypes.oneOf(['sm', 'lg']),
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  variant: PropTypes.oneOf(['outline', 'ghost']),
+}
 
 CButton.displayName = 'CButton'

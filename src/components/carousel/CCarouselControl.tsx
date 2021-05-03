@@ -1,26 +1,27 @@
 import React, { FC, HTMLAttributes, RefObject, useContext } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Context } from './CCarousel'
 
-export interface CCarouselControlProps extends HTMLAttributes<HTMLAnchorElement> {
+type Direction = 'prev' | 'next'
+
+export interface CCarouselControlProps extends HTMLAttributes<HTMLElement> {
   /**
    * A string of all className you want applied to the base component. [docs]
    */
   className?: string
-
   /**
    *  Inner ref of main element. [docs]
    *
    * @type RefObject<HTMLDivElement> | {(): void}
    */
   innerRef?: RefObject<HTMLAnchorElement> | { (): void }
-
   /**
    *  Direction. [docs]
    *
    * @type 'prev' | 'next'
    */
-  direction: 'prev' | 'next'
+  direction: Direction
 }
 
 export const CCarouselControl: FC<CCarouselControlProps> = ({
@@ -55,3 +56,12 @@ export const CCarouselControl: FC<CCarouselControlProps> = ({
     </a>
   )
 }
+
+CCarouselControl.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  direction: PropTypes.oneOf<Direction>(['prev', 'next']).isRequired, // TODO: check
+  innerRef: PropTypes.any,
+}
+
+CCarouselControl.displayName = 'CCarouselControl'

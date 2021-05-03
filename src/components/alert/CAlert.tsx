@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes, useState } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
 
@@ -13,7 +14,7 @@ export interface CAlertProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
    *
-   * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
+   * @type {'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string }
    * @default 'primary'
    */
   color: Colors
@@ -106,5 +107,16 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
     )
   },
 )
+
+CAlert.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  color: PropTypes.string.isRequired,
+  dismissible: PropTypes.bool,
+  onDismiss: PropTypes.func,
+  onDismissed: PropTypes.func,
+  variant: PropTypes.string,
+  visible: PropTypes.bool,
+}
 
 CAlert.displayName = 'CAlert'

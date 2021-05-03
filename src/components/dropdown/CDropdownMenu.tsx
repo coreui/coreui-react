@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { ElementType, FC, HTMLAttributes, useContext } from 'react'
 import classNames from 'classnames'
 import { Popper, PopperChildrenProps } from 'react-popper'
@@ -115,3 +116,11 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
     </>
   )
 }
+
+CDropdownMenu.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  component: PropTypes.elementType,
+}
+
+CDropdownMenu.displayName = 'CDropdownMenu'

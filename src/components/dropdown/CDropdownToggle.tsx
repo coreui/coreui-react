@@ -1,4 +1,5 @@
 import React, { FC, useContext } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Reference } from 'react-popper'
 
@@ -82,3 +83,13 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
 
   return popper ? <Reference>{({ ref }) => Toggler(ref)}</Reference> : Toggler()
 }
+
+CDropdownToggle.propTypes = {
+  caret: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  split: PropTypes.bool,
+  trigger: PropTypes.any, //TODO: refactor
+}
+
+CDropdownToggle.displayName = 'CDropdownToggle'

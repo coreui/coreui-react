@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors } from '../Types'
@@ -11,7 +12,7 @@ export interface CCalloutProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
    *
-   * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
+   * @type {'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string}
    */
   color?: Colors
 }
@@ -33,3 +34,11 @@ export const CCallout = forwardRef<HTMLDivElement, CCalloutProps>(
     )
   },
 )
+
+CCallout.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  color: PropTypes.string,
+}
+
+CCallout.displayName = 'CCallout'

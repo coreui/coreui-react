@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors } from '../Types'
@@ -40,3 +41,12 @@ export const CCard = forwardRef<HTMLDivElement, CCardProps>(
     )
   },
 )
+
+CCard.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  color: PropTypes.string,
+  textColor: PropTypes.string,
+}
+
+CCard.displayName = 'CCard'

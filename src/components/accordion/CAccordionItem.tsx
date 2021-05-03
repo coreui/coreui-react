@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CAccordionItemProps extends HTMLAttributes<HTMLDivElement> {
@@ -19,5 +20,10 @@ export const CAccordionItem = forwardRef<HTMLDivElement, CAccordionItemProps>(
     )
   },
 )
+
+CAccordionItem.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+}
 
 CAccordionItem.displayName = 'CAccordionItem'

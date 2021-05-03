@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors, Shapes } from '../Types'
@@ -11,7 +12,7 @@ export interface CAvatarProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
    *
-   * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
+   * @type {'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string}
    */
   color?: Colors
   /**
@@ -22,7 +23,7 @@ export interface CAvatarProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Select the shape of the component. [docs]
    *
-   * @type 'rounded' | 'rounded-top' | 'rounded-end' | 'rounded-bottom' | 'rounded-start' | 'rounded-circle' | 'rounded-pill' | 'rounded-0' | 'rounded-1' | 'rounded-2' | 'rounded-3' | string
+   * @type {'rounded' | 'rounded-top' | 'rounded-end' | 'rounded-bottom' | 'rounded-start' | 'rounded-circle' | 'rounded-pill' | 'rounded-0' | 'rounded-1' | 'rounded-2' | 'rounded-3' | string}
    */
   shape?: Shapes
   /**
@@ -32,13 +33,13 @@ export interface CAvatarProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Sets the color context of the status indicator to one of CoreUI’s themed colors. [docs]
    *
-   * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
+   * @type {'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string}
    */
   status?: Colors
   /**
    * Sets the text color of the component to one of CoreUI’s themed colors. [docs]
    */
-  textColor?: 'white'
+  textColor?: string
 }
 
 export const CAvatar = forwardRef<HTMLDivElement, CAvatarProps>(
@@ -63,5 +64,16 @@ export const CAvatar = forwardRef<HTMLDivElement, CAvatarProps>(
     )
   },
 )
+
+CAvatar.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  color: PropTypes.string,
+  image: PropTypes.any,
+  shape: PropTypes.string,
+  size: PropTypes.string,
+  status: PropTypes.string,
+  textColor: PropTypes.string,
+}
 
 CAvatar.displayName = 'CAvatar'

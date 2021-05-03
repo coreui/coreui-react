@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CCardGroupProps extends HTMLAttributes<HTMLDivElement> {
@@ -19,5 +20,10 @@ export const CCardGroup = forwardRef<HTMLDivElement, CCardGroupProps>(
     )
   },
 )
+
+CCardGroup.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+}
 
 CCardGroup.displayName = 'CCardGroup'

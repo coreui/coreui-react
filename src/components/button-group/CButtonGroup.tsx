@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
@@ -17,8 +18,10 @@ export interface CButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
   // role?: string
   /**
    * Size the component small or large. [docs]
+   *
+   * @type {'sm' | 'lg'}
    */
-  size?: string
+  size?: 'sm' | 'lg'
   /**
    * Create a set of buttons that appear vertically stacked rather than horizontally. Split button dropdowns are not supported here. [docs]
    */
@@ -57,3 +60,12 @@ export const CButtonGroup = forwardRef<HTMLDivElement, CButtonGroupProps>(
     )
   },
 )
+
+CButtonGroup.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  size: PropTypes.oneOf(['sm', 'lg']),
+  vertical: PropTypes.bool,
+}
+
+CButtonGroup.displayName = 'CButtonGroup'

@@ -1,4 +1,5 @@
 import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CAlertHeadingProps extends HTMLAttributes<HTMLHeadingElement> {
@@ -25,5 +26,11 @@ export const CAlertHeading = forwardRef<HTMLHeadingElement, CAlertHeadingProps>(
     )
   },
 )
+
+CAlertHeading.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  component: PropTypes.elementType,
+}
 
 CAlertHeading.displayName = 'CAlertHeading'

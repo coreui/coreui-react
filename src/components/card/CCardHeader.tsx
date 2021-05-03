@@ -1,4 +1,5 @@
 import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CCardHeaderProps extends HTMLAttributes<HTMLDivElement> {
@@ -25,5 +26,11 @@ export const CCardHeader = forwardRef<HTMLDivElement, CCardHeaderProps>(
     )
   },
 )
+
+CCardHeader.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  component: PropTypes.elementType,
+}
 
 CCardHeader.displayName = 'CCardHeader'
