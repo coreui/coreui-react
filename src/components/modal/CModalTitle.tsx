@@ -1,4 +1,5 @@
 import React, { ElementType, FC, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CModalTitleProps extends HTMLAttributes<HTMLHeadingElement> {
@@ -28,3 +29,11 @@ export const CModalTitle: FC<CModalTitleProps> = ({
     </Component>
   )
 }
+
+CModalTitle.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  component: PropTypes.elementType,
+}
+
+CModalTitle.displayName = 'CModalTitle'

@@ -1,4 +1,5 @@
 import React, { HTMLAttributes, forwardRef } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CTabContentProps extends HTMLAttributes<HTMLDivElement> {
@@ -18,5 +19,10 @@ export const CTabContent = forwardRef<HTMLDivElement, CTabContentProps>(
     )
   },
 )
+
+CTabContent.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+}
 
 CTabContent.displayName = 'CTabContent'

@@ -1,4 +1,5 @@
 import React, { ChangeEventHandler, forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CFormRangeProps extends HTMLAttributes<HTMLInputElement> {
@@ -44,5 +45,9 @@ export const CFormRange = forwardRef<HTMLInputElement, CFormRangeProps>(
     return <input type="range" className={_className} {...rest} ref={ref} />
   },
 )
+
+CFormRange.propTypes = {
+  className: PropTypes.string,
+}
 
 CFormRange.displayName = 'CFormRange'

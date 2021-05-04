@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors } from '../Types'
@@ -13,7 +14,7 @@ export interface CTableHeadProps extends HTMLAttributes<HTMLTableSectionElement>
    *
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
-  color: Colors
+  color?: Colors
 }
 
 export const CTableHead = forwardRef<HTMLTableSectionElement, CTableHeadProps>(
@@ -32,3 +33,11 @@ export const CTableHead = forwardRef<HTMLTableSectionElement, CTableHeadProps>(
     )
   },
 )
+
+CTableHead.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  color: PropTypes.string,
+}
+
+CTableHead.displayName = 'CTableHead'

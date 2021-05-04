@@ -1,4 +1,5 @@
 import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { CLink } from '../link/CLink'
@@ -50,3 +51,11 @@ export const CPaginationItem = forwardRef<HTMLAnchorElement, CPaginationItemProp
     )
   },
 )
+
+CPaginationItem.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  component: PropTypes.elementType,
+}
+
+CPaginationItem.displayName = 'CPaginationItem'

@@ -1,11 +1,16 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-export type BPObject = {
-  span: 'auto' | number | boolean
-  offset: number
-  order: 'first' | 'last' | number
+type Span = 'auto' | number | string | boolean | null
+
+type BPObject = {
+  span?: Span
+  offset?: number | string | null
+  order?: 'first' | 'last' | number | string | null
 }
+
+type Col = Span | BPObject
 
 export interface CColProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -15,39 +20,39 @@ export interface CColProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * The number of columns/offset/order on extra small devices (<576px). [docs]
    *
-   * @type { 'auto' | number | boolean | { span: 'auto' | number | boolean } | { offset: number } | { order: 'first' | 'last' | number }}
+   * @type { 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}
    */
-  xs?: 'auto' | number | boolean | BPObject
+  xs?: Col
   /**
    * The number of columns/offset/order on small devices (<768px). [docs]
    *
-   * @type { 'auto' | number | boolean | { span: 'auto' | number | boolean } | { offset: number } | { order: 'first' | 'last' | number }}
+   * @type { 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}
    */
-  sm?: 'auto' | number | boolean | BPObject
+  sm?: Col
   /**
    * The number of columns/offset/order on medium devices (<992px). [docs]
    *
-   * @type { 'auto' | number | boolean | { span: 'auto' | number | boolean } | { offset: number } | { order: 'first' | 'last' | number }}
+   * @type { 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}
    */
-  md?: 'auto' | number | boolean | BPObject
+  md?: Col
   /**
    * The number of columns/offset/order on large devices (<1200px). [docs]
    *
-   * @type { 'auto' | number | boolean | { span: 'auto' | number | boolean } | { offset: number } | { order: 'first' | 'last' | number }}
+   * @type { 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}
    */
-  lg?: 'auto' | number | boolean | BPObject
+  lg?: Col
   /**
    * The number of columns/offset/order on X-Large devices (<1400px). [docs]
    *
-   * @type { 'auto' | number | boolean | { span: 'auto' | number | boolean } | { offset: number } | { order: 'first' | 'last' | number }}
+   * @type { 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}
    */
-  xl?: 'auto' | number | boolean | BPObject
+  xl?: Col
   /**
    * The number of columns/offset/order on XX-Large devices (≥1400px). [docs]
    *
-   * @type { 'auto' | number | boolean | { span: 'auto' | number | boolean } | { offset: number } | { order: 'first' | 'last' | number }}
+   * @type { 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}
    */
-  xxl?: 'auto' | number | boolean | BPObject
+  xxl?: Col
 }
 
 const BREAKPOINTS = [
@@ -81,7 +86,7 @@ export const CCol = forwardRef<HTMLDivElement, CColProps>(
         repsonsiveCLassNames.push(`col${infix}`)
       }
 
-      if (typeof breakpoint === 'object') {
+      if (breakpoint && typeof breakpoint === 'object') {
         // if (typeof breakpoint.span === 'string' && breakpoint.span === 'auto') {
         //   repsonsiveCLassNames.push(`col${infix}-auto`)
         // }
@@ -116,5 +121,32 @@ export const CCol = forwardRef<HTMLDivElement, CColProps>(
     )
   },
 )
+
+const span = PropTypes.oneOfType([
+  PropTypes.bool,
+  PropTypes.number,
+  PropTypes.string,
+  PropTypes.oneOf(['auto']),
+])
+
+const col = PropTypes.oneOfType([
+  span,
+  PropTypes.shape({
+    span: span,
+    offset: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    order: PropTypes.oneOfType([
+      PropTypes.oneOf(['first', 'last']),
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+  }),
+])
+
+CCol.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  xs: col,
+  sm: col,
+}
 
 CCol.displayName = 'CCol'

@@ -1,4 +1,5 @@
 import React, { FC, HTMLAttributes, useCallback, useLayoutEffect, useRef, useState } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
 
@@ -17,18 +18,30 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    * A string of all className you want applied to the base component. [docs]
    */
   className?: string
+  /**
+   * TODO: . [docs]
+   */
   duration?: number
+  /**
+   * TODO: . [docs]
+   */
   fullscreen?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
   /**
    * Does the modal dialog itself scroll, or does the whole dialog scroll within the window. [docs]
    */
   onDismiss?: () => void
+  /**
+   * TODO: . [docs]
+   */
   scrollable?: boolean
   /**
    * Size the component small, large, or extra large. [docs]
    */
   size?: 'sm' | 'lg' | 'xl'
-  transition?: 'fade' | boolean
+  /**
+   * TODO: . [docs]
+   */
+  transition?: boolean
   /**
    * Toggle the visibility of alert component. [docs]
    */
@@ -44,7 +57,7 @@ export const CModal: FC<CModalProps> = ({
   onDismiss,
   scrollable,
   size,
-  transition = 'fade',
+  transition = true,
   visible,
 }) => {
   const ref = useRef<HTMLDivElement>(null)
@@ -74,8 +87,8 @@ export const CModal: FC<CModalProps> = ({
     'modal',
     {
       'modal-static': staticBackdrop,
+      'fade': transition
     },
-    transition,
     className,
   )
 
@@ -133,3 +146,21 @@ export const CModal: FC<CModalProps> = ({
     </div>
   )
 }
+
+CModal.propTypes = {
+  alignment: PropTypes.oneOf(['top', 'center']),
+  children: PropTypes.node,
+  className: PropTypes.string,
+  duration: PropTypes.number,
+  fullscreen: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl'>(['sm', 'md', 'lg', 'xl', 'xxl']),
+  ]),
+  onDismiss: PropTypes.func,
+  scrollable: PropTypes.bool,
+  size: PropTypes.oneOf(['sm', 'lg', 'xl']),
+  transition: PropTypes.bool,
+  visible: PropTypes.bool,
+}
+
+CModal.displayName = 'CModal'

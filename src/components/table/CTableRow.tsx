@@ -1,11 +1,18 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors } from '../Types'
 
 export interface CTableRowProps extends HTMLAttributes<HTMLTableRowElement> {
+  /**
+   * TODO:. [docs]
+   */
   active?: boolean
-  align?: 'bottom' | 'middle' | 'top' | string
+  /**
+   * TODO:. [docs]
+   */
+  align?: 'bottom' | 'middle' | 'top'
   /**
    * A string of all className you want applied to the component. [docs]
    */
@@ -15,7 +22,7 @@ export interface CTableRowProps extends HTMLAttributes<HTMLTableRowElement> {
    *
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
-  color: Colors
+  color?: Colors
 }
 
 export const CTableRow = forwardRef<HTMLTableRowElement, CTableRowProps>(
@@ -36,3 +43,13 @@ export const CTableRow = forwardRef<HTMLTableRowElement, CTableRowProps>(
     )
   },
 )
+
+CTableRow.propTypes = {
+  active: PropTypes.bool,
+  align: PropTypes.oneOf(['bottom', 'middle', 'top']),
+  children: PropTypes.node,
+  className: PropTypes.string,
+  color: PropTypes.string,
+}
+
+CTableRow.displayName = 'CTableRow'

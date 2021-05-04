@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CPaginationProps extends HTMLAttributes<HTMLUListElement> {
@@ -22,3 +23,11 @@ export const CPagination = forwardRef<HTMLUListElement, CPaginationProps>(
     )
   },
 )
+
+CPagination.propTypes = {
+  children: PropTypes.any,
+  className: PropTypes.any,
+  size: PropTypes.oneOf(['sm', 'lg']),
+}
+
+CPagination.displayName = 'CPagination'

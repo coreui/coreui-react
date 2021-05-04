@@ -1,4 +1,5 @@
 import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CHeaderNavProps extends HTMLAttributes<HTMLDivElement | HTMLUListElement> {
@@ -25,5 +26,11 @@ export const CHeaderNav = forwardRef<HTMLDivElement | HTMLUListElement, CHeaderN
     )
   },
 )
+
+CHeaderNav.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  component: PropTypes.elementType,
+}
 
 CHeaderNav.displayName = 'CHeaderNav'

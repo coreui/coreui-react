@@ -1,4 +1,5 @@
 import React, { CSSProperties, forwardRef } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { CTooltipProps } from './CTooltip'
 import { PopperChildrenProps } from 'react-popper'
@@ -24,5 +25,13 @@ export const CTooltipContent = forwardRef<HTMLDivElement, CTooltipContentProps>(
     </div>
   ),
 )
+
+CTooltipContent.propTypes = {
+  arrowProps: PropTypes.any,
+  content: PropTypes.node,
+  placementClassNamePostfix: PropTypes.any,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  transitionClass: PropTypes.string,
+}
 
 CTooltipContent.displayName = 'CTooltipContent'

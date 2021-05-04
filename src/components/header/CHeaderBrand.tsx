@@ -1,4 +1,5 @@
 import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CHeaderBrandProps extends HTMLAttributes<HTMLAnchorElement | HTMLSpanElement> {
@@ -25,5 +26,11 @@ export const CHeaderBrand = forwardRef<HTMLAnchorElement | HTMLSpanElement, CHea
     )
   },
 )
+
+CHeaderBrand.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  component: PropTypes.elementType,
+}
 
 CHeaderBrand.displayName = 'CHeaderBrand'

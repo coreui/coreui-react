@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors, Shapes } from '../Types'
@@ -25,7 +26,7 @@ export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
    *
    * @type 'sm' | 'lg'
    */
-  buttonSize?: 'sm' | 'lg' | string
+  buttonSize?: 'sm' | 'lg'
   /**
    * Set the button variant to an outlined button or a ghost button. [docs]
    */
@@ -48,16 +49,16 @@ export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
    */
   size?: 'lg' | 'xl'
   /**
+   * Render component as a toggle switch. [docs]
+   */
+  switch?: boolean
+  /**
    * Specifies the type of component. [docs]
    *
    * @type checkbox' | 'radio' | string
    * @default 'checkbox'
    */
   type?: 'checkbox' | 'radio' | string
-  /**
-   * Render component as a toggle switch. [docs]
-   */
-  switch?: boolean
   /**
    * TODO: . [docs]
    */
@@ -148,5 +149,22 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
     )
   },
 )
+
+CFormCheck.propTypes = {
+  button: PropTypes.bool,
+  buttonColor: PropTypes.string,
+  buttonShape: PropTypes.string,
+  buttonSize: PropTypes.oneOf(['sm', 'lg']),
+  buttonVariant: PropTypes.oneOf(['outline', 'ghost']),
+  className: PropTypes.string,
+  id: PropTypes.string,
+  inline: PropTypes.bool,
+  invalid: PropTypes.bool,
+  label: PropTypes.string,
+  size: PropTypes.oneOf(['lg', 'xl']),
+  switch: PropTypes.bool,
+  type: PropTypes.string, // TODO: check
+  valid: PropTypes.bool,
+}
 
 CFormCheck.displayName = 'CFormCheck'

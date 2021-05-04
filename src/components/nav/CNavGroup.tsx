@@ -1,16 +1,38 @@
-import React, { CSSProperties, ElementType, forwardRef, useContext, useRef, useState } from 'react'
+import React, {
+  CSSProperties,
+  ElementType,
+  forwardRef,
+  ReactNode,
+  useContext,
+  useRef,
+  useState,
+} from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
 
 import { CNavContext } from '../sidebar/CSidebarNav'
 export interface CNavGroupProps {
+  children?: ReactNode
   /**
    * A string of all className you want applied to the component. [docs]
    */
   className?: string
+  /**
+   * TODO: . [docs]
+   */
   icon?: string | ElementType
-  toggler: string
+  /**
+   * TODO: . [docs]
+   */
+  toggler?: string
+  /**
+   * TODO: . [docs]
+   */
   visible?: boolean
+  /**
+   * TODO: . [docs]
+   */
   idx?: string
 }
 
@@ -108,5 +130,14 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
     )
   },
 )
+
+CNavGroup.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  idx: PropTypes.string,
+  toggler: PropTypes.string,
+  visible: PropTypes.bool,
+}
 
 CNavGroup.displayName = 'CNavGroup'

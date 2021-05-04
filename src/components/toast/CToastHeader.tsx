@@ -1,4 +1,5 @@
 import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CToastHeaderProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
@@ -27,5 +28,13 @@ export const CToastHeader = forwardRef<HTMLDivElement, CToastHeaderProps>(
     )
   },
 )
+
+CToastHeader.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  time: PropTypes.string,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+}
 
 CToastHeader.displayName = 'CToastHeader'

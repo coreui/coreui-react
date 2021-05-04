@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CSidebarHeaderProps extends HTMLAttributes<HTMLDivElement> {
@@ -18,5 +19,10 @@ export const CSidebarHeader = forwardRef<HTMLDivElement, CSidebarHeaderProps>(
     )
   },
 )
+
+CSidebarHeader.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+}
 
 CSidebarHeader.displayName = 'CSidebarHeader'

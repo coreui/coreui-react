@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { CCard } from '../card/CCard'
@@ -35,5 +36,12 @@ export const CWidgetSimple = forwardRef<HTMLDivElement, CWidgetSimpleProps>(
     )
   },
 )
+
+CWidgetSimple.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  title: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+}
 
 CWidgetSimple.displayName = 'CWidgetSimple'

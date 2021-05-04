@@ -1,11 +1,12 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export type BPObject = {
-  cols?: 'auto' | number
-  gutter?: number
-  gutterX?: number
-  gutterY?: number
+  cols?: 'auto' | number | string | null
+  gutter?: number | string | null
+  gutterX?: number | string | null
+  gutterY?: number | string | null
 }
 
 export interface CRowProps extends HTMLAttributes<HTMLDivElement> {
@@ -16,39 +17,39 @@ export interface CRowProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * The number of columns/offset/order on extra small devices (<576px). [docs]
    *
-   * @type {{ cols: 'auto' | number} | { gutter: number } | { gutterX: number } | { gutterY: number }}
+   * @type {{ cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }}
    */
-  xs?: 'auto' | number | boolean | BPObject
+  xs?: BPObject
   /**
    * The number of columns/offset/order on small devices (<768px). [docs]
    *
-   * @type {{ cols: 'auto' | number} | { gutter: number } | { gutterX: number } | { gutterY: number }}
+   * @type {{ cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }}
    */
-  sm?: 'auto' | number | boolean | BPObject
+  sm?: BPObject
   /**
    * The number of columns/offset/order on medium devices (<992px). [docs]
    *
-   * @type {{ cols: 'auto' | number} | { gutter: number } | { gutterX: number } | { gutterY: number }}
+   * @type {{ cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }}
    */
-  md?: 'auto' | number | boolean | BPObject
+  md?: BPObject
   /**
    * The number of columns/offset/order on large devices (<1200px). [docs]
    *
-   * @type {{ cols: 'auto' | number} | { gutter: number } | { gutterX: number } | { gutterY: number }}
+   * @type {{ cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }}
    */
-  lg?: 'auto' | number | boolean | BPObject
+  lg?: BPObject
   /**
    * The number of columns/offset/order on X-Large devices (<1400px). [docs]
    *
-   * @type {{ cols: 'auto' | number} | { gutter: number } | { gutterX: number } | { gutterY: number }}
+   * @type {{ cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }}
    */
-  xl?: 'auto' | number | boolean | BPObject
+  xl?: BPObject
   /**
    * The number of columns/offset/order on XX-Large devices (≥1400px). [docs]
    *
-   * @type {{ cols: 'auto' | number} | { gutter: number } | { gutterX: number } | { gutterY: number }}
+   * @type {{ cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }}
    */
-  xxl?: 'auto' | number | boolean | BPObject
+  xxl?: BPObject
 }
 
 const BREAKPOINTS = [
@@ -95,5 +96,23 @@ export const CRow = forwardRef<HTMLDivElement, CRowProps>(
     )
   },
 )
+
+const bp = PropTypes.shape({
+  cols: PropTypes.oneOfType([PropTypes.oneOf(['auto']), PropTypes.number, PropTypes.string]),
+  gutter: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  gutterX: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  gutterY: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+})
+
+CRow.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  xs: bp,
+  sm: bp,
+  md: bp,
+  lg: bp,
+  xl: bp,
+  xxl: bp,
+}
 
 CRow.displayName = 'CRow'

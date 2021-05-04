@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors } from '../Types'
@@ -62,5 +63,13 @@ export const CProgressBar = forwardRef<HTMLDivElement, CProgressBarProps>(
     )
   },
 )
+CProgressBar.propTypes = {
+  animated: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  color: PropTypes.string,
+  value: PropTypes.number,
+  variant: PropTypes.any,
+}
 
 CProgressBar.displayName = 'CProgressBar'

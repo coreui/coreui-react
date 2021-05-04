@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CNavbarTextProps extends HTMLAttributes<HTMLSpanElement> {
@@ -19,5 +20,10 @@ export const CNavbarText = forwardRef<HTMLSpanElement, CNavbarTextProps>(
     )
   },
 )
+
+CNavbarText.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+}
 
 CNavbarText.displayName = 'CNavbarText'

@@ -1,11 +1,18 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors } from '../Types'
 
 export interface CTableDataCellProps extends HTMLAttributes<HTMLTableDataCellElement> {
+  /**
+   * TODO:. [docs]
+   */
   active?: boolean
-  align?: 'bottom' | 'middle' | 'top' | string
+  /**
+   * TODO:. [docs]
+   */
+  align?: 'bottom' | 'middle' | 'top'
   /**
    * A string of all className you want applied to the component. [docs]
    */
@@ -15,7 +22,7 @@ export interface CTableDataCellProps extends HTMLAttributes<HTMLTableDataCellEle
    *
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
-  color: Colors
+  color?: Colors
 }
 
 export const CTableDataCell = forwardRef<HTMLTableDataCellElement, CTableDataCellProps>(
@@ -36,3 +43,13 @@ export const CTableDataCell = forwardRef<HTMLTableDataCellElement, CTableDataCel
     )
   },
 )
+
+CTableDataCell.propTypes = {
+  active: PropTypes.bool,
+  align: PropTypes.oneOf(['bottom', 'middle', 'top']),
+  children: PropTypes.node,
+  className: PropTypes.string,
+  color: PropTypes.string, // TODO: refactor, update all color PropTypes
+}
+
+CTableDataCell.displayName = 'CTableDataCell'

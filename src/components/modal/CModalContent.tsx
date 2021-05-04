@@ -1,4 +1,5 @@
 import React, { FC, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CModalContentProps extends HTMLAttributes<HTMLDivElement> {
@@ -17,3 +18,10 @@ export const CModalContent: FC<CModalContentProps> = ({ children, className, ...
     </div>
   )
 }
+
+CModalContent.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+}
+
+CModalContent.displayName = 'CModalContent'

@@ -1,4 +1,5 @@
 import React, { FC, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CModalDialogProps extends HTMLAttributes<HTMLDivElement> {
@@ -12,6 +13,9 @@ export interface CModalDialogProps extends HTMLAttributes<HTMLDivElement> {
    * A string of all className you want applied to the base component. [docs]
    */
   className?: string
+  /**
+   * TODO: . [docs]
+   */
   fullscreen?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
   /**
    * Does the modal dialog itself scroll, or does the whole dialog scroll within the window. [docs]
@@ -51,3 +55,17 @@ export const CModalDialog: FC<CModalDialogProps> = ({
     </div>
   )
 }
+
+CModalDialog.propTypes = {
+  alignment: PropTypes.oneOf(['top', 'center']),
+  children: PropTypes.node,
+  className: PropTypes.string,
+  fullscreen: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl'>(['sm', 'md', 'lg', 'xl', 'xxl']),
+  ]),
+  scrollable: PropTypes.bool,
+  size: PropTypes.oneOf(['sm', 'lg', 'xl']),
+}
+
+CModalDialog.displayName = 'CModalDialog'

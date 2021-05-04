@@ -1,4 +1,5 @@
 import React, { ElementType, forwardRef, HTMLAttributes, useMemo } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors } from '../Types'
@@ -58,5 +59,12 @@ export const CWidgetBrand = forwardRef<HTMLDivElement, CWidgetBrandProps>(
     )
   },
 )
+
+CWidgetBrand.propTypes = {
+  className: PropTypes.string,
+  color: PropTypes.string,
+  headerChildren: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  values: PropTypes.arrayOf(PropTypes.any),
+}
 
 CWidgetBrand.displayName = 'CWidgetBrand'

@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes, useEffect, useState, useRef } from 'react'
+import PropTypes from 'prop-types'
 import { createPortal } from 'react-dom'
 import classNames from 'classnames'
 
@@ -26,6 +27,9 @@ export interface CToasterProps extends HTMLAttributes<HTMLDivElement> {
     | 'bottom-center'
     | 'bottom-end'
     | string
+  /**
+   * TODO:. [docs]
+   */
   push?: CToastProps
 }
 
@@ -82,5 +86,27 @@ export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
     )
   },
 )
+
+CToaster.propTypes = {
+  children: PropTypes.any,
+  className: PropTypes.any,
+  placement: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.oneOf([
+      'top-start',
+      'top-center',
+      'top-end',
+      'middle-start',
+      'middle-center',
+      'middle-end',
+      'bottom-start',
+      'bottom-center',
+      'bottom-end',
+    ]),
+  ]),
+  push: PropTypes.shape({
+    ...CToast.propTypes,
+  }),
+}
 
 CToaster.displayName = 'CToaster'

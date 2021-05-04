@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CFormSelectProps extends HTMLAttributes<HTMLSelectElement> {
@@ -44,5 +45,14 @@ export const CFormSelect = forwardRef<HTMLSelectElement, CFormSelectProps>(
     )
   },
 )
+
+CFormSelect.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  htmlSize: PropTypes.number,
+  invalid: PropTypes.bool,
+  size: PropTypes.oneOf(['sm', 'lg']),
+  valid: PropTypes.bool,
+}
 
 CFormSelect.displayName = 'CFormSelect'

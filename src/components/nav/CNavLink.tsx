@@ -1,4 +1,5 @@
 import React, { ElementType, forwardRef, useContext, useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { useForkedRef } from '../../utils/hooks'
@@ -58,5 +59,12 @@ export const CNavLink = forwardRef<
     </CLink>
   )
 })
+
+CNavLink.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  idx: PropTypes.string,
+}
 
 CNavLink.displayName = 'CNavLink'

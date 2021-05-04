@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CToastBodyProps extends HTMLAttributes<HTMLDivElement> {
@@ -18,5 +19,10 @@ export const CToastBody = forwardRef<HTMLDivElement, CToastBodyProps>(
     )
   },
 )
+
+CToastBody.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+}
 
 CToastBody.displayName = 'CToastBody'

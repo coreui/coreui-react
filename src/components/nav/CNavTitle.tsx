@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CNavTitleProps extends HTMLAttributes<HTMLLIElement> {
@@ -18,5 +19,10 @@ export const CNavTitle = forwardRef<HTMLLIElement, CNavTitleProps>(
     )
   },
 )
+
+CNavTitle.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+}
 
 CNavTitle.displayName = 'CNavTitle'

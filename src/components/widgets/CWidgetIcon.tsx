@@ -1,4 +1,5 @@
 import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors } from '../Types'
@@ -47,5 +48,16 @@ export const CWidgetIcon = forwardRef<HTMLDivElement, CWidgetIconProps>(
     )
   },
 )
+
+CWidgetIcon.propTypes = {
+  className: PropTypes.string,
+  color: PropTypes.string,
+  footer: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  iconPadding: PropTypes.number,
+  padding: PropTypes.number,
+  title: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+}
 
 CWidgetIcon.displayName = 'CWidgetIcon'

@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CFormProps extends HTMLAttributes<HTMLFormElement> {
@@ -22,5 +23,11 @@ export const CForm = forwardRef<HTMLFormElement, CFormProps>(
     )
   },
 )
+
+CForm.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  validated: PropTypes.bool,
+}
 
 CForm.displayName = 'CForm'

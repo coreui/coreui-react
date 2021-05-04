@@ -1,4 +1,5 @@
 import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CNavbarNavProps extends HTMLAttributes<HTMLDivElement | HTMLUListElement> {
@@ -25,5 +26,11 @@ export const CNavbarNav = forwardRef<HTMLDivElement | HTMLUListElement, CNavbarN
     )
   },
 )
+
+CNavbarNav.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  component: PropTypes.elementType,
+}
 
 CNavbarNav.displayName = 'CNavbarNav'

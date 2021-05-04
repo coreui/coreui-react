@@ -1,4 +1,5 @@
 import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CListGroupProps extends HTMLAttributes<HTMLDivElement | HTMLUListElement> {
@@ -46,5 +47,20 @@ export const CListGroup = forwardRef<HTMLDivElement | HTMLUListElement, CListGro
     )
   },
 )
+
+CListGroup.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  component: PropTypes.elementType,
+  flush: PropTypes.bool,
+  layout: PropTypes.oneOf([
+    'horizontal',
+    'horizontal-sm',
+    'horizontal-md',
+    'horizontal-lg',
+    'horizontal-xl',
+    'horizontal-xxl',
+  ]),
+}
 
 CListGroup.displayName = 'CListGroup'

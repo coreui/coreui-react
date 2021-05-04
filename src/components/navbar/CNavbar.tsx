@@ -1,4 +1,5 @@
 import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors } from '../Types'
@@ -86,5 +87,29 @@ export const CNavbar = forwardRef<HTMLDivElement, CNavbarProps>(
     )
   },
 )
+
+CNavbar.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  color: PropTypes.string,
+  colorScheme: PropTypes.oneOf(['dark', 'light']),
+  component: PropTypes.elementType,
+  container: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fluid'>([
+      'sm',
+      'md',
+      'lg',
+      'xl',
+      'xxl',
+      'fluid',
+    ]),
+  ]),
+  expand: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl'>(['sm', 'md', 'lg', 'xl', 'xxl']),
+  ]),
+  placement: PropTypes.oneOf(['fixed-top', 'fixed-bottom', 'sticky-top']),
+}
 
 CNavbar.displayName = 'CNavbar'

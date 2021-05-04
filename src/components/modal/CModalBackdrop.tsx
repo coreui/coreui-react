@@ -1,4 +1,5 @@
 import React, { FC, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CModalBackdropProps extends HTMLAttributes<HTMLDivElement> {
@@ -17,3 +18,10 @@ export const CModalBackdrop: FC<CModalBackdropProps> = ({ children, className, .
     </div>
   )
 }
+
+CModalBackdrop.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+}
+
+CModalBackdrop.displayName = 'CModalBackdrop'

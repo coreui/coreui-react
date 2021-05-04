@@ -1,6 +1,7 @@
 // TODO: fix possition
 
 import React, { FC, ReactNode, useState } from 'react'
+import PropTypes from 'prop-types'
 import { createPortal } from 'react-dom'
 import { Manager, Popper, Reference } from 'react-popper'
 import { Transition } from 'react-transition-group'
@@ -121,3 +122,12 @@ export const CPopover: FC<CPopoverProps> = ({
     </Manager>
   )
 }
+
+CPopover.propTypes = {
+  children: PropTypes.any,
+  placement: PropTypes.any, // TODO: refactor
+  trigger: PropTypes.any, // TODO: refactor
+  visible: PropTypes.bool,
+}
+
+CPopover.displayName = 'CPopover'

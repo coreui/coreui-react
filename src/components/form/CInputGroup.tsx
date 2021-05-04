@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CInputGroupProps extends HTMLAttributes<HTMLDivElement> {
@@ -30,5 +31,11 @@ export const CInputGroup = forwardRef<HTMLDivElement, CInputGroupProps>(
     )
   },
 )
+
+CInputGroup.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  size: PropTypes.oneOf(['sm', 'lg']),
+}
 
 CInputGroup.displayName = 'CInputGroup'

@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CHeaderProps extends HTMLAttributes<HTMLDivElement> {
@@ -36,5 +37,22 @@ export const CHeader = forwardRef<HTMLDivElement, CHeaderProps>(
     )
   },
 )
+
+CHeader.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  container: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fluid'>([
+      'sm',
+      'md',
+      'lg',
+      'xl',
+      'xxl',
+      'fluid',
+    ]),
+  ]),
+  position: PropTypes.oneOf(['fixed', 'sticky']),
+}
 
 CHeader.displayName = 'CHeader'

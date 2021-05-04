@@ -1,4 +1,5 @@
 import React, { createContext, forwardRef, HTMLAttributes, useState } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CSidebarNavProps extends HTMLAttributes<HTMLUListElement> {
@@ -40,5 +41,10 @@ export const CSidebarNav = forwardRef<HTMLUListElement, CSidebarNavProps>(
     )
   },
 )
+
+CSidebarNav.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+}
 
 CSidebarNav.displayName = 'CSidebarNav'

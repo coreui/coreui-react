@@ -1,13 +1,26 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors } from '../Types'
 
 export interface CTableProps extends HTMLAttributes<HTMLTableElement> {
-  align?: 'bottom' | 'middle' | 'top' | string
+  align?: 'bottom' | 'middle' | 'top'
+  /**
+   * TODO:. [docs]
+   */
   borderColor?: Colors
+  /**
+   * TODO:. [docs]
+   */
   bordered?: boolean
+  /**
+   * TODO:. [docs]
+   */
   borderless?: boolean
+  /**
+   * TODO:. [docs]
+   */
   caption?: 'top'
   /**
    * A string of all className you want applied to the component. [docs]
@@ -18,10 +31,22 @@ export interface CTableProps extends HTMLAttributes<HTMLTableElement> {
    *
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
-  color: Colors
+  color?: Colors
+  /**
+   * TODO:. [docs]
+   */
   hover?: boolean
+  /**
+   * TODO:. [docs]
+   */
   responsive?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
+  /**
+   * TODO:. [docs]
+   */
   small?: boolean
+  /**
+   * TODO:. [docs]
+   */
   striped?: boolean
 }
 
@@ -77,3 +102,23 @@ export const CTable = forwardRef<HTMLTableElement, CTableProps>(
     )
   },
 )
+
+CTable.propTypes = {
+  align: PropTypes.oneOf(['bottom', 'middle', 'top']),
+  borderColor: PropTypes.string,
+  bordered: PropTypes.bool,
+  borderless: PropTypes.bool,
+  caption: PropTypes.oneOf(['top']),
+  children: PropTypes.node,
+  className: PropTypes.string,
+  color: PropTypes.string,
+  hover: PropTypes.bool,
+  responsive: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl'>(['sm', 'md', 'lg', 'xl', 'xxl']),
+  ]),
+  small: PropTypes.bool,
+  striped: PropTypes.bool,
+}
+
+CTable.displayName = 'CTable'

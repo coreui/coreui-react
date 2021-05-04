@@ -8,6 +8,7 @@ import React, {
   useState,
 } from 'react'
 import { Transition } from 'react-transition-group'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors } from '../Types'
@@ -45,8 +46,17 @@ export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
    * @default true
    */
   dismissible?: boolean
+  /**
+   * TODO:. [docs]
+   */
   icon?: string | ElementType
+  /**
+   * TODO:. [docs]
+   */
   key?: number
+  /**
+   * TODO:. [docs]
+   */
   time?: string
   /**
    * Title node for your component. [docs]
@@ -191,5 +201,20 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
     )
   },
 )
+
+CToast.propTypes = {
+  autohide: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  color: PropTypes.string,
+  delay: PropTypes.number,
+  dismissible: PropTypes.bool,
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  key: PropTypes.number,
+  onDismiss: PropTypes.func,
+  time: PropTypes.string,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  visible: PropTypes.bool,
+}
 
 CToast.displayName = 'CToast'

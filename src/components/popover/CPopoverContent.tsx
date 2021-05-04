@@ -1,4 +1,5 @@
 import React, { CSSProperties, forwardRef } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { CPopoverProps } from './CPopover'
 import { PopperChildrenProps } from 'react-popper'
@@ -28,5 +29,14 @@ export const CPopoverContent = forwardRef<HTMLDivElement, CPopoverContentProps>(
     </>
   ),
 )
+
+CPopoverContent.propTypes = {
+  arrowProps: PropTypes.any,
+  content: PropTypes.node,
+  placementClassNamePostfix: PropTypes.any,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  title: PropTypes.string,
+  transitionClass: PropTypes.string,
+}
 
 CPopoverContent.displayName = 'CPopoverContent'

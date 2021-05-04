@@ -1,4 +1,5 @@
 import React, { ElementType, HTMLAttributes, forwardRef } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors } from '../Types'
@@ -67,5 +68,14 @@ export const CListGroupItem = forwardRef<
     </Component>
   )
 })
+
+CListGroupItem.propTypes = {
+  active: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  color: PropTypes.string,
+  component: PropTypes.elementType,
+  disabled: PropTypes.bool,
+}
 
 CListGroupItem.displayName = 'CListGroupItem'

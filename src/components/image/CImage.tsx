@@ -1,6 +1,7 @@
 // TODO: add documentation
 
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CImage extends HTMLAttributes<HTMLImageElement> {
@@ -9,8 +10,17 @@ export interface CImage extends HTMLAttributes<HTMLImageElement> {
    * A string of all className you want applied to the component. [docs]
    */
   className?: string
+  /**
+   * TODO: . [docs]
+   */
   fluid?: boolean
+  /**
+   * TODO: . [docs]
+   */
   rounded?: boolean
+  /**
+   * TODO: . [docs]
+   */
   thumbnail?: boolean
 }
 
@@ -29,3 +39,13 @@ export const CImage = forwardRef<HTMLImageElement, CImage>(
     return <img className={_className} {...rest} ref={ref} />
   },
 )
+
+CImage.propTypes = {
+  align: PropTypes.oneOf(['start', 'center', 'end']),
+  className: PropTypes.string,
+  fluid: PropTypes.bool,
+  rounded: PropTypes.bool,
+  thumbnail: PropTypes.bool,
+}
+
+CImage.displayName = 'CImage'

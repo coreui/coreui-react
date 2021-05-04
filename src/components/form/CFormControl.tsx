@@ -1,4 +1,5 @@
 import React, { ChangeEventHandler, ElementType, forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CFormControlProps
@@ -103,5 +104,17 @@ export const CFormControl = forwardRef<
     )
   },
 )
+
+CFormControl.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  classNameParent: PropTypes.string,
+  component: PropTypes.elementType,
+  invalid: PropTypes.bool,
+  plainText: PropTypes.bool,
+  size: PropTypes.oneOf(['sm', 'lg']),
+  type: PropTypes.string, // TODO: check
+  valid: PropTypes.bool,
+}
 
 CFormControl.displayName = 'CFormControl'

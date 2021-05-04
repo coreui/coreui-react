@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CNavbarTogglerProps extends HTMLAttributes<HTMLButtonElement> {
@@ -26,5 +27,10 @@ export const CNavbarToggler = forwardRef<HTMLButtonElement, CNavbarTogglerProps>
     )
   },
 )
+
+CNavbarToggler.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+}
 
 CNavbarToggler.displayName = 'CNavbarToggler'

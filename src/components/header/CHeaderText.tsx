@@ -1,4 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CHeaderTextProps extends HTMLAttributes<HTMLSpanElement> {
@@ -19,5 +20,10 @@ export const CHeaderText = forwardRef<HTMLSpanElement, CHeaderTextProps>(
     )
   },
 )
+
+CHeaderText.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+}
 
 CHeaderText.displayName = 'CHeaderText'

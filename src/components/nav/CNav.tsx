@@ -1,4 +1,5 @@
 import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CNavProps
@@ -41,5 +42,13 @@ export const CNav = forwardRef<HTMLDivElement | HTMLUListElement | HTMLOListElem
     )
   },
 )
+
+CNav.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  component: PropTypes.elementType,
+  layout: PropTypes.oneOf(['fill', 'justified']),
+  variant: PropTypes.oneOf(['tabs', 'pills']),
+}
 
 CNav.displayName = 'CNav'

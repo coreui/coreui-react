@@ -1,4 +1,5 @@
 import React, { HTMLAttributes, forwardRef } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
 
@@ -49,5 +50,11 @@ export const CTabPane = forwardRef<HTMLDivElement, CTabPaneProps>(
     )
   },
 )
+
+CTabPane.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  visible: PropTypes.bool,
+}
 
 CTabPane.displayName = 'CTabPane'

@@ -1,4 +1,5 @@
 import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors } from '../Types'
@@ -44,5 +45,14 @@ export const CWidgetDropdown = forwardRef<HTMLDivElement, CWidgetDropdownProps>(
     )
   },
 )
+
+CWidgetDropdown.propTypes = {
+  action: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  chart: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  className: PropTypes.string,
+  color: PropTypes.string,
+  title: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+}
 
 CWidgetDropdown.displayName = 'CWidgetDropdown'

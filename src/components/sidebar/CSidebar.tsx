@@ -7,6 +7,7 @@ import React, {
   useState,
 } from 'react'
 import { createPortal } from 'react-dom'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Breakpoints } from '../Types'
@@ -17,7 +18,9 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
    * A string of all className you want applied to the component. [docs]
    */
   className?: string
-  // hide?: boolean
+  /**
+   * TODO:. [docs]
+   */
   narrow?: boolean
   /**
    * Method called before the hide animation has started. [docs]
@@ -27,10 +30,25 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
    * Method called before the show animation has started. [docs]
    */
   onShow?: () => void
+  /**
+   * TODO:. [docs]
+   */
   overlaid?: boolean
+  /**
+   * TODO:. [docs]
+   */
   position?: 'fixed' | 'sticky'
+  /**
+   * TODO:. [docs]
+   */
   selfHiding?: Breakpoints | boolean
+  /**
+   * TODO:. [docs]
+   */
   show?: boolean
+  /**
+   * TODO:. [docs]
+   */
   unfoldable?: boolean
 }
 
@@ -141,5 +159,21 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
     )
   },
 )
+
+CSidebar.propTypes = {
+  children: PropTypes.any,
+  className: PropTypes.any,
+  narrow: PropTypes.bool,
+  onHide: PropTypes.func,
+  onShow: PropTypes.func,
+  overlaid: PropTypes.bool,
+  position: PropTypes.oneOf(['fixed', 'sticky']),
+  selfHiding: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl'>(['sm', 'md', 'lg', 'xl', 'xxl']),
+  ]),
+  show: PropTypes.bool,
+  unfoldable: PropTypes.bool,
+}
 
 CSidebar.displayName = 'CSidebar'
