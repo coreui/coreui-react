@@ -14,15 +14,15 @@ export interface CFormFeedbackProps extends HTMLAttributes<HTMLDivElement | HTML
    */
   component?: string | ElementType
   /**
-   * TODO: . [docs]
+   * Method called immediately after the `value` prop changes. [docs]
    */
   invalid?: boolean
   /**
-   * TODO: . [docs]
+   * If your form layout allows it, you can display validation feedback in a styled tooltip. [docs]
    */
   tooltip?: boolean
   /**
-   * TODO: . [docs]
+   * Set component validation state to valid. [docs]
    */
   valid?: boolean
 }

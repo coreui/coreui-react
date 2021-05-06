@@ -8,11 +8,11 @@ export interface CFormSelectProps extends HTMLAttributes<HTMLSelectElement> {
    */
   className?: string
   /**
-   * Specifies the number of visible options in a drop-down list.
+   * Specifies the number of visible options in a drop-down list. [docs]
    */
   htmlSize?: number
   /**
-   * TODO: . [docs]
+   * Set component validation state to invalid. [docs]
    */
   invalid?: boolean
   /**
@@ -22,7 +22,7 @@ export interface CFormSelectProps extends HTMLAttributes<HTMLSelectElement> {
    */
   size?: 'sm' | 'lg'
   /**
-   * TODO: . [docs]
+   * Set component validation state to valid. [docs]
    */
   valid?: boolean
 }

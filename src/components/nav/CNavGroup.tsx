@@ -19,7 +19,7 @@ export interface CNavGroupProps {
    */
   className?: string
   /**
-   * TODO: . [docs]
+   * Set component's icon. [docs]
    */
   icon?: string | ElementType
   /**
@@ -27,11 +27,11 @@ export interface CNavGroupProps {
    */
   toggler?: string
   /**
-   * TODO: . [docs]
+   * Show nav group items. [docs]
    */
   visible?: boolean
   /**
-   * TODO: . [docs]
+   * @ignore
    */
   idx?: string
 }

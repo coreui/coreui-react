@@ -9,7 +9,7 @@ export interface CModalHeaderProps extends HTMLAttributes<HTMLDivElement> {
    */
   className?: string
   /**
-   * TODO: . [docs]
+   * Add a close button component to the header which will call the provided handler when clicked. [docs]
    */
   onDismiss?: () => void
 }

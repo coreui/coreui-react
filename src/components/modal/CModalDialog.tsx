@@ -14,7 +14,7 @@ export interface CModalDialogProps extends HTMLAttributes<HTMLDivElement> {
    */
   className?: string
   /**
-   * TODO: . [docs]
+   * Set modal to covers the entire user viewport. [docs]
    */
   fullscreen?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
   /**

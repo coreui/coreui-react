@@ -14,7 +14,7 @@ export interface CBreadcrumbItemProps extends HTMLAttributes<HTMLLIElement> {
    */
   className?: string
   /**
-   * TODO: . [docs]
+   * The `href` attribute for the inner `<CLink>` component. [docs]
    */
   href?: string
 }

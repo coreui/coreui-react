@@ -16,11 +16,6 @@ export interface CAvatarProps extends HTMLAttributes<HTMLDivElement> {
    */
   color?: Colors
   /**
-   * TODO: add description
-   * TODO: change to src like in image?
-   */
-  image?: any
-  /**
    * Select the shape of the component. [docs]
    *
    * @type {'rounded' | 'rounded-top' | 'rounded-end' | 'rounded-bottom' | 'rounded-start' | 'rounded-circle' | 'rounded-pill' | 'rounded-0' | 'rounded-1' | 'rounded-2' | 'rounded-3' | string}
@@ -30,6 +25,10 @@ export interface CAvatarProps extends HTMLAttributes<HTMLDivElement> {
    * Size the component small, large, or extra large. [docs]
    */
   size?: string
+  /**
+   * The src attribute for the img element. [docs]
+   */
+  src?: string
   /**
    * Sets the color context of the status indicator to one of CoreUI’s themed colors. [docs]
    *
@@ -43,7 +42,7 @@ export interface CAvatarProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const CAvatar = forwardRef<HTMLDivElement, CAvatarProps>(
-  ({ children, className, color, image, shape, size, status, textColor, ...rest }, ref) => {
+  ({ children, className, color, shape, size, src, status, textColor, ...rest }, ref) => {
     const _className = classNames(
       'avatar',
       {
@@ -58,7 +57,7 @@ export const CAvatar = forwardRef<HTMLDivElement, CAvatarProps>(
 
     return (
       <div className={_className} {...rest} ref={ref}>
-        {image ? <img src={image} className="avatar-img" /> : children}
+        {src ? <img src={src} className="avatar-img" /> : children}
         {status && <span className={statusClassName}></span>}
       </div>
     )
@@ -69,9 +68,9 @@ CAvatar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   color: PropTypes.string,
-  image: PropTypes.any,
   shape: PropTypes.string,
   size: PropTypes.string,
+  src: PropTypes.string,
   status: PropTypes.string,
   textColor: PropTypes.string,
 }

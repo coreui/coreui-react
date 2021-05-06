@@ -8,7 +8,7 @@ export interface CFooterProps extends HTMLAttributes<HTMLDivElement> {
    */
   className?: string
   /**
-   * TODO: . [docs]
+   * Place footer in non-static positions. [docs]
    */
   position?: 'fixed' | 'sticky'
 }

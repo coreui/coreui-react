@@ -19,11 +19,12 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    */
   className?: string
   /**
-   * TODO: . [docs]
+   * @ignore
    */
+  // TODO: check if it possible to remove this property
   duration?: number
   /**
-   * TODO: . [docs]
+   * Set modal to covers the entire user viewport. [docs]
    */
   fullscreen?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
   /**
@@ -31,7 +32,7 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    */
   onDismiss?: () => void
   /**
-   * TODO: . [docs]
+   * Create a scrollable modal that allows scrolling the modal body. [docs]
    */
   scrollable?: boolean
   /**
@@ -39,7 +40,7 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    */
   size?: 'sm' | 'lg' | 'xl'
   /**
-   * TODO: . [docs]
+   * Remove animation to create modal that simply appear rather than fade in to view. [docs]
    */
   transition?: boolean
   /**

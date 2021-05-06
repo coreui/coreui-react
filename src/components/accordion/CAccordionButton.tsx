@@ -8,7 +8,7 @@ export interface CAccordionButtonProps extends HTMLAttributes<HTMLButtonElement>
    */
   className?: string
   /**
-   * TODO:. [docs]
+   * Set button state to collapsed. [docs]
    */
   collapsed?: boolean
 }

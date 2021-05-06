@@ -11,15 +11,15 @@ export interface CImage extends HTMLAttributes<HTMLImageElement> {
    */
   className?: string
   /**
-   * TODO: . [docs]
+   * Make image responsive. [docs]
    */
   fluid?: boolean
   /**
-   * TODO: . [docs]
+   * Make image rounded. [docs]
    */
   rounded?: boolean
   /**
-   * TODO: . [docs]
+   * Give an image a rounded 1px border appearance. [docs]
    */
   thumbnail?: boolean
 }

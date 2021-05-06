@@ -35,12 +35,21 @@ export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
    * A string of all className you want applied to the component. [docs]
    */
   className?: string
+  /**
+   * The id global attribute defines an identifier (ID) that must be unique in the whole document. [docs]
+   */
   id?: string
+  /**
+   * Group checkboxes or radios on the same horizontal row by adding. [docs]
+   */
   inline?: boolean
   /**
-   * TODO: . [docs]
+   * Set component validation state to invalid. [docs]
    */
   invalid?: boolean
+  /**
+   * The element represents a caption for a component. [docs]
+   */
   label?: string
   /**
    * Size the component large or extra large. Works only with `switch` [docs]
@@ -60,7 +69,7 @@ export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
    */
   type?: 'checkbox' | 'radio' | string
   /**
-   * TODO: . [docs]
+   * Set component validation state to valid. [docs]
    */
   valid?: boolean
 }

@@ -47,17 +47,17 @@ export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
    */
   dismissible?: boolean
   /**
-   * TODO:. [docs]
+   * Set component's icon. [docs]
    */
   icon?: string | ElementType
   /**
-   * TODO:. [docs]
+   * @ignore
    */
   key?: number
   /**
-   * TODO:. [docs]
+   * Time node for your component. [docs]
    */
-  time?: string
+  time?: string | ElementType
   /**
    * Title node for your component. [docs]
    */
@@ -212,7 +212,7 @@ CToast.propTypes = {
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   key: PropTypes.number,
   onDismiss: PropTypes.func,
-  time: PropTypes.string,
+  time: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   visible: PropTypes.bool,
 }

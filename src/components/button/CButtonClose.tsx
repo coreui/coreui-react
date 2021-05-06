@@ -12,7 +12,7 @@ export interface CButtonCloseProps extends HTMLAttributes<HTMLButtonElement> {
    */
   disabled?: boolean
   /**
-   * TODO: add description
+   * Change the default color to white. [docs]
    */
   white?: boolean
 }

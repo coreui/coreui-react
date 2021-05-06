@@ -8,11 +8,13 @@ export interface CHeaderProps extends HTMLAttributes<HTMLDivElement> {
    */
   className?: string
   /**
-   * TODO:. [docs]
+   * Defines optional container wrapping children elements.
+   *
+   * @type boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fluid'
    */
   container?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fluid'
   /**
-   * TODO:. [docs]
+   * Place header in non-static positions. [docs]
    */
   position?: 'fixed' | 'sticky'
 }

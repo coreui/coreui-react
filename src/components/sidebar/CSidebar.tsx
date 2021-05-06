@@ -19,7 +19,7 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
    */
   className?: string
   /**
-   * TODO:. [docs]
+   * Make sidebar narrow. [docs]
    */
   narrow?: boolean
   /**
@@ -31,23 +31,23 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
    */
   onShow?: () => void
   /**
-   * TODO:. [docs]
+   * Set sidebar to narrow variant. [docs]
    */
   overlaid?: boolean
   /**
-   * TODO:. [docs]
+   * Place sidebar in non-static positions. [docs]
    */
   position?: 'fixed' | 'sticky'
   /**
-   * TODO:. [docs]
+   * Make any sidebar self hiding across all viewports or pick a maximum breakpoint with which to have a self hiding up to. [docs]
    */
   selfHiding?: Breakpoints | boolean
   /**
-   * TODO:. [docs]
+   * Show self hidden sidebar. [docs]
    */
   show?: boolean
   /**
-   * TODO:. [docs]
+   * Expand narrowed sidebar on hover. [docs]
    */
   unfoldable?: boolean
 }

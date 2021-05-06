@@ -20,7 +20,7 @@ export interface CFormControlProps
    */
   disabled?: boolean
   /**
-   * TODO: . [docs]
+   * Set component validation state to invalid. [docs]
    */
   invalid?: boolean
   /**
@@ -49,7 +49,7 @@ export interface CFormControlProps
    */
   type?: 'color' | 'file' | 'text' | string
   /**
-   * TODO: . [docs]
+   * Set component validation state to valid. [docs]
    */
   valid?: boolean
   /**

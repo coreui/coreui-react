@@ -17,7 +17,7 @@ export interface CProgressProps
    */
   height?: number
   /**
-   * TODO: [docs]
+   * Change the default color to white. [docs]
    */
   white?: boolean
 }

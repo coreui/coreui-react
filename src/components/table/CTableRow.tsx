@@ -6,11 +6,11 @@ import { Colors } from '../Types'
 
 export interface CTableRowProps extends HTMLAttributes<HTMLTableRowElement> {
   /**
-   * TODO:. [docs]
+   * Highlight a table row or cell.. [docs]
    */
   active?: boolean
   /**
-   * TODO:. [docs]
+   * Set the vertical aligment. [docs]
    */
   align?: 'bottom' | 'middle' | 'top'
   /**
