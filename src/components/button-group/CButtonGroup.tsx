@@ -3,11 +3,6 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
-  // TODO: clean-up
-  // /**
-  //  * Define a string that labels the current element. Use it in cases where a text label is not visible on the screen. [docs]
-  //  */
-  // ariaLabel?: string
   /**
    * A string of all className you want applied to the base component. [docs]
    */
