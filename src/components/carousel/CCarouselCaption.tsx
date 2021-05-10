@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes, RefObject } from 'react'
+import React, { forwardRef, HTMLAttributes, RefObject } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -7,26 +7,18 @@ export interface CCarouselCaptionProps extends HTMLAttributes<HTMLDivElement> {
    * A string of all className you want applied to the base component. [docs]
    */
   className?: string
-
-  /**
-   * Inner ref of main element. [docs]
-   *
-   * @type RefObject<HTMLDivElement> | {(): void}
-   */
-  innerRef?: RefObject<HTMLDivElement> | { (): void }
 }
 
-export const CCarouselCaption: FC<CCarouselCaptionProps> = ({ className, innerRef, ...rest }) => {
-  //render
+export const CCarouselCaption = forwardRef<HTMLDivElement, CCarouselCaptionProps>(
+  ({ className, ...rest }, ref) => {
+    const _className = classNames('carousel-caption', className)
 
-  const classes = classNames('carousel-caption', className)
-
-  return <div className={classes} {...rest} ref={innerRef} />
-}
+    return <div className={_className} {...rest} ref={ref} />
+  },
+)
 
 CCarouselCaption.propTypes = {
   className: PropTypes.string,
-  innerRef: PropTypes.any,
 }
 
 CCarouselCaption.displayName = 'CCarouselCaption'

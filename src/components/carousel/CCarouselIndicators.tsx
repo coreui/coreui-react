@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes, useContext, RefObject } from 'react'
+import React, { forwardRef, HTMLAttributes, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Context } from './CCarousel'
@@ -9,12 +9,6 @@ export interface CCarouselIndicatorsProps extends HTMLAttributes<HTMLOListElemen
    */
   className?: string
   /**
-   * Inner ref of main element. [docs]
-   *
-   * @type RefObject<HTMLOListElement> | {(): void}
-   */
-  innerRef?: RefObject<HTMLOListElement> | { (): void }
-  /**
    * Indicators section user classes. [docs]
    *
    * @type string
@@ -22,44 +16,35 @@ export interface CCarouselIndicatorsProps extends HTMLAttributes<HTMLOListElemen
   indicatorsClass?: string
 }
 
-// CCarouselIndicators.defaultProps = {
-//   indicatorsClass: 'carousel-indicators'
-// }
+export const CCarouselIndicators = forwardRef<HTMLOListElement, CCarouselIndicatorsProps>(
+  ({ className, indicatorsClass = 'carousel-indicators' }, ref) => {
+    const { itemsNumber, state, setState, animating } = useContext(Context)
 
-export const CCarouselIndicators: FC<CCarouselIndicatorsProps> = ({
-  className,
-  innerRef,
-  indicatorsClass = 'carousel-indicators',
-}) => {
-  const { itemNumber, state, setState, animating } = useContext(Context)
+    const listClasses = classNames(indicatorsClass, className)
 
-  //render
+    const indicators = Array.from({ length: itemsNumber }, (_, i) => i).map((key) => {
+      return (
+        <li
+          key={`indicator${key}`}
+          onClick={() => {
+            !animating && key !== state[1] && setState([state[1], key])
+          }}
+          className={state[1] === key ? 'active' : ''}
+        />
+      )
+    })
 
-  const listClasses = classNames(indicatorsClass, className)
-
-  const indicators = Array.from({ length: itemNumber }, (_, i) => i).map((key) => {
     return (
-      <li
-        key={`indicator${key}`}
-        onClick={() => {
-          !animating && key !== state[1] && setState([state[1], key])
-        }}
-        className={state[1] === key ? 'active' : ''}
-      />
+      <ol className={listClasses} ref={ref}>
+        {indicators}
+      </ol>
     )
-  })
-
-  return (
-    <ol className={listClasses} ref={innerRef}>
-      {indicators}
-    </ol>
-  )
-}
+  },
+)
 
 CCarouselIndicators.propTypes = {
   className: PropTypes.string,
   indicatorsClass: PropTypes.string,
-  innerRef: PropTypes.any, // TODO: check
 }
 
 CCarouselIndicators.displayName = 'CCarouselIndicators'

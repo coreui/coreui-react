@@ -1,31 +1,38 @@
-import React, { FC, HTMLAttributes, RefObject } from 'react'
+import React, { Children, forwardRef, HTMLAttributes, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+
+import { Context } from './CCarousel'
 
 export interface CCarouselInnerProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * A string of all className you want applied to the base component. [docs]
    */
   className?: string
-  /**
-   * Inner ref of main element. [docs]
-   *
-   * @type RefObject<HTMLDivElement> | {(): void}
-   */
-  innerRef?: RefObject<HTMLDivElement> | { (): void }
 }
 
-export const CCarouselInner: FC<CCarouselInnerProps> = ({ className, innerRef, ...rest }) => {
-  //render
+export const CCarouselInner = forwardRef<HTMLDivElement, CCarouselInnerProps>(
+  ({ children, className, ...rest }, ref) => {
+    const { setItemsNumber } = useContext(Context)
+    const _className = classNames('carousel-inner', className)
 
-  const classes = classNames('carousel-inner', className)
+    setItemsNumber(Children.toArray(children).length)
 
-  return <div className={classes} {...rest} ref={innerRef} />
-}
+    return (
+      <div className={_className} {...rest} ref={ref}>
+        {Children.map(children, (child, index) => {
+          if (React.isValidElement(child)) {
+            return React.cloneElement(child, { key: index, idx: index })
+          }
+        })}
+      </div>
+    )
+  },
+)
 
 CCarouselInner.propTypes = {
+  children: PropTypes.node,
   className: PropTypes.string,
-  innerRef: PropTypes.any, // TODO: check
 }
 
 CCarouselInner.displayName = 'CCarouselInner'
