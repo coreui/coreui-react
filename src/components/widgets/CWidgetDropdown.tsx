@@ -2,7 +2,7 @@ import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors } from '../Types'
+import { Colors, colorPropType } from '../Types'
 
 import { CCard } from '../card/CCard'
 import { CCardBody } from '../card/CCardBody'
@@ -50,7 +50,7 @@ CWidgetDropdown.propTypes = {
   action: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   chart: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   className: PropTypes.string,
-  color: PropTypes.string,
+  color: colorPropType,
   title: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 }

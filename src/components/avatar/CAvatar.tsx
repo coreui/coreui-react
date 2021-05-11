@@ -2,7 +2,7 @@ import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors, Shapes } from '../Types'
+import { Colors, Shapes, colorPropType, shapePropType } from '../Types'
 
 export interface CAvatarProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -67,8 +67,8 @@ export const CAvatar = forwardRef<HTMLDivElement, CAvatarProps>(
 CAvatar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  color: PropTypes.string,
-  shape: PropTypes.string,
+  color: colorPropType,
+  shape: shapePropType,
   size: PropTypes.string,
   src: PropTypes.string,
   status: PropTypes.string,

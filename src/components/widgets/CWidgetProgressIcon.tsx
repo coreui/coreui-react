@@ -1,7 +1,7 @@
 import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 
-import { Colors } from '../Types'
+import { Colors, colorPropType } from '../Types'
 
 import { CCard } from '../card/CCard'
 import { CCardBody } from '../card/CCardBody'
@@ -92,7 +92,7 @@ export const CWidgetProgressIcon = forwardRef<HTMLDivElement, CWidgetProgressIco
 
 CWidgetProgressIcon.propTypes = {
   className: PropTypes.string,
-  color: PropTypes.string,
+  color: colorPropType,
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   progressColor: PropTypes.string,
   progressValue: PropTypes.number,

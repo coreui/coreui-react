@@ -7,7 +7,7 @@ import { Manager, Popper, Reference } from 'react-popper'
 import { Transition } from 'react-transition-group'
 
 import { CPopoverContent } from './CPopoverContent'
-import { Placements, Triggers } from '../Types'
+import { Placements, Triggers, triggerPropType } from '../Types'
 
 export interface CPopoverProps {
   children: JSX.Element
@@ -36,11 +36,6 @@ export interface CPopoverProps {
    * @default true
    */
   visible?: boolean
-  // TODO: Consider if this method is method is useful.
-  // /**
-  //  * Method called immediately after the component's visibility has been changed. [docs]
-  //  */
-  // onToggle?: (visible: boolean) => void
 }
 
 export const CPopover: FC<CPopoverProps> = ({
@@ -48,18 +43,12 @@ export const CPopover: FC<CPopoverProps> = ({
   placement = 'top',
   trigger = 'click',
   visible,
-  // TODO: Consider if this method is useful.
-  // onToggle,
   ...rest
 }) => {
   const [_visible, setVisible] = useState(visible)
   const _placement = placement === 'start' ? 'left' : placement === 'end' ? 'right' : placement
 
-  // TODO: Consider if this method is method is useful.
-  // useEffect(() => {
-  //   onToggle && onToggle
-  // }, [visible])
-
+ 
   const getTransitionClass = (state: string) => {
     return state === 'entering'
       ? 'fade'
@@ -125,8 +114,24 @@ export const CPopover: FC<CPopoverProps> = ({
 
 CPopover.propTypes = {
   children: PropTypes.any,
-  placement: PropTypes.any, // TODO: refactor
-  trigger: PropTypes.any, // TODO: refactor
+  placement: PropTypes.oneOf([
+    'auto',
+    'top-end',
+    'top',
+    'top-start',
+    'bottom-end',
+    'bottom',
+    'bottom-start',
+    'right-start',
+    'right',
+    'right-end',
+    'left-start',
+    'left',
+    'left-end',
+    'start',
+    'end'
+  ]),
+  trigger: triggerPropType,
   visible: PropTypes.bool,
 }
 

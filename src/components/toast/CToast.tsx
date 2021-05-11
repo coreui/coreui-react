@@ -11,7 +11,7 @@ import { Transition } from 'react-transition-group'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors } from '../Types'
+import { Colors, colorPropType } from '../Types'
 import { useForkedRef } from '../../utils/hooks'
 
 import { CButtonClose } from '../button/CButtonClose'
@@ -206,7 +206,7 @@ CToast.propTypes = {
   autohide: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
-  color: PropTypes.string,
+  color: colorPropType,
   delay: PropTypes.number,
   dismissible: PropTypes.bool,
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),

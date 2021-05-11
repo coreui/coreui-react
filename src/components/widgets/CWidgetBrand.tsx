@@ -2,7 +2,7 @@ import React, { ElementType, forwardRef, HTMLAttributes, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors } from '../Types'
+import { Colors, colorPropType } from '../Types'
 
 import { CCard } from '../card/CCard'
 import { CCardBody } from '../card/CCardBody'
@@ -62,7 +62,7 @@ export const CWidgetBrand = forwardRef<HTMLDivElement, CWidgetBrandProps>(
 
 CWidgetBrand.propTypes = {
   className: PropTypes.string,
-  color: PropTypes.string,
+  color: colorPropType,
   headerChildren: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   values: PropTypes.arrayOf(PropTypes.any),
 }

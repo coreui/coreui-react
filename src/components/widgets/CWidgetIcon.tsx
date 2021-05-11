@@ -2,7 +2,7 @@ import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors } from '../Types'
+import { Colors, colorPropType } from '../Types'
 
 import { CCard } from '../card/CCard'
 import { CCardBody } from '../card/CCardBody'
@@ -51,7 +51,7 @@ export const CWidgetIcon = forwardRef<HTMLDivElement, CWidgetIconProps>(
 
 CWidgetIcon.propTypes = {
   className: PropTypes.string,
-  color: PropTypes.string,
+  color: colorPropType,
   footer: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   iconPadding: PropTypes.number,

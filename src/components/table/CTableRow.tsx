@@ -2,7 +2,7 @@ import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors } from '../Types'
+import { Colors, colorPropType } from '../Types'
 
 export interface CTableRowProps extends HTMLAttributes<HTMLTableRowElement> {
   /**
@@ -49,7 +49,7 @@ CTableRow.propTypes = {
   align: PropTypes.oneOf(['bottom', 'middle', 'top']),
   children: PropTypes.node,
   className: PropTypes.string,
-  color: PropTypes.string,
+  color: colorPropType,
 }
 
 CTableRow.displayName = 'CTableRow'

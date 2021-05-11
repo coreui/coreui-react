@@ -2,7 +2,7 @@ import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors } from '../Types'
+import { Colors, colorPropType } from '../Types'
 
 export interface CNavbarProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -91,7 +91,7 @@ export const CNavbar = forwardRef<HTMLDivElement, CNavbarProps>(
 CNavbar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  color: PropTypes.string,
+  color: colorPropType,
   colorScheme: PropTypes.oneOf(['dark', 'light']),
   component: PropTypes.elementType,
   container: PropTypes.oneOfType([

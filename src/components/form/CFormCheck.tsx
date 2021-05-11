@@ -2,7 +2,7 @@ import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors, Shapes } from '../Types'
+import { Colors, Shapes, colorPropType, shapePropType } from '../Types'
 
 import { CFormControl } from './CFormControl'
 import { CFormLabel } from './CFormLabel'
@@ -64,10 +64,10 @@ export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
   /**
    * Specifies the type of component. [docs]
    *
-   * @type checkbox' | 'radio' | string
+   * @type checkbox' | 'radio'
    * @default 'checkbox'
    */
-  type?: 'checkbox' | 'radio' | string
+  type?: 'checkbox' | 'radio' 
   /**
    * Set component validation state to valid. [docs]
    */
@@ -161,8 +161,8 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
 
 CFormCheck.propTypes = {
   button: PropTypes.bool,
-  buttonColor: PropTypes.string,
-  buttonShape: PropTypes.string,
+  buttonColor: colorPropType,
+  buttonShape: shapePropType,
   buttonSize: PropTypes.oneOf(['sm', 'lg']),
   buttonVariant: PropTypes.oneOf(['outline', 'ghost']),
   className: PropTypes.string,
@@ -172,7 +172,7 @@ CFormCheck.propTypes = {
   label: PropTypes.string,
   size: PropTypes.oneOf(['lg', 'xl']),
   switch: PropTypes.bool,
-  type: PropTypes.string, // TODO: check
+  type: PropTypes.oneOf(['checkbox', 'radio']),
   valid: PropTypes.bool,
 }
 

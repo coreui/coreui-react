@@ -7,8 +7,14 @@ export interface CToastHeaderProps extends Omit<HTMLAttributes<HTMLDivElement>, 
    * A string of all className you want applied to the base component. [docs]
    */
   className?: string
+  /**
+   * Set component's icon. [docs]
+   */
   icon?: string | ElementType
-  time?: string
+  /**
+   * Time node for your component. [docs]
+   */
+  time?: string | ElementType
   /**
    * Title node for your component. [docs]
    */
@@ -33,7 +39,7 @@ CToastHeader.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
-  time: PropTypes.string,
+  time: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
 }
 

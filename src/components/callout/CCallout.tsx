@@ -2,7 +2,7 @@ import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors } from '../Types'
+import { Colors, colorPropType } from '../Types'
 
 export interface CCalloutProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -38,7 +38,7 @@ export const CCallout = forwardRef<HTMLDivElement, CCalloutProps>(
 CCallout.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  color: PropTypes.string,
+  color: colorPropType,
 }
 
 CCallout.displayName = 'CCallout'

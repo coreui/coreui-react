@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Reference } from 'react-popper'
 
-import { Triggers } from '../Types'
+import { Triggers, triggerPropType } from '../Types'
 
 import { CButton, CButtonProps } from '../button/CButton'
 import { CDropdownContext } from './CDropdown'
@@ -54,7 +54,7 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
       onFocus: () => setVisible(true),
       onBlur: () => setVisible(false),
     }),
-    // TODO: add hover trigger
+    // TODO: consider to add in future releases
     // ...((trigger === 'hover' || trigger.includes('hover')) && {
     //   onMouseEnter: () => setVisible(true),
     //   onMouseLeave: () => setVisible(false),
@@ -67,7 +67,6 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
     ...triggers,
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Toggler = (ref?: React.Ref<any>) => {
     return variant === 'nav-item' ? (
       <a href="#" {...togglerProps} ref={ref}>
@@ -89,7 +88,7 @@ CDropdownToggle.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   split: PropTypes.bool,
-  trigger: PropTypes.any, //TODO: refactor
+  trigger: triggerPropType
 }
 
 CDropdownToggle.displayName = 'CDropdownToggle'

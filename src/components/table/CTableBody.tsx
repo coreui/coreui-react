@@ -2,7 +2,7 @@ import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors } from '../Types'
+import { Colors, colorPropType } from '../Types'
 
 export interface CTableBodyProps extends HTMLAttributes<HTMLTableSectionElement> {
   /**
@@ -37,7 +37,7 @@ export const CTableBody = forwardRef<HTMLTableSectionElement, CTableBodyProps>(
 CTableBody.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  color: PropTypes.string,
+  color: colorPropType,
 }
 
 CTableBody.displayName = 'CTableBody'

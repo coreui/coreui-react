@@ -11,10 +11,8 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Manager } from 'react-popper'
 
-import { Placements } from '../Types'
+import { Placements, placementPropType } from '../Types'
 import { useForkedRef } from '../../utils/hooks'
-
-// import { CDropdownMenuProps } from './CDropdownMenu'
 
 export type Directions = 'start' | 'end'
 
@@ -30,7 +28,7 @@ export type Alignments = Directions | Breakpoints
 
 export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIElement> {
   /**
-   * @type { 'left' | 'right' | { xs: 'left' | 'right' } | { sm: 'left' | 'right' } | { md: 'left' | 'right' } | { lg: 'left' | 'right' } | { xl: 'left' | 'right'} | { xxl: 'left' | 'right'} }
+   * @type { 'start' | 'end' | { xs: 'start' | 'end' } | { sm: 'start' | 'end' } | { md: 'start' | 'end' } | { lg: 'start' | 'end' } | { xl: 'start' | 'end'} | { xxl: 'start' | 'end'} }
    */
   alignment?: Alignments
   /**
@@ -110,11 +108,6 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       popper = false
     }
 
-    // Disable popper if dropdown is in nav.
-    // if (variant === 'nav-item') {
-    //   popper = false
-    // }
-
     const contextValues = {
       alignment,
       dark,
@@ -138,12 +131,12 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
     useEffect(() => {
       window.addEventListener('click', handleClickOutside)
       window.addEventListener('keyup', handleKeyup)
-      // window.addEventListener('mouseover', handleKeyup)
+      // TODO: consider to add in future releases `window.addEventListener('mouseover', handleKeyup)`
 
       return () => {
         window.removeEventListener('click', handleClickOutside)
         window.removeEventListener('keyup', handleKeyup)
-        // window.removeEventListener('mouseover', handleKeyup)
+        // TODO: consider to add in future releases `window.addEventListener('mouseover', handleKeyup)`
       }
     })
 
@@ -181,13 +174,13 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
 )
 
 CDropdown.propTypes = {
-  alignment: PropTypes.any, // TODO: refactor
+  alignment: PropTypes.any, // TODO: fix; add proper PropTypes
   children: PropTypes.node,
   className: PropTypes.string,
   component: PropTypes.elementType,
   dark: PropTypes.bool,
   direction: PropTypes.oneOf(['dropup', 'dropend', 'dropstart']),
-  placement: PropTypes.any, // TODO: refactor
+  placement: placementPropType,
   popper: PropTypes.bool,
   variant: PropTypes.oneOf(['btn-group', 'dropdown', 'nav-item']),
   visible: PropTypes.bool,

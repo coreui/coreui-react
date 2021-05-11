@@ -113,7 +113,10 @@ CFormControl.propTypes = {
   invalid: PropTypes.bool,
   plainText: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'lg']),
-  type: PropTypes.string, // TODO: check
+  type: PropTypes.oneOfType([
+    PropTypes.oneOf(['color', 'file', 'text']),
+    PropTypes.string,
+  ]),
   valid: PropTypes.bool,
 }
 

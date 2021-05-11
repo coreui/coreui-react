@@ -2,7 +2,7 @@ import React, { ButtonHTMLAttributes, ElementType, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors, Shapes } from '../Types'
+import { Colors, Shapes, colorPropType } from '../Types'
 import { CLink } from '../link/CLink'
 
 export interface CButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -101,7 +101,7 @@ export const CButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, CButton
 CButton.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  color: PropTypes.string,
+  color: colorPropType,
   component: PropTypes.elementType,
   shape: PropTypes.string,
   size: PropTypes.oneOf(['sm', 'lg']),

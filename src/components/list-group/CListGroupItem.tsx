@@ -2,7 +2,7 @@ import React, { ElementType, HTMLAttributes, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors } from '../Types'
+import { Colors, colorPropType } from '../Types'
 import { CLink } from '../link/CLink'
 
 export interface CListGroupItemProps
@@ -73,7 +73,7 @@ CListGroupItem.propTypes = {
   active: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
-  color: PropTypes.string,
+  color: colorPropType,
   component: PropTypes.elementType,
   disabled: PropTypes.bool,
 }

@@ -2,7 +2,7 @@ import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors } from '../Types'
+import { Colors, colorPropType } from '../Types'
 export interface CProgressBarProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Use to animate the stripes right to left via CSS3 animations. [docs]
@@ -67,7 +67,7 @@ CProgressBar.propTypes = {
   animated: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
-  color: PropTypes.string,
+  color: colorPropType,
   value: PropTypes.number,
   variant: PropTypes.any,
 }
