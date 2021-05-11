@@ -24,6 +24,7 @@ export const CCarouselInner = forwardRef<HTMLDivElement, CCarouselInnerProps>(
           if (React.isValidElement(child)) {
             return React.cloneElement(child, { key: index, idx: index })
           }
+          return
         })}
       </div>
     )
