@@ -16,7 +16,7 @@ import { CCarouselIndicators } from './CCarouselIndicators.tsx'
 import { CCarouselInner } from './CCarouselInner.tsx'
 import { CCarouselItem } from './CCarouselItem.tsx'
 
-import {slides} from './slides.ts'
+import {slides, slidesLight} from './slides.ts'
 
 ## How it works
 
@@ -28,35 +28,159 @@ In browsers where the [Page Visibility API](https://www.w3.org/TR/page-visibilit
 
 Carousels don't automatically normalize slide dimensions. As such, you may want to use extra utilities or custom methods to properly size content. While carousels support previous/next controls and indicators, they're not explicitly expected. Add and customize as you see fit.
 
+### Slides only
+
 <Playground>
   {() => {
     return (
       <CCarousel>
-        <CCarouselInner>
-          <CCarouselItem>
-            <img className="d-block w-100" src={slides[0]} alt="slide 1"/>
-          </CCarouselItem>
-          <CCarouselItem>
-            <img className="d-block w-100" src={slides[1]} alt="slide 2"/>
-          </CCarouselItem>
-          <CCarouselItem>
-            <img className="d-block w-100" src={slides[2]} alt="slide 3"/>
-          </CCarouselItem>
-        </CCarouselInner>
-        <CCarouselControl direction="prev"/>
-        <CCarouselControl direction="next"/>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slides[0]} alt="slide 1"/>
+        </CCarouselItem>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slides[1]} alt="slide 2"/>
+        </CCarouselItem>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slides[2]} alt="slide 3"/>
+        </CCarouselItem>
       </CCarousel>
     )
   }}
-
 </Playground>
 
-<CCallout color="info">
-  <h5>Conveying meaning to assistive technologies</h5>
-  <p>
-    Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the `.visually-hidden` class.
-  </p>
-</CCallout>
+### With controls
+
+Adding in the previous and next controls by `controls` property.
+
+<Playground>
+  {() => {
+    return (
+      <CCarousel controls>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slides[0]} alt="slide 1"/>
+        </CCarouselItem>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slides[1]} alt="slide 2"/>
+        </CCarouselItem>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slides[2]} alt="slide 3"/>
+        </CCarouselItem>
+      </CCarousel>
+    )
+  }}
+</Playground>
+
+### With indicators
+
+You can attach the indicators to the carousel, lengthwise the controls, too.
+
+<Playground>
+  {() => {
+    return (
+      <CCarousel controls indicators>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slides[0]} alt="slide 1"/>
+        </CCarouselItem>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slides[1]} alt="slide 2"/>
+        </CCarouselItem>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slides[2]} alt="slide 3"/>
+        </CCarouselItem>
+      </CCarousel>
+    )
+  }}
+</Playground>
+
+### With captions
+
+You can add captions to slides with the `<CCarouselCaption>` element within any `<CCarouselItem>`. They can be immediately hidden on smaller viewports, as shown below, with optional [display utilities](https://coreui.io/4.0/utilities/display"). We hide them with `.d-none` and draw them back on medium-sized devices with `.d-md-block`.
+
+<Playground>
+  {() => {
+    return (
+      <CCarousel controls indicators>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slides[0]} alt="slide 1"/>
+          <CCarouselCaption className="d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </CCarouselCaption>
+        </CCarouselItem>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slides[1]} alt="slide 2"/>
+          <CCarouselCaption className="d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </CCarouselCaption>
+        </CCarouselItem>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slides[2]} alt="slide 3"/>
+          <CCarouselCaption className="d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </CCarouselCaption>
+        </CCarouselItem>
+      </CCarousel>
+    )
+  }}
+</Playground>
+
+### Crossfade
+
+Add `transition="crossfade"` to your carousel to animate slides with a fade transition instead of a slide.
+
+<Playground>
+  {() => {
+    return (
+      <CCarousel controls transition="crossfade">
+        <CCarouselItem>
+          <img className="d-block w-100" src={slides[0]} alt="slide 1"/>
+        </CCarouselItem>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slides[1]} alt="slide 2"/>
+        </CCarouselItem>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slides[2]} alt="slide 3"/>
+        </CCarouselItem>
+      </CCarousel>
+    )
+  }}
+</Playground>
+
+## Dark variant
+
+Add `dark` property to the `CCarousel` for darker controls, indicators, and captions. Controls have been inverted from their default white fill with the `filter` CSS property. Captions and controls have additional Sass variables that customize the `color` and `background-color`.
+
+<Playground>
+  {() => {
+    return (
+      <CCarousel controls indicators dark>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slidesLight[0]} alt="slide 1"/>
+          <CCarouselCaption className="d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </CCarouselCaption>
+        </CCarouselItem>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slidesLight[1]} alt="slide 2"/>
+          <CCarouselCaption className="d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </CCarouselCaption>
+        </CCarouselItem>
+        <CCarouselItem>
+          <img className="d-block w-100" src={slidesLight[2]} alt="slide 3"/>
+          <CCarouselCaption className="d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </CCarouselCaption>
+        </CCarouselItem>
+      </CCarousel>
+    )
+  }}
+</Playground>
 
 ## API
 

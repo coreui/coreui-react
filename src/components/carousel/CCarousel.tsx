@@ -2,17 +2,35 @@ import React, { forwardRef, HTMLAttributes, useState, useEffect, useRef } from '
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import { CCarouselControl } from './CCarouselControl'
+import { CCarouselIndicators } from './CCarouselIndicators'
+import { CCarouselInner } from './CCarouselInner'
+
 export interface CCarouselProps extends HTMLAttributes<HTMLDivElement> {
-  /**
-   * A string of all className you want applied to the base component. [docs]
-   */
-  className?: string
   /**
    * Set 'animate' variable for created context. [docs]
    *
    * @type boolean
    */
   animate?: boolean
+  /**
+   * A string of all className you want applied to the base component. [docs]
+   * 
+   * @type string
+   */
+  className?: string
+  /**
+   * Adding in the previous and next controls. [docs]
+   *
+   * @type: boolean
+   */
+  controls?: boolean
+  /**
+   * Add darker controls, indicators, and captions. [docs]
+   * 
+   * @type boolean
+   */
+  dark?: boolean
   /**
    * The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle. [docs]
    *
@@ -25,6 +43,12 @@ export interface CCarouselProps extends HTMLAttributes<HTMLDivElement> {
    * @type number
    */
   index?: number
+  /**
+   * Adding indicators at the bottom of the carousel for each item. [docs]
+   *
+   * @type boolean
+   */
+  indicators?: boolean
   /**
    * On slide change callback. [docs]
    *
@@ -67,7 +91,19 @@ export const Context = React.createContext<ContextType>({
 
 export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
   (
-    { className, children, index = 0, animate = true, interval = 5000, onSlideChange, transition, ...rest },
+    {
+      children,
+      animate = true,
+      className,
+      controls,
+      dark,
+      index = 0,
+      indicators,
+      interval = 5000,
+      onSlideChange,
+      transition,
+      ...rest
+    },
     ref,
   ) => {
     const [state, setState] = useState<[number | null, number, string?]>([null, index])
@@ -105,7 +141,8 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
     const _className = classNames(
       'carousel slide',
       transition === 'crossfade' && 'carousel-fade',
-      className
+      dark && 'carousel-dark',
+      className,
     )
 
     return (
@@ -121,7 +158,14 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
             setAnimating,
           }}
         >
-          {children}
+          {indicators && <CCarouselIndicators/>}
+          <CCarouselInner>{children}</CCarouselInner>
+          {controls && (
+            <>
+              <CCarouselControl direction="prev" />
+              <CCarouselControl direction="next" />
+            </>
+          )}
         </Context.Provider>
       </div>
     )
@@ -133,10 +177,7 @@ CCarousel.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   index: PropTypes.number,
-  interval: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.number
-  ]).isRequired,
+  interval: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]).isRequired,
   onSlideChange: PropTypes.func,
 }
 

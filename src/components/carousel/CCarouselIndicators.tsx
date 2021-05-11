@@ -30,6 +30,7 @@ export const CCarouselIndicators = forwardRef<HTMLOListElement, CCarouselIndicat
             !animating && key !== state[1] && setState([state[1], key])
           }}
           className={state[1] === key ? 'active' : ''}
+          data-coreui-target=''
         />
       )
     })

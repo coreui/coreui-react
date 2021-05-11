@@ -1,4 +1,4 @@
-import React, { forwardRef, HTMLAttributes, RefObject, useContext } from 'react'
+import React, { forwardRef, HTMLAttributes, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Context } from './CCarousel'
@@ -50,7 +50,7 @@ export const CCarouselControl = forwardRef<HTMLButtonElement, CCarouselControlPr
 CCarouselControl.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  direction: PropTypes.oneOf<Direction>(['prev', 'next']).isRequired, // TODO: check
+  direction: PropTypes.oneOf<Direction>(['prev', 'next']).isRequired,
 }
 
 CCarouselControl.displayName = 'CCarouselControl'
