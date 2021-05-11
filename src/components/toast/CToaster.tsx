@@ -50,7 +50,6 @@ export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
     const _className = classNames(
       'toaster toast-container p-3',
       {
-        // TODO: refactor those classes
         'position-fixed': placement,
         'top-0': placement && placement.includes('top'),
         'top-50 translate-middle-y': placement && placement.includes('middle'),

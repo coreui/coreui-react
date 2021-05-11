@@ -22,8 +22,6 @@ export interface CDropdownMenuProps
    * @default 'ul'
    */
   component?: string | ElementType
-  // TODO: modifiers?: string[]
-  // TODO: placement?: Placements
 }
 
 export const CDropdownMenu: FC<CDropdownMenuProps> = ({
@@ -35,12 +33,6 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
   const { alignment, dark, direction, placement, popper, visible } = useContext(CDropdownContext)
 
   let _placement: Placements = placement
-
-  // _placement = placement
-
-  // if (placement) {
-  //   _placement = placement
-  // }
 
   if (direction === 'dropup') {
     _placement = 'top-start'
