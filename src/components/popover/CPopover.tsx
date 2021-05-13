@@ -1,10 +1,10 @@
 // TODO: fix possition
 
 import React, { FC, ReactNode, useState } from 'react'
-import PropTypes from 'prop-types'
 import { createPortal } from 'react-dom'
+import PropTypes from 'prop-types'
 import { Manager, Popper, Reference } from 'react-popper'
-import { Transition } from 'react-transition-group'
+import { CSSTransition } from 'react-transition-group'
 
 import { CPopoverContent } from './CPopoverContent'
 import { Placements, Triggers, triggerPropType } from '../Types'
@@ -81,7 +81,7 @@ export const CPopover: FC<CPopoverProps> = ({
       </Reference>
       {typeof window !== 'undefined' &&
         createPortal(
-          <Transition
+          <CSSTransition
             in={_visible}
             timeout={{
               enter: 0,
@@ -105,7 +105,7 @@ export const CPopover: FC<CPopoverProps> = ({
                 </Popper>
               )
             }}
-          </Transition>,
+          </CSSTransition>,
           document.body,
         )}
     </Manager>

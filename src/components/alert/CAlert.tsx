@@ -1,7 +1,7 @@
 import React, { forwardRef, HTMLAttributes, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Transition } from 'react-transition-group'
+import { CSSTransition } from 'react-transition-group'
 
 import { Colors, colorPropType } from '../Types'
 import { CButtonClose } from '../button/CButtonClose'
@@ -57,53 +57,36 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
     },
     ref,
   ) => {
+    const [_visible, setVisible] = useState(visible)
+
     const _className = classNames(
       'alert',
       variant === 'solid' ? `bg-${color} text-white` : `alert-${color}`,
-      { 'alert-dismissible fade': dismissible },
+      {
+        'alert-dismissible fade': dismissible,
+        show: _visible && dismissible,
+      },
       className,
     )
-    const [_visible, setVisible] = useState(visible)
-
-    const duration = 150
-
-    const defaultStyle = {
-      opacity: 0,
-    }
-
-    const transitionStyles = {
-      entering: { opacity: 1 },
-      entered: { opacity: 1 },
-      exiting: { opacity: 0 },
-      exited: { opacity: 0 },
-    }
 
     return (
-      <Transition
+      <CSSTransition
         in={_visible}
-        timeout={duration}
+        timeout={150}
         onExit={onDismiss}
         onExited={onDismissed}
         unmountOnExit
       >
-        {(state) => {
-          return (
-            <div
-              className={_className}
-              role="alert"
-              style={{
-                ...defaultStyle,
-                ...transitionStyles[state],
-              }}
-              {...rest}
-              ref={ref}
-            >
-              {children}
-              {dismissible && <CButtonClose onClick={() => setVisible(false)} />}
-            </div>
-          )
-        }}
-      </Transition>
+        <div
+          className={_className}
+          role="alert"
+          {...rest}
+          ref={ref}
+        >
+          {children}
+          {dismissible && <CButtonClose onClick={() => setVisible(false)} />}
+        </div>
+      </CSSTransition>
     )
   },
 )

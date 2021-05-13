@@ -1,7 +1,7 @@
 import React, { CSSProperties, forwardRef, HTMLAttributes, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Transition } from 'react-transition-group'
+import { CSSTransition } from 'react-transition-group'
 
 import { useForkedRef } from '../../utils/hooks'
 
@@ -21,10 +21,6 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
     const [height, setHeight] = useState<number>()
     const collapseRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, collapseRef)
-
-    const style: CSSProperties = {
-      transition: 'height 350ms ease 0s',
-    }
 
     const getTransitionClass = (state: string) => {
       return state === 'entering'
@@ -49,8 +45,7 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
     }
 
     const onExiting = () => {
-      // @ts-expect-error
-      const reflow = collapseRef && collapseRef.current && collapseRef.current.offsetHeight
+      // const reflow = collapseRef && collapseRef.current && collapseRef.current.offsetHeight
       setHeight(0)
     }
 
@@ -61,7 +56,7 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
     const _className = classNames(className)
 
     return (
-      <Transition
+      <CSSTransition
         in={visible}
         timeout={350}
         onEntering={onEntering}
@@ -76,7 +71,7 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
           return (
             <div
               className={classNames(_className, transitionClass)}
-              style={{ ...style, ...currentHeight }}
+              style={{ ...currentHeight }}
               {...rest}
               ref={forkedRef}
             >
@@ -84,7 +79,7 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
             </div>
           )
         }}
-      </Transition>
+      </CSSTransition>
     )
   },
 )
