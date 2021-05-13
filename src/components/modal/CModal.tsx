@@ -1,7 +1,8 @@
 import React, { FC, HTMLAttributes, useCallback, useLayoutEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Transition } from 'react-transition-group'
+import { CSSTransition } from 'react-transition-group'
 
 import { CModalBackdrop } from './CModalBackdrop'
 import { CModalContent } from './CModalContent'
@@ -88,7 +89,7 @@ export const CModal: FC<CModalProps> = ({
     'modal',
     {
       'modal-static': staticBackdrop,
-      'fade': transition
+      fade: transition,
     },
     className,
   )
@@ -118,32 +119,44 @@ export const CModal: FC<CModalProps> = ({
     [ref, handleDismiss],
   )
 
+  const modal = (ref?: React.Ref<HTMLDivElement>, transitionClass?: string) => {
+    return (
+      <div
+        className={classNames(_className, transitionClass)}
+        tabIndex={-1}
+        role="dialog"
+        ref={ref}
+      >
+        <CModalDialog
+          alignment={alignment}
+          fullscreen={fullscreen}
+          scrollable={scrollable}
+          size={size}
+          onClick={(event) => event.stopPropagation()}
+        >
+          <CModalContent>{children}</CModalContent>
+        </CModalDialog>
+      </div>
+    )
+  }
+
   return (
     <div onClick={handleDismiss} onKeyDown={handleKeyDown}>
       {visible && <CModalBackdrop className="show" />}
-      <Transition in={visible} timeout={!transition ? 0 : duration} onExit={onDismiss}>
+      <CSSTransition
+        in={visible}
+        timeout={!transition ? 0 : duration}
+        onExit={onDismiss}
+        mountOnEnter
+        unmountOnExit
+      >
         {(state) => {
           const transitionClass = getTransitionClass(state)
-          return (
-            <div
-              className={classNames(_className, transitionClass)}
-              tabIndex={-1}
-              role="dialog"
-              ref={ref}
-            >
-              <CModalDialog
-                alignment={alignment}
-                fullscreen={fullscreen}
-                scrollable={scrollable}
-                size={size}
-                onClick={(event) => event.stopPropagation()}
-              >
-                <CModalContent>{children}</CModalContent>
-              </CModalDialog>
-            </div>
-          )
+          return typeof window
+            ? 'undefined' && createPortal(modal(ref, transitionClass), document.body)
+            : modal(ref, transitionClass)
         }}
-      </Transition>
+      </CSSTransition>
     </div>
   )
 }
