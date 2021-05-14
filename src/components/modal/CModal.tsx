@@ -29,7 +29,7 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    */
   fullscreen?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
   /**
-   * Does the modal dialog itself scroll, or does the whole dialog scroll within the window. [docs]
+   * TODO: Does the modal dialog itself scroll, or does the whole dialog scroll within the window. [docs]
    */
   onDismiss?: () => void
   /**
@@ -45,7 +45,7 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    */
   transition?: boolean
   /**
-   * Toggle the visibility of alert component. [docs]
+   * Toggle the visibility of modal component. [docs]
    */
   visible?: boolean
 }
