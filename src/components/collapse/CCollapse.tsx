@@ -1,4 +1,4 @@
-import React, { CSSProperties, forwardRef, HTMLAttributes, useRef, useState } from 'react'
+import React, { forwardRef, HTMLAttributes, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
@@ -45,7 +45,6 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
     }
 
     const onExiting = () => {
-      // const reflow = collapseRef && collapseRef.current && collapseRef.current.offsetHeight
       setHeight(0)
     }
 

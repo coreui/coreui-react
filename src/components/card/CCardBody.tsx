@@ -27,5 +27,3 @@ CCardBody.propTypes = {
 }
 
 CCardBody.displayName = 'CCardBody'
-
-// npx babel script.js --out-file script-compiled.js --plugins=@babel/proposal-class-properties,@babel/transform-modules-amd
