@@ -1,4 +1,4 @@
-import React, { forwardRef, HTMLAttributes, useEffect, useState, useRef } from 'react'
+import React, { forwardRef, HTMLAttributes, useEffect, useState, useRef, ReactElement } from 'react'
 import PropTypes from 'prop-types'
 import { createPortal } from 'react-dom'
 import classNames from 'classnames'
@@ -30,22 +30,31 @@ export interface CToasterProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * TODO:. [docs]
    */
-  push?: CToastProps
+  push?: ReactElement
 }
 
 export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
   //@ts-expect-error
   ({ children, className, placement, push, ...rest }, ref) => {
-    const [toasts, setToasts] = useState<CToastProps[]>([])
-    const index = useRef(0)
+    const [toasts, setToasts] = useState<ReactElement[]>([])
+    const index = useRef<number>(0)
 
     useEffect(() => {
+      index.current++
       push && addToast(push)
+      console.log(toasts)
+      console.log(index.current)
     }, [push])
 
-    const addToast = (props: CToastProps) => {
-      setToasts((state) => [...state, { key: index.current++, ...props }])
+    // TODO: remove invisible items
+    const addToast = (push: any) => {
+      setToasts((state) => [...state, React.cloneElement(push, {
+        key: index.current,
+        onDismiss: () => setToasts((state) => state.filter((i) => i.key !== index.current)),
+      })])
     }
+
+    // a.splice(a.findIndex(e => e.name === "tc_001"),1);
 
     const _className = classNames(
       'toaster toast-container p-3',
@@ -61,27 +70,23 @@ export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
       className,
     )
 
+    const toaster = (ref?: React.Ref<HTMLDivElement>) => {
+      return (toasts.length > 0 || children ? (
+        <div className={_className} {...rest} ref={ref}>
+          {children}
+          {
+            toasts.map((toast) => toast)
+          }
+        </div>
+      ) : null) 
+    }
+
     return (
-      typeof window !== 'undefined' &&
+      placement ? typeof window !== 'undefined' &&
       createPortal(
-        toasts.length > 0 || children ? (
-          <div className={_className} {...rest} ref={ref}>
-            {children}
-            {toasts.map((toastProps) => {
-              return (
-                <CToast
-                  key={index.current++}
-                  {...toastProps}
-                  onDismiss={() =>
-                    setToasts((state) => state.filter((i) => i.key !== toastProps.key))
-                  }
-                />
-              )
-            })}
-          </div>
-        ) : null,
+        toaster(ref),
         document.body,
-      )
+      ) : toaster(ref)
     )
   },
 )
@@ -103,9 +108,7 @@ CToaster.propTypes = {
       'bottom-end',
     ]),
   ]),
-  push: PropTypes.shape({
-    ...CToast.propTypes,
-  }),
+  push: PropTypes.any,
 }
 
 CToaster.displayName = 'CToaster'

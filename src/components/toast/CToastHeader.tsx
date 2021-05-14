@@ -1,6 +1,8 @@
-import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+
+import { CToastClose } from './CToastClose'
 
 export interface CToastHeaderProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
@@ -8,28 +10,18 @@ export interface CToastHeaderProps extends Omit<HTMLAttributes<HTMLDivElement>, 
    */
   className?: string
   /**
-   * Set component's icon. [docs]
+   * Automatically add a close button to the header.
    */
-  icon?: string | ElementType
-  /**
-   * Time node for your component. [docs]
-   */
-  time?: string | ElementType
-  /**
-   * Title node for your component. [docs]
-   */
-  title?: string | ElementType
+  close?: boolean
 }
 
 export const CToastHeader = forwardRef<HTMLDivElement, CToastHeaderProps>(
-  ({ children, className, icon, time, title, ...rest }, ref) => {
+  ({ children, className, close, ...rest }, ref) => {
     const _className = classNames('toast-header', className)
     return (
       <div className={_className} {...rest} ref={ref}>
-        {icon}
-        {title && <span className="fw-semibold me-auto">{title}</span>}
-        {time && <span className="text-medium-emphasis small">{time}</span>}
         {children}
+        {close && <CToastClose/>}
       </div>
     )
   },
@@ -38,9 +30,7 @@ export const CToastHeader = forwardRef<HTMLDivElement, CToastHeaderProps>(
 CToastHeader.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
-  time: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  close: PropTypes.bool
 }
 
 CToastHeader.displayName = 'CToastHeader'
