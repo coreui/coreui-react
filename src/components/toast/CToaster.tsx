@@ -2,9 +2,6 @@ import React, { forwardRef, HTMLAttributes, useEffect, useState, useRef, ReactEl
 import PropTypes from 'prop-types'
 import { createPortal } from 'react-dom'
 import classNames from 'classnames'
-
-import { CToastProps, CToast } from './CToast'
-
 export interface CToasterProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * A string of all className you want applied to the base component. [docs]
