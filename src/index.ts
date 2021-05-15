@@ -9,6 +9,7 @@ import { CAlertLink } from './components/alert/CAlertLink'
 import { CFade } from './components/animations/CFade'
 import { CAvatar } from './components/avatar/CAvatar'
 import { CBadge } from './components/badge/CBadge'
+import { CBackdrop } from './components/backdrop/CBackdrop'
 import { CBreadcrumb } from './components/breadcrumb/CBreadcrumb'
 import { CBreadcrumbItem } from './components/breadcrumb/CBreadcrumbItem'
 import { CButton } from './components/button/CButton'
@@ -90,6 +91,10 @@ import { CPopoverContent } from './components/popover/CPopoverContent'
 import { CProgress } from './components/progress/CProgress'
 import { CProgressBar } from './components/progress/CProgressBar'
 import { CSidebar } from './components/sidebar/CSidebar'
+import { COffcanvas } from './components/offcanvas/COffcanvas'
+import { COffcanvasBody } from './components/offcanvas/COffcanvasBody'
+import { COffcanvasHeader } from './components/offcanvas/COffcanvasHeader'
+import { COffcanvasTitle } from './components/offcanvas/COffcanvasTitle'
 import { CSidebarBrand } from './components/sidebar/CSidebarBrand'
 import { CSidebarFooter } from './components/sidebar/CSidebarFooter'
 import { CSidebarToggler } from './components/sidebar/CSidebarToggler'
@@ -133,6 +138,7 @@ export {
   CAlertLink,
   CAvatar,
   CBadge,
+  CBackdrop,
   CBreadcrumb,
   CBreadcrumbItem,
   CButton,
@@ -214,6 +220,10 @@ export {
   CPopoverContent,
   CProgress,
   CProgressBar,
+  COffcanvas,
+  COffcanvasBody,
+  COffcanvasHeader,
+  COffcanvasTitle,
   CSidebar,
   CSidebarBrand,
   CSidebarFooter,
