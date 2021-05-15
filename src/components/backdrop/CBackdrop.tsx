@@ -1,7 +1,6 @@
 // TODO: add smooth transition.
 
 import React, { forwardRef, HTMLAttributes } from 'react'
-import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
@@ -15,7 +14,6 @@ export interface CBackdropProps extends HTMLAttributes<HTMLDivElement> {
    * Toggle the visibility of modal component. [docs]
    */
   visible?: boolean
-  addEndListener?: any
 }
 
 export const CBackdrop = forwardRef<HTMLDivElement, CBackdropProps>(
@@ -27,10 +25,6 @@ export const CBackdrop = forwardRef<HTMLDivElement, CBackdropProps>(
       },
       className
     )
-
-    const backdrop = (ref?: React.Ref<HTMLDivElement>) => {
-      return <div className={_className} {...rest} ref={ref} />
-    }
 
     return (
       <CSSTransition
