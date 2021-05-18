@@ -43,7 +43,7 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    */
   onDismiss?: () => void
   /**
-   * TODO: [docs]
+   * Generates modal using createPortal. [docs]
    */
   portal?: boolean
   /**
