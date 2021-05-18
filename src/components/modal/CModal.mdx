@@ -27,7 +27,7 @@ import { CTooltip } from '../tooltip/CTooltip.tsx'
 Below is a static modal example (meaning its `position` and `display` have been overridden). Included are the modal header, modal body (required for `padding`), and modal footer (optional). We ask that you include modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.
 
 <Playground>
-  <CModal className="show d-block position-static">
+  <CModal className="show d-block position-static" backdrop={false} keyboard={false} portal={false} visible>
     <CModalHeader>
       <CModalTitle>Modal title</CModalTitle>
     </CModalHeader>
@@ -528,7 +528,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
       <td>Below <code>1200px</code></td>
     </tr>
     <tr>
-      <td><code>'xx'n</code></td>
+      <td><code>'xxl'</code></td>
       <td>Below <code>1400px</code></td>
     </tr>
   </tbody>

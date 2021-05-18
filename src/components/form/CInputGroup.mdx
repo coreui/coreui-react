@@ -27,7 +27,7 @@ import { CRow } from '../grid/CRow'
 
 ## Basic example
 
-Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place `<label>`s outside the input group.
+Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place `<CFormLabel>`s outside the input group.
 
 <Playground>
 <CInputGroup className="mb-3">
@@ -77,7 +77,7 @@ Input groups wrap by default via `flex-wrap: wrap` in order to accommodate custo
 
 ## Sizing
 
-Add the relative form sizing classes to the `.input-group` itself and contents within will automatically resize—no need for repeating the form control size classes on each element.
+Add the relative form sizing classes to the `<CInputGroup>` itself and contents within will automatically resize—no need for repeating the form control size classes on each element.
 
 **Sizing on the individual input group elements isn't supported.**
 
@@ -120,7 +120,7 @@ Place any checkbox or radio option within an input group's addon instead of text
 
 ## Multiple inputs
 
-While multiple `<input>`s are supported visually, validation styles are only available for input groups with a single `<input>`.
+While multiple `<CFormControl>`s are supported visually, validation styles are only available for input groups with a single `<CFormControl>`.
 
 <Playground>
 <CInputGroup>
