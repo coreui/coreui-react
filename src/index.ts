@@ -1,6 +1,7 @@
 import { CAccordion } from './components/accordion/CAccordion'
 import { CAccordionBody } from './components/accordion/CAccordionBody'
 import { CAccordionButton } from './components/accordion/CAccordionButton'
+import { CAccordionCollapse } from './components/accordion/CAccordionCollapse'
 import { CAccordionHeader } from './components/accordion/CAccordionHeader'
 import { CAccordionItem } from './components/accordion/CAccordionItem'
 import { CAlert } from './components/alert/CAlert'
@@ -112,10 +113,11 @@ import { CTableHeaderCell } from './components/table/CTableHeaderCell'
 import { CTableRow } from './components/table/CTableRow'
 import { CTabContent } from './components/tabs/CTabContent'
 import { CTabPane } from './components/tabs/CTabPane'
+import { CToast } from './components/toast/CToast'
 import { CToastBody } from './components/toast/CToastBody'
+import { CToastClose } from './components/toast/CToastClose'
 import { CToastHeader } from './components/toast/CToastHeader'
 import { CToaster } from './components/toast/CToaster'
-import { CToast } from './components/toast/CToast'
 import { CTooltip } from './components/tooltip/CTooltip'
 import { CTooltipContent } from './components/tooltip/CTooltipContent'
 
@@ -131,6 +133,7 @@ export {
   CAccordion,
   CAccordionBody,
   CAccordionButton,
+  CAccordionCollapse,
   CAccordionHeader,
   CAccordionItem,
   CAlert,
@@ -242,10 +245,11 @@ export {
   CTableRow,
   CTabContent,
   CTabPane,
+  CToast,
   CToastBody,
+  CToastClose,
   CToastHeader,
   CToaster,
-  CToast,
   CTooltip,
   CTooltipContent,
   //
