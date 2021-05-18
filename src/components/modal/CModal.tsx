@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 
-import { CModalBackdrop } from './CModalBackdrop'
+import { CBackdrop } from '../backdrop/CBackdrop'
 import { CModalContent } from './CModalContent'
 import { CModalDialog } from './CModalDialog'
 
@@ -15,6 +15,11 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    * @default 'top'
    */
   alignment?: 'top' | 'center'
+  /**
+   * Apply a backdrop on body while modal is open. [docs]
+   * @default true
+   */
+  backdrop?: boolean
   /**
    * A string of all className you want applied to the base component. [docs]
    */
@@ -29,9 +34,18 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    */
   fullscreen?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
   /**
-   * TODO: Does the modal dialog itself scroll, or does the whole dialog scroll within the window. [docs]
+   * Closes the modal when escape key is pressed. [docs]
+   * @default true
+   */
+  keyboard?: boolean
+  /**
+   * Method called before the dissmiss animation has started. [docs]
    */
   onDismiss?: () => void
+  /**
+   * TODO: [docs]
+   */
+  portal?: boolean
   /**
    * Create a scrollable modal that allows scrolling the modal body. [docs]
    */
@@ -53,10 +67,13 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
 export const CModal: FC<CModalProps> = ({
   children,
   alignment,
+  backdrop = true,
   className,
   duration = 150,
   fullscreen,
+  keyboard = true,
   onDismiss,
+  portal = true,
   scrollable,
   size,
   transition = true,
@@ -112,7 +129,7 @@ export const CModal: FC<CModalProps> = ({
 
   const handleKeyDown = useCallback(
     (event) => {
-      if (event.key === 'Escape') {
+      if (event.key === 'Escape' && keyboard) {
         return handleDismiss()
       }
     },
@@ -121,28 +138,30 @@ export const CModal: FC<CModalProps> = ({
 
   const modal = (ref?: React.Ref<HTMLDivElement>, transitionClass?: string) => {
     return (
-      <div
-        className={classNames(_className, transitionClass)}
-        tabIndex={-1}
-        role="dialog"
-        ref={ref}
-      >
-        <CModalDialog
-          alignment={alignment}
-          fullscreen={fullscreen}
-          scrollable={scrollable}
-          size={size}
-          onClick={(event) => event.stopPropagation()}
+      <>
+        <div
+          className={classNames(_className, transitionClass)}
+          tabIndex={-1}
+          role="dialog"
+          ref={ref}
         >
-          <CModalContent>{children}</CModalContent>
-        </CModalDialog>
-      </div>
+          <CModalDialog
+            alignment={alignment}
+            fullscreen={fullscreen}
+            scrollable={scrollable}
+            size={size}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <CModalContent>{children}</CModalContent>
+          </CModalDialog>
+        </div>
+        {backdrop && <CBackdrop visible={visible} />}
+      </>
     )
   }
 
   return (
     <div onClick={handleDismiss} onKeyDown={handleKeyDown}>
-      {visible && <CModalBackdrop className="show" />}
       <CSSTransition
         in={visible}
         timeout={!transition ? 0 : duration}
@@ -152,8 +171,8 @@ export const CModal: FC<CModalProps> = ({
       >
         {(state) => {
           const transitionClass = getTransitionClass(state)
-          return typeof window
-            ? 'undefined' && createPortal(modal(ref, transitionClass), document.body)
+          return typeof window !== 'undefined' && portal
+            ? createPortal(modal(ref, transitionClass), document.body)
             : modal(ref, transitionClass)
         }}
       </CSSTransition>

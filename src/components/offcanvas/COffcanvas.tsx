@@ -31,9 +31,12 @@ export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {
    */
   placement: 'start' | 'end' | 'top' | 'bottom'
   /**
-   * Toggle the visibility of offcanvas component. [docs]
+   * Generates modal using createPortal. [docs]
    */
   portal?: boolean
+  /**
+   * Toggle the visibility of offcanvas component. [docs]
+   */
   visible?: boolean
 }
 
