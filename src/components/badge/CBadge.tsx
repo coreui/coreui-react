@@ -28,13 +28,19 @@ export interface CBadgeProps extends HTMLAttributes<HTMLDivElement | HTMLSpanEle
    */
   shape?: Shapes
   /**
+   * Size the component small. [docs]
+   *
+   * @type 'sm'
+   */
+  size?: 'sm'
+  /**
    * Sets the text color of the component to one of CoreUI’s themed colors. [docs]
    */
   textColor?: string
 }
 export const CBadge = forwardRef<HTMLDivElement | HTMLSpanElement, CBadgeProps>(
   (
-    { children, className, color, component: Component = 'span', shape, textColor, ...rest },
+    { children, className, color, component: Component = 'span', shape, size, textColor, ...rest },
     ref,
   ) => {
     const _className = classNames(
@@ -42,6 +48,7 @@ export const CBadge = forwardRef<HTMLDivElement | HTMLSpanElement, CBadgeProps>(
       {
         [`bg-${color}`]: color,
         [`text-${textColor}`]: color,
+        [`badge-${size}`]: size,
       },
       shape,
       className,
