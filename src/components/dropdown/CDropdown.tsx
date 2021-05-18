@@ -63,9 +63,9 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
    */
   popper?: boolean
   /**
-   * Set the dropdown variant to an btn-group, dropdown, and nav-item. [docs]
+   * Set the dropdown variant to an btn-group, dropdown, input-group, and nav-item. [docs]
    */
-  variant?: 'btn-group' | 'dropdown' | 'nav-item'
+  variant?: 'btn-group' | 'dropdown' | 'input-group' |'nav-item'
   /**
    * Toggle the visibility of dropdown menu component. [docs]
    *
@@ -158,9 +158,14 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
     return popper ? (
       <CDropdownContext.Provider value={contextValues}>
         <Manager>
-          <Component className={_className} {...rest} ref={forkedRef}>
-            {children}
-          </Component>
+          {/* TODO: find solution how to handle click outside */}
+          {variant === 'input-group' ? (
+            <>{ children }</>
+          ) : (
+            <Component className={_className} {...rest} ref={forkedRef}>
+              {children}
+            </Component>
+          )}
         </Manager>
       </CDropdownContext.Provider>
     ) : (
@@ -182,7 +187,7 @@ CDropdown.propTypes = {
   direction: PropTypes.oneOf(['dropup', 'dropend', 'dropstart']),
   placement: placementPropType,
   popper: PropTypes.bool,
-  variant: PropTypes.oneOf(['btn-group', 'dropdown', 'nav-item']),
+  variant: PropTypes.oneOf(['btn-group', 'dropdown', 'input-group', 'nav-item']),
   visible: PropTypes.bool,
 }
 

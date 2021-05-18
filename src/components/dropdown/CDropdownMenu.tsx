@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types'
 import React, { ElementType, FC, HTMLAttributes, useContext } from 'react'
 import classNames from 'classnames'
 import { Popper, PopperChildrenProps } from 'react-popper'
@@ -72,7 +72,7 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
     className,
   )
 
-  const dropdownMenuComponent = (style?: React.CSSProperties, ref?: React.Ref<any>) => {
+  const dropdownMenuComponent = (style?: React.CSSProperties, ref?: React.Ref<any>, ) => {
     return (
       <Component
         className={_className}
@@ -80,6 +80,7 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
         style={style}
         role="menu"
         aria-hidden={!visible}
+        // isReferenceHidden={false}
         {...(!popper && { 'data-coreui-popper': 'static' })}
         {...rest}
       >
@@ -95,17 +96,10 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
     )
   }
 
-  return (
-    <>
-      {visible &&
-        (popper ? (
-          <Popper placement={_placement}>
-            {({ ref, style }) => dropdownMenuComponent(style, ref)}
-          </Popper>
-        ) : (
-          dropdownMenuComponent()
-        ))}
-    </>
+  return popper && visible ? (
+    <Popper placement={_placement}>{({ ref, style }) => dropdownMenuComponent(style, ref)}</Popper>
+  ) : (
+    dropdownMenuComponent()
   )
 }
 
