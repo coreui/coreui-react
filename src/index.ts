@@ -50,6 +50,7 @@ import { CForm } from './components/form/CForm'
 import { CFormCheck } from './components/form/CFormCheck'
 import { CFormControl } from './components/form/CFormControl'
 import { CFormFeedback } from './components/form/CFormFeedback'
+import { CFormFloating } from './components/form/CFormFloating'
 import { CFormLabel } from './components/form/CFormLabel'
 import { CFormRange } from './components/form/CFormRange'
 import { CFormSelect } from './components/form/CFormSelect'
@@ -182,6 +183,7 @@ export {
   CFormCheck,
   CFormControl,
   CFormFeedback,
+  CFormFloating,
   CFormLabel,
   CFormRange,
   CFormSelect,
