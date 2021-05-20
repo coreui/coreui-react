@@ -39,16 +39,17 @@ export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
     useEffect(() => {
       index.current++
       push && addToast(push)
-      console.log(toasts)
-      console.log(index.current)
     }, [push])
 
     // TODO: remove invisible items
     const addToast = (push: any) => {
-      setToasts((state) => [...state, React.cloneElement(push, {
-        key: index.current,
-        onDismiss: () => setToasts((state) => state.filter((i) => i.key !== index.current)),
-      })])
+      setToasts((state) => [
+        ...state,
+        React.cloneElement(push, {
+          key: index.current,
+          onDismiss: () => setToasts((state) => state.filter((i) => i.key !== index.current)),
+        }),
+      ])
     }
 
     // a.splice(a.findIndex(e => e.name === "tc_001"),1);
@@ -68,23 +69,17 @@ export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
     )
 
     const toaster = (ref?: React.Ref<HTMLDivElement>) => {
-      return (toasts.length > 0 || children ? (
+      return toasts.length > 0 || children ? (
         <div className={_className} {...rest} ref={ref}>
           {children}
-          {
-            toasts.map((toast) => toast)
-          }
+          {toasts.map((toast) => toast)}
         </div>
-      ) : null) 
+      ) : null
     }
 
-    return (
-      placement ? typeof window !== 'undefined' &&
-      createPortal(
-        toaster(ref),
-        document.body,
-      ) : toaster(ref)
-    )
+    return placement
+      ? typeof window !== 'undefined' && createPortal(toaster(ref), document.body)
+      : toaster(ref)
   },
 )
 
