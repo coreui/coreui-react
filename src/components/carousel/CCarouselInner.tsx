@@ -1,4 +1,4 @@
-import React, { Children, forwardRef, HTMLAttributes, useContext } from 'react'
+import React, { Children, forwardRef, HTMLAttributes, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -16,7 +16,9 @@ export const CCarouselInner = forwardRef<HTMLDivElement, CCarouselInnerProps>(
     const { setItemsNumber } = useContext(Context)
     const _className = classNames('carousel-inner', className)
 
-    setItemsNumber(Children.toArray(children).length)
+    useEffect(() => {
+      setItemsNumber(Children.toArray(children).length)
+    })
 
     return (
       <div className={_className} {...rest} ref={ref}>
