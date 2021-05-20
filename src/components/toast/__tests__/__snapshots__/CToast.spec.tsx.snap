@@ -5,28 +5,10 @@ exports[`CToast customize 1`] = `
   <div
     aria-atomic="true"
     aria-live="assertive"
-    class="toast fade show bg-warning bazinga"
+    class="toast fade show bg-warning border-0 bazinga"
     role="alert"
-    style="transition: opacity 150ms linear, height 150ms linear; opacity: 1;"
   >
-    <div
-      class="toast-header"
-    >
-      <span
-        class="fw-semibold me-auto"
-      >
-        title
-      </span>
-      <button
-        aria-label="Close"
-        class="btn btn-close"
-      />
-    </div>
-    <div
-      class="toast-body"
-    >
-      Test
-    </div>
+    Test
   </div>
 </div>
 `;
@@ -38,17 +20,8 @@ exports[`loads and displays CToast component 1`] = `
     aria-live="assertive"
     class="toast fade show"
     role="alert"
-    style="transition: opacity 150ms linear, height 150ms linear; opacity: 1;"
   >
-    <div
-      class="toast-body"
-    >
-      Test
-    </div>
-    <button
-      aria-label="Close"
-      class="btn btn-close"
-    />
+    Test
   </div>
 </div>
 `;

@@ -2,4 +2,12 @@
 
 exports[`CToaster customize 1`] = `<div />`;
 
-exports[`loads and displays CToaster component 1`] = `<div />`;
+exports[`loads and displays CToaster component 1`] = `
+<div>
+  <div
+    class="toaster toast-container p-3"
+  >
+    Test
+  </div>
+</div>
+`;

@@ -1,15 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CSidebar customize hide 1`] = `
-<div>
-  <div
-    class="sidebar hide"
-  >
-    Test
-  </div>
-</div>
-`;
-
 exports[`CSidebar customize show 1`] = `
 <div>
   <div

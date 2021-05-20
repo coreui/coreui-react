@@ -16,6 +16,7 @@ test('CBreadcrumb customize', async () => {
       <CBreadcrumbItem active={true}>Test C</CBreadcrumbItem>
     </CBreadcrumb>,
   )
+  const ol = container.querySelector('ol')
   expect(container).toMatchSnapshot()
-  expect(container.firstChild).toHaveClass('bazinga')
+  expect(ol).toHaveClass('bazinga')
 })

@@ -34,7 +34,6 @@ test('CAvatar customize', async () => {
 })
 
 test('CAvatar customize image', async () => {
-  let element
   const { container } = render(
     <CAvatar
       className="bazinga"
@@ -43,12 +42,13 @@ test('CAvatar customize image', async () => {
       size="xl"
       status="warning"
       textColor="white"
-      image="/bazinga"
+      src="/bazinga"
     >
       Test
     </CAvatar>,
   )
   expect(container).toMatchSnapshot()
-  element = container.getElementsByClassName('avatar-img')
+
+  const element = container.getElementsByClassName('avatar-img')
   expect(element.length).toBe(1)
 })

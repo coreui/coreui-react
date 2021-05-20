@@ -23,6 +23,45 @@ exports[`CDropdown example 1`] = `
     >
       Test
     </button>
+    <ul
+      aria-hidden="true"
+      class="dropdown-menu"
+      role="menu"
+    >
+      <li>
+        <h6
+          class="dropdown-header"
+        >
+          A
+        </h6>
+      </li>
+      <li>
+        <a
+          class="dropdown-item"
+        >
+          B
+        </a>
+      </li>
+      <li>
+        <span
+          class="dropdown-item-text"
+        >
+          C
+        </span>
+      </li>
+      <li>
+        <hr
+          class="dropdown-divider"
+        />
+      </li>
+      <li>
+        <a
+          class="dropdown-item"
+        >
+          D
+        </a>
+      </li>
+    </ul>
   </div>
 </div>
 `;

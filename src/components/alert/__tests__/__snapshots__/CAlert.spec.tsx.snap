@@ -3,9 +3,8 @@
 exports[`CAlert customize 1`] = `
 <div>
   <div
-    class="alert bg-secondary text-white alert-dismissible bazinga"
+    class="alert bg-secondary text-white alert-dismissible fade show bazinga"
     role="alert"
-    style="transition: opacity 150ms linear; opacity: 1;"
   >
     Test
     <button
@@ -21,7 +20,6 @@ exports[`loads and displays CAlert component 1`] = `
   <div
     class="alert alert-primary"
     role="alert"
-    style="transition: opacity 150ms linear; opacity: 1;"
   >
     Test
   </div>

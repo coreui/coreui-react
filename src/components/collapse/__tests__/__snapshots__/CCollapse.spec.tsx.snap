@@ -4,7 +4,6 @@ exports[`CCollapse customize 1`] = `
 <div>
   <div
     class="bazinga collapse"
-    style="transition: height 350ms ease 0s;"
   >
     Test
   </div>
@@ -15,7 +14,6 @@ exports[`loads and displays CCollapse component 1`] = `
 <div>
   <div
     class="collapse"
-    style="transition: height 350ms ease 0s;"
   >
     Test
   </div>
