@@ -1,6 +1,6 @@
 export default {
   title: 'CoreUI for React.js',
-  public: '/public',
+  public: './public',
   base: '/react/docs/4.0/',
   ignore: ['CHANGELOG.md', 'README.md'],
   typescript: true,
@@ -19,4 +19,13 @@ export default {
       name: 'Components', // manually ordered menu "Components"
     },
   ],
+  htmlContext: {
+    footer: {
+      scripts: [
+        {
+          src: 'https://media.ethicalads.io/media/client/ethicalads.min.js',
+        },
+      ],
+    },
+  },
 }
