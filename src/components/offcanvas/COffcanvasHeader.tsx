@@ -23,7 +23,7 @@ export const COffcanvasHeader = forwardRef<HTMLDivElement, COffcanvasHeaderProps
 
 COffcanvasHeader.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string
+  className: PropTypes.string,
 }
 
 COffcanvasHeader.displayName = 'COffcanvasHeader'

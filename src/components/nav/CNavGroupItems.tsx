@@ -1,5 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CNavGroupItemsProps extends HTMLAttributes<HTMLUListElement> {
@@ -22,7 +22,7 @@ export const CNavGroupItems = forwardRef<HTMLUListElement, CNavGroupItemsProps>(
 
 CNavGroupItems.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string
+  className: PropTypes.string,
 }
 
 CNavGroupItems.displayName = 'CNavGroupItems'

@@ -1,5 +1,5 @@
 import React, { FC, ReactNode, useState } from 'react'
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types'
 import { createPortal } from 'react-dom'
 import { Manager, Popper, Reference } from 'react-popper'
 import { CSSTransition } from 'react-transition-group'

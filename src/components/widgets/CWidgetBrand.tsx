@@ -37,6 +37,7 @@ export const CWidgetBrand = forwardRef<HTMLDivElement, CWidgetBrandProps>(
     const generatedItems = useMemo(() => {
       return (
         values &&
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         values.map((value: any, index: number) => {
           return (
             <React.Fragment key={index}>

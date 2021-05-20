@@ -21,7 +21,7 @@ export const CToastHeader = forwardRef<HTMLDivElement, CToastHeaderProps>(
     return (
       <div className={_className} {...rest} ref={ref}>
         {children}
-        {close && <CToastClose/>}
+        {close && <CToastClose />}
       </div>
     )
   },
@@ -30,7 +30,7 @@ export const CToastHeader = forwardRef<HTMLDivElement, CToastHeaderProps>(
 CToastHeader.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  close: PropTypes.bool
+  close: PropTypes.bool,
 }
 
 CToastHeader.displayName = 'CToastHeader'

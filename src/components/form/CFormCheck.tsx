@@ -67,7 +67,7 @@ export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
    * @type checkbox' | 'radio'
    * @default 'checkbox'
    */
-  type?: 'checkbox' | 'radio' 
+  type?: 'checkbox' | 'radio'
   /**
    * Set component validation state to valid. [docs]
    */

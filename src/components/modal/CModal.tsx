@@ -182,6 +182,7 @@ export const CModal: FC<CModalProps> = ({
 
 CModal.propTypes = {
   alignment: PropTypes.oneOf(['top', 'center']),
+  backdrop: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
   duration: PropTypes.number,
@@ -189,7 +190,9 @@ CModal.propTypes = {
     PropTypes.bool,
     PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl'>(['sm', 'md', 'lg', 'xl', 'xxl']),
   ]),
+  keyboard: PropTypes.bool,
   onDismiss: PropTypes.func,
+  portal: PropTypes.bool,
   scrollable: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'lg', 'xl']),
   transition: PropTypes.bool,

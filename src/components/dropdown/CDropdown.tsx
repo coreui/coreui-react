@@ -65,7 +65,7 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
   /**
    * Set the dropdown variant to an btn-group, dropdown, input-group, and nav-item. [docs]
    */
-  variant?: 'btn-group' | 'dropdown' | 'input-group' |'nav-item'
+  variant?: 'btn-group' | 'dropdown' | 'input-group' | 'nav-item'
   /**
    * Toggle the visibility of dropdown menu component. [docs]
    *
@@ -160,7 +160,7 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
         <Manager>
           {/* TODO: find solution how to handle click outside */}
           {variant === 'input-group' ? (
-            <>{ children }</>
+            <>{children}</>
           ) : (
             <Component className={_className} {...rest} ref={forkedRef}>
               {children}

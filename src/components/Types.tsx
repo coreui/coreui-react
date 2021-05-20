@@ -60,7 +60,7 @@ export const placementPropType = PropTypes.oneOf<Placements>([
   'right-end',
   'left-start',
   'left',
-  'left-end'
+  'left-end',
 ])
 
 export type Shapes =

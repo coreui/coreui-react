@@ -67,6 +67,8 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
     ...triggers,
   }
 
+  // TODO: find solution
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Toggler = (ref?: React.Ref<any>) => {
     return variant === 'nav-item' ? (
       <a href="#" {...togglerProps} ref={ref}>
@@ -88,7 +90,7 @@ CDropdownToggle.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   split: PropTypes.bool,
-  trigger: triggerPropType
+  trigger: triggerPropType,
 }
 
 CDropdownToggle.displayName = 'CDropdownToggle'

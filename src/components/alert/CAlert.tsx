@@ -77,12 +77,7 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
         onExited={onDismissed}
         unmountOnExit
       >
-        <div
-          className={_className}
-          role="alert"
-          {...rest}
-          ref={ref}
-        >
+        <div className={_className} role="alert" {...rest} ref={ref}>
           {children}
           {dismissible && <CButtonClose onClick={() => setVisible(false)} />}
         </div>
