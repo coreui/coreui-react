@@ -1,0 +1,7 @@
+/// <reference types="react" />
+export declare type AssignableRef<ValueType> = {
+    bivarianceHack(instance: ValueType | null): void;
+}['bivarianceHack'] | React.MutableRefObject<ValueType | null>;
+export declare function useForkedRef<RefValueType = any>(...refs: (AssignableRef<RefValueType> | null | undefined)[]): ((node: any) => void) | null;
+export declare function assignRef<RefValueType = any>(ref: AssignableRef<RefValueType> | null | undefined, value: any): void;
+export declare function isFunction(value: any): value is Function;
