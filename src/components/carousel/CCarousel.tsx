@@ -15,7 +15,7 @@ export interface CCarouselProps extends HTMLAttributes<HTMLDivElement> {
   animate?: boolean
   /**
    * A string of all className you want applied to the base component. [docs]
-   * 
+   *
    * @type string
    */
   className?: string
@@ -27,7 +27,7 @@ export interface CCarouselProps extends HTMLAttributes<HTMLDivElement> {
   controls?: boolean
   /**
    * Add darker controls, indicators, and captions. [docs]
-   * 
+   *
    * @type boolean
    */
   dark?: boolean
@@ -36,7 +36,7 @@ export interface CCarouselProps extends HTMLAttributes<HTMLDivElement> {
    *
    * @type boolean | number
    */
-  interval: boolean | number
+  interval?: boolean | number
   /**
    * index of the active item. [docs]
    *
@@ -158,7 +158,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
             setAnimating,
           }}
         >
-          {indicators && <CCarouselIndicators/>}
+          {indicators && <CCarouselIndicators />}
           <CCarouselInner>{children}</CCarouselInner>
           {controls && (
             <>
@@ -176,9 +176,13 @@ CCarousel.propTypes = {
   animate: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
+  controls: PropTypes.bool,
+  dark: PropTypes.bool,
   index: PropTypes.number,
-  interval: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]).isRequired,
+  indicators: PropTypes.bool,
+  interval: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   onSlideChange: PropTypes.func,
+  transition: PropTypes.oneOf(['slide', 'crossfade']),
 }
 
 CCarousel.displayName = 'CCarousel'

@@ -1,6 +1,5 @@
 import React, {
   CSSProperties,
-  ElementType,
   forwardRef,
   ReactNode,
   useContext,
@@ -21,7 +20,7 @@ export interface CNavGroupProps {
   /**
    * Set component's icon. [docs]
    */
-  icon?: string | ElementType
+  icon?: string | ReactNode
   /**
    * TODO: . [docs]
    */
@@ -134,7 +133,7 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
 CNavGroup.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   idx: PropTypes.string,
   toggler: PropTypes.string,
   visible: PropTypes.bool,

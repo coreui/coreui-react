@@ -48,7 +48,6 @@ export const CPopover: FC<CPopoverProps> = ({
   const [_visible, setVisible] = useState(visible)
   const _placement = placement === 'start' ? 'left' : placement === 'end' ? 'right' : placement
 
- 
   const getTransitionClass = (state: string) => {
     return state === 'entering'
       ? 'fade'
@@ -129,7 +128,7 @@ CPopover.propTypes = {
     'left',
     'left-end',
     'start',
-    'end'
+    'end',
   ]),
   trigger: triggerPropType,
   visible: PropTypes.bool,

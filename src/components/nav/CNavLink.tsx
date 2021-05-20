@@ -1,4 +1,4 @@
-import React, { ElementType, forwardRef, useContext, useEffect, useRef } from 'react'
+import React, { ElementType, forwardRef, ReactNode, useContext, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -25,7 +25,10 @@ export interface CNavLinkProps extends Omit<CLinkProps, 'idx'> {
    * Toggle the disabled state for the component. [docs]
    */
   disabled?: boolean
-  icon?: string | ElementType
+  /**
+   * TODO:. [docs]
+   */
+  icon?: string | ReactNode
 
   /**
    * @ignore
@@ -63,7 +66,7 @@ export const CNavLink = forwardRef<
 CNavLink.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   idx: PropTypes.string,
 }
 

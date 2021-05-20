@@ -121,6 +121,8 @@ CTooltip.propTypes = {
     'left-start',
     'left',
     'left-end',
+    'start',
+    'end',
   ]),
   trigger: triggerPropType,
   visible: PropTypes.bool,

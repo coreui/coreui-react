@@ -1,4 +1,4 @@
-import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import React, { forwardRef, HTMLAttributes, ReactNode } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -8,8 +8,8 @@ import { CCard } from '../card/CCard'
 import { CCardBody } from '../card/CCardBody'
 
 export interface CWidgetDropdownProps extends HTMLAttributes<HTMLDivElement> {
-  action?: string | ElementType
-  chart?: string | ElementType
+  action?: string | ReactNode
+  chart?: string | ReactNode
   /**
    * A string of all className you want applied to the base component. [docs]
    */
@@ -47,8 +47,8 @@ export const CWidgetDropdown = forwardRef<HTMLDivElement, CWidgetDropdownProps>(
 )
 
 CWidgetDropdown.propTypes = {
-  action: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
-  chart: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  action: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  chart: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   className: PropTypes.string,
   color: colorPropType,
   title: PropTypes.string,

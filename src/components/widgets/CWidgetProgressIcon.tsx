@@ -1,4 +1,4 @@
-import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import React, { forwardRef, HTMLAttributes, ReactNode } from 'react'
 import PropTypes from 'prop-types'
 
 import { Colors, colorPropType } from '../Types'
@@ -18,7 +18,7 @@ export interface CWidgetProgressIconProps extends HTMLAttributes<HTMLDivElement>
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
   color?: Colors
-  icon?: string | ElementType
+  icon?: string | ReactNode
   /**
    * Sets the color context of the progress bar to one of CoreUI’s themed colors. [docs]
    *
@@ -93,7 +93,7 @@ export const CWidgetProgressIcon = forwardRef<HTMLDivElement, CWidgetProgressIco
 CWidgetProgressIcon.propTypes = {
   className: PropTypes.string,
   color: colorPropType,
-  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   progressColor: PropTypes.string,
   progressValue: PropTypes.number,
   progressWhite: PropTypes.bool,

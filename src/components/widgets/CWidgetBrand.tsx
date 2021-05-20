@@ -1,4 +1,4 @@
-import React, { ElementType, forwardRef, HTMLAttributes, useMemo } from 'react'
+import React, { forwardRef, HTMLAttributes, ReactNode, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -20,7 +20,7 @@ export interface CWidgetBrandProps extends HTMLAttributes<HTMLDivElement> {
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
   color?: Colors
-  headerChildren?: string | ElementType
+  headerChildren?: string | ReactNode
   values?: Array<string | number> | Array<Array<string | number>>
 }
 
@@ -37,15 +37,15 @@ export const CWidgetBrand = forwardRef<HTMLDivElement, CWidgetBrandProps>(
     const generatedItems = useMemo(() => {
       return (
         values &&
-        values.map((value: any, index: any) => {
+        values.map((value: any, index: number) => {
           return (
-            <>
+            <React.Fragment key={index}>
               {index % 2 !== 0 && <div className="vr"></div>}
-              <CCol key={index}>
+              <CCol>
                 <div className="fs-5 fw-semibold">{value[0]}</div>
                 <div className="text-uppercase text-medium-emphasis small">{value[1]}</div>
               </CCol>
-            </>
+            </React.Fragment>
           )
         })
       )
@@ -63,7 +63,7 @@ export const CWidgetBrand = forwardRef<HTMLDivElement, CWidgetBrandProps>(
 CWidgetBrand.propTypes = {
   className: PropTypes.string,
   color: colorPropType,
-  headerChildren: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  headerChildren: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   values: PropTypes.arrayOf(PropTypes.any),
 }
 
