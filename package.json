@@ -17,7 +17,7 @@
     "build": "rollup -c",
     "docs:dev": "docz dev",
     "docs:build": "docz build",
-    "lint": "eslint 'src/**/*.{js,ts,tsx}'",
+    "lint": "eslint 'src/components/**/*.{js,ts,tsx}'",
     "test": "jest --coverage",
     "test:update": "jest --coverage --updateSnapshot"
   },
