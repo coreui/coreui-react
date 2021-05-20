@@ -56,7 +56,7 @@ By default, `<CFormControl component="textarea">`s will be the same height as `<
       id="floatingTextarea"
       placeholder="Leave a comment here"
     ></CFormControl>
-    <CFormLabel for="floatingTextarea">Comments</CFormLabel>
+    <CFormLabel htmlFor="floatingTextarea">Comments</CFormLabel>
   </CFormFloating>
 </Playground>
 
@@ -70,7 +70,7 @@ To set a custom height on your `<CFormControl component="textarea">`, do not use
       id="floatingTextarea2"
       style={{ height: '100px' }}
     ></CFormControl>
-    <CFormLabel for="floatingTextarea2">Comments</CFormLabel>
+    <CFormLabel htmlFor="floatingTextarea2">Comments</CFormLabel>
   </CFormFloating>
 </Playground>
 
@@ -81,12 +81,12 @@ Other than `<CFormControl>`, floating labels are only available on `<CFormSelect
 <Playground>
   <CFormFloating>
     <CFormSelect id="floatingSelect" aria-label="Floating label select example">
-      <option selected>Open this select menu</option>
+      <option>Open this select menu</option>
       <option value="1">One</option>
       <option value="2">Two</option>
       <option value="3">Three</option>
     </CFormSelect>
-    <CFormLabel for="floatingSelect">Works with selects</CFormLabel>
+    <CFormLabel htmlFor="floatingSelect">Works with selects</CFormLabel>
   </CFormFloating>
 </Playground>
 
@@ -99,18 +99,18 @@ When working with the CoreUI for Bootstrap grid system, be sure to place form el
     <CCol md>
       <CFormFloating>
         <CFormControl type="email" id="floatingInputGrid" placeholder="name@example.com" value="email@example.com" />
-        <CFormLabel for="floatingInputGrid">Email address</CFormLabel>
+        <CFormLabel htmlFor="floatingInputGrid">Email address</CFormLabel>
       </CFormFloating>
     </CCol>
     <CCol md>
       <CFormFloating>
         <CFormSelect id="floatingSelectGrid" aria-label="Floating label select example">
-          <option selected>Open this select menu</option>
+          <option>Open this select menu</option>
           <option value="1">One</option>
           <option value="2">Two</option>
           <option value="3">Three</option>
         </CFormSelect>
-        <CFormLabel for="floatingSelectGrid">Works with selects</CFormLabel>
+        <CFormLabel htmlFor="floatingSelectGrid">Works with selects</CFormLabel>
       </CFormFloating>
     </CCol>
   </CRow>

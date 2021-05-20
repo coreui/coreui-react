@@ -68,7 +68,7 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
   <CRow className="mb-3">
     <CFormLabel htmlFor="staticEmail" className="col-sm-2 col-form-label">Email</CFormLabel>
     <div className="col-sm-10">
-      <CFormControl type="text" id="staticEmail" value="email@example.com" readOnly plainText/>
+      <CFormControl type="text" id="staticEmail" defaultValue="email@example.com" readOnly plainText/>
     </div>
   </CRow>
   <CRow className="mb-3">
@@ -80,16 +80,16 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 </Playground>
 
 <Playground>
-  <CForm class="row g-3">
-    <div class="col-auto">
+  <CForm className="row g-3">
+    <div className="col-auto">
       <CFormLabel htmlFor="staticEmail2" className="visually-hidden">Email</CFormLabel>
-      <CFormControl type="text" id="staticEmail2" value="email@example.com" readOnly plainText/>
+      <CFormControl type="text" id="staticEmail2" defaultValue="email@example.com" readOnly plainText/>
     </div>
-    <div class="col-auto">
+    <div className="col-auto">
       <CFormLabel htmlFor="inputPassword2" className="visually-hidden">Password</CFormLabel>
       <CFormControl type="password" id="inputPassword2" placeholder="Password"/>
     </div>
-    <div class="col-auto">
+    <div className="col-auto">
       <CButton type="submit" className="mb-3">Confirm identity</CButton>
     </div>
   </CForm>
@@ -98,19 +98,19 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 ## File input
 
 <Playground>
-  <div class="mb-3">
+  <div className="mb-3">
     <CFormLabel htmlFor="formFile">Default file input example</CFormLabel>
     <CFormControl type="file" id="formFile"/>
   </div>
-  <div class="mb-3">
+  <div className="mb-3">
     <CFormLabel htmlFor="formFileMultiple">Multiple files input example</CFormLabel>
     <CFormControl type="file" id="formFileMultiple" multiple/>
   </div>
-  <div class="mb-3">
+  <div className="mb-3">
     <CFormLabel htmlFor="formFileDisabled">Disabled file input example</CFormLabel>
     <CFormControl type="file" id="formFileDisabled" disabled/>
   </div>
-  <div class="mb-3">
+  <div className="mb-3">
     <CFormLabel htmlFor="formFileSm">Small file input example</CFormLabel>
     <CFormControl type="file" size="sm" id="formFileSm"/>
   </div>
@@ -124,7 +124,7 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 
 <Playground>
   <CFormLabel htmlFor="exampleColorInput">Color picker</CFormLabel>
-  <CFormControl type="color" id="exampleColorInput" value="#563d7c" title="Choose your color" />
+  <CFormControl type="color" id="exampleColorInput" defaultValue="#563d7c" title="Choose your color" />
 </Playground>
 
 ## API
