@@ -19,22 +19,40 @@ import navigation from './_nav'
 ## Example
 
 <Playground>
-  <CSidebar className="sidebar-show">
+  <CSidebar>
     <CSidebarNav>
-      <CNavLink>aaa</CNavLink>
-      <CNavGroup toggler="group">
-        <CNavLink>g1</CNavLink>
-        <CNavLink>g2</CNavLink>
-        <CNavLink>g3</CNavLink>
-        <CNavGroup toggler="group-2">
-          <CNavLink>g1</CNavLink>
-          <CNavLink>g2</CNavLink>
-          <CNavLink>g3</CNavLink>
+      <CNavItem>
+        <CNavLink href="#">Link 1</CNavLink>
+      </CNavItem>
+      <CNavGroup toggler="Group 1">
+        <CNavItem>
+          <CNavLink href="#">Link 2</CNavLink>
+        </CNavItem>
+        <CNavItem>
+          <CNavLink href="#">Link 3</CNavLink>
+        </CNavItem>
+        <CNavItem>
+          <CNavLink href="#">Link 4</CNavLink>
+        </CNavItem>
+        <CNavGroup toggler="Group 2">
+          <CNavItem>
+            <CNavLink href="#">Link 5</CNavLink>
+          </CNavItem>
+          <CNavItem>
+            <CNavLink href="#">Link 6</CNavLink>
+          </CNavItem>
+          <CNavItem>
+            <CNavLink href="#">Link 7</CNavLink>
+          </CNavItem>
         </CNavGroup>
       </CNavGroup>
-      <CNavLink>bbb</CNavLink>
-      <CCreateNavItem items={navigation}/>
-      <CNavLink>ccc</CNavLink>
+      <CCreateNavItem items={navigation} />
+      <CNavItem>
+        <CNavLink href="#">Link 17</CNavLink>
+      </CNavItem>
+      <CNavItem>
+        <CNavLink href="#">Link 18</CNavLink>
+      </CNavItem>
     </CSidebarNav>
   </CSidebar>
 </Playground>
