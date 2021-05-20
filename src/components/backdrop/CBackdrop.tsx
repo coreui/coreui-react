@@ -21,19 +21,14 @@ export const CBackdrop = forwardRef<HTMLDivElement, CBackdropProps>(
     const _className = classNames(
       'modal-backdrop fade',
       {
-        show: visible
+        show: visible,
       },
-      className
+      className,
     )
 
     return (
-      <CSSTransition
-        in={visible}
-        timeout={150}
-        mountOnEnter
-        unmountOnExit
-      >
-        <div className={_className} {...rest} ref={ref}/>
+      <CSSTransition in={visible} timeout={150} mountOnEnter unmountOnExit>
+        <div className={_className} {...rest} ref={ref} />
       </CSSTransition>
     )
   },
