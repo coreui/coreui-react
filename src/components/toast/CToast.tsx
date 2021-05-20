@@ -20,17 +20,9 @@ export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
    */
   autohide?: boolean
   /**
-   * A string of all className you want applied to the body wrapper. [docs]
-   */
-  bodyWrapperClassName?: string
-  /**
    * A string of all className you want applied to the base component. [docs]
    */
   className?: string
-  /**
-   * A string of all className you want applied to the close button. [docs]
-   */
-  closeButtonClassName?: string
   /**
    * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
    *
@@ -70,9 +62,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
     {
       children,
       autohide = true,
-      bodyWrapperClassName,
       className,
-      closeButtonClassName,
       color,
       delay = 5000,
       key,
@@ -83,8 +73,6 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
     ref,
   ) => {
     const [_visible, setVisible] = useState(visible)
-    // const toastRef = useRef<HTMLDivElement>(null)
-    // const forkedRef = useForkedRef(ref, toastRef)
     const timeout = useRef<number>()
 
     const contextValues = {
@@ -118,11 +106,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
       className,
     )
     return (
-      <CSSTransition
-        in={_visible}
-        timeout={250}
-        unmountOnExit
-      >
+      <CSSTransition in={_visible} timeout={250} onExit={onDismiss} unmountOnExit>
         <CToastContext.Provider value={contextValues}>
           <div
             className={_className}
