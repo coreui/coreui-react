@@ -1,4 +1,5 @@
-import React, { ElementType, useMemo } from 'react'
+import PropTypes from 'prop-types'
+import React, { FC, ElementType, useMemo } from 'react'
 import { CNavGroup } from '../nav/CNavGroup'
 import { CNavGroupItems } from '../nav/CNavGroupItems'
 import { CNavItem } from '../nav/CNavItem'
@@ -20,7 +21,8 @@ interface CCreateNavItemProps {
   items: Array<object>
 }
 
-export const CCreateNavItem: React.FC<CCreateNavItemProps> = ({ items, idx }) => {
+export const CCreateNavItem: FC<CCreateNavItemProps> = ({ items, idx }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const renderItem = (item: any, index: number, idx?: string) => {
     const { _component, as, anchor, items, ...rest }: CSidebarNavItemGeneratorProps = item
     const components = { CNavGroup, CNavGroupItems, CNavItem, CNavLink, CNavTitle }
@@ -46,4 +48,9 @@ export const CCreateNavItem: React.FC<CCreateNavItemProps> = ({ items, idx }) =>
   }, [JSON.stringify(items)])
 
   return <React.Fragment>{generatedItems}</React.Fragment>
+}
+
+CCreateNavItem.propTypes = {
+  idx: PropTypes.any,
+  items: PropTypes.any, // TODO: find better solution
 }

@@ -31,7 +31,6 @@ export interface CToasterProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
-  //@ts-expect-error
   ({ children, className, placement, push, ...rest }, ref) => {
     const [toasts, setToasts] = useState<ReactElement[]>([])
     const index = useRef<number>(0)
@@ -42,7 +41,7 @@ export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
     }, [push])
 
     // TODO: remove invisible items
-    const addToast = (push: any) => {
+    const addToast = (push: ReactElement) => {
       setToasts((state) => [
         ...state,
         React.cloneElement(push, {
@@ -51,8 +50,6 @@ export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
         }),
       ])
     }
-
-    // a.splice(a.findIndex(e => e.name === "tc_001"),1);
 
     const _className = classNames(
       'toaster toast-container p-3',
@@ -77,15 +74,15 @@ export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
       ) : null
     }
 
-    return placement
-      ? typeof window !== 'undefined' && createPortal(toaster(ref), document.body)
+    return typeof window !== 'undefined' && placement
+      ? createPortal(toaster(ref), document.body)
       : toaster(ref)
   },
 )
 
 CToaster.propTypes = {
-  children: PropTypes.any,
-  className: PropTypes.any,
+  children: PropTypes.node,
+  className: PropTypes.string,
   placement: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.oneOf([

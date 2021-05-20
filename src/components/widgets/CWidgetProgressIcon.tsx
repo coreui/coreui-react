@@ -28,7 +28,6 @@ export interface CWidgetProgressIconProps extends HTMLAttributes<HTMLDivElement>
   progressValue?: number
   progressWhite?: boolean
   title?: string
-  text?: string
   /**
    * Sets the text color context of the component to one of CoreUI’s themed colors. [docs]
    *
@@ -47,7 +46,6 @@ export const CWidgetProgressIcon = forwardRef<HTMLDivElement, CWidgetProgressIco
       progressColor,
       progressValue,
       progressWhite,
-      text,
       textColor,
       title,
       value,
@@ -97,7 +95,6 @@ CWidgetProgressIcon.propTypes = {
   progressColor: PropTypes.string,
   progressValue: PropTypes.number,
   progressWhite: PropTypes.bool,
-  text: PropTypes.string,
   textColor: PropTypes.string,
   title: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

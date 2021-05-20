@@ -68,6 +68,7 @@ CBadge.propTypes = {
   color: colorPropType,
   component: PropTypes.string,
   shape: shapePropType,
+  size: PropTypes.oneOf(['sm']),
   textColor: PropTypes.string,
 }
 

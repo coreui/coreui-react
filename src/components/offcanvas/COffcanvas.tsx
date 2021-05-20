@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { forwardRef, HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Transition } from 'react-transition-group'
@@ -122,3 +123,17 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
     )
   },
 )
+
+COffcanvas.propTypes = {
+  backdrop: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  keyboard: PropTypes.bool,
+  onDismiss: PropTypes.func,
+  placement: PropTypes.oneOf<'start' | 'end' | 'top' | 'bottom'>(['start', 'end', 'top', 'bottom'])
+    .isRequired,
+  portal: PropTypes.bool,
+  visible: PropTypes.bool,
+}
+
+COffcanvas.displayName = 'COffcanvas'
