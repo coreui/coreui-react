@@ -1,4 +1,11 @@
-import React, { forwardRef, HTMLAttributes, useState, useEffect, useRef } from 'react'
+import React, {
+  createContext,
+  forwardRef,
+  HTMLAttributes,
+  useState,
+  useEffect,
+  useRef,
+} from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -68,7 +75,7 @@ interface DataType {
   timeout?: null | ReturnType<typeof setTimeout>
 }
 
-export interface ContextType {
+export interface ContextProps {
   itemsNumber: number
   state: [number | null, number, string?]
   animating: boolean
@@ -78,16 +85,7 @@ export interface ContextType {
   setState: (a: [number | null, number, string?]) => void
 }
 
-//
-
-export const Context = React.createContext<ContextType>({
-  itemsNumber: 0,
-  state: [null, 0],
-  animating: false,
-  setItemsNumber: (_) => {},
-  setAnimating: (_) => {},
-  setState: (_) => {},
-})
+export const CCarouselContext = createContext({} as ContextProps)
 
 export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
   (
@@ -110,7 +108,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
     const [itemsNumber, setItemsNumber] = useState<number>(0)
     const [animating, setAnimating] = useState<boolean>(false)
 
-    let data = useRef<DataType>({}).current
+    const data = useRef<DataType>({}).current
 
     const cycle = () => {
       pause()
@@ -147,7 +145,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
 
     return (
       <div className={_className} onMouseEnter={pause} onMouseLeave={cycle} {...rest} ref={ref}>
-        <Context.Provider
+        <CCarouselContext.Provider
           value={{
             state,
             setState,
@@ -166,7 +164,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
               <CCarouselControl direction="next" />
             </>
           )}
-        </Context.Provider>
+        </CCarouselContext.Provider>
       </div>
     )
   },

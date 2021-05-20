@@ -2,7 +2,7 @@ import React, { Children, forwardRef, HTMLAttributes, useContext, useEffect } fr
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Context } from './CCarousel'
+import { CCarouselContext } from './CCarousel'
 
 export interface CCarouselInnerProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -13,7 +13,7 @@ export interface CCarouselInnerProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CCarouselInner = forwardRef<HTMLDivElement, CCarouselInnerProps>(
   ({ children, className, ...rest }, ref) => {
-    const { setItemsNumber } = useContext(Context)
+    const { setItemsNumber } = useContext(CCarouselContext)
     const _className = classNames('carousel-inner', className)
 
     useEffect(() => {

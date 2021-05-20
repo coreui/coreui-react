@@ -3,15 +3,19 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 
-import { Context } from './CCarousel'
+import { CCarouselContext } from './CCarousel'
 export interface CCarouselItemProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * A string of all className you want applied to the base component. [docs]
    */
   className?: string
-  idx: number
+  /**
+   * @ignore
+   */
+  idx?: number
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 const getDirection = (state: object) => {
   if (state[2]) {
     return state[2] === 'next' ? 'right' : 'left'
@@ -22,9 +26,7 @@ const getDirection = (state: object) => {
 
 export const CCarouselItem = forwardRef<HTMLDivElement, CCarouselItemProps>(
   ({ children, className, idx, ...rest }, ref) => {
-    const { animate, state, animating, setAnimating } = useContext(
-      Context,
-    )
+    const { animate, state, animating, setAnimating } = useContext(CCarouselContext)
 
     const [isIn, setIsIn] = useState<boolean>(false)
 
@@ -44,11 +46,9 @@ export const CCarouselItem = forwardRef<HTMLDivElement, CCarouselItemProps>(
       setAnimating(false)
     }
 
-
     useEffect(() => {
       setIsIn(state[1] === idx)
     }, [state])
-
 
     if (!animate || state[0] === null) {
       const itemClasses = classNames('carousel-item', isIn && 'active', className)
@@ -104,6 +104,7 @@ export const CCarouselItem = forwardRef<HTMLDivElement, CCarouselItemProps>(
 CCarouselItem.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  idx: PropTypes.number,
 }
 
 CCarouselItem.displayName = 'CCarouselItem'

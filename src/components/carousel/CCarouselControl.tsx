@@ -1,7 +1,7 @@
 import React, { forwardRef, HTMLAttributes, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Context } from './CCarousel'
+import { CCarouselContext } from './CCarousel'
 
 type Direction = 'prev' | 'next'
 
@@ -20,7 +20,7 @@ export interface CCarouselControlProps extends HTMLAttributes<HTMLButtonElement>
 
 export const CCarouselControl = forwardRef<HTMLButtonElement, CCarouselControlProps>(
   ({ className, children, direction, ...rest }, ref) => {
-    const { state, setState, itemsNumber, animating } = useContext(Context)
+    const { state, setState, itemsNumber, animating } = useContext(CCarouselContext)
 
     const onClick = (): void => {
       if (animating) {

@@ -1,7 +1,7 @@
 import React, { forwardRef, HTMLAttributes, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Context } from './CCarousel'
+import { CCarouselContext } from './CCarousel'
 
 export interface CCarouselIndicatorsProps extends HTMLAttributes<HTMLOListElement> {
   /**
@@ -18,7 +18,7 @@ export interface CCarouselIndicatorsProps extends HTMLAttributes<HTMLOListElemen
 
 export const CCarouselIndicators = forwardRef<HTMLOListElement, CCarouselIndicatorsProps>(
   ({ className, indicatorsClass = 'carousel-indicators' }, ref) => {
-    const { itemsNumber, state, setState, animating } = useContext(Context)
+    const { itemsNumber, state, setState, animating } = useContext(CCarouselContext)
 
     const listClasses = classNames(indicatorsClass, className)
 
@@ -30,7 +30,7 @@ export const CCarouselIndicators = forwardRef<HTMLOListElement, CCarouselIndicat
             !animating && key !== state[1] && setState([state[1], key])
           }}
           className={state[1] === key ? 'active' : ''}
-          data-coreui-target=''
+          data-coreui-target=""
         />
       )
     })
