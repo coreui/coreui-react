@@ -72,7 +72,7 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
     className,
   )
 
-  const dropdownMenuComponent = (style?: React.CSSProperties, ref?: React.Ref<any>, ) => {
+  const dropdownMenuComponent = (style?: React.CSSProperties, ref?: React.Ref<HTMLDivElement>) => {
     return (
       <Component
         className={_className}
@@ -80,7 +80,6 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
         style={style}
         role="menu"
         aria-hidden={!visible}
-        // isReferenceHidden={false}
         {...(!popper && { 'data-coreui-popper': 'static' })}
         {...rest}
       >

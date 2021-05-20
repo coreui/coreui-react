@@ -26,16 +26,13 @@ export const CSidebarNav = forwardRef<HTMLUListElement, CSidebarNavProps>(
     const classes = classNames('sidebar-nav', className)
     return (
       <ul className={classes} ref={ref} {...rest}>
-        {/* {children} */}
         <CNavContext.Provider value={CNavContextValues}>
-          {
-            // @ts-expect-error
-            React.Children.map(children, (child, index) => {
-              if (React.isValidElement(child)) {
-                return React.cloneElement(child, { key: index, idx: index })
-              }
-            })
-          }
+          {React.Children.map(children, (child, index) => {
+            if (React.isValidElement(child)) {
+              return React.cloneElement(child, { key: index, idx: `${index}` })
+            }
+            return
+          })}
         </CNavContext.Provider>
       </ul>
     )
