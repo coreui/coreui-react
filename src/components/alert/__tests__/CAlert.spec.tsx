@@ -32,7 +32,7 @@ test('CAlert click close button', async () => {
   )
   expect(onDismiss).toHaveBeenCalledTimes(0)
   expect(onDismissed).toHaveBeenCalledTimes(0)
-  let btn = document.querySelector('.btn-close')
+  const btn = document.querySelector('.btn-close')
   if (btn !== null) {
     fireEvent.click(btn)
   }
