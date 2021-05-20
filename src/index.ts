@@ -7,7 +7,6 @@ import { CAccordionItem } from './components/accordion/CAccordionItem'
 import { CAlert } from './components/alert/CAlert'
 import { CAlertHeading } from './components/alert/CAlertHeading'
 import { CAlertLink } from './components/alert/CAlertLink'
-import { CFade } from './components/animations/CFade'
 import { CAvatar } from './components/avatar/CAvatar'
 import { CBadge } from './components/badge/CBadge'
 import { CBackdrop } from './components/backdrop/CBackdrop'
@@ -68,7 +67,6 @@ import { CLink } from './components/link/CLink'
 import { CListGroup } from './components/list-group/CListGroup'
 import { CListGroupItem } from './components/list-group/CListGroupItem'
 import { CModal } from './components/modal/CModal'
-import { CModalBackdrop } from './components/modal/CModalBackdrop'
 import { CModalBody } from './components/modal/CModalBody'
 import { CModalContent } from './components/modal/CModalContent'
 import { CModalDialog } from './components/modal/CModalDialog'
@@ -176,7 +174,6 @@ export {
   CCol,
   CContainer,
   CRow,
-  CFade,
   CFooter,
   CCardGroup,
   CForm,
@@ -201,7 +198,6 @@ export {
   CListGroup,
   CListGroupItem,
   CModal,
-  CModalBackdrop,
   CModalBody,
   CModalContent,
   CModalDialog,
