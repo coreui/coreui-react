@@ -30,6 +30,7 @@ export const MainContainer = ({ children, ...rest }) => {
       <div className="docs-intro ps-lg-4" style={{ gridArea: 'intro' }}>
         <h1>{current.name}</h1>
         <p>{current.description}</p>
+        <div data-ea-publisher="coreui-io" data-ea-type="image"></div>
       </div>
       <div
         className="docs-toc mt-4 mb-5 my-md-0 ps-xl-5 mb-lg-5 text-muted"

@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { useRef, useState } from 'react'
 import { jsx, Layout as BaseLayout, Main } from 'theme-ui'
+import Helmet from 'react-helmet'
 import { Global } from '@emotion/react'
 
 import global from '~theme/global'
@@ -16,33 +17,16 @@ export const Layout = ({ children }) => {
 
   return (
     <div className="d-flex">
-      <Sidebar
-        ref={nav}
-        show={show}
-      />
+      <Sidebar ref={nav} show={show} />
       <div className="wrapper flex-grow-1" data-coreui-reliant="sidebar">
-        <Header onShow={() => setShow(s => !s)} />
+        <Header onShow={() => setShow((s) => !s)} />
         <div className="container-lg my-md-4 flex-grow-1">
           <MainContainer data-testid="main-container">{children}</MainContainer>
         </div>
-        
       </div>
+      <Helmet>
+        <script src="https://media.ethicalads.io/media/client/ethicalads.min.js"/>
+      </Helmet>
     </div>
-    // <BaseLayout sx={{ '& > div': { flex: '1 1 auto' } }} data-testid="layout">
-    //   {/* <Global styles={global} /> */}
-    //   <Main sx={styles.main}>
-    //     {/* <Header onOpen={() => setOpen(s => !s)} /> */}
-    //     <div sx={styles.wrapper}>
-    //       <Sidebar
-    //         ref={nav}
-    //         open={open}
-    //         onFocus={() => setOpen(true)}
-    //         onBlur={() => setOpen(false)}
-    //         onClick={() => setOpen(false)}
-    //       />
-    //       <MainContainer data-testid="main-container">{children}</MainContainer>
-    //     </div>
-    //   </Main>
-    // </BaseLayout>
   )
 }

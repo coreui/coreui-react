@@ -37,7 +37,6 @@ export const NavGroup = ({ item, sidebarRef }) => {
       sidebarRef.current.scrollTo(0, currentDocRef.current.offsetTop)
     }
   }, [])
-  console.log(item)
   return (
     <div className="nav-item nav-group show" data-testid="nav-group">
       <div className="nav-link nav-group-toggle" dangerouslySetInnerHTML={{__html: `${icons[item.name]} ${item.name}`}}onClick={toggleSubheadings}>
