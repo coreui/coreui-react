@@ -1,11 +1,4 @@
-import React, {
-  CSSProperties,
-  forwardRef,
-  ReactNode,
-  useContext,
-  useRef,
-  useState,
-} from 'react'
+import React, { CSSProperties, forwardRef, ReactNode, useContext, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
@@ -37,7 +30,7 @@ export interface CNavGroupProps {
 
 export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
   ({ children, toggler, className, icon, idx, visible, ...rest }, ref) => {
-    const [height, setHeight] = useState<number>()
+    const [height, setHeight] = useState<number | string>()
     const navItemsRef = useRef<HTMLUListElement>(null)
 
     const style: CSSProperties = {
@@ -49,7 +42,7 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
     }
 
     const onEntered = () => {
-      // setHeight(0)
+      setHeight('auto')
     }
 
     const onExit = () => {
@@ -57,7 +50,8 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
     }
 
     const onExiting = () => {
-      // @ts-expect-error
+      // @ts-expect-error reflow is necessary to get correct height of the element
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const reflow = navItemsRef && navItemsRef.current && navItemsRef.current.offsetHeight
       setHeight(0)
     }
