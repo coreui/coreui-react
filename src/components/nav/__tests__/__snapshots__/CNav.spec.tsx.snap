@@ -48,6 +48,36 @@ exports[`CNav example 1`] = `
       >
         A
       </a>
+      <ul
+        aria-hidden="true"
+        class="dropdown-menu"
+        role="menu"
+      >
+        <li>
+          <a
+            class="dropdown-item"
+            href="#"
+          >
+            B
+          </a>
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            href="#"
+          >
+            C
+          </a>
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            href="#"
+          >
+            D
+          </a>
+        </li>
+      </ul>
     </li>
     <li
       class="nav-item"

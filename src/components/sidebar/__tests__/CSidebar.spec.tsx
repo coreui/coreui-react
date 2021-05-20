@@ -12,17 +12,17 @@ test('loads and displays CSidebar component', async () => {
   expect(container).toMatchSnapshot()
 })
 
-test('CSidebar customize hide', async () => {
-  const { container } = render(<CSidebar hide>Test</CSidebar>)
-  expect(container).toMatchSnapshot()
-  expect(container.firstChild).toHaveClass('hide')
-})
+// test('CSidebar customize hide', async () => {
+//   const { container } = render(<CSidebar hide>Test</CSidebar>)
+//   expect(container).toMatchSnapshot()
+//   expect(container.firstChild).toHaveClass('hide')
+// })
 
 test('CSidebar customize show', async () => {
   const { container } = render(
     <CSidebar
       className="bazinga"
-      hide={false}
+      // hide={false}
       narrow={true}
       position="fixed"
       selfHiding="lg"

@@ -15,9 +15,7 @@ test('CToast customize', async () => {
       autohide={false}
       color="warning"
       delay={100}
-      dismissible={true}
       key={1}
-      title="title"
       visible={true}
       //onDismiss
     >
@@ -30,8 +28,6 @@ test('CToast customize', async () => {
   expect(container.firstChild).toHaveClass('fade')
   expect(container.firstChild).toHaveClass('bg-warning')
   expect(container.firstChild).toHaveClass('show')
-  expect(container.firstChild).toHaveStyle('transition: opacity 150ms linear, height 150ms linear')
-  expect(container.firstChild).toHaveStyle('opacity: 1')
 })
 
 test('CToast click on dismiss button', async () => {
@@ -43,9 +39,7 @@ test('CToast click on dismiss button', async () => {
       autohide={false}
       color="warning"
       delay={100}
-      dismissible={true}
       key={1}
-      title="title"
       visible={true}
       onDismiss={onDismiss}
     >

@@ -17,7 +17,6 @@ test('CModal customize', async () => {
       fullscreen="xl"
       scrollable={true}
       size="xl"
-      transition="fade"
       visible={true}
     >
       Test

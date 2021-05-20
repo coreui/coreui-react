@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render /* ,screen */ /* ,fireEvent */ /* ,waitFor */ } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import { CToaster } from '../../../index'
+import { CToast, CToaster } from '../../../index'
 
 test('loads and displays CToaster component', async () => {
   const { container } = render(<CToaster>Test</CToaster>)
@@ -11,7 +11,7 @@ test('loads and displays CToaster component', async () => {
 test('CToaster customize', async () => {
   const { container } = render(
     <CToaster className="bazinga" placement="bottom-start">
-      Test
+      <CToast autohide={false}>Toast</CToast>
     </CToaster>,
   )
   expect(container).toMatchSnapshot()
