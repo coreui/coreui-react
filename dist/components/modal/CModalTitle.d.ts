@@ -1,4 +1,4 @@
-import { ElementType, FC, HTMLAttributes } from 'react';
+import React, { ElementType, HTMLAttributes } from 'react';
 export interface CModalTitleProps extends HTMLAttributes<HTMLHeadingElement> {
     /**
      * A string of all className you want applied to the base component. [docs]
@@ -11,4 +11,4 @@ export interface CModalTitleProps extends HTMLAttributes<HTMLHeadingElement> {
      */
     component?: string | ElementType;
 }
-export declare const CModalTitle: FC<CModalTitleProps>;
+export declare const CModalTitle: React.ForwardRefExoticComponent<CModalTitleProps & React.RefAttributes<HTMLHeadElement>>;

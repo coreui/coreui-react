@@ -5448,11 +5448,11 @@ CDropdown.propTypes = {
 };
 CDropdown.displayName = 'CDropdown';
 
-var CDropdownDivider = function (_a) {
+var CDropdownDivider = forwardRef(function (_a, ref) {
     var className = _a.className, rest = __rest(_a, ["className"]);
     var _className = classNames('dropdown-divider', className);
-    return React__default.createElement("hr", __assign({ className: _className }, rest));
-};
+    return React__default.createElement("hr", __assign({ className: _className }, rest, { ref: ref }));
+});
 CDropdownDivider.propTypes = {
     className: PropTypes.string,
 };
@@ -6000,11 +6000,11 @@ CHeaderBrand.propTypes = {
 };
 CHeaderBrand.displayName = 'CHeaderBrand';
 
-var CHeaderDivider = function (_a) {
+var CHeaderDivider = forwardRef(function (_a, ref) {
     var className = _a.className, rest = __rest(_a, ["className"]);
     var _className = classNames('header-divider', className);
-    return React__default.createElement("div", __assign({ className: _className }, rest));
-};
+    return React__default.createElement("div", __assign({ className: _className }, rest, { ref: ref }));
+});
 CHeaderDivider.propTypes = {
     className: PropTypes.string,
 };
@@ -6122,18 +6122,18 @@ CListGroupItem.propTypes = {
 };
 CListGroupItem.displayName = 'CListGroupItem';
 
-var CModalContent = function (_a) {
+var CModalContent = forwardRef(function (_a, ref) {
     var children = _a.children, className = _a.className, rest = __rest(_a, ["children", "className"]);
     var _className = classNames('modal-content', className);
-    return (React__default.createElement("div", __assign({ className: _className }, rest), children));
-};
+    return (React__default.createElement("div", __assign({ className: _className }, rest, { ref: ref }), children));
+});
 CModalContent.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
 };
 CModalContent.displayName = 'CModalContent';
 
-var CModalDialog = function (_a) {
+var CModalDialog = forwardRef(function (_a, ref) {
     var _b;
     var children = _a.children, alignment = _a.alignment, className = _a.className, fullscreen = _a.fullscreen, scrollable = _a.scrollable, size = _a.size, rest = __rest(_a, ["children", "alignment", "className", "fullscreen", "scrollable", "size"]);
     var _className = classNames('modal-dialog', (_b = {
@@ -6145,8 +6145,8 @@ var CModalDialog = function (_a) {
         _b['modal-dialog-scrollable'] = scrollable,
         _b["modal-" + size] = size,
         _b), className);
-    return (React__default.createElement("div", __assign({ className: _className }, rest), children));
-};
+    return (React__default.createElement("div", __assign({ className: _className }, rest, { ref: ref }), children));
+});
 CModalDialog.propTypes = {
     alignment: PropTypes.oneOf(['top', 'center']),
     children: PropTypes.node,
@@ -6160,10 +6160,11 @@ CModalDialog.propTypes = {
 };
 CModalDialog.displayName = 'CModalDialog';
 
-var CModal = function (_a) {
+var CModal = forwardRef(function (_a, ref) {
     var children = _a.children, alignment = _a.alignment, _b = _a.backdrop, backdrop = _b === void 0 ? true : _b, className = _a.className, _c = _a.duration, duration = _c === void 0 ? 150 : _c, fullscreen = _a.fullscreen, _d = _a.keyboard, keyboard = _d === void 0 ? true : _d, onDismiss = _a.onDismiss, _e = _a.portal, portal = _e === void 0 ? true : _e, scrollable = _a.scrollable, size = _a.size, _f = _a.transition, transition = _f === void 0 ? true : _f, visible = _a.visible;
-    var ref = useRef(null);
     var _g = useState(false), staticBackdrop = _g[0], setStaticBackdrop = _g[1];
+    var modalRef = useRef(null);
+    var forkedRef = useForkedRef(ref, modalRef);
     var handleDismiss = function () {
         if (typeof onDismiss === 'undefined') {
             return setStaticBackdrop(true);
@@ -6191,7 +6192,7 @@ var CModal = function (_a) {
         if (visible) {
             document.body.classList.add('modal-open');
             setTimeout(function () {
-                ref.current && ref.current.focus();
+                modalRef.current && modalRef.current.focus();
             }, !transition ? 0 : duration);
         }
         else {
@@ -6203,7 +6204,7 @@ var CModal = function (_a) {
         if (event.key === 'Escape' && keyboard) {
             return handleDismiss();
         }
-    }, [ref, handleDismiss]);
+    }, [modalRef, handleDismiss]);
     var modal = function (ref, transitionClass) {
         return (React__default.createElement(React__default.Fragment, null,
             React__default.createElement("div", { className: classNames(_className, transitionClass), tabIndex: -1, role: "dialog", ref: ref },
@@ -6215,10 +6216,10 @@ var CModal = function (_a) {
         React__default.createElement(CSSTransition, { in: visible, timeout: !transition ? 0 : duration, onExit: onDismiss, mountOnEnter: true, unmountOnExit: true }, function (state) {
             var transitionClass = getTransitionClass(state);
             return typeof window !== 'undefined' && portal
-                ? createPortal(modal(ref, transitionClass), document.body)
-                : modal(ref, transitionClass);
+                ? createPortal(modal(forkedRef, transitionClass), document.body)
+                : modal(forkedRef, transitionClass);
         })));
-};
+});
 CModal.propTypes = {
     alignment: PropTypes.oneOf(['top', 'center']),
     backdrop: PropTypes.bool,
@@ -6239,35 +6240,35 @@ CModal.propTypes = {
 };
 CModal.displayName = 'CModal';
 
-var CModalBody = function (_a) {
+var CModalBody = forwardRef(function (_a, ref) {
     var children = _a.children, className = _a.className, rest = __rest(_a, ["children", "className"]);
     var _className = classNames('modal-body', className);
-    return (React__default.createElement("div", __assign({ className: _className }, rest), children));
-};
+    return (React__default.createElement("div", __assign({ className: _className }, rest, { ref: ref }), children));
+});
 CModalBody.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
 };
 CModalBody.displayName = 'CModalBody';
 
-var CModalFooter = function (_a) {
+var CModalFooter = forwardRef(function (_a, ref) {
     var children = _a.children, className = _a.className, rest = __rest(_a, ["children", "className"]);
     var _className = classNames('modal-footer', className);
-    return (React__default.createElement("div", __assign({ className: _className }, rest), children));
-};
+    return (React__default.createElement("div", __assign({ className: _className }, rest, { ref: ref }), children));
+});
 CModalFooter.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
 };
 CModalFooter.displayName = 'CModalFooter';
 
-var CModalHeader = function (_a) {
+var CModalHeader = forwardRef(function (_a, ref) {
     var children = _a.children, className = _a.className, onDismiss = _a.onDismiss, rest = __rest(_a, ["children", "className", "onDismiss"]);
     var _className = classNames('modal-header', className);
-    return (React__default.createElement("div", __assign({ className: _className }, rest),
+    return (React__default.createElement("div", __assign({ className: _className }, rest, { ref: ref }),
         children,
         onDismiss && React__default.createElement(CButtonClose, { onClick: onDismiss })));
-};
+});
 CModalHeader.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
@@ -6275,11 +6276,11 @@ CModalHeader.propTypes = {
 };
 CModalHeader.displayName = 'CModalHeader';
 
-var CModalTitle = function (_a) {
+var CModalTitle = forwardRef(function (_a, ref) {
     var children = _a.children, _b = _a.component, Component = _b === void 0 ? 'h5' : _b, className = _a.className, rest = __rest(_a, ["children", "component", "className"]);
     var _className = classNames('modal-title', className);
-    return (React__default.createElement(Component, __assign({ className: _className }, rest), children));
-};
+    return (React__default.createElement(Component, __assign({ className: _className }, rest, { ref: ref }), children));
+});
 CModalTitle.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,

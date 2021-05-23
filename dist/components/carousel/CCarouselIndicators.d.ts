@@ -6,8 +6,6 @@ export interface CCarouselIndicatorsProps extends HTMLAttributes<HTMLOListElemen
     className?: string;
     /**
      * Indicators section user classes. [docs]
-     *
-     * @type string
      */
     indicatorsClass?: string;
 }

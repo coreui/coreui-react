@@ -1,8 +1,8 @@
-import { FC, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 export interface CModalFooterProps extends HTMLAttributes<HTMLDivElement> {
     /**
      * A string of all className you want applied to the base component. [docs]
      */
     className?: string;
 }
-export declare const CModalFooter: FC<CModalFooterProps>;
+export declare const CModalFooter: React.ForwardRefExoticComponent<CModalFooterProps & React.RefAttributes<HTMLDivElement>>;

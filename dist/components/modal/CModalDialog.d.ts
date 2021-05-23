@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 export interface CModalDialogProps extends HTMLAttributes<HTMLDivElement> {
     /**
      * Align the modal in the center or top of the screen. [docs]
@@ -23,4 +23,4 @@ export interface CModalDialogProps extends HTMLAttributes<HTMLDivElement> {
      */
     size?: 'sm' | 'lg' | 'xl';
 }
-export declare const CModalDialog: FC<CModalDialogProps>;
+export declare const CModalDialog: React.ForwardRefExoticComponent<CModalDialogProps & React.RefAttributes<HTMLDivElement>>;

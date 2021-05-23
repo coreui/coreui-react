@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
     /**
      * Align the modal in the center or top of the screen. [docs]
@@ -53,4 +53,4 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
      */
     visible?: boolean;
 }
-export declare const CModal: FC<CModalProps>;
+export declare const CModal: React.ForwardRefExoticComponent<CModalProps & React.RefAttributes<HTMLDivElement>>;
