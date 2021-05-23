@@ -1,0 +1,64 @@
+---
+name: Migration to v4
+description: Track and review changes to the CoreUI for React.js components to help you migrate from v3 to v4.
+menu: "Migration"
+route: "/migration/v4"
+---
+
+CoreUI for React is the React.js version of CoreUI components library, so before read this migration guide, please check also [CoreUI 3 to 4 migration guide](https://coreui.io/docs/4.0/migration/).
+
+## v4.0.0-alpha.2
+
+### Components
+
+- Deprecated component `CEmbed`
+- Deprecated component `CJumbotron`
+
+#### Badges
+
+- variant="pill" => shape="rounded-pill"
+- variant="square" => shape="rounded-0"
+
+#### Forms
+
+- `CInput` => `CFormControl`
+- `CInputCheckbox` => `CFormCheck`
+- `CLabel` => `CFormLabel`
+- `CSelect` => `CFormSelect`
+- `CValidFeedback` => `CFormFeedback valid`
+- `CInvalidFeedback` => `CFormFeedback invalid`
+
+- Deprecated component `CFormGroup`
+- Deprecated component `CInputGroupAppend`
+- Deprecated component `CInputGroupPrepend`
+- Depreacted component `CSwitch`, use `CFormCheck switch` instead of.
+- Deprecated `.help-block`
+
+#### Header
+
+- Deprecated property `withSubheader`
+- Deprecated component `CHeaderNavItem`, use `CNavItem` instead of.
+- Deprecated component `CHeaderNavLink`, use `CNavLink` instead of.
+
+#### List Group
+
+- Depracated prop `action` Use property `component="a"` or `component="button"` instead of `action`.
+
+#### Modal
+
+- Depracated prop `show` Use `visible` instead of.
+
+#### Popover
+
+- Depracated prop `header` Use `title` instead of.
+
+#### Progress Bar
+
+- Depracated prop `precision`
+- Depracated prop `showLabel`
+- Depracated prop `showPercentage`
+- Depracated prop `showValue`
+
+#### Tabs
+
+- Deprecated component `<CTabs>` use `<CNav variant="tabs">` without wrapper component `<CTabs>`

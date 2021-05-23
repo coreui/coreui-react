@@ -10,7 +10,6 @@ import { NavSearch } from '../NavSearch'
 import { NavLink } from '../NavLink'
 import { NavGroup } from '../NavGroup'
 
-
 export const Sidebar = forwardRef(function Sidebar(props, ref) {
   const { show } = props
   const [query, setQuery] = useState('')
@@ -38,15 +37,19 @@ export const Sidebar = forwardRef(function Sidebar(props, ref) {
   }
 
   return (
-    <div className={`sidebar sidebar-lg sidebar-fixed sidebar-self-hiding-md border-end ps-xl-4", ${show && 'show'}`} style={{...cssVars}}>
+    <div
+      className={`sidebar sidebar-lg sidebar-fixed sidebar-self-hiding-md border-end ps-xl-4", ${
+        show && 'show'
+      }`}
+      style={{ ...cssVars }}
+    >
       <div className="sidebar-brand justify-content-start ps-3">
-        <Logo/>
+        <Logo />
       </div>
       <div className="sidebar-nav">
-      {menus &&
-          menus.map(menu => {
-            if (!menu.route)
-              return <NavGroup key={menu.id} item={menu} sidebarRef={ref} />
+        {menus &&
+          menus.map((menu) => {
+            if (!menu.route) return <NavGroup key={menu.id} item={menu} sidebarRef={ref} />
             if (menu.route === currentDoc.route) {
               return (
                 <NavLink key={menu.id} item={menu} ref={currentDocRef}>

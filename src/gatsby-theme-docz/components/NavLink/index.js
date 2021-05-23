@@ -8,9 +8,9 @@ import { get } from 'lodash/fp'
 // import * as styles from './styles'
 
 const getHeadings = (route, docs) => {
-  const doc = docs.find(doc => doc.route === route)
+  const doc = docs.find((doc) => doc.route === route)
   const headings = get('headings', doc)
-  return headings ? headings.filter(heading => heading.depth === 2) : []
+  return headings ? headings.filter((heading) => heading.depth === 2) : []
 }
 
 const getCurrentHash = () => {
@@ -35,12 +35,7 @@ export const NavLink = forwardRef(function NavLink({ item, ...props }, ref) {
   const currentHash = getCurrentHash()
   return (
     <Fragment>
-      <Link
-        {...props}
-        to={to}
-        activeClassName="active"
-        ref={ref}
-      />
+      <Link {...props} to={to} activeClassName="active" ref={ref} />
       {/* {showHeadings &&
         headings.map(heading => (
           <Link

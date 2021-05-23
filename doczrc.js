@@ -18,14 +18,8 @@ export default {
     {
       name: 'Components', // manually ordered menu "Components"
     },
-  ],
-  htmlContext: {
-    footer: {
-      scripts: [
-        {
-          src: 'https://media.ethicalads.io/media/client/ethicalads.min.js',
-        },
-      ],
+    {
+      name: 'Migration', // manually ordered menu "Migration"
     },
-  },
+  ],
 }
