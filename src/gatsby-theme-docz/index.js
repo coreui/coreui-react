@@ -2,7 +2,7 @@
 import { jsx } from 'theme-ui'
 import { theme, useConfig, ComponentsProvider } from 'docz'
 import { Styled, ThemeProvider } from 'theme-ui'
-import '@coreui/coreui-pro/scss/coreui.scss'
+import '@coreui/coreui/scss/coreui.scss'
 import './dosc.scss'
 
 import defaultTheme from '~theme'

@@ -22,7 +22,7 @@
     "test:update": "jest --coverage --updateSnapshot"
   },
   "peerDependencies": {
-    "@coreui/coreui-pro": "^4.0.0-rc.0",
+    "@coreui/coreui": "^4.0.0-rc.0",
     "react": "^17",
     "react-dom": "^17",
     "react-router-dom": "^5.2.0"

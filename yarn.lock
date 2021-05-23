@@ -1119,11 +1119,6 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@coreui/coreui-pro@^4.0.0-rc.0":
-  version "4.0.0-rc.0"
-  resolved "https://registry.yarnpkg.com/@coreui/coreui-pro/-/coreui-pro-4.0.0-rc.0.tgz#cb7b604f8879ab353c02d96bd805eba8746c04f9"
-  integrity sha512-QwNjEpDsEggOkrtNS+s+QbWJj5RFg9P3tbKMLweaF1QEDgbxq7hJWdG32y6YinTCYQI3jIh1KnCQqgWNA4u1Uw==
-
 "@emotion/babel-plugin-jsx-pragmatic@^0.1.5":
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin-jsx-pragmatic/-/babel-plugin-jsx-pragmatic-0.1.5.tgz#27debfe9c27c4d83574d509787ae553bf8a34d7e"
