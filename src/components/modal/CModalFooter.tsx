@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from 'react'
+import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -9,15 +9,17 @@ export interface CModalFooterProps extends HTMLAttributes<HTMLDivElement> {
   className?: string
 }
 
-export const CModalFooter: FC<CModalFooterProps> = ({ children, className, ...rest }) => {
-  const _className = classNames('modal-footer', className)
+export const CModalFooter = forwardRef<HTMLDivElement, CModalFooterProps>(
+  ({ children, className, ...rest }, ref) => {
+    const _className = classNames('modal-footer', className)
 
-  return (
-    <div className={_className} {...rest}>
-      {children}
-    </div>
-  )
-}
+    return (
+      <div className={_className} {...rest} ref={ref}>
+        {children}
+      </div>
+    )
+  },
+)
 
 CModalFooter.propTypes = {
   children: PropTypes.node,

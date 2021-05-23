@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from 'react'
+import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -27,34 +27,28 @@ export interface CModalDialogProps extends HTMLAttributes<HTMLDivElement> {
   size?: 'sm' | 'lg' | 'xl'
 }
 
-export const CModalDialog: FC<CModalDialogProps> = ({
-  children,
-  alignment,
-  className,
-  fullscreen,
-  scrollable,
-  size,
-  ...rest
-}) => {
-  const _className = classNames(
-    'modal-dialog',
-    {
-      'modal-dialog-centered': alignment === 'center',
-      [typeof fullscreen === 'boolean'
-        ? 'modal-fullscreen'
-        : `modal-fullscreen-${fullscreen}-down`]: fullscreen,
-      'modal-dialog-scrollable': scrollable,
-      [`modal-${size}`]: size,
-    },
-    className,
-  )
+export const CModalDialog = forwardRef<HTMLDivElement, CModalDialogProps>(
+  ({ children, alignment, className, fullscreen, scrollable, size, ...rest }, ref) => {
+    const _className = classNames(
+      'modal-dialog',
+      {
+        'modal-dialog-centered': alignment === 'center',
+        [typeof fullscreen === 'boolean'
+          ? 'modal-fullscreen'
+          : `modal-fullscreen-${fullscreen}-down`]: fullscreen,
+        'modal-dialog-scrollable': scrollable,
+        [`modal-${size}`]: size,
+      },
+      className,
+    )
 
-  return (
-    <div className={_className} {...rest}>
-      {children}
-    </div>
-  )
-}
+    return (
+      <div className={_className} {...rest} ref={ref}>
+        {children}
+      </div>
+    )
+  },
+)
 
 CModalDialog.propTypes = {
   alignment: PropTypes.oneOf(['top', 'center']),

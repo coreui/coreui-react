@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from 'react'
+import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -9,11 +9,13 @@ export interface CDropdownDividerProps extends HTMLAttributes<HTMLHRElement> {
   className?: string
 }
 
-export const CDropdownDivider: FC<CDropdownDividerProps> = ({ className, ...rest }) => {
-  const _className = classNames('dropdown-divider', className)
+export const CDropdownDivider = forwardRef<HTMLHRElement, CDropdownDividerProps>(
+  ({ className, ...rest }, ref) => {
+    const _className = classNames('dropdown-divider', className)
 
-  return <hr className={_className} {...rest} />
-}
+    return <hr className={_className} {...rest} ref={ref} />
+  },
+)
 
 CDropdownDivider.propTypes = {
   className: PropTypes.string,

@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from 'react'
+import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import { CButtonClose } from '../button/CButtonClose'
 import classNames from 'classnames'
@@ -14,21 +14,18 @@ export interface CModalHeaderProps extends HTMLAttributes<HTMLDivElement> {
   onDismiss?: () => void
 }
 
-export const CModalHeader: FC<CModalHeaderProps> = ({
-  children,
-  className,
-  onDismiss,
-  ...rest
-}) => {
-  const _className = classNames('modal-header', className)
+export const CModalHeader = forwardRef<HTMLDivElement, CModalHeaderProps>(
+  ({ children, className, onDismiss, ...rest }, ref) => {
+    const _className = classNames('modal-header', className)
 
-  return (
-    <div className={_className} {...rest}>
-      {children}
-      {onDismiss && <CButtonClose onClick={onDismiss} />}
-    </div>
-  )
-}
+    return (
+      <div className={_className} {...rest} ref={ref}>
+        {children}
+        {onDismiss && <CButtonClose onClick={onDismiss} />}
+      </div>
+    )
+  },
+)
 
 CModalHeader.propTypes = {
   children: PropTypes.node,

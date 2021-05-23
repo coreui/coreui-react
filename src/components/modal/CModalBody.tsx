@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from 'react'
+import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -9,15 +9,17 @@ export interface CModalBodyProps extends HTMLAttributes<HTMLDivElement> {
   className?: string
 }
 
-export const CModalBody: FC<CModalBodyProps> = ({ children, className, ...rest }) => {
-  const _className = classNames('modal-body', className)
+export const CModalBody = forwardRef<HTMLDivElement, CModalBodyProps>(
+  ({ children, className, ...rest }, ref) => {
+    const _className = classNames('modal-body', className)
 
-  return (
-    <div className={_className} {...rest}>
-      {children}
-    </div>
-  )
-}
+    return (
+      <div className={_className} {...rest} ref={ref}>
+        {children}
+      </div>
+    )
+  },
+)
 
 CModalBody.propTypes = {
   children: PropTypes.node,

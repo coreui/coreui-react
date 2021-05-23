@@ -1,4 +1,4 @@
-import React, { ElementType, FC, HTMLAttributes } from 'react'
+import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -15,20 +15,17 @@ export interface CModalTitleProps extends HTMLAttributes<HTMLHeadingElement> {
   component?: string | ElementType
 }
 
-export const CModalTitle: FC<CModalTitleProps> = ({
-  children,
-  component: Component = 'h5',
-  className,
-  ...rest
-}) => {
-  const _className = classNames('modal-title', className)
+export const CModalTitle = forwardRef<HTMLHeadElement, CModalTitleProps>(
+  ({ children, component: Component = 'h5', className, ...rest }, ref) => {
+    const _className = classNames('modal-title', className)
 
-  return (
-    <Component className={_className} {...rest}>
-      {children}
-    </Component>
-  )
-}
+    return (
+      <Component className={_className} {...rest} ref={ref}>
+        {children}
+      </Component>
+    )
+  },
+)
 
 CModalTitle.propTypes = {
   children: PropTypes.node,
