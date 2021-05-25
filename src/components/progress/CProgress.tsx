@@ -17,16 +17,26 @@ export interface CProgressProps
    */
   height?: number
   /**
+   * Makes progress bar thinner. [docs]
+   */
+  thin?: boolean
+  /**
+   * The percent to progress the ProgressBar (out of 100). [docs]
+   * @default 0
+   */
+  value?: number
+  /**
    * Change the default color to white. [docs]
    */
   white?: boolean
 }
 
 export const CProgress = forwardRef<HTMLDivElement, CProgressProps>(
-  ({ children, className, height, value, white, ...rest }, ref) => {
+  ({ children, className, height, thin, value = 0, white, ...rest }, ref) => {
     const _className = classNames(
       'progress',
       {
+        'progress-thin': thin,
         'progress-white': white,
       },
       className,
@@ -50,6 +60,7 @@ CProgress.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   height: PropTypes.number,
+  thin: PropTypes.bool,
   value: PropTypes.number,
   white: PropTypes.bool,
 }
