@@ -126,8 +126,8 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
     const handleOnClick = (event: Event) => {
       const target = event.target as HTMLAnchorElement
       target &&
-        target.className.includes('nav-link') &&
-        !target.className.includes('nav-group-toggle') &&
+        target.classList.contains('nav-link') &&
+        !target.classList.contains('nav-group-toggle') &&
         mobile &&
         handleHide()
     }
