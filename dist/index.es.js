@@ -6672,8 +6672,9 @@ CProgressBar.propTypes = {
 CProgressBar.displayName = 'CProgressBar';
 
 var CProgress = forwardRef(function (_a, ref) {
-    var children = _a.children, className = _a.className, height = _a.height, value = _a.value, white = _a.white, rest = __rest(_a, ["children", "className", "height", "value", "white"]);
+    var children = _a.children, className = _a.className, height = _a.height, thin = _a.thin, _b = _a.value, value = _b === void 0 ? 0 : _b, white = _a.white, rest = __rest(_a, ["children", "className", "height", "thin", "value", "white"]);
     var _className = classNames('progress', {
+        'progress-thin': thin,
         'progress-white': white,
     }, className);
     return (React__default.createElement("div", { className: _className, style: height ? { height: height + "px" } : {}, ref: ref }, value ? (React__default.createElement(CProgressBar, __assign({ value: value }, rest), children)) : (children)));
@@ -6682,6 +6683,7 @@ CProgress.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
     height: PropTypes.number,
+    thin: PropTypes.bool,
     value: PropTypes.number,
     white: PropTypes.bool,
 };
@@ -6737,8 +6739,8 @@ var CSidebar = forwardRef(function (_a, ref) {
     var handleOnClick = function (event) {
         var target = event.target;
         target &&
-            target.className.includes('nav-link') &&
-            !target.className.includes('nav-group-toggle') &&
+            target.classList.contains('nav-link') &&
+            !target.classList.contains('nav-group-toggle') &&
             mobile &&
             handleHide();
     };

@@ -12,6 +12,15 @@ export interface CProgressProps extends Omit<HTMLAttributes<HTMLDivElement>, 'co
      */
     height?: number;
     /**
+     * Makes progress bar thinner. [docs]
+     */
+    thin?: boolean;
+    /**
+     * The percent to progress the ProgressBar (out of 100). [docs]
+     * @default 0
+     */
+    value?: number;
+    /**
      * Change the default color to white. [docs]
      */
     white?: boolean;
