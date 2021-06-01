@@ -1,4 +1,4 @@
-import React, { forwardRef, HTMLAttributes } from 'react'
+import React, { forwardRef, HTMLAttributes, ReactNode } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -50,7 +50,7 @@ export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
   /**
    * The element represents a caption for a component. [docs]
    */
-  label?: string
+  label?: string | ReactNode
   /**
    * Size the component large or extra large. Works only with `switch` [docs]
    *
@@ -169,7 +169,7 @@ CFormCheck.propTypes = {
   id: PropTypes.string,
   inline: PropTypes.bool,
   invalid: PropTypes.bool,
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   size: PropTypes.oneOf(['lg', 'xl']),
   switch: PropTypes.bool,
   type: PropTypes.oneOf(['checkbox', 'radio']),
