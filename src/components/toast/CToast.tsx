@@ -80,7 +80,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
       setVisible,
     }
 
-    //triggered on mount and destroy
+    // triggered on mount and destroy
     useEffect(() => () => clearTimeout(timeout.current), [])
 
     useEffect(() => {

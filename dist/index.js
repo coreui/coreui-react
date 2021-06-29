@@ -1778,7 +1778,10 @@ Transition.propTypes = process.env.NODE_ENV !== "production" ? {
    *     [test/CSSTransition-test.js](https://github.com/reactjs/react-transition-group/blob/13435f897b3ab71f6e19d724f145596f5910581c/test/CSSTransition-test.js#L362-L437)).
    */
   nodeRef: PropTypes.shape({
-    current: typeof Element === 'undefined' ? PropTypes.any : PropTypes.instanceOf(Element)
+    current: typeof Element === 'undefined' ? PropTypes.any : function (propValue, key, componentName, location, propFullName, secret) {
+      var value = propValue[key];
+      return PropTypes.instanceOf(value && 'ownerDocument' in value ? value.ownerDocument.defaultView.Element : Element)(propValue, key, componentName, location, propFullName, secret);
+    }
   }),
 
   /**
@@ -2186,7 +2189,7 @@ var CSSTransition = /*#__PURE__*/function (_React$Component) {
 
     if (type === 'appear' && phase === 'done' && doneClassName) {
       className += " " + doneClassName;
-    } // This is for to force a repaint,
+    } // This is to force a repaint,
     // which is necessary in order to transition styles when adding a class name.
 
 
@@ -2532,19 +2535,19 @@ var shapePropType = PropTypes.oneOfType([
 ]);
 var triggerPropType = PropTypes.oneOf(['hover', 'focus', 'click']);
 
-var CButtonClose = React.forwardRef(function (_a, ref) {
+var CCloseButton = React.forwardRef(function (_a, ref) {
     var className = _a.className, disabled = _a.disabled, white = _a.white, rest = __rest(_a, ["className", "disabled", "white"]);
     var _className = classNames('btn', 'btn-close', {
         'btn-close-white': white,
     }, disabled, className);
     return (React__default['default'].createElement("button", __assign({ className: _className, "aria-label": "Close", disabled: disabled }, rest, { ref: ref })));
 });
-CButtonClose.propTypes = {
+CCloseButton.propTypes = {
     className: PropTypes.string,
     disabled: PropTypes.bool,
     white: PropTypes.bool,
 };
-CButtonClose.displayName = 'CButtonClose';
+CCloseButton.displayName = 'CCloseButton';
 
 var CAlert = React.forwardRef(function (_a, ref) {
     var children = _a.children, className = _a.className, _b = _a.color, color = _b === void 0 ? 'primary' : _b, dismissible = _a.dismissible, variant = _a.variant, _c = _a.visible, visible = _c === void 0 ? true : _c, onDismiss = _a.onDismiss, onDismissed = _a.onDismissed, rest = __rest(_a, ["children", "className", "color", "dismissible", "variant", "visible", "onDismiss", "onDismissed"]);
@@ -2556,7 +2559,7 @@ var CAlert = React.forwardRef(function (_a, ref) {
     return (React__default['default'].createElement(CSSTransition, { in: _visible, timeout: 150, onExit: onDismiss, onExited: onDismissed, unmountOnExit: true },
         React__default['default'].createElement("div", __assign({ className: _className, role: "alert" }, rest, { ref: ref }),
             children,
-            dismissible && React__default['default'].createElement(CButtonClose, { onClick: function () { return setVisible(false); } }))));
+            dismissible && React__default['default'].createElement(CCloseButton, { onClick: function () { return setVisible(false); } }))));
 });
 CAlert.propTypes = {
     children: PropTypes.node,
@@ -2718,11 +2721,7 @@ CButton.displayName = 'CButton';
 
 var CButtonGroup = React.forwardRef(function (_a, ref) {
     var _b;
-    var children = _a.children, 
-    // ariaLabel,
-    className = _a.className, 
-    // role,
-    size = _a.size, vertical = _a.vertical, rest = __rest(_a, ["children", "className", "size", "vertical"]);
+    var children = _a.children, className = _a.className, size = _a.size, vertical = _a.vertical, rest = __rest(_a, ["children", "className", "size", "vertical"]);
     var _className = classNames(vertical ? 'btn-group-vertical' : 'btn-group', (_b = {}, _b["btn-group-" + size] = size, _b), className);
     return (React__default['default'].createElement("div", __assign({ className: _className }, rest, { ref: ref }), children));
 });
@@ -2810,7 +2809,6 @@ CCardGroup.propTypes = {
 };
 CCardGroup.displayName = 'CCardGroup';
 
-// TODO: check if component property is necessary.
 var CCardHeader = React.forwardRef(function (_a, ref) {
     var children = _a.children, _b = _a.component, Component = _b === void 0 ? 'div' : _b, className = _a.className, rest = __rest(_a, ["children", "component", "className"]);
     var _className = classNames('card-header', className);
@@ -2974,7 +2972,6 @@ var CCarousel = React.forwardRef(function (_a, ref) {
             pause();
         };
     }, [state]);
-    // render
     var _className = classNames('carousel slide', transition === 'crossfade' && 'carousel-fade', dark && 'carousel-dark', className);
     return (React__default['default'].createElement("div", __assign({ className: _className, onMouseEnter: pause, onMouseLeave: cycle }, rest, { ref: ref }),
         React__default['default'].createElement(CCarouselContext.Provider, { value: {
@@ -5631,9 +5628,6 @@ var CCol = React.forwardRef(function (_a, ref) {
         var breakpoint = rest[bp];
         delete rest[bp];
         var infix = bp === 'xs' ? '' : "-" + bp;
-        // if (typeof breakpoint === 'string' && breakpoint === 'auto') {
-        //   repsonsiveCLassNames.push(`col${infix}-auto`)
-        // }
         if (typeof breakpoint === 'number' || typeof breakpoint === 'string') {
             repsonsiveCLassNames.push("col" + infix + "-" + breakpoint);
         }
@@ -5641,9 +5635,6 @@ var CCol = React.forwardRef(function (_a, ref) {
             repsonsiveCLassNames.push("col" + infix);
         }
         if (breakpoint && typeof breakpoint === 'object') {
-            // if (typeof breakpoint.span === 'string' && breakpoint.span === 'auto') {
-            //   repsonsiveCLassNames.push(`col${infix}-auto`)
-            // }
             if (typeof breakpoint.span === 'number' || typeof breakpoint.span === 'string') {
                 repsonsiveCLassNames.push("col" + infix + "-" + breakpoint.span);
             }
@@ -5879,7 +5870,7 @@ CFormCheck.propTypes = {
     id: PropTypes.string,
     inline: PropTypes.bool,
     invalid: PropTypes.bool,
-    label: PropTypes.string,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     size: PropTypes.oneOf(['lg', 'xl']),
     switch: PropTypes.bool,
     type: PropTypes.oneOf(['checkbox', 'radio']),
@@ -6296,7 +6287,7 @@ var CModalHeader = React.forwardRef(function (_a, ref) {
     var _className = classNames('modal-header', className);
     return (React__default['default'].createElement("div", __assign({ className: _className }, rest, { ref: ref }),
         children,
-        onDismiss && React__default['default'].createElement(CButtonClose, { onClick: onDismiss })));
+        onDismiss && React__default['default'].createElement(CCloseButton, { onClick: onDismiss })));
 });
 CModalHeader.propTypes = {
     children: PropTypes.node,
@@ -6603,9 +6594,7 @@ CPaginationItem.displayName = 'CPaginationItem';
 var CPopoverContent = React.forwardRef(function (_a, ref) {
     var content = _a.content, title = _a.title, placementClassNamePostfix = _a.placementClassNamePostfix, arrowProps = _a.arrowProps, style = _a.style, transitionClass = _a.transitionClass;
     return (React__default['default'].createElement(React__default['default'].Fragment, null,
-        React__default['default'].createElement("div", { className: classNames("popover bs-popover-" + placementClassNamePostfix, transitionClass), 
-            // className={`popover bs-popover-${placementClassNamePostfix}`}
-            ref: ref, style: style, role: "tooltip" },
+        React__default['default'].createElement("div", { className: classNames("popover bs-popover-" + placementClassNamePostfix, transitionClass), ref: ref, style: style, role: "tooltip" },
             React__default['default'].createElement("div", __assign({ className: "popover-arrow" }, arrowProps)),
             React__default['default'].createElement("div", { className: "popover-header" }, title),
             React__default['default'].createElement("div", { className: "popover-body" }, content))));
@@ -7160,7 +7149,7 @@ var CToast = React.forwardRef(function (_a, ref) {
         visible: _visible,
         setVisible: setVisible,
     };
-    //triggered on mount and destroy
+    // triggered on mount and destroy
     React.useEffect(function () { return function () { return clearTimeout(timeout.current); }; }, []);
     React.useEffect(function () {
         _autohide();
@@ -7209,9 +7198,9 @@ CToastBody.displayName = 'CToastBody';
 var CToastClose = React.forwardRef(function (_a, ref) {
     var children = _a.children, Component = _a.component, rest = __rest(_a, ["children", "component"]);
     var setVisible = React.useContext(CToastContext).setVisible;
-    return Component ? (React__default['default'].createElement(Component, __assign({ onClick: function () { return setVisible(false); } }, rest, { ref: ref }), children)) : (React__default['default'].createElement(CButtonClose, __assign({ onClick: function () { return setVisible(false); } }, rest, { ref: ref })));
+    return Component ? (React__default['default'].createElement(Component, __assign({ onClick: function () { return setVisible(false); } }, rest, { ref: ref }), children)) : (React__default['default'].createElement(CCloseButton, __assign({ onClick: function () { return setVisible(false); } }, rest, { ref: ref })));
 });
-CToastClose.propTypes = __assign(__assign({}, CButtonClose.propTypes), { component: PropTypes.elementType });
+CToastClose.propTypes = __assign(__assign({}, CCloseButton.propTypes), { component: PropTypes.elementType });
 CToastClose.displayName = 'CToastClose';
 
 var CToastHeader = React.forwardRef(function (_a, ref) {
@@ -7509,7 +7498,6 @@ exports.CBadge = CBadge;
 exports.CBreadcrumb = CBreadcrumb;
 exports.CBreadcrumbItem = CBreadcrumbItem;
 exports.CButton = CButton;
-exports.CButtonClose = CButtonClose;
 exports.CButtonGroup = CButtonGroup;
 exports.CButtonToolbar = CButtonToolbar;
 exports.CCallout = CCallout;
@@ -7529,6 +7517,7 @@ exports.CCarouselControl = CCarouselControl;
 exports.CCarouselIndicators = CCarouselIndicators;
 exports.CCarouselInner = CCarouselInner;
 exports.CCarouselItem = CCarouselItem;
+exports.CCloseButton = CCloseButton;
 exports.CCol = CCol;
 exports.CCollapse = CCollapse;
 exports.CContainer = CContainer;

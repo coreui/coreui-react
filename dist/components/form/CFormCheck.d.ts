@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, ReactNode } from 'react';
 import { Colors, Shapes } from '../Types';
 export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
     button?: boolean;
@@ -43,7 +43,7 @@ export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
     /**
      * The element represents a caption for a component. [docs]
      */
-    label?: string;
+    label?: string | ReactNode;
     /**
      * Size the component large or extra large. Works only with `switch` [docs]
      *

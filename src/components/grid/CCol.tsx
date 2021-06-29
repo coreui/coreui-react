@@ -74,10 +74,6 @@ export const CCol = forwardRef<HTMLDivElement, CColProps>(
 
       const infix = bp === 'xs' ? '' : `-${bp}`
 
-      // if (typeof breakpoint === 'string' && breakpoint === 'auto') {
-      //   repsonsiveCLassNames.push(`col${infix}-auto`)
-      // }
-
       if (typeof breakpoint === 'number' || typeof breakpoint === 'string') {
         repsonsiveCLassNames.push(`col${infix}-${breakpoint}`)
       }
@@ -87,10 +83,6 @@ export const CCol = forwardRef<HTMLDivElement, CColProps>(
       }
 
       if (breakpoint && typeof breakpoint === 'object') {
-        // if (typeof breakpoint.span === 'string' && breakpoint.span === 'auto') {
-        //   repsonsiveCLassNames.push(`col${infix}-auto`)
-        // }
-
         if (typeof breakpoint.span === 'number' || typeof breakpoint.span === 'string') {
           repsonsiveCLassNames.push(`col${infix}-${breakpoint.span}`)
         }

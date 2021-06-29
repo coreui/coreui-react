@@ -1,6 +1,5 @@
 import React, { ElementType, forwardRef, useContext } from 'react'
 import PropTypes from 'prop-types'
-// import classNames from 'classnames'
 import { CToastContext } from './CToast'
 import { CCloseButton, CCloseButtonProps } from '../close-button/CCloseButton'
 

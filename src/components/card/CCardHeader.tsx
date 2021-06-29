@@ -1,5 +1,3 @@
-// TODO: check if component property is necessary.
-
 import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'

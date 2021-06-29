@@ -7,10 +7,6 @@ export interface CButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
    * A string of all className you want applied to the base component. [docs]
    */
   className?: string
-  // /**
-  //  * The role attribute describes the role of an element in programs that can make use of it, such as screen readers or magnifiers. [docs]
-  //  */
-  // role?: string
   /**
    * Size the component small or large. [docs]
    *
@@ -24,18 +20,7 @@ export interface CButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const CButtonGroup = forwardRef<HTMLDivElement, CButtonGroupProps>(
-  (
-    {
-      children,
-      // ariaLabel,
-      className,
-      // role,
-      size,
-      vertical,
-      ...rest
-    },
-    ref,
-  ) => {
+  ({ children, className, size, vertical, ...rest }, ref) => {
     const _className = classNames(
       vertical ? 'btn-group-vertical' : 'btn-group',
       { [`btn-group-${size}`]: size },
@@ -43,13 +28,7 @@ export const CButtonGroup = forwardRef<HTMLDivElement, CButtonGroupProps>(
     )
 
     return (
-      <div
-        className={_className}
-        // {...(ariaLabel && { 'aria-label': ariaLabel })}
-        // {...(role && { role: role })}
-        {...rest}
-        ref={ref}
-      >
+      <div className={_className} {...rest} ref={ref}>
         {children}
       </div>
     )

@@ -118,8 +118,6 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
       }
     }, [state])
 
-    // render
-
     const _className = classNames(
       'carousel slide',
       transition === 'crossfade' && 'carousel-fade',

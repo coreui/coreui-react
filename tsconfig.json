@@ -19,6 +19,6 @@
     "noUnusedParameters": true,
     "esModuleInterop": true
   },
-  "include": ["src", "docs/4.0/components/_nav.js", "docs/4.0/components/_slides.ts"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }

@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-export interface CImage extends HTMLAttributes<HTMLImageElement> {
+export interface CImageProps extends HTMLAttributes<HTMLImageElement> {
     align?: 'start' | 'center' | 'end';
     /**
      * A string of all className you want applied to the component. [docs]
@@ -18,4 +18,4 @@ export interface CImage extends HTMLAttributes<HTMLImageElement> {
      */
     thumbnail?: boolean;
 }
-export declare const CImage: React.ForwardRefExoticComponent<CImage & React.RefAttributes<HTMLImageElement>>;
+export declare const CImage: React.ForwardRefExoticComponent<CImageProps & React.RefAttributes<HTMLImageElement>>;

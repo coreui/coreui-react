@@ -17,7 +17,6 @@ export const CPopoverContent = forwardRef<HTMLDivElement, CPopoverContentProps>(
     <>
       <div
         className={classNames(`popover bs-popover-${placementClassNamePostfix}`, transitionClass)}
-        // className={`popover bs-popover-${placementClassNamePostfix}`}
         ref={ref}
         style={style}
         role="tooltip"
