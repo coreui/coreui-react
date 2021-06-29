@@ -1,0 +1,170 @@
+---
+name: Gutters
+title: Gutters
+description: Gutters are the padding between your columns, used to responsively space and align content in the CoreUI for React.js grid system.
+menu: Layout
+route: "/layout/gutters"
+---
+
+import { Playground, Props } from 'docz'
+
+import { CCol, CContainer, CRow } from '../../../src/index.ts'
+
+
+## How they work
+
+- **Gutters are the gaps between column content, created by horizontal `padding`.** We set `padding-right` and `padding-left` on each column, and use negative `margin` to offset that at the start and end of each row to align content.
+
+- **Gutters start at `1.5rem` (`24px`) wide.** This allows us to match our grid to the [padding and margin spacers](https://coreui.io/docs/utilities/spacing) scale.
+
+- **Gutters can be responsively adjusted.** Use breakpoint-specific gutter props to modify horizontal gutters, vertical gutters, and all gutters.
+
+## Horizontal gutters
+
+`{breakpoint}={{ gutterX: * }}` props can be used to control the horizontal gutter widths. The `<CContainer>` or `<CContainer fluid>` parent may need to be adjusted if larger gutters are used too to avoid unwanted overflow, using a matching padding utility. For example, in the following example we've increased the padding with `.px-4`:
+
+<Playground>
+  <CContainer className="px-4">
+    <CRow xs={{ gutterX: 5 }}>
+      <CCol>
+        <div className="p-3 border bg-light">Custom column padding</div>
+      </CCol>
+      <CCol>
+        <div className="p-3 border bg-light">Custom column padding</div>
+      </CCol>
+    </CRow>
+  </CContainer>
+</Playground>
+
+An alternative solution is to add a wrapper around the `<CRow>` with the `.overflow-hidden` class:
+
+<Playground>
+  <CContainer className="overflow-hidden">
+    <CRow xs={{ gutterX: 5 }}>
+      <CCol>
+        <div className="p-3 border bg-light">Custom column padding</div>
+      </CCol>
+      <CCol>
+        <div className="p-3 border bg-light">Custom column padding</div>
+      </CCol>
+    </CRow>
+  </CContainer>
+</Playground>
+
+## Vertical gutters
+
+`{breakpoint}={{ gutterY: * }}` props can be used to control the vertical gutter widths. Like the horizontal gutters, the vertical gutters can cause some overflow below the `<CRow>` at the end of a page. If this occurs, you add a wrapper around `<CRow>` with the `.overflow-hidden` class:
+
+<Playground>
+  <CContainer className="overflow-hidden">
+    <CRow xs={{ gutterY: 5 }}>
+      <CCol xs={{ span: 6 }}>
+        <div className="p-3 border bg-light">Custom column padding</div>
+      </CCol>
+      <CCol xs={{ span: 6 }}>
+        <div className="p-3 border bg-light">Custom column padding</div>
+      </CCol>
+      <CCol xs={{ span: 6 }}>
+        <div className="p-3 border bg-light">Custom column padding</div>
+      </CCol>
+      <CCol xs={{ span: 6 }}>
+        <div className="p-3 border bg-light">Custom column padding</div>
+      </CCol>
+    </CRow>
+  </CContainer>
+</Playground>
+
+## Horizontal & vertical gutters
+
+`{breakpoint}={{ gutter: * }}` props can be used to control the horizontal gutter widths, for the following example we use a smaller gutter width, so there won't be a need to add the `.overflow-hidden` wrapper class.
+
+<Playground>
+  <CContainer>
+    <CRow xs={{ gutter: 2 }}>
+      <CCol xs={{ span: 6 }}>
+        <div className="p-3 border bg-light">Custom column padding</div>
+      </CCol>
+      <CCol xs={{ span: 6 }}>
+        <div className="p-3 border bg-light">Custom column padding</div>
+      </CCol>
+      <CCol xs={{ span: 6 }}>
+        <div className="p-3 border bg-light">Custom column padding</div>
+      </CCol>
+      <CCol xs={{ span: 6 }}>
+        <div className="p-3 border bg-light">Custom column padding</div>
+      </CCol>
+    </CRow>
+  </CContainer>
+</Playground>
+
+## Row columns gutters
+
+Gutter props can also be added to [row columns](../layout/grid#row-columns). In the following example, we use responsive row columns and responsive gutter props.
+
+<Playground>
+  <CContainer>
+    <CRow xs={{ cols:2, gutter: 2 }} lg={{ cols: 5, gutter: 3}}>
+      <CCol>
+        <div className="p-3 border bg-light">Row column</div>
+      </CCol>
+      <CCol>
+        <div className="p-3 border bg-light">Row column</div>
+      </CCol>
+      <CCol>
+        <div className="p-3 border bg-light">Row column</div>
+      </CCol>
+      <CCol>
+        <div className="p-3 border bg-light">Row column</div>
+      </CCol>
+      <CCol>
+        <div className="p-3 border bg-light">Row column</div>
+      </CCol>
+      <CCol>
+        <div className="p-3 border bg-light">Row column</div>
+      </CCol>
+      <CCol>
+        <div className="p-3 border bg-light">Row column</div>
+      </CCol>
+      <CCol>
+        <div className="p-3 border bg-light">Row column</div>
+      </CCol>
+      <CCol>
+        <div className="p-3 border bg-light">Row column</div>
+      </CCol>
+      <CCol>
+        <div className="p-3 border bg-light">Row column</div>
+      </CCol>
+    </CRow>
+  </CContainer>
+</Playground>
+
+## No gutters
+
+The gutters between columns in our predefined grid props can be removed with `{breakpoint}={{ gutter: 0 }}`. This removes the negative `margin`s from `<CRow>` and the horizontal `padding` from all immediate children columns.
+
+**Need an edge-to-edge design?** Drop the parent `<CContainer>` or `<CContainer fluid>`.
+
+In practice, here's how it looks. Note you can continue to use this with all other predefined grid props (including column widths, responsive tiers, reorders, and more).
+
+<Playground>
+  <div className="docs-example-row">
+    <CRow xs={{ gutter: 0 }}>
+      <CCol sm={6} md={8}>.col-sm-6 .col-md-8</CCol>
+      <CCol xs={6} md={4}>.col-6 .col-md-4</CCol>
+    </CRow>
+  </div>
+</Playground>
+
+## API
+
+### CContainer
+
+<Props of={CContainer} />
+
+### CRow
+
+<Props of={CRow} />
+
+### CCol
+
+<Props of={CCol} />

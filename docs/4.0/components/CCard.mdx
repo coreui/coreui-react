@@ -1,0 +1,805 @@
+---
+title: React Card Component
+name: Card
+description: React card component provides a flexible and extensible container for displaying content. Card is delivered with a bunch of variants and options.
+menu: Components
+route: /components/card
+---
+
+import { Playground, Props } from 'docz'
+import { 
+  CButton,
+  CCallout,
+  CCard,
+  CCardBody,
+  CCardFooter,
+  CCardGroup,
+  CCardHeader,
+  CCardImage,
+  CCardLink,
+  CCardSubtitle,
+  CCardTitle,
+  CCardText,
+  CListGroup,
+  CListGroupItem,
+  CCol,
+  CNav,
+  CNavItem,
+  CNavLink, 
+  CRow
+} from '../../../src/index.ts'
+
+## About
+
+A react card component is a content container. It incorporates options for images, headers, and footers, a wide variety of content, contextual background colors, and excellent display options.
+
+## Example
+
+Cards are built with as little markup and styles as possible but still manage to deliver a bunch of control and customization. Built with flexbox, they offer easy alignment and mix well with other CoreUI components. Cards have no top, left, and right margins by default, so use [spacing utilities](https://coreui.io/docs/utilities/spacing) as needed. They have no fixed width to start, so they'll fill the full width of its parent.
+
+Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they'll naturally fill the full width of its parent element.
+
+<Playground>
+  <CCard style={{width: '18rem'}}>
+    <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardBody>
+      <CCardTitle>Card title</CCardTitle>
+      <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
+      <CButton href="#">Go somewhere</CButton>
+    </CCardBody>
+  </CCard>
+</Playground>
+
+## Content types
+
+CoreUI card supports a wide variety of content, including images, text, list groups, links, and more. Below are examples of those elements.
+
+### Body
+
+The main block of a card is the `<CCardBody>`. Use it whenever you need a padded section within a card.
+
+<Playground>
+  <CCard>
+    <CCardBody>
+      This is some text within a card body.
+    </CCardBody>
+  </CCard>
+</Playground>
+
+### Titles, text, and links
+
+Card titles are managed by `<CCardTitle>` component. Identically, links are attached and collected next to each other by `<CCardLink>` component.
+
+Subtitles are managed by `<CCardSubtitle>` component. If the `<CCardTitle>` also, the `<CCardSubtitle>` items are stored in a `<CCardBody>` item, the card title, and subtitle are arranged rightly.
+
+<Playground>
+  <CCard style={{width: '18rem'}}>
+    <CCardBody>
+      <CCardTitle>Card title</CCardTitle>
+      <CCardSubtitle className="mb-2 text-muted">Card subtitle</CCardSubtitle>
+      <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
+      <CCardLink href="#">Card link</CCardLink>
+      <CCardLink href="#">Another link</CCardLink>
+    </CCardBody>
+  </CCard>
+</Playground>
+
+### Images
+
+`.card-img-top` places a picture to the top of the card. With `.card-text`, text can be added to the card. Text within `.card-text` can additionally be styled with the regular HTML tags.
+
+<Playground>
+  <CCard style={{width: '18rem'}}>
+    <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardBody>
+      <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
+    </CCardBody>
+  </CCard>
+</Playground>
+
+### List groups
+
+Create lists of content in a card with a flush list group.
+
+<Playground>
+  <CCard style={{width: '18rem'}}>
+    <CListGroup flush>
+      <CListGroupItem>Cras justo odio</CListGroupItem>
+      <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
+      <CListGroupItem>Vestibulum at eros</CListGroupItem>
+    </CListGroup>
+  </CCard>
+</Playground>
+
+<Playground>
+  <CCard style={{width: '18rem'}}>
+    <CCardHeader>Header</CCardHeader>
+    <CListGroup flush>
+      <CListGroupItem>Cras justo odio</CListGroupItem>
+      <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
+      <CListGroupItem>Vestibulum at eros</CListGroupItem>
+    </CListGroup>
+  </CCard>
+</Playground>
+
+<Playground>
+  <CCard style={{width: '18rem'}}>
+    <CListGroup flush>
+      <CListGroupItem>Cras justo odio</CListGroupItem>
+      <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
+      <CListGroupItem>Vestibulum at eros</CListGroupItem>
+    </CListGroup>
+    <CCardFooter>Footer</CCardFooter>
+  </CCard>
+</Playground>
+
+### Kitchen sink
+
+Combine and match many content types to build the card you need, or throw everything in there. Shown below are image styles, blocks, text styles, and a list group—all wrapped in a fixed-width card.
+
+<Playground>
+  <CCard style={{width: '18rem'}}>
+    <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardBody>
+      <CCardTitle>Card title</CCardTitle>
+      <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
+    </CCardBody>
+    <CListGroup flush>
+      <CListGroupItem>Cras justo odio</CListGroupItem>
+      <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
+      <CListGroupItem>Vestibulum at eros</CListGroupItem>
+    </CListGroup>
+    <CCardBody>
+      <CCardLink href="#">Card link</CCardLink>
+      <CCardLink href="#">Another link</CCardLink>
+    </CCardBody>
+  </CCard>
+</Playground>
+
+### Header and footer
+
+Add an optional header and/or footer within a card.
+
+<Playground>
+  <CCard>
+    <CCardHeader>Header</CCardHeader>
+    <CCardBody>
+      <CCardTitle>Special title treatment</CCardTitle>
+      <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
+      <CButton href="#">Go somewhere</CButton>
+    </CCardBody>
+  </CCard>
+</Playground>
+
+Card headers can be styled by adding ex. `component="h5"`.
+
+<Playground>
+  <CCard>
+    <CCardHeader component="h5">Header</CCardHeader>
+    <CCardBody>
+      <CCardTitle>Special title treatment</CCardTitle>
+      <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
+      <CButton href="#">Go somewhere</CButton>
+    </CCardBody>
+  </CCard>
+</Playground>
+
+<Playground>
+  <CCard>
+    <CCardHeader>Quote</CCardHeader>
+    <CCardBody>
+      <blockquote className="blockquote mb-0">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <footer className="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      </blockquote>
+    </CCardBody>
+  </CCard>
+</Playground>
+
+<Playground>
+  <CCard className="text-center">
+    <CCardHeader>Header</CCardHeader>
+    <CCardBody>
+      <CCardTitle>Special title treatment</CCardTitle>
+      <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
+      <CButton href="#">Go somewhere</CButton>
+    </CCardBody>
+    <CCardFooter className="text-muted">2 days ago</CCardFooter>
+  </CCard>
+</Playground>
+
+## Sizing
+
+Cards assume no specific `width` to start, so they'll be 100% wide unless otherwise stated. You can adjust this as required with custom CSS, grid classes, grid Sass mixins, or services.
+
+### Using grid markup
+
+Using the grid, wrap cards in columns and rows as needed.
+
+<Playground>
+  <CRow>
+    <CCol sm="6">
+      <CCard>
+        <CCardBody>
+          <CCardTitle>Special title treatment</CCardTitle>
+          <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
+          <CButton href="#">Go somewhere</CButton>
+        </CCardBody>
+      </CCard>
+    </CCol>
+    <CCol sm="6">
+      <CCard>
+        <CCardBody>
+          <CCardTitle>Special title treatment</CCardTitle>
+          <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
+          <CButton href="#">Go somewhere</CButton>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
+</Playground>
+
+### Using utilities
+
+Use some of [available sizing utilities](https://coreui.io/docs/utilities/sizing/) to rapidly set a card's width.
+
+<Playground>
+  <CCard className="w-75">
+    <CCardBody>
+      <CCardTitle>Card title</CCardTitle>
+      <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
+      <CButton href="#">Go somewhere</CButton>
+    </CCardBody>
+  </CCard>
+  <CCard className="w-50">
+    <CCardBody>
+      <CCardTitle>Card title</CCardTitle>
+      <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
+      <CButton href="#">Go somewhere</CButton>
+    </CCardBody>
+  </CCard>
+</Playground>
+
+### Using custom CSS
+
+Use custom CSS in your stylesheets or as inline styles to set a width.
+
+<Playground>
+  <CCard style={{width: '18rem'}}>
+    <CCardBody>
+      <CCardTitle>Special title treatment</CCardTitle>
+      <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
+      <CButton href="#">Go somewhere</CButton>
+    </CCardBody>
+  </CCard>
+</Playground>
+
+## Text alignment
+
+You can instantly change the text arrangement of any card—in its whole or specific parts—with [text align classes](https://coreui.io/docs/utilities/text/#text-alignment).
+
+<Playground>
+  <CCard style={{width: '18rem'}}>
+    <CCardBody>
+      <CCardTitle>Special title treatment</CCardTitle>
+      <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
+      <CButton href="#">Go somewhere</CButton>
+    </CCardBody>
+  </CCard>
+  <CCard className="text-center" style={{width: '18rem'}}>
+    <CCardBody>
+      <CCardTitle>Special title treatment</CCardTitle>
+      <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
+      <CButton href="#">Go somewhere</CButton>
+    </CCardBody>
+  </CCard>
+  <CCard className="text-end" style={{width: '18rem'}}>
+    <CCardBody>
+      <CCardTitle>Special title treatment</CCardTitle>
+      <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
+      <CButton href="#">Go somewhere</CButton>
+    </CCardBody>
+  </CCard>
+</Playground>
+
+## Navigation
+
+Add some navigation to a `<CCardHeader>` with our `<CNav>` component.
+
+<Playground>
+  <CCard className="text-center">
+    <CCardHeader>
+      <CNav variant="tabs" className="card-header-tabs">
+        <CNavItem>
+          <CNavLink
+            href="#"
+            active
+          >
+            Active
+          </CNavLink>
+        </CNavItem>
+        <CNavItem>
+          <CNavLink
+            href="#"
+          >
+            Link
+          </CNavLink>
+        </CNavItem>
+        <CNavItem>
+          <CNavLink
+            href="#"
+            disabled
+          >
+            Disabled
+          </CNavLink>
+        </CNavItem>
+      </CNav>
+    </CCardHeader>
+    <CCardBody>
+      <CCardTitle>Special title treatment</CCardTitle>
+      <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
+      <CButton href="#">Go somewhere</CButton>
+    </CCardBody>
+  </CCard>
+</Playground>
+
+<Playground>
+  <CCard className="text-center">
+    <CCardHeader>
+      <CNav variant="pills" className="card-header-pills">
+        <CNavItem>
+          <CNavLink
+            href="#"
+            active
+          >
+            Active
+          </CNavLink>
+        </CNavItem>
+        <CNavItem>
+          <CNavLink
+            href="#"
+          >
+            Link
+          </CNavLink>
+        </CNavItem>
+        <CNavItem>
+          <CNavLink
+            href="#"
+            disabled
+          >
+            Disabled
+          </CNavLink>
+        </CNavItem>
+      </CNav>
+    </CCardHeader>
+    <CCardBody>
+      <CCardTitle>Special title treatment</CCardTitle>
+      <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
+      <CButton href="#">Go somewhere</CButton>
+    </CCardBody>
+  </CCard>
+</Playground>
+
+## Images
+
+Cards introduce several options for acting with images. Pick from appending "image caps" at either end of a card, overlaying images with content, or just inserting the image in a card.
+
+### Image caps
+
+Similar to headers and footers, cards can include top and bottom "image caps"—images at the top or bottom of a card.
+
+<Playground>
+  <CCard className="mb-3">
+    <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardBody>
+      <CCardTitle>Card title</CCardTitle>
+      <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+      <CCardText><small className="text-muted">Last updated 3 mins ago</small></CCardText>
+    </CCardBody>
+  </CCard>
+  <CCard className="mb-3">
+    <CCardBody>
+      <CCardTitle>Card title</CCardTitle>
+      <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+      <CCardText><small className="text-muted">Last updated 3 mins ago</small></CCardText>
+    </CCardBody>
+      <CCardImage component="svg" orientation="bottom" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+  </CCard>
+</Playground>
+
+### Image overlays
+
+Adapt an image into a background and overlay your text. Depending on the image, you may need additional styles or utilities.
+
+<!-- TODO: add example -->
+
+Using a combination of grid and utility classes, cards can be made horizontal in a mobile-friendly and responsive way. In the example below, we remove the grid gutters with `.g-0` and use `.col-md-*` classes to make the card horizontal at the `md` breakpoint. Further adjustments may be needed depending on your card content.
+
+<Playground>
+  <CCard className="mb-3" style={{ maxWidth: '540px'}}>
+    <CRow className="g-0">
+      <CCol md="4">
+        <CCardImage component="svg" className="docs-placeholder-img rounded-0" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text></CCardImage>
+      </CCol>
+      <CCol md="8">
+        <CCardBody>
+          <CCardTitle>Card title</CCardTitle>
+          <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+          <CCardText><small className="text-muted">Last updated 3 mins ago</small></CCardText>
+        </CCardBody>
+      </CCol>
+    </CRow>
+  </CCard>
+</Playground>
+
+## Card styles
+
+Cards include various options for customizing their backgrounds, borders, and color.
+
+### Background and color
+
+Use `color` property to change the appearance of a card.
+
+<Playground>
+  <>
+  {[
+    { color: 'primary', textColor: 'white' },
+    { color: 'secondary', textColor: 'white' },
+    { color: 'success', textColor: 'white' },
+    { color: 'danger', textColor: 'white' },
+    { color: 'warning' },
+    { color: 'info', textColor: 'white' },
+    { color: 'light' },
+    { color: 'dark', textColor: 'white' }
+    ].map((item, index) => (
+    <CCard color={item.color} textColor={item.textColor} className="mb-3" style={{ maxWidth: '18rem'}} key={index}>
+      <CCardHeader>Header</CCardHeader>
+      <CCardBody>
+        <CCardTitle>{item.color} card title</CCardTitle>
+        <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
+      </CCardBody>
+    </CCard>
+  ))}
+  </>
+</Playground>
+
+<CCallout color="info">
+  <h5>Conveying meaning to assistive technologies</h5>
+  <p>
+    Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the `.visually-hidden` class.
+  </p>
+</CCallout>
+
+### Border
+
+Use [border utilities](https://coreui.io/docs/utilities/borders/) to change just the `border-color` of a card. Note that you can set `textColor` property on the `<CCard>` or a subset of the card's contents as shown below.
+
+<Playground>
+  <>
+  {[
+    { color: 'primary', textColor: 'primary' },
+    { color: 'secondary', textColor: 'secondary' },
+    { color: 'success', textColor: 'success' },
+    { color: 'danger', textColor: 'danger' },
+    { color: 'warning', textColor: 'warning' },
+    { color: 'info', textColor: 'info' },
+    { color: 'light'},
+    { color: 'dark'}
+    ].map((item, index) => (
+    <CCard textColor={item.textColor} className={`mb-3 border-${item.color}`} style={{ maxWidth: '18rem'}} key={index}>
+      <CCardHeader>Header</CCardHeader>
+      <CCardBody>
+        <CCardTitle>{item.color} card title</CCardTitle>
+        <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
+      </CCardBody>
+    </CCard>
+  ))}
+  </>
+</Playground>
+
+### Top border
+
+<Playground>
+  <>
+  {[
+    { color: 'primary', textColor: 'primary' },
+    { color: 'secondary', textColor: 'secondary' },
+    { color: 'success', textColor: 'success' },
+    { color: 'danger', textColor: 'danger' },
+    { color: 'warning', textColor: 'warning' },
+    { color: 'info', textColor: 'info' },
+    { color: 'light'},
+    { color: 'dark'}
+    ].map((item, index) => (
+    <CCard textColor={item.textColor} className={`mb-3 border-top-${item.color} border-top-3`} style={{ maxWidth: '18rem'}} key={index}>
+      <CCardHeader>Header</CCardHeader>
+      <CCardBody>
+        <CCardTitle>{item.color} card title</CCardTitle>
+        <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
+      </CCardBody>
+    </CCard>
+  ))}
+  </>
+</Playground>
+
+## Card layout
+
+In addition to styling the content within cards, CoreUI includes a few options for laying out series of cards. For the time being, **these layout options are not yet responsive**.
+
+### Card groups
+
+Use card groups to render cards as a single, attached element with equal width and height columns. Card groups start off stacked and use `display: flex;` to become attached with uniform dimensions starting at the `sm` breakpoint.
+
+<Playground>
+  <CCardGroup>
+    <CCard>
+      <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardBody>
+        <CCardTitle>Card title</CCardTitle>
+        <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+        <CCardText><small className="text-muted">Last updated 3 mins ago</small></CCardText>
+      </CCardBody>
+    </CCard>
+    <CCard>
+      <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardBody>
+        <CCardTitle>Card title</CCardTitle>
+        <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
+        <CCardText><small className="text-muted">Last updated 3 mins ago</small></CCardText>
+      </CCardBody>
+    </CCard>
+    <CCard>
+      <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardBody>
+        <CCardTitle>Card title</CCardTitle>
+        <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
+        <CCardText><small className="text-muted">Last updated 3 mins ago</small></CCardText>
+      </CCardBody>
+    </CCard>
+  </CCardGroup>
+</Playground>
+
+When using card groups with footers, their content will automatically line up.
+
+<Playground>
+  <CCardGroup>
+    <CCard>
+      <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardBody>
+        <CCardTitle>Card title</CCardTitle>
+        <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+      </CCardBody>
+      <CCardFooter><small className="text-muted">Last updated 3 mins ago</small></CCardFooter>
+    </CCard>
+    <CCard>
+      <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardBody>
+        <CCardTitle>Card title</CCardTitle>
+        <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
+      </CCardBody>
+      <CCardFooter><small className="text-muted">Last updated 3 mins ago</small></CCardFooter>
+    </CCard>
+    <CCard>
+      <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardBody>
+        <CCardTitle>Card title</CCardTitle>
+        <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
+      </CCardBody>
+      <CCardFooter><small className="text-muted">Last updated 3 mins ago</small></CCardFooter>
+    </CCard>
+  </CCardGroup>
+</Playground>
+
+### Grid cards
+
+Use the `CRow` component and set `xs|sm|md|lg|xl|xxl}={{ cols: * }}` property to control how many grid columns (wrapped around your cards) you show per row. For example, here's `xs={{cols: 1}}` laying out the cards on one column, and `md={{cols: 1}}` splitting four cards to equal width across multiple rows, from the medium breakpoint up.
+
+<Playground>
+  <CRow xs={{ cols: 1, gutter: 4}} md={{ cols:2 }}>
+    <CCol xs>
+      <CCard>
+        <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+        <CCardBody>
+          <CCardTitle>Card title</CCardTitle>
+          <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+        </CCardBody>
+        <CCardFooter><small className="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      </CCard>
+    </CCol>
+    <CCol xs>
+      <CCard>
+        <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+        <CCardBody>
+          <CCardTitle>Card title</CCardTitle>
+          <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+        </CCardBody>
+        <CCardFooter><small className="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      </CCard>
+    </CCol>
+    <CCol xs>
+      <CCard>
+        <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+        <CCardBody>
+          <CCardTitle>Card title</CCardTitle>
+          <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+        </CCardBody>
+        <CCardFooter><small className="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      </CCard>
+    </CCol>
+    <CCol xs>
+      <CCard>
+        <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+        <CCardBody>
+          <CCardTitle>Card title</CCardTitle>
+          <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+        </CCardBody>
+        <CCardFooter><small className="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      </CCard>
+    </CCol>
+  </CRow>
+</Playground>
+
+Change it to `md={{ cols: 3}}` and you'll see the fourth card wrap.
+
+<Playground>
+  <CRow xs={{ cols: 1, gutter: 4}} md={{ cols: 3 }}>
+    <CCol xs>
+      <CCard>
+        <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+        <CCardBody>
+          <CCardTitle>Card title</CCardTitle>
+          <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+        </CCardBody>
+        <CCardFooter><small className="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      </CCard>
+    </CCol>
+    <CCol xs>
+      <CCard>
+        <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+        <CCardBody>
+          <CCardTitle>Card title</CCardTitle>
+          <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+        </CCardBody>
+        <CCardFooter><small className="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      </CCard>
+    </CCol>
+    <CCol xs>
+      <CCard>
+        <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+        <CCardBody>
+          <CCardTitle>Card title</CCardTitle>
+          <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+        </CCardBody>
+        <CCardFooter><small className="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      </CCard>
+    </CCol>
+    <CCol xs>
+      <CCard>
+        <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+        <CCardBody>
+          <CCardTitle>Card title</CCardTitle>
+          <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+        </CCardBody>
+        <CCardFooter><small className="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      </CCard>
+    </CCol>
+  </CRow>
+</Playground>
+
+When you need equal height, add `.h-100` to the cards. If you want equal heights by default, you can set `$card-height: 100%` in Sass.
+
+<Playground>
+  <CRow cols="1" colsMd="3" className="g-4">
+    <CCol xs>
+      <CCard className="h-100">
+        <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+        <CCardBody>
+          <CCardTitle>Card title</CCardTitle>
+          <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+        </CCardBody>
+      </CCard>
+    </CCol>
+    <CCol xs>
+      <CCard className="h-100">
+        <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+        <CCardBody>
+          <CCardTitle>Card title</CCardTitle>
+          <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
+        </CCardBody>
+      </CCard>
+    </CCol>
+    <CCol xs>
+      <CCard className="h-100">
+        <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+        <CCardBody>
+          <CCardTitle>Card title</CCardTitle>
+          <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
+        </CCardBody>
+      </CCard>
+    </CCol>
+    <CCol xs>
+      <CCard className="h-100">
+        <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+        <CCardBody>
+          <CCardTitle>Card title</CCardTitle>
+          <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+        </CCardBody>
+      </CCard>
+    </CCol>
+  </CRow>
+</Playground>
+
+Just like with card groups, card footers will automatically line up.
+
+<Playground>
+  <CRow cols="1" colsMd="3" className="g-4">
+    <CCol xs>
+      <CCard className="h-100">
+        <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+        <CCardBody>
+          <CCardTitle>Card title</CCardTitle>
+          <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+        </CCardBody>
+        <CCardFooter><small className="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      </CCard>
+    </CCol>
+    <CCol xs>
+      <CCard className="h-100">
+        <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+        <CCardBody>
+          <CCardTitle>Card title</CCardTitle>
+          <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
+        </CCardBody>
+        <CCardFooter><small className="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      </CCard>
+    </CCol>
+    <CCol xs>
+      <CCard className="h-100">
+        <CCardImage component="svg" orientation="top" className="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+        <CCardBody>
+          <CCardTitle>Card title</CCardTitle>
+          <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
+        </CCardBody>
+        <CCardFooter><small className="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      </CCard>
+    </CCol>
+  </CRow>
+</Playground>
+
+## API
+
+### CCard
+
+<Props of={CCard} />
+
+### CCardBody
+
+<Props of={CCardBody} />
+
+### CCardFooter
+
+<Props of={CCardFooter} />
+
+### CCardHeader
+
+<Props of={CCardHeader} />
+
+### CCardImage
+
+<Props of={CCardImage} />
+
+### CCardLink
+
+<Props of={CCardLink} />
+
+### CCardSubtitle
+
+<Props of={CCardSubtitle} />
+
+### CCardText
+
+<Props of={CCardText} />
+
+### CCardTitle
+
+<Props of={CCardTitle} />

@@ -1,0 +1,72 @@
+---
+title: React Avatar Component
+name: Avatar
+description: React avatar component can be used to display circular user profile pictures. Avatar can be used to portray people or objects. It supports images, icons, or letters.
+
+menu: Components
+route: /components/avatar
+---
+
+import { Playground, Props } from 'docz'
+import { CAvatar } from '../../../src/index.ts'
+
+
+## Image avatars
+
+<Playground>
+  <CAvatar src="/public/images/avatars/1.jpg"/>
+  <CAvatar src="/public/images/avatars/2.jpg"/>
+  <CAvatar src="/public/images/avatars/3.jpg"/>
+</Playground>
+
+## Letter avatars
+
+<Playground>
+  <CAvatar color="primary" textColor="white">CUI</CAvatar>
+  <CAvatar color="secondary">CUI</CAvatar>
+  <CAvatar color="warning" textColor="white">CUI</CAvatar>
+</Playground>
+
+## Rounded avatars
+
+Use the `shape="rounded"` prop to make avatars squared with rounded corners.
+
+<Playground>
+  <CAvatar color="primary" textColor="white" shape="rounded">CUI</CAvatar>
+  <CAvatar color="secondary" shape="rounded">CUI</CAvatar>
+  <CAvatar color="warning" textColor="white" shape="rounded">CUI</CAvatar>
+</Playground>
+
+## Square avatars
+
+Use the `shape="rounded-0"` prop to make avatars squared.
+
+<Playground>
+  <CAvatar color="primary" textColor="white" shape="rounded-0">CUI</CAvatar>
+  <CAvatar color="secondary" shape="rounded-0">CUI</CAvatar>
+  <CAvatar color="warning" textColor="white" shape="rounded-0">CUI</CAvatar>
+</Playground>
+
+## Sizes
+
+Fancy larger or smaller avatar? Add `size="xl"`, `size="lg"` or `size="sm"` for additional sizes.
+
+<Playground>
+  <CAvatar color="secondary" size="xl">CUI</CAvatar>
+  <CAvatar color="secondary" size="lg">CUI</CAvatar>
+  <CAvatar color="secondary">CUI</CAvatar>
+  <CAvatar color="secondary" size="sm">CUI</CAvatar>
+</Playground>
+
+## Avatars with status
+
+<Playground>
+  <CAvatar src="/public/images/avatars/1.jpg" status="success"/>
+  <CAvatar color="secondary" status="danger">CUI</CAvatar>
+</Playground>
+
+## API
+
+### CAvatar
+
+<Props of={CAvatar} />

@@ -1,0 +1,168 @@
+---
+title: React Checkbox & Radio Components
+name: Checks & radios
+description: Create consistent cross-browser and cross-device checkboxes and radios with our React checkbox, radio, and switch components.
+menu: Forms
+route: /forms/checks-radios
+---
+
+import { Playground, Props } from 'docz'
+import { 
+  CButton,
+  CForm,
+  CFormCheck,
+  CFormControl,
+  CFormLabel,
+  CFormText 
+} from '../../../src/index.ts'
+
+## Approach
+
+Browser default checkboxes and radios are replaced with the help of `<CFormCheck>`. Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
+
+## Checks
+
+<Playground>
+  <CFormCheck id="flexCheckDefault" label="Default checkbox"/>
+  <CFormCheck id="flexCheckChecked" label="Checked checkbox" defaultChecked />
+</Playground>
+
+<!-- TODO: ## Indeterminate
+
+Checkboxes can utilize the `:indeterminate` pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).
+
+<Playground>
+  <CFormCheck id="flexCheckIndeterminate" label="Indeterminate checkbox" indeterminate/>
+</Playground> -->
+
+### Disabled
+
+Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input's state.
+
+<Playground>
+  <CFormCheck label="Disabled checkbox" disabled/>
+  <CFormCheck label="Disabled checked checkbox" defaultChecked disabled/>
+</Playground>
+
+## Radios
+
+Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input's state.
+
+<Playground>
+  <CFormCheck type="radio" name="flexRadioDefault" id="flexRadioDefault1" label="Default radio"/>
+  <CFormCheck type="radio" name="flexRadioDefault" id="flexRadioDefault2" label="Checked radio" defaultChecked/>
+</Playground>
+
+### Disabled
+
+<Playground>
+  <CFormCheck type="radio" name="flexRadioDisabled" id="flexRadioDisabled" label="Disabled radio" disabled/>
+  <CFormCheck type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" label="Disabled checked radio" defaultChecked disabled/>
+</Playground>
+
+## Switches
+
+A switch has the markup of a custom checkbox but uses the `switch` boolean properly to render a toggle switch. Switches also support the `disabled` attribute.
+
+<Playground>
+  <CFormCheck switch label="Default switch checkbox input" id="formSwitchCheckDefault"/>
+  <CFormCheck switch label="Checked switch checkbox input" id="formSwitchCheckChecked" defaultChecked/>
+  <CFormCheck switch label="Disabled switch checkbox input" id="formSwitchCheckDisabled" disabled/>
+  <CFormCheck switch label="Disabled checked switch checkbox input" id="formSwitchCheckCheckedDisabled" defaultChecked disabled/>
+</Playground>
+
+### Sizes
+
+<Playground>
+  <CFormCheck switch label="Default switch checkbox input" id="formSwitchCheckDefault"/>
+  <CFormCheck switch size="lg" label="Large switch checkbox input" id="formSwitchCheckDefaultLg"/>
+  <CFormCheck switch size="xl" label="Extra large switch checkbox input" id="formSwitchCheckDefaultXL"/>
+</Playground>
+
+## Default (stacked)
+
+By default, any number of checkboxes and radios that are immediate sibling will be vertically stacked and appropriately spaced.
+
+<Playground>
+  <CFormCheck id="defaultCheck1" label="Default checkbox"/>
+  <CFormCheck id="defaultCheck2" label="Disabled checkbox" disabled/>
+</Playground>
+
+<Playground>
+  <CFormCheck type="radio" name="exampleRadios" id="exampleRadios1" value="option1" label="Default radio" defaultChecked/>
+  <CFormCheck type="radio" name="exampleRadios" id="exampleRadios2" value="option2" label="Second default radio"/>
+  <CFormCheck type="radio" name="exampleRadios" id="exampleRadios3" value="option3" label="Disabled radio" disabled/>
+</Playground>
+
+## Inline
+
+Group checkboxes or radios on the same horizontal row by adding `inline` boolean property to any `<CFormCheck>`.
+
+<Playground>
+  <CFormCheck inline id="inlineCheckbox1" value="option1" label="1"/>
+  <CFormCheck inline id="inlineCheckbox2" value="option2" label="2"/>
+  <CFormCheck inline id="inlineCheckbox3" value="option3" label="3 (disabled)" disabled/>
+</Playground>
+
+<Playground>
+  <CFormCheck inline type="radio" name="inlineRadioOptions" id="inlineCheckbox1" value="option1" label="1"/>
+  <CFormCheck inline type="radio" name="inlineRadioOptions" id="inlineCheckbox2" value="option2" label="2"/>
+  <CFormCheck inline type="radio" name="inlineRadioOptions" id="inlineCheckbox3" value="option3" label="3 (disabled)" disabled/>
+</Playground>
+
+## Without labels
+
+Remember to still provide some form of accessible name for assistive technologies (for instance, using `aria-label`).
+
+<Playground>
+  <div>
+      <CFormCheck id="checkboxNoLabel" value="" aria-label="..."/>
+  </div>
+  <div>
+    <CFormCheck type="radio" name="radioNoLabel" id="radioNoLabel" value="" aria-label="..."/>
+  </div>
+</Playground>
+
+## Toggle buttons
+
+Create button-like checkboxes and radio buttons by using `button` boolean property on the `<CFormCheck>` component. These toggle buttons can further be grouped in a button group if needed.
+
+### Checkbox toggle buttons
+
+<Playground>
+  <CFormCheck button id="btn-check" autoComplete="off" label="Single toggle"/>
+</Playground>
+
+<Playground>
+  <CFormCheck button id="btn-check-2" autoComplete="off" label="Checked" defaultChecked/>
+</Playground>
+
+<Playground>
+  <CFormCheck button id="btn-check-3" autoComplete="off" label="Disabled" disabled/>
+</Playground>
+
+### Radio toggle buttons
+
+<Playground>
+  <CFormCheck button buttonColor="secondary" type="radio" name="options" id="option1" autoComplete="off" label="Checked" defaultChecked/>
+  <CFormCheck button buttonColor="secondary" type="radio" name="options" id="option2" autoComplete="off" label="Radio"/>
+  <CFormCheck button buttonColor="secondary" type="radio" name="options" id="option3" autoComplete="off" label="Radio" disabled/>
+  <CFormCheck button buttonColor="secondary" type="radio" name="options" id="option4" autoComplete="off" label="Radio"/>
+</Playground>
+
+### Outlined styles
+
+Different variants of button, such at the various outlined styles, are supported.
+
+<Playground>
+  <div> 
+    <CFormCheck button buttonColor="primary" buttonVariant="outline" id="btn-check-outlined" autoComplete="off" label="Single toggle"/>
+  </div>
+  <div>
+    <CFormCheck button buttonColor="secondary" buttonVariant="outline" id="btn-check-2-outlined" autoComplete="off" label="Checked" defaultChecked/>
+  </div>
+  <div>
+    <CFormCheck button buttonColor="success" buttonVariant="outline" type="radio" name="options-outlined" id="success-outlined" autoComplete="off" label="Radio" defaultChecked/>
+    <CFormCheck button buttonColor="danger" buttonVariant="outline" type="radio" name="options-outlined" id="danger-outlined" autoComplete="off" label="Radio"/>
+  </div>
+</Playground>

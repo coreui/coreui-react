@@ -4,7 +4,7 @@ import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-export interface CImage extends HTMLAttributes<HTMLImageElement> {
+export interface CImageProps extends HTMLAttributes<HTMLImageElement> {
   align?: 'start' | 'center' | 'end'
   /**
    * A string of all className you want applied to the component. [docs]
@@ -24,7 +24,7 @@ export interface CImage extends HTMLAttributes<HTMLImageElement> {
   thumbnail?: boolean
 }
 
-export const CImage = forwardRef<HTMLImageElement, CImage>(
+export const CImage = forwardRef<HTMLImageElement, CImageProps>(
   ({ align, className, fluid, rounded, thumbnail, ...rest }, ref) => {
     const _className = classNames(
       {
