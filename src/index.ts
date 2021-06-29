@@ -13,7 +13,6 @@ import { CBackdrop } from './components/backdrop/CBackdrop'
 import { CBreadcrumb } from './components/breadcrumb/CBreadcrumb'
 import { CBreadcrumbItem } from './components/breadcrumb/CBreadcrumbItem'
 import { CButton } from './components/button/CButton'
-import { CButtonClose } from './components/button/CButtonClose'
 import { CButtonGroup } from './components/button-group/CButtonGroup'
 import { CButtonToolbar } from './components/button-group/CButtonToolbar'
 import { CCallout } from './components/callout/CCallout'
@@ -34,6 +33,7 @@ import { CCarouselIndicators } from './components/carousel/CCarouselIndicators'
 import { CCarouselInner } from './components/carousel/CCarouselInner'
 import { CCarouselItem } from './components/carousel/CCarouselItem'
 import { CCollapse } from './components/collapse/CCollapse'
+import { CCloseButton } from './components/close-button/CCloseButton'
 import { CDropdown } from './components/dropdown/CDropdown'
 import { CDropdownDivider } from './components/dropdown/CDropdownDivider'
 import { CDropdownHeader } from './components/dropdown/CDropdownHeader'
@@ -144,7 +144,6 @@ export {
   CBreadcrumb,
   CBreadcrumbItem,
   CButton,
-  CButtonClose,
   CButtonGroup,
   CButtonToolbar,
   CCallout,
@@ -163,6 +162,7 @@ export {
   CCarouselIndicators,
   CCarouselInner,
   CCarouselItem,
+  CCloseButton,
   CCollapse,
   CDropdown,
   CDropdownDivider,

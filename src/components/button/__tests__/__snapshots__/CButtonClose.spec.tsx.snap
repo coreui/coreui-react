@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CButtonClose customize 1`] = `
+exports[`CCloseButton customize 1`] = `
 <div>
   <button
     aria-label="Close"
@@ -12,7 +12,7 @@ exports[`CButtonClose customize 1`] = `
 </div>
 `;
 
-exports[`loads and displays CButtonClose component 1`] = `
+exports[`loads and displays CCloseButton component 1`] = `
 <div>
   <button
     aria-label="Close"

@@ -1,18 +1,18 @@
 import * as React from 'react'
 import { render /* ,screen */ /*,fireEvent */ /* ,waitFor */ } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import { CButtonClose } from '../../../index'
+import { CCloseButton } from '../../../index'
 
-test('loads and displays CButtonClose component', async () => {
-  const { container } = render(<CButtonClose>Test</CButtonClose>)
+test('loads and displays CCloseButton component', async () => {
+  const { container } = render(<CCloseButton>Test</CCloseButton>)
   expect(container).toMatchSnapshot()
 })
 
-test('CButtonClose customize', async () => {
+test('CCloseButton customize', async () => {
   const { container } = render(
-    <CButtonClose white={true} disabled={true} className="bazinga">
+    <CCloseButton white={true} disabled={true} className="bazinga">
       Test
-    </CButtonClose>,
+    </CCloseButton>,
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 
 import { Colors, colorPropType } from '../Types'
-import { CButtonClose } from '../button/CButtonClose'
+import { CCloseButton } from '../close-button/CCloseButton'
 
 export interface CAlertProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -79,7 +79,7 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
       >
         <div className={_className} role="alert" {...rest} ref={ref}>
           {children}
-          {dismissible && <CButtonClose onClick={() => setVisible(false)} />}
+          {dismissible && <CCloseButton onClick={() => setVisible(false)} />}
         </div>
       </CSSTransition>
     )

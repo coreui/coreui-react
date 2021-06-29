@@ -11,7 +11,7 @@ import { useState } from 'react'
 
 import { 
   CButton,
-  CButtonClose,
+  CCloseButton,
   CCallout,
   COffcanvas,
   COffcanvasBody,
@@ -30,7 +30,7 @@ Below is an offcanvas example that is shown by default (via `.show` on `.offcanv
     <COffcanvas backdrop={false} placement="start" portal={false} visible={true}>
       <COffcanvasHeader>
         <COffcanvasTitle>Offcanvas</COffcanvasTitle>
-        <CButtonClose className="text-reset" />
+        <CCloseButton className="text-reset" />
       </COffcanvasHeader>
       <COffcanvasBody>
         Content for the offcanvas goes here. You can place just about any Bootstrap component or
@@ -58,7 +58,7 @@ You can use a link with the `href` attribute, or a button with the `data-coreui-
         <COffcanvas placement="start" visible={visible} onDismiss={() => setVisible(false)} >
           <COffcanvasHeader>
             <COffcanvasTitle>Offcanvas</COffcanvasTitle>
-            <CButtonClose className="text-reset" onClick={() => setVisible(false)}/>
+            <CCloseButton className="text-reset" onClick={() => setVisible(false)}/>
           </COffcanvasHeader>
           <COffcanvasBody>
             Content for the offcanvas goes here. You can place just about any Bootstrap component or
@@ -90,7 +90,7 @@ Try the top, right, and bottom examples out below.
         <COffcanvas placement="top" visible={visible} onDismiss={() => setVisible(false)} >
           <COffcanvasHeader>
             <COffcanvasTitle>Offcanvas</COffcanvasTitle>
-            <CButtonClose className="text-reset" onClick={() => setVisible(false)}/>
+            <CCloseButton className="text-reset" onClick={() => setVisible(false)}/>
           </COffcanvasHeader>
           <COffcanvasBody>
             Content for the offcanvas goes here. You can place just about any Bootstrap component or
@@ -111,7 +111,7 @@ Try the top, right, and bottom examples out below.
         <COffcanvas placement="end" visible={visible} onDismiss={() => setVisible(false)} >
           <COffcanvasHeader>
             <COffcanvasTitle>Offcanvas</COffcanvasTitle>
-            <CButtonClose className="text-reset" onClick={() => setVisible(false)}/>
+            <CCloseButton className="text-reset" onClick={() => setVisible(false)}/>
           </COffcanvasHeader>
           <COffcanvasBody>
             Content for the offcanvas goes here. You can place just about any Bootstrap component or
@@ -132,7 +132,7 @@ Try the top, right, and bottom examples out below.
         <COffcanvas placement="bottom" visible={visible} onDismiss={() => setVisible(false)} >
           <COffcanvasHeader>
             <COffcanvasTitle>Offcanvas</COffcanvasTitle>
-            <CButtonClose className="text-reset" onClick={() => setVisible(false)}/>
+            <CCloseButton className="text-reset" onClick={() => setVisible(false)}/>
           </COffcanvasHeader>
           <COffcanvasBody>
             Content for the offcanvas goes here. You can place just about any Bootstrap component or

@@ -2,7 +2,7 @@ import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-export interface CButtonCloseProps extends HTMLAttributes<HTMLButtonElement> {
+export interface CCloseButtonProps extends HTMLAttributes<HTMLButtonElement> {
   /**
    * A string of all className you want applied to the base component. [docs]
    */
@@ -17,7 +17,7 @@ export interface CButtonCloseProps extends HTMLAttributes<HTMLButtonElement> {
   white?: boolean
 }
 
-export const CButtonClose = forwardRef<HTMLButtonElement, CButtonCloseProps>(
+export const CCloseButton = forwardRef<HTMLButtonElement, CCloseButtonProps>(
   ({ className, disabled, white, ...rest }, ref) => {
     const _className = classNames(
       'btn',
@@ -34,10 +34,10 @@ export const CButtonClose = forwardRef<HTMLButtonElement, CButtonCloseProps>(
   },
 )
 
-CButtonClose.propTypes = {
+CCloseButton.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   white: PropTypes.bool,
 }
 
-CButtonClose.displayName = 'CButtonClose'
+CCloseButton.displayName = 'CCloseButton'

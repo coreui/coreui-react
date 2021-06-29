@@ -1,6 +1,6 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
-import { CButtonClose } from '../button/CButtonClose'
+import { CCloseButton } from '../close-button/CCloseButton'
 import classNames from 'classnames'
 
 export interface CModalHeaderProps extends HTMLAttributes<HTMLDivElement> {
@@ -21,7 +21,7 @@ export const CModalHeader = forwardRef<HTMLDivElement, CModalHeaderProps>(
     return (
       <div className={_className} {...rest} ref={ref}>
         {children}
-        {onDismiss && <CButtonClose onClick={onDismiss} />}
+        {onDismiss && <CCloseButton onClick={onDismiss} />}
       </div>
     )
   },

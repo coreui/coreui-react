@@ -2,9 +2,9 @@ import React, { ElementType, forwardRef, useContext } from 'react'
 import PropTypes from 'prop-types'
 // import classNames from 'classnames'
 import { CToastContext } from './CToast'
-import { CButtonClose, CButtonCloseProps } from '../button/CButtonClose'
+import { CCloseButton, CCloseButtonProps } from '../close-button/CCloseButton'
 
-export interface CToastCloseProps extends CButtonCloseProps {
+export interface CToastCloseProps extends CCloseButtonProps {
   /**
    * Component used for the root node. Either a string to use a HTML element or a component. [docs]
    */
@@ -19,13 +19,13 @@ export const CToastClose = forwardRef<HTMLButtonElement, CToastCloseProps>(
         {children}
       </Component>
     ) : (
-      <CButtonClose onClick={() => setVisible(false)} {...rest} ref={ref} />
+      <CCloseButton onClick={() => setVisible(false)} {...rest} ref={ref} />
     )
   },
 )
 
 CToastClose.propTypes = {
-  ...CButtonClose.propTypes,
+  ...CCloseButton.propTypes,
   component: PropTypes.elementType,
 }
 
