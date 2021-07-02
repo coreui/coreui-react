@@ -131,12 +131,10 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
     useEffect(() => {
       window.addEventListener('click', handleClickOutside)
       window.addEventListener('keyup', handleKeyup)
-      // TODO: consider to add in future releases `window.addEventListener('mouseover', handleKeyup)`
 
       return () => {
         window.removeEventListener('click', handleClickOutside)
         window.removeEventListener('keyup', handleKeyup)
-        // TODO: consider to add in future releases `window.addEventListener('mouseover', handleKeyup)`
       }
     })
 

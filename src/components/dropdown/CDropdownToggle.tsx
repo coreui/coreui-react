@@ -54,11 +54,6 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
       onFocus: () => setVisible(true),
       onBlur: () => setVisible(false),
     }),
-    // TODO: consider to add in future releases
-    // ...((trigger === 'hover' || trigger.includes('hover')) && {
-    //   onMouseEnter: () => setVisible(true),
-    //   onMouseLeave: () => setVisible(false),
-    // }),
   }
 
   const togglerProps = {
