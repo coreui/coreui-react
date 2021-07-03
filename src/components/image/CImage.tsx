@@ -1,5 +1,3 @@
-// TODO: add documentation
-
 import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
