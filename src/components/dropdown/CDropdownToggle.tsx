@@ -62,7 +62,7 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
     ...triggers,
   }
 
-  // TODO: find solution
+  // We use any because Toggler can be `a` as well as `button`.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Toggler = (ref?: React.Ref<any>) => {
     return variant === 'nav-item' ? (
