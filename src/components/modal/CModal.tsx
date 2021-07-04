@@ -169,7 +169,6 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
               <CModalContent>{children}</CModalContent>
             </CModalDialog>
           </div>
-          {/* {backdrop && <CBackdrop visible={visible} />} */}
         </>
       )
     }
