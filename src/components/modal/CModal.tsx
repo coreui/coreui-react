@@ -36,8 +36,7 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * @ignore
    */
-  // TODO: check if it possible to remove this property
-  duration?: number
+  duration?: number // TODO: check if it possible to remove this property.
   /**
    * Set modal to covers the entire user viewport. [docs]
    */
@@ -170,28 +169,33 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
               <CModalContent>{children}</CModalContent>
             </CModalDialog>
           </div>
-          {backdrop && <CBackdrop visible={visible} />}
+          {/* {backdrop && <CBackdrop visible={visible} />} */}
         </>
       )
     }
 
     return (
-      <div onClick={handleDismiss} onKeyDown={handleKeyDown}>
-        <CSSTransition
-          in={visible}
-          timeout={!transition ? 0 : duration}
-          onExit={onDismiss}
-          mountOnEnter
-          unmountOnExit
-        >
-          {(state) => {
-            const transitionClass = getTransitionClass(state)
-            return typeof window !== 'undefined' && portal
-              ? createPortal(modal(forkedRef, transitionClass), document.body)
-              : modal(forkedRef, transitionClass)
-          }}
-        </CSSTransition>
-      </div>
+      <>
+        <div onClick={handleDismiss} onKeyDown={handleKeyDown}>
+          <CSSTransition
+            in={visible}
+            timeout={!transition ? 0 : duration}
+            onExit={onDismiss}
+            mountOnEnter
+            unmountOnExit
+          >
+            {(state) => {
+              const transitionClass = getTransitionClass(state)
+              return typeof window !== 'undefined' && portal
+                ? createPortal(modal(forkedRef, transitionClass), document.body)
+                : modal(forkedRef, transitionClass)
+            }}
+          </CSSTransition>
+        </div>
+        {typeof window !== 'undefined' && portal
+          ? backdrop && createPortal(<CBackdrop visible={visible} />, document.body)
+          : backdrop && <CBackdrop visible={visible} />}
+      </>
     )
   },
 )

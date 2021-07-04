@@ -107,19 +107,24 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
           >
             {children}
           </div>
-          {backdrop && <CBackdrop visible={_visible} onClick={handleDismiss} />}
         </>
       )
     }
 
     return (
-      <Transition in={_visible} timeout={300} onEntered={() => offcanvasRef.current?.focus()}>
-        {(state) => {
-          return typeof window !== 'undefined' && portal
-            ? createPortal(offcanvas(forkedRef, state), document.body)
-            : offcanvas(forkedRef, state)
-        }}
-      </Transition>
+      <>
+        <Transition in={_visible} timeout={300} onEntered={() => offcanvasRef.current?.focus()}>
+          {(state) => {
+            return typeof window !== 'undefined' && portal
+              ? createPortal(offcanvas(forkedRef, state), document.body)
+              : offcanvas(forkedRef, state)
+          }}
+        </Transition>
+        {typeof window !== 'undefined' && portal
+          ? backdrop &&
+            createPortal(<CBackdrop visible={visible} onClick={handleDismiss} />, document.body)
+          : backdrop && <CBackdrop visible={visible} onClick={handleDismiss} />}
+      </>
     )
   },
 )

@@ -1,5 +1,3 @@
-// TODO: add smooth transition.
-
 import React, { forwardRef, HTMLAttributes } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import PropTypes from 'prop-types'
@@ -18,17 +16,18 @@ export interface CBackdropProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CBackdrop = forwardRef<HTMLDivElement, CBackdropProps>(
   ({ className, visible, ...rest }, ref) => {
-    const _className = classNames(
-      'modal-backdrop fade',
-      {
-        show: visible,
-      },
-      className,
-    )
+    const _className = classNames('modal-backdrop fade', className)
+
+    const getTransitionClass = (state: string) => {
+      return state === 'entered' && 'show'
+    }
 
     return (
       <CSSTransition in={visible} timeout={150} mountOnEnter unmountOnExit>
-        <div className={_className} {...rest} ref={ref} />
+        {(state) => {
+          const transitionClass = getTransitionClass(state)
+          return <div className={classNames(_className, transitionClass)} {...rest} ref={ref} />
+        }}
       </CSSTransition>
     )
   },
