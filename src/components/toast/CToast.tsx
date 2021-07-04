@@ -27,13 +27,16 @@ export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
    * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
    *
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
-   * @default 'primary'
    */
   color?: Colors
   /**
    * Delay hiding the toast (ms). [docs]
    */
   delay?: number
+  /**
+   * @ignore
+   */
+  index?: number
   /**
    * @ignore
    */
@@ -47,7 +50,7 @@ export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
   /**
    * Method called before the dissmiss animation has started. [docs]
    */
-  onDismiss?: () => void
+  onDismiss?: (index: number | null) => void
 }
 
 interface ContextProps extends CToastProps {
@@ -65,6 +68,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
       className,
       color,
       delay = 5000,
+      index,
       key,
       visible = true,
       onDismiss,
@@ -106,7 +110,12 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
       className,
     )
     return (
-      <CSSTransition in={_visible} timeout={250} onExit={onDismiss} unmountOnExit>
+      <CSSTransition
+        in={_visible}
+        timeout={250}
+        onExit={() => onDismiss && onDismiss(index ? index : null)}
+        unmountOnExit
+      >
         <CToastContext.Provider value={contextValues}>
           <div
             className={_className}
@@ -133,6 +142,7 @@ CToast.propTypes = {
   className: PropTypes.string,
   color: colorPropType,
   delay: PropTypes.number,
+  index: PropTypes.number,
   key: PropTypes.number,
   onDismiss: PropTypes.func,
   visible: PropTypes.bool,

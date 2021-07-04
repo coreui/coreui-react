@@ -11,7 +11,6 @@ export interface CToasterProps extends HTMLAttributes<HTMLDivElement> {
    * Describes the placement of your component. [docs]
    *
    * @type 'top-start' | 'top' | 'top-end' | 'middle-start' | 'middle' | 'middle-end' | 'bottom-start' | 'bottom' | 'bottom-end' | string
-   * @default 'top-end'
    */
   placement?:
     | 'top-start'
@@ -25,13 +24,13 @@ export interface CToasterProps extends HTMLAttributes<HTMLDivElement> {
     | 'bottom-end'
     | string
   /**
-   * TODO:. [docs]
+   * Adds new `CToast` to `CToaster`. [docs]
    */
   push?: ReactElement
 }
 
 export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
-  ({ children, className, placement = 'top-end', push, ...rest }, ref) => {
+  ({ children, className, placement, push, ...rest }, ref) => {
     const [toasts, setToasts] = useState<ReactElement[]>([])
     const index = useRef<number>(0)
 
@@ -40,13 +39,14 @@ export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
       push && addToast(push)
     }, [push])
 
-    // TODO: remove invisible items
     const addToast = (push: ReactElement) => {
       setToasts((state) => [
         ...state,
         React.cloneElement(push, {
+          index: index.current,
           key: index.current,
-          onDismiss: () => setToasts((state) => state.filter((i) => i.key !== index.current)),
+          onDismiss: (index: number) =>
+            setToasts((state) => state.filter((i) => i.props.index !== index)),
         }),
       ])
     }
