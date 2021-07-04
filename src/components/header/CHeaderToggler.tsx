@@ -14,14 +14,7 @@ export const CHeaderToggler = forwardRef<HTMLButtonElement, CHeaderTogglerProps>
     const _className = classNames('header-toggler', className)
 
     return (
-      // TODO: aria-expanded="false"
-      <button
-        type="button"
-        className={_className}
-        aria-label="Toggle navigation"
-        {...rest}
-        ref={ref}
-      >
+      <button type="button" className={_className} {...rest} ref={ref}>
         {children ? children : <span className="header-toggler-icon"></span>}
       </button>
     )
