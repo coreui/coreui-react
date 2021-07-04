@@ -7365,18 +7365,22 @@ CWidgetBrand.displayName = 'CWidgetBrand';
 
 var CWidgetDropdown = forwardRef(function (_a, ref) {
     var _b;
-    var action = _a.action, chart = _a.chart, className = _a.className, color = _a.color, title = _a.title, value = _a.value, rest = __rest(_a, ["action", "chart", "className", "color", "title", "value"]);
+    var action = _a.action, change = _a.change, chart = _a.chart, className = _a.className, color = _a.color, title = _a.title, value = _a.value, rest = __rest(_a, ["action", "change", "chart", "className", "color", "title", "value"]);
     var _className = classNames((_b = {}, _b["bg-" + color] = color, _b['text-high-emphasis-inverse'] = color, _b), className);
     return (React__default.createElement(CCard, __assign({ className: _className }, rest, { ref: ref }),
         React__default.createElement(CCardBody, { className: "pb-0 d-flex justify-content-between align-items-start" },
             React__default.createElement("div", null,
-                value && React__default.createElement("div", { className: "fs-4 fw-semibold" }, value),
+                value && (React__default.createElement("div", { className: "fs-4 fw-semibold" },
+                    value,
+                    " ",
+                    change && React__default.createElement("span", { className: "fs-6 fw-normal" }, change))),
                 title && React__default.createElement("div", null, title)),
             action),
         chart));
 });
 CWidgetDropdown.propTypes = {
     action: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    change: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     chart: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     className: PropTypes.string,
     color: colorPropType,
@@ -7415,7 +7419,7 @@ var CWidgetProgress = forwardRef(function (_a, ref) {
             value && React__default.createElement("div", { className: "fs-4 fw-semibold" }, value),
             title && React__default.createElement("div", null, title),
             React__default.createElement(CProgress, { className: "my-2", color: progressColor, height: 4, value: progressValue, white: progressWhite }),
-            text && React__default.createElement("small", { className: "text-medium-emphasis" }, text))));
+            text && (React__default.createElement("small", { className: textColor === 'white' ? 'text-medium-emphasis-inverse' : 'text-medium-emphasis' }, text)))));
 });
 CWidgetProgress.propTypes = {
     className: PropTypes.string,

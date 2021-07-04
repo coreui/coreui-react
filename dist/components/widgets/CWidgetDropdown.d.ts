@@ -2,6 +2,7 @@ import React, { HTMLAttributes, ReactNode } from 'react';
 import { Colors } from '../Types';
 export interface CWidgetDropdownProps extends HTMLAttributes<HTMLDivElement> {
     action?: string | ReactNode;
+    change?: string | ReactNode;
     chart?: string | ReactNode;
     /**
      * A string of all className you want applied to the base component. [docs]
