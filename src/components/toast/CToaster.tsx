@@ -10,7 +10,7 @@ export interface CToasterProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Describes the placement of your component. [docs]
    *
-   * @type 'top-start' | 'top' | 'top-end' | 'middle-start' | 'middle' | 'middle-end' | 'bottom-start' | 'bottom' | 'bottom-end' |
+   * @type 'top-start' | 'top' | 'top-end' | 'middle-start' | 'middle' | 'middle-end' | 'bottom-start' | 'bottom' | 'bottom-end' | string
    * @default 'top-end'
    */
   placement?:
@@ -31,7 +31,7 @@ export interface CToasterProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
-  ({ children, className, placement, push, ...rest }, ref) => {
+  ({ children, className, placement = 'top-end', push, ...rest }, ref) => {
     const [toasts, setToasts] = useState<ReactElement[]>([])
     const index = useRef<number>(0)
 

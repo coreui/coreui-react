@@ -45,7 +45,7 @@ const BREAKPOINTS = [
 
 export const CContainer = forwardRef<HTMLDivElement, CContainerProps>(
   ({ children, className, ...rest }, ref) => {
-    const repsonsiveCLassNames: Array<string> = []
+    const repsonsiveCLassNames: string[] = []
 
     BREAKPOINTS.forEach((bp) => {
       const breakpoint = rest[bp]

@@ -112,7 +112,7 @@ export const CPopover: FC<CPopoverProps> = ({
 }
 
 CPopover.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
   placement: PropTypes.oneOf([
     'auto',
     'top-end',

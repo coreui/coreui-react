@@ -25,8 +25,8 @@ export const CPagination = forwardRef<HTMLUListElement, CPaginationProps>(
 )
 
 CPagination.propTypes = {
-  children: PropTypes.any,
-  className: PropTypes.any,
+  children: PropTypes.node,
+  className: PropTypes.string,
   size: PropTypes.oneOf(['sm', 'lg']),
 }
 

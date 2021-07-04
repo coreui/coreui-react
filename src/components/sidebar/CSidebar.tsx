@@ -161,8 +161,8 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
 )
 
 CSidebar.propTypes = {
-  children: PropTypes.any,
-  className: PropTypes.any,
+  children: PropTypes.node,
+  className: PropTypes.string,
   narrow: PropTypes.bool,
   onHide: PropTypes.func,
   onShow: PropTypes.func,

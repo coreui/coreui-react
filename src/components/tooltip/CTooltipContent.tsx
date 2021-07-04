@@ -29,7 +29,7 @@ export const CTooltipContent = forwardRef<HTMLDivElement, CTooltipContentProps>(
 CTooltipContent.propTypes = {
   arrowProps: PropTypes.any,
   content: PropTypes.node,
-  placementClassNamePostfix: PropTypes.any,
+  placementClassNamePostfix: PropTypes.string,
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   transitionClass: PropTypes.string,
 }

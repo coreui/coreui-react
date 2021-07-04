@@ -32,7 +32,7 @@ export const CPopoverContent = forwardRef<HTMLDivElement, CPopoverContentProps>(
 CPopoverContent.propTypes = {
   arrowProps: PropTypes.any,
   content: PropTypes.node,
-  placementClassNamePostfix: PropTypes.any,
+  placementClassNamePostfix: PropTypes.string,
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   title: PropTypes.string,
   transitionClass: PropTypes.string,

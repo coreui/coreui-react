@@ -63,7 +63,7 @@ const BREAKPOINTS = [
 
 export const CRow = forwardRef<HTMLDivElement, CRowProps>(
   ({ children, className, ...rest }, ref) => {
-    const repsonsiveCLassNames: Array<string> = []
+    const repsonsiveCLassNames: string[] = []
 
     BREAKPOINTS.forEach((bp) => {
       const breakpoint = rest[bp]

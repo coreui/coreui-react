@@ -106,7 +106,7 @@ export const CTooltip: FC<CTooltipProps> = ({
 }
 
 CTooltip.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
   placement: PropTypes.oneOf([
     'auto',
     'top-end',
