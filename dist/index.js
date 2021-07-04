@@ -2662,14 +2662,16 @@ CBadge.propTypes = {
 };
 CBadge.displayName = 'CBadge';
 
-// TODO: add smooth transition.
 var CBackdrop = React.forwardRef(function (_a, ref) {
     var className = _a.className, visible = _a.visible, rest = __rest(_a, ["className", "visible"]);
-    var _className = classNames('modal-backdrop fade', {
-        show: visible,
-    }, className);
-    return (React__default['default'].createElement(CSSTransition, { in: visible, timeout: 150, mountOnEnter: true, unmountOnExit: true },
-        React__default['default'].createElement("div", __assign({ className: _className }, rest, { ref: ref }))));
+    var _className = classNames('modal-backdrop fade', className);
+    var getTransitionClass = function (state) {
+        return state === 'entered' && 'show';
+    };
+    return (React__default['default'].createElement(CSSTransition, { in: visible, timeout: 150, mountOnEnter: true, unmountOnExit: true }, function (state) {
+        var transitionClass = getTransitionClass(state);
+        return React__default['default'].createElement("div", __assign({ className: classNames(_className, transitionClass) }, rest, { ref: ref }));
+    }));
 });
 CBackdrop.propTypes = {
     className: PropTypes.string,
@@ -5436,11 +5438,9 @@ var CDropdown = React.forwardRef(function (_a, ref) {
     React.useEffect(function () {
         window.addEventListener('click', handleClickOutside);
         window.addEventListener('keyup', handleKeyup);
-        // TODO: consider to add in future releases `window.addEventListener('mouseover', handleKeyup)`
         return function () {
             window.removeEventListener('click', handleClickOutside);
             window.removeEventListener('keyup', handleKeyup);
-            // TODO: consider to add in future releases `window.addEventListener('mouseover', handleKeyup)`
         };
     });
     React.useEffect(function () {
@@ -5460,8 +5460,18 @@ var CDropdown = React.forwardRef(function (_a, ref) {
         React__default['default'].createElement(Manager, null, variant === 'input-group' ? (React__default['default'].createElement(React__default['default'].Fragment, null, children)) : (React__default['default'].createElement(Component, __assign({ className: _className }, rest, { ref: forkedRef }), children))))) : (React__default['default'].createElement(CDropdownContext.Provider, { value: contextValues },
         React__default['default'].createElement(Component, __assign({ className: _className }, rest, { ref: forkedRef }), children)));
 });
+var alignmentDirection = PropTypes.oneOf(['start', 'end']);
 CDropdown.propTypes = {
-    alignment: PropTypes.any,
+    // @ts-expect-error TODO: we have to find a solution
+    alignment: PropTypes.oneOfType([
+        alignmentDirection,
+        PropTypes.shape({ xs: alignmentDirection }),
+        PropTypes.shape({ sm: alignmentDirection }),
+        PropTypes.shape({ md: alignmentDirection }),
+        PropTypes.shape({ lg: alignmentDirection }),
+        PropTypes.shape({ xl: alignmentDirection }),
+        PropTypes.shape({ xxl: alignmentDirection }),
+    ]),
     children: PropTypes.node,
     className: PropTypes.string,
     component: PropTypes.elementType,
@@ -5592,7 +5602,7 @@ var CDropdownToggle = function (_a) {
         onBlur: function () { return setVisible(false); },
     }));
     var togglerProps = __assign({ className: _className, 'aria-expanded': visible }, triggers);
-    // TODO: find solution
+    // We use any because Toggler can be `a` as well as `button`.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     var Toggler = function (ref) {
         return variant === 'nav-item' ? (React__default['default'].createElement("a", __assign({ href: "#" }, togglerProps, { ref: ref }), children)) : (React__default['default'].createElement(CButton, __assign({}, togglerProps, { tabIndex: 0 }, rest, { ref: ref }),
@@ -6056,9 +6066,7 @@ CHeaderText.displayName = 'CHeaderText';
 var CHeaderToggler = React.forwardRef(function (_a, ref) {
     var children = _a.children, className = _a.className, rest = __rest(_a, ["children", "className"]);
     var _className = classNames('header-toggler', className);
-    return (
-    // TODO: aria-expanded="false"
-    React__default['default'].createElement("button", __assign({ type: "button", className: _className, "aria-label": "Toggle navigation" }, rest, { ref: ref }), children ? children : React__default['default'].createElement("span", { className: "header-toggler-icon" })));
+    return (React__default['default'].createElement("button", __assign({ type: "button", className: _className }, rest, { ref: ref }), children ? children : React__default['default'].createElement("span", { className: "header-toggler-icon" })));
 });
 CHeaderToggler.propTypes = {
     children: PropTypes.node,
@@ -6066,7 +6074,6 @@ CHeaderToggler.propTypes = {
 };
 CHeaderToggler.displayName = 'CHeaderToggler';
 
-// TODO: add documentation
 var CImage = React.forwardRef(function (_a, ref) {
     var _b;
     var align = _a.align, className = _a.className, fluid = _a.fluid, rounded = _a.rounded, thumbnail = _a.thumbnail, rest = __rest(_a, ["align", "className", "fluid", "rounded", "thumbnail"]);
@@ -6229,16 +6236,19 @@ var CModal = React.forwardRef(function (_a, ref) {
         return (React__default['default'].createElement(React__default['default'].Fragment, null,
             React__default['default'].createElement("div", { className: classNames(_className, transitionClass), tabIndex: -1, role: "dialog", ref: ref },
                 React__default['default'].createElement(CModalDialog, { alignment: alignment, fullscreen: fullscreen, scrollable: scrollable, size: size, onClick: function (event) { return event.stopPropagation(); } },
-                    React__default['default'].createElement(CModalContent, null, children))),
-            backdrop && React__default['default'].createElement(CBackdrop, { visible: visible })));
+                    React__default['default'].createElement(CModalContent, null, children)))));
     };
-    return (React__default['default'].createElement("div", { onClick: handleDismiss, onKeyDown: handleKeyDown },
-        React__default['default'].createElement(CSSTransition, { in: visible, timeout: !transition ? 0 : duration, onExit: onDismiss, mountOnEnter: true, unmountOnExit: true }, function (state) {
-            var transitionClass = getTransitionClass(state);
-            return typeof window !== 'undefined' && portal
-                ? ReactDOM.createPortal(modal(forkedRef, transitionClass), document.body)
-                : modal(forkedRef, transitionClass);
-        })));
+    return (React__default['default'].createElement(React__default['default'].Fragment, null,
+        React__default['default'].createElement("div", { onClick: handleDismiss, onKeyDown: handleKeyDown },
+            React__default['default'].createElement(CSSTransition, { in: visible, timeout: !transition ? 0 : duration, onExit: onDismiss, mountOnEnter: true, unmountOnExit: true }, function (state) {
+                var transitionClass = getTransitionClass(state);
+                return typeof window !== 'undefined' && portal
+                    ? ReactDOM.createPortal(modal(forkedRef, transitionClass), document.body)
+                    : modal(forkedRef, transitionClass);
+            })),
+        typeof window !== 'undefined' && portal
+            ? backdrop && ReactDOM.createPortal(React__default['default'].createElement(CBackdrop, { visible: visible }), document.body)
+            : backdrop && React__default['default'].createElement(CBackdrop, { visible: visible })));
 });
 CModal.propTypes = {
     alignment: PropTypes.oneOf(['top', 'center']),
@@ -6551,9 +6561,7 @@ CNavbarText.displayName = 'CNavbarText';
 var CNavbarToggler = React.forwardRef(function (_a, ref) {
     var children = _a.children, className = _a.className, rest = __rest(_a, ["children", "className"]);
     var _className = classNames('navbar-toggler', className);
-    return (
-    // TODO: aria-expanded="false"
-    React__default['default'].createElement("button", __assign({ type: "button", className: _className, "aria-label": "Toggle navigation" }, rest, { ref: ref }), children ? children : React__default['default'].createElement("span", { className: "navbar-toggler-icon" })));
+    return (React__default['default'].createElement("button", __assign({ type: "button", className: _className }, rest, { ref: ref }), children ? children : React__default['default'].createElement("span", { className: "navbar-toggler-icon" })));
 });
 CNavbarToggler.propTypes = {
     children: PropTypes.node,
@@ -6569,8 +6577,8 @@ var CPagination = React.forwardRef(function (_a, ref) {
         React__default['default'].createElement("ul", { className: _className }, children)));
 });
 CPagination.propTypes = {
-    children: PropTypes.any,
-    className: PropTypes.any,
+    children: PropTypes.node,
+    className: PropTypes.string,
     size: PropTypes.oneOf(['sm', 'lg']),
 };
 CPagination.displayName = 'CPagination';
@@ -6602,7 +6610,7 @@ var CPopoverContent = React.forwardRef(function (_a, ref) {
 CPopoverContent.propTypes = {
     arrowProps: PropTypes.any,
     content: PropTypes.node,
-    placementClassNamePostfix: PropTypes.any,
+    placementClassNamePostfix: PropTypes.string,
     style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     title: PropTypes.string,
     transitionClass: PropTypes.string,
@@ -6685,7 +6693,7 @@ CProgressBar.propTypes = {
     className: PropTypes.string,
     color: colorPropType,
     value: PropTypes.number,
-    variant: PropTypes.any,
+    variant: PropTypes.oneOf(['striped']),
 };
 CProgressBar.displayName = 'CProgressBar';
 
@@ -6777,8 +6785,8 @@ var CSidebar = React.forwardRef(function (_a, ref) {
             ReactDOM.createPortal(mobile && _show && React__default['default'].createElement("div", { className: "sidebar-backdrop fade show" }), document.body)));
 });
 CSidebar.propTypes = {
-    children: PropTypes.any,
-    className: PropTypes.any,
+    children: PropTypes.node,
+    className: PropTypes.string,
     narrow: PropTypes.bool,
     onHide: PropTypes.func,
     onShow: PropTypes.func,
@@ -6823,14 +6831,18 @@ var COffcanvas = React.forwardRef(function (_a, ref) {
     }, [ref, handleDismiss]);
     var offcanvas = function (ref, state) {
         return (React__default['default'].createElement(React__default['default'].Fragment, null,
-            React__default['default'].createElement("div", __assign({ className: _className, style: __assign({}, transitionStyles[state]), tabIndex: -1, onKeyDown: handleKeyDown }, rest, { ref: ref }), children),
-            backdrop && React__default['default'].createElement(CBackdrop, { visible: _visible, onClick: handleDismiss })));
+            React__default['default'].createElement("div", __assign({ className: _className, style: __assign({}, transitionStyles[state]), tabIndex: -1, onKeyDown: handleKeyDown }, rest, { ref: ref }), children)));
     };
-    return (React__default['default'].createElement(Transition, { in: _visible, timeout: 300, onEntered: function () { var _a; return (_a = offcanvasRef.current) === null || _a === void 0 ? void 0 : _a.focus(); } }, function (state) {
-        return typeof window !== 'undefined' && portal
-            ? ReactDOM.createPortal(offcanvas(forkedRef, state), document.body)
-            : offcanvas(forkedRef, state);
-    }));
+    return (React__default['default'].createElement(React__default['default'].Fragment, null,
+        React__default['default'].createElement(Transition, { in: _visible, timeout: 300, onEntered: function () { var _a; return (_a = offcanvasRef.current) === null || _a === void 0 ? void 0 : _a.focus(); } }, function (state) {
+            return typeof window !== 'undefined' && portal
+                ? ReactDOM.createPortal(offcanvas(forkedRef, state), document.body)
+                : offcanvas(forkedRef, state);
+        }),
+        typeof window !== 'undefined' && portal
+            ? backdrop &&
+                ReactDOM.createPortal(React__default['default'].createElement(CBackdrop, { visible: visible, onClick: handleDismiss }), document.body)
+            : backdrop && React__default['default'].createElement(CBackdrop, { visible: visible, onClick: handleDismiss })));
 });
 COffcanvas.propTypes = {
     backdrop: PropTypes.bool,
@@ -6928,8 +6940,8 @@ var CCreateNavItem = function (_a) {
     return React__default['default'].createElement(React__default['default'].Fragment, null, generatedItems);
 };
 CCreateNavItem.propTypes = {
-    idx: PropTypes.any,
-    items: PropTypes.any, // TODO: find better solution
+    idx: PropTypes.string,
+    items: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 var CSidebarHeader = React.forwardRef(function (_a, ref) {
@@ -7142,7 +7154,7 @@ CTabPane.displayName = 'CTabPane';
 var CToastContext = React.createContext({});
 var CToast = React.forwardRef(function (_a, ref) {
     var _b;
-    var children = _a.children, _c = _a.autohide, autohide = _c === void 0 ? true : _c, className = _a.className, color = _a.color, _d = _a.delay, delay = _d === void 0 ? 5000 : _d, key = _a.key, _e = _a.visible, visible = _e === void 0 ? true : _e, onDismiss = _a.onDismiss, rest = __rest(_a, ["children", "autohide", "className", "color", "delay", "key", "visible", "onDismiss"]);
+    var children = _a.children, _c = _a.autohide, autohide = _c === void 0 ? true : _c, className = _a.className, color = _a.color, _d = _a.delay, delay = _d === void 0 ? 5000 : _d, index = _a.index, key = _a.key, _e = _a.visible, visible = _e === void 0 ? true : _e, onDismiss = _a.onDismiss, rest = __rest(_a, ["children", "autohide", "className", "color", "delay", "index", "key", "visible", "onDismiss"]);
     var _f = React.useState(visible), _visible = _f[0], setVisible = _f[1];
     var timeout = React.useRef();
     var contextValues = {
@@ -7168,7 +7180,7 @@ var CToast = React.forwardRef(function (_a, ref) {
         _b["bg-" + color] = color,
         _b['border-0'] = color,
         _b), className);
-    return (React__default['default'].createElement(CSSTransition, { in: _visible, timeout: 250, onExit: onDismiss, unmountOnExit: true },
+    return (React__default['default'].createElement(CSSTransition, { in: _visible, timeout: 250, onExit: function () { return onDismiss && onDismiss(index ? index : null); }, unmountOnExit: true },
         React__default['default'].createElement(CToastContext.Provider, { value: contextValues },
             React__default['default'].createElement("div", __assign({ className: _className, "aria-live": "assertive", "aria-atomic": "true", role: "alert", onMouseEnter: function () { return clearTimeout(timeout.current); }, onMouseLeave: function () { return _autohide; } }, rest, { key: key, ref: ref }), children))));
 });
@@ -7178,6 +7190,7 @@ CToast.propTypes = {
     className: PropTypes.string,
     color: colorPropType,
     delay: PropTypes.number,
+    index: PropTypes.number,
     key: PropTypes.number,
     onDismiss: PropTypes.func,
     visible: PropTypes.bool,
@@ -7225,12 +7238,14 @@ var CToaster = React.forwardRef(function (_a, ref) {
         index.current++;
         push && addToast(push);
     }, [push]);
-    // TODO: remove invisible items
     var addToast = function (push) {
         setToasts(function (state) { return __spreadArray(__spreadArray([], state), [
             React__default['default'].cloneElement(push, {
+                index: index.current,
                 key: index.current,
-                onDismiss: function () { return setToasts(function (state) { return state.filter(function (i) { return i.key !== index.current; }); }); },
+                onDismiss: function (index) {
+                    return setToasts(function (state) { return state.filter(function (i) { return i.props.index !== index; }); });
+                },
             }),
         ]); });
     };
@@ -7282,7 +7297,7 @@ var CTooltipContent = React.forwardRef(function (_a, ref) {
 CTooltipContent.propTypes = {
     arrowProps: PropTypes.any,
     content: PropTypes.node,
-    placementClassNamePostfix: PropTypes.any,
+    placementClassNamePostfix: PropTypes.string,
     style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     transitionClass: PropTypes.string,
 };

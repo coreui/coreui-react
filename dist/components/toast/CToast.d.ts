@@ -15,13 +15,16 @@ export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
      * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
      *
      * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
-     * @default 'primary'
      */
     color?: Colors;
     /**
      * Delay hiding the toast (ms). [docs]
      */
     delay?: number;
+    /**
+     * @ignore
+     */
+    index?: number;
     /**
      * @ignore
      */
@@ -35,7 +38,7 @@ export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
     /**
      * Method called before the dissmiss animation has started. [docs]
      */
-    onDismiss?: () => void;
+    onDismiss?: (index: number | null) => void;
 }
 interface ContextProps extends CToastProps {
     visible?: boolean;

@@ -1,5 +1,6 @@
 import React, { HTMLAttributes, ReactNode } from 'react';
 import { Colors } from '../Types';
+declare type Values = number[] | string[];
 export interface CWidgetBrandProps extends HTMLAttributes<HTMLDivElement> {
     /**
      * A string of all className you want applied to the base component. [docs]
@@ -12,6 +13,7 @@ export interface CWidgetBrandProps extends HTMLAttributes<HTMLDivElement> {
      */
     color?: Colors;
     headerChildren?: string | ReactNode;
-    values?: Array<string | number> | Array<Array<string | number>>;
+    values?: Values | Values[];
 }
 export declare const CWidgetBrand: React.ForwardRefExoticComponent<CWidgetBrandProps & React.RefAttributes<HTMLDivElement>>;
+export {};

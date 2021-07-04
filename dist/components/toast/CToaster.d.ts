@@ -7,12 +7,11 @@ export interface CToasterProps extends HTMLAttributes<HTMLDivElement> {
     /**
      * Describes the placement of your component. [docs]
      *
-     * @type 'top-start' | 'top' | 'top-end' | 'middle-start' | 'middle' | 'middle-end' | 'bottom-start' | 'bottom' | 'bottom-end' |
-     * @default 'top-end'
+     * @type 'top-start' | 'top' | 'top-end' | 'middle-start' | 'middle' | 'middle-end' | 'bottom-start' | 'bottom' | 'bottom-end' | string
      */
     placement?: 'top-start' | 'top-center' | 'top-end' | 'middle-start' | 'middle-center' | 'middle-end' | 'bottom-start' | 'bottom-center' | 'bottom-end' | string;
     /**
-     * TODO:. [docs]
+     * Adds new `CToast` to `CToaster`. [docs]
      */
     push?: ReactElement;
 }

@@ -15,7 +15,6 @@ export interface CProgressBarProps extends HTMLAttributes<HTMLDivElement> {
      * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
      *
      * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
-     * @default 'primary'
      */
     color?: Colors;
     /**
@@ -26,8 +25,6 @@ export interface CProgressBarProps extends HTMLAttributes<HTMLDivElement> {
     value?: number;
     /**
      * Set the progress bar variant to optional striped. [docs]
-     *
-     * @default 'undefined'
      */
     variant?: 'striped';
 }

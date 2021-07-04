@@ -1,7 +1,7 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactElement, ReactNode } from 'react';
 import { Placements, Triggers } from '../Types';
 export interface CTooltipProps {
-    children: JSX.Element;
+    children: ReactElement;
     /**
      * Content node for your component. [docs]
      */
