@@ -65,7 +65,15 @@ export const CWidgetProgress = forwardRef<HTMLDivElement, CWidgetProgressProps>(
             value={progressValue}
             white={progressWhite}
           />
-          {text && <small className="text-medium-emphasis">{text}</small>}
+          {text && (
+            <small
+              className={
+                textColor === 'white' ? 'text-medium-emphasis-inverse' : 'text-medium-emphasis'
+              }
+            >
+              {text}
+            </small>
+          )}
         </CCardBody>
       </CCard>
     )

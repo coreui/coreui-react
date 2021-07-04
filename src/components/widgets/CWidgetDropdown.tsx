@@ -9,6 +9,7 @@ import { CCardBody } from '../card/CCardBody'
 
 export interface CWidgetDropdownProps extends HTMLAttributes<HTMLDivElement> {
   action?: string | ReactNode
+  change?: string | ReactNode
   chart?: string | ReactNode
   /**
    * A string of all className you want applied to the base component. [docs]
@@ -25,7 +26,7 @@ export interface CWidgetDropdownProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const CWidgetDropdown = forwardRef<HTMLDivElement, CWidgetDropdownProps>(
-  ({ action, chart, className, color, title, value, ...rest }, ref) => {
+  ({ action, change, chart, className, color, title, value, ...rest }, ref) => {
     const _className = classNames(
       { [`bg-${color}`]: color, 'text-high-emphasis-inverse': color },
       className,
@@ -35,7 +36,11 @@ export const CWidgetDropdown = forwardRef<HTMLDivElement, CWidgetDropdownProps>(
       <CCard className={_className} {...rest} ref={ref}>
         <CCardBody className="pb-0 d-flex justify-content-between align-items-start">
           <div>
-            {value && <div className="fs-4 fw-semibold">{value}</div>}
+            {value && (
+              <div className="fs-4 fw-semibold">
+                {value} {change && <span className="fs-6 fw-normal">{change}</span>}
+              </div>
+            )}
             {title && <div>{title}</div>}
           </div>
           {action}
@@ -48,6 +53,7 @@ export const CWidgetDropdown = forwardRef<HTMLDivElement, CWidgetDropdownProps>(
 
 CWidgetDropdown.propTypes = {
   action: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  change: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   chart: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   className: PropTypes.string,
   color: colorPropType,
