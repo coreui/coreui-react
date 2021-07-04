@@ -3,22 +3,20 @@ import React, { FC, ElementType, useMemo } from 'react'
 import { CNavGroup } from '../nav/CNavGroup'
 import { CNavGroupItems } from '../nav/CNavGroupItems'
 import { CNavItem } from '../nav/CNavItem'
-import { CNavLink } from '../nav/CNavLink'
+import { CNavLink, CNavLinkProps } from '../nav/CNavLink'
 import { CNavTitle } from '../nav/CNavTitle'
 
 export interface CSidebarNavItemGeneratorProps {
   anchor: string
   as: string | ElementType
   _component: string
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  items?: Array<object>
+  items?: CNavLinkProps[]
   idx?: string
 }
 
 interface CCreateNavItemProps {
   idx?: string
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  items: Array<object>
+  items: CNavLinkProps[]
 }
 
 export const CCreateNavItem: FC<CCreateNavItemProps> = ({ items, idx }) => {
@@ -51,6 +49,6 @@ export const CCreateNavItem: FC<CCreateNavItemProps> = ({ items, idx }) => {
 }
 
 CCreateNavItem.propTypes = {
-  idx: PropTypes.any,
-  items: PropTypes.any, // TODO: find better solution
+  idx: PropTypes.string,
+  items: PropTypes.arrayOf(PropTypes.any).isRequired,
 }

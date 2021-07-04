@@ -1,6 +1,6 @@
 // TODO: fix possition
 
-import React, { FC, ReactNode, useState } from 'react'
+import React, { FC, ReactElement, ReactNode, useState } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import { Manager, Popper, Reference } from 'react-popper'
@@ -10,7 +10,7 @@ import { CPopoverContent } from './CPopoverContent'
 import { Placements, Triggers, triggerPropType } from '../Types'
 
 export interface CPopoverProps {
-  children: JSX.Element
+  children: ReactElement
   /**
    * Content node for your component. [docs]
    */
@@ -112,7 +112,7 @@ export const CPopover: FC<CPopoverProps> = ({
 }
 
 CPopover.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.any,
   placement: PropTypes.oneOf([
     'auto',
     'top-end',

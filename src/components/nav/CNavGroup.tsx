@@ -15,7 +15,7 @@ export interface CNavGroupProps {
    */
   icon?: string | ReactNode
   /**
-   * TODO: . [docs]
+   * Set group toggler label. [docs]
    */
   toggler?: string
   /**

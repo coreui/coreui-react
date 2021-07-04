@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useState } from 'react'
+import React, { FC, ReactElement, ReactNode, useState } from 'react'
 import PropTypes from 'prop-types'
 import { createPortal } from 'react-dom'
 import { Manager, Popper, Reference } from 'react-popper'
@@ -8,7 +8,7 @@ import { CTooltipContent } from './CTooltipContent'
 import { Placements, Triggers, triggerPropType } from '../Types'
 
 export interface CTooltipProps {
-  children: JSX.Element
+  children: ReactElement
   /**
    * Content node for your component. [docs]
    */
@@ -106,7 +106,7 @@ export const CTooltip: FC<CTooltipProps> = ({
 }
 
 CTooltip.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.any,
   placement: PropTypes.oneOf([
     'auto',
     'top-end',

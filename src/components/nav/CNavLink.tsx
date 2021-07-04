@@ -26,7 +26,7 @@ export interface CNavLinkProps extends Omit<CLinkProps, 'idx'> {
    */
   disabled?: boolean
   /**
-   * TODO:. [docs]
+   * Set component's icon. [docs]
    */
   icon?: string | ReactNode
 
