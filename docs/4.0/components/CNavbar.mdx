@@ -152,7 +152,7 @@ Adding images to the `<CNavbarBrand>` will likely always require custom styles o
         <CNavbar expand="lg" colorScheme="light" className="bg-light">
           <CContainer fluid>
             <CNavbarBrand href="#">Navbar</CNavbarBrand>
-            <CNavbarToggler onClick={() => setVisible(!visible)} />
+            <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} onClick={() => setVisible(!visible)} />
             <CCollapse className="navbar-collapse" visible={visible}>
               <CNavbarNav>
                 <CNavItem>
@@ -188,7 +188,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
         <CNavbar expand="lg" colorScheme="light" className="bg-light">
           <CContainer fluid>
             <CNavbarBrand href="#">Navbar</CNavbarBrand>
-            <CNavbarToggler onClick={() => setVisible(!visible)} />
+            <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} onClick={() => setVisible(!visible)} />
             <CCollapse className="navbar-collapse" visible={visible}>
               <CNavbarNav component="nav">
                 <CNavLink href="#" active>
@@ -218,7 +218,7 @@ You can also use dropdowns in your navbar. Please note that `<CDropdown>` compon
         <CNavbar expand="lg" colorScheme="light" className="bg-light">
           <CContainer fluid>
             <CNavbarBrand href="#">Navbar</CNavbarBrand>
-            <CNavbarToggler onClick={() => setVisible(!visible)} />
+            <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} onClick={() => setVisible(!visible)} />
             <CCollapse className="navbar-collapse" visible={visible}>
               <CNavbarNav>
                 <CNavItem>
@@ -327,7 +327,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         <CNavbar expand="lg" colorScheme="dark" className="bg-dark">
           <CContainer fluid>
             <CNavbarBrand href="#">Navbar</CNavbarBrand>
-            <CNavbarToggler onClick={() => setVisible(!visible)} />
+            <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} onClick={() => setVisible(!visible)} />
             <CCollapse className="navbar-collapse" visible={visible}>
               <CNavbarNav>
                 <CNavItem>
@@ -364,7 +364,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         <CNavbar expand="lg" colorScheme="dark" className="bg-primary">
           <CContainer fluid>
             <CNavbarBrand href="#">Navbar</CNavbarBrand>
-            <CNavbarToggler onClick={() => setVisible(!visible)} />
+            <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} onClick={() => setVisible(!visible)} />
             <CCollapse className="navbar-collapse" visible={visible}>
               <CNavbarNav>
                 <CNavItem>
@@ -401,7 +401,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         <CNavbar expand="lg" colorScheme="light" style={{backgroundColor: '#e3f2fd'}}>
           <CContainer fluid>
             <CNavbarBrand href="#">Navbar</CNavbarBrand>
-            <CNavbarToggler onClick={() => setVisible(!visible)} />
+            <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} onClick={() => setVisible(!visible)} />
             <CCollapse className="navbar-collapse" visible={visible}>
               <CNavbarNav>
                 <CNavItem>
@@ -520,7 +520,7 @@ With no `<CNavbarBrand>` shown at the smallest breakpoint:
       <>
         <CNavbar expand="lg" colorScheme="light" className="bg-light">
           <CContainer fluid>
-            <CNavbarToggler onClick={() => setVisible(!visible)} />
+            <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} onClick={() => setVisible(!visible)} />
             <CCollapse className="navbar-collapse" visible={visible}>
               <CNavbarBrand href="#">Hidden brand</CNavbarBrand>
               <CNavbarNav className="me-auto mb-2 mb-lg-0">
@@ -560,7 +560,7 @@ With a brand name shown on the left and toggler on the right:
         <CNavbar expand="lg" colorScheme="light" className="bg-light">
           <CContainer fluid>
             <CNavbarBrand href="#">Navbar</CNavbarBrand>
-            <CNavbarToggler onClick={() => setVisible(!visible)} />
+            <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} onClick={() => setVisible(!visible)} />
             <CCollapse className="navbar-collapse" visible={visible}>
               <CNavbarNav className="me-auto mb-2 mb-lg-0">
                 <CNavItem>
@@ -598,7 +598,7 @@ With a toggler on the left and brand name on the right:
       <>
         <CNavbar expand="lg" colorScheme="light" className="bg-light">
           <CContainer fluid>
-            <CNavbarToggler onClick={() => setVisible(!visible)} />
+            <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} onClick={() => setVisible(!visible)} />
             <CNavbarBrand href="#">Navbar</CNavbarBrand>
             <CCollapse className="navbar-collapse" visible={visible}>
               <CNavbarNav className="me-auto mb-2 mb-lg-0">
