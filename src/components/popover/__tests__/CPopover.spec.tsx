@@ -15,7 +15,7 @@ test('loads and displays CPopover component', async () => {
 test('CPopover customize', async () => {
   let arr, element
   const { container } = render(
-    <CPopover content="content" title="title" trigger="click" placement="right-end">
+    <CPopover content="content" title="title" trigger="click" placement="right">
       <CButton>Test</CButton>
     </CPopover>,
   )
@@ -28,7 +28,7 @@ test('CPopover customize', async () => {
   expect(container).toMatchSnapshot()
   let arrLength = container.getElementsByClassName('popover').length
   expect(arrLength).toBe(1)
-  arrLength = container.getElementsByClassName('bs-popover-right-end').length
+  arrLength = container.getElementsByClassName('bs-popover-end').length
   expect(arrLength).toBe(1)
   arrLength = container.getElementsByClassName('popover-arrow').length
   expect(arrLength).toBe(1)

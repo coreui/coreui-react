@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { act, render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import { CTooltip, CLink /*, CButton */ } from '../../../index'
+import { CTooltip, CLink } from '../../../index'
 
 test('loads and displays CTooltip component', async () => {
   const { container } = render(
@@ -14,7 +14,7 @@ test('loads and displays CTooltip component', async () => {
 
 test('CTooltip customize', async () => {
   const { container } = render(
-    <CTooltip trigger="hover" placement="right-end" content="content">
+    <CTooltip trigger="hover" placement="right" content="content">
       <CLink className="link">Test</CLink>
     </CTooltip>,
   )
