@@ -18,7 +18,7 @@ export const CAccordionButton = forwardRef<HTMLButtonElement, CAccordionButtonPr
     const _className = classNames('accordion-button', { collapsed: collapsed }, className)
 
     return (
-      <button className={_className} {...rest} ref={ref}>
+      <button className={_className} {...rest} aria-expanded={!collapsed} ref={ref}>
         {children}
       </button>
     )
