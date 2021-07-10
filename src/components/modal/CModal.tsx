@@ -36,7 +36,7 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * @ignore
    */
-  duration?: number // TODO: check if it possible to remove this property.
+  duration?: number
   /**
    * Set modal to covers the entire user viewport. [docs]
    */
