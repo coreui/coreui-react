@@ -7,7 +7,7 @@ import { Manager, Popper, Reference } from 'react-popper'
 import { CSSTransition } from 'react-transition-group'
 
 import { CPopoverContent } from './CPopoverContent'
-import { Placements, Triggers, triggerPropType } from '../Types'
+import { Triggers, triggerPropType } from '../Types'
 
 export interface CPopoverProps {
   children: ReactElement
@@ -26,10 +26,10 @@ export interface CPopoverProps {
   /**
    * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property. [docs]
    *
-   * @type 'auto' | 'top-end' | 'top' | 'top-start' | 'bottom-end' | 'bottom' | 'bottom-start' | 'right-start' | 'right' | 'right-end' | 'left-start' | 'left' | 'left-end'
-   * @default 'bottom'
+   * @type 'top' | 'right' | 'bottom' | 'left'
+   * @default 'top'
    */
-  placement?: Placements | 'start' | 'end' // TODO: find solution
+  placement?: 'top' | 'right' | 'bottom' | 'left'
   /**
    * Toggle the visibility of popover component. [docs]
    *
@@ -46,7 +46,6 @@ export const CPopover: FC<CPopoverProps> = ({
   ...rest
 }) => {
   const [_visible, setVisible] = useState(visible)
-  const _placement = placement === 'start' ? 'left' : placement === 'end' ? 'right' : placement
 
   const getTransitionClass = (state: string) => {
     return state === 'entering'
@@ -92,11 +91,13 @@ export const CPopover: FC<CPopoverProps> = ({
             {(state) => {
               const transitionClass = getTransitionClass(state)
               return (
-                <Popper placement={_placement}>
+                <Popper placement={placement}>
                   {(p) => (
                     <CPopoverContent
                       transitionClass={transitionClass}
-                      placementClassNamePostfix={placement}
+                      placementClassNamePostfix={
+                        placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement
+                      }
                       {...rest}
                       {...p}
                     ></CPopoverContent>
@@ -113,23 +114,7 @@ export const CPopover: FC<CPopoverProps> = ({
 
 CPopover.propTypes = {
   children: PropTypes.any,
-  placement: PropTypes.oneOf([
-    'auto',
-    'top-end',
-    'top',
-    'top-start',
-    'bottom-end',
-    'bottom',
-    'bottom-start',
-    'right-start',
-    'right',
-    'right-end',
-    'left-start',
-    'left',
-    'left-end',
-    'start',
-    'end',
-  ]),
+  placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   trigger: triggerPropType,
   visible: PropTypes.bool,
 }
