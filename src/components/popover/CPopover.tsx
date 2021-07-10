@@ -1,5 +1,3 @@
-// TODO: fix possition
-
 import React, { FC, ReactElement, ReactNode, useState } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
@@ -15,6 +13,11 @@ export interface CPopoverProps {
    * Content node for your component. [docs]
    */
   content: ReactNode
+  /**
+   * Offset of the popover relative to its target. [docs]
+   * @default '[0, 8]'
+   */
+  offset?: [number, number]
   /**
    * Title node for your component. [docs]
    */
@@ -41,6 +44,7 @@ export interface CPopoverProps {
 export const CPopover: FC<CPopoverProps> = ({
   children,
   placement = 'top',
+  offset = [0, 8],
   trigger = 'click',
   visible,
   ...rest
@@ -91,7 +95,17 @@ export const CPopover: FC<CPopoverProps> = ({
             {(state) => {
               const transitionClass = getTransitionClass(state)
               return (
-                <Popper placement={placement}>
+                <Popper
+                  placement={placement}
+                  modifiers={[
+                    {
+                      name: 'offset',
+                      options: {
+                        offset: offset,
+                      },
+                    },
+                  ]}
+                >
                   {(p) => (
                     <CPopoverContent
                       transitionClass={transitionClass}
@@ -115,6 +129,7 @@ export const CPopover: FC<CPopoverProps> = ({
 CPopover.propTypes = {
   children: PropTypes.any,
   placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+  offset: PropTypes.any, // TODO: find good proptype
   trigger: triggerPropType,
   visible: PropTypes.bool,
 }
