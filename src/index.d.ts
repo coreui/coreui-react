@@ -91,7 +91,7 @@ interface CButtonToolbar extends HTMLPropsNoClassName {
   className?: className;
   innerRef?: innerRef;
   role?: string;
-  justify?: '' | 'start' | 'end' | 'between' | 'center';
+  justify?: '' | 'start' | 'end' | 'between' | 'center' | 'around';
 }
 
 interface CCallout extends HTMLPropsNoClassName {
