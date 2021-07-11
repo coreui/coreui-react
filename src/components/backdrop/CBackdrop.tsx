@@ -15,8 +15,8 @@ export interface CBackdropProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const CBackdrop = forwardRef<HTMLDivElement, CBackdropProps>(
-  ({ className, visible, ...rest }, ref) => {
-    const _className = classNames('modal-backdrop fade', className)
+  ({ className = 'modal-backdrop', visible, ...rest }, ref) => {
+    const _className = classNames(className, 'fade')
 
     const getTransitionClass = (state: string) => {
       return state === 'entered' && 'show'
