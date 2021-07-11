@@ -22,6 +22,7 @@ import { CCardFooter } from './components/card/CCardFooter'
 import { CCardGroup } from './components/card/CCardGroup'
 import { CCardHeader } from './components/card/CCardHeader'
 import { CCardImage } from './components/card/CCardImage'
+import { CCardImageOverlay } from './components/card/CCardImageOverlay'
 import { CCardLink } from './components/card/CCardLink'
 import { CCardSubtitle } from './components/card/CCardSubtitle'
 import { CCardText } from './components/card/CCardText'
@@ -152,6 +153,7 @@ export {
   CCardFooter,
   CCardHeader,
   CCardImage,
+  CCardImageOverlay,
   CCardLink,
   CCardSubtitle,
   CCardText,
