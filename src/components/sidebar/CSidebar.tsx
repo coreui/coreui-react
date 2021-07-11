@@ -1,3 +1,5 @@
+// TODO: check if element is visible after toggle
+
 import React, {
   forwardRef,
   HTMLAttributes,
@@ -12,6 +14,7 @@ import classNames from 'classnames'
 
 import { Breakpoints } from '../Types'
 import { useForkedRef } from '../../utils/hooks'
+import { CBackdrop } from '../backdrop/CBackdrop'
 
 export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -43,13 +46,13 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
    */
   selfHiding?: Breakpoints | boolean
   /**
-   * Show self hidden sidebar. [docs]
-   */
-  show?: boolean
-  /**
    * Expand narrowed sidebar on hover. [docs]
    */
   unfoldable?: boolean
+  /**
+   * Toggle the visibility of sidebar component. [docs]
+   */
+  visible?: boolean
 }
 
 export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
@@ -64,15 +67,15 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
       position,
       selfHiding,
       unfoldable,
-      show,
+      visible,
       ...rest
     },
     ref,
   ) => {
     const sidebarRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, sidebarRef)
-    const [_show, setShow] = useState(show)
     const [mobile, setMobile] = useState(false)
+    const [_visible, setVisible] = useState(visible)
 
     const isOnMobile = (element: React.RefObject<HTMLDivElement>) =>
       Boolean(
@@ -84,14 +87,14 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
     })
 
     useEffect(() => {
-      setShow(show)
+      setVisible(visible)
       setMobile(isOnMobile(sidebarRef))
-    }, [show])
+    }, [visible])
 
     useEffect(() => {
       setMobile(isOnMobile(sidebarRef))
-      _show && onShow && onShow()
-    }, [_show])
+      _visible && onShow && onShow()
+    }, [_visible])
 
     useEffect(() => {
       window.addEventListener('mouseup', handleClickOutside)
@@ -106,19 +109,27 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
     })
 
     const handleHide = () => {
-      if (_show) {
-        setShow(false)
+      if (_visible) {
+        setVisible(false)
         onHide && onHide()
       }
     }
 
     const handleKeyup = (event: Event) => {
-      if (sidebarRef.current && !sidebarRef.current.contains(event.target as HTMLElement)) {
+      if (
+        mobile &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as HTMLElement)
+      ) {
         handleHide()
       }
     }
     const handleClickOutside = (event: Event) => {
-      if (sidebarRef.current && !sidebarRef.current.contains(event.target as HTMLElement)) {
+      if (
+        mobile &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as HTMLElement)
+      ) {
         handleHide()
       }
     }
@@ -140,7 +151,8 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
         [`sidebar-${position}`]: position,
         [`sidebar-self-hiding${typeof selfHiding !== 'boolean' && '-' + selfHiding}`]: selfHiding,
         'sidebar-narrow-unfoldable': unfoldable,
-        show: _show,
+        show: _visible,
+        hide: !_visible,
       },
       className,
     )
@@ -151,8 +163,9 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
           {children}
         </div>
         {typeof window !== 'undefined' &&
+          mobile &&
           createPortal(
-            mobile && _show && <div className="sidebar-backdrop fade show"></div>,
+            <CBackdrop className="sidebar-backdrop" visible={_visible} />,
             document.body,
           )}
       </>
@@ -172,8 +185,8 @@ CSidebar.propTypes = {
     PropTypes.bool,
     PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl'>(['sm', 'md', 'lg', 'xl', 'xxl']),
   ]),
-  show: PropTypes.bool,
   unfoldable: PropTypes.bool,
+  visible: PropTypes.bool,
 }
 
 CSidebar.displayName = 'CSidebar'
