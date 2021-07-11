@@ -16,6 +16,7 @@ import {
   CCardGroup,
   CCardHeader,
   CCardImage,
+  CCardImageOverlay,
   CCardLink,
   CCardSubtitle,
   CCardTitle,
@@ -411,7 +412,18 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
 
 Adapt an image into a background and overlay your text. Depending on the image, you may need additional styles or utilities.
 
-<!-- TODO: add example -->
+<Playground>
+  <CCard className="mb-3 bg-dark text-white">
+    <CCardImage component="svg" className="docs-placeholder-img rounded-0" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text></CCardImage>
+    <CCardImageOverlay>
+      <CCardTitle>Card title</CCardTitle>
+      <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
+      <CCardText>Last updated 3 mins ago</CCardText>
+    </CCardImageOverlay>
+  </CCard>
+</Playground>
+
+## Horizontal
 
 Using a combination of grid and utility classes, cards can be made horizontal in a mobile-friendly and responsive way. In the example below, we remove the grid gutters with `.g-0` and use `.col-md-*` classes to make the card horizontal at the `md` breakpoint. Further adjustments may be needed depending on your card content.
 
@@ -787,6 +799,10 @@ Just like with card groups, card footers will automatically line up.
 ### CCardImage
 
 <Props of={CCardImage} />
+
+### CCardImageOverlay
+
+<Props of={CCardImageOverlay} />
 
 ### CCardLink
 

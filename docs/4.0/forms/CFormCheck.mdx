@@ -5,7 +5,7 @@ description: Create consistent cross-browser and cross-device checkboxes and rad
 menu: Forms
 route: /forms/checks-radios
 ---
-
+import { useEffect, useRef } from 'react'
 import { Playground, Props } from 'docz'
 import { 
   CButton,
@@ -27,13 +27,21 @@ Browser default checkboxes and radios are replaced with the help of `<CFormCheck
   <CFormCheck id="flexCheckChecked" label="Checked checkbox" defaultChecked />
 </Playground>
 
-<!-- TODO: ## Indeterminate
+## Indeterminate
 
 Checkboxes can utilize the `:indeterminate` pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).
 
 <Playground>
-  <CFormCheck id="flexCheckIndeterminate" label="Indeterminate checkbox" indeterminate/>
-</Playground> -->
+    {() => {
+      const checkboxRef = useRef(null)
+      useEffect(() => {
+        checkboxRef.current.indeterminate = true
+      })
+      return (
+        <CFormCheck id="flexCheckIndeterminate" label="Indeterminate checkbox" ref={checkboxRef} />
+      )
+    }}
+</Playground>
 
 ### Disabled
 

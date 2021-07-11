@@ -12,6 +12,8 @@ import {
   CButton,
   CButtonGroup,
   CCallout,
+  CCollapse,
+  CContainer,
   CDropdown,
   CDropdownDivider,
   CDropdownHeader,
@@ -22,7 +24,11 @@ import {
   CForm,
   CFormCheck,
   CFormControl,
-  CFormLabel 
+  CFormLabel,
+  CNavbar,
+  CNavbarBrand,
+  CNavbarNav,
+  CNavbarToggler
 } from '../../../src/index.ts'
 
 
@@ -180,16 +186,13 @@ Opt into darker dropdowns to match a dark navbar or custom style by set `dark` p
 
 And putting it to use in a navbar:
 
-<!-- TODO: update navbar components -->
 <Playground>
-  <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div className="container-fluid">
-      <a className="navbar-brand" href="#">Navbar</a>
-      <button className="navbar-toggler" type="button" data-coreui-toggle="collapse" data-coreui-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
-        <ul className="navbar-nav">
+  <CNavbar expand="lg" colorScheme="dark" className="bg-dark">
+    <CContainer fluid>
+      <CNavbarBrand href="#">Navbar</CNavbarBrand>
+      <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} onClick={() => setVisible(!visible)} />
+      <CCollapse className="navbar-collapse" visible={visible}>
+        <CNavbarNav>
           <CDropdown dark component="li" variant="nav-item">
             <CDropdownToggle>Dropdown</CDropdownToggle>
             <CDropdownMenu>
@@ -200,10 +203,10 @@ And putting it to use in a navbar:
               <CDropdownItem href="#">Separated link</CDropdownItem>
             </CDropdownMenu>
           </CDropdown>
-        </ul>
-      </div>
-    </div>
-  </nav>
+        </CNavbarNav>
+      </CCollapse>
+    </CContainer>
+  </CNavbar>
 </Playground>
 
 ## Directions
