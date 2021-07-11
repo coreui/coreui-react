@@ -6,5 +6,5 @@ interface CPopoverContentProps extends Omit<CPopoverProps, 'placement' | 'childr
     style?: CSSProperties;
     placementClassNamePostfix?: string;
 }
-export declare const CPopoverContent: React.ForwardRefExoticComponent<Pick<CPopoverContentProps, "placement" | "content" | "title" | "visible" | "style" | "isReferenceHidden" | "hasPopperEscaped" | "update" | "forceUpdate" | "arrowProps" | "placementClassNamePostfix" | "transitionClass"> & React.RefAttributes<HTMLDivElement>>;
+export declare const CPopoverContent: React.ForwardRefExoticComponent<Pick<CPopoverContentProps, "placement" | "content" | "offset" | "title" | "visible" | "style" | "isReferenceHidden" | "hasPopperEscaped" | "update" | "forceUpdate" | "arrowProps" | "placementClassNamePostfix" | "transitionClass"> & React.RefAttributes<HTMLDivElement>>;
 export {};

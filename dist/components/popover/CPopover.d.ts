@@ -1,11 +1,16 @@
 import { FC, ReactElement, ReactNode } from 'react';
-import { Placements, Triggers } from '../Types';
+import { Triggers } from '../Types';
 export interface CPopoverProps {
     children: ReactElement;
     /**
      * Content node for your component. [docs]
      */
     content: ReactNode;
+    /**
+     * Offset of the popover relative to its target. [docs]
+     * @default '[0, 8]'
+     */
+    offset?: [number, number];
     /**
      * Title node for your component. [docs]
      */
@@ -17,10 +22,10 @@ export interface CPopoverProps {
     /**
      * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property. [docs]
      *
-     * @type 'auto' | 'top-end' | 'top' | 'top-start' | 'bottom-end' | 'bottom' | 'bottom-start' | 'right-start' | 'right' | 'right-end' | 'left-start' | 'left' | 'left-end'
-     * @default 'bottom'
+     * @type 'top' | 'right' | 'bottom' | 'left'
+     * @default 'top'
      */
-    placement?: Placements | 'start' | 'end';
+    placement?: 'top' | 'right' | 'bottom' | 'left';
     /**
      * Toggle the visibility of popover component. [docs]
      *

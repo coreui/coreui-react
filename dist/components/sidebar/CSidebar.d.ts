@@ -30,12 +30,12 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
      */
     selfHiding?: Breakpoints | boolean;
     /**
-     * Show self hidden sidebar. [docs]
-     */
-    show?: boolean;
-    /**
      * Expand narrowed sidebar on hover. [docs]
      */
     unfoldable?: boolean;
+    /**
+     * Toggle the visibility of sidebar component. [docs]
+     */
+    visible?: boolean;
 }
 export declare const CSidebar: React.ForwardRefExoticComponent<CSidebarProps & React.RefAttributes<HTMLDivElement>>;

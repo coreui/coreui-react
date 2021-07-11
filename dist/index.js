@@ -1243,7 +1243,7 @@ CAccordionBody.displayName = 'CAccordionBody';
 var CAccordionButton = React.forwardRef(function (_a, ref) {
     var children = _a.children, className = _a.className, collapsed = _a.collapsed, rest = __rest(_a, ["children", "className", "collapsed"]);
     var _className = classNames('accordion-button', { collapsed: collapsed }, className);
-    return (React__default['default'].createElement("button", __assign({ className: _className }, rest, { ref: ref }), children));
+    return (React__default['default'].createElement("button", __assign({ className: _className }, rest, { "aria-expanded": !collapsed, ref: ref }), children));
 });
 CAccordionButton.propTypes = {
     children: PropTypes.node,
@@ -2663,8 +2663,8 @@ CBadge.propTypes = {
 CBadge.displayName = 'CBadge';
 
 var CBackdrop = React.forwardRef(function (_a, ref) {
-    var className = _a.className, visible = _a.visible, rest = __rest(_a, ["className", "visible"]);
-    var _className = classNames('modal-backdrop fade', className);
+    var _b = _a.className, className = _b === void 0 ? 'modal-backdrop' : _b, visible = _a.visible, rest = __rest(_a, ["className", "visible"]);
+    var _className = classNames(className, 'fade');
     var getTransitionClass = function (state) {
         return state === 'entered' && 'show';
     };
@@ -2835,6 +2835,17 @@ CCardImage.propTypes = {
     orientation: PropTypes.oneOf(['top', 'bottom']),
 };
 CCardImage.displayName = 'CCardImage';
+
+var CCardImageOverlay = React.forwardRef(function (_a, ref) {
+    var children = _a.children, className = _a.className, rest = __rest(_a, ["children", "className"]);
+    var _className = classNames('card-img-overlay', className);
+    return (React__default['default'].createElement("div", __assign({ className: _className }, rest, { ref: ref }), children));
+});
+CCardImageOverlay.propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
+};
+CCardImageOverlay.displayName = 'CCardImageOverlay';
 
 var CCardLink = React.forwardRef(function (_a, ref) {
     var children = _a.children, className = _a.className, rest = __rest(_a, ["children", "className"]);
@@ -6617,11 +6628,9 @@ CPopoverContent.propTypes = {
 };
 CPopoverContent.displayName = 'CPopoverContent';
 
-// TODO: fix possition
 var CPopover = function (_a) {
-    var children = _a.children, _b = _a.placement, placement = _b === void 0 ? 'top' : _b, _c = _a.trigger, trigger = _c === void 0 ? 'click' : _c, visible = _a.visible, rest = __rest(_a, ["children", "placement", "trigger", "visible"]);
-    var _d = React.useState(visible), _visible = _d[0], setVisible = _d[1];
-    var _placement = placement === 'start' ? 'left' : placement === 'end' ? 'right' : placement;
+    var children = _a.children, _b = _a.placement, placement = _b === void 0 ? 'top' : _b, _c = _a.offset, offset = _c === void 0 ? [0, 8] : _c, _d = _a.trigger, trigger = _d === void 0 ? 'click' : _d, visible = _a.visible, rest = __rest(_a, ["children", "placement", "offset", "trigger", "visible"]);
+    var _e = React.useState(visible), _visible = _e[0], setVisible = _e[1];
     var getTransitionClass = function (state) {
         return state === 'entering'
             ? 'fade'
@@ -6650,28 +6659,20 @@ var CPopover = function (_a) {
                     exit: 200,
                 }, mountOnEnter: true, unmountOnExit: true }, function (state) {
                 var transitionClass = getTransitionClass(state);
-                return (React__default['default'].createElement(Popper, { placement: _placement }, function (p) { return (React__default['default'].createElement(CPopoverContent, __assign({ transitionClass: transitionClass, placementClassNamePostfix: placement }, rest, p))); }));
+                return (React__default['default'].createElement(Popper, { placement: placement, modifiers: [
+                        {
+                            name: 'offset',
+                            options: {
+                                offset: offset,
+                            },
+                        },
+                    ] }, function (p) { return (React__default['default'].createElement(CPopoverContent, __assign({ transitionClass: transitionClass, placementClassNamePostfix: placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement }, rest, p))); }));
             }), document.body)));
 };
 CPopover.propTypes = {
     children: PropTypes.any,
-    placement: PropTypes.oneOf([
-        'auto',
-        'top-end',
-        'top',
-        'top-start',
-        'bottom-end',
-        'bottom',
-        'bottom-start',
-        'right-start',
-        'right',
-        'right-end',
-        'left-start',
-        'left',
-        'left-end',
-        'start',
-        'end',
-    ]),
+    placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+    offset: PropTypes.any,
     trigger: triggerPropType,
     visible: PropTypes.bool,
 };
@@ -6715,13 +6716,14 @@ CProgress.propTypes = {
 };
 CProgress.displayName = 'CProgress';
 
+// TODO: check if element is visible after toggle
 var CSidebar = React.forwardRef(function (_a, ref) {
     var _b;
-    var children = _a.children, className = _a.className, narrow = _a.narrow, onHide = _a.onHide, onShow = _a.onShow, overlaid = _a.overlaid, position = _a.position, selfHiding = _a.selfHiding, unfoldable = _a.unfoldable, show = _a.show, rest = __rest(_a, ["children", "className", "narrow", "onHide", "onShow", "overlaid", "position", "selfHiding", "unfoldable", "show"]);
+    var children = _a.children, className = _a.className, narrow = _a.narrow, onHide = _a.onHide, onShow = _a.onShow, overlaid = _a.overlaid, position = _a.position, selfHiding = _a.selfHiding, unfoldable = _a.unfoldable, visible = _a.visible, rest = __rest(_a, ["children", "className", "narrow", "onHide", "onShow", "overlaid", "position", "selfHiding", "unfoldable", "visible"]);
     var sidebarRef = React.useRef(null);
     var forkedRef = useForkedRef(ref, sidebarRef);
-    var _c = React.useState(show), _show = _c[0], setShow = _c[1];
-    var _d = React.useState(false), mobile = _d[0], setMobile = _d[1];
+    var _c = React.useState(false), mobile = _c[0], setMobile = _c[1];
+    var _d = React.useState(visible), _visible = _d[0], setVisible = _d[1];
     var isOnMobile = function (element) {
         return Boolean(element.current && getComputedStyle(element.current).getPropertyValue('--cui-is-mobile'));
     };
@@ -6729,13 +6731,13 @@ var CSidebar = React.forwardRef(function (_a, ref) {
         setMobile(isOnMobile(sidebarRef));
     });
     React.useEffect(function () {
-        setShow(show);
+        setVisible(visible);
         setMobile(isOnMobile(sidebarRef));
-    }, [show]);
+    }, [visible]);
     React.useEffect(function () {
         setMobile(isOnMobile(sidebarRef));
-        _show && onShow && onShow();
-    }, [_show]);
+        _visible && onShow && onShow();
+    }, [_visible]);
     React.useEffect(function () {
         window.addEventListener('mouseup', handleClickOutside);
         sidebarRef.current && sidebarRef.current.addEventListener('mouseup', handleOnClick);
@@ -6747,18 +6749,22 @@ var CSidebar = React.forwardRef(function (_a, ref) {
         };
     });
     var handleHide = function () {
-        if (_show) {
-            setShow(false);
+        if (_visible) {
+            setVisible(false);
             onHide && onHide();
         }
     };
     var handleKeyup = function (event) {
-        if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        if (mobile &&
+            sidebarRef.current &&
+            !sidebarRef.current.contains(event.target)) {
             handleHide();
         }
     };
     var handleClickOutside = function (event) {
-        if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        if (mobile &&
+            sidebarRef.current &&
+            !sidebarRef.current.contains(event.target)) {
             handleHide();
         }
     };
@@ -6777,12 +6783,14 @@ var CSidebar = React.forwardRef(function (_a, ref) {
         _b["sidebar-" + position] = position,
         _b["sidebar-self-hiding" + (typeof selfHiding !== 'boolean' && '-' + selfHiding)] = selfHiding,
         _b['sidebar-narrow-unfoldable'] = unfoldable,
-        _b.show = _show,
+        _b.show = _visible,
+        _b.hide = !_visible,
         _b), className);
     return (React__default['default'].createElement(React__default['default'].Fragment, null,
         React__default['default'].createElement("div", __assign({ className: _className }, rest, { ref: forkedRef }), children),
         typeof window !== 'undefined' &&
-            ReactDOM.createPortal(mobile && _show && React__default['default'].createElement("div", { className: "sidebar-backdrop fade show" }), document.body)));
+            mobile &&
+            ReactDOM.createPortal(React__default['default'].createElement(CBackdrop, { className: "sidebar-backdrop", visible: _visible }), document.body)));
 });
 CSidebar.propTypes = {
     children: PropTypes.node,
@@ -6796,8 +6804,8 @@ CSidebar.propTypes = {
         PropTypes.bool,
         PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl']),
     ]),
-    show: PropTypes.bool,
     unfoldable: PropTypes.bool,
+    visible: PropTypes.bool,
 };
 CSidebar.displayName = 'CSidebar';
 
@@ -7306,7 +7314,6 @@ CTooltipContent.displayName = 'CTooltipContent';
 var CTooltip = function (_a) {
     var children = _a.children, _b = _a.placement, placement = _b === void 0 ? 'top' : _b, _c = _a.trigger, trigger = _c === void 0 ? 'hover' : _c, visible = _a.visible, rest = __rest(_a, ["children", "placement", "trigger", "visible"]);
     var _d = React.useState(visible), _visible = _d[0], setVisible = _d[1];
-    var _placement = placement === 'start' ? 'left' : placement === 'end' ? 'right' : placement;
     var getTransitionClass = function (state) {
         return state === 'entering'
             ? 'fade'
@@ -7335,28 +7342,12 @@ var CTooltip = function (_a) {
                     exit: 200,
                 }, mountOnEnter: true, unmountOnExit: true }, function (state) {
                 var transitionClass = getTransitionClass(state);
-                return (React__default['default'].createElement(Popper, { placement: _placement }, function (p) { return (React__default['default'].createElement(CTooltipContent, __assign({ transitionClass: transitionClass, placementClassNamePostfix: placement }, rest, p))); }));
+                return (React__default['default'].createElement(Popper, { placement: placement }, function (p) { return (React__default['default'].createElement(CTooltipContent, __assign({ transitionClass: transitionClass, placementClassNamePostfix: placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement }, rest, p))); }));
             }), document.body)));
 };
 CTooltip.propTypes = {
     children: PropTypes.any,
-    placement: PropTypes.oneOf([
-        'auto',
-        'top-end',
-        'top',
-        'top-start',
-        'bottom-end',
-        'bottom',
-        'bottom-start',
-        'right-start',
-        'right',
-        'right-end',
-        'left-start',
-        'left',
-        'left-end',
-        'start',
-        'end',
-    ]),
+    placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
     trigger: triggerPropType,
     visible: PropTypes.bool,
 };
@@ -7526,6 +7517,7 @@ exports.CCardFooter = CCardFooter;
 exports.CCardGroup = CCardGroup;
 exports.CCardHeader = CCardHeader;
 exports.CCardImage = CCardImage;
+exports.CCardImageOverlay = CCardImageOverlay;
 exports.CCardLink = CCardLink;
 exports.CCardSubtitle = CCardSubtitle;
 exports.CCardText = CCardText;
