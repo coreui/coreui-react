@@ -47,7 +47,7 @@ export const CBadge = forwardRef<HTMLDivElement | HTMLSpanElement, CBadgeProps>(
       'badge',
       {
         [`bg-${color}`]: color,
-        [`text-${textColor}`]: color,
+        [`text-${textColor}`]: textColor,
         [`badge-${size}`]: size,
       },
       shape,
