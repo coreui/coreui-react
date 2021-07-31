@@ -2,7 +2,14 @@ import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors, Shapes, colorPropType, shapePropType } from '../Types'
+import {
+  Colors,
+  Shapes,
+  TextColors,
+  colorPropType,
+  shapePropType,
+  textColorsPropType,
+} from '../Types'
 
 export interface CAvatarProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -37,8 +44,10 @@ export interface CAvatarProps extends HTMLAttributes<HTMLDivElement> {
   status?: Colors
   /**
    * Sets the text color of the component to one of CoreUI’s themed colors. [docs]
+   *
+   * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | 'white' | 'muted' | string
    */
-  textColor?: string
+  textColor?: TextColors
 }
 
 export const CAvatar = forwardRef<HTMLDivElement, CAvatarProps>(
@@ -72,7 +81,7 @@ CAvatar.propTypes = {
   size: PropTypes.string,
   src: PropTypes.string,
   status: PropTypes.string,
-  textColor: PropTypes.string,
+  textColor: textColorsPropType,
 }
 
 CAvatar.displayName = 'CAvatar'

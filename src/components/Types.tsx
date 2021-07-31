@@ -94,6 +94,14 @@ export const shapePropType = PropTypes.oneOfType([
   PropTypes.string,
 ])
 
+export type TextColors = Colors | 'white' | 'muted' | string
+
+export const textColorsPropType = PropTypes.oneOfType([
+  colorPropType,
+  PropTypes.oneOf(['white', 'muted']),
+  PropTypes.string,
+])
+
 export type Triggers = 'hover' | 'focus' | 'click'
 
 export const triggerPropType = PropTypes.oneOf<Triggers>(['hover', 'focus', 'click'])

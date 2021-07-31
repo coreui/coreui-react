@@ -2,7 +2,14 @@ import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors, Shapes, colorPropType, shapePropType } from '../Types'
+import {
+  Colors,
+  Shapes,
+  TextColors,
+  colorPropType,
+  shapePropType,
+  textColorsPropType,
+} from '../Types'
 
 export interface CBadgeProps extends HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
   /**
@@ -35,8 +42,10 @@ export interface CBadgeProps extends HTMLAttributes<HTMLDivElement | HTMLSpanEle
   size?: 'sm'
   /**
    * Sets the text color of the component to one of CoreUI’s themed colors. [docs]
+   *
+   * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | 'white' | 'muted' | string
    */
-  textColor?: string
+  textColor?: TextColors
 }
 export const CBadge = forwardRef<HTMLDivElement | HTMLSpanElement, CBadgeProps>(
   (
@@ -69,7 +78,7 @@ CBadge.propTypes = {
   component: PropTypes.string,
   shape: shapePropType,
   size: PropTypes.oneOf(['sm']),
-  textColor: PropTypes.string,
+  textColor: textColorsPropType,
 }
 
 CBadge.displayName = 'CBadge'
