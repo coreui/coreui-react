@@ -5,6 +5,8 @@ menu: Layout
 route: "/layout/breakpoints"
 ---
 
+import { CCallout } from '../../../src/index.ts'
+
 ## Core concepts
 
 - **Breakpoints are the building blocks of responsive design.** Use them to control when your layout can be adapted at a particular viewport or device size.
@@ -63,7 +65,16 @@ Each breakpoint was chosen to comfortably hold containers whose widths are multi
 
 These breakpoints are customizable via Sass—you'll find them in a Sass map in our `_variables.scss` stylesheet.
 
-{{< scss-docs name="grid-breakpoints" file="scss/_variables.scss" >}}
+```scss
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+```
 
 For more information and examples on how to modify our Sass maps and variables, please refer to [the Sass section of the Grid documentation](https://coreui.io/docs/4.0/layout/grid#sass).
 
@@ -162,9 +173,9 @@ These mixins take those declared breakpoints, subtract `.02px` from them, and us
 // No media query since the xxl breakpoint has no upper bound on its width
 ```
 
-{{< callout warning >}}
-{{< partial "callout-info-mediaqueries-breakpoints.md" >}}
-{{< /callout >}}
+<CCallout color="warning">
+  <strong>Why subtract .02px?</strong> Browsers don’t currently support <a href="https://www.w3.org/TR/mediaqueries-4/#range-context">range context queries</a>, so we work around the limitations of <a href="https://www.w3.org/TR/mediaqueries-4/#mq-min-max"><code>min-</code> and <code>max-</code> prefixes</a> and viewports with fractional widths (which can occur under certain conditions on high-dpi devices, for instance) by using values with higher precision.
+</CCallout>
 
 ### Single breakpoint
 
