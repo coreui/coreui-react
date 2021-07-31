@@ -6,8 +6,6 @@ import { Colors, colorPropType } from '../Types'
 export interface CProgressBarProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Use to animate the stripes right to left via CSS3 animations. [docs]
-   *
-   * @default false
    */
   animated?: boolean
   /**
@@ -33,7 +31,7 @@ export interface CProgressBarProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const CProgressBar = forwardRef<HTMLDivElement, CProgressBarProps>(
-  ({ children, animated = false, className, color, value = 0, variant, ...rest }, ref) => {
+  ({ children, animated, className, color, value = 0, variant, ...rest }, ref) => {
     const _className = classNames(
       'progress-bar',
       {
