@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CImageProps extends HTMLAttributes<HTMLImageElement> {
+  /**
+   * Set the horizontal aligment.
+   */
   align?: 'start' | 'center' | 'end'
   /**
    * A string of all className you want applied to the component. [docs]
