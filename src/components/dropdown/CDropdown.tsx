@@ -64,6 +64,8 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
   popper?: boolean
   /**
    * Set the dropdown variant to an btn-group, dropdown, input-group, and nav-item. [docs]
+   *
+   * @default 'btn-group'
    */
   variant?: 'btn-group' | 'dropdown' | 'input-group' | 'nav-item'
   /**
