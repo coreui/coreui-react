@@ -7,8 +7,6 @@ import { Colors, colorPropType } from '../Types'
 export interface CSpinnerProps extends HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
   /**
    * A string of all className you want applied to the component. [docs]
-   *
-   * @default 'undefined'
    */
   className?: string
   /**
@@ -25,8 +23,6 @@ export interface CSpinnerProps extends HTMLAttributes<HTMLDivElement | HTMLSpanE
   component?: string | ElementType
   /**
    * Size the component small. [docs]
-   *
-   * @default 'undefined'
    */
   size?: 'sm'
   /**
@@ -35,10 +31,27 @@ export interface CSpinnerProps extends HTMLAttributes<HTMLDivElement | HTMLSpanE
    * @default 'border'
    */
   variant?: 'border' | 'grow'
+  /**
+   * Set visually hidden label for accessibility purposes. [docs]
+   *
+   * @default 'Loading...'
+   */
+  visuallyHiddenLabel?: string
 }
 
 export const CSpinner = forwardRef<HTMLDivElement | HTMLSpanElement, CSpinnerProps>(
-  ({ className, color, component: Component = 'div', size, variant = 'border', ...rest }, ref) => {
+  (
+    {
+      className,
+      color,
+      component: Component = 'div',
+      size,
+      variant = 'border',
+      visuallyHiddenLabel = 'Loading...',
+      ...rest
+    },
+    ref,
+  ) => {
     const _className = classNames(
       `spinner-${variant}`,
       `text-${color}`,
@@ -48,7 +61,7 @@ export const CSpinner = forwardRef<HTMLDivElement | HTMLSpanElement, CSpinnerPro
 
     return (
       <Component className={_className} role="status" {...rest} ref={ref}>
-        <span className="visually-hidden">Loading...</span>
+        <span className="visually-hidden">{visuallyHiddenLabel}</span>
       </Component>
     )
   },
@@ -60,6 +73,7 @@ CSpinner.propTypes = {
   component: PropTypes.string,
   size: PropTypes.oneOf(['sm']),
   variant: PropTypes.oneOf(['border', 'grow']),
+  visuallyHiddenLabel: PropTypes.string,
 }
 
 CSpinner.displayName = 'CSpinner'
