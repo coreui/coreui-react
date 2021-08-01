@@ -2,35 +2,40 @@ import React, { forwardRef, HTMLAttributes, ReactNode } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors, Shapes, colorPropType, shapePropType } from '../Types'
+import { Colors, Shapes } from '../Types'
 
-import { CFormControl } from './CFormControl'
 import { CFormLabel } from './CFormLabel'
 
-export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
-  button?: boolean
+export type ButtonObject = {
   /**
    * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
    *
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
-  buttonColor?: Colors
+  color?: Colors
   /**
    * Select the shape of the component. [docs]
    *
    * @type 'rounded' | 'rounded-top' | 'rounded-end' | 'rounded-bottom' | 'rounded-start' | 'rounded-circle' | 'rounded-pill' | 'rounded-0' | 'rounded-1' | 'rounded-2' | 'rounded-3' | string
    */
-  buttonShape?: Shapes
+  shape?: Shapes
   /**
    * Size the component small or large. [docs]
    *
    * @type 'sm' | 'lg'
    */
-  buttonSize?: 'sm' | 'lg'
+  size?: 'sm' | 'lg'
   /**
    * Set the button variant to an outlined button or a ghost button. [docs]
    */
-  buttonVariant?: 'outline' | 'ghost'
+  variant?: 'outline' | 'ghost'
+}
+
+export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
+  /**
+   * Create button-like checkboxes and radio buttons
+   */
+  button?: ButtonObject
   /**
    * A string of all className you want applied to the component. [docs]
    */
@@ -52,16 +57,6 @@ export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
    */
   label?: string | ReactNode
   /**
-   * Size the component large or extra large. Works only with `switch` [docs]
-   *
-   * @type 'lg' | 'xl'
-   */
-  size?: 'lg' | 'xl'
-  /**
-   * Render component as a toggle switch. [docs]
-   */
-  switch?: boolean
-  /**
    * Specifies the type of component. [docs]
    *
    * @type checkbox' | 'radio'
@@ -75,31 +70,10 @@ export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
 }
 
 export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
-  (
-    {
-      className,
-      button,
-      buttonColor = 'primary',
-      buttonSize,
-      buttonShape,
-      buttonVariant,
-      id,
-      inline,
-      invalid,
-      label,
-      size,
-      switch: _switch,
-      type = 'checkbox',
-      valid,
-      ...rest
-    },
-    ref,
-  ) => {
+  ({ className, button, id, inline, invalid, label, type = 'checkbox', valid, ...rest }, ref) => {
     const _className = classNames(
       'form-check',
       {
-        'form-switch': _switch,
-        [`form-switch-${size}`]: size,
         'form-check-inline': inline,
         'is-invalid': invalid,
         'is-valid': valid,
@@ -115,35 +89,28 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
       button
         ? classNames(
             'btn',
-            buttonVariant ? `btn-${buttonVariant}-${buttonColor}` : `btn-${buttonColor}`,
+            button.variant ? `btn-${button.variant}-${button.color}` : `btn-${button.color}`,
             {
-              [`btn-${buttonSize}`]: buttonSize,
-              buttonShape,
+              [`btn-${button.size}`]: button.size,
             },
+            `${button.shape}`,
           )
         : 'form-check-label',
     )
 
     const formControl = () => {
-      return (
-        <CFormControl type={type} classNameParent={inputClassName} id={id} {...rest} ref={ref} />
-      )
+      return <input type={type} className={inputClassName} id={id} {...rest} ref={ref} />
     }
 
     const formLabel = () => {
       return (
-        <CFormLabel classNameParent={labelClassName} {...(id && { htmlFor: id })}>
+        <CFormLabel customClassName={labelClassName} {...(id && { htmlFor: id })}>
           {label}
         </CFormLabel>
       )
     }
 
-    return _switch ? (
-      <div className={_className}>
-        {formControl()}
-        {label && formLabel()}
-      </div>
-    ) : button ? (
+    return button ? (
       <>
         {formControl()}
         {label && formLabel()}
@@ -160,18 +127,12 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
 )
 
 CFormCheck.propTypes = {
-  button: PropTypes.bool,
-  buttonColor: colorPropType,
-  buttonShape: shapePropType,
-  buttonSize: PropTypes.oneOf(['sm', 'lg']),
-  buttonVariant: PropTypes.oneOf(['outline', 'ghost']),
+  button: PropTypes.object,
   className: PropTypes.string,
   id: PropTypes.string,
   inline: PropTypes.bool,
   invalid: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  size: PropTypes.oneOf(['lg', 'xl']),
-  switch: PropTypes.bool,
   type: PropTypes.oneOf(['checkbox', 'radio']),
   valid: PropTypes.bool,
 }
