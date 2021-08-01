@@ -1,4 +1,12 @@
-import React, { CSSProperties, forwardRef, ReactNode, useContext, useRef, useState } from 'react'
+import React, {
+  CSSProperties,
+  forwardRef,
+  ReactNode,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
@@ -11,13 +19,9 @@ export interface CNavGroupProps {
    */
   className?: string
   /**
-   * Set component's icon. [docs]
-   */
-  icon?: string | ReactNode
-  /**
    * Set group toggler label. [docs]
    */
-  toggler?: string
+  toggler?: string | ReactNode
   /**
    * Show nav group items. [docs]
    */
@@ -29,9 +33,29 @@ export interface CNavGroupProps {
 }
 
 export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
-  ({ children, toggler, className, icon, idx, visible, ...rest }, ref) => {
+  ({ children, className, idx, toggler, visible, ...rest }, ref) => {
     const [height, setHeight] = useState<number | string>()
     const navItemsRef = useRef<HTMLUListElement>(null)
+
+    const { visibleGroup, setVisibleGroup } = useContext(CNavContext)
+
+    const [_visible, setVisible] = useState(
+      Boolean(
+        visible || (idx && visibleGroup && visibleGroup.toString().startsWith(idx.toString())),
+      ),
+    )
+
+    useEffect(() => {
+      setVisible(Boolean(idx && visibleGroup && visibleGroup.toString().startsWith(idx.toString())))
+    }, [visibleGroup])
+
+    const handleTogglerOnCLick = (event: React.MouseEvent<HTMLElement>) => {
+      event.preventDefault()
+      setVisibleGroup(
+        _visible ? (idx?.toString().includes('.') ? idx.slice(0, idx.lastIndexOf('.')) : '') : idx,
+      )
+      setVisible(!_visible)
+    }
 
     const style: CSSProperties = {
       height: 0,
@@ -67,31 +91,12 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
       exited: { height: height },
     }
 
-    const { visibleGroup, setVisibleGroup } = useContext(CNavContext)
-
-    const _visible = Boolean(
-      visible || (idx && visibleGroup && visibleGroup.toString().startsWith(idx.toString())),
-    )
-
     const _className = classNames('nav-group', { show: _visible }, className)
 
     return (
       <li className={_className} {...rest} ref={ref}>
         {toggler && (
-          <a
-            className="nav-link nav-group-toggle"
-            onClick={(event) => {
-              event.preventDefault()
-              setVisibleGroup(
-                _visible
-                  ? idx?.toString().includes('.')
-                    ? idx.slice(0, idx.lastIndexOf('.'))
-                    : ''
-                  : idx,
-              )
-            }}
-          >
-            {icon && typeof icon === 'string' ? <i className={`nav-icon ${icon}`}></i> : icon}
+          <a className="nav-link nav-group-toggle" onClick={(event) => handleTogglerOnCLick(event)}>
             {toggler}
           </a>
         )}
@@ -127,9 +132,8 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
 CNavGroup.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   idx: PropTypes.string,
-  toggler: PropTypes.string,
+  toggler: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   visible: PropTypes.bool,
 }
 

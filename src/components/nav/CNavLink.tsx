@@ -1,4 +1,4 @@
-import React, { ElementType, forwardRef, ReactNode, useContext, useEffect, useRef } from 'react'
+import React, { ElementType, forwardRef, useContext, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -26,11 +26,6 @@ export interface CNavLinkProps extends Omit<CLinkProps, 'idx'> {
    */
   disabled?: boolean
   /**
-   * Set component's icon. [docs]
-   */
-  icon?: string | ReactNode
-
-  /**
    * @ignore
    */
   idx?: string
@@ -43,7 +38,7 @@ export interface CNavLinkProps extends Omit<CLinkProps, 'idx'> {
 export const CNavLink = forwardRef<
   HTMLButtonElement | HTMLAnchorElement | HTMLLIElement,
   CNavLinkProps
->(({ children, className, icon, idx, ...rest }, ref) => {
+>(({ children, className, idx, ...rest }, ref) => {
   const navLinkRef = useRef<HTMLAnchorElement>(null)
   const forkedRef = useForkedRef(ref, navLinkRef)
 
@@ -57,7 +52,6 @@ export const CNavLink = forwardRef<
 
   return (
     <CLink className={_className} {...rest} ref={forkedRef}>
-      {icon && typeof icon === 'string' ? <i className={`nav-icon ${icon}`}></i> : icon}
       {children}
     </CLink>
   )
@@ -66,7 +60,6 @@ export const CNavLink = forwardRef<
 CNavLink.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   idx: PropTypes.string,
 }
 
