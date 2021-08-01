@@ -12,7 +12,7 @@ import {
   CButton,
   CForm,
   CFormCheck,
-  CFormControl,
+  CFormInput,
   CFormLabel,
   CFormSelect,
   CFormText,
@@ -32,12 +32,12 @@ Here’s a quick example to demonstrate CoreUI’s form styles. Keep reading for
   <CForm>
     <div className="mb-3">
       <CFormLabel htmlFor="exampleInputEmail1">Email address</CFormLabel>
-      <CFormControl type="email" id="exampleInputEmail1" aria-describedby="emailHelp" />
+      <CFormInput type="email" id="exampleInputEmail1" aria-describedby="emailHelp" />
       <CFormText id="emailHelp">We'll never share your email with anyone else.</CFormText>
     </div>
     <div className="mb-3">
       <CFormLabel htmlFor="exampleInputPassword1">Email Password</CFormLabel>
-      <CFormControl type="password" id="exampleInputPassword1" />
+      <CFormInput type="password" id="exampleInputPassword1" />
     </div>
     <CFormCheck
       className="mb-3"
@@ -67,7 +67,7 @@ Form text below inputs can be styled with `<CFormText>`. If a block-level elemen
   <CForm>
     <div className="mb-3">
       <CFormLabel htmlFor="inputPassword5">Password</CFormLabel>
-      <CFormControl type="password" id="inputPassword5" aria-describedby="passwordHelpBlock" />
+      <CFormInput type="password" id="inputPassword5" aria-describedby="passwordHelpBlock" />
       <CFormText id="passwordHelpBlock">
         Your password must be 8-20 characters long, contain letters and numbers, and must not
         contain spaces, special characters, or emoji.
@@ -86,7 +86,7 @@ Inline text can use any typical inline HTML element (be it a `<span>`, `<small>`
       </CFormLabel>
     </CCol>
     <CCol xs="auto">
-      <CFormControl type="password" id="inputPassword6" aria-describedby="passwordHelpInline" />
+      <CFormInput type="password" id="inputPassword6" aria-describedby="passwordHelpInline" />
     </CCol>
     <CCol xs="auto">
       <CFormText component="span" id="passwordHelpInline">
@@ -114,7 +114,7 @@ However, if your form also includes custom button-like elements such as `<CButto
       <legend>Disabled fieldset example</legend>
       <div className="mb-3">
         <CFormLabel htmlFor="disabledTextInput">Disabled input</CFormLabel>
-        <CFormControl id="disabledTextInput" placeholder="Disabled input" />
+        <CFormInput id="disabledTextInput" placeholder="Disabled input" />
       </div>
       <div className="mb-3">
         <CFormLabel htmlFor="disabledSelect">Disabled select menu</CFormLabel>

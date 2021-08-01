@@ -11,8 +11,8 @@ import {
   CButton,
   CForm,
   CFormCheck,
-  CFormControl,
   CFormLabel,
+  CFormSwitch,
   CFormText 
 } from '../../../src/index.ts'
 
@@ -73,18 +73,18 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 A switch has the markup of a custom checkbox but uses the `switch` boolean properly to render a toggle switch. Switches also support the `disabled` attribute.
 
 <Playground>
-  <CFormCheck switch label="Default switch checkbox input" id="formSwitchCheckDefault"/>
-  <CFormCheck switch label="Checked switch checkbox input" id="formSwitchCheckChecked" defaultChecked/>
-  <CFormCheck switch label="Disabled switch checkbox input" id="formSwitchCheckDisabled" disabled/>
-  <CFormCheck switch label="Disabled checked switch checkbox input" id="formSwitchCheckCheckedDisabled" defaultChecked disabled/>
+  <CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefault"/>
+  <CFormSwitch label="Checked switch checkbox input" id="formSwitchCheckChecked" defaultChecked/>
+  <CFormSwitch label="Disabled switch checkbox input" id="formSwitchCheckDisabled" disabled/>
+  <CFormSwitch label="Disabled checked switch checkbox input" id="formSwitchCheckCheckedDisabled" defaultChecked disabled/>
 </Playground>
 
 ### Sizes
 
 <Playground>
-  <CFormCheck switch label="Default switch checkbox input" id="formSwitchCheckDefault"/>
-  <CFormCheck switch size="lg" label="Large switch checkbox input" id="formSwitchCheckDefaultLg"/>
-  <CFormCheck switch size="xl" label="Extra large switch checkbox input" id="formSwitchCheckDefaultXL"/>
+  <CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefault"/>
+  <CFormSwitch size="lg" label="Large switch checkbox input" id="formSwitchCheckDefaultLg"/>
+  <CFormSwitch size="xl" label="Extra large switch checkbox input" id="formSwitchCheckDefaultXL"/>
 </Playground>
 
 ## Default (stacked)
@@ -138,24 +138,24 @@ Create button-like checkboxes and radio buttons by using `button` boolean proper
 ### Checkbox toggle buttons
 
 <Playground>
-  <CFormCheck button id="btn-check" autoComplete="off" label="Single toggle"/>
+  <CFormCheck button={{ color: 'primary' }} id="btn-check" autoComplete="off" label="Single toggle"/>
 </Playground>
 
 <Playground>
-  <CFormCheck button id="btn-check-2" autoComplete="off" label="Checked" defaultChecked/>
+  <CFormCheck button={{ color: 'primary' }} id="btn-check-2" autoComplete="off" label="Checked" defaultChecked/>
 </Playground>
 
 <Playground>
-  <CFormCheck button id="btn-check-3" autoComplete="off" label="Disabled" disabled/>
+  <CFormCheck button={{ color: 'primary' }} id="btn-check-3" autoComplete="off" label="Disabled" disabled/>
 </Playground>
 
 ### Radio toggle buttons
 
 <Playground>
-  <CFormCheck button buttonColor="secondary" type="radio" name="options" id="option1" autoComplete="off" label="Checked" defaultChecked/>
-  <CFormCheck button buttonColor="secondary" type="radio" name="options" id="option2" autoComplete="off" label="Radio"/>
-  <CFormCheck button buttonColor="secondary" type="radio" name="options" id="option3" autoComplete="off" label="Radio" disabled/>
-  <CFormCheck button buttonColor="secondary" type="radio" name="options" id="option4" autoComplete="off" label="Radio"/>
+  <CFormCheck button={{ color: 'secondary' }} type="radio" name="options" id="option1" autoComplete="off" label="Checked" defaultChecked/>
+  <CFormCheck button={{ color: 'secondary' }} type="radio" name="options" id="option2" autoComplete="off" label="Radio"/>
+  <CFormCheck button={{ color: 'secondary' }} type="radio" name="options" id="option3" autoComplete="off" label="Radio" disabled/>
+  <CFormCheck button={{ color: 'secondary' }} type="radio" name="options" id="option4" autoComplete="off" label="Radio"/>
 </Playground>
 
 ### Outlined styles
@@ -164,13 +164,23 @@ Different variants of button, such at the various outlined styles, are supported
 
 <Playground>
   <div> 
-    <CFormCheck button buttonColor="primary" buttonVariant="outline" id="btn-check-outlined" autoComplete="off" label="Single toggle"/>
+    <CFormCheck button={{ color: 'primary', variant: 'outline' }} id="btn-check-outlined" autoComplete="off" label="Single toggle"/>
   </div>
   <div>
-    <CFormCheck button buttonColor="secondary" buttonVariant="outline" id="btn-check-2-outlined" autoComplete="off" label="Checked" defaultChecked/>
+    <CFormCheck button={{ color: 'secondary', variant: 'outline' }} id="btn-check-2-outlined" autoComplete="off" label="Checked" defaultChecked/>
   </div>
   <div>
-    <CFormCheck button buttonColor="success" buttonVariant="outline" type="radio" name="options-outlined" id="success-outlined" autoComplete="off" label="Radio" defaultChecked/>
-    <CFormCheck button buttonColor="danger" buttonVariant="outline" type="radio" name="options-outlined" id="danger-outlined" autoComplete="off" label="Radio"/>
+    <CFormCheck button={{ color: 'success', variant: 'outline' }} type="radio" name="options-outlined" id="success-outlined" autoComplete="off" label="Radio" defaultChecked/>
+    <CFormCheck button={{ color: 'danger', variant: 'outline' }} type="radio" name="options-outlined" id="danger-outlined" autoComplete="off" label="Radio"/>
   </div>
 </Playground>
+
+## API
+
+### CFormCheck
+
+<Props of={CFormCheck} />
+
+### CFormSwitch
+
+<Props of={CFormSwitch} />

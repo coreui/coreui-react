@@ -11,25 +11,26 @@ import { Playground, Props } from 'docz'
 import { 
   CButton,
   CForm,
-  CFormControl,
   CFormFloating,
+  CFormInput,
   CFormLabel,
   CFormSelect,
+  CFormTextarea,
   CCol,
   CRow 
 } from '../../../src/index.ts'
 
 ## Example
 
-Wrap a pair of `<CFormControl>` and `<CFormLabel>` elements in `CFormFloating` to enable floating labels with textual form fields. A `placeholder` is required on each `<CFormControl>` as our method of CSS-only floating labels uses the `:placeholder-shown` pseudo-element. Also note that the `<CFormControl>` must come first so we can utilize a sibling selector (e.g., `~`).
+Wrap a pair of `<CFormInput>` and `<CFormLabel>` elements in `CFormFloating` to enable floating labels with textual form fields. A `placeholder` is required on each `<CFormInput>` as our method of CSS-only floating labels uses the `:placeholder-shown` pseudo-element. Also note that the `<CFormInput>` must come first so we can utilize a sibling selector (e.g., `~`).
 
 <Playground>
   <CFormFloating className="mb-3">
-    <CFormControl type="email" id="floatingInput" placeholder="name@example.com" />
+    <CFormInput type="email" id="floatingInput" placeholder="name@example.com" />
     <CFormLabel htmlFor="floatingInput">Email address</CFormLabel>
   </CFormFloating>
   <CFormFloating>
-    <CFormControl type="password" id="floatingPassword" placeholder="Password" />
+    <CFormInput type="password" id="floatingPassword" placeholder="Password" />
     <CFormLabel htmlFor="exampleFormControlTextarea1">Password</CFormLabel>
   </CFormFloating>
 </Playground>
@@ -38,7 +39,7 @@ When there's a `value` already defined, `<CFormLabel>`s will automatically adjus
 
 <Playground>
   <CFormFloating>
-    <CFormControl
+    <CFormInput
       type="email"
       id="floatingInputValue"
       placeholder="name@example.com"
@@ -50,36 +51,34 @@ When there's a `value` already defined, `<CFormLabel>`s will automatically adjus
 
 ## Textareas
 
-By default, `<CFormControl component="textarea">`s will be the same height as `<CFormControl>`s.
+By default, `<CFormTextarea>`s will be the same height as `<CFormInput>`s.
 
 <Playground>
   <CFormFloating>
-    <CFormControl
-      component="textarea"
+    <CFormTextarea
       id="floatingTextarea"
       placeholder="Leave a comment here"
-    ></CFormControl>
+    ></CFormTextarea>
     <CFormLabel htmlFor="floatingTextarea">Comments</CFormLabel>
   </CFormFloating>
 </Playground>
 
-To set a custom height on your `<CFormControl component="textarea">`, do not use the `rows` attribute. Instead, set an explicit `height` (either inline or via custom CSS).
+To set a custom height on your `<CFormTextarea>`, do not use the `rows` attribute. Instead, set an explicit `height` (either inline or via custom CSS).
 
 <Playground>
   <CFormFloating>
-    <CFormControl
-      component="textarea"
+    <CFormTextarea
       placeholder="Leave a comment here"
       id="floatingTextarea2"
       style={{ height: '100px' }}
-    ></CFormControl>
+    ></CFormTextarea>
     <CFormLabel htmlFor="floatingTextarea2">Comments</CFormLabel>
   </CFormFloating>
 </Playground>
 
 ## Selects
 
-Other than `<CFormControl>`, floating labels are only available on `<CFormSelect>`s. They work in the same way, but unlike `<CFormControl>`s, they'll always show the `<CFormLabel>` in its floated state. **Selects with `size` and `multiple` are not supported.**
+Other than `<CFormInput>`, floating labels are only available on `<CFormSelect>`s. They work in the same way, but unlike `<CFormInput>`s, they'll always show the `<CFormLabel>` in its floated state. **Selects with `size` and `multiple` are not supported.**
 
 <Playground>
   <CFormFloating>
@@ -101,7 +100,7 @@ When working with the CoreUI for Bootstrap grid system, be sure to place form el
   <CRow xs={{gutter: 2}}>
     <CCol md>
       <CFormFloating>
-        <CFormControl type="email" id="floatingInputGrid" placeholder="name@example.com" value="email@example.com" />
+        <CFormInput type="email" id="floatingInputGrid" placeholder="name@example.com" value="email@example.com" />
         <CFormLabel htmlFor="floatingInputGrid">Email address</CFormLabel>
       </CFormFloating>
     </CCol>

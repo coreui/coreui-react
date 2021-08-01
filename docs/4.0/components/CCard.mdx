@@ -219,7 +219,7 @@ Using the grid, wrap cards in columns and rows as needed.
 
 <Playground>
   <CRow>
-    <CCol sm="6">
+    <CCol sm={6} >
       <CCard>
         <CCardBody>
           <CCardTitle>Special title treatment</CCardTitle>
@@ -228,7 +228,7 @@ Using the grid, wrap cards in columns and rows as needed.
         </CCardBody>
       </CCard>
     </CCol>
-    <CCol sm="6">
+    <CCol sm={6} >
       <CCard>
         <CCardBody>
           <CCardTitle>Special title treatment</CCardTitle>
@@ -430,10 +430,10 @@ Using a combination of grid and utility classes, cards can be made horizontal in
 <Playground>
   <CCard className="mb-3" style={{ maxWidth: '540px'}}>
     <CRow className="g-0">
-      <CCol md="4">
+      <CCol md={4}>
         <CCardImage component="svg" className="docs-placeholder-img rounded-0" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text></CCardImage>
       </CCol>
-      <CCol md="8">
+      <CCol md={8}>
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
