@@ -7,12 +7,15 @@ export interface CFormLabelProps extends HTMLAttributes<HTMLLabelElement> {
    * A string of all className you want applied to the component. [docs]
    */
   className?: string
-  classNameParent?: string
+  /**
+   * A string of all className you want to be applied to the component, and override standard className value. [docs]
+   */
+  customClassName?: string
 }
 
 export const CFormLabel = forwardRef<HTMLLabelElement, CFormLabelProps>(
-  ({ children, className, classNameParent, ...rest }, ref) => {
-    const _className = classNameParent ? classNameParent : classNames('form-label', className)
+  ({ children, className, customClassName, ...rest }, ref) => {
+    const _className = customClassName ? customClassName : classNames('form-label', className)
     return (
       <label className={_className} {...rest} ref={ref}>
         {children}
@@ -24,7 +27,7 @@ export const CFormLabel = forwardRef<HTMLLabelElement, CFormLabelProps>(
 CFormLabel.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  classNameParent: PropTypes.string,
+  customClassName: PropTypes.string,
 }
 
 CFormLabel.displayName = 'CFormLabel'
