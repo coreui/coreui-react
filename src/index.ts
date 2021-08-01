@@ -51,10 +51,13 @@ import { CFormCheck } from './components/form/CFormCheck'
 import { CFormControl } from './components/form/CFormControl'
 import { CFormFeedback } from './components/form/CFormFeedback'
 import { CFormFloating } from './components/form/CFormFloating'
+import { CFormInput } from './components/form/CFormInput'
 import { CFormLabel } from './components/form/CFormLabel'
 import { CFormRange } from './components/form/CFormRange'
 import { CFormSelect } from './components/form/CFormSelect'
+import { CFormSwitch } from './components/form/CFormSwitch'
 import { CFormText } from './components/form/CFormText'
+import { CFormTextarea } from './components/form/CFormTextarea'
 import { CInputGroup } from './components/form/CInputGroup'
 import { CInputGroupText } from './components/form/CInputGroupText'
 import { CHeader } from './components/header/CHeader'
@@ -183,10 +186,13 @@ export {
   CFormControl,
   CFormFeedback,
   CFormFloating,
+  CFormInput,
   CFormLabel,
   CFormRange,
   CFormSelect,
+  CFormSwitch,
   CFormText,
+  CFormTextarea,
   CImage,
   CInputGroup,
   CInputGroupText,
