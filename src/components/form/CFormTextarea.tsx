@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, ElementType, forwardRef, HTMLAttributes } from 'react'
+import React, { ChangeEventHandler, forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -40,17 +40,15 @@ export interface CFormTextareaProps extends HTMLAttributes<HTMLTextAreaElement> 
 }
 
 export const CFormTextarea = forwardRef<HTMLTextAreaElement, CFormTextareaProps>(
-  ({ children, className, customClassName, invalid, plainText, valid, ...rest }, ref) => {
-    const _className = customClassName
-      ? customClassName
-      : classNames(
-          plainText ? 'form-control-plaintext' : 'form-control',
-          {
-            'is-invalid': invalid,
-            'is-valid': valid,
-          },
-          className,
-        )
+  ({ children, className, invalid, plainText, valid, ...rest }, ref) => {
+    const _className = classNames(
+      plainText ? 'form-control-plaintext' : 'form-control',
+      {
+        'is-invalid': invalid,
+        'is-valid': valid,
+      },
+      className,
+    )
     return (
       <textarea className={_className} {...rest} ref={ref}>
         {children}
@@ -62,7 +60,6 @@ export const CFormTextarea = forwardRef<HTMLTextAreaElement, CFormTextareaProps>
 CFormTextarea.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  customClassName: PropTypes.string,
   invalid: PropTypes.bool,
   plainText: PropTypes.bool,
   valid: PropTypes.bool,
