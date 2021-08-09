@@ -14,10 +14,6 @@ export interface CFormSwitchProps extends HTMLAttributes<HTMLInputElement> {
    */
   id?: string
   /**
-   * Group checkboxes or radios on the same horizontal row by adding. [docs]
-   */
-  inline?: boolean
-  /**
    * Set component validation state to invalid. [docs]
    */
   invalid?: boolean
@@ -31,10 +27,6 @@ export interface CFormSwitchProps extends HTMLAttributes<HTMLInputElement> {
    * @type 'lg' | 'xl'
    */
   size?: 'lg' | 'xl'
-  /**
-   * Render component as a toggle switch. [docs]
-   */
-  switch?: boolean
   /**
    * Specifies the type of component. [docs]
    *
@@ -82,7 +74,6 @@ export const CFormSwitch = forwardRef<HTMLInputElement, CFormSwitchProps>(
 CFormSwitch.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
-  inline: PropTypes.bool,
   invalid: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   size: PropTypes.oneOf(['lg', 'xl']),
