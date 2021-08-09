@@ -17,10 +17,11 @@ import {
   CDropdownMenu,
   CDropdownToggle,
   CForm,
-  CFormControl,
+  CFormInput,
   CFormCheck,
   CFormLabel,
   CFormSelect,
+  CFormTextarea,
   CInputGroup,
   CInputGroupText,
   CCol,
@@ -34,35 +35,35 @@ Place one add-on or button on either side of an input. You may also place one on
 <Playground>
 <CInputGroup className="mb-3">
   <CInputGroupText id="basic-addon1">@</CInputGroupText>
-  <CFormControl placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
+  <CFormInput placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
 </CInputGroup>
 
 <CInputGroup className="mb-3">
-  <CFormControl placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+  <CFormInput placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
   <CInputGroupText id="basic-addon2">@example.com</CInputGroupText>
 </CInputGroup>
 
 <CFormLabel htmlFor="basic-url">Your vanity URL</CFormLabel>
 <CInputGroup className="mb-3">
   <CInputGroupText id="basic-addon3">https://example.com/users/</CInputGroupText>
-  <CFormControl id="basic-url" aria-describedby="basic-addon3"/>
+  <CFormInput id="basic-url" aria-describedby="basic-addon3"/>
 </CInputGroup>
 
 <CInputGroup className="mb-3">
   <CInputGroupText>$</CInputGroupText>
-  <CFormControl aria-label="Amount (to the nearest dollar)"/>
+  <CFormInput aria-label="Amount (to the nearest dollar)"/>
   <CInputGroupText>.00</CInputGroupText>
 </CInputGroup>
 
 <CInputGroup className="mb-3">
-  <CFormControl placeholder="Username" aria-label="Username"/>
+  <CFormInput placeholder="Username" aria-label="Username"/>
   <CInputGroupText>@</CInputGroupText>
-  <CFormControl placeholder="Server" aria-label="Server"/>
+  <CFormInput placeholder="Server" aria-label="Server"/>
 </CInputGroup>
 
 <CInputGroup>
   <CInputGroupText>With textarea</CInputGroupText>
-  <CFormControl component="textarea" aria-label="With textarea"></CFormControl>
+  <CFormTextarea aria-label="With textarea"></CFormTextarea>
 </CInputGroup>
 </Playground>
 
@@ -73,7 +74,7 @@ Input groups wrap by default via `flex-wrap: wrap` in order to accommodate custo
 <Playground>
 <CInputGroup className="flex-nowrap">
   <CInputGroupText id="addon-wrapping">@</CInputGroupText>
-  <CFormControl placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"/>
+  <CFormInput placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"/>
 </CInputGroup>
 </Playground>
 
@@ -86,17 +87,17 @@ Add the relative form sizing classes to the `<CInputGroup>` itself and contents 
 <Playground>
 <CInputGroup size="sm" className="mb-3">
   <CInputGroupText id="inputGroup-sizing-sm">Small</CInputGroupText>
-  <CFormControl aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"/>
+  <CFormInput aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"/>
 </CInputGroup>
 
 <CInputGroup className="mb-3">
   <CInputGroupText id="inputGroup-sizing-default">Default</CInputGroupText>
-  <CFormControl aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"/>
+  <CFormInput aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"/>
 </CInputGroup>
 
 <CInputGroup size="lg">
   <CInputGroupText id="inputGroup-sizing-lg">Large</CInputGroupText>
-  <CFormControl aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
+  <CFormInput aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
 </CInputGroup>
 </Playground>
 
@@ -109,26 +110,26 @@ Place any checkbox or radio option within an input group's addon instead of text
   <CInputGroupText>
     <CFormCheck type="checkbox" value="" aria-label="Checkbox for following text input"/>
   </CInputGroupText>
-  <CFormControl aria-label="Text input with checkbox"/>
+  <CFormInput aria-label="Text input with checkbox"/>
 </CInputGroup>
 
 <CInputGroup>
   <CInputGroupText>
     <CFormCheck type="radio" value="" aria-label="Radio button for following text input"/>
   </CInputGroupText>
-  <CFormControl aria-label="Text input with radio button"/>
+  <CFormInput aria-label="Text input with radio button"/>
 </CInputGroup>
 </Playground>
 
 ## Multiple inputs
 
-While multiple `<CFormControl>`s are supported visually, validation styles are only available for input groups with a single `<CFormControl>`.
+While multiple `<CFormInput>`s are supported visually, validation styles are only available for input groups with a single `<CFormInput>`.
 
 <Playground>
 <CInputGroup>
   <CInputGroupText>First and last name</CInputGroupText>
-  <CFormControl aria-label="First name"/>
-  <CFormControl aria-label="Last name"/>
+  <CFormInput aria-label="First name"/>
+  <CFormInput aria-label="Last name"/>
 </CInputGroup>
 </Playground>
 
@@ -140,11 +141,11 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 <CInputGroup className="mb-3">
   <CInputGroupText>$</CInputGroupText>
   <CInputGroupText>0.00</CInputGroupText>
-  <CFormControl aria-label="Dollar amount (with dot and two decimal places)"/>
+  <CFormInput aria-label="Dollar amount (with dot and two decimal places)"/>
 </CInputGroup>
 
 <CInputGroup>
-  <CFormControl aria-label="Dollar amount (with dot and two decimal places)"/>
+  <CFormInput aria-label="Dollar amount (with dot and two decimal places)"/>
   <CInputGroupText>$</CInputGroupText>
   <CInputGroupText>0.00</CInputGroupText>
 </CInputGroup>
@@ -155,22 +156,22 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 <Playground>
 <CInputGroup className="mb-3">
   <CButton type="button" color="secondary" variant="outline" id="button-addon1">Button</CButton>
-  <CFormControl placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"/>
+  <CFormInput placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"/>
 </CInputGroup>
 
 <CInputGroup className="mb-3">
-  <CFormControl placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"/>
+  <CFormInput placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"/>
   <CButton type="button" color="secondary" variant="outline" id="button-addon2">Button</CButton>
 </CInputGroup>
 
 <CInputGroup className="mb-3">
   <CButton type="button" color="secondary" variant="outline">Button</CButton>
   <CButton type="button" color="secondary" variant="outline">Button</CButton>
-  <CFormControl placeholder="" aria-label="Example text with two button addons"/>
+  <CFormInput placeholder="" aria-label="Example text with two button addons"/>
 </CInputGroup>
 
 <CInputGroup>
-  <CFormControl placeholder="Recipient's username" aria-label="Recipient's username with two button addons"/>
+  <CFormInput placeholder="Recipient's username" aria-label="Recipient's username with two button addons"/>
   <CButton type="button" color="secondary" variant="outline">Button</CButton>
   <CButton type="button" color="secondary" variant="outline">Button</CButton>
 </CInputGroup>
@@ -190,11 +191,11 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
       <CDropdownItem href="#">Separated link</CDropdownItem>
     </CDropdownMenu>
   </CDropdown>
-  <CFormControl aria-label="Text input with dropdown button"/>
+  <CFormInput aria-label="Text input with dropdown button"/>
 </CInputGroup>
 
 <CInputGroup className="mb-3">
-  <CFormControl aria-label="Text input with dropdown button"/>
+  <CFormInput aria-label="Text input with dropdown button"/>
   <CDropdown alignment="end" variant="input-group">
     <CDropdownToggle color="secondary" variant="outline">Dropdown</CDropdownToggle>
     <CDropdownMenu>
@@ -218,7 +219,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
       <CDropdownItem href="#">Separated link</CDropdownItem>
     </CDropdownMenu>
   </CDropdown>
-  <CFormControl aria-label="Text input with 2 dropdown buttons"/>
+  <CFormInput aria-label="Text input with 2 dropdown buttons"/>
   <CDropdown alignment="end" variant="input-group">
     <CDropdownToggle color="secondary" variant="outline">Dropdown</CDropdownToggle>
     <CDropdownMenu>
@@ -247,11 +248,11 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
       <CDropdownItem href="#">Separated link</CDropdownItem>
     </CDropdownMenu>
   </CDropdown>
-  <CFormControl aria-label="Text input with segmented dropdown button"/>
+  <CFormInput aria-label="Text input with segmented dropdown button"/>
 </CInputGroup>
 
 <CInputGroup>
-  <CFormControl aria-label="Text input with segmented dropdown button"/>
+  <CFormInput aria-label="Text input with segmented dropdown button"/>
   <CDropdown alignment="end" variant="input-group">
     <CButton type="button" color="secondary" variant="outline">Action</CButton>
     <CDropdownToggle color="secondary" variant="outline" split/>
@@ -319,21 +320,21 @@ Input groups include support for custom selects and custom file inputs. Browser 
 <Playground>
 <CInputGroup className="mb-3">
   <CInputGroupText component="label" htmlFor="inputGroupFile01">Upload</CInputGroupText>
-  <CFormControl type="file" id="inputGroupFile01"/>
+  <CFormInput type="file" id="inputGroupFile01"/>
 </CInputGroup>
 
 <CInputGroup className="mb-3">
-  <CFormControl type="file" id="inputGroupFile02"/>
+  <CFormInput type="file" id="inputGroupFile02"/>
   <CInputGroupText component="label" htmlFor="inputGroupFile02">Upload</CInputGroupText>
 </CInputGroup>
 
 <CInputGroup className="mb-3">
   <CButton type="button" color="secondary" variant="outline" id="inputGroupFileAddon03">Button</CButton>
-  <CFormControl type="file" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload"/>
+  <CFormInput type="file" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload"/>
 </CInputGroup>
 
 <CInputGroup>
-  <CFormControl type="file" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload"/>
+  <CFormInput type="file" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload"/>
   <CButton type="button" color="secondary" variant="outline" id="inputGroupFileAddon04">Button</CButton>
 </CInputGroup>
 </Playground>
