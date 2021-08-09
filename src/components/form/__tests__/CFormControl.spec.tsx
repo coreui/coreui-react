@@ -1,16 +1,16 @@
 import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import { CFormControl } from '../../../index'
+import { CFormInput } from '../../../index'
 
-test('loads and displays CFormControl component', async () => {
-  const { container } = render(<CFormControl />)
+test('loads and displays CFormInput component', async () => {
+  const { container } = render(<CFormInput />)
   expect(container).toMatchSnapshot()
 })
 
-test('CFormControl customize', async () => {
+test('CFormInput customize', async () => {
   const { container } = render(
-    <CFormControl
+    <CFormInput
       className="bazinga"
       component="h3"
       disabled={true}
@@ -28,17 +28,15 @@ test('CFormControl customize', async () => {
   expect(container.firstChild).toHaveClass('form-control-lg')
 })
 
-test('CFormControl customize classNameParent', async () => {
-  const { container } = render(
-    <CFormControl className="bazinga" classNameParent="classNameParent" />,
-  )
+test('CFormInput customize classNameParent', async () => {
+  const { container } = render(<CFormInput className="bazinga" classNameParent="classNameParent" />)
   expect(container).toMatchSnapshot()
 })
 
-test('CFormControl change input', async () => {
+test('CFormInput change input', async () => {
   jest.useFakeTimers()
   const onChange = jest.fn()
-  render(<CFormControl onChange={onChange} />)
+  render(<CFormInput onChange={onChange} />)
   expect(onChange).toHaveBeenCalledTimes(0)
   const input = document.querySelector('input')
   if (input !== null) {

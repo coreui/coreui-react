@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CFormControl customize 1`] = `
+exports[`CFormInput customize 1`] = `
 <div>
   <h3
     class="form-control-plaintext form-control-color form-control-lg bazinga"
@@ -11,7 +11,7 @@ exports[`CFormControl customize 1`] = `
 </div>
 `;
 
-exports[`CFormControl customize classNameParent 1`] = `
+exports[`CFormInput customize classNameParent 1`] = `
 <div>
   <input
     class="classNameParent"
@@ -20,7 +20,7 @@ exports[`CFormControl customize classNameParent 1`] = `
 </div>
 `;
 
-exports[`loads and displays CFormControl component 1`] = `
+exports[`loads and displays CFormInput component 1`] = `
 <div>
   <input
     class="form-control"

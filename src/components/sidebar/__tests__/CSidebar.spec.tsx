@@ -4,8 +4,6 @@ import '@testing-library/jest-dom/extend-expect'
 import {
   CSidebar /* , CSidebarNav, CNavLink, CNavGroup, CNavGroupItems, CNavItem */,
 } from '../../../index'
-//import { CCreateNavItem } from '../CCreateNavItem'
-//import navigation from '../_nav'
 
 test('loads and displays CSidebar component', async () => {
   const { container } = render(<CSidebar>Test</CSidebar>)
@@ -41,25 +39,3 @@ test('CSidebar customize show', async () => {
   expect(container.firstChild).toHaveClass('sidebar-narrow-unfoldable')
   expect(container.firstChild).toHaveClass('show')
 })
-
-/*
-test('CSidebar example', async () => {
-  const { container } = render(<CSidebar>
-    A
-    <CSidebarNav>
-      <CNavLink>B</CNavLink>
-      <CCreateNavItem
-        items={navigation}
-        components={{
-          CNavGroup,
-          CNavGroupItems,
-          CNavItem,
-          CNavLink,
-        }}
-      />
-      <CNavLink>ccc</CNavLink>
-    </CSidebarNav>
-  </CSidebar>)
-  expect(container).toMatchSnapshot()
-})
-*/

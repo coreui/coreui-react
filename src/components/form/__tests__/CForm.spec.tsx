@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import { CForm, CFormLabel, CFormControl, CFormText, CFormCheck, CButton } from '../../../index'
+import { CForm, CFormLabel, CFormInput, CFormText, CFormCheck, CButton } from '../../../index'
 
 test('loads and displays CForm component', async () => {
   const { container } = render(<CForm>Test</CForm>)
@@ -23,7 +23,7 @@ test('CForm example', async () => {
   const { container } = render(
     <CForm>
       <CFormLabel>A</CFormLabel>
-      <CFormControl type="email" aria-describedby="B" />
+      <CFormInput type="email" aria-describedby="B" />
       <CFormText>C</CFormText>
       <CFormCheck label="D" />
       <CButton type="submit" color="primary">
