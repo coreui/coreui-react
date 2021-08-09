@@ -33,7 +33,7 @@ export type ButtonObject = {
 
 export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
   /**
-   * Create button-like checkboxes and radio buttons
+   * Create button-like checkboxes and radio buttons. [docs]
    */
   button?: ButtonObject
   /**

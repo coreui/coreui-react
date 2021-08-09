@@ -8,6 +8,9 @@ export interface CFormControlProps
    * A string of all className you want applied to the component. [docs]
    */
   className?: string
+  /**
+   * A string of all className you want to be applied to the component, and override standard className value. [docs]
+   */
   classNameParent?: string
   /**
    * Component used for the root node. Either a string to use a HTML element or a component. [docs]
