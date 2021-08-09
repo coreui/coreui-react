@@ -190,8 +190,8 @@ And putting it to use in a navbar:
   <CNavbar expand="lg" colorScheme="dark" className="bg-dark">
     <CContainer fluid>
       <CNavbarBrand href="#">Navbar</CNavbarBrand>
-      <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} onClick={() => setVisible(!visible)} />
-      <CCollapse className="navbar-collapse" visible={visible}>
+      <CNavbarToggler aria-label="Toggle navigation" aria-expanded={true} />
+      <CCollapse className="navbar-collapse" visible={true}>
         <CNavbarNav>
           <CDropdown dark component="li" variant="nav-item">
             <CDropdownToggle>Dropdown</CDropdownToggle>
