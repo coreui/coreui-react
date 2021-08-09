@@ -48,7 +48,6 @@ import { CRow } from './components/grid/CRow'
 import { CFooter } from './components/footer/CFooter'
 import { CForm } from './components/form/CForm'
 import { CFormCheck } from './components/form/CFormCheck'
-import { CFormControl } from './components/form/CFormControl'
 import { CFormFeedback } from './components/form/CFormFeedback'
 import { CFormFloating } from './components/form/CFormFloating'
 import { CFormInput } from './components/form/CFormInput'
@@ -102,7 +101,6 @@ import { COffcanvasTitle } from './components/offcanvas/COffcanvasTitle'
 import { CSidebarBrand } from './components/sidebar/CSidebarBrand'
 import { CSidebarFooter } from './components/sidebar/CSidebarFooter'
 import { CSidebarToggler } from './components/sidebar/CSidebarToggler'
-import { CCreateNavItem } from './components/sidebar/CCreateNavItem'
 import { CSidebarHeader } from './components/sidebar/CSidebarHeader'
 import { CSidebarNav } from './components/sidebar/CSidebarNav'
 import { CSpinner } from './components/spinner/CSpinner'
@@ -183,7 +181,6 @@ export {
   CCardGroup,
   CForm,
   CFormCheck,
-  CFormControl,
   CFormFeedback,
   CFormFloating,
   CFormInput,
@@ -237,7 +234,6 @@ export {
   CSidebarBrand,
   CSidebarFooter,
   CSidebarToggler,
-  CCreateNavItem,
   CSidebarHeader,
   CSidebarNav,
   CSpinner,
