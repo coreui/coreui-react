@@ -1,5 +1,5 @@
 import React, { ElementType, HTMLAttributes } from 'react';
-import { Colors, Shapes } from '../Types';
+import { Colors, Shapes, TextColors } from '../Types';
 export interface CBadgeProps extends HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
     /**
      * A string of all className you want applied to the component. [docs]
@@ -31,7 +31,9 @@ export interface CBadgeProps extends HTMLAttributes<HTMLDivElement | HTMLSpanEle
     size?: 'sm';
     /**
      * Sets the text color of the component to one of CoreUI’s themed colors. [docs]
+     *
+     * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | 'white' | 'muted' | string
      */
-    textColor?: string;
+    textColor?: TextColors;
 }
 export declare const CBadge: React.ForwardRefExoticComponent<CBadgeProps & React.RefAttributes<HTMLDivElement | HTMLSpanElement>>;

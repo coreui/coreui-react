@@ -1945,6 +1945,7 @@ Transition.EXITED = EXITED;
 Transition.ENTERING = ENTERING;
 Transition.ENTERED = ENTERED;
 Transition.EXITING = EXITING;
+var Transition$1 = Transition;
 
 var _addClass = function addClass$1(node, classes) {
   return node && classes && classes.split(' ').forEach(function (c) {
@@ -2201,7 +2202,7 @@ var CSSTransition = /*#__PURE__*/function (_React$Component) {
         _this$props.classNames;
         var props = _objectWithoutPropertiesLoose(_this$props, ["classNames"]);
 
-    return /*#__PURE__*/React__default.createElement(Transition, _extends({}, props, {
+    return /*#__PURE__*/React__default.createElement(Transition$1, _extends({}, props, {
       onEnter: this.onEnter,
       onEntered: this.onEntered,
       onEntering: this.onEntering,
@@ -2217,7 +2218,7 @@ var CSSTransition = /*#__PURE__*/function (_React$Component) {
 CSSTransition.defaultProps = {
   classNames: ''
 };
-CSSTransition.propTypes = process.env.NODE_ENV !== "production" ? _extends({}, Transition.propTypes, {
+CSSTransition.propTypes = process.env.NODE_ENV !== "production" ? _extends({}, Transition$1.propTypes, {
   /**
    * The animation classNames applied to the component as it appears, enters,
    * exits or has finished the transition. A single name can be provided, which
@@ -2347,6 +2348,7 @@ CSSTransition.propTypes = process.env.NODE_ENV !== "production" ? _extends({}, T
    */
   onExited: PropTypes.func
 }) : {};
+var CSSTransition$1 = CSSTransition;
 
 // code borrowed from https://github.com/reach/reach-ui
 function useForkedRef() {
@@ -2414,7 +2416,7 @@ var CCollapse = forwardRef(function (_a, ref) {
         setHeight(0);
     };
     var _className = classNames(className);
-    return (React__default.createElement(CSSTransition, { in: visible, timeout: 350, onEntering: onEntering, onEntered: onEntered, onExit: onExit, onExiting: onExiting, onExited: onExited }, function (state) {
+    return (React__default.createElement(CSSTransition$1, { in: visible, timeout: 350, onEntering: onEntering, onEntered: onEntered, onExit: onExit, onExiting: onExiting, onExited: onExited }, function (state) {
         var transitionClass = getTransitionClass(state);
         var currentHeight = height === 0 ? null : { height: height };
         return (React__default.createElement("div", __assign({ className: classNames(_className, transitionClass), style: __assign({}, currentHeight) }, rest, { ref: forkedRef }), children));
@@ -2504,6 +2506,11 @@ var shapePropType = PropTypes.oneOfType([
     ]),
     PropTypes.string,
 ]);
+var textColorsPropType = PropTypes.oneOfType([
+    colorPropType,
+    PropTypes.oneOf(['white', 'muted']),
+    PropTypes.string,
+]);
 var triggerPropType = PropTypes.oneOf(['hover', 'focus', 'click']);
 
 var CCloseButton = forwardRef(function (_a, ref) {
@@ -2527,7 +2534,7 @@ var CAlert = forwardRef(function (_a, ref) {
         'alert-dismissible fade': dismissible,
         show: _visible && dismissible,
     }, className);
-    return (React__default.createElement(CSSTransition, { in: _visible, timeout: 150, onExit: onDismiss, onExited: onDismissed, unmountOnExit: true },
+    return (React__default.createElement(CSSTransition$1, { in: _visible, timeout: 150, onExit: onDismiss, onExited: onDismissed, unmountOnExit: true },
         React__default.createElement("div", __assign({ className: _className, role: "alert" }, rest, { ref: ref }),
             children,
             dismissible && React__default.createElement(CCloseButton, { onClick: function () { return setVisible(false); } }))));
@@ -2608,7 +2615,7 @@ CAvatar.propTypes = {
     size: PropTypes.string,
     src: PropTypes.string,
     status: PropTypes.string,
-    textColor: PropTypes.string,
+    textColor: textColorsPropType,
 };
 CAvatar.displayName = 'CAvatar';
 
@@ -2617,7 +2624,7 @@ var CBadge = forwardRef(function (_a, ref) {
     var children = _a.children, className = _a.className, color = _a.color, _c = _a.component, Component = _c === void 0 ? 'span' : _c, shape = _a.shape, size = _a.size, textColor = _a.textColor, rest = __rest(_a, ["children", "className", "color", "component", "shape", "size", "textColor"]);
     var _className = classNames('badge', (_b = {},
         _b["bg-" + color] = color,
-        _b["text-" + textColor] = color,
+        _b["text-" + textColor] = textColor,
         _b["badge-" + size] = size,
         _b), shape, className);
     return (React__default.createElement(Component, __assign({ className: _className }, rest, { ref: ref }), children));
@@ -2629,7 +2636,7 @@ CBadge.propTypes = {
     component: PropTypes.string,
     shape: shapePropType,
     size: PropTypes.oneOf(['sm']),
-    textColor: PropTypes.string,
+    textColor: textColorsPropType,
 };
 CBadge.displayName = 'CBadge';
 
@@ -2639,7 +2646,7 @@ var CBackdrop = forwardRef(function (_a, ref) {
     var getTransitionClass = function (state) {
         return state === 'entered' && 'show';
     };
-    return (React__default.createElement(CSSTransition, { in: visible, timeout: 150, mountOnEnter: true, unmountOnExit: true }, function (state) {
+    return (React__default.createElement(CSSTransition$1, { in: visible, timeout: 150, mountOnEnter: true, unmountOnExit: true }, function (state) {
         var transitionClass = getTransitionClass(state);
         return React__default.createElement("div", __assign({ className: classNames(_className, transitionClass) }, rest, { ref: ref }));
     }));
@@ -2664,7 +2671,10 @@ CBreadcrumb.displayName = 'CBreadcrumb';
 
 var CBreadcrumbItem = forwardRef(function (_a, ref) {
     var children = _a.children, active = _a.active, className = _a.className, href = _a.href, rest = __rest(_a, ["children", "active", "className", "href"]);
-    return (React__default.createElement("li", __assign({ className: classNames('breadcrumb-item', active ? 'active' : false, className) }, (active && { 'aria-current': 'page' }), rest, { ref: ref }), href ? React__default.createElement(CLink, { href: href }, children) : children));
+    var _className = classNames('breadcrumb-item', {
+        active: active,
+    }, className);
+    return (React__default.createElement("li", __assign({ className: _className }, (active && { 'aria-current': 'page' }), rest, { ref: ref }), href ? React__default.createElement(CLink, { href: href }, children) : children));
 });
 CBreadcrumbItem.propTypes = {
     active: PropTypes.bool,
@@ -3032,7 +3042,7 @@ var CCarouselItem = forwardRef(function (_a, ref) {
         var itemClasses = classNames('carousel-item', isIn && 'active', className);
         return (React__default.createElement("div", __assign({ className: itemClasses, ref: ref }, rest), children));
     }
-    return (React__default.createElement(CSSTransition, { timeout: 600, in: isIn, onEnter: onEnter, onEntering: onEntering, onExit: onExit, onExiting: onExiting, onExited: onExited, nodeRef: ref }, function (status) {
+    return (React__default.createElement(CSSTransition$1, { timeout: 600, in: isIn, onEnter: onEnter, onEntering: onEntering, onExit: onExit, onExiting: onExiting, onExited: onExited, nodeRef: ref }, function (status) {
         var direction = getDirection(state);
         var isActive = status === 'entered' || status === 'exiting';
         var directionClassName = (status === 'entering' || status === 'exiting') &&
@@ -3286,17 +3296,31 @@ function getBasePlacement(placement) {
   return placement.split('-')[0];
 }
 
-function getBoundingClientRect(element) {
+var round$1 = Math.round;
+function getBoundingClientRect(element, includeScale) {
+  if (includeScale === void 0) {
+    includeScale = false;
+  }
+
   var rect = element.getBoundingClientRect();
+  var scaleX = 1;
+  var scaleY = 1;
+
+  if (isHTMLElement(element) && includeScale) {
+    // Fallback to 1 in case both values are `0`
+    scaleX = rect.width / element.offsetWidth || 1;
+    scaleY = rect.height / element.offsetHeight || 1;
+  }
+
   return {
-    width: rect.width,
-    height: rect.height,
-    top: rect.top,
-    right: rect.right,
-    bottom: rect.bottom,
-    left: rect.left,
-    x: rect.left,
-    y: rect.top
+    width: round$1(rect.width / scaleX),
+    height: round$1(rect.height / scaleY),
+    top: round$1(rect.top / scaleY),
+    right: round$1(rect.right / scaleX),
+    bottom: round$1(rect.bottom / scaleY),
+    left: round$1(rect.left / scaleX),
+    x: round$1(rect.left / scaleX),
+    y: round$1(rect.top / scaleY)
   };
 }
 
@@ -4547,16 +4571,24 @@ function getNodeScroll(node) {
   }
 }
 
+function isElementScaled(element) {
+  var rect = element.getBoundingClientRect();
+  var scaleX = rect.width / element.offsetWidth || 1;
+  var scaleY = rect.height / element.offsetHeight || 1;
+  return scaleX !== 1 || scaleY !== 1;
+} // Returns the composite rect of an element relative to its offsetParent.
 // Composite means it takes into account transforms as well as layout.
+
 
 function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
   if (isFixed === void 0) {
     isFixed = false;
   }
 
-  var documentElement = getDocumentElement(offsetParent);
-  var rect = getBoundingClientRect(elementOrVirtualElement);
   var isOffsetParentAnElement = isHTMLElement(offsetParent);
+  var offsetParentIsScaled = isHTMLElement(offsetParent) && isElementScaled(offsetParent);
+  var documentElement = getDocumentElement(offsetParent);
+  var rect = getBoundingClientRect(elementOrVirtualElement, offsetParentIsScaled);
   var scroll = {
     scrollLeft: 0,
     scrollTop: 0
@@ -4573,7 +4605,7 @@ function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
     }
 
     if (isHTMLElement(offsetParent)) {
-      offsets = getBoundingClientRect(offsetParent);
+      offsets = getBoundingClientRect(offsetParent, true);
       offsets.x += offsetParent.clientLeft;
       offsets.y += offsetParent.clientTop;
     } else if (documentElement) {
@@ -5777,94 +5809,54 @@ CForm.propTypes = {
 };
 CForm.displayName = 'CForm';
 
-var CFormControl = forwardRef(function (_a, ref) {
-    var _b;
-    var children = _a.children, className = _a.className, classNameParent = _a.classNameParent, _c = _a.component, Component = _c === void 0 ? 'input' : _c, invalid = _a.invalid, plainText = _a.plainText, size = _a.size, _d = _a.type, type = _d === void 0 ? 'text' : _d, valid = _a.valid, rest = __rest(_a, ["children", "className", "classNameParent", "component", "invalid", "plainText", "size", "type", "valid"]);
-    var _className = classNameParent
-        ? classNameParent
-        : classNames(plainText ? 'form-control-plaintext' : 'form-control', (_b = {
-                'form-control-color': type === 'color',
-                'form-range': type === 'range'
-            },
-            _b["form-control-" + size] = size,
-            _b['is-invalid'] = invalid,
-            _b['is-valid'] = valid,
-            _b), className);
-    return (React__default.createElement(Component, __assign({}, (Component === 'input' && { type: type }), { className: _className }, rest, { ref: ref }), children));
-});
-CFormControl.propTypes = {
-    children: PropTypes.node,
-    className: PropTypes.string,
-    classNameParent: PropTypes.string,
-    component: PropTypes.elementType,
-    invalid: PropTypes.bool,
-    plainText: PropTypes.bool,
-    size: PropTypes.oneOf(['sm', 'lg']),
-    type: PropTypes.oneOfType([PropTypes.oneOf(['color', 'file', 'text']), PropTypes.string]),
-    valid: PropTypes.bool,
-};
-CFormControl.displayName = 'CFormControl';
-
 var CFormLabel = forwardRef(function (_a, ref) {
-    var children = _a.children, className = _a.className, classNameParent = _a.classNameParent, rest = __rest(_a, ["children", "className", "classNameParent"]);
-    var _className = classNameParent ? classNameParent : classNames('form-label', className);
+    var children = _a.children, className = _a.className, customClassName = _a.customClassName, rest = __rest(_a, ["children", "className", "customClassName"]);
+    var _className = customClassName ? customClassName : classNames('form-label', className);
     return (React__default.createElement("label", __assign({ className: _className }, rest, { ref: ref }), children));
 });
 CFormLabel.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
-    classNameParent: PropTypes.string,
+    customClassName: PropTypes.string,
 };
 CFormLabel.displayName = 'CFormLabel';
 
 var CFormCheck = forwardRef(function (_a, ref) {
-    var _b, _c;
-    var className = _a.className, button = _a.button, _d = _a.buttonColor, buttonColor = _d === void 0 ? 'primary' : _d, buttonSize = _a.buttonSize, buttonShape = _a.buttonShape, buttonVariant = _a.buttonVariant, id = _a.id, inline = _a.inline, invalid = _a.invalid, label = _a.label, size = _a.size, _switch = _a.switch, _e = _a.type, type = _e === void 0 ? 'checkbox' : _e, valid = _a.valid, rest = __rest(_a, ["className", "button", "buttonColor", "buttonSize", "buttonShape", "buttonVariant", "id", "inline", "invalid", "label", "size", "switch", "type", "valid"]);
-    var _className = classNames('form-check', (_b = {
-            'form-switch': _switch
-        },
-        _b["form-switch-" + size] = size,
-        _b['form-check-inline'] = inline,
-        _b['is-invalid'] = invalid,
-        _b['is-valid'] = valid,
-        _b), className);
+    var _b;
+    var className = _a.className, button = _a.button, id = _a.id, inline = _a.inline, invalid = _a.invalid, label = _a.label, _c = _a.type, type = _c === void 0 ? 'checkbox' : _c, valid = _a.valid, rest = __rest(_a, ["className", "button", "id", "inline", "invalid", "label", "type", "valid"]);
+    var _className = classNames('form-check', {
+        'form-check-inline': inline,
+        'is-invalid': invalid,
+        'is-valid': valid,
+    }, className);
     var inputClassName = classNames(button ? 'btn-check' : 'form-check-input', {
         'is-invalid': invalid,
         'is-valid': valid,
     });
     var labelClassName = classNames(button
-        ? classNames('btn', buttonVariant ? "btn-" + buttonVariant + "-" + buttonColor : "btn-" + buttonColor, (_c = {},
-            _c["btn-" + buttonSize] = buttonSize,
-            _c.buttonShape = buttonShape,
-            _c))
+        ? classNames('btn', button.variant ? "btn-" + button.variant + "-" + button.color : "btn-" + button.color, (_b = {},
+            _b["btn-" + button.size] = button.size,
+            _b), "" + button.shape)
         : 'form-check-label');
     var formControl = function () {
-        return (React__default.createElement(CFormControl, __assign({ type: type, classNameParent: inputClassName, id: id }, rest, { ref: ref })));
+        return React__default.createElement("input", __assign({ type: type, className: inputClassName, id: id }, rest, { ref: ref }));
     };
     var formLabel = function () {
-        return (React__default.createElement(CFormLabel, __assign({ classNameParent: labelClassName }, (id && { htmlFor: id })), label));
+        return (React__default.createElement(CFormLabel, __assign({ customClassName: labelClassName }, (id && { htmlFor: id })), label));
     };
-    return _switch ? (React__default.createElement("div", { className: _className },
-        formControl(),
-        label && formLabel())) : button ? (React__default.createElement(React__default.Fragment, null,
+    return button ? (React__default.createElement(React__default.Fragment, null,
         formControl(),
         label && formLabel())) : label ? (React__default.createElement("div", { className: _className },
         formControl(),
         formLabel())) : (formControl());
 });
 CFormCheck.propTypes = {
-    button: PropTypes.bool,
-    buttonColor: colorPropType,
-    buttonShape: shapePropType,
-    buttonSize: PropTypes.oneOf(['sm', 'lg']),
-    buttonVariant: PropTypes.oneOf(['outline', 'ghost']),
+    button: PropTypes.object,
     className: PropTypes.string,
     id: PropTypes.string,
     inline: PropTypes.bool,
     invalid: PropTypes.bool,
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    size: PropTypes.oneOf(['lg', 'xl']),
-    switch: PropTypes.bool,
     type: PropTypes.oneOf(['checkbox', 'radio']),
     valid: PropTypes.bool,
 };
@@ -5900,6 +5892,28 @@ CFormFloating.propTypes = {
 };
 CFormFloating.displayName = 'CFormFloating';
 
+var CFormInput = forwardRef(function (_a, ref) {
+    var _b;
+    var children = _a.children, className = _a.className, invalid = _a.invalid, plainText = _a.plainText, size = _a.size, _c = _a.type, type = _c === void 0 ? 'text' : _c, valid = _a.valid, rest = __rest(_a, ["children", "className", "invalid", "plainText", "size", "type", "valid"]);
+    var _className = classNames(plainText ? 'form-control-plaintext' : 'form-control', (_b = {},
+        _b["form-control-" + size] = size,
+        _b['form-control-color'] = type === 'color',
+        _b['is-invalid'] = invalid,
+        _b['is-valid'] = valid,
+        _b), className);
+    return (React__default.createElement("input", __assign({ type: type, className: _className }, rest, { ref: ref }), children));
+});
+CFormInput.propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
+    invalid: PropTypes.bool,
+    plainText: PropTypes.bool,
+    size: PropTypes.oneOf(['sm', 'lg']),
+    type: PropTypes.oneOfType([PropTypes.oneOf(['color', 'file', 'text']), PropTypes.string]),
+    valid: PropTypes.bool,
+};
+CFormInput.displayName = 'CFormInput';
+
 var CFormRange = forwardRef(function (_a, ref) {
     var className = _a.className, rest = __rest(_a, ["className"]);
     var _className = classNames('form-range', className);
@@ -5930,6 +5944,34 @@ CFormSelect.propTypes = {
 };
 CFormSelect.displayName = 'CFormSelect';
 
+var CFormSwitch = forwardRef(function (_a, ref) {
+    var _b;
+    var className = _a.className, id = _a.id, invalid = _a.invalid, label = _a.label, size = _a.size, _c = _a.type, type = _c === void 0 ? 'checkbox' : _c, valid = _a.valid, rest = __rest(_a, ["className", "id", "invalid", "label", "size", "type", "valid"]);
+    var _className = classNames('form-check form-switch', (_b = {},
+        _b["form-switch-" + size] = size,
+        _b['is-invalid'] = invalid,
+        _b['is-valid'] = valid,
+        _b), className);
+    var inputClassName = classNames('form-check-input', {
+        'is-invalid': invalid,
+        'is-valid': valid,
+    });
+    var labelClassName = classNames('form-check-label');
+    return (React__default.createElement("div", { className: _className },
+        React__default.createElement("input", __assign({ type: type, className: inputClassName, id: id }, rest, { ref: ref })),
+        label && (React__default.createElement(CFormLabel, __assign({ customClassName: labelClassName }, (id && { htmlFor: id })), label))));
+});
+CFormSwitch.propTypes = {
+    className: PropTypes.string,
+    id: PropTypes.string,
+    invalid: PropTypes.bool,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    size: PropTypes.oneOf(['lg', 'xl']),
+    type: PropTypes.oneOf(['checkbox', 'radio']),
+    valid: PropTypes.bool,
+};
+CFormSwitch.displayName = 'CFormSwitch';
+
 var CFormText = forwardRef(function (_a, ref) {
     var children = _a.children, className = _a.className, _b = _a.component, Component = _b === void 0 ? 'div' : _b, rest = __rest(_a, ["children", "className", "component"]);
     var _className = classNames('form-text', className);
@@ -5941,6 +5983,23 @@ CFormText.propTypes = {
     component: PropTypes.elementType,
 };
 CFormText.displayName = 'CFormText';
+
+var CFormTextarea = forwardRef(function (_a, ref) {
+    var children = _a.children, className = _a.className, invalid = _a.invalid, plainText = _a.plainText, valid = _a.valid, rest = __rest(_a, ["children", "className", "invalid", "plainText", "valid"]);
+    var _className = classNames(plainText ? 'form-control-plaintext' : 'form-control', {
+        'is-invalid': invalid,
+        'is-valid': valid,
+    }, className);
+    return (React__default.createElement("textarea", __assign({ className: _className }, rest, { ref: ref }), children));
+});
+CFormTextarea.propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
+    invalid: PropTypes.bool,
+    plainText: PropTypes.bool,
+    valid: PropTypes.bool,
+};
+CFormTextarea.displayName = 'CFormTextarea';
 
 var CInputGroup = forwardRef(function (_a, ref) {
     var _b;
@@ -6222,7 +6281,7 @@ var CModal = forwardRef(function (_a, ref) {
     };
     return (React__default.createElement(React__default.Fragment, null,
         React__default.createElement("div", { onClick: handleDismiss, onKeyDown: handleKeyDown },
-            React__default.createElement(CSSTransition, { in: visible, timeout: !transition ? 0 : duration, onExit: onDismiss, mountOnEnter: true, unmountOnExit: true }, function (state) {
+            React__default.createElement(CSSTransition$1, { in: visible, timeout: !transition ? 0 : duration, onExit: onDismiss, mountOnEnter: true, unmountOnExit: true }, function (state) {
                 var transitionClass = getTransitionClass(state);
                 return typeof window !== 'undefined' && portal
                     ? createPortal(modal(forkedRef, transitionClass), document.body)
@@ -6353,9 +6412,19 @@ CSidebarNav.propTypes = {
 CSidebarNav.displayName = 'CSidebarNav';
 
 var CNavGroup = forwardRef(function (_a, ref) {
-    var children = _a.children, toggler = _a.toggler, className = _a.className, icon = _a.icon, idx = _a.idx, visible = _a.visible, rest = __rest(_a, ["children", "toggler", "className", "icon", "idx", "visible"]);
+    var children = _a.children, className = _a.className, idx = _a.idx, toggler = _a.toggler, visible = _a.visible, rest = __rest(_a, ["children", "className", "idx", "toggler", "visible"]);
     var _b = useState(), height = _b[0], setHeight = _b[1];
     var navItemsRef = useRef(null);
+    var _c = useContext(CNavContext), visibleGroup = _c.visibleGroup, setVisibleGroup = _c.setVisibleGroup;
+    var _d = useState(Boolean(visible || (idx && visibleGroup && visibleGroup.toString().startsWith(idx.toString())))), _visible = _d[0], setVisible = _d[1];
+    useEffect(function () {
+        setVisible(Boolean(idx && visibleGroup && visibleGroup.toString().startsWith(idx.toString())));
+    }, [visibleGroup]);
+    var handleTogglerOnCLick = function (event) {
+        event.preventDefault();
+        setVisibleGroup(_visible ? ((idx === null || idx === void 0 ? void 0 : idx.toString().includes('.')) ? idx.slice(0, idx.lastIndexOf('.')) : '') : idx);
+        setVisible(!_visible);
+    };
     var style = {
         height: 0,
     };
@@ -6383,21 +6452,10 @@ var CNavGroup = forwardRef(function (_a, ref) {
         exiting: { display: 'block', height: height },
         exited: { height: height },
     };
-    var _c = useContext(CNavContext), visibleGroup = _c.visibleGroup, setVisibleGroup = _c.setVisibleGroup;
-    var _visible = Boolean(visible || (idx && visibleGroup && visibleGroup.toString().startsWith(idx.toString())));
     var _className = classNames('nav-group', { show: _visible }, className);
     return (React__default.createElement("li", __assign({ className: _className }, rest, { ref: ref }),
-        toggler && (React__default.createElement("a", { className: "nav-link nav-group-toggle", onClick: function (event) {
-                event.preventDefault();
-                setVisibleGroup(_visible
-                    ? (idx === null || idx === void 0 ? void 0 : idx.toString().includes('.'))
-                        ? idx.slice(0, idx.lastIndexOf('.'))
-                        : ''
-                    : idx);
-            } },
-            icon && typeof icon === 'string' ? React__default.createElement("i", { className: "nav-icon " + icon }) : icon,
-            toggler)),
-        React__default.createElement(Transition, { in: _visible, timeout: 300, onEntering: onEntering, onEntered: onEntered, onExit: onExit, onExiting: onExiting, onExited: onExited }, function (state) { return (React__default.createElement("ul", { className: "nav-group-items", style: __assign(__assign({}, style), transitionStyles[state]), ref: navItemsRef }, React__default.Children.map(children, function (child, index) {
+        toggler && (React__default.createElement("a", { className: "nav-link nav-group-toggle", onClick: function (event) { return handleTogglerOnCLick(event); } }, toggler)),
+        React__default.createElement(Transition$1, { in: _visible, timeout: 300, onEntering: onEntering, onEntered: onEntered, onExit: onExit, onExiting: onExiting, onExited: onExited }, function (state) { return (React__default.createElement("ul", { className: "nav-group-items", style: __assign(__assign({}, style), transitionStyles[state]), ref: navItemsRef }, React__default.Children.map(children, function (child, index) {
             if (React__default.isValidElement(child)) {
                 return React__default.cloneElement(child, { key: index, idx: idx + "." + index });
             }
@@ -6407,15 +6465,14 @@ var CNavGroup = forwardRef(function (_a, ref) {
 CNavGroup.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
-    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     idx: PropTypes.string,
-    toggler: PropTypes.string,
+    toggler: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     visible: PropTypes.bool,
 };
 CNavGroup.displayName = 'CNavGroup';
 
 var CNavLink = forwardRef(function (_a, ref) {
-    var children = _a.children, className = _a.className, icon = _a.icon, idx = _a.idx, rest = __rest(_a, ["children", "className", "icon", "idx"]);
+    var children = _a.children, className = _a.className, idx = _a.idx, rest = __rest(_a, ["children", "className", "idx"]);
     var navLinkRef = useRef(null);
     var forkedRef = useForkedRef(ref, navLinkRef);
     var setVisibleGroup = useContext(CNavContext).setVisibleGroup;
@@ -6425,14 +6482,11 @@ var CNavLink = forwardRef(function (_a, ref) {
         rest.active = (_a = navLinkRef.current) === null || _a === void 0 ? void 0 : _a.classList.contains('active');
         idx && rest.active && setVisibleGroup(idx);
     }, [rest.active, className]);
-    return (React__default.createElement(CLink, __assign({ className: _className }, rest, { ref: forkedRef }),
-        icon && typeof icon === 'string' ? React__default.createElement("i", { className: "nav-icon " + icon }) : icon,
-        children));
+    return (React__default.createElement(CLink, __assign({ className: _className }, rest, { ref: forkedRef }), children));
 });
 CNavLink.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
-    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     idx: PropTypes.string,
 };
 CNavLink.displayName = 'CNavLink';
@@ -6625,7 +6679,7 @@ var CPopover = function (_a) {
             })));
         }),
         typeof window !== 'undefined' &&
-            createPortal(React__default.createElement(CSSTransition, { in: _visible, timeout: {
+            createPortal(React__default.createElement(CSSTransition$1, { in: _visible, timeout: {
                     enter: 0,
                     exit: 200,
                 }, mountOnEnter: true, unmountOnExit: true }, function (state) {
@@ -6651,7 +6705,7 @@ CPopover.displayName = 'CPopover';
 
 var CProgressBar = forwardRef(function (_a, ref) {
     var _b;
-    var children = _a.children, _c = _a.animated, animated = _c === void 0 ? false : _c, className = _a.className, color = _a.color, _d = _a.value, value = _d === void 0 ? 0 : _d, variant = _a.variant, rest = __rest(_a, ["children", "animated", "className", "color", "value", "variant"]);
+    var children = _a.children, animated = _a.animated, className = _a.className, color = _a.color, _c = _a.value, value = _c === void 0 ? 0 : _c, variant = _a.variant, rest = __rest(_a, ["children", "animated", "className", "color", "value", "variant"]);
     var _className = classNames('progress-bar', (_b = {},
         _b["bg-" + color] = color,
         _b["progress-bar-" + variant] = variant,
@@ -6813,7 +6867,7 @@ var COffcanvas = forwardRef(function (_a, ref) {
             React__default.createElement("div", __assign({ className: _className, style: __assign({}, transitionStyles[state]), tabIndex: -1, onKeyDown: handleKeyDown }, rest, { ref: ref }), children)));
     };
     return (React__default.createElement(React__default.Fragment, null,
-        React__default.createElement(Transition, { in: _visible, timeout: 300, onEntered: function () { var _a; return (_a = offcanvasRef.current) === null || _a === void 0 ? void 0 : _a.focus(); } }, function (state) {
+        React__default.createElement(Transition$1, { in: _visible, timeout: 300, onEntered: function () { var _a; return (_a = offcanvasRef.current) === null || _a === void 0 ? void 0 : _a.focus(); } }, function (state) {
             return typeof window !== 'undefined' && portal
                 ? createPortal(offcanvas(forkedRef, state), document.body)
                 : offcanvas(forkedRef, state);
@@ -6903,26 +6957,6 @@ CSidebarToggler.propTypes = {
 };
 CSidebarToggler.displayName = 'CSidebarToggler';
 
-var CCreateNavItem = function (_a) {
-    var items = _a.items, idx = _a.idx;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    var renderItem = function (item, index, idx) {
-        var _component = item._component, as = item.as, anchor = item.anchor, items = item.items, rest = __rest(item, ["_component", "as", "anchor", "items"]);
-        var components = { CNavGroup: CNavGroup, CNavGroupItems: CNavGroupItems, CNavItem: CNavItem, CNavLink: CNavLink, CNavTitle: CNavTitle };
-        var Component = components[_component] || _component;
-        var children = items ? items.map(function (item, index) { return renderItem(item, index); }) : anchor;
-        return (React__default.createElement(Component, __assign({ component: as, key: index }, (items && { idx: idx + "." + index, toggler: anchor }), rest), children));
-    };
-    var generatedItems = useMemo(function () {
-        return items && items.map(function (item, index) { return renderItem(item, index, idx); });
-    }, [JSON.stringify(items)]);
-    return React__default.createElement(React__default.Fragment, null, generatedItems);
-};
-CCreateNavItem.propTypes = {
-    idx: PropTypes.string,
-    items: PropTypes.arrayOf(PropTypes.any).isRequired,
-};
-
 var CSidebarHeader = forwardRef(function (_a, ref) {
     var children = _a.children, className = _a.className, rest = __rest(_a, ["children", "className"]);
     var _className = classNames('sidebar-header', className);
@@ -6935,10 +6969,10 @@ CSidebarHeader.propTypes = {
 CSidebarHeader.displayName = 'CSidebarHeader';
 
 var CSpinner = forwardRef(function (_a, ref) {
-    var className = _a.className, color = _a.color, _b = _a.component, Component = _b === void 0 ? 'div' : _b, size = _a.size, _c = _a.variant, variant = _c === void 0 ? 'border' : _c, rest = __rest(_a, ["className", "color", "component", "size", "variant"]);
+    var className = _a.className, color = _a.color, _b = _a.component, Component = _b === void 0 ? 'div' : _b, size = _a.size, _c = _a.variant, variant = _c === void 0 ? 'border' : _c, _d = _a.visuallyHiddenLabel, visuallyHiddenLabel = _d === void 0 ? 'Loading...' : _d, rest = __rest(_a, ["className", "color", "component", "size", "variant", "visuallyHiddenLabel"]);
     var _className = classNames("spinner-" + variant, "text-" + color, size && "spinner-" + variant + "-" + size, className);
     return (React__default.createElement(Component, __assign({ className: _className, role: "status" }, rest, { ref: ref }),
-        React__default.createElement("span", { className: "visually-hidden" }, "Loading...")));
+        React__default.createElement("span", { className: "visually-hidden" }, visuallyHiddenLabel)));
 });
 CSpinner.propTypes = {
     className: PropTypes.string,
@@ -6946,6 +6980,7 @@ CSpinner.propTypes = {
     component: PropTypes.string,
     size: PropTypes.oneOf(['sm']),
     variant: PropTypes.oneOf(['border', 'grow']),
+    visuallyHiddenLabel: PropTypes.string,
 };
 CSpinner.displayName = 'CSpinner';
 
@@ -7118,7 +7153,7 @@ var CTabPane = forwardRef(function (_a, ref) {
                     : '';
     };
     var _className = classNames('tab-pane', 'fade', className);
-    return (React__default.createElement(Transition, { in: visible, timeout: 350 }, function (state) {
+    return (React__default.createElement(Transition$1, { in: visible, timeout: 350 }, function (state) {
         var transitionClass = getTransitionClass(state);
         return (React__default.createElement("div", __assign({ className: classNames(_className, transitionClass), style: __assign({}, style) }, rest, { ref: ref }), children));
     }));
@@ -7159,7 +7194,7 @@ var CToast = forwardRef(function (_a, ref) {
         _b["bg-" + color] = color,
         _b['border-0'] = color,
         _b), className);
-    return (React__default.createElement(CSSTransition, { in: _visible, timeout: 250, onExit: function () { return onDismiss && onDismiss(index ? index : null); }, unmountOnExit: true },
+    return (React__default.createElement(CSSTransition$1, { in: _visible, timeout: 250, onExit: function () { return onDismiss && onDismiss(index ? index : null); }, unmountOnExit: true },
         React__default.createElement(CToastContext.Provider, { value: contextValues },
             React__default.createElement("div", __assign({ className: _className, "aria-live": "assertive", "aria-atomic": "true", role: "alert", onMouseEnter: function () { return clearTimeout(timeout.current); }, onMouseLeave: function () { return _autohide; } }, rest, { key: key, ref: ref }), children))));
 });
@@ -7308,7 +7343,7 @@ var CTooltip = function (_a) {
             })));
         }),
         typeof window !== 'undefined' &&
-            createPortal(React__default.createElement(CSSTransition, { in: _visible, timeout: {
+            createPortal(React__default.createElement(CSSTransition$1, { in: _visible, timeout: {
                     enter: 0,
                     exit: 200,
                 }, mountOnEnter: true, unmountOnExit: true }, function (state) {
@@ -7464,5 +7499,5 @@ CWidgetSimple.propTypes = {
 };
 CWidgetSimple.displayName = 'CWidgetSimple';
 
-export { CAccordion, CAccordionBody, CAccordionButton, CAccordionCollapse, CAccordionHeader, CAccordionItem, CAlert, CAlertHeading, CAlertLink, CAvatar, CBackdrop, CBadge, CBreadcrumb, CBreadcrumbItem, CButton, CButtonGroup, CButtonToolbar, CCallout, CCard, CCardBody, CCardFooter, CCardGroup, CCardHeader, CCardImage, CCardImageOverlay, CCardLink, CCardSubtitle, CCardText, CCardTitle, CCarousel, CCarouselCaption, CCarouselControl, CCarouselIndicators, CCarouselInner, CCarouselItem, CCloseButton, CCol, CCollapse, CContainer, CCreateNavItem, CDropdown, CDropdownDivider, CDropdownHeader, CDropdownItem, CDropdownItemPlain, CDropdownMenu, CDropdownToggle, CFooter, CForm, CFormCheck, CFormControl, CFormFeedback, CFormFloating, CFormLabel, CFormRange, CFormSelect, CFormText, CHeader, CHeaderBrand, CHeaderDivider, CHeaderNav, CHeaderText, CHeaderToggler, CImage, CInputGroup, CInputGroupText, CLink, CListGroup, CListGroupItem, CModal, CModalBody, CModalContent, CModalDialog, CModalFooter, CModalHeader, CModalTitle, CNav, CNavGroup, CNavGroupItems, CNavItem, CNavLink, CNavTitle, CNavbar, CNavbarBrand, CNavbarNav, CNavbarText, CNavbarToggler, COffcanvas, COffcanvasBody, COffcanvasHeader, COffcanvasTitle, CPagination, CPaginationItem, CPopover, CPopoverContent, CProgress, CProgressBar, CRow, CSidebar, CSidebarBrand, CSidebarFooter, CSidebarHeader, CSidebarNav, CSidebarToggler, CSpinner, CTabContent, CTabPane, CTable, CTableBody, CTableCaption, CTableDataCell, CTableFoot, CTableHead, CTableHeaderCell, CTableRow, CToast, CToastBody, CToastClose, CToastHeader, CToaster, CTooltip, CTooltipContent, CWidgetBrand, CWidgetDropdown, CWidgetIcon, CWidgetProgress, CWidgetProgressIcon, CWidgetSimple };
+export { CAccordion, CAccordionBody, CAccordionButton, CAccordionCollapse, CAccordionHeader, CAccordionItem, CAlert, CAlertHeading, CAlertLink, CAvatar, CBackdrop, CBadge, CBreadcrumb, CBreadcrumbItem, CButton, CButtonGroup, CButtonToolbar, CCallout, CCard, CCardBody, CCardFooter, CCardGroup, CCardHeader, CCardImage, CCardImageOverlay, CCardLink, CCardSubtitle, CCardText, CCardTitle, CCarousel, CCarouselCaption, CCarouselControl, CCarouselIndicators, CCarouselInner, CCarouselItem, CCloseButton, CCol, CCollapse, CContainer, CDropdown, CDropdownDivider, CDropdownHeader, CDropdownItem, CDropdownItemPlain, CDropdownMenu, CDropdownToggle, CFooter, CForm, CFormCheck, CFormFeedback, CFormFloating, CFormInput, CFormLabel, CFormRange, CFormSelect, CFormSwitch, CFormText, CFormTextarea, CHeader, CHeaderBrand, CHeaderDivider, CHeaderNav, CHeaderText, CHeaderToggler, CImage, CInputGroup, CInputGroupText, CLink, CListGroup, CListGroupItem, CModal, CModalBody, CModalContent, CModalDialog, CModalFooter, CModalHeader, CModalTitle, CNav, CNavGroup, CNavGroupItems, CNavItem, CNavLink, CNavTitle, CNavbar, CNavbarBrand, CNavbarNav, CNavbarText, CNavbarToggler, COffcanvas, COffcanvasBody, COffcanvasHeader, COffcanvasTitle, CPagination, CPaginationItem, CPopover, CPopoverContent, CProgress, CProgressBar, CRow, CSidebar, CSidebarBrand, CSidebarFooter, CSidebarHeader, CSidebarNav, CSidebarToggler, CSpinner, CTabContent, CTabPane, CTable, CTableBody, CTableCaption, CTableDataCell, CTableFoot, CTableHead, CTableHeaderCell, CTableRow, CToast, CToastBody, CToastClose, CToastHeader, CToaster, CTooltip, CTooltipContent, CWidgetBrand, CWidgetDropdown, CWidgetIcon, CWidgetProgress, CWidgetProgressIcon, CWidgetSimple };
 //# sourceMappingURL=index.es.js.map

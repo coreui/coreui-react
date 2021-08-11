@@ -6,5 +6,7 @@ export declare type Placements = 'auto' | 'auto-start' | 'auto-end' | 'top-end' 
 export declare const placementPropType: PropTypes.Requireable<Placements>;
 export declare type Shapes = 'rounded' | 'rounded-top' | 'rounded-end' | 'rounded-bottom' | 'rounded-start' | 'rounded-circle' | 'rounded-pill' | 'rounded-0' | 'rounded-1' | 'rounded-2' | 'rounded-3' | string;
 export declare const shapePropType: PropTypes.Requireable<string>;
+export declare type TextColors = Colors | 'white' | 'muted' | string;
+export declare const textColorsPropType: PropTypes.Requireable<string>;
 export declare type Triggers = 'hover' | 'focus' | 'click';
 export declare const triggerPropType: PropTypes.Requireable<Triggers>;

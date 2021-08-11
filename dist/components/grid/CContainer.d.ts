@@ -1,6 +1,5 @@
 import React, { HTMLAttributes } from 'react';
 export interface CContainerProps extends HTMLAttributes<HTMLDivElement> {
-    breakpoint?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
     /**
      * A string of all className you want applied to the base component. [docs]
      */

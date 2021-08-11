@@ -6,13 +6,9 @@ export interface CNavGroupProps {
      */
     className?: string;
     /**
-     * Set component's icon. [docs]
-     */
-    icon?: string | ReactNode;
-    /**
      * Set group toggler label. [docs]
      */
-    toggler?: string;
+    toggler?: string | ReactNode;
     /**
      * Show nav group items. [docs]
      */

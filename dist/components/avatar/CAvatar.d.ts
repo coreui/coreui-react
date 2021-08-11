@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import { Colors, Shapes } from '../Types';
+import { Colors, Shapes, TextColors } from '../Types';
 export interface CAvatarProps extends HTMLAttributes<HTMLDivElement> {
     /**
      * A string of all className you want applied to the component. [docs]
@@ -33,7 +33,9 @@ export interface CAvatarProps extends HTMLAttributes<HTMLDivElement> {
     status?: Colors;
     /**
      * Sets the text color of the component to one of CoreUI’s themed colors. [docs]
+     *
+     * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | 'white' | 'muted' | string
      */
-    textColor?: string;
+    textColor?: TextColors;
 }
 export declare const CAvatar: React.ForwardRefExoticComponent<CAvatarProps & React.RefAttributes<HTMLDivElement>>;

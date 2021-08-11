@@ -1,4 +1,4 @@
-import React, { ElementType, ReactNode } from 'react';
+import React, { ElementType } from 'react';
 import { CLinkProps } from '../link/CLink';
 export interface CNavLinkProps extends Omit<CLinkProps, 'idx'> {
     /**
@@ -19,10 +19,6 @@ export interface CNavLinkProps extends Omit<CLinkProps, 'idx'> {
      * Toggle the disabled state for the component. [docs]
      */
     disabled?: boolean;
-    /**
-     * Set component's icon. [docs]
-     */
-    icon?: string | ReactNode;
     /**
      * @ignore
      */

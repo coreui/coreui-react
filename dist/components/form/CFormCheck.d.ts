@@ -1,29 +1,34 @@
 import React, { HTMLAttributes, ReactNode } from 'react';
 import { Colors, Shapes } from '../Types';
-export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
-    button?: boolean;
+export declare type ButtonObject = {
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
      *
      * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
      */
-    buttonColor?: Colors;
+    color?: Colors;
     /**
      * Select the shape of the component. [docs]
      *
      * @type 'rounded' | 'rounded-top' | 'rounded-end' | 'rounded-bottom' | 'rounded-start' | 'rounded-circle' | 'rounded-pill' | 'rounded-0' | 'rounded-1' | 'rounded-2' | 'rounded-3' | string
      */
-    buttonShape?: Shapes;
+    shape?: Shapes;
     /**
      * Size the component small or large. [docs]
      *
      * @type 'sm' | 'lg'
      */
-    buttonSize?: 'sm' | 'lg';
+    size?: 'sm' | 'lg';
     /**
      * Set the button variant to an outlined button or a ghost button. [docs]
      */
-    buttonVariant?: 'outline' | 'ghost';
+    variant?: 'outline' | 'ghost';
+};
+export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
+    /**
+     * Create button-like checkboxes and radio buttons. [docs]
+     */
+    button?: ButtonObject;
     /**
      * A string of all className you want applied to the component. [docs]
      */
@@ -44,16 +49,6 @@ export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
      * The element represents a caption for a component. [docs]
      */
     label?: string | ReactNode;
-    /**
-     * Size the component large or extra large. Works only with `switch` [docs]
-     *
-     * @type 'lg' | 'xl'
-     */
-    size?: 'lg' | 'xl';
-    /**
-     * Render component as a toggle switch. [docs]
-     */
-    switch?: boolean;
     /**
      * Specifies the type of component. [docs]
      *

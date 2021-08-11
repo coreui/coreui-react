@@ -3,8 +3,6 @@ import { Colors } from '../Types';
 export interface CProgressBarProps extends HTMLAttributes<HTMLDivElement> {
     /**
      * Use to animate the stripes right to left via CSS3 animations. [docs]
-     *
-     * @default false
      */
     animated?: boolean;
     /**

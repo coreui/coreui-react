@@ -7,8 +7,6 @@ export interface CProgressProps extends Omit<HTMLAttributes<HTMLDivElement>, 'co
     className?: string;
     /**
      * Sets the height of the component. If you set that value the inner <CProgressBar> will automatically resize accordingly. [docs]
-     *
-     * @default 'undefined'
      */
     height?: number;
     /**

@@ -2,6 +2,7 @@ import React, { HTMLAttributes } from 'react';
 export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {
     /**
      * Apply a backdrop on body while offcanvas is open. [docs]
+     *
      * @default true
      */
     backdrop?: boolean;
@@ -11,6 +12,7 @@ export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
     /**
      * Closes the offcanvas when escape key is pressed [docs]
+     *
      * @default true
      */
     keyboard?: boolean;

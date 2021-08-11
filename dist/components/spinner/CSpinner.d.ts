@@ -3,8 +3,6 @@ import { Colors } from '../Types';
 export interface CSpinnerProps extends HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
     /**
      * A string of all className you want applied to the component. [docs]
-     *
-     * @default 'undefined'
      */
     className?: string;
     /**
@@ -21,8 +19,6 @@ export interface CSpinnerProps extends HTMLAttributes<HTMLDivElement | HTMLSpanE
     component?: string | ElementType;
     /**
      * Size the component small. [docs]
-     *
-     * @default 'undefined'
      */
     size?: 'sm';
     /**
@@ -31,5 +27,11 @@ export interface CSpinnerProps extends HTMLAttributes<HTMLDivElement | HTMLSpanE
      * @default 'border'
      */
     variant?: 'border' | 'grow';
+    /**
+     * Set visually hidden label for accessibility purposes. [docs]
+     *
+     * @default 'Loading...'
+     */
+    visuallyHiddenLabel?: string;
 }
 export declare const CSpinner: React.ForwardRefExoticComponent<CSpinnerProps & React.RefAttributes<HTMLDivElement | HTMLSpanElement>>;

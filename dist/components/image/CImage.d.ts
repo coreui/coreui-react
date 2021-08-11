@@ -1,5 +1,8 @@
 import React, { HTMLAttributes } from 'react';
 export interface CImageProps extends HTMLAttributes<HTMLImageElement> {
+    /**
+     * Set the horizontal aligment.
+     */
     align?: 'start' | 'center' | 'end';
     /**
      * A string of all className you want applied to the component. [docs]
