@@ -151,8 +151,8 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
         [`sidebar-${position}`]: position,
         [`sidebar-self-hiding${typeof selfHiding !== 'boolean' && '-' + selfHiding}`]: selfHiding,
         'sidebar-narrow-unfoldable': unfoldable,
-        show: _visible,
-        hide: !_visible,
+        show: _visible === true,
+        hide: _visible === false,
       },
       className,
     )
