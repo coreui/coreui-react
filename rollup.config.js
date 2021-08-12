@@ -24,6 +24,7 @@ export default {
     resolve(),
     typescript({
       exclude: ['**/__tests__/**'],
+      tsconfig: './tsconfig.json',
     }),
     commonjs({
       include: ['node_modules/**'],
