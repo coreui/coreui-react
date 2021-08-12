@@ -1,3 +1,4 @@
 .docz
 coverage/
+dist/
 node_modules/
