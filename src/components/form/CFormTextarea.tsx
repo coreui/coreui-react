@@ -1,8 +1,8 @@
-import React, { ChangeEventHandler, forwardRef, HTMLAttributes } from 'react'
+import React, { ChangeEventHandler, forwardRef, InputHTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-export interface CFormTextareaProps extends HTMLAttributes<HTMLTextAreaElement> {
+export interface CFormTextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
   /**
    * A string of all className you want applied to the component. [docs]
    */
@@ -20,7 +20,7 @@ export interface CFormTextareaProps extends HTMLAttributes<HTMLTextAreaElement> 
    */
   onChange?: ChangeEventHandler<HTMLTextAreaElement>
   /**
-   * Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side `readonly` [docs]
+   * Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side `readonly`. [docs]
    */
   plainText?: boolean
   /**

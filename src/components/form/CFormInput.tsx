@@ -1,9 +1,9 @@
-import React, { ChangeEventHandler, forwardRef, HTMLAttributes } from 'react'
+import React, { ChangeEventHandler, forwardRef, InputHTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 // import { CFormLabel } from './CFormLabel'
 
-export interface CFormInputProps extends HTMLAttributes<HTMLInputElement> {
+export interface CFormInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /**
    * A string of all className you want applied to the component. [docs]
    */

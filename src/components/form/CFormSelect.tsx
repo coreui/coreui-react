@@ -1,8 +1,8 @@
-import React, { forwardRef, HTMLAttributes } from 'react'
+import React, { forwardRef, InputHTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-export interface CFormSelectProps extends HTMLAttributes<HTMLSelectElement> {
+export interface CFormSelectProps extends Omit<InputHTMLAttributes<HTMLSelectElement>, 'size'> {
   /**
    * A string of all className you want applied to the component. [docs]
    */

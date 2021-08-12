@@ -1,4 +1,4 @@
-import React, { forwardRef, HTMLAttributes, ReactNode } from 'react'
+import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -31,7 +31,7 @@ export type ButtonObject = {
   variant?: 'outline' | 'ghost'
 }
 
-export interface CFormCheckProps extends HTMLAttributes<HTMLInputElement> {
+export interface CFormCheckProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * Create button-like checkboxes and radio buttons. [docs]
    */
