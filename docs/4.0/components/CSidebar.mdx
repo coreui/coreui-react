@@ -6,54 +6,86 @@ route: /components/sidebar
 ---
 
 import { Playground, Props } from 'docz'
+import CIcon from '@coreui/icons-react'
+
 import { 
+  CBadge,
   CSidebar, 
+  CSidebarBrand, 
+  CSidebarFooter, 
+  CSidebarHeader, 
   CSidebarNav, 
+  CSidebarToggler, 
   CNavGroup, 
   CNavGroupItems, 
   CNavItem, 
-  CNavLink 
+  CNavLink, 
+  CNavTitle 
 } from '../../../src/index.ts'
 
+## Supported content
 
-import navigation from './_nav'
+Sidebar come with built-in support for a handful of sub-components. Choose from the following as needed:
 
-## Example
+- `<CSidebarHeader>` for optional header.
+- `<CSidebarBrand>` for your company, product, or project name.
+- `<CSidebarNav>` for a full-height and lightweight navigation (including support for dropdowns).
+- `<CSidebarFooter>` for optional footer.
+- `<CSidebarToggler>` for use with our minimizer plugin.
+
+## Examples
 
 <Playground>
   <CSidebar>
+    <CSidebarBrand>Sidebar Brand</CSidebarBrand>
     <CSidebarNav>
-      <CNavItem>
-        <CNavLink href="#">Link 1</CNavLink>
+      <CNavTitle>Nav Title</CNavTitle>
+      <CNavItem href="#">
+        <CIcon customClassName="nav-icon" name="cil-speedometer"/>
+        Nav item
       </CNavItem>
-      <CNavGroup toggler="Group 1">
-        <CNavItem>
-          <CNavLink href="#">Link 2</CNavLink>
+      <CNavItem href="#">
+          <CIcon customClassName="nav-icon" name="cil-speedometer"/>
+          With badge
+          <CBadge color="primary ms-auto">NEW</CBadge>
+      </CNavItem>
+      <CNavGroup toggler="Nav dropdown">
+        <CNavItem href="#">
+          <CIcon customClassName="nav-icon" name="cil-puzzle"/> Nav dropdown item
         </CNavItem>
-        <CNavItem>
-          <CNavLink href="#">Link 3</CNavLink>
+        <CNavItem href="#">
+          <CIcon customClassName="nav-icon" name="cil-puzzle"/> Nav dropdown item
         </CNavItem>
-        <CNavItem>
-          <CNavLink href="#">Link 4</CNavLink>
-        </CNavItem>
-        <CNavGroup toggler="Group 2">
-          <CNavItem>
-            <CNavLink href="#">Link 5</CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">Link 6</CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">Link 7</CNavLink>
-          </CNavItem>
-        </CNavGroup>
       </CNavGroup>
-      <CNavItem>
-        <CNavLink href="#">Link 17</CNavLink>
-      </CNavItem>
-      <CNavItem>
-        <CNavLink href="#">Link 18</CNavLink>
-      </CNavItem>
     </CSidebarNav>
+    <CSidebarToggler/>
   </CSidebar>
 </Playground>
+
+
+## API
+
+### CSidebar
+
+<Props of={CSidebar} />
+
+### CSidebarBrand
+
+<Props of={CSidebarBrand} />
+
+### CSidebarFooter
+
+<Props of={CSidebarFooter} />
+
+### CSidebarHeader
+
+<Props of={CSidebarHeader} />
+
+### CSidebarNav
+
+<Props of={CSidebarNav} />
+
+### CSidebarToggler
+
+<Props of={CSidebarToggler} />
+
