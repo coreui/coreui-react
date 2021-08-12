@@ -203,8 +203,17 @@ Place CoreUI's checkboxes and radios within list group items and customize as ne
   </CListGroup>
 </Playground>
 
-TODO: add missing examples from base docs
+And if you want `<label>`s as the `.list-group-item` for large hit areas, you can do that, too.
 
+<Playground>
+  <CListGroup>
+    <CFormCheck className="list-group-item" hitArea="full" label="Cras justo odio"/>
+    <CFormCheck className="list-group-item" hitArea="full" label="Dapibus ac facilisis in" defaultChecked/>
+    <CFormCheck className="list-group-item" hitArea="full" label="Morbi leo risus" defaultChecked/>
+    <CFormCheck className="list-group-item" hitArea="full" label="orta ac consectetur ac"/>
+    <CFormCheck className="list-group-item" hitArea="full" label="Vestibulum at eros"/>
+  </CListGroup>
+</Playground>
 
 ## API
 
