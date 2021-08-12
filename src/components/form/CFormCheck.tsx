@@ -41,6 +41,10 @@ export interface CFormCheckProps extends InputHTMLAttributes<HTMLInputElement> {
    */
   className?: string
   /**
+   * Sets hit area to the full area of the component. [docs]
+   */
+  hitArea?: 'full'
+  /**
    * The id global attribute defines an identifier (ID) that must be unique in the whole document. [docs]
    */
   id?: string
@@ -70,7 +74,10 @@ export interface CFormCheckProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
-  ({ className, button, id, inline, invalid, label, type = 'checkbox', valid, ...rest }, ref) => {
+  (
+    { className, button, hitArea, id, inline, invalid, label, type = 'checkbox', valid, ...rest },
+    ref,
+  ) => {
     const _className = classNames(
       'form-check',
       {
@@ -84,6 +91,7 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
     const inputClassName = classNames(button ? 'btn-check' : 'form-check-input', {
       'is-invalid': invalid,
       'is-valid': valid,
+      'me-2': hitArea,
     })
     const labelClassName = classNames(
       button
@@ -116,10 +124,17 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
         {label && formLabel()}
       </>
     ) : label ? (
-      <div className={_className}>
-        {formControl()}
-        {formLabel()}
-      </div>
+      hitArea ? (
+        <CFormLabel customClassName={className} {...(id && { htmlFor: id })}>
+          {formControl()}
+          {label}
+        </CFormLabel>
+      ) : (
+        <div className={_className}>
+          {formControl()}
+          {formLabel()}
+        </div>
+      )
     ) : (
       formControl()
     )
@@ -129,6 +144,7 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
 CFormCheck.propTypes = {
   button: PropTypes.object,
   className: PropTypes.string,
+  hitArea: PropTypes.oneOf(['full']),
   id: PropTypes.string,
   inline: PropTypes.bool,
   invalid: PropTypes.bool,
