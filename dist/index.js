@@ -5852,7 +5852,7 @@ CFormLabel.displayName = 'CFormLabel';
 
 var CFormCheck = React.forwardRef(function (_a, ref) {
     var _b;
-    var className = _a.className, button = _a.button, id = _a.id, inline = _a.inline, invalid = _a.invalid, label = _a.label, _c = _a.type, type = _c === void 0 ? 'checkbox' : _c, valid = _a.valid, rest = __rest(_a, ["className", "button", "id", "inline", "invalid", "label", "type", "valid"]);
+    var className = _a.className, button = _a.button, hitArea = _a.hitArea, id = _a.id, inline = _a.inline, invalid = _a.invalid, label = _a.label, _c = _a.type, type = _c === void 0 ? 'checkbox' : _c, valid = _a.valid, rest = __rest(_a, ["className", "button", "hitArea", "id", "inline", "invalid", "label", "type", "valid"]);
     var _className = classNames('form-check', {
         'form-check-inline': inline,
         'is-invalid': invalid,
@@ -5861,6 +5861,7 @@ var CFormCheck = React.forwardRef(function (_a, ref) {
     var inputClassName = classNames(button ? 'btn-check' : 'form-check-input', {
         'is-invalid': invalid,
         'is-valid': valid,
+        'me-2': hitArea,
     });
     var labelClassName = classNames(button
         ? classNames('btn', button.variant ? "btn-" + button.variant + "-" + button.color : "btn-" + button.color, (_b = {},
@@ -5875,13 +5876,16 @@ var CFormCheck = React.forwardRef(function (_a, ref) {
     };
     return button ? (React__default['default'].createElement(React__default['default'].Fragment, null,
         formControl(),
-        label && formLabel())) : label ? (React__default['default'].createElement("div", { className: _className },
+        label && formLabel())) : label ? (hitArea ? (React__default['default'].createElement(CFormLabel, __assign({ customClassName: className }, (id && { htmlFor: id })),
         formControl(),
-        formLabel())) : (formControl());
+        label)) : (React__default['default'].createElement("div", { className: _className },
+        formControl(),
+        formLabel()))) : (formControl());
 });
 CFormCheck.propTypes = {
     button: PropTypes.object,
     className: PropTypes.string,
+    hitArea: PropTypes.oneOf(['full']),
     id: PropTypes.string,
     inline: PropTypes.bool,
     invalid: PropTypes.bool,
@@ -6390,12 +6394,12 @@ CModalTitle.displayName = 'CModalTitle';
 
 var CNav = React.forwardRef(function (_a, ref) {
     var _b;
-    var children = _a.children, className = _a.className, _c = _a.component, Component = _c === void 0 ? 'ul' : _c, layout = _a.layout, variant = _a.variant;
+    var children = _a.children, className = _a.className, _c = _a.component, Component = _c === void 0 ? 'ul' : _c, layout = _a.layout, variant = _a.variant, rest = __rest(_a, ["children", "className", "component", "layout", "variant"]);
     var _className = classNames('nav', (_b = {},
         _b["nav-" + layout] = layout,
         _b["nav-" + variant] = variant,
         _b), className);
-    return (React__default['default'].createElement(Component, { className: _className, role: "navigation", ref: ref }, children));
+    return (React__default['default'].createElement(Component, __assign({ className: _className, role: "navigation" }, rest, { ref: ref }), children));
 });
 CNav.propTypes = {
     children: PropTypes.node,
@@ -6837,8 +6841,8 @@ var CSidebar = React.forwardRef(function (_a, ref) {
         _b["sidebar-" + position] = position,
         _b["sidebar-self-hiding" + (typeof selfHiding !== 'boolean' && '-' + selfHiding)] = selfHiding,
         _b['sidebar-narrow-unfoldable'] = unfoldable,
-        _b.show = _visible,
-        _b.hide = !_visible,
+        _b.show = _visible === true,
+        _b.hide = _visible === false,
         _b), className);
     return (React__default['default'].createElement(React__default['default'].Fragment, null,
         React__default['default'].createElement("div", __assign({ className: _className }, rest, { ref: forkedRef }), children),
