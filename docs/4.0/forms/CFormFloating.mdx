@@ -43,7 +43,7 @@ When there's a `value` already defined, `<CFormLabel>`s will automatically adjus
       type="email"
       id="floatingInputValue"
       placeholder="name@example.com"
-      value="test@example.com"
+      defaultValue="test@example.com"
     />
     <CFormLabel htmlFor="floatingInputValue">Input with value</CFormLabel>
   </CFormFloating>
@@ -100,7 +100,7 @@ When working with the CoreUI for Bootstrap grid system, be sure to place form el
   <CRow xs={{gutter: 2}}>
     <CCol md>
       <CFormFloating>
-        <CFormInput type="email" id="floatingInputGrid" placeholder="name@example.com" value="email@example.com" />
+        <CFormInput type="email" id="floatingInputGrid" placeholder="name@example.com" defaultValue="email@example.com" />
         <CFormLabel htmlFor="floatingInputGrid">Email address</CFormLabel>
       </CFormFloating>
     </CCol>

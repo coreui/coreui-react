@@ -49,7 +49,7 @@ Using the most basic table CoreUI, here's how `<CTable>`-based tables look in Co
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
@@ -150,7 +150,7 @@ Use `striped` property to add zebra-striping to any table row within the `<CTabl
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
@@ -184,7 +184,7 @@ These classes can also be added to table variants:
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
@@ -216,7 +216,7 @@ These classes can also be added to table variants:
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
@@ -252,7 +252,7 @@ Use `hover` property to enable a hover state on table rows within a `<CTableBody
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
@@ -284,7 +284,7 @@ Use `hover` property to enable a hover state on table rows within a `<CTableBody
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
@@ -318,7 +318,7 @@ These hoverable rows can also be combined with the striped variant:
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
@@ -354,7 +354,7 @@ Highlight a table row or cell by adding a `active` property.
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2" active>Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2" active>Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
@@ -386,7 +386,7 @@ Highlight a table row or cell by adding a `active` property.
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2" active>Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2" active>Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
@@ -424,7 +424,7 @@ Add `bordered` property for borders on all sides of the table and cells.
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
@@ -458,7 +458,7 @@ Add `bordered` property for borders on all sides of the table and cells.
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
@@ -494,7 +494,7 @@ Add `borderless` property for a table without borders.
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
@@ -526,7 +526,7 @@ Add `borderless` property for a table without borders.
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
@@ -562,7 +562,7 @@ Add `small` property to make any `<CTable>` more compact by cutting all cell `pa
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
@@ -574,7 +574,7 @@ Add `small` property to make any `<CTable>` more compact by cutting all cell `pa
 Table cells of `<CTableHead>` are always vertical aligned to the bottom. Table cells in `<CTableBody>` inherit their alignment from `<CTable>` and are aligned to the the top by default. Use the align property to re-align where needed.
 
 <Playground>
-  <CTable align="middle" reponsive>
+  <CTable align="middle" responsive>
     <CTableHead>
       <CTableRow>
         <CTableHeaderCell scope="col" className="w-25">Heading 1</CTableHeaderCell>
@@ -628,7 +628,7 @@ Border styles, active styles, and table variants are not inherited by nested tab
         <CTableDataCell>@mdo</CTableDataCell>
       </CTableRow>
       <CTableRow>
-        <CTableHeaderCell colspan="4">
+        <CTableHeaderCell colSpan="4">
           <CTable>
             <CTableHead>
               <CTableRow>
@@ -659,7 +659,7 @@ Border styles, active styles, and table variants are not inherited by nested tab
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
@@ -730,7 +730,7 @@ Similar to tables and dark tables, use the modifier prop `color="light"` or `col
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
@@ -764,7 +764,7 @@ Similar to tables and dark tables, use the modifier prop `color="light"` or `col
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+        <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
