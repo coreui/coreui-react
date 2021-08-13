@@ -122,14 +122,6 @@ import { CToaster } from './components/toast/CToaster'
 import { CTooltip } from './components/tooltip/CTooltip'
 import { CTooltipContent } from './components/tooltip/CTooltipContent'
 
-// Widgets
-import { CWidgetBrand } from './components/widgets/CWidgetBrand'
-import { CWidgetDropdown } from './components/widgets/CWidgetDropdown'
-import { CWidgetIcon } from './components/widgets/CWidgetIcon'
-import { CWidgetProgress } from './components/widgets/CWidgetProgress'
-import { CWidgetProgressIcon } from './components/widgets/CWidgetProgressIcon'
-import { CWidgetSimple } from './components/widgets/CWidgetSimple'
-
 export {
   CAccordion,
   CAccordionBody,
@@ -254,11 +246,6 @@ export {
   CToaster,
   CTooltip,
   CTooltipContent,
-  //
-  CWidgetBrand,
-  CWidgetDropdown,
-  CWidgetIcon,
-  CWidgetProgress,
-  CWidgetProgressIcon,
-  CWidgetSimple,
 }
+
+export * from './components/'

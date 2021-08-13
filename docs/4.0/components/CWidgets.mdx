@@ -1,0 +1,174 @@
+---
+title: React Widgets
+name: Widgets
+description: React alert component gives contextual feedback information for common user operations. The alert component is delivered with a bunch of usable and adjustable alert messages.
+menu: Components
+route: /components/widgets
+---
+
+import { Playground, Props } from 'docz'
+import CIcon from '@coreui/icons-react'
+import { cilArrowTop, cilChartPie, cilOptions } from '@coreui/icons'
+import { CChartLine } from '@coreui/react-chartjs'
+
+import { 
+  CCol,
+  CDropdown,
+  CDropdownItem,
+  CDropdownMenu,
+  CDropdownToggle,
+  CRow,
+  CWidgetA,
+  CWidgetB,
+  CWidgetC,
+} from '../../../src/index.ts'
+
+
+## Examples
+
+React Alert is prepared for any length of text, as well as an optional close button. For a styling, use one of the **required** contextual `color` props (e.g., `primary`). For inline dismissal, use the [dismissing prop](#dismissing).
+
+## CWidgetA
+
+<Playground>
+  <CRow>
+    <CCol sm={6}>
+      <CWidgetA
+        className="mb-4"
+        color="primary"
+        value={<>$9.000 <span className="fs-6 fw-normal">(40.9% <CIcon icon={cilArrowTop} />)</span></>}
+        title="Widget title"
+        action={
+          <CDropdown alignment="end">
+            <CDropdownToggle color="transparent" caret={false} className="p-0">
+              <CIcon icon={cilOptions} className="text-high-emphasis-inverse" />
+            </CDropdownToggle>
+            <CDropdownMenu>
+              <CDropdownItem>Action</CDropdownItem>
+              <CDropdownItem>Another action</CDropdownItem>
+              <CDropdownItem>Something else here...</CDropdownItem>
+              <CDropdownItem disabled>Disabled action</CDropdownItem>
+            </CDropdownMenu>
+          </CDropdown>
+        }
+        chart={
+          <CChartLine
+            className="mt-3 mx-3"
+            style={{ height: '70px' }}
+            data={{
+              labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+              datasets: [
+                {
+                  label: 'My First dataset',
+                  backgroundColor: 'transparent',
+                  borderColor: 'rgba(255,255,255,.55)',
+                  pointBackgroundColor: '#321fdb',
+                  data: [65, 59, 84, 84, 51, 55, 40],
+                },
+              ],
+            }}
+            options={{
+              plugins: {
+                legend: {
+                  display: false,
+                },
+              },
+              maintainAspectRatio: false,
+              scales: {
+                x: {
+                  grid: {
+                    display: false,
+                    drawBorder: false,
+                  },
+                  ticks: {
+                    display: false,
+                  },
+                },
+                y: {
+                  min: 30,
+                  max: 89,
+                  display: false,
+                  grid: {
+                    display: false,
+                  },
+                  ticks: {
+                    display: false,
+                  },
+                },
+              },
+              elements: {
+                line: {
+                  borderWidth: 1,
+                  tension: 0.4,
+                },
+                point: {
+                  radius: 4,
+                  hitRadius: 10,
+                  hoverRadius: 4,
+                },
+              },
+            }}
+          />
+        }
+      />
+    </CCol>
+  </CRow>
+</Playground>
+
+## CWidgetB
+
+<Playground>
+  <CRow>
+    <CCol xs={6}>
+      <CWidgetB
+        className="mb-3"
+        progress={{ color: 'success', value: 75 }}
+        text="Widget helper text"
+        title="Widget title"
+        value="89.9%"/>
+    </CCol>
+    <CCol xs={6}>
+      <CWidgetB
+        className="mb-3"
+        color="primary"
+        inverse
+        progress={{ value: 75 }}
+        text="Widget helper text"
+        title="Widget title"
+        value="89.9%"/>
+    </CCol>
+  </CRow>
+</Playground>
+
+## CWidgetC
+
+<Playground>
+  <CRow>
+    <CCol xs={6}>
+      <CWidgetC
+        className="mb-3"
+        icon={<CIcon icon={cilChartPie} height={36} />}
+        progress={{ color: 'success', value: 75 }}
+        text="Widget helper text"
+        title="Widget title"
+        value="89.9%"/>
+    </CCol>
+    <CCol xs={6}>
+      <CWidgetC
+        className="mb-3"
+        icon={<CIcon icon={cilChartPie} height={36} />}
+        color="primary"
+        inverse
+        progress={{ value: 75 }}
+        text="Widget helper text"
+        title="Widget title"
+        value="89.9%"/>
+    </CCol>
+  </CRow>
+</Playground>
+
+## API
+
+### CWidgetA
+
+<Props of={CWidgetA} />
