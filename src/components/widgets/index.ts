@@ -1,21 +1,8 @@
 import { CWidgetA } from './CWidgetA'
 import { CWidgetB } from './CWidgetB'
 import { CWidgetC } from './CWidgetC'
-import { CWidgetBrand } from './CWidgetBrand'
-import { CWidgetDropdown } from './CWidgetDropdown'
-import { CWidgetIcon } from './CWidgetIcon'
-import { CWidgetProgress } from './CWidgetProgress'
-import { CWidgetProgressIcon } from './CWidgetProgressIcon'
-import { CWidgetSimple } from './CWidgetSimple'
+import { CWidgetD } from './CWidgetD'
+import { CWidgetE } from './CWidgetE'
+import { CWidgetF } from './CWidgetF'
 
-export {
-  CWidgetA,
-  CWidgetB,
-  CWidgetC,
-  CWidgetBrand,
-  CWidgetDropdown,
-  CWidgetIcon,
-  CWidgetProgress,
-  CWidgetProgressIcon,
-  CWidgetSimple,
-}
+export { CWidgetA, CWidgetB, CWidgetC, CWidgetD, CWidgetE, CWidgetF }

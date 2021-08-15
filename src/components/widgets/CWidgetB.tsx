@@ -18,6 +18,9 @@ export interface CWidgetBProps extends Omit<HTMLAttributes<HTMLDivElement>, 'tit
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
   color?: Colors
+  /**
+   * Colors have been inverted from their default dark shade. [docs]
+   */
   inverse?: boolean
   /**
    * Sets the color context of the progress bar to one of CoreUI’s themed colors. [docs]
@@ -29,6 +32,9 @@ export interface CWidgetBProps extends Omit<HTMLAttributes<HTMLDivElement>, 'tit
    * Title node for your component. [docs]
    */
   title?: string | ReactNode
+  /**
+   * Helper text for your component. [docs]
+   */
   text?: string
   /**
    * Value node for your component. [docs]

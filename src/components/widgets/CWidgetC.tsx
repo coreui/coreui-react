@@ -18,7 +18,13 @@ export interface CWidgetCProps extends Omit<HTMLAttributes<HTMLDivElement>, 'tit
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
   color?: Colors
+  /**
+   * Icon node for your component. [docs]
+   */
   icon?: string | ReactNode
+  /**
+   * Colors have been inverted from their default dark shade. [docs]
+   */
   inverse?: boolean
   /**
    * Sets the color context of the progress bar to one of CoreUI’s themed colors. [docs]
