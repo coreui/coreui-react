@@ -7,6 +7,7 @@ route: /components/sidebar
 
 import { Playground, Props } from 'docz'
 import CIcon from '@coreui/icons-react'
+import { cilSpeedometer } from '@coreui/icons'
 
 import { 
   CBadge,
@@ -41,11 +42,11 @@ Sidebar come with built-in support for a handful of sub-components. Choose from 
     <CSidebarNav>
       <CNavTitle>Nav Title</CNavTitle>
       <CNavItem href="#">
-        <CIcon customClassName="nav-icon" name="cil-speedometer"/>
+        <CIcon customClassName="nav-icon" name={cilSpeedometer}/>
         Nav item
       </CNavItem>
       <CNavItem href="#">
-          <CIcon customClassName="nav-icon" name="cil-speedometer"/>
+          <CIcon customClassName="nav-icon" name={cilSpeedometer}/>
           With badge
           <CBadge color="primary ms-auto">NEW</CBadge>
       </CNavItem>

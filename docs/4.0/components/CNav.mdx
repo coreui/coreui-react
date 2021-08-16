@@ -28,7 +28,7 @@ import {
 
 Navigation available in CoreUI for React share general markup and styles, from the base `.nav` class to the active and disabled states. Swap modifier classes to switch between each style.
 
-The base `.nav` component is built with flexbox and provide a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling.
+The base `<CNav>` component is built with flexbox and provide a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling.
 
 <Playground>
   <CNav>
@@ -68,7 +68,7 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
 
 ## Available styles
 
-Change the style of `.nav`s component with modifiers and utilities. Mix and match as needed, or build your own.
+Change the style of `<CNav>`'s component with modifiers and utilities. Mix and match as needed, or build your own.
 
 ### Horizontal alignment
 
@@ -197,7 +197,7 @@ Take that same HTML, but use `variant="pills"` instead:
 
 ### Fill and justify
 
-Force your `.nav`'s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your `.nav-item`s, use `layout="fill"`. Notice that all horizontal space is occupied, but not every nav item has the same width.
+Force your `<CNav>`'s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your `.nav-item`s, use `layout="fill"`. Notice that all horizontal space is occupied, but not every nav item has the same width.
 
 <Playground>
   <CNav variant="pills" layout="fill">

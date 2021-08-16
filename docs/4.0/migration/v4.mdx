@@ -7,17 +7,17 @@ route: "/migration/v4"
 
 CoreUI for React is the React.js version of CoreUI components library, so before read this migration guide, please check also [CoreUI 3 to 4 migration guide](https://coreui.io/docs/4.0/migration/).
 
-### Components
+## Components
 
 - Deprecated component `CEmbed`
 - Deprecated component `CJumbotron`
 
-#### Badges
+### Badges
 
-- variant="pill" => shape="rounded-pill"
-- variant="square" => shape="rounded-0"
+- `variant="pill"` => `shape="rounded-pill"`
+- `variant="square"` => `shape="rounded-0"`
 
-#### Forms
+### Forms
 
 - `CInput` => `CFormInput`
 - `CInputCheckbox` => `CFormCheck`
@@ -27,36 +27,47 @@ CoreUI for React is the React.js version of CoreUI components library, so before
 - `CInvalidFeedback` => `CFormFeedback invalid`
 
 - Deprecated component `CFormGroup`
-- Deprecated component `CInputGroupAppend`
-- Deprecated component `CInputGroupPrepend`
-- Depreacted component `CSwitch`, use `CFormCheck switch` instead of.
+- Deprecated component `CInputGroupAppend`, use `CInputGroupText` instead of.
+- Deprecated component `CInputGroupPrepend` use `CInputGroupText` instead of.
+- Depreacted component `CSwitch`, use `CFormSwitch` instead of.
 - Deprecated `.help-block`
 
-#### Header
+### Header
 
 - Deprecated property `withSubheader`
 - Deprecated component `CHeaderNavItem`, use `CNavItem` instead of.
 - Deprecated component `CHeaderNavLink`, use `CNavLink` instead of.
 
-#### List Group
+### List Group
 
 - Depracated prop `action` Use property `component="a"` or `component="button"` instead of `action`.
 
-#### Modal
+### Modal
 
 - Depracated prop `show` Use `visible` instead of.
 
-#### Popover
+### Popover
 
 - Depracated prop `header` Use `title` instead of.
 
-#### Progress Bar
+### Progress Bar
 
 - Depracated prop `precision`
 - Depracated prop `showLabel`
 - Depracated prop `showPercentage`
 - Depracated prop `showValue`
 
-#### Tabs
+### Sidebar
+- Deprecated property `minimize` use `narrow` instead of.
+- Deprecated property `dropdownMode`.
+
+- Deprecated component `CSidebarForm`, use `CForm` instead of.
+- Deprecated component `CSidebarNavDivider`, use `CNavDivider` instead of.
+- Deprecated component `CSidebarNavDropdown`, use `CNavGroup` instead of.
+- Deprecated component `CSidebarNavLink`, use `CNavLink` instead of.
+- Deprecated component `CSidebarNavItem`, use `CNavItem` instead of.
+- Deprecated component `CSidebarNavTitile`, use `CNavTitle` instead of.
+
+### Tabs
 
 - Deprecated component `<CTabs>` use `<CNav variant="tabs">` without wrapper component `<CTabs>`
