@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { CCard } from '../card/CCard'
 import { CCardBody } from '../card/CCardBody'
 
-export interface CWidgetEProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface CWidgetStatsEProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
    * A string of all className you want applied to the base component. [docs]
    */
@@ -24,7 +24,7 @@ export interface CWidgetEProps extends Omit<HTMLAttributes<HTMLDivElement>, 'tit
   value?: string | number | ReactNode
 }
 
-export const CWidgetE = forwardRef<HTMLDivElement, CWidgetEProps>(
+export const CWidgetStatsE = forwardRef<HTMLDivElement, CWidgetStatsEProps>(
   ({ chart, className, title, value, ...rest }, ref) => {
     const _className = classNames(className)
 
@@ -42,7 +42,7 @@ export const CWidgetE = forwardRef<HTMLDivElement, CWidgetEProps>(
   },
 )
 
-CWidgetE.propTypes = {
+CWidgetStatsE.propTypes = {
   children: PropTypes.node,
   chart: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   className: PropTypes.string,
@@ -50,4 +50,4 @@ CWidgetE.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.number]),
 }
 
-CWidgetE.displayName = 'CWidgetE'
+CWidgetStatsE.displayName = 'CWidgetStatsE'

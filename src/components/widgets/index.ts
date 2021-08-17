@@ -1,8 +1,8 @@
-import { CWidgetA } from './CWidgetA'
-import { CWidgetB } from './CWidgetB'
-import { CWidgetC } from './CWidgetC'
-import { CWidgetD } from './CWidgetD'
-import { CWidgetE } from './CWidgetE'
-import { CWidgetF } from './CWidgetF'
+import { CWidgetStatsA } from './CWidgetStatsA'
+import { CWidgetStatsB } from './CWidgetStatsB'
+import { CWidgetStatsC } from './CWidgetStatsC'
+import { CWidgetStatsD } from './CWidgetStatsD'
+import { CWidgetStatsE } from './CWidgetStatsE'
+import { CWidgetStatsF } from './CWidgetStatsF'
 
-export { CWidgetA, CWidgetB, CWidgetC, CWidgetD, CWidgetE, CWidgetF }
+export { CWidgetStatsA, CWidgetStatsB, CWidgetStatsC, CWidgetStatsD, CWidgetStatsE, CWidgetStatsF }

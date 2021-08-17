@@ -7,7 +7,7 @@ import { CCard } from '../card/CCard'
 import { CCardBody } from '../card/CCardBody'
 import { CProgress, CProgressProps } from '../progress/CProgress'
 
-export interface CWidgetBProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface CWidgetStatsBProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
    * A string of all className you want applied to the base component. [docs]
    */
@@ -42,7 +42,7 @@ export interface CWidgetBProps extends Omit<HTMLAttributes<HTMLDivElement>, 'tit
   value?: string | number | ReactNode
 }
 
-export const CWidgetB = forwardRef<HTMLDivElement, CWidgetBProps>(
+export const CWidgetStatsB = forwardRef<HTMLDivElement, CWidgetStatsBProps>(
   ({ className, color, inverse, progress, text, title, value, ...rest }, ref) => {
     return (
       <CCard
@@ -67,7 +67,7 @@ export const CWidgetB = forwardRef<HTMLDivElement, CWidgetBProps>(
   },
 )
 
-CWidgetB.propTypes = {
+CWidgetStatsB.propTypes = {
   className: PropTypes.string,
   color: colorPropType,
   inverse: PropTypes.bool,
@@ -77,4 +77,4 @@ CWidgetB.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.number]),
 }
 
-CWidgetB.displayName = 'CWidgetCWidgetB'
+CWidgetStatsB.displayName = 'CWidgetCWidgetStatsB'

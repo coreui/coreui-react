@@ -19,12 +19,12 @@ import {
   CDropdownToggle,
   CLink,
   CRow,
-  CWidgetA,
-  CWidgetB,
-  CWidgetC,
-  CWidgetD,
-  CWidgetE,
-  CWidgetF,
+  CWidgetStatsA,
+  CWidgetStatsB,
+  CWidgetStatsC,
+  CWidgetStatsD,
+  CWidgetStatsE,
+  CWidgetStatsF,
 } from '../../../src/index.ts'
 
 
@@ -32,12 +32,12 @@ import {
 
 React Alert is prepared for any length of text, as well as an optional close button. For a styling, use one of the **required** contextual `color` props (e.g., `primary`). For inline dismissal, use the [dismissing prop](#dismissing).
 
-## CWidgetA
+## CWidgetStatsA
 
 <Playground>
   <CRow>
     <CCol sm={6}>
-      <CWidgetA
+      <CWidgetStatsA
         className="mb-4"
         color="primary"
         value={<>$9.000 <span className="fs-6 fw-normal">(40.9% <CIcon icon={cilArrowTop} />)</span></>}
@@ -117,7 +117,7 @@ React Alert is prepared for any length of text, as well as an optional close but
       />
     </CCol>
     <CCol sm={6}>
-      <CWidgetA
+      <CWidgetStatsA
         className="mb-4"
         color="info"
         value={<>$9.000 <span className="fs-6 fw-normal">(40.9% <CIcon icon={cilArrowTop} />)</span></>}
@@ -196,7 +196,7 @@ React Alert is prepared for any length of text, as well as an optional close but
       />
     </CCol>
     <CCol sm={6}>
-      <CWidgetA
+      <CWidgetStatsA
         className="mb-4"
         color="warning"
         value={<>$9.000 <span className="fs-6 fw-normal">(40.9% <CIcon icon={cilArrowTop} />)</span></>}
@@ -262,7 +262,7 @@ React Alert is prepared for any length of text, as well as an optional close but
       />
     </CCol>
     <CCol sm={6}>
-      <CWidgetA
+      <CWidgetStatsA
         className="mb-4"
         color="danger"
         value={<>$9.000 <span className="fs-6 fw-normal">(40.9% <CIcon icon={cilArrowTop} />)</span></>}
@@ -349,12 +349,12 @@ React Alert is prepared for any length of text, as well as an optional close but
   </CRow>
 </Playground>
 
-## CWidgetB
+## CWidgetStatsB
 
 <Playground>
   <CRow>
     <CCol xs={6}>
-      <CWidgetB
+      <CWidgetStatsB
         className="mb-3"
         progress={{ color: 'success', value: 75 }}
         text="Widget helper text"
@@ -362,7 +362,7 @@ React Alert is prepared for any length of text, as well as an optional close but
         value="89.9%"/>
     </CCol>
     <CCol xs={6}>
-      <CWidgetB
+      <CWidgetStatsB
         className="mb-3"
         color="primary"
         inverse
@@ -374,12 +374,12 @@ React Alert is prepared for any length of text, as well as an optional close but
   </CRow>
 </Playground>
 
-## CWidgetC
+## CWidgetStatsC
 
 <Playground>
   <CRow>
     <CCol xs={6}>
-      <CWidgetC
+      <CWidgetStatsC
         className="mb-3"
         icon={<CIcon icon={cilChartPie} height={36} />}
         progress={{ color: 'success', value: 75 }}
@@ -388,7 +388,7 @@ React Alert is prepared for any length of text, as well as an optional close but
         value="89.9%"/>
     </CCol>
     <CCol xs={6}>
-      <CWidgetC
+      <CWidgetStatsC
         className="mb-3"
         icon={<CIcon icon={cilChartPie} height={36} />}
         color="primary"
@@ -401,12 +401,12 @@ React Alert is prepared for any length of text, as well as an optional close but
   </CRow>
 </Playground>
 
-## CWidgetD
+## CWidgetStatsD
 
 <Playground>
   <CRow>
     <CCol xs={6}>
-      <CWidgetD
+      <CWidgetStatsD
         className="mb-3"
         icon={<CIcon className="my-4 text-white" icon={cibFacebook} height={52} />}
         chart={
@@ -461,7 +461,7 @@ React Alert is prepared for any length of text, as well as an optional close but
         ]}/>
     </CCol>
     <CCol xs={6}>
-      <CWidgetD
+      <CWidgetStatsD
         className="mb-3"
         icon={<CIcon className="my-4 text-white" icon={cibTwitter} height={52} />}
         chart={
@@ -518,12 +518,12 @@ React Alert is prepared for any length of text, as well as an optional close but
   </CRow>
 </Playground>
 
-## CWidgetE
+## CWidgetStatsE
 
 <Playground>
   <CRow>
     <CCol xs={6}>
-      <CWidgetE
+      <CWidgetStatsE
         className="mb-3"
         chart={
           <CChartBar
@@ -562,7 +562,7 @@ React Alert is prepared for any length of text, as well as an optional close but
         value="89.9%"/>
     </CCol>
     <CCol xs={6}>
-      <CWidgetE
+      <CWidgetStatsE
         className="mb-3"
         chart={
           <CChartLine
@@ -611,12 +611,12 @@ React Alert is prepared for any length of text, as well as an optional close but
   </CRow>
 </Playground>
 
-## CWidgetF
+## CWidgetStatsF
 
 <Playground>
   <CRow>
     <CCol xs={6}>
-      <CWidgetF
+      <CWidgetStatsF
         className="mb-3"
         color="primary"
         icon={<CIcon icon={cilChartPie} height={24} />}
@@ -624,7 +624,7 @@ React Alert is prepared for any length of text, as well as an optional close but
         value="89.9%"/>
     </CCol>
     <CCol xs={6}>
-      <CWidgetF
+      <CWidgetStatsF
         className="mb-3"
         color="warning"
         icon={<CIcon icon={cilChartPie} height={24} />}
@@ -634,7 +634,7 @@ React Alert is prepared for any length of text, as well as an optional close but
   </CRow>
   <CRow>
     <CCol xs={6}>
-      <CWidgetF
+      <CWidgetStatsF
         className="mb-3"
         color="primary"
         icon={<CIcon icon={cilChartPie} height={24} />}
@@ -643,7 +643,7 @@ React Alert is prepared for any length of text, as well as an optional close but
         value="89.9%"/>
     </CCol>
     <CCol xs={6}>
-      <CWidgetF
+      <CWidgetStatsF
         className="mb-3"
         color="warning"
         icon={<CIcon icon={cilChartPie} height={24} />}
@@ -654,7 +654,7 @@ React Alert is prepared for any length of text, as well as an optional close but
   </CRow>
     <CRow>
     <CCol xs={6}>
-      <CWidgetF
+      <CWidgetStatsF
         className="mb-3"
         color="primary"
         footer={
@@ -673,7 +673,7 @@ React Alert is prepared for any length of text, as well as an optional close but
         value="89.9%"/>
     </CCol>
     <CCol xs={6}>
-      <CWidgetF
+      <CWidgetStatsF
         className="mb-3"
         color="warning"
         footer={
@@ -696,26 +696,26 @@ React Alert is prepared for any length of text, as well as an optional close but
 
 ## API
 
-### CWidgetA
+### CWidgetStatsA
 
-<Props of={CWidgetA} />
+<Props of={CWidgetStatsA} />
 
-### CWidgetB
+### CWidgetStatsB
 
-<Props of={CWidgetB} />
+<Props of={CWidgetStatsB} />
 
-### CWidgetC
+### CWidgetStatsC
 
-<Props of={CWidgetC} />
+<Props of={CWidgetStatsC} />
 
-### CWidgetD
+### CWidgetStatsD
 
-<Props of={CWidgetD} />
+<Props of={CWidgetStatsD} />
 
-### CWidgetE
+### CWidgetStatsE
 
-<Props of={CWidgetE} />
+<Props of={CWidgetStatsE} />
 
-### CWidgetF
+### CWidgetStatsF
 
-<Props of={CWidgetF} />
+<Props of={CWidgetStatsF} />

@@ -1,4 +1,4 @@
-import React, { forwardRef, HTMLAttributes, ReactNode, useMemo } from 'react'
+import React, { forwardRef, HTMLAttributes, ReactNode } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -14,7 +14,7 @@ type Value = {
   value?: number | string | ReactNode
 }
 
-export interface CWidgetDProps extends HTMLAttributes<HTMLDivElement> {
+export interface CWidgetStatsDProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * A string of all className you want applied to the base component. [docs]
    */
@@ -39,7 +39,7 @@ export interface CWidgetDProps extends HTMLAttributes<HTMLDivElement> {
   values?: Value[]
 }
 
-export const CWidgetD = forwardRef<HTMLDivElement, CWidgetDProps>(
+export const CWidgetStatsD = forwardRef<HTMLDivElement, CWidgetStatsDProps>(
   ({ className, chart, color, icon, values, ...rest }, ref) => {
     const _className = classNames(className)
     const classNameHeader = classNames(
@@ -74,7 +74,7 @@ export const CWidgetD = forwardRef<HTMLDivElement, CWidgetDProps>(
   },
 )
 
-CWidgetD.propTypes = {
+CWidgetStatsD.propTypes = {
   chart: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   className: PropTypes.string,
   color: colorPropType,
@@ -82,4 +82,4 @@ CWidgetD.propTypes = {
   values: PropTypes.arrayOf(PropTypes.any),
 }
 
-CWidgetD.displayName = 'CWidgetD'
+CWidgetStatsD.displayName = 'CWidgetStatsD'

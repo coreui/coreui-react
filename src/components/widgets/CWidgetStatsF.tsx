@@ -8,7 +8,7 @@ import { CCard } from '../card/CCard'
 import { CCardBody } from '../card/CCardBody'
 import { CCardFooter } from '../card/CCardFooter'
 
-export interface CWidgetFProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface CWidgetStatsFProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
    * A string of all className you want applied to the base component. [docs]
    */
@@ -41,7 +41,7 @@ export interface CWidgetFProps extends Omit<HTMLAttributes<HTMLDivElement>, 'tit
   value?: string | number | ReactNode
 }
 
-export const CWidgetF = forwardRef<HTMLDivElement, CWidgetFProps>(
+export const CWidgetStatsF = forwardRef<HTMLDivElement, CWidgetStatsFProps>(
   ({ className, color, footer, icon, padding = 3, title, value, ...rest }, ref) => {
     const _className = classNames(className)
 
@@ -60,7 +60,7 @@ export const CWidgetF = forwardRef<HTMLDivElement, CWidgetFProps>(
   },
 )
 
-CWidgetF.propTypes = {
+CWidgetStatsF.propTypes = {
   className: PropTypes.string,
   color: colorPropType,
   footer: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -70,4 +70,4 @@ CWidgetF.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.number]),
 }
 
-CWidgetF.displayName = 'CWidgetF'
+CWidgetStatsF.displayName = 'CWidgetStatsF'

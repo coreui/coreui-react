@@ -7,7 +7,7 @@ import { Colors, colorPropType } from '../Types'
 import { CCard } from '../card/CCard'
 import { CCardBody } from '../card/CCardBody'
 
-export interface CWidgetAProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface CWidgetStatsAProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
    * Action node for your component. [docs]
    */
@@ -36,7 +36,7 @@ export interface CWidgetAProps extends Omit<HTMLAttributes<HTMLDivElement>, 'tit
   value?: string | number | ReactNode
 }
 
-export const CWidgetA = forwardRef<HTMLDivElement, CWidgetAProps>(
+export const CWidgetStatsA = forwardRef<HTMLDivElement, CWidgetStatsAProps>(
   ({ action, chart, className, color, title, value, ...rest }, ref) => {
     const _className = classNames(
       { [`bg-${color}`]: color, 'text-high-emphasis-inverse': color },
@@ -58,7 +58,7 @@ export const CWidgetA = forwardRef<HTMLDivElement, CWidgetAProps>(
   },
 )
 
-CWidgetA.propTypes = {
+CWidgetStatsA.propTypes = {
   action: PropTypes.node,
   chart: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   className: PropTypes.string,
@@ -67,4 +67,4 @@ CWidgetA.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.number]),
 }
 
-CWidgetA.displayName = 'CWidgetA'
+CWidgetStatsA.displayName = 'CWidgetStatsA'
