@@ -12,7 +12,6 @@ test('CFormInput customize', async () => {
   const { container } = render(
     <CFormInput
       className="bazinga"
-      component="h3"
       disabled={true}
       plainText={true}
       readOnly={true}
@@ -26,11 +25,6 @@ test('CFormInput customize', async () => {
   expect(container.firstChild).toHaveClass('form-control-plaintext')
   expect(container.firstChild).toHaveClass('form-control-color')
   expect(container.firstChild).toHaveClass('form-control-lg')
-})
-
-test('CFormInput customize classNameParent', async () => {
-  const { container } = render(<CFormInput className="bazinga" classNameParent="classNameParent" />)
-  expect(container).toMatchSnapshot()
 })
 
 test('CFormInput change input', async () => {

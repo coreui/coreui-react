@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CTableHeaderCell customize 1`] = `
+<div>
+  <th
+    class="table-info bazinga"
+  >
+    Test
+  </th>
+</div>
+`;
+
+exports[`loads and displays CTableHeaderCell component 1`] = `
+<div>
+  <th />
+</div>
+`;

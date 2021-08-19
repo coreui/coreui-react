@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CTableBody customize 1`] = `
+<div>
+  <tbody
+    class="table-info bazinga"
+  >
+    Test
+  </tbody>
+</div>
+`;
+
+exports[`loads and displays CTableBody component 1`] = `
+<div>
+  <tbody />
+</div>
+`;

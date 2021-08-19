@@ -11,40 +11,29 @@ test('loads and displays CFormCheck component', async () => {
 test('CFormCheck customize button=false', async () => {
   const { container } = render(
     <CFormCheck
-      button={false}
       className="bazinga"
       id="id"
       inline={true}
       label="label"
-      size="xl"
       type="radio"
-      switch={true}
-    />,
+    />
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')
   expect(container.firstChild).toHaveClass('form-check')
-  expect(container.firstChild).toHaveClass('form-switch')
-  expect(container.firstChild).toHaveClass('form-switch-xl')
   expect(container.firstChild).toHaveClass('form-check-inline')
 })
 
 test('CFormCheck customize button=true', async () => {
   const { container } = render(
     <CFormCheck
-      button={true}
+      button={{ color: 'primary', size: 'lg', shape: 'rounded', variant: 'ghost' }}
       className="bazinga"
-      buttonColor="primary"
-      buttonShape="rounded-circle"
-      buttonSize="lg"
-      buttonVariant="ghost"
       id="id"
       inline={true}
       label="label"
-      size="xl"
       type="radio"
-      switch={true}
-    />,
+    />
   )
   expect(container).toMatchSnapshot()
 })

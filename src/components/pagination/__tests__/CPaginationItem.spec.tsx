@@ -12,7 +12,6 @@ test('CPaginationItem customize', async () => {
   const { container } = render(
     <CPaginationItem
       className="bazinga"
-      ariaLabel="ariaLabel"
       active={true}
       component="h3"
       disabled={true}

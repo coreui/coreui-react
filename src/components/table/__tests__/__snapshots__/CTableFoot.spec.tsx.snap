@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CTableFoot customize 1`] = `
+<div>
+  <tfoot
+    class="table-info bazinga"
+  >
+    Test
+  </tfoot>
+</div>
+`;
+
+exports[`loads and displays CTableFoot component 1`] = `
+<div>
+  <tfoot />
+</div>
+`;

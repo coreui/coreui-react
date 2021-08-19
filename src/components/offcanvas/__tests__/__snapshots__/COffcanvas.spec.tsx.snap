@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COffcanvas customize and event on click backdrop 1`] = `
+<div>
+  <div
+    class="offcanvas offcanvas-end show bazinga"
+    style="visibility: visible;"
+    tabindex="-1"
+  >
+    Test
+  </div>
+  <div
+    class="modal-backdrop fade show"
+  />
+</div>
+`;
+
+exports[`COffcanvas customize and event on keypress 1`] = `
+<div>
+  <div
+    class="offcanvas offcanvas-end show bazinga"
+    style="visibility: visible;"
+    tabindex="-1"
+  >
+    Test
+  </div>
+  <div
+    class="modal-backdrop fade show"
+  />
+</div>
+`;
+
+exports[`COffcanvas customize one 1`] = `
+<div>
+  <div
+    class="offcanvas offcanvas-start bazinga"
+    style="visibility: hidden;"
+    tabindex="-1"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`loads and displays COffcanvas component 1`] = `<div />`;

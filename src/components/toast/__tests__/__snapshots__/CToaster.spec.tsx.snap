@@ -1,6 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CToaster customize 1`] = `<div />`;
+exports[`CToaster customize 1`] = `
+<div>
+  <button
+    class="btn btn-primary"
+    type="button"
+  >
+    Send a toast
+  </button>
+</div>
+`;
 
 exports[`loads and displays CToaster component 1`] = `
 <div>

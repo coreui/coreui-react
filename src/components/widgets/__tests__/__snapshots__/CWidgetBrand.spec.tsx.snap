@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CWidgetBrand customize 1`] = `
+<div>
+  <div
+    class="card bazinga"
+  >
+    <div
+      class="card-header position-relative d-flex justify-content-center align-items-center bg-info"
+    />
+    <div
+      class="card-body row text-center"
+    >
+      <div
+        class="col"
+      >
+        <div
+          class="fs-5 fw-semibold"
+        >
+          aaa
+        </div>
+        <div
+          class="text-uppercase text-medium-emphasis small"
+        >
+          bbb
+        </div>
+      </div>
+      <div
+        class="vr"
+      />
+      <div
+        class="col"
+      >
+        <div
+          class="fs-5 fw-semibold"
+        >
+          ccc
+        </div>
+        <div
+          class="text-uppercase text-medium-emphasis small"
+        >
+          ddd
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`loads and displays CWidgetBrand component 1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <div
+      class="card-header position-relative d-flex justify-content-center align-items-center"
+    />
+    <div
+      class="card-body row text-center"
+    />
+  </div>
+</div>
+`;

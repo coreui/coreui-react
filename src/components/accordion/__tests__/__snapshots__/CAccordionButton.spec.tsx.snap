@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CAccordionButton customize 1`] = `
+<div>
+  <button
+    aria-expanded="false"
+    class="accordion-button collapsed bazinga"
+  >
+    Test
+  </button>
+</div>
+`;
+
+exports[`loads and displays CAccordionButton component 1`] = `
+<div>
+  <button
+    aria-expanded="true"
+    class="accordion-button"
+  >
+    Test
+  </button>
+</div>
+`;

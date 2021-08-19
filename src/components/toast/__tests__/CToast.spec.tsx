@@ -34,7 +34,7 @@ test('CToast click on dismiss button', async () => {
   jest.useFakeTimers()
   const onDismiss = jest.fn()
   const { container } = render(
-    <CToast className="bazinga" autohide={false} color="warning" delay={100} key={1} visible={true}>
+    <CToast className="bazinga" autohide={false} color="warning" delay={100} key={1} visible={true} onDismiss={onDismiss}>
       <CToastHeader close>
         <svg
           className="rounded me-2"

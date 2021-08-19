@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CWidgetSimple customize 1`] = `
+<div>
+  <div
+    class="card bazinga"
+  >
+    <div
+      class="card-body text-center"
+    >
+      <div
+        class="text-medium-emphasis small text-uppercase fw-semibold"
+      >
+        title
+      </div>
+      <div
+        class="fs-6 fw-semibold py-3"
+      >
+        value
+      </div>
+      Test
+    </div>
+  </div>
+</div>
+`;
+
+exports[`loads and displays CWidgetSimple component 1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <div
+      class="card-body text-center"
+    />
+  </div>
+</div>
+`;

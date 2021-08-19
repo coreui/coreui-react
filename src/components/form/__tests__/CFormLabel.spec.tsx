@@ -13,13 +13,5 @@ test('CFormLabel customize className', async () => {
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')
   expect(container.firstChild).toHaveClass('form-label')
-})
-
-test('CFormLabel customize className and classNameParent', async () => {
-  const { container } = render(
-    <CFormLabel className="bazinga" classNameParent="classNameParent">
-      Test
-    </CFormLabel>,
-  )
-  expect(container).toMatchSnapshot()
+  expect(container.firstChild).toHaveTextContent('Test')
 })

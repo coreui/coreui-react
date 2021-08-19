@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`loads and displays CAccordionCollapse component 1`] = `
+<div>
+  <div
+    class="accordion-collapse collapse"
+  >
+    Test
+  </div>
+</div>
+`;
