@@ -1,0 +1,96 @@
+---
+title: React Popover Component
+name: Popover
+description: Documentation and examples for adding React popovers, like those found in iOS, to any element on your site.
+
+menu: Components
+route: /components/popover
+---
+
+import { CPopover, CButton } from './../../../../src/index.ts'
+
+## Example
+
+<Example>
+  <CPopover
+    title="Popover title"
+    content="And here’s some amazing content. It’s very engaging. Right?"
+    placement="right"
+  >
+    <CButton color="danger" size="lg">Click to toggle popover</CButton>
+  </CPopover>
+</Example>
+
+```jsx
+  <CPopover
+    title="Popover title"
+    content="And here’s some amazing content. It’s very engaging. Right?"
+    placement="right"
+  >
+    <CButton color="danger" size="lg">Click to toggle popover</CButton>
+  </CPopover>
+```
+
+### Four directions
+
+Four options are available: top, right, bottom, and left aligned. Directions are mirrored when using CoreUI for React in RTL.
+
+<Example>
+  <CPopover
+    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+    placement="top"
+  >
+    <CButton color="secondary">Popover on top</CButton>
+  </CPopover>
+  <CPopover
+    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+    placement="right"
+  >
+    <CButton color="secondary">Popover on right</CButton>
+  </CPopover>
+  <CPopover
+    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+    placement="bottom"
+  >
+    <CButton color="secondary">Popover on bottom</CButton>
+  </CPopover>
+  <CPopover
+    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+    placement="left"
+  >
+    <CButton color="secondary">Popover on left</CButton>
+  </CPopover>
+</Example>
+
+```jsx
+  <CPopover
+    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+    placement="top"
+  >
+    <CButton color="secondary">Popover on top</CButton>
+  </CPopover>
+  <CPopover
+    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+    placement="right"
+  >
+    <CButton color="secondary">Popover on right</CButton>
+  </CPopover>
+  <CPopover
+    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+    placement="bottom"
+  >
+    <CButton color="secondary">Popover on bottom</CButton>
+  </CPopover>
+  <CPopover
+    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+    placement="left"
+  >
+    <CButton color="secondary">Popover on left</CButton>
+  </CPopover>
+```
+
+## API
+
+### CPopover
+
+`markdown:CPopover.api.mdx`

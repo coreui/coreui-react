@@ -1,0 +1,118 @@
+---
+name: Sidebar
+description:
+menu: Components
+route: /components/sidebar
+---
+
+import CIcon from '@coreui/icons-react'
+import { cilSpeedometer } from '@coreui/icons'
+
+import { 
+  CBadge,
+  CSidebar, 
+  CSidebarBrand, 
+  CSidebarFooter, 
+  CSidebarHeader, 
+  CSidebarNav, 
+  CSidebarToggler, 
+  CNavGroup, 
+  CNavGroupItems, 
+  CNavItem, 
+  CNavLink, 
+  CNavTitle 
+} from './../../../../src/index.ts'
+
+## Supported content
+
+Sidebar come with built-in support for a handful of sub-components. Choose from the following as needed:
+
+- `<CSidebarHeader>` for optional header.
+- `<CSidebarBrand>` for your company, product, or project name.
+- `<CSidebarNav>` for a full-height and lightweight navigation (including support for dropdowns).
+- `<CSidebarFooter>` for optional footer.
+- `<CSidebarToggler>` for use with our minimizer plugin.
+
+## Examples
+
+<Example>
+  <CSidebar>
+    <CSidebarBrand>Sidebar Brand</CSidebarBrand>
+    <CSidebarNav>
+      <CNavTitle>Nav Title</CNavTitle>
+      <CNavItem href="#">
+        <CIcon customClassName="nav-icon" name={cilSpeedometer}/>
+        Nav item
+      </CNavItem>
+      <CNavItem href="#">
+          <CIcon customClassName="nav-icon" name={cilSpeedometer}/>
+          With badge
+          <CBadge color="primary ms-auto">NEW</CBadge>
+      </CNavItem>
+      <CNavGroup toggler="Nav dropdown">
+        <CNavItem href="#">
+          <CIcon customClassName="nav-icon" name="cil-puzzle"/> Nav dropdown item
+        </CNavItem>
+        <CNavItem href="#">
+          <CIcon customClassName="nav-icon" name="cil-puzzle"/> Nav dropdown item
+        </CNavItem>
+      </CNavGroup>
+    </CSidebarNav>
+    <CSidebarToggler/>
+  </CSidebar>
+</Example>
+
+```jsx
+  <CSidebar>
+    <CSidebarBrand>Sidebar Brand</CSidebarBrand>
+    <CSidebarNav>
+      <CNavTitle>Nav Title</CNavTitle>
+      <CNavItem href="#">
+        <CIcon customClassName="nav-icon" name={cilSpeedometer}/>
+        Nav item
+      </CNavItem>
+      <CNavItem href="#">
+          <CIcon customClassName="nav-icon" name={cilSpeedometer}/>
+          With badge
+          <CBadge color="primary ms-auto">NEW</CBadge>
+      </CNavItem>
+      <CNavGroup toggler="Nav dropdown">
+        <CNavItem href="#">
+          <CIcon customClassName="nav-icon" name="cil-puzzle"/> Nav dropdown item
+        </CNavItem>
+        <CNavItem href="#">
+          <CIcon customClassName="nav-icon" name="cil-puzzle"/> Nav dropdown item
+        </CNavItem>
+      </CNavGroup>
+    </CSidebarNav>
+    <CSidebarToggler/>
+  </CSidebar>
+```
+
+
+## API
+
+### CSidebar
+
+`markdown:CSidebar.api.mdx`
+
+### CSidebarBrand
+
+`markdown:CSidebarBrand.api.mdx`
+
+### CSidebarFooter
+
+`markdown:CSidebarFooter.api.mdx`
+
+### CSidebarHeader
+
+`markdown:CSidebarHeader.api.mdx`
+
+### CSidebarNav
+
+`markdown:CSidebarNav.api.mdx`
+
+### CSidebarToggler
+
+`markdown:CSidebarToggler.api.mdx`
+
