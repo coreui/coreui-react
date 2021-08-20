@@ -46,6 +46,10 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
    */
   selfHiding?: Breakpoints | boolean
   /**
+   * Size the component small, large, or extra large. [docs]
+   */
+  size?: 'sm' | 'lg' | 'xl'
+  /**
    * Expand narrowed sidebar on hover. [docs]
    */
   unfoldable?: boolean
@@ -66,6 +70,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
       overlaid,
       position,
       selfHiding,
+      size,
       unfoldable,
       visible,
       ...rest
@@ -150,6 +155,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
         'sidebar-overlaid': overlaid,
         [`sidebar-${position}`]: position,
         [`sidebar-self-hiding${typeof selfHiding !== 'boolean' && '-' + selfHiding}`]: selfHiding,
+        [`sidebar-${size}`]: size,
         'sidebar-narrow-unfoldable': unfoldable,
         show: _visible === true,
         hide: _visible === false,
@@ -185,6 +191,7 @@ CSidebar.propTypes = {
     PropTypes.bool,
     PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl'>(['sm', 'md', 'lg', 'xl', 'xxl']),
   ]),
+  size: PropTypes.oneOf(['sm', 'lg', 'xl']),
   unfoldable: PropTypes.bool,
   visible: PropTypes.bool,
 }

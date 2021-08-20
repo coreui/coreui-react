@@ -19,6 +19,10 @@ export interface CNavGroupProps {
    */
   className?: string
   /**
+   * Make nav group more compact by cutting all `padding` in half. [docs]
+   */
+  compact?: boolean
+  /**
    * Set group toggler label. [docs]
    */
   toggler?: string | ReactNode
@@ -33,7 +37,7 @@ export interface CNavGroupProps {
 }
 
 export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
-  ({ children, className, idx, toggler, visible, ...rest }, ref) => {
+  ({ children, className, compact, idx, toggler, visible, ...rest }, ref) => {
     const [height, setHeight] = useState<number | string>()
     const navItemsRef = useRef<HTMLUListElement>(null)
 
@@ -111,7 +115,9 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
         >
           {(state) => (
             <ul
-              className="nav-group-items"
+              className={classNames('nav-group-items', {
+                compact: compact,
+              })}
               style={{ ...style, ...transitionStyles[state] }}
               ref={navItemsRef}
             >
@@ -132,6 +138,7 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
 CNavGroup.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  compact: PropTypes.bool,
   idx: PropTypes.string,
   toggler: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   visible: PropTypes.bool,

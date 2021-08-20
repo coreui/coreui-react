@@ -49,8 +49,8 @@ export interface CButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    */
   size?: 'sm' | 'lg'
   /**
-   * Specifies the type of button. Always specify the type attribute for the <button> element.
-   * Different browsers may use different default types for the <button> element. [docs]
+   * Specifies the type of button. Always specify the type attribute for the `<button>` element.
+   * Different browsers may use different default types for the `<button>` element. [docs]
    *
    * @type 'button' | 'submit' | 'reset'
    */
