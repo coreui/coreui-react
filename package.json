@@ -17,8 +17,10 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "docs:dev": "gatsby dev",
-    "docs:build": "docz build",
+    "docs:api": "rimraf \"content/docs/$npm_package_config_version_short/api/*\" & node build/api.js",
+    "docs:build": "run-s docs:api gatsby build",
+    "docs:dev": "gatsby develop",
+    "docs:serve": "gatsby serve",
     "lint": "eslint \"src/components/**/*.{js,ts,tsx}\"",
     "test": "jest --coverage",
     "test:update": "jest --coverage --updateSnapshot"
@@ -69,6 +71,7 @@
     "glob": "^7.1.7",
     "globby": "^11.0.4",
     "jest": "^27.0.6",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.3.2",
     "prism-react-renderer": "^1.2.1",
     "prismjs": "^1.24.1",
@@ -78,6 +81,7 @@
     "react-helmet": "^6.1.0",
     "react-popper": "^2.2.5",
     "react-transition-group": "^4.4.2",
+    "rimraf": "^3.0.2",
     "rollup": "^2.56.22.56.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "sass": "^1.38.0",
