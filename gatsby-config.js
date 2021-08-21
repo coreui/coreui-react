@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const pkg = require('./package.json')
+
 module.exports = {
   siteMetadata: {
     title: `CoreUI for React.js`,
     titleTemplate: '%s · React UI Components · CoreUI ',
     description: `CoreUI for React.js is UI Component library written in TypeScript, and ready for your next React.js project.`,
-    url: `https://coreui.io/react/docs/`,
+    url: `https://coreui.io/react/docs/${pkg.config.version_short}/`,
     image: '', // Path to your image you placed in the 'static' folder
     twitterUsername: '@coreui_io',
   },
@@ -16,14 +19,18 @@ module.exports = {
         },
         gatsbyRemarkPlugins: [
           {
-            // resolve: `gatsby-remark-embed-markdown`,
             resolve: require.resolve('./src/docs/plugins/gatsby-remark-embed-markdown'),
             options: {
-              directory: `${__dirname}/api/`,
+              directory: `${__dirname}/docs/${pkg.config.version_short}/api/`,
             },
           },
           {
             resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              className: `anchor-link`,
+              icon: `<span>#</span>`,
+              isIconAfterHeader: true,
+            },
           },
         ],
       },
@@ -32,7 +39,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `docs`,
-        path: `${__dirname}/content/docs/`,
+        path: `${__dirname}/docs/`,
       },
     },
     'gatsby-plugin-sass',
@@ -52,11 +59,5 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: `gatsby-transformer-remark`,
-    //   options: {
-    //     plugins: [`gatsby-remark-autolink-headers`],
-    //   },
-    // },
   ],
 }
