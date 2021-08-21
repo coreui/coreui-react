@@ -11,7 +11,7 @@ export interface CProgressProps
    */
   className?: string
   /**
-   * Sets the height of the component. If you set that value the inner <CProgressBar> will automatically resize accordingly. [docs]
+   * Sets the height of the component. If you set that value the inner `<CProgressBar>` will automatically resize accordingly. [docs]
    */
   height?: number
   /**

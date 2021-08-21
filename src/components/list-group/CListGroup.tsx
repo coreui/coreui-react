@@ -14,7 +14,7 @@ export interface CListGroupProps extends HTMLAttributes<HTMLDivElement | HTMLULi
    */
   component?: string | ElementType
   /**
-   * Remove some borders and rounded corners to render list group items edge-to-edge in a parent component (e.g., <CCard>) [docs]
+   * Remove some borders and rounded corners to render list group items edge-to-edge in a parent component (e.g., `<CCard>`). [docs]
    */
   flush?: boolean
   /**

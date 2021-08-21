@@ -24,7 +24,7 @@ export interface CTableProps extends HTMLAttributes<HTMLTableElement> {
    */
   borderless?: boolean
   /**
-   * Put the <caption> on the top of the table. [docs]
+   * Put the `<caption>` on the top of the table. [docs]
    */
   caption?: 'top'
   /**
