@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
@@ -8,10 +8,9 @@ import { CodeBlock, Example, Footer, Header, Seo, Sidebar, Toc } from './../comp
 import { CCol, CContainer, CRow } from '../../index'
 import './../styles/styles.scss'
 
+export const myContext = React.createContext()
+
 const components = {
-  // pre: (props) => <div {...props} />,
-  // inlineCode: (props) => <span {...props} />,
-  // code: (props) => <CodeBlock {...props} />,
   pre: (props) => <CodeBlock {...props} />,
   // eslint-disable-next-line react/display-name
   table: (props) => <table {...props} className="table table-striped" />,
@@ -19,34 +18,42 @@ const components = {
 }
 
 const DocsLayout: FC = ({ data: { mdx } }) => {
+  const [sidebarVisible, setSidebarVisible] = useState()
   return (
     <>
       <Seo title={mdx.frontmatter.title} description={mdx.frontmatter.description} />
       <Helmet>
         <script src="https://media.ethicalads.io/media/client/ethicalads.min.js" />
       </Helmet>
-      <Sidebar />
-      <div className="wrapper d-flex flex-column min-vh-100">
-        <Header />
-        <div className="body flex-grow-1 px-3">
-          <CContainer lg>
-            <CRow>
-              <CCol lg={9}>
-                <h1>{mdx.frontmatter.title}</h1>
-                <p className="docs-lead fs-4 fw-light">{mdx.frontmatter.description}</p>
-                <div data-ea-publisher="coreui-io" data-ea-type="image"></div>
-                <MDXProvider components={components}>
-                  <MDXRenderer frontmatter={mdx.frontmatter}>{mdx.body}</MDXRenderer>
-                </MDXProvider>
-              </CCol>
-              <CCol lg={3}>
-                <Toc items={mdx.tableOfContents} />
-              </CCol>
-            </CRow>
-          </CContainer>
+      <myContext.Provider
+        value={{
+          sidebarVisible,
+          toggleSidebar: () => setSidebarVisible(!sidebarVisible),
+        }}
+      >
+        <Sidebar />
+        <div className="wrapper d-flex flex-column min-vh-100">
+          <Header />
+          <div className="body flex-grow-1 px-3">
+            <CContainer lg>
+              <CRow>
+                <CCol lg={9}>
+                  <h1>{mdx.frontmatter.title}</h1>
+                  <p className="docs-lead fs-4 fw-light">{mdx.frontmatter.description}</p>
+                  <div data-ea-publisher="coreui-io" data-ea-type="image"></div>
+                  <MDXProvider components={components}>
+                    <MDXRenderer frontmatter={mdx.frontmatter}>{mdx.body}</MDXRenderer>
+                  </MDXProvider>
+                </CCol>
+                <CCol lg={3}>
+                  <Toc items={mdx.tableOfContents} />
+                </CCol>
+              </CRow>
+            </CContainer>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      </myContext.Provider>
     </>
   )
 }

@@ -212,7 +212,7 @@ const nav = [
       },
       {
         name: 'Widgets',
-        to: `/${version}/components/Widgets`,
+        to: `/${version}/components/widgets`,
       },
     ],
   },

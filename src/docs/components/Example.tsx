@@ -9,7 +9,12 @@ interface ExampleProps {
 
 const Example: FC<ExampleProps> = ({ children, className, ...rest }) => {
   return (
-    <div className={`docs-example border p-3 ${className}`} {...rest}>
+    <div
+      className={`docs-example border ${className} ${
+        className && className.includes('p-') ? '' : 'p-3'
+      }`}
+      {...rest}
+    >
       {children}
     </div>
   )

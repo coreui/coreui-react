@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 
 import { CContainer, CFooter } from '../../index'
+import pkg from './../../../package.json'
 
 const Footer: FC = ({ ...props }) => {
   return (
@@ -27,7 +28,7 @@ const Footer: FC = ({ ...props }) => {
           .
         </p>
         <p className="mb-0">
-          Currently v4.0.0. Code licensed{' '}
+          Currently v{pkg.version}. Code licensed{' '}
           <a
             href="https://github.com/coreui/coreui/blob/main/LICENSE"
             target="_blank"

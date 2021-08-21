@@ -1,0 +1,23 @@
+
+.anchor-link {
+  font-weight: 400;
+  color: rgba($link-color, .5);
+  padding-left: 0.375em;
+  text-decoration: none;
+  opacity: 0;
+  @include transition(color .15s ease-in-out);
+
+  &:focus,
+  &:hover {
+    color: $link-color;
+    text-decoration: none;
+  }
+}
+
+h2, h3, h4, h5, h6 {
+  &:hover {
+    .anchor-link {
+      opacity: 1;
+    }
+  }
+}
