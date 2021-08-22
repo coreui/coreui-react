@@ -18,7 +18,8 @@
   "scripts": {
     "build": "rollup -c",
     "docs:api": "rimraf \"content/docs/$npm_package_config_version_short/api/*\" & node build/api.js",
-    "docs:build": "run-s docs:api gatsby build",
+    "docs:build": "gatsby build --prefix-paths",
+    "docs:dist": "run-s docs:api docs:build",
     "docs:dev": "gatsby develop",
     "docs:serve": "gatsby serve",
     "lint": "eslint \"src/components/**/*.{js,ts,tsx}\"",
@@ -61,6 +62,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "gatsby": "^3.12.0",
     "gatsby-plugin-google-gtag": "3",
+    "gatsby-plugin-manifest": "^3.12.0",
     "gatsby-plugin-mdx": "^2.12.0",
     "gatsby-plugin-sass": "4",
     "gatsby-plugin-sitemap": "4",

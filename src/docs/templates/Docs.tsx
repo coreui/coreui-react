@@ -31,7 +31,7 @@ const DocsLayout: FC = ({ data: { mdx } }) => {
           toggleSidebar: () => setSidebarVisible(!sidebarVisible),
         }}
       >
-        <Sidebar />
+        <Sidebar currentRoute={mdx.frontmatter.route}/>
         <div className="wrapper d-flex flex-column min-vh-100">
           <Header />
           <div className="body flex-grow-1 px-3">
@@ -80,6 +80,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         description
+        route
       }
       tableOfContents(maxDepth: 3)
     }

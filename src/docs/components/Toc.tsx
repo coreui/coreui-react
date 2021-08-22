@@ -5,21 +5,24 @@ const Toc: FC = (props) => {
   const { items } = props
 
   const toc = (items) => {
-    return items.map((item, index) => {
-      if (Array.isArray(item.items)) {
+    return (
+      items &&
+      items.map((item, index) => {
+        if (Array.isArray(item.items)) {
+          return (
+            <li key={index}>
+              <a href={item.url}>{item.title}</a>
+              <ul>{toc(item.items)}</ul>
+            </li>
+          )
+        }
         return (
           <li key={index}>
             <a href={item.url}>{item.title}</a>
-            <ul>{toc(item.items)}</ul>
           </li>
         )
-      }
-      return (
-        <li key={index}>
-          <a href={item.url}>{item.title}</a>
-        </li>
-      )
-    })
+      })
+    )
   }
 
   return (

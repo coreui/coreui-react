@@ -29,7 +29,7 @@ const Header: FC = ({ ...props }) => {
           <CButton
             className="d-lg-inline-block my-2 my-md-0 ms-md-3"
             color="primary"
-            href="#"
+            href="https://coreui.io/react/#compare"
             variant="outline"
           >
             <CIcon icon={cilCloudDownload} /> Download

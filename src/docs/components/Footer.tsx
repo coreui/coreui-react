@@ -17,16 +17,17 @@ const Footer: FC = ({ ...props }) => {
           <li className="d-inline-block ms-3">
             <a href="https://community.coreui.io/">Community</a>
           </li>
+          <li className="d-inline-block ms-3 ps-3 border-start border-2">
+            <a href="https://coreui.io/">CoreUI (Vanilla)</a>
+          </li>
+          <li className="d-inline-block ms-3">
+            <a href="https://coreui.io/angular/">CoreUI for Angular</a>
+          </li>
+          <li className="d-inline-block ms-3">
+            <a href="https://coreui.io/vue/">CoreUI for Vue.js</a>
+          </li>
         </ul>
-        <p className="mb-0">
-          CoreUI is designed as the extension of <a href="https://getbootstrap.com">Bootstrap</a>.
-          Special thanks for{' '}
-          <a href="https://getbootstrap.com/docs/5.0/about/team/">Bootstrap team</a> and{' '}
-          <a href="https://github.com/twbs/bootstrap/graphs/contributors">
-            Bootstrap&#39;s contributors
-          </a>
-          .
-        </p>
+        <p className="mb-0">CoreUI for React is Open Source UI Components Library for React.</p>
         <p className="mb-0">
           Currently v{pkg.version}. Code licensed{' '}
           <a

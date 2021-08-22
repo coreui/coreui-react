@@ -11,7 +11,6 @@ export type Badge = {
 }
 
 export type NavItem = {
-  component: string | ElementType
   name: string | JSX.Element
   icon?: string | JSX.Element
   badge?: Badge
@@ -21,9 +20,10 @@ export type NavItem = {
 
 interface SidebarNavProps {
   items: NavItem[]
+  currentRoute: string
 }
 
-export const SidebarNav = ({ items }: SidebarNavProps) => {
+export const SidebarNav = ({ items, currentRoute }: SidebarNavProps) => {
   const navLink = (name: string | JSX.Element, icon: string | ReactNode, badge?: Badge) => {
     return (
       <>
@@ -52,7 +52,7 @@ export const SidebarNav = ({ items }: SidebarNavProps) => {
       <CNavGroup
         compact
         toggler={navLink(name, icon)}
-        visible={location.pathname.startsWith(to)}
+        visible={to.startsWith(currentRoute)}
         idx={String(index)}
         key={index}
         {...rest}
@@ -76,4 +76,5 @@ export const SidebarNav = ({ items }: SidebarNavProps) => {
 
 SidebarNav.propTypes = {
   items: PropTypes.arrayOf(PropTypes.any).isRequired,
+  currentRoute: PropTypes.string.isRequired,
 }
