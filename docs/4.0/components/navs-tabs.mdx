@@ -577,282 +577,274 @@ Dynamic tabbed interfaces, as described in the [<abbr title="Web Accessibility I
 
 Note that dynamic tabbed interfaces should not contain dropdown menus, as this causes both usability and accessibility issues. From a usability perspective, the fact that the currently displayed tab's trigger element is not immediately visible (as it's inside the closed dropdown menu) can cause confusion. From an accessibility point of view, there is currently no sensible way to map this sort of construct to a standard WAI ARIA pattern, meaning that it cannot be easily made understandable to users of assistive technologies.
 
+export const TabPanesExample = () => {
+  const [activeKey, setActiveKey] = useState(1)
+  return (
+    <>
+      <CNav variant="tabs" role="tablist">
+        <CNavItem>
+          <CNavLink
+            href="javascript:void(0);"
+            active={activeKey === 1}
+            onClick={() => setActiveKey(1)}
+          >
+            Home
+          </CNavLink>
+        </CNavItem>
+        <CNavItem>
+          <CNavLink
+            href="javascript:void(0);"
+            active={activeKey === 2}
+            onClick={() => setActiveKey(2)}
+          >
+            Profile
+          </CNavLink>
+        </CNavItem>
+        <CNavItem>
+          <CNavLink
+            href="javascript:void(0);"
+            active={activeKey === 3}
+            onClick={() => setActiveKey(3)}
+          >
+            Contact
+          </CNavLink>
+        </CNavItem>
+      </CNav>
+      <CTabContent>
+        <CTabPane role="tabpanel" aria-labelledby="home-tab" visible={activeKey === 1}>
+          Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
+          aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
+          helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh
+          mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan
+          aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+        </CTabPane>
+        <CTabPane role="tabpanel" aria-labelledby="profile-tab" visible={activeKey === 2}>
+          Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+          Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan
+          four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft
+          beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic,
+          assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero
+          magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit,
+          sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party
+          scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+        </CTabPane>
+        <CTabPane role="tabpanel" aria-labelledby="contact-tab" visible={activeKey === 3}>
+          Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic
+          lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork
+          tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie
+          helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.
+          Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro
+          mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog
+          stumptown. Pitchfork sustainable tofu synth chambray yr.
+        </CTabPane>
+      </CTabContent>
+    </>
+  )
+}
+
 <Example>
-  {() => {
-    const [activeKey, setActiveKey] = useState(1)
-    return (
-      <>
-        <CNav variant="tabs" role="tablist">
-          <CNavItem>
-            <CNavLink
-              href="javascript:void(0);"
-              active={activeKey === 1}
-              onClick={() => setActiveKey(1)}
-            >
-              Home
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink
-              href="javascript:void(0);"
-              active={activeKey === 2}
-              onClick={() => setActiveKey(2)}
-            >
-              Profile
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink
-              href="javascript:void(0);"
-              active={activeKey === 3}
-              onClick={() => setActiveKey(3)}
-            >
-              Contact
-            </CNavLink>
-          </CNavItem>
-        </CNav>
-        <CTabContent>
-          <CTabPane role="tabpanel" aria-labelledby="home-tab" visible={activeKey === 1}>
-            Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
-            aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
-            helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu
-            banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone.
-            Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
-          </CTabPane>
-          <CTabPane role="tabpanel" aria-labelledby="profile-tab" visible={activeKey === 2}>
-            Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-            Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson
-            artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo
-            enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud
-            organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia
-            yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes
-            anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson
-            biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente
-            accusamus tattooed echo park.
-          </CTabPane>
-          <CTabPane role="tabpanel" aria-labelledby="contact-tab" visible={activeKey === 3}>
-            Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's
-            organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify
-            pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy
-            hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred
-            pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie
-            etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl
-            craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.
-          </CTabPane>
-        </CTabContent>
-      </>
-    )
-  }}
+  <TabPanesExample />
 </Example>
 
 ```jsx
-{
-  ;() => {
-    const [activeKey, setActiveKey] = useState(1)
-    return (
-      <>
-        <CNav variant="tabs" role="tablist">
-          <CNavItem>
-            <CNavLink
-              href="javascript:void(0);"
-              active={activeKey === 1}
-              onClick={() => setActiveKey(1)}
-            >
-              Home
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink
-              href="javascript:void(0);"
-              active={activeKey === 2}
-              onClick={() => setActiveKey(2)}
-            >
-              Profile
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink
-              href="javascript:void(0);"
-              active={activeKey === 3}
-              onClick={() => setActiveKey(3)}
-            >
-              Contact
-            </CNavLink>
-          </CNavItem>
-        </CNav>
-        <CTabContent>
-          <CTabPane role="tabpanel" aria-labelledby="home-tab" visible={activeKey === 1}>
-            Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
-            aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
-            helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu
-            banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone.
-            Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
-          </CTabPane>
-          <CTabPane role="tabpanel" aria-labelledby="profile-tab" visible={activeKey === 2}>
-            Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-            Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson
-            artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo
-            enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud
-            organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia
-            yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes
-            anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson
-            biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente
-            accusamus tattooed echo park.
-          </CTabPane>
-          <CTabPane role="tabpanel" aria-labelledby="contact-tab" visible={activeKey === 3}>
-            Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's
-            organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify
-            pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy
-            hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred
-            pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie
-            etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl
-            craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.
-          </CTabPane>
-        </CTabContent>
-      </>
-    )
-  }
-}
+const [activeKey, setActiveKey] = useState(1)
+return (
+  <>
+    <CNav variant="tabs" role="tablist">
+      <CNavItem>
+        <CNavLink
+          href="javascript:void(0);"
+          active={activeKey === 1}
+          onClick={() => setActiveKey(1)}
+        >
+          Home
+        </CNavLink>
+      </CNavItem>
+      <CNavItem>
+        <CNavLink
+          href="javascript:void(0);"
+          active={activeKey === 2}
+          onClick={() => setActiveKey(2)}
+        >
+          Profile
+        </CNavLink>
+      </CNavItem>
+      <CNavItem>
+        <CNavLink
+          href="javascript:void(0);"
+          active={activeKey === 3}
+          onClick={() => setActiveKey(3)}
+        >
+          Contact
+        </CNavLink>
+      </CNavItem>
+    </CNav>
+    <CTabContent>
+      <CTabPane role="tabpanel" aria-labelledby="home-tab" visible={activeKey === 1}>
+        Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
+        aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
+        helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh
+        mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan
+        aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+      </CTabPane>
+      <CTabPane role="tabpanel" aria-labelledby="profile-tab" visible={activeKey === 2}>
+        Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+        Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan
+        four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft
+        beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda
+        labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit
+        sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean
+        shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown,
+        tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+      </CTabPane>
+      <CTabPane role="tabpanel" aria-labelledby="contact-tab" visible={activeKey === 3}>
+        Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic
+        lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork
+        tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica.
+        DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh
+        mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog.
+        Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown.
+        Pitchfork sustainable tofu synth chambray yr.
+      </CTabPane>
+    </CTabContent>
+  </>
+)
 ```
 
 The tabs also works with pills.
 
+export const TabPanesPillsExample = () => {
+  const [activeKey, setActiveKey] = useState(1)
+  return (
+    <>
+      <CNav variant="pills" role="tablist">
+        <CNavItem>
+          <CNavLink
+            href="javascript:void(0);"
+            active={activeKey === 1}
+            onClick={() => setActiveKey(1)}
+          >
+            Home
+          </CNavLink>
+        </CNavItem>
+        <CNavItem>
+          <CNavLink
+            href="javascript:void(0);"
+            active={activeKey === 2}
+            onClick={() => setActiveKey(2)}
+          >
+            Profile
+          </CNavLink>
+        </CNavItem>
+        <CNavItem>
+          <CNavLink
+            href="javascript:void(0);"
+            active={activeKey === 3}
+            onClick={() => setActiveKey(3)}
+          >
+            Contact
+          </CNavLink>
+        </CNavItem>
+      </CNav>
+      <CTabContent>
+        <CTabPane role="tabpanel" aria-labelledby="home-tab" visible={activeKey === 1}>
+          Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
+          aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
+          helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh
+          mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan
+          aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+        </CTabPane>
+        <CTabPane role="tabpanel" aria-labelledby="profile-tab" visible={activeKey === 2}>
+          Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+          Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan
+          four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft
+          beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic,
+          assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero
+          magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit,
+          sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party
+          scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+        </CTabPane>
+        <CTabPane role="tabpanel" aria-labelledby="contact-tab" visible={activeKey === 3}>
+          Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic
+          lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork
+          tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie
+          helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.
+          Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro
+          mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog
+          stumptown. Pitchfork sustainable tofu synth chambray yr.
+        </CTabPane>
+      </CTabContent>
+    </>
+  )
+}
+
 <Example>
-  {() => {
-    const [activeKey, setActiveKey] = useState(1)
-    return (
-      <>
-        <CNav variant="pills" role="tablist">
-          <CNavItem>
-            <CNavLink
-              href="javascript:void(0);"
-              active={activeKey === 1}
-              onClick={() => setActiveKey(1)}
-            >
-              Home
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink
-              href="javascript:void(0);"
-              active={activeKey === 2}
-              onClick={() => setActiveKey(2)}
-            >
-              Profile
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink
-              href="javascript:void(0);"
-              active={activeKey === 3}
-              onClick={() => setActiveKey(3)}
-            >
-              Contact
-            </CNavLink>
-          </CNavItem>
-        </CNav>
-        <CTabContent>
-          <CTabPane role="tabpanel" aria-labelledby="home-tab" visible={activeKey === 1}>
-            Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
-            aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
-            helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu
-            banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone.
-            Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
-          </CTabPane>
-          <CTabPane role="tabpanel" aria-labelledby="profile-tab" visible={activeKey === 2}>
-            Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-            Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson
-            artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo
-            enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud
-            organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia
-            yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes
-            anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson
-            biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente
-            accusamus tattooed echo park.
-          </CTabPane>
-          <CTabPane role="tabpanel" aria-labelledby="contact-tab" visible={activeKey === 3}>
-            Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's
-            organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify
-            pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy
-            hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred
-            pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie
-            etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl
-            craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.
-          </CTabPane>
-        </CTabContent>
-      </>
-    )
-  }}
+  <TabPanesPillsExample />
 </Example>
 
 ```jsx
-{
-  ;() => {
-    const [activeKey, setActiveKey] = useState(1)
-    return (
-      <>
-        <CNav variant="pills" role="tablist">
-          <CNavItem>
-            <CNavLink
-              href="javascript:void(0);"
-              active={activeKey === 1}
-              onClick={() => setActiveKey(1)}
-            >
-              Home
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink
-              href="javascript:void(0);"
-              active={activeKey === 2}
-              onClick={() => setActiveKey(2)}
-            >
-              Profile
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink
-              href="javascript:void(0);"
-              active={activeKey === 3}
-              onClick={() => setActiveKey(3)}
-            >
-              Contact
-            </CNavLink>
-          </CNavItem>
-        </CNav>
-        <CTabContent>
-          <CTabPane role="tabpanel" aria-labelledby="home-tab" visible={activeKey === 1}>
-            Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
-            aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
-            helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu
-            banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone.
-            Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
-          </CTabPane>
-          <CTabPane role="tabpanel" aria-labelledby="profile-tab" visible={activeKey === 2}>
-            Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-            Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson
-            artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo
-            enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud
-            organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia
-            yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes
-            anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson
-            biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente
-            accusamus tattooed echo park.
-          </CTabPane>
-          <CTabPane role="tabpanel" aria-labelledby="contact-tab" visible={activeKey === 3}>
-            Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's
-            organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify
-            pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy
-            hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred
-            pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie
-            etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl
-            craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.
-          </CTabPane>
-        </CTabContent>
-      </>
-    )
-  }
-}
+const [activeKey, setActiveKey] = useState(1)
+return (
+  <>
+    <CNav variant="pills" role="tablist">
+      <CNavItem>
+        <CNavLink
+          href="javascript:void(0);"
+          active={activeKey === 1}
+          onClick={() => setActiveKey(1)}
+        >
+          Home
+        </CNavLink>
+      </CNavItem>
+      <CNavItem>
+        <CNavLink
+          href="javascript:void(0);"
+          active={activeKey === 2}
+          onClick={() => setActiveKey(2)}
+        >
+          Profile
+        </CNavLink>
+      </CNavItem>
+      <CNavItem>
+        <CNavLink
+          href="javascript:void(0);"
+          active={activeKey === 3}
+          onClick={() => setActiveKey(3)}
+        >
+          Contact
+        </CNavLink>
+      </CNavItem>
+    </CNav>
+    <CTabContent>
+      <CTabPane role="tabpanel" aria-labelledby="home-tab" visible={activeKey === 1}>
+        Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
+        aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
+        helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh
+        mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan
+        aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+      </CTabPane>
+      <CTabPane role="tabpanel" aria-labelledby="profile-tab" visible={activeKey === 2}>
+        Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+        Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan
+        four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft
+        beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda
+        labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit
+        sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean
+        shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown,
+        tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+      </CTabPane>
+      <CTabPane role="tabpanel" aria-labelledby="contact-tab" visible={activeKey === 3}>
+        Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic
+        lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork
+        tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica.
+        DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh
+        mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog.
+        Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown.
+        Pitchfork sustainable tofu synth chambray yr.
+      </CTabPane>
+    </CTabContent>
+  </>
+)
 ```
 
 ## API

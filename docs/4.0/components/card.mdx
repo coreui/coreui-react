@@ -29,6 +29,9 @@ import {
   CRow,
 } from './../../../src/index.ts'
 
+import ReactImg from './../../../src/docs/assets/images/react.jpg'
+import React400Img from './../../../src/docs/assets/images/react400.jpg'
+
 ## About
 
 A react card component is a content container. It incorporates options for images, headers, and footers, a wide variety of content, contextual background colors, and excellent display options.
@@ -41,7 +44,7 @@ Below is an example of a basic card with mixed content and a fixed width. Cards 
 
 <Example>
   <CCard style={{ width: '18rem' }}>
-    <CCardImage orientation="top" src="/images/react.jpg" />
+    <CCardImage orientation="top" src={ReactImg} />
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>
@@ -127,7 +130,7 @@ Subtitles are managed by `<CCardSubtitle>` component. If the `<CCardTitle>` also
 
 <Example>
   <CCard style={{ width: '18rem' }}>
-    <CCardImage orientation="top" src="/images/react.jpg" />
+    <CCardImage orientation="top" src={ReactImg} />
     <CCardBody>
       <CCardText>
         Some quick example text to build on the card title and make up the bulk of the card's
@@ -222,7 +225,7 @@ Combine and match many content types to build the card you need, or throw everyt
 
 <Example>
   <CCard style={{ width: '18rem' }}>
-    <CCardImage orientation="top" src="/images/react.jpg" />
+    <CCardImage orientation="top" src={ReactImg} />
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>
@@ -663,7 +666,7 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
 
 <Example>
   <CCard className="mb-3">
-    <CCardImage orientation="top" src="/images/react.jpg" />
+    <CCardImage orientation="top" src={ReactImg} />
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>
@@ -686,7 +689,7 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
         <small className="text-muted">Last updated 3 mins ago</small>
       </CCardText>
     </CCardBody>
-    <CCardImage orientation="bottom" src="/images/react.jpg" />
+    <CCardImage orientation="bottom" src={ReactImg} />
   </CCard>
 </Example>
 
@@ -715,7 +718,7 @@ Adapt an image into a background and overlay your text. Depending on the image, 
 
 <Example>
   <CCard className="mb-3 bg-dark text-white">
-    <CCardImage src="/images/react.jpg" />
+    <CCardImage src={ReactImg} />
     <CCardImageOverlay>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>
@@ -749,7 +752,7 @@ Using a combination of grid and utility classes, cards can be made horizontal in
   <CCard className="mb-3" style={{ maxWidth: '540px' }}>
     <CRow className="g-0">
       <CCol md={4}>
-        <CCardImage src="/images/react400.jpg" />
+        <CCardImage src={React400Img} />
       </CCol>
       <CCol md={8}>
         <CCardBody>
@@ -1012,7 +1015,7 @@ Use card groups to render cards as a single, attached element with equal width a
 <Example>
   <CCardGroup>
     <CCard>
-      <CCardImage orientation="top" src="/images/react.jpg" />
+      <CCardImage orientation="top" src={ReactImg} />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>
@@ -1025,7 +1028,7 @@ Use card groups to render cards as a single, attached element with equal width a
       </CCardBody>
     </CCard>
     <CCard>
-      <CCardImage orientation="top" src="/images/react.jpg" />
+      <CCardImage orientation="top" src={ReactImg} />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>
@@ -1037,7 +1040,7 @@ Use card groups to render cards as a single, attached element with equal width a
       </CCardBody>
     </CCard>
     <CCard>
-      <CCardImage orientation="top" src="/images/react.jpg" />
+      <CCardImage orientation="top" src={ReactImg} />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>
@@ -1101,7 +1104,7 @@ When using card groups with footers, their content will automatically line up.
 <Example>
   <CCardGroup>
     <CCard>
-      <CCardImage orientation="top" src="/images/react.jpg" />
+      <CCardImage orientation="top" src={ReactImg} />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>
@@ -1114,7 +1117,7 @@ When using card groups with footers, their content will automatically line up.
       </CCardFooter>
     </CCard>
     <CCard>
-      <CCardImage orientation="top" src="/images/react.jpg" />
+      <CCardImage orientation="top" src={ReactImg} />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>
@@ -1126,7 +1129,7 @@ When using card groups with footers, their content will automatically line up.
       </CCardFooter>
     </CCard>
     <CCard>
-      <CCardImage orientation="top" src="/images/react.jpg" />
+      <CCardImage orientation="top" src={ReactImg} />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>
@@ -1193,7 +1196,7 @@ Use the `CRow` component and set `xs|sm|md|lg|xl|xxl}={{ cols: * }}` property to
   <CRow xs={{ cols: 1, gutter: 4 }} md={{ cols: 2 }}>
     <CCol xs>
       <CCard>
-        <CCardImage orientation="top" src="/images/react.jpg" />
+        <CCardImage orientation="top" src={ReactImg} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -1208,7 +1211,7 @@ Use the `CRow` component and set `xs|sm|md|lg|xl|xxl}={{ cols: * }}` property to
     </CCol>
     <CCol xs>
       <CCard>
-        <CCardImage orientation="top" src="/images/react.jpg" />
+        <CCardImage orientation="top" src={ReactImg} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -1223,7 +1226,7 @@ Use the `CRow` component and set `xs|sm|md|lg|xl|xxl}={{ cols: * }}` property to
     </CCol>
     <CCol xs>
       <CCard>
-        <CCardImage orientation="top" src="/images/react.jpg" />
+        <CCardImage orientation="top" src={ReactImg} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -1238,7 +1241,7 @@ Use the `CRow` component and set `xs|sm|md|lg|xl|xxl}={{ cols: * }}` property to
     </CCol>
     <CCol xs>
       <CCard>
-        <CCardImage orientation="top" src="/images/react.jpg" />
+        <CCardImage orientation="top" src={ReactImg} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -1325,7 +1328,7 @@ Change it to `md={{ cols: 3}}` and you'll see the fourth card wrap.
   <CRow xs={{ cols: 1, gutter: 4 }} md={{ cols: 3 }}>
     <CCol xs>
       <CCard>
-        <CCardImage orientation="top" src="/images/react.jpg" />
+        <CCardImage orientation="top" src={ReactImg} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -1340,7 +1343,7 @@ Change it to `md={{ cols: 3}}` and you'll see the fourth card wrap.
     </CCol>
     <CCol xs>
       <CCard>
-        <CCardImage orientation="top" src="/images/react.jpg" />
+        <CCardImage orientation="top" src={ReactImg} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -1355,7 +1358,7 @@ Change it to `md={{ cols: 3}}` and you'll see the fourth card wrap.
     </CCol>
     <CCol xs>
       <CCard>
-        <CCardImage orientation="top" src="/images/react.jpg" />
+        <CCardImage orientation="top" src={ReactImg} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -1370,7 +1373,7 @@ Change it to `md={{ cols: 3}}` and you'll see the fourth card wrap.
     </CCol>
     <CCol xs>
       <CCard>
-        <CCardImage orientation="top" src="/images/react.jpg" />
+        <CCardImage orientation="top" src={ReactImg} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -1457,7 +1460,7 @@ When you need equal height, add `.h-100` to the cards. If you want equal heights
   <CRow xs={{ cols: 1 }} md={{ cols: 3 }} className="g-4">
     <CCol xs>
       <CCard className="h-100">
-        <CCardImage orientation="top" src="/images/react.jpg" />
+        <CCardImage orientation="top" src={ReactImg} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -1469,7 +1472,7 @@ When you need equal height, add `.h-100` to the cards. If you want equal heights
     </CCol>
     <CCol xs>
       <CCard className="h-100">
-        <CCardImage orientation="top" src="/images/react.jpg" />
+        <CCardImage orientation="top" src={ReactImg} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -1480,7 +1483,7 @@ When you need equal height, add `.h-100` to the cards. If you want equal heights
     </CCol>
     <CCol xs>
       <CCard className="h-100">
-        <CCardImage orientation="top" src="/images/react.jpg" />
+        <CCardImage orientation="top" src={ReactImg} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -1493,7 +1496,7 @@ When you need equal height, add `.h-100` to the cards. If you want equal heights
     </CCol>
     <CCol xs>
       <CCard className="h-100">
-        <CCardImage orientation="top" src="/images/react.jpg" />
+        <CCardImage orientation="top" src={ReactImg} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -1565,7 +1568,7 @@ Just like with card groups, card footers will automatically line up.
   <CRow xs={{ cols: 1 }} md={{ cols: 3 }} className="g-4">
     <CCol xs>
       <CCard className="h-100">
-        <CCardImage orientation="top" src="/images/react.jpg" />
+        <CCardImage orientation="top" src={ReactImg} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -1580,7 +1583,7 @@ Just like with card groups, card footers will automatically line up.
     </CCol>
     <CCol xs>
       <CCard className="h-100">
-        <CCardImage orientation="top" src="/images/react.jpg" />
+        <CCardImage orientation="top" src={ReactImg} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -1594,7 +1597,7 @@ Just like with card groups, card footers will automatically line up.
     </CCol>
     <CCol xs>
       <CCard className="h-100">
-        <CCardImage orientation="top" src="/images/react.jpg" />
+        <CCardImage orientation="top" src={ReactImg} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>

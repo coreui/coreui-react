@@ -8,12 +8,15 @@ route: /components/image
 
 import { CImage } from './../../../src/index.ts'
 
+import ReactImg from './../../../src/docs/assets/images/react.jpg'
+import React400Img from './../../../src/docs/assets/images/react400.jpg'
+
 ## Responsive images
 
 Images in CoreUI for React.js are made responsive with `fluid` property. This applies `max-width: 100%;` and `height: auto;` to the image so that it scales with the parent element.
 
 <Example>
-  <CImage fluid src="/images/react.jpg" />
+  <CImage fluid src={ReactImg} />
 </Example>
 
 ```jsx
@@ -25,7 +28,7 @@ Images in CoreUI for React.js are made responsive with `fluid` property. This ap
 In addition to our [border-radius utilities](https://coreui.io/docs/4.0/utilities/borders), you can use prop`thumbnail` to give an image a rounded 1px border appearance.
 
 <Example>
-  <CImage rounded thumbnail src="/images/react400.jpg" width={200} height={200} />
+  <CImage rounded thumbnail src={React400Img} width={200} height={200} />
 </Example>
 
 ```jsx
@@ -38,8 +41,8 @@ Align images with the `align` property.
 
 <Example>
   <div className="clearfix">
-    <CImage align="start" rounded src="/images/react400.jpg" width={200} height={200} />
-    <CImage align="end" rounded src="/images/react400.jpg" width={200} height={200} />
+    <CImage align="start" rounded src={React400Img} width={200} height={200} />
+    <CImage align="end" rounded src={React400Img} width={200} height={200} />
   </div>
 </Example>
 
@@ -52,7 +55,7 @@ Align images with the `align` property.
 
 <Example>
   <div className="clearfix">
-    <CImage align="center" rounded src="/images/react400.jpg" width={200} height={200} />
+    <CImage align="center" rounded src={React400Img} width={200} height={200} />
   </div>
 </Example>
 
@@ -64,7 +67,7 @@ Align images with the `align` property.
 
 <Example>
   <div className="text-center">
-    <CImage rounded src="/images/react400.jpg" width={200} height={200} />
+    <CImage rounded src={React400Img} width={200} height={200} />
   </div>
 </Example>
 

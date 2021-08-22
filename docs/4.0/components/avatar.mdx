@@ -9,12 +9,16 @@ route: /components/avatar
 
 import { CAvatar } from './../../../src/index.ts'
 
+import Avatar1 from './../../../src/docs/assets/images/avatars/1.jpg'
+import Avatar2 from './../../../src/docs/assets/images/avatars/2.jpg'
+import Avatar3 from './../../../src/docs/assets/images/avatars/3.jpg'
+
 ## Image avatars
 
 <Example>
-  <CAvatar src="/images/avatars/1.jpg" />
-  <CAvatar src="/images/avatars/2.jpg" />
-  <CAvatar src="/images/avatars/3.jpg" />
+  <CAvatar src={Avatar1} />
+  <CAvatar src={Avatar2} />
+  <CAvatar src={Avatar3} />
 </Example>
 
 ```jsx
@@ -113,7 +117,7 @@ Fancy larger or smaller avatar? Add `size="xl"`, `size="lg"` or `size="sm"` for 
 ## Avatars with status
 
 <Example>
-  <CAvatar src="/images/avatars/1.jpg" status="success" />
+  <CAvatar src={Avatar1} status="success" />
   <CAvatar color="secondary" status="danger">
     CUI
   </CAvatar>

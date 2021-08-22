@@ -36,30 +36,24 @@ Browser default checkboxes and radios are replaced with the help of `<CFormCheck
 
 Checkboxes can utilize the `:indeterminate` pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).
 
+export const IndeterminateExample = () => {
+  const checkboxRef = useRef(null)
+  useEffect(() => {
+    checkboxRef.current.indeterminate = true
+  })
+  return <CFormCheck id="flexCheckIndeterminate" label="Indeterminate checkbox" ref={checkboxRef} />
+}
+
 <Example>
-  {() => {
-    const checkboxRef = useRef(null)
-    useEffect(() => {
-      checkboxRef.current.indeterminate = true
-    })
-    return (
-      <CFormCheck id="flexCheckIndeterminate" label="Indeterminate checkbox" ref={checkboxRef} />
-    )
-  }}
+  <IndeterminateExample />
 </Example>
 
 ```jsx
-{
-  ;() => {
-    const checkboxRef = useRef(null)
-    useEffect(() => {
-      checkboxRef.current.indeterminate = true
-    })
-    return (
-      <CFormCheck id="flexCheckIndeterminate" label="Indeterminate checkbox" ref={checkboxRef} />
-    )
-  }
-}
+const checkboxRef = useRef(null)
+useEffect(() => {
+  checkboxRef.current.indeterminate = true
+})
+return <CFormCheck id="flexCheckIndeterminate" label="Indeterminate checkbox" ref={checkboxRef} />
 ```
 
 ### Disabled

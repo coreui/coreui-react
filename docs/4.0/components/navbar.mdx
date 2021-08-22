@@ -33,6 +33,8 @@ import {
   CNavbarToggler,
 } from './../../../src/index.ts'
 
+import CoreUISignetImg from './../../../src/docs/assets/images/brand/coreui-signet.svg'
+
 ## Supported content
 
 `<CNavbar>` come with built-in support for a handful of sub-components. Choose from the following as needed:
@@ -187,17 +189,15 @@ Adding images to the `<CNavbarBrand>` will likely always require custom styles o
   <CNavbar colorScheme="light" className="bg-light">
     <CContainer fluid>
       <CNavbarBrand href="#">
-        <img src="/images/brand/coreui-signet.svg" alt="" width="22" height="24" />
+        <img src={CoreUISignetImg} alt="" width="22" height="24" />
       </CNavbarBrand>
     </CContainer>
   </CNavbar>
 </Example>
 
 ```jsx
-{
-  /* Just an image */
-}
-;<CNavbar colorScheme="light" className="bg-light">
+{ /* Just an image */ }
+<CNavbar colorScheme="light" className="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">
       <img src="/images/brand/coreui-signet.svg" alt="" width="22" height="24" />
@@ -212,7 +212,7 @@ Adding images to the `<CNavbarBrand>` will likely always require custom styles o
     <CContainer fluid>
       <CNavbarBrand href="#">
         <img
-          src="/images/brand/coreui-signet.svg"
+          src={CoreUISignetImg}
           alt=""
           width="22"
           height="24"
@@ -225,10 +225,8 @@ Adding images to the `<CNavbarBrand>` will likely always require custom styles o
 </Example>
 
 ```jsx
-{
-  /* Image and text */
-}
-;<CNavbar colorScheme="light" className="bg-light">
+{/* Image and text */}
+<CNavbar colorScheme="light" className="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">
       <img
