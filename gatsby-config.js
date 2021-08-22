@@ -33,7 +33,7 @@ module.exports = {
         },
         gatsbyRemarkPlugins: [
           {
-            resolve: require.resolve(`./src/docs/plugins/gatsby-remark-embed-markdown`),
+            resolve: require.resolve(`./src/docs/plugins/gatsby-remark-import-markdown`),
             options: {
               directory: `${__dirname}/docs/${pkg.config.version_short}/api/`,
             },

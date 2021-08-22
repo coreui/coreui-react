@@ -29,16 +29,13 @@
   "peerDependencies": {
     "@coreui/coreui": "^4.0.1",
     "react": "^17",
-    "react-dom": "^17",
-    "react-router-dom": "^5.2.0"
+    "react-dom": "^17"
   },
   "devDependencies": {
     "@coreui/coreui": "^4.0.1",
     "@coreui/icons": "^2.0.1",
     "@coreui/icons-react": "^2.0.0-rc.5",
     "@coreui/react-chartjs": "^2.0.0-rc.1",
-    "@emotion/react": "^11.4.1",
-    "@emotion/styled": "^11.3.0",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@popperjs/core": "^2.9.3",
@@ -67,9 +64,7 @@
     "gatsby-plugin-sass": "4",
     "gatsby-plugin-sitemap": "4",
     "gatsby-remark-autolink-headers": "^4.9.0",
-    "gatsby-remark-embed-markdown": "^0.0.4",
     "gatsby-source-filesystem": "^3.12.0",
-    "gatsby-transformer-remark": "^4.9.0",
     "glob": "^7.1.7",
     "globby": "^11.0.4",
     "jest": "^27.0.6",
@@ -83,6 +78,7 @@
     "react-helmet": "^6.1.0",
     "react-popper": "^2.2.5",
     "react-transition-group": "^4.4.2",
+    "remark-html": "^13.0.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.22.56.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",

@@ -1,3 +1,5 @@
+'use strict'
+
 const fs = require('fs')
 const normalizePath = require('normalize-path')
 const visit = require('unist-util-visit')
