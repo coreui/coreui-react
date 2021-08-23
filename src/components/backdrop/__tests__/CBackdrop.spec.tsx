@@ -19,7 +19,11 @@ test('CBackdrop customize', async () => {
 
 test('CBackdrop customize 2', async () => {
   jest.useFakeTimers()
-  const { container } = render(<CBackdrop className="bazinga" visible={true}>Test</CBackdrop>)
+  const { container } = render(
+    <CBackdrop className="bazinga" visible={true}>
+      Test
+    </CBackdrop>,
+  )
   jest.runAllTimers()
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

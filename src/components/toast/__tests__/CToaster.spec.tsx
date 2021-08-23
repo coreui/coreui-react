@@ -1,5 +1,4 @@
-import React from //  useState,
-'react'
+import React from 'react' //  useState,
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import { CToast, CToaster, CToastBody, CToastHeader, CButton } from '../../../index'
@@ -12,6 +11,7 @@ test('loads and displays CToaster component', async () => {
 test('CToaster customize', async () => {
   jest.useFakeTimers()
   let toast = <></>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const addToast = function (t: any) {
     toast = t
   }
