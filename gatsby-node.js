@@ -25,7 +25,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   // Destructure the createPage function from the actions object
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
   const result = await graphql(`
     query {
       allMdx {
@@ -58,5 +58,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       // our page layout component
       context: { id: node.id },
     })
+  })
+  createRedirect({
+    fromPath: `/`,
+    toPath: `/getting-started/introduction/`,
+    redirectInBrowser: true,
+    isPermanent: true,
   })
 }

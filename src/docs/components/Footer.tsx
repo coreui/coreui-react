@@ -27,7 +27,7 @@ const Footer: FC = ({ ...props }) => {
             <a href="https://coreui.io/vue/">CoreUI for Vue.js</a>
           </li>
         </ul>
-        <p className="mb-0">CoreUI for React is Open Source UI Components Library for React.</p>
+        <p className="mb-0">CoreUI for React is Open Source UI Components Library for React.js.</p>
         <p className="mb-0">
           Currently v{pkg.version}. Code licensed{' '}
           <a

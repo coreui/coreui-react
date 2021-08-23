@@ -4,16 +4,19 @@ import Highlight, { defaultProps } from 'prism-react-renderer'
 
 const CodeBlock: FC = ({ children }) => {
   const _children = children.props.children
-  const language = children.props.className ? children.props.className.replace(/language-/, '') : 'jsx'
+  const language = children.props.className
+    ? children.props.className.replace(/language-/, '')
+    : 'jsx'
   // const language = 'jsx'
 
   return (
     <div className="code mb-4" style={{ maxHeight: '500px', overflow: 'scroll' }}>
       <Highlight {...defaultProps} theme={false} code={_children?.trim()} language={language}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre className={className} style={{ ...style, padding: '20px' }}>
+          <pre className={className} style={{ ...style }}>
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line, key: i })}>
+                <span className="line-no">{i + 1}</span>
                 {line.map((token, key) => (
                   <span key={key} {...getTokenProps({ token, key })} />
                 ))}
