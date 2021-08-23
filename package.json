@@ -11,7 +11,9 @@
   "jsnext:main": "dist/index.es.js",
   "files": [
     "dist/",
-    "src/",
+    "src/components/",
+    "src/utils/",
+    "src/index.ts",
     "tsconfig.json",
     "package.json"
   ],
