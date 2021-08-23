@@ -1,19 +1,10 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
-import { cilHouse } from '@coreui/icons'
-
-import pkg from './../../package.json'
-import { cilViewQuilt } from '@coreui/icons'
-import { cilNotes } from '@coreui/icons'
-import { cil3d } from '@coreui/icons'
-
-const version = `/`
-// const version = `/${pkg.config.version_short}`
 
 const nav = [
   {
     name: 'Getting Started',
-    to: `${version}getting-started/`,
+    to: '/getting-started/',
     icon: (
       <CIcon
         customClassName="nav-icon text-primary"
@@ -28,85 +19,103 @@ const nav = [
     items: [
       {
         name: 'Introduction',
-        to: `${version}getting-started/introduction/`,
+        to: '/getting-started/introduction/',
       },
     ],
   },
   {
     name: 'Layout',
-    to: `${version}layout/`,
+    to: '/layout/',
     icon: (
-      <CIcon customClassName="nav-icon text-primary" icon={cilViewQuilt} width={64} height={64} />
+      <CIcon
+        customClassName="nav-icon text-primary"
+        icon={[
+          '512 512',
+          '<path fill="var(--ci-primary-color, currentColor)" d="M16,64V448H496V64ZM464,240H192V96H464ZM192,272H312V416H192ZM48,96H160V416H48ZM344,416V272H464V416Z" class="ci-primary"></path>',
+        ]}
+        width={64}
+        height={64}
+      />
     ),
     items: [
       {
         name: 'Breakpoints',
-        to: `${version}layout/breakpoints/`,
+        to: '/layout/breakpoints/',
       },
       {
         name: 'Containers',
-        to: `${version}layout/containers/`,
+        to: '/layout/containers/',
       },
       {
         name: 'Grid',
-        to: `${version}layout/grid/`,
+        to: '/layout/grid/',
       },
       {
         name: 'Columns',
-        to: `${version}layout/columns/`,
+        to: '/layout/columns/',
       },
       {
         name: 'Gutter',
-        to: `${version}layout/gutters/`,
+        to: '/layout/gutters/',
       },
     ],
   },
   {
     name: 'Forms',
-    to: `${version}forms/`,
-    icon: <CIcon customClassName="nav-icon text-primary" icon={cilNotes} width={64} height={64} />,
+    to: '/forms/',
+    icon: (
+      <CIcon
+        customClassName="nav-icon text-primary"
+        icon={[
+          '512 512',
+          '<rect width="288" height="32" x="112" y="152" fill="var(--ci-primary-color, currentColor)" class="ci-primary"></rect><rect width="288" height="32" x="112" y="240" fill="var(--ci-primary-color, currentColor)" class="ci-primary"></rect><rect width="152" height="32" x="112" y="328" fill="var(--ci-primary-color, currentColor)" class="ci-primary"></rect><path fill="var(--ci-primary-color, currentColor)" d="M480,48H32V464H480ZM448,432H64V80H448Z" class="ci-primary"></path>',
+        ]}
+        width={64}
+        height={64}
+      />
+    ),
     items: [
       {
         name: 'Overview',
-        to: `${version}forms/overview/`,
+        to: '/forms/overview/',
       },
       {
         name: 'Form Control',
-        to: `${version}forms/form-control/`,
+        to: '/forms/form-control/',
       },
       {
         name: 'Select',
-        to: `${version}forms/select/`,
+        to: '/forms/select/',
       },
       {
         name: 'Checks & Radios',
-        to: `${version}forms/checks-radios/`,
+        to: '/forms/checks-radios/',
       },
       {
         name: 'Range',
-        to: `${version}forms/range/`,
+        to: '/forms/range/',
       },
       {
         name: 'Input Group',
-        to: `${version}forms/input-group/`,
+        to: '/forms/input-group/',
       },
       {
         name: 'Floating Labels',
-        to: `${version}forms/floating-labels/`,
+        to: '/forms/floating-labels/',
       },
       {
         name: 'Layout',
-        to: `${version}forms/layout/`,
+        to: '/forms/layout/',
       },
       {
         name: 'Validation',
-        to: `${version}forms/validation/`,
+        to: '/forms/validation/',
       },
     ],
   },
   {
     name: 'Components',
-    to: `${version}components/`,
+    to: '/components/',
     icon: (
       <CIcon
         customClassName="nav-icon text-primary"
@@ -121,134 +130,134 @@ const nav = [
     items: [
       {
         name: 'Accordion',
-        to: `${version}components/accordion/`,
+        to: '/components/accordion/',
       },
       {
         name: 'Alert',
-        to: `${version}components/alert/`,
+        to: '/components/alert/',
       },
       {
         name: 'Avatar',
-        to: `${version}components/avatar/`,
+        to: '/components/avatar/',
       },
       {
         name: 'Badge',
-        to: `${version}components/badge/`,
+        to: '/components/badge/',
       },
       {
         name: 'Breadcrumb',
-        to: `${version}components/breadcrumb/`,
+        to: '/components/breadcrumb/',
       },
       {
         name: 'Button',
-        to: `${version}components/button/`,
+        to: '/components/button/',
       },
       {
         name: 'Button Group',
-        to: `${version}components/button-group/`,
+        to: '/components/button-group/',
       },
       {
         name: 'Callout',
-        to: `${version}components/callout/`,
+        to: '/components/callout/',
       },
       {
         name: 'Card',
-        to: `${version}components/card/`,
+        to: '/components/card/',
       },
       {
         name: 'Carousel',
-        to: `${version}components/carousel/`,
+        to: '/components/carousel/',
       },
       {
         name: 'Close Button',
-        to: `${version}components/close-button/`,
+        to: '/components/close-button/',
       },
       {
         name: 'Collapse',
-        to: `${version}components/collapse/`,
+        to: '/components/collapse/',
       },
       {
         name: 'Dropdown',
-        to: `${version}components/dropdown/`,
+        to: '/components/dropdown/',
       },
       {
         name: 'Footer',
-        to: `${version}components/footer/`,
+        to: '/components/footer/',
       },
       {
         name: 'Header',
-        to: `${version}components/header/`,
+        to: '/components/header/',
       },
       {
         name: 'Image',
-        to: `${version}components/image/`,
+        to: '/components/image/',
       },
       {
         name: 'List Group',
-        to: `${version}components/list-group/`,
+        to: '/components/list-group/',
       },
       {
         name: 'Modal',
-        to: `${version}components/modal/`,
+        to: '/components/modal/',
       },
       {
         name: 'Navs & Tabs',
-        to: `${version}components/navs-tabs/`,
+        to: '/components/navs-tabs/',
       },
       {
         name: 'Navbar',
-        to: `${version}components/navbar/`,
+        to: '/components/navbar/',
       },
       {
         name: 'Offcanvas',
-        to: `${version}components/offcanvas/`,
+        to: '/components/offcanvas/',
       },
       {
         name: 'Pagination',
-        to: `${version}components/pagination/`,
+        to: '/components/pagination/',
       },
       {
         name: 'Placeholders',
-        to: `${version}components/placeholders/`,
+        to: '/components/placeholders/',
         disabled: true,
         badge: {
           color: 'warning',
           text: 'WIP v4.1',
-        }
+        },
       },
       {
         name: 'Popover',
-        to: `${version}components/popover/`,
+        to: '/components/popover/',
       },
       {
         name: 'Progress',
-        to: `${version}components/progress/`,
+        to: '/components/progress/',
       },
       {
         name: 'Sidebar',
-        to: `${version}components/sidebar/`,
+        to: '/components/sidebar/',
       },
       {
         name: 'Table',
-        to: `${version}components/table/`,
+        to: '/components/table/',
       },
       {
         name: 'Toast',
-        to: `${version}components/toast/`,
+        to: '/components/toast/',
       },
       {
         name: 'Tooltip',
-        to: `${version}components/tooltip/`,
+        to: '/components/tooltip/',
       },
       {
         name: 'Widgets',
-        to: `${version}components/widgets/`,
+        to: '/components/widgets/',
       },
     ],
   },
   {
     name: 'Migration',
-    to: `${version}migration/`,
+    to: '/migration/',
     icon: (
       <CIcon
         customClassName="nav-icon text-primary"
@@ -263,7 +272,7 @@ const nav = [
     items: [
       {
         name: 'v4',
-        to: `${version}migration/v4/`,
+        to: '/migration/v4/',
       },
     ],
   },
