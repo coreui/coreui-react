@@ -3,7 +3,7 @@
 exports[`CFormCheck customize button=false 1`] = `
 <div>
   <div
-    class="form-check form-switch form-switch-xl form-check-inline bazinga"
+    class="form-check form-check-inline bazinga"
   >
     <input
       class="form-check-input"
@@ -22,21 +22,17 @@ exports[`CFormCheck customize button=false 1`] = `
 
 exports[`CFormCheck customize button=true 1`] = `
 <div>
-  <div
-    class="form-check form-switch form-switch-xl form-check-inline bazinga"
+  <input
+    class="btn-check"
+    id="id"
+    type="radio"
+  />
+  <label
+    class="btn btn-ghost-primary btn-lg rounded"
+    for="id"
   >
-    <input
-      class="btn-check"
-      id="id"
-      type="radio"
-    />
-    <label
-      class="btn btn-ghost-primary btn-lg buttonShape"
-      for="id"
-    >
-      label
-    </label>
-  </div>
+    label
+  </label>
 </div>
 `;
 

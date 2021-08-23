@@ -42,7 +42,7 @@ export interface CWidgetStatsFProps extends Omit<HTMLAttributes<HTMLDivElement>,
 }
 
 export const CWidgetStatsF = forwardRef<HTMLDivElement, CWidgetStatsFProps>(
-  ({ className, color, footer, icon, padding = 3, title, value, ...rest }, ref) => {
+  ({ className, color, footer, icon, padding = true, title, value, ...rest }, ref) => {
     const _className = classNames(className)
 
     return (

@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CWidgetStatsC customize 1`] = `
+<div>
+  <div
+    class="card bg-info text-high-emphasis-inverse bazinga"
+  >
+    <div
+      class="card-body"
+    >
+      <div
+        class="text-medium-emphasis-inverse text-end mb-4"
+      >
+        icon
+      </div>
+      <div
+        class="text-high-emphasis-inverse fs-4 fw-semibold"
+      >
+        value
+      </div>
+      <div
+        class="text-medium-emphasis-inverse"
+      >
+        title
+      </div>
+      <div
+        class="progress progress-white mt-3 mb-0"
+        style="height: 4px;"
+      >
+        <div
+          aria-valuemax="100"
+          aria-valuemin="0"
+          aria-valuenow="75"
+          class="progress-bar bg-warning"
+          role="progressbar"
+          style="width: 75%;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`loads and displays CWidgetStatsC component 1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <div
+      class="card-body"
+    >
+      <div
+        class="progress mt-3 mb-0"
+        style="height: 4px;"
+      />
+    </div>
+  </div>
+</div>
+`;

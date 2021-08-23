@@ -10,22 +10,16 @@ test('loads and displays CSidebar component', async () => {
   expect(container).toMatchSnapshot()
 })
 
-// test('CSidebar customize hide', async () => {
-//   const { container } = render(<CSidebar hide>Test</CSidebar>)
-//   expect(container).toMatchSnapshot()
-//   expect(container.firstChild).toHaveClass('hide')
-// })
-
 test('CSidebar customize show', async () => {
   const { container } = render(
     <CSidebar
       className="bazinga"
-      // hide={false}
       narrow={true}
       position="fixed"
       selfHiding="lg"
-      show={true}
+      visible={true}
       unfoldable={true}
+      overlaid={true}
     >
       Test
     </CSidebar>,
@@ -34,8 +28,28 @@ test('CSidebar customize show', async () => {
   expect(container.firstChild).toHaveClass('bazinga')
   expect(container.firstChild).toHaveClass('sidebar')
   expect(container.firstChild).toHaveClass('sidebar-narrow')
+  expect(container.firstChild).toHaveClass('sidebar-overlaid')
   expect(container.firstChild).toHaveClass('sidebar-fixed')
   expect(container.firstChild).toHaveClass('sidebar-self-hiding-lg')
   expect(container.firstChild).toHaveClass('sidebar-narrow-unfoldable')
   expect(container.firstChild).toHaveClass('show')
+})
+
+test('CSidebar customize hide', async () => {
+  const { container } = render(
+    <CSidebar
+      className="bazinga"
+      position="sticky"
+      selfHiding="md"
+      visible={false}
+      overlaid={false}
+    >
+      Test
+    </CSidebar>,
+  )
+  expect(container).toMatchSnapshot()
+  expect(container.firstChild).toHaveClass('bazinga')
+  expect(container.firstChild).toHaveClass('sidebar')
+  expect(container.firstChild).toHaveClass('sidebar-sticky')
+  expect(container.firstChild).toHaveClass('sidebar-self-hiding-md')
 })

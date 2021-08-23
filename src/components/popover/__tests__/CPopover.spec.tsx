@@ -13,11 +13,13 @@ test('loads and displays CPopover component', async () => {
 })
 
 test('CPopover customize', async () => {
+  jest.useFakeTimers()
   let arr, element
   const { container } = render(
     <CPopover content="content" title="title" trigger="click" placement="right">
       <CButton>Test</CButton>
     </CPopover>,
+    { container: document.body },
   )
   const btn = document.querySelector('.btn')
   act(() => {
@@ -25,6 +27,7 @@ test('CPopover customize', async () => {
       fireEvent.click(btn)
     }
   })
+  jest.runAllTimers()
   expect(container).toMatchSnapshot()
   let arrLength = container.getElementsByClassName('popover').length
   expect(arrLength).toBe(1)
@@ -50,6 +53,7 @@ test('CPopover customize', async () => {
   } else {
     expect(true).toBe(false)
   }
+  jest.useRealTimers()
 })
 
 // test('CPopover onToggle', async () => {

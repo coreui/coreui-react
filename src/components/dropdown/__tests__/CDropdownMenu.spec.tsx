@@ -19,4 +19,5 @@ test('CDropdownMenu customize', async () => {
   expect(container).toMatchSnapshot()
   expect(container.firstChild?.firstChild).toHaveClass('bazinga')
   expect(container.firstChild?.firstChild).toHaveClass('dropdown-menu')
+  expect(container.firstChild?.firstChild).toHaveClass('show')
 })

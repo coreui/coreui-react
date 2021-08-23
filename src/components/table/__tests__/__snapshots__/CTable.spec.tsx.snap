@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CTable customize 1`] = `
+<div>
+  <div
+    class="table-responsive-xl"
+  >
+    <table
+      class="table align-middle caption-top border-primary table-bordered table-borderless table-info table-hover table-sm table-striped bazinga"
+    >
+      <tbody>
+        <tr>
+          <td>
+            Test
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`CTable full example test 1`] = `
+<div>
+  <table
+    class="table caption-top"
+  >
+    <caption>
+      List of users
+    </caption>
+    <thead>
+      <tr>
+        <th>
+          #
+        </th>
+        <th>
+          Class
+        </th>
+        <th>
+          Heading
+        </th>
+        <th>
+          Heading
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>
+          1
+        </th>
+        <td>
+          Mark
+        </td>
+        <td>
+          Otto
+        </td>
+        <td>
+          @mdo
+        </td>
+      </tr>
+      <tr>
+        <th>
+          2
+        </th>
+        <td>
+          Jacob
+        </td>
+        <td>
+          Thornton
+        </td>
+        <td>
+          @fat
+        </td>
+      </tr>
+      <tr>
+        <th>
+          3
+        </th>
+        <td>
+          Larry
+        </td>
+        <td>
+          the Bird
+        </td>
+        <td>
+          @twitter
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>
+          #
+        </th>
+        <th>
+          Class
+        </th>
+        <th>
+          Heading
+        </th>
+        <th>
+          Heading
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+`;
+
+exports[`loads and displays CTable component 1`] = `
+<div>
+  <table
+    class="table"
+  />
+</div>
+`;

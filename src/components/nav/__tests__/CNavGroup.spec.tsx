@@ -14,7 +14,6 @@ test('CNavGroup customize', async () => {
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('nav-group')
-  expect(container.firstChild).toHaveClass('show')
   expect(container.firstChild).toHaveClass('bazinga')
   const arr = container.getElementsByClassName('nav-link')
   if (arr.length > 0) {
