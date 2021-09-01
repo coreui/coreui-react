@@ -1,8 +1,8 @@
-import React, { forwardRef, HTMLAttributes } from 'react'
+import React, { forwardRef, ImgHTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-export interface CImageProps extends HTMLAttributes<HTMLImageElement> {
+export interface CImageProps extends ImgHTMLAttributes<HTMLOrSVGImageElement> {
   /**
    * Set the horizontal aligment.
    */
