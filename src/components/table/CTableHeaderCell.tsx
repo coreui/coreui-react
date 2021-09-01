@@ -1,10 +1,10 @@
-import React, { forwardRef, HTMLAttributes } from 'react'
+import React, { forwardRef, ThHTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors, colorPropType } from '../Types'
 
-export interface CTableHeaderCellProps extends HTMLAttributes<HTMLTableHeaderCellElement> {
+export interface CTableHeaderCellProps extends ThHTMLAttributes<HTMLTableHeaderCellElement> {
   /**
    * A string of all className you want applied to the component. [docs]
    */

@@ -1,10 +1,11 @@
-import React, { forwardRef, HTMLAttributes } from 'react'
+import React, { forwardRef, TdHTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors, colorPropType } from '../Types'
 
-export interface CTableDataCellProps extends HTMLAttributes<HTMLTableDataCellElement> {
+export interface CTableDataCellProps
+  extends Omit<TdHTMLAttributes<HTMLTableDataCellElement>, 'align'> {
   /**
    * Highlight a table row or cell. [docs]
    */

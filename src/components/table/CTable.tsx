@@ -1,10 +1,10 @@
-import React, { forwardRef, HTMLAttributes } from 'react'
+import React, { forwardRef, TableHTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors, colorPropType } from '../Types'
 
-export interface CTableProps extends HTMLAttributes<HTMLTableElement> {
+export interface CTableProps extends TableHTMLAttributes<HTMLTableElement> {
   /**
    * Set the vertical aligment. [docs]
    */
