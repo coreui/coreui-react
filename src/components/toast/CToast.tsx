@@ -14,6 +14,12 @@ import { Colors, colorPropType } from '../Types'
 
 export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
+   * Apply a CSS fade transition to the toast. [docs]
+   *
+   * @default true
+   */
+  animation?: boolean
+  /**
    * Auto hide the toast. [docs]
    *
    * @default true
@@ -43,8 +49,6 @@ export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
   key?: number
   /**
    * Toggle the visibility of component. [docs]
-   *
-   * @default true
    */
   visible?: boolean
   /**
@@ -64,20 +68,25 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
   (
     {
       children,
+      animation = true,
       autohide = true,
       className,
       color,
       delay = 5000,
       index,
       key,
-      visible = true,
+      visible = false,
       onDismiss,
       ...rest
     },
     ref,
   ) => {
-    const [_visible, setVisible] = useState(visible)
+    const [_visible, setVisible] = useState(false)
     const timeout = useRef<number>()
+
+    useEffect(() => {
+      setVisible(visible)
+    }, [visible])
 
     const contextValues = {
       visible: _visible,
@@ -101,42 +110,59 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
     }
 
     const _className = classNames(
-      'toast fade',
+      'toast',
       {
-        show: _visible,
+        fade: animation,
         [`bg-${color}`]: color,
         'border-0': color,
       },
       className,
     )
+
+    const getTransitionClass = (state: string) => {
+      return state === 'entering'
+        ? 'showing'
+        : state === 'entered'
+        ? 'show'
+        : state === 'exiting'
+        ? 'showing'
+        : 'fade'
+    }
+
     return (
       <CSSTransition
         in={_visible}
         timeout={250}
-        onExit={() => onDismiss && onDismiss(index ? index : null)}
+        onExited={() => onDismiss && onDismiss(index ? index : null)}
         unmountOnExit
       >
-        <CToastContext.Provider value={contextValues}>
-          <div
-            className={_className}
-            aria-live="assertive"
-            aria-atomic="true"
-            role="alert"
-            onMouseEnter={() => clearTimeout(timeout.current)}
-            onMouseLeave={() => _autohide}
-            {...rest}
-            key={key}
-            ref={ref}
-          >
-            {children}
-          </div>
-        </CToastContext.Provider>
+        {(state) => {
+          const transitionClass = getTransitionClass(state)
+          return (
+            <CToastContext.Provider value={contextValues}>
+              <div
+                className={classNames(_className, transitionClass)}
+                aria-live="assertive"
+                aria-atomic="true"
+                role="alert"
+                onMouseEnter={() => clearTimeout(timeout.current)}
+                onMouseLeave={() => _autohide}
+                {...rest}
+                key={key}
+                ref={ref}
+              >
+                {children}
+              </div>
+            </CToastContext.Provider>
+          )
+        }}
       </CSSTransition>
     )
   },
 )
 
 CToast.propTypes = {
+  animation: PropTypes.bool,
   autohide: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,

@@ -69,7 +69,7 @@ export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
       return toasts.length > 0 || children ? (
         <div className={_className} {...rest} ref={ref}>
           {children}
-          {toasts.map((toast) => toast)}
+          {toasts.map((toast) => React.cloneElement(toast, { visible: true }))}
         </div>
       ) : null
     }
