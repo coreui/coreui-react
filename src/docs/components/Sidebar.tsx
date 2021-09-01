@@ -7,6 +7,7 @@ import { SidebarNav } from '.'
 import { myContext } from './../templates/Docs'
 
 import items from './../nav'
+// @ts-expect-error svg file
 import logo from './../assets/coreui-react.svg'
 
 interface SidebarProps {
@@ -20,9 +21,11 @@ const Sidebar: FC<SidebarProps> = ({ ...props }) => {
         <CSidebar
           className="docs-sidebar border-end ps-xl-4 elevation-0"
           position="fixed"
-          selfHiding="md"
+          // selfHiding="md"
+          hideBelow="xl"
           size="lg"
           visible={context.sidebarVisible}
+          onVisibleChange={(value) => context.setSidebarVisible(value)}
         >
           <CSidebarBrand className="justify-content-start ps-3">
             <CImage className="d-block mt-4 mb-5" src={logo} height={50} />

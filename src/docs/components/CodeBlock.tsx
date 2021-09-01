@@ -7,11 +7,10 @@ const CodeBlock: FC = ({ children }) => {
   const language = children.props.className
     ? children.props.className.replace(/language-/, '')
     : 'jsx'
-  // const language = 'jsx'
 
   return (
     <div className="code mb-4" style={{ maxHeight: '500px', overflow: 'scroll' }}>
-      <Highlight {...defaultProps} theme={false} code={_children?.trim()} language={language}>
+      <Highlight {...defaultProps} theme={undefined} code={_children?.trim()} language={language}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre className={className} style={{ ...style }}>
             {tokens.map((line, i) => (

@@ -8,9 +8,15 @@ import { CodeBlock, Example, Footer, Header, Seo, Sidebar, Toc } from './../comp
 import { CCol, CContainer, CRow } from '../../index'
 import './../styles/styles.scss'
 
-export const myContext = React.createContext()
+interface ContextProps {
+  sidebarVisible: boolean | undefined
+  setSidebarVisible: React.Dispatch<React.SetStateAction<boolean | undefined>>
+}
+
+export const myContext = React.createContext({} as ContextProps)
 
 const components = {
+  // eslint-disable-next-line react/display-name
   pre: (props) => <CodeBlock {...props} />,
   // eslint-disable-next-line react/display-name
   table: (props) => <table {...props} className="table table-striped" />,
@@ -18,7 +24,7 @@ const components = {
 }
 
 const DocsLayout: FC = ({ data: { mdx } }) => {
-  const [sidebarVisible, setSidebarVisible] = useState()
+  const [sidebarVisible, setSidebarVisible] = useState(true)
   return (
     <>
       <Seo title={mdx.frontmatter.title} description={mdx.frontmatter.description} />
@@ -28,7 +34,8 @@ const DocsLayout: FC = ({ data: { mdx } }) => {
       <myContext.Provider
         value={{
           sidebarVisible,
-          toggleSidebar: () => setSidebarVisible(!sidebarVisible),
+          setSidebarVisible,
+          // toggleSidebar: () => setSidebarVisible(!sidebarVisible),
         }}
       >
         <Sidebar currentRoute={mdx.frontmatter.route}/>

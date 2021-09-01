@@ -12,7 +12,10 @@ const Header: FC = ({ ...props }) => {
     <myContext.Consumer>
       {(context) => (
         <CHeader className="mb-5">
-          <CHeaderToggler className="ms-md-3 d-lg-none" onClick={() => context.toggleSidebar()}>
+          <CHeaderToggler
+            className="ms-md-3"
+            onClick={() => context.setSidebarVisible(!context.sidebarVisible)}
+          >
             <CIcon icon={cilMenu} size="lg" />
           </CHeaderToggler>
           <CHeaderNav className="ms-auto">
