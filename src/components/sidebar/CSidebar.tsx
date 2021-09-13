@@ -4,7 +4,7 @@ import React, {
   forwardRef,
   HTMLAttributes,
   useEffect,
-  useLayoutEffect,
+  // useLayoutEffect,
   useRef,
   useState,
 } from 'react'
@@ -21,18 +21,15 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
    * A string of all className you want applied to the component. [docs]
    */
   className?: string
+  hideBelow?: Breakpoints | boolean | number
   /**
    * Make sidebar narrow. [docs]
    */
   narrow?: boolean
   /**
-   * Method called before the hide animation has started. [docs]
-   */
-  onHide?: () => void
-  /**
    * Method called before the show animation has started. [docs]
    */
-  onShow?: () => void
+  onVisibleChange?: (visible: boolean) => void
   /**
    * Set sidebar to narrow variant. [docs]
    */
@@ -55,8 +52,16 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
   unfoldable?: boolean
   /**
    * Toggle the visibility of sidebar component. [docs]
+   *
+   * @default true
    */
   visible?: boolean
+  /**
+   * Toggle the visibility of sidebar component. [docs]
+   *
+   * @default false
+   */
+  hideOnMobile?: boolean
 }
 
 export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
@@ -64,9 +69,10 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
     {
       children,
       className,
+      hideBelow,
+      hideOnMobile = true,
       narrow,
-      onHide,
-      onShow,
+      onVisibleChange,
       overlaid,
       position,
       selfHiding,
@@ -77,29 +83,86 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
     },
     ref,
   ) => {
+    const getWidth = () =>
+      window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+
     const sidebarRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, sidebarRef)
     const [mobile, setMobile] = useState(false)
     const [_visible, setVisible] = useState(visible)
+    const [width, setWidth] = useState(getWidth())
+
+    const getHideBelowBreakpoint = (element: React.RefObject<HTMLDivElement>) =>
+      element.current &&
+      getComputedStyle(element.current).getPropertyValue(`--cui-breakpoint-${hideBelow}`)
+
+    // const callbackFunction = (entries: IntersectionObserverEntry[]) => {
+    //   const [entry] = entries
+    //   onVisibleChange && onVisibleChange(entry.isIntersecting)
+    // }
+
+    // const options = {
+    //   rootMargin: '0px',
+    //   threshold: 1.0,
+    // }
+
+    useEffect(() => {
+      const { current } = sidebarRef
+      const observer = new IntersectionObserver(
+        (entries: IntersectionObserverEntry[]) => {
+          const [entry] = entries
+          onVisibleChange && onVisibleChange(entry.isIntersecting)
+        },
+        {
+          rootMargin: '0px',
+          threshold: 1.0,
+        },
+      )
+
+      current && observer.observe(current)
+
+      return () => {
+        current && observer.unobserve(current)
+        observer.disconnect()
+      }
+    }, [sidebarRef])
 
     const isOnMobile = (element: React.RefObject<HTMLDivElement>) =>
       Boolean(
         element.current && getComputedStyle(element.current).getPropertyValue('--cui-is-mobile'),
       )
 
-    useLayoutEffect(() => {
-      setMobile(isOnMobile(sidebarRef))
-    })
+    useEffect(() => {
+      const resizeListener = () => {
+        setWidth(getWidth())
+      }
+      window.addEventListener('resize', resizeListener)
+
+      return () => {
+        window.removeEventListener('resize', resizeListener)
+      }
+    }, [sidebarRef])
 
     useEffect(() => {
       setVisible(visible)
-      setMobile(isOnMobile(sidebarRef))
     }, [visible])
 
     useEffect(() => {
-      setMobile(isOnMobile(sidebarRef))
-      _visible && onShow && onShow()
-    }, [_visible])
+      mobile && hideOnMobile && setVisible(false)
+    }, [mobile])
+
+    useEffect(() => {
+      sidebarRef.current && setMobile(isOnMobile(sidebarRef))
+      hideBelow &&
+        sidebarRef.current &&
+        Number(getHideBelowBreakpoint(sidebarRef)?.replace('px', '')) > width &&
+        visible !== true &&
+        setVisible(false)
+      hideBelow &&
+        sidebarRef.current &&
+        Number(getHideBelowBreakpoint(sidebarRef)?.replace('px', '')) <= width &&
+        setVisible(true)
+    }, [width])
 
     useEffect(() => {
       window.addEventListener('mouseup', handleClickOutside)
@@ -116,7 +179,6 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
     const handleHide = () => {
       if (_visible) {
         setVisible(false)
-        onHide && onHide()
       }
     }
 
@@ -157,8 +219,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
         [`sidebar-self-hiding${typeof selfHiding !== 'boolean' && '-' + selfHiding}`]: selfHiding,
         [`sidebar-${size}`]: size,
         'sidebar-narrow-unfoldable': unfoldable,
-        show: _visible === true,
-        hide: _visible === false,
+        hide: !visible || !_visible,
       },
       className,
     )
@@ -182,9 +243,9 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
 CSidebar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  hideBelow: PropTypes.any,
   narrow: PropTypes.bool,
-  onHide: PropTypes.func,
-  onShow: PropTypes.func,
+  onVisibleChange: PropTypes.func,
   overlaid: PropTypes.bool,
   position: PropTypes.oneOf(['fixed', 'sticky']),
   selfHiding: PropTypes.oneOfType([
@@ -194,6 +255,7 @@ CSidebar.propTypes = {
   size: PropTypes.oneOf(['sm', 'lg', 'xl']),
   unfoldable: PropTypes.bool,
   visible: PropTypes.bool,
+  hideOnMobile: PropTypes.bool,
 }
 
 CSidebar.displayName = 'CSidebar'
