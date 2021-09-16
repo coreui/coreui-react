@@ -24,7 +24,8 @@ const components = {
 }
 
 const DocsLayout: FC = ({ data: { mdx } }) => {
-  const [sidebarVisible, setSidebarVisible] = useState(true)
+  const [currentSidebarVisible, setCurrentSidebarVisible] = useState()
+  const [sidebarVisible, setSidebarVisible] = useState()
   return (
     <>
       <Seo title={mdx.frontmatter.title} description={mdx.frontmatter.description} />
@@ -35,7 +36,6 @@ const DocsLayout: FC = ({ data: { mdx } }) => {
         value={{
           sidebarVisible,
           setSidebarVisible,
-          // toggleSidebar: () => setSidebarVisible(!sidebarVisible),
         }}
       >
         <Sidebar currentRoute={mdx.frontmatter.route}/>
