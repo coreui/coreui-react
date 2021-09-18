@@ -1,18 +1,8 @@
-// TODO: check if element is visible after toggle
-
-import React, {
-  forwardRef,
-  HTMLAttributes,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, { forwardRef, HTMLAttributes, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Breakpoints } from '../Types'
 import { useForkedRef } from '../../utils/hooks'
 import { CBackdrop } from '../backdrop/CBackdrop'
 
@@ -26,13 +16,9 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
    */
   narrow?: boolean
   /**
-   * Method called before the hide animation has started. [docs]
+   * Event emitted after visibility of component changed. [docs]
    */
-  onHide?: () => void
-  /**
-   * Method called before the show animation has started. [docs]
-   */
-  onShow?: () => void
+  onVisibleChange?: (visible: boolean) => void
   /**
    * Set sidebar to narrow variant. [docs]
    */
@@ -41,10 +27,6 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
    * Place sidebar in non-static positions. [docs]
    */
   position?: 'fixed' | 'sticky'
-  /**
-   * Make any sidebar self hiding across all viewports or pick a maximum breakpoint with which to have a self hiding up to. [docs]
-   */
-  selfHiding?: Breakpoints | boolean
   /**
    * Size the component small, large, or extra large. [docs]
    */
@@ -59,17 +41,28 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
   visible?: boolean
 }
 
+const isOnMobile = (element: HTMLDivElement) =>
+  Boolean(getComputedStyle(element).getPropertyValue('--cui-is-mobile'))
+
+const isVisible = (element: HTMLDivElement) => {
+  const rect = element.getBoundingClientRect()
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  )
+}
+
 export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
   (
     {
       children,
       className,
       narrow,
-      onHide,
-      onShow,
+      onVisibleChange,
       overlaid,
       position,
-      selfHiding,
       size,
       unfoldable,
       visible,
@@ -81,43 +74,54 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
     const forkedRef = useForkedRef(ref, sidebarRef)
     const [mobile, setMobile] = useState(false)
     const [_visible, setVisible] = useState(visible)
-
-    const isOnMobile = (element: React.RefObject<HTMLDivElement>) =>
-      Boolean(
-        element.current && getComputedStyle(element.current).getPropertyValue('--cui-is-mobile'),
-      )
-
-    useLayoutEffect(() => {
-      setMobile(isOnMobile(sidebarRef))
-    })
+    const [inViewport, setInViewport] = useState<boolean>()
 
     useEffect(() => {
+      sidebarRef.current && setMobile(isOnMobile(sidebarRef.current))
+
       setVisible(visible)
-      setMobile(isOnMobile(sidebarRef))
     }, [visible])
 
     useEffect(() => {
-      setMobile(isOnMobile(sidebarRef))
-      _visible && onShow && onShow()
-    }, [_visible])
+      typeof inViewport !== 'undefined' && onVisibleChange && onVisibleChange(inViewport)
+    }, [inViewport])
 
     useEffect(() => {
+      mobile && visible && setVisible(false)
+    }, [mobile])
+
+    useEffect(() => {
+      sidebarRef.current && setMobile(isOnMobile(sidebarRef.current))
+      sidebarRef.current && setInViewport(isVisible(sidebarRef.current))
+
+      window.addEventListener('resize', () => handleResize())
       window.addEventListener('mouseup', handleClickOutside)
-      sidebarRef.current && sidebarRef.current.addEventListener('mouseup', handleOnClick)
       window.addEventListener('keyup', handleKeyup)
 
+      sidebarRef.current?.addEventListener('mouseup', handleOnClick)
+      sidebarRef.current?.addEventListener('transitionend', () => {
+        sidebarRef.current && setInViewport(isVisible(sidebarRef.current))
+      })
+
       return () => {
+        window.removeEventListener('resize', () => handleResize())
         window.removeEventListener('mouseup', handleClickOutside)
-        sidebarRef.current && sidebarRef.current.removeEventListener('mouseup', handleOnClick)
         window.removeEventListener('keyup', handleKeyup)
+
+        sidebarRef.current?.removeEventListener('mouseup', handleOnClick)
+        sidebarRef.current?.removeEventListener('transitionend', () => {
+          sidebarRef.current && setInViewport(isVisible(sidebarRef.current))
+        })
       }
     })
 
     const handleHide = () => {
-      if (_visible) {
-        setVisible(false)
-        onHide && onHide()
-      }
+      setVisible(false)
+    }
+
+    const handleResize = () => {
+      sidebarRef.current && setMobile(isOnMobile(sidebarRef.current))
+      sidebarRef.current && setInViewport(isVisible(sidebarRef.current))
     }
 
     const handleKeyup = (event: Event) => {
@@ -154,11 +158,10 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
         'sidebar-narrow': narrow,
         'sidebar-overlaid': overlaid,
         [`sidebar-${position}`]: position,
-        [`sidebar-self-hiding${typeof selfHiding !== 'boolean' && '-' + selfHiding}`]: selfHiding,
         [`sidebar-${size}`]: size,
         'sidebar-narrow-unfoldable': unfoldable,
-        show: _visible === true,
-        hide: _visible === false,
+        show: _visible === true && mobile,
+        hide: _visible === false && !mobile,
       },
       className,
     )
@@ -183,14 +186,9 @@ CSidebar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   narrow: PropTypes.bool,
-  onHide: PropTypes.func,
-  onShow: PropTypes.func,
+  onVisibleChange: PropTypes.func,
   overlaid: PropTypes.bool,
   position: PropTypes.oneOf(['fixed', 'sticky']),
-  selfHiding: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl'>(['sm', 'md', 'lg', 'xl', 'xxl']),
-  ]),
   size: PropTypes.oneOf(['sm', 'lg', 'xl']),
   unfoldable: PropTypes.bool,
   visible: PropTypes.bool,
