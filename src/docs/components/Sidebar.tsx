@@ -33,7 +33,6 @@ const Sidebar: FC<SidebarProps> = ({ ...props }) => {
           visible={context.sidebarVisible}
           onVisibleChange={(value) => {
             context.setSidebarVisible(value)
-            console.log(value)
           }}
         >
           <CSidebarBrand className="justify-content-start ps-3">

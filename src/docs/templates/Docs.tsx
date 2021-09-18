@@ -24,7 +24,6 @@ const components = {
 }
 
 const DocsLayout: FC = ({ data: { mdx } }) => {
-  const [currentSidebarVisible, setCurrentSidebarVisible] = useState()
   const [sidebarVisible, setSidebarVisible] = useState()
   return (
     <>

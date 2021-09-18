@@ -39,7 +39,7 @@ const Header: FC = ({ ...props }) => {
               <CNavItem href="https://community.coreui.io/">
                 <CIcon icon={cibDiscourse} size="xl" />
               </CNavItem>
-              <CNavItem href="https://github.com/coreui">
+              <CNavItem href="https://github.com/coreui/coreui-react/">
                 <CIcon icon={cibGithub} size="xl" />
               </CNavItem>
               <CNavItem href="https://twitter.com/core_ui">
