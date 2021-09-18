@@ -5,7 +5,7 @@ exports[`CToast customize 1`] = `
   <div
     aria-atomic="true"
     aria-live="assertive"
-    class="toast fade show bg-warning border-0 bazinga"
+    class="toast fade bg-warning border-0 bazinga showing enter-active"
     role="alert"
   >
     Test
@@ -13,15 +13,69 @@ exports[`CToast customize 1`] = `
 </div>
 `;
 
-exports[`loads and displays CToast component 1`] = `
+exports[`CToast customize 2`] = `
 <div>
   <div
     aria-atomic="true"
     aria-live="assertive"
-    class="toast fade show"
+    class="toast fade bg-warning border-0 bazinga showing enter-active"
     role="alert"
   >
     Test
   </div>
 </div>
 `;
+
+exports[`CToast customize 3`] = `
+<div>
+  <div
+    aria-atomic="true"
+    aria-live="assertive"
+    class="toast fade bg-warning border-0 bazinga showing enter-active"
+    role="alert"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`CToast customize 4`] = `
+<div>
+  <div
+    aria-atomic="true"
+    aria-live="assertive"
+    class="toast fade bg-warning border-0 bazinga showing enter-active"
+    role="alert"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`CToast customize 5`] = `
+<div>
+  <div
+    aria-atomic="true"
+    aria-live="assertive"
+    class="toast fade bg-warning border-0 bazinga showing enter-active"
+    role="alert"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`CToast customize 6`] = `
+<div>
+  <div
+    aria-atomic="true"
+    aria-live="assertive"
+    class="toast fade bg-warning border-0 bazinga show enter-done"
+    role="alert"
+  >
+    Test
+  </div>
+</div>
+`;
+
+exports[`loads and displays CToast component 1`] = `<div />`;

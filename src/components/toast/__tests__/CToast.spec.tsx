@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import { CToast, CToastBody, CToastHeader } from '../../../index'
 
@@ -22,12 +22,14 @@ test('CToast customize', async () => {
       Test
     </CToast>,
   )
-  expect(container).toMatchSnapshot()
-  expect(container.firstChild).toHaveClass('bazinga')
-  expect(container.firstChild).toHaveClass('toast')
-  expect(container.firstChild).toHaveClass('fade')
-  expect(container.firstChild).toHaveClass('bg-warning')
-  expect(container.firstChild).toHaveClass('show')
+  await waitFor(() => {
+    expect(container).toMatchSnapshot()
+    expect(container.firstChild).toHaveClass('bazinga')
+    expect(container.firstChild).toHaveClass('toast')
+    expect(container.firstChild).toHaveClass('fade')
+    expect(container.firstChild).toHaveClass('bg-warning')
+    expect(container.firstChild).toHaveClass('show')
+  })
 })
 
 test('CToast click on dismiss button', async () => {
@@ -61,7 +63,10 @@ test('CToast click on dismiss button', async () => {
       <CToastBody>Hello, world! This is a toast message.</CToastBody>
     </CToast>,
   )
-  expect(container.firstChild).toHaveClass('show')
+  await waitFor(() => {
+    expect(container.firstChild).toHaveClass('show')
+  })
+
   expect(onDismiss).toHaveBeenCalledTimes(0)
   const btn = document.querySelector('.btn-close')
   if (btn !== null) {
@@ -74,14 +79,22 @@ test('CToast click on dismiss button', async () => {
 })
 
 test('CToast test autohide', async () => {
-  jest.useFakeTimers()
   const { container } = render(
-    <CToast autohide={true} delay={100} visible={true}>
+    <CToast autohide={true} delay={1000} visible={true}>
       Test
     </CToast>,
   )
-  expect(container.firstChild).toHaveClass('show')
-  jest.runAllTimers()
-  expect(container.firstChild).toBeNull()
-  jest.useRealTimers()
+
+  await waitFor(() => {
+    expect(container.firstChild).toHaveClass('show')
+  })
+
+  await waitFor(
+    () => {
+      expect(container.firstChild).toBeNull()
+    },
+    {
+      timeout: 5000,
+    },
+  )
 })
