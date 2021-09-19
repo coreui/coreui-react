@@ -30,7 +30,10 @@ export const BasicExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton href="#" onClick={() => setVisible(!visible)}>
+      <CButton href="#" onClick={(event) => {
+        event.preventDefault()
+        setVisible(!visible)
+      }}>
         Link
       </CButton>
       <CButton onClick={() => setVisible(!visible)}>Button</CButton>
@@ -55,7 +58,10 @@ export const BasicExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton href="#" onClick={() => setVisible(!visible)}>
+    <CButton href="#" onClick={(event) => {
+      event.preventDefault()
+      setVisible(!visible)
+    }}>
       Link
     </CButton>
     <CButton onClick={() => setVisible(!visible)}>Button</CButton>
