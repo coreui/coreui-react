@@ -33,7 +33,7 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
     }
 
     const onEntering = () => {
-      collapseRef && collapseRef.current && setHeight(collapseRef.current.scrollHeight)
+      collapseRef.current && setHeight(collapseRef.current.scrollHeight)
     }
 
     const onEntered = () => {
@@ -41,7 +41,7 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
     }
 
     const onExit = () => {
-      collapseRef && collapseRef.current && setHeight(collapseRef.current.scrollHeight)
+      collapseRef.current && setHeight(collapseRef.current.scrollHeight)
     }
 
     const onExiting = () => {
