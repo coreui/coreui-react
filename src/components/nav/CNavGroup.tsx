@@ -66,7 +66,7 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
     }
 
     const onEntering = () => {
-      navItemsRef && navItemsRef.current && setHeight(navItemsRef.current.scrollHeight)
+      navItemsRef.current && setHeight(navItemsRef.current.scrollHeight)
     }
 
     const onEntered = () => {
@@ -74,13 +74,13 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
     }
 
     const onExit = () => {
-      navItemsRef && navItemsRef.current && setHeight(navItemsRef.current.scrollHeight)
+      navItemsRef.current && setHeight(navItemsRef.current.scrollHeight)
     }
 
     const onExiting = () => {
       // @ts-expect-error reflow is necessary to get correct height of the element
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const reflow = navItemsRef && navItemsRef.current && navItemsRef.current.offsetHeight
+      const reflow = navItemsRef.current?.offsetHeight
       setHeight(0)
     }
 
