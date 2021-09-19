@@ -131,7 +131,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
         document.body.classList.add('modal-open')
         setTimeout(
           () => {
-            modalRef.current && modalRef.current.focus()
+            modalRef.current?.focus()
           },
           !transition ? 0 : duration,
         )
