@@ -145,12 +145,12 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
     }, [visible])
 
     const handleKeyup = (event: Event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as HTMLElement)) {
+      if (!dropdownRef.current?.contains(event.target as HTMLElement)) {
         setVisible(false)
       }
     }
     const handleClickOutside = (event: Event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as HTMLElement)) {
+      if (!dropdownRef.current?.contains(event.target as HTMLElement)) {
         setVisible(false)
       }
     }
