@@ -1,23 +1,41 @@
 import * as React from 'react'
-import { act, render, fireEvent } from '@testing-library/react'
+import ReactDOM from 'react-dom'
+import { act } from 'react-dom/test-utils'
+import { fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import { CTooltip, CLink } from '../../../index'
 
+let container: HTMLDivElement | null
+
+beforeEach(() => {
+  container = document.createElement('div')
+  document.body.appendChild(container)
+})
+
+afterEach(() => {
+  container && document.body.removeChild(container)
+  container = null
+})
+
 test('loads and displays CTooltip component', async () => {
-  const { container } = render(
+  ReactDOM.render(
     <CTooltip content="content">
       <CLink>Test</CLink>
     </CTooltip>,
+    container,
   )
   expect(container).toMatchSnapshot()
 })
 
 test('CTooltip customize', async () => {
-  const { container } = render(
-    <CTooltip trigger="hover" placement="right" content="content">
-      <CLink className="link">Test</CLink>
-    </CTooltip>,
-  )
+  act(() => {
+    ReactDOM.render(
+      <CTooltip trigger="hover" placement="right" content="content">
+        <CLink className="link">Test</CLink>
+      </CTooltip>,
+      container,
+    )
+  })
   const link = document.querySelector('.link')
   act(() => {
     if (link !== null) {

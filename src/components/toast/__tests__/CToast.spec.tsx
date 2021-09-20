@@ -15,7 +15,6 @@ test('CToast customize', async () => {
       autohide={false}
       color="warning"
       delay={100}
-      key={1}
       visible={true}
       //onDismiss
     >
@@ -41,7 +40,6 @@ test('CToast click on dismiss button', async () => {
       autohide={false}
       color="warning"
       delay={100}
-      key={1}
       visible={true}
       onDismiss={onDismiss}
     >
