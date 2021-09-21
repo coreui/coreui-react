@@ -1,8 +1,16 @@
-import React, { forwardRef, HTMLAttributes } from 'react'
+import React, { createContext, forwardRef, HTMLAttributes, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CAccordionProps extends HTMLAttributes<HTMLDivElement> {
+  /**
+   * The active item key. [docs]
+   */
+  activeItemKey?: number | string
+  /**
+   * Make accordion items stay open when another item is opened
+   */
+  alwaysOpen?: boolean
   /**
    * A string of all className you want applied to the base component. [docs]
    */
@@ -13,18 +21,31 @@ export interface CAccordionProps extends HTMLAttributes<HTMLDivElement> {
   flush?: boolean
 }
 
+export interface CAccordionContextProps {
+  _activeItemKey?: number | string
+  alwaysOpen?: boolean
+  setActiveKey: React.Dispatch<React.SetStateAction<number | string | undefined>>
+}
+
+export const CAccordionContext = createContext({} as CAccordionContextProps)
+
 export const CAccordion = forwardRef<HTMLDivElement, CAccordionProps>(
-  ({ children, className, flush, ...rest }, ref) => {
+  ({ children, activeItemKey = undefined, alwaysOpen = false, className, flush, ...rest }, ref) => {
+    const [_activeItemKey, setActiveKey] = useState(activeItemKey)
     const _className = classNames('accordion', { 'accordion-flush': flush }, className)
     return (
       <div className={_className} {...rest} ref={ref}>
-        {children}
+        <CAccordionContext.Provider value={{ _activeItemKey, alwaysOpen, setActiveKey }}>
+          {children}
+        </CAccordionContext.Provider>
       </div>
     )
   },
 )
 
 CAccordion.propTypes = {
+  alwaysOpen: PropTypes.bool,
+  activeItemKey: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   children: PropTypes.node,
   className: PropTypes.string,
   flush: PropTypes.bool,

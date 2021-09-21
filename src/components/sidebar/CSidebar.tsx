@@ -37,6 +37,8 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
   unfoldable?: boolean
   /**
    * Toggle the visibility of sidebar component. [docs]
+   *
+   * @default true
    */
   visible?: boolean
 }

@@ -1,24 +1,30 @@
-import React, { forwardRef, HTMLAttributes } from 'react'
+import React, { forwardRef, HTMLAttributes, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+
+import { CAccordionItemContext } from './CAccordionItem'
 
 export interface CAccordionButtonProps extends HTMLAttributes<HTMLButtonElement> {
   /**
    * A string of all className you want applied to the base component. [docs]
    */
   className?: string
-  /**
-   * Set button state to collapsed. [docs]
-   */
-  collapsed?: boolean
 }
 
 export const CAccordionButton = forwardRef<HTMLButtonElement, CAccordionButtonProps>(
-  ({ children, className, collapsed, ...rest }, ref) => {
-    const _className = classNames('accordion-button', { collapsed: collapsed }, className)
+  ({ children, className, ...rest }, ref) => {
+    const { visible, setVisible } = useContext(CAccordionItemContext)
+
+    const _className = classNames('accordion-button', { collapsed: !visible }, className)
 
     return (
-      <button className={_className} {...rest} aria-expanded={!collapsed} ref={ref}>
+      <button
+        className={_className}
+        {...rest}
+        aria-expanded={!visible}
+        onClick={() => setVisible(!visible)}
+        ref={ref}
+      >
         {children}
       </button>
     )
@@ -28,7 +34,6 @@ export const CAccordionButton = forwardRef<HTMLButtonElement, CAccordionButtonPr
 CAccordionButton.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  collapsed: PropTypes.bool,
 }
 
 CAccordionButton.displayName = 'CAccordionButton'
