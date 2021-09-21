@@ -5,7 +5,12 @@ exports[`CAccordionHeader customize 1`] = `
   <div
     class="accordion-header bazinga"
   >
-    Test
+    <button
+      aria-expanded="true"
+      class="accordion-button collapsed"
+    >
+      Test
+    </button>
   </div>
 </div>
 `;
@@ -15,7 +20,12 @@ exports[`loads and displays CAccordionHeader component 1`] = `
   <div
     class="accordion-header"
   >
-    Test
+    <button
+      aria-expanded="true"
+      class="accordion-button collapsed"
+    >
+      Test
+    </button>
   </div>
 </div>
 `;

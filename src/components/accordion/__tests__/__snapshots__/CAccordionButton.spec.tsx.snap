@@ -3,7 +3,7 @@
 exports[`CAccordionButton customize 1`] = `
 <div>
   <button
-    aria-expanded="false"
+    aria-expanded="true"
     class="accordion-button collapsed bazinga"
   >
     Test
@@ -15,7 +15,7 @@ exports[`loads and displays CAccordionButton component 1`] = `
 <div>
   <button
     aria-expanded="true"
-    class="accordion-button"
+    class="accordion-button collapsed"
   >
     Test
   </button>

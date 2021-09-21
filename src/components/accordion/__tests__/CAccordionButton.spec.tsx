@@ -9,13 +9,8 @@ test('loads and displays CAccordionButton component', async () => {
 })
 
 test('CAccordionButton customize', async () => {
-  const { container } = render(
-    <CAccordionButton className="bazinga" collapsed={true}>
-      Test
-    </CAccordionButton>,
-  )
+  const { container } = render(<CAccordionButton className="bazinga">Test</CAccordionButton>)
   expect(container.firstChild).toHaveClass('bazinga')
   expect(container.firstChild).toHaveClass('accordion-button')
-  expect(container.firstChild).toHaveClass('collapsed')
   expect(container).toMatchSnapshot()
 })

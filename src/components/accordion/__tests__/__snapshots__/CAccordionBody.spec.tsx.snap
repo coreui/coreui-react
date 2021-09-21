@@ -3,9 +3,13 @@
 exports[`CAccordionBody customize 1`] = `
 <div>
   <div
-    class="accordion-body bazinga"
+    class="accordion-collpase collapse"
   >
-    Test
+    <div
+      class="accordion-body"
+    >
+      Test
+    </div>
   </div>
 </div>
 `;
@@ -13,9 +17,13 @@ exports[`CAccordionBody customize 1`] = `
 exports[`loads and displays CAccordionBody component 1`] = `
 <div>
   <div
-    class="accordion-body"
+    class="accordion-collpase collapse"
   >
-    Test
+    <div
+      class="accordion-body"
+    >
+      Test
+    </div>
   </div>
 </div>
 `;
