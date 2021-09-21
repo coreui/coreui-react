@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import { CModalHeader } from '../../../index'
 
@@ -15,17 +15,10 @@ test('CModalHeader customize', async () => {
   expect(container.firstChild).toHaveClass('modal-header')
 })
 
-test('CModalHeader click on button close', async () => {
+test('CModalHeader has a close button', async () => {
   const onDismiss = jest.fn()
-  render(
-    <CModalHeader className="bazinga" onDismiss={onDismiss}>
-      Test
-    </CModalHeader>,
-  )
+  render(<CModalHeader className="bazinga">Test</CModalHeader>)
   expect(onDismiss).toHaveBeenCalledTimes(0)
   const btn = document.querySelector('.btn-close')
-  if (btn !== null) {
-    fireEvent.click(btn)
-  }
-  expect(onDismiss).toHaveBeenCalledTimes(1)
+  expect(btn).toBeTruthy()
 })

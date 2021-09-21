@@ -1,7 +1,9 @@
 import React, {
+  createContext,
   forwardRef,
   HTMLAttributes,
   useCallback,
+  useEffect,
   useLayoutEffect,
   useRef,
   useState,
@@ -28,7 +30,7 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    * Apply a backdrop on body while modal is open. [docs]
    * @default true
    */
-  backdrop?: boolean
+  backdrop?: boolean | 'static'
   /**
    * A string of all className you want applied to the base component. [docs]
    */
@@ -72,6 +74,13 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
   visible?: boolean
 }
 
+interface ModalContextProps {
+  visible?: boolean
+  setVisible: React.Dispatch<React.SetStateAction<boolean | undefined>>
+}
+
+export const CModalContext = createContext({} as ModalContextProps)
+
 export const CModal = forwardRef<HTMLDivElement, CModalProps>(
   (
     {
@@ -91,13 +100,23 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     },
     ref,
   ) => {
-    const [staticBackdrop, setStaticBackdrop] = useState(false)
-
     const modalRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, modalRef)
 
+    const [_visible, setVisible] = useState(visible)
+    const [staticBackdrop, setStaticBackdrop] = useState(false)
+
+    useEffect(() => {
+      setVisible(visible)
+    }, [visible])
+
+    const contextValues = {
+      visible: _visible,
+      setVisible,
+    }
+
     const handleDismiss = () => {
-      if (typeof onDismiss === 'undefined') {
+      if (backdrop === 'static') {
         return setStaticBackdrop(true)
       }
       return onDismiss && onDismiss()
@@ -127,7 +146,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
 
     // Set focus to modal after open
     useLayoutEffect(() => {
-      if (visible) {
+      if (_visible) {
         document.body.classList.add('modal-open')
         setTimeout(
           () => {
@@ -139,7 +158,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
         document.body.classList.remove('modal-open')
       }
       return () => document.body.classList.remove('modal-open')
-    }, [visible])
+    }, [_visible])
 
     const handleKeyDown = useCallback(
       (event) => {
@@ -152,7 +171,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
 
     const modal = (ref?: React.Ref<HTMLDivElement>, transitionClass?: string) => {
       return (
-        <>
+        <CModalContext.Provider value={contextValues}>
           <div
             className={classNames(_className, transitionClass)}
             tabIndex={-1}
@@ -169,7 +188,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
               <CModalContent>{children}</CModalContent>
             </CModalDialog>
           </div>
-        </>
+        </CModalContext.Provider>
       )
     }
 
@@ -177,7 +196,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       <>
         <div onClick={handleDismiss} onKeyDown={handleKeyDown}>
           <CSSTransition
-            in={visible}
+            in={_visible}
             timeout={!transition ? 0 : duration}
             onExit={onDismiss}
             mountOnEnter
@@ -192,8 +211,8 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
           </CSSTransition>
         </div>
         {typeof window !== 'undefined' && portal
-          ? backdrop && createPortal(<CBackdrop visible={visible} />, document.body)
-          : backdrop && <CBackdrop visible={visible} />}
+          ? backdrop && createPortal(<CBackdrop visible={_visible} />, document.body)
+          : backdrop && <CBackdrop visible={_visible} />}
       </>
     )
   },
@@ -201,7 +220,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
 
 CModal.propTypes = {
   alignment: PropTypes.oneOf(['top', 'center']),
-  backdrop: PropTypes.bool,
+  backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'static'>(['static'])]),
   children: PropTypes.node,
   className: PropTypes.string,
   duration: PropTypes.number,

@@ -1,5 +1,6 @@
-import React, { forwardRef, HTMLAttributes } from 'react'
+import React, { forwardRef, HTMLAttributes, useContext } from 'react'
 import PropTypes from 'prop-types'
+import { CModalContext } from './CModal'
 import { CCloseButton } from '../close-button/CCloseButton'
 import classNames from 'classnames'
 
@@ -9,19 +10,22 @@ export interface CModalHeaderProps extends HTMLAttributes<HTMLDivElement> {
    */
   className?: string
   /**
-   * Add a close button component to the header which will call the provided handler when clicked. [docs]
+   * Add a close button component to the header. [docs]
+   *
+   * @default true
    */
-  onDismiss?: () => void
+  closeButton?: boolean
 }
 
 export const CModalHeader = forwardRef<HTMLDivElement, CModalHeaderProps>(
-  ({ children, className, onDismiss, ...rest }, ref) => {
+  ({ children, className, closeButton = true, ...rest }, ref) => {
+    const { setVisible } = useContext(CModalContext)
     const _className = classNames('modal-header', className)
 
     return (
       <div className={_className} {...rest} ref={ref}>
         {children}
-        {onDismiss && <CCloseButton onClick={onDismiss} />}
+        {closeButton && <CCloseButton onClick={() => setVisible(false)} />}
       </div>
     )
   },
@@ -30,7 +34,7 @@ export const CModalHeader = forwardRef<HTMLDivElement, CModalHeaderProps>(
 CModalHeader.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  onDismiss: PropTypes.func,
+  closeButton: PropTypes.bool,
 }
 
 CModalHeader.displayName = 'CModalHeader'

@@ -6,6 +6,10 @@ exports[`CModalHeader customize 1`] = `
     class="modal-header bazinga"
   >
     Test
+    <button
+      aria-label="Close"
+      class="btn btn-close"
+    />
   </div>
 </div>
 `;
@@ -16,6 +20,10 @@ exports[`loads and displays CModalHeader component 1`] = `
     class="modal-header"
   >
     Test
+    <button
+      aria-label="Close"
+      class="btn btn-close"
+    />
   </div>
 </div>
 `;
