@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { CFormTextarea } from '../../../index'
 
 test('loads and displays CFormTextarea component', async () => {
-  const { container } = render(<CFormTextarea value="Some value" />)
+  const { container } = render(<CFormTextarea defaultValue="Some value" />)
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('form-control')
 })
@@ -18,7 +18,7 @@ test('CFormTextarea customize', async () => {
       plainText={true}
       readOnly={true}
       valid={true}
-      value="Some value"
+      defaultValue="Some value"
     />,
   )
   expect(container).toMatchSnapshot()
