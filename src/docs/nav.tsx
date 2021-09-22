@@ -238,6 +238,10 @@ const nav = [
         to: '/components/sidebar/',
       },
       {
+        name: 'Spinner',
+        to: '/components/spinner/',
+      },
+      {
         name: 'Table',
         to: '/components/table/',
       },
