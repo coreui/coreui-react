@@ -29,6 +29,12 @@ export interface CBadgeProps extends HTMLAttributes<HTMLDivElement | HTMLSpanEle
    */
   component?: string | ElementType
   /**
+   * Position badge in one of the corners of a link or button.
+   *
+   * @type 'top-start' | 'top-end' | 'bottom-end' | 'botttom-start'
+   */
+  position?: 'top-start' | 'top-end' | 'bottom-end' | 'botttom-start'
+  /**
    * Select the shape of the component. [docs]
    *
    * @type 'rounded' | 'rounded-top' | 'rounded-end' | 'rounded-bottom' | 'rounded-start' | 'rounded-circle' | 'rounded-pill' | 'rounded-0' | 'rounded-1' | 'rounded-2' | 'rounded-3' | string
@@ -49,15 +55,30 @@ export interface CBadgeProps extends HTMLAttributes<HTMLDivElement | HTMLSpanEle
 }
 export const CBadge = forwardRef<HTMLDivElement | HTMLSpanElement, CBadgeProps>(
   (
-    { children, className, color, component: Component = 'span', shape, size, textColor, ...rest },
+    {
+      children,
+      className,
+      color,
+      component: Component = 'span',
+      position,
+      shape,
+      size,
+      textColor,
+      ...rest
+    },
     ref,
   ) => {
     const _className = classNames(
       'badge',
       {
         [`bg-${color}`]: color,
-        [`text-${textColor}`]: textColor,
+        'position-absolute translate-middle': position,
+        'top-0': position?.includes('top'),
+        'top-100': position?.includes('bottom'),
+        'start-100': position?.includes('end'),
+        'start-0': position?.includes('start'),
         [`badge-${size}`]: size,
+        [`text-${textColor}`]: textColor,
       },
       shape,
       className,
@@ -76,6 +97,7 @@ CBadge.propTypes = {
   className: PropTypes.string,
   color: colorPropType,
   component: PropTypes.string,
+  position: PropTypes.oneOf(['top-start', 'top-end', 'bottom-end', 'botttom-start']),
   shape: shapePropType,
   size: PropTypes.oneOf(['sm']),
   textColor: textColorsPropType,

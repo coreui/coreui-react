@@ -13,7 +13,7 @@ import { CBadge, CButton } from './../../../src/index.ts'
 
 Badge component scales to suit the size of the parent element by using relative font sizing and `em` units.
 
-## Basic usage
+### Basic usage
 
 <Example>
   <h1>Example heading <CBadge color="secondary">New</CBadge></h1>
@@ -62,6 +62,85 @@ Unless the context is clear, consider including additional context with a visual
 <CButton color="primary">
   Profile <CBadge color="secondary">9</CBadge>
   <span className="visually-hidden">unread messages</span>
+</CButton>
+```
+
+### Positioned
+
+Use `position` prop to modify a component and position it in the corner of a link or button.
+
+<Example>
+  <CButton color="primary" className="position-relative">
+    Profile
+    <CBadge color="danger" position="top-start" shape="rounded-pill">
+      99+ <span className="visually-hidden">unread messages</span>
+    </CBadge>
+  </CButton>
+  <CButton color="primary" className="position-relative ms-1">
+    Profile
+    <CBadge color="danger" position="top-end" shape="rounded-pill">
+      99+ <span className="visually-hidden">unread messages</span>
+    </CBadge>
+  </CButton>
+  <br/>
+  <CButton color="primary" className="position-relative ">
+    Profile
+    <CBadge color="danger" position="bottom-start" shape="rounded-pill">
+      99+ <span className="visually-hidden">unread messages</span>
+    </CBadge>
+  </CButton>
+  <CButton color="primary" className="position-relative ms-1">
+    Profile
+    <CBadge color="danger" position="bottom-end" shape="rounded-pill">
+      99+ <span className="visually-hidden">unread messages</span>
+    </CBadge>
+  </CButton>
+</Example>
+
+```jsx
+<CButton color="primary" className="position-relative">
+  Profile
+  <CBadge color="danger" position="top-start" shape="rounded-pill">
+    99+ <span className="visually-hidden">unread messages</span>
+  </CBadge>
+</CButton>
+<CButton color="primary" className="position-relative">
+  Profile
+  <CBadge color="danger" position="top-end" shape="rounded-pill">
+    99+ <span className="visually-hidden">unread messages</span>
+  </CBadge>
+</CButton>
+<CButton color="primary" className="position-relative">
+  Profile
+  <CBadge color="danger" position="bottom-start" shape="rounded-pill">
+    99+ <span className="visually-hidden">unread messages</span>
+  </CBadge>
+</CButton>
+<CButton color="primary" className="position-relative">
+  Profile
+  <CBadge color="danger" position="bottom-end" shape="rounded-pill">
+    99+ <span className="visually-hidden">unread messages</span>
+  </CBadge>
+</CButton>
+```
+
+You can also create more generic indicators without a counter using a few more utilities.
+
+<Example>
+  <CButton color="primary" className="position-relative">
+    Profile
+    <CBadge className="border border-light p-2" color="danger" position="top-end" shape="rounded-circle">
+      <span className="visually-hidden">New alerts</span>
+    </CBadge>
+  </CButton>
+</Example>
+
+```jsx
+<CButton color="primary" className="position-relative">
+  Profile
+  <CBadge className="border border-light p-2" color="danger" position="top-end" shape="rounded-circle">
+    <span className="visually-hidden">New alerts</span>
+  </CBadge>
 </CButton>
 ```
 
