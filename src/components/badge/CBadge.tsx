@@ -31,9 +31,9 @@ export interface CBadgeProps extends HTMLAttributes<HTMLDivElement | HTMLSpanEle
   /**
    * Position badge in one of the corners of a link or button.
    *
-   * @type 'top-start' | 'top-end' | 'bottom-end' | 'botttom-start'
+   * @type 'top-start' | 'top-end' | 'bottom-end' | 'bottom-start'
    */
-  position?: 'top-start' | 'top-end' | 'bottom-end' | 'botttom-start'
+  position?: 'top-start' | 'top-end' | 'bottom-end' | 'bottom-start'
   /**
    * Select the shape of the component. [docs]
    *
@@ -97,7 +97,7 @@ CBadge.propTypes = {
   className: PropTypes.string,
   color: colorPropType,
   component: PropTypes.string,
-  position: PropTypes.oneOf(['top-start', 'top-end', 'bottom-end', 'botttom-start']),
+  position: PropTypes.oneOf(['top-start', 'top-end', 'bottom-end', 'bottom-start']),
   shape: shapePropType,
   size: PropTypes.oneOf(['sm']),
   textColor: textColorsPropType,
