@@ -38,6 +38,12 @@ export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {
    */
   portal?: boolean
   /**
+   * Allow body scrolling while offcanvas is open
+   *
+   * @default false
+   */
+  scroll?: boolean
+  /**
    * Toggle the visibility of offcanvas component. [docs]
    */
   visible?: boolean
@@ -53,6 +59,7 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
       onDismiss,
       placement,
       portal = true,
+      scroll = false,
       visible = false,
       ...rest
     },
@@ -65,6 +72,21 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
     useEffect(() => {
       setVisible(visible)
     }, [visible])
+
+    useEffect(() => {
+      if (_visible) {
+        if (!scroll) {
+          document.body.style.overflow = 'hidden'
+          document.body.style.paddingRight = '0px'
+        }
+        return
+      }
+
+      if (!scroll) {
+        document.body.style.removeProperty('overflow')
+        document.body.style.removeProperty('padding-right')
+      }
+    }, [_visible])
 
     const _className = classNames(
       'offcanvas',
@@ -101,6 +123,7 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
         <>
           <div
             className={_className}
+            role="dialog"
             style={{ ...transitionStyles[state] }}
             tabIndex={-1}
             onKeyDown={handleKeyDown}
@@ -140,6 +163,7 @@ COffcanvas.propTypes = {
   placement: PropTypes.oneOf<'start' | 'end' | 'top' | 'bottom'>(['start', 'end', 'top', 'bottom'])
     .isRequired,
   portal: PropTypes.bool,
+  scroll: PropTypes.bool,
   visible: PropTypes.bool,
 }
 

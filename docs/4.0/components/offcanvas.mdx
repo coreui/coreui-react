@@ -236,6 +236,98 @@ return (
 )
 ```
 
+export const BackdropExample = () => {
+  const [visibleScrolling, setVisibleScrolling] = useState(false)
+  const [visibleWithBackdrop, setVisibleWithBackdrop] = useState(false)
+  const [visibleWithBothOptions, setVisibleWithBothOptions] = useState(false)
+  return (
+    <>
+      <CButton color="primary" onClick={() => setVisibleScrolling(true)}>Enable body scrolling</CButton>
+      <CButton color="primary" onClick={() => setVisibleWithBackdrop(true)}>Enable backdrop (default)</CButton>
+      <CButton color="primary" onClick={() => setVisibleWithBothOptions(true)}>Enable both scrolling &amp; backdrop</CButton>
+      <COffcanvas backdrop={false} placement="start" scroll visible={visibleScrolling} onDismiss={() => setVisibleScrolling(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisibleScrolling(false)}/>
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          <p>Try scrolling the rest of the page to see this option in action.</p>
+        </COffcanvasBody>
+      </COffcanvas>
+      <COffcanvas placement="start" visible={visibleWithBackdrop} onDismiss={() => setVisibleWithBackdrop(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisibleWithBackdrop(false)}/>
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          <p>.....</p>
+        </COffcanvasBody>
+      </COffcanvas>
+      <COffcanvas placement="start" scroll visible={visibleWithBothOptions} onDismiss={() => setVisibleWithBothOptions(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisibleWithBothOptions(false)}/>
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          <p>Try scrolling the rest of the page to see this option in action.</p>
+        </COffcanvasBody>
+      </COffcanvas>
+    </>
+  )
+}
+
+## Backdrop 
+
+Scrolling the `<body>` element is disabled when an offcanvas and its backdrop are visible. Use the `scroll` property to toggle `<body>` scrolling and `backdrop` to toggle the backdrop.
+
+<Example>
+  <BackdropExample />
+</Example>
+
+```jsx
+const [visibleScrolling, setVisibleScrolling] = useState(false)
+const [visibleWithBackdrop, setVisibleWithBackdrop] = useState(false)
+const [visibleWithBothOptions, setVisibleWithBothOptions] = useState(false)
+return (
+  <>
+    <CButton color="primary" onClick={() => setVisibleScrolling(true)}>Enable body scrolling</CButton>
+    <CButton color="primary" onClick={() => setVisibleWithBackdrop(true)}>Enable backdrop (default)</CButton>
+    <CButton color="primary" onClick={() => setVisibleWithBothOptions(true)}>Enable both scrolling &amp; backdrop</CButton>
+    <COffcanvas backdrop={false} placement="start" scroll visible={visibleScrolling} onDismiss={() => setVisibleScrolling(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisibleScrolling(false)}/>
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        <p>Try scrolling the rest of the page to see this option in action.</p>
+      </COffcanvasBody>
+    </COffcanvas>
+    <COffcanvas placement="start" visible={visibleWithBackdrop} onDismiss={() => setVisibleWithBackdrop(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisibleWithBackdrop(false)}/>
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        <p>.....</p>
+      </COffcanvasBody>
+    </COffcanvas>
+    <COffcanvas placement="start" scroll visible={visibleWithBothOptions} onDismiss={() => setVisibleWithBothOptions(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisibleWithBothOptions(false)}/>
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        <p>Try scrolling the rest of the page to see this option in action.</p>
+      </COffcanvasBody>
+    </COffcanvas>
+  </>
+)
+```
+
+## Accessibility
+
+Since the offcanvas panel is conceptually a modal dialog, be sure to add `aria-labelledby="..."`—referencing the offcanvas title—to `<COffcanvas>`. Note that you don’t need to add `role="dialog"` since we already add it automatically.
+
 ## API
 
 ### COffcanvas
