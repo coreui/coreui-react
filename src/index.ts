@@ -29,9 +29,6 @@ import { CCardText } from './components/card/CCardText'
 import { CCardTitle } from './components/card/CCardTitle'
 import { CCarousel } from './components/carousel/CCarousel'
 import { CCarouselCaption } from './components/carousel/CCarouselCaption'
-import { CCarouselControl } from './components/carousel/CCarouselControl'
-import { CCarouselIndicators } from './components/carousel/CCarouselIndicators'
-import { CCarouselInner } from './components/carousel/CCarouselInner'
 import { CCarouselItem } from './components/carousel/CCarouselItem'
 import { CCollapse } from './components/collapse/CCollapse'
 import { CCloseButton } from './components/close-button/CCloseButton'
@@ -153,9 +150,6 @@ export {
   CCardTitle,
   CCarousel,
   CCarouselCaption,
-  CCarouselControl,
-  CCarouselIndicators,
-  CCarouselInner,
   CCarouselItem,
   CCloseButton,
   CCollapse,

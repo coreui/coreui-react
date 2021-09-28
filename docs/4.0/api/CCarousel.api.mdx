@@ -8,4 +8,6 @@
 | **indicators** | Adding indicators at the bottom of the carousel for each item. | `boolean` | - |
 | **interval** | The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle. | `number | boolean` | 5000 |
 | **onSlideChange** | On slide change callback. | `(a: string | number) => void` | - |
-| **transition** | On slide change callback. | `{'slide' | 'crossfade'}` | 'slide' |
+| **pause** | If set to 'hover', pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave. If set to false, hovering over the carousel won't pause it. | `boolean | "hover"` | hover |
+| **transition** | Set type of the transition. | `{'slide' | 'crossfade'}` | 'slide' |
+| **wrap** | Set whether the carousel should cycle continuously or have hard stops. | `boolean` | true |
