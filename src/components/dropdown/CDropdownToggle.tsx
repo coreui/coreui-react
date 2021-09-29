@@ -8,11 +8,9 @@ import { Triggers, triggerPropType } from '../Types'
 import { CButton, CButtonProps } from '../button/CButton'
 import { CDropdownContext } from './CDropdown'
 
-export interface CDropdownToggleProps extends CButtonProps {
+export interface CDropdownToggleProps extends Omit<CButtonProps, 'type'> {
   /**
    * Enables pseudo element caret on toggler. [docs]
-   *
-   * @default true
    */
   caret?: boolean
   /**
@@ -21,6 +19,8 @@ export interface CDropdownToggleProps extends CButtonProps {
   split?: boolean
   /**
    * Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them. [docs]
+   *
+   * @type 'hover' | 'focus' | 'click'
    */
   trigger?: Triggers | Triggers[]
 }
@@ -70,7 +70,7 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
         {children}
       </a>
     ) : (
-      <CButton {...togglerProps} tabIndex={0} {...rest} ref={ref}>
+      <CButton type="button" {...togglerProps} tabIndex={0} {...rest} ref={ref}>
         {children}
         {split && <span className="visually-hidden">Toggle Dropdown</span>}
       </CButton>
