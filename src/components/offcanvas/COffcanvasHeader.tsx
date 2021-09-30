@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 export interface COffcanvasHeaderProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
 }

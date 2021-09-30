@@ -6,13 +6,13 @@ import { Colors, colorPropType } from '../Types'
 
 export interface CCalloutProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
-   * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
+   * Sets the color context of the component to one of CoreUI’s themed colors.
    *
-   * @type {'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string}
+   * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
   color?: Colors
 }

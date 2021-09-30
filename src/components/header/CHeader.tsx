@@ -4,17 +4,15 @@ import classNames from 'classnames'
 
 export interface CHeaderProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
    * Defines optional container wrapping children elements.
-   *
-   * @type boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fluid'
    */
   container?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fluid'
   /**
-   * Place header in non-static positions. [docs]
+   * Place header in non-static positions.
    */
   position?: 'fixed' | 'sticky'
 }

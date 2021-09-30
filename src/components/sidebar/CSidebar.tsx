@@ -8,37 +8,35 @@ import { CBackdrop } from '../backdrop/CBackdrop'
 
 export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * Make sidebar narrow. [docs]
+   * Make sidebar narrow.
    */
   narrow?: boolean
   /**
-   * Event emitted after visibility of component changed. [docs]
+   * Event emitted after visibility of component changed.
    */
   onVisibleChange?: (visible: boolean) => void
   /**
-   * Set sidebar to narrow variant. [docs]
+   * Set sidebar to overlaid variant.
    */
   overlaid?: boolean
   /**
-   * Place sidebar in non-static positions. [docs]
+   * Place sidebar in non-static positions.
    */
   position?: 'fixed' | 'sticky'
   /**
-   * Size the component small, large, or extra large. [docs]
+   * Size the component small, large, or extra large.
    */
   size?: 'sm' | 'lg' | 'xl'
   /**
-   * Expand narrowed sidebar on hover. [docs]
+   * Expand narrowed sidebar on hover.
    */
   unfoldable?: boolean
   /**
-   * Toggle the visibility of sidebar component. [docs]
-   *
-   * @default true
+   * Toggle the visibility of sidebar component.
    */
   visible?: boolean
 }

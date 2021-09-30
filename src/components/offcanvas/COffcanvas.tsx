@@ -9,42 +9,35 @@ import { CBackdrop } from '../backdrop/CBackdrop'
 
 export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * Apply a backdrop on body while offcanvas is open. [docs]
-   *
-   * @default true
+   * Apply a backdrop on body while offcanvas is open.
    */
   backdrop?: boolean
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
    * Closes the offcanvas when escape key is pressed [docs]
-   *
-   * @default true
    */
   keyboard?: boolean
   /**
-   * Method called before the dissmiss animation has started. [docs]
+   * Method called before the dissmiss animation has started.
    */
   onDismiss?: () => void
   /**
-   * Components placement, there’s no default placement. [docs]
-   * @type 'start' | 'end' | 'top' | 'bottom'
+   * Components placement, there’s no default placement.
    */
   placement: 'start' | 'end' | 'top' | 'bottom'
   /**
-   * Generates modal using createPortal. [docs]
+   * Generates modal using createPortal.
    */
   portal?: boolean
   /**
    * Allow body scrolling while offcanvas is open
-   *
-   * @default false
    */
   scroll?: boolean
   /**
-   * Toggle the visibility of offcanvas component. [docs]
+   * Toggle the visibility of offcanvas component.
    */
   visible?: boolean
 }

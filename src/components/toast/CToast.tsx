@@ -14,29 +14,25 @@ import { Colors, colorPropType } from '../Types'
 
 export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
-   * Apply a CSS fade transition to the toast. [docs]
-   *
-   * @default true
+   * Apply a CSS fade transition to the toast.
    */
   animation?: boolean
   /**
-   * Auto hide the toast. [docs]
-   *
-   * @default true
+   * Auto hide the toast.
    */
   autohide?: boolean
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
-   * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
+   * Sets the color context of the component to one of CoreUI’s themed colors.
    *
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
   color?: Colors
   /**
-   * Delay hiding the toast (ms). [docs]
+   * Delay hiding the toast (ms).
    */
   delay?: number
   /**
@@ -48,11 +44,11 @@ export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
    */
   key?: number
   /**
-   * Toggle the visibility of component. [docs]
+   * Toggle the visibility of component.
    */
   visible?: boolean
   /**
-   * Method called before the dissmiss animation has started. [docs]
+   * Method called before the dissmiss animation has started.
    */
   onDismiss?: (index: number | null) => void
 }

@@ -4,11 +4,11 @@ import { createPortal } from 'react-dom'
 import classNames from 'classnames'
 export interface CToasterProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
-   * Describes the placement of your component. [docs]
+   * Describes the placement of your component.
    *
    * @type 'top-start' | 'top' | 'top-end' | 'middle-start' | 'middle' | 'middle-end' | 'bottom-start' | 'bottom' | 'bottom-end' | string
    */
@@ -24,7 +24,7 @@ export interface CToasterProps extends HTMLAttributes<HTMLDivElement> {
     | 'bottom-end'
     | string
   /**
-   * Adds new `CToast` to `CToaster`. [docs]
+   * Adds new `CToast` to `CToaster`.
    */
   push?: ReactElement
 }

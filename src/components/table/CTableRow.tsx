@@ -6,19 +6,19 @@ import { Colors, colorPropType } from '../Types'
 
 export interface CTableRowProps extends HTMLAttributes<HTMLTableRowElement> {
   /**
-   * Highlight a table row or cell.. [docs]
+   * Highlight a table row or cell..
    */
   active?: boolean
   /**
-   * Set the vertical aligment. [docs]
+   * Set the vertical aligment.
    */
   align?: 'bottom' | 'middle' | 'top'
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
+   * Sets the color context of the component to one of CoreUI’s themed colors.
    *
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */

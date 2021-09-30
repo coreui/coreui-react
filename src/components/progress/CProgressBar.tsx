@@ -5,27 +5,25 @@ import classNames from 'classnames'
 import { Colors, colorPropType } from '../Types'
 export interface CProgressBarProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * Use to animate the stripes right to left via CSS3 animations. [docs]
+   * Use to animate the stripes right to left via CSS3 animations.
    */
   animated?: boolean
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
+   * Sets the color context of the component to one of CoreUI’s themed colors.
    *
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
   color?: Colors
   /**
-   * The percent to progress the ProgressBar. [docs]
-   *
-   * @default 0
+   * The percent to progress the ProgressBar.
    */
   value?: number
   /**
-   * Set the progress bar variant to optional striped. [docs]
+   * Set the progress bar variant to optional striped.
    */
   variant?: 'striped'
 }

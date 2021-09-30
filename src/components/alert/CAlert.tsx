@@ -8,36 +8,33 @@ import { CCloseButton } from '../close-button/CCloseButton'
 
 export interface CAlertProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
+   * Sets the color context of the component to one of CoreUI’s themed colors.
    *
-   * @type {'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string }
-   * @default 'primary'
+   * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
   color: Colors
   /**
-   * Optionally add a close button to alert and allow it to self dismiss. [docs]
+   * Optionally add a close button to alert and allow it to self dismiss.
    */
   dismissible?: boolean
   /**
-   * Method called before the dissmiss animation has started. [docs]
+   * Method called before the dissmiss animation has started.
    */
   onDismiss?: () => void
   /**
-   * Method called after the dissmiss animation has completed and the component is removed from the dom. [docs]
+   * Method called after the dissmiss animation has completed and the component is removed from the dom.
    */
   onDismissed?: () => void
   /**
-   * Set the alert variant to a solid. [docs]
+   * Set the alert variant to a solid.
    */
   variant?: 'solid' | string
   /**
-   * Toggle the visibility of component. [docs]
-   *
-   * @default true
+   * Toggle the visibility of component.
    */
   visible?: boolean
 }

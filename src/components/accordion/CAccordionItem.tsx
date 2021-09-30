@@ -21,11 +21,11 @@ export const CAccordionItemContext = createContext({} as CAccordionItemContextPr
 
 export interface CAccordionItemProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
-   * Item key. [docs]
+   * Item key.
    */
   itemKey?: number | string
 }

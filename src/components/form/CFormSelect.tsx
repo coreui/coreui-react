@@ -1,30 +1,38 @@
-import React, { forwardRef, InputHTMLAttributes } from 'react'
+import React, { ChangeEventHandler, forwardRef, InputHTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 export interface CFormSelectProps extends Omit<InputHTMLAttributes<HTMLSelectElement>, 'size'> {
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * Specifies the number of visible options in a drop-down list. [docs]
+   * Specifies the number of visible options in a drop-down list.
    */
   htmlSize?: number
   /**
-   * Set component validation state to invalid. [docs]
+   * Set component validation state to invalid.
    */
   invalid?: boolean
   /**
-   * Size the component small or large. [docs]
-   *
-   * @type 'sm' | 'lg'
+   * Method called immediately after the `value` prop changes.
+   */
+  onChange?: ChangeEventHandler<HTMLSelectElement>
+  /**
+   * Size the component small or large.
    */
   size?: 'sm' | 'lg'
   /**
-   * Set component validation state to valid. [docs]
+   * Set component validation state to valid.
    */
   valid?: boolean
+  /**
+   * The `value` attribute of component.
+   *
+   * @controllable onChange
+   * */
+  value?: string | string[] | number
 }
 
 export const CFormSelect = forwardRef<HTMLSelectElement, CFormSelectProps>(

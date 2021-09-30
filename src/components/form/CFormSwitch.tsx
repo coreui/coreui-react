@@ -6,36 +6,31 @@ import { CFormLabel } from './CFormLabel'
 
 export interface CFormSwitchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * The id global attribute defines an identifier (ID) that must be unique in the whole document. [docs]
+   * The id global attribute defines an identifier (ID) that must be unique in the whole document.
    */
   id?: string
   /**
-   * Set component validation state to invalid. [docs]
+   * Set component validation state to invalid.
    */
   invalid?: boolean
   /**
-   * The element represents a caption for a component. [docs]
+   * The element represents a caption for a component.
    */
   label?: string | ReactNode
   /**
    * Size the component large or extra large. Works only with `switch` [docs]
-   *
-   * @type 'lg' | 'xl'
    */
   size?: 'lg' | 'xl'
   /**
-   * Specifies the type of component. [docs]
-   *
-   * @type checkbox' | 'radio'
-   * @default 'checkbox'
+   * Specifies the type of component.
    */
   type?: 'checkbox' | 'radio'
   /**
-   * Set component validation state to valid. [docs]
+   * Set component validation state to valid.
    */
   valid?: boolean
 }

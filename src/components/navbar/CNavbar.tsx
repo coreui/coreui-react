@@ -6,41 +6,33 @@ import { Colors, colorPropType } from '../Types'
 
 export interface CNavbarProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
+   * Sets the color context of the component to one of CoreUI’s themed colors.
    *
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
   color?: Colors
   /**
-   * Sets if the color of text should be colored for a light or dark dark background. [docs]
-   *
-   * @type 'dark' | 'light'
+   * Sets if the color of text should be colored for a light or dark dark background.
    */
   colorScheme?: 'dark' | 'light'
   /**
-   * Component used for the root node. Either a string to use a HTML element or a component. [docs]
-   *
-   * @default 'nav'
+   * Component used for the root node. Either a string to use a HTML element or a component.
    */
   component?: string | ElementType
   /**
    * Defines optional container wrapping children elements.
-   *
-   * @type boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fluid'
    */
   container?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fluid'
   /**
-   * Defines the responsive breakpoint to determine when content collapses. [docs]
+   * Defines the responsive breakpoint to determine when content collapses.
    */
   expand?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
   /**
-   * Place component in non-static positions. [docs]
-   *
-   * @type 'fixed-top' | 'fixed-bottom' | 'sticky-top'
+   * Place component in non-static positions.
    */
   placement?: 'fixed-top' | 'fixed-bottom' | 'sticky-top'
 }

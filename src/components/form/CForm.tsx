@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 export interface CFormProps extends HTMLAttributes<HTMLFormElement> {
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**

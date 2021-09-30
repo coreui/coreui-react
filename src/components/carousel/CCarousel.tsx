@@ -24,35 +24,35 @@ const isVisible = (element: HTMLDivElement) => {
 
 export interface CCarouselProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * Set 'animate' variable for created context. [docs]
+   * Set 'animate' variable for created context.
    */
   animate?: boolean
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
-   * Adding in the previous and next controls. [docs]
+   * Adding in the previous and next controls.
    */
   controls?: boolean
   /**
-   * Add darker controls, indicators, and captions. [docs]
+   * Add darker controls, indicators, and captions.
    */
   dark?: boolean
   /**
-   * The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle. [docs]
+   * The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.
    */
   interval?: boolean | number
   /**
-   * index of the active item. [docs]
+   * index of the active item.
    */
   index?: number
   /**
-   * Adding indicators at the bottom of the carousel for each item. [docs]
+   * Adding indicators at the bottom of the carousel for each item.
    */
   indicators?: boolean
   /**
-   * On slide change callback. [docs]
+   * On slide change callback.
    */
   onSlideChange?: (a: number | string | null) => void
   /**
@@ -60,10 +60,7 @@ export interface CCarouselProps extends HTMLAttributes<HTMLDivElement> {
    */
   pause?: boolean | 'hover'
   /**
-   * Set type of the transition. [docs]
-   *
-   * @type {'slide' | 'crossfade'}
-   * @default 'slide'
+   * Set type of the transition.
    */
   transition?: 'slide' | 'crossfade'
   /**

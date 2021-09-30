@@ -7,11 +7,11 @@ import { useForkedRef } from '../../utils/hooks'
 
 export interface CCollapseProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
-   * Toggle the visibility of component. [docs]
+   * Toggle the visibility of component.
    */
   visible?: boolean
 }

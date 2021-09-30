@@ -21,18 +21,15 @@ import { CModalDialog } from './CModalDialog'
 
 export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * Align the modal in the center or top of the screen. [docs]
-   *
-   * @default 'top'
+   * Align the modal in the center or top of the screen.
    */
   alignment?: 'top' | 'center'
   /**
-   * Apply a backdrop on body while modal is open. [docs]
-   * @default true
+   * Apply a backdrop on body while modal is open.
    */
   backdrop?: boolean | 'static'
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
@@ -40,36 +37,35 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    */
   duration?: number
   /**
-   * Set modal to covers the entire user viewport. [docs]
+   * Set modal to covers the entire user viewport.
    */
   fullscreen?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
   /**
-   * Closes the modal when escape key is pressed. [docs]
-   * @default true
+   * Closes the modal when escape key is pressed.
    */
   keyboard?: boolean
   /**
-   * Method called before the dissmiss animation has started. [docs]
+   * Method called before the dissmiss animation has started.
    */
   onDismiss?: () => void
   /**
-   * Generates modal using createPortal. [docs]
+   * Generates modal using createPortal.
    */
   portal?: boolean
   /**
-   * Create a scrollable modal that allows scrolling the modal body. [docs]
+   * Create a scrollable modal that allows scrolling the modal body.
    */
   scrollable?: boolean
   /**
-   * Size the component small, large, or extra large. [docs]
+   * Size the component small, large, or extra large.
    */
   size?: 'sm' | 'lg' | 'xl'
   /**
-   * Remove animation to create modal that simply appear rather than fade in to view. [docs]
+   * Remove animation to create modal that simply appear rather than fade in to view.
    */
   transition?: boolean
   /**
-   * Toggle the visibility of modal component. [docs]
+   * Toggle the visibility of modal component.
    */
   visible?: boolean
 }

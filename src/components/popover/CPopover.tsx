@@ -10,33 +10,29 @@ import { Triggers, triggerPropType } from '../Types'
 export interface CPopoverProps {
   children: ReactElement
   /**
-   * Content node for your component. [docs]
+   * Content node for your component.
    */
   content: ReactNode
   /**
-   * Offset of the popover relative to its target. [docs]
-   * @default '[0, 8]'
+   * Offset of the popover relative to its target.
    */
   offset?: [number, number]
   /**
-   * Title node for your component. [docs]
+   * Title node for your component.
    */
   title?: ReactNode
   /**
-   * Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them. [docs]
+   * Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.
+   *
+   * @type 'hover' | 'focus' | 'click'
    */
   trigger?: Triggers | Triggers[]
   /**
-   * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property. [docs]
-   *
-   * @type 'top' | 'right' | 'bottom' | 'left'
-   * @default 'top'
+   * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.
    */
   placement?: 'top' | 'right' | 'bottom' | 'left'
   /**
-   * Toggle the visibility of popover component. [docs]
-   *
-   * @default true
+   * Toggle the visibility of popover component.
    */
   visible?: boolean
 }

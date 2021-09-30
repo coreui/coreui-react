@@ -5,20 +5,19 @@ import classNames from 'classnames'
 
 export interface CFormInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * Toggle the disabled state for the component. [docs]
+   * Toggle the disabled state for the component.
    */
   disabled?: boolean
   /**
-   * Set component validation state to invalid. [docs]
+   * Set component validation state to invalid.
    */
   invalid?: boolean
-  // label?: string | ReactNode
   /**
-   * Method called immediately after the `value` prop changes. [docs]
+   * Method called immediately after the `value` prop changes.
    */
   onChange?: ChangeEventHandler<HTMLInputElement>
   /**
@@ -26,28 +25,23 @@ export interface CFormInputProps extends Omit<InputHTMLAttributes<HTMLInputEleme
    */
   plainText?: boolean
   /**
-   * Toggle the readonly state for the component. [docs]
+   * Toggle the readonly state for the component.
    */
   readOnly?: boolean
   /**
-   * Size the component small or large. [docs]
-   *
-   * @type 'sm' | 'lg'
+   * Size the component small or large.
    */
   size?: 'sm' | 'lg'
   /**
-   * Specifies the type of component. [docs]
-   *
-   * @type 'color' | 'file' | 'text' | string
-   * @default 'text'
+   * Specifies the type of component.
    */
   type?: 'color' | 'file' | 'text' | string
   /**
-   * Set component validation state to valid. [docs]
+   * Set component validation state to valid.
    */
   valid?: boolean
   /**
-   * The `value` attribute of component. [docs]
+   * The `value` attribute of component.
    *
    * @controllable onChange
    * */
