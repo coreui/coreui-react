@@ -50,7 +50,7 @@ export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
   /**
    * Method called before the dissmiss animation has started.
    */
-  onDismiss?: (index: number | null) => void
+  onClose?: (index: number | null) => void
 }
 
 interface ContextProps extends CToastProps {
@@ -72,7 +72,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
       index,
       key,
       visible = false,
-      onDismiss,
+      onClose,
       ...rest
     },
     ref,
@@ -129,7 +129,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
       <CSSTransition
         in={_visible}
         timeout={250}
-        onExited={() => onDismiss && onDismiss(index ? index : null)}
+        onExited={() => onClose && onClose(index ? index : null)}
         unmountOnExit
       >
         {(state) => {
@@ -166,7 +166,7 @@ CToast.propTypes = {
   delay: PropTypes.number,
   index: PropTypes.number,
   key: PropTypes.number,
-  onDismiss: PropTypes.func,
+  onClose: PropTypes.func,
   visible: PropTypes.bool,
 }
 
