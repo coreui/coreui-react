@@ -47,7 +47,7 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Method called before the dissmiss animation has started.
    */
-  onDismiss?: () => void
+  onClose?: () => void
   /**
    * Generates modal using createPortal.
    */
@@ -87,7 +87,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       duration = 150,
       fullscreen,
       keyboard = true,
-      onDismiss,
+      onClose,
       portal = true,
       scrollable,
       size,
@@ -115,7 +115,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       if (backdrop === 'static') {
         return setStaticBackdrop(true)
       }
-      return onDismiss && onDismiss()
+      return onClose && onClose()
     }
 
     useLayoutEffect(() => {
@@ -194,7 +194,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
           <CSSTransition
             in={_visible}
             timeout={!transition ? 0 : duration}
-            onExit={onDismiss}
+            onExit={onClose}
             mountOnEnter
             unmountOnExit
           >
@@ -225,7 +225,7 @@ CModal.propTypes = {
     PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl'>(['sm', 'md', 'lg', 'xl', 'xxl']),
   ]),
   keyboard: PropTypes.bool,
-  onDismiss: PropTypes.func,
+  onClose: PropTypes.func,
   portal: PropTypes.bool,
   scrollable: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'lg', 'xl']),
