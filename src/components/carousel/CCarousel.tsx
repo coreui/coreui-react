@@ -24,9 +24,9 @@ const isVisible = (element: HTMLDivElement) => {
 
 export interface CCarouselProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * Set 'animate' variable for created context.
+   * index of the active item.
    */
-  animate?: boolean
+  activeIndex?: number
   /**
    * A string of all className you want applied to the base component.
    */
@@ -44,17 +44,17 @@ export interface CCarouselProps extends HTMLAttributes<HTMLDivElement> {
    */
   interval?: boolean | number
   /**
-   * index of the active item.
-   */
-  index?: number
-  /**
    * Adding indicators at the bottom of the carousel for each item.
    */
   indicators?: boolean
   /**
-   * On slide change callback.
+   * Callback fired when a slide transition end.
    */
-  onSlideChange?: (a: number | string | null) => void
+  onSlid?: (active: number, direction: string) => void
+  /**
+   * Callback fired when a slide transition starts.
+   */
+  onSlide?: (active: number, direction: string) => void
   /**
    * If set to 'hover', pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave. If set to false, hovering over the carousel won't pause it.
    */
@@ -84,14 +84,14 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
   (
     {
       children,
-      animate = true,
+      activeIndex = 0,
       className,
       controls,
       dark,
-      index = 0,
       indicators,
       interval = 5000,
-      onSlideChange,
+      onSlid,
+      onSlide,
       pause = 'hover',
       transition,
       wrap = true,
@@ -103,7 +103,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
     const forkedRef = useForkedRef(ref, carouselRef)
     const data = useRef<DataType>({}).current
 
-    const [active, setActive] = useState<number>(0)
+    const [active, setActive] = useState<number>(activeIndex)
     const [animating, setAnimating] = useState<boolean>(false)
     const [customInterval, setCustomInterval] = useState<boolean | number>()
     const [direction, setDirection] = useState<string>('next')
@@ -120,11 +120,9 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
 
     useEffect(() => {
       !animating && cycle()
+      !animating && onSlid && onSlid(active, direction)
+      animating && onSlide && onSlide(active, direction)
     }, [animating])
-
-    useEffect(() => {
-      onSlideChange && onSlideChange(active)
-    }, [active])
 
     useEffect(() => {
       window.addEventListener('scroll', handleScroll)
@@ -263,15 +261,15 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
 )
 
 CCarousel.propTypes = {
-  animate: PropTypes.bool,
+  activeIndex: PropTypes.number,
   children: PropTypes.node,
   className: PropTypes.string,
   controls: PropTypes.bool,
   dark: PropTypes.bool,
-  index: PropTypes.number,
   indicators: PropTypes.bool,
   interval: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-  onSlideChange: PropTypes.func,
+  onSlid: PropTypes.func,
+  onSlide: PropTypes.func,
   pause: PropTypes.oneOf([false, 'hover']),
   transition: PropTypes.oneOf(['slide', 'crossfade']),
   wrap: PropTypes.bool,
