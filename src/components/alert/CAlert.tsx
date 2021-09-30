@@ -1,4 +1,4 @@
-import React, { forwardRef, HTMLAttributes, useState } from 'react'
+import React, { forwardRef, HTMLAttributes, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
@@ -22,13 +22,9 @@ export interface CAlertProps extends HTMLAttributes<HTMLDivElement> {
    */
   dismissible?: boolean
   /**
-   * Method called before the dissmiss animation has started.
+   * Callback fired when the component requests to be closed.
    */
-  onDismiss?: () => void
-  /**
-   * Method called after the dissmiss animation has completed and the component is removed from the dom.
-   */
-  onDismissed?: () => void
+  onClose?: () => void
   /**
    * Set the alert variant to a solid.
    */
@@ -48,36 +44,47 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
       dismissible,
       variant,
       visible = true,
-      onDismiss,
-      onDismissed,
+      onClose,
       ...rest
     },
     ref,
   ) => {
     const [_visible, setVisible] = useState(visible)
 
+    useEffect(() => {
+      setVisible(visible)
+    }, [visible])
+
     const _className = classNames(
       'alert',
       variant === 'solid' ? `bg-${color} text-white` : `alert-${color}`,
       {
         'alert-dismissible fade': dismissible,
-        show: _visible && dismissible,
+        // show: _visible,
       },
       className,
     )
 
+    const getTransitionClass = (state: string) => {
+      return state === 'entered' && 'show'
+    }
+
     return (
-      <CSSTransition
-        in={_visible}
-        timeout={150}
-        onExit={onDismiss}
-        onExited={onDismissed}
-        unmountOnExit
-      >
-        <div className={_className} role="alert" {...rest} ref={ref}>
-          {children}
-          {dismissible && <CCloseButton onClick={() => setVisible(false)} />}
-        </div>
+      <CSSTransition in={_visible} timeout={150} onExit={onClose} mountOnEnter unmountOnExit>
+        {(state) => {
+          const transitionClass = getTransitionClass(state)
+          return (
+            <div
+              className={classNames(_className, transitionClass)}
+              role="alert"
+              {...rest}
+              ref={ref}
+            >
+              {children}
+              {dismissible && <CCloseButton onClick={() => setVisible(false)} />}
+            </div>
+          )
+        }}
       </CSSTransition>
     )
   },
@@ -88,8 +95,7 @@ CAlert.propTypes = {
   className: PropTypes.string,
   color: colorPropType.isRequired,
   dismissible: PropTypes.bool,
-  onDismiss: PropTypes.func,
-  onDismissed: PropTypes.func,
+  onClose: PropTypes.func,
   variant: PropTypes.string,
   visible: PropTypes.bool,
 }
