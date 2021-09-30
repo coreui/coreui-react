@@ -48,7 +48,7 @@ export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
    */
   visible?: boolean
   /**
-   * Method called before the dissmiss animation has started.
+   * Callback fired when the component requests to be closed.
    */
   onClose?: (index: number | null) => void
 }

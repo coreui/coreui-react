@@ -21,7 +21,7 @@ export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {
    */
   keyboard?: boolean
   /**
-   * Method called before the dissmiss animation has started.
+   * Callback fired when the component requests to be closed.
    */
   onClose?: () => void
   /**
