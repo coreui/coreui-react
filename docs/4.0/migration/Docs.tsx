@@ -19,7 +19,7 @@ const components = {
   // eslint-disable-next-line react/display-name
   pre: (props) => <CodeBlock {...props} />,
   // eslint-disable-next-line react/display-name
-  table: (props) => <CTable responsive {...props} className="table table-striped table-api" />,
+  table: (props) => <CTable responsive {...props} className="table table-striped ." />,
   Example,
 }
 

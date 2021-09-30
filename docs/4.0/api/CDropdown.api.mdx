@@ -1,11 +1,18 @@
+
+```jsx
+import { CDropdown } from '@coreui/react'
+// or
+import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
+```
+
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| **alignment** | - | `Alignments` | - |
+| **alignment** | Set aligment of dropdown menu. | `'start'` \| `'end'` \| `{ xs: 'start'` \| `'end' }` \| `{ sm: 'start'` \| `'end' }` \| `{ md: 'start'` \| `'end' }` \| `{ lg: 'start'` \| `'end' }` \| `{ xl: 'start'` \| `'end'}` \| `{ xxl: 'start'` \| `'end'}` | - |
 | **className** | A string of all className you want applied to the base component. | `string` | - |
-| **component** | Component used for the root node. Either a string to use a HTML element or a component. | `string | ComponentClass<any, any> | FunctionComponent<any>` | div |
+| **component** | Component used for the root node. Either a string to use a HTML element or a component. | `string` \| `ComponentClass<any, any>` \| `FunctionComponent<any>` | div |
 | **dark** | Sets a darker color scheme to match a dark navbar. | `boolean` | - |
-| **direction** | Sets a specified  direction and location of the dropdown menu. | `'dropup' | 'dropend' | 'dropstart'` | - |
-| **placement** | Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property. | `'auto' | 'top-end' | 'top' | 'top-start' | 'bottom-end' | 'bottom' | 'bottom-start' | 'right-start' | 'right' | 'right-end' | 'left-start' | 'left' | 'left-end'` | bottom-start |
+| **direction** | Sets a specified  direction and location of the dropdown menu. | `'dropup'` \| `'dropend'` \| `'dropstart'` | - |
+| **placement** | Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property. | `'auto'` \| `'top-end'` \| `'top'` \| `'top-start'` \| `'bottom-end'` \| `'bottom'` \| `'bottom-start'` \| `'right-start'` \| `'right'` \| `'right-end'` \| `'left-start'` \| `'left'` \| `'left-end'` | bottom-start |
 | **popper** | If you want to disable dynamic positioning set this property to `true`. | `boolean` | true |
-| **variant** | Set the dropdown variant to an btn-group, dropdown, input-group, and nav-item. | `"btn-group" | "dropdown" | "input-group" | "nav-item"` | btn-group |
+| **variant** | Set the dropdown variant to an btn-group, dropdown, input-group, and nav-item. | `'btn-group'` \| `'dropdown'` \| `'input-group'` \| `'nav-item'` | btn-group |
 | **visible** | Toggle the visibility of dropdown menu component. | `boolean` | false |

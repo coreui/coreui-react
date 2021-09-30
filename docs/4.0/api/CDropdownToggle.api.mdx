@@ -1,16 +1,22 @@
+
+```jsx
+import { CDropdownToggle } from '@coreui/react'
+// or
+import CDropdownToggle from '@coreui/react/src/components/dropdown/CDropdownToggle'
+```
+
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | **active** | Toggle the active state for the component. | `boolean` | - |
 | **caret** | Enables pseudo element caret on toggler. | `boolean` | true |
 | **className** | A string of all className you want applied to the base component. | `string` | - |
-| **color** | Sets the color context of the component to one of CoreUI’s themed colors. | `'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string` | - |
-| **component** | Component used for the root node. Either a string to use a HTML element or a component. | `string | ComponentClass<any, any> | FunctionComponent<any>` | - |
+| **color** | Sets the color context of the component to one of CoreUI’s themed colors. | `'primary'` \| `'secondary'` \| `'success'` \| `'danger'` \| `'warning'` \| `'info'` \| `'dark'` \| `'light'` \| `string` | - |
+| **component** | Component used for the root node. Either a string to use a HTML element or a component. | `string` \| `ComponentClass<any, any>` \| `FunctionComponent<any>` | - |
 | **disabled** | Toggle the disabled state for the component. | `boolean` | - |
 | **href** | The href attribute specifies the URL of the page the link goes to. | `string` | - |
 | **role** | The role attribute describes the role of an element in programs that can make use of it, such as screen readers or magnifiers. | `string` | - |
-| **shape** | Select the shape of the component. | `'rounded' | 'rounded-top' | 'rounded-end' | 'rounded-bottom' | 'rounded-start' | 'rounded-circle' | 'rounded-pill' | 'rounded-0' | 'rounded-1' | 'rounded-2' | 'rounded-3' | string` | - |
-| **size** | Size the component small or large. | `'sm' | 'lg'` | - |
+| **shape** | Select the shape of the component. | `'rounded'` \| `'rounded-top'` \| `'rounded-end'` \| `'rounded-bottom'` \| `'rounded-start'` \| `'rounded-circle'` \| `'rounded-pill'` \| `'rounded-0'` \| `'rounded-1'` \| `'rounded-2'` \| `'rounded-3'` \| `string` | - |
+| **size** | Size the component small or large. | `'sm'` \| `'lg'` | - |
 | **split** | Similarly, create split button dropdowns with virtually the same markup as single button dropdowns, but with the addition of `.dropdown-toggle-split` className for proper spacing around the dropdown caret. | `boolean` | - |
-| **trigger** | Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them. | `Triggers | Triggers[]` | click |
-| **type** | Specifies the type of button. Always specify the type attribute for the `<button>` element.<br/>Different browsers may use different default types for the `<button>` element. | `'button' | 'submit' | 'reset'` | - |
-| **variant** | Set the button variant to an outlined button or a ghost button. | `"outline" | "ghost"` | - |
+| **trigger** | Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them. | `'hover'` \| `'focus'` \| `'click'` | click |
+| **variant** | Set the button variant to an outlined button or a ghost button. | `'outline'` \| `'ghost'` | - |

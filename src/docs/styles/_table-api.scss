@@ -1,0 +1,25 @@
+.table-api {
+  --cui-table-striped-bg: #{rgba(#f0f4f7, .25)};
+  tr td {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  td:nth-child(1n),
+  th:nth-child(1n) {
+    width: 15%;
+    padding-left: 1rem;
+  }
+  td:nth-child(2n) {
+    width: 55%;
+  }
+  td:nth-child(3n) {
+    width: 20%;
+  }
+  td:nth-child(4n) {
+    width: 10%;
+  }
+}
+
+.markdown + h3 {
+  margin-top: 3rem;
+}

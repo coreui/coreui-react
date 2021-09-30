@@ -34,7 +34,7 @@ module.exports = function (_ref, _temp) {
 
       const code = fs.readFileSync(path, 'utf8')
 
-      const markdown = unified().use(parse).use(html)
+      const markdown = unified().use(parse).use(html, {sanitize: false})
 
       try {
         parent.value = `<div class=\"markdown\">${markdown.processSync(code)}</div>`
