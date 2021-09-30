@@ -23,7 +23,7 @@ export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Method called before the dissmiss animation has started.
    */
-  onDismiss?: () => void
+  onClose?: () => void
   /**
    * Components placement, there’s no default placement.
    */
@@ -49,7 +49,7 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
       backdrop = true,
       className,
       keyboard = true,
-      onDismiss,
+      onClose,
       placement,
       portal = true,
       scroll = false,
@@ -99,7 +99,7 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
 
     const handleDismiss = () => {
       setVisible(false)
-      return onDismiss && onDismiss()
+      return onClose && onClose()
     }
 
     const handleKeyDown = useCallback(
@@ -152,7 +152,7 @@ COffcanvas.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   keyboard: PropTypes.bool,
-  onDismiss: PropTypes.func,
+  onClose: PropTypes.func,
   placement: PropTypes.oneOf<'start' | 'end' | 'top' | 'bottom'>(['start', 'end', 'top', 'bottom'])
     .isRequired,
   portal: PropTypes.bool,
