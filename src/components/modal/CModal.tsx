@@ -49,6 +49,14 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    */
   onClose?: () => void
   /**
+   * Callback fired when the component requests to be closed.
+   */
+  onClosePrevented?: () => void
+  /**
+   * Callback fired when the modal is shown, its backdrop is static and a click outside the modal or an escape key press is performed with the keyboard option set to false.
+   */
+  onShow?: () => void
+  /**
    * Generates modal using createPortal.
    */
   portal?: boolean
@@ -88,6 +96,8 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       fullscreen,
       keyboard = true,
       onClose,
+      onClosePrevented,
+      onShow,
       portal = true,
       scrollable,
       size,
@@ -119,6 +129,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     }
 
     useLayoutEffect(() => {
+      onClosePrevented && onClosePrevented()
       setTimeout(() => setStaticBackdrop(false), duration)
     }, [staticBackdrop])
 
@@ -194,6 +205,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
           <CSSTransition
             in={_visible}
             timeout={!transition ? 0 : duration}
+            onEnter={onShow}
             onExit={onClose}
             mountOnEnter
             unmountOnExit
@@ -226,6 +238,8 @@ CModal.propTypes = {
   ]),
   keyboard: PropTypes.bool,
   onClose: PropTypes.func,
+  onClosePrevented: PropTypes.func,
+  onShow: PropTypes.func,
   portal: PropTypes.bool,
   scrollable: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'lg', 'xl']),
