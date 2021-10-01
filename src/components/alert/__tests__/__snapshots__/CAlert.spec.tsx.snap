@@ -3,7 +3,7 @@
 exports[`CAlert customize 1`] = `
 <div>
   <div
-    class="alert bg-secondary text-white alert-dismissible fade show bazinga"
+    class="alert bg-secondary text-white alert-dismissible fade bazinga show"
     role="alert"
   >
     Test
@@ -18,7 +18,7 @@ exports[`CAlert customize 1`] = `
 exports[`loads and displays CAlert component 1`] = `
 <div>
   <div
-    class="alert alert-primary"
+    class="alert alert-primary show"
     role="alert"
   >
     Test

@@ -23,7 +23,7 @@ test('CToaster customize', async () => {
           addToast(
             <>
               <CToast autohide={false}>
-                <CToastHeader close>Lorem ipsum</CToastHeader>
+                <CToastHeader closeButton>Lorem ipsum</CToastHeader>
                 <CToastBody>Hello, world! This is a toast message.</CToastBody>
               </CToast>
             </>,

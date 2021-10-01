@@ -27,13 +27,13 @@ test('CModal customize', async () => {
 
 test('CModal dialog close on press ESC', async () => {
   jest.useFakeTimers()
-  const onDismiss = jest.fn()
+  const onClose = jest.fn()
   render(
-    <CModal onDismiss={onDismiss} portal={false} visible>
+    <CModal onClose={onClose} portal={false} visible>
       Test
     </CModal>,
   )
-  expect(onDismiss).toHaveBeenCalledTimes(0)
+  expect(onClose).toHaveBeenCalledTimes(0)
   const modal = document.querySelector('.modal')
   if (modal !== null) {
     fireEvent.keyDown(modal, {
@@ -44,24 +44,24 @@ test('CModal dialog close on press ESC', async () => {
     })
   }
   jest.runAllTimers()
-  expect(onDismiss).toHaveBeenCalledTimes(1)
+  expect(onClose).toHaveBeenCalledTimes(1)
   jest.useRealTimers()
 })
 
 // test('CModal dialog close on backdrop', async () => {
 //   jest.useFakeTimers()
-//   const onDismiss = jest.fn()
+//   const onClose = jest.fn()
 //   render(
-//     <CModal onDismiss={onDismiss} portal={false} visible={true}>
+//     <CModal onClose={onClose} portal={false} visible={true}>
 //       Test
 //     </CModal>,
 //   )
-//   expect(onDismiss).toHaveBeenCalledTimes(0)
+//   expect(onClose).toHaveBeenCalledTimes(0)
 //   const backdrop = document.querySelector('.modal-backdrop')
 //   if (backdrop !== null) {
 //     fireEvent.click(backdrop)
 //   }
 //   jest.runAllTimers()
-//   expect(onDismiss).toHaveBeenCalledTimes(1)
+//   expect(onClose).toHaveBeenCalledTimes(1)
 //   jest.useRealTimers()
 // })
