@@ -11,13 +11,21 @@ export interface CCollapseProps extends HTMLAttributes<HTMLDivElement> {
    */
   className?: string
   /**
+   * Callback fired when the component requests to be hidden.
+   */
+  onHide?: () => void
+  /**
+   * Callback fired when the component requests to be shown.
+   */
+  onShow?: () => void
+  /**
    * Toggle the visibility of component.
    */
   visible?: boolean
 }
 
 export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
-  ({ children, className, visible, ...rest }, ref) => {
+  ({ children, className, onHide, onShow, visible, ...rest }, ref) => {
     const [height, setHeight] = useState<number>()
     const collapseRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, collapseRef)
@@ -33,6 +41,7 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
     }
 
     const onEntering = () => {
+      onShow && onShow()
       collapseRef.current && setHeight(collapseRef.current.scrollHeight)
     }
 
@@ -45,6 +54,7 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
     }
 
     const onExiting = () => {
+      onHide && onHide()
       setHeight(0)
     }
 
@@ -86,6 +96,8 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
 CCollapse.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  onHide: PropTypes.func,
+  onShow: PropTypes.func,
   visible: PropTypes.bool,
 }
 
