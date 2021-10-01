@@ -52,6 +52,14 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
    */
   direction?: 'dropup' | 'dropend' | 'dropstart'
   /**
+   * Callback fired when the component requests to be hidden.
+   */
+  onHide?: () => void
+  /**
+   * Callback fired when the component requests to be shown.
+   */
+  onShow?: () => void
+  /**
    * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.
    *
    * @type 'auto' | 'top-end' | 'top' | 'top-start' | 'bottom-end' | 'bottom' | 'bottom-start' | 'right-start' | 'right' | 'right-end' | 'left-start' | 'left' | 'left-end'
@@ -85,6 +93,8 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       className,
       dark,
       direction,
+      onHide,
+      onShow,
       placement = 'bottom-start',
       popper = true,
       variant = 'btn-group',
@@ -139,6 +149,11 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       setVisible(visible)
     }, [visible])
 
+    useEffect(() => {
+      _visible && onShow && onShow()
+      !_visible && onHide && onHide()
+    }, [_visible])
+
     const handleKeyup = (event: Event) => {
       if (!dropdownRef.current?.contains(event.target as HTMLElement)) {
         setVisible(false)
@@ -191,6 +206,8 @@ CDropdown.propTypes = {
   component: PropTypes.elementType,
   dark: PropTypes.bool,
   direction: PropTypes.oneOf(['dropup', 'dropend', 'dropstart']),
+  onHide: PropTypes.func,
+  onShow: PropTypes.func,
   placement: placementPropType,
   popper: PropTypes.bool,
   variant: PropTypes.oneOf(['btn-group', 'dropdown', 'input-group', 'nav-item']),
