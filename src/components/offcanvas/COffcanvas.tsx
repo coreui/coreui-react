@@ -21,9 +21,13 @@ export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {
    */
   keyboard?: boolean
   /**
-   * Callback fired when the component requests to be closed.
+   * Callback fired when the component requests to be hidden.
    */
-  onClose?: () => void
+  onHide?: () => void
+  /**
+   * Callback fired when the component requests to be shown.
+   */
+  onShow?: () => void
   /**
    * Components placement, there’s no default placement.
    */
@@ -49,7 +53,8 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
       backdrop = true,
       className,
       keyboard = true,
-      onClose,
+      onHide,
+      onShow,
       placement,
       portal = true,
       scroll = false,
@@ -99,7 +104,6 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
 
     const handleDismiss = () => {
       setVisible(false)
-      return onClose && onClose()
     }
 
     const handleKeyDown = useCallback(
@@ -131,7 +135,13 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
 
     return (
       <>
-        <Transition in={_visible} timeout={300} onEntered={() => offcanvasRef.current?.focus()}>
+        <Transition
+          in={_visible}
+          timeout={300}
+          onEnter={onShow}
+          onEntered={() => offcanvasRef.current?.focus()}
+          onExit={onHide}
+        >
           {(state) => {
             return typeof window !== 'undefined' && portal
               ? createPortal(offcanvas(forkedRef, state), document.body)
@@ -152,7 +162,8 @@ COffcanvas.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   keyboard: PropTypes.bool,
-  onClose: PropTypes.func,
+  onHide: PropTypes.func,
+  onShow: PropTypes.func,
   placement: PropTypes.oneOf<'start' | 'end' | 'top' | 'bottom'>(['start', 'end', 'top', 'bottom'])
     .isRequired,
   portal: PropTypes.bool,
