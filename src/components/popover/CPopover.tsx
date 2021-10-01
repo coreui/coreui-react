@@ -18,6 +18,14 @@ export interface CPopoverProps {
    */
   offset?: [number, number]
   /**
+   * Callback fired when the component requests to be hidden.
+   */
+  onHide?: () => void
+  /**
+   * Callback fired when the component requests to be shown.
+   */
+  onShow?: () => void
+  /**
    * Title node for your component.
    */
   title?: ReactNode
@@ -41,6 +49,8 @@ export const CPopover: FC<CPopoverProps> = ({
   children,
   placement = 'top',
   offset = [0, 8],
+  onHide,
+  onShow,
   trigger = 'click',
   visible,
   ...rest
@@ -85,6 +95,8 @@ export const CPopover: FC<CPopoverProps> = ({
               enter: 0,
               exit: 200,
             }}
+            onEnter={onShow}
+            onExit={onHide}
             mountOnEnter
             unmountOnExit
           >
@@ -126,6 +138,8 @@ CPopover.propTypes = {
   children: PropTypes.any,
   placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   offset: PropTypes.any, // TODO: find good proptype
+  onHide: PropTypes.func,
+  onShow: PropTypes.func,
   trigger: triggerPropType,
   visible: PropTypes.bool,
 }
