@@ -14,6 +14,14 @@ export interface CTooltipProps {
    */
   content: ReactNode
   /**
+   * Callback fired when the component requests to be hidden.
+   */
+  onHide?: () => void
+  /**
+   * Callback fired when the component requests to be shown.
+   */
+  onShow?: () => void
+  /**
    * Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.
    *
    * @type 'hover' | 'focus' | 'click'
@@ -32,6 +40,8 @@ export interface CTooltipProps {
 export const CTooltip: FC<CTooltipProps> = ({
   children,
   placement = 'top',
+  onHide,
+  onShow,
   trigger = 'hover',
   visible,
   ...rest
@@ -76,6 +86,8 @@ export const CTooltip: FC<CTooltipProps> = ({
               enter: 0,
               exit: 200,
             }}
+            onEnter={onShow}
+            onExit={onHide}
             mountOnEnter
             unmountOnExit
           >
@@ -106,6 +118,8 @@ export const CTooltip: FC<CTooltipProps> = ({
 CTooltip.propTypes = {
   children: PropTypes.any,
   placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+  onHide: PropTypes.func,
+  onShow: PropTypes.func,
   trigger: triggerPropType,
   visible: PropTypes.bool,
 }
