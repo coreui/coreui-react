@@ -9,13 +9,21 @@ export interface CTabPaneProps extends HTMLAttributes<HTMLDivElement> {
    */
   className?: string
   /**
+   * Callback fired when the component requests to be hidden.
+   */
+  onHide?: () => void
+  /**
+   * Callback fired when the component requests to be shown.
+   */
+  onShow?: () => void
+  /**
    * Toggle the visibility of component.
    */
   visible?: boolean
 }
 
 export const CTabPane = forwardRef<HTMLDivElement, CTabPaneProps>(
-  ({ children, className, visible, ...rest }, ref) => {
+  ({ children, className, onHide, onShow, visible, ...rest }, ref) => {
     const style = {
       transition: `opacity 150ms linear`,
     }
@@ -32,7 +40,7 @@ export const CTabPane = forwardRef<HTMLDivElement, CTabPaneProps>(
 
     const _className = classNames('tab-pane', 'fade', className)
     return (
-      <Transition in={visible} timeout={350}>
+      <Transition in={visible} onEnter={onShow} onExit={onHide} timeout={350}>
         {(state) => {
           const transitionClass = getTransitionClass(state)
           return (
@@ -54,6 +62,8 @@ export const CTabPane = forwardRef<HTMLDivElement, CTabPaneProps>(
 CTabPane.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  onHide: PropTypes.func,
+  onShow: PropTypes.func,
   visible: PropTypes.bool,
 }
 
