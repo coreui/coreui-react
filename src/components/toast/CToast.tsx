@@ -44,13 +44,17 @@ export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
    */
   key?: number
   /**
-   * Toggle the visibility of component.
-   */
-  visible?: boolean
-  /**
    * Callback fired when the component requests to be closed.
    */
   onClose?: (index: number | null) => void
+  /**
+   * Callback fired when the component requests to be shown.
+   */
+  onShow?: (index: number | null) => void
+  /**
+   * Toggle the visibility of component.
+   */
+  visible?: boolean
 }
 
 interface ContextProps extends CToastProps {
@@ -73,6 +77,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
       key,
       visible = false,
       onClose,
+      onShow,
       ...rest
     },
     ref,
@@ -129,6 +134,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
       <CSSTransition
         in={_visible}
         timeout={250}
+        onEnter={() => onShow && onShow(index ? index : null)}
         onExited={() => onClose && onClose(index ? index : null)}
         unmountOnExit
       >
@@ -167,6 +173,7 @@ CToast.propTypes = {
   index: PropTypes.number,
   key: PropTypes.number,
   onClose: PropTypes.func,
+  onShow: PropTypes.func,
   visible: PropTypes.bool,
 }
 
