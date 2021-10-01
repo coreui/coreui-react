@@ -6,10 +6,12 @@ menu: Components
 route: /components/alert
 ---
 
+import { useState } from 'react'
 import { 
   CAlert,
   CAlertHeading,
   CAlertLink,
+  CButton,
   CCallout,
 } from './../../../src/index.ts'
 
@@ -81,6 +83,34 @@ React Alert is prepared for any length of text, as well as an optional close but
     Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the `.visually-hidden` class.
   </p>
 </CCallout>
+
+### Live example
+
+Click the button below to show an alert (hidden with inline styles to start), then dismiss (and destroy) it with the built-in close button.
+
+export const LiveExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <CAlert color="primary" dismissible visible={visible} onClose={() => setVisible(false)}>A simple primary alert—check it out!</CAlert>
+      <CButton color="primary" onClick={() => setVisible(true)}>Show live alert</CButton>
+    </>
+  )
+}
+
+<Example>
+  <LiveExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <>
+    <CAlert color="primary" dismissible visible={visible} onClose={() => setVisible(false)}>A simple primary alert—check it out!</CAlert>
+    <CButton color="primary" onClick={() => setVisible(true)}>Show live alert</CButton>
+  </>
+)
+```
 
 ### Link color
 
@@ -278,7 +308,7 @@ Alerts can also be easily dismissed. Just add the `dismissible` prop.
   <CAlert
     color="warning"
     dismissible
-    onDismissed={() => {
+    onClose={() => {
       alert("👋 Well, hi there! Thanks for dismissing me.");
     }}
   >
@@ -290,7 +320,7 @@ Alerts can also be easily dismissed. Just add the `dismissible` prop.
 <CAlert
   color="warning"
   dismissible
-  onDismissed={() => {
+  onClose={() => {
     alert("👋 Well, hi there! Thanks for dismissing me.");
   }}
 >
