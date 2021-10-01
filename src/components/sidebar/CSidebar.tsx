@@ -16,6 +16,14 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
    */
   narrow?: boolean
   /**
+   * Callback fired when the component requests to be hidden.
+   */
+  onHide?: () => void
+  /**
+   * Callback fired when the component requests to be shown.
+   */
+  onShow?: () => void
+  /**
    * Event emitted after visibility of component changed.
    */
   onVisibleChange?: (visible: boolean) => void
@@ -60,6 +68,8 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
       children,
       className,
       narrow,
+      onHide,
+      onShow,
       onVisibleChange,
       overlaid,
       position,
@@ -84,6 +94,8 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
 
     useEffect(() => {
       typeof inViewport !== 'undefined' && onVisibleChange && onVisibleChange(inViewport)
+      !inViewport && onHide && onHide()
+      inViewport && onShow && onShow()
     }, [inViewport])
 
     useEffect(() => {
@@ -186,6 +198,8 @@ CSidebar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   narrow: PropTypes.bool,
+  onHide: PropTypes.func,
+  onShow: PropTypes.func,
   onVisibleChange: PropTypes.func,
   overlaid: PropTypes.bool,
   position: PropTypes.oneOf(['fixed', 'sticky']),
