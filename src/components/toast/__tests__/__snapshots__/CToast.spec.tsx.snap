@@ -5,7 +5,7 @@ exports[`CToast customize 1`] = `
   <div
     aria-atomic="true"
     aria-live="assertive"
-    class="toast fade bg-warning border-0 bazinga showing enter-active"
+    class="toast fade bg-warning border-0 bazinga showing"
     role="alert"
   >
     Test
@@ -18,7 +18,7 @@ exports[`CToast customize 2`] = `
   <div
     aria-atomic="true"
     aria-live="assertive"
-    class="toast fade bg-warning border-0 bazinga showing enter-active"
+    class="toast fade bg-warning border-0 bazinga showing"
     role="alert"
   >
     Test
@@ -31,7 +31,7 @@ exports[`CToast customize 3`] = `
   <div
     aria-atomic="true"
     aria-live="assertive"
-    class="toast fade bg-warning border-0 bazinga showing enter-active"
+    class="toast fade bg-warning border-0 bazinga showing"
     role="alert"
   >
     Test
@@ -44,7 +44,7 @@ exports[`CToast customize 4`] = `
   <div
     aria-atomic="true"
     aria-live="assertive"
-    class="toast fade bg-warning border-0 bazinga showing enter-active"
+    class="toast fade bg-warning border-0 bazinga showing"
     role="alert"
   >
     Test
@@ -57,7 +57,7 @@ exports[`CToast customize 5`] = `
   <div
     aria-atomic="true"
     aria-live="assertive"
-    class="toast fade bg-warning border-0 bazinga showing enter-active"
+    class="toast fade bg-warning border-0 bazinga showing"
     role="alert"
   >
     Test
@@ -70,7 +70,7 @@ exports[`CToast customize 6`] = `
   <div
     aria-atomic="true"
     aria-live="assertive"
-    class="toast fade bg-warning border-0 bazinga show enter-done"
+    class="toast fade bg-warning border-0 bazinga show"
     role="alert"
   >
     Test

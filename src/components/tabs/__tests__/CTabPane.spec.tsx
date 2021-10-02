@@ -31,8 +31,8 @@ test('CTabContent use case test', async () => {
       <CTabPane visible={true}>Test</CTabPane>
     </CTabContent>,
   )
-  expect(screen.getByText('Test')).toHaveClass('show')
-  expect(screen.getByText('Test')).not.toHaveClass('active')
+  expect(screen.getByText('Test')).not.toHaveClass('show')
+  expect(screen.getByText('Test')).toHaveClass('active')
   jest.runAllTimers()
   expect(screen.getByText('Test')).toHaveClass('show')
   expect(screen.getByText('Test')).toHaveClass('active')
@@ -42,7 +42,7 @@ test('CTabContent use case test', async () => {
     </CTabContent>,
   )
   expect(screen.getByText('Test')).not.toHaveClass('show')
-  expect(screen.getByText('Test')).toHaveClass('active')
+  expect(screen.getByText('Test')).not.toHaveClass('active')
   jest.runAllTimers()
   expect(screen.getByText('Test')).not.toHaveClass('show')
   expect(screen.getByText('Test')).not.toHaveClass('active')
