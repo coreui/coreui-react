@@ -10,7 +10,8 @@ import COffcanvas from '@coreui/react/src/components/offcanvas/COffcanvas'
 | **backdrop** | Apply a backdrop on body while offcanvas is open. | `boolean` | true |
 | **className** | A string of all className you want applied to the base component. | `string` | - |
 | **keyboard** | Closes the offcanvas when escape key is pressed | `boolean` | true |
-| **onDismiss** | Method called before the dissmiss animation has started. | `() => void` | - |
+| **onHide** | Callback fired when the component requests to be hidden. | `() => void` | - |
+| **onShow** | Callback fired when the component requests to be shown. | `() => void` | - |
 | **placement** | Components placement, there’s no default placement. | `'start'` \| `'end'` \| `'top'` \| `'bottom'` | - |
 | **portal** | Generates modal using createPortal. | `boolean` | true |
 | **scroll** | Allow body scrolling while offcanvas is open | `boolean` | false |

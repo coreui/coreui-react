@@ -12,7 +12,9 @@ import CModal from '@coreui/react/src/components/modal/CModal'
 | **className** | A string of all className you want applied to the base component. | `string` | - |
 | **fullscreen** | Set modal to covers the entire user viewport. | `boolean` \| `'sm'` \| `'md'` \| `'lg'` \| `'xl'` \| `'xxl'` | - |
 | **keyboard** | Closes the modal when escape key is pressed. | `boolean` | true |
-| **onDismiss** | Method called before the dissmiss animation has started. | `() => void` | - |
+| **onClose** | Callback fired when the component requests to be closed. | `() => void` | - |
+| **onClosePrevented** | Callback fired when the component requests to be closed. | `() => void` | - |
+| **onShow** | Callback fired when the modal is shown, its backdrop is static and a click outside the modal or an escape key press is performed with the keyboard option set to false. | `() => void` | - |
 | **portal** | Generates modal using createPortal. | `boolean` | true |
 | **scrollable** | Create a scrollable modal that allows scrolling the modal body. | `boolean` | - |
 | **size** | Size the component small, large, or extra large. | `'sm'` \| `'lg'` \| `'xl'` | - |

@@ -12,5 +12,6 @@ import CToast from '@coreui/react/src/components/toast/CToast'
 | **className** | A string of all className you want applied to the base component. | `string` | - |
 | **color** | Sets the color context of the component to one of CoreUI’s themed colors. | `'primary'` \| `'secondary'` \| `'success'` \| `'danger'` \| `'warning'` \| `'info'` \| `'dark'` \| `'light'` \| `string` | - |
 | **delay** | Delay hiding the toast (ms). | `number` | 5000 |
-| **onDismiss** | Method called before the dissmiss animation has started. | `(index: number) => void` | - |
+| **onClose** | Callback fired when the component requests to be closed. | `(index: number) => void` | - |
+| **onShow** | Callback fired when the component requests to be shown. | `(index: number) => void` | - |
 | **visible** | Toggle the visibility of component. | `boolean` | false |
