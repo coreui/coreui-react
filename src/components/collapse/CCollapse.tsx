@@ -1,7 +1,7 @@
 import React, { forwardRef, HTMLAttributes, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { CSSTransition } from 'react-transition-group'
+import { Transition } from 'react-transition-group'
 
 import { useForkedRef } from '../../utils/hooks'
 
@@ -65,14 +65,14 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
     const _className = classNames(className)
 
     return (
-      <CSSTransition
+      <Transition
         in={visible}
-        timeout={350}
         onEntering={onEntering}
         onEntered={onEntered}
         onExit={onExit}
         onExiting={onExiting}
         onExited={onExited}
+        timeout={350}
       >
         {(state) => {
           const transitionClass = getTransitionClass(state)
@@ -88,7 +88,7 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
             </div>
           )
         }}
-      </CSSTransition>
+      </Transition>
     )
   },
 )

@@ -2,7 +2,7 @@ import React, { FC, ReactElement, ReactNode, useState } from 'react'
 import PropTypes from 'prop-types'
 import { createPortal } from 'react-dom'
 import { Manager, Popper, Reference } from 'react-popper'
-import { CSSTransition } from 'react-transition-group'
+import { Transition } from 'react-transition-group'
 
 import { CTooltipContent } from './CTooltipContent'
 import { Triggers, triggerPropType } from '../Types'
@@ -80,15 +80,15 @@ export const CTooltip: FC<CTooltipProps> = ({
       </Reference>
       {typeof window !== 'undefined' &&
         createPortal(
-          <CSSTransition
+          <Transition
             in={_visible}
+            mountOnEnter
+            onEnter={onShow}
+            onExit={onHide}
             timeout={{
               enter: 0,
               exit: 200,
             }}
-            onEnter={onShow}
-            onExit={onHide}
-            mountOnEnter
             unmountOnExit
           >
             {(state) => {
@@ -108,7 +108,7 @@ export const CTooltip: FC<CTooltipProps> = ({
                 </Popper>
               )
             }}
-          </CSSTransition>,
+          </Transition>,
           document.body,
         )}
     </Manager>

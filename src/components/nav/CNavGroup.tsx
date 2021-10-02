@@ -15,19 +15,19 @@ import { CNavContext } from '../sidebar/CSidebarNav'
 export interface CNavGroupProps {
   children?: ReactNode
   /**
-   * A string of all className you want applied to the component.
+   * A string of all className you want applied to the component. [docs]
    */
   className?: string
   /**
-   * Make nav group more compact by cutting all `padding` in half.
+   * Make nav group more compact by cutting all `padding` in half. [docs]
    */
   compact?: boolean
   /**
-   * Set group toggler label.
+   * Set group toggler label. [docs]
    */
   toggler?: string | ReactNode
   /**
-   * Show nav group items.
+   * Show nav group items. [docs]
    */
   visible?: boolean
   /**
@@ -106,12 +106,12 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
         )}
         <Transition
           in={_visible}
-          timeout={300}
           onEntering={onEntering}
           onEntered={onEntered}
           onExit={onExit}
           onExiting={onExiting}
           onExited={onExited}
+          timeout={300}
         >
           {(state) => (
             <ul

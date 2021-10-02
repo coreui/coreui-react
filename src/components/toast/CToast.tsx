@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { CSSTransition } from 'react-transition-group'
+import { Transition } from 'react-transition-group'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -131,11 +131,11 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
     }
 
     return (
-      <CSSTransition
+      <Transition
         in={_visible}
-        timeout={250}
         onEnter={() => onShow && onShow(index ? index : null)}
         onExited={() => onClose && onClose(index ? index : null)}
+        timeout={250}
         unmountOnExit
       >
         {(state) => {
@@ -158,7 +158,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
             </CToastContext.Provider>
           )
         }}
-      </CSSTransition>
+      </Transition>
     )
   },
 )

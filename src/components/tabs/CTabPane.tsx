@@ -24,32 +24,24 @@ export interface CTabPaneProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CTabPane = forwardRef<HTMLDivElement, CTabPaneProps>(
   ({ children, className, onHide, onShow, visible, ...rest }, ref) => {
-    const style = {
-      transition: `opacity 150ms linear`,
-    }
-
     const getTransitionClass = (state: string) => {
-      return state === 'entering'
-        ? 'show'
-        : state === 'entered'
-        ? 'show active'
-        : state === 'exiting'
-        ? 'active'
-        : ''
+      return state === 'entered' && 'show'
     }
 
-    const _className = classNames('tab-pane', 'fade', className)
+    const _className = classNames(
+      'tab-pane',
+      'fade',
+      {
+        active: visible,
+      },
+      className,
+    )
     return (
-      <Transition in={visible} onEnter={onShow} onExit={onHide} timeout={350}>
+      <Transition in={visible} onEnter={onShow} onExit={onHide} timeout={150}>
         {(state) => {
           const transitionClass = getTransitionClass(state)
           return (
-            <div
-              className={classNames(_className, transitionClass)}
-              style={{ ...style }}
-              {...rest}
-              ref={ref}
-            >
+            <div className={classNames(_className, transitionClass)} {...rest} ref={ref}>
               {children}
             </div>
           )

@@ -2,7 +2,7 @@ import React, { FC, ReactElement, ReactNode, useState } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import { Manager, Popper, Reference } from 'react-popper'
-import { CSSTransition } from 'react-transition-group'
+import { Transition } from 'react-transition-group'
 
 import { CPopoverContent } from './CPopoverContent'
 import { Triggers, triggerPropType } from '../Types'
@@ -89,15 +89,15 @@ export const CPopover: FC<CPopoverProps> = ({
       </Reference>
       {typeof window !== 'undefined' &&
         createPortal(
-          <CSSTransition
+          <Transition
             in={_visible}
+            onEnter={onShow}
+            onExit={onHide}
+            mountOnEnter
             timeout={{
               enter: 0,
               exit: 200,
             }}
-            onEnter={onShow}
-            onExit={onHide}
-            mountOnEnter
             unmountOnExit
           >
             {(state) => {
@@ -127,7 +127,7 @@ export const CPopover: FC<CPopoverProps> = ({
                 </Popper>
               )
             }}
-          </CSSTransition>,
+          </Transition>,
           document.body,
         )}
     </Manager>

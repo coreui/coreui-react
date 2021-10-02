@@ -1,7 +1,7 @@
 import React, { forwardRef, HTMLAttributes, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { CSSTransition } from 'react-transition-group'
+import { Transition } from 'react-transition-group'
 
 import { Colors, colorPropType } from '../Types'
 import { CCloseButton } from '../close-button/CCloseButton'
@@ -70,7 +70,7 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
     }
 
     return (
-      <CSSTransition in={_visible} timeout={150} onExit={onClose} mountOnEnter unmountOnExit>
+      <Transition in={_visible} mountOnEnter onExit={onClose} timeout={150} unmountOnExit>
         {(state) => {
           const transitionClass = getTransitionClass(state)
           return (
@@ -85,7 +85,7 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
             </div>
           )
         }}
-      </CSSTransition>
+      </Transition>
     )
   },
 )

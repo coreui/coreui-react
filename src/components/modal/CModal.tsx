@@ -11,7 +11,7 @@ import React, {
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { CSSTransition } from 'react-transition-group'
+import { Transition } from 'react-transition-group'
 
 import { useForkedRef } from '../../utils/hooks'
 
@@ -202,13 +202,13 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     return (
       <>
         <div onClick={handleDismiss} onKeyDown={handleKeyDown}>
-          <CSSTransition
+          <Transition
             in={_visible}
-            timeout={!transition ? 0 : duration}
+            mountOnEnter
             onEnter={onShow}
             onExit={onClose}
-            mountOnEnter
             unmountOnExit
+            timeout={!transition ? 0 : duration}
           >
             {(state) => {
               const transitionClass = getTransitionClass(state)
@@ -216,7 +216,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
                 ? createPortal(modal(forkedRef, transitionClass), document.body)
                 : modal(forkedRef, transitionClass)
             }}
-          </CSSTransition>
+          </Transition>
         </div>
         {typeof window !== 'undefined' && portal
           ? backdrop && createPortal(<CBackdrop visible={_visible} />, document.body)
