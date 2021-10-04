@@ -3,8 +3,7 @@
 exports[`CTabPane customize 1`] = `
 <div>
   <div
-    class="tab-pane fade bazinga show active"
-    style="transition: opacity 150ms linear;"
+    class="tab-pane fade active bazinga show"
   >
     Test
   </div>
@@ -15,7 +14,6 @@ exports[`loads and displays CTabPane component 1`] = `
 <div>
   <div
     class="tab-pane fade"
-    style="transition: opacity 150ms linear;"
   >
     Test
   </div>

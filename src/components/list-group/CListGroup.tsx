@@ -4,21 +4,19 @@ import classNames from 'classnames'
 
 export interface CListGroupProps extends HTMLAttributes<HTMLDivElement | HTMLUListElement> {
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * Component used for the root node. Either a string to use a HTML element or a component. [docs]
-   *
-   * @default 'ul'
+   * Component used for the root node. Either a string to use a HTML element or a component.
    */
   component?: string | ElementType
   /**
-   * Remove some borders and rounded corners to render list group items edge-to-edge in a parent component (e.g., `<CCard>`). [docs]
+   * Remove some borders and rounded corners to render list group items edge-to-edge in a parent component (e.g., `<CCard>`).
    */
   flush?: boolean
   /**
-   * Specify a layout type. [docs]
+   * Specify a layout type.
    */
   layout?:
     | 'horizontal'

@@ -94,7 +94,17 @@ export const shapePropType = PropTypes.oneOfType([
   PropTypes.string,
 ])
 
-export type TextColors = Colors | 'white' | 'muted' | string
+export type TextColors =
+  | Colors
+  | 'white'
+  | 'muted'
+  | 'high-emphasis'
+  | 'medium-emphasis'
+  | 'disabled'
+  | 'high-emphasis-inverse'
+  | 'medium-emphasis-inverse'
+  | 'disabled-inverse'
+  | string
 
 export const textColorsPropType = PropTypes.oneOfType([
   colorPropType,

@@ -6,11 +6,11 @@ import { CLink } from '../link/CLink'
 
 export interface CCardLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
-   * The href attribute specifies the URL of the page the link goes to. [docs]
+   * The href attribute specifies the URL of the page the link goes to.
    */
   href?: string
 }

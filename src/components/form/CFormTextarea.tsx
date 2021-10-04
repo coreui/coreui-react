@@ -4,35 +4,35 @@ import classNames from 'classnames'
 
 export interface CFormTextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * Toggle the disabled state for the component. [docs]
+   * Toggle the disabled state for the component.
    */
   disabled?: boolean
   /**
-   * Set component validation state to invalid. [docs]
+   * Set component validation state to invalid.
    */
   invalid?: boolean
   /**
-   * Method called immediately after the `value` prop changes. [docs]
+   * Method called immediately after the `value` prop changes.
    */
   onChange?: ChangeEventHandler<HTMLTextAreaElement>
   /**
-   * Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side `readonly`. [docs]
+   * Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side `readonly`.
    */
   plainText?: boolean
   /**
-   * Toggle the readonly state for the component. [docs]
+   * Toggle the readonly state for the component.
    */
   readOnly?: boolean
   /**
-   * Set component validation state to valid. [docs]
+   * Set component validation state to valid.
    */
   valid?: boolean
   /**
-   * The `value` attribute of component. [docs]
+   * The `value` attribute of component.
    *
    * @controllable onChange
    * */

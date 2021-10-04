@@ -8,19 +8,19 @@ export interface CImageProps extends ImgHTMLAttributes<HTMLOrSVGImageElement> {
    */
   align?: 'start' | 'center' | 'end'
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * Make image responsive. [docs]
+   * Make image responsive.
    */
   fluid?: boolean
   /**
-   * Make image rounded. [docs]
+   * Make image rounded.
    */
   rounded?: boolean
   /**
-   * Give an image a rounded 1px border appearance. [docs]
+   * Give an image a rounded 1px border appearance.
    */
   thumbnail?: boolean
 }

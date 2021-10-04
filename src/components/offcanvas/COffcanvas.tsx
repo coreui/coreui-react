@@ -9,36 +9,39 @@ import { CBackdrop } from '../backdrop/CBackdrop'
 
 export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * Apply a backdrop on body while offcanvas is open. [docs]
-   *
-   * @default true
+   * Apply a backdrop on body while offcanvas is open.
    */
   backdrop?: boolean
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
    * Closes the offcanvas when escape key is pressed [docs]
-   *
-   * @default true
    */
   keyboard?: boolean
   /**
-   * Method called before the dissmiss animation has started. [docs]
+   * Callback fired when the component requests to be hidden.
    */
-  onDismiss?: () => void
+  onHide?: () => void
   /**
-   * Components placement, there’s no default placement. [docs]
-   * @type 'start' | 'end' | 'top' | 'bottom'
+   * Callback fired when the component requests to be shown.
+   */
+  onShow?: () => void
+  /**
+   * Components placement, there’s no default placement.
    */
   placement: 'start' | 'end' | 'top' | 'bottom'
   /**
-   * Generates modal using createPortal. [docs]
+   * Generates modal using createPortal.
    */
   portal?: boolean
   /**
-   * Toggle the visibility of offcanvas component. [docs]
+   * Allow body scrolling while offcanvas is open
+   */
+  scroll?: boolean
+  /**
+   * Toggle the visibility of offcanvas component.
    */
   visible?: boolean
 }
@@ -50,9 +53,11 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
       backdrop = true,
       className,
       keyboard = true,
-      onDismiss,
+      onHide,
+      onShow,
       placement,
       portal = true,
+      scroll = false,
       visible = false,
       ...rest
     },
@@ -65,6 +70,21 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
     useEffect(() => {
       setVisible(visible)
     }, [visible])
+
+    useEffect(() => {
+      if (_visible) {
+        if (!scroll) {
+          document.body.style.overflow = 'hidden'
+          document.body.style.paddingRight = '0px'
+        }
+        return
+      }
+
+      if (!scroll) {
+        document.body.style.removeProperty('overflow')
+        document.body.style.removeProperty('padding-right')
+      }
+    }, [_visible])
 
     const _className = classNames(
       'offcanvas',
@@ -84,7 +104,6 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
 
     const handleDismiss = () => {
       setVisible(false)
-      return onDismiss && onDismiss()
     }
 
     const handleKeyDown = useCallback(
@@ -101,6 +120,7 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
         <>
           <div
             className={_className}
+            role="dialog"
             style={{ ...transitionStyles[state] }}
             tabIndex={-1}
             onKeyDown={handleKeyDown}
@@ -115,7 +135,13 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
 
     return (
       <>
-        <Transition in={_visible} timeout={300} onEntered={() => offcanvasRef.current?.focus()}>
+        <Transition
+          in={_visible}
+          onEnter={onShow}
+          onEntered={() => offcanvasRef.current?.focus()}
+          onExit={onHide}
+          timeout={300}
+        >
           {(state) => {
             return typeof window !== 'undefined' && portal
               ? createPortal(offcanvas(forkedRef, state), document.body)
@@ -124,8 +150,8 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
         </Transition>
         {typeof window !== 'undefined' && portal
           ? backdrop &&
-            createPortal(<CBackdrop visible={visible} onClick={handleDismiss} />, document.body)
-          : backdrop && <CBackdrop visible={visible} onClick={handleDismiss} />}
+            createPortal(<CBackdrop visible={_visible} onClick={handleDismiss} />, document.body)
+          : backdrop && <CBackdrop visible={_visible} onClick={handleDismiss} />}
       </>
     )
   },
@@ -136,10 +162,12 @@ COffcanvas.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   keyboard: PropTypes.bool,
-  onDismiss: PropTypes.func,
+  onHide: PropTypes.func,
+  onShow: PropTypes.func,
   placement: PropTypes.oneOf<'start' | 'end' | 'top' | 'bottom'>(['start', 'end', 'top', 'bottom'])
     .isRequired,
   portal: PropTypes.bool,
+  scroll: PropTypes.bool,
   visible: PropTypes.bool,
 }
 

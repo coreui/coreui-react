@@ -4,13 +4,11 @@ import classNames from 'classnames'
 
 export interface CCardTextProps extends HTMLAttributes<HTMLParagraphElement> {
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * Component used for the root node. Either a string to use a HTML element or a component. [docs]
-   *
-   * @default 'p'
+   * Component used for the root node. Either a string to use a HTML element or a component.
    */
   component?: string | ElementType
 }

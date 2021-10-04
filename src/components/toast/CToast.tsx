@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { CSSTransition } from 'react-transition-group'
+import { Transition } from 'react-transition-group'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -14,29 +14,25 @@ import { Colors, colorPropType } from '../Types'
 
 export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
-   * Apply a CSS fade transition to the toast. [docs]
-   *
-   * @default true
+   * Apply a CSS fade transition to the toast.
    */
   animation?: boolean
   /**
-   * Auto hide the toast. [docs]
-   *
-   * @default true
+   * Auto hide the toast.
    */
   autohide?: boolean
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
-   * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
+   * Sets the color context of the component to one of CoreUI’s themed colors.
    *
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
   color?: Colors
   /**
-   * Delay hiding the toast (ms). [docs]
+   * Delay hiding the toast (ms).
    */
   delay?: number
   /**
@@ -48,13 +44,17 @@ export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
    */
   key?: number
   /**
-   * Toggle the visibility of component. [docs]
+   * Callback fired when the component requests to be closed.
+   */
+  onClose?: (index: number | null) => void
+  /**
+   * Callback fired when the component requests to be shown.
+   */
+  onShow?: (index: number | null) => void
+  /**
+   * Toggle the visibility of component.
    */
   visible?: boolean
-  /**
-   * Method called before the dissmiss animation has started. [docs]
-   */
-  onDismiss?: (index: number | null) => void
 }
 
 interface ContextProps extends CToastProps {
@@ -76,7 +76,8 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
       index,
       key,
       visible = false,
-      onDismiss,
+      onClose,
+      onShow,
       ...rest
     },
     ref,
@@ -130,10 +131,11 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
     }
 
     return (
-      <CSSTransition
+      <Transition
         in={_visible}
+        onEnter={() => onShow && onShow(index ? index : null)}
+        onExited={() => onClose && onClose(index ? index : null)}
         timeout={250}
-        onExited={() => onDismiss && onDismiss(index ? index : null)}
         unmountOnExit
       >
         {(state) => {
@@ -156,7 +158,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
             </CToastContext.Provider>
           )
         }}
-      </CSSTransition>
+      </Transition>
     )
   },
 )
@@ -170,7 +172,8 @@ CToast.propTypes = {
   delay: PropTypes.number,
   index: PropTypes.number,
   key: PropTypes.number,
-  onDismiss: PropTypes.func,
+  onClose: PropTypes.func,
+  onShow: PropTypes.func,
   visible: PropTypes.bool,
 }
 

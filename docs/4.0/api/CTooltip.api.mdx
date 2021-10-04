@@ -1,6 +1,15 @@
+
+```jsx
+import { CTooltip } from '@coreui/react'
+// or
+import CTooltip from '@coreui/react/src/components/tooltip/CTooltip'
+```
+
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | **content** | Content node for your component. | `ReactNode` | - |
-| **placement** | Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property. | `'top' | 'right' | 'bottom' | 'left'` | top |
-| **trigger** | Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them. | `Triggers | Triggers[]` | hover |
-| **visible** | Toggle the visibility of popover component. | `boolean` | true |
+| **onHide** | Callback fired when the component requests to be hidden. | `() => void` | - |
+| **onShow** | Callback fired when the component requests to be shown. | `() => void` | - |
+| **placement** | Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property. | `'top'` \| `'right'` \| `'bottom'` \| `'left'` | top |
+| **trigger** | Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them. | `'hover'` \| `'focus'` \| `'click'` | hover |
+| **visible** | Toggle the visibility of popover component. | `boolean` | - |

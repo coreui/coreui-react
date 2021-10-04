@@ -7,19 +7,19 @@ import { CCardBody } from '../card/CCardBody'
 
 export interface CWidgetStatsEProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
-   * Chart node for your component. [docs]
+   * Chart node for your component.
    */
   chart?: string | ReactNode
   /**
-   * Title node for your component. [docs]
+   * Title node for your component.
    */
   title?: string | ReactNode
   /**
-   * Value node for your component. [docs]
+   * Value node for your component.
    */
   value?: string | number | ReactNode
 }

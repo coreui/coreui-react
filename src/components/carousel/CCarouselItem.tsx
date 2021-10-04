@@ -1,110 +1,121 @@
-import React, { forwardRef, HTMLAttributes, useContext, useState, useEffect } from 'react'
+import React, { forwardRef, HTMLAttributes, useContext, useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { CSSTransition } from 'react-transition-group'
 
+import { useForkedRef } from '../../utils/hooks'
 import { CCarouselContext } from './CCarousel'
 export interface CCarouselItemProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * @ignore
+   */
+  active?: boolean
+  /**
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
    * @ignore
    */
-  idx?: number
-}
-
-// eslint-disable-next-line @typescript-eslint/ban-types
-const getDirection = (state: object) => {
-  if (state[2]) {
-    return state[2] === 'next' ? 'right' : 'left'
-  } else {
-    return state[1] > state[0] ? 'right' : 'left'
-  }
+  direction?: string
+  /**
+   * The amount of time to delay between automatically cycling an item.
+   */
+  interval?: boolean | number
 }
 
 export const CCarouselItem = forwardRef<HTMLDivElement, CCarouselItemProps>(
-  ({ children, className, idx, ...rest }, ref) => {
-    const { animate, state, animating, setAnimating } = useContext(CCarouselContext)
+  ({ children, className, active, direction, interval = false, ...rest }, ref) => {
+    const { setAnimating, setCustomInterval } = useContext(CCarouselContext)
+    const carouselItemRef = useRef<HTMLDivElement>(null)
+    const forkedRef = useForkedRef(ref, carouselItemRef)
 
-    const [isIn, setIsIn] = useState<boolean>(false)
-
-    const onEnter = () => {
-      setAnimating(false)
-    }
-    const onEntering = () => {
-      setAnimating(true)
-    }
-    const onExit = () => {
-      setAnimating(false)
-    }
-    const onExiting = () => {
-      setAnimating(true)
-    }
-    const onExited = () => {
-      setAnimating(false)
-    }
+    const prevActive = useRef<boolean>()
+    const [directionClassName, setDirectionClassName] = useState<string>()
+    const [orderClassName, setOrderClassName] = useState<string>()
+    const [activeClassName, setActiveClassName] = useState(active && 'active')
+    const [count, setCount] = useState(0)
 
     useEffect(() => {
-      setIsIn(state[1] === idx)
-    }, [state])
+      if (active) {
+        setCustomInterval(interval)
+        if (count !== 0) setOrderClassName(`carousel-item-${direction}`)
+      }
 
-    if (!animate || state[0] === null) {
-      const itemClasses = classNames('carousel-item', isIn && 'active', className)
-      return (
-        <div className={itemClasses} ref={ref} {...rest}>
-          {children}
-        </div>
-      )
-    }
+      if (prevActive.current && !active) {
+        setActiveClassName('active')
+      }
+
+      if (active || prevActive.current) {
+        setTimeout(() => {
+          if (count !== 0) {
+            // @ts-expect-error reflow is necessary to proper transition
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const reflow = carouselItemRef.current?.offsetHeight
+            setDirectionClassName(`carousel-item-${direction === 'next' ? 'start' : 'end'}`)
+          }
+        }, 0)
+      }
+
+      prevActive.current = active
+
+      if (count === 0) setCount(count + 1)
+    }, [active])
+
+    useEffect(() => {
+      carouselItemRef.current?.addEventListener('transitionstart', () => {
+        active && setAnimating(true)
+      })
+      carouselItemRef.current?.addEventListener('transitionend', () => {
+        active && setAnimating(false)
+        setDirectionClassName('')
+        setOrderClassName('')
+        if (active) {
+          setActiveClassName('active')
+        }
+        if (!active) {
+          setActiveClassName('')
+        }
+      })
+      return () => {
+        carouselItemRef.current?.removeEventListener('transitionstart', () => {
+          active && setAnimating(true)
+        })
+        carouselItemRef.current?.removeEventListener('transitionend', () => {
+          active && setAnimating(false)
+          setDirectionClassName('')
+          setOrderClassName('')
+          if (active) {
+            setActiveClassName('active')
+          }
+          if (!active) {
+            setActiveClassName('')
+          }
+        })
+      }
+    })
+
+    const _className = classNames(
+      'carousel-item',
+      activeClassName,
+      directionClassName,
+      orderClassName,
+      className,
+    )
 
     return (
-      <CSSTransition
-        timeout={600}
-        in={isIn}
-        onEnter={onEnter}
-        onEntering={onEntering}
-        onExit={onExit}
-        onExiting={onExiting}
-        onExited={onExited}
-        nodeRef={ref}
-      >
-        {(status) => {
-          const direction = getDirection(state)
-          const isActive = status === 'entered' || status === 'exiting'
-          const directionClassName =
-            (status === 'entering' || status === 'exiting') &&
-            animating &&
-            (direction === 'right' ? 'carousel-item-start' : 'carousel-item-end')
-
-          const orderClassName =
-            status === 'entering' &&
-            (direction === 'right' ? 'carousel-item-next' : 'carousel-item-prev')
-
-          const itemClasses = classNames(
-            'carousel-item',
-            isActive && 'active',
-            orderClassName,
-            directionClassName,
-            className,
-          )
-
-          return (
-            <div className={itemClasses} ref={ref} {...rest}>
-              {children}
-            </div>
-          )
-        }}
-      </CSSTransition>
+      <div className={_className} ref={forkedRef} {...rest}>
+        {children}
+      </div>
     )
   },
 )
 
 CCarouselItem.propTypes = {
+  active: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
-  idx: PropTypes.number,
+  direction: PropTypes.string,
+  interval: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 }
 
 CCarouselItem.displayName = 'CCarouselItem'

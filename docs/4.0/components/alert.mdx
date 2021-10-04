@@ -6,13 +6,18 @@ menu: Components
 route: /components/alert
 ---
 
+import { useState } from 'react'
 import { 
   CAlert,
   CAlertHeading,
   CAlertLink,
+  CButton,
   CCallout,
 } from './../../../src/index.ts'
 
+import CIcon from '@coreui/icons-react'
+
+import { cilBurn, cilCheckCircle, cilInfo, cilWarning } from '@coreui/icons'
 
 ## Examples
 
@@ -79,7 +84,35 @@ React Alert is prepared for any length of text, as well as an optional close but
   </p>
 </CCallout>
 
-## Link color
+### Live example
+
+Click the button below to show an alert (hidden with inline styles to start), then dismiss (and destroy) it with the built-in close button.
+
+export const LiveExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <CAlert color="primary" dismissible visible={visible} onClose={() => setVisible(false)}>A simple primary alert—check it out!</CAlert>
+      <CButton color="primary" onClick={() => setVisible(true)}>Show live alert</CButton>
+    </>
+  )
+}
+
+<Example>
+  <LiveExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <>
+    <CAlert color="primary" dismissible visible={visible} onClose={() => setVisible(false)}>A simple primary alert—check it out!</CAlert>
+    <CButton color="primary" onClick={() => setVisible(true)}>Show live alert</CButton>
+  </>
+)
+```
+
+### Link color
 
 Use the `<CAlertLink>` component to immediately give matching colored links inside any alert.
 
@@ -137,7 +170,7 @@ Use the `<CAlertLink>` component to immediately give matching colored links insi
 </CAlert>
 ```
 
-## Additional content
+### Additional content
 
 Alert can also incorporate supplementary components &amp; elements like heading, paragraph, and divider.
 
@@ -159,7 +192,115 @@ Alert can also incorporate supplementary components &amp; elements like heading,
 </CAlert>
 ```
 
-## Dismissing
+### Icons
+
+Similarly, you can use [flexbox utilities](https//coreui.io/docs/4.0/utilities/flex") and [CoreUI Icons](https://icons.coreui.io) to create alerts with icons. Depending on your icons and content, you may want to add more utilities or custom styles.
+
+<Example>
+  <CAlert color="primary" className="d-flex align-items-center">
+    <svg className="flex-shrink-0 me-2" width="24" height="24" viewBox="0 0 512 512">
+      <rect width="32" height="176" x="240" y="176" fill="var(--ci-primary-color, currentColor)" className="ci-primary"></rect><rect width="32" height="32" x="240" y="384" fill="var(--ci-primary-color, currentColor)" className="ci-primary"></rect><path fill="var(--ci-primary-color, currentColor)" d="M274.014,16H237.986L16,445.174V496H496V445.174ZM464,464H48V452.959L256,50.826,464,452.959Z" className="ci-primary"></path>
+    </svg>
+    <div>
+      An example alert with an icon
+    </div>
+  </CAlert>
+</Example>
+
+```jsx
+<CAlert color="primary" className="d-flex align-items-center">
+  <svg className="flex-shrink-0 me-2" width="24" height="24" viewBox="0 0 512 512">
+    <rect width="32" height="176" x="240" y="176" fill="var(--ci-primary-color, currentColor)" className="ci-primary"></rect><rect width="32" height="32" x="240" y="384" fill="var(--ci-primary-color, currentColor)" className="ci-primary"></rect><path fill="var(--ci-primary-color, currentColor)" d="M274.014,16H237.986L16,445.174V496H496V445.174ZM464,464H48V452.959L256,50.826,464,452.959Z" className="ci-primary"></path>
+  </svg>
+  <div>
+    An example alert with an icon
+  </div>
+</CAlert>
+```
+
+Need more than one icon for your alerts? Consider using [CoreUI Icons](https://icons.coreui.io).
+
+<Example>
+  <CAlert color="primary" className="d-flex align-items-center">
+    <CIcon icon={cilInfo} className="flex-shrink-0 me-2" width={24} height={24} />
+    <div>
+      An example alert with an icon
+    </div>
+  </CAlert>
+  <CAlert color="success" className="d-flex align-items-center">
+    <CIcon icon={cilCheckCircle} className="flex-shrink-0 me-2" width={24} height={24} />
+    <div>
+      An example success alert with an icon
+    </div>
+  </CAlert>
+  <CAlert color="warning" className="d-flex align-items-center">
+    <CIcon icon={cilWarning} className="flex-shrink-0 me-2" width={24} height={24} />
+    <div>
+      An example warning alert with an icon
+    </div>
+  </CAlert>
+  <CAlert color="danger" className="d-flex align-items-center">
+    <CIcon icon={cilBurn} className="flex-shrink-0 me-2" width={24} height={24} />
+    <div>
+      An example danger alert with an icon
+    </div>
+  </CAlert>
+</Example>
+
+```jsx
+<CAlert color="primary" className="d-flex align-items-center">
+  <CIcon icon={cilInfo} className="flex-shrink-0 me-2" width={24} height={24} />
+  <div>
+    An example alert with an icon
+  </div>
+</CAlert>
+<CAlert color="success" className="d-flex align-items-center">
+  <CIcon icon={cilCheckCircle} className="flex-shrink-0 me-2" width={24} height={24} />
+  <div>
+    An example success alert with an icon
+  </div>
+</CAlert>
+<CAlert color="warning" className="d-flex align-items-center">
+  <CIcon icon={cilWarning} className="flex-shrink-0 me-2" width={24} height={24} />
+  <div>
+    An example warning alert with an icon
+  </div>
+</CAlert>
+<CAlert color="danger" className="d-flex align-items-center">
+  <CIcon icon={cilBurn} className="flex-shrink-0 me-2" width={24} height={24} />
+  <div>
+    An example danger alert with an icon
+  </div>
+</CAlert>
+```
+
+### Solid
+
+Use `variant="solid"` to change contextual colors to solid.
+
+<Example>
+  <CAlert color="primary" variant="solid">A simple solid primary alert—check it out!</CAlert>
+  <CAlert color="secondary" variant="solid">A simple solid secondary alert—check it out!</CAlert>
+  <CAlert color="success" variant="solid">A simple solid success alert—check it out!</CAlert>
+  <CAlert color="danger" variant="solid">A simple solid danger alert—check it out!</CAlert>
+  <CAlert color="warning" variant="solid">A simple solid warning alert—check it out!</CAlert>
+  <CAlert color="info" variant="solid">A simple solid info alert—check it out!</CAlert>
+  <CAlert color="light" variant="solid" className="text-high-emphasis">A simple solid light alert—check it out!</CAlert>
+  <CAlert color="dark" variant="solid">A simple solid dark alert—check it out!</CAlert>
+</Example>
+
+```jsx
+<CAlert color="primary" variant="solid">A simple solid primary alert—check it out!</CAlert>
+<CAlert color="secondary" variant="solid">A simple solid secondary alert—check it out!</CAlert>
+<CAlert color="success" variant="solid">A simple solid success alert—check it out!</CAlert>
+<CAlert color="danger" variant="solid">A simple solid danger alert—check it out!</CAlert>
+<CAlert color="warning" variant="solid">A simple solid warning alert—check it out!</CAlert>
+<CAlert color="info" variant="solid">A simple solid info alert—check it out!</CAlert>
+<CAlert color="light" variant="solid" className="text-high-emphasis">A simple solid light alert—check it out!</CAlert>
+<CAlert color="dark" variant="solid">A simple solid dark alert—check it out!</CAlert>
+```
+
+### Dismissing
 
 Alerts can also be easily dismissed. Just add the `dismissible` prop.
 
@@ -167,7 +308,7 @@ Alerts can also be easily dismissed. Just add the `dismissible` prop.
   <CAlert
     color="warning"
     dismissible
-    onDismissed={() => {
+    onClose={() => {
       alert("👋 Well, hi there! Thanks for dismissing me.");
     }}
   >
@@ -179,7 +320,7 @@ Alerts can also be easily dismissed. Just add the `dismissible` prop.
 <CAlert
   color="warning"
   dismissible
-  onDismissed={() => {
+  onClose={() => {
     alert("👋 Well, hi there! Thanks for dismissing me.");
   }}
 >

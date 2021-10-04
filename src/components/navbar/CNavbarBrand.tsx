@@ -4,16 +4,16 @@ import classNames from 'classnames'
 
 export interface CNavbarBrandProps extends HTMLAttributes<HTMLAnchorElement | HTMLSpanElement> {
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * Component used for the root node. Either a string to use a HTML element or a component. [docs]
+   * Component used for the root node. Either a string to use a HTML element or a component.
    *
    */
   component?: string | ElementType
   /**
-   * The href attribute specifies the URL of the page the link goes to. [docs]
+   * The href attribute specifies the URL of the page the link goes to.
    */
   href?: string
 }

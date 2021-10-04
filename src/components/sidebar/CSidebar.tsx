@@ -8,37 +8,43 @@ import { CBackdrop } from '../backdrop/CBackdrop'
 
 export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * Make sidebar narrow. [docs]
+   * Make sidebar narrow.
    */
   narrow?: boolean
   /**
-   * Event emitted after visibility of component changed. [docs]
+   * Callback fired when the component requests to be hidden.
+   */
+  onHide?: () => void
+  /**
+   * Callback fired when the component requests to be shown.
+   */
+  onShow?: () => void
+  /**
+   * Event emitted after visibility of component changed.
    */
   onVisibleChange?: (visible: boolean) => void
   /**
-   * Set sidebar to narrow variant. [docs]
+   * Set sidebar to overlaid variant.
    */
   overlaid?: boolean
   /**
-   * Place sidebar in non-static positions. [docs]
+   * Place sidebar in non-static positions.
    */
   position?: 'fixed' | 'sticky'
   /**
-   * Size the component small, large, or extra large. [docs]
+   * Size the component small, large, or extra large.
    */
   size?: 'sm' | 'lg' | 'xl'
   /**
-   * Expand narrowed sidebar on hover. [docs]
+   * Expand narrowed sidebar on hover.
    */
   unfoldable?: boolean
   /**
-   * Toggle the visibility of sidebar component. [docs]
-   *
-   * @default true
+   * Toggle the visibility of sidebar component.
    */
   visible?: boolean
 }
@@ -62,6 +68,8 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
       children,
       className,
       narrow,
+      onHide,
+      onShow,
       onVisibleChange,
       overlaid,
       position,
@@ -86,6 +94,8 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
 
     useEffect(() => {
       typeof inViewport !== 'undefined' && onVisibleChange && onVisibleChange(inViewport)
+      !inViewport && onHide && onHide()
+      inViewport && onShow && onShow()
     }, [inViewport])
 
     useEffect(() => {
@@ -188,6 +198,8 @@ CSidebar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   narrow: PropTypes.bool,
+  onHide: PropTypes.func,
+  onShow: PropTypes.func,
   onVisibleChange: PropTypes.func,
   overlaid: PropTypes.bool,
   position: PropTypes.oneOf(['fixed', 'sticky']),

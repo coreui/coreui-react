@@ -16,7 +16,7 @@ test('CToast customize', async () => {
       color="warning"
       delay={100}
       visible={true}
-      //onDismiss
+      //onClose
     >
       Test
     </CToast>,
@@ -33,7 +33,7 @@ test('CToast customize', async () => {
 
 test('CToast click on dismiss button', async () => {
   jest.useFakeTimers()
-  const onDismiss = jest.fn()
+  const onClose = jest.fn()
   const { container } = render(
     <CToast
       className="bazinga"
@@ -41,9 +41,9 @@ test('CToast click on dismiss button', async () => {
       color="warning"
       delay={100}
       visible={true}
-      onDismiss={onDismiss}
+      onClose={onClose}
     >
-      <CToastHeader close>
+      <CToastHeader closeButton>
         <svg
           className="rounded me-2"
           width="20"
@@ -65,13 +65,13 @@ test('CToast click on dismiss button', async () => {
     expect(container.firstChild).toHaveClass('show')
   })
 
-  expect(onDismiss).toHaveBeenCalledTimes(0)
+  expect(onClose).toHaveBeenCalledTimes(0)
   const btn = document.querySelector('.btn-close')
   if (btn !== null) {
     fireEvent.click(btn)
   }
   jest.runAllTimers()
-  expect(onDismiss).toHaveBeenCalledTimes(1)
+  expect(onClose).toHaveBeenCalledTimes(1)
   expect(container.firstChild).toBeNull()
   jest.useRealTimers()
 })

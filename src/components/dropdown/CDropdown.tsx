@@ -28,17 +28,17 @@ export type Alignments = Directions | Breakpoints
 
 export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIElement> {
   /**
-   * @type { 'start' | 'end' | { xs: 'start' | 'end' } | { sm: 'start' | 'end' } | { md: 'start' | 'end' } | { lg: 'start' | 'end' } | { xl: 'start' | 'end'} | { xxl: 'start' | 'end'} }
+   * Set aligment of dropdown menu.
+   *
+   * @type 'start' | 'end' | { xs: 'start' | 'end' } | { sm: 'start' | 'end' } | { md: 'start' | 'end' } | { lg: 'start' | 'end' } | { xl: 'start' | 'end'} | { xxl: 'start' | 'end'}
    */
   alignment?: Alignments
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
-   * Component used for the root node. Either a string to use a HTML element or a component. [docs]
-   *
-   * @default 'div'
+   * Component used for the root node. Either a string to use a HTML element or a component.
    */
   component?: string | ElementType
   /**
@@ -46,16 +46,23 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
    */
   dark?: boolean
   /**
-   * Sets a specified  direction and location of the dropdown menu. [docs]
+   * Sets a specified  direction and location of the dropdown menu.
    *
    * @type 'dropup' | 'dropend' | 'dropstart'
    */
   direction?: 'dropup' | 'dropend' | 'dropstart'
   /**
-   * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property. [docs]
+   * Callback fired when the component requests to be hidden.
+   */
+  onHide?: () => void
+  /**
+   * Callback fired when the component requests to be shown.
+   */
+  onShow?: () => void
+  /**
+   * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.
    *
    * @type 'auto' | 'top-end' | 'top' | 'top-start' | 'bottom-end' | 'bottom' | 'bottom-start' | 'right-start' | 'right' | 'right-end' | 'left-start' | 'left' | 'left-end'
-   * @default 'bottom-start'
    */
   placement?: Placements
   /**
@@ -63,15 +70,11 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
    */
   popper?: boolean
   /**
-   * Set the dropdown variant to an btn-group, dropdown, input-group, and nav-item. [docs]
-   *
-   * @default 'btn-group'
+   * Set the dropdown variant to an btn-group, dropdown, input-group, and nav-item.
    */
   variant?: 'btn-group' | 'dropdown' | 'input-group' | 'nav-item'
   /**
-   * Toggle the visibility of dropdown menu component. [docs]
-   *
-   * @default false
+   * Toggle the visibility of dropdown menu component.
    */
   visible?: boolean
 }
@@ -90,6 +93,8 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       className,
       dark,
       direction,
+      onHide,
+      onShow,
       placement = 'bottom-start',
       popper = true,
       variant = 'btn-group',
@@ -144,6 +149,11 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       setVisible(visible)
     }, [visible])
 
+    useEffect(() => {
+      _visible && onShow && onShow()
+      !_visible && onHide && onHide()
+    }, [_visible])
+
     const handleKeyup = (event: Event) => {
       if (!dropdownRef.current?.contains(event.target as HTMLElement)) {
         setVisible(false)
@@ -196,6 +206,8 @@ CDropdown.propTypes = {
   component: PropTypes.elementType,
   dark: PropTypes.bool,
   direction: PropTypes.oneOf(['dropup', 'dropend', 'dropstart']),
+  onHide: PropTypes.func,
+  onShow: PropTypes.func,
   placement: placementPropType,
   popper: PropTypes.bool,
   variant: PropTypes.oneOf(['btn-group', 'dropdown', 'input-group', 'nav-item']),

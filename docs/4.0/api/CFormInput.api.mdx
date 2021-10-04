@@ -1,3 +1,10 @@
+
+```jsx
+import { CFormInput } from '@coreui/react'
+// or
+import CFormInput from '@coreui/react/src/components/form/CFormInput'
+```
+
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | **className** | A string of all className you want applied to the component. | `string` | - |
@@ -6,7 +13,7 @@
 | **onChange** | Method called immediately after the `value` prop changes. | `ChangeEventHandler<HTMLInputElement>` | - |
 | **plainText** | Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side `readonly` | `boolean` | - |
 | **readOnly** | Toggle the readonly state for the component. | `boolean` | - |
-| **size** | Size the component small or large. | `'sm' | 'lg'` | - |
-| **type** | Specifies the type of component. | `'color' | 'file' | 'text' | string` | text |
+| **size** | Size the component small or large. | `'sm'` \| `'lg'` | - |
+| **type** | Specifies the type of component. | `string` | text |
 | **valid** | Set component validation state to valid. | `boolean` | - |
-| **value** | The `value` attribute of component.<br/>@controllable onChange | `string | number | string[]` | - |
+| **value** | The `value` attribute of component.<br/>@controllable onChange | `string` \| `number` \| `string[]` | - |

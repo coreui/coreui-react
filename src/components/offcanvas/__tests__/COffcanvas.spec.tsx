@@ -30,7 +30,7 @@ test('COffcanvas customize one', async () => {
 
 test('COffcanvas customize and event on click backdrop', async () => {
   jest.useFakeTimers()
-  const onDismiss = jest.fn()
+  const onHide = jest.fn()
   const { container } = render(
     <COffcanvas
       className="bazinga"
@@ -39,7 +39,7 @@ test('COffcanvas customize and event on click backdrop', async () => {
       placement="end"
       portal={false}
       visible={true}
-      onDismiss={onDismiss}
+      onHide={onHide}
     >
       Test
     </COffcanvas>,
@@ -50,18 +50,18 @@ test('COffcanvas customize and event on click backdrop', async () => {
   expect(container.firstChild).toHaveClass('bazinga')
   expect(container.firstChild).toHaveClass('show')
   expect(container.firstChild).toHaveTextContent('Test')
-  expect(onDismiss).toHaveBeenCalledTimes(0)
+  expect(onHide).toHaveBeenCalledTimes(0)
   const backdrop = document.querySelector('.modal-backdrop')
   if (backdrop !== null) {
     fireEvent.click(backdrop)
   }
-  expect(onDismiss).toHaveBeenCalledTimes(1)
+  expect(onHide).toHaveBeenCalledTimes(1)
   expect(container.firstChild).not.toHaveClass('show')
 })
 
 test('COffcanvas customize and event on keypress', async () => {
   jest.useFakeTimers()
-  const onDismiss = jest.fn()
+  const onHide = jest.fn()
   const { container } = render(
     <COffcanvas
       className="bazinga"
@@ -70,7 +70,7 @@ test('COffcanvas customize and event on keypress', async () => {
       placement="end"
       portal={false}
       visible={true}
-      onDismiss={onDismiss}
+      onHide={onHide}
     >
       Test
     </COffcanvas>,
@@ -80,7 +80,7 @@ test('COffcanvas customize and event on keypress', async () => {
   expect(container.firstChild).toHaveClass('offcanvas-end')
   expect(container.firstChild).toHaveClass('bazinga')
   expect(container.firstChild).toHaveClass('show')
-  expect(onDismiss).toHaveBeenCalledTimes(0)
+  expect(onHide).toHaveBeenCalledTimes(0)
   const canvas = document.querySelector('.offcanvas')
   if (canvas === null) {
     expect(true).toBe(false)
@@ -92,6 +92,6 @@ test('COffcanvas customize and event on keypress', async () => {
       charCode: 27,
     })
   }
-  expect(onDismiss).toHaveBeenCalledTimes(1)
+  expect(onHide).toHaveBeenCalledTimes(1)
   expect(container.firstChild).not.toHaveClass('show')
 })

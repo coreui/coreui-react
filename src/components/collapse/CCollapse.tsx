@@ -1,23 +1,31 @@
 import React, { forwardRef, HTMLAttributes, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { CSSTransition } from 'react-transition-group'
+import { Transition } from 'react-transition-group'
 
 import { useForkedRef } from '../../utils/hooks'
 
 export interface CCollapseProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
-   * Toggle the visibility of component. [docs]
+   * Callback fired when the component requests to be hidden.
+   */
+  onHide?: () => void
+  /**
+   * Callback fired when the component requests to be shown.
+   */
+  onShow?: () => void
+  /**
+   * Toggle the visibility of component.
    */
   visible?: boolean
 }
 
 export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
-  ({ children, className, visible, ...rest }, ref) => {
+  ({ children, className, onHide, onShow, visible, ...rest }, ref) => {
     const [height, setHeight] = useState<number>()
     const collapseRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, collapseRef)
@@ -33,6 +41,7 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
     }
 
     const onEntering = () => {
+      onShow && onShow()
       collapseRef.current && setHeight(collapseRef.current.scrollHeight)
     }
 
@@ -45,6 +54,7 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
     }
 
     const onExiting = () => {
+      onHide && onHide()
       setHeight(0)
     }
 
@@ -55,14 +65,14 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
     const _className = classNames(className)
 
     return (
-      <CSSTransition
+      <Transition
         in={visible}
-        timeout={350}
         onEntering={onEntering}
         onEntered={onEntered}
         onExit={onExit}
         onExiting={onExiting}
         onExited={onExited}
+        timeout={350}
       >
         {(state) => {
           const transitionClass = getTransitionClass(state)
@@ -78,7 +88,7 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
             </div>
           )
         }}
-      </CSSTransition>
+      </Transition>
     )
   },
 )
@@ -86,6 +96,8 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
 CCollapse.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  onHide: PropTypes.func,
+  onShow: PropTypes.func,
   visible: PropTypes.bool,
 }
 

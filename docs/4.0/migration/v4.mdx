@@ -9,58 +9,283 @@ CoreUI for React is the React.js version of CoreUI components library, so before
 
 ## Components
 
-- Deprecated component `CEmbed`
-- Deprecated component `CJumbotron`
+### CAlert
 
-### Badges
+- Deprecated property `innerRef`.
+- Deprecated property `fade`.
+- Deprecated property `onShowChange`.
+- Deprecated property `closeButton`, use `dismissible` instead of.
+- Deprecated property `show`, use `visible` instead of.
 
-- `variant="pill"` => `shape="rounded-pill"`
-- `variant="square"` => `shape="rounded-0"`
+### CBadge
 
-### Forms
+- Deprecated property `innerRef`.
+- Deprecated property `tag`, use `component` instead of.
 
-- `CInput` => `CFormInput`
-- `CInputCheckbox` => `CFormCheck`
-- `CLabel` => `CFormLabel`
-- `CSelect` => `CFormSelect`
-- `CValidFeedback` => `CFormFeedback valid`
-- `CInvalidFeedback` => `CFormFeedback invalid`
+### CBreadcrumb
 
-- Deprecated component `CFormGroup`
-- Deprecated component `CInputGroupAppend`, use `CInputGroupText` instead of.
-- Deprecated component `CInputGroupPrepend` use `CInputGroupText` instead of.
-- Depreacted component `CSwitch`, use `CFormSwitch` instead of.
-- Deprecated `.help-block`
+- Deprecated property `innerRef`.
 
-### Header
+#### CBreadcrumbItem
 
-- Deprecated property `withSubheader`
+- Deprecated property `innerRef`.
+
+### CButton
+
+- Deprecated property `block`.
+- Deprecated property `innerRef`.
+- Deprecated property `pressed`.
+- Deprecated property `tag`, use `component` instead of.
+
+### CCallout
+
+- Deprecated property `innerRef`.
+
+### CCard
+
+- Deprecated property `innerRef`.
+- Deprecated property `accentColor`, use utilities `className="border-top-{#color} border-top-3"` instead of.
+
+#### CCardBody
+
+- Deprecated property `innerRef`.
+
+#### CCardFooter
+
+- Deprecated property `innerRef`.
+
+#### CCardGroup
+
+- Deprecated property `columns`.
+- Deprecated property `deck`.
+- Deprecated property `innerRef`.
+
+#### CCardHeader
+
+- Deprecated property `innerRef`.
+- Deprecated property `tag`, use `component` instead of.
+
+#### CCardImg
+
+- **Component renamed to `CCardImg`**
+- Deprecated property `variant`, use `orientation` instead of.
+
+#### CCardImgOverlay
+
+- **Component renamed to `CCardImgOverlay`**
+- Deprecated property `innerRef`.
+- Deprecated property `tag`.
+
+#### CCardSubtitle
+
+- Deprecated property `innerRef`.
+- Deprecated property `tag`, use `component` instead of.
+
+#### CCardText
+
+- Deprecated property `innerRef`.
+- Deprecated property `tag`, use `component` instead of.
+
+#### CCardTitle
+
+- Deprecated property `innerRef`.
+- Deprecated property `tag`, use `component` instead of.
+
+### CCarousel
+
+- Deprecated property `autoSlide`.
+- Deprecated property `innerRef`.
+- Deprecated property `activeIndex`, use `index` instead of.
+
+#### CCarouselControl
+
+- Component is depracated, use `<CCarousel controls>` instead of. 
+
+#### CCarouselIndicators
+
+- Component is depracated, use `<CCarousel indicators>` instead of. 
+
+#### CCarouselInner
+
+- Component is depracated. 
+
+### CCollapse
+
+- Deprecated property `innerRef`.
+- Deprecated property `navbar`.
+- Deprecated property `show`, use `visible` instead of.
+
+#### CCreateElement
+
+- Component is depracated. 
+
+### CDropdown
+
+- Deprecated property `innerRef`.
+- Deprecated property `inNav`, use `variant="nav-item"` instead of.
+- Deprecated property `tag`, use `component` instead of.
+
+#### CDropdownitem
+
+- Deprecated property `color`.
+- Deprecated property `divider`.
+- Deprecated property `innerRef`.
+- Deprecated property `header`.
+- Deprecated property `onClick`.
+- Deprecated property `tag`, use `component` instead of.
+
+#### CDropdownMenu
+
+- Deprecated property `innerRef`.
+- Deprecated property `modifiers`.
+- Deprecated property `placement` , use `<CDropdown placement="...">` instead of.
+- Deprecated property `show` , use `<CDropdown visible>` instead of.
+
+#### CDropdownToggle
+
+- Deprecated property `innerRef`.
+- Deprecated property `tag`, use `component` instead of.
+
+### CEmbed
+
+- Component is depracated.
+
+### CFade
+
+- Component is depracated.
+
+### CHeader
+
+- Deprecated property `withSubheader`.
 - Deprecated component `CHeaderNavItem`, use `CNavItem` instead of.
 - Deprecated component `CHeaderNavLink`, use `CNavLink` instead of.
 
-### List Group
+### CImg
 
-- Depracated prop `action` Use property `component="a"` or `component="button"` instead of `action`.
+- **Component renamed to `CImage`**
+- Deprecated property `block`.
+- Deprecated property `innerRef`.
+- Deprecated property `fluidGrow`.
+- Deprecated property `placeholderColor`.
+- Deprecated property `shape`.
+- Deprecated property `tag`.
 
-### Modal
+### CJumbotron
 
-- Depracated prop `show` Use `visible` instead of.
+- Component is depracated.
 
-### Popover
+### CListGroup
 
-- Depracated prop `header` Use `title` instead of.
+- Deprecated property `accent`.
+- Deprecated property `horizontal`, use `layout` instead of.
+- Deprecated property `innerRef`.
+- Deprecated property `tag`, use `component` instead of.
 
-### Progress Bar
+#### CListGroupItem
 
-- Depracated prop `precision`
-- Depracated prop `showLabel`
-- Depracated prop `showPercentage`
-- Depracated prop `showValue`
+- Deprecated property `accent`.
+- Deprecated property `action`, use property `component="a"` or `component="button"` instead of. 
+- Deprecated property `innerRef`.
+- Deprecated property `tag`, use `component` instead of.
 
-### Sidebar
+### CMedia
+
+- Component is depracated.
+
+### CModal
+
+- Deprecated property `addContentClass`.
+- Deprecated property `borderColor`, use utilities `className="border border-{#color}"` instead of.
+- Deprecated property `centered`.
+- Deprecated property `closeOnBackdrop`.
+- Deprecated property `fade`, use `transition` instead of.
+- Deprecated property `innerRef`.
+- Deprecated property `onClosed`.
+- Deprecated property `onOpened`.
+- Deprecated property `show`, use `visible` instead of.
+
+#### CModalBody
+
+- Deprecated property `innerRef`.
+- Deprecated property `tag`.
+
+#### CModalFooter
+
+- Deprecated property `innerRef`.
+- Deprecated property `tag`.
+
+#### CModalHeader
+
+- Deprecated property `innerRef`.
+- Deprecated property `tag`.
+
+### CNav
+
+- Deprecated property `inCard`.
+- Deprecated property `innerRef`.
+- Deprecated property `fill`, use `layout="fill"` instead of.
+- Deprecated property `justified`, use `layout="justified"` instead of.
+- Deprecated property `tag`, use `component` instead of.
+
+#### CNavItem
+
+- Deprecated property `innerRef`.
+- Deprecated property `tag`, use `component` instead of.
+
+#### CNavLink
+
+- Deprecated property `innerRef`.
+
+### CNavbar
+
+- Deprecated property `expandable`, use `expand` instead of.
+- Deprecated property `fixed`, use `placement="fixed-top"` instead of.
+- Deprecated property `innerRef`.
+- Deprecated property `light`, use `colorScheme="light"` instead of.
+- Deprecated property `sticky`, use `placement="sticky-top"` instead of.
+- Deprecated property `tag`, use `component` instead of.
+
+#### CNavbarNav
+
+- Deprecated property `innerRef`.
+- Deprecated property `tag`, use `component` instead of.
+
+#### CNavbarText
+
+- Deprecated property `innerRef`.
+- Deprecated property `tag`, use `component` instead of.
+
+### CPagination
+
+- **The component has been split into `CPagination` and to `CSmartPagination` components.
+
+### CPopover
+
+- Deprecated property `header`, use `title` instead of.
+
+### CProgress
+
+- Deprecated property `innerRef`.
+- Deprecated property `max`.
+- Deprecated property `precision`.
+- Deprecated property `showPercentage`.
+- Deprecated property `showValue`.
+- Deprecated property `size`, use `height` instead of.
+- Deprecated property `striped`, use `variant="striped"` instead of.
+
+### CProgressBar
+
+- Deprecated property `innerRef`.
+- Deprecated property `max`.
+- Deprecated property `precision`.
+- Deprecated property `showPercentage`.
+- Deprecated property `showValue`.
+- Deprecated property `size`, use `height` instead of.
+- Deprecated property `striped`, use `variant="striped"` instead of.
+
+### CSidebar
 - Deprecated property `minimize` use `narrow` instead of.
 - Deprecated property `dropdownMode`.
-
 - Deprecated component `CSidebarForm`, use `CForm` instead of.
 - Deprecated component `CSidebarNavDivider`, use `CNavDivider` instead of.
 - Deprecated component `CSidebarNavDropdown`, use `CNavGroup` instead of.
@@ -68,6 +293,116 @@ CoreUI for React is the React.js version of CoreUI components library, so before
 - Deprecated component `CSidebarNavItem`, use `CNavItem` instead of.
 - Deprecated component `CSidebarNavTitile`, use `CNavTitle` instead of.
 
-### Tabs
+### CSwitch
 
-- Deprecated component `<CTabs>` use `<CNav variant="tabs">` without wrapper component `<CTabs>`
+- Component is depracated, use `CFormSwitch` instead of.
+
+### CSpinner
+
+- Deprecated property `innerRef`.
+- Deprecated property `grow`, use `variant="grow"` instead of.
+- Deprecated property `tag`, use `component` instead of.
+
+### CTabs
+
+- Component is depracated, use `<CNav variant="tabs" role="tablist">` instead of
+
+#### CTabContent
+
+- Deprecated property `innerRef`.
+- Deprecated property `fade`.
+
+#### CTabPane
+
+- Deprecated property `active`, use `visible` instead of.
+- Deprecated property `innerRef`.
+
+### CToast
+
+- Deprecated property `innerRef`.
+- Deprecated property `fade`, use `animation` instead of.
+- Deprecated property `show`, use `visible` instead of.
+- Deprecated property `onStateChange`.
+
+#### CToastBody
+
+- Deprecated property `innerRef`.
+
+#### CToastHeader
+
+- Deprecated property `innerRef`.
+
+
+### CToggler
+
+- Component is depracated.
+
+### CTooltip
+
+- Deprecated property `interactive`.
+- Deprecated property `advancedOptions`.
+
+
+## Forms
+
+### CFormGroup
+
+- Component is depracated.
+
+### CInput
+
+- **Component renamed to `CFormInput`**
+- Deprecated property `plaintext`, use `plainText` instead of.
+
+### CInputCheckbox
+
+- Component is depracated, use `<CFormCheck>` instead of.
+
+### CInputFile
+
+- Component is depracated, use `<CFormInput type="file">` instead of.
+
+### CInputRadio
+
+- Component is depracated, use `<CFormCheck type="radio">` instead of.
+
+### CInputGroup
+
+- Deprecated property `innerRef`.
+
+#### CInputGroupAddon
+
+- Component is depracated, use `CInputGroupText` instead of.
+
+### CSelect
+
+- Component is depracated, use `<CFormSelect>` instead of.
+
+### CValidFeedback
+
+- Component is depracated, use `<CFormFeedback valid>` instead of.
+
+### CInvalidFeedback
+
+- Component is depracated, use `<CCFormFeedback invalid>` instead of.
+
+## Layout
+
+### CContainer
+
+- Deprecated property `tag`.
+- Deprecated property `innerRef`.
+
+### CCol
+
+- Deprecated property `tag`.
+- Deprecated property `width`, use `xs`, `sm`, `md`, `lg`, `xl`, `xxl`.
+
+### CRow
+
+- Deprecated property `alignHorizontal`.
+- Deprecated property `alignVertical`.
+- Deprecated property `form`.
+- Deprecated property `gutters`.
+- Deprecated property `tag`.
+- Deprecated property `width`, use `xs`, `sm`, `md`, `lg`, `xl`, `xxl`.

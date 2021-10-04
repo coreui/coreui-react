@@ -4,13 +4,11 @@ import classNames from 'classnames'
 
 export interface CInputGroupProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * Size the component small or large. [docs]
-   *
-   * @type 'sm' | 'lg'
+   * Size the component small or large.
    */
   size?: 'sm' | 'lg'
 }

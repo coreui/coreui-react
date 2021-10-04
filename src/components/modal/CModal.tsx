@@ -11,7 +11,7 @@ import React, {
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { CSSTransition } from 'react-transition-group'
+import { Transition } from 'react-transition-group'
 
 import { useForkedRef } from '../../utils/hooks'
 
@@ -21,18 +21,15 @@ import { CModalDialog } from './CModalDialog'
 
 export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * Align the modal in the center or top of the screen. [docs]
-   *
-   * @default 'top'
+   * Align the modal in the center or top of the screen.
    */
   alignment?: 'top' | 'center'
   /**
-   * Apply a backdrop on body while modal is open. [docs]
-   * @default true
+   * Apply a backdrop on body while modal is open.
    */
   backdrop?: boolean | 'static'
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
@@ -40,36 +37,43 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    */
   duration?: number
   /**
-   * Set modal to covers the entire user viewport. [docs]
+   * Set modal to covers the entire user viewport.
    */
   fullscreen?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
   /**
-   * Closes the modal when escape key is pressed. [docs]
-   * @default true
+   * Closes the modal when escape key is pressed.
    */
   keyboard?: boolean
   /**
-   * Method called before the dissmiss animation has started. [docs]
+   * Callback fired when the component requests to be closed.
    */
-  onDismiss?: () => void
+  onClose?: () => void
   /**
-   * Generates modal using createPortal. [docs]
+   * Callback fired when the component requests to be closed.
+   */
+  onClosePrevented?: () => void
+  /**
+   * Callback fired when the modal is shown, its backdrop is static and a click outside the modal or an escape key press is performed with the keyboard option set to false.
+   */
+  onShow?: () => void
+  /**
+   * Generates modal using createPortal.
    */
   portal?: boolean
   /**
-   * Create a scrollable modal that allows scrolling the modal body. [docs]
+   * Create a scrollable modal that allows scrolling the modal body.
    */
   scrollable?: boolean
   /**
-   * Size the component small, large, or extra large. [docs]
+   * Size the component small, large, or extra large.
    */
   size?: 'sm' | 'lg' | 'xl'
   /**
-   * Remove animation to create modal that simply appear rather than fade in to view. [docs]
+   * Remove animation to create modal that simply appear rather than fade in to view.
    */
   transition?: boolean
   /**
-   * Toggle the visibility of modal component. [docs]
+   * Toggle the visibility of modal component.
    */
   visible?: boolean
 }
@@ -91,7 +95,9 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       duration = 150,
       fullscreen,
       keyboard = true,
-      onDismiss,
+      onClose,
+      onClosePrevented,
+      onShow,
       portal = true,
       scrollable,
       size,
@@ -119,10 +125,11 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       if (backdrop === 'static') {
         return setStaticBackdrop(true)
       }
-      return onDismiss && onDismiss()
+      return onClose && onClose()
     }
 
     useLayoutEffect(() => {
+      onClosePrevented && onClosePrevented()
       setTimeout(() => setStaticBackdrop(false), duration)
     }, [staticBackdrop])
 
@@ -195,12 +202,13 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     return (
       <>
         <div onClick={handleDismiss} onKeyDown={handleKeyDown}>
-          <CSSTransition
+          <Transition
             in={_visible}
-            timeout={!transition ? 0 : duration}
-            onExit={onDismiss}
             mountOnEnter
+            onEnter={onShow}
+            onExit={onClose}
             unmountOnExit
+            timeout={!transition ? 0 : duration}
           >
             {(state) => {
               const transitionClass = getTransitionClass(state)
@@ -208,7 +216,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
                 ? createPortal(modal(forkedRef, transitionClass), document.body)
                 : modal(forkedRef, transitionClass)
             }}
-          </CSSTransition>
+          </Transition>
         </div>
         {typeof window !== 'undefined' && portal
           ? backdrop && createPortal(<CBackdrop visible={_visible} />, document.body)
@@ -229,7 +237,9 @@ CModal.propTypes = {
     PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl'>(['sm', 'md', 'lg', 'xl', 'xxl']),
   ]),
   keyboard: PropTypes.bool,
-  onDismiss: PropTypes.func,
+  onClose: PropTypes.func,
+  onClosePrevented: PropTypes.func,
+  onShow: PropTypes.func,
   portal: PropTypes.bool,
   scrollable: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'lg', 'xl']),

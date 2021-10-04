@@ -6,22 +6,22 @@ import { CToastClose } from './CToastClose'
 
 export interface CToastHeaderProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
    * Automatically add a close button to the header.
    */
-  close?: boolean
+  closeButton?: boolean
 }
 
 export const CToastHeader = forwardRef<HTMLDivElement, CToastHeaderProps>(
-  ({ children, className, close, ...rest }, ref) => {
+  ({ children, className, closeButton, ...rest }, ref) => {
     const _className = classNames('toast-header', className)
     return (
       <div className={_className} {...rest} ref={ref}>
         {children}
-        {close && <CToastClose />}
+        {closeButton && <CToastClose />}
       </div>
     )
   },
@@ -30,7 +30,7 @@ export const CToastHeader = forwardRef<HTMLDivElement, CToastHeaderProps>(
 CToastHeader.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  close: PropTypes.bool,
+  closeButton: PropTypes.bool,
 }
 
 CToastHeader.displayName = 'CToastHeader'

@@ -7,7 +7,7 @@ import { CAccordionItemContext } from './CAccordionItem'
 import { CCollapse } from './../collapse/CCollapse'
 export interface CAccordionBodyProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
 }

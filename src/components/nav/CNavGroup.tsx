@@ -106,12 +106,12 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
         )}
         <Transition
           in={_visible}
-          timeout={300}
           onEntering={onEntering}
           onEntered={onEntered}
           onExit={onExit}
           onExiting={onExiting}
           onExited={onExited}
+          timeout={300}
         >
           {(state) => (
             <ul

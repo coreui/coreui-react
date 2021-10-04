@@ -1,9 +1,15 @@
+
+```jsx
+import { CAlert } from '@coreui/react'
+// or
+import CAlert from '@coreui/react/src/components/alert/CAlert'
+```
+
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | **className** | A string of all className you want applied to the component. | `string` | - |
-| **color** | Sets the color context of the component to one of CoreUI’s themed colors. | `{'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string }` | primary |
+| **color** | Sets the color context of the component to one of CoreUI’s themed colors. | `'primary'` \| `'secondary'` \| `'success'` \| `'danger'` \| `'warning'` \| `'info'` \| `'dark'` \| `'light'` \| `string` | primary |
 | **dismissible** | Optionally add a close button to alert and allow it to self dismiss. | `boolean` | - |
-| **onDismiss** | Method called before the dissmiss animation has started. | `() => void` | - |
-| **onDismissed** | Method called after the dissmiss animation has completed and the component is removed from the dom. | `() => void` | - |
+| **onClose** | Callback fired when the component requests to be closed. | `() => void` | - |
 | **variant** | Set the alert variant to a solid. | `string` | - |
 | **visible** | Toggle the visibility of component. | `boolean` | true |

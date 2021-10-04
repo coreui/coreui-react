@@ -6,15 +6,15 @@ import { CLink } from '../link/CLink'
 
 export interface CBreadcrumbItemProps extends HTMLAttributes<HTMLLIElement> {
   /**
-   * Toggle the active state for the component. [docs]
+   * Toggle the active state for the component.
    */
   active?: boolean
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
-   * The `href` attribute for the inner `<CLink>` component. [docs]
+   * The `href` attribute for the inner `<CLink>` component.
    */
   href?: string
 }

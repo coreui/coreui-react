@@ -20,10 +20,18 @@ const options = {
   savePropValueAsString: true,
 }
 
-async function createMdx(filename, name, props) {
+async function createMdx(file, filename, name, props) {
   if (typeof props === 'undefined') return
 
-  let content = `| Property | Description | Type | Default |\n`
+  let content = `
+\`\`\`jsx
+import { ${name} } from '@coreui/react'
+// or
+import ${name} from '@coreui/react/${file.replace('.tsx', '')}'
+\`\`\`\n
+`
+
+  content += `| Property | Description | Type | Default |\n`
   content += `| --- | --- | --- | --- |\n`
 
   for (const [key, value] of Object.entries(props).sort()) {
@@ -34,13 +42,22 @@ async function createMdx(filename, name, props) {
       const name = value.name || ''
       const description =
         value.description.replaceAll('\n', '<br/>').replaceAll(' [docs]', '') || '-'
-      const type =
-        value.type ? value.type.name.includes('ReactElement')
+      const type = value.type
+        ? value.type.name.includes('ReactElement')
           ? 'ReactElement'
-          : value.type.name : ''
-      const defaultValue = value.defaultValue ? value.defaultValue.value : '-'
+          : value.type.name
+        : ''
+      const defaultValue = value.defaultValue
+        ? value.defaultValue.value.replace('undefined', '-')
+        : '-'
+      const types = []
+      type.split(' | ').map((element) => {
+        types.push(`\`${element.replace(/"/g, "'")}\``)
+      })
 
-      content += `| **${name}** | ${description} | \`${type}\` | ${defaultValue} |\n`
+      // content += `| **${name}** | ${description} | \`${type
+      //   .replace(/"/g, "'")\` | ${defaultValue} |\n`
+      content += `| **${name}** | ${description} | ${types.join(' \\| ')} | ${defaultValue} |\n`
       console.log(`${filename} - ${key}`)
     }
   }
@@ -63,7 +80,7 @@ async function main() {
         const props = docgen.parse(file, options)
         if (props && typeof props[0] !== 'undefined') {
           const filename = path.basename(file, '.tsx')
-          createMdx(filename, props[0].displayName, props[0].props)
+          createMdx(file, filename, props[0].displayName, props[0].props)
         }
       }),
     )

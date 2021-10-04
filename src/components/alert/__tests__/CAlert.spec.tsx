@@ -23,23 +23,19 @@ test('CAlert customize', async () => {
 
 test('CAlert click close button', async () => {
   jest.useFakeTimers()
-  const onDismiss = jest.fn()
-  const onDismissed = jest.fn()
+  const onClose = jest.fn()
   render(
-    <CAlert color="primary" dismissible onDismiss={onDismiss} onDismissed={onDismissed}>
+    <CAlert color="primary" dismissible onClose={onClose}>
       Test
     </CAlert>,
   )
-  expect(onDismiss).toHaveBeenCalledTimes(0)
-  expect(onDismissed).toHaveBeenCalledTimes(0)
+  expect(onClose).toHaveBeenCalledTimes(0)
   const btn = document.querySelector('.btn-close')
   if (btn !== null) {
     fireEvent.click(btn)
   }
-  expect(onDismiss).toHaveBeenCalledTimes(1)
-  expect(onDismissed).toHaveBeenCalledTimes(0)
+  expect(onClose).toHaveBeenCalledTimes(1)
   jest.runAllTimers()
-  expect(onDismiss).toHaveBeenCalledTimes(1)
-  expect(onDismissed).toHaveBeenCalledTimes(1)
+  expect(onClose).toHaveBeenCalledTimes(1)
   jest.useRealTimers()
 })

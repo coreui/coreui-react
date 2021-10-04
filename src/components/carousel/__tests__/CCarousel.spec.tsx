@@ -61,7 +61,6 @@ test('loads and displays CCarousel component', async () => {
 })
 
 test('CCarousel click on indicator', async () => {
-  jest.useFakeTimers()
   const { container } = render(
     <CCarousel controls indicators>
       <CCarouselItem>
@@ -78,96 +77,30 @@ test('CCarousel click on indicator', async () => {
       </CCarouselItem>
     </CCarousel>,
   )
-  let item1 = getByText(container, 'Item-1')
+  const item1 = getByText(container, 'Item-1')
+  const item2 = getByText(container, 'Item-2')
+
   expect(item1).toHaveClass('active')
-  expect(item1).not.toHaveClass('carousel-item-start')
   expect(item1).toHaveClass('carousel-item')
-  let item2 = getByText(container, 'Item-2')
   expect(item2).not.toHaveClass('active')
-  expect(item2).not.toHaveClass('carousel-item-next')
-  expect(item2).not.toHaveClass('carousel-item-start')
   expect(item2).toHaveClass('carousel-item')
-  //click
+
+  // click
   const ci = document.querySelector('.carousel-indicators')
-  let li = null
-  if (ci !== null) {
-    li = ci.children[1]
-    if (li !== null) {
-      fireEvent.click(li)
-    }
-  }
-  //endclick
-  item1 = getByText(container, 'Item-1')
-  expect(item1).toHaveClass('active')
-  expect(item1).not.toHaveClass('carousel-item-next')
-  expect(item1).not.toHaveClass('carousel-item-prev')
-  expect(item1).toHaveClass('carousel-item-start')
-  expect(item1).not.toHaveClass('carousel-item-end')
-  expect(item1).toHaveClass('carousel-item')
-  item2 = getByText(container, 'Item-2')
-  expect(item2).not.toHaveClass('active')
-  expect(item2).toHaveClass('carousel-item-next')
-  expect(item2).not.toHaveClass('carousel-item-prev')
-  expect(item2).toHaveClass('carousel-item-start')
-  expect(item2).not.toHaveClass('carousel-item-end')
-  expect(item2).toHaveClass('carousel-item')
-  //run timers
-  jest.runAllTimers()
-  item1 = getByText(container, 'Item-1')
+  ci && fireEvent.click(ci.children[1])
+  fireEvent.transitionEnd(item1)
+  fireEvent.transitionEnd(item2)
+
   expect(item1).not.toHaveClass('active')
-  expect(item1).not.toHaveClass('carousel-item-next')
-  expect(item1).not.toHaveClass('carousel-item-prev')
-  expect(item1).not.toHaveClass('carousel-item-start')
-  expect(item1).not.toHaveClass('carousel-item-end')
-  expect(item1).toHaveClass('carousel-item')
-  expect(container).toMatchSnapshot()
-  item2 = getByText(container, 'Item-2')
   expect(item2).toHaveClass('active')
-  expect(item2).not.toHaveClass('carousel-item-next')
-  expect(item2).not.toHaveClass('carousel-item-prev')
-  expect(item2).not.toHaveClass('carousel-item-start')
-  expect(item2).not.toHaveClass('carousel-item-end')
-  expect(item2).toHaveClass('carousel-item')
-  //goback-click
-  if (ci !== null) {
-    li = ci.children[0]
-    if (li !== null) {
-      fireEvent.click(li)
-    }
-  }
-  //endclick
-  item2 = getByText(container, 'Item-2')
-  expect(item2).toHaveClass('active')
-  expect(item2).not.toHaveClass('carousel-item-next')
-  expect(item2).not.toHaveClass('carousel-item-prev')
-  expect(item2).not.toHaveClass('carousel-item-start')
-  expect(item2).toHaveClass('carousel-item-end')
-  expect(item2).toHaveClass('carousel-item')
-  item1 = getByText(container, 'Item-1')
-  expect(item1).not.toHaveClass('active')
-  expect(item1).not.toHaveClass('carousel-item-next')
-  expect(item1).toHaveClass('carousel-item-prev')
-  expect(item1).not.toHaveClass('carousel-item-start')
-  expect(item1).toHaveClass('carousel-item-end')
-  expect(item1).toHaveClass('carousel-item')
-  //run timers
-  jest.runAllTimers()
-  item2 = getByText(container, 'Item-2')
-  expect(item2).not.toHaveClass('active')
-  expect(item2).not.toHaveClass('carousel-item-next')
-  expect(item2).not.toHaveClass('carousel-item-prev')
-  expect(item2).not.toHaveClass('carousel-item-start')
-  expect(item2).not.toHaveClass('carousel-item-end')
-  expect(item2).toHaveClass('carousel-item')
-  expect(container).toMatchSnapshot()
-  item1 = getByText(container, 'Item-1')
+
+  // goback-click
+  ci && fireEvent.click(ci.children[0])
+  fireEvent.transitionEnd(item1)
+  fireEvent.transitionEnd(item2)
+
   expect(item1).toHaveClass('active')
-  expect(item1).not.toHaveClass('carousel-item-next')
-  expect(item1).not.toHaveClass('carousel-item-prev')
-  expect(item1).not.toHaveClass('carousel-item-start')
-  expect(item1).not.toHaveClass('carousel-item-end')
-  expect(item1).toHaveClass('carousel-item')
-  jest.useRealTimers()
+  expect(item2).not.toHaveClass('active')
 })
 
 test('CCarousel click on button', async () => {
@@ -188,88 +121,29 @@ test('CCarousel click on button', async () => {
       </CCarouselItem>
     </CCarousel>,
   )
-  let item1 = getByText(container, 'Item-1')
+  const item1 = getByText(container, 'Item-1')
+  const item2 = getByText(container, 'Item-2')
+
   expect(item1).toHaveClass('active')
-  expect(item1).not.toHaveClass('carousel-item-start')
   expect(item1).toHaveClass('carousel-item')
-  let item2 = getByText(container, 'Item-2')
   expect(item2).not.toHaveClass('active')
-  expect(item2).not.toHaveClass('carousel-item-next')
-  expect(item2).not.toHaveClass('carousel-item-start')
   expect(item2).toHaveClass('carousel-item')
-  //click
+
+  // click
   const buttonNext = document.querySelector('.carousel-control-next')
-  if (buttonNext !== null) {
-    fireEvent.click(buttonNext)
-  }
-  //endclick
-  item1 = getByText(container, 'Item-1')
-  expect(item1).toHaveClass('active')
-  expect(item1).not.toHaveClass('carousel-item-next')
-  expect(item1).not.toHaveClass('carousel-item-prev')
-  expect(item1).toHaveClass('carousel-item-start')
-  expect(item1).not.toHaveClass('carousel-item-end')
-  expect(item1).toHaveClass('carousel-item')
-  item2 = getByText(container, 'Item-2')
-  expect(item2).not.toHaveClass('active')
-  expect(item2).toHaveClass('carousel-item-next')
-  expect(item2).not.toHaveClass('carousel-item-prev')
-  expect(item2).toHaveClass('carousel-item-start')
-  expect(item2).not.toHaveClass('carousel-item-end')
-  expect(item2).toHaveClass('carousel-item')
-  //run timers
-  jest.runAllTimers()
-  item1 = getByText(container, 'Item-1')
+  buttonNext && fireEvent.click(buttonNext)
+  fireEvent.transitionEnd(item1)
+  fireEvent.transitionEnd(item2)
+
   expect(item1).not.toHaveClass('active')
-  expect(item1).not.toHaveClass('carousel-item-next')
-  expect(item1).not.toHaveClass('carousel-item-prev')
-  expect(item1).not.toHaveClass('carousel-item-start')
-  expect(item1).not.toHaveClass('carousel-item-end')
-  expect(item1).toHaveClass('carousel-item')
-  expect(container).toMatchSnapshot()
-  item2 = getByText(container, 'Item-2')
   expect(item2).toHaveClass('active')
-  expect(item2).not.toHaveClass('carousel-item-next')
-  expect(item2).not.toHaveClass('carousel-item-prev')
-  expect(item2).not.toHaveClass('carousel-item-start')
-  expect(item2).not.toHaveClass('carousel-item-end')
-  expect(item2).toHaveClass('carousel-item')
-  //goback-click
+
+  // goback-click
   const buttonPrev = document.querySelector('.carousel-control-prev')
-  if (buttonPrev !== null) {
-    fireEvent.click(buttonPrev)
-  }
-  //endclick
-  item2 = getByText(container, 'Item-2')
+  buttonPrev && fireEvent.click(buttonPrev)
+  fireEvent.transitionEnd(item1)
+  fireEvent.transitionEnd(item2)
+
+  expect(item1).toHaveClass('active')
   expect(item2).not.toHaveClass('active')
-  expect(item2).not.toHaveClass('carousel-item-next')
-  expect(item2).toHaveClass('carousel-item-prev')
-  expect(item2).not.toHaveClass('carousel-item-start')
-  expect(item2).toHaveClass('carousel-item-end')
-  expect(item2).toHaveClass('carousel-item')
-  item1 = getByText(container, 'Item-1')
-  expect(item1).not.toHaveClass('active')
-  expect(item1).not.toHaveClass('carousel-item-next')
-  expect(item1).not.toHaveClass('carousel-item-prev')
-  expect(item1).not.toHaveClass('carousel-item-start')
-  expect(item1).not.toHaveClass('carousel-item-end')
-  expect(item1).toHaveClass('carousel-item')
-  //run timers
-  jest.runAllTimers()
-  item2 = getByText(container, 'Item-2')
-  expect(item2).toHaveClass('active')
-  expect(item2).not.toHaveClass('carousel-item-next')
-  expect(item2).not.toHaveClass('carousel-item-prev')
-  expect(item2).not.toHaveClass('carousel-item-start')
-  expect(item2).not.toHaveClass('carousel-item-end')
-  expect(item2).toHaveClass('carousel-item')
-  expect(container).toMatchSnapshot()
-  item1 = getByText(container, 'Item-1')
-  expect(item1).not.toHaveClass('active')
-  expect(item1).not.toHaveClass('carousel-item-next')
-  expect(item1).not.toHaveClass('carousel-item-prev')
-  expect(item1).not.toHaveClass('carousel-item-start')
-  expect(item1).not.toHaveClass('carousel-item-end')
-  expect(item1).toHaveClass('carousel-item')
-  jest.useRealTimers()
 })

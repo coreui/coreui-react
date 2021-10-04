@@ -2,7 +2,7 @@ import React, { FC, ReactElement, ReactNode, useState } from 'react'
 import PropTypes from 'prop-types'
 import { createPortal } from 'react-dom'
 import { Manager, Popper, Reference } from 'react-popper'
-import { CSSTransition } from 'react-transition-group'
+import { Transition } from 'react-transition-group'
 
 import { CTooltipContent } from './CTooltipContent'
 import { Triggers, triggerPropType } from '../Types'
@@ -10,24 +10,29 @@ import { Triggers, triggerPropType } from '../Types'
 export interface CTooltipProps {
   children: ReactElement
   /**
-   * Content node for your component. [docs]
+   * Content node for your component.
    */
   content: ReactNode
   /**
-   * Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them. [docs]
+   * Callback fired when the component requests to be hidden.
+   */
+  onHide?: () => void
+  /**
+   * Callback fired when the component requests to be shown.
+   */
+  onShow?: () => void
+  /**
+   * Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.
+   *
+   * @type 'hover' | 'focus' | 'click'
    */
   trigger?: Triggers | Triggers[]
   /**
-   * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property. [docs]
-   *
-   * @type 'top' | 'right' | 'bottom' | 'left'
-   * @default 'top'
+   * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.
    */
   placement?: 'top' | 'right' | 'bottom' | 'left'
   /**
-   * Toggle the visibility of popover component. [docs]
-   *
-   * @default true
+   * Toggle the visibility of popover component.
    */
   visible?: boolean
 }
@@ -35,6 +40,8 @@ export interface CTooltipProps {
 export const CTooltip: FC<CTooltipProps> = ({
   children,
   placement = 'top',
+  onHide,
+  onShow,
   trigger = 'hover',
   visible,
   ...rest
@@ -73,13 +80,15 @@ export const CTooltip: FC<CTooltipProps> = ({
       </Reference>
       {typeof window !== 'undefined' &&
         createPortal(
-          <CSSTransition
+          <Transition
             in={_visible}
+            mountOnEnter
+            onEnter={onShow}
+            onExit={onHide}
             timeout={{
               enter: 0,
               exit: 200,
             }}
-            mountOnEnter
             unmountOnExit
           >
             {(state) => {
@@ -99,7 +108,7 @@ export const CTooltip: FC<CTooltipProps> = ({
                 </Popper>
               )
             }}
-          </CSSTransition>,
+          </Transition>,
           document.body,
         )}
     </Manager>
@@ -109,6 +118,8 @@ export const CTooltip: FC<CTooltipProps> = ({
 CTooltip.propTypes = {
   children: PropTypes.any,
   placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+  onHide: PropTypes.func,
+  onShow: PropTypes.func,
   trigger: triggerPropType,
   visible: PropTypes.bool,
 }

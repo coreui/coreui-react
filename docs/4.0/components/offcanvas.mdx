@@ -62,7 +62,7 @@ export const LiveDemoExample = () => {
   return (
     <>
       <CButton onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
-      <COffcanvas placement="start" visible={visible} onDismiss={() => setVisible(false)}>
+      <COffcanvas placement="start" visible={visible} onHide={() => setVisible(false)}>
         <COffcanvasHeader>
           <COffcanvasTitle>Offcanvas</COffcanvasTitle>
           <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
@@ -85,7 +85,7 @@ const [visible, setVisible] = useState(false)
 return (
   <>
     <CButton onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
-    <COffcanvas placement="start" visible={visible} onDismiss={() => setVisible(false)}>
+    <COffcanvas placement="start" visible={visible} onHide={() => setVisible(false)}>
       <COffcanvasHeader>
         <COffcanvasTitle>Offcanvas</COffcanvasTitle>
         <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
@@ -115,7 +115,7 @@ export const PlacementTopExample = () => {
   return (
     <>
       <CButton onClick={() => setVisible(true)}>Toggle top offcanvas</CButton>
-      <COffcanvas placement="top" visible={visible} onDismiss={() => setVisible(false)}>
+      <COffcanvas placement="top" visible={visible} onHide={() => setVisible(false)}>
         <COffcanvasHeader>
           <COffcanvasTitle>Offcanvas</COffcanvasTitle>
           <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
@@ -138,7 +138,7 @@ const [visible, setVisible] = useState(false)
 return (
   <>
     <CButton onClick={() => setVisible(true)}>Toggle top offcanvas</CButton>
-    <COffcanvas placement="top" visible={visible} onDismiss={() => setVisible(false)}>
+    <COffcanvas placement="top" visible={visible} onHide={() => setVisible(false)}>
       <COffcanvasHeader>
         <COffcanvasTitle>Offcanvas</COffcanvasTitle>
         <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
@@ -157,7 +157,7 @@ export const PlacementRightExample = () => {
   return (
     <>
       <CButton onClick={() => setVisible(true)}>Toggle right offcanvas</CButton>
-      <COffcanvas placement="end" visible={visible} onDismiss={() => setVisible(false)}>
+      <COffcanvas placement="end" visible={visible} onHide={() => setVisible(false)}>
         <COffcanvasHeader>
           <COffcanvasTitle>Offcanvas</COffcanvasTitle>
           <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
@@ -180,7 +180,7 @@ const [visible, setVisible] = useState(false)
 return (
   <>
     <CButton onClick={() => setVisible(true)}>Toggle right offcanvas</CButton>
-    <COffcanvas placement="right" visible={visible} onDismiss={() => setVisible(false)}>
+    <COffcanvas placement="right" visible={visible} onHide={() => setVisible(false)}>
       <COffcanvasHeader>
         <COffcanvasTitle>Offcanvas</COffcanvasTitle>
         <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
@@ -199,7 +199,7 @@ export const PlacementBottomExample = () => {
   return (
     <>
       <CButton onClick={() => setVisible(true)}>Toggle bottom offcanvas</CButton>
-      <COffcanvas placement="bottom" visible={visible} onDismiss={() => setVisible(false)}>
+      <COffcanvas placement="bottom" visible={visible} onHide={() => setVisible(false)}>
         <COffcanvasHeader>
           <COffcanvasTitle>Offcanvas</COffcanvasTitle>
           <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
@@ -222,7 +222,7 @@ const [visible, setVisible] = useState(false)
 return (
   <>
     <CButton onClick={() => setVisible(true)}>Toggle bottom offcanvas</CButton>
-    <COffcanvas placement="bottom" visible={visible} onDismiss={() => setVisible(false)}>
+    <COffcanvas placement="bottom" visible={visible} onHide={() => setVisible(false)}>
       <COffcanvasHeader>
         <COffcanvasTitle>Offcanvas</COffcanvasTitle>
         <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
@@ -235,6 +235,98 @@ return (
   </>
 )
 ```
+
+export const BackdropExample = () => {
+  const [visibleScrolling, setVisibleScrolling] = useState(false)
+  const [visibleWithBackdrop, setVisibleWithBackdrop] = useState(false)
+  const [visibleWithBothOptions, setVisibleWithBothOptions] = useState(false)
+  return (
+    <>
+      <CButton color="primary" onClick={() => setVisibleScrolling(true)}>Enable body scrolling</CButton>
+      <CButton color="primary" onClick={() => setVisibleWithBackdrop(true)}>Enable backdrop (default)</CButton>
+      <CButton color="primary" onClick={() => setVisibleWithBothOptions(true)}>Enable both scrolling &amp; backdrop</CButton>
+      <COffcanvas backdrop={false} placement="start" scroll visible={visibleScrolling} onHide={() => setVisibleScrolling(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisibleScrolling(false)}/>
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          <p>Try scrolling the rest of the page to see this option in action.</p>
+        </COffcanvasBody>
+      </COffcanvas>
+      <COffcanvas placement="start" visible={visibleWithBackdrop} onHide={() => setVisibleWithBackdrop(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisibleWithBackdrop(false)}/>
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          <p>.....</p>
+        </COffcanvasBody>
+      </COffcanvas>
+      <COffcanvas placement="start" scroll visible={visibleWithBothOptions} onHide={() => setVisibleWithBothOptions(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisibleWithBothOptions(false)}/>
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          <p>Try scrolling the rest of the page to see this option in action.</p>
+        </COffcanvasBody>
+      </COffcanvas>
+    </>
+  )
+}
+
+## Backdrop 
+
+Scrolling the `<body>` element is disabled when an offcanvas and its backdrop are visible. Use the `scroll` property to toggle `<body>` scrolling and `backdrop` to toggle the backdrop.
+
+<Example>
+  <BackdropExample />
+</Example>
+
+```jsx
+const [visibleScrolling, setVisibleScrolling] = useState(false)
+const [visibleWithBackdrop, setVisibleWithBackdrop] = useState(false)
+const [visibleWithBothOptions, setVisibleWithBothOptions] = useState(false)
+return (
+  <>
+    <CButton color="primary" onClick={() => setVisibleScrolling(true)}>Enable body scrolling</CButton>
+    <CButton color="primary" onClick={() => setVisibleWithBackdrop(true)}>Enable backdrop (default)</CButton>
+    <CButton color="primary" onClick={() => setVisibleWithBothOptions(true)}>Enable both scrolling &amp; backdrop</CButton>
+    <COffcanvas backdrop={false} placement="start" scroll visible={visibleScrolling} onHide={() => setVisibleScrolling(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisibleScrolling(false)}/>
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        <p>Try scrolling the rest of the page to see this option in action.</p>
+      </COffcanvasBody>
+    </COffcanvas>
+    <COffcanvas placement="start" visible={visibleWithBackdrop} onHide={() => setVisibleWithBackdrop(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisibleWithBackdrop(false)}/>
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        <p>.....</p>
+      </COffcanvasBody>
+    </COffcanvas>
+    <COffcanvas placement="start" scroll visible={visibleWithBothOptions} onHide={() => setVisibleWithBothOptions(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisibleWithBothOptions(false)}/>
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        <p>Try scrolling the rest of the page to see this option in action.</p>
+      </COffcanvasBody>
+    </COffcanvas>
+  </>
+)
+```
+
+## Accessibility
+
+Since the offcanvas panel is conceptually a modal dialog, be sure to add `aria-labelledby="..."`—referencing the offcanvas title—to `<COffcanvas>`. Note that you don’t need to add `role="dialog"` since we already add it automatically.
 
 ## API
 

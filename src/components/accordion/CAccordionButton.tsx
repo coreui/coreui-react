@@ -6,7 +6,7 @@ import { CAccordionItemContext } from './CAccordionItem'
 
 export interface CAccordionButtonProps extends HTMLAttributes<HTMLButtonElement> {
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
 }

@@ -4,11 +4,11 @@ import classNames from 'classnames'
 
 export interface CFormLabelProps extends HTMLAttributes<HTMLLabelElement> {
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * A string of all className you want to be applied to the component, and override standard className value. [docs]
+   * A string of all className you want to be applied to the component, and override standard className value.
    */
   customClassName?: string
 }

@@ -6,13 +6,11 @@ import classNames from 'classnames'
 
 export interface CModalHeaderProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
   /**
-   * Add a close button component to the header. [docs]
-   *
-   * @default true
+   * Add a close button component to the header.
    */
   closeButton?: boolean
 }

@@ -6,7 +6,7 @@ import { CLink } from '../link/CLink'
 
 export interface CAlertLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   /**
-   * A string of all className you want applied to the base component. [docs]
+   * A string of all className you want applied to the base component.
    */
   className?: string
 }
