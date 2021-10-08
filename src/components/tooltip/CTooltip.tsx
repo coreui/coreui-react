@@ -1,10 +1,11 @@
 import React, { FC, ReactElement, ReactNode, useState } from 'react'
-import PropTypes from 'prop-types'
 import { createPortal } from 'react-dom'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import { Manager, Popper, Reference } from 'react-popper'
 import { Transition } from 'react-transition-group'
 
-import { CTooltipContent } from './CTooltipContent'
+// import { CTooltipContent } from './CTooltipContent'
 import { Triggers, triggerPropType } from '../Types'
 
 export interface CTooltipProps {
@@ -30,7 +31,7 @@ export interface CTooltipProps {
   /**
    * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.
    */
-  placement?: 'top' | 'right' | 'bottom' | 'left'
+  placement?: 'auto' | 'top' | 'right' | 'bottom' | 'left'
   /**
    * Toggle the visibility of popover component.
    */
@@ -39,6 +40,7 @@ export interface CTooltipProps {
 
 export const CTooltip: FC<CTooltipProps> = ({
   children,
+  content,
   placement = 'top',
   onHide,
   onShow,
@@ -95,15 +97,22 @@ export const CTooltip: FC<CTooltipProps> = ({
               const transitionClass = getTransitionClass(state)
               return (
                 <Popper placement={placement}>
-                  {(p) => (
-                    <CTooltipContent
-                      transitionClass={transitionClass}
-                      placementClassNamePostfix={
-                        placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement
-                      }
+                  {({ arrowProps, style, ref }) => (
+                    <div
+                      className={classNames(
+                        `tooltip bs-tooltip-${
+                          placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement
+                        }`,
+                        transitionClass,
+                      )}
+                      ref={ref}
+                      role="tooltip"
+                      style={style}
                       {...rest}
-                      {...p}
-                    ></CTooltipContent>
+                    >
+                      <div className="tooltip-arrow" {...arrowProps}></div>
+                      <div className="tooltip-inner">{content}</div>
+                    </div>
                   )}
                 </Popper>
               )
@@ -117,7 +126,8 @@ export const CTooltip: FC<CTooltipProps> = ({
 
 CTooltip.propTypes = {
   children: PropTypes.any,
-  placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+  content: PropTypes.node,
+  placement: PropTypes.oneOf(['auto', 'top', 'right', 'bottom', 'left']),
   onHide: PropTypes.func,
   onShow: PropTypes.func,
   trigger: triggerPropType,
