@@ -1,10 +1,11 @@
 import React, { FC, ReactElement, ReactNode, useState } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import { Manager, Popper, Reference } from 'react-popper'
 import { Transition } from 'react-transition-group'
 
-import { CPopoverContent } from './CPopoverContent'
+// import { CPopoverContent } from './CPopoverContent'
 import { Triggers, triggerPropType } from '../Types'
 
 export interface CPopoverProps {
@@ -38,7 +39,7 @@ export interface CPopoverProps {
   /**
    * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.
    */
-  placement?: 'top' | 'right' | 'bottom' | 'left'
+  placement?: 'auto' | 'top' | 'right' | 'bottom' | 'left'
   /**
    * Toggle the visibility of popover component.
    */
@@ -47,10 +48,12 @@ export interface CPopoverProps {
 
 export const CPopover: FC<CPopoverProps> = ({
   children,
+  content,
   placement = 'top',
   offset = [0, 8],
   onHide,
   onShow,
+  title,
   trigger = 'click',
   visible,
   ...rest
@@ -114,15 +117,23 @@ export const CPopover: FC<CPopoverProps> = ({
                     },
                   ]}
                 >
-                  {(p) => (
-                    <CPopoverContent
-                      transitionClass={transitionClass}
-                      placementClassNamePostfix={
-                        placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement
-                      }
+                  {({ arrowProps, style, ref }) => (
+                    <div
+                      className={classNames(
+                        `popover bs-popover-${
+                          placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement
+                        }`,
+                        transitionClass,
+                      )}
+                      ref={ref}
+                      role="tooltip"
+                      style={style}
                       {...rest}
-                      {...p}
-                    ></CPopoverContent>
+                    >
+                      <div className="popover-arrow" {...arrowProps}></div>
+                      <div className="popover-header">{title}</div>
+                      <div className="popover-body">{content}</div>
+                    </div>
                   )}
                 </Popper>
               )
@@ -136,10 +147,12 @@ export const CPopover: FC<CPopoverProps> = ({
 
 CPopover.propTypes = {
   children: PropTypes.any,
-  placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+  content: PropTypes.node,
+  placement: PropTypes.oneOf(['auto', 'top', 'right', 'bottom', 'left']),
   offset: PropTypes.any, // TODO: find good proptype
   onHide: PropTypes.func,
   onShow: PropTypes.func,
+  title: PropTypes.string,
   trigger: triggerPropType,
   visible: PropTypes.bool,
 }
