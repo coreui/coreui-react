@@ -136,14 +136,17 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
     )
 
     useEffect(() => {
-      window.addEventListener('click', handleClickOutside)
-      window.addEventListener('keyup', handleKeyup)
+      _visible &&
+        setTimeout(() => {
+          window.addEventListener('click', handleClickOutside)
+          window.addEventListener('keyup', handleKeyup)
+        })
 
       return () => {
         window.removeEventListener('click', handleClickOutside)
         window.removeEventListener('keyup', handleKeyup)
       }
-    })
+    }, [_visible])
 
     useEffect(() => {
       setVisible(visible)
@@ -165,24 +168,23 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       }
     }
 
-    return popper ? (
-      <CDropdownContext.Provider value={contextValues}>
-        <Manager>
-          {/* TODO: find solution how to handle click outside */}
-          {variant === 'input-group' ? (
-            <>{children}</>
-          ) : (
-            <Component className={_className} {...rest} ref={forkedRef}>
-              {children}
-            </Component>
-          )}
-        </Manager>
-      </CDropdownContext.Provider>
-    ) : (
-      <CDropdownContext.Provider value={contextValues}>
+    const dropdownContent = () => {
+      return variant === 'input-group' ? (
+        <>{children}</>
+      ) : (
         <Component className={_className} {...rest} ref={forkedRef}>
           {children}
         </Component>
+      )
+    }
+
+    return popper ? (
+      <CDropdownContext.Provider value={contextValues}>
+        <Manager>{dropdownContent()}</Manager>
+      </CDropdownContext.Provider>
+    ) : (
+      <CDropdownContext.Provider value={contextValues}>
+        {dropdownContent()}
       </CDropdownContext.Provider>
     )
   },
