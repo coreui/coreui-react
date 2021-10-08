@@ -87,7 +87,6 @@ import { CNavbarToggler } from './components/navbar/CNavbarToggler'
 import { CPagination } from './components/pagination/CPagination'
 import { CPaginationItem } from './components/pagination/CPaginationItem'
 import { CPopover } from './components/popover/CPopover'
-import { CPopoverContent } from './components/popover/CPopoverContent'
 import { CProgress } from './components/progress/CProgress'
 import { CProgressBar } from './components/progress/CProgressBar'
 import { CSidebar } from './components/sidebar/CSidebar'
@@ -117,7 +116,6 @@ import { CToastClose } from './components/toast/CToastClose'
 import { CToastHeader } from './components/toast/CToastHeader'
 import { CToaster } from './components/toast/CToaster'
 import { CTooltip } from './components/tooltip/CTooltip'
-import { CTooltipContent } from './components/tooltip/CTooltipContent'
 
 export {
   CAccordion,
@@ -209,7 +207,6 @@ export {
   CPagination,
   CPaginationItem,
   CPopover,
-  CPopoverContent,
   CProgress,
   CProgressBar,
   COffcanvas,
@@ -239,7 +236,6 @@ export {
   CToastHeader,
   CToaster,
   CTooltip,
-  CTooltipContent,
 }
 
 export * from './components/'
