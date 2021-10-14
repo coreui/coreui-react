@@ -1,0 +1,155 @@
+---
+title: React Spinner Component
+name: Spinner
+description: Indicate the loading state of a component or page with CoreUI spinners, built entirely with HTML, CSS, and no JavaScript.
+menu: Components
+route: /components/spinner
+---
+
+import { CSpinner, CButton } from './../../../../coreui-react/src/index.ts'
+
+## About
+
+CoreUI "spinners" can be used to show the loading state in your projects. They're built only with HTML and CSS, meaning you don't need any JavaScript to create them. You will, however, need some custom JavaScript to toggle their visibility. Their appearance, alignment, and sizing can be easily customized with our amazing utility classes.
+
+For accessibility purposes, each loader here includes `role="status"` and a nested `<span className="visually-hidden">Loading...</span>`.
+
+## Border spinner
+
+Use the border spinners for a lightweight loading indicator.
+
+## Basic usage
+
+<Example>
+  <CSpinner/>
+</Example>
+
+```jsx
+  <CSpinner/>
+```
+
+### Colors
+
+The border spinner uses `currentColor` for its `border-color`. You can use any of our text color utilities on the standard spinner.
+
+<Example>
+  <CSpinner color="primary"/>
+  <CSpinner color="secondary"/>
+  <CSpinner color="success"/>
+  <CSpinner color="danger"/>
+  <CSpinner color="warning"/>
+  <CSpinner color="info"/>
+  <CSpinner color="light"/>
+  <CSpinner color="dark"/>
+</Example>
+
+```jsx
+  <CSpinner color="primary"/>
+  <CSpinner color="secondary"/>
+  <CSpinner color="success"/>
+  <CSpinner color="danger"/>
+  <CSpinner color="warning"/>
+  <CSpinner color="info"/>
+  <CSpinner color="light"/>
+  <CSpinner color="dark"/>
+```
+
+## Growing spinner
+
+If you don't fancy a border spinner, switch to the grow spinner. While it doesn't technically spin, it does repeatedly grow!
+
+<Example>
+  <CSpinner variant="grow"/>
+</Example>
+
+```jsx
+  <CSpinner variant="grow"/>
+```
+
+Once again, this spinner is built with `currentColor`, so you can easily change its appearance. Here it is in blue, along with the supported variants.
+
+<Example>
+  <CSpinner color="primary" variant="grow"/>
+  <CSpinner color="secondary" variant="grow"/>
+  <CSpinner color="success" variant="grow"/>
+  <CSpinner color="danger" variant="grow"/>
+  <CSpinner color="warning" variant="grow"/>
+  <CSpinner color="info" variant="grow"/>
+  <CSpinner color="light" variant="grow"/>
+  <CSpinner color="dark" variant="grow"/>
+</Example>
+
+```jsx
+  <CSpinner color="primary" variant="grow"/>
+  <CSpinner color="secondary" variant="grow"/>
+  <CSpinner color="success" variant="grow"/>
+  <CSpinner color="danger" variant="grow"/>
+  <CSpinner color="warning" variant="grow"/>
+  <CSpinner color="info" variant="grow"/>
+  <CSpinner color="light" variant="grow"/>
+  <CSpinner color="dark" variant="grow"/>
+```
+
+## Size
+
+Add `size="sm"`property` to make a smaller spinner that can quickly be used within other components.
+
+<Example>
+  <CSpinner size="sm"/>
+  <CSpinner size="sm" variant="grow"/>
+</Example>
+
+```jsx
+  <CSpinner size="sm"/>
+  <CSpinner size="sm" variant="grow"/>
+```
+
+## Buttons
+
+Use spinners within buttons to indicate an action is currently processing or taking place. You may also swap the text out of the spinner element and utilize button text as needed.
+
+<Example>
+  <CButton disabled>
+    <CSpinner component="span" size="sm" aria-hidden="true"/>
+  </CButton>
+  <CButton disabled>
+    <CSpinner component="span" size="sm" aria-hidden="true"/>
+    Loading...
+  </CButton>
+</Example>
+
+```jsx
+  <CButton disabled>
+    <CSpinner component="span" size="sm" aria-hidden="true"/>
+  </CButton>
+  <CButton disabled>
+    <CSpinner component="span" size="sm" aria-hidden="true"/>
+    Loading...
+  </CButton>
+```
+
+<Example>
+  <CButton disabled>
+    <CSpinner component="span" size="sm" variant="grow" aria-hidden="true"/>
+  </CButton>
+  <CButton disabled>
+    <CSpinner component="span" size="sm" variant="grow" aria-hidden="true"/>
+    Loading...
+  </CButton>
+</Example>
+
+```jsx
+  <CButton disabled>
+    <CSpinner component="span" size="sm" variant="grow" aria-hidden="true"/>
+  </CButton>
+  <CButton disabled>
+    <CSpinner component="span" size="sm" variant="grow" aria-hidden="true"/>
+    Loading...
+  </CButton>
+```
+
+## API
+
+### CSpinner
+
+`markdown:CSpinner.api.mdx`

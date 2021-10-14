@@ -1,0 +1,375 @@
+---
+title: React Toast Component
+name: Toast
+description: Push notifications to your visitors with a toast, a lightweight and easily customizable alert message.
+menu: Components
+route: /components/toast
+---
+
+import { useState, useRef } from 'react'
+import {
+  CButton,
+  CCloseButton,
+  CToast,
+  CToastBody,
+  CToastClose,
+  CToastHeader,
+  CToaster,
+} from './../../../../coreui-react/src/index.ts'
+
+React toasts are lightweight notifications designed to mimic the push notifications that have been popularized by mobile and desktop operating systems. They’re built with flexbox, so they’re easy to align and position.
+
+## Overview
+
+Things to know when using the toast plugin:
+
+- Toasts are opt-in for performance reasons, so **you must initialize them yourself**.
+- Toasts will automatically hide if you do not specify `autohide: false`.
+
+## Examples
+
+### Basic
+
+To encourage extensible and predictable toasts, we recommend a header and body. Toast headers use `display: flex`, allowing easy alignment of content thanks to our margin and flexbox utilities.
+
+Toasts are as flexible as you need and have very little required markup. At a minimum, we require a single element to contain your "toasted" content and strongly encourage a dismiss button.
+
+<Example>
+  <CToast title="CoreUI for React.js" animation={false} autohide={false} visible={true}>
+    <CToastHeader close>
+      <svg
+        className="rounded me-2"
+        width="20"
+        height="20"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+        role="img"
+      >
+        <rect width="100%" height="100%" fill="#007aff"></rect>
+      </svg>
+      <strong className="me-auto">CoreUI for React.js</strong>
+      <small>7 min ago</small>
+    </CToastHeader>
+    <CToastBody>Hello, world! This is a toast message.</CToastBody>
+  </CToast>
+</Example>
+
+```jsx
+<CToast title="CoreUI for React.js" autohide={false} visible={true}>
+  <CToastHeader close>
+    <svg
+      className="rounded me-2"
+      width="20"
+      height="20"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMidYMid slice"
+      focusable="false"
+      role="img"
+    >
+      <rect width="100%" height="100%" fill="#007aff"></rect>
+    </svg>
+    <strong className="me-auto">CoreUI for React.js</strong>
+    <small>7 min ago</small>
+  </CToastHeader>
+  <CToastBody>Hello, world! This is a toast message.</CToastBody>
+</CToast>
+```
+
+export const BasicExample = () => {
+  const [toast, addToast] = useState(0)
+  const toaster = useRef()
+  const exampleToast = (
+    <CToast title="CoreUI for React.js">
+      <CToastHeader close>
+        <svg
+          className="rounded me-2"
+          width="20"
+          height="20"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice"
+          focusable="false"
+          role="img"
+        >
+          <rect width="100%" height="100%" fill="#007aff"></rect>
+        </svg>
+        <strong className="me-auto">CoreUI for React.js</strong>
+        <small>7 min ago</small>
+      </CToastHeader>
+      <CToastBody>Hello, world! This is a toast message.</CToastBody>
+    </CToast>
+  )
+  return (
+    <>
+      <CButton onClick={() => addToast(exampleToast)}>Send a toast</CButton>
+      <CToaster ref={toaster} push={toast} placement="top-end" />
+    </>
+  )
+}
+
+<Example>
+  <BasicExample />
+</Example>
+
+```jsx
+const [toast, addToast] = useState(0)
+const toaster = useRef()
+const exampleToast = (
+  <CToast title="CoreUI for React.js">
+    <CToastHeader close>
+      <svg
+        className="rounded me-2"
+        width="20"
+        height="20"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+        role="img"
+      >
+        <rect width="100%" height="100%" fill="#007aff"></rect>
+      </svg>
+      <strong className="me-auto">CoreUI for React.js</strong>
+      <small>7 min ago</small>
+    </CToastHeader>
+    <CToastBody>Hello, world! This is a toast message.</CToastBody>
+  </CToast>
+)
+return (
+  <>
+    <CButton onClick={() => addToast(exampleToast)}>Send a toast</CButton>
+    <CToaster ref={toaster} push={toast} placement="top-end" />
+  </>
+)
+```
+
+### Translucent
+
+Toasts are slightly translucent to blend in with what's below them.
+
+<Example className="bg-dark border-0">
+  <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+    <CToastHeader close>
+      <svg
+        className="rounded me-2"
+        width="20"
+        height="20"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+        role="img"
+      >
+        <rect width="100%" height="100%" fill="#007aff"></rect>
+      </svg>
+      <strong className="me-auto">CoreUI for React.js</strong>
+      <small>7 min ago</small>
+    </CToastHeader>
+    <CToastBody>Hello, world! This is a toast message.</CToastBody>
+  </CToast>
+</Example>
+
+```jsx
+<CToast title="CoreUI for React.js" autohide={false} visible={true}>
+  <CToastHeader close>
+    <svg
+      className="rounded me-2"
+      width="20"
+      height="20"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMidYMid slice"
+      focusable="false"
+      role="img"
+    >
+      <rect width="100%" height="100%" fill="#007aff"></rect>
+    </svg>
+    <strong className="me-auto">CoreUI for React.js</strong>
+    <small>7 min ago</small>
+  </CToastHeader>
+  <CToastBody>Hello, world! This is a toast message.</CToastBody>
+</CToast>
+```
+
+### Stacking
+
+You can stack toasts by wrapping them in a toast container, which will vertically add some spacing.
+
+<Example>
+  <CToaster>
+    <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+      <CToastHeader close>
+        <svg
+          className="rounded me-2"
+          width="20"
+          height="20"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice"
+          focusable="false"
+          role="img"
+        >
+          <rect width="100%" height="100%" fill="#007aff"></rect>
+        </svg>
+        <strong className="me-auto">CoreUI for React.js</strong>
+        <small>7 min ago</small>
+      </CToastHeader>
+      <CToastBody>Hello, world! This is a toast message.</CToastBody>
+    </CToast>
+    <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+      <CToastHeader close>
+        <svg
+          className="rounded me-2"
+          width="20"
+          height="20"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice"
+          focusable="false"
+          role="img"
+        >
+          <rect width="100%" height="100%" fill="#007aff"></rect>
+        </svg>
+        <strong className="me-auto">CoreUI for React.js</strong>
+        <small>7 min ago</small>
+      </CToastHeader>
+      <CToastBody>Hello, world! This is a toast message.</CToastBody>
+    </CToast>
+  </CToaster>
+</Example>
+
+```jsx
+<CToaster>
+  <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+    <CToastHeader close>
+      <svg
+        className="rounded me-2"
+        width="20"
+        height="20"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+        role="img"
+      >
+        <rect width="100%" height="100%" fill="#007aff"></rect>
+      </svg>
+      <strong className="me-auto">CoreUI for React.js</strong>
+      <small>7 min ago</small>
+    </CToastHeader>
+    <CToastBody>Hello, world! This is a toast message.</CToastBody>
+  </CToast>
+  <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+    <CToastHeader close>
+      <svg
+        className="rounded me-2"
+        width="20"
+        height="20"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+        role="img"
+      >
+        <rect width="100%" height="100%" fill="#007aff"></rect>
+      </svg>
+      <strong className="me-auto">CoreUI for React.js</strong>
+      <small>7 min ago</small>
+    </CToastHeader>
+    <CToastBody>Hello, world! This is a toast message.</CToastBody>
+  </CToast>
+</CToaster>
+```
+
+### Custom content
+
+Customize your toasts by removing sub-components, tweaking them with [utilities](https://coreui.io/docs/4.0/utilities/api), or by adding your own markup. Here we've created a simpler toast by removing the default `<CToastHeader>`, adding a custom hide icon from [CoreUI Icons](https://icons.coreui.io), and using some [flexbox utilities](https://coreui.io/docs/4.0/utilities/flex) to adjust the layout.
+
+<Example>
+  <CToast autohide={false} visible={true} className="align-items-center">
+    <div className="d-flex">
+      <CToastBody>Hello, world! This is a toast message.</CToastBody>
+      <CToastClose className="me-2 m-auto" />
+    </div>
+  </CToast>
+</Example>
+
+```jsx
+<CToast autohide={false} visible={true} className="align-items-center">
+  <div className="d-flex">
+    <CToastBody>Hello, world! This is a toast message.</CToastBody>
+    <CToastClose className="me-2 m-auto" />
+  </div>
+</CToast>
+```
+
+Alternatively, you can also add additional controls and components to toasts.
+
+<Example>
+  <CToast autohide={false} visible={true}>
+    <CToastBody>
+      Hello, world! This is a toast message.
+      <div className="mt-2 pt-2 border-top">
+        <CButton type="button" color="primary" size="sm">
+          Take action
+        </CButton>
+        <CToastClose component={CButton} color="secondary" size="sm" className="ms-1">
+          Close
+        </CToastClose>
+      </div>
+    </CToastBody>
+  </CToast>
+</Example>
+
+```jsx
+<CToast autohide={false} visible={true}>
+  <CToastBody>
+    Hello, world! This is a toast message.
+    <div className="mt-2 pt-2 border-top">
+      <CButton type="button" color="primary" size="sm">
+        Take action
+      </CButton>
+      <CToastClose component={CButton} color="secondary" size="sm" className="ms-1">
+        Close
+      </CToastClose>
+    </div>
+  </CToastBody>
+</CToast>
+```
+
+### Color schemes
+
+Building on the above example, you can create different toast color schemes with our [color](https://coreui.io/docs/4.0/utilities/colors) and [background](https://coreui.io/docs/4.0//utilities/background) utilities. Here we've set `color="primary"` and added `.text-white` class to the `<Ctoast>`, and then set `white` property to our close button. For a crisp edge, we remove the default border with `.border-0`.
+
+<Example>
+  <CToast autohide={false} visible={true} color="primary" className="text-white align-items-center">
+    <div className="d-flex">
+      <CToastBody>Hello, world! This is a toast message.</CToastBody>
+      <CToastClose className="me-2 m-auto" white />
+    </div>
+  </CToast>
+</Example>
+
+```jsx
+<CToast autohide={false} visible={true} color="primary" className="text-white align-items-center">
+  <div className="d-flex">
+    <CToastBody>Hello, world! This is a toast message.</CToastBody>
+    <CToastClose className="me-2 m-auto" white />
+  </div>
+</CToast>
+```
+
+## API
+
+### CToast
+
+`markdown:CToast.api.mdx`
+
+### CToastHeader
+
+`markdown:CToastHeader.api.mdx`
+
+### CToastBody
+
+`markdown:CToastBody.api.mdx`
+
+### CToastClose
+
+`markdown:CToastClose.api.mdx`
+
+### CToaster
+
+`markdown:CToaster.api.mdx`

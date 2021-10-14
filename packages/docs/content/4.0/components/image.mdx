@@ -1,0 +1,84 @@
+---
+title: React Image Component
+name: Image
+description: React image component with responsive behavior (so it's never become larger than their parent element) and special styles.
+menu: Components
+route: /components/image
+---
+
+import { CImage } from './../../../../coreui-react/src/index.ts'
+
+import ReactImg from './../assets/images/react.jpg'
+import React400Img from './../assets/images/react400.jpg'
+
+## Responsive images
+
+Images in CoreUI for React.js are made responsive with `fluid` property. This applies `max-width: 100%;` and `height: auto;` to the image so that it scales with the parent element.
+
+<Example>
+  <CImage fluid src={ReactImg} />
+</Example>
+
+```jsx
+<CImage fluid src="/images/react.jpg" />
+```
+
+## Image thumbnails
+
+In addition to our [border-radius utilities](https://coreui.io/docs/4.0/utilities/borders), you can use prop`thumbnail` to give an image a rounded 1px border appearance.
+
+<Example>
+  <CImage rounded thumbnail src={React400Img} width={200} height={200} />
+</Example>
+
+```jsx
+<CImage rounded thumbnail src="/images/react400.jpg" width={200} height={200} />
+```
+
+## Aligning images
+
+Align images with the `align` property.
+
+<Example>
+  <div className="clearfix">
+    <CImage align="start" rounded src={React400Img} width={200} height={200} />
+    <CImage align="end" rounded src={React400Img} width={200} height={200} />
+  </div>
+</Example>
+
+```jsx
+<div className="clearfix">
+  <CImage align="start" rounded src="/images/react400.jpg" width={200} height={200} />
+  <CImage align="end" rounded src="/images/react400.jpg" width={200} height={200} />
+</div>
+```
+
+<Example>
+  <div className="clearfix">
+    <CImage align="center" rounded src={React400Img} width={200} height={200} />
+  </div>
+</Example>
+
+```jsx
+<div className="clearfix">
+  <CImage align="center" rounded src="/images/react400.jpg" width={200} height={200} />
+</div>
+```
+
+<Example>
+  <div className="text-center">
+    <CImage rounded src={React400Img} width={200} height={200} />
+  </div>
+</Example>
+
+```jsx
+<div className="text-center">
+  <CImage rounded src="/images/react400.jpg" width={200} height={200} />
+</div>
+```
+
+## API
+
+### CImage
+
+`markdown:CImage.api.mdx`

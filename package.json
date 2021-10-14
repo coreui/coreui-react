@@ -1,99 +1,20 @@
 {
-  "name": "@coreui/react",
-  "version": "4.0.0-rc.4",
-  "config": {
-    "version_short": "4.0"
-  },
-  "description": "",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "jsnext:main": "dist/index.es.js",
-  "files": [
-    "dist/",
-    "src/components/",
-    "src/utils/",
-    "src/index.ts",
-    "tsconfig.json",
-    "package.json"
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "docs:api": "rimraf \"content/docs/$npm_package_config_version_short/api/*\" & node build/api.js",
-    "docs:build": "gatsby build --prefix-paths",
-    "docs:dist": "run-s docs:api docs:build",
-    "docs:dev": "gatsby develop",
-    "docs:serve": "gatsby serve",
-    "lint": "eslint \"src/components/**/*.{js,ts,tsx}\"",
-    "test": "jest --coverage",
-    "test:update": "jest --coverage --updateSnapshot"
-  },
-  "peerDependencies": {
-    "@coreui/coreui": "^4.0.4",
-    "react": "^17",
-    "react-dom": "^17"
+    "docs:api": "lerna run --scope \"@coreui/react-docs\" api --stream",
+    "docs:dev": "lerna run --scope \"@coreui/react-docs\" develop --stream",
+    "docs:build": "lerna run --scope \"@coreui/react-docs\" build --stream",
+    "docs:clean": "lerna run --scope \"@coreui/react-docs\" clean",
+    "docs:dist": "lerna run --scope \"@coreui/react-docs\" dist --stream",
+    "lib:build": "lerna run --scope \"@coreui/react\" build --stream",
+    "lib:lint": "lerna run --scope \"@coreui/react\" lint --stream",
+    "lib:test": "lerna run --scope \"@coreui/react\" test --stream"
   },
   "devDependencies": {
-    "@coreui/coreui": "^4.0.4",
-    "@coreui/icons": "^2.0.1",
-    "@coreui/icons-react": "^2.0.0-rc.5",
-    "@coreui/react-chartjs": "^2.0.0-rc.1",
-    "@mdx-js/mdx": "^1.6.22",
-    "@mdx-js/react": "^1.6.22",
-    "@popperjs/core": "^2.10.2",
-    "@rollup/plugin-commonjs": "^21.0.0",
-    "@rollup/plugin-node-resolve": "^13.0.5",
-    "@rollup/plugin-typescript": "^8.2.5",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.1.2",
-    "@types/react": "^17.0.27",
-    "@types/react-dom": "^17.0.9",
-    "@types/react-helmet": "^6.1.3",
-    "@types/react-transition-group": "^4.4.3",
-    "@typescript-eslint/eslint-plugin": "^4.33.0",
-    "@typescript-eslint/parser": "^4.33.0",
-    "classnames": "^2.3.1",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-jsdoc": "^36.1.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.26.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "gatsby": "^3.14.2",
-    "gatsby-plugin-google-gtag": "3",
-    "gatsby-plugin-manifest": "^3.14.0",
-    "gatsby-plugin-mdx": "^2.14.0",
-    "gatsby-plugin-sass": "4",
-    "gatsby-plugin-sitemap": "4",
-    "gatsby-remark-autolink-headers": "^4.11.0",
-    "gatsby-source-filesystem": "^3.14.0",
-    "glob": "^7.2.0",
-    "globby": "^11.0.4",
-    "jest": "^27.2.5",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.4.1",
-    "prism-react-renderer": "^1.2.1",
-    "prismjs": "^1.25.0",
-    "react": "^17.0.1",
-    "react-docgen-typescript": "^2.1.0",
-    "react-dom": "^17.0.1",
-    "react-github-btn": "^1.2.1",
-    "react-helmet": "^6.1.0",
-    "react-popper": "^2.2.5",
-    "react-transition-group": "^4.4.2",
-    "remark-html": "^13.0.2",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.56.22.56.2",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "sass": "^1.42.1",
-    "ts-jest": "^27.0.5",
-    "typescript": "^4.4.3"
+    "lerna": "^4.0.0"
   },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "jsdom",
-    "testPathIgnorePatterns": [
-      "dist/"
-    ]
-  }
+  "name": "react"
 }

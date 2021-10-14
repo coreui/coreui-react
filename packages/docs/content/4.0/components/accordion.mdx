@@ -1,0 +1,308 @@
+---
+title: React Accordion Component
+name: Accordion
+description: Build vertically collapsing accordions in combination with our React Collapse component.
+menu: Components
+route: /components/accordion
+---
+
+import { useState } from 'react'
+
+import {
+  CAccordion,
+  CAccordionBody,
+  CAccordionCollapse,
+  CAccordionHeader,
+  CAccordionItem 
+} from './../../../../coreui-react/src/index.ts'
+
+
+## Examples
+
+Click the accordions below to expand/collapse the accordion content.
+
+<Example>
+  <CAccordion activeItemKey={2}>
+    <CAccordionItem itemKey={1}>
+      <CAccordionHeader>
+        Accordion Item #1
+      </CAccordionHeader>
+      <CAccordionBody>
+        <strong>This is the first item's accordion body.</strong> It is hidden by default,
+        until the collapse plugin adds the appropriate classes that we use to style each
+        element. These classes control the overall appearance, as well as the showing and
+        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+        our default variables. It's also worth noting that just about any HTML can go within
+        the <code>.accordion-body</code>, though the transition does limit overflow.
+      </CAccordionBody>
+    </CAccordionItem>
+    <CAccordionItem itemKey={2}>
+      <CAccordionHeader>
+        Accordion Item #2
+      </CAccordionHeader>
+      <CAccordionBody>
+        <strong>This is the second item's accordion body.</strong> It is hidden by default,
+        until the collapse plugin adds the appropriate classes that we use to style each
+        element. These classes control the overall appearance, as well as the showing and
+        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+        our default variables. It's also worth noting that just about any HTML can go within
+        the <code>.accordion-body</code>, though the transition does limit overflow.
+      </CAccordionBody>
+    </CAccordionItem>
+    <CAccordionItem itemKey={3}>
+      <CAccordionHeader>
+        Accordion Item #3
+      </CAccordionHeader>
+      <CAccordionBody>
+        <strong>This is the second item's accordion body.</strong> It is hidden by default,
+        until the collapse plugin adds the appropriate classes that we use to style each
+        element. These classes control the overall appearance, as well as the showing and
+        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+        our default variables. It's also worth noting that just about any HTML can go within
+        the <code>.accordion-body</code>, though the transition does limit overflow.
+      </CAccordionBody>
+    </CAccordionItem>
+  </CAccordion>
+</Example>
+
+```jsx
+<CAccordion activeItemKey={2}>
+  <CAccordionItem itemKey={1}>
+    <CAccordionHeader>
+      Accordion Item #1
+    </CAccordionHeader>
+    <CAccordionBody>
+      <strong>This is the first item's accordion body.</strong> It is hidden by default,
+      until the collapse plugin adds the appropriate classes that we use to style each
+      element. These classes control the overall appearance, as well as the showing and
+      hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+      our default variables. It's also worth noting that just about any HTML can go within
+      the <code>.accordion-body</code>, though the transition does limit overflow.
+    </CAccordionBody>
+  </CAccordionItem>
+  <CAccordionItem itemKey={2}>
+    <CAccordionHeader>
+      Accordion Item #2
+    </CAccordionHeader>
+    <CAccordionBody>
+      <strong>This is the second item's accordion body.</strong> It is hidden by default,
+      until the collapse plugin adds the appropriate classes that we use to style each
+      element. These classes control the overall appearance, as well as the showing and
+      hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+      our default variables. It's also worth noting that just about any HTML can go within
+      the <code>.accordion-body</code>, though the transition does limit overflow.
+    </CAccordionBody>
+  </CAccordionItem>
+  <CAccordionItem itemKey={3}>
+    <CAccordionHeader>
+      Accordion Item #3
+    </CAccordionHeader>
+    <CAccordionBody>
+      <strong>This is the second item's accordion body.</strong> It is hidden by default,
+      until the collapse plugin adds the appropriate classes that we use to style each
+      element. These classes control the overall appearance, as well as the showing and
+      hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+      our default variables. It's also worth noting that just about any HTML can go within
+      the <code>.accordion-body</code>, though the transition does limit overflow.
+    </CAccordionBody>
+  </CAccordionItem>
+</CAccordion>
+```
+
+### Flush
+
+Add `flush` to remove the default `background-color`, some borders, and some rounded corners to render accordions edge-to-edge with their parent container.
+
+<Example>
+  <CAccordion flush>
+    <CAccordionItem itemKey={1}>
+      <CAccordionHeader>
+        Accordion Item #1
+      </CAccordionHeader>
+      <CAccordionBody>
+        <strong>This is the first item's accordion body.</strong> It is hidden by default,
+        until the collapse plugin adds the appropriate classes that we use to style each
+        element. These classes control the overall appearance, as well as the showing and
+        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+        our default variables. It's also worth noting that just about any HTML can go within
+        the <code>.accordion-body</code>, though the transition does limit overflow.
+      </CAccordionBody>
+    </CAccordionItem>
+    <CAccordionItem itemKey={2}>
+      <CAccordionHeader>
+        Accordion Item #2
+      </CAccordionHeader>
+      <CAccordionBody>
+        <strong>This is the second item's accordion body.</strong> It is hidden by default,
+        until the collapse plugin adds the appropriate classes that we use to style each
+        element. These classes control the overall appearance, as well as the showing and
+        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+        our default variables. It's also worth noting that just about any HTML can go within
+        the <code>.accordion-body</code>, though the transition does limit overflow.
+      </CAccordionBody>
+    </CAccordionItem>
+    <CAccordionItem itemKey={3}>
+      <CAccordionHeader>
+        Accordion Item #3
+      </CAccordionHeader>
+      <CAccordionBody>
+        <strong>This is the third item's accordion body.</strong> It is hidden by default,
+        until the collapse plugin adds the appropriate classes that we use to style each
+        element. These classes control the overall appearance, as well as the showing and
+        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+        our default variables. It's also worth noting that just about any HTML can go within
+        the <code>.accordion-body</code>, though the transition does limit overflow.
+      </CAccordionBody>
+    </CAccordionItem>
+  </CAccordion>
+</Example>
+
+```jsx
+<CAccordion flush>
+  <CAccordionItem itemKey={1}>
+    <CAccordionHeader>
+      Accordion Item #1
+    </CAccordionHeader>
+    <CAccordionBody>
+      <strong>This is the first item's accordion body.</strong> It is hidden by default,
+      until the collapse plugin adds the appropriate classes that we use to style each
+      element. These classes control the overall appearance, as well as the showing and
+      hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+      our default variables. It's also worth noting that just about any HTML can go within
+      the <code>.accordion-body</code>, though the transition does limit overflow.
+    </CAccordionBody>
+  </CAccordionItem>
+  <CAccordionItem itemKey={2}>
+    <CAccordionHeader>
+      Accordion Item #2
+    </CAccordionHeader>
+    <CAccordionBody>
+      <strong>This is the second item's accordion body.</strong> It is hidden by default,
+      until the collapse plugin adds the appropriate classes that we use to style each
+      element. These classes control the overall appearance, as well as the showing and
+      hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+      our default variables. It's also worth noting that just about any HTML can go within
+      the <code>.accordion-body</code>, though the transition does limit overflow.
+    </CAccordionBody>
+  </CAccordionItem>
+  <CAccordionItem itemKey={3}>
+    <CAccordionHeader>
+      Accordion Item #3
+    </CAccordionHeader>
+    <CAccordionBody>
+      <strong>This is the third item's accordion body.</strong> It is hidden by default,
+      until the collapse plugin adds the appropriate classes that we use to style each
+      element. These classes control the overall appearance, as well as the showing and
+      hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+      our default variables. It's also worth noting that just about any HTML can go within
+      the <code>.accordion-body</code>, though the transition does limit overflow.
+    </CAccordionBody>
+  </CAccordionItem>
+</CAccordion>
+```
+
+### Always open
+
+Add `alwaysOpen` property to make accordion items stay open when another item is opened.
+
+<Example>
+  <CAccordion alwaysOpen activeItemKey={2}>
+    <CAccordionItem itemKey={1}>
+      <CAccordionHeader>
+        Accordion Item #1
+      </CAccordionHeader>
+      <CAccordionBody>
+        <strong>This is the first item's accordion body.</strong> It is hidden by default,
+        until the collapse plugin adds the appropriate classes that we use to style each
+        element. These classes control the overall appearance, as well as the showing and
+        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+        our default variables. It's also worth noting that just about any HTML can go within
+        the <code>.accordion-body</code>, though the transition does limit overflow.
+      </CAccordionBody>
+    </CAccordionItem>
+    <CAccordionItem itemKey={2}>
+      <CAccordionHeader>
+        Accordion Item #2
+      </CAccordionHeader>
+      <CAccordionBody>
+        <strong>This is the second item's accordion body.</strong> It is hidden by default,
+        until the collapse plugin adds the appropriate classes that we use to style each
+        element. These classes control the overall appearance, as well as the showing and
+        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+        our default variables. It's also worth noting that just about any HTML can go within
+        the <code>.accordion-body</code>, though the transition does limit overflow.
+      </CAccordionBody>
+    </CAccordionItem>
+    <CAccordionItem itemKey={3}>
+      <CAccordionHeader>
+        Accordion Item #3
+      </CAccordionHeader>
+      <CAccordionBody>
+        <strong>This is the second item's accordion body.</strong> It is hidden by default,
+        until the collapse plugin adds the appropriate classes that we use to style each
+        element. These classes control the overall appearance, as well as the showing and
+        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+        our default variables. It's also worth noting that just about any HTML can go within
+        the <code>.accordion-body</code>, though the transition does limit overflow.
+      </CAccordionBody>
+    </CAccordionItem>
+  </CAccordion>
+</Example>
+
+```jsx
+<CAccordion alwaysOpen activeItemKey={2}>
+  <CAccordionItem itemKey={1}>
+    <CAccordionHeader>
+      Accordion Item #1
+    </CAccordionHeader>
+    <CAccordionBody>
+      <strong>This is the first item's accordion body.</strong> It is hidden by default,
+      until the collapse plugin adds the appropriate classes that we use to style each
+      element. These classes control the overall appearance, as well as the showing and
+      hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+      our default variables. It's also worth noting that just about any HTML can go within
+      the <code>.accordion-body</code>, though the transition does limit overflow.
+    </CAccordionBody>
+  </CAccordionItem>
+  <CAccordionItem itemKey={2}>
+    <CAccordionHeader>
+      Accordion Item #2
+    </CAccordionHeader>
+    <CAccordionBody>
+      <strong>This is the second item's accordion body.</strong> It is hidden by default,
+      until the collapse plugin adds the appropriate classes that we use to style each
+      element. These classes control the overall appearance, as well as the showing and
+      hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+      our default variables. It's also worth noting that just about any HTML can go within
+      the <code>.accordion-body</code>, though the transition does limit overflow.
+    </CAccordionBody>
+  </CAccordionItem>
+  <CAccordionItem itemKey={3}>
+    <CAccordionHeader>
+      Accordion Item #3
+    </CAccordionHeader>
+    <CAccordionBody>
+      <strong>This is the second item's accordion body.</strong> It is hidden by default,
+      until the collapse plugin adds the appropriate classes that we use to style each
+      element. These classes control the overall appearance, as well as the showing and
+      hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+      our default variables. It's also worth noting that just about any HTML can go within
+      the <code>.accordion-body</code>, though the transition does limit overflow.
+    </CAccordionBody>
+  </CAccordionItem>
+</CAccordion>
+```
+
+## API
+
+### CAccordion
+`markdown:CAccordion.api.mdx`
+
+### CAccordionBody
+`markdown:CAccordionBody.api.mdx`
+
+### CAccordionHeader
+`markdown:CAccordionHeader.api.mdx`
+
+### CAccordionItem
+`markdown:CAccordionItem.api.mdx`

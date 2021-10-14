@@ -1,0 +1,281 @@
+---
+title: React Carousel Component
+name: Carousel
+description: React carousel is a slideshow component for cycling through elements—images or slides of text—like a carousel.
+menu: Components
+route: /components/carousel
+---
+
+import {
+  CCallout,
+  CCarousel,
+  CCarouselCaption,
+  CCarouselItem,
+  CImage,
+} from './../../../../coreui-react/src/index.ts'
+
+import AngularImg from './../assets/images/angular.jpg'
+import ReactImg from './../assets/images/react.jpg'
+import VueImg from './../assets/images/vue.jpg'
+
+## How it works
+
+The React carousel is a slideshow for cycling within a group of content. It runs with a group of images, text, or html elements. It also incorporates support for previous/next buttons.
+
+In browsers where the [Page Visibility API](https://www.w3.org/TR/page-visibility/) is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.).
+
+## Example
+
+Carousels don't automatically normalize slide dimensions. As such, you may want to use extra utilities or custom methods to properly size content. While carousels support previous/next controls and indicators, they're not explicitly expected. Add and customize as you see fit.
+
+### Slides only
+
+<Example>
+  <CCarousel>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={ReactImg} alt="slide 1" />
+    </CCarouselItem>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={VueImg} alt="slide 2"/>
+    </CCarouselItem>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={AngularImg} alt="slide 3" />
+    </CCarouselItem>
+  </CCarousel>
+</Example>
+
+```jsx
+<CCarousel>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/react.jpg" alt="slide 1" />
+  </CCarouselItem>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/vue.jpg" alt="slide 2" />
+  </CCarouselItem>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/angular.jpg" alt="slide 3" />
+  </CCarouselItem>
+</CCarousel>
+```
+
+### With controls
+
+Adding in the previous and next controls by `controls` property.
+
+<Example>
+  <CCarousel controls>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={ReactImg} alt="slide 1" />
+    </CCarouselItem>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={VueImg} alt="slide 2" />
+    </CCarouselItem>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={AngularImg} alt="slide 3" />
+    </CCarouselItem>
+  </CCarousel>
+</Example>
+
+```jsx
+<CCarousel controls>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/react.jpg" alt="slide 1" />
+  </CCarouselItem>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/vue.jpg" alt="slide 2" />
+  </CCarouselItem>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/angular.jpg" alt="slide 3" />
+  </CCarouselItem>
+</CCarousel>
+```
+
+### With indicators
+
+You can attach the indicators to the carousel, lengthwise the controls, too.
+
+<Example>
+  <CCarousel controls indicators>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={ReactImg} alt="slide 1" />
+    </CCarouselItem>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={VueImg} alt="slide 2" />
+    </CCarouselItem>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={AngularImg} alt="slide 3" />
+    </CCarouselItem>
+  </CCarousel>
+</Example>
+
+```jsx
+<CCarousel controls indicators>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/react.jpg" alt="slide 1" />
+  </CCarouselItem>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/vue.jpg" alt="slide 2" />
+  </CCarouselItem>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/angular.jpg" alt="slide 3" />
+  </CCarouselItem>
+</CCarousel>
+```
+
+### With captions
+
+You can add captions to slides with the `<CCarouselCaption>` element within any `<CCarouselItem>`. They can be immediately hidden on smaller viewports, as shown below, with optional [display utilities](https://coreui.io/4.0/utilities/display). We hide them with `.d-none` and draw them back on medium-sized devices with `.d-md-block`.
+
+<Example>
+  <CCarousel controls indicators>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={ReactImg} alt="slide 1" />
+      <CCarouselCaption className="d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </CCarouselCaption>
+    </CCarouselItem>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={VueImg} alt="slide 2" />
+      <CCarouselCaption className="d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </CCarouselCaption>
+    </CCarouselItem>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={AngularImg} alt="slide 3" />
+      <CCarouselCaption className="d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </CCarouselCaption>
+    </CCarouselItem>
+  </CCarousel>
+</Example>
+
+```jsx
+<CCarousel controls indicators>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/react.jpg" alt="slide 1" />
+    <CCarouselCaption className="d-none d-md-block">
+      <h5>First slide label</h5>
+      <p>Some representative placeholder content for the first slide.</p>
+    </CCarouselCaption>
+  </CCarouselItem>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/vue.jpg" alt="slide 2" />
+    <CCarouselCaption className="d-none d-md-block">
+      <h5>Second slide label</h5>
+      <p>Some representative placeholder content for the first slide.</p>
+    </CCarouselCaption>
+  </CCarouselItem>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/angular.jpg" alt="slide 3" />
+    <CCarouselCaption className="d-none d-md-block">
+      <h5>Third slide label</h5>
+      <p>Some representative placeholder content for the first slide.</p>
+    </CCarouselCaption>
+  </CCarouselItem>
+</CCarousel>
+```
+
+### Crossfade
+
+Add `transition="crossfade"` to your carousel to animate slides with a fade transition instead of a slide.
+
+<Example>
+  <CCarousel controls transition="crossfade">
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={ReactImg} alt="slide 1" />
+    </CCarouselItem>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={VueImg} alt="slide 2" />
+    </CCarouselItem>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={AngularImg} alt="slide 3" />
+    </CCarouselItem>
+  </CCarousel>
+</Example>
+
+```jsx
+<CCarousel controls transition="crossfade">
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/react.jpg" alt="slide 1" />
+  </CCarouselItem>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/vue.jpg" alt="slide 2" />
+  </CCarouselItem>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/angular.jpg" alt="slide 3" />
+  </CCarouselItem>
+</CCarousel>
+```
+
+## Dark variant
+
+Add `dark` property to the `CCarousel` for darker controls, indicators, and captions. Controls have been inverted from their default white fill with the `filter` CSS property. Captions and controls have additional Sass variables that customize the `color` and `background-color`.
+
+<Example>
+  <CCarousel controls indicators dark>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={ReactImg} alt="slide 1" />
+      <CCarouselCaption className="d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </CCarouselCaption>
+    </CCarouselItem>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={VueImg} alt="slide 2" />
+      <CCarouselCaption className="d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </CCarouselCaption>
+    </CCarouselItem>
+    <CCarouselItem>
+      <CImage className="d-block w-100" src={AngularImg} alt="slide 3" />
+      <CCarouselCaption className="d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </CCarouselCaption>
+    </CCarouselItem>
+  </CCarousel>
+</Example>
+
+```jsx
+<CCarousel controls indicators dark>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/react.jpg" alt="slide 1" />
+    <CCarouselCaption className="d-none d-md-block">
+      <h5>First slide label</h5>
+      <p>Some representative placeholder content for the first slide.</p>
+    </CCarouselCaption>
+  </CCarouselItem>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/vue.jpg" alt="slide 2" />
+    <CCarouselCaption className="d-none d-md-block">
+      <h5>Second slide label</h5>
+      <p>Some representative placeholder content for the first slide.</p>
+    </CCarouselCaption>
+  </CCarouselItem>
+  <CCarouselItem>
+    <CImage className="d-block w-100" src="/images/angular.jpg" alt="slide 3" />
+    <CCarouselCaption className="d-none d-md-block">
+      <h5>Third slide label</h5>
+      <p>Some representative placeholder content for the first slide.</p>
+    </CCarouselCaption>
+  </CCarouselItem>
+</CCarousel>
+```
+
+## API
+
+### CCarousel
+
+`markdown:CCarousel.api.mdx`
+
+### CCarouselCaption
+
+`markdown:CCarouselCaption.api.mdx`
+
+### CCarouselItem
+
+`markdown:CCarouselItem.api.mdx`
