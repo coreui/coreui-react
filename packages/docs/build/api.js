@@ -21,14 +21,18 @@ const options = {
   savePropValueAsString: true,
 }
 
+const PRO_COMPONENTS = []
+
 async function createMdx(file, filename, name, props) {
   if (typeof props === 'undefined') return
 
+  const pro = PRO_COMPONENTS.some((v) => file.includes(v))
+
   let content = `
 \`\`\`jsx
-import { ${name} } from '@coreui/react'
+import { ${name} } from '@coreui/react${pro ? '-pro' : ''}'
 // or
-import ${name} from '@coreui/react/${file.replace('.tsx', '')}'
+import ${name} from '@coreui/react${pro ? '-pro' : ''}${file.replace('.tsx', '').replace(GLOBBY_OPTIONS.cwd, '')}'
 \`\`\`\n
 `
 
