@@ -60,7 +60,6 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
       variant === 'solid' ? `bg-${color} text-white` : `alert-${color}`,
       {
         'alert-dismissible fade': dismissible,
-        // show: _visible,
       },
       className,
     )
