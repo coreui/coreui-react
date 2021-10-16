@@ -15,6 +15,5 @@
   },
   "devDependencies": {
     "lerna": "^4.0.0"
-  },
-  "name": "react"
+  }
 }
