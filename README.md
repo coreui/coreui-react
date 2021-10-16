@@ -8,12 +8,12 @@
   </a>
 </p>
 
-<h3 align="center">CoreUI</h3>
+<h3 align="center">CoreUI for React.js</h3>
 
 <p align="center">
   React.js Components Library built on top of Bootstrap 5 and TypeScript.
   <br>
-  <a href="https://coreui.io/react/docs/4.0/getting-started/introduction"><strong>Explore CoreUI docs »</strong></a>
+  <a href="https://coreui.io/react/docs/getting-started/introduction"><strong>Explore CoreUI for React.js docs »</strong></a>
   <br>
   <br>
   <a href="https://github.com/coreui/coreui-react/issues/new?template=bug_report.md">Report bug</a>
@@ -45,23 +45,29 @@
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/coreui/coreui-react/archive/v4.0.0-alpha.0.zip)
+- [Download the latest release](https://github.com/coreui/coreui-react/archive/v4.0.0-rc.4.zip)
 - Clone the repo: `git clone https://github.com/coreui/coreui-react.git`
 - Install with [npm](https://www.npmjs.com/): `npm install @coreui/react@next`
 - Install with [yarn](https://yarnpkg.com/): `yarn add @coreui/react@next`
 
-Read the [Getting started page](https://coreui.io/react/docs/4.0/getting-started/introduction/) for information on the framework contents, templates and examples, and more.
+Read the [Getting started page](https://coreui.io/react/docs/getting-started/introduction/) for information on the framework contents, templates and examples, and more.
 
 ### Stylesheets
 
-React components are styled using `@coreui/coreui` CSS library, but you can use them also with bootstrap CSS library. That is possible because `@coreui/coreui` library is compatible with bootstrap, it just extends its functionalities. The only exception is custom CoreUI components, which don't exist in the Bootstrap ecosystem.
+React components are styled using `@coreui/coreui` CSS library, but you can use them also with bootstrap CSS library. That is possible because `@coreui/coreui` library is compatible with bootstrap, it just extends its functionalities. The only exception are custom CoreUI components, which don't exist in the Bootstrap ecosystem.
 
 #### CoreUI CSS files
 
 ##### Installation
 
 ```bash
-npm install @coreui/coreui@next
+yarn add @coreui/coreui
+```
+
+or
+
+```bash
+npm install @coreui/coreui --save
 ```
 
 ##### Basic usage
@@ -75,7 +81,13 @@ import "@coreui/dist/css/coreui.min.css";
 ##### Installation
 
 ```bash
-npm install bootstrap@next
+yarn add bootstrap
+```
+
+or
+
+```bash
+npm install bootstrap
 ```
 
 ##### Basic usage
@@ -90,34 +102,34 @@ import "bootstrap/dist/css/bootstrap.min.css";
 [![npm version](https://img.shields.io/npm/v/@coreui/react)](https://www.npmjs.com/package/@coreui/react)
 [![peerDependencies Status](https://img.shields.io/david/peer/coreui/coreui)](https://david-dm.org/coreui/coreui?type=peer)
 [![devDependency Status](https://img.shields.io/david/dev/coreui/coreui)](https://david-dm.org/coreui/coreui?type=dev)
-[![Coverage Status](https://img.shields.io/coveralls/github/coreui/coreui-react/v4-dev)](https://coveralls.io/github/coreui/coreui-react?branch=v4-dev)
+[![Coverage Status](https://img.shields.io/coveralls/github/coreui/coreui-react/v4)](https://coveralls.io/github/coreui/coreui-react?branch=v4)
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/coreui/coreui-react/blob/v4-dev/.github/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/coreui/coreui-react/issues/new).
+Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/coreui/coreui-react/blob/v4/.github/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/coreui/coreui-react/issues/new).
 
 ## Documentation
 
-The documentation for the CoreUI & CoreUI PRO is hosted at our website [CoreUI for React](https://coreui.io/react/docs/4.0/getting-started/introduction)
+The documentation for the CoreUI & CoreUI PRO is hosted at our website [CoreUI for React](https://coreui.io/react/docs/getting-started/introduction)
 
 ### Running documentation locally
 
-1. Run `yarn install` to install the Node.js dependencies, including Hugo (the site builder).
-2. Run `yarn docz:build` (or a specific npm script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
-3. From the root directory, run `yarn docz:serve` in the command line.
-4. Open `http://localhost:3000/` in your browser, and voilà.
+1. Run `yarn install` or `npm install` to install the Node.js dependencies.
+2. Run `yarn bootstrap` or `npm run bootstrap` to link local packages together and install remaining package dependencies.
+3. From the root directory, run `yarn docs:dev` or `npm run docs:dev` (or a specific npm script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
+4. Open `http://localhost:8000/` in your browser, and voilà.
 
 ## Contributing
 
-Please read through our [contributing guidelines](https://github.com/coreui/coreui-react/blob/v4-dev/.github/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
+Please read through our [contributing guidelines](https://github.com/coreui/coreui-react/blob/v4/.github/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
 
-Editor preferences are available in the [editor config](https://github.com/coreui/coreui-react/blob/v4-dev/.editorconfig) for easy use in common text editors. Read more and download plugins at <https://editorconfig.org/>.
+Editor preferences are available in the [editor config](https://github.com/coreui/coreui-react/blob/v4/.editorconfig) for easy use in common text editors. Read more and download plugins at <https://editorconfig.org/>.
 
 ## Community
 
 Stay up to date on the development of CoreUI and reach out to the community with these helpful resources.
 
-- Read and subscribe to [The Official CoreUI Blog](https://coreui.io/blog/).
+- Read and subscribe to [The Official CoreUI Blog](https://blog.coreui.io/).
 - Join [the official Community](https://community.coreui.io/).
 
 You can also follow [@core_ui on Twitter](https://twitter.com/core_ui).
@@ -138,6 +150,10 @@ See [the Releases section of our project](https://github.com/coreui/coreui-react
 **Andrzej Kopański**
 
 - <https://github.com/xidedix>
+
+**The CoreUI Team**
+
+- <https://github.com/orgs/coreui/people>
 
 ## Copyright and license
 
