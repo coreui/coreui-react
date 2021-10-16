@@ -1,12 +1,31 @@
 {
   "name": "@coreui/react-docs",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "",
   "version": "4.0.0-rc.4",
   "config": {
     "version_short": "4.0"
   },
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "homepage": "https://coreui.io/react/",
+  "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coreui/coreui-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/coreui/coreui-react/issues"
+  },
+  "scripts": {
+    "api": "rimraf \"content/$npm_package_config_version_short/api/*\" & node build/api.js",
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "dist": "run-s api build",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "gatsby develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
   "dependencies": {
     "@coreui/chartjs": "^3.0.0",
     "@coreui/coreui": "^4.0.5",
@@ -45,17 +64,5 @@
   "devDependencies": {
     "npm-run-all": "^4.1.5",
     "prettier": "2.4.1"
-  },
-  "license": "MIT",
-  "scripts": {
-    "api": "rimraf \"content/$npm_package_config_version_short/api/*\" & node build/api.js",
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "dist": "run-s api build",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "gatsby develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   }
 }

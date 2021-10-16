@@ -56,7 +56,7 @@ import ${name} from '@coreui/react/${file.replace('.tsx', '')}'
         types.push(`\`${element.replace(/"/g, "'")}\``)
       })
 
-      content += `| **${name}** | ${description} | ${types.join(' \\| ')} | ${defaultValue} |\n`
+      content += `| **${name}** | ${description} | ${types.join(' \\| ')} | ${defaultValue.replaceAll('\n', '<br/>')} |\n`
       console.log(`${filename} - ${key}`)
     }
   }
