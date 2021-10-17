@@ -189,6 +189,10 @@ const nav = [
         to: '/components/header/',
       },
       {
+        name: 'Icon',
+        to: '/components/icon/',
+      },
+      {
         name: 'Image',
         to: '/components/image/',
       },
