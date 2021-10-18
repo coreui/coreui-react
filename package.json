@@ -4,6 +4,9 @@
     "packages/*"
   ],
   "scripts": {
+    "charts:build": "lerna run --scope \"@coreui/react-chartjs\" build --stream",
+    "charts:lint": "lerna run --scope \"@coreui/react-chartjs\" lint --stream",
+    "charts:test": "lerna run --scope \"@coreui/react-chartjs\" test --stream",
     "docs:api": "lerna run --scope \"@coreui/react-docs\" api --stream",
     "docs:dev": "lerna run --scope \"@coreui/react-docs\" develop --stream",
     "docs:build": "lerna run --scope \"@coreui/react-docs\" build --stream",
