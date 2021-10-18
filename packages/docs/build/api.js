@@ -8,12 +8,12 @@ const path = require('path')
 const globby = require('globby')
 const pkg = require('../package.json')
 
-const GLOB = ['src/components/**/*.tsx']
+const GLOB = ['**/src/**/*.tsx']
 const GLOBBY_OPTIONS = {
   absolute: true,
-  cwd: path.join(__dirname, '..', '..', 'coreui-react'),
+  cwd: path.join(__dirname, '..', '..'),
   gitignore: true,
-  ignore: ['**/__tests__/**'],
+  ignore: ['**/docs/**', '**/__tests__/**'],
 }
 const EXCLUDED_FILES = []
 
@@ -27,12 +27,13 @@ async function createMdx(file, filename, name, props) {
   if (typeof props === 'undefined') return
 
   const pro = PRO_COMPONENTS.some((v) => file.includes(v))
+  const relativeFilename = file.replace(GLOBBY_OPTIONS.cwd, '').replace('coreui-', '')
 
   let content = `
 \`\`\`jsx
-import { ${name} } from '@coreui/react${pro ? '-pro' : ''}'
+import { ${name} } from '@coreui/${relativeFilename.split('/')[1]}${pro ? '-pro' : ''}'
 // or
-import ${name} from '@coreui/react${pro ? '-pro' : ''}${file.replace('.tsx', '').replace(GLOBBY_OPTIONS.cwd, '')}'
+import ${name} from '@coreui${relativeFilename.replace('.tsx', '')}'
 \`\`\`\n
 `
 

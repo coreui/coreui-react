@@ -169,6 +169,10 @@ const nav = [
         to: '/components/carousel/',
       },
       {
+        name: 'Chart',
+        to: '/components/chart/',
+      },
+      {
         name: 'Close Button',
         to: '/components/close-button/',
       },
