@@ -1,34 +1,36 @@
 {
   "name": "@coreui/react-chartjs",
   "version": "2.0.0-rc.2",
-  "description": "CoreUI React component wrapper for chart.js",
-  "license": "MIT",
-  "homepage": "https://coreui.io",
-  "author": {
-    "name": "CoreUI",
-    "url": "https://coreui.io",
-    "github": "https://github.com/coreui",
-    "twitter": "https://twitter.com/core_ui"
-  },
-  "contributors": [
-    {
-      "name": "CoreUI Team",
-      "url": "https://github.com/orgs/coreui/people"
-    }
+  "description": "React wrapper component for Chart.js",
+  "keywords": [
+    "coreui",
+    "chart.js",
+    "charts",
+    "react chart.js",
+    "coreui-react",
+    "react charts",
+    "react chart components",
+    "react chart.js implementation",
+    "layout",
+    "component",
+    "react"
   ],
+  "homepage": "https://coreui.io/react/docs/components/chart/",
+  "bugs": {
+    "url": "https://github.com/coreui/coreui-react/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/coreui/coreui-react-chartjs.git"
+    "url": "git+https://github.com/coreui/coreui-react.git"
   },
-  "bugs": {
-    "url": "https://github.com/coreui/coreui-react-chartjs/issues"
-  },
+  "license": "MIT",
+  "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
   "files": [
     "dist/",
-    "README.md"
+    "src/"
   ],
   "scripts": {
     "build": "rollup -c",
@@ -39,9 +41,6 @@
   "dependencies": {
     "@coreui/chartjs": "^3.0.0",
     "chart.js": "^3.5.0"
-  },
-  "peerDependencies": {
-    "react": "^17"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.0",
@@ -68,27 +67,7 @@
     "ts-jest": "^27.0.7",
     "typescript": "^4.4.4"
   },
-  "keywords": [
-    "coreui",
-    "chart.js",
-    "charts",
-    "react chart.js",
-    "coreui-react",
-    "react charts",
-    "react chart components",
-    "react chart.js implementation",
-    "layout",
-    "component",
-    "react"
-  ],
-  "jest": {
-    "preset": "ts-jest",
-    "setupFiles": [
-      "jest-canvas-mock"
-    ],
-    "testEnvironment": "jsdom",
-    "testPathIgnorePatterns": [
-      "dist/"
-    ]
+  "peerDependencies": {
+    "react": "^17"
   }
 }
