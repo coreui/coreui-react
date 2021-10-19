@@ -4,6 +4,7 @@
   "description": "UI Components Library for React.js",
   "keywords": [
     "react",
+    "react-component",
     "react component",
     "react bootstrap",
     "bootstrap react",
@@ -28,11 +29,7 @@
   "typings": "dist/index.d.ts",
   "files": [
     "dist/",
-    "src/components/",
-    "src/utils/",
-    "src/index.ts",
-    "tsconfig.json",
-    "package.json"
+    "src/"
   ],
   "scripts": {
     "build": "rollup -c",
