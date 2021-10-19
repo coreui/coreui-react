@@ -1,8 +1,27 @@
 {
   "name": "@coreui/react",
-  "description": "UI Components Library for React.js",
   "version": "4.0.0-rc.5",
+  "description": "UI Components Library for React.js",
+  "keywords": [
+    "react",
+    "react component",
+    "react bootstrap",
+    "bootstrap react",
+    "ui library",
+    "ui components",
+    "component library",
+    "components"
+  ],
+  "homepage": "https://coreui.io/react/",
+  "bugs": {
+    "url": "https://github.com/coreui/coreui-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coreui/coreui-react.git"
+  },
   "license": "MIT",
+  "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -54,12 +73,5 @@
   "peerDependencies": {
     "react": "^17",
     "react-dom": "^17"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "jsdom",
-    "testPathIgnorePatterns": [
-      "dist/"
-    ]
   }
 }
