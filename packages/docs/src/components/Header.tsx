@@ -3,11 +3,18 @@ import GitHubButton from 'react-github-btn'
 
 import CIcon from '@coreui/icons-react'
 import { cibDiscourse, cibGithub, cibTwitter, cilCloudDownload, cilMenu } from '@coreui/icons'
-import { CAlert, CButton, CHeader, CHeaderNav, CHeaderToggler, CNavItem } from './../../../coreui-react/src/index'
+import {
+  CAlert,
+  CButton,
+  CHeader,
+  CHeaderNav,
+  CHeaderToggler,
+  CNavItem,
+} from '@coreui/react/src/index'
 
 import { myContext } from './../templates/Docs'
 
-const Header: FC = ({ ...props }) => {
+const Header: FC = () => {
   return (
     <>
       <CAlert color="light" className="d-flex justify-content-center rounded-0 border-bottom mb-0">

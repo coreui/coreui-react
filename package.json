@@ -14,9 +14,23 @@
     "docs:dist": "lerna run --scope \"@coreui/react-docs\" dist --stream",
     "lib:build": "lerna run --scope \"@coreui/react\" build --stream",
     "lib:lint": "lerna run --scope \"@coreui/react\" lint --stream",
-    "lib:test": "lerna run --scope \"@coreui/react\" test --stream"
+    "lib:test": "lerna run --scope \"@coreui/react\" test --stream",
+    "lint": "eslint \"packages/**/src/components/**/*.{js,ts,tsx}\"",
+    "test": "jest --coverage",
+    "test:update": "jest --coverage --updateSnapshot"
   },
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "jest": "^27.3.1",
+    "jest-canvas-mock": "^2.3.1",
+    "lerna": "^4.0.0",
+    "prettier": "^2.4.1",
+    "ts-jest": "^27.0.7"
   }
 }

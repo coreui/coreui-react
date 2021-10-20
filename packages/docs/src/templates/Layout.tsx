@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { Footer, Header, Seo, Sidebar } from './../components/'
 import './../styles/styles.scss'
-import { CContainer } from './../../../coreui-react/src/index'
+import { CContainer } from '@coreui/react/src/index'
 
 const DefaultLayout: FC = ({ children, ...props }) => {
   return (

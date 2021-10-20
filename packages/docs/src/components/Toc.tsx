@@ -1,5 +1,6 @@
-import React from 'react'
-import { CNav } from './../../../coreui-react/src/index'
+import React, { FC } from 'react'
+import PropTypes from 'prop-types'
+import { CNav } from '@coreui/react/src/index'
 
 const Toc: FC = (props) => {
   const { items } = props
@@ -33,6 +34,10 @@ const Toc: FC = (props) => {
       </CNav>
     </div>
   )
+}
+
+Toc.propTypes = {
+  item: PropTypes.node,
 }
 
 export default Toc

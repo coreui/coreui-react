@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 
-import { CContainer, CFooter } from './../../../coreui-react/src/index'
+import { CContainer, CFooter } from '@coreui/react/src/index'
 import pkg from './../../package.json'
 
-const Footer: FC = ({ ...props }) => {
+const Footer: FC = () => {
   return (
     <CFooter className="docs-footer p-3 p-md-5 mt-5 text-center text-sm-start">
       <CContainer>
@@ -33,16 +33,12 @@ const Footer: FC = ({ ...props }) => {
           <a
             href="https://github.com/coreui/coreui/blob/main/LICENSE"
             target="_blank"
-            rel="license noopener"
+            rel="noreferrer"
           >
             MIT
           </a>
           , docs{' '}
-          <a
-            href="https://creativecommons.org/licenses/by/3.0/"
-            target="_blank"
-            rel="license noopener"
-          >
+          <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noreferrer">
             CC BY 3.0
           </a>
           .

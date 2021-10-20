@@ -1,8 +1,8 @@
-import React, { ElementType, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 
-import { CBadge, CNavGroup, CNavItem, CSidebarNav } from './../../../coreui-react/src/index'
+import { CBadge, CNavGroup, CNavItem, CSidebarNav } from '@coreui/react/src/index'
 import CIcon from '@coreui/icons-react'
 
 export type Badge = {

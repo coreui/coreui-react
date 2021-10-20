@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 import DefaultLayout from './../templates/Layout'
 import Seo from './../components/Seo'
-import { CButton } from './../../../coreui-react/src/index'
+import { CButton } from '@coreui/react/src/index'
 
 const NotFoundPage = () => {
   const { site } = useStaticQuery(query)

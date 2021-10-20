@@ -9,7 +9,7 @@ import {
   CSidebar,
   CSidebarBrand,
   CImage,
-} from './../../../coreui-react/src/index'
+} from '@coreui/react/src/index'
 import { SidebarNav } from '.'
 
 import { myContext } from './../templates/Docs'
