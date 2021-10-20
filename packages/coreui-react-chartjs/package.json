@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react-chartjs",
-  "version": "2.0.0-rc.2",
+  "version": "2.0.0-rc.3",
   "description": "React wrapper component for Chart.js",
   "keywords": [
     "coreui",
@@ -35,10 +35,7 @@
     "src/"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "lint": "eslint 'src/**/*.{js,ts,tsx}'",
-    "test": "jest --coverage",
-    "test:update": "jest --coverage --updateSnapshot"
+    "build": "rollup -c"
   },
   "dependencies": {
     "@coreui/chartjs": "^3.0.0",
