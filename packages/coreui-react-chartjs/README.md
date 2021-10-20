@@ -1,8 +1,32 @@
-### [@coreui/react-chartjs](https://coreui.io/) for [CoreUI for React](https://coreui.io/react/)
+<p align="center">
+  <a href="https://coreui.io/">
+    <img
+      src="https://coreui.io/images/brand/coreui-signet.svg"
+      alt="CoreUI logo"
+      width="200"
+    />
+  </a>
+</p>
+
+<h3 align="center">CoreUI React.js wrapper for Chart.js</h3>
+
+<p align="center">
+  <a href="https://coreui.io/react/docs/components/chart/"><strong>Explore @coreui/react-chartjs docs & examples »</strong></a>
+  <br>
+  <br>
+  <a href="https://github.com/coreui/coreui-react/issues/new?template=bug_report.md">Report bug</a>
+  ·
+  <a href="https://github.com/coreui/coreui-react/issues/new?template=feature_request.md">Request feature</a>
+  ·
+  <a href="https://community.coreui.io/">Community</a>
+  ·
+  <a href="https://blog.coreui.io/">Blog</a>
+</p>
+
+## Status
 
 [![npm package][npm-badge]][npm]
 [![NPM downloads][npm-download]][npm]
-![react](https://img.shields.io/badge/react-^17.0.1-lightgrey.svg?style=flat-square&logo=react)
 
 [npm-badge]: https://img.shields.io/npm/v/@coreui/react-chartjs/latest?style=flat-square
 [npm]: https://www.npmjs.com/package/@coreui/react-chartjs
@@ -11,11 +35,11 @@
 ##### install:
 
 ```bash
-npm install @coreui/react-chartjs@next
+npm install @coreui/react-chartjs
 
 # or
 
-yarn add @coreui/react-chartjs@next
+yarn add @coreui/react-chartjs
 ```
 
 ##### import:
