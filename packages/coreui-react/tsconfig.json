@@ -1,4 +1,7 @@
 {
   "extends": "../../tsconfig",
+  "compilerOptions": {
+    "declarationDir": "."
+  },
   "include": ["src/**/*"]
 }

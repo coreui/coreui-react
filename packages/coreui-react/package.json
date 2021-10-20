@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "4.0.0-rc.5",
+  "version": "4.0.0-rc.6",
   "description": "UI Components Library for React.js",
   "keywords": [
     "react",
@@ -32,10 +32,7 @@
     "src/"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "lint": "eslint \"src/components/**/*.{js,ts,tsx}\"",
-    "test": "jest --coverage",
-    "test:update": "jest --coverage --updateSnapshot"
+    "build": "rollup -c"
   },
   "devDependencies": {
     "@popperjs/core": "^2.10.2",
