@@ -5,16 +5,11 @@
   ],
   "scripts": {
     "charts:build": "lerna run --scope \"@coreui/react-chartjs\" build --stream",
-    "charts:lint": "lerna run --scope \"@coreui/react-chartjs\" lint --stream",
-    "charts:test": "lerna run --scope \"@coreui/react-chartjs\" test --stream",
     "docs:api": "lerna run --scope \"@coreui/react-docs\" api --stream",
     "docs:dev": "lerna run --scope \"@coreui/react-docs\" develop --stream",
     "docs:build": "lerna run --scope \"@coreui/react-docs\" build --stream",
     "docs:clean": "lerna run --scope \"@coreui/react-docs\" clean",
-    "docs:dist": "lerna run --scope \"@coreui/react-docs\" dist --stream",
     "lib:build": "lerna run --scope \"@coreui/react\" build --stream",
-    "lib:lint": "lerna run --scope \"@coreui/react\" lint --stream",
-    "lib:test": "lerna run --scope \"@coreui/react\" test --stream",
     "lint": "eslint \"packages/**/src/components/**/*.{js,ts,tsx}\"",
     "test": "jest --coverage",
     "test:update": "jest --coverage --updateSnapshot"
