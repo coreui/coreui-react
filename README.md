@@ -47,8 +47,8 @@ Several quick start options are available:
 
 - [Download the latest release](https://github.com/coreui/coreui-react/archive/v4.0.0.zip)
 - Clone the repo: `git clone https://github.com/coreui/coreui-react.git`
-- Install with [npm](https://www.npmjs.com/): `npm install @coreui/react@next`
-- Install with [yarn](https://yarnpkg.com/): `yarn add @coreui/react@next`
+- Install with [npm](https://www.npmjs.com/): `npm install @coreui/react`
+- Install with [yarn](https://yarnpkg.com/): `yarn add @coreui/react`
 
 Read the [Getting started page](https://coreui.io/react/docs/getting-started/introduction/) for information on the framework contents, templates and examples, and more.
 
@@ -73,7 +73,7 @@ npm install @coreui/coreui --save
 ##### Basic usage
 
 ```js
-import "@coreui/dist/css/coreui.min.css";
+import '@coreui/coreui/dist/css/coreui.min.css'
 ```
 
 #### Bootstrap CSS files
