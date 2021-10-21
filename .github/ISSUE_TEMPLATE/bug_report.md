@@ -11,7 +11,7 @@ Before opening:
 
 - [Search for duplicate or closed issues](https://github.com/coreui/coreui-react/issues?utf8=%E2%9C%93&q=is%3Aissue)
 - [Validate](https://html5.validator.nu/) any HTML to avoid common problems
-- Read the [contributing guidelines](https://github.com/coreui/coreui-react/blob/v4-dev/.github/CONTRIBUTING.md)
+- Read the [contributing guidelines](https://github.com/coreui/coreui-react/blob/main/.github/CONTRIBUTING.md)
 
 Bug reports must include:
 

@@ -45,7 +45,7 @@
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/coreui/coreui-react/archive/v4.0.0-rc.6.zip)
+- [Download the latest release](https://github.com/coreui/coreui-react/archive/v4.0.0.zip)
 - Clone the repo: `git clone https://github.com/coreui/coreui-react.git`
 - Install with [npm](https://www.npmjs.com/): `npm install @coreui/react@next`
 - Install with [yarn](https://yarnpkg.com/): `yarn add @coreui/react@next`
@@ -157,4 +157,4 @@ See [the Releases section of our project](https://github.com/coreui/coreui-react
 
 ## Copyright and license
 
-Copyright 2021 creativeLabs Łukasz Holeczek. Code released under the [MIT License](https://github.com/coreui/coreui-react/blob/v4-dev/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
+Copyright 2021 creativeLabs Łukasz Holeczek. Code released under the [MIT License](https://github.com/coreui/coreui-react/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
