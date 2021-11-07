@@ -2,6 +2,11 @@ import React, { ChangeEventHandler, forwardRef, InputHTMLAttributes } from 'reac
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+type Option = {
+  disabled?: boolean
+  label?: string
+  value?: string
+}
 export interface CFormSelectProps extends Omit<InputHTMLAttributes<HTMLSelectElement>, 'size'> {
   /**
    * A string of all className you want applied to the component.
@@ -20,6 +25,13 @@ export interface CFormSelectProps extends Omit<InputHTMLAttributes<HTMLSelectEle
    */
   onChange?: ChangeEventHandler<HTMLSelectElement>
   /**
+   * Options list of the select component. Available keys: `label`, `value`, `disabled`.
+   * Examples:
+   * - `options={[{ value: 'js', label: 'JavaScript' }, { value: 'html', label: 'HTML', disabled: true }]}`
+   * - `options={['js', 'html']}`
+   */
+  options?: Option[] | string[]
+  /**
    * Size the component small or large.
    */
   size?: 'sm' | 'lg'
@@ -36,7 +48,7 @@ export interface CFormSelectProps extends Omit<InputHTMLAttributes<HTMLSelectEle
 }
 
 export const CFormSelect = forwardRef<HTMLSelectElement, CFormSelectProps>(
-  ({ children, className, htmlSize, invalid, size, valid, ...rest }, ref) => {
+  ({ children, className, htmlSize, invalid, options, size, valid, ...rest }, ref) => {
     const _className = classNames(
       'form-select',
       {
@@ -48,7 +60,20 @@ export const CFormSelect = forwardRef<HTMLSelectElement, CFormSelectProps>(
     )
     return (
       <select className={_className} size={htmlSize} {...rest} ref={ref}>
-        {children}
+        {options
+          ? options.map((option, index) => {
+              return (
+                <option
+                  {...(typeof option === 'object' &&
+                    option.disabled && { disabled: option.disabled })}
+                  {...(typeof option === 'object' && option.value && { value: option.value })}
+                  key={index}
+                >
+                  {typeof option === 'string' ? option : option.label}
+                </option>
+              )
+            })
+          : children}
       </select>
     )
   },
@@ -59,6 +84,7 @@ CFormSelect.propTypes = {
   className: PropTypes.string,
   htmlSize: PropTypes.number,
   invalid: PropTypes.bool,
+  options: PropTypes.array,
   size: PropTypes.oneOf(['sm', 'lg']),
   valid: PropTypes.bool,
 }
