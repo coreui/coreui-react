@@ -14,9 +14,6 @@ const Footer: FC = () => {
           <li className="d-inline-block ms-3">
             <a href="https://twitter.com/core_ui">Twitter</a>
           </li>
-          <li className="d-inline-block ms-3">
-            <a href="https://community.coreui.io/">Community</a>
-          </li>
           <li className="d-inline-block ms-3 ps-3 border-start border-2">
             <a href="https://coreui.io/">CoreUI (Vanilla)</a>
           </li>

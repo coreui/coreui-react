@@ -42,9 +42,6 @@ const Header: FC = () => {
               <CIcon icon={cilMenu} size="lg" />
             </CHeaderToggler>
             <CHeaderNav className="ms-auto">
-              <CNavItem href="https://community.coreui.io/">
-                <CIcon icon={cibDiscourse} size="xl" />
-              </CNavItem>
               <CNavItem href="https://github.com/coreui/coreui-react/">
                 <CIcon icon={cibGithub} size="xl" />
               </CNavItem>
