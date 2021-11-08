@@ -1,7 +1,8 @@
-import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react'
+import React, { forwardRef, InputHTMLAttributes, ReactNode, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import { useForkedRef } from '../../utils/hooks'
 import { Colors, Shapes } from '../Types'
 
 import { CFormLabel } from './CFormLabel'
@@ -47,6 +48,10 @@ export interface CFormCheckProps extends InputHTMLAttributes<HTMLInputElement> {
    */
   id?: string
   /**
+   * Input Checkbox indeterminate Property.
+   */
+  indeterminate?: boolean
+  /**
    * Group checkboxes or radios on the same horizontal row by adding.
    */
   inline?: boolean
@@ -70,9 +75,30 @@ export interface CFormCheckProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
   (
-    { className, button, hitArea, id, inline, invalid, label, type = 'checkbox', valid, ...rest },
+    {
+      className,
+      button,
+      hitArea,
+      id,
+      indeterminate,
+      inline,
+      invalid,
+      label,
+      type = 'checkbox',
+      valid,
+      ...rest
+    },
     ref,
   ) => {
+    const inputRef = useRef<HTMLInputElement>(null)
+    const forkedRef = useForkedRef(ref, inputRef)
+
+    useEffect(() => {
+      if (inputRef.current && indeterminate) {
+        inputRef.current.indeterminate = indeterminate
+      }
+    }, [indeterminate])
+
     const _className = classNames(
       'form-check',
       {
@@ -102,7 +128,7 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
     )
 
     const formControl = () => {
-      return <input type={type} className={inputClassName} id={id} {...rest} ref={ref} />
+      return <input type={type} className={inputClassName} id={id} {...rest} ref={forkedRef} />
     }
 
     const formLabel = () => {
@@ -141,6 +167,7 @@ CFormCheck.propTypes = {
   className: PropTypes.string,
   hitArea: PropTypes.oneOf(['full']),
   id: PropTypes.string,
+  indeterminate: PropTypes.bool,
   inline: PropTypes.bool,
   invalid: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
