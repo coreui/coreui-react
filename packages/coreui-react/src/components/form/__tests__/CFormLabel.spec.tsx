@@ -15,3 +15,11 @@ test('CFormLabel customize className', async () => {
   expect(container.firstChild).toHaveClass('form-label')
   expect(container.firstChild).toHaveTextContent('Test')
 })
+
+test('CFormLabel customize htmlFor', async () => {
+  const { container } = render(<CFormLabel htmlFor="bazinga">Test</CFormLabel>)
+  expect(container).toMatchSnapshot()
+  expect(container.firstChild).toHaveAttribute('for', 'bazinga')
+  expect(container.firstChild).toHaveClass('form-label')
+  expect(container.firstChild).toHaveTextContent('Test')
+})
