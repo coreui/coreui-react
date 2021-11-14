@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import GitHubButton from 'react-github-btn'
 
 import CIcon from '@coreui/icons-react'
-import { cibDiscourse, cibGithub, cibTwitter, cilCloudDownload, cilMenu } from '@coreui/icons'
+import { cibGithub, cibTwitter, cilCloudDownload, cilMenu } from '@coreui/icons'
 import {
   CAlert,
   CButton,
