@@ -103,8 +103,8 @@ CPlaceholder.propTypes = {
   animation: PropTypes.oneOf(['glow', 'wave']),
   children: PropTypes.node,
   className: PropTypes.string,
-  color: colorPropType.isRequired,
-  component: PropTypes.string,
+  color: colorPropType,
+  component: PropTypes.elementType,
   size: PropTypes.oneOf(['xs', 'sm', 'lg']),
 }
 
