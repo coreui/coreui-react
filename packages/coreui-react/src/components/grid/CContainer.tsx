@@ -44,17 +44,17 @@ const BREAKPOINTS = [
 
 export const CContainer = forwardRef<HTMLDivElement, CContainerProps>(
   ({ children, className, ...rest }, ref) => {
-    const repsonsiveCLassNames: string[] = []
+    const repsonsiveClassNames: string[] = []
 
     BREAKPOINTS.forEach((bp) => {
       const breakpoint = rest[bp]
       delete rest[bp]
 
-      breakpoint && repsonsiveCLassNames.push(`container-${bp}`)
+      breakpoint && repsonsiveClassNames.push(`container-${bp}`)
     })
 
     const _className = classNames(
-      repsonsiveCLassNames.length ? repsonsiveCLassNames : 'container',
+      repsonsiveClassNames.length ? repsonsiveClassNames : 'container',
       className,
     )
 

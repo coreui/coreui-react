@@ -63,7 +63,7 @@ const BREAKPOINTS = [
 
 export const CRow = forwardRef<HTMLDivElement, CRowProps>(
   ({ children, className, ...rest }, ref) => {
-    const repsonsiveCLassNames: string[] = []
+    const repsonsiveClassNames: string[] = []
 
     BREAKPOINTS.forEach((bp) => {
       const breakpoint = rest[bp]
@@ -73,21 +73,21 @@ export const CRow = forwardRef<HTMLDivElement, CRowProps>(
 
       if (typeof breakpoint === 'object') {
         if (breakpoint.cols) {
-          repsonsiveCLassNames.push(`row-cols${infix}-${breakpoint.cols}`)
+          repsonsiveClassNames.push(`row-cols${infix}-${breakpoint.cols}`)
         }
         if (typeof breakpoint.gutter === 'number') {
-          repsonsiveCLassNames.push(`g${infix}-${breakpoint.gutter}`)
+          repsonsiveClassNames.push(`g${infix}-${breakpoint.gutter}`)
         }
         if (typeof breakpoint.gutterX === 'number') {
-          repsonsiveCLassNames.push(`gx${infix}-${breakpoint.gutterX}`)
+          repsonsiveClassNames.push(`gx${infix}-${breakpoint.gutterX}`)
         }
         if (typeof breakpoint.gutterY === 'number') {
-          repsonsiveCLassNames.push(`gy${infix}-${breakpoint.gutterY}`)
+          repsonsiveClassNames.push(`gy${infix}-${breakpoint.gutterY}`)
         }
       }
     })
 
-    const _className = classNames('row', repsonsiveCLassNames, className)
+    const _className = classNames('row', repsonsiveClassNames, className)
 
     return (
       <div className={_className} ref={ref}>
