@@ -51,7 +51,7 @@ test('COffcanvas customize and event on click backdrop', async () => {
   expect(container.firstChild).toHaveClass('show')
   expect(container.firstChild).toHaveTextContent('Test')
   expect(onHide).toHaveBeenCalledTimes(0)
-  const backdrop = document.querySelector('.modal-backdrop')
+  const backdrop = document.querySelector('.offcanvas-backdrop')
   if (backdrop !== null) {
     fireEvent.click(backdrop)
   }

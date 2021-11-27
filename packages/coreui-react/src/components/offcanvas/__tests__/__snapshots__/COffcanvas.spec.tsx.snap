@@ -11,7 +11,7 @@ exports[`COffcanvas customize and event on click backdrop 1`] = `
     Test
   </div>
   <div
-    class="modal-backdrop fade show"
+    class="offcanvas-backdrop fade show"
   />
 </div>
 `;
@@ -27,7 +27,7 @@ exports[`COffcanvas customize and event on keypress 1`] = `
     Test
   </div>
   <div
-    class="modal-backdrop fade show"
+    class="offcanvas-backdrop fade show"
   />
 </div>
 `;

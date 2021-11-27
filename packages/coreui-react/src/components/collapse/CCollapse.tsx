@@ -11,6 +11,10 @@ export interface CCollapseProps extends HTMLAttributes<HTMLDivElement> {
    */
   className?: string
   /**
+   * Set horizontal collapsing to transition the width instead of height.
+   */
+  horizontal?: boolean
+  /**
    * Callback fired when the component requests to be hidden.
    */
   onHide?: () => void
@@ -25,8 +29,9 @@ export interface CCollapseProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
-  ({ children, className, onHide, onShow, visible, ...rest }, ref) => {
+  ({ children, className, horizontal, onHide, onShow, visible, ...rest }, ref) => {
     const [height, setHeight] = useState<number>()
+    const [width, setWidth] = useState<number>()
     const collapseRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, collapseRef)
 
@@ -42,27 +47,53 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
 
     const onEntering = () => {
       onShow && onShow()
+
+      if (horizontal) {
+        collapseRef.current && setWidth(collapseRef.current.scrollWidth)
+        return
+      }
       collapseRef.current && setHeight(collapseRef.current.scrollHeight)
     }
 
     const onEntered = () => {
+      if (horizontal) {
+        setWidth(0)
+        return
+      }
       setHeight(0)
     }
 
     const onExit = () => {
+      if (horizontal) {
+        collapseRef.current && setWidth(collapseRef.current.scrollWidth)
+        return
+      }
       collapseRef.current && setHeight(collapseRef.current.scrollHeight)
     }
 
     const onExiting = () => {
       onHide && onHide()
+      if (horizontal) {
+        setWidth(0)
+        return
+      }
       setHeight(0)
     }
 
     const onExited = () => {
+      if (horizontal) {
+        setWidth(0)
+        return
+      }
       setHeight(0)
     }
 
-    const _className = classNames(className)
+    const _className = classNames(
+      {
+        'collapse-horizontal': horizontal,
+      },
+      className,
+    )
 
     return (
       <CSSTransition
@@ -77,10 +108,11 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
         {(state) => {
           const transitionClass = getTransitionClass(state)
           const currentHeight = height === 0 ? null : { height }
+          const currentWidth = width === 0 ? null : { width }
           return (
             <div
               className={classNames(_className, transitionClass)}
-              style={{ ...currentHeight }}
+              style={{ ...currentHeight, ...currentWidth }}
               {...rest}
               ref={forkedRef}
             >
@@ -96,6 +128,7 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
 CCollapse.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  horizontal: PropTypes.bool,
   onHide: PropTypes.func,
   onShow: PropTypes.func,
   visible: PropTypes.bool,

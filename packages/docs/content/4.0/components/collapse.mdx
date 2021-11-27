@@ -78,6 +78,50 @@ return (
 )
 ```
 
+## Horizontal
+
+The collapse plugin also supports horizontal collapsing. Add the `horizontal` property to transition the `width` instead of `height` and set a `width` on the immediate child element.
+
+export const HorizontalExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <CButton className="mb-3" onClick={() => setVisible(!visible)} aria-expanded={visible} aria-controls="collapseWidthExample">Button</CButton>
+      <div style={{ minHeight: '120px'}}>
+        <CCollapse id="collapseWidthExample" horizontal visible={visible}>
+          <CCard style={{width: '300px'}}>
+            <CCardBody>
+              This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+            </CCardBody>
+          </CCard>
+        </CCollapse>
+      </div>
+    </>
+  )
+}
+
+<Example>
+  <HorizontalExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <>
+    <CButton className="mb-3" onClick={() => setVisible(!visible)} aria-expanded={visible} aria-controls="collapseWidthExample">Button</CButton>
+    <div style={{ minHeight: '120px'}}>
+      <CCollapse id="collapseWidthExample" horizontal visible={visible}>
+        <CCard style={{width: '300px'}}>
+          <CCardBody>
+            This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+          </CCardBody>
+        </CCard>
+      </CCollapse>
+    </div>
+  </>
+)
+```
+
 ## Multiple targets
 
 A `<CButton>` can show and hide multiple elements.
