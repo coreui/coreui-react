@@ -1278,6 +1278,60 @@ return (
 )
 ```
 
+### External content
+
+Sometimes you want to use the collapse plugin to trigger a container element for content that structurally sits outside of the `<CNavbar>`.
+
+export const ExternalContentExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <CCollapse id="navbarToggleExternalContent" visible={visible}>
+        <div className="bg-dark p-4">
+          <h5 className="text-white h4">Collapsed content</h5>
+          <span className="text-medium-emphasis-inverse">Toggleable via the navbar brand.</span>
+        </div>
+      </CCollapse>
+      <CNavbar colorScheme="dark" className="bg-dark">
+        <CContainer fluid>
+          <CNavbarToggler
+            aria-controls="navbarToggleExternalContent"
+            aria-label="Toggle navigation"
+            onClick={() => setVisible(!visible)}
+          />
+        </CContainer>
+      </CNavbar>
+    </>
+  )
+}
+
+<Example>
+  <ExternalContentExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <>
+    <CCollapse id="navbarToggleExternalContent" visible={visible}>
+      <div className="bg-dark p-4">
+        <h5 className="text-white h4">Collapsed content</h5>
+        <span className="text-medium-emphasis-inverse">Toggleable via the navbar brand.</span>
+      </div>
+    </CCollapse>
+    <CNavbar colorScheme="dark" className="bg-dark">
+      <CContainer fluid>
+        <CNavbarToggler
+          aria-controls="navbarToggleExternalContent"
+          aria-label="Toggle navigation"
+          onClick={() => setVisible(!visible)}
+        />
+      </CContainer>
+    </CNavbar>
+  </>
+)
+```
+
 ## API
 
 ### CNavbar
