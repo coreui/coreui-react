@@ -86,6 +86,7 @@ import { CNavbarText } from './components/navbar/CNavbarText'
 import { CNavbarToggler } from './components/navbar/CNavbarToggler'
 import { CPagination } from './components/pagination/CPagination'
 import { CPaginationItem } from './components/pagination/CPaginationItem'
+import { CPlaceholder } from './components/placeholder/CPlaceholder'
 import { CPopover } from './components/popover/CPopover'
 import { CProgress } from './components/progress/CProgress'
 import { CProgressBar } from './components/progress/CProgressBar'
@@ -206,6 +207,7 @@ export {
   CNavbarToggler,
   CPagination,
   CPaginationItem,
+  CPlaceholder,
   CPopover,
   CProgress,
   CProgressBar,

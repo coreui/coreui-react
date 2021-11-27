@@ -225,13 +225,8 @@ const nav = [
         to: '/components/pagination/',
       },
       {
-        name: 'Placeholders',
-        to: '/components/placeholders/',
-        disabled: true,
-        badge: {
-          color: 'warning',
-          text: 'WIP v4.1',
-        },
+        name: 'Placeholder',
+        to: '/components/placeholder/',
       },
       {
         name: 'Popover',
