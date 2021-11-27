@@ -31,6 +31,10 @@ import {
   CNavbarNav,
   CNavbarText,
   CNavbarToggler,
+  COffcanvas,
+  COffcanvasBody,
+  COffcanvasHeader,
+  COffcanvasTitle,
 } from '@coreui/react/src/index'
 
 import CoreUISignetImg from './../assets/images/brand/coreui-signet.svg'
@@ -1329,6 +1333,234 @@ return (
       </CContainer>
     </CNavbar>
   </>
+)
+```
+
+### Offcanvas
+
+Transform your expanding and collapsing navbar into an offcanvas drawer with the offcanvas plugin. We extend both the offcanvas default styles and use our `.navbar-expand-*` classes to create a dynamic and flexible navigation sidebar.
+
+In the example below, to create an offcanvas navbar that is always collapsed across all breakpoints, omit the `.navbar-expand-*` class entirely.
+
+export const OffcanvasExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <CNavbar colorScheme="light" className="bg-light">
+      <CContainer fluid>
+        <CNavbarToggler
+          aria-controls="offcanvasNavbar"
+          aria-label="Toggle navigation"
+          onClick={() => setVisible(!visible)}
+        />
+        <COffcanvas id="offcanvasNavbar" placement="end" portal={false} visible={visible} onHide={() => setVisible(false)}>
+          <COffcanvasHeader>
+            <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+            <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+          </COffcanvasHeader>
+          <COffcanvasBody>
+            <CNavbarNav>
+              <CNavItem>
+                <CNavLink href="#" active>
+                  Home
+                </CNavLink>
+              </CNavItem>
+              <CNavItem>
+                <CNavLink href="#">Link</CNavLink>
+              </CNavItem>
+              <CDropdown variant="nav-item" popper={false}>
+                <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
+                <CDropdownMenu>
+                  <CDropdownItem href="#">Action</CDropdownItem>
+                  <CDropdownItem href="#">Another action</CDropdownItem>
+                  <CDropdownDivider />
+                  <CDropdownItem href="#">Something else here</CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+              <CNavItem>
+                <CNavLink href="#" disabled>
+                  Disabled
+                </CNavLink>
+              </CNavItem>
+            </CNavbarNav>
+            <CForm className="d-flex">
+              <CFormInput type="search" className="me-2" placeholder="Search" />
+              <CButton type="submit" color="success" variant="outline">
+                Search
+              </CButton>
+            </CForm>
+          </COffcanvasBody>
+        </COffcanvas>
+      </CContainer>
+    </CNavbar>
+  )
+}
+
+<Example>
+  <OffcanvasExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <CNavbar colorScheme="light" className="bg-light">
+    <CContainer fluid>
+      <CNavbarToggler
+        aria-controls="offcanvasNavbar"
+        aria-label="Toggle navigation"
+        onClick={() => setVisible(!visible)}
+      />
+      <COffcanvas id="offcanvasNavbar" placement="end" portal={false} visible={visible} onHide={() => setVisible(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          <CNavbarNav>
+            <CNavItem>
+              <CNavLink href="#" active>
+                Home
+              </CNavLink>
+            </CNavItem>
+            <CNavItem>
+              <CNavLink href="#">Link</CNavLink>
+            </CNavItem>
+            <CDropdown variant="nav-item" popper={false}>
+              <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem href="#">Action</CDropdownItem>
+                <CDropdownItem href="#">Another action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem href="#">Something else here</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            <CNavItem>
+              <CNavLink href="#" disabled>
+                Disabled
+              </CNavLink>
+            </CNavItem>
+          </CNavbarNav>
+          <CForm className="d-flex">
+            <CFormInput type="search" className="me-2" placeholder="Search" />
+            <CButton type="submit" color="success" variant="outline">
+              Search
+            </CButton>
+          </CForm>
+        </COffcanvasBody>
+      </COffcanvas>
+    </CContainer>
+  </CNavbar>
+)
+```
+
+To create an offcanvas navbar that expands into a normal navbar at a specific breakpoint like `xxl`, use `expand="xxl"` property.
+
+export const OffcanvasExample2 = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <CNavbar colorScheme="light" className="bg-light" expand="xxl">
+      <CContainer fluid>
+        <CNavbarToggler
+          aria-controls="offcanvasNavbar2"
+          aria-label="Toggle navigation"
+          onClick={() => setVisible(!visible)}
+        />
+        <COffcanvas id="offcanvasNavbar2" placement="end" portal={false} visible={visible} onHide={() => setVisible(false)}>
+          <COffcanvasHeader>
+            <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+            <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+          </COffcanvasHeader>
+          <COffcanvasBody>
+            <CNavbarNav>
+              <CNavItem>
+                <CNavLink href="#" active>
+                  Home
+                </CNavLink>
+              </CNavItem>
+              <CNavItem>
+                <CNavLink href="#">Link</CNavLink>
+              </CNavItem>
+              <CDropdown variant="nav-item" popper={false}>
+                <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
+                <CDropdownMenu>
+                  <CDropdownItem href="#">Action</CDropdownItem>
+                  <CDropdownItem href="#">Another action</CDropdownItem>
+                  <CDropdownDivider />
+                  <CDropdownItem href="#">Something else here</CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+              <CNavItem>
+                <CNavLink href="#" disabled>
+                  Disabled
+                </CNavLink>
+              </CNavItem>
+            </CNavbarNav>
+            <CForm className="d-flex">
+              <CFormInput type="search" className="me-2" placeholder="Search" />
+              <CButton type="submit" color="success" variant="outline">
+                Search
+              </CButton>
+            </CForm>
+          </COffcanvasBody>
+        </COffcanvas>
+      </CContainer>
+    </CNavbar>
+  )
+}
+
+<Example>
+  <OffcanvasExample2 />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <CNavbar colorScheme="light" className="bg-light" expand="xxl">
+    <CContainer fluid>
+      <CNavbarToggler
+        aria-controls="offcanvasNavbar2"
+        aria-label="Toggle navigation"
+        onClick={() => setVisible(!visible)}
+      />
+      <COffcanvas id="offcanvasNavbar2" placement="end" portal={false} visible={visible} onHide={() => setVisible(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          <CNavbarNav>
+            <CNavItem>
+              <CNavLink href="#" active>
+                Home
+              </CNavLink>
+            </CNavItem>
+            <CNavItem>
+              <CNavLink href="#">Link</CNavLink>
+            </CNavItem>
+            <CDropdown variant="nav-item" popper={false}>
+              <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem href="#">Action</CDropdownItem>
+                <CDropdownItem href="#">Another action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem href="#">Something else here</CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            <CNavItem>
+              <CNavLink href="#" disabled>
+                Disabled
+              </CNavLink>
+            </CNavItem>
+          </CNavbarNav>
+          <CForm className="d-flex">
+            <CFormInput type="search" className="me-2" placeholder="Search" />
+            <CButton type="submit" color="success" variant="outline">
+              Search
+            </CButton>
+          </CForm>
+        </COffcanvasBody>
+      </COffcanvas>
+    </CContainer>
+  </CNavbar>
 )
 ```
 
