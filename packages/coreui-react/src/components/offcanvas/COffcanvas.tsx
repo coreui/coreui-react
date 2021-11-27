@@ -150,8 +150,21 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
         </Transition>
         {typeof window !== 'undefined' && portal
           ? backdrop &&
-            createPortal(<CBackdrop visible={_visible} onClick={handleDismiss} />, document.body)
-          : backdrop && <CBackdrop visible={_visible} onClick={handleDismiss} />}
+            createPortal(
+              <CBackdrop
+                className="offcanvas-backdrop"
+                onClick={handleDismiss}
+                visible={_visible}
+              />,
+              document.body,
+            )
+          : backdrop && (
+              <CBackdrop
+                className="offcanvas-backdrop"
+                onClick={handleDismiss}
+                visible={_visible}
+              />
+            )}
       </>
     )
   },
