@@ -5,6 +5,9 @@ import classNames from 'classnames'
 import { Colors, colorPropType } from '../Types'
 
 export interface CPlaceholderProps extends HTMLAttributes<HTMLSpanElement> {
+  /**
+   * Set animation type to better convey the perception of something being actively loaded.
+   */
   animation?: 'glow' | 'wave'
   /**
    * A string of all className you want applied to the component.

@@ -1338,9 +1338,9 @@ return (
 
 ### Offcanvas
 
-Transform your expanding and collapsing navbar into an offcanvas drawer with the offcanvas plugin. We extend both the offcanvas default styles and use our `.navbar-expand-*` classes to create a dynamic and flexible navigation sidebar.
+Transform your expanding and collapsing navbar into an offcanvas drawer with the offcanvas plugin. We extend both the offcanvas default styles and use our `expand="*"` prop to create a dynamic and flexible navigation sidebar.
 
-In the example below, to create an offcanvas navbar that is always collapsed across all breakpoints, omit the `.navbar-expand-*` class entirely.
+In the example below, to create an offcanvas navbar that is always collapsed across all breakpoints, omit the `expand="*"` prop entirely.
 
 export const OffcanvasExample = () => {
   const [visible, setVisible] = useState(false)

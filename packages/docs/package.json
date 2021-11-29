@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react-docs",
-  "version": "4.0.2",
+  "version": "4.1.0",
   "private": true,
   "description": "",
   "homepage": "https://coreui.io/react/",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@coreui/chartjs": "^3.0.0",
-    "@coreui/coreui": "^4.0.5",
+    "@coreui/coreui": "^4.1.0",
     "@coreui/icons": "^2.1.0",
     "@coreui/icons-react": "^2.0.0",
     "@coreui/react-chartjs": "^2.0.0",
