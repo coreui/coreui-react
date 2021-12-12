@@ -16,7 +16,8 @@
   "scripts": {
     "api": "rimraf \"content/$npm_package_config_version_short/api/*\" & node build/api.js",
     "build": "gatsby build",
-    "develop": "export NODE_OPTIONS=--openssl-legacy-provider; gatsby develop",
+    "develop": "gatsby develop",
+    "develop:n17": "export NODE_OPTIONS=--openssl-legacy-provider; gatsby develop",
     "dist": "run-s api build",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "gatsby develop",
