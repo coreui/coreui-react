@@ -13,7 +13,7 @@ export interface CTooltipProps {
   /**
    * Content node for your component.
    */
-  content: ReactNode
+  content: ReactNode | string
   /**
    * Callback fired when the component requests to be hidden.
    */
@@ -126,7 +126,7 @@ export const CTooltip: FC<CTooltipProps> = ({
 
 CTooltip.propTypes = {
   children: PropTypes.any,
-  content: PropTypes.node,
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   placement: PropTypes.oneOf(['auto', 'top', 'right', 'bottom', 'left']),
   onHide: PropTypes.func,
   onShow: PropTypes.func,
