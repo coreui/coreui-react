@@ -13,7 +13,7 @@ export interface CPopoverProps {
   /**
    * Content node for your component.
    */
-  content: ReactNode
+  content: ReactNode | string
   /**
    * Offset of the popover relative to its target.
    */
@@ -29,7 +29,7 @@ export interface CPopoverProps {
   /**
    * Title node for your component.
    */
-  title?: ReactNode
+  title?: ReactNode | string
   /**
    * Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.
    *
@@ -147,12 +147,12 @@ export const CPopover: FC<CPopoverProps> = ({
 
 CPopover.propTypes = {
   children: PropTypes.any,
-  content: PropTypes.node,
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   placement: PropTypes.oneOf(['auto', 'top', 'right', 'bottom', 'left']),
   offset: PropTypes.any, // TODO: find good proptype
   onHide: PropTypes.func,
   onShow: PropTypes.func,
-  title: PropTypes.string,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   trigger: triggerPropType,
   visible: PropTypes.bool,
 }
