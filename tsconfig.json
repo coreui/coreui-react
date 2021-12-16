@@ -19,6 +19,8 @@
     "noUnusedParameters": true,
     "esModuleInterop": true,
     "paths": {
+      "@coreui/icons-react": ["./packages/coreui-icons-react/src"],
+      "@coreui/icons-react/*": ["./packages/coreui-icons-react/src/*"],
       "@coreui/react": ["./packages/coreui-react/src"],
       "@coreui/react/*": ["./packages/coreui-react/src/*"],
       "@coreui/react-chartjs": ["./packages/coreui-react-chartjs/src"],

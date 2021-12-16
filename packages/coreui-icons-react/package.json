@@ -1,0 +1,58 @@
+{
+  "name": "@coreui/icons-react",
+  "version": "2.0.0",
+  "description": "Official React component for CoreUI Icons",
+  "keywords": [
+    "coreui",
+    "coreui-icons",
+    "coreui-react",
+    "icons",
+    "svg",
+    "svg-icons",
+    "layout",
+    "component",
+    "react"
+  ],
+  "homepage": "https://icons.coreui.io",
+  "bugs": {
+    "url": "https://github.com/coreui/coreui-icons/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coreui/coreui-icons.git"
+  },
+  "license": "MIT",
+  "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.1.1",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "classnames": "^2.3.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rollup": "^2.61.1",
+    "rollup-plugin-import-css": "^3.0.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "typescript": "^4.5.4"
+  },
+  "peerDependencies": {
+    "react": "^17",
+    "react-dom": "^17"
+  }
+}
