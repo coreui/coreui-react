@@ -9,23 +9,24 @@
     "docs:dev": "lerna run --scope \"@coreui/react-docs\" develop --stream",
     "docs:build": "lerna run --scope \"@coreui/react-docs\" build --stream",
     "docs:clean": "lerna run --scope \"@coreui/react-docs\" clean",
+    "icons:build": "lerna run --scope \"@coreui/icons-react\" build --stream",
     "lib:build": "lerna run --scope \"@coreui/react\" build --stream",
     "lint": "eslint \"packages/**/src/components/**/*.{js,ts,tsx}\"",
     "test": "jest --coverage",
     "test:update": "jest --coverage --updateSnapshot"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.4.0",
-    "@typescript-eslint/parser": "^5.4.0",
-    "eslint": "8.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "eslint": "8.4.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "jest": "^27.3.1",
+    "jest": "^27.4.5",
     "jest-canvas-mock": "^2.3.1",
     "lerna": "^4.0.0",
-    "prettier": "^2.5.0",
-    "ts-jest": "^27.0.7"
+    "prettier": "^2.5.1",
+    "ts-jest": "^27.1.2"
   }
 }
