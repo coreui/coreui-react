@@ -24,6 +24,7 @@ describe('<CChart />', () => {
     responsive: false,
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let chart: any, update: any, destroy: any
   const ref = (el: Chart | null): void => {
     chart = el

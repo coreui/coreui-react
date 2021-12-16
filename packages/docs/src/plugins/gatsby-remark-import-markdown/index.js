@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 'use strict'
 
 const fs = require('fs')
@@ -34,7 +35,7 @@ module.exports = function (_ref, _temp) {
 
       const code = fs.readFileSync(path, 'utf8')
 
-      const markdown = unified().use(parse).use(html, {sanitize: false})
+      const markdown = unified().use(parse).use(html, { sanitize: false })
 
       try {
         parent.value = `<div class=\"markdown\">${markdown.processSync(code)}</div>`

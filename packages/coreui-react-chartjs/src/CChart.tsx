@@ -160,6 +160,7 @@ export const CChart = forwardRef<Chart | undefined, CChartProps>((props, ref) =>
     )
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleOnClick = (e: any) => {
     if (!chart) return
 
@@ -195,6 +196,7 @@ export const CChart = forwardRef<Chart | undefined, CChartProps>((props, ref) =>
 
     // copy values
     assign(chart.config.data, newChartData)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     chart.config.data.datasets = newDataSets.map((newDataSet: any) => {
       // given the new set, find it's current match
       const currentDataSet = find(

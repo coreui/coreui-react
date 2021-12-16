@@ -37,7 +37,7 @@ const DocsLayout: FC = ({ data: { mdx } }) => {
           setSidebarVisible,
         }}
       >
-        <Sidebar currentRoute={mdx.frontmatter.route}/>
+        <Sidebar currentRoute={mdx.frontmatter.route} />
         <div className="wrapper d-flex flex-column min-vh-100">
           <Header />
           <div className="body flex-grow-1 px-3">

@@ -9,6 +9,7 @@ export type AssignableRef<ValueType> =
     }['bivarianceHack']
   | React.MutableRefObject<ValueType | null>
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function useForkedRef<RefValueType = any>(
   ...refs: (AssignableRef<RefValueType> | null | undefined)[]
 ) {
@@ -16,6 +17,7 @@ export function useForkedRef<RefValueType = any>(
     if (refs.every((ref) => ref == null)) {
       return null
     }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (node: any) => {
       refs.forEach((ref) => {
         assignRef(ref, node)
@@ -24,8 +26,10 @@ export function useForkedRef<RefValueType = any>(
   }, refs)
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function assignRef<RefValueType = any>(
   ref: AssignableRef<RefValueType> | null | undefined,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   value: any,
 ) {
   if (ref == null) return
@@ -40,6 +44,7 @@ export function assignRef<RefValueType = any>(
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
 export function isFunction(value: any): value is Function {
   return !!(value && {}.toString.call(value) == '[object Function]')
 }

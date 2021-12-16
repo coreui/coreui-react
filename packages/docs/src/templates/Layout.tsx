@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import { Footer, Header, Seo, Sidebar } from './../components/'
+import { Footer, Header } from './../components/'
 import './../styles/styles.scss'
 import { CContainer } from '@coreui/react/src/index'
 

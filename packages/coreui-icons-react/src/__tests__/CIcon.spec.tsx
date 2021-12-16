@@ -6,7 +6,6 @@ import CIcon from './../'
 // import { cifAu } from './../../../icons/js/flag/cif-au'
 
 describe('CIcon', () => {
-
   it('renders svg with class="icon"', () => {
     const { container } = render(<CIcon />)
     expect(container.firstChild).toHaveClass('icon')
@@ -19,7 +18,7 @@ describe('CIcon', () => {
   // })
 
   it('renders svg with size', () => {
-    const { container } = render(<CIcon size="xl"/>)
+    const { container } = render(<CIcon size="xl" />)
     expect(container.firstChild).toHaveClass('icon-xl')
   })
 
