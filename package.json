@@ -11,7 +11,7 @@
     "docs:clean": "lerna run --scope \"@coreui/react-docs\" clean",
     "icons:build": "lerna run --scope \"@coreui/icons-react\" build --stream",
     "lib:build": "lerna run --scope \"@coreui/react\" build --stream",
-    "lint": "eslint \"packages/**/src/components/**/*.{js,ts,tsx}\"",
+    "lint": "eslint \"packages/**/src/**/*.{js,ts,tsx}\"",
     "test": "jest --coverage",
     "test:update": "jest --coverage --updateSnapshot"
   },
