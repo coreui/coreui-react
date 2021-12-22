@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react-chartjs",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "React wrapper component for Chart.js",
   "keywords": [
     "coreui",
