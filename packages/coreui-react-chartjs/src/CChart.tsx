@@ -11,7 +11,6 @@ import React, {
 import classNames from 'classnames'
 
 import Chart, { ChartData, ChartOptions, ChartType, InteractionItem, Plugin } from 'chart.js/auto'
-import * as chartjs from 'chart.js'
 import { customTooltips as cuiCustomTooltips } from '@coreui/chartjs'
 
 import assign from 'lodash/assign'
@@ -136,25 +135,37 @@ export const CChart = forwardRef<Chart | undefined, CChartProps>((props, ref) =>
     } else return merge({}, data)
   }, [data, canvasRef.current])
 
+  const computedOptions = useMemo(() => {
+    return customTooltips
+      ? merge({}, options, {
+          plugins: {
+            tooltip: {
+              enabled: false,
+              mode: 'index',
+              position: 'nearest',
+              external: cuiCustomTooltips,
+            },
+          },
+        })
+      : options
+  }, [data, canvasRef.current, options])
+
   const [chart, setChart] = useState<Chart>()
+
+  useEffect(() => {
+    console.log(chart)
+  }, [chart])
 
   useImperativeHandle<Chart | undefined, Chart | undefined>(ref, () => chart, [chart])
 
   const renderChart = () => {
     if (!canvasRef.current) return
 
-    if (customTooltips) {
-      chartjs.defaults.plugins.tooltip.enabled = false
-      chartjs.defaults.plugins.tooltip.mode = 'index'
-      chartjs.defaults.plugins.tooltip.position = 'nearest'
-      chartjs.defaults.plugins.tooltip.external = cuiCustomTooltips
-    }
-
     setChart(
       new Chart(canvasRef.current, {
         type,
         data: computedData,
-        options,
+        options: computedOptions,
         plugins,
       }),
     )
@@ -182,7 +193,7 @@ export const CChart = forwardRef<Chart | undefined, CChartProps>((props, ref) =>
     if (!chart) return
 
     if (options) {
-      chart.options = { ...options }
+      chart.options = { ...computedOptions }
     }
 
     if (!chart.config.data) {
