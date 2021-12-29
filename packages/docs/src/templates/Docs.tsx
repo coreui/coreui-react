@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { CodeBlock, Example, Footer, Header, Seo, Sidebar, Toc } from './../components/'
-import { CCol, CContainer, CRow, CTable } from '@coreui/react/src/index'
+import { CCol, CContainer, CRow, CTable } from '@coreui/react/src/'
 import './../styles/styles.scss'
 
 interface ContextProps {
@@ -17,9 +17,9 @@ export const myContext = React.createContext({} as ContextProps)
 
 const components = {
   // eslint-disable-next-line react/display-name
-  pre: (props) => <CodeBlock {...props} />,
+  pre: (props: any) => <CodeBlock {...props} />,
   // eslint-disable-next-line react/display-name
-  table: (props) => <CTable responsive {...props} className="table table-striped table-api" />,
+  table: (props: any) => <CTable responsive {...props} className="table table-striped table-api" />,
   Example,
 }
 
