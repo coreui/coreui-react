@@ -152,10 +152,6 @@ export const CChart = forwardRef<Chart | undefined, CChartProps>((props, ref) =>
 
   const [chart, setChart] = useState<Chart>()
 
-  useEffect(() => {
-    console.log(chart)
-  }, [chart])
-
   useImperativeHandle<Chart | undefined, Chart | undefined>(ref, () => chart, [chart])
 
   const renderChart = () => {
