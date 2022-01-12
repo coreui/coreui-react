@@ -72,6 +72,10 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    * Remove animation to create modal that simply appear rather than fade in to view.
    */
   transition?: boolean
+  /*
+   * By default the component is unmounted after close animation, if you want to keep the component mounted set this property to false
+   */
+  unmountOnClose?: boolean
   /**
    * Toggle the visibility of modal component.
    */
@@ -102,11 +106,13 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       scrollable,
       size,
       transition = true,
+      unmountOnClose = true,
       visible,
     },
     ref,
   ) => {
     const modalRef = useRef<HTMLDivElement>(null)
+    const modalContentRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, modalRef)
 
     const [_visible, setVisible] = useState(visible)
@@ -120,6 +126,16 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       visible: _visible,
       setVisible,
     }
+
+    useEffect(() => {
+      modalRef.current && modalRef.current.addEventListener('click', handleClickOutside)
+      modalRef.current && modalRef.current.addEventListener('keyup', handleKeyDown)
+
+      return () => {
+        modalRef.current && modalRef.current.removeEventListener('click', handleClickOutside)
+        modalRef.current && modalRef.current.removeEventListener('keyup', handleKeyDown)
+      }
+    }, [_visible])
 
     const handleDismiss = () => {
       if (backdrop === 'static') {
@@ -167,6 +183,15 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       return () => document.body.classList.remove('modal-open')
     }, [_visible])
 
+    const handleClickOutside = (event: Event) => {
+      if (
+        modalContentRef.current &&
+        !modalContentRef.current.contains(event.target as HTMLElement)
+      ) {
+        handleDismiss()
+      }
+    }
+
     const handleKeyDown = useCallback(
       (event) => {
         if (event.key === 'Escape' && keyboard) {
@@ -190,9 +215,8 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
               fullscreen={fullscreen}
               scrollable={scrollable}
               size={size}
-              onClick={(event) => event.stopPropagation()}
             >
-              <CModalContent>{children}</CModalContent>
+              <CModalContent ref={modalContentRef}>{children}</CModalContent>
             </CModalDialog>
           </div>
         </CModalContext.Provider>
@@ -201,23 +225,21 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
 
     return (
       <>
-        <div onClick={handleDismiss} onKeyDown={handleKeyDown}>
-          <Transition
-            in={_visible}
-            mountOnEnter
-            onEnter={onShow}
-            onExit={onClose}
-            unmountOnExit
-            timeout={!transition ? 0 : duration}
-          >
-            {(state) => {
-              const transitionClass = getTransitionClass(state)
-              return typeof window !== 'undefined' && portal
-                ? createPortal(modal(forkedRef, transitionClass), document.body)
-                : modal(forkedRef, transitionClass)
-            }}
-          </Transition>
-        </div>
+        <Transition
+          in={_visible}
+          mountOnEnter
+          onEnter={onShow}
+          onExit={onClose}
+          unmountOnExit={unmountOnClose}
+          timeout={!transition ? 0 : duration}
+        >
+          {(state) => {
+            const transitionClass = getTransitionClass(state)
+            return typeof window !== 'undefined' && portal
+              ? createPortal(modal(forkedRef, transitionClass), document.body)
+              : modal(forkedRef, transitionClass)
+          }}
+        </Transition>
         {typeof window !== 'undefined' && portal
           ? backdrop && createPortal(<CBackdrop visible={_visible} />, document.body)
           : backdrop && <CBackdrop visible={_visible} />}
@@ -244,6 +266,7 @@ CModal.propTypes = {
   scrollable: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'lg', 'xl']),
   transition: PropTypes.bool,
+  unmountOnClose: PropTypes.bool,
   visible: PropTypes.bool,
 }
 

@@ -36,7 +36,7 @@ test('CModal dialog close on press ESC', async () => {
   expect(onClose).toHaveBeenCalledTimes(0)
   const modal = document.querySelector('.modal')
   if (modal !== null) {
-    fireEvent.keyDown(modal, {
+    fireEvent.keyUp(modal, {
       key: 'Escape',
       code: 'Escape',
       keyCode: 27,
