@@ -3,6 +3,7 @@ import React, {
   ElementType,
   forwardRef,
   HTMLAttributes,
+  RefObject,
   useEffect,
   useRef,
   useState,
@@ -33,6 +34,14 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
    * @type 'start' | 'end' | { xs: 'start' | 'end' } | { sm: 'start' | 'end' } | { md: 'start' | 'end' } | { lg: 'start' | 'end' } | { xl: 'start' | 'end'} | { xxl: 'start' | 'end'}
    */
   alignment?: Alignments
+  /**
+   * Configure the auto close behavior of the dropdown:
+   * - `true` - the dropdown will be closed by clicking outside or inside the dropdown menu.
+   * - `false` - the dropdown will be closed by clicking the toggle button and manually calling hide or toggle method. (Also will not be closed by pressing esc key)
+   * - `'inside'` - the dropdown will be closed (only) by clicking inside the dropdown menu.
+   * - `'outside'` - the dropdown will be closed (only) by clicking outside the dropdown menu.
+   */
+  autoClose?: 'inside' | 'outside' | boolean
   /**
    * A string of all className you want applied to the base component.
    */
@@ -80,6 +89,8 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
 }
 
 interface ContextProps extends CDropdownProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  dropdownToggleRef: RefObject<any> | undefined
   setVisible: React.Dispatch<React.SetStateAction<boolean | undefined>>
 }
 
@@ -90,6 +101,7 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
     {
       children,
       alignment,
+      autoClose = true,
       className,
       dark,
       direction,
@@ -106,6 +118,7 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
   ) => {
     const [_visible, setVisible] = useState(visible)
     const dropdownRef = useRef<HTMLDivElement>(null)
+    const dropdownToggleRef = useRef(null)
     const forkedRef = useForkedRef(ref, dropdownRef)
 
     const Component = variant === 'nav-item' ? 'li' : component
@@ -117,8 +130,10 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
 
     const contextValues = {
       alignment,
+      autoClose,
       dark,
       direction: direction,
+      dropdownToggleRef,
       placement: placement,
       popper,
       variant,
@@ -136,19 +151,6 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
     )
 
     useEffect(() => {
-      _visible &&
-        setTimeout(() => {
-          window.addEventListener('click', handleClickOutside)
-          window.addEventListener('keyup', handleKeyup)
-        })
-
-      return () => {
-        window.removeEventListener('click', handleClickOutside)
-        window.removeEventListener('keyup', handleKeyup)
-      }
-    }, [_visible])
-
-    useEffect(() => {
       setVisible(visible)
     }, [visible])
 
@@ -156,17 +158,6 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       _visible && onShow && onShow()
       !_visible && onHide && onHide()
     }, [_visible])
-
-    const handleKeyup = (event: Event) => {
-      if (!dropdownRef.current?.contains(event.target as HTMLElement)) {
-        setVisible(false)
-      }
-    }
-    const handleClickOutside = (event: Event) => {
-      if (!dropdownRef.current?.contains(event.target as HTMLElement)) {
-        setVisible(false)
-      }
-    }
 
     const dropdownContent = () => {
       return variant === 'input-group' ? (
@@ -202,6 +193,10 @@ CDropdown.propTypes = {
     PropTypes.shape({ lg: alignmentDirection }),
     PropTypes.shape({ xl: alignmentDirection }),
     PropTypes.shape({ xxl: alignmentDirection }),
+  ]),
+  autoClose: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf<'inside' | 'outside'>(['inside', 'outside']),
   ]),
   children: PropTypes.node,
   className: PropTypes.string,

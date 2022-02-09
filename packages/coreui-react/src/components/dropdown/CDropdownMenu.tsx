@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { ElementType, FC, HTMLAttributes, useContext } from 'react'
+import React, { ElementType, FC, HTMLAttributes, useContext, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { Popper, PopperChildrenProps } from 'react-popper'
 
@@ -35,7 +35,57 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
   component: Component = 'ul',
   ...rest
 }) => {
-  const { alignment, dark, direction, placement, popper, visible } = useContext(CDropdownContext)
+  const {
+    alignment,
+    autoClose,
+    dark,
+    direction,
+    dropdownToggleRef,
+    placement,
+    popper,
+    visible,
+    setVisible,
+  } = useContext(CDropdownContext)
+
+  const dropdownMenuRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    visible && window.addEventListener('mouseup', handleMouseUp)
+    visible && window.addEventListener('keyup', handleKeyup)
+
+    return () => {
+      window.removeEventListener('mouseup', handleMouseUp)
+      window.removeEventListener('keyup', handleKeyup)
+    }
+  }, [visible])
+
+  const handleKeyup = (event: Event) => {
+    if (autoClose === false) {
+      return
+    }
+    if (!dropdownMenuRef.current?.contains(event.target as HTMLElement)) {
+      setVisible(false)
+    }
+  }
+  const handleMouseUp = (event: Event) => {
+    if (dropdownToggleRef && dropdownToggleRef.current.contains(event.target as HTMLElement)) {
+      return
+    }
+    if (autoClose === true) {
+      setVisible(false)
+      return
+    }
+    if (autoClose === 'inside' && dropdownMenuRef.current?.contains(event.target as HTMLElement)) {
+      setVisible(false)
+      return
+    }
+    if (
+      autoClose === 'outside' &&
+      !dropdownMenuRef.current?.contains(event.target as HTMLElement)
+    ) {
+      setVisible(false)
+    }
+  }
 
   let _placement: Placements = placement
 
@@ -101,7 +151,9 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
   }
 
   return popper && visible ? (
-    <Popper placement={_placement}>{({ ref, style }) => dropdownMenuComponent(style, ref)}</Popper>
+    <Popper innerRef={dropdownMenuRef} placement={_placement}>
+      {({ ref, style }) => dropdownMenuComponent(style, ref)}
+    </Popper>
   ) : (
     dropdownMenuComponent()
   )
