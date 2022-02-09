@@ -19,10 +19,11 @@ export const CAccordionButton = forwardRef<HTMLButtonElement, CAccordionButtonPr
 
     return (
       <button
+        type="button"
         className={_className}
-        {...rest}
         aria-expanded={!visible}
         onClick={() => setVisible(!visible)}
+        {...rest}
         ref={ref}
       >
         {children}
