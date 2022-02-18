@@ -7,11 +7,12 @@ module.exports = {
     titleTemplate: `%s · React UI Components · CoreUI `,
     description: `CoreUI for React.js is UI Component library written in TypeScript, and ready for your next React.js project.`,
     author: `@coreui_io`,
-    url: `https://coreui.io/react/docs/${pkg.config.version_short}/`,
-    siteUrl: `https://coreui.io/react/docs/${pkg.config.version_short}/`,
+    url: `https://coreui.io/react/docs/`,
+    siteUrl: `https://coreui.io/react/docs/`,
     image: ``, // Path to your image you placed in the `static` folder
     twitterUsername: `@coreui_io`,
   },
+  pathPrefix: `react/docs/`,
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
