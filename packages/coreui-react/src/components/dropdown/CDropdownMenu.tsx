@@ -63,12 +63,12 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
     if (autoClose === false) {
       return
     }
-    if (!dropdownMenuRef.current?.contains(event.target as HTMLElement)) {
-      if (event.key === 'Escape') {
-        setVisible(false)
-      }
+
+    if (event.key === 'Escape') {
+      setVisible(false)
     }
   }
+
   const handleMouseUp = (event: Event) => {
     if (dropdownToggleRef && dropdownToggleRef.current.contains(event.target as HTMLElement)) {
       return
