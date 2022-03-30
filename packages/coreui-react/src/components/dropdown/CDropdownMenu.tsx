@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
 import React, { ElementType, FC, HTMLAttributes, useContext, useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Popper, PopperChildrenProps } from 'react-popper'
 
@@ -59,12 +59,14 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
     }
   }, [visible])
 
-  const handleKeyup = (event: Event) => {
+  const handleKeyup = (event: KeyboardEvent) => {
     if (autoClose === false) {
       return
     }
     if (!dropdownMenuRef.current?.contains(event.target as HTMLElement)) {
-      setVisible(false)
+      if (event.key === 'Escape') {
+        setVisible(false)
+      }
     }
   }
   const handleMouseUp = (event: Event) => {
