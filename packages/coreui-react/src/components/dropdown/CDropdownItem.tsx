@@ -21,7 +21,7 @@ export const CDropdownItem = forwardRef<HTMLButtonElement | HTMLAnchorElement, C
     const _className = classNames('dropdown-item', className)
 
     return (
-      <CLink component={component} {...rest} className={_className} ref={ref}>
+      <CLink className={_className} component={component} {...rest} ref={ref}>
         {children}
       </CLink>
     )

@@ -73,19 +73,14 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
     if (dropdownToggleRef && dropdownToggleRef.current.contains(event.target as HTMLElement)) {
       return
     }
-    if (autoClose === true) {
-      setVisible(false)
-      return
-    }
-    if (autoClose === 'inside' && dropdownMenuRef.current?.contains(event.target as HTMLElement)) {
-      setVisible(false)
-      return
-    }
+
     if (
-      autoClose === 'outside' &&
-      !dropdownMenuRef.current?.contains(event.target as HTMLElement)
+      autoClose === true ||
+      (autoClose === 'inside' && dropdownMenuRef.current?.contains(event.target as HTMLElement)) ||
+      (autoClose === 'outside' && !dropdownMenuRef.current?.contains(event.target as HTMLElement))
     ) {
-      setVisible(false)
+      setTimeout(() => setVisible(false), 1)
+      return
     }
   }
 
@@ -94,12 +89,15 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
   if (direction === 'dropup') {
     _placement = 'top-start'
   }
+
   if (direction === 'dropend') {
     _placement = 'right-start'
   }
+
   if (direction === 'dropstart') {
     _placement = 'left-start'
   }
+
   if (alignment === 'end') {
     _placement = 'bottom-end'
   }
