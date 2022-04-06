@@ -137,6 +137,7 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
       <>
         <Transition
           in={_visible}
+          nodeRef={offcanvasRef}
           onEnter={onShow}
           onEntered={() => offcanvasRef.current?.focus()}
           onExit={onHide}

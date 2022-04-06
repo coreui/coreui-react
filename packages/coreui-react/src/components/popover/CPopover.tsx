@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, ReactNode, useState } from 'react'
+import React, { FC, ReactElement, ReactNode, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
@@ -59,6 +59,7 @@ export const CPopover: FC<CPopoverProps> = ({
   ...rest
 }) => {
   const [_visible, setVisible] = useState(visible)
+  const popoverRef = useRef()
 
   const getTransitionClass = (state: string) => {
     return state === 'entering'
@@ -94,9 +95,10 @@ export const CPopover: FC<CPopoverProps> = ({
         createPortal(
           <Transition
             in={_visible}
+            mountOnEnter
+            nodeRef={popoverRef}
             onEnter={onShow}
             onExit={onHide}
-            mountOnEnter
             timeout={{
               enter: 0,
               exit: 200,

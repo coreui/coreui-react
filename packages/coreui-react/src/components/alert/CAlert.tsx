@@ -1,10 +1,12 @@
-import React, { forwardRef, HTMLAttributes, useEffect, useState } from 'react'
+import React, { forwardRef, HTMLAttributes, useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
 
 import { Colors, colorPropType } from '../Types'
 import { CCloseButton } from '../close-button/CCloseButton'
+
+import { useForkedRef } from '../../utils/hooks'
 
 export interface CAlertProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -49,6 +51,8 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
     },
     ref,
   ) => {
+    const alertRef = useRef<HTMLDivElement>(null)
+    const forkedRef = useForkedRef(ref, alertRef)
     const [_visible, setVisible] = useState(visible)
 
     useEffect(() => {
@@ -69,7 +73,14 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
     }
 
     return (
-      <Transition in={_visible} mountOnEnter onExit={onClose} timeout={150} unmountOnExit>
+      <Transition
+        in={_visible}
+        mountOnEnter
+        nodeRef={alertRef}
+        onExit={onClose}
+        timeout={150}
+        unmountOnExit
+      >
         {(state) => {
           const transitionClass = getTransitionClass(state)
           return (
@@ -77,7 +88,7 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
               className={classNames(_className, transitionClass)}
               role="alert"
               {...rest}
-              ref={ref}
+              ref={forkedRef}
             >
               {children}
               {dismissible && <CCloseButton onClick={() => setVisible(false)} />}

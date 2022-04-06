@@ -228,6 +228,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
         <Transition
           in={_visible}
           mountOnEnter
+          nodeRef={modalRef}
           onEnter={onShow}
           onExit={onClose}
           unmountOnExit={unmountOnClose}

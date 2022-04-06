@@ -12,6 +12,8 @@ import classNames from 'classnames'
 
 import { Colors, colorPropType } from '../Types'
 
+import { useForkedRef } from '../../utils/hooks'
+
 export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
    * Apply a CSS fade transition to the toast.
@@ -82,6 +84,8 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
     },
     ref,
   ) => {
+    const toastRef = useRef()
+    const forkedRef = useForkedRef(ref, toastRef)
     const [_visible, setVisible] = useState(false)
     const timeout = useRef<number>()
 
@@ -133,6 +137,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
     return (
       <Transition
         in={_visible}
+        nodeRef={toastRef}
         onEnter={() => onShow && onShow(index ? index : null)}
         onExited={() => onClose && onClose(index ? index : null)}
         timeout={250}
@@ -151,7 +156,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
                 onMouseLeave={() => _autohide}
                 {...rest}
                 key={key}
-                ref={ref}
+                ref={forkedRef}
               >
                 {children}
               </div>

@@ -1,8 +1,9 @@
-import React, { HTMLAttributes, forwardRef } from 'react'
+import React, { HTMLAttributes, forwardRef, useRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
 
+import { useForkedRef } from '../../utils/hooks'
 export interface CTabPaneProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * A string of all className you want applied to the base component.
@@ -24,6 +25,9 @@ export interface CTabPaneProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CTabPane = forwardRef<HTMLDivElement, CTabPaneProps>(
   ({ children, className, onHide, onShow, visible, ...rest }, ref) => {
+    const tabPaneRef = useRef()
+    const forkedRef = useForkedRef(ref, tabPaneRef)
+
     const getTransitionClass = (state: string) => {
       return state === 'entered' && 'show'
     }
@@ -37,11 +41,11 @@ export const CTabPane = forwardRef<HTMLDivElement, CTabPaneProps>(
       className,
     )
     return (
-      <Transition in={visible} onEnter={onShow} onExit={onHide} timeout={150}>
+      <Transition in={visible} nodeRef={tabPaneRef} onEnter={onShow} onExit={onHide} timeout={150}>
         {(state) => {
           const transitionClass = getTransitionClass(state)
           return (
-            <div className={classNames(_className, transitionClass)} {...rest} ref={ref}>
+            <div className={classNames(_className, transitionClass)} {...rest} ref={forkedRef}>
               {children}
             </div>
           )

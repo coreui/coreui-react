@@ -26,7 +26,7 @@ const components = {
 const DocsLayout: FC = ({ data: { mdx } }) => {
   const [sidebarVisible, setSidebarVisible] = useState()
   return (
-    <>
+    <React.StrictMode>
       <Seo title={mdx.frontmatter.title} description={mdx.frontmatter.description} />
       <Helmet>
         <script src="https://media.ethicalads.io/media/client/ethicalads.min.js" />
@@ -60,7 +60,7 @@ const DocsLayout: FC = ({ data: { mdx } }) => {
           <Footer />
         </div>
       </myContext.Provider>
-    </>
+    </React.StrictMode>
   )
 }
 

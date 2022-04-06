@@ -106,6 +106,7 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
         )}
         <Transition
           in={_visible}
+          nodeRef={navItemsRef}
           onEntering={onEntering}
           onEntered={onEntered}
           onExit={onExit}

@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, ReactNode, useState } from 'react'
+import React, { FC, ReactElement, ReactNode, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
@@ -48,6 +48,7 @@ export const CTooltip: FC<CTooltipProps> = ({
   visible,
   ...rest
 }) => {
+  const tooltipRef = useRef()
   const [_visible, setVisible] = useState(visible)
 
   const getTransitionClass = (state: string) => {
@@ -85,6 +86,7 @@ export const CTooltip: FC<CTooltipProps> = ({
           <Transition
             in={_visible}
             mountOnEnter
+            nodeRef={tooltipRef}
             onEnter={onShow}
             onExit={onHide}
             timeout={{
