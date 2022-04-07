@@ -19,6 +19,7 @@ const EXCLUDED_FILES = []
 
 const options = {
   savePropValueAsString: true,
+  shouldIncludePropTagMap: true,
 }
 
 const PRO_COMPONENTS = []
@@ -43,9 +44,15 @@ import ${name} from '@coreui${relativeFilename.replace('.tsx', '')}'
   for (const [key, value] of Object.entries(props).sort()) {
     if (
       !value.parent.fileName.includes('@types/react/index.d.ts') &&
-      !value['description'].includes('@ignore')
+      typeof value.tags.ignore === 'undefined'
     ) {
-      const name = value.name || ''
+      let name = value.name || ''
+      const since = value.tags.since
+        ? ` <br/><div class="badge bg-primary">${value.tags.since}+</div>`
+        : ''
+      const deprecated = value.tags.deprecated
+        ? ` <br/><div class="badge bg-warning">Deprecated ${value.tags.deprecated}+</div>`
+        : ''
       const description =
         value.description.replaceAll('\n', '<br/>').replaceAll(' [docs]', '') || '-'
       const type = value.type
@@ -61,7 +68,9 @@ import ${name} from '@coreui${relativeFilename.replace('.tsx', '')}'
         types.push(`\`${element.replace(/"/g, "'")}\``)
       })
 
-      content += `| **${name}** | ${description} | ${types.join(' \\| ')} | ${defaultValue.replaceAll('\n', '<br/>')} |\n`
+      content += `| **${name}**${since}${deprecated} | ${description} | ${types.join(
+        ' \\| ',
+      )} | ${defaultValue.replaceAll('\n', '<br/>')} |\n`
       console.log(`${filename} - ${key}`)
     }
   }
