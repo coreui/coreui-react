@@ -1,8 +1,8 @@
-import React, { forwardRef, HTMLAttributes } from 'react'
+import React, { forwardRef, FormHTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-export interface CFormProps extends HTMLAttributes<HTMLFormElement> {
+export interface CFormProps extends FormHTMLAttributes<HTMLFormElement> {
   /**
    * A string of all className you want applied to the component.
    */
