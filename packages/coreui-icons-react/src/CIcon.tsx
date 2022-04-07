@@ -11,7 +11,7 @@ export interface CIconProps extends HTMLAttributes<SVGSVGElement> {
   /**
    * Use `icon={...}` instead of
    *
-   * @deprecated since version 3.0
+   * @deprecated 3.0
    */
   content?: string | string[]
   /**
@@ -29,7 +29,7 @@ export interface CIconProps extends HTMLAttributes<SVGSVGElement> {
   /**
    * Use `icon="..."` instead of
    *
-   * @deprecated since version 3.0
+   * @deprecated 3.0
    */
   name?: string
   /**
