@@ -1,7 +1,9 @@
-import React, { ChangeEventHandler, forwardRef, InputHTMLAttributes } from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import React, { ChangeEventHandler, forwardRef, InputHTMLAttributes, ReactNode } from 'react'
 
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
+
+import { CFormLabel } from './CFormLabel'
 export interface CFormRangeProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * A string of all className you want applied to the component.
@@ -11,6 +13,12 @@ export interface CFormRangeProps extends InputHTMLAttributes<HTMLInputElement> {
    * Toggle the disabled state for the component.
    */
   disabled?: boolean
+  /**
+   * Add a caption for a component.
+   *
+   * @since 4.2.0
+   */
+  label?: ReactNode | string
   /**
    * Specifies the maximum value for the component.
    */
@@ -40,14 +48,20 @@ export interface CFormRangeProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const CFormRange = forwardRef<HTMLInputElement, CFormRangeProps>(
-  ({ className, ...rest }, ref) => {
+  ({ className, label, ...rest }, ref) => {
     const _className = classNames('form-range', className)
-    return <input type="range" className={_className} {...rest} ref={ref} />
+    return (
+      <>
+        {label && <CFormLabel htmlFor={rest.id}>{label}</CFormLabel>}
+        <input type="range" className={_className} {...rest} ref={ref} />
+      </>
+    )
   },
 )
 
 CFormRange.propTypes = {
   className: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 }
 
 CFormRange.displayName = 'CFormRange'
