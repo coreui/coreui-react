@@ -1,9 +1,13 @@
 import React, { ChangeEventHandler, forwardRef, InputHTMLAttributes } from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-// import { CFormLabel } from './CFormLabel'
 
-export interface CFormInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
+
+import { CFormControlWrapper, CFormControlWrapperProps } from './CFormControlWrapper'
+
+export interface CFormInputProps
+  extends CFormControlWrapperProps,
+    Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /**
    * A string of all className you want applied to the component.
    */
@@ -12,10 +16,6 @@ export interface CFormInputProps extends Omit<InputHTMLAttributes<HTMLInputEleme
    * Toggle the disabled state for the component.
    */
   disabled?: boolean
-  /**
-   * Set component validation state to invalid.
-   */
-  invalid?: boolean
   /**
    * Method called immediately after the `value` prop changes.
    */
@@ -37,10 +37,6 @@ export interface CFormInputProps extends Omit<InputHTMLAttributes<HTMLInputEleme
    */
   type?: 'color' | 'file' | 'text' | string
   /**
-   * Set component validation state to valid.
-   */
-  valid?: boolean
-  /**
    * The `value` attribute of component.
    *
    * @controllable onChange
@@ -49,7 +45,27 @@ export interface CFormInputProps extends Omit<InputHTMLAttributes<HTMLInputEleme
 }
 
 export const CFormInput = forwardRef<HTMLInputElement, CFormInputProps>(
-  ({ children, className, invalid, plainText, size, type = 'text', valid, ...rest }, ref) => {
+  (
+    {
+      children,
+      className,
+      feedback,
+      feedbackInvalid,
+      feedbackValid,
+      floatingLabel,
+      id,
+      invalid,
+      label,
+      plainText,
+      size,
+      text,
+      tooltipFeedback,
+      type = 'text',
+      valid,
+      ...rest
+    },
+    ref,
+  ) => {
     const _className = classNames(
       plainText ? 'form-control-plaintext' : 'form-control',
       {
@@ -61,21 +77,34 @@ export const CFormInput = forwardRef<HTMLInputElement, CFormInputProps>(
       className,
     )
     return (
-      <input type={type} className={_className} {...rest} ref={ref}>
-        {children}
-      </input>
+      <CFormControlWrapper
+        describedby={rest['aria-describedby']}
+        feedback={feedback}
+        feedbackInvalid={feedbackInvalid}
+        feedbackValid={feedbackValid}
+        floatingLabel={floatingLabel}
+        id={id}
+        invalid={invalid}
+        label={label}
+        text={text}
+        tooltipFeedback={tooltipFeedback}
+        valid={valid}
+      >
+        <input className={_className} id={id} type={type} {...rest} ref={ref}>
+          {children}
+        </input>
+      </CFormControlWrapper>
     )
   },
 )
 
 CFormInput.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
-  invalid: PropTypes.bool,
+  id: PropTypes.string,
   plainText: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'lg']),
   type: PropTypes.oneOfType([PropTypes.oneOf(['color', 'file', 'text']), PropTypes.string]),
-  valid: PropTypes.bool,
+  ...CFormControlWrapper.propTypes,
 }
 
 CFormInput.displayName = 'CFormInput'

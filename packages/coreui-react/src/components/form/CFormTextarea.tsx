@@ -1,8 +1,13 @@
 import React, { ChangeEventHandler, forwardRef, InputHTMLAttributes } from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
 
-export interface CFormTextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
+
+import { CFormControlWrapper, CFormControlWrapperProps } from './CFormControlWrapper'
+
+export interface CFormTextareaProps
+  extends CFormControlWrapperProps,
+    InputHTMLAttributes<HTMLTextAreaElement> {
   /**
    * A string of all className you want applied to the component.
    */
@@ -11,10 +16,6 @@ export interface CFormTextareaProps extends InputHTMLAttributes<HTMLTextAreaElem
    * Toggle the disabled state for the component.
    */
   disabled?: boolean
-  /**
-   * Set component validation state to invalid.
-   */
-  invalid?: boolean
   /**
    * Method called immediately after the `value` prop changes.
    */
@@ -28,10 +29,6 @@ export interface CFormTextareaProps extends InputHTMLAttributes<HTMLTextAreaElem
    */
   readOnly?: boolean
   /**
-   * Set component validation state to valid.
-   */
-  valid?: boolean
-  /**
    * The `value` attribute of component.
    *
    * @controllable onChange
@@ -40,7 +37,25 @@ export interface CFormTextareaProps extends InputHTMLAttributes<HTMLTextAreaElem
 }
 
 export const CFormTextarea = forwardRef<HTMLTextAreaElement, CFormTextareaProps>(
-  ({ children, className, invalid, plainText, valid, ...rest }, ref) => {
+  (
+    {
+      children,
+      className,
+      feedback,
+      feedbackInvalid,
+      feedbackValid,
+      floatingLabel,
+      id,
+      invalid,
+      label,
+      plainText,
+      text,
+      tooltipFeedback,
+      valid,
+      ...rest
+    },
+    ref,
+  ) => {
     const _className = classNames(
       plainText ? 'form-control-plaintext' : 'form-control',
       {
@@ -50,19 +65,32 @@ export const CFormTextarea = forwardRef<HTMLTextAreaElement, CFormTextareaProps>
       className,
     )
     return (
-      <textarea className={_className} {...rest} ref={ref}>
-        {children}
-      </textarea>
+      <CFormControlWrapper
+        describedby={rest['aria-describedby']}
+        feedback={feedback}
+        feedbackInvalid={feedbackInvalid}
+        feedbackValid={feedbackValid}
+        floatingLabel={floatingLabel}
+        id={id}
+        invalid={invalid}
+        label={label}
+        text={text}
+        tooltipFeedback={tooltipFeedback}
+        valid={valid}
+      >
+        <textarea className={_className} {...rest} ref={ref}>
+          {children}
+        </textarea>
+      </CFormControlWrapper>
     )
   },
 )
 
 CFormTextarea.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
-  invalid: PropTypes.bool,
+  id: PropTypes.string,
   plainText: PropTypes.bool,
-  valid: PropTypes.bool,
+  ...CFormControlWrapper.propTypes,
 }
 
 CFormTextarea.displayName = 'CFormTextarea'

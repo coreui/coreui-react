@@ -1,13 +1,18 @@
 import React, { ChangeEventHandler, forwardRef, InputHTMLAttributes } from 'react'
-import PropTypes from 'prop-types'
+
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
+
+import { CFormControlWrapper, CFormControlWrapperProps } from './CFormControlWrapper'
 
 type Option = {
   disabled?: boolean
   label?: string
   value?: string
 }
-export interface CFormSelectProps extends Omit<InputHTMLAttributes<HTMLSelectElement>, 'size'> {
+export interface CFormSelectProps
+  extends CFormControlWrapperProps,
+    Omit<InputHTMLAttributes<HTMLSelectElement>, 'size'> {
   /**
    * A string of all className you want applied to the component.
    */
@@ -16,10 +21,6 @@ export interface CFormSelectProps extends Omit<InputHTMLAttributes<HTMLSelectEle
    * Specifies the number of visible options in a drop-down list.
    */
   htmlSize?: number
-  /**
-   * Set component validation state to invalid.
-   */
-  invalid?: boolean
   /**
    * Method called immediately after the `value` prop changes.
    */
@@ -36,19 +37,35 @@ export interface CFormSelectProps extends Omit<InputHTMLAttributes<HTMLSelectEle
    */
   size?: 'sm' | 'lg'
   /**
-   * Set component validation state to valid.
-   */
-  valid?: boolean
-  /**
    * The `value` attribute of component.
    *
    * @controllable onChange
-   * */
+   */
   value?: string | string[] | number
 }
 
 export const CFormSelect = forwardRef<HTMLSelectElement, CFormSelectProps>(
-  ({ children, className, htmlSize, invalid, options, size, valid, ...rest }, ref) => {
+  (
+    {
+      children,
+      className,
+      feedback,
+      feedbackInvalid,
+      feedbackValid,
+      floatingLabel,
+      htmlSize,
+      id,
+      invalid,
+      label,
+      options,
+      size,
+      text,
+      tooltipFeedback,
+      valid,
+      ...rest
+    },
+    ref,
+  ) => {
     const _className = classNames(
       'form-select',
       {
@@ -59,34 +76,45 @@ export const CFormSelect = forwardRef<HTMLSelectElement, CFormSelectProps>(
       className,
     )
     return (
-      <select className={_className} size={htmlSize} {...rest} ref={ref}>
-        {options
-          ? options.map((option, index) => {
-              return (
-                <option
-                  {...(typeof option === 'object' &&
-                    option.disabled && { disabled: option.disabled })}
-                  {...(typeof option === 'object' && option.value && { value: option.value })}
-                  key={index}
-                >
-                  {typeof option === 'string' ? option : option.label}
-                </option>
-              )
-            })
-          : children}
-      </select>
+      <CFormControlWrapper
+        describedby={rest['aria-describedby']}
+        feedback={feedback}
+        feedbackInvalid={feedbackInvalid}
+        feedbackValid={feedbackValid}
+        floatingLabel={floatingLabel}
+        id={id}
+        invalid={invalid}
+        label={label}
+        text={text}
+        tooltipFeedback={tooltipFeedback}
+        valid={valid}
+      >
+        <select id={id} className={_className} size={htmlSize} {...rest} ref={ref}>
+          {options
+            ? options.map((option, index) => {
+                return (
+                  <option
+                    {...(typeof option === 'object' &&
+                      option.disabled && { disabled: option.disabled })}
+                    {...(typeof option === 'object' && option.value && { value: option.value })}
+                    key={index}
+                  >
+                    {typeof option === 'string' ? option : option.label}
+                  </option>
+                )
+              })
+            : children}
+        </select>
+      </CFormControlWrapper>
     )
   },
 )
 
 CFormSelect.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
   htmlSize: PropTypes.number,
-  invalid: PropTypes.bool,
   options: PropTypes.array,
-  size: PropTypes.oneOf(['sm', 'lg']),
-  valid: PropTypes.bool,
+  ...CFormControlWrapper.propTypes,
 }
 
 CFormSelect.displayName = 'CFormSelect'
