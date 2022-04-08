@@ -5,7 +5,8 @@ import classNames from 'classnames'
 import { useForkedRef } from '../../utils/hooks'
 import { Colors, Shapes } from '../Types'
 
-import { CFormLabel } from './CFormLabel'
+import { CFormControlValidation, CFormControlValidationProps } from './CFormControlValidation'
+import { CFormLabel } from './'
 
 export type ButtonObject = {
   /**
@@ -30,7 +31,9 @@ export type ButtonObject = {
   variant?: 'outline' | 'ghost'
 }
 
-export interface CFormCheckProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface CFormCheckProps
+  extends CFormControlValidationProps,
+    InputHTMLAttributes<HTMLInputElement> {
   /**
    * Create button-like checkboxes and radio buttons.
    */
@@ -78,6 +81,11 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
     {
       className,
       button,
+      feedback,
+      feedbackInvalid,
+      feedbackValid,
+      floatingLabel,
+      tooltipFeedback,
       hitArea,
       id,
       indeterminate,
@@ -131,6 +139,19 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
       return <input type={type} className={inputClassName} id={id} {...rest} ref={forkedRef} />
     }
 
+    const formValidation = () => (
+      <CFormControlValidation
+        describedby={rest['aria-describedby']}
+        feedback={feedback}
+        feedbackInvalid={feedbackInvalid}
+        feedbackValid={feedbackValid}
+        floatingLabel={floatingLabel}
+        invalid={invalid}
+        tooltipFeedback={tooltipFeedback}
+        valid={valid}
+      />
+    )
+
     const formLabel = () => {
       return (
         <CFormLabel customClassName={labelClassName} {...(id && { htmlFor: id })}>
@@ -143,17 +164,22 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
       <>
         {formControl()}
         {label && formLabel()}
+        {formValidation()}
       </>
     ) : label ? (
       hitArea ? (
-        <CFormLabel customClassName={className} {...(id && { htmlFor: id })}>
-          {formControl()}
-          {label}
-        </CFormLabel>
+        <>
+          <CFormLabel customClassName={className} {...(id && { htmlFor: id })}>
+            {formControl()}
+            {label}
+          </CFormLabel>
+          {formValidation()}
+        </>
       ) : (
         <div className={_className}>
           {formControl()}
           {formLabel()}
+          {formValidation()}
         </div>
       )
     ) : (
@@ -169,10 +195,9 @@ CFormCheck.propTypes = {
   id: PropTypes.string,
   indeterminate: PropTypes.bool,
   inline: PropTypes.bool,
-  invalid: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   type: PropTypes.oneOf(['checkbox', 'radio']),
-  valid: PropTypes.bool,
+  ...CFormControlValidation.propTypes,
 }
 
 CFormCheck.displayName = 'CFormCheck'
