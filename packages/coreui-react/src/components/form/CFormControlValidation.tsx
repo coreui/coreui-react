@@ -2,7 +2,7 @@ import React, { FC, ReactNode } from 'react'
 
 import PropTypes from 'prop-types'
 
-import { CFormFeedback } from './'
+import { CFormFeedback } from './CFormFeedback'
 
 export interface CFormControlValidationProps {
   /**

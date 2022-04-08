@@ -6,7 +6,7 @@ import { useForkedRef } from '../../utils/hooks'
 import { Colors, Shapes } from '../Types'
 
 import { CFormControlValidation, CFormControlValidationProps } from './CFormControlValidation'
-import { CFormLabel } from './'
+import { CFormLabel } from './CFormLabel'
 
 export type ButtonObject = {
   /**

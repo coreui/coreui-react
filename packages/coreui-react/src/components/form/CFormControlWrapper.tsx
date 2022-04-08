@@ -3,7 +3,9 @@ import React, { FC, ReactNode } from 'react'
 import PropTypes from 'prop-types'
 
 import { CFormControlValidation, CFormControlValidationProps } from './CFormControlValidation'
-import { CFormFloating, CFormLabel, CFormText } from './'
+import { CFormFloating } from './CFormFloating'
+import { CFormLabel } from './CFormLabel'
+import { CFormText } from './CFormText'
 
 export interface CFormControlWrapperProps extends CFormControlValidationProps {
   /**
