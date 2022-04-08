@@ -72,8 +72,8 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    * Remove animation to create modal that simply appear rather than fade in to view.
    */
   transition?: boolean
-  /*
-   * By default the component is unmounted after close animation, if you want to keep the component mounted set this property to false
+  /**
+   * By default the component is unmounted after close animation, if you want to keep the component mounted set this property to false.
    */
   unmountOnClose?: boolean
   /**
