@@ -75,30 +75,50 @@ const nav = [
       />
     ),
     items: [
+      // {
+      //   name: 'Overview',
+      //   to: '/forms/overview/',
+      // },
       {
-        name: 'Overview',
-        to: '/forms/overview/',
+        name: 'Checkbox',
+        to: '/forms/checkbox/',
       },
       {
-        name: 'Form Control',
-        to: '/forms/form-control/',
+        name: 'Input',
+        to: '/forms/input/',
       },
       {
-        name: 'Select',
-        to: '/forms/select/',
+        name: 'Input Group',
+        to: '/forms/input-group/',
       },
       {
-        name: 'Checks & Radios',
-        to: '/forms/checks-radios/',
+        name: 'Radio',
+        to: '/forms/radio/',
       },
       {
         name: 'Range',
         to: '/forms/range/',
       },
       {
-        name: 'Input Group',
-        to: '/forms/input-group/',
+        name: 'Select',
+        to: '/forms/select/',
       },
+      {
+        name: 'Switch',
+        to: '/forms/switch/',
+      },
+      {
+        name: 'Textarea',
+        to: '/forms/textarea/',
+      },
+      // {
+      //   name: 'Form Control',
+      //   to: '/forms/form-control/',
+      // },
+      // {
+      //   name: 'Checks & Radios',
+      //   to: '/forms/checks-radios/',
+      // },
       {
         name: 'Floating Labels',
         to: '/forms/floating-labels/',

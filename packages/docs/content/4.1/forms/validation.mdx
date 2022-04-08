@@ -23,6 +23,7 @@ import {
   CFormFeedback,
   CFormLabel,
   CFormSelect,
+  CFormTextarea,
   CInputGroup,
   CInputGroupText,
   CCol,
@@ -44,7 +45,7 @@ Here's how form validation works with Bootstrap:
 
 With that in mind, consider the following demos for our custom form validation styles, optional server-side classes, and browser defaults. -->
 
-## Custom styles
+## Example
 
 For custom CoreUI form validation messages, you'll need to add the `noValidate` boolean property to your `<CForm>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you. When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to your form controls.
 
@@ -68,46 +69,71 @@ export const CustomStylesExample = () => {
       onSubmit={handleSubmit}
     >
       <CCol md={4}>
-        <CFormLabel htmlFor="validationCustom01">Email</CFormLabel>
-        <CFormInput type="text" id="validationCustom01" defaultValue="Mark" required />
-        <CFormFeedback valid>Looks good!</CFormFeedback>
+        <CFormInput
+          type="text"
+          defaultValue="Mark"
+          feedbackValid="Looks good!"
+          id="validationCustom01"
+          label="First name"
+          required
+        />
       </CCol>
       <CCol md={4}>
-        <CFormLabel htmlFor="validationCustom02">Email</CFormLabel>
-        <CFormInput type="text" id="validationCustom02" defaultValue="Otto" required />
-        <CFormFeedback valid>Looks good!</CFormFeedback>
+        <CFormInput
+          type="text"
+          defaultValue="Otto"
+          feedbackValid="Looks good!"
+          id="validationCustom02"
+          label="First name"
+          required
+        />
       </CCol>
       <CCol md={4}>
         <CFormLabel htmlFor="validationCustomUsername">Username</CFormLabel>
         <CInputGroup className="has-validation">
-          <CInputGroupText id="inputGroupPrepend">@</CInputGroupText>
+          <CInputGroupText>@</CInputGroupText>
           <CFormInput
             type="text"
+            aria-describedby="inputGroupPrependFeedback"
+            feedbackValid="Please choose a username."
             id="validationCustomUsername"
-            defaultValue=""
-            aria-describedby="inputGroupPrepend"
             required
           />
-          <CFormFeedback invalid>Please choose a username.</CFormFeedback>
         </CInputGroup>
       </CCol>
       <CCol md={6}>
-        <CFormLabel htmlFor="validationCustom03">City</CFormLabel>
-        <CFormInput type="text" id="validationCustom03" required />
-        <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
+        <CFormInput
+          type="text"
+          aria-describedby="validationCustom03Feedback"
+          feedbackInvalid="Please provide a valid city."
+          id="validationCustom03"
+          label="City"
+          required
+        />
       </CCol>
       <CCol md={3}>
-        <CFormLabel htmlFor="validationCustom04">City</CFormLabel>
-        <CFormSelect id="validationCustom04">
-          <option disabled>Choose...</option>
+        <CFormSelect
+          aria-describedby="validationCustom04Feedback"
+          feedbackInvalid="Please select a valid state."
+          id="validationCustom04"
+          label="State"
+          required
+        >
+          <option selected="" disabled="" value="">
+            Choose...
+          </option>
           <option>...</option>
         </CFormSelect>
-        <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
       </CCol>
       <CCol md={3}>
-        <CFormLabel htmlFor="validationCustom05">City</CFormLabel>
-        <CFormInput type="text" id="validationCustom05" required />
-        <CFormFeedback invalid>Please provide a valid zip.</CFormFeedback>
+        <CFormInput
+          type="text"
+          aria-describedby="validationCustom05Feedback"
+          feedbackInvalid="Please provide a valid zip."
+          id="validationCustom05"
+          label="Zip"
+          required
+        />
       </CCol>
       <CCol xs={12}>
         <CFormCheck
@@ -149,46 +175,69 @@ return (
     onSubmit={handleSubmit}
   >
     <CCol md={4}>
-      <CFormLabel htmlFor="validationCustom01">Email</CFormLabel>
-      <CFormInput type="text" id="validationCustom01" defaultValue="Mark" required />
-      <CFormFeedback valid>Looks good!</CFormFeedback>
+      <CFormInput
+        type="text"
+        defaultValue="Mark"
+        feedbackValid="Looks good!"
+        id="validationCustom01"
+        label="First name"
+        required
+      />
     </CCol>
     <CCol md={4}>
-      <CFormLabel htmlFor="validationCustom02">Email</CFormLabel>
-      <CFormInput type="text" id="validationCustom02" defaultValue="Otto" required />
-      <CFormFeedback valid>Looks good!</CFormFeedback>
+      <CFormInput
+        type="text"
+        defaultValue="Otto"
+        feedbackValid="Looks good!"
+        id="validationCustom02"
+        label="First name"
+        required
+      />
     </CCol>
     <CCol md={4}>
       <CFormLabel htmlFor="validationCustomUsername">Username</CFormLabel>
       <CInputGroup className="has-validation">
-        <CInputGroupText id="inputGroupPrepend">@</CInputGroupText>
+        <CInputGroupText>@</CInputGroupText>
         <CFormInput
           type="text"
+          aria-describedby="inputGroupPrependFeedback"
+          feedbackValid="Please choose a username."
           id="validationCustomUsername"
-          defaultValue=""
-          aria-describedby="inputGroupPrepend"
           required
         />
-        <CFormFeedback invalid>Please choose a username.</CFormFeedback>
       </CInputGroup>
     </CCol>
     <CCol md={6}>
-      <CFormLabel htmlFor="validationCustom03">City</CFormLabel>
-      <CFormInput type="text" id="validationCustom03" required />
-      <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
+      <CFormInput
+        type="text"
+        aria-describedby="validationCustom03Feedback"
+        feedbackInvalid="Please provide a valid city."
+        id="validationCustom03"
+        label="City"
+        required
+      />
     </CCol>
     <CCol md={3}>
-      <CFormLabel htmlFor="validationCustom04">City</CFormLabel>
-      <CFormSelect id="validationCustom04">
+      <CFormSelect
+        aria-describedby="validationCustom04Feedback"
+        feedbackInvalid="Please select a valid state."
+        id="validationCustom04"
+        label="State"
+        required
+      >
         <option disabled>Choose...</option>
         <option>...</option>
       </CFormSelect>
-      <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
     </CCol>
     <CCol md={3}>
-      <CFormLabel htmlFor="validationCustom05">City</CFormLabel>
-      <CFormInput type="text" id="validationCustom05" required />
-      <CFormFeedback invalid>Please provide a valid zip.</CFormFeedback>
+      <CFormInput
+        type="text"
+        aria-describedby="validationCustom05Feedback"
+        feedbackInvalid="Please provide a valid zip."
+        id="validationCustom05"
+        label="Zip"
+        required
+      />
     </CCol>
     <CCol xs={12}>
       <CFormCheck
@@ -214,107 +263,29 @@ Not interested in custom validation feedback messages or writing JavaScript to c
 
 While these feedback styles cannot be styled with CSS, you can still customize the feedback text through JavaScript.
 
-export const BrowserDefaultsExample = () => {
-  const [validated, setValidated] = useState(false)
-  const handleSubmit = (event) => {
-    const form = event.currentTarget
-    if (form.checkValidity() === false) {
-      event.preventDefault()
-      event.stopPropagation()
-    }
-    setValidated(true)
-  }
-  return (
-    <CForm className="row g-3 needs-validation" validated={validated} onSubmit={handleSubmit}>
-      <CCol md={4}>
-        <CFormLabel htmlFor="validationDefault01">Email</CFormLabel>
-        <CFormInput type="text" id="validationDefault01" defaultValue="Mark" required />
-        <CFormFeedback valid>Looks good!</CFormFeedback>
-      </CCol>
-      <CCol md={4}>
-        <CFormLabel htmlFor="validationDefault02">Email</CFormLabel>
-        <CFormInput type="text" id="validationDefault02" defaultValue="Otto" required />
-        <CFormFeedback valid>Looks good!</CFormFeedback>
-      </CCol>
-      <CCol md={4}>
-        <CFormLabel htmlFor="validationDefaultUsername">Username</CFormLabel>
-        <CInputGroup className="has-validation">
-          <CInputGroupText id="inputGroupPrepend02">@</CInputGroupText>
-          <CFormInput
-            type="text"
-            id="validationDefaultUsername"
-            defaultValue=""
-            aria-describedby="inputGroupPrepend02"
-            required
-          />
-          <CFormFeedback invalid>Please choose a username.</CFormFeedback>
-        </CInputGroup>
-      </CCol>
-      <CCol md={6}>
-        <CFormLabel htmlFor="validationDefault03">City</CFormLabel>
-        <CFormInput type="text" id="validationDefault03" required />
-        <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
-      </CCol>
-      <CCol md={3}>
-        <CFormLabel htmlFor="validationDefault04">City</CFormLabel>
-        <CFormSelect id="validationDefault04">
-          <option disabled>Choose...</option>
-          <option>...</option>
-        </CFormSelect>
-        <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
-      </CCol>
-      <CCol md={3}>
-        <CFormLabel htmlFor="validationDefault05">City</CFormLabel>
-        <CFormInput type="text" id="validationDefault05" required />
-        <CFormFeedback invalid>Please provide a valid zip.</CFormFeedback>
-      </CCol>
-      <CCol xs={12}>
-        <CFormCheck
-          type="checkbox"
-          id="invalidCheck"
-          label="Agree to terms and conditions"
-          required
-        />
-        <CFormFeedback invalid>You must agree before submitting.</CFormFeedback>
-      </CCol>
-      <CCol xs={12}>
-        <CButton color="primary" type="submit">
-          Submit form
-        </CButton>
-      </CCol>
-    </CForm>
-  )
-}
-
 <Example>
-  <BrowserDefaultsExample />
-</Example>
-
-```jsx
-const [validated, setValidated] = useState(false)
-const handleSubmit = (event) => {
-  const form = event.currentTarget
-  if (form.checkValidity() === false) {
-    event.preventDefault()
-    event.stopPropagation()
-  }
-  setValidated(true)
-}
-return (
-  <CForm className="row g-3 needs-validation" validated={validated} onSubmit={handleSubmit}>
+  <CForm className="row g-3">
     <CCol md={4}>
-      <CFormLabel htmlFor="validationDefault01">Email</CFormLabel>
-      <CFormInput type="text" id="validationDefault01" defaultValue="Mark" required />
-      <CFormFeedback valid>Looks good!</CFormFeedback>
+      <CFormInput
+        type="text"
+        id="validationDefault01"
+        label="First name"
+        defaultValue="Mark"
+        required
+      />
     </CCol>
     <CCol md={4}>
-      <CFormLabel htmlFor="validationDefault02">Email</CFormLabel>
-      <CFormInput type="text" id="validationDefault02" defaultValue="Otto" required />
-      <CFormFeedback valid>Looks good!</CFormFeedback>
+      <CFormInput
+        type="text"
+        id="validationDefault02"
+        label="Last name"
+        defaultValue="Otto"
+        required
+      />
     </CCol>
     <CCol md={4}>
       <CFormLabel htmlFor="validationDefaultUsername">Username</CFormLabel>
-      <CInputGroup className="has-validation">
+      <CInputGroup>
         <CInputGroupText id="inputGroupPrepend02">@</CInputGroupText>
         <CFormInput
           type="text"
@@ -323,26 +294,19 @@ return (
           aria-describedby="inputGroupPrepend02"
           required
         />
-        <CFormFeedback invalid>Please choose a username.</CFormFeedback>
       </CInputGroup>
     </CCol>
     <CCol md={6}>
-      <CFormLabel htmlFor="validationDefault03">City</CFormLabel>
-      <CFormInput type="text" id="validationDefault03" required />
-      <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
+      <CFormInput type="text" id="validationDefault03" label="City" required />
     </CCol>
     <CCol md={3}>
-      <CFormLabel htmlFor="validationDefault04">City</CFormLabel>
-      <CFormSelect id="validationDefault04">
+      <CFormSelect id="validationDefault04" label="State">
         <option disabled>Choose...</option>
         <option>...</option>
       </CFormSelect>
-      <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
     </CCol>
     <CCol md={3}>
-      <CFormLabel htmlFor="validationDefault05">City</CFormLabel>
-      <CFormInput type="text" id="validationDefault05" required />
-      <CFormFeedback invalid>Please provide a valid zip.</CFormFeedback>
+      <CFormInput type="text" id="validationDefault05" label="Zip" required />
     </CCol>
     <CCol xs={12}>
       <CFormCheck
@@ -351,7 +315,6 @@ return (
         label="Agree to terms and conditions"
         required
       />
-      <CFormFeedback invalid>You must agree before submitting.</CFormFeedback>
     </CCol>
     <CCol xs={12}>
       <CButton color="primary" type="submit">
@@ -359,26 +322,93 @@ return (
       </CButton>
     </CCol>
   </CForm>
-)
+</Example>
+
+```jsx
+<CForm className="row g-3">
+  <CCol md={4}>
+    <CFormInput
+      type="text"
+      id="validationDefault01"
+      label="First name"
+      defaultValue="Mark"
+      required
+    />
+  </CCol>
+  <CCol md={4}>
+    <CFormInput
+      type="text"
+      id="validationDefault02"
+      label="Last name"
+      defaultValue="Otto"
+      required
+    />
+  </CCol>
+  <CCol md={4}>
+    <CFormLabel htmlFor="validationDefaultUsername">Username</CFormLabel>
+    <CInputGroup>
+      <CInputGroupText id="inputGroupPrepend02">@</CInputGroupText>
+      <CFormInput
+        type="text"
+        id="validationDefaultUsername"
+        defaultValue=""
+        aria-describedby="inputGroupPrepend02"
+        required
+      />
+    </CInputGroup>
+  </CCol>
+  <CCol md={6}>
+    <CFormInput type="text" id="validationDefault03" label="City" required />
+  </CCol>
+  <CCol md={3}>
+    <CFormSelect id="validationDefault04" label="State">
+      <option disabled>Choose...</option>
+      <option>...</option>
+    </CFormSelect>
+  </CCol>
+  <CCol md={3}>
+    <CFormInput type="text" id="validationDefault05" label="Zip" required />
+  </CCol>
+  <CCol xs={12}>
+    <CFormCheck type="checkbox" id="invalidCheck" label="Agree to terms and conditions" required />
+  </CCol>
+  <CCol xs={12}>
+    <CButton color="primary" type="submit">
+      Submit form
+    </CButton>
+  </CCol>
+</CForm>
 ```
 
-## Server side
+## Custom validation
 
-We recommend using client-side validation, but in case you require server-side validation, you can indicate invalid and valid form fields with `invalid` and `valid` boolean properties.
+In case you require custom or server-side validation, you can indicate invalid and valid form fields with `invalid` and `valid` boolean properties.
 
 For invalid fields, ensure that the invalid feedback/error message is associated with the relevant form field using `aria-describedby` (noting that this attribute allows more than one `id` to be referenced, in case the field already points to additional form text).
 
 <Example>
-  <CForm className="row g-3 needs-validation">
+  <CForm className="row g-3">
     <CCol md={4}>
-      <CFormLabel htmlFor="validationServer01">Email</CFormLabel>
-      <CFormInput type="text" id="validationServer01" defaultValue="Mark" valid required />
-      <CFormFeedback valid>Looks good!</CFormFeedback>
+      <CFormInput
+        type="text"
+        id="validationServer01"
+        label="Email"
+        feedback="Looks good!"
+        defaultValue="name@surname.com"
+        valid
+        required
+      />
     </CCol>
     <CCol md={4}>
-      <CFormLabel htmlFor="validationServer02">Email</CFormLabel>
-      <CFormInput type="text" id="validationServer02" defaultValue="Otto" valid required />
-      <CFormFeedback valid>Looks good!</CFormFeedback>
+      <CFormInput
+        type="text"
+        id="validationServer02"
+        label="Repeat email"
+        feedback="Looks good!"
+        defaultValue="name@surname.com"
+        valid
+        required
+      />
     </CCol>
     <CCol md={4}>
       <CFormLabel htmlFor="validationServerUsername">Username</CFormLabel>
@@ -387,31 +417,44 @@ For invalid fields, ensure that the invalid feedback/error message is associated
         <CFormInput
           type="text"
           id="validationServerUsername"
+          feedback="Please choose a username."
           defaultValue=""
           aria-describedby="inputGroupPrepend03"
           invalid
           required
         />
-        <CFormFeedback invalid>Please choose a username.</CFormFeedback>
       </CInputGroup>
     </CCol>
     <CCol md={6}>
-      <CFormLabel htmlFor="validationServer03">City</CFormLabel>
-      <CFormInput type="text" id="validationServer03" invalid required />
-      <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
+      <CFormInput
+        type="text"
+        id="validationServer03"
+        label="City"
+        feedback="Please provide a valid city."
+        invalid
+        required
+      />
     </CCol>
     <CCol md={3}>
-      <CFormLabel htmlFor="validationServer04">City</CFormLabel>
-      <CFormSelect id="validationServer04" invalid>
+      <CFormSelect
+        id="validationServer04"
+        label="State"
+        feedback="Please provide a valid city."
+        invalid
+      >
         <option disabled>Choose...</option>
         <option>...</option>
       </CFormSelect>
-      <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
     </CCol>
     <CCol md={3}>
-      <CFormLabel htmlFor="validationServer05">City</CFormLabel>
-      <CFormInput type="text" id="validationServer05" invalid required />
-      <CFormFeedback invalid>Please provide a valid zip.</CFormFeedback>
+      <CFormInput
+        type="text"
+        id="validationServer05"
+        label="zip"
+        feedback="Please provide a valid zip."
+        invalid
+        required
+      />
     </CCol>
     <CCol xs={12}>
       <CFormCheck
@@ -432,16 +475,28 @@ For invalid fields, ensure that the invalid feedback/error message is associated
 </Example>
 
 ```jsx
-<CForm className="row g-3 needs-validation">
+<CForm className="row g-3">
   <CCol md={4}>
-    <CFormLabel htmlFor="validationServer01">Email</CFormLabel>
-    <CFormInput type="text" id="validationServer01" defaultValue="Mark" valid required />
-    <CFormFeedback valid>Looks good!</CFormFeedback>
+    <CFormInput
+      type="text"
+      id="validationServer01"
+      label="Email"
+      feedback="Looks good!"
+      defaultValue="name@surname.com"
+      valid
+      required
+    />
   </CCol>
   <CCol md={4}>
-    <CFormLabel htmlFor="validationServer02">Email</CFormLabel>
-    <CFormInput type="text" id="validationServer02" defaultValue="Otto" valid required />
-    <CFormFeedback valid>Looks good!</CFormFeedback>
+    <CFormInput
+      type="text"
+      id="validationServer02"
+      label="Repeat email"
+      feedback="Looks good!"
+      defaultValue="name@surname.com"
+      valid
+      required
+    />
   </CCol>
   <CCol md={4}>
     <CFormLabel htmlFor="validationServerUsername">Username</CFormLabel>
@@ -450,31 +505,44 @@ For invalid fields, ensure that the invalid feedback/error message is associated
       <CFormInput
         type="text"
         id="validationServerUsername"
+        feedback="Please choose a username."
         defaultValue=""
         aria-describedby="inputGroupPrepend03"
         invalid
         required
       />
-      <CFormFeedback invalid>Please choose a username.</CFormFeedback>
     </CInputGroup>
   </CCol>
   <CCol md={6}>
-    <CFormLabel htmlFor="validationServer03">City</CFormLabel>
-    <CFormInput type="text" id="validationServer03" invalid required />
-    <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
+    <CFormInput
+      type="text"
+      id="validationServer03"
+      label="City"
+      feedback="Please provide a valid city."
+      invalid
+      required
+    />
   </CCol>
   <CCol md={3}>
-    <CFormLabel htmlFor="validationServer04">City</CFormLabel>
-    <CFormSelect id="validationServer04" invalid>
+    <CFormSelect
+      id="validationServer04"
+      label="State"
+      feedback="Please provide a valid city."
+      invalid
+    >
       <option disabled>Choose...</option>
       <option>...</option>
     </CFormSelect>
-    <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
   </CCol>
   <CCol md={3}>
-    <CFormLabel htmlFor="validationServer05">City</CFormLabel>
-    <CFormInput type="text" id="validationServer05" invalid required />
-    <CFormFeedback invalid>Please provide a valid zip.</CFormFeedback>
+    <CFormInput
+      type="text"
+      id="validationServer05"
+      label="zip"
+      feedback="Please provide a valid zip."
+      invalid
+      required
+    />
   </CCol>
   <CCol xs={12}>
     <CFormCheck
@@ -506,20 +574,21 @@ Validation styles are available for the following form controls and components:
 <Example>
   <CForm validated={true}>
     <div className="mb-3">
-      <CFormLabel htmlFor="validationTextarea" className="form-label">
-        Textarea
-      </CFormLabel>
-      <CFormInput
-        component="textarea"
+      <CFormTextarea
+        feedbackInvalid="Please enter a message in the textarea."
         id="validationTextarea"
+        label="Textarea"
         placeholder="Required example textarea"
-        invalid
         required
-      ></CFormInput>
-      <CFormFeedback invalid>Please enter a message in the textarea.</CFormFeedback>
+      ></CFormTextarea>
     </div>
-    <CFormCheck className="mb-3" id="validationFormCheck1" label="Check this checkbox" required />
-    <CFormFeedback invalid>Example invalid feedback text</CFormFeedback>
+    <CFormCheck
+      className="mb-3"
+      id="validationFormCheck1"
+      label="Check this checkbox"
+      feedbackInvalid="Example invalid feedback text"
+      required
+    />
     <CFormCheck
       type="radio"
       name="radio-stacked"
@@ -533,21 +602,31 @@ Validation styles are available for the following form controls and components:
       name="radio-stacked"
       id="validationFormCheck3"
       label="Or toggle this other radio"
+      feedbackInvalid="More example invalid feedback text"
       required
     />
-    <CFormFeedback invalid>More example invalid feedback text</CFormFeedback>
     <div className="mb-3">
-      <CFormSelect required aria-label="select example">
-        <option>Open this select menu</option>
+      <CFormSelect
+        feedbackInvalid="Example invalid select feedback"
+        aria-label="select example"
+        required
+      >
+        <option selected="" value="">
+          Open this select menu
+        </option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
       </CFormSelect>
-      <CFormFeedback invalid>Example invalid select feedback</CFormFeedback>
     </div>
     <div className="mb-3">
-      <CFormInput type="file" id="validationTextarea" aria-label="file example" required />
-      <CFormFeedback invalid>Example invalid form file feedback</CFormFeedback>
+      <CFormInput
+        type="file"
+        id="validationTextarea"
+        feedbackInvalid="Example invalid form file feedback"
+        aria-label="file example"
+        required
+      />
     </div>
     <div className="mb-3">
       <CButton type="submit" color="primary" disabled>
@@ -560,22 +639,21 @@ Validation styles are available for the following form controls and components:
 ```jsx
 <CForm validated={true}>
   <div className="mb-3">
-    <CFormLabel htmlFor="validationTextarea" className="form-label">
-      Textarea
-    </CFormLabel>
-    <CFormInput
-      component="textarea"
+    <CFormTextarea
+      feedbackInvalid="Please enter a message in the textarea."
       id="validationTextarea"
+      label="Textarea"
       placeholder="Required example textarea"
-      invalid
       required
-    ></CFormInput>
-    <CFormFeedback invalid>Please enter a message in the textarea.</CFormFeedback>
+    ></CFormTextarea>
   </div>
-
-  <CFormCheck className="mb-3" id="validationFormCheck1" label="Check this checkbox" required />
-  <CFormFeedback invalid>Example invalid feedback text</CFormFeedback>
-
+  <CFormCheck
+    className="mb-3"
+    id="validationFormCheck1"
+    label="Check this checkbox"
+    feedbackInvalid="Example invalid feedback text"
+    required
+  />
   <CFormCheck
     type="radio"
     name="radio-stacked"
@@ -583,32 +661,38 @@ Validation styles are available for the following form controls and components:
     label="Check this checkbox"
     required
   />
-
   <CFormCheck
     className="mb-3"
     type="radio"
     name="radio-stacked"
     id="validationFormCheck3"
     label="Or toggle this other radio"
+    feedbackInvalid="More example invalid feedback text"
     required
   />
-  <CFormFeedback invalid>More example invalid feedback text</CFormFeedback>
-
   <div className="mb-3">
-    <CFormSelect required aria-label="select example">
-      <option>Open this select menu</option>
+    <CFormSelect
+      feedbackInvalid="Example invalid select feedback"
+      aria-label="select example"
+      required
+    >
+      <option selected="" value="">
+        Open this select menu
+      </option>
       <option value="1">One</option>
       <option value="2">Two</option>
       <option value="3">Three</option>
     </CFormSelect>
-    <CFormFeedback invalid>Example invalid select feedback</CFormFeedback>
   </div>
-
   <div className="mb-3">
-    <CFormInput type="file" id="validationTextarea" aria-label="file example" required />
-    <CFormFeedback invalid>Example invalid form file feedback</CFormFeedback>
+    <CFormInput
+      type="file"
+      id="validationTextarea"
+      feedbackInvalid="Example invalid form file feedback"
+      aria-label="file example"
+      required
+    />
   </div>
-
   <div className="mb-3">
     <CButton type="submit" color="primary" disabled>
       Submit form
@@ -639,18 +723,26 @@ export const TooltipsExample = () => {
       onSubmit={handleSubmit}
     >
       <CCol md={4} className="position-relative">
-        <CFormLabel htmlFor="validationTooltip01">Email</CFormLabel>
-        <CFormInput type="text" id="validationTooltip01" defaultValue="Mark" required />
-        <CFormFeedback tooltip valid>
-          Looks good!
-        </CFormFeedback>
+        <CFormInput
+          type="text"
+          defaultValue="Mark"
+          feedbackValid="Looks good!"
+          id="validationTooltip01"
+          label="First name"
+          required
+          tooltipFeedback
+        />
       </CCol>
       <CCol md={4} className="position-relative">
-        <CFormLabel htmlFor="validationTooltip02">Email</CFormLabel>
-        <CFormInput type="text" id="validationTooltip02" defaultValue="Otto" required />
-        <CFormFeedback tooltip valid>
-          Looks good!
-        </CFormFeedback>
+        <CFormInput
+          type="text"
+          defaultValue="Otto"
+          feedbackValid="Looks good!"
+          id="validationTooltip02"
+          label="First name"
+          required
+          tooltipFeedback
+        />
       </CCol>
       <CCol md={4} className="position-relative">
         <CFormLabel htmlFor="validationTooltipUsername">Username</CFormLabel>
@@ -658,41 +750,50 @@ export const TooltipsExample = () => {
           <CInputGroupText id="inputGroupPrepend">@</CInputGroupText>
           <CFormInput
             type="text"
+            aria-describedby="inputGroupPrependFeedback"
+            feedbackInvalid="Please choose a username."
             id="validationTooltipUsername"
-            defaultValue=""
-            aria-describedby="inputGroupPrepend"
             required
+            tooltipFeedback
           />
-          <CFormFeedback tooltip invalid>
-            Please choose a username.
-          </CFormFeedback>
         </CInputGroup>
       </CCol>
       <CCol md={6} className="position-relative">
-        <CFormLabel htmlFor="validationTooltip03">City</CFormLabel>
-        <CFormInput type="text" id="validationTooltip03" required />
-        <CFormFeedback tooltip invalid>
-          Please provide a valid city.
-        </CFormFeedback>
+        <CFormInput
+          type="text"
+          aria-describedby="validationTooltip03Feedback"
+          feedbackInvalid="Please provide a valid city."
+          id="validationTooltip03"
+          label="City"
+          required
+          tooltipFeedback
+        />
       </CCol>
       <CCol md={3} className="position-relative">
-        <CFormLabel htmlFor="validationTooltip04">City</CFormLabel>
-        <CFormSelect id="validationTooltip04" required>
-          <option disabled value="">
+        <CFormSelect
+          aria-describedby="validationTooltip04Feedback"
+          feedbackInvalid="Please select a valid state."
+          id="validationTooltip04"
+          label="State"
+          required
+          tooltipFeedback
+        >
+          <option selected="" disabled="" value="">
             Choose...
           </option>
           <option>...</option>
         </CFormSelect>
-        <CFormFeedback tooltip invalid>
-          Please provide a valid city.
-        </CFormFeedback>
       </CCol>
       <CCol md={3} className="position-relative">
-        <CFormLabel htmlFor="validationTooltip05">City</CFormLabel>
-        <CFormInput type="text" id="validationTooltip05" required />
-        <CFormFeedback tooltip invalid>
-          Please provide a valid zip.
-        </CFormFeedback>
+        <CFormInput
+          type="text"
+          aria-describedby="validationTooltip05Feedback"
+          feedbackInvalid="Please provide a valid zip."
+          id="validationTooltip05"
+          label="Zip"
+          required
+          tooltipFeedback
+        />
       </CCol>
       <CCol xs={12} className="position-relative">
         <CButton color="primary" type="submit">
@@ -718,73 +819,90 @@ const handleSubmit = (event) => {
   setValidated(true)
 }
 return (
-  <CForm
-    className="row g-3 needs-validation"
-    noValidate
-    validated={validated}
-    onSubmit={handleSubmit}
-  >
-    <CCol md={4} className="position-relative">
-      <CFormLabel htmlFor="validationTooltip01">Email</CFormLabel>
-      <CFormInput type="text" id="validationTooltip01" defaultValue="Mark" required />
-      <CFormFeedback tooltip valid>
-        Looks good!
-      </CFormFeedback>
-    </CCol>
-    <CCol md={4} className="position-relative">
-      <CFormLabel htmlFor="validationTooltip02">Email</CFormLabel>
-      <CFormInput type="text" id="validationTooltip02" defaultValue="Otto" required />
-      <CFormFeedback tooltip valid>
-        Looks good!
-      </CFormFeedback>
-    </CCol>
-    <CCol md={4} className="position-relative">
-      <CFormLabel htmlFor="validationTooltipUsername">Username</CFormLabel>
-      <CInputGroup className="has-validation">
-        <CInputGroupText id="inputGroupPrepend">@</CInputGroupText>
-        <CFormInput
-          type="text"
-          id="validationTooltipUsername"
-          defaultValue=""
-          aria-describedby="inputGroupPrepend"
-          required
-        />
-        <CFormFeedback tooltip invalid>
-          Please choose a username.
-        </CFormFeedback>
-      </CInputGroup>
-    </CCol>
-    <CCol md={6} className="position-relative">
-      <CFormLabel htmlFor="validationTooltip03">City</CFormLabel>
-      <CFormInput type="text" id="validationTooltip03" required />
-      <CFormFeedback tooltip invalid>
-        Please provide a valid city.
-      </CFormFeedback>
-    </CCol>
-    <CCol md={3} className="position-relative">
-      <CFormLabel htmlFor="validationTooltip04">City</CFormLabel>
-      <CFormSelect id="validationTooltip04" required>
-        <option disabled value="">
-          Choose...
-        </option>
-        <option>...</option>
-      </CFormSelect>
-      <CFormFeedback tooltip invalid>
-        Please provide a valid city.
-      </CFormFeedback>
-    </CCol>
-    <CCol md={3} className="position-relative">
-      <CFormLabel htmlFor="validationTooltip05">City</CFormLabel>
-      <CFormInput type="text" id="validationTooltip05" required />
-      <CFormFeedback tooltip invalid>
-        Please provide a valid zip.
-      </CFormFeedback>
-    </CCol>
-    <CCol xs={12} className="position-relative">
-      <CButton color="primary" type="submit">
-        Submit form
-      </CButton>
-    </CCol>
-  </CForm>
+ <CForm
+  className="row g-3 needs-validation"
+  noValidate
+  validated={validated}
+  onSubmit={handleSubmit}
+>
+  <CCol md={4} className="position-relative">
+    <CFormInput
+      type="text"
+      defaultValue="Mark"
+      feedbackValid="Looks good!"
+      id="validationTooltip01"
+      label="First name"
+      required
+      tooltipFeedback
+    />
+  </CCol>
+  <CCol md={4} className="position-relative">
+    <CFormInput
+      type="text"
+      defaultValue="Otto"
+      feedbackValid="Looks good!"
+      id="validationTooltip02"
+      label="First name"
+      required
+      tooltipFeedback
+    />
+  </CCol>
+  <CCol md={4} className="position-relative">
+    <CFormLabel htmlFor="validationTooltipUsername">Username</CFormLabel>
+    <CInputGroup className="has-validation">
+      <CInputGroupText id="inputGroupPrepend">@</CInputGroupText>
+      <CFormInput
+        type="text"
+        aria-describedby="inputGroupPrependFeedback"
+        feedbackInvalid="Please choose a username."
+        id="validationTooltipUsername"
+        required
+        tooltipFeedback
+      />
+    </CInputGroup>
+  </CCol>
+  <CCol md={6} className="position-relative">
+    <CFormInput
+      type="text"
+      aria-describedby="validationTooltip03Feedback"
+      feedbackInvalid="Please provide a valid city."
+      id="validationTooltip03"
+      label="City"
+      required
+      tooltipFeedback
+    />
+  </CCol>
+  <CCol md={3} className="position-relative">
+    <CFormSelect
+      aria-describedby="validationTooltip04Feedback"
+      feedbackInvalid="Please select a valid state."
+      id="validationTooltip04"
+      label="State"
+      required
+      tooltipFeedback
+    >
+      <option selected="" disabled="" value="">
+        Choose...
+      </option>
+      <option>...</option>
+    </CFormSelect>
+  </CCol>
+  <CCol md={3} className="position-relative">
+    <CFormInput
+      type="text"
+      aria-describedby="validationTooltip05Feedback"
+      feedbackInvalid="Please provide a valid zip."
+      id="validationTooltip05"
+      label="Zip"
+      required
+      tooltipFeedback
+    />
+  </CCol>
+  <CCol xs={12} className="position-relative">
+    <CButton color="primary" type="submit">
+      Submit form
+    </CButton>
+  </CCol>
+</CForm>
 )
 ```

@@ -6,7 +6,7 @@ menu: Forms
 route: /forms/floating-labels
 ---
 
-import { 
+import {
   CButton,
   CForm,
   CFormFloating,
@@ -15,12 +15,35 @@ import {
   CFormSelect,
   CFormTextarea,
   CCol,
-  CRow 
+  CRow,
 } from '@coreui/react/src/index'
 
 ## Example
 
-Wrap a pair of `<CFormInput>` and `<CFormLabel>` elements in `CFormFloating` to enable floating labels with textual form fields. A `placeholder` is required on each `<CFormInput>` as our method of CSS-only floating labels uses the `:placeholder-shown` pseudo-element. Also note that the `<CFormInput>` must come first so we can utilize a sibling selector (e.g., `~`).
+Use `floatingLabel` property on `<CFormInput>`, `<CFormSelect>` or `<CFormTextarea>` to enable floating labels with textual form fields. A `placeholder` is required on each `<CFormInput>`, `<CFormSelect>` and `<CFormTextarea>` as our method of CSS-only floating labels uses the `:placeholder-shown` pseudo-element.
+
+<Example>
+  <CFormInput
+    className="mb-3"
+    type="email"
+    id="floatingInput"
+    floatingLabel="Email address"
+    placeholder="name@example.com"
+  />
+  <CFormInput
+    type="password"
+    id="floatingPassword"
+    floatingLabel="Password"
+    placeholder="Password"
+  />
+</Example>
+
+```jsx
+<CFormInput type="email" id="floatingInput" floatingLabel="Email address" placeholder="name@example.com" />
+<CFormInput type="password" id="floatingPassword" floatingLabel="Password" placeholder="Password" />
+```
+
+You can create the same form control by wrapping a pair of `<CFormInput>` and `<CFormLabel>` elements in `<CFormFloating>` to enable floating labels with textual form fields. A `placeholder` is required on each `<CFormInput>` as our method of CSS-only floating labels uses the `:placeholder-shown` pseudo-element. Also, note that the `<CFormInput>` must come first so we can utilize a sibling selector (e.g., `~`).
 
 <Example>
   <CFormFloating className="mb-3">
@@ -47,27 +70,65 @@ Wrap a pair of `<CFormInput>` and `<CFormLabel>` elements in `CFormFloating` to 
 When there's a `value` already defined, `<CFormLabel>`s will automatically adjust to their floated position.
 
 <Example>
-  <CFormFloating>
-    <CFormInput
-      type="email"
-      id="floatingInputValue"
-      placeholder="name@example.com"
-      defaultValue="test@example.com"
-    />
-    <CFormLabel htmlFor="floatingInputValue">Input with value</CFormLabel>
-  </CFormFloating>
-</Example>
-
-```jsx
-<CFormFloating>
   <CFormInput
     type="email"
     id="floatingInputValue"
+    floatingLabel="Input with value"
     placeholder="name@example.com"
     defaultValue="test@example.com"
   />
-  <CFormLabel htmlFor="floatingInputValue">Input with value</CFormLabel>
-</CFormFloating>
+</Example>
+
+```jsx
+<CFormInput
+  type="email"
+  id="floatingInputValue"
+  floatingLabel="Input with value"
+  placeholder="name@example.com"
+  defaultValue="test@example.com"
+/>
+```
+
+
+Form validation styles also work as expected.
+
+<Example>
+  <CFormInput
+    className="mb-3"
+    type="email"
+    id="floatingInputInvalid"
+    floatingLabel="Email addresss"
+    placeholder="name@example.com"
+    defaultValue="test@example.com"
+    valid
+  />
+  <CFormInput
+    type="email"
+    id="floatingInputInvalid"
+    floatingLabel="Email addresss"
+    placeholder="name@example.com"
+    defaultValue="test@example.com"
+    invalid
+  />
+</Example>
+
+```jsx
+<CFormInput
+  type="email"
+  id="floatingInputInvalid"
+  floatingLabel="Email addresss"
+  placeholder="name@example.com"
+  defaultValue="test@example.com"
+  valid
+/>
+<CFormInput
+  type="email"
+  id="floatingInputInvalid"
+  floatingLabel="Email addresss"
+  placeholder="name@example.com"
+  defaultValue="test@example.com"
+  invalid
+/>
 ```
 
 ## Textareas
@@ -75,47 +136,40 @@ When there's a `value` already defined, `<CFormLabel>`s will automatically adjus
 By default, `<CFormTextarea>`s will be the same height as `<CFormInput>`s.
 
 <Example>
-  <CFormFloating>
-    <CFormTextarea
-      id="floatingTextarea"
-      placeholder="Leave a comment here"
-    ></CFormTextarea>
-    <CFormLabel htmlFor="floatingTextarea">Comments</CFormLabel>
-  </CFormFloating>
+  <CFormTextarea
+    id="floatingTextarea"
+    floatingLabel="Comments"
+    placeholder="Leave a comment here"
+  ></CFormTextarea>
 </Example>
 
 ```jsx
-<CFormFloating>
-  <CFormTextarea
-    id="floatingTextarea"
-    placeholder="Leave a comment here"
-  ></CFormTextarea>
-  <CFormLabel htmlFor="floatingTextarea">Comments</CFormLabel>
+<CFormTextarea
+  id="floatingTextarea"
+  floatingLabel="Comments"
+  placeholder="Leave a comment here"
+></CFormTextarea>
 </CFormFloating>
 ```
 
 To set a custom height on your `<CFormTextarea>`, do not use the `rows` attribute. Instead, set an explicit `height` (either inline or via custom CSS).
 
 <Example>
-  <CFormFloating>
-    <CFormTextarea
-      placeholder="Leave a comment here"
-      id="floatingTextarea2"
-      style={{ height: '100px' }}
-    ></CFormTextarea>
-    <CFormLabel htmlFor="floatingTextarea2">Comments</CFormLabel>
-  </CFormFloating>
-</Example>
-
-```jsx
-<CFormFloating>
   <CFormTextarea
     placeholder="Leave a comment here"
     id="floatingTextarea2"
+    floatingLabel="Comments"
     style={{ height: '100px' }}
   ></CFormTextarea>
-  <CFormLabel htmlFor="floatingTextarea2">Comments</CFormLabel>
-</CFormFloating>
+</Example>
+
+```jsx
+<CFormTextarea
+  placeholder="Leave a comment here"
+  id="floatingTextarea2"
+  floatingLabel="Comments"
+  style={{ height: '100px' }}
+></CFormTextarea>
 ```
 
 ## Selects
@@ -123,27 +177,29 @@ To set a custom height on your `<CFormTextarea>`, do not use the `rows` attribut
 Other than `<CFormInput>`, floating labels are only available on `<CFormSelect>`s. They work in the same way, but unlike `<CFormInput>`s, they'll always show the `<CFormLabel>` in its floated state. **Selects with `size` and `multiple` are not supported.**
 
 <Example>
-  <CFormFloating>
-    <CFormSelect id="floatingSelect" aria-label="Floating label select example">
-      <option>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </CFormSelect>
-    <CFormLabel htmlFor="floatingSelect">Works with selects</CFormLabel>
-  </CFormFloating>
-</Example>
-
-```jsx
-<CFormFloating>
-  <CFormSelect id="floatingSelect" aria-label="Floating label select example">
+  <CFormSelect
+    id="floatingSelect"
+    floatingLabel="Works with selects"
+    aria-label="Floating label select example"
+  >
     <option>Open this select menu</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
   </CFormSelect>
-  <CFormLabel htmlFor="floatingSelect">Works with selects</CFormLabel>
-</CFormFloating>
+</Example>
+
+```jsx
+<CFormSelect
+  id="floatingSelect"
+  floatingLabel="Works with selects"
+  aria-label="Floating label select example"
+>
+  <option>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</CFormSelect>
 ```
 
 ## Layout
@@ -151,45 +207,53 @@ Other than `<CFormInput>`, floating labels are only available on `<CFormSelect>`
 When working with the CoreUI for Bootstrap grid system, be sure to place form elements within column classes.
 
 <Example>
-  <CRow xs={{gutter: 2}}>
+  <CRow xs={{ gutter: 2 }}>
     <CCol md>
-      <CFormFloating>
-        <CFormInput type="email" id="floatingInputGrid" placeholder="name@example.com" defaultValue="email@example.com" />
-        <CFormLabel htmlFor="floatingInputGrid">Email address</CFormLabel>
-      </CFormFloating>
+      <CFormInput
+        type="email"
+        id="floatingInputGrid"
+        floatingLabel="Email address"
+        placeholder="name@example.com"
+        defaultValue="email@example.com"
+      />
     </CCol>
     <CCol md>
-      <CFormFloating>
-        <CFormSelect id="floatingSelectGrid" aria-label="Floating label select example">
-          <option>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </CFormSelect>
-        <CFormLabel htmlFor="floatingSelectGrid">Works with selects</CFormLabel>
-      </CFormFloating>
-    </CCol>
-  </CRow>
-</Example>
-
-```jsx
-<CRow xs={{gutter: 2}}>
-  <CCol md>
-    <CFormFloating>
-      <CFormInput type="email" id="floatingInputGrid" placeholder="name@example.com" defaultValue="email@example.com" />
-      <CFormLabel htmlFor="floatingInputGrid">Email address</CFormLabel>
-    </CFormFloating>
-  </CCol>
-  <CCol md>
-    <CFormFloating>
-      <CFormSelect id="floatingSelectGrid" aria-label="Floating label select example">
+      <CFormSelect
+        id="floatingSelectGrid"
+        floatingLabel="Email address"
+        aria-label="Works with selects"
+      >
         <option>Open this select menu</option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
       </CFormSelect>
-      <CFormLabel htmlFor="floatingSelectGrid">Works with selects</CFormLabel>
-    </CFormFloating>
+    </CCol>
+  </CRow>
+</Example>
+
+```jsx
+<CRow xs={{ gutter: 2 }}>
+  <CCol md>
+    <CFormInput
+      type="email"
+      id="floatingInputGrid"
+      floatingLabel="Email address"
+      placeholder="name@example.com"
+      defaultValue="email@example.com"
+    />
+  </CCol>
+  <CCol md>
+    <CFormSelect
+      id="floatingSelectGrid"
+      floatingLabel="Email address"
+      aria-label="Works with selects"
+    >
+      <option>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </CFormSelect>
   </CCol>
 </CRow>
 ```

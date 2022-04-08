@@ -1,0 +1,111 @@
+---
+title: React Form Text Component
+name: Form control
+description: React textarea components. Give textual form `<textarea>`s an upgrade with custom styles, sizing, focus states, validation, and more.
+menu: Forms
+route: /forms/textarea
+---
+
+import {
+  CButton,
+  CForm,
+  CFormFloating,
+  CFormInput,
+  CFormLabel,
+  CFormText,
+  CFormTextarea,
+  CCol,
+  CRow,
+} from '@coreui/react/src/index'
+
+## Example
+
+<Example>
+  <CFormTextarea
+    id="exampleFormControlTextarea1"
+    label="Example textarea"
+    rows="3"
+    text="Must be 8-20 words long."
+  ></CFormTextarea>
+</Example>
+
+```jsx
+<CForm>
+  <CFormTextarea
+    id="exampleFormControlTextarea1"
+    label="Example textarea"
+    rows="3"
+    text="Must be 8-20 words long."
+  ></CFormTextarea>
+</CForm>
+```
+
+If you need to add custom classNames to form's components, or need to add some custom elements you can add each form component separately. Please check the example below.
+
+```jsx
+<CFormLabel htmlFor="exampleFormControlTextarea1">Example textarea</CFormLabel>
+<CFormTextarea id="exampleFormControlTextarea1" rows="3"></CFormTextarea>
+<CFormText component="span" id="passwordHelpInline">Must be 8-20 words long.</CFormText>
+```
+
+## Disabled
+
+Add the `disabled` boolean attribute on an textarea to give it a grayed out appearance and remove pointer events.
+
+<Example>
+  <CFormTextarea
+    className="mb-3"
+    placeholder="Disabled textarea"
+    aria-label="Disabled textarea example"
+    disabled
+  ></CFormTextarea>
+</Example>
+
+```jsx
+<CFormTextarea
+  className="mb-3"
+  placeholder="Disabled textarea"
+  aria-label="Disabled textarea example"
+  disabled
+></CFormTextarea>
+```
+
+## Readonly
+
+Add the `readOnly` boolean attribute on an textarea to prevent modification of the textarea's value. Read-only textareas appear lighter (just like disabled textareas), but retain the standard cursor.
+
+<Example>
+  <CFormTextarea
+    placeholder="Readonly textarea"
+    aria-label="Readonly textarea example"
+    disabled
+    readOnly
+  ></CFormTextarea>
+</Example>
+
+```jsx
+<CFormTextarea
+  placeholder="Readonly textarea"
+  aria-label="Readonly textarea example"
+  disabled
+  readOnly
+></CFormTextarea>
+```
+
+## API
+
+### CFormTextarea
+
+`markdown:CFormTextarea.api.mdx`
+
+### CFormFeedback
+
+`markdown:CFormFeedback.api.mdx`
+
+### CFormLabel
+
+`markdown:CFormLabel.api.mdx`
+
+### CFormText
+
+`markdown:CFormText.api.mdx`

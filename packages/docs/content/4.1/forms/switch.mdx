@@ -1,0 +1,53 @@
+---
+title: React Switch Components
+name: Switch
+description: Create consistent cross-browser and cross-device switch component.
+menu: Forms
+route: /forms/checks-radios
+---
+
+import { useEffect, useRef } from 'react'
+import {
+  CFormSwitch,
+} from '@coreui/react/src/index'
+
+## Switches
+
+<Example>
+  <CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefault" />
+  <CFormSwitch label="Checked switch checkbox input" id="formSwitchCheckChecked" defaultChecked />
+  <CFormSwitch label="Disabled switch checkbox input" id="formSwitchCheckDisabled" disabled />
+  <CFormSwitch
+    label="Disabled checked switch checkbox input"
+    id="formSwitchCheckCheckedDisabled"
+    defaultChecked
+    disabled
+  />
+</Example>
+
+```jsx
+<CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefault"/>
+<CFormSwitch label="Checked switch checkbox input" id="formSwitchCheckChecked" defaultChecked/>
+<CFormSwitch label="Disabled switch checkbox input" id="formSwitchCheckDisabled" disabled/>
+<CFormSwitch label="Disabled checked switch checkbox input" id="formSwitchCheckCheckedDisabled" defaultChecked disabled/>
+```
+
+### Sizes
+
+<Example>
+  <CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefaultNormal" />
+  <CFormSwitch size="lg" label="Large switch checkbox input" id="formSwitchCheckDefaultLg" />
+  <CFormSwitch size="xl" label="Extra large switch checkbox input" id="formSwitchCheckDefaultXL" />
+</Example>
+
+```jsx
+<CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefaultNormal"/>
+<CFormSwitch size="lg" label="Large switch checkbox input" id="formSwitchCheckDefaultLg"/>
+<CFormSwitch size="xl" label="Extra large switch checkbox input" id="formSwitchCheckDefaultXL"/>
+```
+
+## API
+
+### CFormSwitch
+
+`markdown:CFormSwitch.api.mdx`
