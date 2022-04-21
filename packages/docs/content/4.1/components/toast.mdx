@@ -35,7 +35,7 @@ To encourage extensible and predictable toasts, we recommend a header and body. 
 Toasts are as flexible as you need and have very little required markup. At a minimum, we require a single element to contain your "toasted" content and strongly encourage a dismiss button.
 
 <Example>
-  <CToast title="CoreUI for React.js" animation={false} autohide={false} visible={true}>
+  <CToast animation={false} autohide={false} visible={true}>
     <CToastHeader closeButton>
       <svg
         className="rounded me-2"
@@ -56,7 +56,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 </Example>
 
 ```jsx
-<CToast title="CoreUI for React.js" autohide={false} visible={true}>
+<CToast autohide={false} visible={true}>
   <CToastHeader closeButton>
     <svg
       className="rounded me-2"
@@ -80,7 +80,7 @@ export const BasicExample = () => {
   const [toast, addToast] = useState(0)
   const toaster = useRef()
   const exampleToast = (
-    <CToast title="CoreUI for React.js">
+    <CToast>
       <CToastHeader closeButton>
         <svg
           className="rounded me-2"
@@ -115,7 +115,7 @@ export const BasicExample = () => {
 const [toast, addToast] = useState(0)
 const toaster = useRef()
 const exampleToast = (
-  <CToast title="CoreUI for React.js">
+  <CToast>
     <CToastHeader closeButton>
       <svg
         className="rounded me-2"
@@ -147,7 +147,7 @@ return (
 Toasts are slightly translucent to blend in with what's below them.
 
 <Example className="bg-dark border-0">
-  <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+  <CToast autohide={false} visible={true}>
     <CToastHeader closeButton>
       <svg
         className="rounded me-2"
@@ -168,7 +168,7 @@ Toasts are slightly translucent to blend in with what's below them.
 </Example>
 
 ```jsx
-<CToast title="CoreUI for React.js" autohide={false} visible={true}>
+<CToast autohide={false} visible={true}>
   <CToastHeader closeButton>
     <svg
       className="rounded me-2"
@@ -194,7 +194,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
 
 <Example>
   <CToaster>
-    <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+    <CToast autohide={false} visible={true}>
       <CToastHeader closeButton>
         <svg
           className="rounded me-2"
@@ -212,7 +212,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
       </CToastHeader>
       <CToastBody>Hello, world! This is a toast message.</CToastBody>
     </CToast>
-    <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+    <CToast autohide={false} visible={true}>
       <CToastHeader closeButton>
         <svg
           className="rounded me-2"
@@ -235,7 +235,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
 
 ```jsx
 <CToaster>
-  <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+  <CToast autohide={false} visible={true}>
     <CToastHeader closeButton>
       <svg
         className="rounded me-2"
@@ -253,7 +253,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
     </CToastHeader>
     <CToastBody>Hello, world! This is a toast message.</CToastBody>
   </CToast>
-  <CToast title="CoreUI for React.js" autohide={false} visible={true}>
+  <CToast autohide={false} visible={true}>
     <CToastHeader closeButton>
       <svg
         className="rounded me-2"
