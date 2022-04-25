@@ -1,9 +1,10 @@
-import React, { ChangeEventHandler, forwardRef, InputHTMLAttributes } from 'react'
+import React, { ChangeEventHandler, forwardRef, InputHTMLAttributes, useState } from 'react'
 
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
 import { CFormControlWrapper, CFormControlWrapperProps } from './CFormControlWrapper'
+import { useEffect } from 'react'
 
 export interface CFormInputProps
   extends CFormControlWrapperProps,
@@ -12,6 +13,10 @@ export interface CFormInputProps
    * A string of all className you want applied to the component.
    */
   className?: string
+  /**
+   * Delay onChange event while typing. If set to true onChange event will be delayed 500ms, you can also provide the number of milliseconds you want to delay the onChange event.
+   */
+  delay?: boolean | number
   /**
    * Toggle the disabled state for the component.
    */
@@ -49,6 +54,7 @@ export const CFormInput = forwardRef<HTMLInputElement, CFormInputProps>(
     {
       children,
       className,
+      delay = false,
       feedback,
       feedbackInvalid,
       feedbackValid,
@@ -56,6 +62,7 @@ export const CFormInput = forwardRef<HTMLInputElement, CFormInputProps>(
       id,
       invalid,
       label,
+      onChange,
       plainText,
       size,
       text,
@@ -66,6 +73,17 @@ export const CFormInput = forwardRef<HTMLInputElement, CFormInputProps>(
     },
     ref,
   ) => {
+    const [value, setValue] = useState<React.ChangeEvent<HTMLInputElement>>()
+
+    useEffect(() => {
+      const timeOutId = setTimeout(
+        () => value && onChange && onChange(value),
+        typeof delay === 'number' ? delay : 500,
+      )
+
+      return () => clearTimeout(timeOutId)
+    }, [value])
+
     const _className = classNames(
       plainText ? 'form-control-plaintext' : 'form-control',
       {
@@ -76,6 +94,7 @@ export const CFormInput = forwardRef<HTMLInputElement, CFormInputProps>(
       },
       className,
     )
+
     return (
       <CFormControlWrapper
         describedby={rest['aria-describedby']}
@@ -90,7 +109,14 @@ export const CFormInput = forwardRef<HTMLInputElement, CFormInputProps>(
         tooltipFeedback={tooltipFeedback}
         valid={valid}
       >
-        <input className={_className} id={id} type={type} {...rest} ref={ref}>
+        <input
+          className={_className}
+          id={id}
+          type={type}
+          onChange={(event) => (delay ? setValue(event) : onChange && onChange(event))}
+          {...rest}
+          ref={ref}
+        >
           {children}
         </input>
       </CFormControlWrapper>
@@ -101,6 +127,7 @@ export const CFormInput = forwardRef<HTMLInputElement, CFormInputProps>(
 CFormInput.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
+  delay: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   plainText: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'lg']),
   type: PropTypes.oneOfType([PropTypes.oneOf(['color', 'file', 'text']), PropTypes.string]),
