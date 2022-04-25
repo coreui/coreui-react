@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, ReactNode, useRef, useState } from 'react'
+import React, { FC, ReactNode, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
@@ -9,7 +9,7 @@ import { Transition } from 'react-transition-group'
 import { Triggers, triggerPropType } from '../Types'
 
 export interface CTooltipProps {
-  children: ReactElement
+  children: any
   /**
    * Content node for your component.
    */
@@ -63,65 +63,71 @@ export const CTooltip: FC<CTooltipProps> = ({
 
   return (
     <Manager>
-      <Reference>
-        {({ ref }) =>
-          React.cloneElement(children, {
-            ref: ref,
-            ...((trigger === 'click' || trigger.includes('click')) && {
-              onClick: () => setVisible(!_visible),
-            }),
-            ...((trigger === 'focus' || trigger.includes('focus')) && {
-              onFocus: () => setVisible(true),
-              onBlur: () => setVisible(false),
-            }),
-            ...((trigger === 'hover' || trigger.includes('hover')) && {
-              onMouseEnter: () => setVisible(true),
-              onMouseLeave: () => setVisible(false),
-            }),
-          })
-        }
-      </Reference>
-      {typeof window !== 'undefined' &&
-        createPortal(
-          <Transition
-            in={_visible}
-            mountOnEnter
-            nodeRef={tooltipRef}
-            onEnter={onShow}
-            onExit={onHide}
-            timeout={{
-              enter: 0,
-              exit: 200,
-            }}
-            unmountOnExit
-          >
-            {(state) => {
-              const transitionClass = getTransitionClass(state)
-              return (
-                <Popper placement={placement}>
-                  {({ arrowProps, style, ref }) => (
-                    <div
-                      className={classNames(
-                        `tooltip bs-tooltip-${
-                          placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement
-                        }`,
-                        transitionClass,
-                      )}
-                      ref={ref}
-                      role="tooltip"
-                      style={style}
-                      {...rest}
-                    >
-                      <div className="tooltip-arrow" {...arrowProps}></div>
-                      <div className="tooltip-inner">{content}</div>
-                    </div>
-                  )}
-                </Popper>
-              )
-            }}
-          </Transition>,
-          document.body,
-        )}
+      <>
+        <Reference>
+          {({ ref }) =>
+            React.cloneElement(children, {
+              ref: ref,
+              ...((trigger === 'click' || trigger.includes('click')) && {
+                onClick: () => setVisible(!_visible),
+              }),
+              ...((trigger === 'focus' || trigger.includes('focus')) && {
+                onFocus: () => setVisible(true),
+                onBlur: () => setVisible(false),
+              }),
+              ...((trigger === 'hover' || trigger.includes('hover')) && {
+                onMouseEnter: () => setVisible(true),
+                onMouseLeave: () => setVisible(false),
+              }),
+            })
+          }
+        </Reference>
+        {typeof window !== 'undefined' &&
+          createPortal(
+            <Transition
+              in={_visible}
+              mountOnEnter
+              nodeRef={tooltipRef}
+              onEnter={onShow}
+              onExit={onHide}
+              timeout={{
+                enter: 0,
+                exit: 200,
+              }}
+              unmountOnExit
+            >
+              {(state) => {
+                const transitionClass = getTransitionClass(state)
+                return (
+                  <Popper placement={placement}>
+                    {({ arrowProps, style, ref }) => (
+                      <div
+                        className={classNames(
+                          `tooltip bs-tooltip-${
+                            placement === 'left'
+                              ? 'start'
+                              : placement === 'right'
+                              ? 'end'
+                              : placement
+                          }`,
+                          transitionClass,
+                        )}
+                        ref={ref}
+                        role="tooltip"
+                        style={style}
+                        {...rest}
+                      >
+                        <div className="tooltip-arrow" {...arrowProps}></div>
+                        <div className="tooltip-inner">{content}</div>
+                      </div>
+                    )}
+                  </Popper>
+                )
+              }}
+            </Transition>,
+            document.body,
+          )}
+      </>
     </Manager>
   )
 }

@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, ReactNode, useRef, useState } from 'react'
+import React, { FC, ReactNode, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
@@ -9,7 +9,8 @@ import { Transition } from 'react-transition-group'
 import { Triggers, triggerPropType } from '../Types'
 
 export interface CPopoverProps {
-  children: ReactElement
+  // TODO: find solution to not use any
+  children: any
   /**
    * Content node for your component.
    */
@@ -73,76 +74,82 @@ export const CPopover: FC<CPopoverProps> = ({
 
   return (
     <Manager>
-      <Reference>
-        {({ ref }) =>
-          React.cloneElement(children, {
-            ref: ref,
-            ...((trigger === 'click' || trigger.includes('click')) && {
-              onClick: () => setVisible(!_visible),
-            }),
-            ...((trigger === 'focus' || trigger.includes('focus')) && {
-              onFocus: () => setVisible(true),
-              onBlur: () => setVisible(false),
-            }),
-            ...((trigger === 'hover' || trigger.includes('hover')) && {
-              onMouseEnter: () => setVisible(true),
-              onMouseLeave: () => setVisible(false),
-            }),
-          })
-        }
-      </Reference>
-      {typeof window !== 'undefined' &&
-        createPortal(
-          <Transition
-            in={_visible}
-            mountOnEnter
-            nodeRef={popoverRef}
-            onEnter={onShow}
-            onExit={onHide}
-            timeout={{
-              enter: 0,
-              exit: 200,
-            }}
-            unmountOnExit
-          >
-            {(state) => {
-              const transitionClass = getTransitionClass(state)
-              return (
-                <Popper
-                  placement={placement}
-                  modifiers={[
-                    {
-                      name: 'offset',
-                      options: {
-                        offset: offset,
+      <>
+        <Reference>
+          {({ ref }) =>
+            React.cloneElement(children, {
+              ref: ref,
+              ...((trigger === 'click' || trigger.includes('click')) && {
+                onClick: () => setVisible(!_visible),
+              }),
+              ...((trigger === 'focus' || trigger.includes('focus')) && {
+                onFocus: () => setVisible(true),
+                onBlur: () => setVisible(false),
+              }),
+              ...((trigger === 'hover' || trigger.includes('hover')) && {
+                onMouseEnter: () => setVisible(true),
+                onMouseLeave: () => setVisible(false),
+              }),
+            })
+          }
+        </Reference>
+        {typeof window !== 'undefined' &&
+          createPortal(
+            <Transition
+              in={_visible}
+              mountOnEnter
+              nodeRef={popoverRef}
+              onEnter={onShow}
+              onExit={onHide}
+              timeout={{
+                enter: 0,
+                exit: 200,
+              }}
+              unmountOnExit
+            >
+              {(state) => {
+                const transitionClass = getTransitionClass(state)
+                return (
+                  <Popper
+                    placement={placement}
+                    modifiers={[
+                      {
+                        name: 'offset',
+                        options: {
+                          offset: offset,
+                        },
                       },
-                    },
-                  ]}
-                >
-                  {({ arrowProps, style, ref }) => (
-                    <div
-                      className={classNames(
-                        `popover bs-popover-${
-                          placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement
-                        }`,
-                        transitionClass,
-                      )}
-                      ref={ref}
-                      role="tooltip"
-                      style={style}
-                      {...rest}
-                    >
-                      <div className="popover-arrow" {...arrowProps}></div>
-                      <div className="popover-header">{title}</div>
-                      <div className="popover-body">{content}</div>
-                    </div>
-                  )}
-                </Popper>
-              )
-            }}
-          </Transition>,
-          document.body,
-        )}
+                    ]}
+                  >
+                    {({ arrowProps, style, ref }) => (
+                      <div
+                        className={classNames(
+                          `popover bs-popover-${
+                            placement === 'left'
+                              ? 'start'
+                              : placement === 'right'
+                              ? 'end'
+                              : placement
+                          }`,
+                          transitionClass,
+                        )}
+                        ref={ref}
+                        role="tooltip"
+                        style={style}
+                        {...rest}
+                      >
+                        <div className="popover-arrow" {...arrowProps}></div>
+                        <div className="popover-header">{title}</div>
+                        <div className="popover-body">{content}</div>
+                      </div>
+                    )}
+                  </Popper>
+                )
+              }}
+            </Transition>,
+            document.body,
+          )}
+      </>
     </Manager>
   )
 }
