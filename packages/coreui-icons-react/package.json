@@ -40,7 +40,7 @@
     "@rollup/plugin-typescript": "^8.3.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.4",
-    "@types/react": "^17.0.44",
+    "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.15",
     "classnames": "^2.3.1",
     "prop-types": "^15.8.1",
