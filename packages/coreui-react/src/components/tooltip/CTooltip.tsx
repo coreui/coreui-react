@@ -1,19 +1,25 @@
 import React, { FC, ReactNode, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import PropTypes from 'prop-types'
+
 import classNames from 'classnames'
-import { Manager, Popper, Reference } from 'react-popper'
+import PropTypes from 'prop-types'
+import { usePopper } from 'react-popper'
 import { Transition } from 'react-transition-group'
 
 // import { CTooltipContent } from './CTooltipContent'
 import { Triggers, triggerPropType } from '../Types'
 
 export interface CTooltipProps {
+  // TODO: find solution to not use any
   children: any
   /**
    * Content node for your component.
    */
   content: ReactNode | string
+  /**
+   * Offset of the popover relative to its target.
+   */
+  offset?: [number, number]
   /**
    * Callback fired when the component requests to be hidden.
    */
@@ -41,15 +47,32 @@ export interface CTooltipProps {
 export const CTooltip: FC<CTooltipProps> = ({
   children,
   content,
-  placement = 'top',
+  offset = [0, 0],
   onHide,
   onShow,
+  placement = 'top',
   trigger = 'hover',
   visible,
   ...rest
 }) => {
   const tooltipRef = useRef()
   const [_visible, setVisible] = useState(visible)
+
+  const [referenceElement, setReferenceElement] = useState(null)
+  const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
+  const [arrowElement, setArrowElement] = useState<HTMLDivElement | null>(null)
+  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+    modifiers: [
+      { name: 'arrow', options: { element: arrowElement } },
+      {
+        name: 'offset',
+        options: {
+          offset: offset,
+        },
+      },
+    ],
+    placement: placement,
+  })
 
   const getTransitionClass = (state: string) => {
     return state === 'entering'
@@ -62,82 +85,70 @@ export const CTooltip: FC<CTooltipProps> = ({
   }
 
   return (
-    <Manager>
-      <>
-        <Reference>
-          {({ ref }) =>
-            React.cloneElement(children, {
-              ref: ref,
-              ...((trigger === 'click' || trigger.includes('click')) && {
-                onClick: () => setVisible(!_visible),
-              }),
-              ...((trigger === 'focus' || trigger.includes('focus')) && {
-                onFocus: () => setVisible(true),
-                onBlur: () => setVisible(false),
-              }),
-              ...((trigger === 'hover' || trigger.includes('hover')) && {
-                onMouseEnter: () => setVisible(true),
-                onMouseLeave: () => setVisible(false),
-              }),
-            })
-          }
-        </Reference>
-        {typeof window !== 'undefined' &&
-          createPortal(
-            <Transition
-              in={_visible}
-              mountOnEnter
-              nodeRef={tooltipRef}
-              onEnter={onShow}
-              onExit={onHide}
-              timeout={{
-                enter: 0,
-                exit: 200,
-              }}
-              unmountOnExit
-            >
-              {(state) => {
-                const transitionClass = getTransitionClass(state)
-                return (
-                  <Popper placement={placement}>
-                    {({ arrowProps, style, ref }) => (
-                      <div
-                        className={classNames(
-                          `tooltip bs-tooltip-${
-                            placement === 'left'
-                              ? 'start'
-                              : placement === 'right'
-                              ? 'end'
-                              : placement
-                          }`,
-                          transitionClass,
-                        )}
-                        ref={ref}
-                        role="tooltip"
-                        style={style}
-                        {...rest}
-                      >
-                        <div className="tooltip-arrow" {...arrowProps}></div>
-                        <div className="tooltip-inner">{content}</div>
-                      </div>
-                    )}
-                  </Popper>
-                )
-              }}
-            </Transition>,
-            document.body,
-          )}
-      </>
-    </Manager>
+    <>
+      {React.cloneElement(children, {
+        ref: setReferenceElement,
+        ...((trigger === 'click' || trigger.includes('click')) && {
+          onClick: () => setVisible(!_visible),
+        }),
+        ...((trigger === 'focus' || trigger.includes('focus')) && {
+          onFocus: () => setVisible(true),
+          onBlur: () => setVisible(false),
+        }),
+        ...((trigger === 'hover' || trigger.includes('hover')) && {
+          onMouseEnter: () => setVisible(true),
+          onMouseLeave: () => setVisible(false),
+        }),
+      })}
+      {typeof window !== 'undefined' &&
+        createPortal(
+          <Transition
+            in={_visible}
+            mountOnEnter
+            nodeRef={tooltipRef}
+            onEnter={onShow}
+            onExit={onHide}
+            timeout={{
+              enter: 0,
+              exit: 200,
+            }}
+            unmountOnExit
+          >
+            {(state) => {
+              const transitionClass = getTransitionClass(state)
+              return (
+                <div
+                  className={classNames(
+                    `tooltip bs-tooltip-${
+                      placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement
+                    }`,
+                    transitionClass,
+                  )}
+                  ref={setPopperElement}
+                  role="tooltip"
+                  style={styles.popper}
+                  {...attributes.popper}
+                  {...rest}
+                >
+                  <div className="tooltip-arrow" style={styles.arrow} ref={setArrowElement}></div>
+                  <div className="tooltip-inner">{content}</div>
+                </div>
+              )
+            }}
+          </Transition>,
+          document.body,
+        )}
+    </>
   )
 }
 
 CTooltip.propTypes = {
   children: PropTypes.any,
   content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  placement: PropTypes.oneOf(['auto', 'top', 'right', 'bottom', 'left']),
+  offset: PropTypes.any, // TODO: find good proptype
   onHide: PropTypes.func,
   onShow: PropTypes.func,
+  placement: PropTypes.oneOf(['auto', 'top', 'right', 'bottom', 'left']),
   trigger: triggerPropType,
   visible: PropTypes.bool,
 }
