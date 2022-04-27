@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 import { usePopper } from 'react-popper'
 import { Transition } from 'react-transition-group'
 
-// import { CTooltipContent } from './CTooltipContent'
 import { Triggers, triggerPropType } from '../Types'
 
 export interface CTooltipProps {
