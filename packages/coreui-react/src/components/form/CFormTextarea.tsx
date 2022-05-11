@@ -78,7 +78,7 @@ export const CFormTextarea = forwardRef<HTMLTextAreaElement, CFormTextareaProps>
         tooltipFeedback={tooltipFeedback}
         valid={valid}
       >
-        <textarea className={_className} {...rest} ref={ref}>
+        <textarea className={_className} id={id} {...rest} ref={ref}>
           {children}
         </textarea>
       </CFormControlWrapper>
