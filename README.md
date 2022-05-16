@@ -27,8 +27,8 @@
 ## Table of contents
 
 - [Quick start](#quick-start)
+- [Components](#components)
 - [Status](#status)
-- [What's included](#whats-included)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Documentation](#documentation)
 - [Contributing](#contributing)
@@ -94,13 +94,58 @@ npm install bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 ```
 
+## Components
+
+- [React Accordion](https://coreui.io/react/docs/components/accordion/)
+- [React Alert](https://coreui.io/react/docs/components/alert/)
+- [React Avatar](https://coreui.io/react/docs/components/avatar/)
+- [React Badge](https://coreui.io/react/docs/components/badge/)
+- [React Breadcrumb](https://coreui.io/react/docs/components/breadcrumb/)
+- [React Button](https://coreui.io/react/docs/components/button/)
+- [React Button Group](https://coreui.io/react/docs/components/button-group/)
+- [React Callout](https://coreui.io/react/docs/components/callout/)
+- [React Card](https://coreui.io/react/docs/components/card/)
+- [React Carousel](https://coreui.io/react/docs/components/carousel/)
+- [React Checkbox](https://coreui.io/react/docs/forms/checkbox/)
+- [React Close Button](https://coreui.io/react/docs/components/close-button/)
+- [React Collapse](https://coreui.io/react/docs/components/collapse/)
+- [React Date Picker](https://coreui.io/react/docs/forms/date-picker/) **PRO**
+- [React Date Range Picker](https://coreui.io/react/docs/forms/date-range-picker/) **PRO**
+- [React Dropdown](https://coreui.io/react/docs/components/dropdown/)
+- [React Floating Labels](https://coreui.io/react/docs/forms/floating-labels/)
+- [React Footer](https://coreui.io/react/docs/components/footer/)
+- [React Header](https://coreui.io/react/docs/components/header/)
+- [React Image](https://coreui.io/react/docs/components/image/)
+- [React Input](https://coreui.io/react/docs/forms/input/)
+- [React Input Group](https://coreui.io/react/docs/forms/input-group/)
+- [React List Group](https://coreui.io/react/docs/components/list-group/)
+- [React Loading Button](https://coreui.io/react/docs/components/loading-button/) **PRO**
+- [React Modal](https://coreui.io/react/docs/components/modal/)
+- [React Multi Select](https://coreui.io/react/docs/forms/multi-select/) **PRO**
+- [React Navs & Tabs](https://coreui.io/react/docs/components/navs-tabs/)
+- [React Navbar](https://coreui.io/react/docs/components/navbar/)
+- [React Offcanvas](https://coreui.io/react/docs/components/offcanvas/)
+- [React Pagination](https://coreui.io/react/docs/components/pagination/)
+- [React Placeholder](https://coreui.io/react/docs/components/placeholder/)
+- [React Popover](https://coreui.io/react/docs/components/popover/)
+- [React Progress](https://coreui.io/react/docs/components/progress/)
+- [React Radio](https://coreui.io/react/docs/forms/radio/)
+- [React Range](https://coreui.io/react/docs/forms/range/)
+- [React Select](https://coreui.io/react/docs/forms/select/)
+- [React Sidebar](https://coreui.io/react/docs/components/sidebar/)
+- [React Smart Pagination](https://coreui.io/react/docs/components/smart-pagination/) **PRO**
+- [React Smart Table](https://coreui.io/react/docs/components/smart-table/) **PRO**
+- [React Spinner](https://coreui.io/react/docs/components/spinner/)
+- [React Switch](https://coreui.io/react/docs/forms/switch/)
+- [React Table](https://coreui.io/react/docs/components/table/)
+- [React Textarea](https://coreui.io/react/docs/forms/textarea/)
+- [React Time Picker](https://coreui.io/react/docs/forms/time-picker/)
+- [React Toast](https://coreui.io/react/docs/components/toast/)
+- [React Tooltip](https://coreui.io/react/docs/components/tooltip/)
+
 ## Status
 
-[![Build Status](https://github.com/coreui/coreui-react/workflows/JS%20Tests/badge.svg?branch=main)](https://github.com/coreui/coreui-react/actions?query=workflow%3AJS+Tests+branch%3Amain)
 [![npm version](https://img.shields.io/npm/v/@coreui/react)](https://www.npmjs.com/package/@coreui/react)
-[![peerDependencies Status](https://img.shields.io/david/peer/coreui/coreui)](https://david-dm.org/coreui/coreui?type=peer)
-[![devDependency Status](https://img.shields.io/david/dev/coreui/coreui)](https://david-dm.org/coreui/coreui?type=dev)
-[![Coverage Status](https://img.shields.io/coveralls/github/coreui/coreui-react/v4)](https://coveralls.io/github/coreui/coreui-react?branch=v4)
 
 ## Bugs and feature requests
 
