@@ -139,7 +139,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 - [React Switch](https://coreui.io/react/docs/forms/switch/)
 - [React Table](https://coreui.io/react/docs/components/table/)
 - [React Textarea](https://coreui.io/react/docs/forms/textarea/)
-- [React Time Picker](https://coreui.io/react/docs/forms/time-picker/)
+- [React Time Picker](https://coreui.io/react/docs/forms/time-picker/) **PRO**
 - [React Toast](https://coreui.io/react/docs/components/toast/)
 - [React Tooltip](https://coreui.io/react/docs/components/tooltip/)
 
