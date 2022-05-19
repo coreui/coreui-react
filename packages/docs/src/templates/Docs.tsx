@@ -1,10 +1,9 @@
 import React, { FC, useState } from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { CodeBlock, Example, Footer, Header, Seo, Sidebar, Toc } from './../components/'
+import { Ads, CodeBlock, Example, Footer, Header, Seo, Sidebar, Toc } from './../components/'
 import { CCol, CContainer, CRow, CTable } from '@coreui/react/src/'
 import './../styles/styles.scss'
 
@@ -28,9 +27,6 @@ const DocsLayout: FC = ({ data: { mdx } }) => {
   return (
     <>
       <Seo title={mdx.frontmatter.title} description={mdx.frontmatter.description} />
-      <Helmet>
-        <script src="https://media.ethicalads.io/media/client/ethicalads.min.js" />
-      </Helmet>
       <myContext.Provider
         value={{
           sidebarVisible,
@@ -46,7 +42,7 @@ const DocsLayout: FC = ({ data: { mdx } }) => {
                 <CCol lg={9}>
                   <h1>{mdx.frontmatter.title}</h1>
                   <p className="docs-lead fs-4 fw-light">{mdx.frontmatter.description}</p>
-                  <div data-ea-publisher="coreui-io" data-ea-type="image"></div>
+                  <Ads code="CEAICKJY" placement="coreuiio" />
                   <MDXProvider components={components}>
                     <MDXRenderer frontmatter={mdx.frontmatter}>{mdx.body}</MDXRenderer>
                   </MDXProvider>

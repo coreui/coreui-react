@@ -1,3 +1,4 @@
+import Ads from './Ads'
 import CodeBlock from './CodeBlock'
 import Example from './Example'
 import Footer from './Footer'
@@ -7,4 +8,4 @@ import Sidebar from './Sidebar'
 import { SidebarNav } from './SidebarNav'
 import Toc from './Toc'
 
-export { CodeBlock, Example, Footer, Header, Seo, Sidebar, SidebarNav, Toc }
+export { Ads, CodeBlock, Example, Footer, Header, Seo, Sidebar, SidebarNav, Toc }
