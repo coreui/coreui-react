@@ -1,7 +1,7 @@
 ---
 title: React Modal Component
 name: Modal
-description: React Modal component offers a lightweight, multi-purpose popup to add dialogs to yours. Learn how to customize React CoreUI Modals easily. Multiple examples and tutorial.
+description: React Modal component offers a lightweight, multi-purpose popup to add dialogs to yours. Learn how to customize CoreUI React modal components easily. Multiple examples and tutorial.
 menu: Components
 route: /components/modal
 ---
@@ -19,11 +19,11 @@ import {
   CTooltip,
 } from '@coreui/react/src/index'
 
-## Examples
+## How to use React Modal Component?
 
-### Modal components
+### Static modal component example
 
-Below is a static modal example (meaning its `position` and `display` have been overridden). Included are the modal header, modal body (required for `padding`), and modal footer (optional). We ask that you include modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.
+Below is a static react modal component example (meaning its `position` and `display` have been overridden). Included are the modal header, modal body (required for `padding`), and modal footer (optional). We ask that you include react modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.
 
 <Example>
   <CModal
@@ -34,9 +34,9 @@ Below is a static modal example (meaning its `position` and `display` have been 
     visible
   >
     <CModalHeader>
-      <CModalTitle>Modal title</CModalTitle>
+      <CModalTitle>React Modal title</CModalTitle>
     </CModalHeader>
-    <CModalBody>Modal body text goes here.</CModalBody>
+    <CModalBody>React Modal body text goes here.</CModalBody>
     <CModalFooter>
       <CButton color="secondary">Close</CButton>
       <CButton color="primary">Save changes</CButton>
@@ -53,9 +53,9 @@ Below is a static modal example (meaning its `position` and `display` have been 
   visible
 >
   <CModalHeader>
-    <CModalTitle>Modal title</CModalTitle>
+    <CModalTitle>React Modal title</CModalTitle>
   </CModalHeader>
-  <CModalBody>Modal body text goes here.</CModalBody>
+  <CModalBody>React Modal body text goes here.</CModalBody>
   <CModalFooter>
     <CButton color="secondary">Close</CButton>
     <CButton color="primary">Save changes</CButton>
@@ -65,7 +65,7 @@ Below is a static modal example (meaning its `position` and `display` have been 
 
 ### Live demo
 
-Toggle a working modal demo by clicking the button below. It will slide down and fade in from the top of the page.
+Toggle a working React modal component demo by clicking the button below. It will slide down and fade in from the top of the page.
 
 export const LiveDemoExample = () => {
   const [visible, setVisible] = useState(false)
@@ -115,7 +115,7 @@ return (
 
 ### Static backdrop
 
-If you set a `backdrop` to `static`, your modal will behave as though the backdrop is static, meaning it will not close when clicking outside it. Click the button below to try it.
+If you set a `backdrop` to `static`, your React modal component will behave as though the backdrop is static, meaning it will not close when clicking outside it. Click the button below to try it.
 
 export const StaticBackdropExample = () => {
   const [visible, setVisible] = useState(false)
@@ -375,7 +375,7 @@ return (
 )
 ```
 
-You can also create a scrollable modal that allows scroll the modal body by adding `scrollable` prop.
+You can also create a scrollable react modal component that allows scroll the modal body by adding `scrollable` prop.
 
 export const ScrollingLongContentExample2 = () => {
   const [visible, setVisible] = useState(false)
@@ -583,7 +583,7 @@ return (
 
 ### Vertically centered
 
-Add `alignment="center` to `<CModal>` to vertically center the modal.
+Add `alignment="center` to `<CModal>` to vertically center the React modal.
 
 export const VerticallyCenteredExample = () => {
   const [visible, setVisible] = useState(false)
@@ -729,7 +729,7 @@ return (
 
 ### Tooltips and popovers
 
-`<CTooltips>` and `<CPopovers>` can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automatically dismissed.
+`<CTooltips>` and `<CPopovers>` can be placed within react modals as needed. When modal components are closed, any tooltips and popovers within are also automatically dismissed.
 
 export const TooltipsAndPopoversExample = () => {
   const [visible, setVisible] = useState(false)
@@ -933,7 +933,7 @@ return (
 
 ## Fullscreen Modal
 
-Another override is the option to pop up a modal that covers the user viewport, available via property `fullscrean`.
+Another override is the option to pop up a React modal component that covers the user viewport, available via property `fullscrean`.
 
 <table className="table">
   <thead>
