@@ -107,7 +107,7 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
     }
 
     const handleKeyDown = useCallback(
-      (event) => {
+      (event: KeyboardEvent) => {
         if (event.key === 'Escape' && keyboard) {
           return handleDismiss()
         }
