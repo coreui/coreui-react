@@ -193,7 +193,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     }
 
     const handleKeyDown = useCallback(
-      (event) => {
+      (event: KeyboardEvent) => {
         if (event.key === 'Escape' && keyboard) {
           return handleDismiss()
         }
