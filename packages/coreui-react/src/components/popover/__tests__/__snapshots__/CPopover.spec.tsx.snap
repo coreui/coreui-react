@@ -9,7 +9,7 @@ exports[`CPopover customize 1`] = `
     Test
   </button>
   <div
-    class="popover bs-popover-end fade show"
+    class="popover bs-popover-end fade"
     role="tooltip"
     style="position: absolute; left: 0px; top: 0px;"
   >
