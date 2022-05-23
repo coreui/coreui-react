@@ -29,7 +29,14 @@ export const CCloseButton = forwardRef<HTMLButtonElement, CCloseButtonProps>(
       className,
     )
     return (
-      <button className={_className} aria-label="Close" disabled={disabled} {...rest} ref={ref} />
+      <button
+        type="button"
+        className={_className}
+        aria-label="Close"
+        disabled={disabled}
+        {...rest}
+        ref={ref}
+      />
     )
   },
 )
