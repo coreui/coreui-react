@@ -46,7 +46,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "rollup": "^2.74.0",
+    "rollup": "^2.74.1",
     "rollup-plugin-import-css": "^3.0.3",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "typescript": "^4.6.4"
