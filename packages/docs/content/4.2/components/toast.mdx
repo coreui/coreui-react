@@ -276,7 +276,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
 
 ### Custom content
 
-Customize your toasts by removing sub-components, tweaking them with [utilities](https://coreui.io/docs/4.0/utilities/api), or by adding your own markup. Here we've created a simpler toast by removing the default `<CToastHeader>`, adding a custom hide icon from [CoreUI Icons](https://icons.coreui.io), and using some [flexbox utilities](https://coreui.io/docs/4.0/utilities/flex) to adjust the layout.
+Customize your toasts by removing sub-components, tweaking them with [utilities](https://coreui.io/docs/utilities/api), or by adding your own markup. Here we've created a simpler toast by removing the default `<CToastHeader>`, adding a custom hide icon from [CoreUI Icons](https://icons.coreui.io), and using some [flexbox utilities](https://coreui.io/docs/utilities/flex) to adjust the layout.
 
 <Example>
   <CToast autohide={false} visible={true} className="align-items-center">
@@ -332,7 +332,7 @@ Alternatively, you can also add additional controls and components to toasts.
 
 ### Color schemes
 
-Building on the above example, you can create different toast color schemes with our [color](https://coreui.io/docs/4.0/utilities/colors) and [background](https://coreui.io/docs/4.0//utilities/background) utilities. Here we've set `color="primary"` and added `.text-white` class to the `<Ctoast>`, and then set `white` property to our close button. For a crisp edge, we remove the default border with `.border-0`.
+Building on the above example, you can create different toast color schemes with our [color](https://coreui.io/docs/utilities/colors) and [background](https://coreui.io/docs//utilities/background) utilities. Here we've set `color="primary"` and added `.text-white` class to the `<Ctoast>`, and then set `white` property to our close button. For a crisp edge, we remove the default border with `.border-0`.
 
 <Example>
   <CToast autohide={false} visible={true} color="primary" className="text-white align-items-center">
