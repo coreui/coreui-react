@@ -26,7 +26,11 @@ const DocsLayout: FC = ({ data: { mdx } }) => {
   const [sidebarVisible, setSidebarVisible] = useState()
   return (
     <>
-      <Seo title={mdx.frontmatter.title} description={mdx.frontmatter.description} />
+      <Seo
+        title={mdx.frontmatter.title}
+        description={mdx.frontmatter.description}
+        name={mdx.frontmatter.name}
+      />
       <myContext.Provider
         value={{
           sidebarVisible,
@@ -82,6 +86,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         description
+        name
         route
       }
       tableOfContents(maxDepth: 3)
