@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, forwardRef, InputHTMLAttributes } from 'react'
+import React, { ChangeEventHandler, forwardRef, TextareaHTMLAttributes } from 'react'
 
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
@@ -7,7 +7,7 @@ import { CFormControlWrapper, CFormControlWrapperProps } from './CFormControlWra
 
 export interface CFormTextareaProps
   extends CFormControlWrapperProps,
-    InputHTMLAttributes<HTMLTextAreaElement> {
+    TextareaHTMLAttributes<HTMLTextAreaElement> {
   /**
    * A string of all className you want applied to the component.
    */
