@@ -170,7 +170,7 @@ The documentation for the CoreUI & CoreUI PRO is hosted at our website [CoreUI f
 CoreUI supports most popular frameworks.
 
 - [CoreUI for Angular](https://github.com/coreui/coreui-angular)
-- [CoreUI for Bootstrap(Vanilla JS)](https://github.com/coreui/coreui)
+- [CoreUI for Bootstrap (Vanilla JS)](https://github.com/coreui/coreui)
 - [CoreUI for React](https://github.com/coreui/coreui-react)
 - [CoreUI for Vue](https://github.com/coreui/coreui-vue)
 
