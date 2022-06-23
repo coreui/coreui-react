@@ -20,7 +20,7 @@
   ·
   <a href="https://github.com/coreui/coreui-react/issues/new?template=feature_request.md">Request feature</a>
   ·
-  <a href="https://blog.coreui.io/">Blog</a>
+  <a href="https://coreui.io/blog/">Blog</a>
 </p>
 
 
