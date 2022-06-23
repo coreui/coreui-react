@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import { Colors, colorPropType } from '../Types'
 
-export interface CTableProps extends TableHTMLAttributes<HTMLTableElement> {
+export interface CTableProps extends Omit<TableHTMLAttributes<HTMLTableElement>, 'align'> {
   /**
    * Set the vertical aligment.
    */
