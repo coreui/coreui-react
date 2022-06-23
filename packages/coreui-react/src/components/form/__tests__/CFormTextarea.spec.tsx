@@ -19,6 +19,7 @@ test('CFormTextarea customize', async () => {
       readOnly={true}
       valid={true}
       defaultValue="Some value"
+      rows={2}
     />,
   )
   expect(container).toMatchSnapshot()
