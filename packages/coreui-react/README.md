@@ -20,21 +20,24 @@
   ·
   <a href="https://github.com/coreui/coreui-react/issues/new?template=feature_request.md">Request feature</a>
   ·
-  <a href="https://blog.coreui.io/">Blog</a>
+  <a href="https://coreui.io/blog/">Blog</a>
 </p>
 
 
 ## Table of contents
 
 - [Quick start](#quick-start)
+- [Components](#components)
 - [Status](#status)
-- [What's included](#whats-included)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Documentation](#documentation)
+- [Frameworks](#frameworks)
+- [Templates](#templates)
 - [Contributing](#contributing)
 - [Community](#community)
 - [Versioning](#versioning)
 - [Creators](#creators)
+- [Support CoreUI Development](#support-coreui-development)
 - [Copyright and license](#copyright-and-license)
 
 ## Quick start
@@ -94,13 +97,58 @@ npm install bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 ```
 
+## Components
+
+- [React Accordion](https://coreui.io/react/docs/components/accordion/)
+- [React Alert](https://coreui.io/react/docs/components/alert/)
+- [React Avatar](https://coreui.io/react/docs/components/avatar/)
+- [React Badge](https://coreui.io/react/docs/components/badge/)
+- [React Breadcrumb](https://coreui.io/react/docs/components/breadcrumb/)
+- [React Button](https://coreui.io/react/docs/components/button/)
+- [React Button Group](https://coreui.io/react/docs/components/button-group/)
+- [React Callout](https://coreui.io/react/docs/components/callout/)
+- [React Card](https://coreui.io/react/docs/components/card/)
+- [React Carousel](https://coreui.io/react/docs/components/carousel/)
+- [React Checkbox](https://coreui.io/react/docs/forms/checkbox/)
+- [React Close Button](https://coreui.io/react/docs/components/close-button/)
+- [React Collapse](https://coreui.io/react/docs/components/collapse/)
+- [React Date Picker](https://coreui.io/react/docs/forms/date-picker/) **PRO**
+- [React Date Range Picker](https://coreui.io/react/docs/forms/date-range-picker/) **PRO**
+- [React Dropdown](https://coreui.io/react/docs/components/dropdown/)
+- [React Floating Labels](https://coreui.io/react/docs/forms/floating-labels/)
+- [React Footer](https://coreui.io/react/docs/components/footer/)
+- [React Header](https://coreui.io/react/docs/components/header/)
+- [React Image](https://coreui.io/react/docs/components/image/)
+- [React Input](https://coreui.io/react/docs/forms/input/)
+- [React Input Group](https://coreui.io/react/docs/forms/input-group/)
+- [React List Group](https://coreui.io/react/docs/components/list-group/)
+- [React Loading Button](https://coreui.io/react/docs/components/loading-button/) **PRO**
+- [React Modal](https://coreui.io/react/docs/components/modal/)
+- [React Multi Select](https://coreui.io/react/docs/forms/multi-select/) **PRO**
+- [React Navs & Tabs](https://coreui.io/react/docs/components/navs-tabs/)
+- [React Navbar](https://coreui.io/react/docs/components/navbar/)
+- [React Offcanvas](https://coreui.io/react/docs/components/offcanvas/)
+- [React Pagination](https://coreui.io/react/docs/components/pagination/)
+- [React Placeholder](https://coreui.io/react/docs/components/placeholder/)
+- [React Popover](https://coreui.io/react/docs/components/popover/)
+- [React Progress](https://coreui.io/react/docs/components/progress/)
+- [React Radio](https://coreui.io/react/docs/forms/radio/)
+- [React Range](https://coreui.io/react/docs/forms/range/)
+- [React Select](https://coreui.io/react/docs/forms/select/)
+- [React Sidebar](https://coreui.io/react/docs/components/sidebar/)
+- [React Smart Pagination](https://coreui.io/react/docs/components/smart-pagination/) **PRO**
+- [React Smart Table](https://coreui.io/react/docs/components/smart-table/) **PRO**
+- [React Spinner](https://coreui.io/react/docs/components/spinner/)
+- [React Switch](https://coreui.io/react/docs/forms/switch/)
+- [React Table](https://coreui.io/react/docs/components/table/)
+- [React Textarea](https://coreui.io/react/docs/forms/textarea/)
+- [React Time Picker](https://coreui.io/react/docs/forms/time-picker/) **PRO**
+- [React Toast](https://coreui.io/react/docs/components/toast/)
+- [React Tooltip](https://coreui.io/react/docs/components/tooltip/)
+
 ## Status
 
-[![Build Status](https://github.com/coreui/coreui-react/workflows/JS%20Tests/badge.svg?branch=main)](https://github.com/coreui/coreui-react/actions?query=workflow%3AJS+Tests+branch%3Amain)
 [![npm version](https://img.shields.io/npm/v/@coreui/react)](https://www.npmjs.com/package/@coreui/react)
-[![peerDependencies Status](https://img.shields.io/david/peer/coreui/coreui)](https://david-dm.org/coreui/coreui?type=peer)
-[![devDependency Status](https://img.shields.io/david/dev/coreui/coreui)](https://david-dm.org/coreui/coreui?type=dev)
-[![Coverage Status](https://img.shields.io/coveralls/github/coreui/coreui-react/v4)](https://coveralls.io/github/coreui/coreui-react?branch=v4)
 
 ## Bugs and feature requests
 
@@ -116,6 +164,24 @@ The documentation for the CoreUI & CoreUI PRO is hosted at our website [CoreUI f
 2. Run `yarn bootstrap` or `npm run bootstrap` to link local packages together and install remaining package dependencies.
 3. From the root directory, run `yarn docs:dev` or `npm run docs:dev` (or a specific npm script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
 4. Open `http://localhost:8000/` in your browser, and voilà.
+
+## Frameworks
+
+CoreUI supports most popular frameworks.
+
+- [CoreUI for Angular](https://github.com/coreui/coreui-angular)
+- [CoreUI for Bootstrap (Vanilla JS)](https://github.com/coreui/coreui)
+- [CoreUI for React](https://github.com/coreui/coreui-react)
+- [CoreUI for Vue](https://github.com/coreui/coreui-vue)
+
+## Templates
+
+Fully featured, out-of-the-box, templates for your application based on CoreUI.
+
+- [Angular Admin Template](https://coreui.io/angular)
+- [Bootstrap Admin Template](https://coreui.io/)
+- [React Admin Template](https://coreui.io/react)
+- [Vue Admin Template](https://coreui.io/vue)
 
 ## Contributing
 
@@ -152,6 +218,44 @@ See [the Releases section of our project](https://github.com/coreui/coreui-react
 
 - <https://github.com/orgs/coreui/people>
 
+## Support CoreUI Development
+
+CoreUI is an MIT-licensed open source project and is completely free to use. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. You can support development by buying the [CoreUI PRO](https://coreui.io/pricing/) or by becoming a sponsor via [Open Collective](https://opencollective.com/coreui/).
+
+<!--- StartOpenCollectiveBackers -->
+
+### Platinum Sponsors
+
+Support this project by [becoming a Platinum Sponsor](https://opencollective.com/coreui/contribute/platinum-sponsor-40959/). A large company logo will be added here with a link to your website.
+
+<a href="https://opencollective.com/coreui/contribute/platinum-sponsor-40959/checkout"><img src="https://opencollective.com/coreui/tiers/platinum-sponsor/0/avatar.svg?avatarHeight=100"></a>
+
+### Gold Sponsors
+
+Support this project by [becoming a Gold Sponsor](https://opencollective.com/coreui/contribute/gold-sponsor-40960/). A big company logo will be added here with a link to your website.
+
+<a href="https://opencollective.com/coreui/contribute/gold-sponsor-40960/checkout"><img src="https://opencollective.com/coreui/tiers/gold-sponsor/0/avatar.svg?avatarHeight=100"></a> 
+
+### Silver Sponsors
+
+Support this project by [becoming a Silver Sponsor](https://opencollective.com/coreui/contribute/silver-sponsor-40967/). A medium company logo will be added here with a link to your website.
+
+<a href="https://opencollective.com/coreui/contribute/silver-sponsor-40967/checkout"><img src="https://opencollective.com/coreui/tiers/gold-sponsor/0/avatar.svg?avatarHeight=100"></a>
+
+### Bronze Sponsors
+
+Support this project by [becoming a Bronze Sponsor](https://opencollective.com/coreui/contribute/bronze-sponsor-40966/). The company avatar will show up here with a link to your OpenCollective Profile.
+
+<a href="https://opencollective.com/coreui/contribute/bronze-sponsor-40966/checkout"><img src="https://opencollective.com/coreui/tiers/bronze-sponsor/0/avatar.svg?avatarHeight=100"></a> 
+
+### Backers
+
+Thanks to all the backers and sponsors! Support this project by [becoming a backer](https://opencollective.com/coreui/contribute/backer-40965/).
+
+<a href="https://opencollective.com/coreui/contribute/backer-40965/checkout" target="_blank" rel="noopener"><img src="https://opencollective.com/coreui/backers.svg?width=890"></a>
+
+<!--- EndOpenCollectiveBackers -->
+
 ## Copyright and license
 
-Copyright 2021 creativeLabs Łukasz Holeczek. Code released under the [MIT License](https://github.com/coreui/coreui-react/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
+Copyright 2022 creativeLabs Łukasz Holeczek. Code released under the [MIT License](https://github.com/coreui/coreui-react/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
