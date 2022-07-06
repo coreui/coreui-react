@@ -74,6 +74,19 @@ render() {
 ...
 ```
 
+## Stylesheets
+
+### Using `@coreui/icons-react` with `@coreui/react`
+
+Styles for icon included in `@coreui/react`, see [instructions](https://coreui.io/react/docs/getting-started/introduction/#stylesheets)
+
+### Using only `@coreui/icons-react`
+
+Import css in your app's entry file:
+
+```jsx
+import '@coreui/icons-react/dist/index.css';
+```
 
 ## API
 

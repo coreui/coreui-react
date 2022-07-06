@@ -119,13 +119,9 @@ export const CIcon = forwardRef<SVGSVGElement, CIconProps>(
       return Array.isArray(code) ? code[1] || code[0] : code
     }, [change])
 
-    const scale = (() => {
-      return Array.isArray(code) && code.length > 1 ? code[0] : '64 64'
-    })()
+    const scale = Array.isArray(code) && code.length > 1 ? code[0] : '64 64'
 
-    const viewBox = (() => {
-      return rest['viewBox'] || `0 0 ${scale}`
-    })()
+    const viewBox = rest['viewBox'] || `0 0 ${scale}`
 
     // render
 
@@ -134,8 +130,8 @@ export const CIcon = forwardRef<SVGSVGElement, CIconProps>(
       : classNames(
           'icon',
           {
-            [`icon-${size}`]: size,
             [`icon-custom-size`]: height || width,
+            [`icon-${size}`]: size,
           },
           className,
         )
