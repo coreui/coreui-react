@@ -1,35 +1,14 @@
 import React, { FC } from 'react'
-import GitHubButton from 'react-github-btn'
 
 import CIcon from '@coreui/icons-react'
 import { cibGithub, cibTwitter, cilCloudDownload, cilMenu } from '@coreui/icons'
-import {
-  CAlert,
-  CButton,
-  CHeader,
-  CHeaderNav,
-  CHeaderToggler,
-  CNavItem,
-} from '@coreui/react/src/index'
+import { CButton, CHeader, CHeaderNav, CHeaderToggler, CNavItem } from '@coreui/react/src/index'
 
 import { myContext } from './../templates/Docs'
 
 const Header: FC = () => {
   return (
     <>
-      <CAlert color="light" className="d-flex justify-content-center rounded-0 border-bottom mb-0">
-        <span className="me-3">
-          If you like this project and want to help us, please give us a star ⭐️ on Github. ➡️
-        </span>
-        <GitHubButton
-          href="https://github.com/coreui/coreui-react"
-          data-size="large"
-          aria-label="Star coreui/coreui-react on GitHub"
-        >
-          Star
-        </GitHubButton>
-        <span className="ms-3">🙏</span>
-      </CAlert>
       <myContext.Consumer>
         {(context) => (
           <CHeader className="mb-5" position="sticky">

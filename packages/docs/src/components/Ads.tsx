@@ -13,7 +13,7 @@ const Ads: FC = ({ code, placement }: { code: string; placement: string }) => {
     }
   }, [])
 
-  return <div id="carbonads" className="my-3" ref={ref} />
+  return <div ref={ref} />
 }
 
 Ads.displayName = 'Ads'

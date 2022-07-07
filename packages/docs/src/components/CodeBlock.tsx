@@ -9,7 +9,7 @@ const CodeBlock: FC = ({ children }) => {
     : 'jsx'
 
   return (
-    <div className="code mb-4" style={{ maxHeight: '500px', overflow: 'scroll' }}>
+    <div className="code mb-4">
       <Highlight {...defaultProps} theme={undefined} code={_children?.trim()} language={language}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre className={className} style={{ ...style }}>

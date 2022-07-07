@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@coreui/chartjs": "^3.0.0",
-    "@coreui/coreui": "^4.1.6",
+    "@coreui/coreui": "^4.2.0",
     "@coreui/icons": "^2.1.0",
     "@coreui/icons-react": "^2.0.0",
     "@coreui/react-chartjs": "^2.0.0",
