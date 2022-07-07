@@ -107,6 +107,55 @@ Hover over the buttons below to see the four tooltips directions: top, right, bo
   </CTooltip>
 ```
 
+## Customizing
+
+### CSS variables
+
+React toltips use local CSS variables on `.tooltip` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+```sass
+--cui-tooltip-zindex: #{$zindex-tooltip};
+--cui-tooltip-max-width: #{$tooltip-max-width};
+--cui-tooltip-padding-x: #{$tooltip-padding-x};
+--cui-tooltip-padding-y: #{$tooltip-padding-y};
+--cui-tooltip-margin: #{$tooltip-margin};
+--cui-tooltip-font-size: #{$tooltip-font-size};
+--cui-tooltip-color: #{$tooltip-color};
+--cui-tooltip-bg: #{$tooltip-bg};
+--cui-tooltip-border-radius: #{$tooltip-border-radius};
+--cui-tooltip-opacity: #{$tooltip-opacity};
+--cui-tooltip-arrow-width: #{$tooltip-arrow-width};
+--cui-tooltip-arrow-height: #{$tooltip-arrow-height};
+```
+
+#### How to use CSS variables
+
+```jsx
+const vars = { 
+  '--my-css-var': 10,
+  '--my-another-css-var': "red" 
+}
+return <CTooltip style={vars}>...</CTooltip>
+```
+
+### SASS variables
+
+```sass
+$tooltip-font-size:                 $font-size-sm;
+$tooltip-max-width:                 200px;
+$tooltip-color:                     $high-emphasis-inverse;
+$tooltip-bg:                        $black;
+$tooltip-border-radius:             $border-radius;
+$tooltip-opacity:                   .9;
+$tooltip-padding-y:                 $spacer * .25;
+$tooltip-padding-x:                 $spacer * .5;
+$tooltip-margin:                    null;
+
+$tooltip-arrow-width:               .8rem;
+$tooltip-arrow-height:              .4rem;
+$tooltip-arrow-color:               null; 
+```
+
 ## API
 
 ### CTooltip

@@ -847,6 +847,85 @@ return (
 )
 ```
 
+## Customizing
+
+### CSS variables
+
+React cards use local CSS variables on `.nav`, `.nav-tabs`, and `.nav-pills` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+On the `.nav` base class:
+
+```sass
+--cui-nav-link-padding-x: #{$nav-link-padding-x};
+--cui-nav-link-padding-y: #{$nav-link-padding-y};
+--cui-nav-link-font-size: #{$nav-link-font-size};
+--cui-nav-link-font-weight: #{$nav-link-font-weight};
+--cui-nav-link-color: #{$nav-link-color};
+--cui-nav-link-hover-color: #{$nav-link-hover-color};
+--cui-nav-link-disabled-color: #{$nav-link-disabled-color};
+```
+
+On the `.nav-tabs` modifier class:
+
+```sass
+--cui-nav-tabs-border-width: #{$nav-tabs-border-width};
+--cui-nav-tabs-border-color: #{$nav-tabs-border-color};
+--cui-nav-tabs-border-radius: #{$nav-tabs-border-radius};
+--cui-nav-tabs-link-hover-border-color: #{$nav-tabs-link-hover-border-color};
+--cui-nav-tabs-link-active-color: #{$nav-tabs-link-active-color};
+--cui-nav-tabs-link-active-bg: #{$nav-tabs-link-active-bg};
+--cui-nav-tabs-link-active-border-color: #{$nav-tabs-link-active-border-color};
+```
+
+On the `.nav-pills` modifier class:
+
+```sass
+--cui-nav-pills-border-radius: #{$nav-pills-border-radius};
+--cui-nav-pills-link-active-color: #{$nav-pills-link-active-color};
+--cui-nav-pills-link-active-bg: #{$nav-pills-link-active-bg};
+```
+
+#### How to use CSS variables
+
+```jsx
+const vars = { 
+  '--my-css-var': 10,
+  '--my-another-css-var': "red" 
+}
+return <CNav style={vars}>...</CNav>
+```
+
+### SASS variables
+
+```sass
+$nav-link-padding-y:                .5rem;
+$nav-link-padding-x:                1rem;
+$nav-link-font-size:                null;
+$nav-link-font-weight:              null;
+$nav-link-color:                    var(--cui-link-color);
+$nav-link-hover-color:              var(--cui-link-hover-color);
+$nav-link-transition:               color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+$nav-link-disabled-color:           $gray-600;
+
+$nav-tabs-border-color:             $gray-300;
+$nav-tabs-border-width:             $border-width;
+$nav-tabs-border-radius:            $border-radius;
+$nav-tabs-link-hover-border-color:  $gray-200 $gray-200 $nav-tabs-border-color;
+$nav-tabs-link-active-color:        $gray-700;
+$nav-tabs-link-active-bg:           $body-bg;
+$nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg;
+
+$nav-pills-border-radius:           $border-radius;
+$nav-pills-link-active-color:       $component-active-color;
+$nav-pills-link-active-bg:          $component-active-bg;
+
+$nav-underline-border-color:              $gray-300;
+$nav-underline-border-width:              $border-width * 2;
+$nav-underline-link-color:                $gray-700;
+$nav-underline-link-active-color:         $primary;
+$nav-underline-link-active-border-color:  $primary;
+```
+
 ## API
 
 ### CNav

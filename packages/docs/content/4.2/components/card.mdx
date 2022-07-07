@@ -1664,6 +1664,65 @@ Just like with card groups, card footers will automatically line up.
 </CRow>
 ```
 
+
+## Customizing
+
+### CSS variables
+
+React cards use local CSS variables on `.card` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+```sass
+--cui-card-spacer-y: #{$card-spacer-y};
+--cui-card-spacer-x: #{$card-spacer-x};
+--cui-card-title-spacer-y: #{$card-title-spacer-y};
+--cui-card-border-width: #{$card-border-width};
+--cui-card-border-color: #{$card-border-color};
+--cui-card-border-radius: #{$card-border-radius};
+--cui-card-box-shadow: #{$card-box-shadow};
+--cui-card-inner-border-radius: #{$card-inner-border-radius};
+--cui-card-cap-padding-y: #{$card-cap-padding-y};
+--cui-card-cap-padding-x: #{$card-cap-padding-x};
+--cui-card-cap-bg: #{$card-cap-bg};
+--cui-card-cap-color: #{$card-cap-color};
+--cui-card-height: #{$card-height};
+--cui-card-color: #{$card-color};
+--cui-card-bg: #{$card-bg};
+--cui-card-img-overlay-padding: #{$card-img-overlay-padding};
+--cui-card-group-margin: #{$card-group-margin};
+```
+
+#### How to use CSS variables
+
+```jsx
+const vars = { 
+  '--my-css-var': 10,
+  '--my-another-css-var': "red" 
+}
+return <CCard style={vars}>...</CCard>
+```
+
+### SASS variables
+
+```sass
+$card-spacer-y:                     $spacer;
+$card-spacer-x:                     $spacer;
+$card-title-spacer-y:               $spacer * .5;
+$card-border-width:                 $border-width;
+$card-border-color:                 var(--cui-border-color-translucent);
+$card-border-radius:                $border-radius;
+$card-box-shadow:                   null;
+$card-inner-border-radius:          subtract($card-border-radius, $card-border-width);
+$card-cap-padding-y:                $card-spacer-y * .5;
+$card-cap-padding-x:                $card-spacer-x;
+$card-cap-bg:                       rgba($black, .03);
+$card-cap-color:                    unset;
+$card-height:                       null;
+$card-color:                        unset;
+$card-bg:                           $white;
+$card-img-overlay-padding:          $spacer;
+$card-group-margin:                 $grid-gutter-width * .5;
+```
+
 ## API
 
 ### CCard

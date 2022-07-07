@@ -334,6 +334,48 @@ React Alert component can also be easily dismissed. Just add the `dismissible` p
   </p>
 </CCallout>
 
+## Customizing
+
+### CSS variables
+
+React alerts use local CSS variables on `.alert` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+```sass
+--cui-alert-bg: transparent;
+--cui-alert-padding-x: #{$alert-padding-x};
+--cui-alert-padding-y: #{$alert-padding-y};
+--cui-alert-margin-bottom: #{$alert-margin-bottom};
+--cui-alert-color: inherit;
+--cui-alert-border-color: transparent;
+--cui-alert-border: #{$alert-border-width} solid var(--cui-alert-border-color);
+--cui-alert-border-radius: #{$alert-border-radius};
+```
+
+#### How to use CSS variables
+
+```jsx
+const vars = { 
+  '--my-css-var': 10,
+  '--my-another-css-var': "red" 
+}
+return <CAlert style={vars}>...</CAlert>
+```
+
+### SASS variables
+
+```sass
+$alert-padding-y:               $spacer;
+$alert-padding-x:               $spacer;
+$alert-margin-bottom:           1rem;
+$alert-border-radius:           $border-radius;
+$alert-link-font-weight:        $font-weight-bold;
+$alert-border-width:            $border-width;
+$alert-bg-scale:                -80%;
+$alert-border-scale:            -70%;
+$alert-color-scale:             40%;
+$alert-dismissible-padding-r:   $alert-padding-x * 3; // 3x covers width of x plus default padding on either side
+```
+
 ## API
 
 ### CAlert
