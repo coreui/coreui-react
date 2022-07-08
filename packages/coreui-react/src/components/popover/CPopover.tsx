@@ -7,6 +7,7 @@ import { usePopper } from 'react-popper'
 import { Transition } from 'react-transition-group'
 
 import { Triggers, triggerPropType } from '../Types'
+import { useEffect } from 'react'
 
 export interface CPopoverProps {
   // TODO: find solution to not use any
@@ -77,6 +78,10 @@ export const CPopover: FC<CPopoverProps> = ({
     ],
     placement: placement,
   })
+
+  useEffect(() => {
+    setVisible(visible)
+  }, [visible])
 
   const getTransitionClass = (state: string) => {
     return state === 'entering'
