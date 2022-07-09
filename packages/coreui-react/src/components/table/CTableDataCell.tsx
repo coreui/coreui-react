@@ -1,11 +1,12 @@
-import React, { forwardRef, TdHTMLAttributes } from 'react'
+import React, { forwardRef, TdHTMLAttributes, ThHTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors, colorPropType } from '../Types'
 
 export interface CTableDataCellProps
-  extends Omit<TdHTMLAttributes<HTMLTableDataCellElement>, 'align'> {
+  extends Omit<TdHTMLAttributes<HTMLTableCellElement>, 'align'>,
+    Omit<ThHTMLAttributes<HTMLTableCellElement>, 'align'> {
   /**
    * Highlight a table row or cell.
    */
@@ -26,7 +27,7 @@ export interface CTableDataCellProps
   color?: Colors
 }
 
-export const CTableDataCell = forwardRef<HTMLTableDataCellElement, CTableDataCellProps>(
+export const CTableDataCell = forwardRef<HTMLTableCellElement, CTableDataCellProps>(
   ({ children, active, align, className, color, ...rest }, ref) => {
     const _className = classNames(
       {
@@ -37,10 +38,12 @@ export const CTableDataCell = forwardRef<HTMLTableDataCellElement, CTableDataCel
       className,
     )
 
+    const Component = rest.scope ? 'th' : 'td'
+
     return (
-      <td className={_className ? _className : undefined} {...rest} ref={ref}>
+      <Component className={_className ? _className : undefined} {...rest} ref={ref}>
         {children}
-      </td>
+      </Component>
     )
   },
 )

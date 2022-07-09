@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import { Colors, colorPropType } from '../Types'
 
-export interface CTableHeaderCellProps extends ThHTMLAttributes<HTMLTableHeaderCellElement> {
+export interface CTableHeaderCellProps extends ThHTMLAttributes<HTMLTableCellElement> {
   /**
    * A string of all className you want applied to the component.
    */
@@ -17,7 +17,7 @@ export interface CTableHeaderCellProps extends ThHTMLAttributes<HTMLTableHeaderC
   color?: Colors
 }
 
-export const CTableHeaderCell = forwardRef<HTMLTableHeaderCellElement, CTableHeaderCellProps>(
+export const CTableHeaderCell = forwardRef<HTMLTableCellElement, CTableHeaderCellProps>(
   ({ children, className, color, ...rest }, ref) => {
     const _className = classNames(
       {
