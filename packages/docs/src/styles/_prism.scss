@@ -35,7 +35,7 @@ pre[class*='language-'] {
   margin: 0.5em 0;
 }
 
-pre[class*='language-']:not(.language-sass) {
+pre[class*='language-']:not(.language-sass):not(.language-text):not(.language-css) {
   overflow: scroll;
   max-height: 500px;
 }
