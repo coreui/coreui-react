@@ -14,7 +14,7 @@ export interface CTableDataCellProps
   /**
    * Set the vertical aligment.
    */
-  align?: 'bottom' | 'middle' | 'top'
+  align?: 'bottom' | 'middle' | 'top' | string
   /**
    * A string of all className you want applied to the component.
    */

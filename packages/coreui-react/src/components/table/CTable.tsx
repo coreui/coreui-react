@@ -15,7 +15,7 @@ export interface CTableProps extends Omit<TableHTMLAttributes<HTMLTableElement>,
   /**
    * Set the vertical aligment.
    */
-  align?: 'bottom' | 'middle' | 'top'
+  align?: 'bottom' | 'middle' | 'top' | string
   /**
    * Sets the border color of the component to one of CoreUI’s themed colors.
    *

@@ -12,7 +12,7 @@ export interface CTableRowProps extends HTMLAttributes<HTMLTableRowElement> {
   /**
    * Set the vertical aligment.
    */
-  align?: 'bottom' | 'middle' | 'top'
+  align?: 'bottom' | 'middle' | 'top' | string
   /**
    * A string of all className you want applied to the component.
    */
