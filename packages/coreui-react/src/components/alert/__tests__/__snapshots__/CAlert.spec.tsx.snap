@@ -10,6 +10,7 @@ exports[`CAlert customize 1`] = `
     <button
       aria-label="Close"
       class="btn btn-close"
+      type="button"
     />
   </div>
 </div>

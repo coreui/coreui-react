@@ -6,6 +6,7 @@ exports[`CCloseButton customize 1`] = `
     aria-label="Close"
     class="btn btn-close btn-close-white bazinga"
     disabled=""
+    type="button"
   >
     Test
   </button>
@@ -17,6 +18,7 @@ exports[`loads and displays CCloseButton component 1`] = `
   <button
     aria-label="Close"
     class="btn btn-close"
+    type="button"
   >
     Test
   </button>

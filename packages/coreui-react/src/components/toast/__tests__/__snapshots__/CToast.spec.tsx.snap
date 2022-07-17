@@ -57,19 +57,6 @@ exports[`CToast customize 5`] = `
   <div
     aria-atomic="true"
     aria-live="assertive"
-    class="toast fade bg-warning border-0 bazinga showing"
-    role="alert"
-  >
-    Test
-  </div>
-</div>
-`;
-
-exports[`CToast customize 6`] = `
-<div>
-  <div
-    aria-atomic="true"
-    aria-live="assertive"
     class="toast fade bg-warning border-0 bazinga show"
     role="alert"
   >
