@@ -153,7 +153,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
                 aria-atomic="true"
                 role="alert"
                 onMouseEnter={() => clearTimeout(timeout.current)}
-                onMouseLeave={() => _autohide}
+                onMouseLeave={() => _autohide()}
                 {...rest}
                 key={key}
                 ref={forkedRef}
