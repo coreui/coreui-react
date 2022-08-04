@@ -9,10 +9,10 @@ import {
   CSidebar,
   CSidebarBrand,
   CImage,
-} from '@coreui/react/src/index'
+} from '@coreui/react'
 import { SidebarNav } from '.'
 
-import { myContext } from './../templates/Docs'
+import { AppContext } from './../AppContext'
 
 import items from './../nav'
 // @ts-expect-error svg file
@@ -24,15 +24,15 @@ interface SidebarProps {
 
 const Sidebar: FC<SidebarProps> = ({ ...props }) => {
   return (
-    <myContext.Consumer>
+    <AppContext.Consumer>
       {(context) => (
         <CSidebar
           className="docs-sidebar border-end ps-xl-4 elevation-0"
           position="fixed"
           size="lg"
           visible={context.sidebarVisible}
-          onVisibleChange={(value) => {
-            context.setSidebarVisible(value)
+          onVisibleChange={(value: boolean) => {
+            context.setSidebarVisible && context.setSidebarVisible(value)
           }}
         >
           <CSidebarBrand className="justify-content-start ps-3">
@@ -44,13 +44,13 @@ const Sidebar: FC<SidebarProps> = ({ ...props }) => {
               React.js
             </CDropdownToggle>
             <CDropdownMenu className="w-100">
-              <CDropdownItem href="#" disabled>
-                Angular <span className="badge bg-warning float-end mt-1">Work in Progress</span>
+              <CDropdownItem href="https://coreui.io/angular/docs/" target="_blank">
+                Angular
               </CDropdownItem>
-              <CDropdownItem href="https://coreui.io/docs/4.0/" target="_blank">
+              <CDropdownItem href="https://coreui.io/docs/" target="_blank">
                 JavaScript / Vanilla JS
               </CDropdownItem>
-              <CDropdownItem href="https://coreui.io/vue/docs/4.0/" target="_blank">
+              <CDropdownItem href="https://coreui.io/vue/docs/" target="_blank">
                 Vue.js
               </CDropdownItem>
             </CDropdownMenu>
@@ -58,7 +58,7 @@ const Sidebar: FC<SidebarProps> = ({ ...props }) => {
           <SidebarNav items={items} currentRoute={props.currentRoute} />
         </CSidebar>
       )}
-    </myContext.Consumer>
+    </AppContext.Consumer>
   )
 }
 

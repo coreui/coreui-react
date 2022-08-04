@@ -2,20 +2,20 @@ import React, { FC } from 'react'
 
 import CIcon from '@coreui/icons-react'
 import { cibGithub, cibTwitter, cilCloudDownload, cilMenu } from '@coreui/icons'
-import { CButton, CHeader, CHeaderNav, CHeaderToggler, CNavItem } from '@coreui/react/src/index'
+import { CButton, CHeader, CHeaderNav, CHeaderToggler, CNavItem } from '@coreui/react'
 
-import { myContext } from './../templates/Docs'
+import { AppContext } from './../AppContext'
 
 const Header: FC = () => {
   return (
     <>
-      <myContext.Consumer>
+      <AppContext.Consumer>
         {(context) => (
           <CHeader className="mb-5" position="sticky">
             <CHeaderToggler
               className="ms-md-3"
               onClick={() => {
-                context.setSidebarVisible(!context.sidebarVisible)
+                context.setSidebarVisible && context.setSidebarVisible(!context.sidebarVisible)
               }}
             >
               <CIcon icon={cilMenu} size="lg" />
@@ -45,7 +45,7 @@ const Header: FC = () => {
             </CButton>
           </CHeader>
         )}
-      </myContext.Consumer>
+      </AppContext.Consumer>
     </>
   )
 }
