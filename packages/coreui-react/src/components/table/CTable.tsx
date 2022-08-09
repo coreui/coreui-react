@@ -10,6 +10,7 @@ import { CTableDataCell, CTableDataCellProps } from './CTableDataCell'
 import { CTableRow, CTableRowProps } from './CTableRow'
 import { CTableFoot, CTableFootProps } from './CTableFoot'
 import { CTableCaption } from './CTableCaption'
+import { CTableResponsiveWrapper } from './CTableResponsiveWrapper'
 
 export interface CTableProps extends Omit<TableHTMLAttributes<HTMLTableElement>, 'align'> {
   /**
@@ -206,72 +207,62 @@ export const CTable = forwardRef<HTMLTableElement, CTableProps>(
           : pretifyName(column.key)
         : pretifyName(column)
 
-    const Table = () => (
-      <table className={_className} {...rest} ref={ref}>
-        {((caption && caption !== 'top') || captionTop) && (
-          <CTableCaption>{caption || captionTop}</CTableCaption>
-        )}
-        {columns && (
-          <CTableHead {...tableHeadProps}>
-            <CTableRow>
-              {columns.map((column: Column, index: number) => (
-                <CTableHeaderCell
-                  {...(column._props && { ...column._props })}
-                  {...(column._style && { style: { ...column._style } })}
-                  key={index}
-                >
-                  {label(column)}
-                </CTableHeaderCell>
-              ))}
-            </CTableRow>
-          </CTableHead>
-        )}
-        {items && (
-          <CTableBody>
-            {items.map((item: Item, index: number) => (
-              <CTableRow {...(item._props && { ...item._props })} key={index}>
-                {rawColumnNames.map((colName: string, index: number) => {
-                  return item[colName] ? (
-                    <CTableDataCell
-                      {...(item._cellProps && {
-                        ...(item._cellProps['all'] && { ...item._cellProps['all'] }),
-                        ...(item._cellProps[colName] && { ...item._cellProps[colName] }),
-                      })}
-                      key={index}
-                    >
-                      {item[colName]}
-                    </CTableDataCell>
-                  ) : null
-                })}
+    return (
+      <CTableResponsiveWrapper responsive={responsive}>
+        <table className={_className} {...rest} ref={ref}>
+          {((caption && caption !== 'top') || captionTop) && (
+            <CTableCaption>{caption || captionTop}</CTableCaption>
+          )}
+          {columns && (
+            <CTableHead {...tableHeadProps}>
+              <CTableRow>
+                {columns.map((column: Column, index: number) => (
+                  <CTableHeaderCell
+                    {...(column._props && { ...column._props })}
+                    {...(column._style && { style: { ...column._style } })}
+                    key={index}
+                  >
+                    {label(column)}
+                  </CTableHeaderCell>
+                ))}
               </CTableRow>
-            ))}
-          </CTableBody>
-        )}
-        {children}
-        {footer && (
-          <CTableFoot {...tableFootProps}>
-            <CTableRow>
-              {footer.map((item: FooterItem, index: number) => (
-                <CTableDataCell {...(item._props && { ...item._props })} key={index}>
-                  {typeof item === 'object' ? item.label : item}
-                </CTableDataCell>
+            </CTableHead>
+          )}
+          {items && (
+            <CTableBody>
+              {items.map((item: Item, index: number) => (
+                <CTableRow {...(item._props && { ...item._props })} key={index}>
+                  {rawColumnNames.map((colName: string, index: number) => {
+                    return item[colName] ? (
+                      <CTableDataCell
+                        {...(item._cellProps && {
+                          ...(item._cellProps['all'] && { ...item._cellProps['all'] }),
+                          ...(item._cellProps[colName] && { ...item._cellProps[colName] }),
+                        })}
+                        key={index}
+                      >
+                        {item[colName]}
+                      </CTableDataCell>
+                    ) : null
+                  })}
+                </CTableRow>
               ))}
-            </CTableRow>
-          </CTableFoot>
-        )}
-      </table>
-    )
-
-    return responsive ? (
-      <div
-        className={
-          typeof responsive === 'boolean' ? 'table-responsive' : `table-responsive-${responsive}`
-        }
-      >
-        <Table />
-      </div>
-    ) : (
-      <Table />
+            </CTableBody>
+          )}
+          {children}
+          {footer && (
+            <CTableFoot {...tableFootProps}>
+              <CTableRow>
+                {footer.map((item: FooterItem, index: number) => (
+                  <CTableDataCell {...(item._props && { ...item._props })} key={index}>
+                    {typeof item === 'object' ? item.label : item}
+                  </CTableDataCell>
+                ))}
+              </CTableRow>
+            </CTableFoot>
+          )}
+        </table>
+      </CTableResponsiveWrapper>
     )
   },
 )

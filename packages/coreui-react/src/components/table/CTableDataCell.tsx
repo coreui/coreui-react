@@ -25,6 +25,10 @@ export interface CTableDataCellProps
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
   color?: Colors
+  /**
+   * @ignore
+   */
+  colSpan?: number
 }
 
 export const CTableDataCell = forwardRef<HTMLTableCellElement, CTableDataCellProps>(
