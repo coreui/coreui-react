@@ -56,10 +56,8 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
   dark?: boolean
   /**
    * Sets a specified  direction and location of the dropdown menu.
-   *
-   * @type 'dropup' | 'dropend' | 'dropstart'
    */
-  direction?: 'dropup' | 'dropend' | 'dropstart'
+  direction?: 'center' | 'dropup' | 'dropup-center' | 'dropend' | 'dropstart'
   /**
    * Callback fired when the component requests to be hidden.
    */
@@ -146,7 +144,11 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       {
         show: _visible,
       },
-      direction,
+      direction === 'center'
+        ? 'dropdown-center'
+        : direction === 'dropup-center'
+        ? 'dropup dropup-center'
+        : direction,
       className,
     )
 
@@ -202,7 +204,7 @@ CDropdown.propTypes = {
   className: PropTypes.string,
   component: PropTypes.elementType,
   dark: PropTypes.bool,
-  direction: PropTypes.oneOf(['dropup', 'dropend', 'dropstart']),
+  direction: PropTypes.oneOf(['center', 'dropup', 'dropup-center', 'dropend', 'dropstart']),
   onHide: PropTypes.func,
   onShow: PropTypes.func,
   placement: placementPropType,

@@ -86,8 +86,16 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
 
   let _placement: Placements = placement
 
+  if (direction === 'center') {
+    _placement = 'bottom'
+  }
+
   if (direction === 'dropup') {
     _placement = 'top-start'
+  }
+
+  if (direction === 'dropup-center') {
+    _placement = 'top'
   }
 
   if (direction === 'dropend') {
