@@ -171,6 +171,12 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     useLayoutEffect(() => {
       if (_visible) {
         document.body.classList.add('modal-open')
+
+        if (backdrop) {
+          document.body.style.overflow = 'hidden'
+          document.body.style.paddingRight = '0px'
+        }
+
         setTimeout(
           () => {
             modalRef.current?.focus()
@@ -179,8 +185,19 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
         )
       } else {
         document.body.classList.remove('modal-open')
+
+        if (backdrop) {
+          document.body.style.removeProperty('overflow')
+          document.body.style.removeProperty('padding-right')
+        }
       }
-      return () => document.body.classList.remove('modal-open')
+      return () => {
+        document.body.classList.remove('modal-open')
+        if (backdrop) {
+          document.body.style.removeProperty('overflow')
+          document.body.style.removeProperty('padding-right')
+        }
+      }
     }, [_visible])
 
     const handleClickOutside = (event: Event) => {
