@@ -124,7 +124,10 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
             >
               {React.Children.map(children, (child, index) => {
                 if (React.isValidElement(child)) {
-                  return React.cloneElement(child, { key: index, idx: `${idx}.${index}` })
+                  return React.cloneElement(child as React.ReactElement<any>, {
+                    key: index,
+                    idx: `${idx}.${index}`,
+                  })
                 }
                 return
               })}

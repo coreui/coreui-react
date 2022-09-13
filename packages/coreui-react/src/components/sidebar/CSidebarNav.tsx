@@ -29,7 +29,10 @@ export const CSidebarNav = forwardRef<HTMLUListElement, CSidebarNavProps>(
         <CNavContext.Provider value={CNavContextValues}>
           {React.Children.map(children, (child, index) => {
             if (React.isValidElement(child)) {
-              return React.cloneElement(child, { key: index, idx: `${index}` })
+              return React.cloneElement(child as React.ReactElement<any>, {
+                key: index,
+                idx: `${index}`,
+              })
             }
             return
           })}

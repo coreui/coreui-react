@@ -75,7 +75,7 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
   const Toggler = (ref?: React.Ref<any>) => {
     return custom && React.isValidElement(children) ? (
       <>
-        {React.cloneElement(children, {
+        {React.cloneElement(children as React.ReactElement<any>, {
           'aria-expanded': visible,
           ...(!rest.disabled && { ...triggers }),
           ref: useForkedRef(ref, dropdownToggleRef),
