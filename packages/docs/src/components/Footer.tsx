@@ -26,7 +26,7 @@ const Footer: FC = () => {
         </ul>
         <p className="mb-0">CoreUI for React is Open Source UI Components Library for React.js.</p>
         <p className="mb-0">
-          Currently v{pkg.version}. Code licensed{' '}
+          Currently v{pkg.version}. CoreUI code licensed{' '}
           <a
             href="https://github.com/coreui/coreui/blob/main/LICENSE"
             target="_blank"
@@ -38,7 +38,7 @@ const Footer: FC = () => {
           <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noreferrer">
             CC BY 3.0
           </a>
-          .
+          .<strong> CoreUI PRO requires a commercial license.</strong>
         </p>
       </CContainer>
     </CFooter>

@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import CIcon from '@coreui/icons-react'
-import { cibGithub, cibTwitter, cilCloudDownload, cilMenu } from '@coreui/icons'
+import { cibGithub, cibOpenCollective, cibTwitter, cilCloudDownload, cilMenu } from '@coreui/icons'
 import { CButton, CHeader, CHeaderNav, CHeaderToggler, CNavItem } from '@coreui/react'
 
 import { AppContext } from './../AppContext'
@@ -27,11 +27,14 @@ const Header: FC = () => {
               <CNavItem href="https://twitter.com/core_ui">
                 <CIcon icon={cibTwitter} size="xl" />
               </CNavItem>
+              <CNavItem href="https://opencollective.com/coreui">
+                <CIcon icon={cibOpenCollective} size="xl" />
+              </CNavItem>
             </CHeaderNav>
             <CButton
               className="d-lg-inline-block my-2 my-md-0 ms-md-3"
               color="primary"
-              href="https://coreui.io/react/#compare"
+              href="/getting-started/introduction/"
               variant="outline"
             >
               <CIcon icon={cilCloudDownload} /> Download
@@ -39,7 +42,7 @@ const Header: FC = () => {
             <CButton
               className="d-lg-inline-block my-2 my-md-0 ms-md-3"
               color="primary"
-              href="https://coreui.io/pro/react/"
+              href="https://coreui.io/pricing/?framework=react&docs=coreui-header-button"
             >
               Get CoreUI PRO
             </CButton>
