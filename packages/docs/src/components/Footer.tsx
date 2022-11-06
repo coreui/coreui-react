@@ -38,7 +38,11 @@ const Footer: FC = () => {
           <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noreferrer">
             CC BY 3.0
           </a>
-          .<strong> CoreUI PRO requires a commercial license.</strong>
+          .
+          <strong>
+            CoreUI PRO requires a{' '}
+            <a href="https://coreui.io/pricing/?framework=react&docs=footer">commercial license</a>.
+          </strong>
         </p>
       </CContainer>
     </CFooter>
