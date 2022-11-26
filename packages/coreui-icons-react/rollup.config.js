@@ -1,9 +1,11 @@
 import commonjs from '@rollup/plugin-commonjs'
-import external from 'rollup-plugin-peer-deps-external'
 import resolve from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
 import css from 'rollup-plugin-import-css'
-import pkg from './package.json'
+import { readFileSync } from 'node:fs'
+
+const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url)))
+
 export default {
   input: 'src/index.ts',
   output: [
@@ -30,9 +32,9 @@ export default {
       },
     },
   ],
+  external: ['react', 'react-dom'],
   plugins: [
     css(),
-    external(),
     resolve(),
     typescript({
       exclude: ['**/__tests__/**'],
