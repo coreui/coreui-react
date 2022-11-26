@@ -1,5 +1,7 @@
 import { CForm } from './CForm'
 import { CFormCheck } from './CFormCheck'
+import { CFormControlValidation } from './CFormControlValidation'
+import { CFormControlWrapper } from './CFormControlWrapper'
 import { CFormFeedback } from './CFormFeedback'
 import { CFormFloating } from './CFormFloating'
 import { CFormInput } from './CFormInput'
@@ -15,6 +17,8 @@ import { CInputGroupText } from './CInputGroupText'
 export {
   CForm,
   CFormCheck,
+  CFormControlValidation,
+  CFormControlWrapper,
   CFormFeedback,
   CFormFloating,
   CFormInput,
