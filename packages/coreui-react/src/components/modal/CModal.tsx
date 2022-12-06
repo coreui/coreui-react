@@ -108,6 +108,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       transition = true,
       unmountOnClose = true,
       visible,
+      ...attributes
     },
     ref,
   ) => {
@@ -232,6 +233,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
               fullscreen={fullscreen}
               scrollable={scrollable}
               size={size}
+              {...attributes}
             >
               <CModalContent ref={modalContentRef}>{children}</CModalContent>
             </CModalDialog>
