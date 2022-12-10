@@ -5,12 +5,21 @@ import React, {
   useEffect,
   useImperativeHandle,
   useMemo,
-  useState,
   useRef,
 } from 'react'
 import classNames from 'classnames'
 
-import Chart, { ChartData, ChartOptions, ChartType, InteractionItem, Plugin } from 'chart.js/auto'
+import { Chart as ChartJS, registerables } from 'chart.js'
+import type {
+  ChartData,
+  ChartOptions,
+  ChartType,
+  ChartTypeRegistry,
+  InteractionItem,
+  Plugin,
+  ScatterDataPoint,
+  BubbleDataPoint,
+} from 'chart.js'
 import { customTooltips as cuiCustomTooltips } from '@coreui/chartjs'
 
 import assign from 'lodash/assign'
@@ -92,7 +101,7 @@ export interface CChartProps extends HTMLAttributes<HTMLCanvasElement | HTMLDivE
    *
    * @type {'line' | 'bar' | 'radar' | 'doughnut' | 'polarArea' | 'bubble' | 'pie' | 'scatter'}
    */
-  type: ChartType
+  type?: ChartType
   /**
    * Width attribute applied to the rendered canvas.
    *
@@ -107,187 +116,208 @@ export interface CChartProps extends HTMLAttributes<HTMLCanvasElement | HTMLDivE
   wrapper?: boolean
 }
 
-export const CChart = forwardRef<Chart | undefined, CChartProps>((props, ref) => {
-  const {
-    className,
-    customTooltips = true,
-    data,
-    id,
-    fallbackContent,
-    getDatasetAtEvent,
-    getElementAtEvent,
-    getElementsAtEvent,
-    height = 150,
-    options,
-    plugins = [],
-    redraw = false,
-    type,
-    width = 300,
-    wrapper = true,
-    ...rest
-  } = props
+export const CChart = forwardRef<ChartJS | undefined, CChartProps>(
+  (
+    {
+      className,
+      customTooltips = true,
+      data,
+      id,
+      fallbackContent,
+      getDatasetAtEvent,
+      getElementAtEvent,
+      getElementsAtEvent,
+      height = 150,
+      options,
+      plugins = [],
+      redraw = false,
+      type = 'bar',
+      width = 300,
+      wrapper = true,
+      ...rest
+    },
+    ref,
+  ) => {
+    ChartJS.register(...registerables)
 
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+    const canvasRef = useRef<HTMLCanvasElement>(null)
+    const chartRef = useRef<
+      | ChartJS<
+          keyof ChartTypeRegistry,
+          (number | ScatterDataPoint | BubbleDataPoint | null)[],
+          unknown
+        >
+      | undefined
+    >()
 
-  const computedData = useMemo(() => {
-    if (typeof data === 'function') {
-      return canvasRef.current ? data(canvasRef.current) : { datasets: [] }
-    } else return merge({}, data)
-  }, [data, canvasRef.current])
+    useImperativeHandle<ChartJS | undefined, ChartJS | undefined>(ref, () => chartRef.current, [
+      chartRef,
+    ])
 
-  const computedOptions = useMemo(() => {
-    return customTooltips
-      ? merge({}, options, {
-          plugins: {
-            tooltip: {
-              enabled: false,
-              mode: 'index',
-              position: 'nearest',
-              external: cuiCustomTooltips,
+    const computedData = useMemo(() => {
+      if (typeof data === 'function') {
+        return canvasRef.current ? data(canvasRef.current) : { datasets: [] }
+      }
+
+      return merge({}, data)
+    }, [canvasRef.current, JSON.stringify(data)])
+
+    const computedOptions = useMemo(() => {
+      return customTooltips
+        ? merge({}, options, {
+            plugins: {
+              tooltip: {
+                enabled: false,
+                mode: 'index',
+                position: 'nearest',
+                external: cuiCustomTooltips,
+              },
             },
-          },
-        })
-      : options
-  }, [data, canvasRef.current, options])
+          })
+        : options
+    }, [canvasRef.current, JSON.stringify(options)])
 
-  const [chart, setChart] = useState<Chart>()
+    const renderChart = () => {
+      if (!canvasRef.current) return
 
-  useImperativeHandle<Chart | undefined, Chart | undefined>(ref, () => chart, [chart])
-
-  const renderChart = () => {
-    if (!canvasRef.current) return
-
-    setChart(
-      new Chart(canvasRef.current, {
+      chartRef.current = new ChartJS(canvasRef.current, {
         type,
         data: computedData,
         options: computedOptions,
         plugins,
-      }),
-    )
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleOnClick = (e: any) => {
-    if (!chart) return
-
-    getDatasetAtEvent &&
-      getDatasetAtEvent(
-        chart.getElementsAtEventForMode(e, 'dataset', { intersect: true }, false),
-        e,
-      )
-    getElementAtEvent &&
-      getElementAtEvent(
-        chart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, false),
-        e,
-      )
-    getElementsAtEvent &&
-      getElementsAtEvent(chart.getElementsAtEventForMode(e, 'index', { intersect: true }, false), e)
-  }
-
-  const updateChart = () => {
-    if (!chart) return
-
-    if (options) {
-      chart.options = { ...computedOptions }
+      })
     }
 
-    if (!chart.config.data) {
-      chart.config.data = computedData
-      chart.update()
-      return
-    }
-
-    const { datasets: newDataSets = [], ...newChartData } = computedData
-    const { datasets: currentDataSets = [] } = chart.config.data
-
-    // copy values
-    assign(chart.config.data, newChartData)
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    chart.config.data.datasets = newDataSets.map((newDataSet: any) => {
-      // given the new set, find it's current match
-      const currentDataSet = find(
-        currentDataSets,
-        (d) => d.label === newDataSet.label && d.type === newDataSet.type,
-      )
+    const handleOnClick = (e: any) => {
+      if (!chartRef.current) return
 
-      // There is no original to update, so simply add new one
-      if (!currentDataSet || !newDataSet.data) return newDataSet
-
-      if (!currentDataSet.data) {
-        currentDataSet.data = []
-      } else {
-        currentDataSet.data.length = newDataSet.data.length
-      }
-
-      // copy in values
-      assign(currentDataSet.data, newDataSet.data)
-
-      // apply dataset changes, but keep copied data
-      return {
-        ...currentDataSet,
-        ...newDataSet,
-        data: currentDataSet.data,
-      }
-    })
-
-    chart.update()
-  }
-
-  const destroyChart = () => {
-    if (chart) chart.destroy()
-  }
-
-  useEffect(() => {
-    renderChart()
-
-    return () => destroyChart()
-  }, [])
-
-  useEffect(() => {
-    if (redraw) {
-      destroyChart()
-      setTimeout(() => {
-        renderChart()
-      }, 0)
-    } else {
-      updateChart()
+      getDatasetAtEvent &&
+        getDatasetAtEvent(
+          chartRef.current.getElementsAtEventForMode(e, 'dataset', { intersect: true }, false),
+          e,
+        )
+      getElementAtEvent &&
+        getElementAtEvent(
+          chartRef.current.getElementsAtEventForMode(e, 'nearest', { intersect: true }, false),
+          e,
+        )
+      getElementsAtEvent &&
+        getElementsAtEvent(
+          chartRef.current.getElementsAtEventForMode(e, 'index', { intersect: true }, false),
+          e,
+        )
     }
-  }, [props, computedData])
 
-  const canvas = (ref: React.Ref<HTMLCanvasElement>) => {
-    return (
-      <canvas
-        {...(!wrapper && className && { className: className })}
-        data-testid="canvas"
-        height={height}
-        id={id}
-        onClick={(e: React.MouseEvent<HTMLCanvasElement>) => {
-          handleOnClick(e)
-        }}
-        ref={ref}
-        role="img"
-        width={width}
-        {...rest}
-      >
-        {fallbackContent}
-      </canvas>
+    const updateChart = () => {
+      if (!chartRef.current) return
+
+      if (options) {
+        chartRef.current.options = { ...computedOptions }
+      }
+
+      if (!chartRef.current.config.data) {
+        chartRef.current.config.data = computedData
+        chartRef.current.update()
+        return
+      }
+
+      const { datasets: newDataSets = [], ...newChartData } = computedData
+      const { datasets: currentDataSets = [] } = chartRef.current.config.data
+
+      // copy values
+      assign(chartRef.current.config.data, newChartData)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      chartRef.current.config.data.datasets = newDataSets.map((newDataSet: any) => {
+        // given the new set, find it's current match
+        const currentDataSet = find(
+          currentDataSets,
+          (d) => d.label === newDataSet.label && d.type === newDataSet.type,
+        )
+
+        // There is no original to update, so simply add new one
+        if (!currentDataSet || !newDataSet.data) return newDataSet
+
+        if (!currentDataSet.data) {
+          currentDataSet.data = []
+        } else {
+          currentDataSet.data.length = newDataSet.data.length
+        }
+
+        // copy in values
+        assign(currentDataSet.data, newDataSet.data)
+
+        // apply dataset changes, but keep copied data
+        return {
+          ...currentDataSet,
+          ...newDataSet,
+          data: currentDataSet.data,
+        }
+      })
+
+      chartRef.current.update()
+    }
+
+    const destroyChart = () => {
+      if (chartRef.current) {
+        chartRef.current.destroy()
+        chartRef.current = undefined
+      }
+    }
+
+    useEffect(() => {
+      renderChart()
+
+      return () => destroyChart()
+    }, [])
+
+    useEffect(() => {
+      if (!chartRef.current) return
+
+      if (redraw) {
+        destroyChart()
+        setTimeout(() => {
+          renderChart()
+        }, 0)
+      } else {
+        updateChart()
+      }
+    }, [JSON.stringify(data), computedData])
+
+    const canvas = (ref: React.Ref<HTMLCanvasElement>) => {
+      return (
+        <canvas
+          {...(!wrapper && className && { className: className })}
+          data-testid="canvas"
+          height={height}
+          id={id}
+          onClick={(e: React.MouseEvent<HTMLCanvasElement>) => {
+            handleOnClick(e)
+          }}
+          ref={ref}
+          role="img"
+          width={width}
+          {...rest}
+        >
+          {fallbackContent}
+        </canvas>
+      )
+    }
+
+    return wrapper ? (
+      <div className={classNames('chart-wrapper', className)} {...rest}>
+        {canvas(canvasRef)}
+      </div>
+    ) : (
+      canvas(canvasRef)
     )
-  }
-
-  return wrapper ? (
-    <div className={classNames('chart-wrapper', className)} {...rest}>
-      {canvas(canvasRef)}
-    </div>
-  ) : (
-    canvas(canvasRef)
-  )
-})
+  },
+)
 
 CChart.propTypes = {
   className: PropTypes.string,
   customTooltips: PropTypes.bool,
-  data: PropTypes.any.isRequired, // TODO: check
+  data: PropTypes.any.isRequired, // TODO: improve this type
   fallbackContent: PropTypes.node,
   getDatasetAtEvent: PropTypes.func,
   getElementAtEvent: PropTypes.func,
