@@ -1,4 +1,4 @@
-import React, { ElementType, HTMLAttributes, forwardRef } from 'react'
+import React, { ElementType, AnchorHTMLAttributes, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -6,7 +6,7 @@ import { Colors, colorPropType } from '../Types'
 import { CLink } from '../link/CLink'
 
 export interface CListGroupItemProps
-  extends HTMLAttributes<HTMLLIElement | HTMLAnchorElement | HTMLButtonElement> {
+  extends AnchorHTMLAttributes<HTMLLIElement | HTMLAnchorElement | HTMLButtonElement> {
   /**
    * Toggle the active state for the component.
    */

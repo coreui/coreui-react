@@ -2,7 +2,7 @@ import React, { AllHTMLAttributes, ElementType, forwardRef, MouseEvent } from 'r
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-export interface CLinkProps extends AllHTMLAttributes<HTMLElement> {
+export interface CLinkProps extends AllHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   /**
    * Toggle the active state for the component.
    */
@@ -36,7 +36,7 @@ export const CLink = forwardRef<HTMLButtonElement | HTMLAnchorElement, CLinkProp
         {...(active && { 'aria-current': 'page' })}
         {...(Component === 'a' && disabled && { 'aria-disabled': true, tabIndex: -1 })}
         {...((Component === 'a' || Component === 'button') && {
-          onClick: (event: MouseEvent<HTMLElement>) => {
+          onClick: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
             event.preventDefault
             !disabled && rest.onClick && rest.onClick(event)
           },

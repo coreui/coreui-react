@@ -1,11 +1,11 @@
-import React, { ButtonHTMLAttributes, ElementType, forwardRef } from 'react'
+import React, { ElementType, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Colors, Shapes, colorPropType } from '../Types'
-import { CLink } from '../link/CLink'
+import { CLink, CLinkProps } from '../link/CLink'
 
-export interface CButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface CButtonProps extends Omit<CLinkProps, 'size'> {
   /**
    * Toggle the active state for the component.
    */

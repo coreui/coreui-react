@@ -1,8 +1,9 @@
-import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import React, { ElementType, forwardRef, AnchorHTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-export interface CHeaderBrandProps extends HTMLAttributes<HTMLAnchorElement | HTMLSpanElement> {
+export interface CHeaderBrandProps
+  extends AnchorHTMLAttributes<HTMLAnchorElement | HTMLSpanElement> {
   /**
    * A string of all className you want applied to the component.
    */
