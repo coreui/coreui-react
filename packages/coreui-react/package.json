@@ -27,13 +27,12 @@
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
   "types": "dist/index.d.ts",
-  "type": "module",
   "files": [
     "dist/",
     "src/"
   ],
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c --bundleConfigAsCjs"
   },
   "devDependencies": {
     "@popperjs/core": "^2.11.5",

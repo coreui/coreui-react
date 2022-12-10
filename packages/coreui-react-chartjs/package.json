@@ -35,11 +35,11 @@
     "src/"
   ],
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c --bundleConfigAsCjs"
   },
   "dependencies": {
     "@coreui/chartjs": "^3.0.0",
-    "chart.js": "^3.9.1"
+    "chart.js": "3.9.1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^23.0.2",
@@ -48,9 +48,13 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@types/lodash": "^4.14.181",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "^18.0.6",
     "classnames": "^2.3.2",
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rollup": "^3.4.0",
     "typescript": "^4.9.3"
   },
