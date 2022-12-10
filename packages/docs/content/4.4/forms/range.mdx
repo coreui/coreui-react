@@ -38,23 +38,23 @@ Add the `disabled` boolean attribute on an input to give it a grayed out appeara
 Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
 
 <Example>
-  <CFormRange min="0" max="5" label="Example range" defaultValue="3" id="customRange2" />
+  <CFormRange min={0} max={5} label="Example range" defaultValue="3" id="customRange2" />
 </Example>
 
 ```jsx
-<CFormRange min="0" max="5" label="Example range" defaultValue="3" id="customRange2" />
+<CFormRange min={0} max={5} label="Example range" defaultValue="3" id="customRange2" />
 ```
 
 ## Steps
 
-By default, range inputs "snap" to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `step="0.5"`.
+By default, range inputs "snap" to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `step={0.5}`.
 
 <Example>
-  <CFormRange min="0" max="5" step="0.5" label="Example range" defaultValue="3" id="customRange3" />
+  <CFormRange min={0} max={5} step={0.5} label="Example range" defaultValue="3" id="customRange3" />
 </Example>
 
 ```jsx
-<CFormRange min="0" max="5" step="0.5" label="Example range" defaultValue="3" id="customRange3" />
+<CFormRange min={0} max={5} step={0.5} label="Example range" defaultValue="3" id="customRange3" />
 ```
 
 ## API

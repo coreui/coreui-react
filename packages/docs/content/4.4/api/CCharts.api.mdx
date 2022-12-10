@@ -19,6 +19,5 @@ import CChartBar from '@coreui/react-chartjs/src/CCharts'
 | **options** | The options object that is passed into the Chart.js chart.<br/><br/>{@link https://www.chartjs.org/docs/latest/general/options.html More Info} | `_DeepPartialObject<CoreChartOptions<keyof ChartTypeRegistry> & ElementChartOptions<keyof ChartTypeRegistry> & PluginChartOptions<...> & DatasetChartOptions<...> & ScaleChartOptions<...>>` | - |
 | **plugins** | The plugins array that is passed into the Chart.js chart (more info)<br/><br/>{@link https://www.chartjs.org/docs/latest/developers/plugins.html More Info} | `Plugin<keyof ChartTypeRegistry, AnyObject>[]` | - |
 | **redraw** | If true, will tear down and redraw chart on all updates. | `boolean` | false |
-| **type** | Chart.js chart type. | `{'line'` \| `'bar'` \| `'radar'` \| `'doughnut'` \| `'polarArea'` \| `'bubble'` \| `'pie'` \| `'scatter'}` | - |
 | **width** | Width attribute applied to the rendered canvas. | `number` | 300 |
 | **wrapper** | Put the chart into the wrapper div element. | `boolean` | true |
