@@ -1,8 +1,9 @@
-import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
+import React, { ElementType, forwardRef, LabelHTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-export interface CInputGroupTextProps extends HTMLAttributes<HTMLLabelElement | HTMLSpanElement> {
+export interface CInputGroupTextProps
+  extends LabelHTMLAttributes<HTMLLabelElement | HTMLSpanElement> {
   /**
    * A string of all className you want applied to the component.
    */
