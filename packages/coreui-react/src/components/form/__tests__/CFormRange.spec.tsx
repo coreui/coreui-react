@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { CFormRange } from '../../../index'
 
 test('loads and displays CFormRange component', async () => {
-  const { container } = render(<CFormRange steps={3} />)
+  const { container } = render(<CFormRange step={3} />)
   expect(container).toMatchSnapshot()
 })
 
@@ -12,7 +12,7 @@ test('CFormRange customize', async () => {
   const { container } = render(
     <CFormRange
       className="bazinga"
-      steps={2}
+      step={2}
       disabled={true}
       max={150}
       min={20}

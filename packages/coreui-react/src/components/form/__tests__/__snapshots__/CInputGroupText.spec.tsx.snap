@@ -19,3 +19,14 @@ exports[`loads and displays CInputGroupText component 1`] = `
   </span>
 </div>
 `;
+
+exports[`renders CInputGroupText component as a label 1`] = `
+<div>
+  <label
+    class="input-group-text"
+    for="input"
+  >
+    Test
+  </label>
+</div>
+`;

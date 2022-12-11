@@ -8,6 +8,15 @@ test('loads and displays CInputGroupText component', async () => {
   expect(container).toMatchSnapshot()
 })
 
+test('renders CInputGroupText component as a label', async () => {
+  const { container } = render(
+    <CInputGroupText component="label" htmlFor="input">
+      Test
+    </CInputGroupText>,
+  )
+  expect(container).toMatchSnapshot()
+})
+
 test('CInputGroupText customize', async () => {
   const { container } = render(<CInputGroupText className="bazinga">Test</CInputGroupText>)
   expect(container).toMatchSnapshot()
