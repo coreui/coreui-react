@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 import { CToastContext } from './CToast'
 import { CCloseButton, CCloseButtonProps } from '../close-button/CCloseButton'
 
-export interface CToastCloseProps extends CCloseButtonProps {
+import type { CButtonProps } from '../button/CButton'
+
+type CombineButtonProps = CCloseButtonProps & CButtonProps
+export interface CToastCloseProps extends CombineButtonProps {
   /**
    * Component used for the root node. Either a string to use a HTML element or a component.
    */
