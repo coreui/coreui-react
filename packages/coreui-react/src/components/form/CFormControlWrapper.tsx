@@ -15,7 +15,7 @@ export interface CFormControlWrapperProps extends CFormControlValidationProps {
   /**
    * A string of all className you want applied to the floating label wrapper.
    *
-   * @since 4.3.0
+   * @since 4.5.0
    */
   floatingClassName?: string
   /**

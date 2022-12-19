@@ -52,7 +52,7 @@ export interface CCarouselProps extends HTMLAttributes<HTMLDivElement> {
    */
   pause?: boolean | 'hover'
   /**
-   * Whether the carousel should support left/right swipe interactions on touchscreen devices.
+   * Set whether the carousel should support left/right swipe interactions on touchscreen devices.
    *
    * @since 4.5.0
    */
