@@ -3,6 +3,7 @@ import React, {
   createContext,
   forwardRef,
   HTMLAttributes,
+  TouchEvent,
   useState,
   useEffect,
   useRef,
@@ -51,6 +52,12 @@ export interface CCarouselProps extends HTMLAttributes<HTMLDivElement> {
    */
   pause?: boolean | 'hover'
   /**
+   * Whether the carousel should support left/right swipe interactions on touchscreen devices.
+   *
+   * @since 4.5.0
+   */
+  touch?: boolean
+  /**
    * Set type of the transition.
    */
   transition?: 'slide' | 'crossfade'
@@ -84,6 +91,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
       onSlid,
       onSlide,
       pause = 'hover',
+      touch = true,
       transition,
       wrap = true,
       ...rest
@@ -99,6 +107,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
     const [customInterval, setCustomInterval] = useState<boolean | number>()
     const [direction, setDirection] = useState<string>('next')
     const [itemsNumber, setItemsNumber] = useState<number>(0)
+    const [touchPosition, setTouchPosition] = useState<number | null>(null)
     const [visible, setVisible] = useState<boolean>()
 
     useEffect(() => {
@@ -193,11 +202,38 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
       }
     }
 
+    const handleTouchMove = (e: TouchEvent) => {
+      const touchDown = touchPosition
+
+      if (touchDown === null) {
+        return
+      }
+
+      const currentTouch = e.touches[0].clientX
+      const diff = touchDown - currentTouch
+
+      if (diff > 5) {
+        handleControlClick('next')
+      }
+
+      if (diff < -5) {
+        handleControlClick('prev')
+      }
+
+      setTouchPosition(null)
+    }
+
+    const handleTouchStart = (e: TouchEvent) => {
+      const touchDown = e.touches[0].clientX
+      setTouchPosition(touchDown)
+    }
+
     return (
       <div
         className={_className}
         onMouseEnter={_pause}
         onMouseLeave={cycle}
+        {...(touch && { onTouchStart: handleTouchStart, onTouchMove: handleTouchMove })}
         {...rest}
         ref={forkedRef}
       >
@@ -262,6 +298,7 @@ CCarousel.propTypes = {
   onSlid: PropTypes.func,
   onSlide: PropTypes.func,
   pause: PropTypes.oneOf([false, 'hover']),
+  touch: PropTypes.bool,
   transition: PropTypes.oneOf(['slide', 'crossfade']),
   wrap: PropTypes.bool,
 }
