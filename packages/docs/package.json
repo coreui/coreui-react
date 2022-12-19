@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react-docs",
-  "version": "4.4.1",
+  "version": "4.5.0",
   "private": true,
   "description": "",
   "homepage": "https://coreui.io/react/",
@@ -24,7 +24,7 @@
     "clean": "gatsby clean"
   },
   "config": {
-    "version_short": "4.4"
+    "version_short": "4.5"
   },
   "dependencies": {
     "@coreui/chartjs": "^3.0.0",
