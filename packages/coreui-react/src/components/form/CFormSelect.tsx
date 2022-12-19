@@ -52,6 +52,7 @@ export const CFormSelect = forwardRef<HTMLSelectElement, CFormSelectProps>(
       feedback,
       feedbackInvalid,
       feedbackValid,
+      floatingClassName,
       floatingLabel,
       htmlSize,
       id,
@@ -81,6 +82,7 @@ export const CFormSelect = forwardRef<HTMLSelectElement, CFormSelectProps>(
         feedback={feedback}
         feedbackInvalid={feedbackInvalid}
         feedbackValid={feedbackValid}
+        floatingClassName={floatingClassName}
         floatingLabel={floatingLabel}
         id={id}
         invalid={invalid}

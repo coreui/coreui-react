@@ -95,9 +95,10 @@ Form validation styles also work as expected.
 
 <Example>
   <CFormInput
-    className="mb-3"
+    floatingClassName="mb-3"
     type="email"
     id="floatingInputInvalid"
+    feedbackValid="Please choose a username."
     floatingLabel="Email addresss"
     placeholder="name@example.com"
     defaultValue="test@example.com"
@@ -106,6 +107,7 @@ Form validation styles also work as expected.
   <CFormInput
     type="email"
     id="floatingInputInvalid"
+    feedbackInvalid="Please choose a username."
     floatingLabel="Email addresss"
     placeholder="name@example.com"
     defaultValue="test@example.com"

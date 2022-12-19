@@ -13,6 +13,12 @@ export interface CFormControlWrapperProps extends CFormControlValidationProps {
    */
   children?: ReactNode
   /**
+   * A string of all className you want applied to the floating label wrapper.
+   *
+   * @since 4.3.0
+   */
+  floatingClassName?: string
+  /**
    * Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.
    *
    * @since 4.2.0
@@ -42,6 +48,7 @@ export const CFormControlWrapper: FC<CFormControlWrapperProps> = ({
   feedback,
   feedbackInvalid,
   feedbackValid,
+  floatingClassName,
   floatingLabel,
   id,
   invalid,
@@ -51,9 +58,20 @@ export const CFormControlWrapper: FC<CFormControlWrapperProps> = ({
   valid,
 }) => {
   return floatingLabel ? (
-    <CFormFloating>
+    <CFormFloating className={floatingClassName}>
       {children}
       <CFormLabel htmlFor={id}>{label || floatingLabel}</CFormLabel>
+      {text && <CFormText id={describedby}>{text}</CFormText>}
+      <CFormControlValidation
+        describedby={describedby}
+        feedback={feedback}
+        feedbackInvalid={feedbackInvalid}
+        feedbackValid={feedbackValid}
+        floatingLabel={floatingLabel}
+        invalid={invalid}
+        tooltipFeedback={tooltipFeedback}
+        valid={valid}
+      />
     </CFormFloating>
   ) : (
     <>
@@ -76,6 +94,7 @@ export const CFormControlWrapper: FC<CFormControlWrapperProps> = ({
 
 CFormControlWrapper.propTypes = {
   children: PropTypes.node,
+  floatingClassName: PropTypes.string,
   floatingLabel: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
   label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
   text: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),

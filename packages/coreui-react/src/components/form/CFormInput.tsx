@@ -58,6 +58,7 @@ export const CFormInput = forwardRef<HTMLInputElement, CFormInputProps>(
       feedback,
       feedbackInvalid,
       feedbackValid,
+      floatingClassName,
       floatingLabel,
       id,
       invalid,
@@ -101,6 +102,7 @@ export const CFormInput = forwardRef<HTMLInputElement, CFormInputProps>(
         feedback={feedback}
         feedbackInvalid={feedbackInvalid}
         feedbackValid={feedbackValid}
+        floatingClassName={floatingClassName}
         floatingLabel={floatingLabel}
         id={id}
         invalid={invalid}

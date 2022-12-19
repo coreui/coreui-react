@@ -44,6 +44,7 @@ export const CFormTextarea = forwardRef<HTMLTextAreaElement, CFormTextareaProps>
       feedback,
       feedbackInvalid,
       feedbackValid,
+      floatingClassName,
       floatingLabel,
       id,
       invalid,
@@ -70,6 +71,7 @@ export const CFormTextarea = forwardRef<HTMLTextAreaElement, CFormTextareaProps>
         feedback={feedback}
         feedbackInvalid={feedbackInvalid}
         feedbackValid={feedbackValid}
+        floatingClassName={floatingClassName}
         floatingLabel={floatingLabel}
         id={id}
         invalid={invalid}
