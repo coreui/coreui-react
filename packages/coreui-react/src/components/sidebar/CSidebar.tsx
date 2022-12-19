@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import { isVisible } from '../../utils'
 import { useForkedRef } from '../../utils/hooks'
 import { CBackdrop } from '../backdrop/CBackdrop'
 
@@ -51,16 +52,6 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
 
 const isOnMobile = (element: HTMLDivElement) =>
   Boolean(getComputedStyle(element).getPropertyValue('--cui-is-mobile'))
-
-const isVisible = (element: HTMLDivElement) => {
-  const rect = element.getBoundingClientRect()
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  )
-}
 
 export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
   (
