@@ -115,8 +115,8 @@ const DocsLayout: FC = ({ data: { mdx } }: { data: any }) => {
                       Vue components. To learn more please visit the following pages.
                     </p>
                     <ul>
-                      {frameworks.map((item: string) => (
-                        <>
+                      {frameworks.map((item: string, index: number) => (
+                        <React.Fragment key={index}>
                           {Object.keys(otherFrameworks[item]).map(
                             (el, index) =>
                               el !== 'react' && (
@@ -129,7 +129,7 @@ const DocsLayout: FC = ({ data: { mdx } }: { data: any }) => {
                                 </li>
                               ),
                           )}
-                        </>
+                        </React.Fragment>
                       ))}
                     </ul>
                   </>
