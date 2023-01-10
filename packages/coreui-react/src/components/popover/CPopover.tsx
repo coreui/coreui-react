@@ -1,17 +1,17 @@
-import React, { FC, ReactNode, useRef, useState } from 'react'
+import React, { FC, HTMLAttributes, ReactNode, useRef, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-
-import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import { usePopper } from 'react-popper'
 import { Transition } from 'react-transition-group'
 
 import { Triggers, triggerPropType } from '../Types'
-import { useEffect } from 'react'
 
-export interface CPopoverProps {
-  // TODO: find solution to not use any
-  children: any
+export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+  /**
+   * A string of all className you want applied to the component.
+   */
+  className?: string
   /**
    * Content node for your component.
    */
@@ -50,6 +50,7 @@ export interface CPopoverProps {
 
 export const CPopover: FC<CPopoverProps> = ({
   children,
+  className,
   content,
   offset = [0, 8],
   onHide,
@@ -95,7 +96,7 @@ export const CPopover: FC<CPopoverProps> = ({
 
   return (
     <>
-      {React.cloneElement(children, {
+      {React.cloneElement(children as React.ReactElement<any>, {
         ref: setReferenceElement,
         ...((trigger === 'click' || trigger.includes('click')) && {
           onClick: () => setVisible(!_visible),
@@ -131,6 +132,7 @@ export const CPopover: FC<CPopoverProps> = ({
                     `popover bs-popover-${
                       placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement
                     }`,
+                    className,
                     transitionClass,
                   )}
                   ref={setPopperElement}
@@ -153,7 +155,8 @@ export const CPopover: FC<CPopoverProps> = ({
 }
 
 CPopover.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
+  className: PropTypes.string,
   content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   offset: PropTypes.any, // TODO: find good proptype
   onHide: PropTypes.func,
