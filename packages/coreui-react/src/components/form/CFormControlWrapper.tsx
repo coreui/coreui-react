@@ -57,37 +57,31 @@ export const CFormControlWrapper: FC<CFormControlWrapperProps> = ({
   tooltipFeedback,
   valid,
 }) => {
+  const formControlValidation = () => (
+    <CFormControlValidation
+      describedby={describedby}
+      feedback={feedback}
+      feedbackInvalid={feedbackInvalid}
+      feedbackValid={feedbackValid}
+      floatingLabel={floatingLabel}
+      invalid={invalid}
+      tooltipFeedback={tooltipFeedback}
+      valid={valid}
+    />
+  )
   return floatingLabel ? (
     <CFormFloating className={floatingClassName}>
       {children}
       <CFormLabel htmlFor={id}>{label || floatingLabel}</CFormLabel>
       {text && <CFormText id={describedby}>{text}</CFormText>}
-      <CFormControlValidation
-        describedby={describedby}
-        feedback={feedback}
-        feedbackInvalid={feedbackInvalid}
-        feedbackValid={feedbackValid}
-        floatingLabel={floatingLabel}
-        invalid={invalid}
-        tooltipFeedback={tooltipFeedback}
-        valid={valid}
-      />
+      {formControlValidation()}
     </CFormFloating>
   ) : (
     <>
       {label && <CFormLabel htmlFor={id}>{label}</CFormLabel>}
       {children}
       {text && <CFormText id={describedby}>{text}</CFormText>}
-      <CFormControlValidation
-        describedby={describedby}
-        feedback={feedback}
-        feedbackInvalid={feedbackInvalid}
-        feedbackValid={feedbackValid}
-        floatingLabel={floatingLabel}
-        invalid={invalid}
-        tooltipFeedback={tooltipFeedback}
-        valid={valid}
-      />
+      {formControlValidation()}
     </>
   )
 }
