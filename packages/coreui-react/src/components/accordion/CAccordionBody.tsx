@@ -18,7 +18,7 @@ export const CAccordionBody = forwardRef<HTMLDivElement, CAccordionBodyProps>(
     const _className = classNames('accordion-body', className)
 
     return (
-      <CCollapse className="accordion-collpase" visible={visible}>
+      <CCollapse className="accordion-collapse" visible={visible}>
         <div className={_className} {...rest} ref={ref}>
           {children}
         </div>
