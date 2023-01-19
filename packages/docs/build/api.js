@@ -6,7 +6,6 @@ const docgen = require('react-docgen-typescript')
 const fs = require('fs').promises
 const path = require('path')
 const globby = require('globby')
-const pkg = require('../package.json')
 
 const GLOB = ['**/src/**/*.tsx']
 const GLOBBY_OPTIONS = {
@@ -76,7 +75,7 @@ import ${name} from '@coreui${relativeFilename.replace('.tsx', '')}'
   }
 
   await fs
-    .writeFile(`content/${pkg.config.version_short}/api/${filename}.api.mdx`, content, {
+    .writeFile(`content/api/${filename}.api.mdx`, content, {
       encoding: 'utf8',
     })
     .then(() => {

@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const pkg = require(`./package.json`)
-
 module.exports = {
   siteMetadata: {
     title: `CoreUI for React.js`,
@@ -41,7 +38,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `docs`,
-        path: `${__dirname}/content/${pkg.config.version_short}/`,
+        path: `${__dirname}/content/`,
       },
     },
     {
@@ -54,7 +51,7 @@ module.exports = {
           {
             resolve: require.resolve(`./src/plugins/gatsby-remark-import-markdown`),
             options: {
-              directory: `${__dirname}/content/${pkg.config.version_short}/api/`,
+              directory: `${__dirname}/content/api/`,
             },
           },
           {

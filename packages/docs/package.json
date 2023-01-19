@@ -14,7 +14,7 @@
   "license": "MIT",
   "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
   "scripts": {
-    "api": "rimraf \"content/$npm_package_config_version_short/api/*\" & node build/api.js",
+    "api": "rimraf \"content/api/*\" & node build/api.js",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "dist": "run-s api build",
@@ -22,9 +22,6 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
-  },
-  "config": {
-    "version_short": "4.5"
   },
   "dependencies": {
     "@coreui/chartjs": "^3.0.0",
