@@ -155,7 +155,7 @@ export const CTable = forwardRef<HTMLTableElement, CTableProps>(
       columns,
       footer,
       hover,
-      items = [],
+      items,
       responsive,
       small,
       striped,
@@ -188,7 +188,7 @@ export const CTable = forwardRef<HTMLTableElement, CTableProps>(
           if (typeof column === 'object') return column.key
           else return column
         })
-      : Object.keys(items[0] || {}).filter((el) => el.charAt(0) !== '_')
+      : Object.keys((items && items[0]) || {}).filter((el) => el.charAt(0) !== '_')
 
     const pretifyName = (name: string) => {
       return name
