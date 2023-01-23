@@ -22,7 +22,7 @@ export interface CFormSwitchProps extends Omit<InputHTMLAttributes<HTMLInputElem
    */
   label?: string | ReactNode
   /**
-   * Size the component large or extra large. Works only with `switch` [docs]
+   * Size the component large or extra large. Works only with `switch`.
    */
   size?: 'lg' | 'xl'
   /**

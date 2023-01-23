@@ -53,7 +53,7 @@ export interface CTableProps extends Omit<TableHTMLAttributes<HTMLTableElement>,
    * Object: item is object with following keys available as column configuration:
    * - key (required)(String) - define column name equal to item key.
    * - label (String) - define visible label of column. If not defined, label will be generated automatically based on column name, by converting kebab-case and snake_case to individual words and capitalization of each word.
-   * - _props (Object) - adds classes to all cels in column, ex. _props: { scope: 'col', className: 'custom-class' },
+   * - _props (Object) - adds classes to all cels in column, ex. `_props: { scope: 'col', className: 'custom-class' }`,
    * - _style (Object) - adds styles to the column header (useful for defining widths)
    *
    * @since 4.3.0
@@ -69,9 +69,9 @@ export interface CTableProps extends Omit<TableHTMLAttributes<HTMLTableElement>,
    * Array of objects or strings, where each element represents one cell in the table footer.
    *
    * Example items:
-   * ['FooterCell', 'FooterCell', 'FooterCell']
+   * `['FooterCell', 'FooterCell', 'FooterCell']`
    * or
-   * [{ label: 'FooterCell', _props: { color: 'success' }, ...]
+   * `[{ label: 'FooterCell', _props: { color: 'success' }, ...]`
    *
    * @since 4.3.0
    */
@@ -84,7 +84,7 @@ export interface CTableProps extends Omit<TableHTMLAttributes<HTMLTableElement>,
    * Array of objects, where each object represents one item - row in table. Additionally, you can add style classes to each row by passing them by '_props' key and to single cell by '_cellProps'.
    *
    * Example item:
-   * { name: 'John' , age: 12, _props: { color: 'success' }, _cellProps: { age: { className: 'fw-bold'}}}
+   * `{ name: 'John' , age: 12, _props: { color: 'success' }, _cellProps: { age: { className: 'fw-bold'}}}`
    *
    * @since 4.3.0
    */

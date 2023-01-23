@@ -15,19 +15,19 @@ import { CNavContext } from '../sidebar/CSidebarNav'
 export interface CNavGroupProps {
   children?: ReactNode
   /**
-   * A string of all className you want applied to the component. [docs]
+   * A string of all className you want applied to the component.
    */
   className?: string
   /**
-   * Make nav group more compact by cutting all `padding` in half. [docs]
+   * Make nav group more compact by cutting all `padding` in half.
    */
   compact?: boolean
   /**
-   * Set group toggler label. [docs]
+   * Set group toggler label.
    */
   toggler?: string | ReactNode
   /**
-   * Show nav group items. [docs]
+   * Show nav group items.
    */
   visible?: boolean
   /**

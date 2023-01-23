@@ -17,7 +17,7 @@ export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {
    */
   className?: string
   /**
-   * Closes the offcanvas when escape key is pressed [docs]
+   * Closes the offcanvas when escape key is pressed.
    */
   keyboard?: boolean
   /**

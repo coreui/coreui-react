@@ -26,7 +26,7 @@ export interface CFormInputProps
    */
   onChange?: ChangeEventHandler<HTMLInputElement>
   /**
-   * Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side `readonly` [docs]
+   * Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side `readonly`.
    */
   plainText?: boolean
   /**

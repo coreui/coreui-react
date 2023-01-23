@@ -43,8 +43,6 @@ export interface CChartProps extends HTMLAttributes<HTMLCanvasElement | HTMLDivE
   data: ChartData | ((canvas: HTMLCanvasElement) => ChartData)
   /**
    * A fallback for when the canvas cannot be rendered. Can be used for accessible chart descriptions.
-   *
-   * {@link https://www.chartjs.org/docs/latest/general/accessibility.html More Info}
    */
   fallbackContent?: React.ReactNode
   /**
@@ -80,14 +78,10 @@ export interface CChartProps extends HTMLAttributes<HTMLCanvasElement | HTMLDivE
   id?: string
   /**
    * The options object that is passed into the Chart.js chart.
-   *
-   * {@link https://www.chartjs.org/docs/latest/general/options.html More Info}
    */
   options?: ChartOptions
   /**
    * The plugins array that is passed into the Chart.js chart (more info)
-   *
-   * {@link https://www.chartjs.org/docs/latest/developers/plugins.html More Info}
    */
   plugins?: Plugin[]
   /**
