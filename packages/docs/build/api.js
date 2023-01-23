@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-/* eslint-disable @typescript-eslint/no-var-requires */
 'use strict'
 
 const docgen = require('react-docgen-typescript')
@@ -46,12 +45,8 @@ import ${name} from '@coreui${relativeFilename.replace('.tsx', '')}'
       typeof value.tags.ignore === 'undefined'
     ) {
       let name = value.name || ''
-      const since = value.tags.since
-        ? ` <br/><div class="badge bg-primary">${value.tags.since}+</div>`
-        : ''
-      const deprecated = value.tags.deprecated
-        ? ` <br/><div class="badge bg-warning">Deprecated ${value.tags.deprecated}+</div>`
-        : ''
+      const since = value.tags.since ? ` **_${value.tags.since}+_**` : ''
+      const deprecated = value.tags.deprecated ? ` **_Deprecated ${value.tags.deprecated}+_**` : ''
       const description =
         value.description.replaceAll('\n', '<br/>').replaceAll(' [docs]', '') || '-'
       const type = value.type
@@ -67,9 +62,18 @@ import ${name} from '@coreui${relativeFilename.replace('.tsx', '')}'
         types.push(`\`${element.replace(/"/g, "'")}\``)
       })
 
-      content += `| **${name}**${since}${deprecated} | ${description} | ${types.join(
+      const replace = (text) =>
+        text
+          .replaceAll('\n', '<br/>')
+          .replaceAll('{', '{')
+          .replaceAll('}', '}')
+          .replaceAll('(', '(')
+          .replaceAll(')', ')')
+          .replaceAll('@', '@')
+
+      content += `| **${name}**${since}${deprecated} | ${replace(description)} | ${types.join(
         ' \\| ',
-      )} | ${defaultValue.replaceAll('\n', '<br/>')} |\n`
+      )} | ${replace(defaultValue)} |\n`
       console.log(`${filename} - ${key}`)
     }
   }
