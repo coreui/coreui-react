@@ -47,8 +47,7 @@ import ${name} from '@coreui${relativeFilename.replace('.tsx', '')}'
       let name = value.name || ''
       const since = value.tags.since ? ` **_${value.tags.since}+_**` : ''
       const deprecated = value.tags.deprecated ? ` **_Deprecated ${value.tags.deprecated}+_**` : ''
-      const description =
-        value.description.replaceAll('\n', '<br/>').replaceAll(' [docs]', '') || '-'
+      const description = value.description || '-'
       const type = value.type
         ? value.type.name.includes('ReactElement')
           ? 'ReactElement'
@@ -62,14 +61,7 @@ import ${name} from '@coreui${relativeFilename.replace('.tsx', '')}'
         types.push(`\`${element.replace(/"/g, "'")}\``)
       })
 
-      const replace = (text) =>
-        text
-          .replaceAll('\n', '<br/>')
-          .replaceAll('{', '{')
-          .replaceAll('}', '}')
-          .replaceAll('(', '(')
-          .replaceAll(')', ')')
-          .replaceAll('@', '@')
+      const replace = (text) => text.replaceAll('\n', '<br/>').replaceAll('(<', '(\\<')
 
       content += `| **${name}**${since}${deprecated} | ${replace(description)} | ${types.join(
         ' \\| ',
