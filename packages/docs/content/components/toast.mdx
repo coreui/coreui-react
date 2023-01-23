@@ -35,29 +35,8 @@ To encourage extensible and predictable toasts, we recommend a header and body. 
 
 Toasts are as flexible as you need and have very little required markup. At a minimum, we require a single element to contain your "toasted" content and strongly encourage a dismiss button.
 
-<Example>
-  <CToast animation={false} autohide={false} visible={true}>
-    <CToastHeader closeButton>
-      <svg
-        className="rounded me-2"
-        width="20"
-        height="20"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid slice"
-        focusable="false"
-        role="img"
-      >
-        <rect width="100%" height="100%" fill="#007aff"></rect>
-      </svg>
-      <strong className="me-auto">CoreUI for React.js</strong>
-      <small>7 min ago</small>
-    </CToastHeader>
-    <CToastBody>Hello, world! This is a toast message.</CToastBody>
-  </CToast>
-</Example>
-
-```jsx
-<CToast autohide={false} visible={true}>
+```jsx preview
+<CToast animation={false} autohide={false} visible={true}>
   <CToastHeader closeButton>
     <svg
       className="rounded me-2"
@@ -147,28 +126,7 @@ return (
 
 Toasts are slightly translucent to blend in with what's below them.
 
-<Example className="bg-dark border-0">
-  <CToast autohide={false} visible={true}>
-    <CToastHeader closeButton>
-      <svg
-        className="rounded me-2"
-        width="20"
-        height="20"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid slice"
-        focusable="false"
-        role="img"
-      >
-        <rect width="100%" height="100%" fill="#007aff"></rect>
-      </svg>
-      <strong className="me-auto">CoreUI for React.js</strong>
-      <small>7 min ago</small>
-    </CToastHeader>
-    <CToastBody>Hello, world! This is a toast message.</CToastBody>
-  </CToast>
-</Example>
-
-```jsx
+```jsx preview className="bg-dark border-0"
 <CToast autohide={false} visible={true}>
   <CToastHeader closeButton>
     <svg
@@ -193,48 +151,7 @@ Toasts are slightly translucent to blend in with what's below them.
 
 You can stack toasts by wrapping them in a toast container, which will vertically add some spacing.
 
-<Example>
-  <CToaster>
-    <CToast autohide={false} visible={true}>
-      <CToastHeader closeButton>
-        <svg
-          className="rounded me-2"
-          width="20"
-          height="20"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="xMidYMid slice"
-          focusable="false"
-          role="img"
-        >
-          <rect width="100%" height="100%" fill="#007aff"></rect>
-        </svg>
-        <strong className="me-auto">CoreUI for React.js</strong>
-        <small>7 min ago</small>
-      </CToastHeader>
-      <CToastBody>Hello, world! This is a toast message.</CToastBody>
-    </CToast>
-    <CToast autohide={false} visible={true}>
-      <CToastHeader closeButton>
-        <svg
-          className="rounded me-2"
-          width="20"
-          height="20"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="xMidYMid slice"
-          focusable="false"
-          role="img"
-        >
-          <rect width="100%" height="100%" fill="#007aff"></rect>
-        </svg>
-        <strong className="me-auto">CoreUI for React.js</strong>
-        <small>7 min ago</small>
-      </CToastHeader>
-      <CToastBody>Hello, world! This is a toast message.</CToastBody>
-    </CToast>
-  </CToaster>
-</Example>
-
-```jsx
+```jsx preview
 <CToaster>
   <CToast autohide={false} visible={true}>
     <CToastHeader closeButton>
@@ -279,16 +196,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
 
 Customize your toasts by removing sub-components, tweaking them with [utilities](https://coreui.io/docs/utilities/api), or by adding your own markup. Here we've created a simpler toast by removing the default `<CToastHeader>`, adding a custom hide icon from [CoreUI Icons](https://icons.coreui.io), and using some [flexbox utilities](https://coreui.io/docs/utilities/flex) to adjust the layout.
 
-<Example>
-  <CToast autohide={false} visible={true} className="align-items-center">
-    <div className="d-flex">
-      <CToastBody>Hello, world! This is a toast message.</CToastBody>
-      <CToastClose className="me-2 m-auto" />
-    </div>
-  </CToast>
-</Example>
-
-```jsx
+```jsx preview
 <CToast autohide={false} visible={true} className="align-items-center">
   <div className="d-flex">
     <CToastBody>Hello, world! This is a toast message.</CToastBody>
@@ -299,23 +207,7 @@ Customize your toasts by removing sub-components, tweaking them with [utilities]
 
 Alternatively, you can also add additional controls and components to toasts.
 
-<Example>
-  <CToast autohide={false} visible={true}>
-    <CToastBody>
-      Hello, world! This is a toast message.
-      <div className="mt-2 pt-2 border-top">
-        <CButton type="button" color="primary" size="sm">
-          Take action
-        </CButton>
-        <CToastClose component={CButton} color="secondary" size="sm" className="ms-1">
-          Close
-        </CToastClose>
-      </div>
-    </CToastBody>
-  </CToast>
-</Example>
-
-```jsx
+```jsx preview
 <CToast autohide={false} visible={true}>
   <CToastBody>
     Hello, world! This is a toast message.
@@ -335,16 +227,7 @@ Alternatively, you can also add additional controls and components to toasts.
 
 Building on the above example, you can create different toast color schemes with our [color](https://coreui.io/docs/utilities/colors) and [background](https://coreui.io/docs//utilities/background) utilities. Here we've set `color="primary"` and added `.text-white` class to the `<Ctoast>`, and then set `white` property to our close button. For a crisp edge, we remove the default border with `.border-0`.
 
-<Example>
-  <CToast autohide={false} visible={true} color="primary" className="text-white align-items-center">
-    <div className="d-flex">
-      <CToastBody>Hello, world! This is a toast message.</CToastBody>
-      <CToastClose className="me-2 m-auto" white />
-    </div>
-  </CToast>
-</Example>
-
-```jsx
+```jsx preview
 <CToast autohide={false} visible={true} color="primary" className="text-white align-items-center">
   <div className="d-flex">
     <CToastBody>Hello, world! This is a toast message.</CToastBody>

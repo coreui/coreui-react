@@ -30,7 +30,7 @@ import {
   CRow,
 } from '@coreui/react/src/index'
 
-<!-- ## How it works
+{/* ## How it works
 
 Here's how form validation works with Bootstrap:
 
@@ -43,7 +43,7 @@ Here's how form validation works with Bootstrap:
 - Feedback messages may utilize the [browser defaults](#browser-defaults) (different for each browser, and unstylable via CSS) or our custom feedback styles with additional HTML and CSS.
 - You may provide custom validity messages with `setCustomValidity` in JavaScript.
 
-With that in mind, consider the following demos for our custom form validation styles, optional server-side classes, and browser defaults. -->
+With that in mind, consider the following demos for our custom form validation styles, optional server-side classes, and browser defaults.*/}
 
 ## Example
 
@@ -263,68 +263,7 @@ Not interested in custom validation feedback messages or writing JavaScript to c
 
 While these feedback styles cannot be styled with CSS, you can still customize the feedback text through JavaScript.
 
-<Example>
-  <CForm className="row g-3">
-    <CCol md={4}>
-      <CFormInput
-        type="text"
-        id="validationDefault01"
-        label="First name"
-        defaultValue="Mark"
-        required
-      />
-    </CCol>
-    <CCol md={4}>
-      <CFormInput
-        type="text"
-        id="validationDefault02"
-        label="Last name"
-        defaultValue="Otto"
-        required
-      />
-    </CCol>
-    <CCol md={4}>
-      <CFormLabel htmlFor="validationDefaultUsername">Username</CFormLabel>
-      <CInputGroup>
-        <CInputGroupText id="inputGroupPrepend02">@</CInputGroupText>
-        <CFormInput
-          type="text"
-          id="validationDefaultUsername"
-          defaultValue=""
-          aria-describedby="inputGroupPrepend02"
-          required
-        />
-      </CInputGroup>
-    </CCol>
-    <CCol md={6}>
-      <CFormInput type="text" id="validationDefault03" label="City" required />
-    </CCol>
-    <CCol md={3}>
-      <CFormSelect id="validationDefault04" label="State">
-        <option disabled>Choose...</option>
-        <option>...</option>
-      </CFormSelect>
-    </CCol>
-    <CCol md={3}>
-      <CFormInput type="text" id="validationDefault05" label="Zip" required />
-    </CCol>
-    <CCol xs={12}>
-      <CFormCheck
-        type="checkbox"
-        id="invalidCheck"
-        label="Agree to terms and conditions"
-        required
-      />
-    </CCol>
-    <CCol xs={12}>
-      <CButton color="primary" type="submit">
-        Submit form
-      </CButton>
-    </CCol>
-  </CForm>
-</Example>
-
-```jsx
+```jsx preview
 <CForm className="row g-3">
   <CCol md={4}>
     <CFormInput
@@ -386,95 +325,7 @@ In case you require custom or server-side validation, you can indicate invalid a
 
 For invalid fields, ensure that the invalid feedback/error message is associated with the relevant form field using `aria-describedby` (noting that this attribute allows more than one `id` to be referenced, in case the field already points to additional form text).
 
-<Example>
-  <CForm className="row g-3">
-    <CCol md={4}>
-      <CFormInput
-        type="text"
-        id="validationServer01"
-        label="Email"
-        feedback="Looks good!"
-        defaultValue="name@surname.com"
-        valid
-        required
-      />
-    </CCol>
-    <CCol md={4}>
-      <CFormInput
-        type="text"
-        id="validationServer02"
-        label="Repeat email"
-        feedback="Looks good!"
-        defaultValue="name@surname.com"
-        valid
-        required
-      />
-    </CCol>
-    <CCol md={4}>
-      <CFormLabel htmlFor="validationServerUsername">Username</CFormLabel>
-      <CInputGroup className="has-validation">
-        <CInputGroupText id="inputGroupPrepend03">@</CInputGroupText>
-        <CFormInput
-          type="text"
-          id="validationServerUsername"
-          feedback="Please choose a username."
-          defaultValue=""
-          aria-describedby="inputGroupPrepend03"
-          invalid
-          required
-        />
-      </CInputGroup>
-    </CCol>
-    <CCol md={6}>
-      <CFormInput
-        type="text"
-        id="validationServer03"
-        label="City"
-        feedback="Please provide a valid city."
-        invalid
-        required
-      />
-    </CCol>
-    <CCol md={3}>
-      <CFormSelect
-        id="validationServer04"
-        label="State"
-        feedback="Please provide a valid city."
-        invalid
-      >
-        <option disabled>Choose...</option>
-        <option>...</option>
-      </CFormSelect>
-    </CCol>
-    <CCol md={3}>
-      <CFormInput
-        type="text"
-        id="validationServer05"
-        label="zip"
-        feedback="Please provide a valid zip."
-        invalid
-        required
-      />
-    </CCol>
-    <CCol xs={12}>
-      <CFormCheck
-        type="checkbox"
-        id="invalidCheck"
-        label="Agree to terms and conditions"
-        invalid
-        required
-      />
-      <CFormFeedback invalid>You must agree before submitting.</CFormFeedback>
-    </CCol>
-    <CCol xs={12}>
-      <CButton color="primary" type="submit">
-        Submit form
-      </CButton>
-    </CCol>
-  </CForm>
-</Example>
-
-```jsx
+```jsx preview
 <CForm className="row g-3">
   <CCol md={4}>
     <CFormInput
@@ -571,72 +422,7 @@ Validation styles are available for the following form controls and components:
 - `<CFormSelect>`s
 - `<CFormTextarea>`s
 
-<Example>
-  <CForm validated={true}>
-    <div className="mb-3">
-      <CFormTextarea
-        feedbackInvalid="Please enter a message in the textarea."
-        id="validationTextarea"
-        label="Textarea"
-        placeholder="Required example textarea"
-        required
-      ></CFormTextarea>
-    </div>
-    <CFormCheck
-      className="mb-3"
-      id="validationFormCheck1"
-      label="Check this checkbox"
-      feedbackInvalid="Example invalid feedback text"
-      required
-    />
-    <CFormCheck
-      type="radio"
-      name="radio-stacked"
-      id="validationFormCheck2"
-      label="Check this checkbox"
-      required
-    />
-    <CFormCheck
-      className="mb-3"
-      type="radio"
-      name="radio-stacked"
-      id="validationFormCheck3"
-      label="Or toggle this other radio"
-      feedbackInvalid="More example invalid feedback text"
-      required
-    />
-    <div className="mb-3">
-      <CFormSelect
-        feedbackInvalid="Example invalid select feedback"
-        aria-label="select example"
-        required
-      >
-        <option selected="" value="">
-          Open this select menu
-        </option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </CFormSelect>
-    </div>
-    <div className="mb-3">
-      <CFormInput
-        type="file"
-        id="validationTextarea"
-        feedbackInvalid="Example invalid form file feedback"
-        aria-label="file example"
-        required
-      />
-    </div>
-    <div className="mb-3">
-      <CButton type="submit" color="primary" disabled>
-        Submit form
-      </CButton>
-    </div>
-  </CForm>
-</Example>
-
-```jsx
+```jsx preview
 <CForm validated={true}>
   <div className="mb-3">
     <CFormTextarea

@@ -13,11 +13,7 @@ import { CForm, CFormLabel, CFormRange } from '@coreui/react/src/index'
 
 Create custom `<input type="range">` controls with `<CFormRange>`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only Edge Legacy and Firefox supports "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.
 
-<Example>
-  <CFormRange id="customRange1" label="Example range" />
-</Example>
-
-```jsx
+```jsx preview
 <CFormRange id="customRange1" label="Example range" />
 ```
 
@@ -25,11 +21,7 @@ Create custom `<input type="range">` controls with `<CFormRange>`. The track (th
 
 Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
 
-<Example>
-  <CFormRange id="disabledRange" label="Disabled range" disabled />
-</Example>
-
-```jsx
+```jsx preview
 <CFormRange id="disabledRange" label="Disabled range" disabled />
 ```
 
@@ -37,11 +29,7 @@ Add the `disabled` boolean attribute on an input to give it a grayed out appeara
 
 Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
 
-<Example>
-  <CFormRange min={0} max={5} label="Example range" defaultValue="3" id="customRange2" />
-</Example>
-
-```jsx
+```jsx preview
 <CFormRange min={0} max={5} label="Example range" defaultValue="3" id="customRange2" />
 ```
 
@@ -49,11 +37,7 @@ Range inputs have implicit values for `min` and `max`—`0` and `100`, respectiv
 
 By default, range inputs "snap" to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `step={0.5}`.
 
-<Example>
-  <CFormRange min={0} max={5} step={0.5} label="Example range" defaultValue="3" id="customRange3" />
-</Example>
-
-```jsx
+```jsx preview
 <CFormRange min={0} max={5} step={0.5} label="Example range" defaultValue="3" id="customRange3" />
 ```
 

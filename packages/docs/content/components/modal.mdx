@@ -26,26 +26,7 @@ import {
 
 Below is a static react modal component example (meaning its `position` and `display` have been overridden). Included are the modal header, modal body (required for `padding`), and modal footer (optional). We ask that you include react modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.
 
-<Example>
-  <CModal
-    className="show d-block position-static"
-    backdrop={false}
-    keyboard={false}
-    portal={false}
-    visible
-  >
-    <CModalHeader>
-      <CModalTitle>React Modal title</CModalTitle>
-    </CModalHeader>
-    <CModalBody>React Modal body text goes here.</CModalBody>
-    <CModalFooter>
-      <CButton color="secondary">Close</CButton>
-      <CButton color="primary">Save changes</CButton>
-    </CModalFooter>
-  </CModal>
-</Example>
-
-```jsx
+```jsx preview
 <CModal
   className="show d-block position-static"
   backdrop={false}

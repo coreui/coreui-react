@@ -30,28 +30,7 @@ Navigation available in CoreUI for React share general markup and styles, from t
 
 The base `<CNav>` component is built with flexbox and provide a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling.
 
-<Example>
-  <CNav>
-    <CNavItem>
-      <CNavLink href="#" active>
-        Active
-      </CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#" disabled>
-        Disabled
-      </CNavLink>
-    </CNavItem>
-  </CNav>
-</Example>
-
-```jsx
+```jsx preview
 <CNav>
   <CNavItem>
     <CNavLink href="#" active>
@@ -74,20 +53,7 @@ The base `<CNav>` component is built with flexbox and provide a strong foundatio
 
 Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, `<ol>` if the order of your items is important, or roll your own with a `<nav>` element. Because the .nav uses display: flex, the nav links behave the same as nav items would, but without the extra markup.
 
-<Example>
-  <CNav component="nav">
-    <CNavLink href="#" active>
-      Active
-    </CNavLink>
-    <CNavLink href="#">Link</CNavLink>
-    <CNavLink href="#">Link</CNavLink>
-    <CNavLink href="#" disabled>
-      Disabled
-    </CNavLink>
-  </CNav>
-</Example>
-
-```jsx
+```jsx preview
 <CNav component="nav">
   <CNavLink href="#" active>
     Active
@@ -110,28 +76,7 @@ Change the horizontal alignment of your nav with [flexbox utilities](https://cor
 
 Centered with `.justify-content-center`:
 
-<Example>
-  <CNav className="justify-content-center">
-    <CNavItem>
-      <CNavLink href="#" active>
-        Active
-      </CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#" disabled>
-        Disabled
-      </CNavLink>
-    </CNavItem>
-  </CNav>
-</Example>
-
-```jsx
+```jsx preview
 <CNav className="justify-content-center">
   <CNavItem>
     <CNavLink href="#" active>
@@ -154,28 +99,7 @@ Centered with `.justify-content-center`:
 
 Right-aligned with `.justify-content-end`:
 
-<Example>
-  <CNav className="justify-content-end">
-    <CNavItem>
-      <CNavLink href="#" active>
-        Active
-      </CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#" disabled>
-        Disabled
-      </CNavLink>
-    </CNavItem>
-  </CNav>
-</Example>
-
-```jsx
+```jsx preview
 <CNav className="justify-content-end">
   <CNavItem>
     <CNavLink href="#" active>
@@ -200,28 +124,7 @@ Right-aligned with `.justify-content-end`:
 
 Stack your navigation by changing the flex item direction with the `.flex-column` utility. Need to stack them on some viewports but not others? Use the responsive versions (e.g., `.flex-sm-column`).
 
-<Example>
-  <CNav className="flex-column">
-    <CNavItem>
-      <CNavLink href="#" active>
-        Active
-      </CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#" disabled>
-        Disabled
-      </CNavLink>
-    </CNavItem>
-  </CNav>
-</Example>
-
-```jsx
+```jsx preview
 <CNav className="flex-column">
   <CNavItem>
     <CNavLink href="#" active>
@@ -246,28 +149,7 @@ Stack your navigation by changing the flex item direction with the `.flex-column
 
 Takes the basic nav from above and adds the `variant="tabs"` class to generate a tabbed interface
 
-<Example>
-  <CNav variant="tabs">
-    <CNavItem>
-      <CNavLink href="#" active>
-        Active
-      </CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#" disabled>
-        Disabled
-      </CNavLink>
-    </CNavItem>
-  </CNav>
-</Example>
-
-```jsx
+```jsx preview
 <CNav variant="tabs">
   <CNavItem>
     <CNavLink href="#" active>
@@ -292,28 +174,7 @@ Takes the basic nav from above and adds the `variant="tabs"` class to generate a
 
 Take that same HTML, but use `variant="pills"` instead:
 
-<Example>
-  <CNav variant="pills">
-    <CNavItem>
-      <CNavLink href="#" active>
-        Active
-      </CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#" disabled>
-        Disabled
-      </CNavLink>
-    </CNavItem>
-  </CNav>
-</Example>
-
-```jsx
+```jsx preview
 <CNav variant="pills">
   <CNavItem>
     <CNavLink href="#" active>
@@ -338,28 +199,7 @@ Take that same HTML, but use `variant="pills"` instead:
 
 Force your `<CNav>`'s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your `.nav-item`s, use `layout="fill"`. Notice that all horizontal space is occupied, but not every nav item has the same width.
 
-<Example>
-  <CNav variant="pills" layout="fill">
-    <CNavItem>
-      <CNavLink href="#" active>
-        Active
-      </CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#" disabled>
-        Disabled
-      </CNavLink>
-    </CNavItem>
-  </CNav>
-</Example>
-
-```jsx
+```jsx preview
 <CNav variant="pills" layout="fill">
   <CNavItem>
     <CNavLink href="#" active>
@@ -382,28 +222,7 @@ Force your `<CNav>`'s contents to extend the full available width one of two mod
 
 For equal-width elements, use `layout="justified"`. All horizontal space will be occupied by nav links, but unlike the .nav-fill above, every nav item will be the same width.
 
-<Example>
-  <CNav variant="pills" layout="justified">
-    <CNavItem>
-      <CNavLink href="#" active>
-        Active
-      </CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#" disabled>
-        Disabled
-      </CNavLink>
-    </CNavItem>
-  </CNav>
-</Example>
-
-```jsx
+```jsx preview
 <CNav variant="pills" layout="justified">
   <CNavItem>
     <CNavLink href="#" active>
@@ -428,20 +247,7 @@ For equal-width elements, use `layout="justified"`. All horizontal space will be
 
 If you need responsive nav variations, consider using a series of [flexbox utilities](https://coreui.io/docs/utilities/flex). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, our nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
 
-<Example>
-  <CNav component="nav" variant="pills" className="flex-column flex-sm-row">
-    <CNavLink href="#" active>
-      Active
-    </CNavLink>
-    <CNavLink href="#">Link</CNavLink>
-    <CNavLink href="#">Link</CNavLink>
-    <CNavLink href="#" disabled>
-      Disabled
-    </CNavLink>
-  </CNav>
-</Example>
-
-```jsx
+```jsx preview
 <CNav component="nav" variant="pills" className="flex-column flex-sm-row">
   <CNavLink href="#" active>
     Active
@@ -466,33 +272,7 @@ Add dropdown menus with a little extra HTML.
 
 ### Tabs with dropdowns
 
-<Example>
-  <CNav>
-    <CNavItem>
-      <CNavLink href="#" active>
-        Active
-      </CNavLink>
-    </CNavItem>
-    <CDropdown variant="nav-item">
-      <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
-      <CDropdownMenu>
-        <CDropdownItem href="#">Action</CDropdownItem>
-        <CDropdownItem href="#">Another action</CDropdownItem>
-        <CDropdownItem href="#">Something else here</CDropdownItem>
-      </CDropdownMenu>
-    </CDropdown>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#" disabled>
-        Disabled
-      </CNavLink>
-    </CNavItem>
-  </CNav>
-</Example>
-
-```jsx
+```jsx preview
 <CNav>
   <CNavItem>
     <CNavLink href="#" active>
@@ -520,33 +300,7 @@ Add dropdown menus with a little extra HTML.
 
 ### Pills with dropdowns
 
-<Example>
-  <CNav variant="pills">
-    <CNavItem>
-      <CNavLink href="#" active>
-        Active
-      </CNavLink>
-    </CNavItem>
-    <CDropdown variant="nav-item">
-      <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
-      <CDropdownMenu>
-        <CDropdownItem href="#">Action</CDropdownItem>
-        <CDropdownItem href="#">Another action</CDropdownItem>
-        <CDropdownItem href="#">Something else here</CDropdownItem>
-      </CDropdownMenu>
-    </CDropdown>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#" disabled>
-        Disabled
-      </CNavLink>
-    </CNavItem>
-  </CNav>
-</Example>
-
-```jsx
+```jsx preview
 <CNav variant="pills">
   <CNavItem>
     <CNavLink href="#" active>

@@ -21,43 +21,14 @@ Browser default radios are replaced with the help of `<CFormCheck radio>`. Radio
 
 Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input's state.
 
-<Example>
-  <CFormCheck type="radio" name="flexRadioDefault" id="flexRadioDefault1" label="Default radio" />
-  <CFormCheck
-    type="radio"
-    name="flexRadioDefault"
-    id="flexRadioDefault2"
-    label="Checked radio"
-    defaultChecked
-  />
-</Example>
-
-```jsx
+```jsx preview
 <CFormCheck type="radio" name="flexRadioDefault" id="flexRadioDefault1" label="Default radio"/>
 <CFormCheck type="radio" name="flexRadioDefault" id="flexRadioDefault2" label="Checked radio" defaultChecked/>
 ```
 
 ### Disabled
 
-<Example>
-  <CFormCheck
-    type="radio"
-    name="flexRadioDisabled"
-    id="flexRadioDisabled"
-    label="Disabled radio"
-    disabled
-  />
-  <CFormCheck
-    type="radio"
-    name="flexRadioDisabled"
-    id="flexRadioCheckedDisabled"
-    label="Disabled checked radio"
-    defaultChecked
-    disabled
-  />
-</Example>
-
-```jsx
+```jsx preview
 <CFormCheck type="radio" name="flexRadioDisabled" id="flexRadioDisabled" label="Disabled radio" disabled/>
 <CFormCheck type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" label="Disabled checked radio" defaultChecked disabled/>
 ```
@@ -66,33 +37,7 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 By default, any number of radios that are immediate sibling will be vertically stacked and appropriately spaced.
 
-<Example>
-  <CFormCheck
-    type="radio"
-    name="exampleRadios"
-    id="exampleRadios1"
-    value="option1"
-    label="Default radio"
-    defaultChecked
-  />
-  <CFormCheck
-    type="radio"
-    name="exampleRadios"
-    id="exampleRadios2"
-    value="option2"
-    label="Second default radio"
-  />
-  <CFormCheck
-    type="radio"
-    name="exampleRadios"
-    id="exampleRadios3"
-    value="option3"
-    label="Disabled radio"
-    disabled
-  />
-</Example>
-
-```jsx
+```jsx preview
 <CFormCheck type="radio" name="exampleRadios" id="exampleRadios1" value="option1" label="Default radio" defaultChecked/>
 <CFormCheck type="radio" name="exampleRadios" id="exampleRadios2" value="option2" label="Second default radio"/>
 <CFormCheck type="radio" name="exampleRadios" id="exampleRadios3" value="option3" label="Disabled radio" disabled/>
@@ -102,35 +47,7 @@ By default, any number of radios that are immediate sibling will be vertically s
 
 Group radios on the same horizontal row by adding `inline` boolean property to any `<CFormCheck radio>`.
 
-<Example>
-  <CFormCheck
-    inline
-    type="radio"
-    name="inlineRadioOptions"
-    id="inlineCheckbox1"
-    value="option1"
-    label="1"
-  />
-  <CFormCheck
-    inline
-    type="radio"
-    name="inlineRadioOptions"
-    id="inlineCheckbox2"
-    value="option2"
-    label="2"
-  />
-  <CFormCheck
-    inline
-    type="radio"
-    name="inlineRadioOptions"
-    id="inlineCheckbox3"
-    value="option3"
-    label="3 (disabled)"
-    disabled
-  />
-</Example>
-
-```jsx
+```jsx preview
 <CFormCheck inline type="radio" name="inlineRadioOptions" id="inlineCheckbox1" value="option1" label="1"/>
 <CFormCheck inline type="radio" name="inlineRadioOptions" id="inlineCheckbox2" value="option2" label="2"/>
 <CFormCheck inline type="radio" name="inlineRadioOptions" id="inlineCheckbox3" value="option3" label="3 (disabled)" disabled/>
@@ -140,11 +57,7 @@ Group radios on the same horizontal row by adding `inline` boolean property to a
 
 Remember to still provide some form of accessible name for assistive technologies (for instance, using `aria-label`).
 
-<Example>
-  <CFormCheck type="radio" name="radioNoLabel" id="radioNoLabel" value="" aria-label="..." />
-</Example>
-
-```jsx
+```jsx preview
 <CFormCheck type="radio" name="radioNoLabel" id="radioNoLabel" value="" aria-label="..."/>
 ```
 
@@ -152,44 +65,7 @@ Remember to still provide some form of accessible name for assistive technologie
 
 Create button-like radio buttons by using `button` boolean property on the `<CFormCheck radio>` component. These toggle buttons can further be grouped in a button group if needed.
 
-<Example>
-  <CFormCheck
-    button={{ color: 'secondary' }}
-    type="radio"
-    name="options"
-    id="option1"
-    autoComplete="off"
-    label="Checked"
-    defaultChecked
-  />
-  <CFormCheck
-    button={{ color: 'secondary' }}
-    type="radio"
-    name="options"
-    id="option2"
-    autoComplete="off"
-    label="Radio"
-  />
-  <CFormCheck
-    button={{ color: 'secondary' }}
-    type="radio"
-    name="options"
-    id="option3"
-    autoComplete="off"
-    label="Radio"
-    disabled
-  />
-  <CFormCheck
-    button={{ color: 'secondary' }}
-    type="radio"
-    name="options"
-    id="option4"
-    autoComplete="off"
-    label="Radio"
-  />
-</Example>
-
-```jsx
+```jsx preview
 <CFormCheck button={{ color: 'secondary' }} type="radio" name="options" id="option1" autoComplete="off" label="Checked" defaultChecked/>
 <CFormCheck button={{ color: 'secondary' }} type="radio" name="options" id="option2" autoComplete="off" label="Radio"/>
 <CFormCheck button={{ color: 'secondary' }} type="radio" name="options" id="option3" autoComplete="off" label="Radio" disabled/>
@@ -200,27 +76,7 @@ Create button-like radio buttons by using `button` boolean property on the `<CFo
 
 Different variants of button, such at the various outlined styles, are supported.
 
-<Example>
-  <CFormCheck
-    button={{ color: 'success', variant: 'outline' }}
-    type="radio"
-    name="options-outlined"
-    id="success-outlined"
-    autoComplete="off"
-    label="Radio"
-    defaultChecked
-  />
-  <CFormCheck
-    button={{ color: 'danger', variant: 'outline' }}
-    type="radio"
-    name="options-outlined"
-    id="danger-outlined"
-    autoComplete="off"
-    label="Radio"
-  />
-</Example>
-
-```jsx
+```jsx preview
 <CFormCheck button={{ color: 'success', variant: 'outline' }} type="radio" name="options-outlined" id="success-outlined" autoComplete="off" label="Radio" defaultChecked/>
 <CFormCheck button={{ color: 'danger', variant: 'outline' }} type="radio" name="options-outlined" id="danger-outlined" autoComplete="off" label="Radio"/>
 ```

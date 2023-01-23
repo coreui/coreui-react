@@ -21,11 +21,7 @@ Use the border spinners for a lightweight loading indicator.
 
 ## Basic usage
 
-<Example>
-  <CSpinner/>
-</Example>
-
-```jsx
+```jsx preview
   <CSpinner/>
 ```
 
@@ -33,18 +29,7 @@ Use the border spinners for a lightweight loading indicator.
 
 The border spinner uses `currentColor` for its `border-color`. You can use any of our text color utilities on the standard spinner.
 
-<Example>
-  <CSpinner color="primary"/>
-  <CSpinner color="secondary"/>
-  <CSpinner color="success"/>
-  <CSpinner color="danger"/>
-  <CSpinner color="warning"/>
-  <CSpinner color="info"/>
-  <CSpinner color="light"/>
-  <CSpinner color="dark"/>
-</Example>
-
-```jsx
+```jsx preview
   <CSpinner color="primary"/>
   <CSpinner color="secondary"/>
   <CSpinner color="success"/>
@@ -59,28 +44,13 @@ The border spinner uses `currentColor` for its `border-color`. You can use any o
 
 If you don't fancy a border spinner, switch to the grow spinner. While it doesn't technically spin, it does repeatedly grow!
 
-<Example>
-  <CSpinner variant="grow"/>
-</Example>
-
-```jsx
+```jsx preview
   <CSpinner variant="grow"/>
 ```
 
 Once again, this spinner is built with `currentColor`, so you can easily change its appearance. Here it is in blue, along with the supported variants.
 
-<Example>
-  <CSpinner color="primary" variant="grow"/>
-  <CSpinner color="secondary" variant="grow"/>
-  <CSpinner color="success" variant="grow"/>
-  <CSpinner color="danger" variant="grow"/>
-  <CSpinner color="warning" variant="grow"/>
-  <CSpinner color="info" variant="grow"/>
-  <CSpinner color="light" variant="grow"/>
-  <CSpinner color="dark" variant="grow"/>
-</Example>
-
-```jsx
+```jsx preview
   <CSpinner color="primary" variant="grow"/>
   <CSpinner color="secondary" variant="grow"/>
   <CSpinner color="success" variant="grow"/>
@@ -95,12 +65,7 @@ Once again, this spinner is built with `currentColor`, so you can easily change 
 
 Add `size="sm"`property` to make a smaller spinner that can quickly be used within other components.
 
-<Example>
-  <CSpinner size="sm"/>
-  <CSpinner size="sm" variant="grow"/>
-</Example>
-
-```jsx
+```jsx preview
   <CSpinner size="sm"/>
   <CSpinner size="sm" variant="grow"/>
 ```
@@ -109,17 +74,7 @@ Add `size="sm"`property` to make a smaller spinner that can quickly be used with
 
 Use spinners within buttons to indicate an action is currently processing or taking place. You may also swap the text out of the spinner element and utilize button text as needed.
 
-<Example>
-  <CButton disabled>
-    <CSpinner component="span" size="sm" aria-hidden="true"/>
-  </CButton>
-  <CButton disabled>
-    <CSpinner component="span" size="sm" aria-hidden="true"/>
-    Loading...
-  </CButton>
-</Example>
-
-```jsx
+```jsx preview
   <CButton disabled>
     <CSpinner component="span" size="sm" aria-hidden="true"/>
   </CButton>
@@ -129,17 +84,7 @@ Use spinners within buttons to indicate an action is currently processing or tak
   </CButton>
 ```
 
-<Example>
-  <CButton disabled>
-    <CSpinner component="span" size="sm" variant="grow" aria-hidden="true"/>
-  </CButton>
-  <CButton disabled>
-    <CSpinner component="span" size="sm" variant="grow" aria-hidden="true"/>
-    Loading...
-  </CButton>
-</Example>
-
-```jsx
+```jsx preview
   <CButton disabled>
     <CSpinner component="span" size="sm" variant="grow" aria-hidden="true"/>
   </CButton>

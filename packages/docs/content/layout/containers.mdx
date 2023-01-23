@@ -121,12 +121,6 @@ The table below illustrates how each container's `max-width` compares to the ori
 
 Our default `<CContainer>` class is a responsive, fixed-width container, meaning its `max-width` changes at each breakpoint.
 
-<Example>
-  <CContainer>
-    Content here
-  </CContainer>
-</Example>
-
 ```jsx
 <CContainer>
   Content here
@@ -136,14 +130,6 @@ Our default `<CContainer>` class is a responsive, fixed-width container, meaning
 ## Responsive containers
 
 Responsive containers allow you to specify a class that is 100% wide until the specified breakpoint is reached, after which we apply `max-width`s for each of the higher breakpoints. For example, `<CContainer sm>` is 100% wide to start until the `sm` breakpoint is reached, where it will scale up with `md`, `lg`, `xl`, and `xxl`.
-
-<Example>
-  <CContainer sm>100% wide until small breakpoint</CContainer>
-  <CContainer md>100% wide until medium breakpoint</CContainer>
-  <CContainer lg>100% wide until large breakpoint</CContainer>
-  <CContainer xl>100% wide until extra large breakpoint</CContainer>
-  <CContainer xxl>100% wide until extra extra large breakpoint</CContainer>
-</Example>
 
 ```jsx
 <CContainer sm>100% wide until small breakpoint</CContainer>
@@ -156,12 +142,6 @@ Responsive containers allow you to specify a class that is 100% wide until the s
 ## Fluid containers
 
 Use `<CContainer fluid>` for a full width container, spanning the entire width of the viewport.
-
-<Example>
-  <CContainer fluid>
-    Content here
-  </CContainer>
-</Example>
 
 ```jsx
 <CContainer fluid>

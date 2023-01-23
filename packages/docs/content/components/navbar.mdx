@@ -11,6 +11,7 @@ import { useState } from 'react'
 import {
   CButton,
   CContainer,
+  CCloseButton,
   CCollapse,
   CDropdown,
   CDropdownDivider,
@@ -154,31 +155,13 @@ return (
 
 The `<CNavbarBrand>` can be applied to most elements, but an anchor works best, as some elements might require utility classes or custom styles.
 
-<Example>
-  {/* As a link */}
-  <CNavbar colorScheme="light" className="bg-light">
-    <CContainer fluid>
-      <CNavbarBrand href="#">Navbar</CNavbarBrand>
-    </CContainer>
-  </CNavbar>
-  <br />
-  {/* As a heading */}
-  <CNavbar colorScheme="light" className="bg-light">
-    <CContainer fluid>
-      <CNavbarBrand className="mb-0 h1">Navbar</CNavbarBrand>
-    </CContainer>
-  </CNavbar>
-</Example>
-
-```jsx
-{/* As a link */}
+```jsx preview
 <CNavbar colorScheme="light" className="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
   </CContainer>
 </CNavbar>
 <br/>
-{/* As a heading */}
 <CNavbar colorScheme="light" className="bg-light">
   <CContainer fluid>
     <CNavbarBrand className="mb-0 h1">Navbar</CNavbarBrand>
@@ -188,59 +171,27 @@ The `<CNavbarBrand>` can be applied to most elements, but an anchor works best, 
 
 Adding images to the `<CNavbarBrand>` will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.
 
-<Example>
-  {/* Just an image */}
-  <CNavbar colorScheme="light" className="bg-light">
-    <CContainer fluid>
-      <CNavbarBrand href="#">
-        <img src={CoreUISignetImg} alt="" width="22" height="24" />
-      </CNavbarBrand>
-    </CContainer>
-  </CNavbar>
-</Example>
-
-```jsx
-{ /* Just an image */ }
+```jsx preview
 <CNavbar colorScheme="light" className="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">
-      <img src="/images/brand/coreui-signet.svg" alt="" width="22" height="24" />
+      <img src={CoreUISignetImg} alt="" width="22" height="24" />
     </CNavbarBrand>
   </CContainer>
 </CNavbar>
 ```
 
-<Example>
-  {/* Image and text */}
-  <CNavbar colorScheme="light" className="bg-light">
-    <CContainer fluid>
-      <CNavbarBrand href="#">
-        <img
-          src={CoreUISignetImg}
-          alt=""
-          width="22"
-          height="24"
-          className="d-inline-block align-top"
-        />{' '}
-        CoreUI
-      </CNavbarBrand>
-    </CContainer>
-  </CNavbar>
-</Example>
-
-```jsx
-{/* Image and text */}
+```jsx preview
 <CNavbar colorScheme="light" className="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">
       <img
-        src="/images/brand/coreui-signet.svg"
+        src={CoreUISignetImg}
         alt=""
         width="22"
         height="24"
         className="d-inline-block align-top"
-      />{' '}
-      CoreUI
+      /> CoreUI
     </CNavbarBrand>
   </CContainer>
 </CNavbar>
@@ -488,20 +439,7 @@ return (
 
 Place various form controls and components within a navbar:
 
-<Example>
-  <CNavbar colorScheme="light" className="bg-light">
-    <CContainer fluid>
-      <CForm className="d-flex">
-        <CFormInput type="search" className="me-2" placeholder="Search" />
-        <CButton type="submit" color="success" variant="outline">
-          Search
-        </CButton>
-      </CForm>
-    </CContainer>
-  </CNavbar>
-</Example>
-
-```jsx
+```jsx preview
 <CNavbar colorScheme="light" className="bg-light">
   <CContainer fluid>
     <CForm className="d-flex">
@@ -516,21 +454,7 @@ Place various form controls and components within a navbar:
 
 Immediate child elements of `<CNavbar>` use flex layout and will default to `justify-content: space-between`. Use additional [flex utilities](https://coreui.io/docs/utilities/flex/) as needed to adjust this behavior.
 
-<Example>
-  <CNavbar colorScheme="light" className="bg-light">
-    <CContainer fluid>
-      <CNavbarBrand href="#">Navbar</CNavbarBrand>
-      <CForm className="d-flex">
-        <CFormInput type="search" className="me-2" placeholder="Search" />
-        <CButton type="submit" color="success" variant="outline">
-          Search
-        </CButton>
-      </CForm>
-    </CContainer>
-  </CNavbar>
-</Example>
-
-```jsx
+```jsx preview
 <CNavbar colorScheme="light" className="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
@@ -546,18 +470,7 @@ Immediate child elements of `<CNavbar>` use flex layout and will default to `jus
 
 Input groups work, too. If your navbar is an entire form, or mostly a form, you can use the `<CForm>` element as the container and save some HTML.
 
-<Example>
-  <CNavbar colorScheme="light" className="bg-light">
-    <CForm className="container-fluid">
-      <CInputGroup>
-        <CInputGroupText id="basic-addon1">@</CInputGroupText>
-        <CFormInput placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
-      </CInputGroup>
-    </CForm>
-  </CNavbar>
-</Example>
-
-```jsx
+```jsx preview
 <CNavbar colorScheme="light" className="bg-light">
   <CForm className="container-fluid">
     <CInputGroup>
@@ -570,20 +483,7 @@ Input groups work, too. If your navbar is an entire form, or mostly a form, you 
 
 Various buttons are supported as part of these navbar forms, too. This is also a great reminder that vertical alignment utilities can be used to align different sized elements.
 
-<Example>
-  <CNavbar colorScheme="light" className="bg-light">
-    <CForm className="container-fluid justify-content-start">
-      <CButton type="button" color="success" variant="outline" className="me-2">
-        Main button
-      </CButton>
-      <CButton type="button" color="secondary" variant="outline" size="sm">
-        Smaller button
-      </CButton>
-    </CForm>
-  </CNavbar>
-</Example>
-
-```jsx
+```jsx preview
 <CNavbar colorScheme="light" className="bg-light">
   <CForm className="container-fluid justify-content-start">
     <CButton type="button" color="success" variant="outline" className="me-2">
@@ -600,15 +500,7 @@ Various buttons are supported as part of these navbar forms, too. This is also a
 
 Navbars may contain bits of text with the help of `<CNavbarText>`. This class adjusts vertical alignment and horizontal spacing for strings of text.
 
-<Example>
-  <CNavbar colorScheme="light" className="bg-light">
-    <CContainer fluid>
-      <CNavbarText>Navbar text with an inline element</CNavbarText>
-    </CContainer>
-  </CNavbar>
-</Example>
-
-```jsx
+```jsx preview
 <CNavbar colorScheme="light" className="bg-light">
   <CContainer fluid>
     <CNavbarText>Navbar text with an inline element</CNavbarText>
@@ -900,17 +792,7 @@ return (
 
 Although it's not required, you can wrap a `<CNavbar>` in a `<CContainer>` to center it on a page–though note that an inner container is still required. Or you can add a container inside the `<CNavbar>` to only center the contents of a [fixed or static top navbar](#placement).
 
-<Example>
-  <CContainer>
-    <CNavbar colorScheme="light" className="bg-light">
-      <CContainer fluid>
-        <CNavbarBrand href="#">Navbar</CNavbarBrand>
-      </CContainer>
-    </CNavbar>
-  </CContainer>
-</Example>
-
-```jsx
+```jsx preview
 <CContainer>
   <CNavbar colorScheme="light" className="bg-light">
     <CContainer fluid>
@@ -922,15 +804,7 @@ Although it's not required, you can wrap a `<CNavbar>` in a `<CContainer>` to ce
 
 Use any of the responsive containers to change how wide the content in your navbar is presented.
 
-<Example>
-  <CNavbar colorScheme="light" className="bg-light">
-    <CContainer breakpoint="md">
-      <CNavbarBrand href="#">Navbar</CNavbarBrand>
-    </CContainer>
-  </CNavbar>
-</Example>
-
-```jsx
+```jsx preview
 <CNavbar colorScheme="light" className="bg-light">
   <CContainer breakpoint="md">
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
@@ -944,15 +818,7 @@ Use our `placement` properly to place navbars in non-static positions. Choose fr
 
 Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully supported in every browser](https://caniuse.com/css-sticky)**.
 
-<Example>
-  <CNavbar colorScheme="light" className="bg-light">
-    <CContainer fluid>
-      <CNavbarBrand href="#">Default</CNavbarBrand>
-    </CContainer>
-  </CNavbar>
-</Example>
-
-```jsx
+```jsx preview
 <CNavbar colorScheme="light" className="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Default</CNavbarBrand>
@@ -960,15 +826,7 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 </CNavbar>
 ```
 
-<Example>
-  <CNavbar colorScheme="light" className="bg-light" placement="fixed-top">
-    <CContainer fluid>
-      <CNavbarBrand href="#">Fixed top</CNavbarBrand>
-    </CContainer>
-  </CNavbar>
-</Example>
-
-```jsx
+```jsx preview
 <CNavbar colorScheme="light" className="bg-light" placement="fixed-top">
   <CContainer fluid>
     <CNavbarBrand href="#">Fixed top</CNavbarBrand>
@@ -976,15 +834,7 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 </CNavbar>
 ```
 
-<Example>
-  <CNavbar colorScheme="light" className="bg-light" placement="fixed-bottom">
-    <CContainer fluid>
-      <CNavbarBrand href="#">Fixed bottom</CNavbarBrand>
-    </CContainer>
-  </CNavbar>
-</Example>
-
-```jsx
+```jsx preview
 <CNavbar colorScheme="light" className="bg-light" placement="fixed-bottom">
   <CContainer fluid>
     <CNavbarBrand href="#">Fixed bottom</CNavbarBrand>
@@ -992,15 +842,7 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 </CNavbar>
 ```
 
-<Example>
-  <CNavbar colorScheme="light" className="bg-light" placement="sticky-top">
-    <CContainer fluid>
-      <CNavbarBrand href="#">Sticky top</CNavbarBrand>
-    </CContainer>
-  </CNavbar>
-</Example>
-
-```jsx
+```jsx preview
 <CNavbar colorScheme="light" className="bg-light" placement="sticky-top">
   <CContainer fluid>
     <CNavbarBrand href="#">Sticky top</CNavbarBrand>

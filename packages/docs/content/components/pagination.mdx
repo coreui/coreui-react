@@ -15,17 +15,7 @@ We use a large block of connected links for our pagination, making links hard to
 
 In addition, as pages likely have more than one such navigation section, it's advisable to provide a descriptive `aria-label` for the `<nav>` to reflect its purpose. For example, if the pagination component is used to navigate between a set of search results, an appropriate label could be `aria-label="Search results pages"`.
 
-<Example>
-  <CPagination aria-label="Page navigation example">
-    <CPaginationItem>Previous</CPaginationItem>
-    <CPaginationItem>1</CPaginationItem>
-    <CPaginationItem>2</CPaginationItem>
-    <CPaginationItem>3</CPaginationItem>
-    <CPaginationItem>Next</CPaginationItem>
-  </CPagination>
-</Example>
-
-```jsx
+```jsx preview
 <CPagination aria-label="Page navigation example">
   <CPaginationItem>Previous</CPaginationItem>
   <CPaginationItem>1</CPaginationItem>
@@ -39,21 +29,7 @@ In addition, as pages likely have more than one such navigation section, it's ad
 
 Looking to use an icon or symbol in place of text for some pagination links? Be sure to provide proper screen reader support with `aria` attributes.
 
-<Example>
-  <CPagination aria-label="Page navigation example">
-    <CPaginationItem aria-label="Previous">
-      <span aria-hidden="true">&laquo;</span>
-    </CPaginationItem>
-    <CPaginationItem>1</CPaginationItem>
-    <CPaginationItem>2</CPaginationItem>
-    <CPaginationItem>3</CPaginationItem>
-    <CPaginationItem aria-label="Next">
-      <span aria-hidden="true">&raquo;</span>
-    </CPaginationItem>
-  </CPagination>
-</Example>
-
-```jsx
+```jsx preview
 <CPagination aria-label="Page navigation example">
   <CPaginationItem aria-label="Previous">
     <span aria-hidden="true">&laquo;</span>
@@ -73,21 +49,7 @@ Pagination links are customizable for different circumstances. Use `disabled` fo
 
 While the `disabled` prop uses `pointer-events: none` to _try_ to disable the link functionality of `<a>`s, that CSS property is not yet standardized and doesn't account for keyboard navigation. As such, we always add `tabindex="-1"` on disabled links and use custom JavaScript to fully disable their functionality.
 
-<Example>
-  <CPagination aria-label="Page navigation example">
-    <CPaginationItem aria-label="Previous" disabled>
-      <span aria-hidden="true">&laquo;</span>
-    </CPaginationItem>
-    <CPaginationItem active>1</CPaginationItem>
-    <CPaginationItem>2</CPaginationItem>
-    <CPaginationItem>3</CPaginationItem>
-    <CPaginationItem aria-label="Next">
-      <span aria-hidden="true">&raquo;</span>
-    </CPaginationItem>
-  </CPagination>
-</Example>
-
-```jsx
+```jsx preview
 <CPagination aria-label="Page navigation example">
   <CPaginationItem aria-label="Previous" disabled>
     <span aria-hidden="true">&laquo;</span>
@@ -105,17 +67,7 @@ While the `disabled` prop uses `pointer-events: none` to _try_ to disable the li
 
 Fancy larger or smaller pagination? Add `size="lg"` or `size="sm"` for additional sizes.
 
-<Example>
-  <CPagination size="lg" aria-label="Page navigation example">
-    <CPaginationItem>Previous</CPaginationItem>
-    <CPaginationItem>1</CPaginationItem>
-    <CPaginationItem>2</CPaginationItem>
-    <CPaginationItem>3</CPaginationItem>
-    <CPaginationItem>Next</CPaginationItem>
-  </CPagination>
-</Example>
-
-```jsx
+```jsx preview
 <CPagination size="lg" aria-label="Page navigation example">
   <CPaginationItem>Previous</CPaginationItem>
   <CPaginationItem>1</CPaginationItem>
@@ -125,17 +77,7 @@ Fancy larger or smaller pagination? Add `size="lg"` or `size="sm"` for additiona
 </CPagination>
 ```
 
-<Example>
-  <CPagination size="sm" aria-label="Page navigation example">
-    <CPaginationItem>Previous</CPaginationItem>
-    <CPaginationItem>1</CPaginationItem>
-    <CPaginationItem>2</CPaginationItem>
-    <CPaginationItem>3</CPaginationItem>
-    <CPaginationItem>Next</CPaginationItem>
-  </CPagination>
-</Example>
-
-```jsx
+```jsx preview
 <CPagination size="sm" aria-label="Page navigation example">
   <CPaginationItem>Previous</CPaginationItem>
   <CPaginationItem>1</CPaginationItem>
@@ -149,17 +91,7 @@ Fancy larger or smaller pagination? Add `size="lg"` or `size="sm"` for additiona
 
 Change the alignment of pagination components with `align` property.
 
-<Example>
-  <CPagination align="center" aria-label="Page navigation example">
-    <CPaginationItem disabled>Previous</CPaginationItem>
-    <CPaginationItem>1</CPaginationItem>
-    <CPaginationItem>2</CPaginationItem>
-    <CPaginationItem>3</CPaginationItem>
-    <CPaginationItem>Next</CPaginationItem>
-  </CPagination>
-</Example>
-
-```jsx
+```jsx preview
 <CPagination align="center" aria-label="Page navigation example">
   <CPaginationItem disabled>Previous</CPaginationItem>
   <CPaginationItem>1</CPaginationItem>
@@ -169,17 +101,7 @@ Change the alignment of pagination components with `align` property.
 </CPagination>
 ```
 
-<Example>
-  <CPagination align="end" aria-label="Page navigation example">
-    <CPaginationItem disabled>Previous</CPaginationItem>
-    <CPaginationItem>1</CPaginationItem>
-    <CPaginationItem>2</CPaginationItem>
-    <CPaginationItem>3</CPaginationItem>
-    <CPaginationItem>Next</CPaginationItem>
-  </CPagination>
-</Example>
-
-```jsx
+```jsx preview
 <CPagination align="end" aria-label="Page navigation example">
   <CPaginationItem disabled>Previous</CPaginationItem>
   <CPaginationItem>1</CPaginationItem>

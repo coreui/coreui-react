@@ -31,30 +31,16 @@ Carousels don't automatically normalize slide dimensions. As such, you may want 
 
 ### Slides only
 
-<Example>
-  <CCarousel>
-    <CCarouselItem>
-      <CImage className="d-block w-100" src={ReactImg} alt="slide 1" />
-    </CCarouselItem>
-    <CCarouselItem>
-      <CImage className="d-block w-100" src={VueImg} alt="slide 2"/>
-    </CCarouselItem>
-    <CCarouselItem>
-      <CImage className="d-block w-100" src={AngularImg} alt="slide 3" />
-    </CCarouselItem>
-  </CCarousel>
-</Example>
-
-```jsx
+```jsx preview
 <CCarousel>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/react.jpg" alt="slide 1" />
+    <CImage className="d-block w-100" src={ReactImg} alt="slide 1" />
   </CCarouselItem>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/vue.jpg" alt="slide 2" />
+    <CImage className="d-block w-100" src={VueImg} alt="slide 2" />
   </CCarouselItem>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/angular.jpg" alt="slide 3" />
+    <CImage className="d-block w-100" src={AngularImg} alt="slide 3" />
   </CCarouselItem>
 </CCarousel>
 ```
@@ -63,30 +49,16 @@ Carousels don't automatically normalize slide dimensions. As such, you may want 
 
 Adding in the previous and next controls by `controls` property.
 
-<Example>
-  <CCarousel controls>
-    <CCarouselItem>
-      <CImage className="d-block w-100" src={ReactImg} alt="slide 1" />
-    </CCarouselItem>
-    <CCarouselItem>
-      <CImage className="d-block w-100" src={VueImg} alt="slide 2" />
-    </CCarouselItem>
-    <CCarouselItem>
-      <CImage className="d-block w-100" src={AngularImg} alt="slide 3" />
-    </CCarouselItem>
-  </CCarousel>
-</Example>
-
-```jsx
+```jsx preview
 <CCarousel controls>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/react.jpg" alt="slide 1" />
+    <CImage className="d-block w-100" src={ReactImg} alt="slide 1" />
   </CCarouselItem>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/vue.jpg" alt="slide 2" />
+    <CImage className="d-block w-100" src={VueImg} alt="slide 2" />
   </CCarouselItem>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/angular.jpg" alt="slide 3" />
+    <CImage className="d-block w-100" src={AngularImg} alt="slide 3" />
   </CCarouselItem>
 </CCarousel>
 ```
@@ -95,30 +67,16 @@ Adding in the previous and next controls by `controls` property.
 
 You can attach the indicators to the carousel, lengthwise the controls, too.
 
-<Example>
-  <CCarousel controls indicators>
-    <CCarouselItem>
-      <CImage className="d-block w-100" src={ReactImg} alt="slide 1" />
-    </CCarouselItem>
-    <CCarouselItem>
-      <CImage className="d-block w-100" src={VueImg} alt="slide 2" />
-    </CCarouselItem>
-    <CCarouselItem>
-      <CImage className="d-block w-100" src={AngularImg} alt="slide 3" />
-    </CCarouselItem>
-  </CCarousel>
-</Example>
-
-```jsx
+```jsx preview
 <CCarousel controls indicators>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/react.jpg" alt="slide 1" />
+    <CImage className="d-block w-100" src={ReactImg} alt="slide 1" />
   </CCarouselItem>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/vue.jpg" alt="slide 2" />
+    <CImage className="d-block w-100" src={VueImg} alt="slide 2" />
   </CCarouselItem>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/angular.jpg" alt="slide 3" />
+    <CImage className="d-block w-100" src={AngularImg} alt="slide 3" />
   </CCarouselItem>
 </CCarousel>
 ```
@@ -156,21 +114,21 @@ You can add captions to slides with the `<CCarouselCaption>` element within any 
 ```jsx
 <CCarousel controls indicators>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/react.jpg" alt="slide 1" />
+    <CImage className="d-block w-100" src={ReactImg} alt="slide 1" />
     <CCarouselCaption className="d-none d-md-block">
       <h5>First slide label</h5>
       <p>Some representative placeholder content for the first slide.</p>
     </CCarouselCaption>
   </CCarouselItem>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/vue.jpg" alt="slide 2" />
+    <CImage className="d-block w-100" src={VueImg} alt="slide 2" />
     <CCarouselCaption className="d-none d-md-block">
       <h5>Second slide label</h5>
       <p>Some representative placeholder content for the first slide.</p>
     </CCarouselCaption>
   </CCarouselItem>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/angular.jpg" alt="slide 3" />
+    <CImage className="d-block w-100" src={AngularImg} alt="slide 3" />
     <CCarouselCaption className="d-none d-md-block">
       <h5>Third slide label</h5>
       <p>Some representative placeholder content for the first slide.</p>
@@ -183,30 +141,16 @@ You can add captions to slides with the `<CCarouselCaption>` element within any 
 
 Add `transition="crossfade"` to your carousel to animate slides with a fade transition instead of a slide.
 
-<Example>
-  <CCarousel controls transition="crossfade">
-    <CCarouselItem>
-      <CImage className="d-block w-100" src={ReactImg} alt="slide 1" />
-    </CCarouselItem>
-    <CCarouselItem>
-      <CImage className="d-block w-100" src={VueImg} alt="slide 2" />
-    </CCarouselItem>
-    <CCarouselItem>
-      <CImage className="d-block w-100" src={AngularImg} alt="slide 3" />
-    </CCarouselItem>
-  </CCarousel>
-</Example>
-
-```jsx
+```jsx preview
 <CCarousel controls transition="crossfade">
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/react.jpg" alt="slide 1" />
+    <CImage className="d-block w-100" src={ReactImg} alt="slide 1" />
   </CCarouselItem>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/vue.jpg" alt="slide 2" />
+    <CImage className="d-block w-100" src={VueImg} alt="slide 2" />
   </CCarouselItem>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/angular.jpg" alt="slide 3" />
+    <CImage className="d-block w-100" src={AngularImg} alt="slide 3" />
   </CCarouselItem>
 </CCarousel>
 ```
@@ -244,21 +188,21 @@ Add `dark` property to the `CCarousel` for darker controls, indicators, and capt
 ```jsx
 <CCarousel controls indicators dark>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/react.jpg" alt="slide 1" />
+    <CImage className="d-block w-100" src={ReactImg} alt="slide 1" />
     <CCarouselCaption className="d-none d-md-block">
       <h5>First slide label</h5>
       <p>Some representative placeholder content for the first slide.</p>
     </CCarouselCaption>
   </CCarouselItem>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/vue.jpg" alt="slide 2" />
+    <CImage className="d-block w-100" src={VueImg} alt="slide 2" />
     <CCarouselCaption className="d-none d-md-block">
       <h5>Second slide label</h5>
       <p>Some representative placeholder content for the first slide.</p>
     </CCarouselCaption>
   </CCarouselItem>
   <CCarouselItem>
-    <CImage className="d-block w-100" src="/images/angular.jpg" alt="slide 3" />
+    <CImage className="d-block w-100" src={AngularImg} alt="slide 3" />
     <CCarouselCaption className="d-none d-md-block">
       <h5>Third slide label</h5>
       <p>Some representative placeholder content for the first slide.</p>

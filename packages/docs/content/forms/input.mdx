@@ -21,20 +21,7 @@ import {
 
 ## Example
 
-<Example>
-  <CForm>
-    <CFormInput
-      type="email"
-      id="exampleFormControlInput1"
-      label="Email address"
-      placeholder="name@example.com"
-      text="Must be 8-20 characters long."
-      aria-describedby="exampleFormControlInputHelpInline"
-    />
-  </CForm>
-</Example>
-
-```jsx
+```jsx preview
 <CForm>
   <CFormInput
     type="email"
@@ -63,30 +50,7 @@ If you need to add custom classNames to form's components, or need to add some c
 
 Set heights using `size` property like `size="lg"` and `size="sm"`.
 
-<Example>
-  <CFormInput
-    type="text"
-    className="mb-3"
-    size="lg"
-    placeholder="Large input"
-    aria-label="lg input example"
-  />
-  <CFormInput
-    type="text"
-    className="mb-3"
-    placeholder="Default input"
-    aria-label="default input example"
-  />
-  <CFormInput
-    type="text"
-    className="mb-3"
-    size="sm"
-    placeholder="Small input"
-    aria-label="sm input example"
-  />
-</Example>
-
-```jsx
+```jsx preview
 <CFormInput type="text" size="lg" placeholder="Large input" aria-label="lg input example"/>
 <CFormInput type="text" placeholder="Default input" aria-label="default input example"/>
 <CFormInput type="text" size="sm" placeholder="Small input" aria-label="sm input example"/>
@@ -96,24 +60,7 @@ Set heights using `size` property like `size="lg"` and `size="sm"`.
 
 Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
 
-<Example>
-  <CFormInput
-    className="mb-3"
-    type="text"
-    placeholder="Disabled input"
-    aria-label="Disabled input example"
-    disabled
-  />
-  <CFormInput
-    type="text"
-    placeholder="Disabled readonly input"
-    aria-label="Disabled input example"
-    disabled
-    readOnly
-  />
-</Example>
-
-```jsx
+```jsx preview
 <CFormInput type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled/>
 <CFormInput type="text" placeholder="Disabled readonly input" aria-label="Disabled input example" disabled readOnly/>
 ```
@@ -122,16 +69,7 @@ Add the `disabled` boolean attribute on an input to give it a grayed out appeara
 
 Add the `readOnly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
 
-<Example>
-  <CFormInput
-    type="text"
-    placeholder="Readonly input here..."
-    aria-label="readonly input example"
-    readOnly
-  />
-</Example>
-
-```jsx
+```jsx preview
 <CFormInput
   type="text"
   placeholder="Readonly input here..."
@@ -144,32 +82,7 @@ Add the `readOnly` boolean attribute on an input to prevent modification of the 
 
 If you want to have `<input readonly>` elements in your form styled as plain text, use the `plainText` boolean property to remove the default form field styling and preserve the correct margin and padding.
 
-<Example>
-  <CRow className="mb-3">
-    <CFormLabel htmlFor="staticEmail" className="col-sm-2 col-form-label">
-      Email
-    </CFormLabel>
-    <CCol sm={10}>
-      <CFormInput
-        type="text"
-        id="staticEmail"
-        defaultValue="email@example.com"
-        readOnly
-        plainText
-      />
-    </CCol>
-  </CRow>
-  <CRow className="mb-3">
-    <CFormLabel htmlFor="inputPassword" className="col-sm-2 col-form-label">
-      Password
-    </CFormLabel>
-    <CCol sm={10}>
-      <CFormInput type="password" id="inputPassword" />
-    </CCol>
-  </CRow>
-</Example>
-
-```jsx
+```jsx preview
 <CRow className="mb-3">
   <CFormLabel htmlFor="staticEmail" className="col-sm-2 col-form-label">Email</CFormLabel>
   <CCol sm={10}>
@@ -184,35 +97,7 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 </CRow>
 ```
 
-<Example>
-  <CForm className="row g-3">
-    <CCol xs="auto">
-      <CFormLabel htmlFor="staticEmail2" className="visually-hidden">
-        Email
-      </CFormLabel>
-      <CFormInput
-        type="text"
-        id="staticEmail2"
-        defaultValue="email@example.com"
-        readOnly
-        plainText
-      />
-    </CCol>
-    <CCol xs="auto">
-      <CFormLabel htmlFor="inputPassword2" className="visually-hidden">
-        Password
-      </CFormLabel>
-      <CFormInput type="password" id="inputPassword2" placeholder="Password" />
-    </CCol>
-    <CCol xs="auto">
-      <CButton type="submit" className="mb-3">
-        Confirm identity
-      </CButton>
-    </CCol>
-  </CForm>
-</Example>
-
-```jsx
+```jsx preview
 <CForm className="row g-3">
   <CCol xs="auto">
     <CFormLabel htmlFor="staticEmail2" className="visually-hidden">
@@ -237,44 +122,30 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 ## File input
 
 <Example>
-  <div className="mb-3">
-    <CFormInput type="file" id="formFile" label="Default file input example" />
-  </div>
-  <div className="mb-3">
-    <CFormInput type="file" id="formFileMultiple" label="Multiple files input example" multiple />
-  </div>
-  <div className="mb-3">
-    <CFormInput type="file" id="formFileDisabled" label="Disabled file input example" disabled />
-  </div>
-  <div className="mb-3">
-    <CFormInput type="file" size="sm" id="formFileSm" label="Small file input example" />
-  </div>
-  <div>
-    <CFormInput type="file" size="lg" id="formFileLg" label="Large file input example" />
-  </div>
+
 </Example>
 
-```jsx
-<CFormInput type="file" id="formFile" label="Default file input example" />
-<CFormInput type="file" id="formFileMultiple" label="Multiple files input example" multiple />
-<CFormInput type="file" id="formFileDisabled" label="Disabled file input example" disabled />
-<CFormInput type="file" size="sm" id="formFileSm" label="Small file input example" />
-<CFormInput type="file" size="lg" id="formFileLg" label="Large file input example" />
+```jsx preview
+<div className="mb-3">
+  <CFormInput type="file" id="formFile" label="Default file input example" />
+</div>
+<div className="mb-3">
+  <CFormInput type="file" id="formFileMultiple" label="Multiple files input example" multiple />
+</div>
+<div className="mb-3">
+  <CFormInput type="file" id="formFileDisabled" label="Disabled file input example" disabled />
+</div>
+<div className="mb-3">
+  <CFormInput type="file" size="sm" id="formFileSm" label="Small file input example" />
+</div>
+<div>
+  <CFormInput type="file" size="lg" id="formFileLg" label="Large file input example" />
+</div>
 ```
 
 ## Color
 
-<Example>
-  <CFormInput
-    type="color"
-    id="exampleColorInput"
-    defaultValue="#563d7c"
-    label="Color picker"
-    title="Choose your color"
-  />
-</Example>
-
-```jsx
+```jsx preview
 <CFormInput
   type="color"
   id="exampleColorInput"

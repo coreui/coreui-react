@@ -47,8 +47,6 @@ Breaking it down, here's how the grid system comes together:
 
 - **Gutters are also responsive and customizable.** [Gutter classes are available](../gutters) across all breakpoints, with all the same sizes as our [margin and padding spacing](https://coreui.io/docs/utilities/spacing/). Change horizontal gutters with `xs|sm|md|lg|xl|xxl={{ gutterX: * }}` classes, vertical gutters with `xs|sm|md|lg|xl|xxl={{ gutterY: * }}`, or all gutters with `xs|sm|md|lg|xl|xxl={{ gutter: * }}` classes. `xs|sm|md|lg|xl|xxl={{ gutter: 0 }}` is also available to remove gutters.
 
-<!-- - **Sass variables, maps, and mixins power the grid.** If you don't want to use the predefined grid classes in CoreUI, you can use our [grid's source Sass](#sass) to create your own with more semantic markup. We also include some CSS custom properties to consume these Sass variables for even greater flexibility for you. -->
-
 Be aware of the limitations and [bugs around flexbox](https://github.com/philipwalton/flexbugs), like the [inability to use some HTML elements as flex containers](https://github.com/philipwalton/flexbugs#flexbug-9).
 
 ## Grid options
@@ -139,19 +137,19 @@ As noted above, each of these breakpoints have their own container, unique class
       <th className="text-nowrap" scope="row">
         # of columns
       </th>
-      <td colspan="6">12</td>
+      <td colSpan="6">12</td>
     </tr>
     <tr>
       <th className="text-nowrap" scope="row">
         Gutter width
       </th>
-      <td colspan="6">1.5rem (.75rem on left and right)</td>
+      <td colSpan="6">1.5rem (.75rem on left and right)</td>
     </tr>
     <tr>
       <th className="text-nowrap" scope="row">
         Custom gutters
       </th>
-      <td colspan="6">
+      <td colSpan="6">
         <a href="./layout/gutters">Yes</a>
       </td>
     </tr>
@@ -159,7 +157,7 @@ As noted above, each of these breakpoints have their own container, unique class
       <th className="text-nowrap" scope="row">
         Nestable
       </th>
-      <td colspan="6">
+      <td colSpan="6">
         <a href="#nesting">Yes</a>
       </td>
     </tr>
@@ -167,7 +165,7 @@ As noted above, each of these breakpoints have their own container, unique class
       <th className="text-nowrap" scope="row">
         Column ordering
       </th>
-      <td colspan="6">
+      <td colSpan="6">
         <a href="./layout/columns">Yes</a>
       </td>
     </tr>
@@ -530,6 +528,10 @@ Use these row columns classes to quickly create basic grid layouts or to control
     <CCol>Column</CCol>
   </CRow>
 </CContainer>
+```
+
+```js
+console.log()
 ```
 
 <Example className="docs-example-row">
