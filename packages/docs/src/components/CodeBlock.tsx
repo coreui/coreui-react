@@ -2,8 +2,12 @@ import React, { FC } from 'react'
 import PropTypes from 'prop-types'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 
-const CodeBlock: FC = ({ children }) => {
-  const _children = children.props.children
+interface CodeBlockProps {
+  children: any
+}
+
+const CodeBlock: FC<CodeBlockProps> = ({ children }) => {
+  const _children = children && children.props.children
   const language = children.props.className
     ? children.props.className.replace(/language-/, '')
     : 'jsx'

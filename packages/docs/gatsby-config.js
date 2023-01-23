@@ -44,16 +44,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        defaultLayouts: {
-          docs: require.resolve(`./src/templates/Docs.tsx`),
-        },
         gatsbyRemarkPlugins: [
           {
-            resolve: require.resolve(`./src/plugins/gatsby-remark-import-markdown`),
+            resolve: `gatsby-remark-import-markdown`,
             options: {
               directory: `${__dirname}/content/api/`,
             },
           },
+          `gatsby-remark-jsx-preview`,
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
@@ -63,12 +61,12 @@ module.exports = {
             },
           },
           {
-            resolve: "gatsby-remark-external-links",
+            resolve: 'gatsby-remark-external-links',
             options: {
-              target: "_blank",
-              rel: "nofollow"
-            }
-          }
+              target: '_blank',
+              rel: 'nofollow',
+            },
+          },
         ],
       },
     },

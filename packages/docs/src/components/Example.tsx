@@ -1,7 +1,6 @@
-import React, { FC } from 'react'
-import PropTypes from 'prop-types'
-
+import React, { FC, ReactNode } from 'react'
 interface ExampleProps {
+  children: ReactNode
   className: string
 }
 
@@ -16,10 +15,6 @@ const Example: FC<ExampleProps> = ({ children, className, ...rest }) => {
       {children}
     </div>
   )
-}
-
-Example.propTypes = {
-  className: PropTypes.string,
 }
 
 Example.displayName = 'Example'

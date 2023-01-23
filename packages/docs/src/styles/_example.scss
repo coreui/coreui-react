@@ -135,6 +135,17 @@
     margin-left: .5rem;
   }
 
+  // Badges
+  > .btn + .btn {
+    margin-left: .25rem;
+  }
+  > br + .btn {
+    margin-top: .25rem;
+  }
+  > .badge + .badge {
+    margin-left: .25rem;
+  }
+
   // Buttons
   > .btn,
   > .btn-group {

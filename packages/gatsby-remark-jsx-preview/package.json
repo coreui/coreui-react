@@ -1,0 +1,26 @@
+{
+  "name": "gatsby-remark-jsx-preview",
+  "license": "MIT",
+  "version": "1.0.0",
+  "author": "Łukasz Holeczek <https://github.com/mrholek>",
+  "repository": "",
+  "keywords": [
+    "code",
+    "jsx",
+    "gatsby",
+    "gatsby-plugin",
+    "remark"
+  ],
+  "description": "Gatsby plugin to embed jsx code preview",
+  "dependencies": {
+    "mdast-util-from-markdown": "^0.8.5",
+    "micromark-extension-mdx-jsx": "^0.3.3",
+    "micromark-extension-mdx-md": "^0.1.1",
+    "mdast-util-mdx-jsx": "^0.1.4",
+    "unist-util-visit": "^2.0.3"
+  },
+  "peerDependencies": {
+    "gatsby": ">=5.0.0"
+  },
+  "main": "index.js"
+}

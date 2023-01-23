@@ -1,6 +1,11 @@
 import React, { FC, useEffect, useRef } from 'react'
 
-const Ads: FC = ({ code, placement }: { code: string; placement: string }) => {
+interface AdsProps {
+  code: string
+  placement: string
+}
+
+export const Ads: FC<AdsProps> = ({ code, placement }) => {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {

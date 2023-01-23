@@ -1,11 +1,19 @@
 import React, { FC } from 'react'
-import PropTypes from 'prop-types'
 import { CNav } from '@coreui/react/src/index'
 
-const Toc: FC = (props) => {
-  const { items } = props
+type TocItem = {
+  url: string
+  title: string
+  items: TocItem[]
+}
 
-  const toc = (items) => {
+interface TocProps {
+  items: TocItem[]
+}
+
+const Toc: FC<TocProps> = ({ items }) => {
+  console.log(items)
+  const toc = (items: TocItem[]) => {
     return (
       items &&
       items.map((item, index) => {
@@ -30,14 +38,10 @@ const Toc: FC = (props) => {
     <div className="docs-toc mt-4 mb-5 my-md-0 ps-xl-5 mb-lg-5 text-muted">
       <strong className="d-block h6 mb-2 pb-2 border-bottom">On this page</strong>
       <CNav component="nav" className="flex-column">
-        <ul>{toc(items.items)}</ul>
+        <ul>{toc(items)}</ul>
       </CNav>
     </div>
   )
-}
-
-Toc.propTypes = {
-  item: PropTypes.node,
 }
 
 export default Toc

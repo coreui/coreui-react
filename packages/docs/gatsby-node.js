@@ -36,6 +36,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               slug
             }
             tableOfContents(maxDepth: 10)
+            internal {
+              contentFilePath
+            }
           }
         }
       }
@@ -46,18 +49,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
   // Create blog post pages.
   const posts = result.data.allMdx.edges
+  const docsTemplate = path.resolve(`./src/templates/Docs.tsx`)
   // you'll call `createPage` for each result
   posts.forEach(({ node }, index) => {
-    createPage({
-      // This is the slug you created before
-      // (or `node.frontmatter.slug`)
-      path: node.fields.slug,
-      // This component will wrap our MDX content
-      component: path.resolve(`./src/templates/Docs.tsx`),
-      // You can use the values in this context in
-      // our page layout component
-      context: { id: node.id },
-    })
+    !node.internal.contentFilePath.includes('api') &&
+      createPage({
+        // This is the slug you created before
+        // (or `node.frontmatter.slug`)
+        path: node.fields.slug,
+        // This component will wrap our MDX content
+        component: `${docsTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+        // You can use the values in this context in
+        // our page layout component
+        context: { id: node.id },
+      })
   })
   createRedirect({
     fromPath: `/`,
