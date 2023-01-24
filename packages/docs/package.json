@@ -16,7 +16,7 @@
   "scripts": {
     "api": "rimraf \"content/api/*\" & node build/api.js",
     "build": "gatsby build",
-    "develop": "NODE_OPTIONS=--max-old-space-size=8192 gatsby develop",
+    "develop": "gatsby develop",
     "dist": "run-s api build",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "gatsby develop",
