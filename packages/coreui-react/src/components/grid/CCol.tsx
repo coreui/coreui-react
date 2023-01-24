@@ -139,6 +139,10 @@ CCol.propTypes = {
   className: PropTypes.string,
   xs: col,
   sm: col,
+  md: col,
+  lg: col,
+  xl: col,
+  xxl: col,
 }
 
 CCol.displayName = 'CCol'
