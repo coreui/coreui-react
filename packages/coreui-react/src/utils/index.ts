@@ -1,3 +1,3 @@
-import isVisible from './isVisible'
+import isInViewport from './isInViewport'
 
-export { isVisible }
+export { isInViewport }

@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { isVisible } from '../../utils'
+import { isInViewport } from '../../utils'
 import { useForkedRef } from '../../utils/hooks'
 import { CBackdrop } from '../backdrop/CBackdrop'
 
@@ -95,7 +95,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
 
     useEffect(() => {
       sidebarRef.current && setMobile(isOnMobile(sidebarRef.current))
-      sidebarRef.current && setInViewport(isVisible(sidebarRef.current))
+      sidebarRef.current && setInViewport(isInViewport(sidebarRef.current))
 
       window.addEventListener('resize', () => handleResize())
       window.addEventListener('mouseup', handleClickOutside)
@@ -103,7 +103,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
 
       sidebarRef.current?.addEventListener('mouseup', handleOnClick)
       sidebarRef.current?.addEventListener('transitionend', () => {
-        sidebarRef.current && setInViewport(isVisible(sidebarRef.current))
+        sidebarRef.current && setInViewport(isInViewport(sidebarRef.current))
       })
 
       return () => {
@@ -113,7 +113,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
 
         sidebarRef.current?.removeEventListener('mouseup', handleOnClick)
         sidebarRef.current?.removeEventListener('transitionend', () => {
-          sidebarRef.current && setInViewport(isVisible(sidebarRef.current))
+          sidebarRef.current && setInViewport(isInViewport(sidebarRef.current))
         })
       }
     })
@@ -124,7 +124,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
 
     const handleResize = () => {
       sidebarRef.current && setMobile(isOnMobile(sidebarRef.current))
-      sidebarRef.current && setInViewport(isVisible(sidebarRef.current))
+      sidebarRef.current && setInViewport(isInViewport(sidebarRef.current))
     }
 
     const handleKeyup = (event: Event) => {

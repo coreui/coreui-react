@@ -11,7 +11,7 @@ import React, {
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { isVisible } from '../../utils'
+import { isInViewport } from '../../utils'
 import { useForkedRef } from '../../utils/hooks'
 
 export interface CCarouselProps extends HTMLAttributes<HTMLDivElement> {
@@ -157,7 +157,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
     const nextItemWhenVisible = () => {
       // Don't call next when the page isn't visible
       // or the carousel or its parent isn't visible
-      if (!document.hidden && carouselRef.current && isVisible(carouselRef.current)) {
+      if (!document.hidden && carouselRef.current && isInViewport(carouselRef.current)) {
         if (animating) {
           return
         }
@@ -195,7 +195,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
     }
 
     const handleScroll = () => {
-      if (!document.hidden && carouselRef.current && isVisible(carouselRef.current)) {
+      if (!document.hidden && carouselRef.current && isInViewport(carouselRef.current)) {
         setVisible(true)
       } else {
         setVisible(false)
