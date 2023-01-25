@@ -75,7 +75,7 @@ export interface CTableProps extends Omit<TableHTMLAttributes<HTMLTableElement>,
    *
    * @since 4.3.0
    */
-  footer?: FooterItem[]
+  footer?: (FooterItem | string)[]
   /**
    * Enable a hover state on table rows within a `<CTableBody>`.
    */
@@ -253,8 +253,11 @@ export const CTable = forwardRef<HTMLTableElement, CTableProps>(
           {footer && (
             <CTableFoot {...tableFootProps}>
               <CTableRow>
-                {footer.map((item: FooterItem, index: number) => (
-                  <CTableDataCell {...(item._props && { ...item._props })} key={index}>
+                {footer.map((item: FooterItem | string, index: number) => (
+                  <CTableDataCell
+                    {...(typeof item === 'object' && item._props && { ...item._props })}
+                    key={index}
+                  >
                     {typeof item === 'object' ? item.label : item}
                   </CTableDataCell>
                 ))}
