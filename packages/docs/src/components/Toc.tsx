@@ -12,7 +12,6 @@ interface TocProps {
 }
 
 const Toc: FC<TocProps> = ({ items }) => {
-  console.log(items)
   const toc = (items: TocItem[]) => {
     return (
       items &&
