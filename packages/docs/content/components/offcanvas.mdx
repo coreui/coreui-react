@@ -86,6 +86,138 @@ return (
   </>
 )
 ```
+### Body scrolling
+
+Scrolling the `<body>` element is disabled when an offcanvas and its backdrop are visible. Use the scroll property to toggle `<body>` scrolling and backdrop to toggle the backdrop.
+
+export const BodyScrollingExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <CButton onClick={() => setVisible(true)}>Enable body scrolling</CButton>
+      <COffcanvas backdrop={false} placement="start" scroll={true} visible={visible} onHide={() => setVisible(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Offcanvas with body scrolling</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          Try scrolling the rest of the page to see this option in action.
+        </COffcanvasBody>
+      </COffcanvas>
+    </>
+  )
+}
+
+<Example>
+  <BodyScrollingExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <>
+    <CButton onClick={() => setVisible(true)}>Enable body scrolling</CButton>
+    <COffcanvas backdrop={false} placement="start" scroll={true} visible={visible} onHide={() => setVisible(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Offcanvas with body scrolling</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        Try scrolling the rest of the page to see this option in action.
+      </COffcanvasBody>
+    </COffcanvas>
+  </>
+)
+```
+
+### Body scrolling and backdrop
+
+You can also enable `<body>` scrolling with a visible backdrop.
+
+export const BodyScrollingAndBackdropExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <CButton onClick={() => setVisible(true)}>Enable both scrolling &amp; backdrop</CButton>
+      <COffcanvas placement="start" scroll={true} visible={visible} onHide={() => setVisible(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Backdrop with scrolling</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          Try scrolling the rest of the page to see this option in action.
+        </COffcanvasBody>
+      </COffcanvas>
+    </>
+  )
+}
+
+<Example>
+  <BodyScrollingAndBackdropExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <>
+    <CButton onClick={() => setVisible(true)}>Enable both scrolling &amp; backdrop</CButton>
+    <COffcanvas placement="start" scroll={true} visible={visible} onHide={() => setVisible(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Backdrop with scrolling</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        Try scrolling the rest of the page to see this option in action.
+      </COffcanvasBody>
+    </COffcanvas>
+  </>
+)
+```
+
+### Static backdrop
+
+If you set a `backdrop` to `static`, your React offcanvas component will not close when clicking outside of it.
+
+export const StaticBackdropExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <CButton onClick={() => setVisible(true)}>Toggle static offcanvas</CButton>
+      <COffcanvas backdrop="static" placement="start" visible={visible} onHide={() => setVisible(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Backdrop with scrolling</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          I will not close if you click outside of me.
+        </COffcanvasBody>
+      </COffcanvas>
+    </>
+  )
+}
+
+<Example>
+  <StaticBackdropExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <>
+    <CButton onClick={() => setVisible(true)}>Toggle static offcanvas</CButton>
+    <COffcanvas backdrop="static" placement="start" visible={visible} onHide={() => setVisible(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Backdrop with scrolling</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        I will not close if you click outside of me.
+      </COffcanvasBody>
+    </COffcanvas>
+  </>
+)
+```
+
 
 ## Placement
 
@@ -218,94 +350,6 @@ return (
       <COffcanvasBody>
         Content for the offcanvas goes here. You can place just about any Bootstrap component or
         custom elements here.
-      </COffcanvasBody>
-    </COffcanvas>
-  </>
-)
-```
-
-export const BackdropExample = () => {
-  const [visibleScrolling, setVisibleScrolling] = useState(false)
-  const [visibleWithBackdrop, setVisibleWithBackdrop] = useState(false)
-  const [visibleWithBothOptions, setVisibleWithBothOptions] = useState(false)
-  return (
-    <>
-      <CButton color="primary" onClick={() => setVisibleScrolling(true)}>Enable body scrolling</CButton>
-      <CButton color="primary" onClick={() => setVisibleWithBackdrop(true)}>Enable backdrop (default)</CButton>
-      <CButton color="primary" onClick={() => setVisibleWithBothOptions(true)}>Enable both scrolling &amp; backdrop</CButton>
-      <COffcanvas backdrop={false} placement="start" scroll visible={visibleScrolling} onHide={() => setVisibleScrolling(false)}>
-        <COffcanvasHeader>
-          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
-          <CCloseButton className="text-reset" onClick={() => setVisibleScrolling(false)}/>
-        </COffcanvasHeader>
-        <COffcanvasBody>
-          <p>Try scrolling the rest of the page to see this option in action.</p>
-        </COffcanvasBody>
-      </COffcanvas>
-      <COffcanvas placement="start" visible={visibleWithBackdrop} onHide={() => setVisibleWithBackdrop(false)}>
-        <COffcanvasHeader>
-          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
-          <CCloseButton className="text-reset" onClick={() => setVisibleWithBackdrop(false)}/>
-        </COffcanvasHeader>
-        <COffcanvasBody>
-          <p>.....</p>
-        </COffcanvasBody>
-      </COffcanvas>
-      <COffcanvas placement="start" scroll visible={visibleWithBothOptions} onHide={() => setVisibleWithBothOptions(false)}>
-        <COffcanvasHeader>
-          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
-          <CCloseButton className="text-reset" onClick={() => setVisibleWithBothOptions(false)}/>
-        </COffcanvasHeader>
-        <COffcanvasBody>
-          <p>Try scrolling the rest of the page to see this option in action.</p>
-        </COffcanvasBody>
-      </COffcanvas>
-    </>
-  )
-}
-
-## Backdrop 
-
-Scrolling the `<body>` element is disabled when an offcanvas and its backdrop are visible. Use the `scroll` property to toggle `<body>` scrolling and `backdrop` to toggle the backdrop.
-
-<Example>
-  <BackdropExample />
-</Example>
-
-```jsx
-const [visibleScrolling, setVisibleScrolling] = useState(false)
-const [visibleWithBackdrop, setVisibleWithBackdrop] = useState(false)
-const [visibleWithBothOptions, setVisibleWithBothOptions] = useState(false)
-return (
-  <>
-    <CButton color="primary" onClick={() => setVisibleScrolling(true)}>Enable body scrolling</CButton>
-    <CButton color="primary" onClick={() => setVisibleWithBackdrop(true)}>Enable backdrop (default)</CButton>
-    <CButton color="primary" onClick={() => setVisibleWithBothOptions(true)}>Enable both scrolling &amp; backdrop</CButton>
-    <COffcanvas backdrop={false} placement="start" scroll visible={visibleScrolling} onHide={() => setVisibleScrolling(false)}>
-      <COffcanvasHeader>
-        <COffcanvasTitle>Offcanvas</COffcanvasTitle>
-        <CCloseButton className="text-reset" onClick={() => setVisibleScrolling(false)}/>
-      </COffcanvasHeader>
-      <COffcanvasBody>
-        <p>Try scrolling the rest of the page to see this option in action.</p>
-      </COffcanvasBody>
-    </COffcanvas>
-    <COffcanvas placement="start" visible={visibleWithBackdrop} onHide={() => setVisibleWithBackdrop(false)}>
-      <COffcanvasHeader>
-        <COffcanvasTitle>Offcanvas</COffcanvasTitle>
-        <CCloseButton className="text-reset" onClick={() => setVisibleWithBackdrop(false)}/>
-      </COffcanvasHeader>
-      <COffcanvasBody>
-        <p>.....</p>
-      </COffcanvasBody>
-    </COffcanvas>
-    <COffcanvas placement="start" scroll visible={visibleWithBothOptions} onHide={() => setVisibleWithBothOptions(false)}>
-      <COffcanvasHeader>
-        <COffcanvasTitle>Offcanvas</COffcanvasTitle>
-        <CCloseButton className="text-reset" onClick={() => setVisibleWithBothOptions(false)}/>
-      </COffcanvasHeader>
-      <COffcanvasBody>
-        <p>Try scrolling the rest of the page to see this option in action.</p>
       </COffcanvasBody>
     </COffcanvas>
   </>
