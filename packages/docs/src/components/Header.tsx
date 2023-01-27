@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import CIcon from '@coreui/icons-react'
 import { cibGithub, cibOpenCollective, cibTwitter, cilCloudDownload, cilMenu } from '@coreui/icons'
-import { CButton, CHeader, CHeaderNav, CHeaderToggler, CNavItem } from '@coreui/react'
+import { CButton, CHeader, CHeaderNav, CHeaderToggler, CNavItem } from '@coreui/react/src'
 
 import { AppContext } from './../AppContext'
 
@@ -21,13 +21,19 @@ const Header: FC = () => {
               <CIcon icon={cilMenu} size="lg" />
             </CHeaderToggler>
             <CHeaderNav className="ms-auto">
-              <CNavItem href="https://github.com/coreui/coreui-react/">
+              <CNavItem
+                href="https://github.com/coreui/coreui-react/"
+                aria-label="Visit our GitHub"
+              >
                 <CIcon icon={cibGithub} size="xl" />
               </CNavItem>
-              <CNavItem href="https://twitter.com/core_ui">
+              <CNavItem href="https://twitter.com/core_ui" aria-label="Visit our Twitter">
                 <CIcon icon={cibTwitter} size="xl" />
               </CNavItem>
-              <CNavItem href="https://opencollective.com/coreui">
+              <CNavItem
+                href="https://opencollective.com/coreui"
+                aria-label="Visit our OpenCollective"
+              >
                 <CIcon icon={cibOpenCollective} size="xl" />
               </CNavItem>
             </CHeaderNav>

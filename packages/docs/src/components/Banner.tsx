@@ -7,7 +7,7 @@ interface BannerProps {
 
 const Banner: FC<BannerProps> = ({ pro }) => {
   return pro ? (
-    <div className="bg-danger bg-opacity-10 border-start border-start-5 border-start-danger p-4 pb-3 mb-5">
+    <div className="bg-danger d-none d-lg-block bg-opacity-10 border-start border-start-5 border-start-danger p-4 pb-3 mb-5">
       <h3 className="mb-4">CoreUI PRO Component</h3>
       <p>
         To use this component you must have a CoreUI PRO license. Buy the{' '}
@@ -16,7 +16,7 @@ const Banner: FC<BannerProps> = ({ pro }) => {
       </p>
     </div>
   ) : (
-    <div className="bg-info bg-opacity-10 border-start border-start-5 border-start-info p-4 pb-3 mb-5">
+    <div className="bg-info d-none d-lg-block bg-opacity-10 border-start border-start-5 border-start-info p-4 pb-3 mb-5">
       <h3 className="mb-4">Support CoreUI Development</h3>
       <p>
         CoreUI is an MIT-licensed open source project and is completely free to use. However, the
