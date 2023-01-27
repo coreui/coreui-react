@@ -37,6 +37,12 @@ export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {
    */
   portal?: boolean
   /**
+   * Responsive offcanvas property hide content outside the viewport from a specified breakpoint and down.
+   *
+   * @since 4.6.0
+   */
+  responsive?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
+  /**
    * Allow body scrolling while offcanvas is open
    */
   scroll?: boolean
@@ -56,7 +62,8 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
       onHide,
       onShow,
       placement,
-      portal = true,
+      portal = false,
+      responsive = true,
       scroll = false,
       visible = false,
       ...rest
@@ -86,26 +93,28 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
       }
     }, [_visible])
 
+    const getTransitionClass = (state: string) => {
+      return state === 'entering'
+        ? 'showing'
+        : state === 'entered'
+        ? 'show'
+        : state === 'exiting'
+        ? 'show hiding'
+        : ''
+    }
+
     const _className = classNames(
-      'offcanvas',
       {
+        [`offcanvas${typeof responsive !== 'boolean' ? '-' + responsive : ''}`]: responsive,
         [`offcanvas-${placement}`]: placement,
-        show: _visible,
       },
       className,
     )
 
-    const transitionStyles = {
-      entering: { visibility: 'visible' },
-      entered: { visibility: 'visible' },
-      exiting: { visibility: 'visible' },
-      exited: { visibility: 'hidden' },
-    }
-
     const handleDismiss = () => {
       setVisible(false)
     }
-    
+
     const handleBackdropDismiss = () => {
       if (backdrop !== 'static') {
         setVisible(false)
@@ -125,9 +134,8 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
       return (
         <>
           <div
-            className={_className}
+            className={classNames(_className, getTransitionClass(state))}
             role="dialog"
-            style={{ ...transitionStyles[state] }}
             tabIndex={-1}
             onKeyDown={handleKeyDown}
             {...rest}
@@ -187,6 +195,10 @@ COffcanvas.propTypes = {
   placement: PropTypes.oneOf<'start' | 'end' | 'top' | 'bottom'>(['start', 'end', 'top', 'bottom'])
     .isRequired,
   portal: PropTypes.bool,
+  responsive: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl'>(['sm', 'md', 'lg', 'xl', 'xxl']),
+  ]),
   scroll: PropTypes.bool,
   visible: PropTypes.bool,
 }

@@ -10,6 +10,7 @@ other_frameworks: offcanvas
 import { useState } from 'react'
 
 import {
+  CAlert,
   CButton,
   CCloseButton,
   CCallout,
@@ -26,7 +27,7 @@ import {
 Below is an offcanvas example that is shown by default (via `visible={true}`). Offcanvas includes support for a header with a close button and an optional body class for some initial `padding`. We suggest that you include offcanvas headers with dismiss actions whenever possible, or provide an explicit dismiss action.
 
 ```jsx preview className="docs-example-offcanvas bg-light p-0"
-<COffcanvas backdrop={false} placement="start" portal={false} visible={true}>
+<COffcanvas backdrop={false} placement="start" visible={true}>
   <COffcanvasHeader>
     <COffcanvasTitle>Offcanvas</COffcanvasTitle>
     <CCloseButton className="text-reset" />
@@ -212,6 +213,54 @@ return (
       </COffcanvasHeader>
       <COffcanvasBody>
         I will not close if you click outside of me.
+      </COffcanvasBody>
+    </COffcanvas>
+  </>
+)
+```
+
+## Responsive 
+
+Responsive offcanvas properties hide content outside the viewport from a specified breakpoint and down.
+Above that breakpoint, the contents within will behave as usual. 
+For example, `responsive="lg"` hides content in an offcanvas below the lg breakpoint, but shows the content above the lg breakpoint.
+
+export const ResponsiveExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <CButton className="d-lg-none" onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
+      <CAlert className="d-none d-lg-block" color="info">Resize your browser to show the responsive offcanvas toggle.</CAlert>
+      <COffcanvas placement="start" responsive="lg" visible={visible} onHide={() => setVisible(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Responsive offcanvas</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          <p>This is content within an <code>.offcanvas-lg</code></p>.
+        </COffcanvasBody>
+      </COffcanvas>
+    </>
+  )
+}
+
+<Example>
+  <ResponsiveExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <>
+    <CButton className="d-lg-none" onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
+    <CAlert className="d-none d-lg-block" color="info">Resize your browser to show the responsive offcanvas toggle.</CAlert>
+    <COffcanvas backdrop="static" placement="start" visible={visible} onHide={() => setVisible(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Responsive offcanvas</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        This is content within an <code>.offcanvas-lg</code>.
       </COffcanvasBody>
     </COffcanvas>
   </>
