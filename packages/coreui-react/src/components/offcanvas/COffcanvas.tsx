@@ -11,7 +11,7 @@ export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Apply a backdrop on body while offcanvas is open.
    */
-  backdrop?: boolean | string
+  backdrop?: boolean | 'static'
   /**
    * A string of all className you want applied to the base component.
    */
@@ -105,6 +105,7 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
     const handleDismiss = () => {
       setVisible(false)
     }
+    
     const handleBackdropDismiss = () => {
       if (backdrop !== 'static') {
         setVisible(false)
@@ -177,7 +178,7 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
 )
 
 COffcanvas.propTypes = {
-  backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'static'>(['static'])]),
   children: PropTypes.node,
   className: PropTypes.string,
   keyboard: PropTypes.bool,
