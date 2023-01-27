@@ -801,51 +801,12 @@ return (
 
 Modals have three optional sizes, available via modifier classes to be placed on a `<CModal>`. These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
 
-<table className="table">
-  <thead>
-    <tr>
-      <th>Size</th>
-      <th>Property size</th>
-      <th>Modal max-width</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Small</td>
-      <td>
-        <code>'sm'</code>
-      </td>
-      <td>
-        <code>300px</code>
-      </td>
-    </tr>
-    <tr>
-      <td>Default</td>
-      <td className="text-medium-emphasis">None</td>
-      <td>
-        <code>500px</code>
-      </td>
-    </tr>
-    <tr>
-      <td>Large</td>
-      <td>
-        <code>'lg'</code>
-      </td>
-      <td>
-        <code>800px</code>
-      </td>
-    </tr>
-    <tr>
-      <td>Extra large</td>
-      <td>
-        <code>'xl'</code>
-      </td>
-      <td>
-        <code>1140px</code>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Size | Property size | Modal max-width |
+| --- | --- | --- |
+| Small | `'sm'` | `300px` |
+| Default | None | `500px` |
+| Large | `'lg'` | `800px` |
+| Extra large | `'xl'` | `1140px` |
 
 export const OptionalSizesExample = () => {
   const [visibleXL, setVisibleXL] = useState(false)
@@ -917,62 +878,14 @@ return (
 
 Another override is the option to pop up a React modal component that covers the user viewport, available via property `fullscrean`.
 
-<table className="table">
-  <thead>
-    <tr>
-      <th>Property fullscrean</th>
-      <th>Availability</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <code>true</code>
-      </td>
-      <td>Always</td>
-    </tr>
-    <tr>
-      <td>
-        <code>'sm'</code>
-      </td>
-      <td>
-        Below <code>576px</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>'md'</code>
-      </td>
-      <td>
-        Below <code>768px</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>'lg'</code>
-      </td>
-      <td>
-        Below <code>992px</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>'xl'</code>
-      </td>
-      <td>
-        Below <code>1200px</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>'xxl'</code>
-      </td>
-      <td>
-        Below <code>1400px</code>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Fullscrean | Availability |
+| --- | --- |
+| `true` | Always |
+| `'sm'` | Below `576px` |
+| `'md'` | Below `768px` |
+| `'lg'` | Below `992px` |
+| `'xl'` | Below `1200px` |
+| `'xxl'` | Below `1400px` |
 
 export const FullscreenExample = () => {
   const [visible, setVisible] = useState(false)

@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { CBadge, CCol, CContainer, CRow, CTable } from '@coreui/react/src/index'
+import { CBadge, CCallout, CCol, CContainer, CRow, CTable } from '@coreui/react/src/index'
 import {
   Ads,
   Banner,
@@ -110,10 +110,42 @@ const DocsLayout: FC<DocsLayoutProps> = ({ data: { mdx }, children }) => {
                       }
                     },
                     pre: (props: any) => <CodeBlock {...props} />,
-                    table: (props: any) => (
-                      <CTable responsive {...props} className="table table-striped table-api" />
-                    ),
-                    Example,
+                    table: (props: any) => {
+                      const isApiTable =
+                        props.children[0].props.children.props.children[0].props.children &&
+                        props.children[0].props.children.props.children[0].props.children.includes(
+                          'Property',
+                        )
+                      return (
+                        <CTable
+                          responsive
+                          {...props}
+                          className={`table ${isApiTable && ' table-striped table-api'}`}
+                        />
+                      )
+                    },
+                    Callout: (props: any) => {
+                      const { children, title, ...rest } = props
+                      return (
+                        <CCallout {...rest}>
+                          {title && <h5>{title}</h5>}
+                          {children}
+                        </CCallout>
+                      )
+                    },
+                    Example: (props: any) => {
+                      const { children, ...rest } = props
+                      return (
+                        <Example {...rest}>
+                          {React.Children.map(children, (child) => {
+                            if (React.isValidElement(child)) {
+                              return React.cloneElement(child)
+                            }
+                            return
+                          })}
+                        </Example>
+                      )
+                    },
                   }}
                 >
                   {children}

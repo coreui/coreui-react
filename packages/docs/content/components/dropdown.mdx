@@ -10,7 +10,6 @@ other_frameworks: dropdown
 import {
   CButton,
   CButtonGroup,
-  CCallout,
   CCollapse,
   CContainer,
   CDropdown,
@@ -244,13 +243,9 @@ And putting it to use in a navbar:
 
 ## Directions
 
-<CCallout color="info">
-  <h4>RTL</h4>
-  <p>
-    Directions are mirrored when using CoreUI in RTL, meaning `.dropstart` will appear on the right
-    side.
-  </p>
-</CCallout>
+<Callout color="info" title="RTL">
+  Directions are mirrored when using CoreUI in RTL, meaning `.dropstart` will appear on the right side.
+</Callout>
 
 ### Centered
 
@@ -435,9 +430,9 @@ In the following example we use `div` instead of `<CDropdownMenu>` to show `<CDr
 
 By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add `aligment="end"` to right align the dropdown menu.
 
-<CCallout color="info">
+<Callout color="info">
   <strong>Heads up!</strong> Dropdowns are positioned thanks to Popper.
-</CCallout>
+</Callout>
 
 ```jsx preview
 <CDropdown alignment="end">

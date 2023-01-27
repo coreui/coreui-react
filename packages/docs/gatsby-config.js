@@ -44,6 +44,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
+        mdxOptions: {
+          remarkPlugins: [
+            // Add GitHub Flavored Markdown (GFM) support
+            require(`remark-gfm`),
+          ],
+        },
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-import-markdown`,

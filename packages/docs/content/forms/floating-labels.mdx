@@ -30,7 +30,7 @@ Use `floatingLabel` property on `<CFormInput>`, `<CFormSelect>` or `<CFormTextar
 
 You can create the same form control by wrapping a pair of `<CFormInput>` and `<CFormLabel>` elements in `<CFormFloating>` to enable floating labels with textual form fields. A `placeholder` is required on each `<CFormInput>` as our method of CSS-only floating labels uses the `:placeholder-shown` pseudo-element. Also, note that the `<CFormInput>` must come first so we can utilize a sibling selector (e.g., `~`).
 
-```jsx preview
+```jsx
 <CFormFloating className="mb-3">
   <CFormInput type="email" id="floatingInput" placeholder="name@example.com" />
   <CFormLabel htmlFor="floatingInput">Email address</CFormLabel>
@@ -59,7 +59,7 @@ Form validation styles also work as expected.
 ```jsx preview
 <CFormInput
   type="email"
-  id="floatingInputInvalid"
+  id="floatingInputValid"
   floatingClassName="mb-3"
   floatingLabel="Email addresss"
   placeholder="name@example.com"

@@ -8,7 +8,7 @@ other_frameworks: alert
 ---
 
 import { useState } from 'react'
-import { CAlert, CAlertHeading, CAlertLink, CButton, CCallout } from '@coreui/react/src/index'
+import { CAlert, CAlertHeading, CAlertLink, CButton } from '@coreui/react/src/index'
 
 import CIcon from '@coreui/icons-react'
 
@@ -45,15 +45,12 @@ React Alert is prepared for any length of text, as well as an optional close but
 </CAlert>
 ```
 
-<CCallout color="info">
-  <h5>Conveying meaning to assistive technologies</h5>
-  <p>
-    Using color to add meaning only provides a visual indication, which will not be conveyed to
-    users of assistive technologies – such as screen readers. Ensure that information denoted by the
-    color is either obvious from the content itself (e.g. the visible text), or is included through
-    alternative means, such as additional text hidden with the `.visually-hidden` class.
-  </p>
-</CCallout>
+<Callout color="info" title="Conveying meaning to assistive technologies">
+  Using color to add meaning only provides a visual indication, which will not be conveyed to
+  users of assistive technologies – such as screen readers. Ensure that information denoted by the
+  color is either obvious from the content itself (e.g. the visible text), or is included through
+  alternative means, such as additional text hidden with the `.visually-hidden` class.
+</Callout>
 
 ### Live example
 
@@ -222,13 +219,11 @@ React Alert component can also be easily dismissed. Just add the `dismissible` p
 </CAlert>
 ```
 
-<CCallout color="warning">
-  <p>
-    When an alert is dismissed, the element is completely removed from the page structure. If a
-    keyboard user dismisses the alert using the close button, their focus will suddenly be lost and,
-    depending on the browser, reset to the start of the page/document.
-  </p>
-</CCallout>
+<Callout color="warning">
+  When an alert is dismissed, the element is completely removed from the page structure. If a
+  keyboard user dismisses the alert using the close button, their focus will suddenly be lost and,
+  depending on the browser, reset to the start of the page/document.
+</Callout>
 
 ## Customizing
 
