@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react'
-import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 
 import { CBadge, CNavGroup, CNavItem, CSidebarNav } from '@coreui/react/src/index'
@@ -46,6 +45,7 @@ export const SidebarNav = ({ items, currentRoute }: SidebarNavProps) => {
       </CNavItem>
     )
   }
+
   const navGroup = (item: NavItem, index: number) => {
     const { name, icon, to, ...rest } = item
     return (
@@ -72,9 +72,4 @@ export const SidebarNav = ({ items, currentRoute }: SidebarNavProps) => {
         )}
     </CSidebarNav>
   )
-}
-
-SidebarNav.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.any).isRequired,
-  currentRoute: PropTypes.string.isRequired,
 }

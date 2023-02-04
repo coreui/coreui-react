@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import PropTypes from 'prop-types'
 
 import {
   CDropdown,
@@ -60,10 +59,6 @@ const Sidebar: FC<SidebarProps> = ({ ...props }) => {
       )}
     </AppContext.Consumer>
   )
-}
-
-Sidebar.propTypes = {
-  currentRoute: PropTypes.string.isRequired,
 }
 
 Sidebar.displayName = 'Sidebar'

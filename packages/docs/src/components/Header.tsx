@@ -2,8 +2,8 @@ import React, { FC } from 'react'
 
 import CIcon from '@coreui/icons-react'
 import { cibGithub, cibOpenCollective, cibTwitter, cilCloudDownload, cilMenu } from '@coreui/icons'
-import { CButton, CHeader, CHeaderNav, CHeaderToggler, CNavItem } from '@coreui/react/src'
 
+import { CButton, CHeader, CHeaderNav, CHeaderToggler, CNavItem } from '@coreui/react/src'
 import { AppContext } from './../AppContext'
 
 const Header: FC = () => {

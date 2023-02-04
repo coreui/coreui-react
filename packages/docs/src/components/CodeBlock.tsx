@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import PropTypes from 'prop-types'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 
 interface CodeBlockProps {
@@ -30,10 +29,6 @@ const CodeBlock: FC<CodeBlockProps> = ({ children }) => {
       </Highlight>
     </div>
   )
-}
-
-CodeBlock.propTypes = {
-  children: PropTypes.any,
 }
 
 CodeBlock.displayName = 'CodeBlock'

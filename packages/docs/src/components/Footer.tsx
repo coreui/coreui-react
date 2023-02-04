@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
 
 import { CContainer, CFooter } from '@coreui/react/src/index'
+
+// @ts-expect-error json file
 import pkg from './../../package.json'
 
 const Footer: FC = () => {

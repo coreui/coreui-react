@@ -2,10 +2,11 @@ import React, { FC, useEffect, useRef } from 'react'
 
 interface AdsProps {
   code: string
+  location: string
   placement: string
 }
 
-export const Ads: FC<AdsProps> = ({ code, placement }) => {
+export const Ads: FC<AdsProps> = ({ code, location, placement }) => {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -16,7 +17,7 @@ export const Ads: FC<AdsProps> = ({ code, placement }) => {
       s.src = `//cdn.carbonads.com/carbon.js?serve=${code}&placement=${placement}`
       ref.current.appendChild(s)
     }
-  }, [])
+  }, [location])
 
   return <div ref={ref} />
 }
