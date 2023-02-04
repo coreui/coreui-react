@@ -11,17 +11,7 @@ import { CCol, CContainer, CRow } from '@coreui/react/src/index'
 
 CoreUI's grid system uses a series of containers, rows, and columns to layout and align content. It's built with [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) and is fully responsive. Below is an example and an in-depth explanation for how the grid system comes together.
 
-<Example className="docs-example-row">
-  <CContainer>
-    <CRow>
-      <CCol sm="auto">One of three columns</CCol>
-      <CCol sm="auto">One of three columns</CCol>
-      <CCol sm="auto">One of three columns</CCol>
-    </CRow>
-  </CContainer>
-</Example>
-
-```jsx
+```jsx preview className="docs-example-row"
 <CContainer>
   <CRow>
     <CCol sm="auto">One of three columns</CCol>
@@ -144,21 +134,8 @@ Utilize breakpoint-specific column classes for easy column sizing without an exp
 
 For example, here are two grid layouts that apply to every device and viewport, from `xs` to `xxl`. Add any number of unit-less classes for each breakpoint you need and every column will be the same width.
 
-<Example className="docs-example-row">
-  <CContainer>
-    <CRow>
-      <CCol>1 of 2</CCol>
-      <CCol>2 of 2</CCol>
-    </CRow>
-    <CRow>
-      <CCol>1 of 3</CCol>
-      <CCol>2 of 3</CCol>
-      <CCol>3 of 3</CCol>
-    </CRow>
-  </CContainer>
-</Example>
 
-```jsx
+```jsx preview className="docs-example-row"
 <CContainer>
   <CRow>
     <CCol>1 of 2</CCol>
@@ -176,22 +153,7 @@ For example, here are two grid layouts that apply to every device and viewport, 
 
 Auto-layout for flexbox grid columns also means you can set the width of one column and have the sibling columns automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths. Note that the other columns will resize no matter the width of the center column.
 
-<Example className="docs-example-row">
-  <CContainer>
-    <CRow>
-      <CCol>1 of 3</CCol>
-      <CCol xs={6}>2 of 3 (wider)</CCol>
-      <CCol>3 of 3</CCol>
-    </CRow>
-    <CRow>
-      <CCol>1 of 3</CCol>
-      <CCol xs={6}>2 of 3 (wider)</CCol>
-      <CCol>3 of 3</CCol>
-    </CRow>
-  </CContainer>
-</Example>
-
-```jsx
+```jsx preview className="docs-example-row"
 <CContainer>
   <CRow>
     <CCol>1 of 3</CCol>
@@ -210,28 +172,7 @@ Auto-layout for flexbox grid columns also means you can set the width of one col
 
 Use `<CCol {breakpoint}="auto"` props to size columns based on the natural width of their content.
 
-<Example className="docs-example-row">
-  <CContainer>
-    <div className="row justify-content-md-center">
-      <CCol xs lg={2}>
-        1 of 3
-      </CCol>
-      <CCol md="auto">Variable width content</CCol>
-      <CCol xs lg={2}>
-        3 of 3
-      </CCol>
-    </div>
-    <CRow>
-      <CCol>1 of 3</CCol>
-      <CCol md="auto">Variable width content</CCol>
-      <CCol xs lg={2}>
-        3 of 3
-      </CCol>
-    </CRow>
-  </CContainer>
-</Example>
-
-```jsx
+```jsx preview className="docs-example-row"
 <CContainer>
   <div className="row justify-content-md-center">
     <CCol xs lg={2}>
@@ -260,22 +201,7 @@ CoreUI's grid includes six tiers of predefined classes for building complex resp
 
 For grids that are the same from the smallest of devices to the largest, use the `<CCol>` and `<CCol xs={*}>` classes. Specify a numbered class when you need a particularly sized column; otherwise, feel free to stick to `<CCol>`.
 
-<Example className="docs-example-row">
-  <CContainer>
-    <CRow>
-      <CCol>col</CCol>
-      <CCol>col</CCol>
-      <CCol>col</CCol>
-      <CCol>col</CCol>
-    </CRow>
-    <CRow>
-      <CCol xs={8}>col-8</CCol>
-      <CCol xs={4}>col-4</CCol>
-    </CRow>
-  </CContainer>
-</Example>
-
-```jsx
+```jsx preview className="docs-example-row"
 <CContainer>
   <CRow>
     <CCol>col</CCol>
@@ -294,21 +220,7 @@ For grids that are the same from the smallest of devices to the largest, use the
 
 Using a single set of `<CCol sm={*}>` classes, you can create a basic grid system that starts out stacked and becomes horizontal at the small breakpoint (`sm`).
 
-<Example className="docs-example-row">
-  <CContainer>
-    <CRow>
-      <CCol sm={8}>col-sm-8</CCol>
-      <CCol sm={4}>col-sm-4</CCol>
-    </CRow>
-    <CRow>
-      <CCol sm>col-sm</CCol>
-      <CCol sm>col-sm</CCol>
-      <CCol sm>col-sm</CCol>
-    </CRow>
-  </CContainer>
-</Example>
-
-```jsx
+```jsx preview className="docs-example-row"
 <CContainer>
   <CRow>
     <CCol sm={8}>col-sm-8</CCol>
@@ -326,33 +238,7 @@ Using a single set of `<CCol sm={*}>` classes, you can create a basic grid syste
 
 Don't want your columns to simply stack in some grid tiers? Use a combination of different classes for each tier as needed. See the example below for a better idea of how it all works.
 
-<Example className="docs-example-row">
-  <CContainer>
-    <CRow>
-      <CCol md={8}>.col-md-8</CCol>
-      <CCol xs={6} md={4}>
-        .col-6 .col-md-4
-      </CCol>
-    </CRow>
-    <CRow>
-      <CCol xs={6} md={4}>
-        .col-6 .col-md-4
-      </CCol>
-      <CCol xs={6} md={4}>
-        .col-6 .col-md-4
-      </CCol>
-      <CCol xs={6} md={4}>
-        .col-6 .col-md-4
-      </CCol>
-    </CRow>
-    <CRow>
-      <CCol xs={6}>.col-6</CCol>
-      <CCol xs={6}>.col-6</CCol>
-    </CRow>
-  </CContainer>
-</Example>
-
-```jsx
+```jsx preview className="docs-example-row"
 <CContainer>
   <CRow>
     <CCol md={8}>.col-md-8</CCol>
@@ -384,18 +270,7 @@ Use the responsive `{breakpoint}={{ cols: * }}` classes to quickly set the numbe
 
 Use these row columns classes to quickly create basic grid layouts or to control your card layouts.
 
-<Example className="docs-example-row">
-  <CContainer>
-    <CRow xs={{ cols: 2 }}>
-      <CCol>Column</CCol>
-      <CCol>Column</CCol>
-      <CCol>Column</CCol>
-      <CCol>Column</CCol>
-    </CRow>
-  </CContainer>
-</Example>
-
-```jsx
+```jsx preview className="docs-example-row"
 <CContainer>
   <CRow xs={{ cols: 2 }}>
     <CCol>Column</CCol>
@@ -406,18 +281,7 @@ Use these row columns classes to quickly create basic grid layouts or to control
 </CContainer>
 ```
 
-<Example className="docs-example-row">
-  <CContainer>
-    <CRow xs={{ cols: 3 }}>
-      <CCol>Column</CCol>
-      <CCol>Column</CCol>
-      <CCol>Column</CCol>
-      <CCol>Column</CCol>
-    </CRow>
-  </CContainer>
-</Example>
-
-```jsx
+```jsx preview className="docs-example-row"
 <CContainer>
   <CRow xs={{ cols: 3 }}>
     <CCol>Column</CCol>
@@ -428,18 +292,7 @@ Use these row columns classes to quickly create basic grid layouts or to control
 </CContainer>
 ```
 
-<Example className="docs-example-row">
-  <CContainer>
-    <CRow xs={{ cols: 'auto' }}>
-      <CCol>Column</CCol>
-      <CCol>Column</CCol>
-      <CCol>Column</CCol>
-      <CCol>Column</CCol>
-    </CRow>
-  </CContainer>
-</Example>
-
-```jsx
+```jsx preview className="docs-example-row"
 <CContainer>
   <CRow xs={{ cols: 'auto' }}>
     <CCol>Column</CCol>
@@ -450,18 +303,7 @@ Use these row columns classes to quickly create basic grid layouts or to control
 </CContainer>
 ```
 
-<Example className="docs-example-row">
-  <CContainer>
-    <CRow xs={{ cols: 4 }}>
-      <CCol>Column</CCol>
-      <CCol>Column</CCol>
-      <CCol>Column</CCol>
-      <CCol>Column</CCol>
-    </CRow>
-  </CContainer>
-</Example>
-
-```jsx
+```jsx preview className="docs-example-row"
 <CContainer>
   <CRow xs={{ cols: 4 }}>
     <CCol>Column</CCol>
@@ -472,18 +314,7 @@ Use these row columns classes to quickly create basic grid layouts or to control
 </CContainer>
 ```
 
-<Example className="docs-example-row">
-  <CContainer>
-    <CRow xs={{ cols: 4 }}>
-      <CCol>Column</CCol>
-      <CCol>Column</CCol>
-      <CCol xs={6}>Column</CCol>
-      <CCol>Column</CCol>
-    </CRow>
-  </CContainer>
-</Example>
-
-```jsx
+```jsx preview className="docs-example-row"
 <CContainer>
   <CRow xs={{ cols: 4 }}>
     <CCol>Column</CCol>
@@ -494,22 +325,7 @@ Use these row columns classes to quickly create basic grid layouts or to control
 </CContainer>
 ```
 
-```js
-console.log()
-```
-
-<Example className="docs-example-row">
-  <CContainer>
-    <CRow xs={{ cols: 1 }} sm={{ cols: 2 }} md={{ cols: 4 }}>
-      <CCol>Column</CCol>
-      <CCol>Column</CCol>
-      <CCol>Column</CCol>
-      <CCol>Column</CCol>
-    </CRow>
-  </CContainer>
-</Example>
-
-```jsx
+```jsx preview className="docs-example-row"
 <CContainer>
   <CRow xs={{ cols: 1 }} sm={{ cols: 2 }} md={{ cols: 4 }}>
     <CCol>Column</CCol>

@@ -25,7 +25,7 @@ Due to the widespread use of `<CTable>` elements across third-party widgets like
 
 Using the most basic table CoreUI, here's how `<CTable>`-based tables look in CoreUI.
 
-export const TableExample = () => {
+export const TableExample = (props) => {
   const columns = [
     {
       key: 'id',
@@ -69,7 +69,7 @@ export const TableExample = () => {
       _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
     },
   ]
-  return <CTable columns={columns} items={items} />
+  return <CTable columns={columns} items={items} {...props} />
 }
 
 <Example className="rounded">
@@ -383,35 +383,7 @@ return <CTable columns={columns} items={items} />
 Use `striped` property to add zebra-striping to any react table row within the `<CTableBody>`.
 
 <Example>
-  <CTable striped>
-    <CTableHead>
-      <CTableRow>
-        <CTableHeaderCell scope="col">#</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Class</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-      </CTableRow>
-    </CTableHead>
-    <CTableBody>
-      <CTableRow>
-        <CTableHeaderCell scope="row">1</CTableHeaderCell>
-        <CTableDataCell>Mark</CTableDataCell>
-        <CTableDataCell>Otto</CTableDataCell>
-        <CTableDataCell>@mdo</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">2</CTableHeaderCell>
-        <CTableDataCell>Jacob</CTableDataCell>
-        <CTableDataCell>Thornton</CTableDataCell>
-        <CTableDataCell>@fat</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
-        <CTableDataCell>@twitter</CTableDataCell>
-      </CTableRow>
-    </CTableBody>
-  </CTable>
+  <TableExample striped />
 </Example>
 
 ```jsx
@@ -425,35 +397,7 @@ Use `striped` property to add zebra-striping to any react table row within the `
 Use `stripedColumns` boolean property to add zebra-striping to any table column.
 
 <Example>
-  <CTable stripedColumns>
-    <CTableHead>
-      <CTableRow>
-        <CTableHeaderCell scope="col">#</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Class</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-      </CTableRow>
-    </CTableHead>
-    <CTableBody>
-      <CTableRow>
-        <CTableHeaderCell scope="row">1</CTableHeaderCell>
-        <CTableDataCell>Mark</CTableDataCell>
-        <CTableDataCell>Otto</CTableDataCell>
-        <CTableDataCell>@mdo</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">2</CTableHeaderCell>
-        <CTableDataCell>Jacob</CTableDataCell>
-        <CTableDataCell>Thornton</CTableDataCell>
-        <CTableDataCell>@fat</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
-        <CTableDataCell>@twitter</CTableDataCell>
-      </CTableRow>
-    </CTableBody>
-  </CTable>
+  <TableExample stripedColumns />
 </Example>
 
 ```jsx
@@ -465,35 +409,7 @@ Use `stripedColumns` boolean property to add zebra-striping to any table column.
 These classes can also be added to react table variants:
 
 <Example>
-  <CTable color="dark" striped>
-    <CTableHead>
-      <CTableRow>
-        <CTableHeaderCell scope="col">#</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Class</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-      </CTableRow>
-    </CTableHead>
-    <CTableBody>
-      <CTableRow>
-        <CTableHeaderCell scope="row">1</CTableHeaderCell>
-        <CTableDataCell>Mark</CTableDataCell>
-        <CTableDataCell>Otto</CTableDataCell>
-        <CTableDataCell>@mdo</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">2</CTableHeaderCell>
-        <CTableDataCell>Jacob</CTableDataCell>
-        <CTableDataCell>Thornton</CTableDataCell>
-        <CTableDataCell>@fat</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
-        <CTableDataCell>@twitter</CTableDataCell>
-      </CTableRow>
-    </CTableBody>
-  </CTable>
+  <TableExample color="dark" striped />
 </Example>
 
 ```jsx
@@ -503,35 +419,7 @@ These classes can also be added to react table variants:
 ```
 
 <Example>
-  <CTable color="dark" stripedColumns>
-    <CTableHead>
-      <CTableRow>
-        <CTableHeaderCell scope="col">#</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Class</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-      </CTableRow>
-    </CTableHead>
-    <CTableBody>
-      <CTableRow>
-        <CTableHeaderCell scope="row">1</CTableHeaderCell>
-        <CTableDataCell>Mark</CTableDataCell>
-        <CTableDataCell>Otto</CTableDataCell>
-        <CTableDataCell>@mdo</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">2</CTableHeaderCell>
-        <CTableDataCell>Jacob</CTableDataCell>
-        <CTableDataCell>Thornton</CTableDataCell>
-        <CTableDataCell>@fat</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
-        <CTableDataCell>@twitter</CTableDataCell>
-      </CTableRow>
-    </CTableBody>
-  </CTable>
+  <TableExample color="dark" stripedColumns />
 </Example>
 
 ```jsx
@@ -541,35 +429,7 @@ These classes can also be added to react table variants:
 ```
 
 <Example>
-  <CTable color="success" striped>
-    <CTableHead>
-      <CTableRow>
-        <CTableHeaderCell scope="col">#</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Class</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-      </CTableRow>
-    </CTableHead>
-    <CTableBody>
-      <CTableRow>
-        <CTableHeaderCell scope="row">1</CTableHeaderCell>
-        <CTableDataCell>Mark</CTableDataCell>
-        <CTableDataCell>Otto</CTableDataCell>
-        <CTableDataCell>@mdo</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">2</CTableHeaderCell>
-        <CTableDataCell>Jacob</CTableDataCell>
-        <CTableDataCell>Thornton</CTableDataCell>
-        <CTableDataCell>@fat</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
-        <CTableDataCell>@twitter</CTableDataCell>
-      </CTableRow>
-    </CTableBody>
-  </CTable>
+  <TableExample color="success" striped />
 </Example>
 
 ```jsx
@@ -579,35 +439,7 @@ These classes can also be added to react table variants:
 ```
 
 <Example>
-  <CTable color="success" stripedColumns>
-    <CTableHead>
-      <CTableRow>
-        <CTableHeaderCell scope="col">#</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Class</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-      </CTableRow>
-    </CTableHead>
-    <CTableBody>
-      <CTableRow>
-        <CTableHeaderCell scope="row">1</CTableHeaderCell>
-        <CTableDataCell>Mark</CTableDataCell>
-        <CTableDataCell>Otto</CTableDataCell>
-        <CTableDataCell>@mdo</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">2</CTableHeaderCell>
-        <CTableDataCell>Jacob</CTableDataCell>
-        <CTableDataCell>Thornton</CTableDataCell>
-        <CTableDataCell>@fat</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
-        <CTableDataCell>@twitter</CTableDataCell>
-      </CTableRow>
-    </CTableBody>
-  </CTable>
+  <TableExample color="success" stripedColumns />
 </Example>
 
 ```jsx
@@ -621,35 +453,7 @@ These classes can also be added to react table variants:
 Use `hover` property to enable a hover state on react table rows within a `<CTableBody>`.
 
 <Example>
-  <CTable hover>
-    <CTableHead>
-      <CTableRow>
-        <CTableHeaderCell scope="col">#</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Class</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-      </CTableRow>
-    </CTableHead>
-    <CTableBody>
-      <CTableRow>
-        <CTableHeaderCell scope="row">1</CTableHeaderCell>
-        <CTableDataCell>Mark</CTableDataCell>
-        <CTableDataCell>Otto</CTableDataCell>
-        <CTableDataCell>@mdo</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">2</CTableHeaderCell>
-        <CTableDataCell>Jacob</CTableDataCell>
-        <CTableDataCell>Thornton</CTableDataCell>
-        <CTableDataCell>@fat</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
-        <CTableDataCell>@twitter</CTableDataCell>
-      </CTableRow>
-    </CTableBody>
-  </CTable>
+  <TableExample hover />
 </Example>
 
 ```jsx
@@ -659,35 +463,7 @@ Use `hover` property to enable a hover state on react table rows within a `<CTab
 ```
 
 <Example>
-  <CTable color="dark" hover>
-    <CTableHead>
-      <CTableRow>
-        <CTableHeaderCell scope="col">#</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Class</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-      </CTableRow>
-    </CTableHead>
-    <CTableBody>
-      <CTableRow>
-        <CTableHeaderCell scope="row">1</CTableHeaderCell>
-        <CTableDataCell>Mark</CTableDataCell>
-        <CTableDataCell>Otto</CTableDataCell>
-        <CTableDataCell>@mdo</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">2</CTableHeaderCell>
-        <CTableDataCell>Jacob</CTableDataCell>
-        <CTableDataCell>Thornton</CTableDataCell>
-        <CTableDataCell>@fat</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
-        <CTableDataCell>@twitter</CTableDataCell>
-      </CTableRow>
-    </CTableBody>
-  </CTable>
+  <TableExample color="dark" hover />
 </Example>
 
 ```jsx
@@ -699,35 +475,7 @@ Use `hover` property to enable a hover state on react table rows within a `<CTab
 These hoverable rows can also be combined with the striped variant:
 
 <Example>
-  <CTable striped hover>
-    <CTableHead>
-      <CTableRow>
-        <CTableHeaderCell scope="col">#</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Class</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-      </CTableRow>
-    </CTableHead>
-    <CTableBody>
-      <CTableRow>
-        <CTableHeaderCell scope="row">1</CTableHeaderCell>
-        <CTableDataCell>Mark</CTableDataCell>
-        <CTableDataCell>Otto</CTableDataCell>
-        <CTableDataCell>@mdo</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">2</CTableHeaderCell>
-        <CTableDataCell>Jacob</CTableDataCell>
-        <CTableDataCell>Thornton</CTableDataCell>
-        <CTableDataCell>@fat</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
-        <CTableDataCell>@twitter</CTableDataCell>
-      </CTableRow>
-    </CTableBody>
-  </CTable>
+  <TableExample striped hover />
 </Example>
 
 ```jsx
@@ -983,35 +731,7 @@ return <CTable color="dark" columns={columns} items={items} />
 Add `bordered` property for borders on all sides of the table and cells.
 
 <Example>
-  <CTable bordered>
-    <CTableHead>
-      <CTableRow>
-        <CTableHeaderCell scope="col">#</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Class</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-      </CTableRow>
-    </CTableHead>
-    <CTableBody>
-      <CTableRow>
-        <CTableHeaderCell scope="row">1</CTableHeaderCell>
-        <CTableDataCell>Mark</CTableDataCell>
-        <CTableDataCell>Otto</CTableDataCell>
-        <CTableDataCell>@mdo</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">2</CTableHeaderCell>
-        <CTableDataCell>Jacob</CTableDataCell>
-        <CTableDataCell>Thornton</CTableDataCell>
-        <CTableDataCell>@fat</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
-        <CTableDataCell>@twitter</CTableDataCell>
-      </CTableRow>
-    </CTableBody>
-  </CTable>
+  <TableExample bordered />
 </Example>
 
 ```jsx
@@ -1023,35 +743,7 @@ Add `bordered` property for borders on all sides of the table and cells.
 [Border color utilities](https://coreui.io/docs/utilities/borders#border-color) can be added to change colors:
 
 <Example>
-  <CTable bordered borderColor="primary">
-    <CTableHead>
-      <CTableRow>
-        <CTableHeaderCell scope="col">#</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Class</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-      </CTableRow>
-    </CTableHead>
-    <CTableBody>
-      <CTableRow>
-        <CTableHeaderCell scope="row">1</CTableHeaderCell>
-        <CTableDataCell>Mark</CTableDataCell>
-        <CTableDataCell>Otto</CTableDataCell>
-        <CTableDataCell>@mdo</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">2</CTableHeaderCell>
-        <CTableDataCell>Jacob</CTableDataCell>
-        <CTableDataCell>Thornton</CTableDataCell>
-        <CTableDataCell>@fat</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
-        <CTableDataCell>@twitter</CTableDataCell>
-      </CTableRow>
-    </CTableBody>
-  </CTable>
+  <TableExample bordered borderColor="primary" />
 </Example>
 
 ```jsx
@@ -1065,35 +757,7 @@ Add `bordered` property for borders on all sides of the table and cells.
 Add `borderless` property for a react table without borders.
 
 <Example>
-  <CTable borderless>
-    <CTableHead>
-      <CTableRow>
-        <CTableHeaderCell scope="col">#</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Class</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-      </CTableRow>
-    </CTableHead>
-    <CTableBody>
-      <CTableRow>
-        <CTableHeaderCell scope="row">1</CTableHeaderCell>
-        <CTableDataCell>Mark</CTableDataCell>
-        <CTableDataCell>Otto</CTableDataCell>
-        <CTableDataCell>@mdo</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">2</CTableHeaderCell>
-        <CTableDataCell>Jacob</CTableDataCell>
-        <CTableDataCell>Thornton</CTableDataCell>
-        <CTableDataCell>@fat</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
-        <CTableDataCell>@twitter</CTableDataCell>
-      </CTableRow>
-    </CTableBody>
-  </CTable>
+  <TableExample borderless />
 </Example>
 
 ```jsx
@@ -1103,35 +767,7 @@ Add `borderless` property for a react table without borders.
 ```
 
 <Example>
-  <CTable color="dark" borderless>
-    <CTableHead>
-      <CTableRow>
-        <CTableHeaderCell scope="col">#</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Class</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-      </CTableRow>
-    </CTableHead>
-    <CTableBody>
-      <CTableRow>
-        <CTableHeaderCell scope="row">1</CTableHeaderCell>
-        <CTableDataCell>Mark</CTableDataCell>
-        <CTableDataCell>Otto</CTableDataCell>
-        <CTableDataCell>@mdo</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">2</CTableHeaderCell>
-        <CTableDataCell>Jacob</CTableDataCell>
-        <CTableDataCell>Thornton</CTableDataCell>
-        <CTableDataCell>@fat</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
-        <CTableDataCell>@twitter</CTableDataCell>
-      </CTableRow>
-    </CTableBody>
-  </CTable>
+  <TableExample borderless color="dark" />
 </Example>
 
 ```jsx
@@ -1145,35 +781,7 @@ Add `borderless` property for a react table without borders.
 Add `small` property to make any `<CTable>` more compact by cutting all cell `padding` in half.
 
 <Example>
-  <CTable small>
-    <CTableHead>
-      <CTableRow>
-        <CTableHeaderCell scope="col">#</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Class</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-      </CTableRow>
-    </CTableHead>
-    <CTableBody>
-      <CTableRow>
-        <CTableHeaderCell scope="row">1</CTableHeaderCell>
-        <CTableDataCell>Mark</CTableDataCell>
-        <CTableDataCell>Otto</CTableDataCell>
-        <CTableDataCell>@mdo</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">2</CTableHeaderCell>
-        <CTableDataCell>Jacob</CTableDataCell>
-        <CTableDataCell>Thornton</CTableDataCell>
-        <CTableDataCell>@fat</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
-        <CTableDataCell>@twitter</CTableDataCell>
-      </CTableRow>
-    </CTableBody>
-  </CTable>
+  <TableExample small />
 </Example>
 
 ```jsx
@@ -1353,7 +961,7 @@ You can also put all table components together manually as hitherto.
 Border styles, active styles, and react table component variants are not inherited by nested tables.
 
 <Example>
-  <CTable striped>
+  {<CTable striped>
     <CTableHead>
       <CTableRow>
         <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -1405,7 +1013,7 @@ Border styles, active styles, and react table component variants are not inherit
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>
-  </CTable>
+  </CTable>}
 </Example>
 
 ```jsx
@@ -1470,55 +1078,8 @@ Border styles, active styles, and react table component variants are not inherit
 
 Similar to tables and dark tables, use the modifier prop `color="light"` or `color="dark"` to make `<CTableHead>`s appear light or dark gray.
 
-export const TableHeadExample = () => {
-  const columns = [
-    {
-      key: 'id',
-      label: '#',
-      _props: { scope: 'col' },
-    },
-    {
-      key: 'class',
-      _props: { scope: 'col' },
-    },
-    {
-      key: 'heading_1',
-      label: 'Heading',
-      _props: { scope: 'col' },
-    },
-    {
-      key: 'heading_2',
-      label: 'Heading',
-      _props: { scope: 'col' },
-    },
-  ]
-  const items = [
-    {
-      id: 1,
-      class: 'Mark',
-      heading_1: 'Otto',
-      heading_2: '@mdo',
-      _cellProps: { id: { scope: 'row' } },
-    },
-    {
-      id: 2,
-      class: 'Jacob',
-      heading_1: 'Thornton',
-      heading_2: '@fat',
-      _cellProps: { id: { scope: 'row' } },
-    },
-    {
-      id: 3,
-      class: 'Larry the Bird',
-      heading_2: '@twitter',
-      _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
-    },
-  ]
-  return <CTable columns={columns} items={items} tableHeadProps={{ color: 'light' }} />
-}
-
 <Example>
-  <TableHeadExample />
+  <TableExample tableHeadProps={{ color: 'light' }} />
 </Example>
 
 ```jsx
@@ -1542,35 +1103,7 @@ return <CTable columns={columns} items={items} tableHeadProps={{ color: 'light' 
 ```
 
 <Example>
-  <CTable>
-    <CTableHead color="dark">
-      <CTableRow>
-        <CTableHeaderCell scope="col">#</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Class</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-        <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-      </CTableRow>
-    </CTableHead>
-    <CTableBody>
-      <CTableRow>
-        <CTableHeaderCell scope="row">1</CTableHeaderCell>
-        <CTableDataCell>Mark</CTableDataCell>
-        <CTableDataCell>Otto</CTableDataCell>
-        <CTableDataCell>@mdo</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">2</CTableHeaderCell>
-        <CTableDataCell>Jacob</CTableDataCell>
-        <CTableDataCell>Thornton</CTableDataCell>
-        <CTableDataCell>@fat</CTableDataCell>
-      </CTableRow>
-      <CTableRow>
-        <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
-        <CTableDataCell>@twitter</CTableDataCell>
-      </CTableRow>
-    </CTableBody>
-  </CTable>
+  <TableExample tableHeadProps={{ color: 'dark' }} />
 </Example>
 
 ```jsx
@@ -1689,61 +1222,8 @@ return <CTable columns={columns} footer={footer} items={items} tableHeadProps={{
 
 A `<CTableCaption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it's about and decide if they want to read it.
 
-export const TableCaptionExample = () => {
-  const columns = [
-    {
-      key: 'id',
-      label: '#',
-      _props: { scope: 'col' },
-    },
-    {
-      key: 'class',
-      _props: { scope: 'col' },
-    },
-    {
-      key: 'heading_1',
-      label: 'Heading',
-      _props: { scope: 'col' },
-    },
-    {
-      key: 'heading_2',
-      label: 'Heading',
-      _props: { scope: 'col' },
-    },
-  ]
-  const footer = [
-    'Footer',
-    'Footer',
-    'Footer',
-    'Footer',
-  ]
-  const items = [
-    {
-      id: 1,
-      class: 'Mark',
-      heading_1: 'Otto',
-      heading_2: '@mdo',
-      _cellProps: { id: { scope: 'row' } },
-    },
-    {
-      id: 2,
-      class: 'Jacob',
-      heading_1: 'Thornton',
-      heading_2: '@fat',
-      _cellProps: { id: { scope: 'row' } },
-    },
-    {
-      id: 3,
-      class: 'Larry the Bird',
-      heading_2: '@twitter',
-      _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
-    },
-  ]
-  return <CTable caption="List of users" columns={columns} items={items} />
-}
-
 <Example>
-  <TableCaptionExample />
+  <TableExample caption="List of users" />
 </Example>
 
 ```jsx
@@ -1769,61 +1249,8 @@ return <CTable caption="List of users" columns={columns} items={items} />
 
 You can also put the `<CTableCaption>` on the top of the table with `caption="top"`.
 
-export const TableCaptionTopExample = () => {
-  const columns = [
-    {
-      key: 'id',
-      label: '#',
-      _props: { scope: 'col' },
-    },
-    {
-      key: 'class',
-      _props: { scope: 'col' },
-    },
-    {
-      key: 'heading_1',
-      label: 'Heading',
-      _props: { scope: 'col' },
-    },
-    {
-      key: 'heading_2',
-      label: 'Heading',
-      _props: { scope: 'col' },
-    },
-  ]
-  const footer = [
-    'Footer',
-    'Footer',
-    'Footer',
-    'Footer',
-  ]
-  const items = [
-    {
-      id: 1,
-      class: 'Mark',
-      heading_1: 'Otto',
-      heading_2: '@mdo',
-      _cellProps: { id: { scope: 'row' } },
-    },
-    {
-      id: 2,
-      class: 'Jacob',
-      heading_1: 'Thornton',
-      heading_2: '@fat',
-      _cellProps: { id: { scope: 'row' } },
-    },
-    {
-      id: 3,
-      class: 'Larry the Bird',
-      heading_2: '@twitter',
-      _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
-    },
-  ]
-  return <CTable captionTop="List of users" columns={columns} items={items} />
-}
-
 <Example>
-  <TableCaptionTopExample />
+  <TableExample captionTop="List of users" />
 </Example>
 
 ```jsx
@@ -1852,7 +1279,7 @@ return <CTable captionTop="List of users" columns={columns} items={items} />
 Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by adding a `responsive` property. Or, pick a maximum breakpoint with which to have a responsive table up to by using `responsive="{-sm|-md|-lg|-xl|-xxl}"`.
 
 <Example>
-  <CTable responsive>
+  {<CTable responsive>
     <CTableHead>
       <CTableRow>
         <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -1901,7 +1328,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
         <CTableDataCell>Cell</CTableDataCell>
       </CTableRow>
     </CTableBody>
-  </CTable>
+  </CTable>}
 </Example>
 
 ```jsx
@@ -1911,7 +1338,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 ```
 
 <Example>
-  <CTable responsive="sm">
+  {<CTable responsive="sm">
     <CTableHead>
       <CTableRow>
         <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -1960,7 +1387,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
         <CTableDataCell>Cell</CTableDataCell>
       </CTableRow>
     </CTableBody>
-  </CTable>
+  </CTable>}
 </Example>
 
 ```jsx
@@ -1970,7 +1397,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 ```
 
 <Example>
-  <CTable responsive="md">
+  {<CTable responsive="md">
     <CTableHead>
       <CTableRow>
         <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -2019,7 +1446,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
         <CTableDataCell>Cell</CTableDataCell>
       </CTableRow>
     </CTableBody>
-  </CTable>
+  </CTable>}
 </Example>
 
 ```jsx
@@ -2029,7 +1456,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 ```
 
 <Example>
-  <CTable responsive="lg">
+  {<CTable responsive="lg">
     <CTableHead>
       <CTableRow>
         <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -2078,7 +1505,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
         <CTableDataCell>Cell</CTableDataCell>
       </CTableRow>
     </CTableBody>
-  </CTable>
+  </CTable>}
 </Example>
 
 ```jsx
@@ -2088,7 +1515,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 ```
 
 <Example>
-  <CTable responsive="xl">
+  {<CTable responsive="xl">
     <CTableHead>
       <CTableRow>
         <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -2137,7 +1564,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
         <CTableDataCell>Cell</CTableDataCell>
       </CTableRow>
     </CTableBody>
-  </CTable>
+  </CTable>}
 </Example>
 
 ```jsx
@@ -2147,7 +1574,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 ```
 
 <Example>
-  <CTable responsive="xxl">
+  {<CTable responsive="xxl">
     <CTableHead>
       <CTableRow>
         <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -2196,7 +1623,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
         <CTableDataCell>Cell</CTableDataCell>
       </CTableRow>
     </CTableBody>
-  </CTable>
+  </CTable>}
 </Example>
 
 ```jsx
