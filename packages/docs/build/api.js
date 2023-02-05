@@ -65,10 +65,9 @@ import ${name} from '@coreui${relativeFilename.replace('.tsx', '')}'
 
       const replace = (text) =>
         text
-          .replaceAll('\n', '<br/>')
           .replaceAll('(<', '(\\<')
-          .replaceAll('{', '\\{')
-          .replaceAll('}', '\\}')
+          .replace(/<C(.*)\/>/g, '`<C$1/>`')
+          .replaceAll('\n', '<br/>')
 
       content += `| **${name}**${since}${deprecated} | ${replace(description)} | ${types.join(
         ' \\| ',
