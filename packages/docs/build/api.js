@@ -36,14 +36,16 @@ import ${name} from '@coreui${relativeFilename.replace('.tsx', '')}'
 \`\`\`\n
 `
 
-  content += `| Property | Description | Type | Default |\n`
-  content += `| --- | --- | --- | --- |\n`
-
+  let index = 0
   for (const [key, value] of Object.entries(props).sort()) {
     if (
       !value.parent.fileName.includes('@types/react/index.d.ts') &&
       typeof value.tags.ignore === 'undefined'
     ) {
+      if (index === 0) {
+        content += `| Property | Description | Type | Default |\n`
+        content += `| --- | --- | --- | --- |\n`
+      }
       let name = value.name || ''
       const since = value.tags.since ? ` **_${value.tags.since}+_**` : ''
       const deprecated = value.tags.deprecated ? ` **_Deprecated ${value.tags.deprecated}+_**` : ''
@@ -61,12 +63,18 @@ import ${name} from '@coreui${relativeFilename.replace('.tsx', '')}'
         types.push(`\`${element.replace(/"/g, "'")}\``)
       })
 
-      const replace = (text) => text.replaceAll('\n', '<br/>').replaceAll('(<', '(\\<')
+      const replace = (text) =>
+        text
+          .replaceAll('\n', '<br/>')
+          .replaceAll('(<', '(\\<')
+          .replaceAll('{', '\\{')
+          .replaceAll('}', '\\}')
 
       content += `| **${name}**${since}${deprecated} | ${replace(description)} | ${types.join(
         ' \\| ',
       )} | ${replace(defaultValue)} |\n`
       console.log(`${filename} - ${key}`)
+      index++
     }
   }
 
