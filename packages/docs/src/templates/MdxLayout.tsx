@@ -30,6 +30,7 @@ const MdxLayout: FC<MdxLayoutProps> = ({ children }) => {
         },
         pre: (props: any) => <CodeBlock {...props} />,
         table: (props: any) => {
+          // TODO: find better soultion
           const isApiTable =
             props.children[0].props.children.props.children[0].props.children &&
             props.children[0].props.children.props.children[0].props.children.includes('Property')
