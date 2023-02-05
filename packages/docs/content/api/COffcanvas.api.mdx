@@ -7,12 +7,13 @@ import COffcanvas from '@coreui/react/src/components/offcanvas/COffcanvas'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| **backdrop** | Apply a backdrop on body while offcanvas is open. | `boolean` | true |
+| **backdrop** | Apply a backdrop on body while offcanvas is open. | `boolean` \| `'static'` | true |
 | **className** | A string of all className you want applied to the base component. | `string` | - |
 | **keyboard** | Closes the offcanvas when escape key is pressed. | `boolean` | true |
 | **onHide** | Callback fired when the component requests to be hidden. | `() => void` | - |
 | **onShow** | Callback fired when the component requests to be shown. | `() => void` | - |
 | **placement** | Components placement, there’s no default placement. | `'start'` \| `'end'` \| `'top'` \| `'bottom'` | - |
-| **portal** | Generates modal using createPortal. | `boolean` | true |
+| **portal** | Generates modal using createPortal. | `boolean` | false |
+| **responsive** **_4.6.0+_** | Responsive offcanvas property hide content outside the viewport from a specified breakpoint and down. | `boolean` \| `'sm'` \| `'md'` \| `'lg'` \| `'xl'` \| `'xxl'` | true |
 | **scroll** | Allow body scrolling while offcanvas is open | `boolean` | false |
 | **visible** | Toggle the visibility of offcanvas component. | `boolean` | false |
