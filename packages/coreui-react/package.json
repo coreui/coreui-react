@@ -35,24 +35,24 @@
     "build": "rollup -c --bundleConfigAsCjs"
   },
   "devDependencies": {
-    "@popperjs/core": "^2.11.5",
+    "@popperjs/core": "^2.11.6",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-typescript": "^11.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@types/react": "18.0.27",
-    "@types/react-dom": "^18.0.6",
+    "@types/react-dom": "^18.0.10",
     "@types/react-transition-group": "^4.4.5",
     "classnames": "^2.3.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-popper": "^2.2.5",
+    "react-popper": "^2.3.0",
     "react-transition-group": "^4.4.5",
-    "rollup": "^3.7.5",
-    "tslib": "^2.4.1",
-    "typescript": "^4.9.4"
+    "rollup": "^3.14.0",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5"
   },
   "peerDependencies": {
     "react": ">=17",
