@@ -1101,6 +1101,11 @@
   resolved "https://registry.yarnpkg.com/@coreui/icons/-/icons-3.0.0.tgz#e36ef6e10fdc61aaff22e4ab1f6e71775b26f365"
   integrity sha512-t4hJilv5IFBvaHIIQeUoXctV5nJkW21PTIhgeGO80xS25Ii4kkXa2gzryj6v6OEPSDPnY2YWhYm39TBjbXt1Xw==
 
+"@docsearch/css@^3.3.3":
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-3.3.3.tgz#f9346c9e24602218341f51b8ba91eb9109add434"
+  integrity sha512-6SCwI7P8ao+se1TUsdZ7B4XzL+gqeQZnBc+2EONZlcVa0dVrk0NjETxozFKgMv0eEGH8QzP1fkN+A1rH61l4eg==
+
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-0.4.3.tgz#9e42981ef035beb3dd49add17acb96e8ff6f394c"

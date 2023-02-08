@@ -20,6 +20,7 @@ const Header: FC = () => {
             >
               <CIcon icon={cilMenu} size="lg" />
             </CHeaderToggler>
+            <div className="docs-search" id="docsearch"></div>
             <CHeaderNav className="ms-auto">
               <CNavItem
                 href="https://github.com/coreui/coreui-react/"

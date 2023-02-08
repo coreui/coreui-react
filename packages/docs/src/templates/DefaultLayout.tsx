@@ -4,6 +4,8 @@ import { CContainer } from '@coreui/react/src/'
 import DocsLayout from './DocsLayout'
 
 import { AppContext } from '../AppContext'
+import { Script } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
 interface DefaultLayoutProps {
   children: any
@@ -42,6 +44,29 @@ const DefaultLayout: FC<DefaultLayoutProps> = ({ children, data, pageContext, pa
         </div>
         <Footer />
       </div>
+      <Script
+        src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"
+        onLoad={() => {
+          const searchElement = document.getElementById('docsearch')
+
+          // @ts-expect-error global variable
+          if (!window.docsearch || !searchElement) {
+            return
+          }
+
+          // @ts-expect-error global variable
+          window.docsearch({
+            appId: 'JIOZIZPLMM',
+            apiKey: '6e3f7692d2589d042bb40426b75df1b7',
+            indexName: 'coreui-react',
+            container: searchElement,
+            // Set debug to `true` if you want to inspect the dropdown
+            debug: true,
+          })
+        }}
+      />
+
+      <script type="text/javascript"></script>
     </AppContext.Provider>
   )
 }
