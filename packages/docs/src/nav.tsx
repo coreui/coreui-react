@@ -108,10 +108,6 @@ const nav = [
       />
     ),
     items: [
-      // {
-      //   name: 'Overview',
-      //   to: '/forms/overview/',
-      // },
       {
         name: 'Checkbox',
         to: '/forms/checkbox/',
@@ -144,14 +140,6 @@ const nav = [
         name: 'Textarea',
         to: '/forms/textarea/',
       },
-      // {
-      //   name: 'Form Control',
-      //   to: '/forms/form-control/',
-      // },
-      // {
-      //   name: 'Checks & Radios',
-      //   to: '/forms/checks-radios/',
-      // },
       {
         name: 'Floating Labels',
         to: '/forms/floating-labels/',
