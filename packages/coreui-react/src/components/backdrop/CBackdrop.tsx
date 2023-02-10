@@ -3,7 +3,7 @@ import { Transition } from 'react-transition-group'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { useForkedRef } from '../../utils/hooks'
+import { useForkedRef } from '../../hooks'
 
 export interface CBackdropProps extends HTMLAttributes<HTMLDivElement> {
   /**

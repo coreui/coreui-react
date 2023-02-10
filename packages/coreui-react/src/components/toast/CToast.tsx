@@ -12,7 +12,7 @@ import classNames from 'classnames'
 
 import { Colors, colorPropType } from '../Types'
 
-import { useForkedRef } from '../../utils/hooks'
+import { useForkedRef } from '../../hooks'
 
 export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**

@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom'
 import { Transition } from 'react-transition-group'
 import classNames from 'classnames'
 
-import { useForkedRef } from '../../utils/hooks'
+import { useForkedRef } from '../../hooks'
 import { CBackdrop } from '../backdrop/CBackdrop'
 
 export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {

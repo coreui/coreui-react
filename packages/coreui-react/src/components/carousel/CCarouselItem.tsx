@@ -2,7 +2,7 @@ import React, { forwardRef, HTMLAttributes, useContext, useEffect, useState, use
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { useForkedRef } from '../../utils/hooks'
+import { useForkedRef } from '../../hooks'
 import { CCarouselContext } from './CCarousel'
 export interface CCarouselItemProps extends HTMLAttributes<HTMLDivElement> {
   /**

@@ -13,7 +13,7 @@ import classNames from 'classnames'
 import { Manager } from 'react-popper'
 
 import { Placements, placementPropType } from '../Types'
-import { useForkedRef } from '../../utils/hooks'
+import { useForkedRef } from '../../hooks'
 
 export type Directions = 'start' | 'end'
 

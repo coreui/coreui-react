@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Reference } from 'react-popper'
 
-import { useForkedRef } from '../../utils/hooks'
+import { useForkedRef } from '../../hooks'
 
 import { Triggers, triggerPropType } from '../Types'
 

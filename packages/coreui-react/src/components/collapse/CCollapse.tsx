@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 
-import { useForkedRef } from '../../utils/hooks'
+import { useForkedRef } from '../../hooks'
 
 export interface CCollapseProps extends HTMLAttributes<HTMLDivElement> {
   /**

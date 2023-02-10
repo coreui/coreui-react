@@ -12,7 +12,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { isInViewport } from '../../utils'
-import { useForkedRef } from '../../utils/hooks'
+import { useForkedRef } from '../../hooks'
 
 export interface CCarouselProps extends HTMLAttributes<HTMLDivElement> {
   /**

@@ -6,7 +6,7 @@ import { Transition } from 'react-transition-group'
 import { Colors, colorPropType } from '../Types'
 import { CCloseButton } from '../close-button/CCloseButton'
 
-import { useForkedRef } from '../../utils/hooks'
+import { useForkedRef } from '../../hooks'
 
 export interface CAlertProps extends HTMLAttributes<HTMLDivElement> {
   /**

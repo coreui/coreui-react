@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
 
-import { useForkedRef } from '../../utils/hooks'
+import { useForkedRef } from '../../hooks'
 export interface CTabPaneProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * A string of all className you want applied to the base component.

@@ -2,7 +2,7 @@ import React, { forwardRef, InputHTMLAttributes, ReactNode, useEffect, useRef } 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { useForkedRef } from '../../utils/hooks'
+import { useForkedRef } from '../../hooks'
 import { Colors, Shapes } from '../Types'
 
 import { CFormControlValidation, CFormControlValidationProps } from './CFormControlValidation'

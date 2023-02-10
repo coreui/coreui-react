@@ -2,7 +2,7 @@ import React, { ElementType, forwardRef, useContext, useEffect, useRef } from 'r
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { useForkedRef } from '../../utils/hooks'
+import { useForkedRef } from '../../hooks'
 
 import { CNavContext } from '../sidebar/CSidebarNav'
 import { CLinkProps, CLink } from '../link/CLink'
