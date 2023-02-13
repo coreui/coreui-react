@@ -6,6 +6,7 @@ import { useForkedRef } from '../../hooks'
 
 import { CNavContext } from '../sidebar/CSidebarNav'
 import { CLinkProps, CLink } from '../link/CLink'
+
 export interface CNavLinkProps extends Omit<CLinkProps, 'idx'> {
   /**
    * Toggle the active state for the component.
