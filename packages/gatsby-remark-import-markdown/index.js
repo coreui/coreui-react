@@ -48,39 +48,5 @@ module.exports = ({ markdownAST }, pluginOptions = {}) => {
     }
   })
 
-  // visit(markdownAST, 'code', (node) => {
-  //   if (node.meta && node.meta.includes('preview')) {
-  //     const value = node.value
-  //     const className = /className="(.*)"/.test(node.meta) ? RegExp.$1 : ''
-  //     const tree = fromMarkdown(value.replace(/(\r\n|\n|\r)/gm, ''), {
-  //       extensions: [syntax({ acorn: acorn, addResult: true }), mdxMd],
-  //       mdastExtensions: [mdxJsx.fromMarkdown],
-  //     })
-
-  //     delete node.value
-  //     delete node.position
-  //     delete node.lang
-  //     delete node.meta
-
-  //     node.type = 'div'
-  //     node.children = [
-  //       {
-  //         type: 'mdxJsxFlowElement',
-  //         name: 'Example',
-  //         attributes: [{ type: 'mdxJsxAttribute', name: 'className', value: className }],
-  //         children:
-  //           tree.children[0].type === 'paragraph'
-  //             ? tree.children[0].children.map((child) => child)
-  //             : tree.children.map((child) => child),
-  //       },
-  //       {
-  //         type: 'code',
-  //         lang: 'jsx',
-  //         value: value,
-  //       },
-  //     ]
-  //   }
-  // })
-
   return markdownAST
 }
