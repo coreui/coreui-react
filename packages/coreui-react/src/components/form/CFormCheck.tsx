@@ -2,11 +2,11 @@ import React, { forwardRef, InputHTMLAttributes, ReactNode, useEffect, useRef } 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { useForkedRef } from '../../hooks'
-import { Colors, Shapes } from '../Types'
-
 import { CFormControlValidation, CFormControlValidationProps } from './CFormControlValidation'
 import { CFormLabel } from './CFormLabel'
+
+import { useForkedRef } from '../../hooks'
+import type { Colors, Shapes } from '../../types'
 
 export type ButtonObject = {
   /**

@@ -12,8 +12,9 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Manager } from 'react-popper'
 
-import { Placements, placementPropType } from '../Types'
 import { useForkedRef } from '../../hooks'
+import { placementPropType } from '../../props'
+import type { Placements } from '../../types'
 
 export type Directions = 'start' | 'end'
 

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Reference } from 'react-popper'
 
-import { useForkedRef } from '../../hooks'
-
-import { Triggers, triggerPropType } from '../Types'
-
 import { CButton, CButtonProps } from '../button/CButton'
 import { CDropdownContext } from './CDropdown'
+
+import { useForkedRef } from '../../hooks'
+import { triggerPropType } from '../../props'
+import type { Triggers } from '../../types'
 
 export interface CDropdownToggleProps extends Omit<CButtonProps, 'type'> {
   /**

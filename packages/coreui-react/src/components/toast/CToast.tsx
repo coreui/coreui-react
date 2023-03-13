@@ -10,9 +10,9 @@ import { Transition } from 'react-transition-group'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors, colorPropType } from '../Types'
-
 import { useForkedRef } from '../../hooks'
+import { colorPropType } from '../../props'
+import type { Colors } from '../../types'
 
 export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**

@@ -2,7 +2,8 @@ import PropTypes from 'prop-types'
 import React, { forwardRef, HTMLAttributes } from 'react'
 import classNames from 'classnames'
 
-import { Colors, colorPropType } from '../Types'
+import { colorPropType } from '../../props'
+import type { Colors } from '../../types'
 
 export interface CTableFootProps extends HTMLAttributes<HTMLTableSectionElement> {
   /**

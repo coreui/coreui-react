@@ -2,14 +2,8 @@ import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import {
-  Colors,
-  Shapes,
-  TextColors,
-  colorPropType,
-  shapePropType,
-  textColorsPropType,
-} from '../Types'
+import { colorPropType, shapePropType, textColorsPropType } from '../../props'
+import type { Colors, Shapes, TextColors } from '../../types'
 
 export interface CBadgeProps extends HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
   /**

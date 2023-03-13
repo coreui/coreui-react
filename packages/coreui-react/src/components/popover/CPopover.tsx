@@ -5,7 +5,8 @@ import classNames from 'classnames'
 import { usePopper } from 'react-popper'
 import { Transition } from 'react-transition-group'
 
-import { Triggers, triggerPropType } from '../Types'
+import { triggerPropType } from '../../props'
+import type { Triggers } from '../../types'
 
 export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**

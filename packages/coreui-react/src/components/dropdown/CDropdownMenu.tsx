@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Popper, PopperChildrenProps } from 'react-popper'
 
-import { Placements } from '../Types'
 import { Alignments, CDropdownContext } from './CDropdown'
+
+import type { Placements } from '../../types'
 
 export interface CDropdownMenuProps
   extends HTMLAttributes<HTMLDivElement | HTMLUListElement>,

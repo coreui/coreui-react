@@ -2,8 +2,10 @@ import React, { ElementType, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors, Shapes, colorPropType } from '../Types'
 import { CLink, CLinkProps } from '../link/CLink'
+
+import { colorPropType } from '../../props'
+import type { Colors, Shapes } from '../../types'
 
 export interface CButtonProps extends Omit<CLinkProps, 'size'> {
   /**

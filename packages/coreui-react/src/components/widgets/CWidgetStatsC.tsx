@@ -1,11 +1,12 @@
 import React, { forwardRef, HTMLAttributes, ReactNode } from 'react'
 import PropTypes from 'prop-types'
 
-import { Colors, colorPropType } from '../Types'
-
 import { CCard } from '../card/CCard'
 import { CCardBody } from '../card/CCardBody'
 import { CProgress, CProgressProps } from '../progress/CProgress'
+
+import { colorPropType } from '../../props'
+import type { Colors } from '../../types'
 
 export interface CWidgetStatsCProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**

@@ -2,8 +2,10 @@ import React, { ElementType, AnchorHTMLAttributes, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors, colorPropType } from '../Types'
 import { CLink } from '../link/CLink'
+
+import { colorPropType } from '../../props'
+import type { Colors } from '../../types'
 
 export interface CListGroupItemProps
   extends AnchorHTMLAttributes<HTMLLIElement | HTMLAnchorElement | HTMLButtonElement> {

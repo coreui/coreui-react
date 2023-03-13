@@ -2,7 +2,6 @@ import React, { forwardRef, TableHTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Colors, colorPropType } from '../Types'
 import { CTableHead, CTableHeadProps } from './CTableHead'
 import { CTableHeaderCell, CTableHeaderCellProps } from './CTableHeaderCell'
 import { CTableBody } from './CTableBody'
@@ -11,6 +10,9 @@ import { CTableRow, CTableRowProps } from './CTableRow'
 import { CTableFoot, CTableFootProps } from './CTableFoot'
 import { CTableCaption } from './CTableCaption'
 import { CTableResponsiveWrapper } from './CTableResponsiveWrapper'
+
+import { colorPropType } from '../../props'
+import type { Colors } from '../../types'
 
 export interface CTableProps extends Omit<TableHTMLAttributes<HTMLTableElement>, 'align'> {
   /**
