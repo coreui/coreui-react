@@ -13,11 +13,11 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
 
-import { useForkedRef } from '../../hooks'
-
 import { CBackdrop } from '../backdrop/CBackdrop'
 import { CModalContent } from './CModalContent'
 import { CModalDialog } from './CModalDialog'
+
+import { useForkedRef } from '../../hooks'
 
 export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
   /**

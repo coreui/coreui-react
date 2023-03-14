@@ -1,7 +1,7 @@
 import React, { FC, HTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import { usePopper } from 'react-popper'
 import { Transition } from 'react-transition-group'
 

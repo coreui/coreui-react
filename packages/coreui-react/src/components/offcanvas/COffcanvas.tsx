@@ -1,11 +1,12 @@
-import PropTypes from 'prop-types'
 import React, { forwardRef, HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { Transition } from 'react-transition-group'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import { Transition } from 'react-transition-group'
+
+import { CBackdrop } from '../backdrop/CBackdrop'
 
 import { useForkedRef } from '../../hooks'
-import { CBackdrop } from '../backdrop/CBackdrop'
 
 export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {
   /**

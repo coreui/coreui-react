@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+
 import { CNavLink, CNavLinkProps } from './CNavLink'
 
 export const CNavItem = forwardRef<HTMLLIElement, CNavLinkProps>(

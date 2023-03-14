@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
+
 import { CCollapse, CCollapseProps } from '../collapse/CCollapse'
 
 export const CAccordionCollapse = forwardRef<HTMLDivElement, Omit<CCollapseProps, 'horizontal'>>(

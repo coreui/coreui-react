@@ -2,8 +2,7 @@ import React, { ElementType, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { CLinkProps } from '../link/CLink'
-import { CLink } from '../link/CLink'
+import { CLink, CLinkProps } from '../link/CLink'
 
 export interface CDropdownItemProps extends CLinkProps {
   /**

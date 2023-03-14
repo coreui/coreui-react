@@ -2,9 +2,7 @@ import React, { forwardRef, HTMLAttributes, ReactNode } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { CCard } from '../card/CCard'
-import { CCardBody } from '../card/CCardBody'
-import { CCardHeader } from '../card/CCardHeader'
+import { CCard, CCardBody, CCardHeader } from '../card'
 import { CCol } from '../grid/CCol'
 
 import { colorPropType } from '../../props'

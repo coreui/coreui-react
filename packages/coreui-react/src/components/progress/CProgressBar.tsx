@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 import { colorPropType } from '../../props'
 import type { Colors } from '../../types'
+
 export interface CProgressBarProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Use to animate the stripes right to left via CSS3 animations.

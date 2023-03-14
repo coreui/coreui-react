@@ -1,8 +1,9 @@
 import React, { forwardRef, HTMLAttributes, useContext } from 'react'
 import PropTypes from 'prop-types'
-import { CModalContext } from './CModal'
-import { CCloseButton } from '../close-button/CCloseButton'
 import classNames from 'classnames'
+
+import { CCloseButton } from '../close-button/CCloseButton'
+import { CModalContext } from './CModal'
 
 export interface CModalHeaderProps extends HTMLAttributes<HTMLDivElement> {
   /**

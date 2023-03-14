@@ -2,8 +2,7 @@ import React, { forwardRef, HTMLAttributes, ReactNode } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { CCard } from '../card/CCard'
-import { CCardBody } from '../card/CCardBody'
+import { CCard, CCardBody } from '../card'
 
 export interface CWidgetStatsEProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**

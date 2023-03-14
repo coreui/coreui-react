@@ -1,8 +1,7 @@
 import React, { forwardRef, HTMLAttributes, ReactNode } from 'react'
 import PropTypes from 'prop-types'
 
-import { CCard } from '../card/CCard'
-import { CCardBody } from '../card/CCardBody'
+import { CCard, CCardBody } from '../card'
 import { CProgress, CProgressProps } from '../progress/CProgress'
 
 import { colorPropType } from '../../props'

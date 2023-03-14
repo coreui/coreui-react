@@ -6,9 +6,9 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { Transition } from 'react-transition-group'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import { Transition } from 'react-transition-group'
 
 import { useForkedRef } from '../../hooks'
 import { colorPropType } from '../../props'

@@ -1,7 +1,6 @@
 import React, { ChangeEventHandler, forwardRef, InputHTMLAttributes, ReactNode } from 'react'
-
-import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 import { CFormLabel } from './CFormLabel'
 export interface CFormRangeProps extends InputHTMLAttributes<HTMLInputElement> {

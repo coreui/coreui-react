@@ -1,10 +1,14 @@
-import React, { ChangeEventHandler, forwardRef, InputHTMLAttributes, useState } from 'react'
-
-import classNames from 'classnames'
+import React, {
+  ChangeEventHandler,
+  forwardRef,
+  InputHTMLAttributes,
+  useEffect,
+  useState,
+} from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 import { CFormControlWrapper, CFormControlWrapperProps } from './CFormControlWrapper'
-import { useEffect } from 'react'
 
 export interface CFormInputProps
   extends CFormControlWrapperProps,

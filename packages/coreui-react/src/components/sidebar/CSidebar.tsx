@@ -3,9 +3,10 @@ import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import { CBackdrop } from '../backdrop/CBackdrop'
+
 import { isInViewport } from '../../utils'
 import { useForkedRef } from '../../hooks'
-import { CBackdrop } from '../backdrop/CBackdrop'
 
 export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
   /**
