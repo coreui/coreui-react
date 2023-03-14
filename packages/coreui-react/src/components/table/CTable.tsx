@@ -1,18 +1,20 @@
-import React, { forwardRef, TableHTMLAttributes } from 'react'
+import React, { forwardRef, TableHTMLAttributes, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { CTableHead, CTableHeadProps } from './CTableHead'
-import { CTableHeaderCell, CTableHeaderCellProps } from './CTableHeaderCell'
+import { CTableHeaderCell } from './CTableHeaderCell'
 import { CTableBody } from './CTableBody'
-import { CTableDataCell, CTableDataCellProps } from './CTableDataCell'
-import { CTableRow, CTableRowProps } from './CTableRow'
+import { CTableDataCell } from './CTableDataCell'
+import { CTableRow } from './CTableRow'
 import { CTableFoot, CTableFootProps } from './CTableFoot'
 import { CTableCaption } from './CTableCaption'
 import { CTableResponsiveWrapper } from './CTableResponsiveWrapper'
 
 import { colorPropType } from '../../props'
 import type { Colors } from '../../types'
+import { getColumnLabel, getColumnNames } from './utils'
+import type { Column, FooterItem, Item } from './types'
 
 export interface CTableProps extends Omit<TableHTMLAttributes<HTMLTableElement>, 'align'> {
   /**
@@ -125,23 +127,6 @@ export interface CTableProps extends Omit<TableHTMLAttributes<HTMLTableElement>,
   tableHeadProps?: CTableHeadProps
 }
 
-export interface Column {
-  label?: string
-  key: string
-  _style?: any
-  _props?: CTableHeaderCellProps
-}
-
-export interface Item {
-  [key: string]: number | string | any
-  _props?: CTableRowProps
-}
-
-export interface FooterItem {
-  label?: string
-  _props?: CTableDataCellProps
-}
-
 export const CTable = forwardRef<HTMLTableElement, CTableProps>(
   (
     {
@@ -185,29 +170,7 @@ export const CTable = forwardRef<HTMLTableElement, CTableProps>(
       className,
     )
 
-    const rawColumnNames = columns
-      ? columns.map((column: Column) => {
-          if (typeof column === 'object') return column.key
-          else return column
-        })
-      : Object.keys((items && items[0]) || {}).filter((el) => el.charAt(0) !== '_')
-
-    const pretifyName = (name: string) => {
-      return name
-        .replace(/[-_.]/g, ' ')
-        .replace(/ +/g, ' ')
-        .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
-        .split(' ')
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ')
-    }
-
-    const label = (column: Column | string) =>
-      typeof column === 'object'
-        ? column.label !== undefined
-          ? column.label
-          : pretifyName(column.key)
-        : pretifyName(column)
+    const columnNames = useMemo(() => getColumnNames(columns, items), [columns, items])
 
     return (
       <CTableResponsiveWrapper responsive={responsive}>
@@ -224,7 +187,7 @@ export const CTable = forwardRef<HTMLTableElement, CTableProps>(
                     {...(column._style && { style: { ...column._style } })}
                     key={index}
                   >
-                    {label(column)}
+                    {getColumnLabel(column)}
                   </CTableHeaderCell>
                 ))}
               </CTableRow>
@@ -234,19 +197,20 @@ export const CTable = forwardRef<HTMLTableElement, CTableProps>(
             <CTableBody>
               {items.map((item: Item, index: number) => (
                 <CTableRow {...(item._props && { ...item._props })} key={index}>
-                  {rawColumnNames.map((colName: string, index: number) => {
-                    return item[colName] ? (
-                      <CTableDataCell
-                        {...(item._cellProps && {
-                          ...(item._cellProps['all'] && { ...item._cellProps['all'] }),
-                          ...(item._cellProps[colName] && { ...item._cellProps[colName] }),
-                        })}
-                        key={index}
-                      >
-                        {item[colName]}
-                      </CTableDataCell>
-                    ) : null
-                  })}
+                  {columnNames &&
+                    columnNames.map((colName: string, index: number) => {
+                      return item[colName] ? (
+                        <CTableDataCell
+                          {...(item._cellProps && {
+                            ...(item._cellProps['all'] && { ...item._cellProps['all'] }),
+                            ...(item._cellProps[colName] && { ...item._cellProps[colName] }),
+                          })}
+                          key={index}
+                        >
+                          {item[colName]}
+                        </CTableDataCell>
+                      ) : null
+                    })}
                 </CTableRow>
               ))}
             </CTableBody>
