@@ -1,6 +1,8 @@
-[submodule "packages/coreui-react-chartjs2"]
-	path = packages/coreui-react-chartjs2
-	url = https://github.com/coreui/coreui-react-chartjs.git
 [submodule "packages/coreui-react-chartjs"]
 	path = packages/coreui-react-chartjs
 	url = https://github.com/coreui/coreui-react-chartjs.git
+  branch = main
+[submodule "packages/coreui-icons-react"]
+	path = packages/coreui-icons-react
+	url = https://github.com/coreui/coreui-icons-react.git
+  branch = main
