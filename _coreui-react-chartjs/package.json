@@ -1,0 +1,65 @@
+{
+  "name": "@coreui/react-chartjs",
+  "version": "2.1.2",
+  "description": "React wrapper component for Chart.js",
+  "keywords": [
+    "coreui",
+    "chart.js",
+    "charts",
+    "react chart.js",
+    "coreui-react",
+    "react charts",
+    "react chart components",
+    "react chart.js implementation",
+    "layout",
+    "component",
+    "react",
+    "react-component",
+    "react component"
+  ],
+  "homepage": "https://coreui.io/react/docs/components/chart/",
+  "bugs": {
+    "url": "https://github.com/coreui/coreui-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coreui/coreui-react.git"
+  },
+  "license": "MIT",
+  "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "scripts": {
+    "build": "rollup -c --bundleConfigAsCjs"
+  },
+  "dependencies": {
+    "@coreui/chartjs": "^3.0.0",
+    "chart.js": "3.9.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@types/lodash": "^4.14.191",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "^18.0.6",
+    "classnames": "^2.3.2",
+    "lodash": "^4.17.21",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^3.14.0",
+    "typescript": "^4.9.5"
+  },
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
+  }
+}
