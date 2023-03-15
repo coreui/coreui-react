@@ -8,7 +8,7 @@ exports[`CFormRange customize 1`] = `
     max="150"
     min="20"
     readonly=""
-    steps="2"
+    step="2"
     type="range"
     value="80"
   />
@@ -19,7 +19,7 @@ exports[`loads and displays CFormRange component 1`] = `
 <div>
   <input
     class="form-range"
-    steps="3"
+    step="3"
     type="range"
   />
 </div>

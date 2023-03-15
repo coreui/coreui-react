@@ -57,7 +57,7 @@ exports[`CToast customize 5`] = `
   <div
     aria-atomic="true"
     aria-live="assertive"
-    class="toast fade bg-warning border-0 bazinga showing"
+    class="toast fade bg-warning border-0 bazinga show"
     role="alert"
   >
     Test

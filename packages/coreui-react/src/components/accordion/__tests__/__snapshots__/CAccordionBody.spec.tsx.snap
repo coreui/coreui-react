@@ -3,7 +3,7 @@
 exports[`CAccordionBody customize 1`] = `
 <div>
   <div
-    class="accordion-collpase collapse"
+    class="accordion-collapse collapse"
   >
     <div
       class="accordion-body"
@@ -17,7 +17,7 @@ exports[`CAccordionBody customize 1`] = `
 exports[`loads and displays CAccordionBody component 1`] = `
 <div>
   <div
-    class="accordion-collpase collapse"
+    class="accordion-collapse collapse"
   >
     <div
       class="accordion-body"

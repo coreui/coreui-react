@@ -3,9 +3,8 @@
 exports[`COffcanvas customize and event on click backdrop 1`] = `
 <div>
   <div
-    class="offcanvas offcanvas-end show bazinga"
+    class="offcanvas offcanvas-end bazinga show"
     role="dialog"
-    style="visibility: visible;"
     tabindex="-1"
   >
     Test
@@ -19,9 +18,8 @@ exports[`COffcanvas customize and event on click backdrop 1`] = `
 exports[`COffcanvas customize and event on keypress 1`] = `
 <div>
   <div
-    class="offcanvas offcanvas-end show bazinga"
+    class="offcanvas offcanvas-end bazinga show"
     role="dialog"
-    style="visibility: visible;"
     tabindex="-1"
   >
     Test
@@ -37,7 +35,6 @@ exports[`COffcanvas customize one 1`] = `
   <div
     class="offcanvas offcanvas-start bazinga"
     role="dialog"
-    style="visibility: hidden;"
     tabindex="-1"
   >
     Test
@@ -45,4 +42,12 @@ exports[`COffcanvas customize one 1`] = `
 </div>
 `;
 
-exports[`loads and displays COffcanvas component 1`] = `<div />`;
+exports[`loads and displays COffcanvas component 1`] = `
+<div>
+  <div
+    class="offcanvas offcanvas-top"
+    role="dialog"
+    tabindex="-1"
+  />
+</div>
+`;

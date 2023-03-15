@@ -8,7 +8,6 @@ exports[`CTable customize 1`] = `
     <table
       class="table align-middle border-primary caption-top table-bordered table-borderless table-info table-hover table-sm table-striped bazinga"
     >
-      <tbody />
       <tbody>
         <tr>
           <td>
@@ -26,7 +25,6 @@ exports[`CTable full example test 1`] = `
   <table
     class="table caption-top"
   >
-    <tbody />
     <caption>
       List of users
     </caption>
@@ -194,8 +192,6 @@ exports[`loads and displays CTable component 1`] = `
 <div>
   <table
     class="table"
-  >
-    <tbody />
-  </table>
+  />
 </div>
 `;
