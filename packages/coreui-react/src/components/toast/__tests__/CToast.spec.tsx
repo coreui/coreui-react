@@ -32,7 +32,7 @@ test('CToast customize', async () => {
 })
 
 test('CToast click on dismiss button', async () => {
-  jest.useFakeTimers()
+  // jest.useFakeTimers()
   const onClose = jest.fn()
   const { container } = render(
     <CToast
@@ -71,6 +71,7 @@ test('CToast click on dismiss button', async () => {
     fireEvent.click(btn)
   }
   jest.runAllTimers()
+  await new Promise((r) => setTimeout(r, 1000))
   expect(onClose).toHaveBeenCalledTimes(1)
   expect(container.firstChild).toBeNull()
   jest.useRealTimers()

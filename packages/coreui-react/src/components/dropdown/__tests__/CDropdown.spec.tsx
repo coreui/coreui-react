@@ -54,7 +54,6 @@ test('CDropdown change visible prop', async () => {
 })
 
 test('CDropdown click', async () => {
-  jest.useFakeTimers()
   render(
     <CDropdown>
       <CDropdownToggle>Test</CDropdownToggle>
@@ -71,10 +70,9 @@ test('CDropdown click', async () => {
   }
   jest.runAllTimers()
   expect(screen.getByText('Test').closest('div')).toHaveClass('show')
-  fireEvent.click(document) //click outside
+  fireEvent.mouseUp(document.body) //click outside
+  await new Promise((r) => setTimeout(r, 1000))
   expect(screen.getByText('Test').closest('div')).not.toHaveClass('show')
-  jest.runAllTimers()
-  jest.useRealTimers()
 })
 
 test('CDropdown example', async () => {

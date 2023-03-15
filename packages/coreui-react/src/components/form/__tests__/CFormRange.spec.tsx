@@ -27,7 +27,7 @@ test('CFormRange customize', async () => {
   expect(container.firstChild).toHaveAttribute('max', '150')
   expect(container.firstChild).toHaveAttribute('min', '20')
   expect(container.firstChild).toHaveAttribute('readonly', '')
-  expect(container.firstChild).toHaveAttribute('steps', '2')
+  expect(container.firstChild).toHaveAttribute('step', '2')
   expect(container.firstChild).toHaveAttribute('type', 'range')
   expect(container.firstChild).toHaveAttribute('value', '80')
 })

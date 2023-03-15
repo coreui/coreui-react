@@ -15,7 +15,6 @@ test('CCollapse customize', async () => {
 })
 
 test('CCollapse use case test', async () => {
-  jest.useFakeTimers()
   const { rerender } = render(<CCollapse visible={false}>Test</CCollapse>)
   expect(screen.getByText('Test')).toHaveClass('collapse')
   expect(screen.getByText('Test')).not.toHaveClass('show')
@@ -24,7 +23,7 @@ test('CCollapse use case test', async () => {
   expect(screen.getByText('Test')).not.toHaveClass('collapse')
   expect(screen.getByText('Test')).not.toHaveClass('show')
   expect(screen.getByText('Test')).toHaveClass('collapsing')
-  jest.runAllTimers()
+  await new Promise((r) => setTimeout(r, 1000))
   expect(screen.getByText('Test')).toHaveClass('collapse')
   expect(screen.getByText('Test')).toHaveClass('show')
   expect(screen.getByText('Test')).not.toHaveClass('collapsing')
@@ -32,7 +31,7 @@ test('CCollapse use case test', async () => {
   expect(screen.getByText('Test')).not.toHaveClass('collapse')
   expect(screen.getByText('Test')).not.toHaveClass('show')
   expect(screen.getByText('Test')).toHaveClass('collapsing')
-  jest.runAllTimers()
+  await new Promise((r) => setTimeout(r, 1000))
   expect(screen.getByText('Test')).toHaveClass('collapse')
   expect(screen.getByText('Test')).not.toHaveClass('show')
   expect(screen.getByText('Test')).not.toHaveClass('collapsing')
