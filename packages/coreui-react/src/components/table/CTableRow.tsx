@@ -38,7 +38,7 @@ export const CTableRow = forwardRef<HTMLTableRowElement, CTableRowProps>(
     )
 
     return (
-      <tr className={_className ? _className : undefined} {...rest} ref={ref}>
+      <tr className={_className} {...rest} ref={ref}>
         {children}
       </tr>
     )

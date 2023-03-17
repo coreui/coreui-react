@@ -28,7 +28,7 @@ export const CTableBody = forwardRef<HTMLTableSectionElement, CTableBodyProps>(
     )
 
     return (
-      <tbody className={_className ? _className : undefined} {...rest} ref={ref}>
+      <tbody className={_className} {...rest} ref={ref}>
         {children}
       </tbody>
     )

@@ -46,7 +46,7 @@ export const CTableDataCell = forwardRef<HTMLTableCellElement, CTableDataCellPro
     const Component = rest.scope ? 'th' : 'td'
 
     return (
-      <Component className={_className ? _className : undefined} {...rest} ref={ref}>
+      <Component className={_className} {...rest} ref={ref}>
         {children}
       </Component>
     )

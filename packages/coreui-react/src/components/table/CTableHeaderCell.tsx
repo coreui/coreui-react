@@ -28,7 +28,7 @@ export const CTableHeaderCell = forwardRef<HTMLTableCellElement, CTableHeaderCel
     )
 
     return (
-      <th className={_className ? _className : undefined} {...rest} ref={ref}>
+      <th className={_className} {...rest} ref={ref}>
         {children}
       </th>
     )

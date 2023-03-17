@@ -28,7 +28,7 @@ export const CTableFoot = forwardRef<HTMLTableSectionElement, CTableFootProps>(
     )
 
     return (
-      <tfoot className={_className ? _className : undefined} {...rest} ref={ref}>
+      <tfoot className={_className} {...rest} ref={ref}>
         {children}
       </tfoot>
     )
