@@ -15,10 +15,8 @@ export interface CCardHeaderProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CCardHeader = forwardRef<HTMLDivElement, CCardHeaderProps>(
   ({ children, component: Component = 'div', className, ...rest }, ref) => {
-    const _className = classNames('card-header', className)
-
     return (
-      <Component className={_className} {...rest} ref={ref}>
+      <Component className={classNames('card-header', className)} {...rest} ref={ref}>
         {children}
       </Component>
     )

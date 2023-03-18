@@ -140,19 +140,6 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       setVisible,
     }
 
-    const _className = classNames(
-      variant === 'nav-item' ? 'nav-item dropdown' : variant,
-      {
-        show: _visible,
-      },
-      direction === 'center'
-        ? 'dropdown-center'
-        : direction === 'dropup-center'
-        ? 'dropup dropup-center'
-        : direction,
-      className,
-    )
-
     useEffect(() => {
       setVisible(visible)
     }, [visible])
@@ -166,7 +153,22 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       return variant === 'input-group' ? (
         <>{children}</>
       ) : (
-        <Component className={_className} {...rest} ref={forkedRef}>
+        <Component
+          className={classNames(
+            variant === 'nav-item' ? 'nav-item dropdown' : variant,
+            direction === 'center'
+              ? 'dropdown-center'
+              : direction === 'dropup-center'
+              ? 'dropup dropup-center'
+              : direction,
+            {
+              show: _visible,
+            },
+            className,
+          )}
+          {...rest}
+          ref={forkedRef}
+        >
           {children}
         </Component>
       )

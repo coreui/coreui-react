@@ -15,10 +15,13 @@ export interface CNavbarNavProps extends HTMLAttributes<HTMLDivElement | HTMLULi
 
 export const CNavbarNav = forwardRef<HTMLDivElement | HTMLUListElement, CNavbarNavProps>(
   ({ children, component: Component = 'ul', className, ...rest }, ref) => {
-    const _className = classNames('navbar-nav', className)
-
     return (
-      <Component className={_className} role="navigation" {...rest} ref={ref}>
+      <Component
+        className={classNames('navbar-nav', className)}
+        role="navigation"
+        {...rest}
+        ref={ref}
+      >
         {children}
       </Component>
     )

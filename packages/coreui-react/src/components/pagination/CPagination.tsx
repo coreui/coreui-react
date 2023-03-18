@@ -19,17 +19,20 @@ export interface CPaginationProps extends HTMLAttributes<HTMLUListElement> {
 
 export const CPagination = forwardRef<HTMLUListElement, CPaginationProps>(
   ({ children, align, className, size, ...rest }, ref) => {
-    const _className = classNames(
-      'pagination',
-      {
-        [`justify-content-${align}`]: align,
-        [`pagination-${size}`]: size,
-      },
-      className,
-    )
     return (
       <nav ref={ref} {...rest}>
-        <ul className={_className}>{children}</ul>
+        <ul
+          className={classNames(
+            'pagination',
+            {
+              [`justify-content-${align}`]: align,
+              [`pagination-${size}`]: size,
+            },
+            className,
+          )}
+        >
+          {children}
+        </ul>
       </nav>
     )
   },

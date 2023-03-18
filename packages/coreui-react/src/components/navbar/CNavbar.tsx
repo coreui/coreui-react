@@ -53,17 +53,6 @@ export const CNavbar = forwardRef<HTMLDivElement, CNavbarProps>(
     },
     ref,
   ) => {
-    const _className = classNames(
-      'navbar',
-      {
-        [`bg-${color}`]: color,
-        [`navbar-${colorScheme}`]: colorScheme,
-        [typeof expand === 'boolean' ? 'navbar-expand' : `navbar-expand-${expand}`]: expand,
-      },
-      placement,
-      className,
-    )
-
     let content
     if (container) {
       content = (
@@ -74,7 +63,20 @@ export const CNavbar = forwardRef<HTMLDivElement, CNavbarProps>(
     }
 
     return (
-      <Component className={_className} {...rest} ref={ref}>
+      <Component
+        className={classNames(
+          'navbar',
+          {
+            [`bg-${color}`]: color,
+            [`navbar-${colorScheme}`]: colorScheme,
+            [typeof expand === 'boolean' ? 'navbar-expand' : `navbar-expand-${expand}`]: expand,
+          },
+          placement,
+          className,
+        )}
+        {...rest}
+        ref={ref}
+      >
         {content}
       </Component>
     )

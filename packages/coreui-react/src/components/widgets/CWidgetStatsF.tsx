@@ -1,6 +1,5 @@
 import React, { forwardRef, HTMLAttributes, ReactNode } from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 
 import { CCard, CCardBody, CCardFooter } from '../card'
 
@@ -42,10 +41,8 @@ export interface CWidgetStatsFProps extends Omit<HTMLAttributes<HTMLDivElement>,
 
 export const CWidgetStatsF = forwardRef<HTMLDivElement, CWidgetStatsFProps>(
   ({ className, color, footer, icon, padding = true, title, value, ...rest }, ref) => {
-    const _className = classNames(className)
-
     return (
-      <CCard className={_className} {...rest} ref={ref}>
+      <CCard className={className} {...rest} ref={ref}>
         <CCardBody className={`d-flex align-items-center ${padding === false && 'p-0'}`}>
           <div className={`me-3 text-white bg-${color} ${padding ? 'p-3' : 'p-4'}`}>{icon}</div>
           <div>

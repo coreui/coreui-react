@@ -37,27 +37,30 @@ export interface CFormSwitchProps extends Omit<InputHTMLAttributes<HTMLInputElem
 
 export const CFormSwitch = forwardRef<HTMLInputElement, CFormSwitchProps>(
   ({ className, id, invalid, label, size, type = 'checkbox', valid, ...rest }, ref) => {
-    const _className = classNames(
-      'form-check form-switch',
-      {
-        [`form-switch-${size}`]: size,
-        'is-invalid': invalid,
-        'is-valid': valid,
-      },
-      className,
-    )
-
-    const inputClassName = classNames('form-check-input', {
-      'is-invalid': invalid,
-      'is-valid': valid,
-    })
-    const labelClassName = classNames('form-check-label')
-
     return (
-      <div className={_className}>
-        <input type={type} className={inputClassName} id={id} {...rest} ref={ref} />
+      <div
+        className={classNames(
+          'form-check form-switch',
+          {
+            [`form-switch-${size}`]: size,
+            'is-invalid': invalid,
+            'is-valid': valid,
+          },
+          className,
+        )}
+      >
+        <input
+          type={type}
+          className={classNames('form-check-input', {
+            'is-invalid': invalid,
+            'is-valid': valid,
+          })}
+          id={id}
+          {...rest}
+          ref={ref}
+        />
         {label && (
-          <CFormLabel customClassName={labelClassName} {...(id && { htmlFor: id })}>
+          <CFormLabel customClassName="form-check-label" {...(id && { htmlFor: id })}>
             {label}
           </CFormLabel>
         )}

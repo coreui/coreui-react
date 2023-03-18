@@ -11,9 +11,8 @@ export interface CSidebarHeaderProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CSidebarHeader = forwardRef<HTMLDivElement, CSidebarHeaderProps>(
   ({ children, className, ...rest }, ref) => {
-    const _className = classNames('sidebar-header', className)
     return (
-      <div className={_className} ref={ref} {...rest}>
+      <div className={classNames('sidebar-header', className)} ref={ref} {...rest}>
         {children}
       </div>
     )

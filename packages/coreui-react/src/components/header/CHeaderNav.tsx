@@ -15,10 +15,13 @@ export interface CHeaderNavProps extends HTMLAttributes<HTMLDivElement | HTMLULi
 
 export const CHeaderNav = forwardRef<HTMLDivElement | HTMLUListElement, CHeaderNavProps>(
   ({ children, component: Component = 'ul', className, ...rest }, ref) => {
-    const _className = classNames('header-nav', className)
-
     return (
-      <Component className={_className} role="navigation" {...rest} ref={ref}>
+      <Component
+        className={classNames('header-nav', className)}
+        role="navigation"
+        {...rest}
+        ref={ref}
+      >
         {children}
       </Component>
     )

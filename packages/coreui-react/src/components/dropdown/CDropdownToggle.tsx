@@ -42,14 +42,6 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
   ...rest
 }) => {
   const { dropdownToggleRef, popper, variant, visible, setVisible } = useContext(CDropdownContext)
-  const _className = classNames(
-    {
-      'dropdown-toggle': caret,
-      'dropdown-toggle-split': split,
-      'nav-link': variant === 'nav-item',
-    },
-    className,
-  )
 
   const triggers = {
     ...((trigger === 'click' || trigger.includes('click')) && {
@@ -65,7 +57,14 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
   }
 
   const togglerProps = {
-    className: _className,
+    className: classNames(
+      {
+        'dropdown-toggle': caret,
+        'dropdown-toggle-split': split,
+        'nav-link': variant === 'nav-item',
+      },
+      className,
+    ),
     'aria-expanded': visible,
     ...(!rest.disabled && { ...triggers }),
     ...triggers,

@@ -21,19 +21,20 @@ export interface CPaginationItemProps extends HTMLAttributes<HTMLAnchorElement> 
 
 export const CPaginationItem = forwardRef<HTMLAnchorElement, CPaginationItemProps>(
   ({ children, className, component, ...rest }, ref) => {
-    const _className = classNames(
-      'page-item',
-      {
-        active: rest.active,
-        disabled: rest.disabled,
-      },
-      className,
-    )
-
     const Component = component ? component : rest.active ? 'span' : 'a'
 
     return (
-      <li className={_className} {...(rest.active && { 'aria-current': 'page' })}>
+      <li
+        className={classNames(
+          'page-item',
+          {
+            active: rest.active,
+            disabled: rest.disabled,
+          },
+          className,
+        )}
+        {...(rest.active && { 'aria-current': 'page' })}
+      >
         {Component === 'a' ? (
           <CLink className="page-link" component={Component} {...rest} ref={ref}>
             {children}

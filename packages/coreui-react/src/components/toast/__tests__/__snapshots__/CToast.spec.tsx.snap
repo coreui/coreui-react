@@ -5,72 +5,7 @@ exports[`CToast customize 1`] = `
   <div
     aria-atomic="true"
     aria-live="assertive"
-    class="toast fade bg-warning border-0 bazinga showing"
-    role="alert"
-  >
-    Test
-  </div>
-</div>
-`;
-
-exports[`CToast customize 2`] = `
-<div>
-  <div
-    aria-atomic="true"
-    aria-live="assertive"
-    class="toast fade bg-warning border-0 bazinga showing"
-    role="alert"
-  >
-    Test
-  </div>
-</div>
-`;
-
-exports[`CToast customize 3`] = `
-<div>
-  <div
-    aria-atomic="true"
-    aria-live="assertive"
-    class="toast fade bg-warning border-0 bazinga showing"
-    role="alert"
-  >
-    Test
-  </div>
-</div>
-`;
-
-exports[`CToast customize 4`] = `
-<div>
-  <div
-    aria-atomic="true"
-    aria-live="assertive"
-    class="toast fade bg-warning border-0 bazinga showing"
-    role="alert"
-  >
-    Test
-  </div>
-</div>
-`;
-
-exports[`CToast customize 5`] = `
-<div>
-  <div
-    aria-atomic="true"
-    aria-live="assertive"
-    class="toast fade bg-warning border-0 bazinga showing"
-    role="alert"
-  >
-    Test
-  </div>
-</div>
-`;
-
-exports[`CToast customize 6`] = `
-<div>
-  <div
-    aria-atomic="true"
-    aria-live="assertive"
-    class="toast fade bg-warning border-0 bazinga show"
+    class="toast fade bg-warning border-0 show showing bazinga"
     role="alert"
   >
     Test

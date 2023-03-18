@@ -156,23 +156,25 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
         handleHide()
     }
 
-    const _className = classNames(
-      'sidebar',
-      {
-        'sidebar-narrow': narrow,
-        'sidebar-overlaid': overlaid,
-        [`sidebar-${position}`]: position,
-        [`sidebar-${size}`]: size,
-        'sidebar-narrow-unfoldable': unfoldable,
-        show: _visible === true && mobile,
-        hide: _visible === false && !mobile,
-      },
-      className,
-    )
-
     return (
       <>
-        <div className={_className} {...rest} ref={forkedRef}>
+        <div
+          className={classNames(
+            'sidebar',
+            {
+              'sidebar-narrow': narrow,
+              'sidebar-overlaid': overlaid,
+              [`sidebar-${position}`]: position,
+              [`sidebar-${size}`]: size,
+              'sidebar-narrow-unfoldable': unfoldable,
+              show: _visible === true && mobile,
+              hide: _visible === false && !mobile,
+            },
+            className,
+          )}
+          {...rest}
+          ref={forkedRef}
+        >
           {children}
         </div>
         {typeof window !== 'undefined' &&

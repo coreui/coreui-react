@@ -94,24 +94,6 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
       }
     }, [_visible])
 
-    const getTransitionClass = (state: string) => {
-      return state === 'entering'
-        ? 'showing'
-        : state === 'entered'
-        ? 'show'
-        : state === 'exiting'
-        ? 'show hiding'
-        : ''
-    }
-
-    const _className = classNames(
-      {
-        [`offcanvas${typeof responsive !== 'boolean' ? '-' + responsive : ''}`]: responsive,
-        [`offcanvas-${placement}`]: placement,
-      },
-      className,
-    )
-
     const handleDismiss = () => {
       setVisible(false)
     }
@@ -135,7 +117,20 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
       return (
         <>
           <div
-            className={classNames(_className, getTransitionClass(state))}
+            className={classNames(
+              {
+                [`offcanvas${typeof responsive !== 'boolean' ? '-' + responsive : ''}`]: responsive,
+                [`offcanvas-${placement}`]: placement,
+              },
+              state === 'entering'
+                ? 'showing'
+                : state === 'entered'
+                ? 'show'
+                : state === 'exiting'
+                ? 'show hiding'
+                : '',
+              className,
+            )}
             role="dialog"
             tabIndex={-1}
             onKeyDown={handleKeyDown}

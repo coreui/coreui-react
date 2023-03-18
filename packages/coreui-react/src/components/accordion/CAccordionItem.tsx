@@ -45,10 +45,8 @@ export const CAccordionItem = forwardRef<HTMLDivElement, CAccordionItemProps>(
       setVisible(Boolean(_activeItemKey === _itemKey.current))
     }, [_activeItemKey])
 
-    const _className = classNames('accordion-item', className)
-
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div className={classNames('accordion-item', className)} {...rest} ref={ref}>
         <CAccordionItemContext.Provider value={{ setVisible, visible }}>
           {children}
         </CAccordionItemContext.Provider>

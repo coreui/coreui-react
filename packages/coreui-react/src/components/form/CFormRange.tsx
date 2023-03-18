@@ -48,11 +48,10 @@ export interface CFormRangeProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export const CFormRange = forwardRef<HTMLInputElement, CFormRangeProps>(
   ({ className, label, ...rest }, ref) => {
-    const _className = classNames('form-range', className)
     return (
       <>
         {label && <CFormLabel htmlFor={rest.id}>{label}</CFormLabel>}
-        <input type="range" className={_className} {...rest} ref={ref} />
+        <input type="range" className={classNames('form-range', className)} {...rest} ref={ref} />
       </>
     )
   },

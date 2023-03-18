@@ -21,10 +21,9 @@ export interface CNavbarBrandProps extends HTMLAttributes<HTMLAnchorElement | HT
 export const CNavbarBrand = forwardRef<HTMLAnchorElement | HTMLSpanElement, CNavbarBrandProps>(
   ({ children, component, className, ...rest }, ref) => {
     const Component = component ? component : rest.href ? 'a' : 'span'
-    const _className = classNames('navbar-brand', className)
 
     return (
-      <Component className={_className} {...rest} ref={ref}>
+      <Component className={classNames('navbar-brand', className)} {...rest} ref={ref}>
         {children}
       </Component>
     )

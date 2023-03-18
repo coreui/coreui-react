@@ -42,7 +42,6 @@ export const CNavLink = forwardRef<
   const forkedRef = useForkedRef(ref, navLinkRef)
 
   const { setVisibleGroup } = useContext(CNavContext)
-  const _className = classNames('nav-link', className)
 
   useEffect(() => {
     rest.active = navLinkRef.current?.classList.contains('active')
@@ -50,7 +49,7 @@ export const CNavLink = forwardRef<
   }, [rest.active, className])
 
   return (
-    <CLink className={_className} {...rest} ref={forkedRef}>
+    <CLink className={classNames('nav-link', className)} {...rest} ref={forkedRef}>
       {children}
     </CLink>
   )

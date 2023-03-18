@@ -153,28 +153,30 @@ export const CTable = forwardRef<HTMLTableElement, CTableProps>(
     },
     ref,
   ) => {
-    const _className = classNames(
-      'table',
-      {
-        [`align-${align}`]: align,
-        [`border-${borderColor}`]: borderColor,
-        [`caption-top`]: captionTop || caption === 'top',
-        'table-bordered': bordered,
-        'table-borderless': borderless,
-        [`table-${color}`]: color,
-        'table-hover': hover,
-        'table-sm': small,
-        'table-striped': striped,
-        'table-striped-columns': stripedColumns,
-      },
-      className,
-    )
-
     const columnNames = useMemo(() => getColumnNames(columns, items), [columns, items])
 
     return (
       <CTableResponsiveWrapper responsive={responsive}>
-        <table className={_className} {...rest} ref={ref}>
+        <table
+          className={classNames(
+            'table',
+            {
+              [`align-${align}`]: align,
+              [`border-${borderColor}`]: borderColor,
+              [`caption-top`]: captionTop || caption === 'top',
+              'table-bordered': bordered,
+              'table-borderless': borderless,
+              [`table-${color}`]: color,
+              'table-hover': hover,
+              'table-sm': small,
+              'table-striped': striped,
+              'table-striped-columns': stripedColumns,
+            },
+            className,
+          )}
+          {...rest}
+          ref={ref}
+        >
           {((caption && caption !== 'top') || captionTop) && (
             <CTableCaption>{caption || captionTop}</CTableCaption>
           )}

@@ -80,16 +80,6 @@ export const CTooltip: FC<CTooltipProps> = ({
     setVisible(visible)
   }, [visible])
 
-  const getTransitionClass = (state: string) => {
-    return state === 'entering'
-      ? 'fade'
-      : state === 'entered'
-      ? 'fade show'
-      : state === 'exiting'
-      ? 'fade'
-      : 'fade'
-  }
-
   return (
     <>
       {React.cloneElement(children as React.ReactElement<any>, {
@@ -120,28 +110,31 @@ export const CTooltip: FC<CTooltipProps> = ({
             }}
             unmountOnExit
           >
-            {(state) => {
-              const transitionClass = getTransitionClass(state)
-              return (
-                <div
-                  className={classNames(
-                    `tooltip bs-tooltip-${
-                      placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement
-                    }`,
-                    className,
-                    transitionClass,
-                  )}
-                  ref={setPopperElement}
-                  role="tooltip"
-                  style={styles.popper}
-                  {...attributes.popper}
-                  {...rest}
-                >
-                  <div className="tooltip-arrow" style={styles.arrow} ref={setArrowElement}></div>
-                  <div className="tooltip-inner">{content}</div>
-                </div>
-              )
-            }}
+            {(state) => (
+              <div
+                className={classNames(
+                  `tooltip bs-tooltip-${
+                    placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement
+                  }`,
+                  state === 'entering'
+                    ? 'fade'
+                    : state === 'entered'
+                    ? 'fade show'
+                    : state === 'exiting'
+                    ? 'fade'
+                    : 'fade',
+                  className,
+                )}
+                ref={setPopperElement}
+                role="tooltip"
+                style={styles.popper}
+                {...attributes.popper}
+                {...rest}
+              >
+                <div className="tooltip-arrow" style={styles.arrow} ref={setArrowElement}></div>
+                <div className="tooltip-inner">{content}</div>
+              </div>
+            )}
           </Transition>,
           document.body,
         )}

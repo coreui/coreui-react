@@ -46,20 +46,23 @@ export interface CAvatarProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CAvatar = forwardRef<HTMLDivElement, CAvatarProps>(
   ({ children, className, color, shape, size, src, status, textColor, ...rest }, ref) => {
-    const _className = classNames(
-      'avatar',
-      {
-        [`bg-${color}`]: color,
-        [`avatar-${size}`]: size,
-        [`text-${textColor}`]: textColor,
-      },
-      shape,
-      className,
-    )
     const statusClassName = status && classNames('avatar-status', `bg-${status}`)
 
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div
+        className={classNames(
+          'avatar',
+          {
+            [`bg-${color}`]: color,
+            [`avatar-${size}`]: size,
+            [`text-${textColor}`]: textColor,
+          },
+          shape,
+          className,
+        )}
+        {...rest}
+        ref={ref}
+      >
         {src ? <img src={src} className="avatar-img" /> : children}
         {status && <span className={statusClassName}></span>}
       </div>

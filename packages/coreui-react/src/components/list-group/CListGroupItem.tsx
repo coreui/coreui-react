@@ -37,17 +37,6 @@ export const CListGroupItem = forwardRef<
   HTMLLIElement | HTMLAnchorElement | HTMLButtonElement,
   CListGroupItemProps
 >(({ children, active, className, disabled, color, component = 'li', ...rest }, ref) => {
-  const _className = classNames(
-    'list-group-item',
-    {
-      [`list-group-item-${color}`]: color,
-      'list-group-item-action': component === 'a' || component === 'button',
-      active,
-      disabled,
-    },
-    className,
-  )
-
   const Component = component === 'a' || component === 'button' ? CLink : component
 
   rest = {
@@ -63,7 +52,19 @@ export const CListGroupItem = forwardRef<
   }
 
   return (
-    <Component className={_className} {...rest}>
+    <Component
+      className={classNames(
+        'list-group-item',
+        {
+          [`list-group-item-${color}`]: color,
+          'list-group-item-action': component === 'a' || component === 'button',
+          active,
+          disabled,
+        },
+        className,
+      )}
+      {...rest}
+    >
       {children}
     </Component>
   )

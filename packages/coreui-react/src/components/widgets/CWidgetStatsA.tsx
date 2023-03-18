@@ -38,13 +38,15 @@ export interface CWidgetStatsAProps extends Omit<HTMLAttributes<HTMLDivElement>,
 
 export const CWidgetStatsA = forwardRef<HTMLDivElement, CWidgetStatsAProps>(
   ({ action, chart, className, color, title, value, ...rest }, ref) => {
-    const _className = classNames(
-      { [`bg-${color}`]: color, 'text-high-emphasis-inverse': color },
-      className,
-    )
-
     return (
-      <CCard className={_className} {...rest} ref={ref}>
+      <CCard
+        className={classNames(
+          { [`bg-${color}`]: color, 'text-high-emphasis-inverse': color },
+          className,
+        )}
+        {...rest}
+        ref={ref}
+      >
         <CCardBody className="pb-0 d-flex justify-content-between align-items-start">
           <div>
             {value && <div className="fs-4 fw-semibold">{value}</div>}

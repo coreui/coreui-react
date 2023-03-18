@@ -56,24 +56,26 @@ export const CBadge = forwardRef<HTMLDivElement | HTMLSpanElement, CBadgeProps>(
     },
     ref,
   ) => {
-    const _className = classNames(
-      'badge',
-      {
-        [`bg-${color}`]: color,
-        'position-absolute translate-middle': position,
-        'top-0': position?.includes('top'),
-        'top-100': position?.includes('bottom'),
-        'start-100': position?.includes('end'),
-        'start-0': position?.includes('start'),
-        [`badge-${size}`]: size,
-        [`text-${textColor}`]: textColor,
-      },
-      shape,
-      className,
-    )
-
     return (
-      <Component className={_className} {...rest} ref={ref}>
+      <Component
+        className={classNames(
+          'badge',
+          {
+            [`bg-${color}`]: color,
+            'position-absolute translate-middle': position,
+            'top-0': position?.includes('top'),
+            'top-100': position?.includes('bottom'),
+            'start-100': position?.includes('end'),
+            'start-0': position?.includes('start'),
+            [`badge-${size}`]: size,
+            [`text-${textColor}`]: textColor,
+          },
+          shape,
+          className,
+        )}
+        {...rest}
+        ref={ref}
+      >
         {children}
       </Component>
     )

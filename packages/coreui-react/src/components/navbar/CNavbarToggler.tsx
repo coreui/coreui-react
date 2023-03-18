@@ -11,10 +11,8 @@ export interface CNavbarTogglerProps extends HTMLAttributes<HTMLButtonElement> {
 
 export const CNavbarToggler = forwardRef<HTMLButtonElement, CNavbarTogglerProps>(
   ({ children, className, ...rest }, ref) => {
-    const _className = classNames('navbar-toggler', className)
-
     return (
-      <button type="button" className={_className} {...rest} ref={ref}>
+      <button type="button" className={classNames('navbar-toggler', className)} {...rest} ref={ref}>
         {children ? children : <span className="navbar-toggler-icon"></span>}
       </button>
     )

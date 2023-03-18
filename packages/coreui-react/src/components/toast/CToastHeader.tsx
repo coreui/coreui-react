@@ -17,9 +17,8 @@ export interface CToastHeaderProps extends Omit<HTMLAttributes<HTMLDivElement>, 
 
 export const CToastHeader = forwardRef<HTMLDivElement, CToastHeaderProps>(
   ({ children, className, closeButton, ...rest }, ref) => {
-    const _className = classNames('toast-header', className)
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div className={classNames('toast-header', className)} {...rest} ref={ref}>
         {children}
         {closeButton && <CToastClose />}
       </div>

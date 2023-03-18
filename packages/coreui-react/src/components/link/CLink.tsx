@@ -27,12 +27,10 @@ export interface CLinkProps extends AllHTMLAttributes<HTMLButtonElement | HTMLAn
 
 export const CLink = forwardRef<HTMLButtonElement | HTMLAnchorElement, CLinkProps>(
   ({ children, active, className, component: Component = 'a', disabled, ...rest }, ref) => {
-    // TODO: remove duplicated classes ex. `active active` in `<CListGroupItem>`
-    const _className = classNames(className, { active, disabled })
-
     return (
       <Component
-        className={_className}
+        // TODO: remove duplicated classes ex. `active active` in `<CListGroupItem>`
+        className={classNames(className, { active, disabled })}
         {...(active && { 'aria-current': 'page' })}
         {...(Component === 'a' && disabled && { 'aria-disabled': true, tabIndex: -1 })}
         {...((Component === 'a' || Component === 'button') && {

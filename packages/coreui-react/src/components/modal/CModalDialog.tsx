@@ -27,21 +27,23 @@ export interface CModalDialogProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CModalDialog = forwardRef<HTMLDivElement, CModalDialogProps>(
   ({ children, alignment, className, fullscreen, scrollable, size, ...rest }, ref) => {
-    const _className = classNames(
-      'modal-dialog',
-      {
-        'modal-dialog-centered': alignment === 'center',
-        [typeof fullscreen === 'boolean'
-          ? 'modal-fullscreen'
-          : `modal-fullscreen-${fullscreen}-down`]: fullscreen,
-        'modal-dialog-scrollable': scrollable,
-        [`modal-${size}`]: size,
-      },
-      className,
-    )
-
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div
+        className={classNames(
+          'modal-dialog',
+          {
+            'modal-dialog-centered': alignment === 'center',
+            [typeof fullscreen === 'boolean'
+              ? 'modal-fullscreen'
+              : `modal-fullscreen-${fullscreen}-down`]: fullscreen,
+            'modal-dialog-scrollable': scrollable,
+            [`modal-${size}`]: size,
+          },
+          className,
+        )}
+        {...rest}
+        ref={ref}
+      >
         {children}
       </div>
     )

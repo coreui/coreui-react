@@ -24,17 +24,20 @@ export interface CNavProps
 
 export const CNav = forwardRef<HTMLDivElement | HTMLUListElement | HTMLOListElement, CNavProps>(
   ({ children, className, component: Component = 'ul', layout, variant, ...rest }, ref) => {
-    const _className = classNames(
-      'nav',
-      {
-        [`nav-${layout}`]: layout,
-        [`nav-${variant}`]: variant,
-      },
-      className,
-    )
-
     return (
-      <Component className={_className} role="navigation" {...rest} ref={ref}>
+      <Component
+        className={classNames(
+          'nav',
+          {
+            [`nav-${layout}`]: layout,
+            [`nav-${variant}`]: variant,
+          },
+          className,
+        )}
+        role="navigation"
+        {...rest}
+        ref={ref}
+      >
         {children}
       </Component>
     )

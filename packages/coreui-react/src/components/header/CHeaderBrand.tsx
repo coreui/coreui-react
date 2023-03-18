@@ -16,10 +16,8 @@ export interface CHeaderBrandProps
 
 export const CHeaderBrand = forwardRef<HTMLAnchorElement | HTMLSpanElement, CHeaderBrandProps>(
   ({ children, component: Component = 'a', className, ...rest }, ref) => {
-    const _className = classNames('header-brand', className)
-
     return (
-      <Component className={_className} {...rest} ref={ref}>
+      <Component className={classNames('header-brand', className)} {...rest} ref={ref}>
         {children}
       </Component>
     )

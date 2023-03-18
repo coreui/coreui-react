@@ -29,17 +29,18 @@ export interface CListGroupProps extends HTMLAttributes<HTMLDivElement | HTMLULi
 
 export const CListGroup = forwardRef<HTMLDivElement | HTMLUListElement, CListGroupProps>(
   ({ children, className, component: Component = 'ul', flush, layout }, ref) => {
-    const _className = classNames(
-      'list-group',
-      {
-        'list-group-flush': flush,
-        [`list-group-${layout}`]: layout,
-      },
-      className,
-    )
-
     return (
-      <Component className={_className} ref={ref}>
+      <Component
+        className={classNames(
+          'list-group',
+          {
+            'list-group-flush': flush,
+            [`list-group-${layout}`]: layout,
+          },
+          className,
+        )}
+        ref={ref}
+      >
         {children}
       </Component>
     )

@@ -85,16 +85,6 @@ export const CPopover: FC<CPopoverProps> = ({
     setVisible(visible)
   }, [visible])
 
-  const getTransitionClass = (state: string) => {
-    return state === 'entering'
-      ? 'fade'
-      : state === 'entered'
-      ? 'fade show'
-      : state === 'exiting'
-      ? 'fade'
-      : 'fade'
-  }
-
   return (
     <>
       {React.cloneElement(children as React.ReactElement<any>, {
@@ -125,29 +115,32 @@ export const CPopover: FC<CPopoverProps> = ({
             }}
             unmountOnExit
           >
-            {(state) => {
-              const transitionClass = getTransitionClass(state)
-              return (
-                <div
-                  className={classNames(
-                    `popover bs-popover-${
-                      placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement
-                    }`,
-                    className,
-                    transitionClass,
-                  )}
-                  ref={setPopperElement}
-                  role="tooltip"
-                  style={styles.popper}
-                  {...attributes.popper}
-                  {...rest}
-                >
-                  <div className="popover-arrow" style={styles.arrow} ref={setArrowElement}></div>
-                  <div className="popover-header">{title}</div>
-                  <div className="popover-body">{content}</div>
-                </div>
-              )
-            }}
+            {(state) => (
+              <div
+                className={classNames(
+                  `popover bs-popover-${
+                    placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement
+                  }`,
+                  state === 'entering'
+                    ? 'fade'
+                    : state === 'entered'
+                    ? 'fade show'
+                    : state === 'exiting'
+                    ? 'fade'
+                    : 'fade',
+                  className,
+                )}
+                ref={setPopperElement}
+                role="tooltip"
+                style={styles.popper}
+                {...attributes.popper}
+                {...rest}
+              >
+                <div className="popover-arrow" style={styles.arrow} ref={setArrowElement}></div>
+                <div className="popover-header">{title}</div>
+                <div className="popover-body">{content}</div>
+              </div>
+            )}
           </Transition>,
           document.body,
         )}

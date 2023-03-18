@@ -53,13 +53,15 @@ export const CContainer = forwardRef<HTMLDivElement, CContainerProps>(
       breakpoint && repsonsiveClassNames.push(`container-${bp}`)
     })
 
-    const _className = classNames(
-      repsonsiveClassNames.length ? repsonsiveClassNames : 'container',
-      className,
-    )
-
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div
+        className={classNames(
+          repsonsiveClassNames.length ? repsonsiveClassNames : 'container',
+          className,
+        )}
+        {...rest}
+        ref={ref}
+      >
         {children}
       </div>
     )

@@ -11,10 +11,8 @@ export interface CModalFooterProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CModalFooter = forwardRef<HTMLDivElement, CModalFooterProps>(
   ({ children, className, ...rest }, ref) => {
-    const _className = classNames('modal-footer', className)
-
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div className={classNames('modal-footer', className)} {...rest} ref={ref}>
         {children}
       </div>
     )

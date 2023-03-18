@@ -17,10 +17,13 @@ export interface CDropdownItemProps extends CLinkProps {
 
 export const CDropdownItem = forwardRef<HTMLButtonElement | HTMLAnchorElement, CDropdownItemProps>(
   ({ children, className, component = 'a', ...rest }, ref) => {
-    const _className = classNames('dropdown-item', className)
-
     return (
-      <CLink className={_className} component={component} {...rest} ref={ref}>
+      <CLink
+        className={classNames('dropdown-item', className)}
+        component={component}
+        {...rest}
+        ref={ref}
+      >
         {children}
       </CLink>
     )

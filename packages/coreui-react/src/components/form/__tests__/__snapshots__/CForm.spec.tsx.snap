@@ -12,9 +12,7 @@ exports[`CForm customize 1`] = `
 
 exports[`CForm example 1`] = `
 <div>
-  <form
-    class=""
-  >
+  <form>
     <label
       class="form-label"
     >
@@ -55,9 +53,7 @@ exports[`CForm example 1`] = `
 
 exports[`loads and displays CForm component 1`] = `
 <div>
-  <form
-    class=""
-  >
+  <form>
     Test
   </form>
 </div>

@@ -6,17 +6,15 @@ import { CNavLink, CNavLinkProps } from './CNavLink'
 
 export const CNavItem = forwardRef<HTMLLIElement, CNavLinkProps>(
   ({ children, className, ...rest }, ref) => {
-    const _className = classNames('nav-item', className)
-    if (rest.href || rest.to) {
-      children = (
-        <CNavLink className={className} {...rest}>
-          {children}
-        </CNavLink>
-      )
-    }
     return (
-      <li className={_className} ref={ref}>
-        {children}
+      <li className={classNames('nav-item', className)} ref={ref}>
+        {rest.href || rest.to ? (
+          <CNavLink className={className} {...rest}>
+            {children}
+          </CNavLink>
+        ) : (
+          children
+        )}
       </li>
     )
   },

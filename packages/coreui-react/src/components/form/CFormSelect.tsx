@@ -66,15 +66,6 @@ export const CFormSelect = forwardRef<HTMLSelectElement, CFormSelectProps>(
     },
     ref,
   ) => {
-    const _className = classNames(
-      'form-select',
-      {
-        [`form-select-${size}`]: size,
-        'is-invalid': invalid,
-        'is-valid': valid,
-      },
-      className,
-    )
     return (
       <CFormControlWrapper
         describedby={rest['aria-describedby']}
@@ -90,7 +81,21 @@ export const CFormSelect = forwardRef<HTMLSelectElement, CFormSelectProps>(
         tooltipFeedback={tooltipFeedback}
         valid={valid}
       >
-        <select id={id} className={_className} size={htmlSize} {...rest} ref={ref}>
+        <select
+          id={id}
+          className={classNames(
+            'form-select',
+            {
+              [`form-select-${size}`]: size,
+              'is-invalid': invalid,
+              'is-valid': valid,
+            },
+            className,
+          )}
+          size={htmlSize}
+          {...rest}
+          ref={ref}
+        >
           {options
             ? options.map((option, index) => {
                 return (

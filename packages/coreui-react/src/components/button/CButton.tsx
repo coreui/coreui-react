@@ -74,19 +74,17 @@ export const CButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, CButton
     },
     ref,
   ) => {
-    const _className = classNames(
-      'btn',
-      variant ? `btn-${variant}-${color}` : `btn-${color}`,
-      { [`btn-${size}`]: size },
-      shape,
-      className,
-    )
-
     return (
       <CLink
         component={rest.href ? 'a' : component}
         type={type}
-        className={_className}
+        className={classNames(
+          'btn',
+          variant ? `btn-${variant}-${color}` : `btn-${color}`,
+          { [`btn-${size}`]: size },
+          shape,
+          className,
+        )}
         {...rest}
         ref={ref}
       >

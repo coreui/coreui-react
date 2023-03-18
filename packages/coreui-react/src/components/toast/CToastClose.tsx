@@ -1,11 +1,13 @@
 import React, { ElementType, forwardRef, useContext } from 'react'
 import PropTypes from 'prop-types'
-import { CToastContext } from './CToast'
 
 import { CButtonProps } from '../button/CButton'
 import { CCloseButton, CCloseButtonProps } from '../close-button/CCloseButton'
 
+import { CToastContext } from './CToast'
+
 type CombineButtonProps = CCloseButtonProps & CButtonProps
+
 export interface CToastCloseProps extends CombineButtonProps {
   /**
    * Component used for the root node. Either a string to use a HTML element or a component.

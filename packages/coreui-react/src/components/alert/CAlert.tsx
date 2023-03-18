@@ -60,19 +60,6 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
       setVisible(visible)
     }, [visible])
 
-    const _className = classNames(
-      'alert',
-      variant === 'solid' ? `bg-${color} text-white` : `alert-${color}`,
-      {
-        'alert-dismissible fade': dismissible,
-      },
-      className,
-    )
-
-    const getTransitionClass = (state: string) => {
-      return state === 'entered' && 'show'
-    }
-
     return (
       <Transition
         in={_visible}
@@ -82,20 +69,25 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
         timeout={150}
         unmountOnExit
       >
-        {(state) => {
-          const transitionClass = getTransitionClass(state)
-          return (
-            <div
-              className={classNames(_className, transitionClass)}
-              role="alert"
-              {...rest}
-              ref={forkedRef}
-            >
-              {children}
-              {dismissible && <CCloseButton onClick={() => setVisible(false)} />}
-            </div>
-          )
-        }}
+        {(state) => (
+          <div
+            className={classNames(
+              'alert',
+              variant === 'solid' ? `bg-${color} text-white` : `alert-${color}`,
+              {
+                'alert-dismissible fade': dismissible,
+                show: state === 'entered',
+              },
+              className,
+            )}
+            role="alert"
+            {...rest}
+            ref={forkedRef}
+          >
+            {children}
+            {dismissible && <CCloseButton onClick={() => setVisible(false)} />}
+          </div>
+        )}
       </Transition>
     )
   },

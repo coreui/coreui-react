@@ -27,17 +27,24 @@ export interface CImageProps extends ImgHTMLAttributes<HTMLOrSVGImageElement> {
 
 export const CImage = forwardRef<HTMLImageElement, CImageProps>(
   ({ align, className, fluid, rounded, thumbnail, ...rest }, ref) => {
-    const _className = classNames(
-      {
-        [`float-${align}`]: align && (align === 'start' || align === 'end'),
-        'd-block mx-auto': align && align === 'center',
-        'img-fluid': fluid,
-        rounded: rounded,
-        'img-thumbnail': thumbnail,
-      },
-      className,
+    return (
+      <img
+        className={
+          classNames(
+            {
+              [`float-${align}`]: align && (align === 'start' || align === 'end'),
+              'd-block mx-auto': align && align === 'center',
+              'img-fluid': fluid,
+              rounded: rounded,
+              'img-thumbnail': thumbnail,
+            },
+            className,
+          ) || undefined
+        }
+        {...rest}
+        ref={ref}
+      />
     )
-    return <img className={_className} {...rest} ref={ref} />
   },
 )
 

@@ -18,8 +18,6 @@ exports[`CImage customize two 1`] = `
 
 exports[`loads and displays CImage component 1`] = `
 <div>
-  <img
-    class=""
-  />
+  <img />
 </div>
 `;

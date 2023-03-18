@@ -11,9 +11,7 @@ export interface CCarouselCaptionProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CCarouselCaption = forwardRef<HTMLDivElement, CCarouselCaptionProps>(
   ({ className, ...rest }, ref) => {
-    const _className = classNames('carousel-caption', className)
-
-    return <div className={_className} {...rest} ref={ref} />
+    return <div className={classNames('carousel-caption', className)} {...rest} ref={ref} />
   },
 )
 

@@ -20,15 +20,19 @@ export interface CTableFootProps extends HTMLAttributes<HTMLTableSectionElement>
 
 export const CTableFoot = forwardRef<HTMLTableSectionElement, CTableFootProps>(
   ({ children, className, color, ...rest }, ref) => {
-    const _className = classNames(
-      {
-        [`table-${color}`]: color,
-      },
-      className,
-    )
-
     return (
-      <tfoot className={_className} {...rest} ref={ref}>
+      <tfoot
+        className={
+          classNames(
+            {
+              [`table-${color}`]: color,
+            },
+            className,
+          ) || undefined
+        }
+        {...rest}
+        ref={ref}
+      >
         {children}
       </tfoot>
     )

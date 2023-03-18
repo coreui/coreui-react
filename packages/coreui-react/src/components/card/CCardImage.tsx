@@ -22,10 +22,12 @@ export const CCardImage = forwardRef<
   HTMLImageElement | HTMLOrSVGElement | HTMLOrSVGImageElement,
   CCardImageProps
 >(({ children, className, component: Component = 'img', orientation, ...rest }, ref) => {
-  const _className = classNames(orientation ? `card-img-${orientation}` : 'card-img', className)
-
   return (
-    <Component className={_className} {...rest} ref={ref}>
+    <Component
+      className={classNames(orientation ? `card-img-${orientation}` : 'card-img', className)}
+      {...rest}
+      ref={ref}
+    >
       {children}
     </Component>
   )

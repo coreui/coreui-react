@@ -3,7 +3,7 @@
 exports[`CDropdown customize 1`] = `
 <div>
   <li
-    class="nav-item dropdown show dropstart bazinga"
+    class="nav-item dropdown dropstart show bazinga"
   >
     Test
   </li>

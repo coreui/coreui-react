@@ -11,10 +11,8 @@ export interface COffcanvasHeaderProps extends HTMLAttributes<HTMLDivElement> {
 
 export const COffcanvasHeader = forwardRef<HTMLDivElement, COffcanvasHeaderProps>(
   ({ children, className, ...rest }, ref) => {
-    const _className = classNames('offcanvas-header', className)
-
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div className={classNames('offcanvas-header', className)} {...rest} ref={ref}>
         {children}
       </div>
     )

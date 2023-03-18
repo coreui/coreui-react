@@ -11,9 +11,7 @@ export interface CDropdownDividerProps extends HTMLAttributes<HTMLHRElement> {
 
 export const CDropdownDivider = forwardRef<HTMLHRElement, CDropdownDividerProps>(
   ({ className, ...rest }, ref) => {
-    const _className = classNames('dropdown-divider', className)
-
-    return <hr className={_className} {...rest} ref={ref} />
+    return <hr className={classNames('dropdown-divider', className)} {...rest} ref={ref} />
   },
 )
 

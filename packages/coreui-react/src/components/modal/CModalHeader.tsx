@@ -19,10 +19,9 @@ export interface CModalHeaderProps extends HTMLAttributes<HTMLDivElement> {
 export const CModalHeader = forwardRef<HTMLDivElement, CModalHeaderProps>(
   ({ children, className, closeButton = true, ...rest }, ref) => {
     const { setVisible } = useContext(CModalContext)
-    const _className = classNames('modal-header', className)
 
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div className={classNames('modal-header', className)} {...rest} ref={ref}>
         {children}
         {closeButton && <CCloseButton onClick={() => setVisible(false)} />}
       </div>

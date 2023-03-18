@@ -11,9 +11,7 @@ export interface CHeaderDividerProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CHeaderDivider = forwardRef<HTMLDivElement, CHeaderDividerProps>(
   ({ className, ...rest }, ref) => {
-    const _className = classNames('header-divider', className)
-
-    return <div className={_className} {...rest} ref={ref} />
+    return <div className={classNames('header-divider', className)} {...rest} ref={ref} />
   },
 )
 

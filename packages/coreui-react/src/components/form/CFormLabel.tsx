@@ -15,9 +15,12 @@ export interface CFormLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 
 export const CFormLabel = forwardRef<HTMLLabelElement, CFormLabelProps>(
   ({ children, className, customClassName, ...rest }, ref) => {
-    const _className = customClassName ? customClassName : classNames('form-label', className)
     return (
-      <label className={_className} {...rest} ref={ref}>
+      <label
+        className={customClassName ? customClassName : classNames('form-label', className)}
+        {...rest}
+        ref={ref}
+      >
         {children}
       </label>
     )

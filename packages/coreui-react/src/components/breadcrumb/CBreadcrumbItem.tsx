@@ -21,15 +21,19 @@ export interface CBreadcrumbItemProps extends HTMLAttributes<HTMLLIElement> {
 
 export const CBreadcrumbItem = forwardRef<HTMLLIElement, CBreadcrumbItemProps>(
   ({ children, active, className, href, ...rest }, ref) => {
-    const _className = classNames(
-      'breadcrumb-item',
-      {
-        active: active,
-      },
-      className,
-    )
     return (
-      <li className={_className} {...(active && { 'aria-current': 'page' })} {...rest} ref={ref}>
+      <li
+        className={classNames(
+          'breadcrumb-item',
+          {
+            active: active,
+          },
+          className,
+        )}
+        {...(active && { 'aria-current': 'page' })}
+        {...rest}
+        ref={ref}
+      >
         {href ? <CLink href={href}>{children}</CLink> : children}
       </li>
     )

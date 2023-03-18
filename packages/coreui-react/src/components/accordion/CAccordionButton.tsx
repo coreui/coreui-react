@@ -15,12 +15,10 @@ export const CAccordionButton = forwardRef<HTMLButtonElement, CAccordionButtonPr
   ({ children, className, ...rest }, ref) => {
     const { visible, setVisible } = useContext(CAccordionItemContext)
 
-    const _className = classNames('accordion-button', { collapsed: !visible }, className)
-
     return (
       <button
         type="button"
-        className={_className}
+        className={classNames('accordion-button', { collapsed: !visible }, className)}
         aria-expanded={!visible}
         onClick={() => setVisible(!visible)}
         {...rest}

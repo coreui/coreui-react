@@ -25,10 +25,8 @@ export interface CWidgetStatsEProps extends Omit<HTMLAttributes<HTMLDivElement>,
 
 export const CWidgetStatsE = forwardRef<HTMLDivElement, CWidgetStatsEProps>(
   ({ chart, className, title, value, ...rest }, ref) => {
-    const _className = classNames(className)
-
     return (
-      <CCard className={_className} {...rest} ref={ref}>
+      <CCard className={classNames(className)} {...rest} ref={ref}>
         <CCardBody className="text-center">
           {title && (
             <div className="text-medium-emphasis small text-uppercase fw-semibold">{title}</div>

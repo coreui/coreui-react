@@ -16,11 +16,10 @@ export interface CAccordionBodyProps extends HTMLAttributes<HTMLDivElement> {
 export const CAccordionBody = forwardRef<HTMLDivElement, CAccordionBodyProps>(
   ({ children, className, ...rest }, ref) => {
     const { visible } = useContext(CAccordionItemContext)
-    const _className = classNames('accordion-body', className)
 
     return (
       <CCollapse className="accordion-collapse" visible={visible}>
-        <div className={_className} {...rest} ref={ref}>
+        <div className={classNames('accordion-body', className)} {...rest} ref={ref}>
           {children}
         </div>
       </CCollapse>

@@ -11,10 +11,8 @@ export interface CModalBodyProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CModalBody = forwardRef<HTMLDivElement, CModalBodyProps>(
   ({ children, className, ...rest }, ref) => {
-    const _className = classNames('modal-body', className)
-
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div className={classNames('modal-body', className)} {...rest} ref={ref}>
         {children}
       </div>
     )

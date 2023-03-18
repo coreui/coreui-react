@@ -16,9 +16,8 @@ export interface CInputGroupTextProps
 
 export const CInputGroupText = forwardRef<HTMLLabelElement | HTMLSpanElement, CInputGroupTextProps>(
   ({ children, className, component: Component = 'span', ...rest }, ref) => {
-    const _className = classNames('input-group-text', className)
     return (
-      <Component className={_className} {...rest} ref={ref}>
+      <Component className={classNames('input-group-text', className)} {...rest} ref={ref}>
         {children}
       </Component>
     )

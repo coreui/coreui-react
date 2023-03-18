@@ -32,19 +32,17 @@ export interface CProgressBarProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CProgressBar = forwardRef<HTMLDivElement, CProgressBarProps>(
   ({ children, animated, className, color, value = 0, variant, ...rest }, ref) => {
-    const _className = classNames(
-      'progress-bar',
-      {
-        [`bg-${color}`]: color,
-        [`progress-bar-${variant}`]: variant,
-        'progress-bar-animated': animated,
-      },
-      className,
-    )
-
     return (
       <div
-        className={_className}
+        className={classNames(
+          'progress-bar',
+          {
+            [`bg-${color}`]: color,
+            [`progress-bar-${variant}`]: variant,
+            'progress-bar-animated': animated,
+          },
+          className,
+        )}
         role="progressbar"
         style={{ width: `${value}%` }}
         aria-valuenow={value}

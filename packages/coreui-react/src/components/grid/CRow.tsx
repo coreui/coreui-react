@@ -75,22 +75,23 @@ export const CRow = forwardRef<HTMLDivElement, CRowProps>(
         if (breakpoint.cols) {
           repsonsiveClassNames.push(`row-cols${infix}-${breakpoint.cols}`)
         }
+
         if (typeof breakpoint.gutter === 'number') {
           repsonsiveClassNames.push(`g${infix}-${breakpoint.gutter}`)
         }
+
         if (typeof breakpoint.gutterX === 'number') {
           repsonsiveClassNames.push(`gx${infix}-${breakpoint.gutterX}`)
         }
+
         if (typeof breakpoint.gutterY === 'number') {
           repsonsiveClassNames.push(`gy${infix}-${breakpoint.gutterY}`)
         }
       }
     })
 
-    const _className = classNames('row', repsonsiveClassNames, className)
-
     return (
-      <div className={_className} ref={ref}>
+      <div className={classNames('row', repsonsiveClassNames, className)} ref={ref}>
         {children}
       </div>
     )

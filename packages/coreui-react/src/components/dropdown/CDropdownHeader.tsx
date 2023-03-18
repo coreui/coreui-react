@@ -15,10 +15,8 @@ export interface CDropdownHeaderProps extends HTMLAttributes<HTMLHeadingElement>
 
 export const CDropdownHeader = forwardRef<HTMLHeadingElement, CDropdownHeaderProps>(
   ({ children, className, component: Component = 'h6', ...rest }, ref) => {
-    const _className = classNames('dropdown-header', className)
-
     return (
-      <Component className={_className} {...rest} ref={ref}>
+      <Component className={classNames('dropdown-header', className)} {...rest} ref={ref}>
         {children}
       </Component>
     )

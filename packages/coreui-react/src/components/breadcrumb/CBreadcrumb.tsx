@@ -11,10 +11,9 @@ export interface CBreadcrumbProps extends HTMLAttributes<HTMLOListElement> {
 
 export const CBreadcrumb = forwardRef<HTMLOListElement, CBreadcrumbProps>(
   ({ children, className, ...rest }, ref) => {
-    const _className = classNames('breadcrumb', className)
     return (
       <nav aria-label="breadcrumb">
-        <ol className={_className} {...rest} ref={ref}>
+        <ol className={classNames('breadcrumb', className)} {...rest} ref={ref}>
           {children}
         </ol>
       </nav>

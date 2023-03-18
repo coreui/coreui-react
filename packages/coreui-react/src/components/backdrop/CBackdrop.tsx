@@ -21,20 +21,17 @@ export const CBackdrop = forwardRef<HTMLDivElement, CBackdropProps>(
     const backdropRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, backdropRef)
 
-    const _className = classNames(className, 'fade')
-
-    const getTransitionClass = (state: string) => {
-      return state === 'entered' && 'show'
-    }
-
     return (
       <Transition in={visible} mountOnEnter nodeRef={backdropRef} timeout={150} unmountOnExit>
-        {(state) => {
-          const transitionClass = getTransitionClass(state)
-          return (
-            <div className={classNames(_className, transitionClass)} {...rest} ref={forkedRef} />
-          )
-        }}
+        {(state) => (
+          <div
+            className={classNames(className, 'fade', {
+              show: state === 'entered',
+            })}
+            {...rest}
+            ref={forkedRef}
+          />
+        )}
       </Transition>
     )
   },

@@ -56,14 +56,6 @@ export const CFormTextarea = forwardRef<HTMLTextAreaElement, CFormTextareaProps>
     },
     ref,
   ) => {
-    const _className = classNames(
-      plainText ? 'form-control-plaintext' : 'form-control',
-      {
-        'is-invalid': invalid,
-        'is-valid': valid,
-      },
-      className,
-    )
     return (
       <CFormControlWrapper
         describedby={rest['aria-describedby']}
@@ -79,7 +71,19 @@ export const CFormTextarea = forwardRef<HTMLTextAreaElement, CFormTextareaProps>
         tooltipFeedback={tooltipFeedback}
         valid={valid}
       >
-        <textarea className={_className} id={id} {...rest} ref={ref}>
+        <textarea
+          className={classNames(
+            plainText ? 'form-control-plaintext' : 'form-control',
+            {
+              'is-invalid': invalid,
+              'is-valid': valid,
+            },
+            className,
+          )}
+          id={id}
+          {...rest}
+          ref={ref}
+        >
           {children}
         </textarea>
       </CFormControlWrapper>

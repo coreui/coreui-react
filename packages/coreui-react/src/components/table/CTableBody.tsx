@@ -20,15 +20,19 @@ export interface CTableBodyProps extends HTMLAttributes<HTMLTableSectionElement>
 
 export const CTableBody = forwardRef<HTMLTableSectionElement, CTableBodyProps>(
   ({ children, className, color, ...rest }, ref) => {
-    const _className = classNames(
-      {
-        [`table-${color}`]: color,
-      },
-      className,
-    )
-
     return (
-      <tbody className={_className} {...rest} ref={ref}>
+      <tbody
+        className={
+          classNames(
+            {
+              [`table-${color}`]: color,
+            },
+            className,
+          ) || undefined
+        }
+        {...rest}
+        ref={ref}
+      >
         {children}
       </tbody>
     )

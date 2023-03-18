@@ -31,17 +31,19 @@ export interface CProgressProps
 
 export const CProgress = forwardRef<HTMLDivElement, CProgressProps>(
   ({ children, className, height, thin, value = 0, white, ...rest }, ref) => {
-    const _className = classNames(
-      'progress',
-      {
-        'progress-thin': thin,
-        'progress-white': white,
-      },
-      className,
-    )
-
     return (
-      <div className={_className} style={height ? { height: `${height}px` } : {}} ref={ref}>
+      <div
+        className={classNames(
+          'progress',
+          {
+            'progress-thin': thin,
+            'progress-white': white,
+          },
+          className,
+        )}
+        style={height ? { height: `${height}px` } : {}}
+        ref={ref}
+      >
         {value ? (
           <CProgressBar value={value} {...rest}>
             {children}

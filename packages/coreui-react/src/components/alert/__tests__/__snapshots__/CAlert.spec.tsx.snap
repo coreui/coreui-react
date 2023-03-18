@@ -3,7 +3,7 @@
 exports[`CAlert customize 1`] = `
 <div>
   <div
-    class="alert bg-secondary text-white alert-dismissible fade bazinga show"
+    class="alert bg-secondary text-white alert-dismissible fade show bazinga"
     role="alert"
   >
     Test

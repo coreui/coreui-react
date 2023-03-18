@@ -19,19 +19,18 @@ export interface CCloseButtonProps extends HTMLAttributes<HTMLButtonElement> {
 
 export const CCloseButton = forwardRef<HTMLButtonElement, CCloseButtonProps>(
   ({ className, disabled, white, ...rest }, ref) => {
-    const _className = classNames(
-      'btn',
-      'btn-close',
-      {
-        'btn-close-white': white,
-      },
-      disabled,
-      className,
-    )
     return (
       <button
         type="button"
-        className={_className}
+        className={classNames(
+          'btn',
+          'btn-close',
+          {
+            'btn-close-white': white,
+          },
+          disabled,
+          className,
+        )}
         aria-label="Close"
         disabled={disabled}
         {...rest}

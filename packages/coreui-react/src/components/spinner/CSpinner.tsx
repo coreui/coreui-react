@@ -47,15 +47,18 @@ export const CSpinner = forwardRef<HTMLDivElement | HTMLSpanElement, CSpinnerPro
     },
     ref,
   ) => {
-    const _className = classNames(
-      `spinner-${variant}`,
-      `text-${color}`,
-      size && `spinner-${variant}-${size}`,
-      className,
-    )
-
     return (
-      <Component className={_className} role="status" {...rest} ref={ref}>
+      <Component
+        className={classNames(
+          `spinner-${variant}`,
+          `text-${color}`,
+          size && `spinner-${variant}-${size}`,
+          className,
+        )}
+        role="status"
+        {...rest}
+        ref={ref}
+      >
         <span className="visually-hidden">{visuallyHiddenLabel}</span>
       </Component>
     )

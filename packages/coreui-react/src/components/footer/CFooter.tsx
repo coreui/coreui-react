@@ -15,10 +15,12 @@ export interface CFooterProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CFooter = forwardRef<HTMLDivElement, CFooterProps>(
   ({ children, className, position, ...rest }, ref) => {
-    const _className = classNames('footer', { [`footer-${position}`]: position }, className)
-
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div
+        className={classNames('footer', { [`footer-${position}`]: position }, className)}
+        {...rest}
+        ref={ref}
+      >
         {children}
       </div>
     )

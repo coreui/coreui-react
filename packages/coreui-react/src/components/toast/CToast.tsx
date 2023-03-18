@@ -114,26 +114,6 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
       }
     }
 
-    const _className = classNames(
-      'toast',
-      {
-        fade: animation,
-        [`bg-${color}`]: color,
-        'border-0': color,
-      },
-      className,
-    )
-
-    const getTransitionClass = (state: string) => {
-      return state === 'entering'
-        ? 'showing'
-        : state === 'entered'
-        ? 'show'
-        : state === 'exiting'
-        ? 'showing'
-        : 'fade'
-    }
-
     return (
       <Transition
         in={_visible}
@@ -143,26 +123,38 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
         timeout={250}
         unmountOnExit
       >
-        {(state) => {
-          const transitionClass = getTransitionClass(state)
-          return (
-            <CToastContext.Provider value={contextValues}>
-              <div
-                className={classNames(_className, transitionClass)}
-                aria-live="assertive"
-                aria-atomic="true"
-                role="alert"
-                onMouseEnter={() => clearTimeout(timeout.current)}
-                onMouseLeave={() => _autohide()}
-                {...rest}
-                key={key}
-                ref={forkedRef}
-              >
-                {children}
-              </div>
-            </CToastContext.Provider>
-          )
-        }}
+        {(state) => (
+          <CToastContext.Provider value={contextValues}>
+            <div
+              className={classNames(
+                'toast',
+                {
+                  fade: animation,
+                  [`bg-${color}`]: color,
+                  'border-0': color,
+                },
+                state === 'entering'
+                  ? 'show showing'
+                  : state === 'entered'
+                  ? 'show'
+                  : state === 'exiting'
+                  ? 'show showing'
+                  : '',
+                className,
+              )}
+              aria-live="assertive"
+              aria-atomic="true"
+              role="alert"
+              onMouseEnter={() => clearTimeout(timeout.current)}
+              onMouseLeave={() => _autohide()}
+              {...rest}
+              key={key}
+              ref={forkedRef}
+            >
+              {children}
+            </div>
+          </CToastContext.Provider>
+        )}
       </Transition>
     )
   },

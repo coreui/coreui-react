@@ -11,10 +11,8 @@ export interface CHeaderTextProps extends HTMLAttributes<HTMLSpanElement> {
 
 export const CHeaderText = forwardRef<HTMLSpanElement, CHeaderTextProps>(
   ({ children, className, ...rest }, ref) => {
-    const _className = classNames('header-text', className)
-
     return (
-      <span className={_className} {...rest} ref={ref}>
+      <span className={classNames('header-text', className)} {...rest} ref={ref}>
         {children}
       </span>
     )

@@ -95,10 +95,8 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
       exited: { height: height },
     }
 
-    const _className = classNames('nav-group', { show: _visible }, className)
-
     return (
-      <li className={_className} {...rest} ref={ref}>
+      <li className={classNames('nav-group', { show: _visible }, className)} {...rest} ref={ref}>
         {toggler && (
           <a className="nav-link nav-group-toggle" onClick={(event) => handleTogglerOnCLick(event)}>
             {toggler}

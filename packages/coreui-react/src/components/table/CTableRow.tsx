@@ -28,17 +28,21 @@ export interface CTableRowProps extends HTMLAttributes<HTMLTableRowElement> {
 
 export const CTableRow = forwardRef<HTMLTableRowElement, CTableRowProps>(
   ({ children, active, align, className, color, ...rest }, ref) => {
-    const _className = classNames(
-      {
-        [`align-${align}`]: align,
-        'table-active': active,
-        [`table-${color}`]: color,
-      },
-      className,
-    )
-
     return (
-      <tr className={_className} {...rest} ref={ref}>
+      <tr
+        className={
+          classNames(
+            {
+              [`align-${align}`]: align,
+              'table-active': active,
+              [`table-${color}`]: color,
+            },
+            className,
+          ) || undefined
+        }
+        {...rest}
+        ref={ref}
+      >
         {children}
       </tr>
     )

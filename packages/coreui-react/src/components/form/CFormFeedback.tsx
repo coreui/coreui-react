@@ -30,15 +30,18 @@ export const CFormFeedback = forwardRef<HTMLDivElement | HTMLSpanElement, CFormF
     { children, className, component: Component = 'div', invalid, tooltip, valid, ...rest },
     ref,
   ) => {
-    const _className = classNames(
-      {
-        [`invalid-${tooltip ? 'tooltip' : 'feedback'}`]: invalid,
-        [`valid-${tooltip ? 'tooltip' : 'feedback'}`]: valid,
-      },
-      className,
-    )
     return (
-      <Component className={_className} {...rest} ref={ref}>
+      <Component
+        className={classNames(
+          {
+            [`invalid-${tooltip ? 'tooltip' : 'feedback'}`]: invalid,
+            [`valid-${tooltip ? 'tooltip' : 'feedback'}`]: valid,
+          },
+          className,
+        )}
+        {...rest}
+        ref={ref}
+      >
         {children}
       </Component>
     )

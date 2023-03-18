@@ -11,9 +11,8 @@ export interface CNavTitleProps extends HTMLAttributes<HTMLLIElement> {
 
 export const CNavTitle = forwardRef<HTMLLIElement, CNavTitleProps>(
   ({ children, className, ...rest }, ref) => {
-    const _className = classNames('nav-title', className)
     return (
-      <li className={_className} {...rest} ref={ref}>
+      <li className={classNames('nav-title', className)} {...rest} ref={ref}>
         {children}
       </li>
     )

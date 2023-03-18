@@ -101,13 +101,15 @@ export const CCol = forwardRef<HTMLDivElement, CColProps>(
       }
     })
 
-    const _className = classNames(
-      repsonsiveClassNames.length ? repsonsiveClassNames : 'col',
-      className,
-    )
-
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div
+        className={classNames(
+          repsonsiveClassNames.length ? repsonsiveClassNames : 'col',
+          className,
+        )}
+        {...rest}
+        ref={ref}
+      >
         {children}
       </div>
     )

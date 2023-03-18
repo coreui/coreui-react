@@ -11,10 +11,8 @@ export interface CCardGroupProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CCardGroup = forwardRef<HTMLDivElement, CCardGroupProps>(
   ({ children, className, ...rest }, ref) => {
-    const _className = classNames('card-group', className)
-
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div className={classNames('card-group', className)} {...rest} ref={ref}>
         {children}
       </div>
     )

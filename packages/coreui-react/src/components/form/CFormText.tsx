@@ -15,9 +15,8 @@ export interface CFormTextProps extends HTMLAttributes<HTMLDivElement | HTMLSpan
 
 export const CFormText = forwardRef<HTMLDivElement | HTMLSpanElement, CFormTextProps>(
   ({ children, className, component: Component = 'div', ...rest }, ref) => {
-    const _className = classNames('form-text', className)
     return (
-      <Component className={_className} {...rest} ref={ref}>
+      <Component className={classNames('form-text', className)} {...rest} ref={ref}>
         {children}
       </Component>
     )

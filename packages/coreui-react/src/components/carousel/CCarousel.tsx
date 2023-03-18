@@ -132,13 +132,6 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
       }
     })
 
-    const _className = classNames(
-      'carousel slide',
-      transition === 'crossfade' && 'carousel-fade',
-      dark && 'carousel-dark',
-      className,
-    )
-
     const cycle = () => {
       _pause()
       if (!wrap && active === itemsNumber - 1) {
@@ -230,7 +223,14 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
 
     return (
       <div
-        className={_className}
+        className={classNames(
+          'carousel slide',
+          {
+            'carousel-dark': dark,
+            'carousel-fade': transition === 'crossfade',
+          },
+          className,
+        )}
         onMouseEnter={_pause}
         onMouseLeave={cycle}
         {...(touch && { onTouchStart: handleTouchStart, onTouchMove: handleTouchMove })}

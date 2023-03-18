@@ -11,9 +11,8 @@ export interface CSidebarFooterProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CSidebarFooter = forwardRef<HTMLDivElement, CSidebarFooterProps>(
   ({ children, className, ...rest }, ref) => {
-    const _className = classNames('sidebar-footer', className)
     return (
-      <div className={_className} ref={ref} {...rest}>
+      <div className={classNames('sidebar-footer', className)} ref={ref} {...rest}>
         {children}
       </div>
     )

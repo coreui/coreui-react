@@ -26,17 +26,19 @@ export interface CCardProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CCard = forwardRef<HTMLDivElement, CCardProps>(
   ({ children, className, color, textColor, ...rest }, ref) => {
-    const _className = classNames(
-      'card',
-      {
-        [`bg-${color}`]: color,
-        [`text-${textColor}`]: textColor,
-      },
-      className,
-    )
-
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div
+        className={classNames(
+          'card',
+          {
+            [`bg-${color}`]: color,
+            [`text-${textColor}`]: textColor,
+          },
+          className,
+        )}
+        {...rest}
+        ref={ref}
+      >
         {children}
       </div>
     )

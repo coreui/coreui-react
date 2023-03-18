@@ -85,18 +85,20 @@ export const CPlaceholder = forwardRef<HTMLSpanElement, CPlaceholderProps>(
       }
     })
 
-    const _className = classNames(
-      animation ? `placeholder-${animation}` : 'placeholder',
-      {
-        [`bg-${color}`]: color,
-        [`placeholder-${size}`]: size,
-      },
-      repsonsiveClassNames,
-      className,
-    )
-
     return (
-      <Component className={_className} {...rest} ref={ref}>
+      <Component
+        className={classNames(
+          animation ? `placeholder-${animation}` : 'placeholder',
+          {
+            [`bg-${color}`]: color,
+            [`placeholder-${size}`]: size,
+          },
+          repsonsiveClassNames,
+          className,
+        )}
+        {...rest}
+        ref={ref}
+      >
         {children}
       </Component>
     )

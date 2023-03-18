@@ -32,9 +32,13 @@ export const CAccordionContext = createContext({} as CAccordionContextProps)
 export const CAccordion = forwardRef<HTMLDivElement, CAccordionProps>(
   ({ children, activeItemKey = undefined, alwaysOpen = false, className, flush, ...rest }, ref) => {
     const [_activeItemKey, setActiveKey] = useState(activeItemKey)
-    const _className = classNames('accordion', { 'accordion-flush': flush }, className)
+
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div
+        className={classNames('accordion', { 'accordion-flush': flush }, className)}
+        {...rest}
+        ref={ref}
+      >
         <CAccordionContext.Provider value={{ _activeItemKey, alwaysOpen, setActiveKey }}>
           {children}
         </CAccordionContext.Provider>

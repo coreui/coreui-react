@@ -94,16 +94,18 @@ export const CCarouselItem = forwardRef<HTMLDivElement, CCarouselItemProps>(
       }
     })
 
-    const _className = classNames(
-      'carousel-item',
-      activeClassName,
-      directionClassName,
-      orderClassName,
-      className,
-    )
-
     return (
-      <div className={_className} ref={forkedRef} {...rest}>
+      <div
+        className={classNames(
+          'carousel-item',
+          activeClassName,
+          directionClassName,
+          orderClassName,
+          className,
+        )}
+        ref={forkedRef}
+        {...rest}
+      >
         {children}
       </div>
     )

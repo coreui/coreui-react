@@ -15,10 +15,8 @@ export interface CDropdownItemPlainProps extends HTMLAttributes<HTMLSpanElement>
 
 export const CDropdownItemPlain = forwardRef<HTMLSpanElement, CDropdownItemPlainProps>(
   ({ children, className, component: Component = 'span', ...rest }, ref) => {
-    const _className = classNames('dropdown-item-text', className)
-
     return (
-      <Component className={_className} {...rest} ref={ref}>
+      <Component className={classNames('dropdown-item-text', className)} {...rest} ref={ref}>
         {children}
       </Component>
     )

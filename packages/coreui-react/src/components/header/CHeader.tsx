@@ -19,8 +19,6 @@ export interface CHeaderProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CHeader = forwardRef<HTMLDivElement, CHeaderProps>(
   ({ children, className, container, position, ...rest }, ref) => {
-    const _className = classNames('header', { [`header-${position}`]: position }, className)
-
     let content
     if (container) {
       content = (
@@ -31,7 +29,11 @@ export const CHeader = forwardRef<HTMLDivElement, CHeaderProps>(
     }
 
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div
+        className={classNames('header', { [`header-${position}`]: position }, className)}
+        {...rest}
+        ref={ref}
+      >
         {content}
       </div>
     )

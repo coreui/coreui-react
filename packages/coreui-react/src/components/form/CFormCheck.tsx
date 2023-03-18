@@ -107,36 +107,20 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
       }
     }, [indeterminate])
 
-    const _className = classNames(
-      'form-check',
-      {
-        'form-check-inline': inline,
-        'is-invalid': invalid,
-        'is-valid': valid,
-      },
-      className,
-    )
-
-    const inputClassName = classNames(button ? 'btn-check' : 'form-check-input', {
-      'is-invalid': invalid,
-      'is-valid': valid,
-      'me-2': hitArea,
-    })
-    const labelClassName = classNames(
-      button
-        ? classNames(
-            'btn',
-            button.variant ? `btn-${button.variant}-${button.color}` : `btn-${button.color}`,
-            {
-              [`btn-${button.size}`]: button.size,
-            },
-            `${button.shape}`,
-          )
-        : 'form-check-label',
-    )
-
     const formControl = () => {
-      return <input type={type} className={inputClassName} id={id} {...rest} ref={forkedRef} />
+      return (
+        <input
+          type={type}
+          className={classNames(button ? 'btn-check' : 'form-check-input', {
+            'is-invalid': invalid,
+            'is-valid': valid,
+            'me-2': hitArea,
+          })}
+          id={id}
+          {...rest}
+          ref={forkedRef}
+        />
+      )
     }
 
     const formValidation = () => (
@@ -154,7 +138,21 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
 
     const formLabel = () => {
       return (
-        <CFormLabel customClassName={labelClassName} {...(id && { htmlFor: id })}>
+        <CFormLabel
+          customClassName={classNames(
+            button
+              ? classNames(
+                  'btn',
+                  button.variant ? `btn-${button.variant}-${button.color}` : `btn-${button.color}`,
+                  {
+                    [`btn-${button.size}`]: button.size,
+                  },
+                  `${button.shape}`,
+                )
+              : 'form-check-label',
+          )}
+          {...(id && { htmlFor: id })}
+        >
           {label}
         </CFormLabel>
       )
@@ -176,7 +174,17 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
           {formValidation()}
         </>
       ) : (
-        <div className={_className}>
+        <div
+          className={classNames(
+            'form-check',
+            {
+              'form-check-inline': inline,
+              'is-invalid': invalid,
+              'is-valid': valid,
+            },
+            className,
+          )}
+        >
           {formControl()}
           {formLabel()}
           {formValidation()}

@@ -13,10 +13,8 @@ export interface CAlertLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement>
 
 export const CAlertLink = forwardRef<HTMLAnchorElement, CAlertLinkProps>(
   ({ children, className, ...rest }, ref) => {
-    const _className = classNames('alert-link', className)
-
     return (
-      <CLink className={_className} {...rest} ref={ref}>
+      <CLink className={classNames('alert-link', className)} {...rest} ref={ref}>
         {children}
       </CLink>
     )

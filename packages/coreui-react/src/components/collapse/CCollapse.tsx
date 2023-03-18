@@ -30,20 +30,11 @@ export interface CCollapseProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
   ({ children, className, horizontal, onHide, onShow, visible, ...rest }, ref) => {
-    const [height, setHeight] = useState<number>()
-    const [width, setWidth] = useState<number>()
     const collapseRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, collapseRef)
 
-    const getTransitionClass = (state: string) => {
-      return state === 'entering'
-        ? 'collapsing'
-        : state === 'entered'
-        ? 'collapse show'
-        : state === 'exiting'
-        ? 'collapsing'
-        : 'collapse'
-    }
+    const [height, setHeight] = useState<number>()
+    const [width, setWidth] = useState<number>()
 
     const onEntering = () => {
       onShow && onShow()
@@ -88,13 +79,6 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
       setHeight(0)
     }
 
-    const _className = classNames(
-      {
-        'collapse-horizontal': horizontal,
-      },
-      className,
-    )
-
     return (
       <CSSTransition
         in={visible}
@@ -107,12 +91,23 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
         timeout={350}
       >
         {(state) => {
-          const transitionClass = getTransitionClass(state)
           const currentHeight = height === 0 ? null : { height }
           const currentWidth = width === 0 ? null : { width }
           return (
             <div
-              className={classNames(_className, transitionClass)}
+              className={classNames(
+                className,
+                {
+                  'collapse-horizontal': horizontal,
+                },
+                state === 'entering'
+                  ? 'collapsing'
+                  : state === 'entered'
+                  ? 'collapse show'
+                  : state === 'exiting'
+                  ? 'collapsing'
+                  : 'collapse',
+              )}
               style={{ ...currentHeight, ...currentWidth }}
               {...rest}
               ref={forkedRef}

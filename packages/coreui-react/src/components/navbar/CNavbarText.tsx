@@ -11,10 +11,8 @@ export interface CNavbarTextProps extends HTMLAttributes<HTMLSpanElement> {
 
 export const CNavbarText = forwardRef<HTMLSpanElement, CNavbarTextProps>(
   ({ children, className, ...rest }, ref) => {
-    const _className = classNames('navbar-text', className)
-
     return (
-      <span className={_className} {...rest} ref={ref}>
+      <span className={classNames('navbar-text', className)} {...rest} ref={ref}>
         {children}
       </span>
     )

@@ -34,19 +34,23 @@ export interface CTableDataCellProps
 
 export const CTableDataCell = forwardRef<HTMLTableCellElement, CTableDataCellProps>(
   ({ children, active, align, className, color, ...rest }, ref) => {
-    const _className = classNames(
-      {
-        [`align-${align}`]: align,
-        'table-active': active,
-        [`table-${color}`]: color,
-      },
-      className,
-    )
-
     const Component = rest.scope ? 'th' : 'td'
 
     return (
-      <Component className={_className} {...rest} ref={ref}>
+      <Component
+        className={
+          classNames(
+            {
+              [`align-${align}`]: align,
+              'table-active': active,
+              [`table-${color}`]: color,
+            },
+            className,
+          ) || undefined
+        }
+        {...rest}
+        ref={ref}
+      >
         {children}
       </Component>
     )

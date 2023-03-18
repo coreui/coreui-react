@@ -40,17 +40,16 @@ export interface CWidgetStatsDProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CWidgetStatsD = forwardRef<HTMLDivElement, CWidgetStatsDProps>(
   ({ className, chart, color, icon, values, ...rest }, ref) => {
-    const _className = classNames(className)
-    const classNameHeader = classNames(
-      'position-relative d-flex justify-content-center align-items-center',
-      {
-        [`bg-${color}`]: color,
-      },
-    )
-
     return (
-      <CCard className={_className} {...rest} ref={ref}>
-        <CCardHeader className={classNameHeader}>
+      <CCard className={className} {...rest} ref={ref}>
+        <CCardHeader
+          className={classNames(
+            'position-relative d-flex justify-content-center align-items-center',
+            {
+              [`bg-${color}`]: color,
+            },
+          )}
+        >
           {icon}
           {chart}
         </CCardHeader>

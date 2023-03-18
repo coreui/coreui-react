@@ -20,16 +20,18 @@ export interface CCalloutProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CCallout = forwardRef<HTMLDivElement, CCalloutProps>(
   ({ children, className, color, ...rest }, ref) => {
-    const _className = classNames(
-      'callout',
-      {
-        [`callout-${color}`]: color,
-      },
-      className,
-    )
-
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div
+        className={classNames(
+          'callout',
+          {
+            [`callout-${color}`]: color,
+          },
+          className,
+        )}
+        {...rest}
+        ref={ref}
+      >
         {children}
       </div>
     )

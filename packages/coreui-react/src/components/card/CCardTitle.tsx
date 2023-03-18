@@ -15,10 +15,8 @@ export interface CCardTitleProps extends HTMLAttributes<HTMLHeadingElement> {
 
 export const CCardTitle = forwardRef<HTMLHeadingElement, CCardTitleProps>(
   ({ children, component: Component = 'h5', className, ...rest }, ref) => {
-    const _className = classNames('card-title', className)
-
     return (
-      <Component className={_className} {...rest} ref={ref}>
+      <Component className={classNames('card-title', className)} {...rest} ref={ref}>
         {children}
       </Component>
     )

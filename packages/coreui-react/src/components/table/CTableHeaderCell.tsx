@@ -20,15 +20,19 @@ export interface CTableHeaderCellProps extends ThHTMLAttributes<HTMLTableCellEle
 
 export const CTableHeaderCell = forwardRef<HTMLTableCellElement, CTableHeaderCellProps>(
   ({ children, className, color, ...rest }, ref) => {
-    const _className = classNames(
-      {
-        [`table-${color}`]: color,
-      },
-      className,
-    )
-
     return (
-      <th className={_className} {...rest} ref={ref}>
+      <th
+        className={
+          classNames(
+            {
+              [`table-${color}`]: color,
+            },
+            className,
+          ) || undefined
+        }
+        {...rest}
+        ref={ref}
+      >
         {children}
       </th>
     )

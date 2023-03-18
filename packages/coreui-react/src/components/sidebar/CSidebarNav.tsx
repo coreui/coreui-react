@@ -23,9 +23,9 @@ export const CSidebarNav = forwardRef<HTMLUListElement, CSidebarNavProps>(
       visibleGroup,
       setVisibleGroup,
     }
-    const classes = classNames('sidebar-nav', className)
+
     return (
-      <ul className={classes} ref={ref} {...rest}>
+      <ul className={classNames('sidebar-nav', className)} ref={ref} {...rest}>
         <CNavContext.Provider value={CNavContextValues}>
           {React.Children.map(children, (child, index) => {
             if (React.isValidElement(child)) {

@@ -15,15 +15,18 @@ export interface CInputGroupProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CInputGroup = forwardRef<HTMLDivElement, CInputGroupProps>(
   ({ children, className, size, ...rest }, ref) => {
-    const _className = classNames(
-      'input-group',
-      {
-        [`input-group-${size}`]: size,
-      },
-      className,
-    )
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div
+        className={classNames(
+          'input-group',
+          {
+            [`input-group-${size}`]: size,
+          },
+          className,
+        )}
+        {...rest}
+        ref={ref}
+      >
         {children}
       </div>
     )

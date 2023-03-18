@@ -11,10 +11,8 @@ export interface CModalContentProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CModalContent = forwardRef<HTMLDivElement, CModalContentProps>(
   ({ children, className, ...rest }, ref) => {
-    const _className = classNames('modal-content', className)
-
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div className={classNames('modal-content', className)} {...rest} ref={ref}>
         {children}
       </div>
     )

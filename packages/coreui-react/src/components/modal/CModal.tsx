@@ -150,24 +150,6 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       setTimeout(() => setStaticBackdrop(false), duration)
     }, [staticBackdrop])
 
-    const getTransitionClass = (state: string) => {
-      return state === 'entering'
-        ? 'd-block'
-        : state === 'entered'
-        ? 'show d-block'
-        : state === 'exiting'
-        ? 'd-block'
-        : ''
-    }
-    const _className = classNames(
-      'modal',
-      {
-        'modal-static': staticBackdrop,
-        fade: transition,
-      },
-      className,
-    )
-
     // Set focus to modal after open
     useLayoutEffect(() => {
       if (_visible) {
@@ -219,11 +201,25 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       [modalRef, handleDismiss],
     )
 
-    const modal = (ref?: React.Ref<HTMLDivElement>, transitionClass?: string) => {
+    const modal = (ref?: React.Ref<HTMLDivElement>, state?: string) => {
       return (
         <CModalContext.Provider value={contextValues}>
           <div
-            className={classNames(_className, transitionClass)}
+            className={classNames(
+              'modal',
+              {
+                'modal-static': staticBackdrop,
+                fade: transition,
+              },
+              state === 'entering'
+                ? 'd-block'
+                : state === 'entered'
+                ? 'show d-block'
+                : state === 'exiting'
+                ? 'd-block'
+                : '',
+              className,
+            )}
             tabIndex={-1}
             role="dialog"
             ref={ref}
@@ -255,10 +251,9 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
           timeout={!transition ? 0 : duration}
         >
           {(state) => {
-            const transitionClass = getTransitionClass(state)
             return typeof window !== 'undefined' && portal
-              ? createPortal(modal(forkedRef, transitionClass), document.body)
-              : modal(forkedRef, transitionClass)
+              ? createPortal(modal(forkedRef, state), document.body)
+              : modal(forkedRef, state)
           }}
         </Transition>
         {typeof window !== 'undefined' && portal

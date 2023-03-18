@@ -126,20 +126,18 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
     return classNames
   }
 
-  const _className = classNames(
-    'dropdown-menu',
-    {
-      'dropdown-menu-dark': dark,
-      show: visible,
-    },
-    alignment && alignmentClassNames(alignment),
-    className,
-  )
-
   const dropdownMenuComponent = (style?: React.CSSProperties, ref?: React.Ref<HTMLDivElement>) => {
     return (
       <Component
-        className={_className}
+        className={classNames(
+          'dropdown-menu',
+          {
+            'dropdown-menu-dark': dark,
+            show: visible,
+          },
+          alignment && alignmentClassNames(alignment),
+          className,
+        )}
         ref={ref}
         style={style}
         role="menu"

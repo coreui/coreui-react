@@ -89,17 +89,6 @@ export const CFormInput = forwardRef<HTMLInputElement, CFormInputProps>(
       return () => clearTimeout(timeOutId)
     }, [value])
 
-    const _className = classNames(
-      plainText ? 'form-control-plaintext' : 'form-control',
-      {
-        [`form-control-${size}`]: size,
-        'form-control-color': type === 'color',
-        'is-invalid': invalid,
-        'is-valid': valid,
-      },
-      className,
-    )
-
     return (
       <CFormControlWrapper
         describedby={rest['aria-describedby']}
@@ -116,7 +105,16 @@ export const CFormInput = forwardRef<HTMLInputElement, CFormInputProps>(
         valid={valid}
       >
         <input
-          className={_className}
+          className={classNames(
+            plainText ? 'form-control-plaintext' : 'form-control',
+            {
+              [`form-control-${size}`]: size,
+              'form-control-color': type === 'color',
+              'is-invalid': invalid,
+              'is-valid': valid,
+            },
+            className,
+          )}
           id={id}
           type={type}
           onChange={(event) => (delay ? setValue(event) : onChange && onChange(event))}

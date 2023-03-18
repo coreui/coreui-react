@@ -13,10 +13,8 @@ export interface CAccordionHeaderProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CAccordionHeader = forwardRef<HTMLDivElement, CAccordionHeaderProps>(
   ({ children, className, ...rest }, ref) => {
-    const _className = classNames('accordion-header', className)
-
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div className={classNames('accordion-header', className)} {...rest} ref={ref}>
         <CAccordionButton>{children}</CAccordionButton>
       </div>
     )

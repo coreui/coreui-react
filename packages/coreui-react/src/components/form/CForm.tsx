@@ -15,9 +15,12 @@ export interface CFormProps extends FormHTMLAttributes<HTMLFormElement> {
 
 export const CForm = forwardRef<HTMLFormElement, CFormProps>(
   ({ children, className, validated, ...rest }, ref) => {
-    const _className = classNames({ 'was-validated': validated }, className)
     return (
-      <form className={_className} {...rest} ref={ref}>
+      <form
+        className={classNames({ 'was-validated': validated }, className) || undefined}
+        {...rest}
+        ref={ref}
+      >
         {children}
       </form>
     )

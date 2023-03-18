@@ -29,28 +29,25 @@ export const CTabPane = forwardRef<HTMLDivElement, CTabPaneProps>(
     const tabPaneRef = useRef()
     const forkedRef = useForkedRef(ref, tabPaneRef)
 
-    const getTransitionClass = (state: string) => {
-      return state === 'entered' && 'show'
-    }
-
-    const _className = classNames(
-      'tab-pane',
-      'fade',
-      {
-        active: visible,
-      },
-      className,
-    )
     return (
       <Transition in={visible} nodeRef={tabPaneRef} onEnter={onShow} onExit={onHide} timeout={150}>
-        {(state) => {
-          const transitionClass = getTransitionClass(state)
-          return (
-            <div className={classNames(_className, transitionClass)} {...rest} ref={forkedRef}>
-              {children}
-            </div>
-          )
-        }}
+        {(state) => (
+          <div
+            className={classNames(
+              'tab-pane',
+              'fade',
+              {
+                active: visible,
+                show: state === 'entered',
+              },
+              className,
+            )}
+            {...rest}
+            ref={forkedRef}
+          >
+            {children}
+          </div>
+        )}
       </Transition>
     )
   },

@@ -20,15 +20,19 @@ export interface CTableHeadProps extends HTMLAttributes<HTMLTableSectionElement>
 
 export const CTableHead = forwardRef<HTMLTableSectionElement, CTableHeadProps>(
   ({ children, className, color, ...rest }, ref) => {
-    const _className = classNames(
-      {
-        [`table-${color}`]: color,
-      },
-      className,
-    )
-
     return (
-      <thead className={_className} {...rest} ref={ref}>
+      <thead
+        className={
+          classNames(
+            {
+              [`table-${color}`]: color,
+            },
+            className,
+          ) || undefined
+        }
+        {...rest}
+        ref={ref}
+      >
         {children}
       </thead>
     )

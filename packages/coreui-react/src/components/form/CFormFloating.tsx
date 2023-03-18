@@ -11,9 +11,8 @@ export interface CFormFloatingProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CFormFloating = forwardRef<HTMLDivElement, CFormFloatingProps>(
   ({ children, className, ...rest }, ref) => {
-    const _className = classNames('form-floating', className)
     return (
-      <div className={_className} {...rest} ref={ref}>
+      <div className={classNames('form-floating', className)} {...rest} ref={ref}>
         {children}
       </div>
     )
