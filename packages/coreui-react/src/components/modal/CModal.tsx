@@ -8,12 +8,12 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
 
 import { CBackdrop } from '../backdrop/CBackdrop'
+import { CConditionalPortal } from '../conditional-portal'
 import { CModalContent } from './CModalContent'
 import { CModalDialog } from './CModalDialog'
 
@@ -119,22 +119,22 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     const [_visible, setVisible] = useState(visible)
     const [staticBackdrop, setStaticBackdrop] = useState(false)
 
-    useEffect(() => {
-      setVisible(visible)
-    }, [visible])
-
     const contextValues = {
       visible: _visible,
       setVisible,
     }
 
     useEffect(() => {
-      modalRef.current && modalRef.current.addEventListener('click', handleClickOutside)
-      modalRef.current && modalRef.current.addEventListener('keyup', handleKeyDown)
+      setVisible(visible)
+    }, [visible])
+
+    useEffect(() => {
+      document.addEventListener('click', handleClickOutside)
+      document.addEventListener('keydown', handleKeyDown)
 
       return () => {
-        modalRef.current && modalRef.current.removeEventListener('click', handleClickOutside)
-        modalRef.current && modalRef.current.removeEventListener('keyup', handleKeyDown)
+        document.removeEventListener('click', handleClickOutside)
+        document.removeEventListener('keydown', handleKeyDown)
       }
     }, [_visible])
 
@@ -195,49 +195,45 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     const handleKeyDown = useCallback(
       (event: KeyboardEvent) => {
         if (event.key === 'Escape' && keyboard) {
-          return handleDismiss()
+          handleDismiss()
         }
       },
       [modalRef, handleDismiss],
     )
 
-    const modal = (ref?: React.Ref<HTMLDivElement>, state?: string) => {
-      return (
-        <CModalContext.Provider value={contextValues}>
-          <div
-            className={classNames(
-              'modal',
-              {
-                'modal-static': staticBackdrop,
-                fade: transition,
-              },
-              state === 'entering'
-                ? 'd-block'
-                : state === 'entered'
-                ? 'show d-block'
-                : state === 'exiting'
-                ? 'd-block'
-                : '',
-              className,
-            )}
-            tabIndex={-1}
-            role="dialog"
-            ref={ref}
-          >
-            <CModalDialog
-              alignment={alignment}
-              fullscreen={fullscreen}
-              scrollable={scrollable}
-              size={size}
-            >
-              <CModalContent {...rest} ref={modalContentRef}>
-                {children}
-              </CModalContent>
-            </CModalDialog>
-          </div>
-        </CModalContext.Provider>
-      )
-    }
+    // const Modal = ({ ref, state }: { ref?: React.Ref<HTMLDivElement>; state?: string }) => (
+    //   <div
+    //     className={classNames(
+    //       'modal',
+    //       {
+    //         'modal-static': staticBackdrop,
+    //         fade: transition,
+    //       },
+    //       state === 'entering'
+    //         ? 'd-block'
+    //         : state === 'entered'
+    //         ? 'show d-block'
+    //         : state === 'exiting'
+    //         ? 'd-block'
+    //         : '',
+    //       className,
+    //     )}
+    //     tabIndex={-1}
+    //     role="dialog"
+    //     ref={ref}
+    //   >
+    //     <CModalDialog
+    //       alignment={alignment}
+    //       fullscreen={fullscreen}
+    //       scrollable={scrollable}
+    //       size={size}
+    //     >
+    //       <CModalContent {...rest} ref={modalContentRef}>
+    //         {children}
+    //       </CModalContent>
+    //     </CModalDialog>
+    //   </div>
+    // )
 
     return (
       <>
@@ -250,15 +246,49 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
           unmountOnExit={unmountOnClose}
           timeout={!transition ? 0 : duration}
         >
-          {(state) => {
-            return typeof window !== 'undefined' && portal
-              ? createPortal(modal(forkedRef, state), document.body)
-              : modal(forkedRef, state)
-          }}
+          {(state) => (
+            <CConditionalPortal portal={portal}>
+              <CModalContext.Provider value={contextValues}>
+                <div
+                  className={classNames(
+                    'modal',
+                    {
+                      'modal-static': staticBackdrop,
+                      fade: transition,
+                    },
+                    state === 'entering'
+                      ? 'd-block'
+                      : state === 'entered'
+                      ? 'show d-block'
+                      : state === 'exiting'
+                      ? 'd-block'
+                      : '',
+                    className,
+                  )}
+                  tabIndex={-1}
+                  role="dialog"
+                  ref={forkedRef}
+                >
+                  <CModalDialog
+                    alignment={alignment}
+                    fullscreen={fullscreen}
+                    scrollable={scrollable}
+                    size={size}
+                  >
+                    <CModalContent {...rest} ref={modalContentRef}>
+                      {children}
+                    </CModalContent>
+                  </CModalDialog>
+                </div>
+              </CModalContext.Provider>
+            </CConditionalPortal>
+          )}
         </Transition>
-        {typeof window !== 'undefined' && portal
-          ? backdrop && createPortal(<CBackdrop visible={_visible} />, document.body)
-          : backdrop && <CBackdrop visible={_visible} />}
+        {backdrop && (
+          <CConditionalPortal portal={portal}>
+            <CBackdrop visible={_visible} />
+          </CConditionalPortal>
+        )}
       </>
     )
   },

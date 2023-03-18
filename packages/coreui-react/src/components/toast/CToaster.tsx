@@ -1,7 +1,7 @@
 import React, { forwardRef, HTMLAttributes, useEffect, useState, useRef, ReactElement } from 'react'
-import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import { CConditionalPortal } from '../conditional-portal'
 
 export interface CToasterProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -52,34 +52,32 @@ export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
       ])
     }
 
-    const toaster = (ref?: React.Ref<HTMLDivElement>) => {
-      return toasts.length > 0 || children ? (
-        <div
-          className={classNames(
-            'toaster toast-container p-3',
-            {
-              'position-fixed': placement,
-              'top-0': placement && placement.includes('top'),
-              'top-50 translate-middle-y': placement && placement.includes('middle'),
-              'bottom-0': placement && placement.includes('bottom'),
-              'start-0': placement && placement.includes('start'),
-              'start-50 translate-middle-x': placement && placement.includes('center'),
-              'end-0': placement && placement.includes('end'),
-            },
-            className,
-          )}
-          {...rest}
-          ref={ref}
-        >
-          {children}
-          {toasts.map((toast) => React.cloneElement(toast, { visible: true }))}
-        </div>
-      ) : null
-    }
-
-    return typeof window !== 'undefined' && placement
-      ? createPortal(toaster(ref), document.body)
-      : toaster(ref)
+    return (
+      <CConditionalPortal portal={typeof placement === 'string'}>
+        {toasts.length > 0 || children ? (
+          <div
+            className={classNames(
+              'toaster toast-container p-3',
+              {
+                'position-fixed': placement,
+                'top-0': placement && placement.includes('top'),
+                'top-50 translate-middle-y': placement && placement.includes('middle'),
+                'bottom-0': placement && placement.includes('bottom'),
+                'start-0': placement && placement.includes('start'),
+                'start-50 translate-middle-x': placement && placement.includes('center'),
+                'end-0': placement && placement.includes('end'),
+              },
+              className,
+            )}
+            {...rest}
+            ref={ref}
+          >
+            {children}
+            {toasts.map((toast) => React.cloneElement(toast, { visible: true }))}
+          </div>
+        ) : null}
+      </CConditionalPortal>
+    )
   },
 )
 

@@ -1,10 +1,10 @@
 import React, { forwardRef, HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
 
 import { CBackdrop } from '../backdrop/CBackdrop'
+import { CConditionalPortal } from '../conditional-portal'
 
 import { useForkedRef } from '../../hooks'
 
@@ -113,36 +113,6 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
       [ref, handleDismiss],
     )
 
-    const offcanvas = (ref: React.Ref<HTMLDivElement>, state: string) => {
-      return (
-        <>
-          <div
-            className={classNames(
-              {
-                [`offcanvas${typeof responsive !== 'boolean' ? '-' + responsive : ''}`]: responsive,
-                [`offcanvas-${placement}`]: placement,
-              },
-              state === 'entering'
-                ? 'showing'
-                : state === 'entered'
-                ? 'show'
-                : state === 'exiting'
-                ? 'show hiding'
-                : '',
-              className,
-            )}
-            role="dialog"
-            tabIndex={-1}
-            onKeyDown={handleKeyDown}
-            {...rest}
-            ref={ref}
-          >
-            {children}
-          </div>
-        </>
-      )
-    }
-
     return (
       <>
         <Transition
@@ -153,29 +123,44 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
           onExit={onHide}
           timeout={300}
         >
-          {(state) => {
-            return typeof window !== 'undefined' && portal
-              ? createPortal(offcanvas(forkedRef, state), document.body)
-              : offcanvas(forkedRef, state)
-          }}
+          {(state) => (
+            <CConditionalPortal portal={portal}>
+              <div
+                className={classNames(
+                  {
+                    [`offcanvas${typeof responsive !== 'boolean' ? '-' + responsive : ''}`]:
+                      responsive,
+                    [`offcanvas-${placement}`]: placement,
+                  },
+                  state === 'entering'
+                    ? 'showing'
+                    : state === 'entered'
+                    ? 'show'
+                    : state === 'exiting'
+                    ? 'show hiding'
+                    : '',
+                  className,
+                )}
+                role="dialog"
+                tabIndex={-1}
+                onKeyDown={handleKeyDown}
+                {...rest}
+                ref={forkedRef}
+              >
+                {children}
+              </div>
+            </CConditionalPortal>
+          )}
         </Transition>
-        {typeof window !== 'undefined' && portal
-          ? backdrop &&
-            createPortal(
-              <CBackdrop
-                className="offcanvas-backdrop"
-                onClick={handleBackdropDismiss}
-                visible={_visible}
-              />,
-              document.body,
-            )
-          : backdrop && (
-              <CBackdrop
-                className="offcanvas-backdrop"
-                onClick={handleBackdropDismiss}
-                visible={_visible}
-              />
-            )}
+        {backdrop && (
+          <CConditionalPortal portal={portal}>
+            <CBackdrop
+              className="offcanvas-backdrop"
+              onClick={handleBackdropDismiss}
+              visible={_visible}
+            />
+          </CConditionalPortal>
+        )}
       </>
     )
   },
