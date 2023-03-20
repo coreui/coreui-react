@@ -56,7 +56,7 @@ export const CContainer = forwardRef<HTMLDivElement, CContainerProps>(
     return (
       <div
         className={classNames(
-          repsonsiveClassNames.length ? repsonsiveClassNames : 'container',
+          repsonsiveClassNames.length > 0 ? repsonsiveClassNames : 'container',
           className,
         )}
         {...rest}
