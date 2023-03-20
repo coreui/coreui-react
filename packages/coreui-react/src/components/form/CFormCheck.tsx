@@ -154,41 +154,52 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
       </CFormLabel>
     )
 
-    return button ? (
-      <>
-        <FormControl />
-        {label && <FormLabel />}
-        <FormValidation />
-      </>
-    ) : label ? (
-      hitArea ? (
-        <>
-          <CFormLabel customClassName={className} {...(id && { htmlFor: id })}>
+    const FormCheck = () => {
+      if (button) {
+        return (
+          <>
             <FormControl />
-            {label}
-          </CFormLabel>
-          <FormValidation />
-        </>
-      ) : (
-        <div
-          className={classNames(
-            'form-check',
-            {
-              'form-check-inline': inline,
-              'is-invalid': invalid,
-              'is-valid': valid,
-            },
-            className,
-          )}
-        >
-          <FormControl />
-          <FormLabel />
-          <FormValidation />
-        </div>
-      )
-    ) : (
-      <FormControl />
-    )
+            {label && <FormLabel />}
+            <FormValidation />
+          </>
+        )
+      }
+
+      if (label) {
+        return hitArea ? (
+          <>
+            <FormControl />
+            <CFormLabel
+              customClassName={classNames('form-check-label stretched-link', className)}
+              {...(id && { htmlFor: id })}
+            >
+              {label}
+            </CFormLabel>
+            <FormValidation />
+          </>
+        ) : (
+          <div
+            className={classNames(
+              'form-check',
+              {
+                'form-check-inline': inline,
+                'is-invalid': invalid,
+                'is-valid': valid,
+              },
+              className,
+            )}
+          >
+            <FormControl />
+            <FormLabel />
+            <FormValidation />
+          </div>
+        )
+      }
+
+      return <FormControl />
+    }
+
+    return <FormCheck />
   },
 )
 
