@@ -13,7 +13,7 @@ export const CHeaderToggler = forwardRef<HTMLButtonElement, CHeaderTogglerProps>
   ({ children, className, ...rest }, ref) => {
     return (
       <button type="button" className={classNames('header-toggler', className)} {...rest} ref={ref}>
-        {children ? children : <span className="header-toggler-icon"></span>}
+        {children ?? <span className="header-toggler-icon"></span>}
       </button>
     )
   },

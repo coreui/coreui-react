@@ -19,22 +19,19 @@ export interface CHeaderProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CHeader = forwardRef<HTMLDivElement, CHeaderProps>(
   ({ children, className, container, position, ...rest }, ref) => {
-    let content
-    if (container) {
-      content = (
-        <div className={`container${container !== true ? '-' + container : ''}`}>{children}</div>
-      )
-    } else {
-      content = children
-    }
-
     return (
       <div
         className={classNames('header', { [`header-${position}`]: position }, className)}
         {...rest}
         ref={ref}
       >
-        {content}
+        {container ? (
+          <div className={typeof container === 'string' ? `container-${container}` : 'container'}>
+            {children}
+          </div>
+        ) : (
+          <>{children}</>
+        )}
       </div>
     )
   },
