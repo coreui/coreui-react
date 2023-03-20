@@ -118,8 +118,8 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
       <Transition
         in={_visible}
         nodeRef={toastRef}
-        onEnter={() => onShow && onShow(index ? index : null)}
-        onExited={() => onClose && onClose(index ? index : null)}
+        onEnter={() => onShow && onShow(index ?? null)}
+        onExited={() => onClose && onClose(index ?? null)}
         timeout={250}
         unmountOnExit
       >
@@ -132,14 +132,9 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
                   fade: animation,
                   [`bg-${color}`]: color,
                   'border-0': color,
+                  'show showing': state === 'entering' || state === 'exiting',
+                  show: state === 'entered',
                 },
-                state === 'entering'
-                  ? 'show showing'
-                  : state === 'entered'
-                  ? 'show'
-                  : state === 'exiting'
-                  ? 'show showing'
-                  : '',
                 className,
               )}
               aria-live="assertive"
