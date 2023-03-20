@@ -53,15 +53,6 @@ export const CNavbar = forwardRef<HTMLDivElement, CNavbarProps>(
     },
     ref,
   ) => {
-    let content
-    if (container) {
-      content = (
-        <div className={`container${container !== true ? '-' + container : ''}`}>{children}</div>
-      )
-    } else {
-      content = children
-    }
-
     return (
       <Component
         className={classNames(
@@ -77,7 +68,13 @@ export const CNavbar = forwardRef<HTMLDivElement, CNavbarProps>(
         {...rest}
         ref={ref}
       >
-        {content}
+        {container ? (
+          <div className={typeof container === 'string' ? `container-${container}` : 'container'}>
+            {children}
+          </div>
+        ) : (
+          <>{children}</>
+        )}
       </Component>
     )
   },

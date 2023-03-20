@@ -13,7 +13,7 @@ export const CNavbarToggler = forwardRef<HTMLButtonElement, CNavbarTogglerProps>
   ({ children, className, ...rest }, ref) => {
     return (
       <button type="button" className={classNames('navbar-toggler', className)} {...rest} ref={ref}>
-        {children ? children : <span className="navbar-toggler-icon"></span>}
+        {children ?? <span className="navbar-toggler-icon"></span>}
       </button>
     )
   },
