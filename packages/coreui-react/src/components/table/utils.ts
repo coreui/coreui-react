@@ -11,17 +11,12 @@ export const pretifyName = (name: string) => {
 }
 
 export const getColumnLabel = (column: Column | string) =>
-  typeof column === 'object'
-    ? column.label !== undefined
-      ? column.label
-      : pretifyName(column.key)
-    : pretifyName(column)
+  typeof column === 'object' ? column.label ?? pretifyName(column.key) : pretifyName(column)
 
 export const getColumnNames = (columns: (string | Column)[] | undefined, items?: Item[]) =>
   columns
     ? columns.map((column: Column | string) => {
-        if (typeof column === 'object') return column.key
-        else return column
+        return typeof column === 'object' ? column.key : column
       })
     : items && getColumnNamesFromItems(items)
 
