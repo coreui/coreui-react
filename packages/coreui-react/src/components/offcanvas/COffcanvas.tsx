@@ -1,4 +1,4 @@
-import React, { forwardRef, HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react'
+import React, { forwardRef, HTMLAttributes, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
@@ -104,14 +104,11 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
       }
     }
 
-    const handleKeyDown = useCallback(
-      (event: React.KeyboardEvent<HTMLDivElement>) => {
-        if (event.key === 'Escape' && keyboard) {
-          return handleDismiss()
-        }
-      },
-      [ref, handleDismiss],
-    )
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === 'Escape' && keyboard) {
+        return handleDismiss()
+      }
+    }
 
     return (
       <>
@@ -128,17 +125,13 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
               <div
                 className={classNames(
                   {
-                    [`offcanvas${typeof responsive !== 'boolean' ? '-' + responsive : ''}`]:
+                    [`offcanvas${typeof responsive === 'string' ? '-' + responsive : ''}`]:
                       responsive,
                     [`offcanvas-${placement}`]: placement,
+                    showing: state === 'entering',
+                    show: state === 'entered',
+                    'show hiding': state === 'exiting',
                   },
-                  state === 'entering'
-                    ? 'showing'
-                    : state === 'entered'
-                    ? 'show'
-                    : state === 'exiting'
-                    ? 'show hiding'
-                    : '',
                   className,
                 )}
                 role="dialog"
