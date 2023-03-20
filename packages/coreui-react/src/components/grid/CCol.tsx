@@ -104,7 +104,7 @@ export const CCol = forwardRef<HTMLDivElement, CColProps>(
     return (
       <div
         className={classNames(
-          repsonsiveClassNames.length ? repsonsiveClassNames : 'col',
+          repsonsiveClassNames.length > 0 ? repsonsiveClassNames : 'col',
           className,
         )}
         {...rest}
