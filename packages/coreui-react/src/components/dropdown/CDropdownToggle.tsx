@@ -67,7 +67,6 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
     ),
     'aria-expanded': visible,
     ...(!rest.disabled && { ...triggers }),
-    ...triggers,
   }
 
   // We use any because Toggler can be `a` as well as `button`.

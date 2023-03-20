@@ -126,36 +126,34 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
     return classNames
   }
 
-  const dropdownMenuComponent = (style?: React.CSSProperties, ref?: React.Ref<HTMLDivElement>) => {
-    return (
-      <Component
-        className={classNames(
-          'dropdown-menu',
-          {
-            'dropdown-menu-dark': dark,
-            show: visible,
-          },
-          alignment && alignmentClassNames(alignment),
-          className,
-        )}
-        ref={ref}
-        style={style}
-        role="menu"
-        aria-hidden={!visible}
-        {...(!popper && { 'data-coreui-popper': 'static' })}
-        {...rest}
-      >
-        {Component === 'ul'
-          ? React.Children.map(children, (child, index) => {
-              if (React.isValidElement(child)) {
-                return <li key={index}>{React.cloneElement(child)}</li>
-              }
-              return
-            })
-          : children}
-      </Component>
-    )
-  }
+  const dropdownMenuComponent = (style?: React.CSSProperties, ref?: React.Ref<HTMLDivElement>) => (
+    <Component
+      className={classNames(
+        'dropdown-menu',
+        {
+          'dropdown-menu-dark': dark,
+          show: visible,
+        },
+        alignment && alignmentClassNames(alignment),
+        className,
+      )}
+      ref={ref}
+      style={style}
+      role="menu"
+      aria-hidden={!visible}
+      {...(!popper && { 'data-coreui-popper': 'static' })}
+      {...rest}
+    >
+      {Component === 'ul'
+        ? React.Children.map(children, (child, index) => {
+            if (React.isValidElement(child)) {
+              return <li key={index}>{React.cloneElement(child)}</li>
+            }
+            return
+          })
+        : children}
+    </Component>
+  )
 
   return popper && visible ? (
     <Popper innerRef={dropdownMenuRef} placement={_placement}>

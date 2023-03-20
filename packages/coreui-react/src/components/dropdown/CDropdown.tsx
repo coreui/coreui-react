@@ -115,10 +115,10 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
     },
     ref,
   ) => {
-    const [_visible, setVisible] = useState(visible)
     const dropdownRef = useRef<HTMLDivElement>(null)
     const dropdownToggleRef = useRef(null)
     const forkedRef = useForkedRef(ref, dropdownRef)
+    const [_visible, setVisible] = useState(visible)
 
     const Component = variant === 'nav-item' ? 'li' : component
 
@@ -149,7 +149,7 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       !_visible && onHide && onHide()
     }, [_visible])
 
-    const dropdownContent = () => {
+    const DropdownContent = () => {
       return variant === 'input-group' ? (
         <>{children}</>
       ) : (
@@ -174,13 +174,15 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       )
     }
 
-    return popper ? (
+    return (
       <CDropdownContext.Provider value={contextValues}>
-        <Manager>{dropdownContent()}</Manager>
-      </CDropdownContext.Provider>
-    ) : (
-      <CDropdownContext.Provider value={contextValues}>
-        {dropdownContent()}
+        {popper ? (
+          <Manager>
+            <DropdownContent />
+          </Manager>
+        ) : (
+          <DropdownContent />
+        )}
       </CDropdownContext.Provider>
     )
   },
