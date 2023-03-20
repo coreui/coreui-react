@@ -2,7 +2,6 @@ import React, {
   createContext,
   forwardRef,
   HTMLAttributes,
-  useCallback,
   useEffect,
   useLayoutEffect,
   useRef,
@@ -142,6 +141,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       if (backdrop === 'static') {
         return setStaticBackdrop(true)
       }
+
       return onClose && onClose()
     }
 
@@ -164,7 +164,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
           () => {
             modalRef.current?.focus()
           },
-          !transition ? 0 : duration,
+          transition ? duration : 0,
         )
       } else {
         document.body.classList.remove('modal-open')
@@ -192,48 +192,11 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       }
     }
 
-    const handleKeyDown = useCallback(
-      (event: KeyboardEvent) => {
-        if (event.key === 'Escape' && keyboard) {
-          handleDismiss()
-        }
-      },
-      [modalRef, handleDismiss],
-    )
-
-    // const Modal = ({ ref, state }: { ref?: React.Ref<HTMLDivElement>; state?: string }) => (
-    //   <div
-    //     className={classNames(
-    //       'modal',
-    //       {
-    //         'modal-static': staticBackdrop,
-    //         fade: transition,
-    //       },
-    //       state === 'entering'
-    //         ? 'd-block'
-    //         : state === 'entered'
-    //         ? 'show d-block'
-    //         : state === 'exiting'
-    //         ? 'd-block'
-    //         : '',
-    //       className,
-    //     )}
-    //     tabIndex={-1}
-    //     role="dialog"
-    //     ref={ref}
-    //   >
-    //     <CModalDialog
-    //       alignment={alignment}
-    //       fullscreen={fullscreen}
-    //       scrollable={scrollable}
-    //       size={size}
-    //     >
-    //       <CModalContent {...rest} ref={modalContentRef}>
-    //         {children}
-    //       </CModalContent>
-    //     </CModalDialog>
-    //   </div>
-    // )
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && keyboard) {
+        handleDismiss()
+      }
+    }
 
     return (
       <>
@@ -244,7 +207,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
           onEnter={onShow}
           onExit={onClose}
           unmountOnExit={unmountOnClose}
-          timeout={!transition ? 0 : duration}
+          timeout={transition ? duration : 0}
         >
           {(state) => (
             <CConditionalPortal portal={portal}>
@@ -255,18 +218,15 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
                     {
                       'modal-static': staticBackdrop,
                       fade: transition,
+                      show: state === 'entered',
                     },
-                    state === 'entering'
-                      ? 'd-block'
-                      : state === 'entered'
-                      ? 'show d-block'
-                      : state === 'exiting'
-                      ? 'd-block'
-                      : '',
                     className,
                   )}
                   tabIndex={-1}
                   role="dialog"
+                  style={{
+                    ...(state !== 'exited' && { display: 'block' }),
+                  }}
                   ref={forkedRef}
                 >
                   <CModalDialog
