@@ -21,7 +21,7 @@ export interface CPaginationItemProps extends HTMLAttributes<HTMLAnchorElement> 
 
 export const CPaginationItem = forwardRef<HTMLAnchorElement, CPaginationItemProps>(
   ({ children, className, component, ...rest }, ref) => {
-    const Component = component ? component : rest.active ? 'span' : 'a'
+    const Component = component ?? (rest.active ? 'span' : 'a')
 
     return (
       <li
