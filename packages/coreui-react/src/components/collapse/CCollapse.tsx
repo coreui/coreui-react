@@ -95,19 +95,12 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
           const currentWidth = width === 0 ? null : { width }
           return (
             <div
-              className={classNames(
-                className,
-                {
-                  'collapse-horizontal': horizontal,
-                },
-                state === 'entering'
-                  ? 'collapsing'
-                  : state === 'entered'
-                  ? 'collapse show'
-                  : state === 'exiting'
-                  ? 'collapsing'
-                  : 'collapse',
-              )}
+              className={classNames(className, {
+                'collapse-horizontal': horizontal,
+                collapsing: state === 'entering' || state === 'exiting',
+                'collapse show': state === 'entered',
+                collapse: state === 'exited',
+              })}
               style={{ ...currentHeight, ...currentWidth }}
               {...rest}
               ref={forkedRef}
