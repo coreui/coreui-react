@@ -85,7 +85,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
     }, [visible])
 
     useEffect(() => {
-      typeof inViewport !== 'undefined' && onVisibleChange && onVisibleChange(inViewport)
+      inViewport !== undefined && onVisibleChange && onVisibleChange(inViewport)
       !inViewport && onHide && onHide()
       inViewport && onShow && onShow()
     }, [inViewport])
