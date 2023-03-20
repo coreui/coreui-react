@@ -72,19 +72,27 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
   // We use any because Toggler can be `a` as well as `button`.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Toggler = (ref?: React.Ref<any>) => {
-    return custom && React.isValidElement(children) ? (
-      <>
-        {React.cloneElement(children as React.ReactElement<any>, {
-          'aria-expanded': visible,
-          ...(!rest.disabled && { ...triggers }),
-          ref: useForkedRef(ref, dropdownToggleRef),
-        })}
-      </>
-    ) : variant === 'nav-item' ? (
-      <a href="#" {...togglerProps} ref={useForkedRef(ref, dropdownToggleRef)}>
-        {children}
-      </a>
-    ) : (
+    if (custom && React.isValidElement(children)) {
+      return (
+        <>
+          {React.cloneElement(children as React.ReactElement<any>, {
+            'aria-expanded': visible,
+            ...(!rest.disabled && { ...triggers }),
+            ref: useForkedRef(ref, dropdownToggleRef),
+          })}
+        </>
+      )
+    }
+
+    if (variant === 'nav-item') {
+      return (
+        <a href="#" {...togglerProps} ref={useForkedRef(ref, dropdownToggleRef)}>
+          {children}
+        </a>
+      )
+    }
+
+    return (
       <CButton
         type="button"
         {...togglerProps}

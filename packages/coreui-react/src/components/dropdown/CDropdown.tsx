@@ -156,12 +156,10 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
         <Component
           className={classNames(
             variant === 'nav-item' ? 'nav-item dropdown' : variant,
-            direction === 'center'
-              ? 'dropdown-center'
-              : direction === 'dropup-center'
-              ? 'dropup dropup-center'
-              : direction,
             {
+              'dropdown-center': direction === 'center',
+              'dropup dropup-center': direction === 'dropup-center',
+              direction: direction && direction !== 'center' && direction !== 'dropup-center',
               show: _visible,
             },
             className,
