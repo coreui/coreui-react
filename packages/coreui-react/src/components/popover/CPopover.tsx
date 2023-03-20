@@ -118,16 +118,12 @@ export const CPopover: FC<CPopoverProps> = ({
             {(state) => (
               <div
                 className={classNames(
-                  `popover bs-popover-${
-                    placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement
-                  }`,
-                  state === 'entering'
-                    ? 'fade'
-                    : state === 'entered'
-                    ? 'fade show'
-                    : state === 'exiting'
-                    ? 'fade'
-                    : 'fade',
+                  'popover',
+                  `bs-popover-${placement.replace('left', 'start').replace('right', 'end')}`,
+                  'fade',
+                  {
+                    show: state === 'entered',
+                  },
                   className,
                 )}
                 ref={setPopperElement}
