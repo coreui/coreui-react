@@ -32,7 +32,7 @@ export interface CAccordionItemProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CAccordionItem = forwardRef<HTMLDivElement, CAccordionItemProps>(
   ({ children, className, itemKey, ...rest }, ref) => {
-    const _itemKey = useRef(itemKey ? itemKey : Math.random().toString(36).substr(2, 9))
+    const _itemKey = useRef(itemKey ?? Math.random().toString(36).slice(2, 11))
 
     const { _activeItemKey, alwaysOpen, setActiveKey } = useContext(CAccordionContext)
     const [visible, setVisible] = useState(Boolean(_activeItemKey === _itemKey.current))

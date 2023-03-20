@@ -30,7 +30,7 @@ export interface CAccordionContextProps {
 export const CAccordionContext = createContext({} as CAccordionContextProps)
 
 export const CAccordion = forwardRef<HTMLDivElement, CAccordionProps>(
-  ({ children, activeItemKey = undefined, alwaysOpen = false, className, flush, ...rest }, ref) => {
+  ({ children, activeItemKey, alwaysOpen = false, className, flush, ...rest }, ref) => {
     const [_activeItemKey, setActiveKey] = useState(activeItemKey)
 
     return (
