@@ -18,6 +18,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    "plugin:unicorn/recommended",
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -34,4 +35,13 @@ module.exports = {
       version: 'detect',
     },
   },
+  rules: {
+    "unicorn/filename-case": "off",
+    "unicorn/no-array-for-each": "off",
+    "unicorn/no-null": "off",
+    "unicorn/prefer-dom-node-append": "off",
+    "unicorn/prefer-export-from": "off",
+    "unicorn/prefer-query-selector": "off",
+    "unicorn/prevent-abbreviations": "off",
+  }
 }
