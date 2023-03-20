@@ -5,7 +5,6 @@ import DocsLayout from './DocsLayout'
 
 import { AppContext } from '../AppContext'
 import { Script } from 'gatsby'
-import { Helmet } from 'react-helmet'
 
 interface DefaultLayoutProps {
   children: any

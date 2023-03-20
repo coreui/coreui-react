@@ -300,16 +300,15 @@ And if you want `<label>`s as the `.list-group-item` for large hit areas, you ca
 
 ```jsx preview
 <CListGroup>
-  <CFormCheck className="list-group-item" hitArea="full" label="Cras justo odio" />
-  <CFormCheck
-    className="list-group-item"
-    hitArea="full"
-    label="Dapibus ac facilisis in"
-    defaultChecked
-  />
-  <CFormCheck className="list-group-item" hitArea="full" label="Morbi leo risus" defaultChecked />
-  <CFormCheck className="list-group-item" hitArea="full" label="orta ac consectetur ac" />
-  <CFormCheck className="list-group-item" hitArea="full" label="Vestibulum at eros" />
+  <CListGroupItem>
+    <CFormCheck hitArea="full" label="First checkbox" value="" id="firstCheckboxStretched" />
+  </CListGroupItem>
+  <CListGroupItem>
+    <CFormCheck hitArea="full" label="Second checkbox" value="" id="secondCheckboxStretched" defaultChecked/>
+  </CListGroupItem>
+  <CListGroupItem>
+    <CFormCheck hitArea="full" label="Third checkbox" value="" id="thirdCheckboxStretched"/>
+  </CListGroupItem>
 </CListGroup>
 ```
 
