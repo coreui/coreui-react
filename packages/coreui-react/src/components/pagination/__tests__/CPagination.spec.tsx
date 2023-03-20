@@ -16,13 +16,13 @@ test('CPagination customize', async () => {
   )
   expect(container).toMatchSnapshot()
   let element = container.firstChild
-  if (element !== null) {
+  if (element === null) {
+    expect(true).toBe(false)
+  } else {
     element = element.firstChild
     expect(element).toHaveClass('bazinga')
     expect(element).toHaveClass('pagination')
     expect(element).toHaveClass('pagination-lg')
-  } else {
-    expect(true).toBe(false)
   }
 })
 

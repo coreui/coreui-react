@@ -20,10 +20,10 @@ test('CPaginationItem customize', async () => {
   expect(container.firstChild).toHaveClass('active')
   expect(container.firstChild).toHaveClass('disabled')
   let element = container.firstChild
-  if (element !== null) {
+  if (element === null) {
+    expect(true).toBe(false)
+  } else {
     element = element.firstChild
     expect(element).toHaveClass('page-link')
-  } else {
-    expect(true).toBe(false)
   }
 })
