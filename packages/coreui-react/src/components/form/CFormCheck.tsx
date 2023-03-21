@@ -55,7 +55,7 @@ export interface CFormCheckProps
    */
   indeterminate?: boolean
   /**
-   * Group checkboxes or radios on the same horizontal row by adding.
+   * Group checkboxes or radios on the same horizontal row.
    */
   inline?: boolean
   /**
@@ -66,6 +66,12 @@ export interface CFormCheckProps
    * The element represents a caption for a component.
    */
   label?: string | ReactNode
+  /**
+   * Put checkboxes or radios on the opposite side.
+   *
+   * @sinve 4.7.0
+   */
+  reverse?: boolean
   /**
    * Specifies the type of component.
    */
@@ -92,6 +98,7 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
       inline,
       invalid,
       label,
+      reverse,
       type = 'checkbox',
       valid,
       ...rest
@@ -183,6 +190,7 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
               'form-check',
               {
                 'form-check-inline': inline,
+                'form-check-reverse': reverse,
                 'is-invalid': invalid,
                 'is-valid': valid,
               },
@@ -211,6 +219,7 @@ CFormCheck.propTypes = {
   indeterminate: PropTypes.bool,
   inline: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  reverse: PropTypes.bool,
   type: PropTypes.oneOf(['checkbox', 'radio']),
   ...CFormControlValidation.propTypes,
 }
