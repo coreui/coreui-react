@@ -12,7 +12,13 @@ import {
   CFormSwitch,
 } from '@coreui/react/src/index'
 
-## Switches
+## About
+
+React Switch Components are a type of UI component that allows users to toggle between two states, usually represented as "on" or "off", "enabled" or "disabled", or "checked" or "unchecked".
+
+When a user interacts with the component by clicking or tapping on it, the switch toggles its state, triggering an action or changing the appearance of the component. This type of component is often used in forms, settings panels, and other places where users need to turn something on or off or choose between two options.
+
+## Example
 
 ```jsx preview
 <CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefault"/>
@@ -21,12 +27,23 @@ import {
 <CFormSwitch label="Disabled checked switch checkbox input" id="formSwitchCheckCheckedDisabled" defaultChecked disabled/>
 ```
 
-### Sizes
+## Sizing
+
+Larger or smaller react switches? Add `size="lg"` or `size="xl"` for additional sizes.
 
 ```jsx preview
 <CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefaultNormal"/>
 <CFormSwitch size="lg" label="Large switch checkbox input" id="formSwitchCheckDefaultLg"/>
 <CFormSwitch size="xl" label="Extra large switch checkbox input" id="formSwitchCheckDefaultXL"/>
+```
+
+## Reverse 
+
+Put your switches on the opposite side by adding `reverse` boolean property.
+
+```jsx preview
+<CFormSwitch reverse type="radio" id="reverseFormSwitch1" label="Reverse switch"/>
+<CFormSwitch reverse type="radio" id="reverseFormSwitch2" label="Disabled reverse switch" disabled/>
 ```
 
 ## API

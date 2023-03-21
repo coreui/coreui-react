@@ -22,6 +22,12 @@ export interface CFormSwitchProps extends Omit<InputHTMLAttributes<HTMLInputElem
    */
   label?: string | ReactNode
   /**
+   * Put switch on the opposite side.
+   *
+   * @sinve 4.7.0
+   */
+  reverse?: boolean
+  /**
    * Size the component large or extra large. Works only with `switch`.
    */
   size?: 'lg' | 'xl'
@@ -36,12 +42,13 @@ export interface CFormSwitchProps extends Omit<InputHTMLAttributes<HTMLInputElem
 }
 
 export const CFormSwitch = forwardRef<HTMLInputElement, CFormSwitchProps>(
-  ({ className, id, invalid, label, size, type = 'checkbox', valid, ...rest }, ref) => {
+  ({ className, id, invalid, label, reverse, size, type = 'checkbox', valid, ...rest }, ref) => {
     return (
       <div
         className={classNames(
           'form-check form-switch',
           {
+            'form-check-reverse': reverse,
             [`form-switch-${size}`]: size,
             'is-invalid': invalid,
             'is-valid': valid,
@@ -74,6 +81,7 @@ CFormSwitch.propTypes = {
   id: PropTypes.string,
   invalid: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  reverse: PropTypes.bool,
   size: PropTypes.oneOf(['lg', 'xl']),
   type: PropTypes.oneOf(['checkbox', 'radio']),
   valid: PropTypes.bool,
