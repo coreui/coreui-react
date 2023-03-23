@@ -3,6 +3,7 @@ import React, {
   ElementType,
   forwardRef,
   HTMLAttributes,
+  ReactNode,
   RefObject,
   useEffect,
   useRef,
@@ -87,6 +88,16 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
   visible?: boolean
 }
 
+const PopperManagerWrapper = ({
+  children,
+  popper,
+}: {
+  children: ReactNode
+  popper: boolean
+}) => {
+  return popper ? <Manager>{children}</Manager> : <>{children}</>
+}
+
 interface ContextProps extends CDropdownProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dropdownToggleRef: RefObject<any> | undefined
@@ -149,38 +160,30 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       !_visible && onHide && onHide()
     }, [_visible])
 
-    const DropdownContent = () => {
-      return variant === 'input-group' ? (
-        <>{children}</>
-      ) : (
-        <Component
-          className={classNames(
-            variant === 'nav-item' ? 'nav-item dropdown' : variant,
-            {
-              'dropdown-center': direction === 'center',
-              'dropup dropup-center': direction === 'dropup-center',
-              direction: direction && direction !== 'center' && direction !== 'dropup-center',
-              show: _visible,
-            },
-            className,
-          )}
-          {...rest}
-          ref={forkedRef}
-        >
-          {children}
-        </Component>
-      )
-    }
-
     return (
       <CDropdownContext.Provider value={contextValues}>
-        {popper ? (
-          <Manager>
-            <DropdownContent />
-          </Manager>
-        ) : (
-          <DropdownContent />
-        )}
+        <PopperManagerWrapper popper={popper}>
+          {variant === 'input-group' ? (
+            <>{children}</>
+          ) : (
+            <Component
+              className={classNames(
+                variant === 'nav-item' ? 'nav-item dropdown' : variant,
+                {
+                  'dropdown-center': direction === 'center',
+                  'dropup dropup-center': direction === 'dropup-center',
+                  direction: direction && direction !== 'center' && direction !== 'dropup-center',
+                  show: _visible,
+                },
+                className,
+              )}
+              {...rest}
+              ref={forkedRef}
+            >
+              {children}
+            </Component>
+          )}
+        </PopperManagerWrapper>
       </CDropdownContext.Provider>
     )
   },
