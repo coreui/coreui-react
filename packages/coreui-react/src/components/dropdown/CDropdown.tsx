@@ -172,7 +172,7 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
                 {
                   'dropdown-center': direction === 'center',
                   'dropup dropup-center': direction === 'dropup-center',
-                  direction: direction && direction !== 'center' && direction !== 'dropup-center',
+                  [`${direction}`]: direction && direction !== 'center' && direction !== 'dropup-center',
                   show: _visible,
                 },
                 className,
