@@ -80,11 +80,9 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
     }, [visible])
 
     useEffect(() => {
-      if (_visible) {
-        if (!scroll) {
-          document.body.style.overflow = 'hidden'
-          document.body.style.paddingRight = '0px'
-        }
+      if (_visible && !scroll) {
+        document.body.style.overflow = 'hidden'
+        document.body.style.paddingRight = '0px'
         return
       }
 
