@@ -79,6 +79,12 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
    */
   popper?: boolean
   /**
+   * Generates dropdown menu using createPortal.
+   *
+   * @since 4.8.0
+   */
+  portal?: boolean
+  /**
    * Set the dropdown variant to an btn-group, dropdown, input-group, and nav-item.
    */
   variant?: 'btn-group' | 'dropdown' | 'input-group' | 'nav-item'
@@ -88,13 +94,7 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
   visible?: boolean
 }
 
-const PopperManagerWrapper = ({
-  children,
-  popper,
-}: {
-  children: ReactNode
-  popper: boolean
-}) => {
+const PopperManagerWrapper = ({ children, popper }: { children: ReactNode; popper: boolean }) => {
   return popper ? <Manager>{children}</Manager> : <>{children}</>
 }
 
@@ -102,6 +102,7 @@ interface ContextProps extends CDropdownProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dropdownToggleRef: RefObject<any> | undefined
   setVisible: React.Dispatch<React.SetStateAction<boolean | undefined>>
+  portal: boolean
 }
 
 export const CDropdownContext = createContext({} as ContextProps)
@@ -119,6 +120,7 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       onShow,
       placement = 'bottom-start',
       popper = true,
+      portal = false,
       variant = 'btn-group',
       component = 'div',
       visible = false,
@@ -146,6 +148,7 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       dropdownToggleRef,
       placement: placement,
       popper,
+      portal: portal,
       variant,
       visible: _visible,
       setVisible,
@@ -172,7 +175,8 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
                 {
                   'dropdown-center': direction === 'center',
                   'dropup dropup-center': direction === 'dropup-center',
-                  [`${direction}`]: direction && direction !== 'center' && direction !== 'dropup-center',
+                  [`${direction}`]:
+                    direction && direction !== 'center' && direction !== 'dropup-center',
                   show: _visible,
                 },
                 className,
@@ -215,6 +219,7 @@ CDropdown.propTypes = {
   onShow: PropTypes.func,
   placement: placementPropType,
   popper: PropTypes.bool,
+  portal: PropTypes.bool,
   variant: PropTypes.oneOf(['btn-group', 'dropdown', 'input-group', 'nav-item']),
   visible: PropTypes.bool,
 }
