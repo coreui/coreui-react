@@ -7,13 +7,272 @@ import CIcon from '@coreui/icons-react/src/CIcon'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
+| **about** | - | `string` | - |
+| **accessKey** | - | `string` | - |
+| **aria-activedescendant** | Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application. | `string` | - |
+| **aria-atomic** | Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute. | `Booleanish` | - |
+| **aria-autocomplete** | Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be<br/>presented if they are made. | `'list'` \| `'none'` \| `'inline'` \| `'both'` | - |
+| **aria-busy** | Indicates an element is being modified and that assistive technologies MAY want to wait until the modifications are complete before exposing them to the user. | `Booleanish` | - |
+| **aria-checked** | Indicates the current "checked" state of checkboxes, radio buttons, and other widgets. | `boolean` \| `'true'` \| `'false'` \| `'mixed'` | - |
+| **aria-colcount** | Defines the total number of columns in a table, grid, or treegrid. | `number` | - |
+| **aria-colindex** | Defines an element's column index or position with respect to the total number of columns within a table, grid, or treegrid. | `number` | - |
+| **aria-colspan** | Defines the number of columns spanned by a cell or gridcell within a table, grid, or treegrid. | `number` | - |
+| **aria-controls** | Identifies the element (or elements) whose contents or presence are controlled by the current element. | `string` | - |
+| **aria-current** | Indicates the element that represents the current item within a container or set of related elements. | `boolean` \| `'true'` \| `'false'` \| `'page'` \| `'step'` \| `'location'` \| `'date'` \| `'time'` | - |
+| **aria-describedby** | Identifies the element (or elements) that describes the object. | `string` | - |
+| **aria-details** | Identifies the element that provides a detailed, extended description for the object. | `string` | - |
+| **aria-disabled** | Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable. | `Booleanish` | - |
+| **aria-dropeffect** **_Deprecated in ARIA 1.1+_** | Indicates what functions can be performed when a dragged object is released on the drop target. | `'link'` \| `'none'` \| `'copy'` \| `'execute'` \| `'move'` \| `'popup'` | - |
+| **aria-errormessage** | Identifies the element that provides an error message for the object. | `string` | - |
+| **aria-expanded** | Indicates whether the element, or another grouping element it controls, is currently expanded or collapsed. | `Booleanish` | - |
+| **aria-flowto** | Identifies the next element (or elements) in an alternate reading order of content which, at the user's discretion,<br/>allows assistive technology to override the general default of reading in document source order. | `string` | - |
+| **aria-grabbed** **_Deprecated in ARIA 1.1+_** | Indicates an element's "grabbed" state in a drag-and-drop operation. | `Booleanish` | - |
+| **aria-haspopup** | Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element. | `boolean` \| `'true'` \| `'false'` \| `'dialog'` \| `'grid'` \| `'listbox'` \| `'menu'` \| `'tree'` | - |
+| **aria-hidden** | Indicates whether the element is exposed to an accessibility API. | `Booleanish` | - |
+| **aria-invalid** | Indicates the entered value does not conform to the format expected by the application. | `boolean` \| `'true'` \| `'false'` \| `'grammar'` \| `'spelling'` | - |
+| **aria-keyshortcuts** | Indicates keyboard shortcuts that an author has implemented to activate or give focus to an element. | `string` | - |
+| **aria-label** | Defines a string value that labels the current element. | `string` | - |
+| **aria-labelledby** | Identifies the element (or elements) that labels the current element. | `string` | - |
+| **aria-level** | Defines the hierarchical level of an element within a structure. | `number` | - |
+| **aria-live** | Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region. | `'off'` \| `'assertive'` \| `'polite'` | - |
+| **aria-modal** | Indicates whether an element is modal when displayed. | `Booleanish` | - |
+| **aria-multiline** | Indicates whether a text box accepts multiple lines of input or only a single line. | `Booleanish` | - |
+| **aria-multiselectable** | Indicates that the user may select more than one item from the current selectable descendants. | `Booleanish` | - |
+| **aria-orientation** | Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous. | `'horizontal'` \| `'vertical'` | - |
+| **aria-owns** | Identifies an element (or elements) in order to define a visual, functional, or contextual parent/child relationship<br/>between DOM elements where the DOM hierarchy cannot be used to represent the relationship. | `string` | - |
+| **aria-placeholder** | Defines a short hint (a word or short phrase) intended to aid the user with data entry when the control has no value.<br/>A hint could be a sample value or a brief description of the expected format. | `string` | - |
+| **aria-posinset** | Defines an element's number or position in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM. | `number` | - |
+| **aria-pressed** | Indicates the current "pressed" state of toggle buttons. | `boolean` \| `'true'` \| `'false'` \| `'mixed'` | - |
+| **aria-readonly** | Indicates that the element is not editable, but is otherwise operable. | `Booleanish` | - |
+| **aria-relevant** | Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified. | `'text'` \| `'additions'` \| `'additions removals'` \| `'additions text'` \| `'all'` \| `'removals'` \| `'removals additions'` \| `'removals text'` \| `'text additions'` \| `'text removals'` | - |
+| **aria-required** | Indicates that user input is required on the element before a form may be submitted. | `Booleanish` | - |
+| **aria-roledescription** | Defines a human-readable, author-localized description for the role of an element. | `string` | - |
+| **aria-rowcount** | Defines the total number of rows in a table, grid, or treegrid. | `number` | - |
+| **aria-rowindex** | Defines an element's row index or position with respect to the total number of rows within a table, grid, or treegrid. | `number` | - |
+| **aria-rowspan** | Defines the number of rows spanned by a cell or gridcell within a table, grid, or treegrid. | `number` | - |
+| **aria-selected** | Indicates the current "selected" state of various widgets. | `Booleanish` | - |
+| **aria-setsize** | Defines the number of items in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM. | `number` | - |
+| **aria-sort** | Indicates if items in a table or grid are sorted in ascending or descending order. | `'none'` \| `'ascending'` \| `'descending'` \| `'other'` | - |
+| **aria-valuemax** | Defines the maximum allowed value for a range widget. | `number` | - |
+| **aria-valuemin** | Defines the minimum allowed value for a range widget. | `number` | - |
+| **aria-valuenow** | Defines the current value for a range widget. | `number` | - |
+| **aria-valuetext** | Defines the human readable text alternative of aria-valuenow for a range widget. | `string` | - |
+| **autoCapitalize** | - | `string` | - |
+| **autoCorrect** | - | `string` | - |
+| **autoFocus** | - | `boolean` | - |
+| **autoSave** | - | `string` | - |
 | **className** | A string of all className you want applied to the component. | `string` | - |
+| **color** | - | `string` | - |
 | **content** **_Deprecated 3.0+_** | Use `icon={...}` instead of | `string` \| `string[]` | - |
-| **customClassName** | Use for replacing default CIcon component classes. Prop is overriding the 'size' prop. | `string` \| `object` \| `string[]` | - |
+| **contentEditable** | - | `Booleanish` \| `'inherit'` | - |
+| **contextMenu** | - | `string` | - |
+| **customClassName** | Use for replacing default CIcon component classes. Prop is overriding the 'size' prop. | `string` \| `string[]` | - |
+| **dangerouslySetInnerHTML** | - | `{ __html: string` \| `TrustedHTML; }` | - |
+| **datatype** | - | `string` | - |
+| **defaultChecked** | - | `boolean` | - |
+| **defaultValue** | - | `string` \| `number` \| `readonly string[]` | - |
+| **dir** | - | `string` | - |
+| **draggable** | - | `Booleanish` | - |
 | **height** | The height attribute defines the vertical length of an icon. | `number` | - |
+| **hidden** | - | `boolean` | - |
 | **icon** | Name of the icon placed in React object or SVG content. | `string` \| `string[]` | - |
+| **id** | - | `string` | - |
+| **inlist** | - | `any` | - |
+| **inputMode** | Hints at the type of data that might be entered by the user while editing the element or its contents | `'none'` \| `'search'` \| `'text'` \| `'tel'` \| `'url'` \| `'email'` \| `'numeric'` \| `'decimal'` | - |
+| **is** | Specify that a standard HTML element should behave like a defined custom built-in element | `string` | - |
+| **itemID** | - | `string` | - |
+| **itemProp** | - | `string` | - |
+| **itemRef** | - | `string` | - |
+| **itemScope** | - | `boolean` | - |
+| **itemType** | - | `string` | - |
+| **key** | - | `Key` | - |
+| **lang** | - | `string` | - |
 | **name** **_Deprecated 3.0+_** | Use `icon="..."` instead of | `string` | - |
+| **nonce** | - | `string` | - |
+| **onAbort** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onAbortCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onAnimationEnd** | - | `AnimationEventHandler<SVGSVGElement>` | - |
+| **onAnimationEndCapture** | - | `AnimationEventHandler<SVGSVGElement>` | - |
+| **onAnimationIteration** | - | `AnimationEventHandler<SVGSVGElement>` | - |
+| **onAnimationIterationCapture** | - | `AnimationEventHandler<SVGSVGElement>` | - |
+| **onAnimationStart** | - | `AnimationEventHandler<SVGSVGElement>` | - |
+| **onAnimationStartCapture** | - | `AnimationEventHandler<SVGSVGElement>` | - |
+| **onAuxClick** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onAuxClickCapture** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onBeforeInput** | - | `FormEventHandler<SVGSVGElement>` | - |
+| **onBeforeInputCapture** | - | `FormEventHandler<SVGSVGElement>` | - |
+| **onBlur** | - | `FocusEventHandler<SVGSVGElement>` | - |
+| **onBlurCapture** | - | `FocusEventHandler<SVGSVGElement>` | - |
+| **onCanPlay** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onCanPlayCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onCanPlayThrough** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onCanPlayThroughCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onChange** | - | `FormEventHandler<SVGSVGElement>` | - |
+| **onChangeCapture** | - | `FormEventHandler<SVGSVGElement>` | - |
+| **onClick** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onClickCapture** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onCompositionEnd** | - | `CompositionEventHandler<SVGSVGElement>` | - |
+| **onCompositionEndCapture** | - | `CompositionEventHandler<SVGSVGElement>` | - |
+| **onCompositionStart** | - | `CompositionEventHandler<SVGSVGElement>` | - |
+| **onCompositionStartCapture** | - | `CompositionEventHandler<SVGSVGElement>` | - |
+| **onCompositionUpdate** | - | `CompositionEventHandler<SVGSVGElement>` | - |
+| **onCompositionUpdateCapture** | - | `CompositionEventHandler<SVGSVGElement>` | - |
+| **onContextMenu** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onContextMenuCapture** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onCopy** | - | `ClipboardEventHandler<SVGSVGElement>` | - |
+| **onCopyCapture** | - | `ClipboardEventHandler<SVGSVGElement>` | - |
+| **onCut** | - | `ClipboardEventHandler<SVGSVGElement>` | - |
+| **onCutCapture** | - | `ClipboardEventHandler<SVGSVGElement>` | - |
+| **onDoubleClick** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onDoubleClickCapture** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onDrag** | - | `DragEventHandler<SVGSVGElement>` | - |
+| **onDragCapture** | - | `DragEventHandler<SVGSVGElement>` | - |
+| **onDragEnd** | - | `DragEventHandler<SVGSVGElement>` | - |
+| **onDragEndCapture** | - | `DragEventHandler<SVGSVGElement>` | - |
+| **onDragEnter** | - | `DragEventHandler<SVGSVGElement>` | - |
+| **onDragEnterCapture** | - | `DragEventHandler<SVGSVGElement>` | - |
+| **onDragExit** | - | `DragEventHandler<SVGSVGElement>` | - |
+| **onDragExitCapture** | - | `DragEventHandler<SVGSVGElement>` | - |
+| **onDragLeave** | - | `DragEventHandler<SVGSVGElement>` | - |
+| **onDragLeaveCapture** | - | `DragEventHandler<SVGSVGElement>` | - |
+| **onDragOver** | - | `DragEventHandler<SVGSVGElement>` | - |
+| **onDragOverCapture** | - | `DragEventHandler<SVGSVGElement>` | - |
+| **onDragStart** | - | `DragEventHandler<SVGSVGElement>` | - |
+| **onDragStartCapture** | - | `DragEventHandler<SVGSVGElement>` | - |
+| **onDrop** | - | `DragEventHandler<SVGSVGElement>` | - |
+| **onDropCapture** | - | `DragEventHandler<SVGSVGElement>` | - |
+| **onDurationChange** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onDurationChangeCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onEmptied** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onEmptiedCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onEncrypted** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onEncryptedCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onEnded** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onEndedCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onError** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onErrorCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onFocus** | - | `FocusEventHandler<SVGSVGElement>` | - |
+| **onFocusCapture** | - | `FocusEventHandler<SVGSVGElement>` | - |
+| **onGotPointerCapture** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onGotPointerCaptureCapture** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onInput** | - | `FormEventHandler<SVGSVGElement>` | - |
+| **onInputCapture** | - | `FormEventHandler<SVGSVGElement>` | - |
+| **onInvalid** | - | `FormEventHandler<SVGSVGElement>` | - |
+| **onInvalidCapture** | - | `FormEventHandler<SVGSVGElement>` | - |
+| **onKeyDown** | - | `KeyboardEventHandler<SVGSVGElement>` | - |
+| **onKeyDownCapture** | - | `KeyboardEventHandler<SVGSVGElement>` | - |
+| **onKeyPress** | - | `KeyboardEventHandler<SVGSVGElement>` | - |
+| **onKeyPressCapture** | - | `KeyboardEventHandler<SVGSVGElement>` | - |
+| **onKeyUp** | - | `KeyboardEventHandler<SVGSVGElement>` | - |
+| **onKeyUpCapture** | - | `KeyboardEventHandler<SVGSVGElement>` | - |
+| **onLoad** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onLoadCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onLoadStart** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onLoadStartCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onLoadedData** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onLoadedDataCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onLoadedMetadata** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onLoadedMetadataCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onLostPointerCapture** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onLostPointerCaptureCapture** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onMouseDown** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onMouseDownCapture** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onMouseEnter** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onMouseLeave** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onMouseMove** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onMouseMoveCapture** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onMouseOut** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onMouseOutCapture** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onMouseOver** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onMouseOverCapture** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onMouseUp** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onMouseUpCapture** | - | `MouseEventHandler<SVGSVGElement>` | - |
+| **onPaste** | - | `ClipboardEventHandler<SVGSVGElement>` | - |
+| **onPasteCapture** | - | `ClipboardEventHandler<SVGSVGElement>` | - |
+| **onPause** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onPauseCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onPlay** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onPlayCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onPlaying** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onPlayingCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onPointerCancel** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onPointerCancelCapture** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onPointerDown** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onPointerDownCapture** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onPointerEnter** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onPointerEnterCapture** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onPointerLeave** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onPointerLeaveCapture** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onPointerMove** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onPointerMoveCapture** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onPointerOut** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onPointerOutCapture** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onPointerOver** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onPointerOverCapture** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onPointerUp** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onPointerUpCapture** | - | `PointerEventHandler<SVGSVGElement>` | - |
+| **onProgress** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onProgressCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onRateChange** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onRateChangeCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onReset** | - | `FormEventHandler<SVGSVGElement>` | - |
+| **onResetCapture** | - | `FormEventHandler<SVGSVGElement>` | - |
+| **onResize** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onResizeCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onScroll** | - | `UIEventHandler<SVGSVGElement>` | - |
+| **onScrollCapture** | - | `UIEventHandler<SVGSVGElement>` | - |
+| **onSeeked** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onSeekedCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onSeeking** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onSeekingCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onSelect** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onSelectCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onStalled** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onStalledCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onSubmit** | - | `FormEventHandler<SVGSVGElement>` | - |
+| **onSubmitCapture** | - | `FormEventHandler<SVGSVGElement>` | - |
+| **onSuspend** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onSuspendCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onTimeUpdate** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onTimeUpdateCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onTouchCancel** | - | `TouchEventHandler<SVGSVGElement>` | - |
+| **onTouchCancelCapture** | - | `TouchEventHandler<SVGSVGElement>` | - |
+| **onTouchEnd** | - | `TouchEventHandler<SVGSVGElement>` | - |
+| **onTouchEndCapture** | - | `TouchEventHandler<SVGSVGElement>` | - |
+| **onTouchMove** | - | `TouchEventHandler<SVGSVGElement>` | - |
+| **onTouchMoveCapture** | - | `TouchEventHandler<SVGSVGElement>` | - |
+| **onTouchStart** | - | `TouchEventHandler<SVGSVGElement>` | - |
+| **onTouchStartCapture** | - | `TouchEventHandler<SVGSVGElement>` | - |
+| **onTransitionEnd** | - | `TransitionEventHandler<SVGSVGElement>` | - |
+| **onTransitionEndCapture** | - | `TransitionEventHandler<SVGSVGElement>` | - |
+| **onVolumeChange** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onVolumeChangeCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onWaiting** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onWaitingCapture** | - | `ReactEventHandler<SVGSVGElement>` | - |
+| **onWheel** | - | `WheelEventHandler<SVGSVGElement>` | - |
+| **onWheelCapture** | - | `WheelEventHandler<SVGSVGElement>` | - |
+| **placeholder** | - | `string` | - |
+| **prefix** | - | `string` | - |
+| **property** | - | `string` | - |
+| **radioGroup** | - | `string` | - |
+| **ref** | Allows getting a ref to the component instance.<br/>Once the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref). | `Ref<SVGSVGElement>` | - |
+| **rel** | - | `string` | - |
+| **resource** | - | `string` | - |
+| **results** | - | `number` | - |
+| **rev** | - | `string` | - |
+| **role** | - | `AriaRole` | - |
+| **security** | - | `string` | - |
 | **size** | Size of the icon. Available sizes: 'sm', 'lg', 'xl', 'xxl', '3xl...9xl', 'custom', 'custom-size'. | `'custom'` \| `'custom-size'` \| `'sm'` \| `'lg'` \| `'xl'` \| `'xxl'` \| `'3xl'` \| `'4xl'` \| `'5xl'` \| `'6xl'` \| `'7xl'` \| `'8xl'` \| `'9xl'` | - |
+| **slot** | - | `string` | - |
+| **spellCheck** | - | `Booleanish` | - |
+| **style** | - | `CSSProperties` | - |
+| **suppressContentEditableWarning** | - | `boolean` | - |
+| **suppressHydrationWarning** | - | `boolean` | - |
+| **tabIndex** | - | `number` | - |
 | **title** | Title tag content. | `string` | - |
+| **translate** | - | `'yes'` \| `'no'` | - |
+| **typeof** | - | `string` | - |
+| **unselectable** | - | `'on'` \| `'off'` | - |
 | **use** | If defined component will be rendered using 'use' tag. | `string` | - |
+| **vocab** | - | `string` | - |
 | **width** | The width attribute defines the horizontal length of an icon. | `number` | - |
