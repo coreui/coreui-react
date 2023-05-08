@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { CBadge, CCallout, CTable } from '@coreui/react/src/index'
-import { CodeBlock, Example } from '../components'
+import { CBadge, CTable } from '@coreui/react/src/index'
+import { Callout, CodeBlock, Example } from '../components'
 
 interface MdxLayoutProps {
   data: any
@@ -45,10 +45,10 @@ const MdxLayout: FC<MdxLayoutProps> = ({ children }) => {
         Callout: (props: any) => {
           const { children, title, ...rest } = props
           return (
-            <CCallout {...rest}>
+            <Callout {...rest}>
               {title && <h5>{title}</h5>}
               {children}
-            </CCallout>
+            </Callout>
           )
         },
         Example: (props: any) => {

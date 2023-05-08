@@ -12,13 +12,12 @@ const CodeBlock: FC<CodeBlockProps> = ({ children }) => {
     : 'jsx'
 
   return (
-    <div className="code mb-4">
+    <div className="highlight">
       <Highlight {...defaultProps} theme={undefined} code={_children?.trim()} language={language}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre className={className} style={{ ...style }}>
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line, key: i })}>
-                <span className="line-no">{i + 1}</span>
                 {line.map((token, key) => (
                   <span key={key} {...getTokenProps({ token, key })} />
                 ))}
