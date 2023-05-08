@@ -60,6 +60,7 @@
     "typescript": "^4.9.5"
   },
   "peerDependencies": {
+    "@coreui/coreui": "4.3.0-alpha.0",
     "react": ">=17",
     "react-dom": ">=17"
   }
