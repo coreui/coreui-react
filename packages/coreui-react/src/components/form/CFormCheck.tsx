@@ -112,7 +112,7 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
       if (inputRef.current && indeterminate) {
         inputRef.current.indeterminate = indeterminate
       }
-    }, [indeterminate])
+    }, [indeterminate, inputRef.current])
 
     const FormControl = () => (
       <input
