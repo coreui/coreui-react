@@ -1,10 +1,11 @@
 #!/usr/bin/env node
+
 'use strict'
 
-const docgen = require('react-docgen-typescript')
-const fs = require('fs').promises
-const path = require('path')
+const fs = require('node:fs').promises
+const path = require('node:path')
 const globby = require('globby')
+const docgen = require('react-docgen-typescript')
 
 const GLOB = ['**/src/**/*.tsx']
 const GLOBBY_OPTIONS = {
@@ -22,59 +23,67 @@ const options = {
 
 const PRO_COMPONENTS = []
 
+const replace = (text) =>
+  text
+    .replaceAll('(<', '(\\<')
+    .replace(/<C(.*)\/>/g, '`<C$1/>`')
+    .replaceAll('\n', '<br/>')
+
 async function createMdx(file, filename, name, props) {
-  if (typeof props === 'undefined') return
+  if (typeof props === 'undefined') {
+    return
+  }
 
   const pro = PRO_COMPONENTS.some((v) => file.includes(v))
   const relativeFilename = file.replace(GLOBBY_OPTIONS.cwd, '').replace('coreui-', '')
 
-  let content = `
-\`\`\`jsx
-import { ${name} } from '@coreui/${relativeFilename.split('/')[1]}${pro ? '-pro' : ''}'
-// or
-import ${name} from '@coreui${relativeFilename.replace('.tsx', '')}'
-\`\`\`\n
-`
+  let content = `\n`
+  content += `\`\`\`jsx\n`
+  content += `import { ${name} } from '@coreui/${relativeFilename.split('/')[1]}${
+    pro ? '-pro' : ''
+  }'\n`
+  content += `// or\n`
+  content += `import ${name} from '@coreui${relativeFilename.replace('.tsx', '')}'\n`
+  content += `\`\`\`\n\n`
 
   let index = 0
   for (const [key, value] of Object.entries(props).sort()) {
     if (
-      !value.parent.fileName.includes('@types/react/index.d.ts') &&
-      typeof value.tags.ignore === 'undefined'
+      value.parent.fileName.includes('@types/react/index.d.ts') ||
+      value.parent.fileName.includes('@types/react/ts5.0/index.d.ts')
     ) {
-      if (index === 0) {
-        content += `| Property | Description | Type | Default |\n`
-        content += `| --- | --- | --- | --- |\n`
-      }
-      let name = value.name || ''
-      const since = value.tags.since ? ` **_${value.tags.since}+_**` : ''
-      const deprecated = value.tags.deprecated ? ` **_Deprecated ${value.tags.deprecated}+_**` : ''
-      const description = value.description || '-'
-      const type = value.type
-        ? value.type.name.includes('ReactElement')
-          ? 'ReactElement'
-          : value.type.name
-        : ''
-      const defaultValue = value.defaultValue
-        ? value.defaultValue.value.replace('undefined', '-')
-        : '-'
-      const types = []
-      type.split(' | ').map((element) => {
-        types.push(`\`${element.replace(/"/g, "'")}\``)
-      })
-
-      const replace = (text) =>
-        text
-          .replaceAll('(<', '(\\<')
-          .replace(/<C(.*)\/>/g, '`<C$1/>`')
-          .replaceAll('\n', '<br/>')
-
-      content += `| **${name}**${since}${deprecated} | ${replace(description)} | ${types.join(
-        ' \\| ',
-      )} | ${replace(defaultValue)} |\n`
-      console.log(`${filename} - ${key}`)
-      index++
+      continue
     }
+
+    if (value.tags.ignore === '') {
+      continue
+    }
+
+    if (index === 0) {
+      content += `| Property | Description | Type | Default |\n`
+      content += `| --- | --- | --- | --- |\n`
+    }
+    let name = value.name || ''
+    const since = value.tags.since ? ` **_${value.tags.since}+_**` : ''
+    const deprecated = value.tags.deprecated ? ` **_Deprecated ${value.tags.deprecated}+_**` : ''
+    const description = value.description || '-'
+    const type = value.type
+      ? (value.type.name.includes('ReactElement')
+        ? 'ReactElement'
+        : value.type.name)
+      : ''
+    const defaultValue = value.defaultValue
+      ? value.defaultValue.value.replace('undefined', '-')
+      : '-'
+    const types = []
+    type.split(' | ').map((element) => {
+      types.push(`\`${element.replace(/"/g, "'")}\``)
+    })
+
+    content += `| **${name}**${since}${deprecated} | ${replace(description)} | ${types.join(
+      ' \\| ',
+    )} | ${replace(defaultValue)} |\n`
+    index++
   }
 
   await fs
