@@ -120,7 +120,7 @@ const Header: FC = () => {
               href="https://coreui.io/about/services/?docs=coreui-header-button"
               variant="outline"
             >
-              <CIcon icon={cilHandshake} /> Hire Us
+              <CIcon className="me-2" icon={cilHandshake} />
             </CButton>
             <CButton
               className="d-lg-inline-block my-2 my-md-0 ms-md-3"
