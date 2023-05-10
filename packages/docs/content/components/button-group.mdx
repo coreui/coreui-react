@@ -28,6 +28,7 @@ import {
 
 Wrap a series of `<CButton>` components in `<CButtonGroup>`.
 
+
 ```jsx preview
 <CButtonGroup role="group" aria-label="Basic example">
   <CButton color="primary">Left</CButton>
@@ -48,7 +49,7 @@ These classes can also be added to groups of links, as an alternative to the `<C
 <CButtonGroup>
   <CButton href="#" color="primary" active>Active link</CButton>
   <CButton href="#" color="primary">Link</CButton>
-  <CButton href="#" color="primary">Link</CButton>
+  <CButton href="#" color="primary"> Link</CButton>
 </CButtonGroup>
 ```
 
@@ -154,30 +155,30 @@ Join sets of button groups into button toolbars for more complicated components.
 Feel free to combine input groups with button groups in your toolbars. Similar to the example above, you’ll likely need some utilities through to space items correctly.
 
 ```jsx preview
-  <CButtonToolbar className="mb-3" role="group" aria-label="Toolbar with button groups">
-    <CButtonGroup className="me-2" role="group" aria-label="First group">
-      <CButton color="secondary" variant="outline">1</CButton>
-      <CButton color="secondary" variant="outline">2</CButton>
-      <CButton color="secondary" variant="outline">3</CButton>
-      <CButton color="secondary" variant="outline">4</CButton>
-    </CButtonGroup>
-    <CInputGroup>
-      <CInputGroupText>@</CInputGroupText>
-      <CFormInput placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon"/>
-    </CInputGroup>
-  </CButtonToolbar>
-  <CButtonToolbar className="justify-content-between" role="group" aria-label="Toolbar with button groups">
-    <CButtonGroup className="me-2" role="group" aria-label="First group">
-      <CButton color="secondary" variant="outline">1</CButton>
-      <CButton color="secondary" variant="outline">2</CButton>
-      <CButton color="secondary" variant="outline">3</CButton>
-      <CButton color="secondary" variant="outline">4</CButton>
-    </CButtonGroup>
-    <CInputGroup>
-      <CInputGroupText>@</CInputGroupText>
-      <CFormInput placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon"/>
-    </CInputGroup>
-  </CButtonToolbar>
+<CButtonToolbar className="mb-3" role="group" aria-label="Toolbar with button groups">
+  <CButtonGroup className="me-2" role="group" aria-label="First group">
+    <CButton color="secondary" variant="outline">1</CButton>
+    <CButton color="secondary" variant="outline">2</CButton>
+    <CButton color="secondary" variant="outline">3</CButton>
+    <CButton color="secondary" variant="outline">4</CButton>
+  </CButtonGroup>
+  <CInputGroup>
+    <CInputGroupText>@</CInputGroupText>
+    <CFormInput placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon"/>
+  </CInputGroup>
+</CButtonToolbar>
+<CButtonToolbar className="justify-content-between" role="group" aria-label="Toolbar with button groups">
+  <CButtonGroup className="me-2" role="group" aria-label="First group">
+    <CButton color="secondary" variant="outline">1</CButton>
+    <CButton color="secondary" variant="outline">2</CButton>
+    <CButton color="secondary" variant="outline">3</CButton>
+    <CButton color="secondary" variant="outline">4</CButton>
+  </CButtonGroup>
+  <CInputGroup>
+    <CInputGroupText>@</CInputGroupText>
+    <CFormInput placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon"/>
+  </CInputGroup>
+</CButtonToolbar>
 ```
 
 ## Sizing
@@ -186,21 +187,21 @@ Alternatively, of implementing button sizing classes to each button in a group, 
 
 ```jsx preview
 <CButtonGroup size="lg" role="group" aria-label="Large button group">
-  <CButton color="dark" variant="outline">Left</CButton>
-  <CButton color="dark" variant="outline">Middle</CButton>
-  <CButton color="dark" variant="outline">Right</CButton>
+  <CButton color="primary" variant="outline">Left</CButton>
+  <CButton color="primary" variant="outline">Middle</CButton>
+  <CButton color="primary" variant="outline">Right</CButton>
 </CButtonGroup>
 <br/>
 <CButtonGroup role="group" aria-label="Default button group">
-  <CButton color="dark" variant="outline">Left</CButton>
-  <CButton color="dark" variant="outline">Middle</CButton>
-  <CButton color="dark" variant="outline">Right</CButton>
+  <CButton color="primary" variant="outline">Left</CButton>
+  <CButton color="primary" variant="outline">Middle</CButton>
+  <CButton color="primary" variant="outline">Right</CButton>
 </CButtonGroup>
 <br/>
 <CButtonGroup size="sm" role="group" aria-label="Small button group">
-  <CButton color="dark" variant="outline">Left</CButton>
-  <CButton color="dark" variant="outline">Middle</CButton>
-  <CButton color="dark" variant="outline">Right</CButton>
+  <CButton color="primary" variant="outline">Left</CButton>
+  <CButton color="primary" variant="outline">Middle</CButton>
+  <CButton color="primary" variant="outline">Right</CButton>
 </CButtonGroup>
 ```
 
@@ -231,13 +232,13 @@ Create a set of buttons that appear vertically stacked rather than horizontally.
 
 ```jsx preview
 <CButtonGroup vertical role="group" aria-label="Vertical button group">
-  <CButton color="dark">Button</CButton>
-  <CButton color="dark">Button</CButton>
-  <CButton color="dark">Button</CButton>
-  <CButton color="dark">Button</CButton>
-  <CButton color="dark">Button</CButton>
-  <CButton color="dark">Button</CButton>
-  <CButton color="dark">Button</CButton>
+  <CButton color="primary">Button</CButton>
+  <CButton color="primary">Button</CButton>
+  <CButton color="primary">Button</CButton>
+  <CButton color="primary">Button</CButton>
+  <CButton color="primary">Button</CButton>
+  <CButton color="primary">Button</CButton>
+  <CButton color="primary">Button</CButton>
 </CButtonGroup>
 ```
 
