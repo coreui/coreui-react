@@ -8,7 +8,7 @@ import { Transition } from 'react-transition-group'
 import { triggerPropType } from '../../props'
 import type { Triggers } from '../../types'
 
-export interface CTooltipProps extends HTMLAttributes<HTMLDivElement> {
+export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'content'> {
   /**
    * A string of all className you want applied to the component.
    */

@@ -8,7 +8,7 @@ import { Transition } from 'react-transition-group'
 import { triggerPropType } from '../../props'
 import type { Triggers } from '../../types'
 
-export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content'> {
   /**
    * A string of all className you want applied to the component.
    */
