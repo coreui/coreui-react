@@ -43,5 +43,25 @@ module.exports = {
     "unicorn/prefer-export-from": "off",
     "unicorn/prefer-query-selector": "off",
     "unicorn/prevent-abbreviations": "off",
-  }
+  },
+  overrides: [
+    {
+      "files": [
+        "packages/docs/build/**"
+      ],
+      "env": {
+        "browser": false,
+        "node": true
+      },
+      "parserOptions": {
+        "sourceType": "script"
+      },
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off",
+        "no-console": "off",
+        "unicorn/prefer-module": "off",
+        "unicorn/prefer-top-level-await": "off"
+      }
+    },
+  ]
 }
