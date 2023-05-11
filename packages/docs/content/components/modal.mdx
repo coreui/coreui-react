@@ -131,7 +131,7 @@ const [visible, setVisible] = useState(false)
 return (
   <>
     <CButton onClick={() => setVisible(!visible)}>Launch static backdrop modal</CButton>
-    <CModal visible={visible} onClose={() => setVisible(false)}>
+    <CModal backdrop="static" visible={visible} onClose={() => setVisible(false)}>
       <CModalHeader>
         <CModalTitle>Modal title</CModalTitle>
       </CModalHeader>
