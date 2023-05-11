@@ -1,12 +1,13 @@
-import React, { FC, HTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react'
+import React, { FC, HTMLAttributes, ReactNode, useRef, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { usePopper } from 'react-popper'
+import PropTypes from 'prop-types'
 import { Transition } from 'react-transition-group'
+import { createPopper, Instance, Placement } from '@popperjs/core'
 
 import { triggerPropType } from '../../props'
 import type { Triggers } from '../../types'
+import { isRTL } from '../../utils'
 
 export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'content'> {
   /**
@@ -18,7 +19,7 @@ export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'con
    */
   content: ReactNode | string
   /**
-   * Offset of the popover relative to its target.
+   * Offset of the tooltip relative to its target.
    */
   offset?: [number, number]
   /**
@@ -40,16 +41,31 @@ export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'con
    */
   placement?: 'auto' | 'top' | 'right' | 'bottom' | 'left'
   /**
-   * Toggle the visibility of popover component.
+   * Toggle the visibility of tooltip component.
    */
   visible?: boolean
+}
+
+const getPlacement = (placement: string, element: HTMLDivElement | null): Placement => {
+  console.log(element)
+  switch (placement) {
+    case 'right': {
+      return isRTL(element) ? 'left' : 'right'
+    }
+    case 'left': {
+      return isRTL(element) ? 'right' : 'left'
+    }
+    default: {
+      return placement as Placement
+    }
+  }
 }
 
 export const CTooltip: FC<CTooltipProps> = ({
   children,
   className,
   content,
-  offset = [0, 0],
+  offset = [0, 6],
   onHide,
   onShow,
   placement = 'top',
@@ -57,33 +73,53 @@ export const CTooltip: FC<CTooltipProps> = ({
   visible,
   ...rest
 }) => {
-  const tooltipRef = useRef()
+  const tooltipRef = useRef(null)
+  const togglerRef = useRef(null)
+  const popper = useRef<Instance>()
   const [_visible, setVisible] = useState(visible)
-
-  const [referenceElement, setReferenceElement] = useState(null)
-  const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
-  const [arrowElement, setArrowElement] = useState<HTMLDivElement | null>(null)
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
-    modifiers: [
-      { name: 'arrow', options: { element: arrowElement } },
-      {
-        name: 'offset',
-        options: {
-          offset: offset,
-        },
-      },
-    ],
-    placement: placement,
-  })
 
   useEffect(() => {
     setVisible(visible)
   }, [visible])
 
+  useEffect(() => {
+    if (_visible) {
+      initPopper()
+    }
+
+    return () => {
+      destroyPopper()
+    }
+  }, [_visible])
+
+  const initPopper = () => {
+    if (togglerRef.current && tooltipRef.current) {
+      popper.current = createPopper(togglerRef.current, tooltipRef.current, {
+        modifiers: [
+          {
+            name: 'offset',
+            options: {
+              offset: offset,
+            },
+          },
+        ],
+        placement: getPlacement(placement, togglerRef.current),
+      })
+    }
+  }
+
+  const destroyPopper = () => {
+    if (popper.current) {
+      popper.current.destroy()
+    }
+
+    popper.current = undefined
+  }
+
   return (
     <>
       {React.cloneElement(children as React.ReactElement<any>, {
-        ref: setReferenceElement,
+        ref: togglerRef,
         ...((trigger === 'click' || trigger.includes('click')) && {
           onClick: () => setVisible(!_visible),
         }),
@@ -101,7 +137,6 @@ export const CTooltip: FC<CTooltipProps> = ({
           <Transition
             in={_visible}
             mountOnEnter
-            nodeRef={tooltipRef}
             onEnter={onShow}
             onExit={onHide}
             timeout={{
@@ -114,20 +149,20 @@ export const CTooltip: FC<CTooltipProps> = ({
               <div
                 className={classNames(
                   'tooltip',
-                  `bs-popover-${placement.replace('left', 'start').replace('right', 'end')}`,
+                  `bs-tooltip-${getPlacement(placement, togglerRef.current)
+                    .replace('left', 'start')
+                    .replace('right', 'end')}`,
                   'fade',
                   {
                     show: state === 'entered',
                   },
                   className,
                 )}
-                ref={setPopperElement}
+                ref={tooltipRef}
                 role="tooltip"
-                style={styles.popper}
-                {...attributes.popper}
                 {...rest}
               >
-                <div className="tooltip-arrow" style={styles.arrow} ref={setArrowElement}></div>
+                <div data-popper-arrow className="tooltip-arrow"></div>
                 <div className="tooltip-inner">{content}</div>
               </div>
             )}

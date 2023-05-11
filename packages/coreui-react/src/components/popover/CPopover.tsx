@@ -1,12 +1,13 @@
 import React, { FC, HTMLAttributes, ReactNode, useRef, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { usePopper } from 'react-popper'
+import PropTypes from 'prop-types'
 import { Transition } from 'react-transition-group'
+import { createPopper, Instance, Placement } from '@popperjs/core'
 
 import { triggerPropType } from '../../props'
 import type { Triggers } from '../../types'
+import { isRTL } from '../../utils'
 
 export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content'> {
   /**
@@ -49,6 +50,21 @@ export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'tit
   visible?: boolean
 }
 
+const getPlacement = (placement: string, element: HTMLDivElement | null): Placement => {
+  console.log(element)
+  switch (placement) {
+    case 'right': {
+      return isRTL(element) ? 'left' : 'right'
+    }
+    case 'left': {
+      return isRTL(element) ? 'right' : 'left'
+    }
+    default: {
+      return placement as Placement
+    }
+  }
+}
+
 export const CPopover: FC<CPopoverProps> = ({
   children,
   className,
@@ -62,33 +78,53 @@ export const CPopover: FC<CPopoverProps> = ({
   visible,
   ...rest
 }) => {
+  const popoverRef = useRef(null)
+  const togglerRef = useRef(null)
+  const popper = useRef<Instance>()
   const [_visible, setVisible] = useState(visible)
-  const popoverRef = useRef()
-
-  const [referenceElement, setReferenceElement] = useState(null)
-  const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
-  const [arrowElement, setArrowElement] = useState<HTMLDivElement | null>(null)
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
-    modifiers: [
-      { name: 'arrow', options: { element: arrowElement } },
-      {
-        name: 'offset',
-        options: {
-          offset: offset,
-        },
-      },
-    ],
-    placement: placement,
-  })
 
   useEffect(() => {
     setVisible(visible)
   }, [visible])
 
+  useEffect(() => {
+    if (_visible) {
+      initPopper()
+    }
+
+    return () => {
+      destroyPopper()
+    }
+  }, [_visible])
+
+  const initPopper = () => {
+    if (togglerRef.current && popoverRef.current) {
+      popper.current = createPopper(togglerRef.current, popoverRef.current, {
+        modifiers: [
+          {
+            name: 'offset',
+            options: {
+              offset: offset,
+            },
+          },
+        ],
+        placement: getPlacement(placement, togglerRef.current),
+      })
+    }
+  }
+
+  const destroyPopper = () => {
+    if (popper.current) {
+      popper.current.destroy()
+    }
+
+    popper.current = undefined
+  }
+
   return (
     <>
       {React.cloneElement(children as React.ReactElement<any>, {
-        ref: setReferenceElement,
+        ref: togglerRef,
         ...((trigger === 'click' || trigger.includes('click')) && {
           onClick: () => setVisible(!_visible),
         }),
@@ -119,20 +155,20 @@ export const CPopover: FC<CPopoverProps> = ({
               <div
                 className={classNames(
                   'popover',
-                  `bs-popover-${placement.replace('left', 'start').replace('right', 'end')}`,
+                  `bs-popover-${getPlacement(placement, togglerRef.current)
+                    .replace('left', 'start')
+                    .replace('right', 'end')}`,
                   'fade',
                   {
                     show: state === 'entered',
                   },
                   className,
                 )}
-                ref={setPopperElement}
+                ref={popoverRef}
                 role="tooltip"
-                style={styles.popper}
-                {...attributes.popper}
                 {...rest}
               >
-                <div className="popover-arrow" style={styles.arrow} ref={setArrowElement}></div>
+                <div data-popper-arrow className="popover-arrow"></div>
                 <div className="popover-header">{title}</div>
                 <div className="popover-body">{content}</div>
               </div>

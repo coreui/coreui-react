@@ -1,3 +1,4 @@
 import isInViewport from './isInViewport'
+import isRTL from './isRTL'
 
-export { isInViewport }
+export { isInViewport, isRTL }

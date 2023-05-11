@@ -7,6 +7,7 @@ import { Alignments, CDropdownContext } from './CDropdown'
 import { CConditionalPortal } from '../conditional-portal'
 
 import type { Placements } from '../../types'
+import { isRTL } from '../../utils'
 
 export interface CDropdownMenuProps
   extends HTMLAttributes<HTMLDivElement | HTMLUListElement>,
@@ -109,7 +110,7 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
   }
 
   if (direction === 'dropup') {
-    _placement = 'top-start'
+    _placement = isRTL(dropdownMenuRef.current) ? 'top-end' : 'top-start'
   }
 
   if (direction === 'dropup-center') {
@@ -117,15 +118,15 @@ export const CDropdownMenu: FC<CDropdownMenuProps> = ({
   }
 
   if (direction === 'dropend') {
-    _placement = 'right-start'
+    _placement = isRTL(dropdownMenuRef.current) ? 'left-start' : 'right-start'
   }
 
   if (direction === 'dropstart') {
-    _placement = 'left-start'
+    _placement = isRTL(dropdownMenuRef.current) ? 'right-start' : 'left-start'
   }
 
   if (alignment === 'end') {
-    _placement = 'bottom-end'
+    _placement = isRTL(dropdownMenuRef.current) ? 'bottom-start' : 'bottom-end'
   }
 
   const dropdownMenuComponent = (style?: React.CSSProperties, ref?: React.Ref<HTMLDivElement>) => (
