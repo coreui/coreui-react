@@ -24,6 +24,9 @@ const getPreferredTheme = (storedTheme: string | undefined) => {
 const setTheme = (theme: string) => {
   document.documentElement.dataset.coreuiTheme =
     theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : theme
+
+  const event = new Event('ColorSchemeChange')
+  document.documentElement.dispatchEvent(event)
 }
 
 const DefaultLayout: FC<DefaultLayoutProps> = ({ children, data, pageContext, path }) => {

@@ -29,6 +29,7 @@
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-react": "^2.1.0",
     "@coreui/react-chartjs": "^2.1.2",
+    "@coreui/utils": "^2.0.1",
     "@docsearch/css": "^3.3.4",
     "@mdx-js/mdx": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
