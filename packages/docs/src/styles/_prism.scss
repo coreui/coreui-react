@@ -6,163 +6,167 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
  * @author Rose Pritchard
  */
 
- :root,
- [data-coreui-theme="light"] {
-   // --base00: #fff;
-   // --base01: #f5f5f5;
-   --base02: #c8c8fa;
-   --base03: #565c64;
-   --base04: #666;
-   --base05: #333;
-   --base06: #fff;
-   --base07: #{$teal-700}; // #9a6700
-   --base08: #{mix($red-500, $red-600, 50%)}; // #bc4c00
-   --base09: #{$cyan-700}; // #087990
-   --base0A: #{$purple-500}; // #795da3
-   --base0B: #{$blue-700}; // #183691
-   --base0C: #{$blue-700}; // #183691
-   --base0D: #{$purple-500}; // #795da3
-   --base0E: #{$pink-600}; // #a71d5d
-   --base0F: #333;
+:root,
+[data-coreui-theme="light"] {
+  // --base00: #fff;
+  // --base01: #f5f5f5;
+  --base02: #c8c8fa;
+  --base03: #565c64;
+  --base04: #666;
+  --base05: #333;
+  --base06: #fff;
+  --base07: #{$teal-700}; // #9a6700
+  --base08: #{mix($red-500, $red-600, 50%)}; // #bc4c00
+  --base09: #{$cyan-700}; // #087990
+  --base0A: #{$purple-500}; // #795da3
+  --base0B: #{$blue-700}; // #183691
+  --base0C: #{$blue-700}; // #183691
+  --base0D: #{$purple-500}; // #795da3
+  --base0E: #{$pink-600}; // #a71d5d
+  --base0F: #333;
  }
- 
- @include color-mode(dark, true) {
-   // --base00: #282c34;
-   // --base01: #353b45;
-   --base02: #3e4451;
-   --base03: #868e96;
-   --base04: #868e96;
-   --base05: #abb2bf;
-   --base06: #b6bdca;
-   --base07: #{$orange-300}; // #d19a66
-   --base08: #{$cyan-300};
-   --base09: #{$orange-300}; // #d19a66
-   --base0A: #{$yellow-200}; // #e5c07b
-   --base0B: #{$teal-300}; // #98c379
-   --base0C: #{$teal-300}; // #56b6c2
-   --base0D: #{$blue-300}; // #61afef
-   --base0E: #{$indigo-200}; // #c678dd
-   --base0F: #{$red-300}; // #be5046
- 
-   .language-diff .gd {
-     color: $red-400;
-   }
-   .language-diff .gi {
-     color: $green-400;
-   }
- }
- 
- code[class*='language-'],
- pre[class*='language-'] {
-   background: none;
-   font-family: var(--cui-font-monospace);
-   font-size: .875em;
-   text-align: left;
-   white-space: pre;
- 
-   -moz-tab-size: 4;
-   -o-tab-size: 4;
-   tab-size: 4;
- 
-   -webkit-hyphens: none;
-   -moz-hyphens: none;
-   -ms-hyphens: none;
-   hyphens: none;
- }
- 
- pre[class*='language-']:not(.language-sass):not(.language-text):not(.language-css) {
-   overflow: scroll;
-   max-height: 500px;
- }
- 
- .token.comment,
- .token.block-comment,
- .token.prolog,
- .token.doctype,
- .token.cdata {
-   color: var(--base03);
- }
- 
- .token.tag {
-   color: var(--base08);
- }
- 
- .token.attr-name,
- .token.namespace,
- .token.deleted {
-   color: var(--base0A);
- }
- 
- .token.punctuation {
-   color: var(--base05);
- }
- 
- .token.function-name {
-   color: var(--base0A); 
- }
- 
- .token.boolean,
- .token.number,
- .token.function {
-   color: var(--base09);
- }
- 
- .token.property,
- .token.class-name,
- .token.constant,
- .token.symbol {
-   color: var(--base0A);
- }
- 
- .token.selector,
- .token.important,
- .token.atrule,
- .token.keyword,
- .token.builtin {
-   color: var(--base0E);
- }
- 
- .token.string,
- .token.char,
- .token.attr-value,
- .token.regex,
- .token.variable {
-   color: var(--base0C);
- }
- 
- .token.operator,
- .token.entity,
- .token.url {
-   color: var(--base05);
- }
- 
- .token.important,
- .token.bold {
-   font-weight: bold;
- }
- .token.italic {
-   font-style: italic;
- }
- 
- .token.entity {
-   cursor: help;
- }
- 
- .token.inserted {
-   color: green;
- }
- 
- .language-bash,
- .language-sh {
-   .token-line::before {
-     color: var(--base03);
-     content: "$ ";
-     user-select: none;
-   }
- }
- 
- .language-powershell::before {
-   color: var(--base0C);
-   content: "PM> ";
-   user-select: none;
- }
+
+@include color-mode(dark, true) {
+  // --base00: #282c34;
+  // --base01: #353b45;
+  --base02: #3e4451;
+  --base03: #868e96;
+  --base04: #868e96;
+  --base05: #abb2bf;
+  --base06: #b6bdca;
+  --base07: #{$orange-300}; // #d19a66
+  --base08: #{$cyan-300};
+  --base09: #{$orange-300}; // #d19a66
+  --base0A: #{$yellow-200}; // #e5c07b
+  --base0B: #{$teal-300}; // #98c379
+  --base0C: #{$teal-300}; // #56b6c2
+  --base0D: #{$blue-300}; // #61afef
+  --base0E: #{$indigo-200}; // #c678dd
+  --base0F: #{$red-300}; // #be5046
+
+  .language-diff .gd {
+    color: $red-400;
+  }
+  .language-diff .gi {
+    color: $green-400;
+  }
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  background: none;
+  font-family: var(--cui-font-monospace);
+  font-size: .875em;
+  text-align: left;
+  white-space: pre;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre[class*='language-']:not(.language-sass):not(.language-text):not(.language-css) {
+  overflow: scroll;
+  max-height: 500px;
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: var(--base03);
+}
+
+.token.tag {
+  color: var(--base08);
+}
+
+.token.attr-name,
+.token.namespace,
+.token.deleted {
+  color: var(--base0A);
+}
+
+.token.punctuation {
+  color: var(--base05);
+}
+
+.token.function-name {
+  color: var(--base0A); 
+}
+
+.token.boolean,
+.token.number,
+.token.function {
+  color: var(--base09);
+}
+
+.token.class-name,
+.token.maybe-class-name {
+  color: var(--base08);
+}
+
+.token.property,
+.token.constant,
+.token.symbol {
+  color: var(--base0A);
+}
+
+.token.selector,
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.builtin {
+  color: var(--base0E);
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+  color: var(--base0C);
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+  color: var(--base05);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.inserted {
+  color: green;
+}
+
+.language-bash,
+.language-sh {
+  .token-line::before {
+    color: var(--base03);
+    content: "$ ";
+    user-select: none;
+  }
+}
+
+.language-powershell::before {
+  color: var(--base0C);
+  content: "PM> ";
+  user-select: none;
+}
