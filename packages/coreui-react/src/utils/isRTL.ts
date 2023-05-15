@@ -1,5 +1,5 @@
 const isRTL = (element?: HTMLElement | HTMLDivElement | null) => {
-  if (document.documentElement.dir === 'rtl') {
+  if (typeof document !== 'undefined' && document.documentElement.dir === 'rtl') {
     return true
   }
 
