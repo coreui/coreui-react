@@ -26,18 +26,33 @@ import {
 
 Below is a static react modal component example (meaning its `position` and `display` have been overridden). Included are the modal header, modal body (required for `padding`), and modal footer (optional). We ask that you include react modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.
 
-```jsx preview
-<CModal
-  className="show d-block position-static"
-  backdrop={false}
-  keyboard={false}
-  portal={false}
-  visible
->
+<Example>
+  <div className="modal position-static d-block" tabIndex="-1">
+    <div className="modal-dialog">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h5 className="modal-title">React Modal title</h5>
+          <button type="button" className="btn-close" aria-label="Close"></button>
+        </div>
+        <div className="modal-body">
+          <p>React Modal body text goes here.</p>
+        </div>
+        <div className="modal-footer">
+          <button type="button" className="btn btn-secondary">Close</button>
+          <button type="button" className="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</Example>
+```jsx
+<CModal>
   <CModalHeader>
     <CModalTitle>React Modal title</CModalTitle>
   </CModalHeader>
-  <CModalBody>React Modal body text goes here.</CModalBody>
+  <CModalBody>
+    <p>React Modal body text goes here.</p>
+  </CModalBody>
   <CModalFooter>
     <CButton color="secondary">Close</CButton>
     <CButton color="primary">Save changes</CButton>
@@ -58,7 +73,9 @@ export const LiveDemoExample = () => {
         <CModalHeader>
           <CModalTitle>Modal title</CModalTitle>
         </CModalHeader>
-        <CModalBody>Woohoo, you're reading this text in a modal!</CModalBody>
+        <CModalBody>
+          <p>Woohoo, you're reading this text in a modal!</p>
+        </CModalBody>
         <CModalFooter>
           <CButton color="secondary" onClick={() => setVisible(false)}>
             Close
@@ -83,7 +100,9 @@ return (
       <CModalHeader onClose={() => setVisible(false)}>
         <CModalTitle>Modal title</CModalTitle>
       </CModalHeader>
-      <CModalBody>Woohoo, you're reading this text in a modal!</CModalBody>
+      <CModalBody>
+        <p>Woohoo, you're reading this text in a modal!</p>
+      </CModalBody>
       <CModalFooter>
         <CButton color="secondary" onClick={() => setVisible(false)}>
           Close

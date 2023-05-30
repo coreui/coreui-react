@@ -142,6 +142,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
         return setStaticBackdrop(true)
       }
 
+      setVisible(false)
       return onClose && onClose()
     }
 
@@ -174,6 +175,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
           document.body.style.removeProperty('padding-right')
         }
       }
+
       return () => {
         document.body.classList.remove('modal-open')
         if (backdrop) {
