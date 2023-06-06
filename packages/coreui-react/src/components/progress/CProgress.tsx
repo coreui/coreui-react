@@ -29,6 +29,7 @@ export interface CProgressProps
   white?: boolean
 }
 
+// TODO: update markup and add '.progress-stacked' in v5
 export const CProgress = forwardRef<HTMLDivElement, CProgressProps>(
   ({ children, className, height, thin, value = 0, white, ...rest }, ref) => {
     return (
