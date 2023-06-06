@@ -42,6 +42,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `scss`,
+        path: `./../../node_modules/@coreui/coreui/scss/`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         mdxOptions: {

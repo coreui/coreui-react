@@ -123,14 +123,7 @@ Apply the `shape="rounded-pill"` prop to make badges rounded.
 
 React badges use local CSS variables on `.badges` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-```sass
---cui-badge-padding-x: #{$badge-padding-x};
---cui-badge-padding-y: #{$badge-padding-y};
---cui-badge-font-size: #{$badge-font-size};
---cui-badge-font-weight: #{$badge-font-weight};
---cui-badge-color: #{$badge-color};
---cui-badge-border-radius: #{$badge-border-radius};
-```
+<ScssDocs file="_badge.scss" capture="badge-css-vars"/>
 
 #### How to use CSS variables
 
@@ -144,18 +137,7 @@ return <CBadge style={vars}>...</CBadge>
 
 ### SASS variables
 
-```sass
-$badge-font-size:                   .75em;
-$badge-font-weight:                 $font-weight-bold;
-$badge-color:                       $high-emphasis-inverse;
-$badge-padding-y:                   .35em;
-$badge-padding-x:                   .65em;
-$badge-border-radius:               $border-radius;
-
-$badge-font-size-sm:                .65em;
-$badge-padding-y-sm:                .3em;
-$badge-padding-x-sm:                .5em;
-```
+<ScssDocs file="_variables.scss" capture="badge-variables"/>
 
 ## API
 

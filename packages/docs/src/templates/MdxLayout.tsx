@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { CBadge, CTable } from '@coreui/react/src/index'
-import { Callout, CodeBlock, Example } from '../components'
+import { Callout, CodeBlock, Example, ScssDocs } from '../components'
 
 interface MdxLayoutProps {
   data: any
@@ -13,6 +13,7 @@ const MdxLayout: FC<MdxLayoutProps> = ({ children }) => {
   return (
     <MDXProvider
       components={{
+        ScssDocs: (props: any) => <ScssDocs {...props} />,
         strong: (props: any) => {
           if (props.children.type == 'em') {
             const color = props.children.props.children.includes('Deprecated')

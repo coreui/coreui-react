@@ -1418,38 +1418,15 @@ return (
 
 React navbars use local CSS variables on `.navbar` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-```sass
---cui-navbar-padding-x: #{if($navbar-padding-x == null, 0, $navbar-padding-x)};
---cui-navbar-padding-y: #{$navbar-padding-y};
---cui-navbar-color: #{$navbar-light-color};
---cui-navbar-hover-color: #{$navbar-light-hover-color};
---cui-navbar-disabled-color: #{$navbar-light-disabled-color};
---cui-navbar-active-color: #{$navbar-light-active-color};
---cui-navbar-brand-padding-y: #{$navbar-brand-padding-y};
---cui-navbar-brand-margin-end: #{$navbar-brand-margin-end};
---cui-navbar-brand-font-size: #{$navbar-brand-font-size};
---cui-navbar-brand-color: #{$navbar-light-brand-color};
---cui-navbar-brand-hover-color: #{$navbar-light-brand-hover-color};
---cui-navbar-nav-link-padding-x: #{$navbar-nav-link-padding-x};
---cui-navbar-toggler-padding-y: #{$navbar-toggler-padding-y};
---cui-navbar-toggler-padding-x: #{$navbar-toggler-padding-x};
---cui-navbar-toggler-font-size: #{$navbar-toggler-font-size};
---cui-navbar-toggler-icon-bg: #{escape-svg($navbar-light-toggler-icon-bg)};
---cui-navbar-toggler-border-color: #{$navbar-light-toggler-border-color};
---cui-navbar-toggler-border-radius: #{$navbar-toggler-border-radius};
---cui-navbar-toggler-focus-width: #{$navbar-toggler-focus-width};
---cui-navbar-toggler-transition: #{$navbar-toggler-transition};
-```
+<ScssDocs file="_navbar.scss" capture="navbar-css-vars"/>
 
 Some additional CSS variables are also present on `.navbar-nav`:
 
-```sass
---cui-nav-link-padding-x: 0;
---cui-nav-link-padding-y: #{$nav-link-padding-y};
---cui-nav-link-color: var(--cui-navbar-color);
---cui-nav-link-hover-color: var(--cui-navbar-hover-color);
---cui-nav-link-disabled-color: var(--cui-navbar-disabled-color);
-```
+<ScssDocs file="_navbar.scss" capture="navbar-nav-css-vars"/>
+
+Customization through CSS variables can be seen on the `.navbar-dark` class where we override specific values without adding duplicate CSS selectors.
+
+<ScssDocs file="_navbar.scss" capture="navbar-dark-css-vars"/>
 
 #### How to use CSS variables
 
@@ -1463,45 +1440,19 @@ return <CNavbar style={vars}>...</CNavbar>
 
 ### SASS variables
 
-```sass
-$navbar-padding-y:                  $spacer * .5;
-$navbar-padding-x:                  null;
+Variables for all navbars:
 
-$navbar-nav-link-padding-x:         .5rem;
+<ScssDocs file="_variables.scss" capture="navbar-variables"/>
 
-$navbar-brand-font-size:            $font-size-lg;
-// Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
-$nav-link-height:                   $font-size-base * $line-height-base + $nav-link-padding-y * 2;
-$navbar-brand-height:               $navbar-brand-font-size * $line-height-base;
-$navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) * .5;
-$navbar-brand-margin-end:           1rem;
+Variables for the [dark navbar](#color-schemes):
 
-$navbar-toggler-padding-y:          .25rem;
-$navbar-toggler-padding-x:          .75rem;
-$navbar-toggler-font-size:          $font-size-lg;
-$navbar-toggler-border-radius:      $btn-border-radius;
-$navbar-toggler-focus-width:        $btn-focus-width;
-$navbar-toggler-transition:         box-shadow .15s ease-in-out;
+<ScssDocs file="_variables.scss" capture="navbar-dark-variables"/>
 
-$navbar-dark-color:                 $medium-emphasis-inverse;
-$navbar-dark-hover-color:           $high-emphasis-inverse;
-$navbar-dark-active-color:          $high-emphasis-inverse;
-$navbar-dark-disabled-color:        $disabled-inverse;
-$navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
-$navbar-dark-toggler-border-color:  rgba($white, .1);
+### Sass loops
 
-$navbar-light-color:                $medium-emphasis;
-$navbar-light-hover-color:          $high-emphasis;
-$navbar-light-active-color:         $high-emphasis;
-$navbar-light-disabled-color:       $disabled;
-$navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
-$navbar-light-toggler-border-color: rgba($black, .1);
+[Responsive navbar expand/collapse classes](#responsive-behaviors) (e.g., `.navbar-expand-lg`) are combined with the `$breakpoints` map and generated through a loop in `scss/_navbar.scss`.
 
-$navbar-light-brand-color:                $navbar-light-active-color;
-$navbar-light-brand-hover-color:          $navbar-light-active-color;
-$navbar-dark-brand-color:                 $navbar-dark-active-color;
-$navbar-dark-brand-hover-color:           $navbar-dark-active-color;
-```
+<ScssDocs file="_navbar.scss" capture="navbar-expand-loop"/>
 
 ## API
 

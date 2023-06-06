@@ -242,22 +242,7 @@ Building on the above example, you can create different toast color schemes with
 
 React toasts use local CSS variables on `.toast` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-```sass
---cui-toast-padding-x: #{$toast-padding-x};
---cui-toast-padding-y: #{$toast-padding-y};
---cui-toast-spacing: #{$toast-spacing};
---cui-toast-max-width: #{$toast-max-width};
---cui-toast-font-size: #{$toast-font-size};
---cui-toast-color: #{$toast-color};
---cui-toast-bg: #{$toast-background-color};
---cui-toast-border-width: #{$toast-border-width};
---cui-toast-border-color: #{$toast-border-color};
---cui-toast-border-radius: #{$toast-border-radius};
---cui-toast-box-shadow: #{$toast-box-shadow};
---cui-toast-header-color: #{$toast-header-color};
---cui-toast-header-bg: #{$toast-header-background-color};
---cui-toast-header-border-color: #{$toast-header-border-color};
-```
+<ScssDocs file="_toasts.scss" capture="toast-css-vars"/>
 
 #### How to use CSS variables
 
@@ -271,23 +256,7 @@ return <CToast style={vars}>...</CToast>
 
 ### SASS variables
 
-```sass
-$toast-max-width:                   350px;
-$toast-padding-x:                   .75rem;
-$toast-padding-y:                   .5rem;
-$toast-font-size:                   .875rem;
-$toast-color:                       unset;
-$toast-background-color:            rgba($white, .85);
-$toast-border-width:                $border-width;
-$toast-border-color:                var(--cui-border-color-translucent);
-$toast-border-radius:               $border-radius;
-$toast-box-shadow:                  $box-shadow;
-$toast-spacing:                     $container-padding-x;
-
-$toast-header-color:                $gray-600;
-$toast-header-background-color:     rgba($white, .85);
-$toast-header-border-color:         rgba($black, .05);
-```
+<ScssDocs file="_variables.scss" capture="toast-variables"/>
 
 ## API
 

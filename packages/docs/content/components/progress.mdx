@@ -131,16 +131,7 @@ The striped gradient can also be animated. Add `animated` property to `<CProgres
 
 React cards use local CSS variables on `.card` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-```sass
---cui-progress-height: #{$progress-height};
---cui-progress-font-size: #{$progress-font-size};
---cui-progress-bg: #{$progress-bg};
---cui-progress-border-radius: #{$progress-border-radius};
---cui-progress-box-shadow: #{$progress-box-shadow};
---cui-progress-bar-color: #{$progress-bar-color};
---cui-progress-bar-bg: #{$progress-bar-bg};
---cui-progress-bar-transition: #{$progress-bar-transition};
-```
+<ScssDocs file="_progress.scss" capture="progress-css-vars"/>
 
 #### How to use CSS variables
 
@@ -154,20 +145,7 @@ return <CProgress style={vars}>...</CProgress>
 
 ### SASS variables
 
-```sass
-$progress-height:                   1rem;
-$progress-font-size:                $font-size-base * .75;
-$progress-bg:                       $gray-200;
-$progress-border-radius:            $border-radius;
-$progress-box-shadow:               $box-shadow-inset;
-$progress-bar-color:                $high-emphasis-inverse;
-$progress-bar-bg:                   $primary;
-$progress-bar-animation-timing:     1s linear infinite;
-$progress-bar-transition:           width .6s ease;
-
-$progress-group-margin-bottom:         $spacer;
-$progress-group-header-margin-bottom:  $spacer * .25;
-```
+<ScssDocs file="_variables.scss" capture="progress-variables"/>
 
 ## API
 

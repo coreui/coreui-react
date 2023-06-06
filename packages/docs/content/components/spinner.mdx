@@ -102,32 +102,15 @@ React spinners use local CSS variables on `.spinner-border` and `.spinner-grow` 
 
 Border spinner variables:
 
-```sass
---cui-spinner-width: #{$spinner-width};
---cui-spinner-height: #{$spinner-height};
---cui-spinner-vertical-align: #{$spinner-vertical-align};
---cui-spinner-border-width: #{$spinner-border-width};
---cui-spinner-animation-speed: #{$spinner-animation-speed};
---cui-spinner-animation-name: spinner-border;
-```
+<ScssDocs file="_spinners.scss" capture="spinner-border-css-vars"/>
 
 Growing spinner variables:
 
-```sass
---cui-spinner-width: #{$spinner-width};
---cui-spinner-height: #{$spinner-height};
---cui-spinner-vertical-align: #{$spinner-vertical-align};
---cui-spinner-animation-speed: #{$spinner-animation-speed};
---cui-spinner-animation-name: spinner-grow;
-```
+<ScssDocs file="_spinners.scss" capture="spinner-grow-css-vars"/>
 
 For both spinners, small spinner modifier classes are used to update the values of these CSS variables as needed. For example, the `.spinner-border-sm` class does the following:
 
-```sass
---cui-spinner-width: #{$spinner-width-sm};
---cui-spinner-height: #{$spinner-height-sm};
---cui-spinner-border-width: #{$spinner-border-width-sm};
-```
+<ScssDocs file="_spinners.scss" capture="spinner-border-sm-css-vars"/>
 
 #### How to use CSS variables
 
@@ -141,17 +124,7 @@ return <CSpinner style={vars}>...</CSpinner>
 
 ### SASS variables
 
-```sass
-$spinner-width:           2rem;
-$spinner-height:          $spinner-width;
-$spinner-vertical-align:  -.125em;
-$spinner-border-width:    .25em;
-$spinner-animation-speed: .75s;
-
-$spinner-width-sm:        1rem;
-$spinner-height-sm:       $spinner-width-sm;
-$spinner-border-width-sm: .2em;
-```
+<ScssDocs file="_variables.scss" capture="spinner-variables"/>
 
 ## API
 

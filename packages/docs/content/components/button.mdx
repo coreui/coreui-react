@@ -193,22 +193,7 @@ Additional utilities can be used to adjust the alignment of buttons when horizon
 
 React buttons use local CSS variables on `.btn` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-```sass
---cui-btn-padding-x: #{$btn-padding-x};
---cui-btn-padding-y: #{$btn-padding-y};
---cui-btn-font-family: #{$btn-font-family};
---cui-btn-font-size: #{$btn-font-size};
---cui-btn-font-weight: #{$btn-font-weight};
---cui-btn-line-height: #{$btn-line-height};
---cui-btn-color: #{$body-color};
---cui-btn-bg: transparent;
---cui-btn-border-width: #{$btn-border-width};
---cui-btn-border-color: transparent;
---cui-btn-border-radius: #{$btn-border-radius};
---cui-btn-box-shadow: #{$btn-box-shadow};
---cui-btn-disabled-opacity: #{$btn-disabled-opacity};
---cui-btn-focus-box-shadow: 0 0 0 #{$btn-focus-width} rgba(var(--cui-btn-focus-shadow-rgb), .5);
-```
+<ScssDocs file="_buttons.scss" capture="btn-css-vars"/>
 
 #### How to use CSS variables
 
@@ -222,75 +207,7 @@ return <CButton style={vars}>...</CButton>
 
 ### SASS variables
 
-```sass
-$btn-padding-y:               $input-btn-padding-y;
-$btn-padding-x:               $input-btn-padding-x;
-$btn-font-family:             $input-btn-font-family;
-$btn-font-size:               $input-btn-font-size;
-$btn-line-height:             $input-btn-line-height;
-$btn-white-space:             null; // Set to `nowrap` to prevent text wrapping
-
-$btn-padding-y-sm:            $input-btn-padding-y-sm;
-$btn-padding-x-sm:            $input-btn-padding-x-sm;
-$btn-font-size-sm:            $input-btn-font-size-sm;
-
-$btn-padding-y-lg:            $input-btn-padding-y-lg;
-$btn-padding-x-lg:            $input-btn-padding-x-lg;
-$btn-font-size-lg:            $input-btn-font-size-lg;
-
-$btn-border-width:            $input-btn-border-width;
-
-$btn-font-weight:             $font-weight-normal;
-$btn-box-shadow:              inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075);
-$btn-focus-width:             $input-btn-focus-width;
-$btn-focus-box-shadow:        $input-btn-focus-box-shadow;
-$btn-disabled-opacity:        .65;
-$btn-active-box-shadow:       inset 0 3px 5px rgba($black, .125);
-
-$btn-link-color:              var(--cui-link-color);
-$btn-link-hover-color:        var(--cui-link-hover-color);
-$btn-link-disabled-color:     $gray-600;
-
-// Allows for customizing button radius independently from global border radius
-$btn-border-radius:           $border-radius;
-$btn-border-radius-sm:        $border-radius-sm;
-$btn-border-radius-lg:        $border-radius-lg;
-
-$btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-
-$btn-hover-bg-shade-amount:       15%;
-$btn-hover-bg-tint-amount:        15%;
-$btn-hover-border-shade-amount:   20%;
-$btn-hover-border-tint-amount:    10%;
-$btn-active-bg-shade-amount:      20%;
-$btn-active-bg-tint-amount:       20%;
-$btn-active-border-shade-amount:  25%;
-$btn-active-border-tint-amount:   10%;
-
-// scss-docs-start button-variants
-$button-variants: (
-  "primary": btn-color-map($primary, $primary),
-  "secondary": btn-color-map($secondary, $secondary),
-  "success": btn-color-map($success, $success),
-  "danger": btn-color-map($danger, $danger),
-  "warning": btn-color-map($warning, $warning),
-  "info": btn-color-map($info, $info),
-  "light": btn-color-map($light, $light),
-  "dark": btn-color-map($dark, $dark)
-);
-
-$button-outline-ghost-variants: (
-  "primary": btn-outline-color-map($primary),
-  "secondary": btn-outline-color-map($secondary),
-  "success": btn-outline-color-map($success),
-  "danger": btn-outline-color-map($danger),
-  "warning": btn-outline-color-map($warning),
-  "info": btn-outline-color-map($info),
-  "light": btn-outline-color-map($light),
-  "dark": btn-outline-color-map($dark)
-);
-// scss-docs-end button-variants
-```
+<ScssDocs file="_variables.scss" capture="btn-variables"/>
 
 ## API
 

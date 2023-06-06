@@ -1,21 +1,24 @@
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+exports.onCreateNode = async ({ node, loadNodeContent, actions: { createNodeField }, getNode }) => {
   if (node.internal.type === 'Mdx') {
     const slug = createFilePath({ node, getNode })
 
     createNodeField({
-      name: 'slug',
       node,
+      name: 'slug',
       value: `${slug}`,
     })
   }
+
+  if (node.ext === '.scss') {
+    const nodeContent = await loadNodeContent(node)
+    createNodeField({ node, name: `content`, value: nodeContent })
+  }
 }
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage, createRedirect } = actions
+exports.createPages = async ({ graphql, actions: { createPage, createRedirect }, reporter }) => {
   const result = await graphql(`
     query {
       allMdx {
@@ -39,19 +42,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const posts = result.data.allMdx.nodes
 
-  posts.forEach((node) => {
-    createPage({
-      path: node.fields.slug,
-      component: `${path.resolve(`./src/templates/MdxLayout.tsx`)}?__contentFilePath=${
-        node.internal.contentFilePath
-      }`,
-      context: { id: node.id },
+  if (posts.length > 0) {
+    posts.forEach((node) => {
+      createPage({
+        path: node.fields.slug,
+        component: `${path.resolve(`./src/templates/MdxLayout.tsx`)}?__contentFilePath=${
+          node.internal.contentFilePath
+        }`,
+        context: { id: node.id },
+      })
     })
-  })
-  createRedirect({
-    fromPath: `/`,
-    toPath: `/getting-started/introduction/`,
-    redirectInBrowser: true,
-    isPermanent: true,
-  })
+    createRedirect({
+      fromPath: `/`,
+      toPath: `/getting-started/introduction/`,
+      redirectInBrowser: true,
+      isPermanent: true,
+    })
+  }
 }

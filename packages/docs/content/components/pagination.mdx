@@ -117,28 +117,7 @@ Change the alignment of pagination components with `align` property.
 
 React pagination use local CSS variables on `.pagination` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-```sass
---cui-pagination-padding-x: #{$pagination-padding-x};
---cui-pagination-padding-y: #{$pagination-padding-y};
---cui-pagination-font-size: #{$pagination-font-size});
---cui-pagination-color: #{$pagination-color};
---cui-pagination-bg: #{$pagination-bg};
---cui-pagination-border-width: #{$pagination-border-width};
---cui-pagination-border-color: #{$pagination-border-color};
---cui-pagination-border-radius: #{$pagination-border-radius};
---cui-pagination-hover-color: #{$pagination-hover-color};
---cui-pagination-hover-bg: #{$pagination-hover-bg};
---cui-pagination-hover-border-color: #{$pagination-hover-border-color};
---cui-pagination-focus-color: #{$pagination-focus-color};
---cui-pagination-focus-bg: #{$pagination-focus-bg};
---cui-pagination-focus-box-shadow: #{$pagination-focus-box-shadow};
---cui-pagination-active-color: #{$pagination-active-color};
---cui-pagination-active-bg: #{$pagination-active-bg};
---cui-pagination-active-border-color: #{$pagination-active-border-color};
---cui-pagination-disabled-color: #{$pagination-disabled-color};
---cui-pagination-disabled-bg: #{$pagination-disabled-bg};
---cui-pagination-disabled-border-color: #{$pagination-disabled-border-color};
-```
+<ScssDocs file="_pagination.scss" capture="pagination-css-vars"/>
 
 #### How to use CSS variables
 
@@ -152,45 +131,7 @@ return <CPagination style={vars}>...</CCard>
 
 ### SASS variables
 
-```sass
-$pagination-padding-y:              .375rem;
-$pagination-padding-x:              .75rem;
-$pagination-padding-y-sm:           .25rem;
-$pagination-padding-x-sm:           .5rem;
-$pagination-padding-y-lg:           .75rem;
-$pagination-padding-x-lg:           1.5rem;
-
-$pagination-font-size:              $font-size-base;
-
-$pagination-color:                  var(--cui-link-color);
-$pagination-bg:                     $white;
-$pagination-border-radius:          $border-radius;
-$pagination-border-width:           $border-width;
-$pagination-margin-start:           calc($pagination-border-width * -1); // stylelint-disable-line function-disallowed-list
-$pagination-border-color:           $gray-300;
-
-$pagination-focus-color:            var(--cui-link-hover-color);
-$pagination-focus-bg:               $gray-200;
-$pagination-focus-box-shadow:       $input-btn-focus-box-shadow;
-$pagination-focus-outline:          0;
-
-$pagination-hover-color:            var(--cui-link-hover-color);
-$pagination-hover-bg:               $gray-200;
-$pagination-hover-border-color:     $gray-300;
-
-$pagination-active-color:           $component-active-color;
-$pagination-active-bg:              $component-active-bg;
-$pagination-active-border-color:    $pagination-active-bg;
-
-$pagination-disabled-color:         $gray-600;
-$pagination-disabled-bg:            $white;
-$pagination-disabled-border-color:  $gray-300;
-
-$pagination-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-
-$pagination-border-radius-sm:       $border-radius-sm;
-$pagination-border-radius-lg:       $border-radius-lg;
-```
+<ScssDocs file="_variables.scss" capture="pagination-variables"/>
 
 ## API
 
