@@ -51,7 +51,6 @@ export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'tit
 }
 
 const getPlacement = (placement: string, element: HTMLDivElement | null): Placement => {
-  console.log(element)
   switch (placement) {
     case 'right': {
       return isRTL(element) ? 'left' : 'right'

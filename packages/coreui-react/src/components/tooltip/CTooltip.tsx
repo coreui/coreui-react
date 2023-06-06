@@ -47,7 +47,6 @@ export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'con
 }
 
 const getPlacement = (placement: string, element: HTMLDivElement | null): Placement => {
-  console.log(element)
   switch (placement) {
     case 'right': {
       return isRTL(element) ? 'left' : 'right'
