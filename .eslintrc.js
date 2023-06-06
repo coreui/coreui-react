@@ -18,7 +18,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
-    "plugin:unicorn/recommended",
+    'plugin:unicorn/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -36,32 +36,30 @@ module.exports = {
     },
   },
   rules: {
-    "unicorn/filename-case": "off",
-    "unicorn/no-array-for-each": "off",
-    "unicorn/no-null": "off",
-    "unicorn/prefer-dom-node-append": "off",
-    "unicorn/prefer-export-from": "off",
-    "unicorn/prefer-query-selector": "off",
-    "unicorn/prevent-abbreviations": "off",
+    'unicorn/filename-case': 'off',
+    'unicorn/no-array-for-each': 'off',
+    'unicorn/no-null': 'off',
+    'unicorn/prefer-dom-node-append': 'off',
+    'unicorn/prefer-export-from': 'off',
+    'unicorn/prefer-query-selector': 'off',
+    'unicorn/prevent-abbreviations': 'off',
   },
   overrides: [
     {
-      "files": [
-        "packages/docs/build/**"
-      ],
-      "env": {
-        "browser": false,
-        "node": true
+      files: ['packages/docs/build/**'],
+      env: {
+        browser: false,
+        node: true,
       },
-      "parserOptions": {
-        "sourceType": "script"
+      parserOptions: {
+        sourceType: 'script',
       },
-      "rules": {
-        "@typescript-eslint/no-var-requires": "off",
-        "no-console": "off",
-        "unicorn/prefer-module": "off",
-        "unicorn/prefer-top-level-await": "off"
-      }
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+        'no-console': 'off',
+        'unicorn/prefer-module': 'off',
+        'unicorn/prefer-top-level-await': 'off',
+      },
     },
-  ]
+  ],
 }
