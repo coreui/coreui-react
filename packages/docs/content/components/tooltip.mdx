@@ -109,30 +109,57 @@ Hover over the buttons below to see the four tooltips directions: top, right, bo
 </Example>
 
 ```jsx
+<CTooltip
+  content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+  placement="top"
+>
+  <CButton color="secondary">Tooltip on top</CButton>
+</CTooltip>
+<CTooltip
+  content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+  placement="right"
+>
+  <CButton color="secondary">Tooltip on right</CButton>
+</CTooltip>
+<CTooltip
+  content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+  placement="bottom"
+>
+  <CButton color="secondary">Tooltip on bottom</CButton>
+</CTooltip>
+<CTooltip
+  content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+  placement="left"
+>
+  <CButton color="secondary">Tooltip on left</CButton>
+</CTooltip>
+```
+
+## Usage
+
+### Disabled elements
+
+Elements with the disabled attribute aren’t interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you’ll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
+
+<Example>
   <CTooltip
-    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-    placement="top"
+    content="Disabled tooltip"
+    trigger={['hover', 'focus']}
   >
-    <CButton color="secondary">Tooltip on top</CButton>
+    <span className="d-inline-block" tabIndex={0}>
+      <CButton color="primary" disabled>Disabled button</CButton>
+    </span>
   </CTooltip>
-  <CTooltip
-    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-    placement="right"
-  >
-    <CButton color="secondary">Tooltip on right</CButton>
-  </CTooltip>
-  <CTooltip
-    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-    placement="bottom"
-  >
-    <CButton color="secondary">Tooltip on bottom</CButton>
-  </CTooltip>
-  <CTooltip
-    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-    placement="left"
-  >
-    <CButton color="secondary">Tooltip on left</CButton>
-  </CTooltip>
+</Example>
+```jsx
+<CTooltip
+  content="Disabled tooltip"
+  trigger={['hover', 'focus']}
+>
+  <span className="d-inline-block" tabIndex={0}>
+    <CButton color="primary" disabled>Disabled button</CButton>
+  </span>
+</CTooltip>
 ```
 
 ## Customizing
