@@ -28,39 +28,43 @@ const ScssDocs: FC = ({ file, capture }: { file?: string; capture?: string }) =>
   const captureStart = `// scss-docs-start ${capture}`
   const captureEnd = `// scss-docs-end ${capture}`
   const re = new RegExp(`${captureStart}((?:.|\n)*)${captureEnd}`)
-  const code = re.exec(_file.node.internal.content)[1].trim()
+  const code = re.test(_file.node.internal.content)
+    ? re.exec(_file.node.internal.content)[1].trim()
+    : null
 
   return (
-    <div className="highlight">
-      <Highlight
-        code={code
-          .replaceAll('--#{$prefix}', '--cui-')
-          .replaceAll('\n  -', '\n-')
-          .replaceAll('\n  @', '\n@')}
-        language="scss"
-        theme={{ plain: {}, styles: [] }}
-      >
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre className={className} style={{ ...style }}>
-            {tokens.map((line, i) => {
-              const lineProps = getLineProps({ line, key: i })
-              return (
-                <div className={lineProps.className} key={i}>
-                  {line.map((token, key) => {
-                    const tokenProps = getTokenProps({ token, key })
-                    return (
-                      <span className={tokenProps.className} key={key}>
-                        {tokenProps.children}
-                      </span>
-                    )
-                  })}
-                </div>
-              )
-            })}
-          </pre>
-        )}
-      </Highlight>
-    </div>
+    code && (
+      <div className="highlight">
+        <Highlight
+          code={code
+            .replaceAll('--#{$prefix}', '--cui-')
+            .replaceAll('\n  -', '\n-')
+            .replaceAll('\n  @', '\n@')}
+          language="scss"
+          theme={{ plain: {}, styles: [] }}
+        >
+          {({ className, style, tokens, getLineProps, getTokenProps }) => (
+            <pre className={className} style={{ ...style }}>
+              {tokens.map((line, i) => {
+                const lineProps = getLineProps({ line, key: i })
+                return (
+                  <div className={lineProps.className} key={i}>
+                    {line.map((token, key) => {
+                      const tokenProps = getTokenProps({ token, key })
+                      return (
+                        <span className={tokenProps.className} key={key}>
+                          {tokenProps.children}
+                        </span>
+                      )
+                    })}
+                  </div>
+                )
+              })}
+            </pre>
+          )}
+        </Highlight>
+      </div>
+    )
   )
 }
 
