@@ -1,8 +1,12 @@
 import React, { FC } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import Highlight, { defaultProps } from 'prism-react-renderer'
+import { Highlight, Prism } from 'prism-react-renderer'
 
 const ScssDocs: FC = ({ file, capture }: { file?: string; capture?: string }) => {
+  ;(typeof global === 'undefined' ? window : global).Prism = Prism
+  // eslint-disable-next-line unicorn/prefer-module
+  require('prismjs/components/prism-scss')
+
   const data = useStaticQuery(graphql`
     query {
       allFile(filter: { ext: { eq: ".scss" } }) {
@@ -29,15 +33,15 @@ const ScssDocs: FC = ({ file, capture }: { file?: string; capture?: string }) =>
   return (
     <div className="highlight">
       <Highlight
-        {...defaultProps}
         code={code
           .replaceAll('--#{$prefix}', '--cui-')
           .replaceAll('\n  -', '\n-')
           .replaceAll('\n  @', '\n@')}
-        language="sass"
+        language="scss"
+        theme={{ plain: {}, styles: [] }}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre className={className}>
+          <pre className={className} style={{ ...style }}>
             {tokens.map((line, i) => {
               const lineProps = getLineProps({ line, key: i })
               return (

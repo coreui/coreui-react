@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import Highlight, { defaultProps } from 'prism-react-renderer'
+import { Highlight } from 'prism-react-renderer'
 
 interface CodeBlockProps {
   children: any
@@ -13,7 +13,7 @@ const CodeBlock: FC<CodeBlockProps> = ({ children }) => {
 
   return (
     <div className="highlight">
-      <Highlight {...defaultProps} theme={undefined} code={_children?.trim()} language={language}>
+      <Highlight code={_children?.trim()} language={language} theme={{ plain: {}, styles: [] }}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre className={className} style={{ ...style }}>
             {tokens.map((line, i) => (
