@@ -61,5 +61,12 @@ module.exports = {
         'unicorn/prefer-top-level-await': 'off',
       },
     },
+    {
+      files: ['packages/docs/**'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+        'unicorn/prefer-module': 'off',
+      },
+    },
   ],
 }
