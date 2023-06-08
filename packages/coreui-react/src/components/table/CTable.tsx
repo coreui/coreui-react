@@ -201,7 +201,7 @@ export const CTable = forwardRef<HTMLTableElement, CTableProps>(
                 <CTableRow {...(item._props && { ...item._props })} key={index}>
                   {columnNames &&
                     columnNames.map((colName: string, index: number) => {
-                      return item[colName] ? (
+                      return item[colName] !== undefined ? (
                         <CTableDataCell
                           {...(item._cellProps && {
                             ...(item._cellProps['all'] && { ...item._cellProps['all'] }),
