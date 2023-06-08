@@ -13,7 +13,7 @@ beforeEach(() => {
 })
 
 afterEach(() => {
-  container && document.body.removeChild(container)
+  container && container.remove()
   container = null
 })
 
