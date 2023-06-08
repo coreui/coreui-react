@@ -38,7 +38,7 @@ export function assignRef<RefValueType = any>(
   } else {
     try {
       ref.current = value
-    } catch (error) {
+    } catch {
       throw new Error(`Cannot assign value "${value}" to ref "${ref}"`)
     }
   }

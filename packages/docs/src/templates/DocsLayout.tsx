@@ -3,9 +3,9 @@ import { Ads, Banner, Seo, Toc } from '../components'
 import { CCol, CContainer, CRow } from '@coreui/react/src/'
 
 interface DocsLayoutProps {
-  children: any
-  data: any
-  pageContext: any
+  children: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  data: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  pageContext: any // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 // @ts-expect-error json file

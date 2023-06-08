@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { Highlight } from 'prism-react-renderer'
 
 interface CodeBlockProps {
-  children: any
+  children: any // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 const CodeBlock: FC<CodeBlockProps> = ({ children }) => {

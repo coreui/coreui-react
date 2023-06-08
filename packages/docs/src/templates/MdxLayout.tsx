@@ -13,7 +13,9 @@ const MdxLayout: FC<MdxLayoutProps> = ({ children }) => {
   return (
     <MDXProvider
       components={{
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ScssDocs: (props: any) => <ScssDocs {...props} />,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         strong: (props: any) => {
           if (props.children.type == 'em') {
             const color = props.children.props.children.includes('Deprecated')
@@ -29,7 +31,9 @@ const MdxLayout: FC<MdxLayoutProps> = ({ children }) => {
             return <strong>{props.children}</strong>
           }
         },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         pre: (props: any) => <CodeBlock {...props} />,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         table: (props: any) => {
           // TODO: find better soultion
           const isApiTable =
@@ -43,6 +47,7 @@ const MdxLayout: FC<MdxLayoutProps> = ({ children }) => {
             />
           )
         },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         Callout: (props: any) => {
           const { children, title, ...rest } = props
           return (
@@ -52,6 +57,7 @@ const MdxLayout: FC<MdxLayoutProps> = ({ children }) => {
             </Callout>
           )
         },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         Example: (props: any) => {
           const { children, ...rest } = props
           return (
