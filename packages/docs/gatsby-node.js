@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('node:path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
 exports.onCreateNode = async ({ node, loadNodeContent, actions: { createNodeField }, getNode }) => {
@@ -14,7 +14,11 @@ exports.onCreateNode = async ({ node, loadNodeContent, actions: { createNodeFiel
 
   if (node.ext === '.scss') {
     const nodeContent = await loadNodeContent(node)
-    createNodeField({ node, name: `content`, value: nodeContent })
+    createNodeField({
+      node,
+      name: `content`,
+      value: nodeContent,
+    })
   }
 }
 

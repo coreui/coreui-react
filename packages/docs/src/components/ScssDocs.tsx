@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Highlight, Prism } from 'prism-react-renderer'
 
-const ScssDocs: FC = ({ file, capture }: { file?: string; capture?: string }) => {
+const ScssDocs: FC = ({ file, capture }: { file: string; capture: string }) => {
   ;(typeof global === 'undefined' ? window : global).Prism = Prism
   // eslint-disable-next-line unicorn/prefer-module
   require('prismjs/components/prism-scss')
@@ -28,9 +28,8 @@ const ScssDocs: FC = ({ file, capture }: { file?: string; capture?: string }) =>
   const captureStart = `// scss-docs-start ${capture}`
   const captureEnd = `// scss-docs-end ${capture}`
   const re = new RegExp(`${captureStart}((?:.|\n)*)${captureEnd}`)
-  const code = re.test(_file.node.internal.content)
-    ? re.exec(_file.node.internal.content)[1].trim()
-    : null
+  const captured = re.exec(_file.node.internal.content)
+  const code = captured && captured[1].trim()
 
   return (
     code && (
