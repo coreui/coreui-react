@@ -58,6 +58,6 @@ export const textColorsPropType = PropTypes.oneOfType([
 ])
 
 export const triggerPropType = PropTypes.oneOfType([
-  PropTypes.arrayOf(PropTypes.string),
+  PropTypes.arrayOf(PropTypes.oneOf<Triggers>(['hover', 'focus', 'click']).isRequired),
   PropTypes.oneOf<Triggers>(['hover', 'focus', 'click']),
 ])
