@@ -38,12 +38,12 @@
   },
   "devDependencies": {
     "@popperjs/core": "^2.11.8",
-    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-commonjs": "^25.0.1",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-typescript": "^11.1.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
-    "@types/react": "18.2.9",
+    "@types/react": "18.2.11",
     "@types/react-dom": "^18.2.4",
     "@types/react-transition-group": "^4.4.6",
     "classnames": "^2.3.2",
@@ -54,7 +54,7 @@
     "react-dom": "^18.2.0",
     "react-popper": "^2.3.0",
     "react-transition-group": "^4.4.5",
-    "rollup": "^3.24.0",
+    "rollup": "^3.25.0",
     "tslib": "^2.5.3",
     "ts-jest": "^29.1.0",
     "typescript": "^4.9.5"
