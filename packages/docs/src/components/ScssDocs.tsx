@@ -24,7 +24,7 @@ const ScssDocs: FC = ({ file, capture }: { file: string; capture: string }) => {
     }
   `)
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-line @typescript-eslint/no-explicit-any
   const _file = data.allFile.edges.find((node: any) => node.node.relativePath === file)
   const captureStart = `// scss-docs-start ${capture}`
   const captureEnd = `// scss-docs-end ${capture}`

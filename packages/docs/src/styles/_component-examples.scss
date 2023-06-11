@@ -351,6 +351,7 @@
   position: relative;
   padding: .75rem ($cd-gutter-x * .5);
   margin-bottom: 1rem;
+  border: 1px solid var(--cui-border-color);
   background-color: var(--cd-pre-bg);
 
   @include media-breakpoint-up(md) {
@@ -415,7 +416,6 @@
 }
 
 .docs-example + .highlight {
-  border: 1px solid var(--cui-border-color);
   border-top-width: 0;
   @include border-top-radius(0);
 }
