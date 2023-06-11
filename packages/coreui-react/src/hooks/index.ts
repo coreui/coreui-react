@@ -1,3 +1,4 @@
+import { useColorModes } from './useColorModes'
 import { useForkedRef } from './useForkedRef'
 
-export { useForkedRef }
+export { useColorModes, useForkedRef }

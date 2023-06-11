@@ -23,10 +23,13 @@ import {
   CHeaderNav,
   CHeaderToggler,
   CNavItem,
+  useColorModes,
 } from '@coreui/react/src'
 import { AppContext } from './../AppContext'
 
 const Header: FC = () => {
+  const { getColorMode, setColorMode } = useColorModes('coreui-react-docs-theme')
+  const colorMode = getColorMode()
   return (
     <>
       <AppContext.Consumer>
@@ -63,39 +66,39 @@ const Header: FC = () => {
               </li>
               <CDropdown variant="nav-item" placement="bottom-end">
                 <CDropdownToggle caret={false}>
-                  {context.storedTheme === 'dark' ? (
+                  {colorMode === 'dark' ? (
                     <CIcon icon={cilMoon} size="xl" />
-                  ) : (context.storedTheme === 'auto' ? (
+                  ) : colorMode === 'auto' ? (
                     <CIcon icon={cilContrast} size="xl" />
                   ) : (
                     <CIcon icon={cilSun} size="xl" />
-                  ))}
+                  )}
                 </CDropdownToggle>
                 <CDropdownMenu>
                   <CDropdownItem
-                    active={context.storedTheme === 'light'}
+                    active={colorMode === 'light'}
                     className="d-flex align-items-center"
                     component="button"
                     type="button"
-                    onClick={() => context.setStoredTheme && context.setStoredTheme('light')}
+                    onClick={() => setColorMode('light')}
                   >
                     <CIcon className="me-2" icon={cilSun} size="lg" /> Light
                   </CDropdownItem>
                   <CDropdownItem
-                    active={context.storedTheme === 'dark'}
+                    active={colorMode === 'dark'}
                     className="d-flex align-items-center"
                     component="button"
                     type="button"
-                    onClick={() => context.setStoredTheme && context.setStoredTheme('dark')}
+                    onClick={() => setColorMode('dark')}
                   >
                     <CIcon className="me-2" icon={cilMoon} size="lg" /> Dark
                   </CDropdownItem>
                   <CDropdownItem
-                    active={context.storedTheme === 'auto'}
+                    active={colorMode === 'auto'}
                     className="d-flex align-items-center"
                     component="button"
                     type="button"
-                    onClick={() => context.setStoredTheme && context.setStoredTheme('auto')}
+                    onClick={() => setColorMode('auto')}
                   >
                     <CIcon className="me-2" icon={cilContrast} size="lg" /> Auto
                   </CDropdownItem>

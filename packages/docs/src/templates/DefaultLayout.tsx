@@ -13,58 +13,19 @@ interface DefaultLayoutProps {
   path: any // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-const getPreferredTheme = (storedTheme: string | undefined) => {
-  if (storedTheme) {
-    return storedTheme
-  }
-
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-}
-
-const setTheme = (theme: string) => {
-  document.documentElement.dataset.coreuiTheme =
-    theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : theme
-
-  const event = new Event('ColorSchemeChange')
-  document.documentElement.dispatchEvent(event)
-}
-
 const DefaultLayout: FC<DefaultLayoutProps> = ({ children, data, pageContext, path }) => {
-  const theme = 'coreui-react-docs-theme'
   const [sidebarVisible, setSidebarVisible] = useState()
-  const [storedTheme, setStoredTheme] = useState()
-
-  useEffect(() => {
-    if (typeof localStorage.getItem(theme) === 'string') {
-      setStoredTheme(localStorage.getItem(theme))
-    }
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      if (storedTheme !== 'light' || storedTheme !== 'dark') {
-        setTheme(getPreferredTheme(storedTheme))
-      }
-    })
-  }, [])
 
   const title = pageContext.frontmatter ? pageContext.frontmatter.title : ''
   const description = pageContext.frontmatter ? pageContext.frontmatter.description : ''
   const name = pageContext.frontmatter ? pageContext.frontmatter.name : ''
   const route = pageContext.frontmatter ? pageContext.frontmatter.route : ''
 
-  useEffect(() => {
-    if (storedTheme) {
-      localStorage.setItem(theme, storedTheme)
-      setTheme(storedTheme)
-    }
-  }, [storedTheme])
-
   return (
     <AppContext.Provider
       value={{
         sidebarVisible,
         setSidebarVisible,
-        storedTheme,
-        setStoredTheme,
       }}
     >
       <Seo title={title} description={description} name={name} />
