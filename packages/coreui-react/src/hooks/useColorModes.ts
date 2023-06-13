@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 interface UseColorModesOutput {
   getColorMode: () => string
+  isColorModeSet: () => boolean
   setColorMode: (mode: string) => void
 }
 
@@ -50,6 +51,7 @@ export const useColorModes = (
 
   return {
     getColorMode: () => colorMode,
+    isColorModeSet: () => Boolean(getStoredTheme(localStorageItemName)),
     setColorMode: (mode: string) => setColorMode(mode),
   }
 }
