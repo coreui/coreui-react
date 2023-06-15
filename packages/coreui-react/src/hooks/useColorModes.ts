@@ -1,16 +1,21 @@
 import { useEffect, useState } from 'react'
 
 interface UseColorModesOutput {
-  getColorMode: () => string
+  getColorMode: () => string | undefined
   isColorModeSet: () => boolean
   setColorMode: (mode: string) => void
 }
 
-const getStoredTheme = (localStorageItemName: string) => localStorage.getItem(localStorageItemName)
+const getStoredTheme = (localStorageItemName: string) =>
+  typeof window !== 'undefined' && localStorage.getItem(localStorageItemName)
 const setStoredTheme = (localStorageItemName: string, colorMode: string) =>
   localStorage.setItem(localStorageItemName, colorMode)
 
 const getPreferredColorScheme = (localStorageItemName: string) => {
+  if (typeof window === 'undefined') {
+    return
+  }
+
   const storedTheme = getStoredTheme(localStorageItemName)
 
   if (storedTheme) {
@@ -33,17 +38,21 @@ const setTheme = (colorMode: string) => {
 export const useColorModes = (
   localStorageItemName = 'coreui-react-color-scheme',
 ): UseColorModesOutput => {
-  const [colorMode, setColorMode] = useState<string>(getPreferredColorScheme(localStorageItemName))
+  const [colorMode, setColorMode] = useState<string | undefined>(
+    getPreferredColorScheme(localStorageItemName),
+  )
 
   useEffect(() => {
-    setStoredTheme(localStorageItemName, colorMode)
-    setTheme(colorMode)
+    if (colorMode) {
+      setStoredTheme(localStorageItemName, colorMode)
+      setTheme(colorMode)
+    }
   }, [colorMode])
 
   useEffect(() => {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
       const storedTheme = getStoredTheme(localStorageItemName)
-      if (storedTheme !== 'light' && storedTheme !== 'dark') {
+      if (storedTheme !== 'light' && storedTheme !== 'dark' && colorMode) {
         setTheme(colorMode)
       }
     })
