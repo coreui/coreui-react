@@ -35,7 +35,7 @@
     "@mdx-js/react": "^2.3.0",
     "@types/react-helmet": "^6.1.6",
     "gatsby": "^5.10.0",
-    "gatsby-plugin-google-gtag": "^5.10.0",
+    "gatsby-plugin-google-tagmanager": "^5.10.0",
     "gatsby-plugin-image": "^3.10.0",
     "gatsby-plugin-manifest": "^5.10.0",
     "gatsby-plugin-mdx": "^5.10.0",
