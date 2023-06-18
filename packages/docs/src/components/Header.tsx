@@ -68,11 +68,11 @@ const Header: FC = () => {
                 <CDropdownToggle caret={false}>
                   {colorMode === 'dark' ? (
                     <CIcon icon={cilMoon} size="xl" />
-                  ) : colorMode === 'auto' ? (
+                  ) : (colorMode === 'auto' ? (
                     <CIcon icon={cilContrast} size="xl" />
                   ) : (
                     <CIcon icon={cilSun} size="xl" />
-                  )}
+                  ))}
                 </CDropdownToggle>
                 <CDropdownMenu>
                   <CDropdownItem

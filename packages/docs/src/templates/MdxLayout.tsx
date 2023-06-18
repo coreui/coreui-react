@@ -5,8 +5,8 @@ import { CBadge, CTable } from '@coreui/react/src/index'
 import { Callout, CodeBlock, Example, ScssDocs } from '../components'
 
 interface MdxLayoutProps {
-  data: any
-  children: any
+  data: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  children: any // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 const MdxLayout: FC<MdxLayoutProps> = ({ children }) => {

@@ -1,8 +1,13 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Highlight, Prism } from 'prism-react-renderer'
 
-const ScssDocs: FC = ({ file, capture }: { file: string; capture: string }) => {
+interface ScssDocsProps {
+  file: string
+  capture: string
+}
+
+const ScssDocs = ({ file, capture }: ScssDocsProps) => {
   ;(typeof global === 'undefined' ? window : global).Prism = Prism
   // eslint-disable-next-line unicorn/prefer-module
   require('prismjs/components/prism-scss')
@@ -24,7 +29,7 @@ const ScssDocs: FC = ({ file, capture }: { file: string; capture: string }) => {
     }
   `)
 
-  // eslint-disable-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const _file = data.allFile.edges.find((node: any) => node.node.relativePath === file)
   const captureStart = `// scss-docs-start ${capture}`
   const captureEnd = `// scss-docs-end ${capture}`

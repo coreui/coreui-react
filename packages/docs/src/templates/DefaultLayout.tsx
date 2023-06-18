@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useState } from 'react'
 import { Footer, Header, Sidebar, Seo } from '../components'
 import { CContainer } from '@coreui/react/src/'
 import DocsLayout from './DocsLayout'
