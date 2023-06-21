@@ -12,6 +12,12 @@ import { isRTL } from '../../utils'
 
 export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content'> {
   /**
+   * Apply a CSS fade transition to the popover.
+   *
+   * @since 4.9.0-beta.1
+   */
+  animation?: boolean
+  /**
    * A string of all className you want applied to the component.
    */
   className?: string
@@ -67,6 +73,7 @@ const getPlacement = (placement: string, element: HTMLDivElement | null): Placem
 
 export const CPopover: FC<CPopoverProps> = ({
   children,
+  animation = true,
   className,
   content,
   offset = [0, 8],
@@ -144,8 +151,8 @@ export const CPopover: FC<CPopoverProps> = ({
                 className={classNames(
                   'popover',
                   'bs-popover-auto',
-                  'fade',
                   {
+                    fade: animation,
                     show: state === 'entered',
                   },
                   className,
@@ -167,6 +174,7 @@ export const CPopover: FC<CPopoverProps> = ({
 }
 
 CPopover.propTypes = {
+  animation: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
   content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),

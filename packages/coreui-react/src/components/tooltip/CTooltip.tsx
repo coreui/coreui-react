@@ -12,6 +12,12 @@ import { isRTL } from '../../utils'
 
 export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'content'> {
   /**
+   * Apply a CSS fade transition to the tooltip.
+   *
+   * @since 4.9.0-beta.1
+   */
+  animation?: boolean
+  /**
    * A string of all className you want applied to the component.
    */
   className?: string
@@ -63,6 +69,7 @@ const getPlacement = (placement: string, element: HTMLDivElement | null): Placem
 
 export const CTooltip: FC<CTooltipProps> = ({
   children,
+  animation = true,
   className,
   content,
   offset = [0, 6],
@@ -138,8 +145,8 @@ export const CTooltip: FC<CTooltipProps> = ({
                 className={classNames(
                   'tooltip',
                   'bs-tooltip-auto',
-                  'fade',
                   {
+                    fade: animation,
                     show: state === 'entered',
                   },
                   className,
@@ -160,6 +167,7 @@ export const CTooltip: FC<CTooltipProps> = ({
 }
 
 CTooltip.propTypes = {
+  animation: PropTypes.bool,
   children: PropTypes.node,
   content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   offset: PropTypes.any, // TODO: find good proptype
