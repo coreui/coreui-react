@@ -143,9 +143,7 @@ export const CPopover: FC<CPopoverProps> = ({
               <div
                 className={classNames(
                   'popover',
-                  `bs-popover-${getPlacement(placement, togglerRef.current)
-                    .replace('left', 'start')
-                    .replace('right', 'end')}`,
+                  'bs-popover-auto',
                   'fade',
                   {
                     show: state === 'entered',

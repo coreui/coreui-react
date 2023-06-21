@@ -137,9 +137,7 @@ export const CTooltip: FC<CTooltipProps> = ({
               <div
                 className={classNames(
                   'tooltip',
-                  `bs-tooltip-${getPlacement(placement, togglerRef.current)
-                    .replace('left', 'start')
-                    .replace('right', 'end')}`,
+                  'bs-tooltip-auto',
                   'fade',
                   {
                     show: state === 'entered',
