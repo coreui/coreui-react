@@ -1,19 +1,20 @@
-import { useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 interface UseColorModesOutput {
-  getColorMode: () => string | undefined
+  colorMode: string | undefined
   isColorModeSet: () => boolean
-  setColorMode: (mode: string) => void
+  setColorMode: Dispatch<SetStateAction<string>>
 }
 
 const getStoredTheme = (localStorageItemName: string) =>
   typeof window !== 'undefined' && localStorage.getItem(localStorageItemName)
+
 const setStoredTheme = (localStorageItemName: string, colorMode: string) =>
   localStorage.setItem(localStorageItemName, colorMode)
 
 const getPreferredColorScheme = (localStorageItemName: string) => {
   if (typeof window === 'undefined') {
-    return
+    return 'light'
   }
 
   const storedTheme = getStoredTheme(localStorageItemName)
@@ -56,11 +57,11 @@ export const useColorModes = (
         setTheme(colorMode)
       }
     })
-  }, [])
+  })
 
   return {
-    getColorMode: () => colorMode,
+    colorMode,
     isColorModeSet: () => Boolean(getStoredTheme(localStorageItemName)),
-    setColorMode: (mode: string) => setColorMode(mode),
+    setColorMode,
   }
 }
