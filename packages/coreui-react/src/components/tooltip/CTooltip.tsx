@@ -3,12 +3,11 @@ import { createPortal } from 'react-dom'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { Transition } from 'react-transition-group'
-import { Placement } from '@popperjs/core'
 
 import { usePopper } from '../../hooks'
 import { fallbackPlacementsPropType, triggerPropType } from '../../props'
 import type { Placements, Triggers } from '../../types'
-import { isRTL } from '../../utils'
+import { getRTLPlacement } from '../../utils'
 
 export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'content'> {
   /**
@@ -65,20 +64,6 @@ export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'con
   visible?: boolean
 }
 
-const getPlacement = (placement: string, element: HTMLDivElement | null): Placement => {
-  switch (placement) {
-    case 'right': {
-      return isRTL(element) ? 'left' : 'right'
-    }
-    case 'left': {
-      return isRTL(element) ? 'right' : 'left'
-    }
-    default: {
-      return placement as Placement
-    }
-  }
-}
-
 export const CTooltip: FC<CTooltipProps> = ({
   children,
   animation = true,
@@ -122,7 +107,7 @@ export const CTooltip: FC<CTooltipProps> = ({
         },
       },
     ],
-    placement: getPlacement(placement, togglerRef.current),
+    placement: getRTLPlacement(placement, togglerRef.current),
   }
 
   useEffect(() => {
