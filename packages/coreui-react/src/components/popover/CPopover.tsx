@@ -3,8 +3,9 @@ import { createPortal } from 'react-dom'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { Transition } from 'react-transition-group'
-import { createPopper, Instance, Placement } from '@popperjs/core'
+import { Placement } from '@popperjs/core'
 
+import { usePopper } from '../../hooks'
 import { triggerPropType } from '../../props'
 import type { Triggers } from '../../types'
 import { isRTL } from '../../utils'
@@ -79,46 +80,34 @@ export const CPopover: FC<CPopoverProps> = ({
 }) => {
   const popoverRef = useRef(null)
   const togglerRef = useRef(null)
-  const popper = useRef<Instance>()
+  const { initPopper, destroyPopper } = usePopper()
   const [_visible, setVisible] = useState(visible)
+
+  const popperConfig = {
+    modifiers: [
+      {
+        name: 'offset',
+        options: {
+          offset: offset,
+        },
+      },
+    ],
+    placement: getPlacement(placement, togglerRef.current),
+  }
 
   useEffect(() => {
     setVisible(visible)
   }, [visible])
 
   useEffect(() => {
-    if (_visible) {
-      initPopper()
+    if (_visible && togglerRef.current && popoverRef.current) {
+      initPopper(togglerRef.current, popoverRef.current, popperConfig)
     }
 
     return () => {
       destroyPopper()
     }
   }, [_visible])
-
-  const initPopper = () => {
-    if (togglerRef.current && popoverRef.current) {
-      popper.current = createPopper(togglerRef.current, popoverRef.current, {
-        modifiers: [
-          {
-            name: 'offset',
-            options: {
-              offset: offset,
-            },
-          },
-        ],
-        placement: getPlacement(placement, togglerRef.current),
-      })
-    }
-  }
-
-  const destroyPopper = () => {
-    if (popper.current) {
-      popper.current.destroy()
-    }
-
-    popper.current = undefined
-  }
 
   return (
     <>
