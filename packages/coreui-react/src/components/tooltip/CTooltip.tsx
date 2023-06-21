@@ -26,6 +26,12 @@ export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'con
    */
   content: ReactNode | string
   /**
+   * The delay for displaying and hiding the tooltip (in milliseconds). When a numerical value is provided, the delay applies to both the hide and show actions. The object structure for specifying the delay is as follows: delay: `{ 'show': 500, 'hide': 100 }`.
+   *
+   * @since 4.9.0-beta.1
+   */
+  delay?: number | { show: number; hide: number }
+  /**
    * Offset of the tooltip relative to its target.
    */
   offset?: [number, number]
@@ -72,6 +78,7 @@ export const CTooltip: FC<CTooltipProps> = ({
   animation = true,
   className,
   content,
+  delay = 0,
   offset = [0, 6],
   onHide,
   onShow,
@@ -84,6 +91,8 @@ export const CTooltip: FC<CTooltipProps> = ({
   const togglerRef = useRef(null)
   const { initPopper, destroyPopper } = usePopper()
   const [_visible, setVisible] = useState(visible)
+
+  const _delay = typeof delay === 'number' ? { show: delay, hide: delay } : delay
 
   const popperConfig = {
     modifiers: [
@@ -111,20 +120,29 @@ export const CTooltip: FC<CTooltipProps> = ({
     }
   }, [_visible])
 
+  const toggleVisible = (visible: boolean) => {
+    if (visible) {
+      setTimeout(() => setVisible(true), _delay.show)
+      return
+    }
+
+    setTimeout(() => setVisible(false), _delay.hide)
+  }
+
   return (
     <>
       {React.cloneElement(children as React.ReactElement<any>, {
         ref: togglerRef,
         ...((trigger === 'click' || trigger.includes('click')) && {
-          onClick: () => setVisible(!_visible),
+          onClick: () => toggleVisible(!_visible),
         }),
         ...((trigger === 'focus' || trigger.includes('focus')) && {
-          onFocus: () => setVisible(true),
-          onBlur: () => setVisible(false),
+          onFocus: () => toggleVisible(true),
+          onBlur: () => toggleVisible(false),
         }),
         ...((trigger === 'hover' || trigger.includes('hover')) && {
-          onMouseEnter: () => setVisible(true),
-          onMouseLeave: () => setVisible(false),
+          onMouseEnter: () => toggleVisible(true),
+          onMouseLeave: () => toggleVisible(false),
         }),
       })}
       {typeof window !== 'undefined' &&
@@ -170,6 +188,13 @@ CTooltip.propTypes = {
   animation: PropTypes.bool,
   children: PropTypes.node,
   content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  delay: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.shape({
+      show: PropTypes.number.isRequired,
+      hide: PropTypes.number.isRequired,
+    }),
+  ]),
   offset: PropTypes.any, // TODO: find good proptype
   onHide: PropTypes.func,
   onShow: PropTypes.func,
