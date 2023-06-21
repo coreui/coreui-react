@@ -196,15 +196,14 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
 const alignmentDirection = PropTypes.oneOf<Directions>(['start', 'end'])
 
 CDropdown.propTypes = {
-  // @ts-expect-error TODO: we have to find a solution
   alignment: PropTypes.oneOfType([
     alignmentDirection,
-    PropTypes.shape({ xs: alignmentDirection }),
-    PropTypes.shape({ sm: alignmentDirection }),
-    PropTypes.shape({ md: alignmentDirection }),
-    PropTypes.shape({ lg: alignmentDirection }),
-    PropTypes.shape({ xl: alignmentDirection }),
-    PropTypes.shape({ xxl: alignmentDirection }),
+    PropTypes.shape({ xs: alignmentDirection.isRequired }),
+    PropTypes.shape({ sm: alignmentDirection.isRequired }),
+    PropTypes.shape({ md: alignmentDirection.isRequired }),
+    PropTypes.shape({ lg: alignmentDirection.isRequired }),
+    PropTypes.shape({ xl: alignmentDirection.isRequired }),
+    PropTypes.shape({ xxl: alignmentDirection.isRequired }),
   ]),
   autoClose: PropTypes.oneOfType([
     PropTypes.bool,
