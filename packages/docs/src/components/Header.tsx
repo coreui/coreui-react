@@ -28,8 +28,7 @@ import {
 import { AppContext } from './../AppContext'
 
 const Header: FC = () => {
-  const { getColorMode, setColorMode } = useColorModes('coreui-react-docs-theme')
-  const colorMode = getColorMode()
+  const { colorMode, setColorMode } = useColorModes('coreui-react-docs-theme')
   return (
     <>
       <AppContext.Consumer>
