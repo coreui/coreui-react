@@ -109,6 +109,12 @@ export const CPopover: FC<CPopoverProps> = ({
   const popperConfig = {
     modifiers: [
       {
+        name: 'arrow',
+        options: {
+          element: '.popover-arrow',
+        },
+      },
+      {
         name: 'flip',
         options: {
           fallbackPlacements: fallbackPlacements,
@@ -192,7 +198,7 @@ export const CPopover: FC<CPopoverProps> = ({
                 role="tooltip"
                 {...rest}
               >
-                <div data-popper-arrow className="popover-arrow"></div>
+                <div className="popover-arrow"></div>
                 <div className="popover-header">{title}</div>
                 <div className="popover-body">{content}</div>
               </div>

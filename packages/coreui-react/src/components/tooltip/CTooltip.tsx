@@ -104,6 +104,12 @@ export const CTooltip: FC<CTooltipProps> = ({
   const popperConfig = {
     modifiers: [
       {
+        name: 'arrow',
+        options: {
+          element: '.tooltip-arrow',
+        },
+      },
+      {
         name: 'flip',
         options: {
           fallbackPlacements: fallbackPlacements,
@@ -186,7 +192,7 @@ export const CTooltip: FC<CTooltipProps> = ({
                 role="tooltip"
                 {...rest}
               >
-                <div data-popper-arrow className="tooltip-arrow"></div>
+                <div className="tooltip-arrow"></div>
                 <div className="tooltip-inner">{content}</div>
               </div>
             )}
