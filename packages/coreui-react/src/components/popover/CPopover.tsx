@@ -6,8 +6,8 @@ import { Transition } from 'react-transition-group'
 import { Placement } from '@popperjs/core'
 
 import { usePopper } from '../../hooks'
-import { triggerPropType } from '../../props'
-import type { Triggers } from '../../types'
+import { fallbackPlacementsPropType, triggerPropType } from '../../props'
+import type { Placements, Triggers } from '../../types'
 import { isRTL } from '../../utils'
 
 export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content'> {
@@ -35,6 +35,12 @@ export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'tit
    * @since 4.9.0-beta.1
    */
   delay?: number | { show: number; hide: number }
+  /**
+   * Specify the desired order of fallback placements by providing a list of placements as an array. The placements should be prioritized based on preference.
+   *
+   * @since 4.9.0-beta.1
+   */
+  fallbackPlacements?: Placements | Placements[]
   /**
    * Callback fired when the component requests to be hidden.
    */
@@ -83,6 +89,7 @@ export const CPopover: FC<CPopoverProps> = ({
   className,
   content,
   delay = 0,
+  fallbackPlacements = ['top', 'right', 'bottom', 'left'],
   offset = [0, 8],
   onHide,
   onShow,
@@ -101,6 +108,12 @@ export const CPopover: FC<CPopoverProps> = ({
 
   const popperConfig = {
     modifiers: [
+      {
+        name: 'flip',
+        options: {
+          fallbackPlacements: fallbackPlacements,
+        },
+      },
       {
         name: 'offset',
         options: {
@@ -203,6 +216,7 @@ CPopover.propTypes = {
       hide: PropTypes.number.isRequired,
     }),
   ]),
+  fallbackPlacements: fallbackPlacementsPropType,
   offset: PropTypes.any, // TODO: find good proptype
   onHide: PropTypes.func,
   onShow: PropTypes.func,

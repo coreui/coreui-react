@@ -16,6 +16,11 @@ export const colorPropType = PropTypes.oneOfType([
   PropTypes.string,
 ])
 
+export const fallbackPlacementsPropType = PropTypes.oneOfType([
+  PropTypes.arrayOf(PropTypes.oneOf<Placements>(['top', 'bottom', 'right', 'left']).isRequired),
+  PropTypes.oneOf<Placements>(['top', 'bottom', 'right', 'left']),
+])
+
 export const placementPropType = PropTypes.oneOf<Placements>([
   'auto',
   'auto-start',

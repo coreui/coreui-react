@@ -6,8 +6,8 @@ import { Transition } from 'react-transition-group'
 import { Placement } from '@popperjs/core'
 
 import { usePopper } from '../../hooks'
-import { triggerPropType } from '../../props'
-import type { Triggers } from '../../types'
+import { fallbackPlacementsPropType, triggerPropType } from '../../props'
+import type { Placements, Triggers } from '../../types'
 import { isRTL } from '../../utils'
 
 export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'content'> {
@@ -31,6 +31,12 @@ export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'con
    * @since 4.9.0-beta.1
    */
   delay?: number | { show: number; hide: number }
+  /**
+   * Specify the desired order of fallback placements by providing a list of placements as an array. The placements should be prioritized based on preference.
+   *
+   * @since 4.9.0-beta.1
+   */
+  fallbackPlacements?: Placements | Placements[]
   /**
    * Offset of the tooltip relative to its target.
    */
@@ -79,6 +85,7 @@ export const CTooltip: FC<CTooltipProps> = ({
   className,
   content,
   delay = 0,
+  fallbackPlacements = ['top', 'right', 'bottom', 'left'],
   offset = [0, 6],
   onHide,
   onShow,
@@ -96,6 +103,12 @@ export const CTooltip: FC<CTooltipProps> = ({
 
   const popperConfig = {
     modifiers: [
+      {
+        name: 'flip',
+        options: {
+          fallbackPlacements: fallbackPlacements,
+        },
+      },
       {
         name: 'offset',
         options: {
@@ -195,6 +208,7 @@ CTooltip.propTypes = {
       hide: PropTypes.number.isRequired,
     }),
   ]),
+  fallbackPlacements: fallbackPlacementsPropType,
   offset: PropTypes.any, // TODO: find good proptype
   onHide: PropTypes.func,
   onShow: PropTypes.func,
