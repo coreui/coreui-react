@@ -69,7 +69,7 @@ export const CTooltip: FC<CTooltipProps> = ({
   onHide,
   onShow,
   placement = 'top',
-  trigger = 'hover',
+  trigger = ['hover', 'focus'],
   visible,
   ...rest
 }) => {
