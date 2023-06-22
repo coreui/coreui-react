@@ -1,27 +1,13 @@
-import React, { ElementType, FC, HTMLAttributes, useContext, useEffect, useRef } from 'react'
+import React, { ElementType, forwardRef, HTMLAttributes, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Popper, PopperChildrenProps } from 'react-popper'
 
 import { Alignments, CDropdownContext } from './CDropdown'
 import { CConditionalPortal } from '../conditional-portal'
 
-import type { Placements } from '../../types'
-import { isRTL } from '../../utils'
+import { useForkedRef } from '../../hooks'
 
-export interface CDropdownMenuProps
-  extends HTMLAttributes<HTMLDivElement | HTMLUListElement>,
-    Omit<
-      PopperChildrenProps,
-      | 'arrowProps'
-      | 'forceUpdate'
-      | 'hasPopperEscaped'
-      | 'isReferenceHidden'
-      | 'placement'
-      | 'ref'
-      | 'style'
-      | 'update'
-    > {
+export interface CDropdownMenuProps extends HTMLAttributes<HTMLDivElement | HTMLUListElement> {
   /**
    * A string of all className you want applied to the base component.
    */
@@ -47,127 +33,44 @@ const alignmentClassNames = (alignment: Alignments) => {
   return classNames
 }
 
-export const CDropdownMenu: FC<CDropdownMenuProps> = ({
-  children,
-  className,
-  component: Component = 'ul',
-  ...rest
-}) => {
-  const {
-    alignment,
-    autoClose,
-    dark,
-    direction,
-    dropdownToggleRef,
-    placement,
-    popper,
-    portal,
-    visible,
-    setVisible,
-  } = useContext(CDropdownContext)
+export const CDropdownMenu = forwardRef<HTMLDivElement | HTMLUListElement, CDropdownMenuProps>(
+  ({ children, className, component: Component = 'ul', ...rest }, ref) => {
+    const { alignment, dark, dropdownMenuRef, popper, portal, visible } =
+      useContext(CDropdownContext)
 
-  const dropdownMenuRef = useRef<HTMLDivElement>(null)
+    const forkedRef = useForkedRef(ref, dropdownMenuRef)
 
-  useEffect(() => {
-    visible && window.addEventListener('mouseup', handleMouseUp)
-    visible && window.addEventListener('keyup', handleKeyup)
-
-    return () => {
-      window.removeEventListener('mouseup', handleMouseUp)
-      window.removeEventListener('keyup', handleKeyup)
-    }
-  }, [visible])
-
-  const handleKeyup = (event: KeyboardEvent) => {
-    if (autoClose === false) {
-      return
-    }
-
-    if (event.key === 'Escape') {
-      setVisible(false)
-    }
-  }
-
-  const handleMouseUp = (event: Event) => {
-    if (dropdownToggleRef && dropdownToggleRef.current.contains(event.target as HTMLElement)) {
-      return
-    }
-
-    if (
-      autoClose === true ||
-      (autoClose === 'inside' && dropdownMenuRef.current?.contains(event.target as HTMLElement)) ||
-      (autoClose === 'outside' && !dropdownMenuRef.current?.contains(event.target as HTMLElement))
-    ) {
-      setTimeout(() => setVisible(false), 1)
-      return
-    }
-  }
-
-  let _placement: Placements = placement
-
-  if (direction === 'center') {
-    _placement = 'bottom'
-  }
-
-  if (direction === 'dropup') {
-    _placement = isRTL(dropdownMenuRef.current) ? 'top-end' : 'top-start'
-  }
-
-  if (direction === 'dropup-center') {
-    _placement = 'top'
-  }
-
-  if (direction === 'dropend') {
-    _placement = isRTL(dropdownMenuRef.current) ? 'left-start' : 'right-start'
-  }
-
-  if (direction === 'dropstart') {
-    _placement = isRTL(dropdownMenuRef.current) ? 'right-start' : 'left-start'
-  }
-
-  if (alignment === 'end') {
-    _placement = isRTL(dropdownMenuRef.current) ? 'bottom-start' : 'bottom-end'
-  }
-
-  const dropdownMenuComponent = (style?: React.CSSProperties, ref?: React.Ref<HTMLDivElement>) => (
-    <CConditionalPortal portal={portal ?? false}>
-      <Component
-        className={classNames(
-          'dropdown-menu',
-          {
-            'dropdown-menu-dark': dark,
-            show: visible,
-          },
-          alignment && alignmentClassNames(alignment),
-          className,
-        )}
-        ref={ref}
-        style={style}
-        role="menu"
-        aria-hidden={!visible}
-        {...(!popper && { 'data-coreui-popper': 'static' })}
-        {...rest}
-      >
-        {Component === 'ul'
-          ? React.Children.map(children, (child, index) => {
-              if (React.isValidElement(child)) {
-                return <li key={index}>{React.cloneElement(child)}</li>
-              }
-              return
-            })
-          : children}
-      </Component>
-    </CConditionalPortal>
-  )
-
-  return popper && visible ? (
-    <Popper innerRef={dropdownMenuRef} placement={_placement}>
-      {({ ref, style }) => dropdownMenuComponent(style, ref)}
-    </Popper>
-  ) : (
-    dropdownMenuComponent()
-  )
-}
+    return (
+      <CConditionalPortal portal={portal ?? false}>
+        <Component
+          className={classNames(
+            'dropdown-menu',
+            {
+              'dropdown-menu-dark': dark,
+              show: visible,
+            },
+            alignment && alignmentClassNames(alignment),
+            className,
+          )}
+          ref={forkedRef}
+          role="menu"
+          aria-hidden={!visible}
+          {...(!popper && { 'data-coreui-popper': 'static' })}
+          {...rest}
+        >
+          {Component === 'ul'
+            ? React.Children.map(children, (child, index) => {
+                if (React.isValidElement(child)) {
+                  return <li key={index}>{React.cloneElement(child)}</li>
+                }
+                return
+              })
+            : children}
+        </Component>
+      </CConditionalPortal>
+    )
+  },
+)
 
 CDropdownMenu.propTypes = {
   children: PropTypes.node,

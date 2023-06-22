@@ -1,13 +1,11 @@
 import React, { FC, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Reference } from 'react-popper'
 
 import { CButton, CButtonProps } from '../button/CButton'
 
 import { CDropdownContext } from './CDropdown'
 
-import { useForkedRef } from '../../hooks'
 import { triggerPropType } from '../../props'
 import type { Triggers } from '../../types'
 
@@ -41,7 +39,7 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
   trigger = 'click',
   ...rest
 }) => {
-  const { dropdownToggleRef, popper, variant, visible, setVisible } = useContext(CDropdownContext)
+  const { dropdownToggleRef, variant, visible, setVisible } = useContext(CDropdownContext)
 
   const triggers = {
     ...((trigger === 'click' || trigger.includes('click')) && {
@@ -70,15 +68,14 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
   }
 
   // We use any because Toggler can be `a` as well as `button`.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const Toggler = (ref?: React.Ref<any>) => {
+  const Toggler = () => {
     if (custom && React.isValidElement(children)) {
       return (
         <>
           {React.cloneElement(children as React.ReactElement<any>, {
             'aria-expanded': visible,
             ...(!rest.disabled && { ...triggers }),
-            ref: useForkedRef(ref, dropdownToggleRef),
+            ref: dropdownToggleRef,
           })}
         </>
       )
@@ -86,27 +83,21 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
 
     if (variant === 'nav-item') {
       return (
-        <a href="#" {...togglerProps} ref={useForkedRef(ref, dropdownToggleRef)}>
+        <a href="#" {...togglerProps} ref={dropdownToggleRef}>
           {children}
         </a>
       )
     }
 
     return (
-      <CButton
-        type="button"
-        {...togglerProps}
-        tabIndex={0}
-        {...rest}
-        ref={useForkedRef(ref, dropdownToggleRef)}
-      >
+      <CButton type="button" {...togglerProps} tabIndex={0} {...rest} ref={dropdownToggleRef}>
         {children}
         {split && <span className="visually-hidden">Toggle Dropdown</span>}
       </CButton>
     )
   }
 
-  return popper ? <Reference>{({ ref }) => Toggler(ref)}</Reference> : Toggler(dropdownToggleRef)
+  return <Toggler />
 }
 
 CDropdownToggle.propTypes = {
