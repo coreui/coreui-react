@@ -9,7 +9,6 @@ exports[`CDropdownMenu customize 1`] = `
       aria-hidden="false"
       class="dropdown-menu show bazinga"
       role="menu"
-      style="position: absolute; left: 0px; top: 0px;"
     >
       Test
     </div>
