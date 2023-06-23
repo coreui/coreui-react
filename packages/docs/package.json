@@ -57,6 +57,7 @@
     "react-docgen-typescript": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-imask": "^7.0.1",
     "rimraf": "^5.0.1",
     "sass": "^1.63.4"
   },

@@ -1,0 +1,126 @@
+---
+title: React Input Mask
+name: Input mask
+description: React input masks allow you to regulate the format of data entered. Yyou can enhance data entry accuracy by implementing react input masks for fields with consistent formatting requirements. This ensures that users input data correctly, such as accurately formatted phone numbers in a designated phone number field.
+menu: Forms
+route: /forms/input-mask
+---
+
+import { CFormInput } from '@coreui/react/src/index'
+
+import { IMaskMixin } from 'react-imask'
+
+## Usage
+
+While CoreUI for React does not currently include a 'mask' feature, it can be enhanced by leveraging existing libraries like `react-imask` to extend the functionality of our components.
+
+To enable the extension of the `<CFormInput />` component, please ensure that you have installed `react-imask` first.
+
+```bash
+npm install react-imask
+```
+
+or
+
+```bash
+yarn add react-imask
+```
+
+Once you have installed react-imask, you can proceed to create a custom component with a mask.
+
+```jsx
+import { IMaskMixin } from 'react-imask'
+```
+
+```jsx
+const CFormInputMasked = IMaskMixin(({ inputRef, ...props }) => (
+  <CFormInput
+    {...props}
+    ref={inputRef} // bind internal input
+  />
+))
+```
+
+Here is an example of a date mask for reference.
+
+export const MaskExample = () => {
+  const CFormInputMasked = IMaskMixin(({ inputRef, ...props }) => (
+    <CFormInput {...props} ref={inputRef} />
+  ))
+  return (
+    <CFormInputMasked
+      mask={Date}
+      min={new Date(1990, 0, 1)}
+      max={new Date(2020, 0, 1)}
+      lazy={false}
+    />
+  )
+}
+
+<Example>
+  <MaskExample />
+</Example>
+
+```jsx
+const CFormInputMasked = IMaskMixin(({ inputRef, ...props }) => (
+  <CFormInput {...props} ref={inputRef} />
+))
+return (
+  <CFormInputMasked
+    mask={Date}
+    min={new Date(1990, 0, 1)}
+    max={new Date(2020, 0, 1)}
+    lazy={false}
+  />
+)
+```
+
+## Patterns
+
+Please take a moment to review some example masks you can use for reference. These examples serve as helpful templates for implementing input masks and can assist you in effectively controlling data entry formats.
+
+### Phone
+
+export const PhoneMaskExample = () => {
+  const CFormInputMasked = IMaskMixin(({ inputRef, ...props }) => (
+    <CFormInput {...props} ref={inputRef} />
+  ))
+  return <CFormInputMasked mask="+{1}(000)000-00-00" />
+}
+
+<Example>
+  <PhoneMaskExample />
+</Example>
+
+```jsx
+const CFormInputMasked = IMaskMixin(({ inputRef, ...props }) => (
+  <CFormInput {...props} ref={inputRef} />
+))
+return (
+  return <CFormInputMasked mask="+{1}(000)000-00-00" />
+)
+```
+
+### Credit Card
+
+export const CreditCardMaskExample = () => {
+  const CFormInputMasked = IMaskMixin(({ inputRef, ...props }) => (
+    <CFormInput {...props} ref={inputRef} />
+  ))
+  return <CFormInputMasked mask="0000 0000 0000 0000" />
+}
+
+<Example>
+  <CreditCardMaskExample />
+</Example>
+
+```jsx
+const CFormInputMasked = IMaskMixin(({ inputRef, ...props }) => (
+  <CFormInput {...props} ref={inputRef} />
+))
+return (
+  return <CFormInputMasked mask="0000 0000 0000 0000" />
+)
+```
+
+For more information on how to use the input mask, you can refer to the following resource: https://imask.js.org/

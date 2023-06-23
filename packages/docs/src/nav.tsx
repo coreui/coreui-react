@@ -117,6 +117,10 @@ const nav = [
         to: '/forms/input/',
       },
       {
+        name: 'Input Mask',
+        to: '/forms/input-mask/',
+      },
+      {
         name: 'Input Group',
         to: '/forms/input-group/',
       },
