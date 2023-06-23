@@ -1,7 +1,8 @@
-import React, { forwardRef, HTMLAttributes } from 'react'
+import React, { forwardRef, HTMLAttributes, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import { CProgressStackedContext } from './CProgressStacked'
 import { CProgressBar, CProgressBarProps } from './CProgressBar'
 
 export interface CProgressProps
@@ -16,6 +17,12 @@ export interface CProgressProps
    */
   height?: number
   /**
+   * A string of all className you want applied to the <CProgressBar/> component.
+   *
+   * @since 4.9.0
+   */
+  progressBarClassName?: string
+  /**
    * Makes progress bar thinner.
    */
   thin?: boolean
@@ -29,9 +36,10 @@ export interface CProgressProps
   white?: boolean
 }
 
-// TODO: update markup and add '.progress-stacked' in v5
 export const CProgress = forwardRef<HTMLDivElement, CProgressProps>(
-  ({ children, className, height, thin, value = 0, white, ...rest }, ref) => {
+  ({ children, className, height, progressBarClassName, thin, value, white, ...rest }, ref) => {
+    const { stacked } = useContext(CProgressStackedContext)
+
     return (
       <div
         className={classNames(
@@ -42,15 +50,41 @@ export const CProgress = forwardRef<HTMLDivElement, CProgressProps>(
           },
           className,
         )}
-        style={height ? { height: `${height}px` } : {}}
+        {...(value !== undefined && {
+          role: 'progressbar',
+          'aria-valuenow': value,
+          'aria-valuemin': 0,
+          'aria-valuemax': 100,
+        })}
+        style={{
+          ...(height ? { height: `${height}px` } : {}),
+          ...(stacked ? { width: `${value}%` } : {}),
+        }}
         ref={ref}
       >
-        {value ? (
-          <CProgressBar value={value} {...rest}>
+        {React.Children.toArray(children).some(
+          // @ts-expect-error displayName is set in the CProgressBar component
+          (child) => child.type && child.type.displayName === 'CProgressBar',
+        ) ? (
+          React.Children.map(children, (child) => {
+            // @ts-expect-error displayName is set in the CProgressBar component
+            if (React.isValidElement(child) && child.type.displayName === 'CProgressBar') {
+              return React.cloneElement(child, {
+                ...(value && { value: value }),
+                ...rest,
+              })
+            }
+
+            return
+          })
+        ) : (
+          <CProgressBar
+            {...(progressBarClassName && { className: progressBarClassName })}
+            value={value}
+            {...rest}
+          >
             {children}
           </CProgressBar>
-        ) : (
-          children
         )}
       </div>
     )
@@ -61,6 +95,7 @@ CProgress.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   height: PropTypes.number,
+  progressBarClassName: PropTypes.string,
   thin: PropTypes.bool,
   value: PropTypes.number,
   white: PropTypes.bool,
