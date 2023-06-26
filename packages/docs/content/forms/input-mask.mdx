@@ -33,7 +33,7 @@ import { IMaskMixin } from 'react-imask'
 ```
 
 ```jsx
-const CFormInputMasked = IMaskMixin(({ inputRef, ...props }) => (
+const CFormInputWithMask = IMaskMixin(({ inputRef, ...props }) => (
   <CFormInput
     {...props}
     ref={inputRef} // bind internal input
@@ -44,11 +44,11 @@ const CFormInputMasked = IMaskMixin(({ inputRef, ...props }) => (
 Here is an example of a date mask for reference.
 
 export const MaskExample = () => {
-  const CFormInputMasked = IMaskMixin(({ inputRef, ...props }) => (
+  const CFormInputWithMask = IMaskMixin(({ inputRef, ...props }) => (
     <CFormInput {...props} ref={inputRef} />
   ))
   return (
-    <CFormInputMasked
+    <CFormInputWithMask
       mask={Date}
       min={new Date(1990, 0, 1)}
       max={new Date(2020, 0, 1)}
@@ -62,11 +62,11 @@ export const MaskExample = () => {
 </Example>
 
 ```jsx
-const CFormInputMasked = IMaskMixin(({ inputRef, ...props }) => (
+const CFormInputWithMask = IMaskMixin(({ inputRef, ...props }) => (
   <CFormInput {...props} ref={inputRef} />
 ))
 return (
-  <CFormInputMasked
+  <CFormInputWithMask
     mask={Date}
     min={new Date(1990, 0, 1)}
     max={new Date(2020, 0, 1)}
@@ -81,11 +81,13 @@ Please take a moment to review some example masks you can use for reference. The
 
 ### Phone
 
+This example react input mask for a phone number follows the format commonly used in North America. It consists of three groups of numbers: the area code enclosed in parentheses, followed by a space, and then the seven-digit phone number separated by a hyphen.
+
 export const PhoneMaskExample = () => {
-  const CFormInputMasked = IMaskMixin(({ inputRef, ...props }) => (
+  const CFormInputWithMask = IMaskMixin(({ inputRef, ...props }) => (
     <CFormInput {...props} ref={inputRef} />
   ))
-  return <CFormInputMasked mask="+{1}(000)000-00-00" />
+  return <CFormInputWithMask mask="+{1}(000)000-00-00" />
 }
 
 <Example>
@@ -93,21 +95,21 @@ export const PhoneMaskExample = () => {
 </Example>
 
 ```jsx
-const CFormInputMasked = IMaskMixin(({ inputRef, ...props }) => (
+const CFormInputWithMask = IMaskMixin(({ inputRef, ...props }) => (
   <CFormInput {...props} ref={inputRef} />
 ))
-return (
-  return <CFormInputMasked mask="+{1}(000)000-00-00" />
-)
+return <CFormInputWithMask mask="+{1}(000)000-00-00" />
 ```
 
 ### Credit Card
 
+The provided code snippet demonstrates an implementation of an react input mask for a credit card number using the IMask library in JavaScript. The mask is set to "0000 0000 0000 0000", indicating that the input should consist of a 16-digit credit card number with spaces separating every four digits. The component renders an input field with the specified mask, allowing users to enter credit card numbers in the desired format.
+
 export const CreditCardMaskExample = () => {
-  const CFormInputMasked = IMaskMixin(({ inputRef, ...props }) => (
+  const CFormInputWithMask = IMaskMixin(({ inputRef, ...props }) => (
     <CFormInput {...props} ref={inputRef} />
   ))
-  return <CFormInputMasked mask="0000 0000 0000 0000" />
+  return <CFormInputWithMask mask="0000 0000 0000 0000" />
 }
 
 <Example>
@@ -115,12 +117,10 @@ export const CreditCardMaskExample = () => {
 </Example>
 
 ```jsx
-const CFormInputMasked = IMaskMixin(({ inputRef, ...props }) => (
+const CFormInputWithMask = IMaskMixin(({ inputRef, ...props }) => (
   <CFormInput {...props} ref={inputRef} />
 ))
-return (
-  return <CFormInputMasked mask="0000 0000 0000 0000" />
-)
+return <CFormInputWithMask mask="0000 0000 0000 0000" />
 ```
 
 For more information on how to use the input mask, you can refer to the following resource: https://imask.js.org/
