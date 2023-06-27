@@ -66,7 +66,7 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
   /**
    * Callback fired when the component requests to be hidden.
    *
-   * @since 4.9.0-beta.1
+   * @since 4.9.0-beta.2
    */
   onHide?: () => void
   /**

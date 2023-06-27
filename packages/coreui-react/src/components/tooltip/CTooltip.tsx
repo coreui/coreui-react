@@ -13,7 +13,7 @@ export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'con
   /**
    * Apply a CSS fade transition to the tooltip.
    *
-   * @since 4.9.0-beta.1
+   * @since 4.9.0-beta.2
    */
   animation?: boolean
   /**
@@ -27,13 +27,13 @@ export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'con
   /**
    * The delay for displaying and hiding the tooltip (in milliseconds). When a numerical value is provided, the delay applies to both the hide and show actions. The object structure for specifying the delay is as follows: delay: `{ 'show': 500, 'hide': 100 }`.
    *
-   * @since 4.9.0-beta.1
+   * @since 4.9.0-beta.2
    */
   delay?: number | { show: number; hide: number }
   /**
    * Specify the desired order of fallback placements by providing a list of placements as an array. The placements should be prioritized based on preference.
    *
-   * @since 4.9.0-beta.1
+   * @since 4.9.0-beta.2
    */
   fallbackPlacements?: Placements | Placements[]
   /**
