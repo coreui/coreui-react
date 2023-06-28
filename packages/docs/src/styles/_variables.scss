@@ -1,0 +1,26 @@
+// stylelint-disable scss/dollar-variable-default
+
+// Local docs variables
+$cd-purple:        #4c0bce;
+$cd-violet:        lighten(saturate($cd-purple, 5%), 15%); // stylelint-disable-line function-disallowed-list
+$cd-accent:       #ffe484;
+
+$cd-gutter-x: 3rem;
+$cd-callout-variants: info, warning, danger !default;
+
+:root {
+  --cui-tertiary-bg: #f0f4f7;
+  --cd-purple: #{$cd-purple};
+  --cd-violet: #{$cd-violet};
+  --cd-accent: #{$cd-accent};
+  --cd-violet-rgb: #{to-rgb($cd-violet)};
+  --cd-accent-rgb: #{to-rgb($cd-accent)};
+  --cd-pink-rgb: #{to-rgb($pink-500)};
+  --cd-teal-rgb: #{to-rgb($teal-500)};
+  --cd-violet-bg: var(--cd-violet);
+  --cd-toc-color: var(--cd-violet);
+  --cd-sidebar-link-bg: rgba(var(--cd-violet-rgb), .1);
+  --cd-callout-link: #{to-rgb($blue-600)};
+  --cd-callout-code-color: #{$pink-600};
+  --cd-pre-bg: var(--cui-tertiary-bg);
+}

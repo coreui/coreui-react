@@ -7,10 +7,10 @@ import { AppContext } from '../AppContext'
 import { Script } from 'gatsby'
 
 interface DefaultLayoutProps {
-  children: any
-  data: any
-  pageContext: any
-  path: any
+  children: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  data: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  pageContext: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  path: any // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 const DefaultLayout: FC<DefaultLayoutProps> = ({ children, data, pageContext, path }) => {

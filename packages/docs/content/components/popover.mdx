@@ -9,7 +9,9 @@ other_frameworks: popover
 
 import { CPopover, CButton } from '@coreui/react/src/index'
 
-## Example
+## Examples
+
+### Live demo
 
 <Example>
   <CPopover
@@ -27,9 +29,7 @@ import { CPopover, CButton } from '@coreui/react/src/index'
   content="And here’s some amazing content. It’s very engaging. Right?"
   placement="right"
 >
-  <CButton color="danger" size="lg">
-    Click to toggle popover
-  </CButton>
+  <CButton color="danger" size="lg">Click to toggle popover</CButton>
 </CPopover>
 ```
 
@@ -79,70 +79,133 @@ Four options are available: top, right, bottom, and left aligned. Directions are
   </CPopover>
 ```
 
+### Custom popovers
+
+You can customize the appearance of popovers using [CSS variables](#css-variables). We set a custom `style` to scope our custom appearance and use it to override some of the local CSS variables.
+
+export const CustomPopoversExample = () => {
+  const customPopoverStyle = {
+    '--cui-popover-max-width': '200px',
+    '--cui-popover-border-color': 'var(--cui-primary)',
+    '--cui-popover-header-bg': 'var(--cui-primary)',
+    '--cui-popover-header-color': 'var(--cui-white)',
+    '--cui-popover-body-padding-x': '1rem',
+    '--cui-popover-body-padding-y': '.5rem',
+  }
+  return (
+    <CPopover
+      content="This popover is themed via CSS variables."
+      placement="right"
+      title="Custom popover"
+      style={customPopoverStyle}
+    >
+      <CButton color="secondary">Custom popover</CButton>
+    </CPopover>
+  )
+}
+
+<Example>
+  <CustomPopoversExample />
+</Example>
+```jsx
+const customPopoverStyle = {
+  '--cui-popover-max-width': '200px',
+  '--cui-popover-border-color': 'var(--cui-primary)',
+  '--cui-popover-header-bg': 'var(--cui-primary)',
+  '--cui-popover-header-color': 'var(--cui-white)',
+  '--cui-popover-body-padding-x': '1rem',
+  '--cui-popover-body-padding-y': '.5rem',
+}
+return (
+  <CPopover
+    content="This popover is themed via CSS variables."
+    placement="right"
+    title="Custom popover"
+    style={customPopoverStyle}
+  >
+    <CButton color="secondary">Custom popover</CButton>
+  </CPopover>
+)
+```
+
+### Dismiss on next click
+
+Use the `focus` trigger to dismiss popovers on the user's next click of a different element than the toggle element.
+
+<Example>
+  <CPopover
+    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+    placement="right"
+    title="Dismissible popover"
+    trigger="focus"
+  >
+    <CButton color="danger">Dismissible popover</CButton>
+  </CPopover>
+</Example>
+```jsx
+<CPopover
+  content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+  placement="right"
+  title="Dismissible popover"
+  trigger="focus"
+>
+  <CButton color="danger">Dismissible popover</CButton>
+</CPopover>
+```
+
+## Usage
+
+### Disabled elements
+
+Elements with the disabled attribute aren't interactive, meaning users cannot hover or click them to trigger a popover (or tooltip). As a workaround, you'll want to trigger the popover from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
+
+For disabled popover triggers, you may also prefer `trigger={['hover', 'focus']}` so that the popover appears as immediate visual feedback to your users as they may not expect to click on a disabled element.
+
+<Example>
+  <CPopover
+    content="Disabled popover"
+    placement="right"
+    trigger={['hover', 'focus']}
+  >
+    <span className="d-inline-block" tabIndex={0}>
+      <CButton color="primary" disabled>Disabled button</CButton>
+    </span>
+  </CPopover>
+</Example>
+```jsx
+<CPopover
+  content="Disabled popover"
+  placement="right"
+  trigger={['hover', 'focus']}
+>
+  <span className="d-inline-block" tabIndex={0}>
+    <CButton color="primary" disabled>Disabled button</CButton>
+  </span>
+</CPopover>
+```
+
+
 ## Customizing
 
 ### CSS variables
 
 React popovers use local CSS variables on `.popover` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-```sass
---cui-popover-zindex: #{$zindex-popover};
---cui-popover-max-width: #{$popover-max-width};
---cui-popover-font-size: {$popover-font-size};
---cui-popover-bg: #{$popover-bg};
---cui-popover-border-width: #{$popover-border-width};
---cui-popover-border-color: #{$popover-border-color};
---cui-popover-border-radius: #{$popover-border-radius};
---cui-popover-inner-border-radius: #{$popover-inner-border-radius};
---cui-popover-box-shadow: #{$popover-box-shadow};
---cui-popover-header-padding-x: #{$popover-header-padding-x};
---cui-popover-header-padding-y: #{$popover-header-padding-y};
---cui-popover-header-font-size: {$popover-header-font-size};
---cui-popover-header-color: #{$popover-header-color};
---cui-popover-header-bg: #{$popover-header-bg};
---cui-popover-body-padding-x: #{$popover-body-padding-x};
---cui-popover-body-padding-y: #{$popover-body-padding-y};
---cui-popover-body-color: #{$popover-body-color};
---cui-popover-arrow-width: #{$popover-arrow-width};
---cui-popover-arrow-height: #{$popover-arrow-height};
---cui-popover-arrow-border: var(--cui-popover-border-color);
-```
+<ScssDocs file="_popover.scss" capture="popover-css-vars"/>
 
 #### How to use CSS variables
 
 ```jsx
-const vars = { 
+const vars = {
   '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+  '--my-another-css-var': 'red',
 }
 return <CPopover style={vars}>...</CPopover>
 ```
 
 ### SASS variables
 
-```sass
-$popover-font-size:                 $font-size-sm;
-$popover-bg:                        $white;
-$popover-max-width:                 276px;
-$popover-border-width:              $border-width;
-$popover-border-color:              var(--cui-border-color-translucent);
-$popover-border-radius:             $border-radius-lg;
-$popover-inner-border-radius:       subtract($popover-border-radius, $popover-border-width);
-$popover-box-shadow:                $box-shadow;
-
-$popover-header-font-size:          $font-size-base;
-$popover-header-bg:                 shade-color($popover-bg, 6%);
-$popover-header-color:              var(--cui-heading-color);
-$popover-header-padding-y:          .5rem;
-$popover-header-padding-x:          $spacer;
-
-$popover-body-color:                $body-color;
-$popover-body-padding-y:            $spacer;
-$popover-body-padding-x:            $spacer;
-
-$popover-arrow-width:               1rem;
-$popover-arrow-height:              .5rem;
-```
+<ScssDocs file="_variables.scss" capture="popover-variables"/>
 
 ## API
 

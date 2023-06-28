@@ -42,6 +42,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `scss`,
+        path: `./../../node_modules/@coreui/coreui/scss/`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         mdxOptions: {
@@ -85,12 +92,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-gtag`,
+      resolve: `gatsby-plugin-google-tagmanager`,
       options: {
-        // You can add multiple tracking ids and a pageview event will be fired for all of them.
-        trackingIds: [
-          `UA-118965717-1`, // Google Analytics / GA
-        ],
+        id: `GTM-KX4JH47`,
       },
     },
   ],

@@ -61,16 +61,7 @@ Callout component is prepared for any length of text, as well as an optional ele
 
 React callouts use local CSS variables on `.callout` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-```sass
---cui-callout-padding-x: #{$callout-padding-x};
---cui-callout-padding-y: #{$callout-padding-y};
---cui-callout-margin-x: #{$callout-margin-x};
---cui-callout-margin-y: #{$callout-margin-y};
---cui-callout-border-width: #{$callout-border-width};
---cui-callout-border-color: #{$callout-border-color};
---cui-callout-border-left-width: #{$callout-border-left-width};
---cui-callout-border-radius: #{$callout-border-radius};
-```
+<ScssDocs file="_callout.scss" capture="callout-css-vars"/>
 
 #### How to use CSS variables
 
@@ -84,28 +75,7 @@ return <CCallout style={vars}>...</CCallout>
 
 ### SASS variables
 
-```sass
-$callout-padding-y:                 $spacer;
-$callout-padding-x:                 $spacer;
-$callout-margin-y:                  $spacer;
-$callout-margin-x:                  0;
-$callout-border-radius:             $border-radius;
-$callout-border-width:              $border-width;
-$callout-border-color:              $border-color;
-$callout-border-left-width:         (4 * $callout-border-width);
-
-$callout-variants: (
-  "primary":    $primary,
-  "secondary":  $secondary,
-  "success":    $success,
-  "danger":     $danger,
-  "warning":    $warning,
-  "info":       $info,
-  "light":      $light,
-  "dark":       $dark
-);
-```
-
+<ScssDocs file="_variables.scss" capture="callout-variables"/>
 
 ## API
 

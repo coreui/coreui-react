@@ -1,14 +1,21 @@
 import React, { FC, HTMLAttributes, ReactNode, useRef, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { usePopper } from 'react-popper'
+import PropTypes from 'prop-types'
 import { Transition } from 'react-transition-group'
 
-import { triggerPropType } from '../../props'
-import type { Triggers } from '../../types'
+import { usePopper } from '../../hooks'
+import { fallbackPlacementsPropType, triggerPropType } from '../../props'
+import type { Placements, Triggers } from '../../types'
+import { getRTLPlacement } from '../../utils'
 
-export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content'> {
+  /**
+   * Apply a CSS fade transition to the popover.
+   *
+   * @since 4.9.0-beta.2
+   */
+  animation?: boolean
   /**
    * A string of all className you want applied to the component.
    */
@@ -21,6 +28,18 @@ export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'tit
    * Offset of the popover relative to its target.
    */
   offset?: [number, number]
+  /**
+   * The delay for displaying and hiding the popover (in milliseconds). When a numerical value is provided, the delay applies to both the hide and show actions. The object structure for specifying the delay is as follows: delay: `{ 'show': 500, 'hide': 100 }`.
+   *
+   * @since 4.9.0-beta.2
+   */
+  delay?: number | { show: number; hide: number }
+  /**
+   * Specify the desired order of fallback placements by providing a list of placements as an array. The placements should be prioritized based on preference.
+   *
+   * @since 4.9.0-beta.2
+   */
+  fallbackPlacements?: Placements | Placements[]
   /**
    * Callback fired when the component requests to be hidden.
    */
@@ -51,8 +70,11 @@ export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'tit
 
 export const CPopover: FC<CPopoverProps> = ({
   children,
+  animation = true,
   className,
   content,
+  delay = 0,
+  fallbackPlacements = ['top', 'right', 'bottom', 'left'],
   offset = [0, 8],
   onHide,
   onShow,
@@ -62,15 +84,27 @@ export const CPopover: FC<CPopoverProps> = ({
   visible,
   ...rest
 }) => {
+  const popoverRef = useRef(null)
+  const togglerRef = useRef(null)
+  const { initPopper, destroyPopper } = usePopper()
   const [_visible, setVisible] = useState(visible)
-  const popoverRef = useRef()
 
-  const [referenceElement, setReferenceElement] = useState(null)
-  const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
-  const [arrowElement, setArrowElement] = useState<HTMLDivElement | null>(null)
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+  const _delay = typeof delay === 'number' ? { show: delay, hide: delay } : delay
+
+  const popperConfig = {
     modifiers: [
-      { name: 'arrow', options: { element: arrowElement } },
+      {
+        name: 'arrow',
+        options: {
+          element: '.popover-arrow',
+        },
+      },
+      {
+        name: 'flip',
+        options: {
+          fallbackPlacements: fallbackPlacements,
+        },
+      },
       {
         name: 'offset',
         options: {
@@ -78,27 +112,46 @@ export const CPopover: FC<CPopoverProps> = ({
         },
       },
     ],
-    placement: placement,
-  })
+    placement: getRTLPlacement(placement, togglerRef.current),
+  }
 
   useEffect(() => {
     setVisible(visible)
   }, [visible])
 
+  useEffect(() => {
+    if (_visible && togglerRef.current && popoverRef.current) {
+      initPopper(togglerRef.current, popoverRef.current, popperConfig)
+    }
+
+    return () => {
+      destroyPopper()
+    }
+  }, [_visible])
+
+  const toggleVisible = (visible: boolean) => {
+    if (visible) {
+      setTimeout(() => setVisible(true), _delay.show)
+      return
+    }
+
+    setTimeout(() => setVisible(false), _delay.hide)
+  }
+
   return (
     <>
       {React.cloneElement(children as React.ReactElement<any>, {
-        ref: setReferenceElement,
+        ref: togglerRef,
         ...((trigger === 'click' || trigger.includes('click')) && {
-          onClick: () => setVisible(!_visible),
+          onClick: () => toggleVisible(!_visible),
         }),
         ...((trigger === 'focus' || trigger.includes('focus')) && {
-          onFocus: () => setVisible(true),
-          onBlur: () => setVisible(false),
+          onFocus: () => toggleVisible(true),
+          onBlur: () => toggleVisible(false),
         }),
         ...((trigger === 'hover' || trigger.includes('hover')) && {
-          onMouseEnter: () => setVisible(true),
-          onMouseLeave: () => setVisible(false),
+          onMouseEnter: () => toggleVisible(true),
+          onMouseLeave: () => toggleVisible(false),
         }),
       })}
       {typeof window !== 'undefined' &&
@@ -119,20 +172,18 @@ export const CPopover: FC<CPopoverProps> = ({
               <div
                 className={classNames(
                   'popover',
-                  `bs-popover-${placement.replace('left', 'start').replace('right', 'end')}`,
-                  'fade',
+                  'bs-popover-auto',
                   {
+                    fade: animation,
                     show: state === 'entered',
                   },
                   className,
                 )}
-                ref={setPopperElement}
+                ref={popoverRef}
                 role="tooltip"
-                style={styles.popper}
-                {...attributes.popper}
                 {...rest}
               >
-                <div className="popover-arrow" style={styles.arrow} ref={setArrowElement}></div>
+                <div className="popover-arrow"></div>
                 <div className="popover-header">{title}</div>
                 <div className="popover-body">{content}</div>
               </div>
@@ -145,9 +196,18 @@ export const CPopover: FC<CPopoverProps> = ({
 }
 
 CPopover.propTypes = {
+  animation: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
   content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  delay: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.shape({
+      show: PropTypes.number.isRequired,
+      hide: PropTypes.number.isRequired,
+    }),
+  ]),
+  fallbackPlacements: fallbackPlacementsPropType,
   offset: PropTypes.any, // TODO: find good proptype
   onHide: PropTypes.func,
   onShow: PropTypes.func,

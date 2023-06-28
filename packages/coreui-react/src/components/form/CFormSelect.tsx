@@ -9,6 +9,7 @@ type Option = {
   label?: string
   value?: string
 }
+
 export interface CFormSelectProps
   extends CFormControlWrapperProps,
     Omit<InputHTMLAttributes<HTMLSelectElement>, 'size'> {
@@ -102,7 +103,8 @@ export const CFormSelect = forwardRef<HTMLSelectElement, CFormSelectProps>(
                   <option
                     {...(typeof option === 'object' &&
                       option.disabled && { disabled: option.disabled })}
-                    {...(typeof option === 'object' && option.value && { value: option.value })}
+                    {...(typeof option === 'object' &&
+                      option.value !== undefined && { value: option.value })}
                     key={index}
                   >
                     {typeof option === 'string' ? option : option.label}

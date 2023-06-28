@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
-import Highlight, { defaultProps } from 'prism-react-renderer'
+import { Highlight } from 'prism-react-renderer'
 
 interface CodeBlockProps {
-  children: any
+  children: any // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 const CodeBlock: FC<CodeBlockProps> = ({ children }) => {
@@ -12,13 +12,12 @@ const CodeBlock: FC<CodeBlockProps> = ({ children }) => {
     : 'jsx'
 
   return (
-    <div className="code mb-4">
-      <Highlight {...defaultProps} theme={undefined} code={_children?.trim()} language={language}>
+    <div className="highlight">
+      <Highlight code={_children?.trim()} language={language} theme={{ plain: {}, styles: [] }}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre className={className} style={{ ...style }}>
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line, key: i })}>
-                <span className="line-no">{i + 1}</span>
                 {line.map((token, key) => (
                   <span key={key} {...getTokenProps({ token, key })} />
                 ))}

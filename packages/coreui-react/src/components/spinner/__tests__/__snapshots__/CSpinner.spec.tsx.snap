@@ -3,7 +3,7 @@
 exports[`CSpinner customize 1`] = `
 <div>
   <h3
-    class="spinner-grow text-warning spinner-grow-sm bazinga"
+    class="spinner-grow spinner-grow-sm text-warning bazinga"
     role="status"
   >
     <span
@@ -18,7 +18,7 @@ exports[`CSpinner customize 1`] = `
 exports[`loads and displays CSpinner component 1`] = `
 <div>
   <div
-    class="spinner-border text-undefined"
+    class="spinner-border"
     role="status"
   >
     <span

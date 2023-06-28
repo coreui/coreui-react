@@ -415,17 +415,7 @@ Since the offcanvas panel is conceptually a modal dialog, be sure to add `aria-l
 
 React offcanvas uses local CSS variables on `.offcanvas` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-```sass
---cui-offcanvas-width: #{$offcanvas-horizontal-width};
---cui-offcanvas-height: #{$offcanvas-vertical-height};
---cui-offcanvas-padding-x: #{$offcanvas-padding-x};
---cui-offcanvas-padding-y: #{$offcanvas-padding-y};
---cui-offcanvas-color: #{$offcanvas-color};
---cui-offcanvas-bg: #{$offcanvas-bg-color};
---cui-offcanvas-border-width: #{$offcanvas-border-width};
---cui-offcanvas-border-color: #{$offcanvas-border-color};
---cui-offcanvas-box-shadow: #{$offcanvas-box-shadow};
-```
+<ScssDocs file="_offcanvas.scss" capture="offcanvas-css-vars"/>
 
 #### How to use CSS variables
 
@@ -439,21 +429,7 @@ return <COffcanvas style={vars}>...</COffcanvas>
 
 ### SASS variables
 
-```sass
-$offcanvas-padding-y:               $modal-inner-padding;
-$offcanvas-padding-x:               $modal-inner-padding;
-$offcanvas-horizontal-width:        400px;
-$offcanvas-vertical-height:         30vh;
-$offcanvas-transition-duration:     .3s;
-$offcanvas-border-color:            $modal-content-border-color;
-$offcanvas-border-width:            $modal-content-border-width;
-$offcanvas-title-line-height:       $modal-title-line-height;
-$offcanvas-bg-color:                $modal-content-bg;
-$offcanvas-color:                   $modal-content-color;
-$offcanvas-box-shadow:              $modal-content-box-shadow-xs;
-$offcanvas-backdrop-bg:             $modal-backdrop-bg;
-$offcanvas-backdrop-opacity:        $modal-backdrop-opacity;
-```
+<ScssDocs file="_variables.scss" capture="offcanvas-variables"/>
 
 ## API
 

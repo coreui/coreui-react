@@ -24,6 +24,7 @@ module.exports = ({ markdownAST }) => {
       delete node.meta
 
       node.type = 'div'
+      node.data = { hProperties: { className: ['docs-example-snippet docs-code-snippet'] } }
       node.children = [
         {
           type: 'mdxJsxFlowElement',

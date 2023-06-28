@@ -51,8 +51,10 @@ export const CSpinner = forwardRef<HTMLDivElement | HTMLSpanElement, CSpinnerPro
       <Component
         className={classNames(
           `spinner-${variant}`,
-          `text-${color}`,
-          size && `spinner-${variant}-${size}`,
+          {
+            [`spinner-${variant}-${size}`]: size,
+            [`text-${color}`]: color,
+          },
           className,
         )}
         role="status"

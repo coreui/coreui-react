@@ -98,7 +98,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
       sidebarRef.current && setMobile(isOnMobile(sidebarRef.current))
       sidebarRef.current && setInViewport(isInViewport(sidebarRef.current))
 
-      window.addEventListener('resize', () => handleResize())
+      window.addEventListener('resize', handleResize)
       window.addEventListener('mouseup', handleClickOutside)
       window.addEventListener('keyup', handleKeyup)
 
@@ -108,7 +108,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
       })
 
       return () => {
-        window.removeEventListener('resize', () => handleResize())
+        window.removeEventListener('resize', handleResize)
         window.removeEventListener('mouseup', handleClickOutside)
         window.removeEventListener('keyup', handleKeyup)
 

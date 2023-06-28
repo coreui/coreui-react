@@ -3,9 +3,9 @@ import { Ads, Banner, Seo, Toc } from '../components'
 import { CCol, CContainer, CRow } from '@coreui/react/src/'
 
 interface DocsLayoutProps {
-  children: any
-  data: any
-  pageContext: any
+  children: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  data: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  pageContext: any // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 // @ts-expect-error json file
@@ -35,47 +35,49 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, pageContext }) => {
     <>
       <Seo title={title} description={description} name={name} />
       <CContainer lg>
-        <CRow>
-          <CCol lg={9}>
-            <Banner pro={pro_component} />
-            <h1>{title}</h1>
-            <p className="docs-lead fs-4 fw-light">{description}</p>
-            <Ads code="CEAICKJY" location={route} placement="coreuiio" />
-            {frameworks && (
-              <>
-                <h2>Other frameworks</h2>
-                <p>
-                  CoreUI components are available as native Angular, Bootstrap (Vanilla JS), and Vue
-                  components. To learn more please visit the following pages.
-                </p>
-                <ul>
-                  {frameworks.map((item: string, index: number) => (
-                    <React.Fragment key={index}>
-                      {Object.keys(otherFrameworks[item]).map(
-                        (el, index) =>
-                          el !== 'react' && (
-                            <li key={index}>
-                              <a href={otherFrameworks[item][el]}>
-                                <>
-                                  {el[0].toUpperCase() + el.slice(1)} {humanize(item)}
-                                </>
-                              </a>
-                            </li>
-                          ),
-                      )}
-                    </React.Fragment>
-                  ))}
-                </ul>
-              </>
-            )}
-            {children}
-          </CCol>
-          {data && data.mdx && (
-            <CCol lg={3}>
-              <Toc items={data.mdx.tableOfContents.items} />
+        <main className="docs-main">
+          <CRow>
+            <CCol lg={9}>
+              <Banner pro={pro_component} />
+              <h1>{title}</h1>
+              <p className="docs-lead fs-4 fw-light">{description}</p>
+              <Ads code="CEAICKJY" location={route} placement="coreuiio" />
+              {frameworks && (
+                <>
+                  <h2>Other frameworks</h2>
+                  <p>
+                    CoreUI components are available as native Angular, Bootstrap (Vanilla JS), and
+                    Vue components. To learn more please visit the following pages.
+                  </p>
+                  <ul>
+                    {frameworks.map((item: string, index: number) => (
+                      <React.Fragment key={index}>
+                        {Object.keys(otherFrameworks[item]).map(
+                          (el, index) =>
+                            el !== 'react' && (
+                              <li key={index}>
+                                <a href={otherFrameworks[item][el]}>
+                                  <>
+                                    {el[0].toUpperCase() + el.slice(1)} {humanize(item)}
+                                  </>
+                                </a>
+                              </li>
+                            ),
+                        )}
+                      </React.Fragment>
+                    ))}
+                  </ul>
+                </>
+              )}
+              {children}
             </CCol>
-          )}
-        </CRow>
+            {data && data.mdx && (
+              <CCol lg={3}>
+                <Toc items={data.mdx.tableOfContents.items} />
+              </CCol>
+            )}
+          </CRow>
+        </main>
       </CContainer>
     </>
   )

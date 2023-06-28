@@ -1,9 +1,29 @@
 import React, { FC } from 'react'
 
 import CIcon from '@coreui/icons-react'
-import { cibGithub, cibOpenCollective, cibTwitter, cilCloudDownload, cilMenu } from '@coreui/icons'
+import {
+  cibGithub,
+  cibOpenCollective,
+  cibTwitter,
+  cilCloudDownload,
+  cilMenu,
+  cilSun,
+  cilMoon,
+  cilContrast,
+  cilHandshake,
+} from '@coreui/icons'
 
-import { CButton, CHeader, CHeaderNav, CHeaderToggler, CNavItem } from '@coreui/react/src'
+import {
+  CButton,
+  CDropdown,
+  CDropdownItem,
+  CDropdownMenu,
+  CDropdownToggle,
+  CHeader,
+  CHeaderNav,
+  CHeaderToggler,
+  CNavItem,
+} from '@coreui/react/src'
 import { AppContext } from './../AppContext'
 
 const Header: FC = () => {
@@ -37,6 +57,10 @@ const Header: FC = () => {
               >
                 <CIcon icon={cibOpenCollective} size="xl" />
               </CNavItem>
+              <li className="nav-item py-2 py-lg-1">
+                <div className="vr d-none d-lg-flex h-100 mx-lg-2 text-body text-opacity-75"></div>
+                <hr className="d-lg-none my-2 text-white-50" />
+              </li>
             </CHeaderNav>
             <CButton
               className="d-lg-inline-block my-2 my-md-0 ms-md-3"
@@ -44,7 +68,15 @@ const Header: FC = () => {
               href="https://coreui.io/react/docs/getting-started/introduction/"
               variant="outline"
             >
-              <CIcon icon={cilCloudDownload} /> Download
+              <CIcon className="me-2" icon={cilCloudDownload} /> Download
+            </CButton>
+            <CButton
+              className="d-lg-inline-block my-2 my-md-0 ms-md-3"
+              color="primary"
+              href="https://coreui.io/about/services/?docs=coreui-header-button"
+              variant="outline"
+            >
+              <CIcon className="me-2" icon={cilHandshake} /> Hire Us
             </CButton>
             <CButton
               className="d-lg-inline-block my-2 my-md-0 ms-md-3"

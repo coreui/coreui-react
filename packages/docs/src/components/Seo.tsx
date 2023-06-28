@@ -24,12 +24,14 @@ const SEO = ({ title, description, name, image, article }: SEOProps) => {
     twitterUsername,
   } = site.siteMetadata
 
+  const prefix = site.pathPrefix
+
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
     name: name,
     image: `${siteUrl}${image || defaultImage}`,
-    url: `${siteUrl}${pathname}`,
+    url: `${siteUrl}${pathname.replace(`${prefix}/`, '')}`,
   }
 
   return (
@@ -93,6 +95,7 @@ const query = graphql`
         defaultImage: image
         twitterUsername
       }
+      pathPrefix
     }
   }
 `

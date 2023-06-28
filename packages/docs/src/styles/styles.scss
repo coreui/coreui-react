@@ -2,14 +2,16 @@
 
 // Import Chart.js custom tooltips styles
 @import "@coreui/chartjs/scss/coreui-chartjs";
-@import "prismjs/themes/prism-solarizedlight.css";
 
+@import "variables";
 @import "ads";
 @import "anchor";
-@import "example";
+@import "callouts";
+@import "component-examples";
 @import "footer";
 @import "layout";
 @import "prism";
+@import "scrolling";
 @import "search";
 @import "sidebar";
 @import "table-api";

@@ -1,3 +1,5 @@
+import getRTLPlacement from './getRTLPlacement'
 import isInViewport from './isInViewport'
+import isRTL from './isRTL'
 
-export { isInViewport }
+export { getRTLPlacement, isInViewport, isRTL }

@@ -15,7 +15,10 @@ import {
   CChartPolarArea,
   CChartRadar,
   CChartScatter 
-} from '@coreui/react-chartjs/src/index'
+} from '@coreui/react-chartjs'
+
+import { useEffect, useRef, useState } from 'react'
+import { getStyle } from '@coreui/utils'
 
 ## Installation
 
@@ -40,7 +43,68 @@ yarn add @coreui/react-chartjs
 A line chart is a way of plotting data points on a line. Often, it is used to show trend data, or the comparison of two data sets. 
 [Line Chart properties](https://www.chartjs.org/docs/latest/charts/line.html#dataset-properties)
 
-```jsx preview
+export const LineChartExample = () => {
+  return (
+    <CChart
+      type="line" 
+      data={{
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [
+          {
+            label: "My First dataset",
+            backgroundColor: "rgba(220, 220, 220, 0.2)",
+            borderColor: "rgba(220, 220, 220, 1)",
+            pointBackgroundColor: "rgba(220, 220, 220, 1)",
+            pointBorderColor: "#fff",
+            data: [40, 20, 12, 39, 10, 40, 39, 80, 40]
+          },
+          {
+            label: "My Second dataset",
+            backgroundColor: "rgba(151, 187, 205, 0.2)",
+            borderColor: "rgba(151, 187, 205, 1)",
+            pointBackgroundColor: "rgba(151, 187, 205, 1)",
+            pointBorderColor: "#fff",
+            data: [50, 12, 28, 29, 7, 25, 12, 70, 60]
+          },
+        ],
+      }}
+      options={{
+        plugins: {
+          legend: {
+            labels: {
+              color: getStyle('--cui-body-color'),
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: {
+              color: getStyle('--cui-border-color-translucent'),
+            },
+            ticks: {
+              color: getStyle('--cui-body-color'),
+            },
+          },
+          y: {
+            grid: {
+              color: getStyle('--cui-border-color-translucent'),
+            },
+            ticks: {
+              color: getStyle('--cui-body-color'),
+            },
+          },
+        },
+      }}
+    />
+  )
+}
+
+<Example>
+  <LineChartExample />
+</Example>
+
+
+```jsx
 <CChart
   type="line" 
   data={{
@@ -64,6 +128,33 @@ A line chart is a way of plotting data points on a line. Often, it is used to sh
       },
     ],
   }}
+  options={{
+    plugins: {
+      legend: {
+        labels: {
+          color: getStyle('--cui-body-color'),
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+      y: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+    },
+  }}
 />
 ```
 
@@ -71,7 +162,57 @@ A line chart is a way of plotting data points on a line. Often, it is used to sh
 
 A bar chart provides a way of showing data values represented as vertical bars. It is sometimes used to show trend data, and the comparison of multiple data sets side by side. [Bar Chart properties](https://www.chartjs.org/docs/latest/charts/bar.html#dataset-properties)
 
-```jsx preview
+export const BarChartExample = () => {
+  return (
+    <CChart
+      type="bar"
+      data={{
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [
+          {
+            label: 'GitHub Commits',
+            backgroundColor: '#f87979',
+            data: [40, 20, 12, 39, 10, 40, 39, 80, 40],
+          },
+        ],
+      }}
+      labels="months"
+      options={{
+        plugins: {
+          legend: {
+            labels: {
+              color: getStyle('--cui-body-color'),
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: {
+              color: getStyle('--cui-border-color-translucent'),
+            },
+            ticks: {
+              color: getStyle('--cui-body-color'),
+            },
+          },
+          y: {
+            grid: {
+              color: getStyle('--cui-border-color-translucent'),
+            },
+            ticks: {
+              color: getStyle('--cui-body-color'),
+            },
+          },
+        },
+      }}
+    />
+  )
+}
+
+<Example>
+  <BarChartExample />
+</Example>
+
+```jsx
 <CChart
   type="bar"
   data={{
@@ -85,6 +226,33 @@ A bar chart provides a way of showing data values represented as vertical bars. 
     ],
   }}
   labels="months"
+  options={{
+    plugins: {
+      legend: {
+        labels: {
+          color: getStyle('--cui-body-color'),
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+      y: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+    },
+  }}
 />
 ```
 
@@ -92,7 +260,71 @@ A bar chart provides a way of showing data values represented as vertical bars. 
 
 A radar chart is a way of showing multiple data points and the variation between them. They are often useful for comparing the points of two or more different data sets. [Radar Chart properties](https://www.chartjs.org/docs/latest/charts/radar.html#dataset-properties)
 
-```jsx preview
+export const RadarChartExample = () => {
+  return (
+    <CChart
+      type="radar"
+      data={{
+        labels: [
+          'Eating',
+          'Drinking',
+          'Sleeping',
+          'Designing',
+          'Coding',
+          'Cycling',
+          'Running',
+        ],
+        datasets: [
+          {
+            label: 'My First dataset',
+            backgroundColor: 'rgba(220, 220, 220, 0.2)',
+            borderColor: 'rgba(220, 220, 220, 1)',
+            pointBackgroundColor: 'rgba(220, 220, 220, 1)',
+            pointBorderColor: '#fff',
+            pointHighlightFill: '#fff',
+            pointHighlightStroke: 'rgba(220, 220, 220, 1)',
+            data: [65, 59, 90, 81, 56, 55, 40],
+          },
+          {
+            label: 'My Second dataset',
+            backgroundColor: 'rgba(151, 187, 205, 0.2)',
+            borderColor: 'rgba(151, 187, 205, 1)',
+            pointBackgroundColor: 'rgba(151, 187, 205, 1)',
+            pointBorderColor: '#fff',
+            pointHighlightFill: '#fff',
+            pointHighlightStroke: 'rgba(151, 187, 205, 1)',
+            data: [28, 48, 40, 19, 96, 27, 100],
+          },
+        ],
+      }}
+      options={{
+        plugins: {
+          legend: {
+            labels: {
+              color: getStyle('--cui-body-color'),
+            }
+          }
+        },
+        scales: {
+          r: {
+            grid: {
+              color: getStyle('--cui-border-color-translucent'),
+            },
+            ticks: {
+              color: getStyle('--cui-body-color'),
+            },
+          },
+        },
+      }}
+    />
+  )
+}
+
+<Example>
+  <RadarChartExample />
+</Example>
+
+```jsx
 <CChart 
   type="radar"
   data={{
@@ -128,6 +360,25 @@ A radar chart is a way of showing multiple data points and the variation between
       },
     ],
   }}
+  options={{
+    plugins: {
+      legend: {
+        labels: {
+          color: getStyle('--cui-body-color'),
+        }
+      }
+    },
+    scales: {
+      r: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+    },
+  }}
 />
 ```
 
@@ -135,7 +386,37 @@ A radar chart is a way of showing multiple data points and the variation between
 
 Pie and doughnut charts are probably the most commonly used charts. They are divided into segments, the arc of each segment shows the proportional value of each piece of data. [Doughnut and Pie Charts properties](https://www.chartjs.org/docs/latest/charts/doughnut.html#dataset-properties)
 
-```jsx preview
+export const DoughnutAndPieExample = () => {
+  return (
+    <CChart
+      type="doughnut"
+      data={{
+        labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
+        datasets: [
+          {
+            backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+            data: [40, 20, 80, 10],
+          },
+        ],
+      }}
+      options={{
+        plugins: {
+          legend: {
+            labels: {
+              color: getStyle('--cui-body-color'),
+            }
+          }
+        },
+      }}
+    />
+  )
+}
+
+<Example>
+  <DoughnutAndPieExample />
+</Example>
+
+```jsx
 <CChart
   type="doughnut"
   data={{
@@ -147,6 +428,15 @@ Pie and doughnut charts are probably the most commonly used charts. They are div
       },
     ],
   }}
+  options={{
+    plugins: {
+      legend: {
+        labels: {
+          color: getStyle('--cui-body-color'),
+        }
+      }
+    },
+  }}
 />
 ```
 
@@ -154,7 +444,44 @@ Pie and doughnut charts are probably the most commonly used charts. They are div
 
 Polar area charts are similar to pie charts, but each segment has the same angle - the radius of the segment differs depending on the value. [Polar Area Chart properties](https://www.chartjs.org/docs/latest/charts/polar.html#dataset-properties)
 
-```jsx preview
+export const PolarAreaExample = () => {
+  return (
+    <CChart
+      type="polarArea"
+      data={{
+        labels: ['Red', 'Green', 'Yellow', 'Grey', 'Blue'],
+        datasets: [
+          {
+            data: [11, 16, 7, 3, 14],
+            backgroundColor: ['#FF6384', '#4BC0C0', '#FFCE56', '#E7E9ED', '#36A2EB'],
+          },
+        ],
+      }}
+      options={{
+        plugins: {
+          legend: {
+            labels: {
+              color: getStyle('--cui-body-color'),
+            }
+          }
+        },
+        scales: {
+          r: {
+            grid: {
+              color: getStyle('--cui-border-color'),
+            },
+          }
+        }
+      }}
+    />
+  )
+}
+
+<Example>
+  <PolarAreaExample />
+</Example>
+
+```jsx
 <CChart
   type="polarArea"
   data={{
@@ -166,6 +493,22 @@ Polar area charts are similar to pie charts, but each segment has the same angle
       },
     ],
   }}
+  options={{
+    plugins: {
+      legend: {
+        labels: {
+          color: getStyle('--cui-body-color'),
+        }
+      }
+    },
+    scales: {
+      r: {
+        grid: {
+          color: getStyle('--cui-border-color'),
+        },
+      }
+    }
+  }}
 />
 ```
 
@@ -173,7 +516,61 @@ Polar area charts are similar to pie charts, but each segment has the same angle
 
 A bubble chart is used to display three dimensions of data at the same time. The location of the bubble is determined by the first two dimensions and the corresponding horizontal and vertical axes. The third dimension is represented by the size of the individual bubbles. [Bubble Chart properties](https://www.chartjs.org/docs/latest/charts/bubble.html#dataset-properties)
 
-```jsx preview
+export const BubbleChartExample = () => {
+  return (
+    <CChart
+      type="bubble"
+      data={{
+        datasets: [{
+          label: 'First Dataset',
+          data: [{
+            x: 20,
+            y: 30,
+            r: 15
+          }, {
+            x: 40,
+            y: 10,
+            r: 10
+          }],
+          backgroundColor: 'rgb(255, 99, 132)'
+        }]
+      }}
+      options={{
+        plugins: {
+          legend: {
+            labels: {
+              color: getStyle('--cui-body-color'),
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: {
+              color: getStyle('--cui-border-color-translucent'),
+            },
+            ticks: {
+              color: getStyle('--cui-body-color'),
+            },
+          },
+          y: {
+            grid: {
+              color: getStyle('--cui-border-color-translucent'),
+            },
+            ticks: {
+              color: getStyle('--cui-body-color'),
+            },
+          },
+        },
+      }}
+    />
+  )
+}
+
+<Example>
+  <BubbleChartExample />
+</Example>
+
+```jsx
 <CChart
   type="bubble"
   data={{
@@ -191,6 +588,33 @@ A bubble chart is used to display three dimensions of data at the same time. The
       backgroundColor: 'rgb(255, 99, 132)'
     }]
   }}
+  options={{
+    plugins: {
+      legend: {
+        labels: {
+          color: getStyle('--cui-body-color'),
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+      y: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+    },
+  }}
 />
 ```
 
@@ -198,7 +622,68 @@ A bubble chart is used to display three dimensions of data at the same time. The
 
 A bubble chart is used to display three dimensions of data at the same time. The location of the bubble is determined by the first two dimensions and the corresponding horizontal and vertical axes. The third dimension is represented by the size of the individual bubbles. [Scatter Chart properties](https://www.chartjs.org/docs/latest/charts/scatter.html#dataset-properties)
 
-```jsx preview
+export const ScatterChartExample = () => {
+  return (
+    <CChart
+      type="scatter"
+      data={{
+        datasets: [{
+          label: 'Scatter Dataset',
+          data: [{
+            x: -10,
+            y: 0
+          }, {
+            x: 0,
+            y: 10
+          }, {
+            x: 10,
+            y: 5
+          }, {
+            x: 0.5,
+            y: 5.5
+          }],
+          backgroundColor: 'rgb(255, 99, 132)'
+        }],
+      }}
+      options={{
+        plugins: {
+          legend: {
+            labels: {
+              color: getStyle('--cui-body-color'),
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: {
+              color: getStyle('--cui-border-color-translucent'),
+            },
+            position: 'bottom',
+            ticks: {
+              color: getStyle('--cui-body-color'),
+            },
+            type: 'linear',
+          },
+          y: {
+            grid: {
+              color: getStyle('--cui-border-color-translucent'),
+            },
+            ticks: {
+              color: getStyle('--cui-body-color'),
+            },
+          },
+        },
+      }}
+    />
+  )
+}
+
+<Example>
+  <ScatterChartExample />
+</Example>
+
+
+```jsx
 <CChart
   type="scatter"
   data={{
@@ -221,12 +706,33 @@ A bubble chart is used to display three dimensions of data at the same time. The
     }],
   }}
   options={{
+    plugins: {
+      legend: {
+        labels: {
+          color: getStyle('--cui-body-color'),
+        }
+      }
+    },
     scales: {
       x: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        position: 'bottom',
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
         type: 'linear',
-        position: 'bottom'
-      }
-    }
+      },
+      y: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+    },
   }}
 />
 ```

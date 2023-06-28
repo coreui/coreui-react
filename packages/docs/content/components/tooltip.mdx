@@ -11,18 +11,21 @@ import { CTooltip, CButton, CLink } from '@coreui/react/src/index'
 
 ## Examples
 
+### Tooltips on links
+
 Hover over the links below to see tooltips:
 
 <Example className="text-medium-emphasis">
-  Tight pants next level keffiyeh <CTooltip content="Tooltip text"><CLink>you probably</CLink></CTooltip>
+  Tight pants next level keffiyeh <CTooltip content="Tooltip text"><CLink>you&nbsp;probably</CLink></CTooltip>
   haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown.
-  Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <CTooltip content="Tooltip text"><CLink>have a</CLink></CTooltip>
+  Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <CTooltip content="Tooltip text"><CLink>have&nbsp;a</CLink></CTooltip>
   terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu
   biodiesel williamsburg marfa, four loko mcsweeney''s cleanse vegan chambray. A really ironic
-  artisan <CTooltip content="Tooltip text"><CLink>whatever keytar</CLink></CTooltip>
-  scenester farm-to-table banksy Austin <CTooltip content="Tooltip text"><CLink>twitter handle</CLink></CTooltip>
+  artisan <CTooltip content="Tooltip text"><CLink>whatever&nbsp;keytar</CLink></CTooltip>
+  scenester farm-to-table banksy Austin <CTooltip content="Tooltip text"><CLink>twitter&nbsp;handle</CLink></CTooltip>
   freegan cred raw denim single-origin coffee viral.
 </Example>
+
 
 ```jsx
 <p className="text-medium-emphasis">
@@ -49,6 +52,45 @@ Hover over the links below to see tooltips:
 </p>
 ```
 
+### Custom tooltips
+
+You can customize the appearance of tooltips using [CSS variables](#css-variables). We set a custom `style` to scope our custom appearance and use it to override some of the local CSS variables.
+
+export const CustomTooltipsExample = () => {
+  const customTooltipStyle = {
+    '--cui-tooltip-bg': 'var(--cui-primary)',
+  }
+  return (
+    <CTooltip
+      content="This top tooltip is themed via CSS variables."
+      placement="top"
+      style={customTooltipStyle}
+    >
+      <CButton color="secondary">Custom tooltip</CButton>
+    </CTooltip>
+  )
+}
+
+<Example>
+  <CustomTooltipsExample />
+</Example>
+```jsx
+const customTooltipStyle = {
+  '--cui-tooltip-bg': 'var(--cui-primary)',
+}
+return (
+  <CTooltip
+    content="This top tooltip is themed via CSS variables."
+    placement="top"
+    style={customTooltipStyle}
+  >
+    <CButton color="secondary">Custom tooltip</CButton>
+  </CTooltip>
+)
+```
+
+### Directions
+
 Hover over the buttons below to see the four tooltips directions: top, right, bottom, and left. Directions are mirrored when using CoreUI in RTL.
 
 <Example>
@@ -67,30 +109,57 @@ Hover over the buttons below to see the four tooltips directions: top, right, bo
 </Example>
 
 ```jsx
+<CTooltip
+  content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+  placement="top"
+>
+  <CButton color="secondary">Tooltip on top</CButton>
+</CTooltip>
+<CTooltip
+  content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+  placement="right"
+>
+  <CButton color="secondary">Tooltip on right</CButton>
+</CTooltip>
+<CTooltip
+  content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+  placement="bottom"
+>
+  <CButton color="secondary">Tooltip on bottom</CButton>
+</CTooltip>
+<CTooltip
+  content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+  placement="left"
+>
+  <CButton color="secondary">Tooltip on left</CButton>
+</CTooltip>
+```
+
+## Usage
+
+### Disabled elements
+
+Elements with the disabled attribute aren’t interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you’ll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
+
+<Example>
   <CTooltip
-    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-    placement="top"
+    content="Disabled tooltip"
+    trigger={['hover', 'focus']}
   >
-    <CButton color="secondary">Tooltip on top</CButton>
+    <span className="d-inline-block" tabIndex={0}>
+      <CButton color="primary" disabled>Disabled button</CButton>
+    </span>
   </CTooltip>
-  <CTooltip
-    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-    placement="right"
-  >
-    <CButton color="secondary">Tooltip on right</CButton>
-  </CTooltip>
-  <CTooltip
-    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-    placement="bottom"
-  >
-    <CButton color="secondary">Tooltip on bottom</CButton>
-  </CTooltip>
-  <CTooltip
-    content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-    placement="left"
-  >
-    <CButton color="secondary">Tooltip on left</CButton>
-  </CTooltip>
+</Example>
+```jsx
+<CTooltip
+  content="Disabled tooltip"
+  trigger={['hover', 'focus']}
+>
+  <span className="d-inline-block" tabIndex={0}>
+    <CButton color="primary" disabled>Disabled button</CButton>
+  </span>
+</CTooltip>
 ```
 
 ## Customizing
@@ -99,20 +168,7 @@ Hover over the buttons below to see the four tooltips directions: top, right, bo
 
 React toltips use local CSS variables on `.tooltip` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-```sass
---cui-tooltip-zindex: #{$zindex-tooltip};
---cui-tooltip-max-width: #{$tooltip-max-width};
---cui-tooltip-padding-x: #{$tooltip-padding-x};
---cui-tooltip-padding-y: #{$tooltip-padding-y};
---cui-tooltip-margin: #{$tooltip-margin};
---cui-tooltip-font-size: #{$tooltip-font-size};
---cui-tooltip-color: #{$tooltip-color};
---cui-tooltip-bg: #{$tooltip-bg};
---cui-tooltip-border-radius: #{$tooltip-border-radius};
---cui-tooltip-opacity: #{$tooltip-opacity};
---cui-tooltip-arrow-width: #{$tooltip-arrow-width};
---cui-tooltip-arrow-height: #{$tooltip-arrow-height};
-```
+<ScssDocs file="_tooltip.scss" capture="tooltip-css-vars"/>
 
 #### How to use CSS variables
 
@@ -126,21 +182,7 @@ return <CTooltip style={vars}>...</CTooltip>
 
 ### SASS variables
 
-```sass
-$tooltip-font-size:                 $font-size-sm;
-$tooltip-max-width:                 200px;
-$tooltip-color:                     $high-emphasis-inverse;
-$tooltip-bg:                        $black;
-$tooltip-border-radius:             $border-radius;
-$tooltip-opacity:                   .9;
-$tooltip-padding-y:                 $spacer * .25;
-$tooltip-padding-x:                 $spacer * .5;
-$tooltip-margin:                    null;
-
-$tooltip-arrow-width:               .8rem;
-$tooltip-arrow-height:              .4rem;
-$tooltip-arrow-color:               null; 
-```
+<ScssDocs file="_variables.scss" capture="tooltip-variables"/>
 
 ## API
 

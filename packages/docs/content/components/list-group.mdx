@@ -318,25 +318,7 @@ And if you want `<label>`s as the `.list-group-item` for large hit areas, you ca
 
 React list groups use local CSS variables on `.list-group` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-```sass
---cui-list-group-color: #{$list-group-color};
---cui-list-group-bg: #{$list-group-bg};
---cui-list-group-border-color: #{$list-group-border-color};
---cui-list-group-border-width: #{$list-group-border-width};
---cui-list-group-border-radius: #{$list-group-border-radius};
---cui-list-group-item-padding-x: #{$list-group-item-padding-x};
---cui-list-group-item-padding-y: #{$list-group-item-padding-y};
---cui-list-group-action-color: #{$list-group-action-color};
---cui-list-group-action-hover-color: #{$list-group-action-hover-color};
---cui-list-group-action-hover-bg: #{$list-group-hover-bg};
---cui-list-group-action-active-color: #{$list-group-action-active-color};
---cui-list-group-action-active-bg: #{$list-group-action-active-bg};
---cui-list-group-disabled-color: #{$list-group-disabled-color};
---cui-list-group-disabled-bg: #{$list-group-disabled-bg};
---cui-list-group-active-color: #{$list-group-active-color};
---cui-list-group-active-bg: #{$list-group-active-bg};
---cui-list-group-active-border-color: #{$list-group-active-border-color};
-```
+<ScssDocs file="_list-group.scss" capture="list-group-css-vars"/>
 
 #### How to use CSS variables
 
@@ -350,44 +332,7 @@ return <CListGroup style={vars}>...</CListGroup>
 
 ### SASS variables
 
-```sass
-$list-group-color:                  unset;
-$list-group-bg:                     $white;
-$list-group-border-color:           rgba($black, .125);
-$list-group-border-width:           $border-width;
-$list-group-border-radius:          $border-radius;
-
-$list-group-item-padding-y:         $spacer * .5;
-$list-group-item-padding-x:         $spacer;
-$list-group-item-bg-scale:          -80%;
-$list-group-item-color-scale:       40%;
-
-$list-group-hover-bg:               $gray-100;
-$list-group-active-color:           $component-active-color;
-$list-group-active-bg:              $component-active-bg;
-$list-group-active-border-color:    $list-group-active-bg;
-
-$list-group-disabled-color:         $gray-600;
-$list-group-disabled-bg:            $list-group-bg;
-
-$list-group-action-color:           $gray-700;
-$list-group-action-hover-color:     $list-group-action-color;
-
-$list-group-action-active-color:    $body-color;
-$list-group-action-active-bg:       $gray-200;
-
-
-$list-group-variants: (
-  "primary": list-group-color-map($primary),
-  "secondary": list-group-color-map($secondary),
-  "success": list-group-color-map($success),
-  "danger": list-group-color-map($danger),
-  "warning": list-group-color-map($warning),
-  "info": list-group-color-map($info),
-  "light": list-group-color-map($light),
-  "dark": list-group-color-map($dark)
-);
-```
+<ScssDocs file="_variables.scss" capture="list-group-variables"/>
 
 ## API
 

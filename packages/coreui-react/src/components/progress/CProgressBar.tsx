@@ -1,7 +1,8 @@
-import React, { forwardRef, HTMLAttributes } from 'react'
+import React, { forwardRef, HTMLAttributes, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import { CProgressStackedContext } from './CProgressStacked'
 import { colorPropType } from '../../props'
 import type { Colors } from '../../types'
 
@@ -32,6 +33,8 @@ export interface CProgressBarProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CProgressBar = forwardRef<HTMLDivElement, CProgressBarProps>(
   ({ children, animated, className, color, value = 0, variant, ...rest }, ref) => {
+    const { stacked } = useContext(CProgressStackedContext)
+
     return (
       <div
         className={classNames(
@@ -43,11 +46,7 @@ export const CProgressBar = forwardRef<HTMLDivElement, CProgressBarProps>(
           },
           className,
         )}
-        role="progressbar"
-        style={{ width: `${value}%` }}
-        aria-valuenow={value}
-        aria-valuemin={0}
-        aria-valuemax={100}
+        {...(!stacked && { style: { width: `${value}%` } })}
         {...rest}
         ref={ref}
       >
