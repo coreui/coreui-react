@@ -7,23 +7,10 @@ import {
   cibTwitter,
   cilCloudDownload,
   cilMenu,
-  cilSun,
-  cilMoon,
-  cilContrast,
   cilHandshake,
 } from '@coreui/icons'
 
-import {
-  CButton,
-  CDropdown,
-  CDropdownItem,
-  CDropdownMenu,
-  CDropdownToggle,
-  CHeader,
-  CHeaderNav,
-  CHeaderToggler,
-  CNavItem,
-} from '@coreui/react/src'
+import { CButton, CHeader, CHeaderNav, CHeaderToggler, CNavItem } from '@coreui/react/src'
 import { AppContext } from './../AppContext'
 
 const Header: FC = () => {
