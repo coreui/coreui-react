@@ -76,12 +76,14 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
     const forkedRef = useForkedRef(ref, sidebarRef)
     const [mobile, setMobile] = useState(false)
     const [_visible, setVisible] = useState(visible)
+    const [mobileVisible, setMobileVisible] = useState<boolean>(false)
     const [inViewport, setInViewport] = useState<boolean>()
 
     useEffect(() => {
       sidebarRef.current && setMobile(isOnMobile(sidebarRef.current))
-
-      setVisible(visible)
+      sidebarRef.current && isOnMobile(sidebarRef.current)
+        ? setMobileVisible(visible ?? false)
+        : setVisible(visible)
     }, [visible])
 
     useEffect(() => {
@@ -91,11 +93,8 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
     }, [inViewport])
 
     useEffect(() => {
-      mobile && visible && setVisible(false)
-    }, [mobile])
-
-    useEffect(() => {
       sidebarRef.current && setMobile(isOnMobile(sidebarRef.current))
+      sidebarRef.current && !isOnMobile(sidebarRef.current) && setMobileVisible(false)
       sidebarRef.current && setInViewport(isInViewport(sidebarRef.current))
 
       window.addEventListener('resize', handleResize)
@@ -120,7 +119,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
     })
 
     const handleHide = () => {
-      setVisible(false)
+      setMobileVisible(false)
     }
 
     const handleResize = () => {
@@ -167,7 +166,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
               [`sidebar-${position}`]: position,
               [`sidebar-${size}`]: size,
               'sidebar-narrow-unfoldable': unfoldable,
-              show: _visible === true && mobile,
+              show: mobileVisible === true && mobile,
               hide: _visible === false && !mobile,
             },
             className,
@@ -180,7 +179,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
         {typeof window !== 'undefined' &&
           mobile &&
           createPortal(
-            <CBackdrop className="sidebar-backdrop" visible={_visible} />,
+            <CBackdrop className="sidebar-backdrop" visible={mobileVisible} />,
             document.body,
           )}
       </>
