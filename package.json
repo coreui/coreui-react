@@ -33,5 +33,13 @@
     "lerna": "^7.1.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.0.0"
+  },
+  "overrides": {
+    "gatsby-remark-external-links": {
+      "unist-util-find": "1.0.2"
+    }
+  },
+  "resolutions": {
+    "**/gatsby-remark-external-links/unist-util-find": "1.0.2"
   }
 }
