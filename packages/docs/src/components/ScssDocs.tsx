@@ -35,7 +35,11 @@ const ScssDocs = ({ file, capture }: ScssDocsProps) => {
   const captureEnd = `// scss-docs-end ${capture}`
   const re = new RegExp(`${captureStart}((?:.|\n)*)${captureEnd}`)
   const captured = re.exec(_file.node.internal.content)
-  const code = captured && captured[1].trim()
+  const code = captured ? captured[1].trim() : undefined
+
+  if (code === undefined) {
+    console.error(`Can't find "${capture}" in ${_file.node.relativePath}`)
+  }
 
   return (
     code && (
