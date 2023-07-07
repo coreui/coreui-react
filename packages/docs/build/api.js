@@ -7,11 +7,15 @@ const path = require('node:path')
 const globby = require('globby')
 const docgen = require('react-docgen-typescript')
 
-const GLOB = ['**/src/**/*.tsx']
+const GLOB = [
+  '**/src/**/*.tsx',
+  '../node_modules/@coreui/icons-react/src/**/*.tsx',
+  '../node_modules/@coreui/react-chartjs/src/**/*.tsx',
+]
 const GLOBBY_OPTIONS = {
   absolute: true,
   cwd: path.join(__dirname, '..', '..'),
-  gitignore: true,
+  gitignore: false,
   ignore: ['**/docs/**', '**/__tests__/**'],
 }
 const EXCLUDED_FILES = []
@@ -35,13 +39,20 @@ async function createMdx(file, filename, name, props) {
   }
 
   const pro = PRO_COMPONENTS.some((v) => file.includes(v))
-  const relativeFilename = file.replace(GLOBBY_OPTIONS.cwd, '').replace('coreui-', '')
+  let relativeFilename
+  if (file.includes('node_modules')) {
+    relativeFilename = file.replace(path.join(file, '..', '..', '..'), '').replace('coreui-', '')
+  } else {
+    relativeFilename = file.replace(GLOBBY_OPTIONS.cwd, '').replace('coreui-', '')
+  }
+
+  if (!pro) {
+    relativeFilename = relativeFilename.replace('-pro', '')
+  }
 
   let content = `\n`
   content += `\`\`\`jsx\n`
-  content += `import { ${name} } from '@coreui/${relativeFilename.split('/')[1]}${
-    pro ? '-pro' : ''
-  }'\n`
+  content += `import { ${name} } from '@coreui/${relativeFilename.split('/')[1]}'\n`
   content += `// or\n`
   content += `import ${name} from '@coreui${relativeFilename.replace('.tsx', '')}'\n`
   content += `\`\`\`\n\n`
