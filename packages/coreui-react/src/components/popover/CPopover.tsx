@@ -13,7 +13,7 @@ export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'tit
   /**
    * Apply a CSS fade transition to the popover.
    *
-   * @since 4.9.0-rc.0
+   * @since 4.9.0
    */
   animation?: boolean
   /**
@@ -31,13 +31,13 @@ export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'tit
   /**
    * The delay for displaying and hiding the popover (in milliseconds). When a numerical value is provided, the delay applies to both the hide and show actions. The object structure for specifying the delay is as follows: delay: `{ 'show': 500, 'hide': 100 }`.
    *
-   * @since 4.9.0-rc.0
+   * @since 4.9.0
    */
   delay?: number | { show: number; hide: number }
   /**
    * Specify the desired order of fallback placements by providing a list of placements as an array. The placements should be prioritized based on preference.
    *
-   * @since 4.9.0-rc.0
+   * @since 4.9.0
    */
   fallbackPlacements?: Placements | Placements[]
   /**

@@ -7,11 +7,11 @@ import CPopover from '@coreui/react/src/components/popover/CPopover'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| **animation** **_4.9.0-rc.0+_** | Apply a CSS fade transition to the popover. | `boolean` | true |
+| **animation** **_4.9.0+_** | Apply a CSS fade transition to the popover. | `boolean` | true |
 | **className** | A string of all className you want applied to the component. | `string` | - |
 | **content** | Content node for your component. | `ReactNode` | - |
-| **delay** **_4.9.0-rc.0+_** | The delay for displaying and hiding the popover (in milliseconds). When a numerical value is provided, the delay applies to both the hide and show actions. The object structure for specifying the delay is as follows: delay: `{ 'show': 500, 'hide': 100 }`. | `number` \| `{ show: number; hide: number; }` | 0 |
-| **fallbackPlacements** **_4.9.0-rc.0+_** | Specify the desired order of fallback placements by providing a list of placements as an array. The placements should be prioritized based on preference. | `Placements` \| `Placements[]` | ['top', 'right', 'bottom', 'left'] |
+| **delay** **_4.9.0+_** | The delay for displaying and hiding the popover (in milliseconds). When a numerical value is provided, the delay applies to both the hide and show actions. The object structure for specifying the delay is as follows: delay: `{ 'show': 500, 'hide': 100 }`. | `number` \| `{ show: number; hide: number; }` | 0 |
+| **fallbackPlacements** **_4.9.0+_** | Specify the desired order of fallback placements by providing a list of placements as an array. The placements should be prioritized based on preference. | `Placements` \| `Placements[]` | ['top', 'right', 'bottom', 'left'] |
 | **offset** | Offset of the popover relative to its target. | `[number, number]` | [0, 8] |
 | **onHide** | Callback fired when the component requests to be hidden. | `() => void` | - |
 | **onShow** | Callback fired when the component requests to be shown. | `() => void` | - |
