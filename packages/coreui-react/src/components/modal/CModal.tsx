@@ -128,11 +128,13 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     }, [visible])
 
     useEffect(() => {
-      document.addEventListener('click', handleClickOutside)
-      document.addEventListener('keydown', handleKeyDown)
+      if (_visible) {
+        document.addEventListener('mouseup', handleClickOutside)
+        document.addEventListener('keydown', handleKeyDown)
+      }
 
       return () => {
-        document.removeEventListener('click', handleClickOutside)
+        document.removeEventListener('mouseup', handleClickOutside)
         document.removeEventListener('keydown', handleKeyDown)
       }
     }, [_visible])
