@@ -36,6 +36,13 @@ export interface CNavGroupProps {
   idx?: string
 }
 
+const isInVisibleGroup = (el1: string, el2: string) => {
+  const array1 = el1.toString().split('.')
+  const array2 = el2.toString().split('.')
+
+  return array2.every((item, index) => item === array1[index])
+}
+
 export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
   ({ children, className, compact, idx, toggler, visible, ...rest }, ref) => {
     const [height, setHeight] = useState<number | string>()
@@ -45,12 +52,12 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
 
     const [_visible, setVisible] = useState(
       Boolean(
-        visible || (idx && visibleGroup && visibleGroup.toString().startsWith(idx.toString())),
+        visible || (idx && visibleGroup && isInVisibleGroup(visibleGroup, idx)),
       ),
     )
 
     useEffect(() => {
-      setVisible(Boolean(idx && visibleGroup && visibleGroup.toString().startsWith(idx.toString())))
+      setVisible(Boolean(idx && visibleGroup && isInVisibleGroup(visibleGroup, idx)))
     }, [visibleGroup])
 
     const handleTogglerOnCLick = (event: React.MouseEvent<HTMLElement>) => {
