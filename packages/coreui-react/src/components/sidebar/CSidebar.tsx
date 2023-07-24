@@ -75,7 +75,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
     const sidebarRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, sidebarRef)
     const [mobile, setMobile] = useState(false)
-    const [_visible, setVisible] = useState(visible)
+    const [desktopVisible, setDesktopVisible] = useState(visible)
     const [mobileVisible, setMobileVisible] = useState<boolean>(false)
     const [inViewport, setInViewport] = useState<boolean>()
 
@@ -83,7 +83,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
       sidebarRef.current && setMobile(isOnMobile(sidebarRef.current))
       sidebarRef.current && isOnMobile(sidebarRef.current)
         ? setMobileVisible(visible ?? false)
-        : setVisible(visible)
+        : setDesktopVisible(visible)
     }, [visible])
 
     useEffect(() => {
@@ -136,6 +136,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
         handleHide()
       }
     }
+
     const handleClickOutside = (event: Event) => {
       if (
         mobile &&
@@ -167,7 +168,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
               [`sidebar-${size}`]: size,
               'sidebar-narrow-unfoldable': unfoldable,
               show: mobileVisible === true && mobile,
-              hide: _visible === false && !mobile,
+              hide: desktopVisible === false && !mobile,
             },
             className,
           )}
