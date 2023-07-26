@@ -244,20 +244,22 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
           }}
         >
           {indicators && (
-            <ol className="carousel-indicators">
+            <div className="carousel-indicators">
               {Array.from({ length: itemsNumber }, (_, i) => i).map((index) => {
                 return (
-                  <li
+                  <button
                     key={`indicator${index}`}
                     onClick={() => {
                       !animating && handleIndicatorClick(index)
                     }}
-                    className={active === index ? 'active' : ''}
+                    className={classNames({
+                      active: active === index
+                    })}
                     data-coreui-target=""
                   />
                 )
               })}
-            </ol>
+            </div>
           )}
           <div className="carousel-inner">
             {Children.map(children, (child, index) => {
