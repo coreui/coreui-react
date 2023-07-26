@@ -17,7 +17,7 @@ export interface CNavbarProps extends HTMLAttributes<HTMLDivElement> {
    */
   color?: Colors
   /**
-   * Sets if the color of text should be colored for a light or dark dark background.
+   * Sets if the color of text should be colored for a light or dark background.
    */
   colorScheme?: 'dark' | 'light'
   /**
@@ -59,12 +59,12 @@ export const CNavbar = forwardRef<HTMLDivElement, CNavbarProps>(
           'navbar',
           {
             [`bg-${color}`]: color,
-            [`navbar-${colorScheme}`]: colorScheme,
             [typeof expand === 'boolean' ? 'navbar-expand' : `navbar-expand-${expand}`]: expand,
           },
           placement,
           className,
         )}
+        {...(colorScheme && { 'data-coreui-theme': colorScheme })}
         {...rest}
         ref={ref}
       >

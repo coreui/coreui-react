@@ -226,11 +226,11 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
         className={classNames(
           'carousel slide',
           {
-            'carousel-dark': dark,
             'carousel-fade': transition === 'crossfade',
           },
           className,
         )}
+        {...(dark && { 'data-coreui-theme': 'dark' })}
         onMouseEnter={_pause}
         onMouseLeave={cycle}
         {...(touch && { onTouchStart: handleTouchStart, onTouchMove: handleTouchMove })}

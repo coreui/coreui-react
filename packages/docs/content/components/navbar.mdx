@@ -59,7 +59,7 @@ export const BasicUsageExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CNavbar expand="lg" colorScheme="light" className="bg-light">
+      <CNavbar expand="lg" className="bg-body-tertiary">
         <CContainer fluid>
           <CNavbarBrand href="#">Navbar</CNavbarBrand>
           <CNavbarToggler onClick={() => setVisible(!visible)} />
@@ -109,7 +109,7 @@ export const BasicUsageExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CNavbar expand="lg" colorScheme="light" className="bg-light">
+    <CNavbar expand="lg" className="bg-body-tertiary">
       <CContainer fluid>
         <CNavbarBrand href="#">Navbar</CNavbarBrand>
         <CNavbarToggler onClick={() => setVisible(!visible)} />
@@ -156,13 +156,13 @@ return (
 The `<CNavbarBrand>` can be applied to most elements, but an anchor works best, as some elements might require utility classes or custom styles.
 
 ```jsx preview
-<CNavbar colorScheme="light" className="bg-light">
+<CNavbar className="bg-body-tertiary">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
   </CContainer>
 </CNavbar>
 <br/>
-<CNavbar colorScheme="light" className="bg-light">
+<CNavbar className="bg-body-tertiary">
   <CContainer fluid>
     <CNavbarBrand className="mb-0 h1">Navbar</CNavbarBrand>
   </CContainer>
@@ -172,7 +172,7 @@ The `<CNavbarBrand>` can be applied to most elements, but an anchor works best, 
 Adding images to the `<CNavbarBrand>` will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.
 
 ```jsx preview
-<CNavbar colorScheme="light" className="bg-light">
+<CNavbar className="bg-body-tertiary">
   <CContainer fluid>
     <CNavbarBrand href="#">
       <img src={CoreUISignetImg} alt="" width="22" height="24" />
@@ -182,7 +182,7 @@ Adding images to the `<CNavbarBrand>` will likely always require custom styles o
 ```
 
 ```jsx preview
-<CNavbar colorScheme="light" className="bg-light">
+<CNavbar className="bg-body-tertiary">
   <CContainer fluid>
     <CNavbarBrand href="#">
       <img
@@ -205,7 +205,7 @@ export const NavExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CNavbar expand="lg" colorScheme="light" className="bg-light">
+      <CNavbar expand="lg" className="bg-body-tertiary">
         <CContainer fluid>
           <CNavbarBrand href="#">Navbar</CNavbarBrand>
           <CNavbarToggler
@@ -247,7 +247,7 @@ export const NavExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CNavbar expand="lg" colorScheme="light" className="bg-light">
+    <CNavbar expand="lg" className="bg-body-tertiary">
       <CContainer fluid>
         <CNavbarBrand href="#">Navbar</CNavbarBrand>
         <CNavbarToggler
@@ -287,7 +287,7 @@ export const NavExample2 = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CNavbar expand="lg" colorScheme="light" className="bg-light">
+      <CNavbar expand="lg" className="bg-body-tertiary">
         <CContainer fluid>
           <CNavbarBrand href="#">Navbar</CNavbarBrand>
           <CNavbarToggler
@@ -321,7 +321,7 @@ export const NavExample2 = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CNavbar expand="lg" colorScheme="light" className="bg-light">
+    <CNavbar expand="lg" className="bg-body-tertiary">
       <CContainer fluid>
         <CNavbarBrand href="#">Navbar</CNavbarBrand>
         <CNavbarToggler
@@ -353,7 +353,7 @@ export const NavDropdownExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CNavbar expand="lg" colorScheme="light" className="bg-light">
+      <CNavbar expand="lg" className="bg-body-tertiary">
         <CContainer fluid>
           <CNavbarBrand href="#">Navbar</CNavbarBrand>
           <CNavbarToggler
@@ -399,7 +399,7 @@ export const NavDropdownExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CNavbar expand="lg" colorScheme="light" className="bg-light">
+    <CNavbar expand="lg" className="bg-body-tertiary">
       <CContainer fluid>
         <CNavbarBrand href="#">Navbar</CNavbarBrand>
         <CNavbarToggler
@@ -442,7 +442,7 @@ return (
 Place various form controls and components within a navbar:
 
 ```jsx preview
-<CNavbar colorScheme="light" className="bg-light">
+<CNavbar className="bg-body-tertiary">
   <CContainer fluid>
     <CForm className="d-flex">
       <CFormInput type="search" className="me-2" placeholder="Search" />
@@ -457,7 +457,7 @@ Place various form controls and components within a navbar:
 Immediate child elements of `<CNavbar>` use flex layout and will default to `justify-content: space-between`. Use additional [flex utilities](https://coreui.io/docs/utilities/flex/) as needed to adjust this behavior.
 
 ```jsx preview
-<CNavbar colorScheme="light" className="bg-light">
+<CNavbar className="bg-body-tertiary">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CForm className="d-flex">
@@ -473,7 +473,7 @@ Immediate child elements of `<CNavbar>` use flex layout and will default to `jus
 Input groups work, too. If your navbar is an entire form, or mostly a form, you can use the `<CForm>` element as the container and save some HTML.
 
 ```jsx preview
-<CNavbar colorScheme="light" className="bg-light">
+<CNavbar className="bg-body-tertiary">
   <CForm className="container-fluid">
     <CInputGroup>
       <CInputGroupText id="basic-addon1">@</CInputGroupText>
@@ -486,7 +486,7 @@ Input groups work, too. If your navbar is an entire form, or mostly a form, you 
 Various buttons are supported as part of these navbar forms, too. This is also a great reminder that vertical alignment utilities can be used to align different sized elements.
 
 ```jsx preview
-<CNavbar colorScheme="light" className="bg-light">
+<CNavbar className="bg-body-tertiary">
   <CForm className="container-fluid justify-content-start">
     <CButton type="button" color="success" variant="outline" className="me-2">
       Main button
@@ -503,7 +503,7 @@ Various buttons are supported as part of these navbar forms, too. This is also a
 Navbars may contain bits of text with the help of `<CNavbarText>`. This class adjusts vertical alignment and horizontal spacing for strings of text.
 
 ```jsx preview
-<CNavbar colorScheme="light" className="bg-light">
+<CNavbar className="bg-body-tertiary">
   <CContainer fluid>
     <CNavbarText>Navbar text with an inline element</CNavbarText>
   </CContainer>
@@ -700,7 +700,6 @@ return (
         </CCollapse>
       </CContainer>
     </CNavbar>
-    <br />
     <CNavbar expand="lg" colorScheme="dark" className="bg-primary">
       <CContainer fluid>
         <CNavbarBrand href="#">Navbar</CNavbarBrand>
@@ -743,7 +742,6 @@ return (
         </CCollapse>
       </CContainer>
     </CNavbar>
-    <br />
     <CNavbar expand="lg" colorScheme="light" style={{ backgroundColor: '#e3f2fd' }}>
       <CContainer fluid>
         <CNavbarBrand href="#">Navbar</CNavbarBrand>
@@ -796,7 +794,7 @@ Although it's not required, you can wrap a `<CNavbar>` in a `<CContainer>` to ce
 
 ```jsx preview
 <CContainer>
-  <CNavbar colorScheme="light" className="bg-light">
+  <CNavbar className="bg-body-tertiary">
     <CContainer fluid>
       <CNavbarBrand href="#">Navbar</CNavbarBrand>
     </CContainer>
@@ -807,7 +805,7 @@ Although it's not required, you can wrap a `<CNavbar>` in a `<CContainer>` to ce
 Use any of the responsive containers to change how wide the content in your navbar is presented.
 
 ```jsx preview
-<CNavbar colorScheme="light" className="bg-light">
+<CNavbar className="bg-body-tertiary">
   <CContainer breakpoint="md">
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
   </CContainer>
@@ -821,7 +819,7 @@ Use our `placement` properly to place navbars in non-static positions. Choose fr
 Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully supported in every browser](https://caniuse.com/css-sticky)**.
 
 ```jsx preview
-<CNavbar colorScheme="light" className="bg-light">
+<CNavbar className="bg-body-tertiary">
   <CContainer fluid>
     <CNavbarBrand href="#">Default</CNavbarBrand>
   </CContainer>
@@ -829,7 +827,7 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 ```
 
 ```jsx preview
-<CNavbar colorScheme="light" className="bg-light" placement="fixed-top">
+<CNavbar className="bg-body-tertiary" placement="fixed-top">
   <CContainer fluid>
     <CNavbarBrand href="#">Fixed top</CNavbarBrand>
   </CContainer>
@@ -837,7 +835,7 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 ```
 
 ```jsx preview
-<CNavbar colorScheme="light" className="bg-light" placement="fixed-bottom">
+<CNavbar className="bg-body-tertiary" placement="fixed-bottom">
   <CContainer fluid>
     <CNavbarBrand href="#">Fixed bottom</CNavbarBrand>
   </CContainer>
@@ -845,7 +843,7 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 ```
 
 ```jsx preview
-<CNavbar colorScheme="light" className="bg-light" placement="sticky-top">
+<CNavbar className="bg-body-tertiary" placement="sticky-top">
   <CContainer fluid>
     <CNavbarBrand href="#">Sticky top</CNavbarBrand>
   </CContainer>
@@ -868,7 +866,7 @@ export const ResponsiveBehaviorsExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CNavbar expand="lg" colorScheme="light" className="bg-light">
+      <CNavbar expand="lg" className="bg-body-tertiary">
         <CContainer fluid>
           <CNavbarToggler
             aria-label="Toggle navigation"
@@ -913,7 +911,7 @@ export const ResponsiveBehaviorsExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CNavbar expand="lg" colorScheme="light" className="bg-light">
+    <CNavbar expand="lg" className="bg-body-tertiary">
       <CContainer fluid>
         <CNavbarToggler
           aria-label="Toggle navigation"
@@ -956,7 +954,7 @@ export const ResponsiveBehaviorsExample2 = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CNavbar expand="lg" colorScheme="light" className="bg-light">
+      <CNavbar expand="lg" className="bg-body-tertiary">
         <CContainer fluid>
           <CNavbarBrand href="#">Navbar</CNavbarBrand>
           <CNavbarToggler
@@ -1001,7 +999,7 @@ export const ResponsiveBehaviorsExample2 = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CNavbar expand="lg" colorScheme="light" className="bg-light">
+    <CNavbar expand="lg" className="bg-body-tertiary">
       <CContainer fluid>
         <CNavbarBrand href="#">Navbar</CNavbarBrand>
         <CNavbarToggler
@@ -1044,7 +1042,7 @@ export const ResponsiveBehaviorsExample3 = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CNavbar expand="lg" colorScheme="light" className="bg-light">
+      <CNavbar expand="lg" className="bg-body-tertiary">
         <CContainer fluid>
           <CNavbarToggler
             aria-label="Toggle navigation"
@@ -1089,7 +1087,7 @@ export const ResponsiveBehaviorsExample3 = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CNavbar expand="lg" colorScheme="light" className="bg-light">
+    <CNavbar expand="lg" className="bg-body-tertiary">
       <CContainer fluid>
         <CNavbarToggler
           aria-label="Toggle navigation"
@@ -1189,7 +1187,7 @@ In the example below, to create an offcanvas navbar that is always collapsed acr
 export const OffcanvasExample = () => {
   const [visible, setVisible] = useState(false)
   return (
-    <CNavbar colorScheme="light" className="bg-light">
+    <CNavbar className="bg-body-tertiary">
       <CContainer fluid>
         <CNavbarBrand>Offcanvas navbar</CNavbarBrand>
         <CNavbarToggler
@@ -1247,7 +1245,7 @@ export const OffcanvasExample = () => {
 ```jsx
 const [visible, setVisible] = useState(false)
 return (
-  <CNavbar colorScheme="light" className="bg-light">
+  <CNavbar className="bg-body-tertiary">
     <CContainer fluid>
       <CNavbarBrand>Offcanvas navbar</CNavbarBrand>
       <CNavbarToggler
@@ -1303,7 +1301,7 @@ To create an offcanvas navbar that expands into a normal navbar at a specific br
 export const OffcanvasExample2 = () => {
   const [visible, setVisible] = useState(false)
   return (
-    <CNavbar colorScheme="light" className="bg-light" expand="xxl">
+    <CNavbar className="bg-body-tertiary" expand="xxl">
       <CContainer fluid>
         <CNavbarBrand>Offcanvas navbar</CNavbarBrand>
         <CNavbarToggler
@@ -1361,7 +1359,7 @@ export const OffcanvasExample2 = () => {
 ```jsx
 const [visible, setVisible] = useState(false)
 return (
-  <CNavbar colorScheme="light" className="bg-light" expand="xxl">
+  <CNavbar className="bg-body-tertiary" expand="xxl">
     <CNavbarBrand>Offcanvas navbar</CNavbarBrand>
     <CContainer fluid>
       <CNavbarToggler

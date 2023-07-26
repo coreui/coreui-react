@@ -18,6 +18,10 @@ export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {
    */
   className?: string
   /**
+   * Sets a darker color scheme.
+   */
+  dark?: boolean
+  /**
    * Closes the offcanvas when escape key is pressed.
    */
   keyboard?: boolean
@@ -59,6 +63,7 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
       children,
       backdrop = true,
       className,
+      dark,
       keyboard = true,
       onHide,
       onShow,
@@ -135,6 +140,7 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
                 role="dialog"
                 tabIndex={-1}
                 onKeyDown={handleKeyDown}
+                {...(dark && { 'data-coreui-theme': 'dark' })}
                 {...rest}
                 ref={forkedRef}
               >
@@ -161,6 +167,7 @@ COffcanvas.propTypes = {
   backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'static'>(['static'])]),
   children: PropTypes.node,
   className: PropTypes.string,
+  dark: PropTypes.bool,
   keyboard: PropTypes.bool,
   onHide: PropTypes.func,
   onShow: PropTypes.func,

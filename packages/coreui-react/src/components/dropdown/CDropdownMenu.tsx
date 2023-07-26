@@ -46,7 +46,6 @@ export const CDropdownMenu = forwardRef<HTMLDivElement | HTMLUListElement, CDrop
           className={classNames(
             'dropdown-menu',
             {
-              'dropdown-menu-dark': dark,
               show: visible,
             },
             alignment && alignmentClassNames(alignment),
@@ -56,6 +55,7 @@ export const CDropdownMenu = forwardRef<HTMLDivElement | HTMLUListElement, CDrop
           role="menu"
           aria-hidden={!visible}
           {...(!popper && { 'data-coreui-popper': 'static' })}
+          {...(dark && { 'data-coreui-theme': 'dark' })}
           {...rest}
         >
           {Component === 'ul'
