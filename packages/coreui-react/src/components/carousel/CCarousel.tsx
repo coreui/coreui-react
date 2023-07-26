@@ -256,6 +256,8 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
                       active: active === index
                     })}
                     data-coreui-target=""
+                    {...(active === index && { 'aria-current': true })}
+                    aria-label={`Slide ${index + 1}`}
                   />
                 )
               })}
