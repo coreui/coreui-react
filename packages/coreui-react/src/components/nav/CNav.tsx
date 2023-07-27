@@ -19,7 +19,7 @@ export interface CNavProps
   /**
    * Set the nav variant to tabs or pills.
    */
-  variant?: 'tabs' | 'pills'
+  variant?: 'pills' | 'tabs' | 'underline'
 }
 
 export const CNav = forwardRef<HTMLDivElement | HTMLUListElement | HTMLOListElement, CNavProps>(
@@ -49,7 +49,7 @@ CNav.propTypes = {
   className: PropTypes.string,
   component: PropTypes.elementType,
   layout: PropTypes.oneOf(['fill', 'justified']),
-  variant: PropTypes.oneOf(['tabs', 'pills']),
+  variant: PropTypes.oneOf(['pills', 'tabs', 'underline']),
 }
 
 CNav.displayName = 'CNav'
