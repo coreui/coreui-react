@@ -88,7 +88,7 @@ const nav = [
         to: '/layout/columns/',
       },
       {
-        name: 'Gutter',
+        name: 'Gutters',
         to: '/layout/gutters/',
       },
     ],
