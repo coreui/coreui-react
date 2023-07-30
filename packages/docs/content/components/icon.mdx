@@ -1,7 +1,7 @@
 ---
 title: React Icons Component
 name: Icon
-description: React icons is a great resource for React developers, who can use its customizable SVG icons in their applications. It offers an extensive library of icons to choose from, which can be easily inserted into projects with just a few lines of code. Not only that, but users are also able to customize the appearance of these icons by setting various props on them. This provides developers with an efficient and flexible way to integrate useful graphical elements into their webpages without doing any extra work.
+description: React icons library is a great resource for React developers, who can use its customizable SVG icons in their applications. It offers an extensive library of icons to choose from, which can be easily inserted into projects with just a few lines of code. Not only that, but users are also able to customize the appearance of these icons by setting various props on them. This provides developers with an efficient and flexible way to integrate useful graphical elements into their web pages without doing any extra work.
 menu: Components
 route: /components/icon
 ---
@@ -21,28 +21,27 @@ import * as icon from '@coreui/icons';
 
 ## Installation
 
-To use React icons in your project, you will need to install it as a dependency:
+To start using CoreUI React Icons in your project, you need to install it as a dependency. Follow the instructions below based on your package manager of choice:
 
 ### Npm
 
 ```bash
-// CoreUI Icons library
-npm install @coreui/icons
-
-// CIcon component
-npm install @coreui/icons-react 
+npm install @coreui/icons @coreui/icons-react 
 ```
 
 ### Yarn
 
 ```bash
-yarn add @coreui/icons
-yarn add @coreui/icons-react
+yarn add @coreui/icons @coreui/icons-react 
 ```
 
 ## Usage
 
-### Single icon
+Import react icons using one of these two options:
+
+### Single react icon
+
+To use a single react icon, import the `<CIcon>` component and the desired icon(s) from the `@coreui/icons` library. Then, include the `<CIcon>` component in your code and specify the icon prop with the imported icon variable. Additionally, you can set the desired size for the icon using the `size` prop.
 
 <Example>
   <CIcon icon={cilList} size="xl"/>
@@ -59,7 +58,9 @@ import { cilList, cilShieldAlt } from '@coreui/icons';
 ...
 ```
 
-### All icons
+### All react icons
+
+To use all icons available in the CoreUI React Icons package, import the CIcon component and the entire `@coreui/icons` library using the `* as` syntax. Then, reference the desired icon within the `icon` prop.
 
 ```jsx
 import CIcon from '@coreui/icons-react';
@@ -74,9 +75,125 @@ render() {
 ...
 ```
 
+### Color
+
+The CoreUI React Icon component offers versatile color customization options, empowering you to personalize the icons in multiple ways. You can effortlessly modify the colors by utilizing either class names or CSS variables, providing flexibility and ease in creating visually stunning and cohesive icon designs.
+
+#### Utility classes
+
+With some [color utility classes](https://coreui.io/docs/utilities/colors/), you may use color to convey message.
+
+```jsx preview
+<CIcon icon={cilList} size="xl" />
+<CIcon icon={cilList} className="text-primary" size="xl" />
+<CIcon icon={cilList} className="text-secondary" size="xl" />
+<CIcon icon={cilList} className="text-success" size="xl" />
+<CIcon icon={cilList} className="text-danger" size="xl" />
+<CIcon icon={cilList} className="text-warning" size="xl" />
+<CIcon icon={cilList} className="text-info" size="xl" />
+```
+
+#### CSS Variables
+
+CoreUI React Icons leverage local CSS variables, such as `--ci-primary-color` and `--ci-secondary-color` (for Duotone icons), to facilitate real-time customization. This allows developers to easily customize the icons by providing their own custom CSS variables.
+
+```jsx preview
+<CIcon icon={cilList} size="xl" style={{'--ci-primary-color': 'red'}} />
+<CIcon icon={cilList} size="xl" style={{'--ci-primary-color': 'green'}} />
+```
+
+### Sizing
+
+Set heights of react icons using size property like size="lg" and size="sm".
+
+```jsx preview
+<CIcon icon={cilList} size="sm" />
+<CIcon icon={cilList} size="md" />
+<CIcon icon={cilList} size="lg" />
+<CIcon icon={cilList} size="xl" />
+<CIcon icon={cilList} size="xxl" />
+<CIcon icon={cilList} size="3xl" />
+```
+
+
+## Accessibility
+
+It's crucial for react icons to be seen by as many people as possible because they have the power to communicate a variety of meaningful information.
+
+People who are blind, have low vision, or have other visual impairments make up approximately 10% of the world's population, and more than 5% of people worldwide have hearing loss that makes them unable to function normally.
+
+Therefore, it's crucial to make sure that the assistive equipment for people with disabilities, such as screen readers, either ignores or better understands the react icons you use online.
+
+Icons are used in one of two ways on websites, apps, and other digital spaces.
+
+#### Decorative Icons
+
+It is not necessary to declare an icon to visitors when they are using your website or app if you are utilizing it to offer extra decoration or branding.
+
+Additionally, if you use an icon to visually emphasize or add flair to content that is already present in your HTML, an assistive technology user does not need to see it again.
+
+In certain circumstances, the details of the icon ought to be concealed from the screenreader so as not to obstruct the intended message.
+
+#### Semantic Icons
+
+You need to make sure that consumers understand the meaning an icon is intended to represent by giving them text-based alternatives.
+
+This applies to both the content you're using icons to represent (such as the status of your shopping cart or the number of unread messages), as well react icons as interactive controls (such as buttons, form elements, toggles, etc.).
+
+### CoreUI React Icons and Accessibility
+
+Our React Icon component automatically takes care of accessibility concerns by adding appropriate elements.
+
+#### Decorative icons
+
+If your icons are only for decorative purposes, the CoreUI React Icon Component will ensure that assistive technology ignores the icon. In addition to referencing an icon as normal, the `aria-hidden=true` attribute has been introduced, so there is nothing else you need to do.
+
+If your markup looks like this:
+
+```jsx
+<CButton>
+  <CIcon icon={cilCloudDownload} />
+</CButton>
+```
+
+By including the `aria-hidden` attribute, CoreUI React Icon Component will afterwards automatically hide it from screenreaders.
+
+```html
+<button class="btn btn-primary" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon" role="img" aria-hidden="true">
+    <polygon fill="var(--ci-primary-color, currentColor)" points="272 434.744 272 209.176 240 209.176 240 434.744 188.118 382.862 165.49 405.489 256 496 346.51 405.489 323.882 382.862 272 434.744" class="ci-primary"></polygon><path fill="var(--ci-primary-color, currentColor)" d="M400,161.176c0-79.4-64.6-144-144-144s-144,64.6-144,144a96,96,0,0,0,0,192h80v-32H112a64,64,0,0,1,0-128h32v-32a112,112,0,0,1,224,0v32h32a64,64,0,0,1,0,128H320v32h80a96,96,0,0,0,0-192Z" class="ci-primary"></path>
+  </svg>
+</button>
+```
+
+#### Semantic icons
+
+The description that you must set using the title property will be used by CoreUI React Icon Component to generate alternative text for the semantic icon.
+
+Thus, if your markup appears as follows:
+
+```jsx
+<CButton>
+  <CIcon icon={cilCloudDownload} title="Download file" />
+</CButton>
+```
+
+CoreUI React Icon Component will make the necessary adjustments so that only screenreaders can "see" the supporting elements that convey the message.
+
+```html
+<button class="btn btn-primary" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon" role="img" aria-hidden="true">
+    <polygon fill="var(--ci-primary-color, currentColor)" points="272 434.744 272 209.176 240 209.176 240 434.744 188.118 382.862 165.49 405.489 256 496 346.51 405.489 323.882 382.862 272 434.744" class="ci-primary"></polygon><path fill="var(--ci-primary-color, currentColor)" d="M400,161.176c0-79.4-64.6-144-144-144s-144,64.6-144,144a96,96,0,0,0,0,192h80v-32H112a64,64,0,0,1,0-128h32v-32a112,112,0,0,1,224,0v32h32a64,64,0,0,1,0,128H320v32h80a96,96,0,0,0,0-192Z" class="ci-primary"></path>
+  </svg>
+  <span class="visually-hidden">Download file</span>
+</button>
+```
+
 ## Available react icons
 
-CoreUI React Icons package is delivered with more than 1500 icons in multiple formats SVG, PNG, and Webfonts. CoreUI Icons are beautifully crafted symbols for common actions and items. You can use them in your digital products for web or mobile app.
+The CoreUI React Icons package includes a comprehensive library of more than 1500 icons, available in various formats such as SVG, PNG, and Webfonts. These popular icons are meticulously crafted symbols representing common actions and items. You can utilize them in your digital products, whether they are web or mobile applications, to enhance their visual appeal and user experience.
+
+By leveraging the capabilities of the React Icons component from CoreUI, you can easily incorporate visually appealing icons into their React applications, allowing for more engaging and intuitive user interfaces.
 
 export const LinearExample = () => {
   const icons = ['cilAccountLogout', 'cilActionRedo', 'cilActionUndo', 'cilAddressBook', 'cilAirplaneModeOff', 'cilAirplaneMode', 'cilAirplay', 'cilAlarm', 'cilAlbum', 'cilAlignCenter', 'cilAlignLeft', 'cilAlignRight', 'cilAmericanFootball', 'cilAnimal', 'cilAperture', 'cilApple', 'cilApplicationsSettings', 'cilApplications', 'cilAppsSettings', 'cilApps', 'cilArrowBottom', 'cilArrowCircleBottom', 'cilArrowCircleLeft', 'cilArrowCircleRight', 'cilArrowCircleTop', 'cilArrowLeft', 'cilArrowRight', 'cilArrowThickBottom', 'cilArrowThickFromBottom', 'cilArrowThickFromLeft', 'cilArrowThickFromRight', 'cilArrowThickFromTop', 'cilArrowThickLeft', 'cilArrowThickRight', 'cilArrowThickToBottom', 'cilArrowThickToLeft', 'cilArrowThickToRight', 'cilArrowThickToTop', 'cilArrowThickTop', 'cilArrowTop', 'cilAssistiveListeningSystem', 'cilAsteriskCircle', 'cilAsterisk', 'cilAt', 'cilAudioDescription', 'cilAudioSpectrum', 'cilAudio', 'cilAvTimer', 'cilBabyCarriage', 'cilBaby', 'cilBackspace', 'cilBadge', 'cilBalanceScale', 'cilBan', 'cilBank', 'cilBarChart', 'cilBarcode', 'cilBaseball', 'cilBasket', 'cilBasketball', 'cilBath', 'cilBathroom', 'cilBattery0', 'cilBattery3', 'cilBattery5', 'cilBatteryAlert', 'cilBatteryEmpty', 'cilBatteryFull', 'cilBatterySlash', 'cilBeachAccess', 'cilBeaker', 'cilBed', 'cilBellExclamation', 'cilBell', 'cilBike', 'cilBirthdayCake', 'cilBlind', 'cilBluetooth', 'cilBlurCircular', 'cilBlurLinear', 'cilBlur', 'cilBoatAlt', 'cilBold', 'cilBoltCircle', 'cilBolt', 'cilBook', 'cilBookmark', 'cilBorderAll', 'cilBorderBottom', 'cilBorderClear', 'cilBorderHorizontal', 'cilBorderInner', 'cilBorderLeft', 'cilBorderOuter', 'cilBorderRight', 'cilBorderStyle', 'cilBorderTop', 'cilBorderVertical', 'cilBowling', 'cilBraille', 'cilBriefcase', 'cilBrightness', 'cilBritishPound', 'cilBrowser', 'cilBrushAlt', 'cilBrush', 'cilBug', 'cilBuilding', 'cilBullhorn', 'cilBurger', 'cilBurn', 'cilBusAlt', 'cilCalculator', 'cilCalendarCheck', 'cilCalendar', 'cilCameraControl', 'cilCameraRoll', 'cilCamera', 'cilCarAlt', 'cilCaretBottom', 'cilCaretLeft', 'cilCaretRight', 'cilCaretTop', 'cilCart', 'cilCash', 'cilCasino', 'cilCast', 'cilCat', 'cilCc', 'cilCenterFocus', 'cilChartLine', 'cilChartPie', 'cilChart', 'cilChatBubble', 'cilCheckAlt', 'cilCheckCircle', 'cilCheck', 'cilChevronBottom', 'cilChevronCircleDownAlt', 'cilChevronCircleLeftAlt', 'cilChevronCircleRightAlt', 'cilChevronCircleUpAlt', 'cilChevronDoubleDown', 'cilChevronDoubleLeft', 'cilChevronDoubleRight', 'cilChevronDoubleUp', 'cilChevronLeft', 'cilChevronRight', 'cilChevronTop', 'cilChildFriendly', 'cilChild', 'cilCircle', 'cilClearAll', 'cilClipboard', 'cilClock', 'cilClone', 'cilClosedCaptioning', 'cilCloudDownload', 'cilCloudUpload', 'cilCloud', 'cilCloudy', 'cilCode', 'cilCoffee', 'cilCog', 'cilColorBorder', 'cilColorFill', 'cilColorPalette', 'cilColumns', 'cilCommand', 'cilCommentBubble', 'cilCommentSquare', 'cilCompass', 'cilCompress', 'cilContact', 'cilContrast', 'cilControl', 'cilCopy', 'cilCouch', 'cilCreditCard', 'cilCropRotate', 'cilCrop', 'cilCursorMove', 'cilCursor', 'cilCut', 'cilDataTransferDown', 'cilDataTransferUp', 'cilDeaf', 'cilDelete', 'cilDescription', 'cilDevices', 'cilDialpad', 'cilDiamond', 'cilDinner', 'cilDisabled', 'cilDog', 'cilDollar', 'cilDoor', 'cilDoubleQuoteSansLeft', 'cilDoubleQuoteSansRight', 'cilDrinkAlcohol', 'cilDrink', 'cilDrop', 'cilEco', 'cilEducation', 'cilElevator', 'cilEnvelopeClosed', 'cilEnvelopeLetter', 'cilEnvelopeOpen', 'cilEqualizer', 'cilEthernet', 'cilEuro', 'cilExcerpt', 'cilExitToApp', 'cilExpandDown', 'cilExpandLeft', 'cilExpandRight', 'cilExpandUp', 'cilExposure', 'cilExternalLink', 'cilEyedropper', 'cilFaceDead', 'cilFace', 'cilFactorySlash', 'cilFactory', 'cilFastfood', 'cilFax', 'cilFeaturedPlaylist', 'cilFile', 'cilFilterFrames', 'cilFilterPhoto', 'cilFilterSquare', 'cilFilterX', 'cilFilter', 'cilFindInPage', 'cilFingerprint', 'cilFire', 'cilFlagAlt', 'cilFlightTakeoff', 'cilFlipToBack', 'cilFlipToFront', 'cilFlip', 'cilFlower', 'cilFolderOpen', 'cilFolder', 'cilFont', 'cilFootball', 'cilFork', 'cilFridge', 'cilFrown', 'cilFullscreenExit', 'cilFullscreen', 'cilFunctionsAlt', 'cilFunctions', 'cilGamepad', 'cilGarage', 'cilGem', 'cilGif', 'cilGift', 'cilGlobeAlt', 'cilGolfAlt', 'cilGolf', 'cilGradient', 'cilGrain', 'cilGraph', 'cilGridSlash', 'cilGrid', 'cilGroup', 'cilHamburgerMenu', 'cilHandPointDown', 'cilHandPointLeft', 'cilHandPointRight', 'cilHandPointUp', 'cilHappy', 'cilHd', 'cilHdr', 'cilHeader', 'cilHeadphones', 'cilHealing', 'cilHeart', 'cilHighlighter', 'cilHighligt', 'cilHistory', 'cilHome', 'cilHospital', 'cilHotTub', 'cilHouse', 'cilHttps', 'cilImageBroken', 'cilImagePlus', 'cilImage', 'cilInbox', 'cilIndentDecrease', 'cilIndentIncrease', 'cilIndustrySlash', 'cilIndustry', 'cilInfinity', 'cilInfo', 'cilInputHdmi', 'cilInputPower', 'cilInput', 'cilInstitution', 'cilItalic', 'cilJustifyCenter', 'cilJustifyLeft', 'cilJustifyRight', 'cilKeyboard', 'cilLan', 'cilLanguage', 'cilLaptop', 'cilLayers', 'cilLeaf', 'cilLemon', 'cilLevelDown', 'cilLevelUp', 'cilLibraryAdd', 'cilLibraryBuilding', 'cilLibrary', 'cilLifeRing', 'cilLightbulb', 'cilLineSpacing', 'cilLineStyle', 'cilLineWeight', 'cilLinkAlt', 'cilLinkBroken', 'cilLink', 'cilListFilter', 'cilListHighPriority', 'cilListLowPriority', 'cilListNumberedRtl', 'cilListNumbered', 'cilListRich', 'cilList', 'cilLocationPin', 'cilLockLocked', 'cilLockUnlocked', 'cilLocomotive', 'cilLoop1', 'cilLoopCircular', 'cilLoop', 'cilLowVision', 'cilMagnifyingGlass', 'cilMap', 'cilMediaEject', 'cilMediaPause', 'cilMediaPlay', 'cilMediaRecord', 'cilMediaSkipBackward', 'cilMediaSkipForward', 'cilMediaStepBackward', 'cilMediaStepForward', 'cilMediaStop', 'cilMedicalCross', 'cilMeh', 'cilMemory', 'cilMenu', 'cilMic', 'cilMicrophone', 'cilMinus', 'cilMobileLandscape', 'cilMobile', 'cilMoney', 'cilMonitor', 'cilMoodBad', 'cilMoodGood', 'cilMoodVeryBad', 'cilMoodVeryGood', 'cilMoon', 'cilMouse', 'cilMouthSlash', 'cilMove', 'cilMovie', 'cilMugTea', 'cilMug', 'cilMusicNote', 'cilNewspaper', 'cilNoteAdd', 'cilNotes', 'cilObjectGroup', 'cilObjectUngroup', 'cilOpacity', 'cilOpentype', 'cilOptions', 'cilPaintBucket', 'cilPaint', 'cilPaperPlane', 'cilPaperclip', 'cilParagraph', 'cilPaw', 'cilPenAlt', 'cilPenNib', 'cilPen', 'cilPencil', 'cilPeople', 'cilPhone', 'cilPin', 'cilPizza', 'cilPlant', 'cilPlaylistAdd', 'cilPlus', 'cilPool', 'cilPowerStandby', 'cilPregnant', 'cilPrint', 'cilPushchair', 'cilPuzzle', 'cilQrCode', 'cilRain', 'cilRectangle', 'cilRecycle', 'cilReload', 'cilReportSlash', 'cilResizeBoth', 'cilResizeHeight', 'cilResizeWidth', 'cilRestaurant', 'cilRoom', 'cilRouter', 'cilRowing', 'cilRss', 'cilRuble', 'cilRunning', 'cilSad', 'cilSatelite', 'cilSave', 'cilSchool', 'cilScreenDesktop', 'cilScreenSmartphone', 'cilScrubber', 'cilSearch', 'cilSend', 'cilSettings', 'cilShareAll', 'cilShareAlt', 'cilShareBoxed', 'cilShare', 'cilShieldAlt', 'cilShortText', 'cilShower', 'cilSignLanguage', 'cilSignalCellular0', 'cilSignalCellular3', 'cilSignalCellular4', 'cilSim', 'cilSitemap', 'cilSmilePlus', 'cilSmile', 'cilSmokeFree', 'cilSmokeSlash', 'cilSmoke', 'cilSmokingRoom', 'cilSnowflake', 'cilSoccer', 'cilSofa', 'cilSortAlphaDown', 'cilSortAlphaUp', 'cilSortAscending', 'cilSortDescending', 'cilSortNumericDown', 'cilSortNumericUp', 'cilSpa', 'cilSpaceBar', 'cilSpeak', 'cilSpeaker', 'cilSpeech', 'cilSpeedometer', 'cilSpreadsheet', 'cilSquare', 'cilStarHalf', 'cilStar', 'cilStorage', 'cilStream', 'cilStrikethrough', 'cilSun', 'cilSwapHorizontal', 'cilSwapVertical', 'cilSwimming', 'cilSync', 'cilTablet', 'cilTag', 'cilTags', 'cilTask', 'cilTaxi', 'cilTennisBall', 'cilTennis', 'cilTerminal', 'cilTerrain', 'cilTextShapes', 'cilTextSize', 'cilTextSquare', 'cilTextStrike', 'cilText', 'cilThumbDown', 'cilThumbUp', 'cilToggleOff', 'cilToggleOn', 'cilToilet', 'cilTouchApp', 'cilTransfer', 'cilTranslate', 'cilTrash', 'cilTriangle', 'cilTruck', 'cilTv', 'cilUnderline', 'cilUsb', 'cilUserFemale', 'cilUserFollow', 'cilUserPlus', 'cilUserUnfollow', 'cilUserX', 'cilUser', 'cilVector', 'cilVerticalAlignBottom', 'cilVerticalAlignCenter', 'cilVerticalAlignTop', 'cilVideo', 'cilVideogame', 'cilViewColumn', 'cilViewModule', 'cilViewQuilt', 'cilViewStream', 'cilVoiceOverRecord', 'cilVoice', 'cilVolumeHigh', 'cilVolumeLow', 'cilVolumeOff', 'cilWalk', 'cilWallet', 'cilWallpaper', 'cilWarning', 'cilWatch', 'cilWc', 'cilWeightlifitng', 'cilWheelchair', 'cilWifiSignal0', 'cilWifiSignal1', 'cilWifiSignal2', 'cilWifiSignal3', 'cilWifiSignal4', 'cilWifiSignalOff', 'cilWindowMaximize', 'cilWindowMinimize', 'cilWindowRestore', 'cilWindow', 'cilWrapText', 'cilXCircle', 'cilX', 'cilYen', 'cilZoomIn', 'cilZoomOut', 'cilZoom']
@@ -189,6 +306,12 @@ export const TabPanesExample = () => {
 <TabPanesExample />
 
 React Icons also provides a variety of customization options, such as the ability to change the size, color, and style of the icons, as well as the ability to add additional CSS classes to the icons. You can find more information on these customization options in the documentation.
+
+## Premium icons
+
+If you find yourself in need of a greater selection of icons, we've got you covered with our [premium icon pack](https://coreui.io/icons/all/). This incredible package boasts an extensive collection of over 4,000 meticulously crafted icons, ensuring that you'll find the perfect representation for any concept or idea. Explore the vast range of options and unlock a world of visual possibilities. 
+
+So if you need more icons our PRO package will be a great choice for you.
 
 ## API
 
