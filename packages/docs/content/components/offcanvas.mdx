@@ -26,14 +26,14 @@ import {
 
 Below is an offcanvas example that is shown by default (via `visible={true}`). Offcanvas includes support for a header with a close button and an optional body class for some initial `padding`. We suggest that you include offcanvas headers with dismiss actions whenever possible, or provide an explicit dismiss action.
 
-```jsx preview className="docs-example-offcanvas bg-light p-0"
+```jsx preview className="docs-example-offcanvas bg-body-tertiary p-0 overflow-hidden"
 <COffcanvas backdrop={false} placement="start" visible={true}>
   <COffcanvasHeader>
     <COffcanvasTitle>Offcanvas</COffcanvasTitle>
     <CCloseButton className="text-reset" />
   </COffcanvasHeader>
   <COffcanvasBody>
-    Content for the offcanvas goes here. You can place just about any Bootstrap component or custom
+    Content for the offcanvas goes here. You can place just about any React component or custom
     elements here.
   </COffcanvasBody>
 </COffcanvas>
@@ -57,7 +57,7 @@ export const LiveDemoExample = () => {
           <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
         </COffcanvasHeader>
         <COffcanvasBody>
-          Content for the offcanvas goes here. You can place just about any Bootstrap component or
+          Content for the offcanvas goes here. You can place just about any React component or
           custom elements here.
         </COffcanvasBody>
       </COffcanvas>
@@ -80,7 +80,7 @@ return (
         <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
       </COffcanvasHeader>
       <COffcanvasBody>
-        Content for the offcanvas goes here. You can place just about any Bootstrap component or
+        Content for the offcanvas goes here. You can place just about any React component or
         custom elements here.
       </COffcanvasBody>
     </COffcanvas>
@@ -219,6 +219,23 @@ return (
 )
 ```
 
+## Dark offcanvas
+
+Change the appearance of offcanvases with utilities to better match them to different contexts like dark navbars. Here we add `.text-bg-dark` to the `<COffcanvas>` and `white` property to `<CCloseButton>` for proper styling with a dark offcanvas.
+
+```jsx preview className="docs-example-offcanvas bg-body-secondary p-0 overflow-hidden"
+<COffcanvas backdrop={false} className="text-bg-dark" placement="start" visible={true}>
+  <COffcanvasHeader>
+    <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+    <CCloseButton white />
+  </COffcanvasHeader>
+  <COffcanvasBody>
+    Content for the offcanvas goes here. You can place just about any React component or custom
+    elements here.
+  </COffcanvasBody>
+</COffcanvas>
+```
+
 ## Responsive 
 
 Responsive offcanvas properties hide content outside the viewport from a specified breakpoint and down.
@@ -290,7 +307,7 @@ export const PlacementTopExample = () => {
           <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
         </COffcanvasHeader>
         <COffcanvasBody>
-          Content for the offcanvas goes here. You can place just about any Bootstrap component or
+          Content for the offcanvas goes here. You can place just about any React component or
           custom elements here.
         </COffcanvasBody>
       </COffcanvas>
@@ -313,7 +330,7 @@ return (
         <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
       </COffcanvasHeader>
       <COffcanvasBody>
-        Content for the offcanvas goes here. You can place just about any Bootstrap component or
+        Content for the offcanvas goes here. You can place just about any React component or
         custom elements here.
       </COffcanvasBody>
     </COffcanvas>
@@ -332,7 +349,7 @@ export const PlacementRightExample = () => {
           <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
         </COffcanvasHeader>
         <COffcanvasBody>
-          Content for the offcanvas goes here. You can place just about any Bootstrap component or
+          Content for the offcanvas goes here. You can place just about any React component or
           custom elements here.
         </COffcanvasBody>
       </COffcanvas>
@@ -355,7 +372,7 @@ return (
         <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
       </COffcanvasHeader>
       <COffcanvasBody>
-        Content for the offcanvas goes here. You can place just about any Bootstrap component or
+        Content for the offcanvas goes here. You can place just about any React component or
         custom elements here.
       </COffcanvasBody>
     </COffcanvas>
@@ -374,7 +391,7 @@ export const PlacementBottomExample = () => {
           <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
         </COffcanvasHeader>
         <COffcanvasBody>
-          Content for the offcanvas goes here. You can place just about any Bootstrap component or
+          Content for the offcanvas goes here. You can place just about any React component or
           custom elements here.
         </COffcanvasBody>
       </COffcanvas>
@@ -397,7 +414,7 @@ return (
         <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
       </COffcanvasHeader>
       <COffcanvasBody>
-        Content for the offcanvas goes here. You can place just about any Bootstrap component or
+        Content for the offcanvas goes here. You can place just about any React component or
         custom elements here.
       </COffcanvasBody>
     </COffcanvas>

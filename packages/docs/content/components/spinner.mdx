@@ -19,10 +19,8 @@ For accessibility purposes, each loader here includes `role="status"` and a nest
 
 Use the border spinners for a lightweight loading indicator.
 
-## Basic usage
-
 ```jsx preview
-  <CSpinner/>
+<CSpinner/>
 ```
 
 ### Colors
@@ -30,14 +28,14 @@ Use the border spinners for a lightweight loading indicator.
 The border spinner uses `currentColor` for its `border-color`. You can use any of our text color utilities on the standard spinner.
 
 ```jsx preview
-  <CSpinner color="primary"/>
-  <CSpinner color="secondary"/>
-  <CSpinner color="success"/>
-  <CSpinner color="danger"/>
-  <CSpinner color="warning"/>
-  <CSpinner color="info"/>
-  <CSpinner color="light"/>
-  <CSpinner color="dark"/>
+<CSpinner color="primary" />
+<CSpinner color="secondary" />
+<CSpinner color="success" />
+<CSpinner color="danger" />
+<CSpinner color="warning" />
+<CSpinner color="info" />
+<CSpinner color="light" />
+<CSpinner color="dark" />
 ```
 
 ## Growing spinner
@@ -45,29 +43,83 @@ The border spinner uses `currentColor` for its `border-color`. You can use any o
 If you don't fancy a border spinner, switch to the grow spinner. While it doesn't technically spin, it does repeatedly grow!
 
 ```jsx preview
-  <CSpinner variant="grow"/>
+<CSpinner variant="grow" />
 ```
 
 Once again, this spinner is built with `currentColor`, so you can easily change its appearance. Here it is in blue, along with the supported variants.
 
 ```jsx preview
-  <CSpinner color="primary" variant="grow"/>
-  <CSpinner color="secondary" variant="grow"/>
-  <CSpinner color="success" variant="grow"/>
-  <CSpinner color="danger" variant="grow"/>
-  <CSpinner color="warning" variant="grow"/>
-  <CSpinner color="info" variant="grow"/>
-  <CSpinner color="light" variant="grow"/>
-  <CSpinner color="dark" variant="grow"/>
+<CSpinner color="primary" variant="grow" />
+<CSpinner color="secondary" variant="grow" />
+<CSpinner color="success" variant="grow" />
+<CSpinner color="danger" variant="grow" />
+<CSpinner color="warning" variant="grow" />
+<CSpinner color="info" variant="grow" />
+<CSpinner color="light" variant="grow" />
+<CSpinner color="dark" variant="grow" />
+```
+
+## Alignment 
+
+CoreUI React spinners are built with `rems`, `currentColor`, and `display: inline-flex`. This means they can easily be resized, recolored, and quickly aligned.
+
+### Margin 
+
+Use [margin utilities](https://coreui.io/docs/utilities/spacing/#margin-and-padding) like `.m-5` for easy spacing.
+
+```jsx preview
+<CSpinner className="m-5" />
+```
+
+### Placement
+
+Use [flexbox utilities][https://coreui.io/docs/utilities/flex/], [float utilities][https://coreui.io/docs/utilities/float/], or [text alignment][https://coreui.io/docs/utilities/text/] utilities to place spinners exactly where you need them in any situation.
+
+#### Flex
+
+```jsx preview
+<div className="d-flex justify-content-center">
+  <CSpinner />
+</div>
+```
+
+```jsx preview
+<div className="d-flex align-items-center">
+  <strong role="status">Loading...</strong>
+  <CSpinner className="ms-auto" />
+</div>
+```
+
+#### Floats
+
+```jsx preview
+<div className="clearfix">
+  <CSpinner className="float-end" />
+</div>
+```
+
+#### Text align
+
+```jsx preview
+<div className="text-center">
+  <CSpinner />
+</div>
 ```
 
 ## Size
 
-Add `size="sm"`property` to make a smaller spinner that can quickly be used within other components.
+Add `size="sm"` property to make a smaller spinner that can quickly be used within other components.
 
 ```jsx preview
-  <CSpinner size="sm"/>
-  <CSpinner size="sm" variant="grow"/>
+<CSpinner size="sm" />
+<CSpinner size="sm" variant="grow" />
+```
+
+Or, use custom CSS or inline styles to change the dimensions as needed.
+
+```jsx preview
+<CSpinner size="sm" style={{ width: '3rem', height: '3rem'}}/>
+<CSpinner size="sm" variant="grow" style={{ width: '3rem', height: '3rem'}}/>
 ```
 
 ## Buttons
@@ -75,23 +127,23 @@ Add `size="sm"`property` to make a smaller spinner that can quickly be used with
 Use spinners within buttons to indicate an action is currently processing or taking place. You may also swap the text out of the spinner element and utilize button text as needed.
 
 ```jsx preview
-  <CButton disabled>
-    <CSpinner component="span" size="sm" aria-hidden="true"/>
-  </CButton>
-  <CButton disabled>
-    <CSpinner component="span" size="sm" aria-hidden="true"/>
-    Loading...
-  </CButton>
+<CButton disabled>
+  <CSpinner component="span" size="sm" aria-hidden="true" />
+</CButton>
+<CButton disabled>
+  <CSpinner component="span" size="sm" aria-hidden="true" />
+  Loading...
+</CButton>
 ```
 
 ```jsx preview
-  <CButton disabled>
-    <CSpinner component="span" size="sm" variant="grow" aria-hidden="true"/>
-  </CButton>
-  <CButton disabled>
-    <CSpinner component="span" size="sm" variant="grow" aria-hidden="true"/>
-    Loading...
-  </CButton>
+<CButton disabled>
+  <CSpinner component="span" size="sm" variant="grow" aria-hidden="true" />
+</CButton>
+<CButton disabled>
+  <CSpinner component="span" size="sm" variant="grow" aria-hidden="true" />
+  Loading...
+</CButton>
 ```
 
 ## Customizing
@@ -102,15 +154,15 @@ React spinners use local CSS variables on `.spinner-border` and `.spinner-grow` 
 
 Border spinner variables:
 
-<ScssDocs file="_spinners.scss" capture="spinner-border-css-vars"/>
+<ScssDocs file="_spinners.scss" capture="spinner-border-css-vars" />
 
 Growing spinner variables:
 
-<ScssDocs file="_spinners.scss" capture="spinner-grow-css-vars"/>
+<ScssDocs file="_spinners.scss" capture="spinner-grow-css-vars" />
 
 For both spinners, small spinner modifier classes are used to update the values of these CSS variables as needed. For example, the `.spinner-border-sm` class does the following:
 
-<ScssDocs file="_spinners.scss" capture="spinner-border-sm-css-vars"/>
+<ScssDocs file="_spinners.scss" capture="spinner-border-sm-css-vars" />
 
 #### How to use CSS variables
 
@@ -124,7 +176,15 @@ return <CSpinner style={vars}>...</CSpinner>
 
 ### SASS variables
 
-<ScssDocs file="_variables.scss" capture="spinner-variables"/>
+<ScssDocs file="_variables.scss" capture="spinner-variables" />
+
+### Keyframes
+
+Used for creating the CSS animations for our spinners. Included in `_spinners.scss`.
+
+<ScssDocs file="_spinners.scss" capture="spinner-border-keyframes" />
+
+<ScssDocs file="_spinners.scss" capture="spinner-grow-keyframes" />
 
 ## API
 
