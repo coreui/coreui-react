@@ -7,7 +7,7 @@
   @include font-size(.875rem);
 
   a {
-    color: #768192;
+    color: var(--#{$prefix}tertiary-color);
     text-decoration: none;
 
     &:hover,

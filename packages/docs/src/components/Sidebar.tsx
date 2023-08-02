@@ -48,7 +48,7 @@ const Sidebar: FC<SidebarProps> = ({ ...props }) => {
               </g>
             </svg>
           </CSidebarBrand>
-          <div className="text-muted ms-3 me-5 mb-2 small fw-semibold">Framework:</div>
+          <div className="text-body-secondary ms-3 me-5 mb-2 small fw-semibold">Framework:</div>
           <CDropdown className="ms-3 me-5 mb-4">
             <CDropdownToggle color="primary" variant="outline">
               React.js
