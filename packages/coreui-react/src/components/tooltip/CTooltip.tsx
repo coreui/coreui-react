@@ -7,7 +7,7 @@ import { Transition } from 'react-transition-group'
 import { usePopper } from '../../hooks'
 import { fallbackPlacementsPropType, triggerPropType } from '../../props'
 import type { Placements, Triggers } from '../../types'
-import { getRTLPlacement } from '../../utils'
+import { getRTLPlacement, getTransitionDurationFromElement } from '../../utils'
 
 export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'content'> {
   /**
@@ -158,7 +158,7 @@ export const CTooltip: FC<CTooltipProps> = ({
             onExit={onHide}
             timeout={{
               enter: 0,
-              exit: 200,
+              exit: tooltipRef.current ? getTransitionDurationFromElement(tooltipRef.current) + 50 : 200,
             }}
             unmountOnExit
           >
