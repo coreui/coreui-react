@@ -37,7 +37,7 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
   duration?: number
   /**
    * Puts the focus on the modal when shown.
-   * 
+   *
    * @since v4.10.0
    */
   focus?: boolean
@@ -239,10 +239,12 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
                     className,
                   )}
                   tabIndex={-1}
+                  {...(_visible ? { 'aria-modal': true } : { 'aria-hidden': 'true' })}
                   role="dialog"
                   style={{
                     ...(state !== 'exited' && { display: 'block' }),
                   }}
+                  {...rest}
                   ref={forkedRef}
                 >
                   <CModalDialog
@@ -251,7 +253,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
                     scrollable={scrollable}
                     size={size}
                   >
-                    <CModalContent {...rest} ref={modalContentRef}>
+                    <CModalContent ref={modalContentRef}>
                       {children}
                     </CModalContent>
                   </CModalDialog>
