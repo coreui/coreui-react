@@ -239,8 +239,9 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
                     className,
                   )}
                   tabIndex={-1}
-                  {...(_visible ? { 'aria-modal': true } : { 'aria-hidden': 'true' })}
-                  role="dialog"
+                  {...(_visible
+                    ? { 'aria-modal': true, role: 'dialog' }
+                    : { 'aria-hidden': 'true' })}
                   style={{
                     ...(state !== 'exited' && { display: 'block' }),
                   }}
@@ -253,9 +254,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
                     scrollable={scrollable}
                     size={size}
                   >
-                    <CModalContent ref={modalContentRef}>
-                      {children}
-                    </CModalContent>
+                    <CModalContent ref={modalContentRef}>{children}</CModalContent>
                   </CModalDialog>
                 </div>
               </CModalContext.Provider>
