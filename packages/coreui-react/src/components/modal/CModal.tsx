@@ -36,6 +36,12 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    */
   duration?: number
   /**
+   * Puts the focus on the modal when shown.
+   * 
+   * @since v4.10.0
+   */
+  focus?: boolean
+  /**
    * Set modal to covers the entire user viewport.
    */
   fullscreen?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
@@ -96,6 +102,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       backdrop = true,
       className,
       duration = 150,
+      focus = true,
       fullscreen,
       keyboard = true,
       onClose,
@@ -134,9 +141,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
         document.addEventListener('mouseup', handleClickOutside)
         document.addEventListener('keydown', handleKeyDown)
       } else {
-        if (activeElementRef.current) {
-          activeElementRef.current.focus()
-        }
+        activeElementRef.current?.focus()
       }
 
       return () => {
@@ -172,7 +177,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
 
         setTimeout(
           () => {
-            modalRef.current?.focus()
+            focus && modalRef.current?.focus()
           },
           transition ? duration : 0,
         )
@@ -271,6 +276,7 @@ CModal.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   duration: PropTypes.number,
+  focus: PropTypes.bool,
   fullscreen: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl'>(['sm', 'md', 'lg', 'xl', 'xxl']),
