@@ -133,6 +133,10 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
         activeElementRef.current = document.activeElement as HTMLElement | null
         document.addEventListener('mouseup', handleClickOutside)
         document.addEventListener('keydown', handleKeyDown)
+      } else {
+        if (activeElementRef.current) {
+          activeElementRef.current.focus()
+        }
       }
 
       return () => {
@@ -147,10 +151,6 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       }
 
       setVisible(false)
-
-      if (activeElementRef.current) {
-        activeElementRef.current.focus()
-      }
 
       return onClose && onClose()
     }
