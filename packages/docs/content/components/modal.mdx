@@ -38,8 +38,12 @@ Below is a static react modal component example (meaning its `position` and `dis
           <p>React Modal body text goes here.</p>
         </div>
         <div className="modal-footer">
-          <button type="button" className="btn btn-secondary">Close</button>
-          <button type="button" className="btn btn-primary">Save changes</button>
+          <button type="button" className="btn btn-secondary">
+            Close
+          </button>
+          <button type="button" className="btn btn-primary">
+            Save changes
+          </button>
         </div>
       </div>
     </div>
@@ -69,9 +73,13 @@ export const LiveDemoExample = () => {
   return (
     <>
       <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
-      <CModal visible={visible} onClose={() => setVisible(false)}>
+      <CModal
+        visible={visible}
+        onClose={() => setVisible(false)}
+        aria-labelledby="LiveDemoExampleLabel"
+      >
         <CModalHeader>
-          <CModalTitle>Modal title</CModalTitle>
+          <CModalTitle id="LiveDemoExampleLabel">Modal title</CModalTitle>
         </CModalHeader>
         <CModalBody>
           <p>Woohoo, you're reading this text in a modal!</p>
@@ -96,9 +104,13 @@ const [visible, setVisible] = useState(false)
 return (
   <>
     <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
-    <CModal visible={visible} onClose={() => setVisible(false)}>
+    <CModal
+      visible={visible}
+      onClose={() => setVisible(false)}
+      aria-labelledby="LiveDemoExampleLabel"
+    >
       <CModalHeader onClose={() => setVisible(false)}>
-        <CModalTitle>Modal title</CModalTitle>
+        <CModalTitle id="LiveDemoExampleLabel">Modal title</CModalTitle>
       </CModalHeader>
       <CModalBody>
         <p>Woohoo, you're reading this text in a modal!</p>
@@ -123,9 +135,14 @@ export const StaticBackdropExample = () => {
   return (
     <>
       <CButton onClick={() => setVisible(!visible)}>Launch static backdrop modal</CButton>
-      <CModal backdrop="static" visible={visible} onClose={() => setVisible(false)}>
+      <CModal
+        backdrop="static"
+        visible={visible}
+        onClose={() => setVisible(false)}
+        aria-labelledby="StaticBackdropExampleLabel"
+      >
         <CModalHeader>
-          <CModalTitle>Modal title</CModalTitle>
+          <CModalTitle id="StaticBackdropExampleLabel">Modal title</CModalTitle>
         </CModalHeader>
         <CModalBody>
           I will not close if you click outside me. Don't even try to press escape key.
@@ -150,9 +167,14 @@ const [visible, setVisible] = useState(false)
 return (
   <>
     <CButton onClick={() => setVisible(!visible)}>Launch static backdrop modal</CButton>
-    <CModal backdrop="static" visible={visible} onClose={() => setVisible(false)}>
+    <CModal
+      backdrop="static"
+      visible={visible}
+      onClose={() => setVisible(false)}
+      aria-labelledby="StaticBackdropExampleLabel"
+    >
       <CModalHeader>
-        <CModalTitle>Modal title</CModalTitle>
+        <CModalTitle id="StaticBackdropExampleLabel">Modal title</CModalTitle>
       </CModalHeader>
       <CModalBody>
         I will not close if you click outside me. Don't even try to press escape key.
@@ -177,9 +199,13 @@ export const ScrollingLongContentExample = () => {
   return (
     <>
       <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
-      <CModal visible={visible} onClose={() => setVisible(false)}>
+      <CModal
+        visible={visible}
+        onClose={() => setVisible(false)}
+        aria-labelledby="ScrollingLongContentExampleLabel"
+      >
         <CModalHeader>
-          <CModalTitle>Modal title</CModalTitle>
+          <CModalTitle id="ScrollingLongContentExampleLabel">Modal title</CModalTitle>
         </CModalHeader>
         <CModalBody>
           <p>
@@ -281,9 +307,13 @@ const [visible, setVisible] = useState(false)
 return (
   <>
     <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
-    <CModal visible={visible} onClose={() => setVisible(false)}>
+    <CModal
+      visible={visible}
+      onClose={() => setVisible(false)}
+      aria-labelledby="ScrollingLongContentExampleLabel"
+    >
       <CModalHeader>
-        <CModalTitle>Modal title</CModalTitle>
+        <CModalTitle id="ScrollingLongContentExampleLabel">Modal title</CModalTitle>
       </CModalHeader>
       <CModalBody>
         <p>
@@ -383,9 +413,14 @@ export const ScrollingLongContentExample2 = () => {
   return (
     <>
       <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
-      <CModal scrollable visible={visible} onClose={() => setVisible(false)}>
+      <CModal
+        scrollable
+        visible={visible}
+        onClose={() => setVisible(false)}
+        aria-labelledby="ScrollingLongContentExampleLabel2"
+      >
         <CModalHeader>
-          <CModalTitle>Modal title</CModalTitle>
+          <CModalTitle id="ScrollingLongContentExampleLabel2">Modal title</CModalTitle>
         </CModalHeader>
         <CModalBody>
           <p>
@@ -487,9 +522,14 @@ const [visible, setVisible] = useState(false)
 return (
   <>
     <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
-    <CModal scrollable visible={visible} onClose={() => setVisible(false)}>
+    <CModal
+      scrollable
+      visible={visible}
+      onClose={() => setVisible(false)}
+      aria-labelledby="ScrollingLongContentExampleLabel2"
+    >
       <CModalHeader>
-        <CModalTitle>Modal title</CModalTitle>
+        <CModalTitle id="ScrollingLongContentExampleLabel2">Modal title</CModalTitle>
       </CModalHeader>
       <CModalBody>
         <p>
@@ -591,9 +631,14 @@ export const VerticallyCenteredExample = () => {
   return (
     <>
       <CButton onClick={() => setVisible(!visible)}>Vertically centered modal</CButton>
-      <CModal alignment="center" visible={visible} onClose={() => setVisible(false)}>
+      <CModal
+        alignment="center"
+        visible={visible}
+        onClose={() => setVisible(false)}
+        aria-labelledby="VerticallyCenteredExample"
+      >
         <CModalHeader>
-          <CModalTitle>Modal title</CModalTitle>
+          <CModalTitle id="VerticallyCenteredExample">Modal title</CModalTitle>
         </CModalHeader>
         <CModalBody>
           Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
@@ -619,9 +664,14 @@ const [visible, setVisible] = useState(false)
 return (
   <>
     <CButton onClick={() => setVisible(!visible)}>Vertically centered modal</CButton>
-    <CModal alignment="center" visible={visible} onClose={() => setVisible(false)}>
+    <CModal
+      alignment="center"
+      visible={visible}
+      onClose={() => setVisible(false)}
+      aria-labelledby="VerticallyCenteredExample"
+    >
       <CModalHeader>
-        <CModalTitle>Modal title</CModalTitle>
+        <CModalTitle id="VerticallyCenteredExample">Modal title</CModalTitle>
       </CModalHeader>
       <CModalBody>
         Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
@@ -643,9 +693,15 @@ export const VerticallyCenteredScrollableExample = () => {
   return (
     <>
       <CButton onClick={() => setVisible(!visible)}>Vertically centered scrollable modal</CButton>
-      <CModal alignment="center" scrollable visible={visible}  onClose={() => setVisible(false)}>
+      <CModal
+        alignment="center"
+        scrollable
+        visible={visible}
+        onClose={() => setVisible(false)}
+        aria-labelledby="VerticallyCenteredScrollableExample"
+      >
         <CModalHeader>
-          <CModalTitle>Modal title</CModalTitle>
+          <CModalTitle id="VerticallyCenteredScrollableExample">Modal title</CModalTitle>
         </CModalHeader>
         <CModalBody>
           <p>
@@ -690,9 +746,15 @@ const [visible, setVisible] = useState(false)
 return (
   <>
     <CButton onClick={() => setVisible(!visible)}>Vertically centered scrollable modal</CButton>
-    <CModal alignment="center" scrollable visible={visible} onClose={() => setVisible(false)}>
+    <CModal
+      alignment="center"
+      scrollable
+      visible={visible}
+      onClose={() => setVisible(false)}
+      aria-labelledby="VerticallyCenteredScrollableExample"
+    >
       <CModalHeader>
-        <CModalTitle>Modal title</CModalTitle>
+        <CModalTitle id="VerticallyCenteredScrollableExample">Modal title</CModalTitle>
       </CModalHeader>
       <CModalBody>
         <p>
@@ -737,9 +799,14 @@ export const TooltipsAndPopoversExample = () => {
   return (
     <>
       <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
-      <CModal alignment="center" visible={visible} onClose={() => setVisible(false)}>
+      <CModal
+        alignment="center"
+        visible={visible}
+        onClose={() => setVisible(false)}
+        aria-labelledby="TooltipsAndPopoverExample"
+      >
         <CModalHeader>
-          <CModalTitle>Modal title</CModalTitle>
+          <CModalTitle id="TooltipsAndPopoverExample">Modal title</CModalTitle>
         </CModalHeader>
         <CModalBody>
           <h5>Popover in a modal</h5>
@@ -781,9 +848,14 @@ const [visible, setVisible] = useState(false)
 return (
   <>
     <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
-    <CModal alignment="center" visible={visible} onClose={() => setVisible(false)}>
+    <CModal
+      alignment="center"
+      visible={visible}
+      onClose={() => setVisible(false)}
+      aria-labelledby="TooltipsAndPopoverExample"
+    >
       <CModalHeader>
-        <CModalTitle>Modal title</CModalTitle>
+        <CModalTitle id="TooltipsAndPopoverExample">Modal title</CModalTitle>
       </CModalHeader>
       <CModalBody>
         <h5>Popover in a modal</h5>
@@ -816,16 +888,160 @@ return (
 )
 ```
 
+### Toggle between modals
+
+Toggle between multiple modals with some clever placement of the `visible` props. **Please note multiple modals cannot be opened at the same time** — this method simply toggles between two separate modals.
+
+export const ToggleBetweenModalsExample = () => {
+  const [visible, setVisible] = useState(false)
+  const [visible2, setVisible2] = useState(false)
+  return (
+    <>
+      <CButton onClick={() => setVisible(!visible)}>Open first modal</CButton>
+      <CModal
+        visible={visible}
+        onClose={() => setVisible(false)}
+        aria-labelledby="ToggleBetweenModalsExample1"
+      >
+        <CModalHeader>
+          <CModalTitle id="ToggleBetweenModalsExample1">Modal 1 title</CModalTitle>
+        </CModalHeader>
+        <CModalBody>
+          <p>Show a second modal and hide this one with the button below.</p>
+        </CModalBody>
+        <CModalFooter>
+          <CButton
+            color="primary"
+            onClick={() => {
+              setVisible(false)
+              setVisible2(true)
+            }}
+          >
+            Open second modal
+          </CButton>
+        </CModalFooter>
+      </CModal>
+      <CModal
+        visible={visible2}
+        onClick={() => {
+          setVisible(true)
+          setVisible2(false)
+        }}
+        aria-labelledby="ToggleBetweenModalsExample2"
+      >
+        <CModalHeader>
+          <CModalTitle id="ToggleBetweenModalsExample2">Modal 2 title</CModalTitle>
+        </CModalHeader>
+        <CModalBody>
+          <p>Hide this modal and show the first with the button below.</p>
+        </CModalBody>
+        <CModalFooter>
+          <CButton
+            color="primary"
+            onClick={() => {
+              setVisible(true)
+              setVisible2(false)
+            }}
+          >
+            Back to first
+          </CButton>
+        </CModalFooter>
+      </CModal>
+    </>
+  )
+}
+
+<Example>
+  <ToggleBetweenModalsExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+const [visible2, setVisible2] = useState(false)
+return (
+  <>
+    <CButton onClick={() => setVisible(!visible)}>Open first modal</CButton>
+    <CModal
+      visible={visible}
+      onClose={() => setVisible(false)}
+      aria-labelledby="ToggleBetweenModalsExample1"
+    >
+      <CModalHeader>
+        <CModalTitle id="ToggleBetweenModalsExample1">Modal 1 title</CModalTitle>
+      </CModalHeader>
+      <CModalBody>
+        <p>Show a second modal and hide this one with the button below.</p>
+      </CModalBody>
+      <CModalFooter>
+        <CButton
+          color="primary"
+          onClick={() => {
+            setVisible(false)
+            setVisible2(true)
+          }}
+        >
+          Open second modal
+        </CButton>
+      </CModalFooter>
+    </CModal>
+    <CModal
+      visible={visible2}
+      onClick={() => {
+        setVisible(true)
+        setVisible2(false)
+      }}
+      aria-labelledby="ToggleBetweenModalsExample2"
+    >
+      <CModalHeader>
+        <CModalTitle id="ToggleBetweenModalsExample2">Modal 2 title</CModalTitle>
+      </CModalHeader>
+      <CModalBody>
+        <p>Hide this modal and show the first with the button below.</p>
+      </CModalBody>
+      <CModalFooter>
+        <CButton
+          color="primary"
+          onClick={() => {
+            setVisible(true)
+            setVisible2(false)
+          }}
+        >
+          Back to first
+        </CButton>
+      </CModalFooter>
+    </CModal>
+  </>
+)
+```
+
+### Change animation
+
+The variable `$modal-fade-transform` determines the transform state of React Modal component before the modal fade-in animation, whereas the variable `$modal-show-transform` determines the transform state of Modal component after the modal fade-in animation.
+
+If you want a zoom-in animation, for example, set `$modal-fade-transform: scale(.8)`.
+
+### Remove animation
+
+For modals that simply appear rather than fade into view, set `transition` to `false`.
+
+```jsx
+<CModal transition={false}>...</CModal>
+```
+
+### Accessibility
+
+Be sure to add `aria-labelledby="..."`, referencing the modal title, to `<CModal />` Additionally, you may give a description of your modal dialog with `aria-describedby` on `<CModal>`. Note that you don’t need to add `role="dialog` since we already add it.
+
 ## Optional sizes
 
 Modals have three optional sizes, available via modifier classes to be placed on a `<CModal>`. These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
 
-| Size | Property size | Modal max-width |
-| --- | --- | --- |
-| Small | `'sm'` | `300px` |
-| Default | None | `500px` |
-| Large | `'lg'` | `800px` |
-| Extra large | `'xl'` | `1140px` |
+| Size        | Property size | Modal max-width |
+| ----------- | ------------- | --------------- |
+| Small       | `'sm'`        | `300px`         |
+| Default     | None          | `500px`         |
+| Large       | `'lg'`        | `800px`         |
+| Extra large | `'xl'`        | `1140px`        |
 
 export const OptionalSizesExample = () => {
   const [visibleXL, setVisibleXL] = useState(false)
@@ -836,21 +1052,36 @@ export const OptionalSizesExample = () => {
       <CButton onClick={() => setVisibleXL(!visibleXL)}>Extra large modal</CButton>
       <CButton onClick={() => setVisibleLg(!visibleLg)}>Large modal</CButton>
       <CButton onClick={() => setVisibleSm(!visibleSm)}>Small modal</CButton>
-      <CModal size="xl" visible={visibleXL} onClose={() => setVisibleXL(false)}>
+      <CModal
+        size="xl"
+        visible={visibleXL}
+        onClose={() => setVisibleXL(false)}
+        aria-labelledby="OptionalSizesExample1"
+      >
         <CModalHeader>
-          <CModalTitle>Extra large modal</CModalTitle>
+          <CModalTitle id="OptionalSizesExample1">Extra large modal</CModalTitle>
         </CModalHeader>
         <CModalBody>...</CModalBody>
       </CModal>
-      <CModal size="lg" visible={visibleLg} onClose={() => setVisibleLg(false)}>
+      <CModal
+        size="lg"
+        visible={visibleLg}
+        onClose={() => setVisibleLg(false)}
+        aria-labelledby="OptionalSizesExample2"
+      >
         <CModalHeader>
-          <CModalTitle>Large modal</CModalTitle>
+          <CModalTitle id="OptionalSizesExample2">Large modal</CModalTitle>
         </CModalHeader>
         <CModalBody>...</CModalBody>
       </CModal>
-      <CModal size="sm" visible={visibleSm} onClose={() => setVisibleSm(false)}>
+      <CModal
+        size="sm"
+        visible={visibleSm}
+        onClose={() => setVisibleSm(false)}
+        aria-labelledby="OptionalSizesExample3"
+      >
         <CModalHeader>
-          <CModalTitle>Small modal</CModalTitle>
+          <CModalTitle id="OptionalSizesExample3">Small modal</CModalTitle>
         </CModalHeader>
         <CModalBody>...</CModalBody>
       </CModal>
@@ -871,21 +1102,36 @@ return (
     <CButton onClick={() => setVisibleXL(!visibleXL)}>Extra large modal</CButton>
     <CButton onClick={() => setVisibleLg(!visibleLg)}>Large modal</CButton>
     <CButton onClick={() => setVisibleSm(!visibleSm)}>Small modal</CButton>
-    <CModal size="xl" visible={visibleXL} onClose={() => setVisibleXL(false)}>
+    <CModal
+      size="xl"
+      visible={visibleXL}
+      onClose={() => setVisibleXL(false)}
+      aria-labelledby="OptionalSizesExample1"
+    >
       <CModalHeader>
-        <CModalTitle>Extra large modal</CModalTitle>
+        <CModalTitle id="OptionalSizesExample1">Extra large modal</CModalTitle>
       </CModalHeader>
       <CModalBody>...</CModalBody>
     </CModal>
-    <CModal size="lg" visible={visibleLg} onClose={() => setVisibleLg(false)}>
+    <CModal
+      size="lg"
+      visible={visibleLg}
+      onClose={() => setVisibleLg(false)}
+      aria-labelledby="OptionalSizesExample2"
+    >
       <CModalHeader>
-        <CModalTitle>Large modal</CModalTitle>
+        <CModalTitle id="OptionalSizesExample2">Large modal</CModalTitle>
       </CModalHeader>
       <CModalBody>...</CModalBody>
     </CModal>
-    <CModal size="sm" visible={visibleSm} onClose={() => setVisibleSm(false)}>
+    <CModal
+      size="sm"
+      visible={visibleSm}
+      onClose={() => setVisibleSm(false)}
+      aria-labelledby="OptionalSizesExample3"
+    >
       <CModalHeader>
-        <CModalTitle>Small modal</CModalTitle>
+        <CModalTitle id="OptionalSizesExample3">Small modal</CModalTitle>
       </CModalHeader>
       <CModalBody>...</CModalBody>
     </CModal>
@@ -897,14 +1143,14 @@ return (
 
 Another override is the option to pop up a React modal component that covers the user viewport, available via property `fullscrean`.
 
-| Fullscrean | Availability |
-| --- | --- |
-| `true` | Always |
-| `'sm'` | Below `576px` |
-| `'md'` | Below `768px` |
-| `'lg'` | Below `992px` |
-| `'xl'` | Below `1200px` |
-| `'xxl'` | Below `1400px` |
+| Fullscrean | Availability   |
+| ---------- | -------------- |
+| `true`     | Always         |
+| `'sm'`     | Below `576px`  |
+| `'md'`     | Below `768px`  |
+| `'lg'`     | Below `992px`  |
+| `'xl'`     | Below `1200px` |
+| `'xxl'`    | Below `1400px` |
 
 export const FullscreenExample = () => {
   const [visible, setVisible] = useState(false)
@@ -921,39 +1167,69 @@ export const FullscreenExample = () => {
       <CButton onClick={() => setVisibleLg(!visibleLg)}>Full screen below lg</CButton>
       <CButton onClick={() => setVisibleXL(!visibleXL)}>Full screen below xl</CButton>
       <CButton onClick={() => setVisibleXXL(!visibleXXL)}>Full screen below xxl</CButton>
-      <CModal fullscreen visible={visible} onClose={() => setVisible(false)}>
+      <CModal
+        fullscreen
+        visible={visible}
+        onClose={() => setVisible(false)}
+        aria-labelledby="FullscreenExample1"
+      >
         <CModalHeader>
-          <CModalTitle>Full screen</CModalTitle>
+          <CModalTitle id="FullscreenExample1">Full screen</CModalTitle>
         </CModalHeader>
         <CModalBody>...</CModalBody>
       </CModal>
-      <CModal fullscreen="sm" visible={visibleSm} onClose={() => setVisibleSm(false)}>
+      <CModal
+        fullscreen="sm"
+        visible={visibleSm}
+        onClose={() => setVisibleSm(false)}
+        aria-labelledby="FullscreenExample2"
+      >
         <CModalHeader>
-          <CModalTitle>Full screen below sm</CModalTitle>
+          <CModalTitle id="FullscreenExample2">Full screen below sm</CModalTitle>
         </CModalHeader>
         <CModalBody>...</CModalBody>
       </CModal>
-      <CModal fullscreen="md" visible={visibleMd} onClose={() => setVisibleMd(false)}>
+      <CModal
+        fullscreen="md"
+        visible={visibleMd}
+        onClose={() => setVisibleMd(false)}
+        aria-labelledby="FullscreenExample3"
+      >
         <CModalHeader>
-          <CModalTitle>Full screen below md</CModalTitle>
+          <CModalTitle id="FullscreenExample3">Full screen below md</CModalTitle>
         </CModalHeader>
         <CModalBody>...</CModalBody>
       </CModal>
-      <CModal fullscreen="lg" visible={visibleLg} onClose={() => setVisibleLg(false)}>
+      <CModal
+        fullscreen="lg"
+        visible={visibleLg}
+        onClose={() => setVisibleLg(false)}
+        aria-labelledby="FullscreenExample4"
+      >
         <CModalHeader>
-          <CModalTitle>Full screen below lg</CModalTitle>
+          <CModalTitle id="FullscreenExample4">Full screen below lg</CModalTitle>
         </CModalHeader>
         <CModalBody>...</CModalBody>
       </CModal>
-      <CModal fullscreen="xl" visible={visibleXL} onClose={() => setVisibleXL(false)}>
+      <CModal
+        fullscreen="xl"
+        visible={visibleXL}
+        onClose={() => setVisibleXL(false)}
+        aria-labelledby="FullscreenExample5"
+      >
         <CModalHeader>
-          <CModalTitle>Full screen below xl</CModalTitle>
+          <CModalTitle id="FullscreenExample5">Full screen below xl</CModalTitle>
         </CModalHeader>
         <CModalBody>...</CModalBody>
       </CModal>
-      <CModal fullscreen="xxl" visible={visibleXXL} onClose={() => setVisibleXXL(false)}>
+      <CModal
+        fullscreen="xxl"
+        visible={visibleXXL}
+        onClose={() => setVisibleXXL(false)}
+        aria-labelledby="FullscreenExample6"
+      >
         <CModalHeader>
-          <CModalTitle>Full screen below xxl</CModalTitle>
+          <CModalTitle id="FullscreenExample6">Full screen below xxl</CModalTitle>
         </CModalHeader>
         <CModalBody>...</CModalBody>
       </CModal>
@@ -980,39 +1256,69 @@ return (
     <CButton onClick={() => setVisibleLg(!visibleLg)}>Full screen below lg</CButton>
     <CButton onClick={() => setVisibleXL(!visibleXL)}>Full screen below xl</CButton>
     <CButton onClick={() => setVisibleXXL(!visibleXXL)}>Full screen below xxl</CButton>
-    <CModal fullscreen visible={visible} onClose={() => setVisible(false)}>
+    <CModal
+      fullscreen
+      visible={visible}
+      onClose={() => setVisible(false)}
+      aria-labelledby="FullscreenExample1"
+    >
       <CModalHeader>
-        <CModalTitle>Full screen</CModalTitle>
+        <CModalTitle id="FullscreenExample1">Full screen</CModalTitle>
       </CModalHeader>
       <CModalBody>...</CModalBody>
     </CModal>
-    <CModal fullscreen="sm" visible={visibleSm} onClose={() => setVisibleSm(false)}>
+    <CModal
+      fullscreen="sm"
+      visible={visibleSm}
+      onClose={() => setVisibleSm(false)}
+      aria-labelledby="FullscreenExample2"
+    >
       <CModalHeader>
-        <CModalTitle>Full screen below sm</CModalTitle>
+        <CModalTitle id="FullscreenExample2">Full screen below sm</CModalTitle>
       </CModalHeader>
       <CModalBody>...</CModalBody>
     </CModal>
-    <CModal fullscreen="md" visible={visibleMd} onClose={() => setVisibleMd(false)}>
+    <CModal
+      fullscreen="md"
+      visible={visibleMd}
+      onClose={() => setVisibleMd(false)}
+      aria-labelledby="FullscreenExample3"
+    >
       <CModalHeader>
-        <CModalTitle>Full screen below md</CModalTitle>
+        <CModalTitle id="FullscreenExample3">Full screen below md</CModalTitle>
       </CModalHeader>
       <CModalBody>...</CModalBody>
     </CModal>
-    <CModal fullscreen="lg" visible={visibleLg} onClose={() => setVisibleLg(false)}>
+    <CModal
+      fullscreen="lg"
+      visible={visibleLg}
+      onClose={() => setVisibleLg(false)}
+      aria-labelledby="FullscreenExample4"
+    >
       <CModalHeader>
-        <CModalTitle>Full screen below lg</CModalTitle>
+        <CModalTitle id="FullscreenExample4">Full screen below lg</CModalTitle>
       </CModalHeader>
       <CModalBody>...</CModalBody>
     </CModal>
-    <CModal fullscreen="xl" visible={visibleXL} onClose={() => setVisibleXL(false)}>
+    <CModal
+      fullscreen="xl"
+      visible={visibleXL}
+      onClose={() => setVisibleXL(false)}
+      aria-labelledby="FullscreenExample5"
+    >
       <CModalHeader>
-        <CModalTitle>Full screen below xl</CModalTitle>
+        <CModalTitle id="FullscreenExample5">Full screen below xl</CModalTitle>
       </CModalHeader>
       <CModalBody>...</CModalBody>
     </CModal>
-    <CModal fullscreen="xxl" visible={visibleXXL} onClose={() => setVisibleXXL(false)}>
+    <CModal
+      fullscreen="xxl"
+      visible={visibleXXL}
+      onClose={() => setVisibleXXL(false)}
+      aria-labelledby="FullscreenExample6"
+    >
       <CModalHeader>
-        <CModalTitle>Full screen below xxl</CModalTitle>
+        <CModalTitle id="FullscreenExample6">Full screen below xxl</CModalTitle>
       </CModalHeader>
       <CModalBody>...</CModalBody>
     </CModal>
@@ -1026,29 +1332,29 @@ return (
 
 React modals use local CSS variables on `.modal` and `.modal-backdrop` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-<ScssDocs file="_modal.scss" capture="modal-css-vars"/>
+<ScssDocs file="_modal.scss" capture="modal-css-vars" />
 
-<ScssDocs file="_modal.scss" capture="modal-backdrop-css-vars"/>
+<ScssDocs file="_modal.scss" capture="modal-backdrop-css-vars" />
 
 #### How to use CSS variables
 
 ```jsx
-const vars = { 
+const vars = {
   '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+  '--my-another-css-var': 'red',
 }
 return <CModal style={vars}>...</CModal>
 ```
 
 ### SASS variables
 
-<ScssDocs file="_variables.scss" capture="modal-variables"/>
+<ScssDocs file="_variables.scss" capture="modal-variables" />
 
 ### SASS loops
 
 [Responsive fullscreen modals](#fullscreen-modal) are generated via the `$breakpoints` map and a loop in `scss/_modal.scss`.
 
-<ScssDocs file="_modal.scss" capture="modal-fullscreen-loop"/>
+<ScssDocs file="_modal.scss" capture="modal-fullscreen-loop" />
 
 ## API
 
