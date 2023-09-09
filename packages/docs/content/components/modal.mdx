@@ -1030,7 +1030,7 @@ For modals that simply appear rather than fade into view, set `transition` to `f
 
 ### Accessibility
 
-Be sure to add `aria-labelledby="..."`, referencing the modal title, to `<CModal />` Additionally, you may give a description of your modal dialog with `aria-describedby` on `<CModal>`. Note that you don’t need to add `role="dialog` since we already add it.
+Be sure to add `aria-labelledby="..."`, referencing the modal title, to `<CModal />` Additionally, you may give a description of your modal dialog with `aria-describedby` on `<CModal>`. Note that you don’t need to add `role="dialog`, `aria-hidden="true"`, and `aria-modal="true"` since we already add it.
 
 ## Optional sizes
 
