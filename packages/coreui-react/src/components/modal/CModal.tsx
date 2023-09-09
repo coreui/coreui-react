@@ -111,6 +111,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     },
     ref,
   ) => {
+    const activeElementRef = useRef<HTMLElement | null>(null)
     const modalRef = useRef<HTMLDivElement>(null)
     const modalContentRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, modalRef)
@@ -129,8 +130,13 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
 
     useEffect(() => {
       if (_visible) {
+        activeElementRef.current = document.activeElement as HTMLElement | null
         document.addEventListener('mouseup', handleClickOutside)
         document.addEventListener('keydown', handleKeyDown)
+      } else {
+        if (activeElementRef.current) {
+          activeElementRef.current.focus()
+        }
       }
 
       return () => {
@@ -145,6 +151,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       }
 
       setVisible(false)
+
       return onClose && onClose()
     }
 
