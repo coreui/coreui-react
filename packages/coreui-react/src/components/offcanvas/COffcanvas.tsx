@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
 
-import { CBackdrop } from '../backdrop/CBackdrop'
+import { CBackdrop } from '../backdrop'
 import { CConditionalPortal } from '../conditional-portal'
 
 import { useForkedRef } from '../../hooks'
