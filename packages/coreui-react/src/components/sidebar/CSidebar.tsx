@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { CBackdrop } from '../backdrop/CBackdrop'
+import { CBackdrop } from '../backdrop'
 
 import { isInViewport } from '../../utils'
 import { useForkedRef } from '../../hooks'
