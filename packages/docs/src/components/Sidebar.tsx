@@ -23,7 +23,7 @@ const Sidebar: FC<SidebarProps> = ({ ...props }) => {
     <AppContext.Consumer>
       {(context) => (
         <CSidebar
-          className="docs-sidebar border-end ps-xl-4 elevation-0"
+          className="docs-sidebar border-end px-xl-4 elevation-0"
           position="fixed"
           size="lg"
           visible={context.sidebarVisible}
@@ -48,8 +48,8 @@ const Sidebar: FC<SidebarProps> = ({ ...props }) => {
               </g>
             </svg>
           </CSidebarBrand>
-          <div className="text-body-secondary ms-3 me-5 mb-2 small fw-semibold">Framework:</div>
-          <CDropdown className="ms-3 me-5 mb-4">
+          <div className="text-body-secondary mx-3 mb-2 small fw-semibold">Framework:</div>
+          <CDropdown className="mx-3 mb-4">
             <CDropdownToggle color="primary" variant="outline">
               React.js
             </CDropdownToggle>
