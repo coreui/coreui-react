@@ -48,7 +48,7 @@ export const CWidgetStatsB = forwardRef<HTMLDivElement, CWidgetStatsBProps>(
       <CCard
         className={className}
         color={color}
-        {...(inverse && { textColor: 'high-emphasis-inverse' })}
+        {...(inverse && { textColor: 'white' })}
         {...rest}
         ref={ref}
       >
@@ -57,7 +57,7 @@ export const CWidgetStatsB = forwardRef<HTMLDivElement, CWidgetStatsBProps>(
           {title && <div>{title}</div>}
           <CProgress className="my-2" height={4} {...(inverse && { white: true })} {...progress} />
           {text && (
-            <small className={inverse ? 'text-medium-emphasis-inverse' : 'text-medium-emphasis'}>
+            <small className={inverse ? 'text-white text-opacity-75' : 'text-body-secondary'}>
               {text}
             </small>
           )}

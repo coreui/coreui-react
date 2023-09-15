@@ -23,7 +23,7 @@ test('CWidgetStatsA customize', async () => {
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bg-info')
-  expect(container.firstChild).toHaveClass('text-high-emphasis-inverse')
+  expect(container.firstChild).toHaveClass('text-white')
   expect(container.firstChild).toHaveClass('bazinga')
   if (container.firstChild === null) {
     expect(true).toBe(false)

@@ -3,7 +3,7 @@
 exports[`CWidgetStatsC customize 1`] = `
 <div>
   <div
-    class="card bg-info text-high-emphasis-inverse bazinga"
+    class="card bg-info text-white bazinga"
   >
     <div
       class="card-body"
@@ -14,7 +14,7 @@ exports[`CWidgetStatsC customize 1`] = `
         icon
       </div>
       <div
-        class="text-high-emphasis-inverse fs-4 fw-semibold"
+        class="text-white fs-4 fw-semibold"
       >
         value
       </div>

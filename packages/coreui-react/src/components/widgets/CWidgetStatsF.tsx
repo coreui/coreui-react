@@ -47,7 +47,7 @@ export const CWidgetStatsF = forwardRef<HTMLDivElement, CWidgetStatsFProps>(
           <div className={`me-3 text-white bg-${color} ${padding ? 'p-3' : 'p-4'}`}>{icon}</div>
           <div>
             <div className={`fs-6 fw-semibold text-${color}`}>{value}</div>
-            <div className="text-medium-emphasis text-uppercase fw-semibold small">{title}</div>
+            <div className="text-body-secondary text-uppercase fw-semibold small">{title}</div>
           </div>
         </CCardBody>
         {footer && <CCardFooter>{footer}</CCardFooter>}

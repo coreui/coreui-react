@@ -47,7 +47,7 @@ test('CWidgetStatsF customize', async () => {
         expect(container.firstChild.firstChild.lastChild.firstChild).toHaveClass('text-info')
         expect(container.firstChild.firstChild.lastChild.firstChild).toHaveTextContent('value')
         expect(container.firstChild.firstChild.lastChild.lastChild).toHaveClass(
-          'text-medium-emphasis',
+          'text-body-secondary',
         )
         expect(container.firstChild.firstChild.lastChild.lastChild).toHaveClass('text-uppercase')
         expect(container.firstChild.firstChild.lastChild.lastChild).toHaveClass('fw-semibold ')

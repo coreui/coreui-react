@@ -32,7 +32,7 @@ test('CWidgetStatsB customize', async () => {
     expect(container.firstChild.firstChild.firstChild).toHaveClass('fs-4')
     expect(container.firstChild.firstChild.firstChild).toHaveClass('fw-semibold')
     expect(container.firstChild.firstChild.firstChild).toHaveTextContent('value')
-    expect(container.firstChild.firstChild.lastChild).toHaveClass('text-medium-emphasis-inverse')
+    expect(container.firstChild.firstChild.lastChild).toHaveClass('text-white')
     expect(container.firstChild.firstChild.lastChild).toHaveTextContent('text')
   }
 })

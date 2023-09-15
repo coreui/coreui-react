@@ -61,7 +61,7 @@ export const CWidgetStatsD = forwardRef<HTMLDivElement, CWidgetStatsDProps>(
                   {index % 2 !== 0 && <div className="vr"></div>}
                   <CCol>
                     <div className="fs-5 fw-semibold">{value.value}</div>
-                    <div className="text-uppercase text-medium-emphasis small">{value.title}</div>
+                    <div className="text-uppercase text-body-secondary small">{value.title}</div>
                   </CCol>
                 </React.Fragment>
               )

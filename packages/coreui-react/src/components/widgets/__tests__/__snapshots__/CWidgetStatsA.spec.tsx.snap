@@ -3,7 +3,7 @@
 exports[`CWidgetStatsA customize 1`] = `
 <div>
   <div
-    class="card bg-info text-high-emphasis-inverse bazinga"
+    class="card bg-info text-white bazinga"
   >
     <div
       class="card-body pb-0 d-flex justify-content-between align-items-start"

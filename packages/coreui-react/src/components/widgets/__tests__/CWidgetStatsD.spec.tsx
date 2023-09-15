@@ -42,7 +42,7 @@ test('CWidgetStatsD customize', async () => {
       expect(container.firstChild.lastChild.firstChild.firstChild).toHaveTextContent('89K')
       expect(container.firstChild.lastChild.firstChild.lastChild).toHaveClass('text-uppercase')
       expect(container.firstChild.lastChild.firstChild.lastChild).toHaveClass(
-        'text-medium-emphasis',
+        'text-body-secondary',
       )
       expect(container.firstChild.lastChild.firstChild.lastChild).toHaveClass('small')
       expect(container.firstChild.lastChild.firstChild.lastChild).toHaveTextContent('friends')

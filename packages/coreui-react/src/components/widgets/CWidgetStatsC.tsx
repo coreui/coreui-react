@@ -48,23 +48,15 @@ export const CWidgetStatsC = forwardRef<HTMLDivElement, CWidgetStatsCProps>(
       <CCard
         className={className}
         color={color}
-        {...(inverse && { textColor: 'high-emphasis-inverse' })}
+        {...(inverse && { textColor: 'white' })}
         {...rest}
         ref={ref}
       >
         <CCardBody>
-          {icon && (
-            <div className={`text-medium-emphasis${inverse ? '-inverse' : ''} text-end mb-4`}>
-              {icon}
-            </div>
-          )}
-          {value && (
-            <div className={`text-high-emphasis${inverse ? '-inverse' : ''} fs-4 fw-semibold`}>
-              {value}
-            </div>
-          )}
+          {icon && <div className="text-end mb-4">{icon}</div>}
+          {value && <div className="fs-4 fw-semibold">{value}</div>}
           {title && (
-            <div className={inverse ? 'text-medium-emphasis-inverse' : 'text-medium-emphasis'}>
+            <div className={inverse ? 'text-white text-opacity-75' : 'text-body-secondary'}>
               {title}
             </div>
           )}

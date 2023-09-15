@@ -21,7 +21,7 @@ test('CWidgetStatsE customize', async () => {
     expect(true).toBe(false)
   } else {
     expect(container.firstChild.firstChild).toHaveClass('card-body')
-    expect(container.firstChild.firstChild.firstChild).toHaveClass('text-medium-emphasis')
+    expect(container.firstChild.firstChild.firstChild).toHaveClass('text-body-secondary')
     expect(container.firstChild.firstChild.firstChild).toHaveClass('small')
     expect(container.firstChild.firstChild.firstChild).toHaveClass('text-uppercase')
     expect(container.firstChild.firstChild.firstChild).toHaveClass('fw-semibold')

@@ -41,7 +41,7 @@ export const CWidgetStatsA = forwardRef<HTMLDivElement, CWidgetStatsAProps>(
     return (
       <CCard
         className={classNames(
-          { [`bg-${color}`]: color, 'text-high-emphasis-inverse': color },
+          { [`bg-${color}`]: color, 'text-white': color },
           className,
         )}
         {...rest}

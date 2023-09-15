@@ -29,7 +29,7 @@ export const CWidgetStatsE = forwardRef<HTMLDivElement, CWidgetStatsEProps>(
       <CCard className={classNames(className)} {...rest} ref={ref}>
         <CCardBody className="text-center">
           {title && (
-            <div className="text-medium-emphasis small text-uppercase fw-semibold">{title}</div>
+            <div className="text-body-secondary small text-uppercase fw-semibold">{title}</div>
           )}
           {value && <div className="fs-6 fw-semibold py-3">{value}</div>}
           {chart}
