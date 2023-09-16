@@ -39,7 +39,7 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
   trigger = 'click',
   ...rest
 }) => {
-  const { dropdownToggleRef, variant, visible, setVisible } = useContext(CDropdownContext)
+  const { dropdownToggleRef, visible, setVisible } = useContext(CDropdownContext)
 
   const triggers = {
     ...((trigger === 'click' || trigger.includes('click')) && {
@@ -58,8 +58,7 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
     className: classNames(
       {
         'dropdown-toggle': caret,
-        'dropdown-toggle-split': split,
-        'nav-link': variant === 'nav-item',
+        'dropdown-toggle-split': split
       },
       className,
     ),
@@ -67,7 +66,6 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
     ...(!rest.disabled && { ...triggers }),
   }
 
-  // We use any because Toggler can be `a` as well as `button`.
   const Toggler = () => {
     if (custom && React.isValidElement(children)) {
       return (
@@ -78,14 +76,6 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
             ref: dropdownToggleRef,
           })}
         </>
-      )
-    }
-
-    if (variant === 'nav-item') {
-      return (
-        <a href="#" {...togglerProps} ref={dropdownToggleRef}>
-          {children}
-        </a>
       )
     }
 
