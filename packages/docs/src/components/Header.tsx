@@ -64,7 +64,7 @@ const Header: FC = () => {
                 <hr className="d-lg-none my-2 text-white-50" />
               </li>
               <CDropdown variant="nav-item" placement="bottom-end">
-                <CDropdownToggle caret={false}>
+                <CDropdownToggle className="nav-link" color="link" caret={false}>
                   {colorMode === 'dark' ? (
                     <CIcon icon={cilMoon} size="xl" />
                   ) : (colorMode === 'auto' ? (
