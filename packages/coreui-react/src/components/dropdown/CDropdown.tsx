@@ -107,6 +107,23 @@ interface ContextProps extends CDropdownProps {
   portal: boolean
 }
 
+export const getNextActiveElement = (list: HTMLElement[], activeElement: HTMLElement, shouldGetNext: boolean, isCycleAllowed: boolean) => {
+  const listLength = list.length
+  let index = list.indexOf(activeElement)
+
+  if (index === -1) {
+    return !shouldGetNext && isCycleAllowed ? list[listLength - 1] : list[0]
+  }
+
+  index += shouldGetNext ? 1 : -1
+
+  if (isCycleAllowed) {
+    index = (index + listLength) % listLength
+  }
+
+  return list[Math.max(0, Math.min(index, listLength - 1))]
+}
+
 const getPlacement = (
   placement: Placements,
   direction: CDropdownProps['direction'],
@@ -206,10 +223,12 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
     }, [visible])
 
     useEffect(() => {
-      if (_visible && dropdownToggleRef.current && dropdownMenuRef.current) {
+      if (_visible && dropdownRef.current && dropdownToggleRef.current && dropdownMenuRef.current) {
+        dropdownToggleRef.current.focus()
         popper && initPopper(dropdownToggleRef.current, dropdownMenuRef.current, popperConfig)
         window.addEventListener('mouseup', handleMouseUp)
         window.addEventListener('keyup', handleKeyup)
+        dropdownRef.current.addEventListener('keydown', handleKeydown)
         onShow && onShow()
       }
 
@@ -217,9 +236,19 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
         popper && destroyPopper()
         window.removeEventListener('mouseup', handleMouseUp)
         window.removeEventListener('keyup', handleKeyup)
+        dropdownRef.current && dropdownRef.current.removeEventListener('keydown', handleKeydown)
         onHide && onHide()
       }
     }, [_visible])
+
+    const handleKeydown = (event: KeyboardEvent) => {
+      if (_visible && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
+        const target = event.target as HTMLElement
+        event.preventDefault()
+        const items = [].concat(...Element.prototype.querySelectorAll.call(dropdownRef.current, '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'))
+        getNextActiveElement(items, target, event.key === 'ArrowDown', true).focus()
+      }
+    }
 
     const handleKeyup = (event: KeyboardEvent) => {
       if (autoClose === false) {
