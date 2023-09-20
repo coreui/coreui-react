@@ -80,7 +80,7 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
     }
 
     return (
-      <CButton type="button" {...togglerProps} tabIndex={0} {...rest} ref={dropdownToggleRef}>
+      <CButton {...togglerProps} tabIndex={0} {...rest} ref={dropdownToggleRef}>
         {children}
         {split && <span className="visually-hidden">Toggle Dropdown</span>}
       </CButton>

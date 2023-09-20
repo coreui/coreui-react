@@ -77,7 +77,7 @@ export const CButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, CButton
     return (
       <CLink
         component={rest.href ? 'a' : component}
-        type={type}
+        {...(!rest.href && { type: type })}
         className={classNames(
           'btn',
           variant ? `btn-${variant}-${color}` : `btn-${color}`,
