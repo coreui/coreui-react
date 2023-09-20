@@ -58,7 +58,8 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
     className: classNames(
       {
         'dropdown-toggle': caret,
-        'dropdown-toggle-split': split
+        'dropdown-toggle-split': split,
+        show: visible,
       },
       className,
     ),

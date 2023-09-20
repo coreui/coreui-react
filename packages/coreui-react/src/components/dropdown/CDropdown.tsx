@@ -107,7 +107,12 @@ interface ContextProps extends CDropdownProps {
   portal: boolean
 }
 
-export const getNextActiveElement = (list: HTMLElement[], activeElement: HTMLElement, shouldGetNext: boolean, isCycleAllowed: boolean) => {
+export const getNextActiveElement = (
+  list: HTMLElement[],
+  activeElement: HTMLElement,
+  shouldGetNext: boolean,
+  isCycleAllowed: boolean,
+) => {
   const listLength = list.length
   let index = list.indexOf(activeElement)
 
@@ -223,12 +228,13 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
     }, [visible])
 
     useEffect(() => {
-      if (_visible && dropdownRef.current && dropdownToggleRef.current && dropdownMenuRef.current) {
+      if (_visible && dropdownToggleRef.current && dropdownMenuRef.current) {
         dropdownToggleRef.current.focus()
         popper && initPopper(dropdownToggleRef.current, dropdownMenuRef.current, popperConfig)
         window.addEventListener('mouseup', handleMouseUp)
         window.addEventListener('keyup', handleKeyup)
-        dropdownRef.current.addEventListener('keydown', handleKeydown)
+        dropdownToggleRef.current.addEventListener('keydown', handleKeydown)
+        dropdownMenuRef.current.addEventListener('keydown', handleKeydown)
         onShow && onShow()
       }
 
@@ -236,7 +242,10 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
         popper && destroyPopper()
         window.removeEventListener('mouseup', handleMouseUp)
         window.removeEventListener('keyup', handleKeyup)
-        dropdownRef.current && dropdownRef.current.removeEventListener('keydown', handleKeydown)
+        dropdownToggleRef.current &&
+          dropdownToggleRef.current.removeEventListener('keydown', handleKeydown)
+        dropdownMenuRef.current &&
+          dropdownMenuRef.current.removeEventListener('keydown', handleKeydown)
         onHide && onHide()
       }
     }, [_visible])
@@ -245,7 +254,12 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       if (_visible && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
         const target = event.target as HTMLElement
         event.preventDefault()
-        const items = [].concat(...Element.prototype.querySelectorAll.call(dropdownRef.current, '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'))
+        const items = [].concat(
+          ...Element.prototype.querySelectorAll.call(
+            dropdownMenuRef.current,
+            '.dropdown-item:not(.disabled):not(:disabled)',
+          ),
+        )
         getNextActiveElement(items, target, event.key === 'ArrowDown', true).focus()
       }
     }
@@ -292,7 +306,6 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
                 'dropup dropup-center': direction === 'dropup-center',
                 [`${direction}`]:
                   direction && direction !== 'center' && direction !== 'dropup-center',
-                show: _visible,
               },
               className,
             )}
