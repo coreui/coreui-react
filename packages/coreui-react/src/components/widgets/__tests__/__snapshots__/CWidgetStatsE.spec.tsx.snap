@@ -9,7 +9,7 @@ exports[`CWidgetStatsE customize 1`] = `
       class="card-body text-center"
     >
       <div
-        class="text-medium-emphasis small text-uppercase fw-semibold"
+        class="text-body-secondary small text-uppercase fw-semibold"
       >
         title
       </div>

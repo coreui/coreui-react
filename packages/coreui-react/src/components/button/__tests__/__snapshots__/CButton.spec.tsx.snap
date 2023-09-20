@@ -19,7 +19,6 @@ exports[`CButton customize witch href 1`] = `
   <a
     class="btn btn-primary"
     href="/bazinga"
-    type="button"
   >
     Test
   </a>

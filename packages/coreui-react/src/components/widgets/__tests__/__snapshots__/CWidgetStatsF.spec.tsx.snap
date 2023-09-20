@@ -20,7 +20,7 @@ exports[`CWidgetStatsF customize 1`] = `
           value
         </div>
         <div
-          class="text-medium-emphasis text-uppercase fw-semibold small"
+          class="text-body-secondary text-uppercase fw-semibold small"
         >
           title
         </div>
@@ -51,7 +51,7 @@ exports[`loads and displays CWidgetStatsF component 1`] = `
           class="fs-6 fw-semibold text-undefined"
         />
         <div
-          class="text-medium-emphasis text-uppercase fw-semibold small"
+          class="text-body-secondary text-uppercase fw-semibold small"
         />
       </div>
     </div>

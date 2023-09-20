@@ -5,22 +5,26 @@ exports[`loads and displays CCarousel component 1`] = `
   <div
     class="carousel slide"
   >
-    <ol
+    <div
       class="carousel-indicators"
     >
-      <li
+      <button
+        aria-current="true"
+        aria-label="Slide 1"
         class="active"
         data-coreui-target=""
       />
-      <li
+      <button
+        aria-label="Slide 2"
         class=""
         data-coreui-target=""
       />
-      <li
+      <button
+        aria-label="Slide 3"
         class=""
         data-coreui-target=""
       />
-    </ol>
+    </div>
     <div
       class="carousel-inner"
     >

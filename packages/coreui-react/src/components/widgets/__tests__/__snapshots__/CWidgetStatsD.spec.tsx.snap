@@ -20,7 +20,7 @@ exports[`CWidgetStatsD customize 1`] = `
           89K
         </div>
         <div
-          class="text-uppercase text-medium-emphasis small"
+          class="text-uppercase text-body-secondary small"
         >
           friends
         </div>
@@ -37,7 +37,7 @@ exports[`CWidgetStatsD customize 1`] = `
           459
         </div>
         <div
-          class="text-uppercase text-medium-emphasis small"
+          class="text-uppercase text-body-secondary small"
         >
           feeds
         </div>

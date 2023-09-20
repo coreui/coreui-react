@@ -41,13 +41,14 @@ exports[`CNav example 1`] = `
     <li
       class="nav-item dropdown"
     >
-      <a
+      <button
         aria-expanded="false"
-        class="dropdown-toggle nav-link"
-        href="#"
+        class="btn btn-primary dropdown-toggle"
+        tabindex="0"
+        type="button"
       >
         A
-      </a>
+      </button>
       <ul
         aria-hidden="true"
         class="dropdown-menu"

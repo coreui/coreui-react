@@ -26,9 +26,9 @@ test('CNavbar customize', async () => {
   expect(container.firstChild).toHaveClass('bazinga')
   expect(container.firstChild).toHaveClass('navbar')
   expect(container.firstChild).toHaveClass('bg-warning')
-  expect(container.firstChild).toHaveClass('navbar-dark')
   expect(container.firstChild).toHaveClass('navbar-expand-lg')
   expect(container.firstChild).toHaveClass('fixed-bottom')
+  expect(container.firstChild).toHaveAttribute('data-coreui-theme', 'dark')
   const arrLength = container.getElementsByClassName('container-xl').length
   expect(arrLength).toBe(1)
 })
