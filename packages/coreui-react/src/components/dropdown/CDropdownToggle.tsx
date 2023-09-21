@@ -19,6 +19,12 @@ export interface CDropdownToggleProps extends Omit<CButtonProps, 'type'> {
    */
   custom?: boolean
   /**
+   * If a dropdown `variant` is set to `nav-item` then render the toggler as a link instead of a button.
+   * 
+   * @since v5.0.0-alpha.3
+   */
+  navLink?: boolean
+  /**
    * Similarly, create split button dropdowns with virtually the same markup as single button dropdowns, but with the addition of `.dropdown-toggle-split` className for proper spacing around the dropdown caret.
    */
   split?: boolean
@@ -35,11 +41,12 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
   caret = true,
   custom,
   className,
+  navLink = true,
   split,
   trigger = 'click',
   ...rest
 }) => {
-  const { dropdownToggleRef, visible, setVisible } = useContext(CDropdownContext)
+  const { dropdownToggleRef, variant, visible, setVisible } = useContext(CDropdownContext)
 
   const triggers = {
     ...((trigger === 'click' || trigger.includes('click')) && {
@@ -57,6 +64,7 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
   const togglerProps = {
     className: classNames(
       {
+        'nav-link': variant === 'nav-item' && navLink,
         'dropdown-toggle': caret,
         'dropdown-toggle-split': split,
         show: visible,
@@ -77,6 +85,14 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
             ref: dropdownToggleRef,
           })}
         </>
+      )
+    }
+
+    if (variant === 'nav-item' && navLink) {
+      return (
+        <a href="#" {...togglerProps} role="button" ref={dropdownToggleRef}>
+          {children}
+        </a>
       )
     }
 
