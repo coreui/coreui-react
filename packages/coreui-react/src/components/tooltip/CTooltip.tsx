@@ -94,7 +94,7 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
     const togglerRef = useRef(null)
     const forkedRef = useForkedRef(ref, tooltipRef)
 
-    const { popper, initPopper, destroyPopper } = usePopper()
+    const { initPopper, destroyPopper } = usePopper()
     const [_visible, setVisible] = useState(visible)
 
     const _delay = typeof delay === 'number' ? { show: delay, hide: delay } : delay
