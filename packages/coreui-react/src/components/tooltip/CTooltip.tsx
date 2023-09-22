@@ -1,10 +1,17 @@
-import React, { FC, HTMLAttributes, ReactNode, useRef, useEffect, useState } from 'react'
+import React, {
+  forwardRef,
+  HTMLAttributes,
+  ReactNode,
+  useRef,
+  useEffect,
+  useState,
+} from 'react'
 import { createPortal } from 'react-dom'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { Transition } from 'react-transition-group'
 
-import { usePopper } from '../../hooks'
+import { useForkedRef, usePopper } from '../../hooks'
 import { fallbackPlacementsPropType, triggerPropType } from '../../props'
 import type { Placements, Triggers } from '../../types'
 import { getRTLPlacement, getTransitionDurationFromElement } from '../../utils'
@@ -64,129 +71,139 @@ export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'con
   visible?: boolean
 }
 
-export const CTooltip: FC<CTooltipProps> = ({
-  children,
-  animation = true,
-  className,
-  content,
-  delay = 0,
-  fallbackPlacements = ['top', 'right', 'bottom', 'left'],
-  offset = [0, 6],
-  onHide,
-  onShow,
-  placement = 'top',
-  trigger = ['hover', 'focus'],
-  visible,
-  ...rest
-}) => {
-  const tooltipRef = useRef(null)
-  const togglerRef = useRef(null)
-  const { initPopper, destroyPopper } = usePopper()
-  const [_visible, setVisible] = useState(visible)
+export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
+  (
+    {
+      children,
+      animation = true,
+      className,
+      content,
+      delay = 0,
+      fallbackPlacements = ['top', 'right', 'bottom', 'left'],
+      offset = [0, 6],
+      onHide,
+      onShow,
+      placement = 'top',
+      trigger = ['hover', 'focus'],
+      visible,
+      ...rest
+    },
+    ref,
+  ) => {
+    const tooltipRef = useRef(null)
+    const togglerRef = useRef(null)
+    const forkedRef = useForkedRef(ref, tooltipRef)
 
-  const _delay = typeof delay === 'number' ? { show: delay, hide: delay } : delay
+    const { popper, initPopper, destroyPopper } = usePopper()
+    const [_visible, setVisible] = useState(visible)
 
-  const popperConfig = {
-    modifiers: [
-      {
-        name: 'arrow',
-        options: {
-          element: '.tooltip-arrow',
+    const _delay = typeof delay === 'number' ? { show: delay, hide: delay } : delay
+
+    const popperConfig = {
+      modifiers: [
+        {
+          name: 'arrow',
+          options: {
+            element: '.tooltip-arrow',
+          },
         },
-      },
-      {
-        name: 'flip',
-        options: {
-          fallbackPlacements: fallbackPlacements,
+        {
+          name: 'flip',
+          options: {
+            fallbackPlacements: fallbackPlacements,
+          },
         },
-      },
-      {
-        name: 'offset',
-        options: {
-          offset: offset,
+        {
+          name: 'offset',
+          options: {
+            offset: offset,
+          },
         },
-      },
-    ],
-    placement: getRTLPlacement(placement, togglerRef.current),
-  }
-
-  useEffect(() => {
-    setVisible(visible)
-  }, [visible])
-
-  useEffect(() => {
-    if (_visible && togglerRef.current && tooltipRef.current) {
-      initPopper(togglerRef.current, tooltipRef.current, popperConfig)
+      ],
+      placement: getRTLPlacement(placement, togglerRef.current),
     }
 
-    return () => {
-      destroyPopper()
+    useEffect(() => {
+      setVisible(visible)
+    }, [visible])
+
+    useEffect(() => {
+      if (_visible && togglerRef.current && tooltipRef.current) {
+        initPopper(togglerRef.current, tooltipRef.current, popperConfig)
+      }
+
+      return () => {
+        destroyPopper()
+      }
+    }, [_visible])
+
+    const toggleVisible = (visible: boolean) => {
+      if (visible) {
+        setTimeout(() => setVisible(true), _delay.show)
+        return
+      }
+
+      setTimeout(() => setVisible(false), _delay.hide)
     }
-  }, [_visible])
 
-  const toggleVisible = (visible: boolean) => {
-    if (visible) {
-      setTimeout(() => setVisible(true), _delay.show)
-      return
-    }
-
-    setTimeout(() => setVisible(false), _delay.hide)
-  }
-
-  return (
-    <>
-      {React.cloneElement(children as React.ReactElement<any>, {
-        ref: togglerRef,
-        ...((trigger === 'click' || trigger.includes('click')) && {
-          onClick: () => toggleVisible(!_visible),
-        }),
-        ...((trigger === 'focus' || trigger.includes('focus')) && {
-          onFocus: () => toggleVisible(true),
-          onBlur: () => toggleVisible(false),
-        }),
-        ...((trigger === 'hover' || trigger.includes('hover')) && {
-          onMouseEnter: () => toggleVisible(true),
-          onMouseLeave: () => toggleVisible(false),
-        }),
-      })}
-      {typeof window !== 'undefined' &&
-        createPortal(
-          <Transition
-            in={_visible}
-            mountOnEnter
-            onEnter={onShow}
-            onExit={onHide}
-            timeout={{
-              enter: 0,
-              exit: tooltipRef.current ? getTransitionDurationFromElement(tooltipRef.current) + 50 : 200,
-            }}
-            unmountOnExit
-          >
-            {(state) => (
-              <div
-                className={classNames(
-                  'tooltip',
-                  'bs-tooltip-auto',
-                  {
-                    fade: animation,
-                    show: state === 'entered',
-                  },
-                  className,
-                )}
-                ref={tooltipRef}
-                role="tooltip"
-                {...rest}
-              >
-                <div className="tooltip-arrow"></div>
-                <div className="tooltip-inner">{content}</div>
-              </div>
-            )}
-          </Transition>,
-          document.body,
-        )}
-    </>
-  )
-}
+    return (
+      <>
+        {React.cloneElement(children as React.ReactElement<any>, {
+          ref: togglerRef,
+          ...((trigger === 'click' || trigger.includes('click')) && {
+            onClick: () => toggleVisible(!_visible),
+          }),
+          ...((trigger === 'focus' || trigger.includes('focus')) && {
+            onFocus: () => toggleVisible(true),
+            onBlur: () => toggleVisible(false),
+          }),
+          ...((trigger === 'hover' || trigger.includes('hover')) && {
+            onMouseEnter: () => toggleVisible(true),
+            onMouseLeave: () => toggleVisible(false),
+          }),
+        })}
+        {typeof window !== 'undefined' &&
+          createPortal(
+            <Transition
+              in={_visible}
+              mountOnEnter
+              nodeRef={tooltipRef}
+              onEnter={onShow}
+              onExit={onHide}
+              timeout={{
+                enter: 0,
+                exit: tooltipRef.current
+                  ? getTransitionDurationFromElement(tooltipRef.current) + 50
+                  : 200,
+              }}
+              unmountOnExit
+            >
+              {(state) => (
+                <div
+                  className={classNames(
+                    'tooltip',
+                    'bs-tooltip-auto',
+                    {
+                      fade: animation,
+                      show: state === 'entered',
+                    },
+                    className,
+                  )}
+                  ref={forkedRef}
+                  role="tooltip"
+                  {...rest}
+                >
+                  <div className="tooltip-arrow"></div>
+                  <div className="tooltip-inner">{content}</div>
+                </div>
+              )}
+            </Transition>,
+            document.body,
+          )}
+      </>
+    )
+  },
+)
 
 CTooltip.propTypes = {
   animation: PropTypes.bool,
