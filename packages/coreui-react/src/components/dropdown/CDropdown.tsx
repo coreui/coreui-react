@@ -16,17 +16,8 @@ import { placementPropType } from '../../props'
 import type { Placements } from '../../types'
 import { isRTL } from '../../utils'
 
-export type Directions = 'start' | 'end'
-
-export type Breakpoints =
-  | { xs: Directions }
-  | { sm: Directions }
-  | { md: Directions }
-  | { lg: Directions }
-  | { xl: Directions }
-  | { xxl: Directions }
-
-export type Alignments = Directions | Breakpoints
+import type { Alignments } from './types'
+import { getNextActiveElement, getPlacement } from './utils'
 
 export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIElement> {
   /**
@@ -105,59 +96,6 @@ interface ContextProps extends CDropdownProps {
   dropdownMenuRef: RefObject<HTMLDivElement | HTMLUListElement | undefined>
   setVisible: React.Dispatch<React.SetStateAction<boolean | undefined>>
   portal: boolean
-}
-
-export const getNextActiveElement = (
-  list: HTMLElement[],
-  activeElement: HTMLElement,
-  shouldGetNext: boolean,
-  isCycleAllowed: boolean,
-) => {
-  const listLength = list.length
-  let index = list.indexOf(activeElement)
-
-  if (index === -1) {
-    return !shouldGetNext && isCycleAllowed ? list[listLength - 1] : list[0]
-  }
-
-  index += shouldGetNext ? 1 : -1
-
-  if (isCycleAllowed) {
-    index = (index + listLength) % listLength
-  }
-
-  return list[Math.max(0, Math.min(index, listLength - 1))]
-}
-
-const getPlacement = (
-  placement: Placements,
-  direction: CDropdownProps['direction'],
-  alignment: CDropdownProps['alignment'],
-  isRTL: boolean,
-): Placements => {
-  let _placement = placement
-
-  if (direction === 'dropup') {
-    _placement = isRTL ? 'top-end' : 'top-start'
-  }
-
-  if (direction === 'dropup-center') {
-    _placement = 'top'
-  }
-
-  if (direction === 'dropend') {
-    _placement = isRTL ? 'left-start' : 'right-start'
-  }
-
-  if (direction === 'dropstart') {
-    _placement = isRTL ? 'right-start' : 'left-start'
-  }
-
-  if (alignment === 'end') {
-    _placement = isRTL ? 'bottom-start' : 'bottom-end'
-  }
-
-  return _placement
 }
 
 export const CDropdownContext = createContext({} as ContextProps)
@@ -251,15 +189,10 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
     }, [_visible])
 
     const handleKeydown = (event: KeyboardEvent) => {
-      if (_visible && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
-        const target = event.target as HTMLElement
+      if (_visible && dropdownMenuRef.current && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
         event.preventDefault()
-        const items = [].concat(
-          ...Element.prototype.querySelectorAll.call(
-            dropdownMenuRef.current,
-            '.dropdown-item:not(.disabled):not(:disabled)',
-          ),
-        )
+        const target = event.target as HTMLElement
+        const items: HTMLElement[] = Array.from(dropdownMenuRef.current.querySelectorAll('.dropdown-item:not(.disabled):not(:disabled)'))
         getNextActiveElement(items, target, event.key === 'ArrowDown', true).focus()
       }
     }
