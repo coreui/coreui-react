@@ -19,7 +19,7 @@ export interface CNavProps
   /**
    * Set the nav variant to tabs or pills.
    */
-  variant?: 'pills' | 'tabs' | 'underline'
+  variant?: 'pills' | 'tabs' | 'underline' | 'underline-border'
 }
 
 export const CNav = forwardRef<HTMLDivElement | HTMLUListElement | HTMLOListElement, CNavProps>(
