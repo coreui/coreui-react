@@ -49,7 +49,7 @@ CNav.propTypes = {
   className: PropTypes.string,
   component: PropTypes.elementType,
   layout: PropTypes.oneOf(['fill', 'justified']),
-  variant: PropTypes.oneOf(['pills', 'tabs', 'underline']),
+  variant: PropTypes.oneOf(['pills', 'tabs', 'underline', 'underline-border']),
 }
 
 CNav.displayName = 'CNav'
