@@ -1,9 +1,10 @@
 import React, { forwardRef, HTMLAttributes, ReactNode, useRef, useEffect, useState } from 'react'
-import { createPortal } from 'react-dom'
+// import { createPortal } from 'react-dom'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { Transition } from 'react-transition-group'
 
+import { CConditionalPortal } from '../conditional-portal'
 import { useForkedRef, usePopper } from '../../hooks'
 import { fallbackPlacementsPropType, triggerPropType } from '../../props'
 import type { Placements, Triggers } from '../../types'
@@ -20,6 +21,12 @@ export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'tit
    * A string of all className you want applied to the component.
    */
   className?: string
+  /**
+   * Appends the react popover to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`.
+   *
+   * @since v4.11.0
+   */
+  container?: Element | (() => Element | null) | null
   /**
    * Content node for your component.
    */
@@ -74,6 +81,7 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
       children,
       animation = true,
       className,
+      container,
       content,
       delay = 0,
       fallbackPlacements = ['top', 'right', 'bottom', 'left'],
@@ -160,45 +168,43 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
             onMouseLeave: () => toggleVisible(false),
           }),
         })}
-        {typeof window !== 'undefined' &&
-          createPortal(
-            <Transition
-              in={_visible}
-              mountOnEnter
-              nodeRef={popoverRef}
-              onEnter={onShow}
-              onExit={onHide}
-              timeout={{
-                enter: 0,
-                exit: popoverRef.current
-                  ? getTransitionDurationFromElement(popoverRef.current) + 50
-                  : 200,
-              }}
-              unmountOnExit
-            >
-              {(state) => (
-                <div
-                  className={classNames(
-                    'popover',
-                    'bs-popover-auto',
-                    {
-                      fade: animation,
-                      show: state === 'entered',
-                    },
-                    className,
-                  )}
-                  ref={forkedRef}
-                  role="tooltip"
-                  {...rest}
-                >
-                  <div className="popover-arrow"></div>
-                  <div className="popover-header">{title}</div>
-                  <div className="popover-body">{content}</div>
-                </div>
-              )}
-            </Transition>,
-            document.body,
-          )}
+        <CConditionalPortal container={container} portal={true}>
+          <Transition
+            in={_visible}
+            mountOnEnter
+            nodeRef={popoverRef}
+            onEnter={onShow}
+            onExit={onHide}
+            timeout={{
+              enter: 0,
+              exit: popoverRef.current
+                ? getTransitionDurationFromElement(popoverRef.current) + 50
+                : 200,
+            }}
+            unmountOnExit
+          >
+            {(state) => (
+              <div
+                className={classNames(
+                  'popover',
+                  'bs-popover-auto',
+                  {
+                    fade: animation,
+                    show: state === 'entered',
+                  },
+                  className,
+                )}
+                ref={forkedRef}
+                role="tooltip"
+                {...rest}
+              >
+                <div className="popover-arrow"></div>
+                <div className="popover-header">{title}</div>
+                <div className="popover-body">{content}</div>
+              </div>
+            )}
+          </Transition>
+        </CConditionalPortal>
       </>
     )
   },
@@ -208,6 +214,7 @@ CPopover.propTypes = {
   animation: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
+  container: PropTypes.any,
   content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   delay: PropTypes.oneOfType([
     PropTypes.number,

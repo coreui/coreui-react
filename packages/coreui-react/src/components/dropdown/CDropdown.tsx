@@ -43,6 +43,12 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
    */
   component?: string | ElementType
   /**
+   * Appends the react dropdown menu to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`.
+   *
+   * @since v4.11.0
+   */
+  container?: Element | (() => Element | null) | null
+  /**
    * Sets a darker color scheme to match a dark navbar.
    */
   dark?: boolean
@@ -107,6 +113,7 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       alignment,
       autoClose = true,
       className,
+      container,
       dark,
       direction,
       offset = [0, 2],
@@ -139,6 +146,7 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
 
     const contextValues = {
       alignment,
+      container,
       dark,
       dropdownToggleRef,
       dropdownMenuRef,

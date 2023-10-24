@@ -23,13 +23,13 @@ export interface CDropdownMenuProps extends HTMLAttributes<HTMLDivElement | HTML
 
 export const CDropdownMenu = forwardRef<HTMLDivElement | HTMLUListElement, CDropdownMenuProps>(
   ({ children, className, component: Component = 'ul', ...rest }, ref) => {
-    const { alignment, dark, dropdownMenuRef, popper, portal, visible } =
+    const { alignment, container, dark, dropdownMenuRef, popper, portal, visible } =
       useContext(CDropdownContext)
 
     const forkedRef = useForkedRef(ref, dropdownMenuRef)
 
     return (
-      <CConditionalPortal portal={portal ?? false}>
+      <CConditionalPortal container={container} portal={portal ?? false}>
         <Component
           className={classNames(
             'dropdown-menu',
