@@ -9,6 +9,7 @@ import CTooltip from '@coreui/react/src/components/tooltip/CTooltip'
 | --- | --- | --- | --- |
 | **animation** **_4.9.0+_** | Apply a CSS fade transition to the tooltip. | `boolean` | true |
 | **className** | A string of all className you want applied to the component. | `string` | - |
+| **container** **_v4.11.0+_** | Appends the react tooltip to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`. | `Element` \| `(() => Element)` | - |
 | **content** | Content node for your component. | `ReactNode` | - |
 | **delay** **_4.9.0+_** | The delay for displaying and hiding the tooltip (in milliseconds). When a numerical value is provided, the delay applies to both the hide and show actions. The object structure for specifying the delay is as follows: delay: `{ 'show': 500, 'hide': 100 }`. | `number` \| `{ show: number; hide: number; }` | 0 |
 | **fallbackPlacements** **_4.9.0+_** | Specify the desired order of fallback placements by providing a list of placements as an array. The placements should be prioritized based on preference. | `Placements` \| `Placements[]` | ['top', 'right', 'bottom', 'left'] |

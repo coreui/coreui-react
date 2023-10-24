@@ -1,6 +1,14 @@
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
+
+const getContainer = (container?: Element | (() => Element | null) | null) => {
+  if (container) {
+    return typeof container === 'function' ? container() : container
+  }
+
+  return document.body
+}
 
 export interface CConditionalPortalProps {
   /**
@@ -8,14 +16,30 @@ export interface CConditionalPortalProps {
    */
   children: ReactNode
   /**
+   * An HTML element or function that returns a single element, with `document.body` as the default.
+   * 
+   * @since v4.11.0
+   */
+  container?: Element | (() => Element | null) | null
+  /**
    * Render some children into a different part of the DOM
    */
-  portal: boolean
+  portal: boolean | any
 }
 
-export const CConditionalPortal: FC<CConditionalPortalProps> = ({ children, portal }) => {
-  return typeof window !== 'undefined' && portal ? (
-    createPortal(children, document.body)
+export const CConditionalPortal: FC<CConditionalPortalProps> = ({
+  children,
+  container,
+  portal,
+}) => {
+  const [_container, setContainer] = useState<ReturnType<typeof getContainer>>(null)
+
+  useEffect(() => {
+    portal && setContainer(getContainer(container) || document.body)
+  }, [container, portal])
+
+  return typeof window !== 'undefined' && portal && _container ? (
+    createPortal(children, _container)
   ) : (
     <>{children}</>
   )
@@ -23,7 +47,8 @@ export const CConditionalPortal: FC<CConditionalPortalProps> = ({ children, port
 
 CConditionalPortal.propTypes = {
   children: PropTypes.node,
-  portal: PropTypes.bool.isRequired,
+  container: PropTypes.any, // HTMLElement
+  portal: PropTypes.bool,
 }
 
 CConditionalPortal.displayName = 'CConditionalPortal'
