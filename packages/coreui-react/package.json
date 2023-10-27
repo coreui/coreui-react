@@ -23,16 +23,20 @@
   },
   "license": "MIT",
   "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "jsnext:main": "dist/index.es.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "jsnext:main": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
   "files": [
     "dist/",
     "src/"
   ],
+  "sideEffects": false,
   "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs",
+    "build": "npm-run-all clean build-*",
+    "build-cjs": "rollup --environment ESM:false --config",
+    "build-esm": "rollup --environment ESM:true --config",
+    "clean": "cross-env-shell \"rm -rf dist\"",
     "test": "jest --coverage",
     "test:update": "jest --coverage --updateSnapshot"
   },
@@ -47,6 +51,7 @@
     "@types/react-dom": "^18.2.14",
     "@types/react-transition-group": "^4.4.8",
     "classnames": "^2.3.2",
+    "cross-env": "^7.0.3",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "prop-types": "^15.8.1",
@@ -61,6 +66,8 @@
   },
   "peerDependencies": {
     "@coreui/coreui": "^5.0.0-alpha.3",
+    "@popperjs/core": "^2.11.8",
+    "prop-types": "^15.8.1",
     "react": ">=17",
     "react-dom": ">=17"
   }
