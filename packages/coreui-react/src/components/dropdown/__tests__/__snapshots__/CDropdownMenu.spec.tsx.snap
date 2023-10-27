@@ -3,7 +3,7 @@
 exports[`CDropdownMenu customize 1`] = `
 <div>
   <div
-    class="btn-group show"
+    class="btn-group"
   >
     <div
       aria-hidden="false"

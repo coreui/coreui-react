@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import { getByText } from '@testing-library/dom'
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom'
 import { CCarousel, CCarouselCaption, CCarouselItem } from '../../../index'
 
 test('loads and displays CCarousel component', async () => {

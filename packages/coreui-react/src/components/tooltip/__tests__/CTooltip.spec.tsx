@@ -2,7 +2,7 @@ import * as React from 'react'
 import ReactDOM from 'react-dom'
 import { act } from 'react-dom/test-utils'
 import { fireEvent } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom'
 import { CTooltip, CLink } from '../../../index'
 
 let container: HTMLDivElement | null

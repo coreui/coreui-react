@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom'
 import { CForm, CFormLabel, CFormInput, CFormText, CFormCheck, CButton } from '../../../index'
 
 test('loads and displays CForm component', async () => {

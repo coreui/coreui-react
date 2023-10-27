@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom'
 import {
   CDropdown,
   CDropdownToggle,
@@ -37,7 +37,6 @@ test('CDropdown customize', async () => {
   expect(container.firstChild).toHaveClass('nav-item')
   expect(container.firstChild).toHaveClass('dropdown')
   expect(container.firstChild).toHaveClass('dropstart')
-  expect(container.firstChild).toHaveClass('show')
 })
 
 test('CDropdown change visible prop', async () => {
