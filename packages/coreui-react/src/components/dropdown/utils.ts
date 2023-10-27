@@ -1,13 +1,14 @@
 import type { Placement } from '@popperjs/core'
 import type { Placements } from '../../types'
-import type { Alignments } from './types'
+import type { Alignments, Breakpoints } from './types'
 
-export const getAlignmentClassNames = (alignment: object | string) => {
+export const getAlignmentClassNames = (alignment: Alignments) => {
   const classNames: string[] = []
   if (typeof alignment === 'object') {
-    Object.keys(alignment).map((key) => {
-      classNames.push(`dropdown-menu${key === 'xs' ? '' : `-${key}`}-${alignment[key]}`)
-    })
+
+    for (const key in alignment) {
+      classNames.push(`dropdown-menu${key === 'xs' ? '' : `-${key}`}-${alignment[key as keyof Breakpoints]}`)
+    }
   }
 
   if (typeof alignment === 'string') {

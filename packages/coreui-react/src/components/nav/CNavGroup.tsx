@@ -10,6 +10,7 @@ import React, {
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
+import type { TransitionStatus } from 'react-transition-group'
 
 import { CNavContext } from '../sidebar/CSidebarNav'
 export interface CNavGroupProps {
@@ -51,9 +52,7 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
     const { visibleGroup, setVisibleGroup } = useContext(CNavContext)
 
     const [_visible, setVisible] = useState(
-      Boolean(
-        visible || (idx && visibleGroup && isInVisibleGroup(visibleGroup, idx)),
-      ),
+      Boolean(visible || (idx && visibleGroup && isInVisibleGroup(visibleGroup, idx))),
     )
 
     useEffect(() => {
@@ -100,6 +99,7 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
       entered: { display: 'block', height: height },
       exiting: { display: 'block', height: height },
       exited: { height: height },
+      unmounted: {}
     }
 
     return (
@@ -124,7 +124,10 @@ export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
               className={classNames('nav-group-items', {
                 compact: compact,
               })}
-              style={{ ...style, ...transitionStyles[state] }}
+              style={{
+                ...style,
+                ...transitionStyles[state as TransitionStatus],
+              }}
               ref={navItemsRef}
             >
               {React.Children.map(children, (child, index) => {

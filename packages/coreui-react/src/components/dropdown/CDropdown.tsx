@@ -16,7 +16,7 @@ import { placementPropType } from '../../props'
 import type { Placements } from '../../types'
 import { isRTL } from '../../utils'
 
-import type { Alignments } from './types'
+import type { Alignments, Directions } from './types'
 import { getNextActiveElement, getPlacement } from './utils'
 
 export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIElement> {
