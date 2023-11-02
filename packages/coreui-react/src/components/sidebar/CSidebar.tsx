@@ -74,15 +74,20 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
   ) => {
     const sidebarRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, sidebarRef)
-    const [mobile, setMobile] = useState(false)
-    const [_visible, setVisible] = useState(visible)
+
     const [inViewport, setInViewport] = useState<boolean>()
+    const [mobile, setMobile] = useState(false)
+    const [visibleMobile, setVisibleMobile] = useState(false)
+    const [visibleDesktop, setVisibleDesktop] = useState(true)
 
     useEffect(() => {
       sidebarRef.current && setMobile(isOnMobile(sidebarRef.current))
-
-      setVisible(visible)
+      if (visible !== undefined) {
+        handleVisibleChange(visible)
+      }
     }, [visible])
+
+
 
     useEffect(() => {
       inViewport !== undefined && onVisibleChange && onVisibleChange(inViewport)
@@ -91,7 +96,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
     }, [inViewport])
 
     useEffect(() => {
-      mobile && visible && setVisible(false)
+      mobile && setVisibleMobile(false)
     }, [mobile])
 
     useEffect(() => {
@@ -119,8 +124,17 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
       }
     })
 
+    const handleVisibleChange = (visible: boolean) => {
+      if (mobile) {
+        setVisibleMobile(visible)
+        return
+      }
+
+      setVisibleDesktop(visible)
+    }
+
     const handleHide = () => {
-      setVisible(false)
+      handleVisibleChange(false)
     }
 
     const handleResize = () => {
@@ -167,8 +181,8 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
               [`sidebar-${position}`]: position,
               [`sidebar-${size}`]: size,
               'sidebar-narrow-unfoldable': unfoldable,
-              show: _visible === true && mobile,
-              hide: _visible === false && !mobile,
+              show: (mobile && visibleMobile) || (overlaid && visibleDesktop),
+              hide: !visibleDesktop && !mobile,
             },
             className,
           )}
@@ -180,7 +194,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
         {typeof window !== 'undefined' &&
           mobile &&
           createPortal(
-            <CBackdrop className="sidebar-backdrop" visible={_visible} />,
+            <CBackdrop className="sidebar-backdrop" visible={mobile && visibleMobile} />,
             document.body,
           )}
       </>
