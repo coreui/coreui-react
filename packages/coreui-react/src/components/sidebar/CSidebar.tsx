@@ -14,6 +14,12 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
    */
   className?: string
   /**
+   * Sets if the color of text should be colored for a light or dark dark background.
+   *
+   * @type 'dark' | 'light'
+   */
+  colorScheme?: 'dark' | 'light'
+  /**
    * Make sidebar narrow.
    */
   narrow?: boolean
@@ -33,6 +39,11 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
    * Set sidebar to overlaid variant.
    */
   overlaid?: boolean
+  /**
+   * Components placement, there’s no default placement.
+   * @type 'start' | 'end'
+   */
+  placement?: 'start' | 'end'
   /**
    * Place sidebar in non-static positions.
    */
@@ -59,11 +70,13 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
     {
       children,
       className,
+      colorScheme,
       narrow,
       onHide,
       onShow,
       onVisibleChange,
       overlaid,
+      placement,
       position,
       size,
       unfoldable,
@@ -77,17 +90,15 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
 
     const [inViewport, setInViewport] = useState<boolean>()
     const [mobile, setMobile] = useState(false)
-    const [visibleMobile, setVisibleMobile] = useState(false)
-    const [visibleDesktop, setVisibleDesktop] = useState(true)
+    const [visibleMobile, setVisibleMobile] = useState<boolean>(false)
+    const [visibleDesktop, setVisibleDesktop] = useState<boolean>(
+      visible !== undefined ? visible : overlaid ? false : true,
+    )
 
     useEffect(() => {
       sidebarRef.current && setMobile(isOnMobile(sidebarRef.current))
-      if (visible !== undefined) {
-        handleVisibleChange(visible)
-      }
+      visible !== undefined && handleVisibleChange(visible)
     }, [visible])
-
-
 
     useEffect(() => {
       inViewport !== undefined && onVisibleChange && onVisibleChange(inViewport)
@@ -176,13 +187,15 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
           className={classNames(
             'sidebar',
             {
+              [`sidebar-${colorScheme}`]: colorScheme,
               'sidebar-narrow': narrow,
               'sidebar-overlaid': overlaid,
+              [`sidebar-${placement}`]: placement,
               [`sidebar-${position}`]: position,
               [`sidebar-${size}`]: size,
               'sidebar-narrow-unfoldable': unfoldable,
               show: (mobile && visibleMobile) || (overlaid && visibleDesktop),
-              hide: !visibleDesktop && !mobile,
+              hide: visibleDesktop === false && !mobile && !overlaid,
             },
             className,
           )}
@@ -205,11 +218,13 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
 CSidebar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  colorScheme: PropTypes.oneOf(['dark', 'light']),
   narrow: PropTypes.bool,
   onHide: PropTypes.func,
   onShow: PropTypes.func,
   onVisibleChange: PropTypes.func,
   overlaid: PropTypes.bool,
+  placement: PropTypes.oneOf(['start', 'end']),
   position: PropTypes.oneOf(['fixed', 'sticky']),
   size: PropTypes.oneOf(['sm', 'lg', 'xl']),
   unfoldable: PropTypes.bool,
