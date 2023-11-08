@@ -57,7 +57,7 @@ export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
         {toasts.length > 0 || children ? (
           <div
             className={classNames(
-              'toaster toast-container p-3',
+              'toaster toast-container',
               {
                 'position-fixed': placement,
                 'top-0': placement && placement.includes('top'),
