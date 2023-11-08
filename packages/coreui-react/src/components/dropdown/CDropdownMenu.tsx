@@ -9,7 +9,6 @@ import { useForkedRef } from '../../hooks'
 
 import { getAlignmentClassNames } from './utils'
 
-
 export interface CDropdownMenuProps extends HTMLAttributes<HTMLDivElement | HTMLUListElement> {
   /**
    * A string of all className you want applied to the base component.

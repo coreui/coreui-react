@@ -5,16 +5,17 @@ import type { Alignments, Breakpoints } from './types'
 export const getAlignmentClassNames = (alignment: Alignments) => {
   const classNames: string[] = []
   if (typeof alignment === 'object') {
-
     for (const key in alignment) {
-      classNames.push(`dropdown-menu${key === 'xs' ? '' : `-${key}`}-${alignment[key as keyof Breakpoints]}`)
+      classNames.push(
+        `dropdown-menu${key === 'xs' ? '' : `-${key}`}-${alignment[key as keyof Breakpoints]}`,
+      )
     }
   }
 
   if (typeof alignment === 'string') {
     classNames.push(`dropdown-menu-${alignment}`)
   }
-  
+
   return classNames
 }
 

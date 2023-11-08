@@ -40,10 +40,7 @@ export const CWidgetStatsA = forwardRef<HTMLDivElement, CWidgetStatsAProps>(
   ({ action, chart, className, color, title, value, ...rest }, ref) => {
     return (
       <CCard
-        className={classNames(
-          { [`bg-${color}`]: color, 'text-white': color },
-          className,
-        )}
+        className={classNames({ [`bg-${color}`]: color, 'text-white': color }, className)}
         {...rest}
         ref={ref}
       >

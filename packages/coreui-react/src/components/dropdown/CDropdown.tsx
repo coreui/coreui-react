@@ -197,10 +197,16 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
     }, [_visible])
 
     const handleKeydown = (event: KeyboardEvent) => {
-      if (_visible && dropdownMenuRef.current && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
+      if (
+        _visible &&
+        dropdownMenuRef.current &&
+        (event.key === 'ArrowDown' || event.key === 'ArrowUp')
+      ) {
         event.preventDefault()
         const target = event.target as HTMLElement
-        const items: HTMLElement[] = Array.from(dropdownMenuRef.current.querySelectorAll('.dropdown-item:not(.disabled):not(:disabled)'))
+        const items: HTMLElement[] = Array.from(
+          dropdownMenuRef.current.querySelectorAll('.dropdown-item:not(.disabled):not(:disabled)'),
+        )
         getNextActiveElement(items, target, event.key === 'ArrowDown', true).focus()
       }
     }

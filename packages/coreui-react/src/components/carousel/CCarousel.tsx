@@ -253,7 +253,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
                       !animating && handleIndicatorClick(index)
                     }}
                     className={classNames({
-                      active: active === index
+                      active: active === index,
                     })}
                     data-coreui-target=""
                     {...(active === index && { 'aria-current': true })}

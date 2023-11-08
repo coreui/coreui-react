@@ -17,7 +17,7 @@ export interface CCloseButtonProps extends HTMLAttributes<HTMLButtonElement> {
   disabled?: boolean
   /**
    * Change the default color to white.
-   * 
+   *
    * @deprecated 5.0.0
    */
   white?: boolean
