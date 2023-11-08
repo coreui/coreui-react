@@ -117,6 +117,16 @@
   > .spinner-grow + .spinner-grow {
     margin-left: .25rem;
   }
+
+  // Sidebar
+  .sidebar-narrow,
+  .sidebar-narrow-unfoldable {
+    position: static;
+  }
+
+  .sidebar-narrow-unfoldable {
+    min-height: 550px;
+  }
 }
 
 //

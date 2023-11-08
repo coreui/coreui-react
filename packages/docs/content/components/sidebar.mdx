@@ -8,7 +8,7 @@ other_frameworks: sidebar
 ---
 
 import CIcon from '@coreui/icons-react'
-import { cilPuzzle, cilSpeedometer } from '@coreui/icons'
+import { cilCloudDownload, cilLayers, cilPuzzle, cilSpeedometer } from '@coreui/icons'
 
 import {
   CBadge,
@@ -37,32 +37,212 @@ Sidebar come with built-in support for a handful of sub-components. Choose from 
 
 ## Examples
 
-```jsx preview
-<CSidebar>
-  <CSidebarBrand>Sidebar Brand</CSidebarBrand>
+### Sidebar component
+
+Below is an sidebar example that is shown by default on desktop devices.
+
+<Example className="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
+  <CSidebar className="border-end">
+    <CSidebarHeader className="border-bottom">
+      <CSidebarBrand>CoreUI</CSidebarBrand>
+    </CSidebarHeader>
+    <CSidebarNav>
+      <CNavTitle>Nav Title</CNavTitle>
+      <CNavItem href="#"><CIcon customClassName="nav-icon" icon={cilSpeedometer} /> Nav item</CNavItem>
+      <CNavItem href="#"><CIcon customClassName="nav-icon" icon={cilSpeedometer} /> With badge <CBadge color="primary ms-auto">NEW</CBadge></CNavItem>
+      <CNavGroup
+        toggler={
+          <>
+            <CIcon customClassName="nav-icon" icon={cilPuzzle} /> Nav dropdown
+          </>
+        }
+      >
+        <CNavItem href="#"><span className="nav-icon"><span className="nav-icon-bullet"></span></span> Nav dropdown item</CNavItem>
+        <CNavItem href="#"><span className="nav-icon"><span className="nav-icon-bullet"></span></span> Nav dropdown item</CNavItem>
+      </CNavGroup>
+      <CNavItem href="https://coreui.io"><CIcon customClassName="nav-icon" icon={cilCloudDownload} /> Download CoreUI</CNavItem>
+      <CNavItem href="https://coreui.io/pro/"><CIcon customClassName="nav-icon" icon={cilLayers} /> Try CoreUI PRO</CNavItem>
+    </CSidebarNav>
+    <CSidebarHeader className="border-top">
+      <CSidebarToggler />
+    </CSidebarHeader>
+  </CSidebar>
+</Example>
+
+```jsx
+<CSidebar className="border-end">
+  <CSidebarHeader className="border-bottom">
+    <CSidebarBrand>CoreUI</CSidebarBrand>
+  </CSidebarHeader>
   <CSidebarNav>
     <CNavTitle>Nav Title</CNavTitle>
-    <CNavItem href="#">
-      <CIcon customClassName="nav-icon" icon={cilSpeedometer} />
-      Nav item
-    </CNavItem>
-    <CNavItem href="#">
-      <CIcon customClassName="nav-icon" icon={cilSpeedometer} />
-      With badge
-      <CBadge color="primary ms-auto">NEW</CBadge>
-    </CNavItem>
-    <CNavGroup toggler="Nav dropdown">
-      <CNavItem href="#">
-        <CIcon customClassName="nav-icon" icon={cilPuzzle} /> Nav dropdown item
-      </CNavItem>
-      <CNavItem href="#">
-        <CIcon customClassName="nav-icon" icon={cilPuzzle} /> Nav dropdown item
-      </CNavItem>
+    <CNavItem href="#"><CIcon customClassName="nav-icon" icon={cilSpeedometer} /> Nav item</CNavItem>
+    <CNavItem href="#"><CIcon customClassName="nav-icon" icon={cilSpeedometer} /> With badge <CBadge color="primary ms-auto">NEW</CBadge></CNavItem>
+    <CNavGroup
+      toggler={
+        <>
+          <CIcon customClassName="nav-icon" icon={cilPuzzle} /> Nav dropdown
+        </>
+      }
+    >
+      <CNavItem href="#"><span className="nav-icon"><span className="nav-icon-bullet"></span></span> Nav dropdown item</CNavItem>
+      <CNavItem href="#"><span className="nav-icon"><span className="nav-icon-bullet"></span></span> Nav dropdown item</CNavItem>
     </CNavGroup>
+    <CNavItem href="https://coreui.io"><CIcon customClassName="nav-icon" icon={cilCloudDownload} /> Download CoreUI</CNavItem>
+    <CNavItem href="https://coreui.io/pro/"><CIcon customClassName="nav-icon" icon={cilLayers} /> Try CoreUI PRO</CNavItem>
   </CSidebarNav>
-  <CSidebarToggler />
+  <CSidebarHeader className="border-top">
+    <CSidebarToggler />
+  </CSidebarHeader>
 </CSidebar>
 ```
+
+### Narrow sidebar
+
+Add the `narrow` property to make the sidebar narrow.
+
+<Example className="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
+  <CSidebar className="border-end" narrow>
+    <CSidebarHeader className="border-bottom">
+      <CSidebarBrand>CUI</CSidebarBrand>
+    </CSidebarHeader>
+    <CSidebarNav>
+      <CNavItem href="#"><CIcon customClassName="nav-icon" icon={cilSpeedometer} /></CNavItem>
+      <CNavItem href="#"><CIcon customClassName="nav-icon" icon={cilSpeedometer} /></CNavItem>
+      <CNavItem href="https://coreui.io"><CIcon customClassName="nav-icon" icon={cilCloudDownload} /></CNavItem>
+      <CNavItem href="https://coreui.io/pro/"><CIcon customClassName="nav-icon" icon={cilLayers} /></CNavItem>
+    </CSidebarNav>
+  </CSidebar>
+</Example>
+
+```jsx
+<CSidebar className="border-end" narrow>
+  <CSidebarHeader className="border-bottom">
+    <CSidebarBrand>CUI</CSidebarBrand>
+  </CSidebarHeader>
+  <CSidebarNav>
+    <CNavItem href="#"><CIcon customClassName="nav-icon" icon={cilSpeedometer} /></CNavItem>
+    <CNavItem href="#"><CIcon customClassName="nav-icon" icon={cilSpeedometer} /></CNavItem>
+    <CNavItem href="https://coreui.io"><CIcon customClassName="nav-icon" icon={cilCloudDownload} /></CNavItem>
+    <CNavItem href="https://coreui.io/pro/"><CIcon customClassName="nav-icon" icon={cilLayers} /></CNavItem>
+  </CSidebarNav>
+</CSidebar>
+```
+
+### Unfoldable sidebar
+
+Add the `unfoldable` property to make the sidebar narrow with unfoldable on hover.
+
+<Example className="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
+  <CSidebar className="border-end" unfoldable>
+    <CSidebarHeader className="border-bottom">
+      <CSidebarBrand>CUI</CSidebarBrand>
+    </CSidebarHeader>
+    <CSidebarNav>
+      <CNavTitle>Nav Title</CNavTitle>
+      <CNavItem href="#"><CIcon customClassName="nav-icon" icon={cilSpeedometer} /> Nav item</CNavItem>
+      <CNavItem href="#"><CIcon customClassName="nav-icon" icon={cilSpeedometer} /> With badge <CBadge color="primary ms-auto">NEW</CBadge></CNavItem>
+      <CNavGroup
+        toggler={
+          <>
+            <CIcon customClassName="nav-icon" icon={cilPuzzle} /> Nav dropdown
+          </>
+        }
+      >
+        <CNavItem href="#"><span className="nav-icon"><span className="nav-icon-bullet"></span></span> Nav dropdown item</CNavItem>
+        <CNavItem href="#"><span className="nav-icon"><span className="nav-icon-bullet"></span></span> Nav dropdown item</CNavItem>
+      </CNavGroup>
+      <CNavItem href="https://coreui.io"><CIcon customClassName="nav-icon" icon={cilCloudDownload} /> Download CUI</CNavItem>
+      <CNavItem href="https://coreui.io/pro/"><CIcon customClassName="nav-icon" icon={cilLayers} /> Try CoreUI PRO</CNavItem>
+    </CSidebarNav>
+  </CSidebar>
+</Example>
+
+```jsx
+<CSidebar className="border-end" unfoldable>
+  <CSidebarHeader className="border-bottom">
+    <CSidebarBrand>CUI</CSidebarBrand>
+  </CSidebarHeader>
+  <CSidebarNav>
+    <CNavTitle>Nav Title</CNavTitle>
+    <CNavItem href="#"><CIcon customClassName="nav-icon" icon={cilSpeedometer} /> Nav item</CNavItem>
+    <CNavItem href="#"><CIcon customClassName="nav-icon" icon={cilSpeedometer} /> With badge <CBadge color="primary ms-auto">NEW</CBadge></CNavItem>
+    <CNavGroup
+      toggler={
+        <>
+          <CIcon customClassName="nav-icon" icon={cilPuzzle} /> Nav dropdown
+        </>
+      }
+    >
+      <CNavItem href="#"><span className="nav-icon"><span className="nav-icon-bullet"></span></span> Nav dropdown item</CNavItem>
+      <CNavItem href="#"><span className="nav-icon"><span className="nav-icon-bullet"></span></span> Nav dropdown item</CNavItem>
+    </CNavGroup>
+    <CNavItem href="https://coreui.io"><CIcon customClassName="nav-icon" icon={cilCloudDownload} /> Download CoreUI</CNavItem>
+    <CNavItem href="https://coreui.io/pro/"><CIcon customClassName="nav-icon" icon={cilLayers} /> Try CoreUI PRO</CNavItem>
+  </CSidebarNav>
+</CSidebar>
+```
+
+## Dark sidebar
+
+Change the appearance of sidebars with the `colorScheme="dark"`.
+
+<Example className="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
+  <CSidebar className="border-end" colorScheme="dark">
+    <CSidebarHeader className="border-bottom">
+      <CSidebarBrand>CoreUI</CSidebarBrand>
+    </CSidebarHeader>
+    <CSidebarNav>
+      <CNavTitle>Nav Title</CNavTitle>
+      <CNavItem href="#"><CIcon customClassName="nav-icon" icon={cilSpeedometer} /> Nav item</CNavItem>
+      <CNavItem href="#"><CIcon customClassName="nav-icon" icon={cilSpeedometer} /> With badge <CBadge color="primary ms-auto">NEW</CBadge></CNavItem>
+      <CNavGroup
+        toggler={
+          <>
+            <CIcon customClassName="nav-icon" icon={cilPuzzle} /> Nav dropdown
+          </>
+        }
+      >
+        <CNavItem href="#"><span className="nav-icon"><span className="nav-icon-bullet"></span></span> Nav dropdown item</CNavItem>
+        <CNavItem href="#"><span className="nav-icon"><span className="nav-icon-bullet"></span></span> Nav dropdown item</CNavItem>
+      </CNavGroup>
+      <CNavItem href="https://coreui.io"><CIcon customClassName="nav-icon" icon={cilCloudDownload} /> Download CoreUI</CNavItem>
+      <CNavItem href="https://coreui.io/pro/"><CIcon customClassName="nav-icon" icon={cilLayers} /> Try CoreUI PRO</CNavItem>
+    </CSidebarNav>
+  </CSidebar>
+</Example>
+
+```jsx
+<CSidebar className="border-end" colorScheme="dark">
+  <CSidebarHeader className="border-bottom">
+    <CSidebarBrand>CoreUI</CSidebarBrand>
+  </CSidebarHeader>
+  <CSidebarNav>
+    <CNavTitle>Nav Title</CNavTitle>
+    <CNavItem href="#"><CIcon customClassName="nav-icon" icon={cilSpeedometer} /> Nav item</CNavItem>
+    <CNavItem href="#"><CIcon customClassName="nav-icon" icon={cilSpeedometer} /> With badge <CBadge color="primary ms-auto">NEW</CBadge></CNavItem>
+    <CNavGroup
+      toggler={
+        <>
+          <CIcon customClassName="nav-icon" icon={cilPuzzle} /> Nav dropdown
+        </>
+      }
+    >
+      <CNavItem href="#"><span className="nav-icon"><span className="nav-icon-bullet"></span></span> Nav dropdown item</CNavItem>
+      <CNavItem href="#"><span className="nav-icon"><span className="nav-icon-bullet"></span></span> Nav dropdown item</CNavItem>
+    </CNavGroup>
+    <CNavItem href="https://coreui.io"><CIcon customClassName="nav-icon" icon={cilCloudDownload} /> Download CoreUI</CNavItem>
+    <CNavItem href="https://coreui.io/pro/"><CIcon customClassName="nav-icon" icon={cilLayers} /> Try CoreUI PRO</CNavItem>
+  </CSidebarNav>
+</CSidebar>
+```
+
+## Placement
+
+By default placement for sidebar components is on the left of the viewport, but you can add one of the modifier classes below.
+
+- `placement="start"` places sidebar on the left of the viewport (shown above)
+- `placement="end"` places sidebar on the right of the viewport
 
 ## Customizing
 
@@ -70,23 +250,33 @@ Sidebar come with built-in support for a handful of sub-components. Choose from 
 
 React sidebars use local CSS variables on `.sidebar` and `.sidebar-backdrop` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-<ScssDocs file="sidebar/_sidebar.scss" capture="sidebar-css-vars"/>
+<ScssDocs file="sidebar/_sidebar.scss" capture="sidebar-css-vars" />
 
-<ScssDocs file="sidebar/_sidebar.scss" capture="sidebar-backdrop-css-vars"/>
+<ScssDocs file="sidebar/_sidebar.scss" capture="sidebar-overlaid-css-vars" />
+
+<ScssDocs file="sidebar/_sidebar-narrow.scss" capture="sidebar-narrow-css-vars" />
+
+<ScssDocs file="sidebar/_sidebar-nav.scss" capture="sidebar-nav-css-vars" />
+
+<ScssDocs file="sidebar/_sidebar.scss" capture="sidebar-toggler-css-vars" />
+
+<ScssDocs file="sidebar/_sidebar.scss" capture="sidebar-backdrop-css-vars" />
 
 #### How to use CSS variables
 
 ```jsx
-const vars = { 
+const vars = {
   '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+  '--my-another-css-var': 'red',
 }
 return <CSidebar style={vars}>...</CSidebar>
 ```
 
 ### SASS variables
 
-<ScssDocs file="_variables.scss" capture="sidebar-variables"/>
+<ScssDocs file="_variables.scss" capture="sidebar-variables" />
+
+<ScssDocs file="_variables.scss" capture="sidebar-toggler" />
 
 ## API
 
