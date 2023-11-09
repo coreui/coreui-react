@@ -11,39 +11,50 @@ route: /getting-started/introduction
 ### Npm
 
 ```bash
-npm install @coreui/react
+npm install @coreui/react @coreui/coreui
+```
+
+If you use CoreUI PRO version.
+
+```bash
+npm install @coreui/react-pro @coreui/coreui-pro
 ```
 
 ### Yarn
 
 ```bash
-yarn add @coreui/react
+yarn add @coreui/react @coreui/coreui
 ```
+
+If you use CoreUI PRO version.
+
+```bash
+yarn add @coreui/react-pro @coreui/coreui-pro
+```
+
 
 ## Using components
 
 ```jsx
+import { CAlert } from '@coreui/react';
 
-import { Alert } from '@coreui/react';
-
+// CoreUI PRO version
+import { CAlert } from '@coreui/react-pro';
 ```
 
 ## Stylesheets
 
-React components are styled using `@coreui/coreui` CSS library, but you can use them also with bootstrap CSS library. That is possible because `@coreui/coreui` library is compatible with bootstrap, it just extends its functionalities. The only exception is custom CoreUI components, which don't exist in the Bootstrap ecosystem.
+React components are styled using the `@coreui/coreui` or `@coreui/coreui-pro` CSS library, but you can also use them with the bootstrap CSS library. That is possible because the `@coreui/coreui` library is compatible with Bootstrap, it just extends its functionalities. The only exceptions are custom CoreUI and CoreUI PRO components, which don't exist in the Bootstrap ecosystem.
 
-### CoreUI CSS files
-
-###### Installation
-
-```bash
-npm install @coreui/coreui
-```
+### CoreUI and CoreUI PRO CSS files
 
 ###### Basic usage
 
 ```js
 import '@coreui/coreui/dist/css/coreui.min.css'
+
+// CoreUI PRO version
+import '@coreui/coreui-pro/dist/css/coreui.min.css'
 ```
 
 ### Bootstrap CSS files
