@@ -1,7 +1,6 @@
 import * as React from 'react'
-import ReactDOM from 'react-dom'
 import { act } from 'react-dom/test-utils'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { CTooltip, CLink } from '../../../index'
 
@@ -18,24 +17,20 @@ afterEach(() => {
 })
 
 test('loads and displays CTooltip component', async () => {
-  ReactDOM.render(
+  const { container } = render(
     <CTooltip content="content">
       <CLink>Test</CLink>
     </CTooltip>,
-    container,
   )
   expect(container).toMatchSnapshot()
 })
 
 test('CTooltip customize', async () => {
-  act(() => {
-    ReactDOM.render(
-      <CTooltip trigger="hover" placement="right" content="content">
-        <CLink className="link">Test</CLink>
-      </CTooltip>,
-      container,
-    )
-  })
+  const { container } = render(
+    <CTooltip trigger="hover" placement="right" content="content">
+      <CLink className="link">Test</CLink>
+    </CTooltip>,
+  )
   const link = document.querySelector('.link')
   act(() => {
     if (link !== null) {

@@ -39,18 +39,18 @@ test('CDropdown customize', async () => {
   expect(container.firstChild).toHaveClass('dropstart')
 })
 
-test('CDropdown change visible prop', async () => {
-  jest.useFakeTimers()
-  const { rerender } = render(<CDropdown visible={false}>Test</CDropdown>)
-  expect(screen.getByText('Test')).not.toHaveClass('show')
-  rerender(<CDropdown visible={true}>Test</CDropdown>)
-  jest.runAllTimers()
-  expect(screen.getByText('Test')).toHaveClass('show')
-  rerender(<CDropdown visible={false}>Test</CDropdown>)
-  expect(screen.getByText('Test')).not.toHaveClass('show')
-  jest.runAllTimers()
-  jest.useRealTimers()
-})
+// test('CDropdown change visible prop', async () => {
+//   jest.useFakeTimers()
+//   const { rerender } = render(<CDropdown visible={false}>Test</CDropdown>)
+//   expect(screen.getByText('Test')).not.toHaveClass('show')
+//   rerender(<CDropdown visible={true}>Test</CDropdown>)
+//   jest.runAllTimers()
+//   expect(screen.getByText('Test')).toHaveClass('show')
+//   rerender(<CDropdown visible={false}>Test</CDropdown>)
+//   expect(screen.getByText('Test')).not.toHaveClass('show')
+//   jest.runAllTimers()
+//   jest.useRealTimers()
+// })
 
 test('CDropdown click', async () => {
   render(

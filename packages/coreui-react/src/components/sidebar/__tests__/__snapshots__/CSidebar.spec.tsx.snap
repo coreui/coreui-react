@@ -13,7 +13,7 @@ exports[`CSidebar customize hide 1`] = `
 exports[`CSidebar customize show 1`] = `
 <div>
   <div
-    class="sidebar sidebar-narrow sidebar-overlaid sidebar-fixed sidebar-narrow-unfoldable bazinga"
+    class="sidebar sidebar-narrow sidebar-overlaid sidebar-fixed sidebar-narrow-unfoldable show bazinga"
   >
     Test
   </div>
