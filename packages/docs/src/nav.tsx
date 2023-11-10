@@ -367,6 +367,10 @@ const nav = [
         name: 'v4',
         to: '/migration/v4/',
       },
+      {
+        name: 'v5',
+        to: '/migration/v5/',
+      },
     ],
   },
 ]

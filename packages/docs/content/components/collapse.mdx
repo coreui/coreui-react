@@ -31,13 +31,19 @@ export const BasicExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton href="#" onClick={(event) => {
-        event.preventDefault()
-        setVisible(!visible)
-      }}>
+      <CButton
+        color="primary"
+        href="#"
+        onClick={(event) => {
+          event.preventDefault()
+          setVisible(!visible)
+        }}
+      >
         Link
       </CButton>
-      <CButton onClick={() => setVisible(!visible)}>Button</CButton>
+      <CButton color="primary" onClick={() => setVisible(!visible)}>
+        Button
+      </CButton>
       <CCollapse visible={visible}>
         <CCard className="mt-3">
           <CCardBody>
@@ -59,13 +65,19 @@ export const BasicExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton href="#" onClick={(event) => {
-      event.preventDefault()
-      setVisible(!visible)
-    }}>
+    <CButton
+      color="primary"
+      href="#"
+      onClick={(event) => {
+        event.preventDefault()
+        setVisible(!visible)
+      }}
+    >
       Link
     </CButton>
-    <CButton onClick={() => setVisible(!visible)}>Button</CButton>
+    <CButton color="primary" onClick={() => setVisible(!visible)}>
+      Button
+    </CButton>
     <CCollapse visible={visible}>
       <CCard className="mt-3">
         <CCardBody>
@@ -87,12 +99,21 @@ export const HorizontalExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton className="mb-3" onClick={() => setVisible(!visible)} aria-expanded={visible} aria-controls="collapseWidthExample">Button</CButton>
-      <div style={{ minHeight: '120px'}}>
+      <CButton
+        color="primary"
+        className="mb-3"
+        onClick={() => setVisible(!visible)}
+        aria-expanded={visible}
+        aria-controls="collapseWidthExample"
+      >
+        Button
+      </CButton>
+      <div style={{ minHeight: '120px' }}>
         <CCollapse id="collapseWidthExample" horizontal visible={visible}>
-          <CCard style={{width: '300px'}}>
+          <CCard style={{ width: '300px' }}>
             <CCardBody>
-              This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+              This is some placeholder content for a horizontal collapse. It's hidden by default and
+              shown when triggered.
             </CCardBody>
           </CCard>
         </CCollapse>
@@ -109,12 +130,20 @@ export const HorizontalExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton className="mb-3" onClick={() => setVisible(!visible)} aria-expanded={visible} aria-controls="collapseWidthExample">Button</CButton>
-    <div style={{ minHeight: '120px'}}>
+    <CButton
+      className="mb-3"
+      onClick={() => setVisible(!visible)}
+      aria-expanded={visible}
+      aria-controls="collapseWidthExample"
+    >
+      Button
+    </CButton>
+    <div style={{ minHeight: '120px' }}>
       <CCollapse id="collapseWidthExample" horizontal visible={visible}>
-        <CCard style={{width: '300px'}}>
+        <CCard style={{ width: '300px' }}>
           <CCardBody>
-            This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+            This is some placeholder content for a horizontal collapse. It's hidden by default and
+            shown when triggered.
           </CCardBody>
         </CCard>
       </CCollapse>
@@ -132,9 +161,14 @@ export const MultipleTargetsExample = () => {
   const [visibleB, setVisibleB] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisibleA(!visibleA)}>Toggle first element</CButton>
-      <CButton onClick={() => setVisibleB(!visibleB)}>Toggle second element</CButton>
+      <CButton color="primary" onClick={() => setVisibleA(!visibleA)}>
+        Toggle first element
+      </CButton>
+      <CButton color="primary" onClick={() => setVisibleB(!visibleB)}>
+        Toggle second element
+      </CButton>
       <CButton
+        color="primary"
         onClick={() => {
           setVisibleA(!visibleA)
           setVisibleB(!visibleB)
@@ -179,9 +213,14 @@ const [visibleA, setVisibleA] = useState(false)
 const [visibleB, setVisibleB] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisibleA(!visibleA)}>Toggle first element</CButton>
-    <CButton onClick={() => setVisibleB(!visibleB)}>Toggle second element</CButton>
+    <CButton color="primary" onClick={() => setVisibleA(!visibleA)}>
+      Toggle first element
+    </CButton>
+    <CButton color="primary" onClick={() => setVisibleB(!visibleB)}>
+      Toggle second element
+    </CButton>
     <CButton
+      color="primary"
       onClick={() => {
         setVisibleA(!visibleA)
         setVisibleB(!visibleB)

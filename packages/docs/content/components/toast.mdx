@@ -81,7 +81,7 @@ export const BasicExample = () => {
   )
   return (
     <>
-      <CButton onClick={() => addToast(exampleToast)}>Send a toast</CButton>
+      <CButton color="primary" onClick={() => addToast(exampleToast)}>Send a toast</CButton>
       <CToaster className="p-3" placement="top-end" push={toast} ref={toaster} />
     </>
   )
@@ -116,7 +116,7 @@ const exampleToast = (
 )
 return (
   <>
-    <CButton onClick={() => addToast(exampleToast)}>Send a toast</CButton>
+    <CButton color="primary" onClick={() => addToast(exampleToast)}>Send a toast</CButton>
     <CToaster className="p-3" placement="top-end" push={toast} ref={toaster} />
   </>
 )

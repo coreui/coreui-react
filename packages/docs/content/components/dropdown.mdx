@@ -528,29 +528,7 @@ Place any freeform text within a dropdown menu with text. Note that you'll likel
 
 Put a form within a dropdown menu, or make it into a dropdown menu.
 
-<Example>
-  <CDropdownMenu>
-    <CForm className="px-4 py-4">
-      <div className="mb-3">
-        <CFormLabel htmlFor="exampleDropdownFormEmail1">Email address</CFormLabel>
-        <CFormInput type="email" id="exampleDropdownFormEmail1" placeholder="email@example.com" />
-      </div>
-      <div className="mb-3">
-        <CFormLabel htmlFor="exampleDropdownFormPassword1">Password</CFormLabel>
-        <CFormInput type="password" id="exampleDropdownFormPassword1" placeholder="Password" />
-      </div>
-      <div className="mb-3">
-        <CFormCheck id="dropdownCheck" label="Remember me" />
-      </div>
-      <CButton type="submit">Sign in</CButton>
-    </CForm>
-    <CDropdownDivider />
-    <CDropdownItem href="#">New around here? Sign up</CDropdownItem>
-    <CDropdownItem href="#">Forgot password?</CDropdownItem>
-  </CDropdownMenu>
-</Example>
-
-```jsx
+```jsx preview
 <CDropdownMenu>
   <CForm className="px-4 py-4">
     <div className="mb-3">
@@ -564,7 +542,7 @@ Put a form within a dropdown menu, or make it into a dropdown menu.
     <div className="mb-3">
       <CFormCheck id="dropdownCheck" label="Remember me" />
     </div>
-    <CButton type="submit">Sign in</CButton>
+    <CButton color="primary" type="submit">Sign in</CButton>
   </CForm>
   <CDropdownDivider />
   <CDropdownItem href="#">New around here? Sign up</CDropdownItem>

@@ -50,7 +50,7 @@ export const LiveDemoExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
+      <CButton color="primary" onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
       <COffcanvas placement="start" visible={visible} onHide={() => setVisible(false)}>
         <COffcanvasHeader>
           <COffcanvasTitle>Offcanvas</COffcanvasTitle>
@@ -73,7 +73,7 @@ export const LiveDemoExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
+    <CButton color="primary" onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
     <COffcanvas placement="start" visible={visible} onHide={() => setVisible(false)}>
       <COffcanvasHeader>
         <COffcanvasTitle>Offcanvas</COffcanvasTitle>
@@ -95,7 +95,7 @@ export const BodyScrollingExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(true)}>Enable body scrolling</CButton>
+      <CButton color="primary" onClick={() => setVisible(true)}>Enable body scrolling</CButton>
       <COffcanvas backdrop={false} placement="start" scroll={true} visible={visible} onHide={() => setVisible(false)}>
         <COffcanvasHeader>
           <COffcanvasTitle>Offcanvas with body scrolling</COffcanvasTitle>
@@ -117,7 +117,7 @@ export const BodyScrollingExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisible(true)}>Enable body scrolling</CButton>
+    <CButton color="primary" onClick={() => setVisible(true)}>Enable body scrolling</CButton>
     <COffcanvas backdrop={false} placement="start" scroll={true} visible={visible} onHide={() => setVisible(false)}>
       <COffcanvasHeader>
         <COffcanvasTitle>Offcanvas with body scrolling</COffcanvasTitle>
@@ -139,7 +139,7 @@ export const BodyScrollingAndBackdropExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(true)}>Enable both scrolling &amp; backdrop</CButton>
+      <CButton color="primary" onClick={() => setVisible(true)}>Enable both scrolling &amp; backdrop</CButton>
       <COffcanvas placement="start" scroll={true} visible={visible} onHide={() => setVisible(false)}>
         <COffcanvasHeader>
           <COffcanvasTitle>Backdrop with scrolling</COffcanvasTitle>
@@ -161,7 +161,7 @@ export const BodyScrollingAndBackdropExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisible(true)}>Enable both scrolling &amp; backdrop</CButton>
+    <CButton color="primary" onClick={() => setVisible(true)}>Enable both scrolling &amp; backdrop</CButton>
     <COffcanvas placement="start" scroll={true} visible={visible} onHide={() => setVisible(false)}>
       <COffcanvasHeader>
         <COffcanvasTitle>Backdrop with scrolling</COffcanvasTitle>
@@ -183,7 +183,7 @@ export const StaticBackdropExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(true)}>Toggle static offcanvas</CButton>
+      <CButton color="primary" onClick={() => setVisible(true)}>Toggle static offcanvas</CButton>
       <COffcanvas backdrop="static" placement="start" visible={visible} onHide={() => setVisible(false)}>
         <COffcanvasHeader>
           <COffcanvasTitle>Backdrop with scrolling</COffcanvasTitle>
@@ -205,7 +205,7 @@ export const StaticBackdropExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisible(true)}>Toggle static offcanvas</CButton>
+    <CButton color="primary" onClick={() => setVisible(true)}>Toggle static offcanvas</CButton>
     <COffcanvas backdrop="static" placement="start" visible={visible} onHide={() => setVisible(false)}>
       <COffcanvasHeader>
         <COffcanvasTitle>Backdrop with scrolling</COffcanvasTitle>
@@ -246,7 +246,7 @@ export const ResponsiveExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton className="d-lg-none" onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
+      <CButton color="primary" className="d-lg-none" onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
       <CAlert className="d-none d-lg-block" color="info">Resize your browser to show the responsive offcanvas toggle.</CAlert>
       <COffcanvas placement="start" responsive="lg" visible={visible} onHide={() => setVisible(false)}>
         <COffcanvasHeader>
@@ -269,7 +269,7 @@ export const ResponsiveExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton className="d-lg-none" onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
+    <CButton color="primary" className="d-lg-none" onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
     <CAlert className="d-none d-lg-block" color="info">Resize your browser to show the responsive offcanvas toggle.</CAlert>
     <COffcanvas backdrop="static" placement="start" visible={visible} onHide={() => setVisible(false)}>
       <COffcanvasHeader>
@@ -300,7 +300,7 @@ export const PlacementTopExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(true)}>Toggle top offcanvas</CButton>
+      <CButton color="primary" onClick={() => setVisible(true)}>Toggle top offcanvas</CButton>
       <COffcanvas placement="top" visible={visible} onHide={() => setVisible(false)}>
         <COffcanvasHeader>
           <COffcanvasTitle>Offcanvas</COffcanvasTitle>
@@ -323,7 +323,7 @@ export const PlacementTopExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisible(true)}>Toggle top offcanvas</CButton>
+    <CButton color="primary" onClick={() => setVisible(true)}>Toggle top offcanvas</CButton>
     <COffcanvas placement="top" visible={visible} onHide={() => setVisible(false)}>
       <COffcanvasHeader>
         <COffcanvasTitle>Offcanvas</COffcanvasTitle>
@@ -342,7 +342,7 @@ export const PlacementRightExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(true)}>Toggle right offcanvas</CButton>
+      <CButton color="primary" onClick={() => setVisible(true)}>Toggle right offcanvas</CButton>
       <COffcanvas placement="end" visible={visible} onHide={() => setVisible(false)}>
         <COffcanvasHeader>
           <COffcanvasTitle>Offcanvas</COffcanvasTitle>
@@ -365,7 +365,7 @@ export const PlacementRightExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisible(true)}>Toggle right offcanvas</CButton>
+    <CButton color="primary" onClick={() => setVisible(true)}>Toggle right offcanvas</CButton>
     <COffcanvas placement="right" visible={visible} onHide={() => setVisible(false)}>
       <COffcanvasHeader>
         <COffcanvasTitle>Offcanvas</COffcanvasTitle>
@@ -384,7 +384,7 @@ export const PlacementBottomExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(true)}>Toggle bottom offcanvas</CButton>
+      <CButton color="primary" onClick={() => setVisible(true)}>Toggle bottom offcanvas</CButton>
       <COffcanvas placement="bottom" visible={visible} onHide={() => setVisible(false)}>
         <COffcanvasHeader>
           <COffcanvasTitle>Offcanvas</COffcanvasTitle>
@@ -407,7 +407,7 @@ export const PlacementBottomExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisible(true)}>Toggle bottom offcanvas</CButton>
+    <CButton color="primary" onClick={() => setVisible(true)}>Toggle bottom offcanvas</CButton>
     <COffcanvas placement="bottom" visible={visible} onHide={() => setVisible(false)}>
       <COffcanvasHeader>
         <COffcanvasTitle>Offcanvas</COffcanvasTitle>

@@ -68,7 +68,7 @@ export const LiveDemoExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
+      <CButton color="primary" onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
       <CModal
         visible={visible}
         onClose={() => setVisible(false)}
@@ -99,7 +99,7 @@ export const LiveDemoExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
+    <CButton color="primary" onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
     <CModal
       visible={visible}
       onClose={() => setVisible(false)}
@@ -130,7 +130,7 @@ export const StaticBackdropExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(!visible)}>Launch static backdrop modal</CButton>
+      <CButton color="primary" onClick={() => setVisible(!visible)}>Launch static backdrop modal</CButton>
       <CModal
         backdrop="static"
         visible={visible}
@@ -162,7 +162,7 @@ export const StaticBackdropExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisible(!visible)}>Launch static backdrop modal</CButton>
+    <CButton color="primary" onClick={() => setVisible(!visible)}>Launch static backdrop modal</CButton>
     <CModal
       backdrop="static"
       visible={visible}
@@ -194,7 +194,7 @@ export const ScrollingLongContentExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
+      <CButton color="primary" onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
       <CModal
         visible={visible}
         onClose={() => setVisible(false)}
@@ -302,7 +302,7 @@ export const ScrollingLongContentExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
+    <CButton color="primary" onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
     <CModal
       visible={visible}
       onClose={() => setVisible(false)}
@@ -408,7 +408,7 @@ export const ScrollingLongContentExample2 = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
+      <CButton color="primary" onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
       <CModal
         scrollable
         visible={visible}
@@ -517,7 +517,7 @@ export const ScrollingLongContentExample2 = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
+    <CButton color="primary" onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
     <CModal
       scrollable
       visible={visible}
@@ -626,7 +626,7 @@ export const VerticallyCenteredExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(!visible)}>Vertically centered modal</CButton>
+      <CButton color="primary" onClick={() => setVisible(!visible)}>Vertically centered modal</CButton>
       <CModal
         alignment="center"
         visible={visible}
@@ -659,7 +659,7 @@ export const VerticallyCenteredExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisible(!visible)}>Vertically centered modal</CButton>
+    <CButton color="primary" onClick={() => setVisible(!visible)}>Vertically centered modal</CButton>
     <CModal
       alignment="center"
       visible={visible}
@@ -688,7 +688,7 @@ export const VerticallyCenteredScrollableExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(!visible)}>Vertically centered scrollable modal</CButton>
+      <CButton color="primary" onClick={() => setVisible(!visible)}>Vertically centered scrollable modal</CButton>
       <CModal
         alignment="center"
         scrollable
@@ -741,7 +741,7 @@ export const VerticallyCenteredScrollableExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisible(!visible)}>Vertically centered scrollable modal</CButton>
+    <CButton color="primary" onClick={() => setVisible(!visible)}>Vertically centered scrollable modal</CButton>
     <CModal
       alignment="center"
       scrollable
@@ -794,7 +794,7 @@ export const TooltipsAndPopoversExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
+      <CButton color="primary" onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
       <CModal
         alignment="center"
         visible={visible}
@@ -809,7 +809,7 @@ export const TooltipsAndPopoversExample = () => {
           <p>
             This
             <CPopover title="Popover title" content="Popover body content is set in this property.">
-              <CButton>button</CButton>
+              <CButton color="primary">button</CButton>
             </CPopover> triggers a popover on click.
           </p>
           <hr />
@@ -843,7 +843,7 @@ export const TooltipsAndPopoversExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
+    <CButton color="primary" onClick={() => setVisible(!visible)}>Launch demo modal</CButton>
     <CModal
       alignment="center"
       visible={visible}
@@ -858,7 +858,7 @@ return (
         <p>
           This
           <CPopover title="Popover title" content="Popover body content is set in this property.">
-            <CButton>button</CButton>
+            <CButton color="primary">button</CButton>
           </CPopover> triggers a popover on click.
         </p>
         <hr />
@@ -893,7 +893,7 @@ export const ToggleBetweenModalsExample = () => {
   const [visible2, setVisible2] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(!visible)}>Open first modal</CButton>
+      <CButton color="primary" onClick={() => setVisible(!visible)}>Open first modal</CButton>
       <CModal
         visible={visible}
         onClose={() => setVisible(false)}
@@ -956,7 +956,7 @@ const [visible, setVisible] = useState(false)
 const [visible2, setVisible2] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisible(!visible)}>Open first modal</CButton>
+    <CButton color="primary" onClick={() => setVisible(!visible)}>Open first modal</CButton>
     <CModal
       visible={visible}
       onClose={() => setVisible(false)}
@@ -1045,9 +1045,9 @@ export const OptionalSizesExample = () => {
   const [visibleSm, setVisibleSm] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisibleXL(!visibleXL)}>Extra large modal</CButton>
-      <CButton onClick={() => setVisibleLg(!visibleLg)}>Large modal</CButton>
-      <CButton onClick={() => setVisibleSm(!visibleSm)}>Small modal</CButton>
+      <CButton color="primary" onClick={() => setVisibleXL(!visibleXL)}>Extra large modal</CButton>
+      <CButton color="primary" onClick={() => setVisibleLg(!visibleLg)}>Large modal</CButton>
+      <CButton color="primary" onClick={() => setVisibleSm(!visibleSm)}>Small modal</CButton>
       <CModal
         size="xl"
         visible={visibleXL}
@@ -1095,9 +1095,9 @@ const [visibleLg, setVisibleLg] = useState(false)
 const [visibleSm, setVisibleSm] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisibleXL(!visibleXL)}>Extra large modal</CButton>
-    <CButton onClick={() => setVisibleLg(!visibleLg)}>Large modal</CButton>
-    <CButton onClick={() => setVisibleSm(!visibleSm)}>Small modal</CButton>
+    <CButton color="primary" onClick={() => setVisibleXL(!visibleXL)}>Extra large modal</CButton>
+    <CButton color="primary" onClick={() => setVisibleLg(!visibleLg)}>Large modal</CButton>
+    <CButton color="primary" onClick={() => setVisibleSm(!visibleSm)}>Small modal</CButton>
     <CModal
       size="xl"
       visible={visibleXL}
@@ -1157,12 +1157,12 @@ export const FullscreenExample = () => {
   const [visibleXXL, setVisibleXXL] = useState(false)
   return (
     <>
-      <CButton onClick={() => setVisible(!visible)}>Full screen</CButton>
-      <CButton onClick={() => setVisibleSm(!visibleSm)}>Full screen below sm</CButton>
-      <CButton onClick={() => setVisibleMd(!visibleMd)}>Full screen below md</CButton>
-      <CButton onClick={() => setVisibleLg(!visibleLg)}>Full screen below lg</CButton>
-      <CButton onClick={() => setVisibleXL(!visibleXL)}>Full screen below xl</CButton>
-      <CButton onClick={() => setVisibleXXL(!visibleXXL)}>Full screen below xxl</CButton>
+      <CButton color="primary" onClick={() => setVisible(!visible)}>Full screen</CButton>
+      <CButton color="primary" onClick={() => setVisibleSm(!visibleSm)}>Full screen below sm</CButton>
+      <CButton color="primary" onClick={() => setVisibleMd(!visibleMd)}>Full screen below md</CButton>
+      <CButton color="primary" onClick={() => setVisibleLg(!visibleLg)}>Full screen below lg</CButton>
+      <CButton color="primary" onClick={() => setVisibleXL(!visibleXL)}>Full screen below xl</CButton>
+      <CButton color="primary" onClick={() => setVisibleXXL(!visibleXXL)}>Full screen below xxl</CButton>
       <CModal
         fullscreen
         visible={visible}
@@ -1246,12 +1246,12 @@ const [visibleXL, setVisibleXL] = useState(false)
 const [visibleXXL, setVisibleXXL] = useState(false)
 return (
   <>
-    <CButton onClick={() => setVisible(!visible)}>Full screen</CButton>
-    <CButton onClick={() => setVisibleSm(!visibleSm)}>Full screen below sm</CButton>
-    <CButton onClick={() => setVisibleMd(!visibleMd)}>Full screen below md</CButton>
-    <CButton onClick={() => setVisibleLg(!visibleLg)}>Full screen below lg</CButton>
-    <CButton onClick={() => setVisibleXL(!visibleXL)}>Full screen below xl</CButton>
-    <CButton onClick={() => setVisibleXXL(!visibleXXL)}>Full screen below xxl</CButton>
+    <CButton color="primary" onClick={() => setVisible(!visible)}>Full screen</CButton>
+    <CButton color="primary" onClick={() => setVisibleSm(!visibleSm)}>Full screen below sm</CButton>
+    <CButton color="primary" onClick={() => setVisibleMd(!visibleMd)}>Full screen below md</CButton>
+    <CButton color="primary" onClick={() => setVisibleLg(!visibleLg)}>Full screen below lg</CButton>
+    <CButton color="primary" onClick={() => setVisibleXL(!visibleXL)}>Full screen below xl</CButton>
+    <CButton color="primary" onClick={() => setVisibleXXL(!visibleXXL)}>Full screen below xxl</CButton>
     <CModal
       fullscreen
       visible={visible}

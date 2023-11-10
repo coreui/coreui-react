@@ -64,7 +64,7 @@ export const CButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, CButton
     {
       children,
       className,
-      color = 'primary',
+      color,
       component = 'button',
       shape,
       size,
