@@ -6,6 +6,7 @@ import { CProgress, CProgressProps } from '../progress/CProgress'
 
 import { colorPropType } from '../../props'
 import type { Colors } from '../../types'
+import classNames from 'classnames'
 
 export interface CWidgetStatsCProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
@@ -53,7 +54,16 @@ export const CWidgetStatsC = forwardRef<HTMLDivElement, CWidgetStatsCProps>(
         ref={ref}
       >
         <CCardBody>
-          {icon && <div className="text-end mb-4">{icon}</div>}
+          {icon && (
+            <div
+              className={classNames(
+                'text-end mb-4',
+                inverse ? 'text-white text-opacity-75' : 'text-body-secondary',
+              )}
+            >
+              {icon}
+            </div>
+          )}
           {value && <div className="fs-4 fw-semibold">{value}</div>}
           {title && (
             <div className={inverse ? 'text-white text-opacity-75' : 'text-body-secondary'}>
