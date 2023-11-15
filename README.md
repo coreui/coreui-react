@@ -220,8 +220,6 @@ See [the Releases section of our project](https://github.com/coreui/coreui-react
 * <https://github.com/coreui>
 * <https://github.com/orgs/coreui/people>
 
-- <https://github.com/orgs/coreui/people>
-
 ## Support CoreUI Development
 
 CoreUI is an MIT-licensed open source project and is completely free to use. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. You can support development by buying the [CoreUI PRO](https://coreui.io/pricing/?framework=react&src=github-coreui-react) or by becoming a sponsor via [Open Collective](https://opencollective.com/coreui/).
