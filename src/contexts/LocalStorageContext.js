@@ -17,6 +17,7 @@ const LocalStorageContext = createContext();
 export const LocalStorageContextProvider = ({ children }) => {
   const [collators, setCollators] = useState(() => getLocalStorageItem('collators', []));
   const [coretime, setCoretime] = useState(() => getLocalStorageItem('coretime', {}));
+  const [runtime, setRuntime] = useState(() => getLocalStorageItem('runtime', {}));
 
   // Update localStorage when collators or coretime changes
   useEffect(() => {
@@ -26,13 +27,19 @@ export const LocalStorageContextProvider = ({ children }) => {
   useEffect(() => {
     setLocalStorageItem('coretime', coretime);
   }, [coretime]);
+  
+  useEffect(() => {
+    setLocalStorageItem('runtime', runtime);
+  }, [runtime]);
 
   // Context value
   const contextValue = {
     collators,
     setCollators,
     coretime,
-    setCoretime
+    setCoretime,
+    runtime,
+    setRuntime
   };
 
   return (

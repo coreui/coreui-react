@@ -1,0 +1,22 @@
+[
+    {
+        "name":"Extended Parachain Template",
+        "developer":"Parity Technologies",
+        "tags":["Assets", "XCM", "Governance", "SUDO"],
+        "shortDescription":"The Extended Parachain Template is a ready-to-use parachain template, pre-configured with the Assets pallet, a simple Governance system (Collective & Motion pallets), and other useful base features.",
+        "longDescription":"The Extended Parachain Tempalte has been developed by Parity Technologies to allow users to quickly develop a parachain. It has simple yet powerful features like the Assets Pallet which gives the parachain the ability to manage different assets. It also has a simple Governance system that contains of Motions and Collectives, allowing for parachain builders to experience first hand how to manage on-chain Governance. It also has SUDO functionality enabled for first-time parachain developers, as well as an intial XCM Configuration for cross-chain messaging.",
+        "github":"https://github.com/paritytech/extended-parachain-template",
+        "img":"https://media.licdn.com/dms/image/C4E0BAQEQCf-N1FDWLw/company-logo_200_200/0/1631365010727/paritytech_logo?e=2147483647&v=beta&t=RT4zbwHB40-kFmiak5cR_9TL6m-MHyMlcgLlrmCdhhE",
+        "id":1
+    },
+    {
+        "name":"EVM Parachain Template",
+        "developer":"Parity Technologies",
+        "tags":["EVM", "XCM", "Governance", "SUDO"],
+        "shortDescription":"The Frontier Parachain Template is a ready-to-use EVM-based parachain (based on the Frontier project), pre-configured with the Assets pallet, a simple Governance system (Collective & Motion pallets), and EVM precompiles.",
+        "longDescription":" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit amet urna a augue sagittis posuere. Aenean feugiat venenatis nunc, at blandit velit. Sed eu ornare est. Duis vitae nisl imperdiet, euismod ipsum non, ultricies libero. Pellentesque consequat eu tellus eu laoreet. Vivamus eu velit id sapien malesuada semper. Ut at accumsan diam. Sed fermentum turpis sed velit eleifend, at tincidunt quam elementum. Integer commodo, dui id consequat tristique, nulla nulla luctus ipsum, ut pulvinar ex magna sed tellus. Etiam pellentesque nisl non quam eleifend, sed commodo est lobortis. Proin efficitur est eget ex interdum, at sodales nulla accumsan.",
+        "github":"https://github.com/paritytech/frontier-parachain-template",
+        "id":2,
+        "img":"https://media.licdn.com/dms/image/C4E0BAQEQCf-N1FDWLw/company-logo_200_200/0/1631365010727/paritytech_logo?e=2147483647&v=beta&t=RT4zbwHB40-kFmiak5cR_9TL6m-MHyMlcgLlrmCdhhE"
+    }
+]
