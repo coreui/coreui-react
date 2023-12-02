@@ -15,7 +15,7 @@ const ConfiguratorCoretime = React.lazy(() => import('./views/configurator-coret
 
 
 const routes = [
-  { path: '/', exact: true, name: 'Welcome' , element: Empty},
+  { path: '/', exact: true, name: 'Start Building' , element: Empty},
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
