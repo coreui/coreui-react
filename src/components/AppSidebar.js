@@ -33,7 +33,7 @@ const AppSidebar = () => {
       <CSidebarBrand className="d-none d-md-flex" to="/">
       <div className="clearfix" style={{"margin":"2rem"}}>
         <CImage rounded align="center" src={porticoSVG} width={150} height={150} />
-        <h3 style={{'text-align':'center', 'margin':'0'}}>PORTICO</h3>
+        <h3 style={{'textAlign':'center', 'margin':'0'}}>PORTICO</h3>
       </div>
       </CSidebarBrand>
       <CSidebarNav>
