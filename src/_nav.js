@@ -24,14 +24,22 @@ const generateNav = (networkInfo, networkStatus) => {
         to: `https://polkadot.js.org/apps/?rpc=${node.wsUri}#/explorer`
       }
     })
+
+    console.log("networkInfo", networkInfo)
+
+    for (const para in networkInfo.paras) {
+      //each para is an an array of paranodes
+      paraCollators = networkInfo.paras[para].map(node => {
+        return {
+          component: CNavItem,
+          name: node.name,
+          to: `https://polkadot.js.org/apps/?rpc=${node.wsUri}#/explorer`
+        }
+      })
+      
+    }
     
-    paraCollators = networkInfo.paras[1].map(node => {
-      return {
-        component: CNavItem,
-        name: node.name,
-        to: `https://polkadot.js.org/apps/?rpc=${node.wsUri}#/explorer`
-      }
-    })
+    
   }
 
   

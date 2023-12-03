@@ -11,6 +11,8 @@ export const AppSidebarNav = ({ items }) => {
   const localStorageContext = useLocalStorageContext();
   const { networkStatus } = localStorageContext;
 
+  console.log(networkStatus === 'OK')
+
   const location = useLocation()
   const navLink = (name, icon, badge) => {
     return (
@@ -52,7 +54,7 @@ export const AppSidebarNav = ({ items }) => {
       <Component
         idx={String(index)}
         key={index}
-        toggler={navLink(name, icon)}
+        toggler={networkStatus === 'OK' ? navLink(name, icon): false}
         visible={location.pathname.startsWith(to)}
         {...rest}
       >
