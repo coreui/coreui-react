@@ -11,8 +11,6 @@ export const AppSidebarNav = ({ items }) => {
   const localStorageContext = useLocalStorageContext();
   const { networkStatus } = localStorageContext;
 
-  console.log(networkStatus === 'OK')
-
   const location = useLocation()
   const navLink = (name, icon, badge) => {
     return (
