@@ -10,8 +10,10 @@ const RuntimeUpgrade = React.lazy(() => import('./views/runtime-upgrade/RuntimeU
 const Empty = React.lazy(() => import('./views/empty/Empty'))
 const Configurator = React.lazy(() => import('./views/configurator/Configurator'))
 const ConfiguratorRuntime = React.lazy(() => import('./views/configurator-runtime/ConfiguratorRuntime'))
+const ConfiguratorRuntimeSpecs = React.lazy(() => import('./views/configurator-runtime/ConfiguratorRuntimeSpecs'))
 const ConfiguratorCollators = React.lazy(() => import('./views/configurator-collators/ConfiguratorCollators'))
 const ConfiguratorCoretime = React.lazy(() => import('./views/configurator-coretime/ConfiguratorCoretime'))
+
 
 
 const routes = [
@@ -24,8 +26,11 @@ const routes = [
   { path: '/runtime-upgrade', name: 'Runtime Upgrade', element: RuntimeUpgrade },
   { path: '/configure', name: 'Configure Deployment', element: Configurator },
   { path: '/configure/runtime', name: 'Runtime', element: ConfiguratorRuntime },
+  { path: '/configure/runtime-specs', name: 'Runtime Specs', element:  ConfiguratorRuntimeSpecs},
   { path: '/configure/collators', name: 'Network Topology', element: ConfiguratorCollators },
   { path: '/configure/coretime', name: 'Coretime', element: ConfiguratorCoretime },
+
+
 ]
 
 export default routes
