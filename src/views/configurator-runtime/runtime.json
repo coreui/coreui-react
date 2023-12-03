@@ -1,6 +1,7 @@
 [
     {
         "name":"Extended Parachain Template",
+        "value": "parity-extended-template",
         "developer":"Parity Technologies",
         "tags":["Assets", "XCM", "Governance", "SUDO"],
         "shortDescription":"The Extended Parachain Template is a ready-to-use parachain template, pre-configured with the Assets pallet, a simple Governance system (Collective & Motion pallets), and other useful base features.",
@@ -11,6 +12,7 @@
     },
     {
         "name":"EVM Parachain Template",
+        "value": "parity-frontier-template",
         "developer":"Parity Technologies",
         "tags":["EVM", "XCM", "Governance", "SUDO"],
         "shortDescription":"The Frontier Parachain Template is a ready-to-use EVM-based parachain (based on the Frontier project), pre-configured with the Assets pallet, a simple Governance system (Collective & Motion pallets), and EVM precompiles.",

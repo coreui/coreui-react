@@ -8,7 +8,7 @@ const ConfiguratorFormContext = createContext();
 export const ConfiguratorFormContextProvider = ({ children }) => {
   const [collators, setCollators] = useState(0);
   const [coretime, setCoretime] = useState({every: null, amount: null });
-  const [runtime, setRuntime] = useState({template: null});
+  const [runtime, setRuntime] = useState({template: null, specs: {paraId:null, ss58:null, tokenSymbol:null, decimals:null}});
 
   // Context value
   const contextValue = {

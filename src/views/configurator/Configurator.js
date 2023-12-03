@@ -7,12 +7,14 @@ import CIcon from '@coreui/icons-react'
 import submit from './submit'
 
 import { useConfiguratorFormContext } from 'src/contexts/ConfiguratorFormContext'
+import { useLocalStorageContext } from 'src/contexts/LocalStorageContext'
 
 
 const Configurator = () => {
   const [formStatus, setStateStatus] = useState({executing: '', status: '', message: ''});
   const configurationContext = useConfiguratorFormContext();
-  const [ready, setReady] = useState(false);
+  const localStorageContext = useLocalStorageContext();
+  const [ready, setReady] = useState(true);
 
   const {collators, runtime, coretime } = configurationContext;
   // const {setCollators, setRuntime, setCoretime } = configurationContext;
@@ -27,8 +29,9 @@ const Configurator = () => {
 
 
   const handleSubmit = useCallback(() => {
-    submit({...configurationContext, setStateStatus})
+    submit({setStateStatus,localStorageContext, configurationContext })
   }, [configurationContext,setStateStatus]);
+
   
   return (
     <CContainer fluid >
@@ -107,7 +110,6 @@ const Configurator = () => {
         >
           Deploy
         </CButton>
-
       </CRow>
     </CContainer>
   )

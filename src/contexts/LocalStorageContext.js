@@ -15,14 +15,14 @@ const LocalStorageContext = createContext();
 
 // Define the context provider component
 export const LocalStorageContextProvider = ({ children }) => {
-  const [collators, setCollators] = useState(() => getLocalStorageItem('collators', []));
+  const [network, setNetwork] = useState(() => getLocalStorageItem('network', {}));
   const [coretime, setCoretime] = useState(() => getLocalStorageItem('coretime', {}));
   const [runtime, setRuntime] = useState(() => getLocalStorageItem('runtime', {}));
 
-  // Update localStorage when collators or coretime changes
+  // Update localStorage when network or coretime changes
   useEffect(() => {
-    setLocalStorageItem('collators', collators);
-  }, [collators]);
+    setLocalStorageItem('network', network);
+  }, [network]);
 
   useEffect(() => {
     setLocalStorageItem('coretime', coretime);
@@ -34,8 +34,8 @@ export const LocalStorageContextProvider = ({ children }) => {
 
   // Context value
   const contextValue = {
-    collators,
-    setCollators,
+    network,
+    setNetwork,
     coretime,
     setCoretime,
     runtime,

@@ -10,7 +10,6 @@ const ConfiguratorCollators = () => {
   const { collators, setCollators } = useConfiguratorFormContext();
 
   const handleClick = (qty) => {
-    console.log(typeof qty)
     setCollators(qty)
   }
 
