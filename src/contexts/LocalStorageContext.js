@@ -17,7 +17,10 @@ const LocalStorageContext = createContext();
 export const LocalStorageContextProvider = ({ children }) => {
   const [network, setNetwork] = useState(() => getLocalStorageItem('network', {}));
   const [coretime, setCoretime] = useState(() => getLocalStorageItem('coretime', {}));
+  //TODO: this might need to be deleted
   const [runtime, setRuntime] = useState(() => getLocalStorageItem('runtime', {}));
+
+  const [networkStatus, setNetworkStatus] = useState(() => getLocalStorageItem('networkStatus', {}));
 
   // Update localStorage when network or coretime changes
   useEffect(() => {
@@ -32,6 +35,10 @@ export const LocalStorageContextProvider = ({ children }) => {
     setLocalStorageItem('runtime', runtime);
   }, [runtime]);
 
+  useEffect(() => {
+    setLocalStorageItem('networkStatus', networkStatus);
+  }, [networkStatus]);
+
   // Context value
   const contextValue = {
     network,
@@ -39,7 +46,9 @@ export const LocalStorageContextProvider = ({ children }) => {
     coretime,
     setCoretime,
     runtime,
-    setRuntime
+    setRuntime,
+    networkStatus,
+    setNetworkStatus
   };
 
   return (

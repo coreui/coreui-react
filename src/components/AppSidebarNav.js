@@ -4,7 +4,13 @@ import PropTypes from 'prop-types'
 
 import { CBadge } from '@coreui/react'
 
+import { useLocalStorageContext } from 'src/contexts/LocalStorageContext'
+
 export const AppSidebarNav = ({ items }) => {
+
+  const localStorageContext = useLocalStorageContext();
+  const { networkStatus } = localStorageContext;
+
   const location = useLocation()
   const navLink = (name, icon, badge) => {
     return (
@@ -20,6 +26,9 @@ export const AppSidebarNav = ({ items }) => {
     )
   }
 
+  console.log(networkStatus)
+  console.log(networkStatus === 'OK')
+
   const navItem = (item, index) => {
     const { component, name, badge, icon, ...rest } = item
     const Component = component
@@ -31,6 +40,7 @@ export const AppSidebarNav = ({ items }) => {
           })}
         key={index}
         {...rest}
+        disabled={networkStatus === 'OK' ? false : true}
       >
         {navLink(name, icon, badge)}
       </Component>
