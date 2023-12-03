@@ -23,8 +23,6 @@ const generateNav = (networkInfo, networkStatus) => {
       }
     })
 
-    console.log("networkInfo", networkInfo)
-
     for (const para in networkInfo.paras) {
       //each para is an an array of paranodes
       paraCollators = networkInfo.paras[para].map(node => {
