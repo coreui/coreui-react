@@ -1,4 +1,4 @@
-import {React, useState, useCallback} from 'react'
+import {React, useState, useCallback, useEffect} from 'react'
 import { CContainer, CCol, CRow, CCard, CCardBody, CCardText, CCardTitle, CAvatar, CButton } from '@coreui/react'
 import {Link} from 'react-router-dom'
 import {cilArrowCircleRight} from '@coreui/icons'
@@ -15,7 +15,15 @@ const Configurator = () => {
   const [ready, setReady] = useState(false);
 
   const {collators, runtime, coretime } = configurationContext;
-  const {setCollators, setRuntime, setCoretime } = configurationContext;
+  // const {setCollators, setRuntime, setCoretime } = configurationContext;
+
+  useEffect(() => {
+    // This function will run after every render (initial render + updates)
+    if (collators && runtime && coretime) {
+      setReady(true)
+    }
+  }, [collators, runtime, coretime]);
+
 
 
   const handleSubmit = useCallback(() => {
@@ -89,16 +97,16 @@ const Configurator = () => {
         </CRow>
       </CCard>
       <CRow className="g-0 p-3 col-md-10">
-        {
-          ready ? 
-            <CButton onClick={() => handleClick()} className="col-3 mx-auto" color="success" size="lg" variant="outline" style={{"fontWeight":"200"}}>
-              Deploy
-            </CButton>
-          :
-            <CButton onClick={() => handleClick()} disabled className="col-3 mx-auto" color="danger" size="lg" variant="outline" style={{"fontWeight":"200"}}>
-              Deploy
-            </CButton>
-        }
+        <CButton 
+          onClick={() => handleSubmit()} 
+          disabled={!ready} 
+          className="col-3 mx-auto" 
+          color={ready ? "success" : "danger"} 
+          size="lg" variant="outline" 
+          style={{"fontWeight":"200"}}
+        >
+          Deploy
+        </CButton>
 
       </CRow>
     </CContainer>
