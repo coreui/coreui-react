@@ -35,11 +35,8 @@ const generateNav = (networkInfo, networkStatus) => {
           name: node.name,
           to: `https://polkadot.js.org/apps/?rpc=${node.wsUri}#/explorer`
         }
-      })
-      
+      }).sort((node1, node2) => Number(node1.name.split("-")[2]) - Number(node2.name.split("-")[2]))
     }
-    
-    
   }
 
   
