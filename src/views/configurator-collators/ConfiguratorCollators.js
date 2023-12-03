@@ -16,12 +16,12 @@ const ConfiguratorCollators = () => {
   return (
     <>
       <CRow className='d-flex flex-row'>
-        <CCol md={1}>
+        {/* <CCol md={1}>
           <Link to='/configure'>
             <CIcon size="lg" className="text-secondary" icon={cilArrowLeft}/>
           </Link>
         </CCol>
-        <CCol md={11}>
+        <CCol md={11}> */}
           <p className='fs-5 fw-light'>Pick the number of collators to be deployed.</p>
           <CButtonToolbar className='mt-4' role="group" aria-label="Large button group">
             <CButtonGroup role="group" aria-label="Third group">
@@ -37,7 +37,7 @@ const ConfiguratorCollators = () => {
               <CButton className='fw-light' active={collators === 10 ? true : false} onClick={() => handleClick(10)} color="info" variant="outline">10 Collators</CButton>
             </CButtonGroup>
           </CButtonToolbar>
-        </CCol>
+        {/* </CCol> */}
       </CRow>
       <CRow className='mt-4'>
         <Link className='text-center' to="/configure">

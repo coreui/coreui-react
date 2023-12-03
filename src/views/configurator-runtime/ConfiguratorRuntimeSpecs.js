@@ -79,12 +79,12 @@ const handleTokenSymbolChange = (event, max, setter) => {
   return (
     <CForm className="needs-validation" noValidate onSubmit={handleSubmit} validated={validated}>
       <CRow className='d-flex flex-row'>
-        <CCol md={1}>
+        {/* <CCol md={1}>
           <Link to='/configure'>
             <CIcon size="lg" className="text-secondary" icon={cilArrowLeft}/>
           </Link>
-        </CCol>
-        <CCol md={11}>
+        </CCol> */}
+        {/* <CCol md={11}> */}
             <CRow className='mb-3'>
               <p>In order to configure your Coretime needs, you need to select: <strong>Amount</strong> and <strong>Frequency</strong> of validation.</p>
               <p><strong>Amount</strong> dictates how many blocks of your parachain you want to pre-configure to be validated by the Relay Chain. For the purposes of this MVP the cap is 10_000 blocks.</p>
@@ -163,7 +163,7 @@ const handleTokenSymbolChange = (event, max, setter) => {
                 />
               </CCol>
             </CRow>
-        </CCol>
+        {/* </CCol> */}
       </CRow>
       <CRow className='mt-4'>
         <CCol className='d-flex justify-content-center'>
