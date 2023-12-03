@@ -1,19 +1,32 @@
-import React from 'react'
+import {React, useState, useCallback} from 'react'
 import { CContainer, CCol, CRow, CCard, CCardBody, CCardText, CCardTitle, CAvatar, CButton } from '@coreui/react'
 import {Link} from 'react-router-dom'
 import {cilArrowCircleRight} from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
 
+import submit from './submit'
+
 import { useConfiguratorFormContext } from 'src/contexts/ConfiguratorFormContext'
 
 
 const Configurator = () => {
+  const [formStatus, setStateStatus] = useState({executing: '', status: '', message: ''});
+  const configurationContext = useConfiguratorFormContext();
 
-  const { collators, runtime, coretime } = useConfiguratorFormContext();
+  const {collators, runtime, coretime } = configurationContext;
+  const {setCollators, setRuntime, setCoretime } = configurationContext;
 
-  const handleClick = () => {
-    console.log('clicked')
-  }
+
+  const handleSubmit = useCallback(() => {
+    submit({...configurationContext, setStateStatus})
+  }, [configurationContext,setStateStatus]);
+
+  const testState = useCallback(() => {
+    setCollators(3)
+    setRuntime({template: 'parachain'})
+    setCoretime({every: 2, amount: 10 })
+  }, [configurationContext,setStateStatus]);
+
   
   return (
     <CContainer fluid >
@@ -26,7 +39,7 @@ const Configurator = () => {
             <CCardBody>
               <CCardTitle>Select Runtime</CCardTitle>
               <CCardText>
-                {runtime.name ? runtime.name : "Please Select a Runtime"}
+                {runtime.template ? runtime.template : "Please Select a Runtime"}
               </CCardText>
             </CCardBody>
           </CCol>
@@ -78,7 +91,7 @@ const Configurator = () => {
         </CRow>
       </CCard>
       <CRow className="g-0 p-3 col-md-10">
-        <CButton onClick={() => handleClick()}className="col-3 mx-auto" color="success" size="lg" variant="outline" style={{"fontWeight":"200"}}>
+        <CButton onClick={() => handleSubmit()}className="col-3 mx-auto" color="success" size="lg" variant="outline" style={{"fontWeight":"200"}}>
           Deploy
         </CButton>
       </CRow>
