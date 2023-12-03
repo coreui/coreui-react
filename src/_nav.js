@@ -3,9 +3,7 @@ import CIcon from '@coreui/icons-react'
 import {
   cilSpeedometer,
   cilWallet,
-  cilMemory,
   cilMagnifyingGlass,
-  cilMonitor,
   cilCog
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle, CNavLink } from '@coreui/react'
@@ -65,7 +63,7 @@ const generateNav = (networkInfo, networkStatus) => {
      component: CNavItem,
      name: 'Runtime Upgrades',
      to: '/runtime-upgrade',
-     icon: <CIcon icon={cilMemory} customClassName="nav-icon" />,
+     icon: <CIcon icon={cilCog} customClassName="nav-icon" />,
    },
    {
       component: CNavGroup,
@@ -89,85 +87,5 @@ const generateNav = (networkInfo, networkStatus) => {
   return nav
   
 }
-
-// const _nav = [
-//    {
-//     component: CNavTitle,
-//     name: "Account"
-//   },
-//   {
-//     component: CNavTitle,
-//     name: 'Current Deployment',
-//   },
-//   {
-//     component: CNavItem,
-//     name: 'Dashboard',
-//     to: '/dashboard',
-//     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-//   },
-//   {
-//     component: CNavItem,
-//     name: 'Coretime Credits',
-//     to: '/coretime',
-//     icon: <CIcon icon={cilWallet} customClassName="nav-icon" />,
-//   },
-//   {
-//     component: CNavItem,
-//     name: 'Runtime Upgrades',
-//     to: '/runtime-upgrade',
-//     icon: <CIcon icon={cilMemory} customClassName="nav-icon" />,
-//   },
-//     {
-//       component: CNavGroup,
-//       name: 'Explorer',
-//       icon: <CIcon icon={cilCog} customClassName="nav-icon" />,
-//       items: [
-//         {
-//           component: CNavGroup,
-//           name: 'Relay Chain',
-//           items: [
-//             {
-//               component: CNavItem,
-//               name: 'Validator - 01',
-//               to: '/'
-//             },
-//             {
-//               component: CNavItem,
-//               name: 'Validator - 02',
-//               to: '/'
-//             },
-//           ]
-//         },
-//         {
-//           component: CNavGroup,
-//           name: 'Parachain',
-//           items: [
-//             {
-//               component: CNavItem,
-//               name: 'Collator - 01',
-//               to: '/'
-//             },
-//             {
-//               component: CNavItem,
-//               name: 'Collator - 02',
-//               to: '/'
-//             },
-//           ]
-//         },
-//       ]
-//   },
-//   {
-//     component: CNavItem,
-//     name: 'Explorer',
-//     to: 'https://google.com',
-//     icon: <CIcon icon={cilMagnifyingGlass} customClassName="nav-icon" />,
-//   },
-//   {
-//     component: CNavLink,
-//     name: 'Grafana',
-//     href: 'https://google.com',
-//     icon: <CIcon icon={cilMonitor} customClassName="nav-icon" />,
-//   },
-// ]
 
 export default generateNav
