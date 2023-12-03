@@ -1,5 +1,5 @@
 import React from 'react'
-import runtimes from 'src/assets/runtimes/runtime.json'
+import runtimes from './runtime.json'
 import {Link} from 'react-router-dom'
 import { useLocalStorageContext } from 'src/contexts/LocalStorageContext'
 
