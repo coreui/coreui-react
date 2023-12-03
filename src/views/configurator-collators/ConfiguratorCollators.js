@@ -3,7 +3,7 @@ import { useConfiguratorFormContext } from 'src/contexts/ConfiguratorFormContext
 import {Link} from 'react-router-dom'
 import CIcon from '@coreui/icons-react'
 import {cilArrowLeft} from '@coreui/icons'
-import { CContainer, CRow, CCol, CButtonToolbar, CButtonGroup, CButton} from '@coreui/react'
+import { CRow, CCol, CButtonToolbar, CButtonGroup, CButton} from '@coreui/react'
 
 const ConfiguratorCollators = () => {
 
@@ -22,7 +22,7 @@ const ConfiguratorCollators = () => {
             <CIcon size="lg" className="text-secondary" icon={cilArrowLeft}/>
           </Link>
         </CCol>
-        <CCol>
+        <CCol md={11}>
           <p className='fs-5 fw-light'>Pick the number of collators to be deployed.</p>
           <CButtonToolbar className='mt-4' role="group" aria-label="Large button group">
             <CButtonGroup role="group" aria-label="Third group">
