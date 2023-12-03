@@ -1,22 +1,26 @@
-import React, {useState} from 'react'
+import {React, useState, useCallback} from 'react'
 import { CContainer, CCol, CRow, CCard, CCardBody, CCardText, CCardTitle, CAvatar, CButton } from '@coreui/react'
 import {Link} from 'react-router-dom'
 import {cilArrowCircleRight} from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
 
+import submit from './submit'
+
 import { useConfiguratorFormContext } from 'src/contexts/ConfiguratorFormContext'
 
 
 const Configurator = () => {
+  const [formStatus, setStateStatus] = useState({executing: '', status: '', message: ''});
+  const configurationContext = useConfiguratorFormContext();
   const [ready, setReady] = useState(false);
 
-  const { collators, runtime, coretime } = useConfiguratorFormContext();
+  const {collators, runtime, coretime } = configurationContext;
+  const {setCollators, setRuntime, setCoretime } = configurationContext;
 
-  const handleClick = () => {
-    console.log('clicked')
-  }
 
-  //TODO: Logic of ready/setReady to send request
+  const handleSubmit = useCallback(() => {
+    submit({...configurationContext, setStateStatus})
+  }, [configurationContext,setStateStatus]);
   
   return (
     <CContainer fluid >
