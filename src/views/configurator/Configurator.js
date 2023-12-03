@@ -20,7 +20,7 @@ const Configurator = () => {
       <CCard className="mb-3 col-md-10">
         <CRow className="g-0 p-3">
           <CCol md={1} className="d-flex justify-content-center align-items-center">
-            <CAvatar color="light" size="xl">1</CAvatar>
+            <CAvatar color={runtime.name ? 'success' : 'light'} size="xl">1</CAvatar>
           </CCol>
           <CCol md={10}>
             <CCardBody>
@@ -40,7 +40,7 @@ const Configurator = () => {
       <CCard className="mb-3 col-md-10">
         <CRow className="g-0 p-3">
           <CCol md={1} className="d-flex justify-content-center align-items-center">
-            <CAvatar color="light" size="xl">2</CAvatar>
+            <CAvatar color={collators.length ? 'success' : 'light'} size="xl">2</CAvatar>
           </CCol>
           <CCol md={10}>
             <CCardBody>
@@ -51,7 +51,7 @@ const Configurator = () => {
             </CCardBody>
           </CCol>
           <CCol md={1} className="d-flex justify-content-center align-items-center">
-            <Link to='/configure/runtime'>
+            <Link to='/configure/collators'>
               <CIcon size="xxl" className="text-secondary" icon={cilArrowCircleRight} />
             </Link>
           </CCol>
@@ -60,7 +60,7 @@ const Configurator = () => {
       <CCard className="mb-3 col-md-10">
         <CRow className="g-0 p-3">
           <CCol md={1} className="d-flex justify-content-center align-items-center">
-            <CAvatar color="light" size="xl">3</CAvatar>
+            <CAvatar color={coretime.amount ? 'success' : 'light'} size="xl">3</CAvatar>
           </CCol>
           <CCol md={10}>
             <CCardBody>
@@ -71,7 +71,7 @@ const Configurator = () => {
             </CCardBody>
           </CCol>
           <CCol md={1} className="d-flex justify-content-center align-items-center">
-            <Link to='/configure/runtime'>
+            <Link to='/configure/coretime'>
               <CIcon size="xxl" className="text-secondary" icon={cilArrowCircleRight} />
             </Link>
           </CCol>
