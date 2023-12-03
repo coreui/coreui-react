@@ -4,12 +4,12 @@ import {Link} from 'react-router-dom'
 import {cilArrowCircleRight} from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
 
-import { useLocalStorageContext } from 'src/contexts/LocalStorageContext'
+import { useConfiguratorFormContext } from 'src/contexts/ConfiguratorFormContext'
 
 
 const Configurator = () => {
 
-  const { collators, runtime, coretime } = useLocalStorageContext();
+  const { collators, runtime, coretime } = useConfiguratorFormContext();
 
   const handleClick = () => {
     console.log('clicked')
@@ -46,7 +46,7 @@ const Configurator = () => {
             <CCardBody>
               <CCardTitle>Network Topology</CCardTitle>
               <CCardText>
-                {collators.length ? collators.length : "Please configure Network Topology"}
+                {collators ? collators : "Please configure Network Topology"}
               </CCardText>
             </CCardBody>
           </CCol>
