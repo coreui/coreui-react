@@ -35,7 +35,6 @@ const AppBreadcrumb = () => {
     <CBreadcrumb className="m-0 ms-2">
       <CBreadcrumbItem><Link to="/">Home</Link></CBreadcrumbItem>
       {breadcrumbs.map((breadcrumb, index) => {
-        console.log(index, breadcrumb)
         return (
           <CBreadcrumbItem
             {...(breadcrumb.active ? { active: true } : "")}
