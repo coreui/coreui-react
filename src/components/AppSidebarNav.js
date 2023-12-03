@@ -29,6 +29,7 @@ export const AppSidebarNav = ({ items }) => {
   const navItem = (item, index) => {
     const { component, name, badge, icon, ...rest } = item
     const Component = component
+    const newWindow = {...rest}.to && {...rest}.to.includes("polkadot") ? "_blank" : ""; 
     return (
       <Component
         {...(rest.to &&
@@ -37,6 +38,7 @@ export const AppSidebarNav = ({ items }) => {
           })}
         key={index}
         {...rest}
+        target={newWindow}
         disabled={networkStatus === 'OK' ? false : true}
       >
         {navLink(name, icon, badge)}
