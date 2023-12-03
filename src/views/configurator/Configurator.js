@@ -71,7 +71,11 @@ const Configurator = () => {
             <CCardBody>
               <CCardTitle>Coretime</CCardTitle>
               <CCardText>
-                {coretime.amount ? coretime.amount : "Please configure Coretime needs"}
+                {coretime.amount 
+                ? 
+                  `Amount: ${coretime.amount}. Frequency: ${coretime.every}.`
+                : 
+                  "Please configure Coretime needs"}
               </CCardText>
             </CCardBody>
           </CCol>
