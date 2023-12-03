@@ -52,8 +52,8 @@ const ConfiguratorRuntime = () => {
       </CCol>
     </CRow>
     <CRow className='mt-4'>
-        <Link className='text-center' to="/configure">
-          <CButton className='fw-light'>Confirm</CButton>
+      <Link className='text-center' to="/configure/runtime-specs">
+          <CButton className='fw-light'>Next</CButton>
         </Link>
       </CRow>
     </>

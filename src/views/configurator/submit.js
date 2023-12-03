@@ -1,39 +1,15 @@
-
-// Your JSON data
-let jsonData = {
-    "settings": {
-        "provider": "native"
-    },
-    "relaychain": {
-        "chain": "rococo-local",
-        "default_command": "./bin/polkadot",
-        "nodes": [
-            {
-                "name": "alice",
-            },
-            {
-                "name": "bob",
-            }
-        ]
-    },
-    "parachains": [
-        {
-            "id": 2100,
-            "cumulus_based": true,
-            "chain": "local",
-            "add_to_genesis": false,
-            "onboard_as_parachain": false,
-            "collators": []
-        }
-    ]
-};
-
-const submit = async ({collators, runtime, coretime, setStateStatus }) => {
-
-    jsonData.parachains[0].collators = Array.from({ length: collators }, (_, i) => ({
-        "name": `parachain-collator${(i + 1).toString().padStart(2, '0')}`,
-        "command": "./bin/parachain-template-node"
-    }));
+const submit = async ({collators, runtime, setStateStatus, paraId, configurationContext }) => {
+    
+    let jsonData = {
+        paraId,
+        template: runtime.template.value,
+        collators_count: collators,
+        properties: {
+            symbol: "PORT",
+            ss58: number,
+            decimals : number
+        },
+    }
     
     setStateStatus({executing: 'executing', status: 'info', message: 'Submitting Configuration'});
     
@@ -46,10 +22,9 @@ const submit = async ({collators, runtime, coretime, setStateStatus }) => {
     });
     
     const data = await response.json();
-
-    console.log('submit data', data);
     
     if (data.result === 'OK') {
+        configurationContext.setNetwork(data.network);
         setStateStatus({executing: 'success', status: 'success', message: 'Configuration Submitted'});
     } else {
         setStateStatus({executing: 'failed', status: 'danger', message: 'Configuration Submission Failed'});
