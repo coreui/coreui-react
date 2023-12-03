@@ -14,7 +14,7 @@ const ConfiguratorRuntime = () => {
 
 
   const handleClick = (runtimeInfo) => {
-    setRuntime({template: runtimeInfo})
+    setRuntime((runtime) => ({template: runtimeInfo, specs: runtime.specs}))
   }
 
   return (

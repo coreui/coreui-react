@@ -7,18 +7,21 @@ import CIcon from '@coreui/icons-react'
 import submit from './submit'
 
 import { useConfiguratorFormContext } from 'src/contexts/ConfiguratorFormContext'
+import { useLocalStorageContext } from 'src/contexts/LocalStorageContext'
 
 
 const Configurator = () => {
   const [formStatus, setStateStatus] = useState({executing: '', status: '', message: ''});
   const configurationContext = useConfiguratorFormContext();
-  const [ready, setReady] = useState(false);
+  const localStorageContext = useLocalStorageContext();
+  const [ready, setReady] = useState(true);
 
   const {collators, runtime, coretime } = configurationContext;
 
   const handleSubmit = useCallback(() => {
-    submit({...configurationContext, setStateStatus,configurationContext})
+    submit({setStateStatus,localStorageContext, configurationContext })
   }, [configurationContext,setStateStatus]);
+
   
   return (
     <CContainer fluid >
@@ -89,11 +92,11 @@ const Configurator = () => {
       <CRow className="g-0 p-3 col-md-10">
         {
           ready ? 
-            <CButton onClick={() => handleClick()} className="col-3 mx-auto" color="success" size="lg" variant="outline" style={{"fontWeight":"200"}}>
+            <CButton onClick={() => handleSubmit()} className="col-3 mx-auto" color="success" size="lg" variant="outline" style={{"fontWeight":"200"}}>
               Deploy
             </CButton>
           :
-            <CButton onClick={() => handleClick()} disabled className="col-3 mx-auto" color="danger" size="lg" variant="outline" style={{"fontWeight":"200"}}>
+            <CButton onClick={() => handleSubmit()} disabled className="col-3 mx-auto" color="danger" size="lg" variant="outline" style={{"fontWeight":"200"}}>
               Deploy
             </CButton>
         }

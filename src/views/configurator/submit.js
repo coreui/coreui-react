@@ -1,13 +1,14 @@
-const submit = async ({collators, runtime, setStateStatus, paraId, configurationContext }) => {
-    
+const submit = async ({setStateStatus,localStorageContext, configurationContext}) => {
+    const {collators, runtime } = configurationContext;
+    const {paraId, ss58, tokenSymbol, decimals} = runtime.specs;
     let jsonData = {
-        paraId,
+        para_id: paraId,
         template: runtime.template.value,
         collators_count: collators,
         properties: {
-            symbol: "PORT",
-            ss58: number,
-            decimals : number
+            symbol: tokenSymbol,
+            ss58,
+            decimals,
         },
     }
     
@@ -24,7 +25,7 @@ const submit = async ({collators, runtime, setStateStatus, paraId, configuration
     const data = await response.json();
     
     if (data.result === 'OK') {
-        configurationContext.setNetwork(data.network);
+        localStorageContext.setNetwork(data.network);
         setStateStatus({executing: 'success', status: 'success', message: 'Configuration Submitted'});
     } else {
         setStateStatus({executing: 'failed', status: 'danger', message: 'Configuration Submission Failed'});
