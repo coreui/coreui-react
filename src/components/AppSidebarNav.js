@@ -26,9 +26,6 @@ export const AppSidebarNav = ({ items }) => {
     )
   }
 
-  console.log(networkStatus)
-  console.log(networkStatus === 'OK')
-
   const navItem = (item, index) => {
     const { component, name, badge, icon, ...rest } = item
     const Component = component
