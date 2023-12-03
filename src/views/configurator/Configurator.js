@@ -20,13 +20,6 @@ const Configurator = () => {
   const handleSubmit = useCallback(() => {
     submit({...configurationContext, setStateStatus})
   }, [configurationContext,setStateStatus]);
-
-  const testState = useCallback(() => {
-    setCollators(3)
-    setRuntime({template: 'parachain'})
-    setCoretime({every: 2, amount: 10 })
-  }, [configurationContext,setStateStatus]);
-
   
   return (
     <CContainer fluid >
