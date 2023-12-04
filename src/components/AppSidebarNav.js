@@ -4,7 +4,13 @@ import PropTypes from 'prop-types'
 
 import { CBadge } from '@coreui/react'
 
+import { useLocalStorageContext } from 'src/contexts/LocalStorageContext'
+
 export const AppSidebarNav = ({ items }) => {
+
+  const localStorageContext = useLocalStorageContext();
+  const { networkStatus } = localStorageContext;
+
   const location = useLocation()
   const navLink = (name, icon, badge) => {
     return (
@@ -23,6 +29,7 @@ export const AppSidebarNav = ({ items }) => {
   const navItem = (item, index) => {
     const { component, name, badge, icon, ...rest } = item
     const Component = component
+    const newWindow = {...rest}.to && {...rest}.to.includes("polkadot") ? "_blank" : ""; 
     return (
       <Component
         {...(rest.to &&
@@ -31,6 +38,8 @@ export const AppSidebarNav = ({ items }) => {
           })}
         key={index}
         {...rest}
+        target={newWindow}
+        disabled={networkStatus === 'OK' ? false : true}
       >
         {navLink(name, icon, badge)}
       </Component>
@@ -43,7 +52,7 @@ export const AppSidebarNav = ({ items }) => {
       <Component
         idx={String(index)}
         key={index}
-        toggler={navLink(name, icon)}
+        toggler={networkStatus === 'OK' ? navLink(name, icon): false}
         visible={location.pathname.startsWith(to)}
         {...rest}
       >

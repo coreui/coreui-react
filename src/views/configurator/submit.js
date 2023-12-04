@@ -23,6 +23,7 @@ const submit = async ({setStateStatus,localStorageContext, configurationContext}
     });
     
     const data = await response.json();
+    localStorageContext.setNetworkStatus(data.result);
     
     if (data.result === 'OK') {
         localStorageContext.setNetwork(data.network);

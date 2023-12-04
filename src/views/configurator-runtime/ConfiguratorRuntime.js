@@ -6,7 +6,7 @@ import { useConfiguratorFormContext } from 'src/contexts/ConfiguratorFormContext
 
 import { CButton, CCard, CCardImage, CCardBody, CCardFooter, CCardTitle, CCardText, CRow, CCol} from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import {cibGithub, cilArrowLeft} from '@coreui/icons'
+import {cibGithub} from '@coreui/icons'
 
 const ConfiguratorRuntime = () => {
 
@@ -20,12 +20,6 @@ const ConfiguratorRuntime = () => {
   return (
     <>
     <CRow>
-      <CCol md={1}>
-        <Link to='/configure'>
-          <CIcon size="lg" className="text-secondary" icon={cilArrowLeft}/>
-        </Link>
-      </CCol>
-      <CCol md={11}>
         <CRow xs={{ cols: 1, gutter: 4 }} md={{ cols: 4 }}>
           {runtimes.map(runtimeInfo => {
             return (
@@ -49,7 +43,6 @@ const ConfiguratorRuntime = () => {
             )
           })}
         </CRow>
-      </CCol>
     </CRow>
     <CRow className='mt-4'>
       <Link className='text-center' to="/configure/runtime-specs">

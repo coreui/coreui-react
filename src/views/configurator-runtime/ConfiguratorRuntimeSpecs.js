@@ -1,12 +1,8 @@
 import React,{useState} from 'react'
-import runtimes from './runtime.json'
-import {Link} from 'react-router-dom'
 import { useConfiguratorFormContext } from 'src/contexts/ConfiguratorFormContext'
 import { useNavigate } from 'react-router-dom';
 
-import { CButton, CCard, CCardImage, CCardBody, CCardFooter, CCardTitle, CCardText, CRow, CCol,CFormInput,CForm} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import {cibGithub, cilArrowLeft} from '@coreui/icons'
+import { CButton, CRow, CCol,CFormInput,CForm} from '@coreui/react'
 
 const ConfiguratorRuntimeSpecs = () => {
   const [ss58Valid, setSs58Valid] = useState(true)
@@ -18,8 +14,6 @@ const ConfiguratorRuntimeSpecs = () => {
   const { runtime, setRuntime } = useConfiguratorFormContext();
 
   const navigate = useNavigate()
-
-
 
   const handleAmountChange = (event, max, setter, path) => {
     const amount = Math.floor(Number(event.target.valueAsNumber));
@@ -79,21 +73,12 @@ const handleTokenSymbolChange = (event, max, setter) => {
   return (
     <CForm className="needs-validation" noValidate onSubmit={handleSubmit} validated={validated}>
       <CRow className='d-flex flex-row'>
-        <CCol md={1}>
-          <Link to='/configure'>
-            <CIcon size="lg" className="text-secondary" icon={cilArrowLeft}/>
-          </Link>
-        </CCol>
-        <CCol md={11}>
             <CRow className='mb-3'>
-              <p>In order to configure your Coretime needs, you need to select: <strong>Amount</strong> and <strong>Frequency</strong> of validation.</p>
-              <p><strong>Amount</strong> dictates how many blocks of your parachain you want to pre-configure to be validated by the Relay Chain. For the purposes of this MVP the cap is 10_000 blocks.</p>
-              <p><strong>Frequency</strong> configures every how many blocks of the Relay Chain you wish to submit a Parachain Block.</p>
-              <p className='mt-2'><strong>Example</strong>. Objective is to have one thousand Parachain blocks validated by the Relay Chain, and this to happen every 10 Relay Chain blocks. Configuration would look as follows:</p>
-              <ul className='ms-4'>
-                <li>Amount: 1_000</li>
-                <li>Frequency: 10</li>
-              </ul>
+              <p>The following is a basic configuration of your runtime parameters.</p>
+              <p><strong>ParaId</strong> refers to the ID your Parachain will have on the Relaychain.</p>
+              <p><strong>ss58 Format</strong> is the prefix allowing to identify an address belonging to this parachain.</p>
+              <p><strong>tokenSymbol</strong> refers to the ticker of the token of this parachain.</p>
+              <p><strong>Decimals</strong> is the amount of decimals for the token of this parachain.</p>
             </CRow>
             <CRow>
               <CCol md={7}>
@@ -108,7 +93,7 @@ const handleTokenSymbolChange = (event, max, setter) => {
                   aria-label="lg input example"
                   required
                   feedbackInvalid={paraIdValid ? "" : "Please make it an integer below 10_000"}
-                  label="ParaId: Parachain Id"
+                  label="ParaId"
                 />
               </CCol>
             </CRow> 
@@ -153,7 +138,7 @@ const handleTokenSymbolChange = (event, max, setter) => {
                   step={1}
                   onChange={(event) => handleAmountChange(event, 1000, setDecimalsValid, 'specs.decimals')}
                   invalid={!decimalsValid} 
-                  label="Decimals: Amount of decimals for the token"
+                  label="Decimals"
                   type="number"
                   value={runtime?.specs?.decimals ? runtime.specs.decimals : ""} 
                   size="lg"
@@ -163,7 +148,6 @@ const handleTokenSymbolChange = (event, max, setter) => {
                 />
               </CCol>
             </CRow>
-        </CCol>
       </CRow>
       <CRow className='mt-4'>
         <CCol className='d-flex justify-content-center'>

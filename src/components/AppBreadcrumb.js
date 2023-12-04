@@ -5,8 +5,14 @@ import routes from '../routes'
 
 import { CBreadcrumb, CBreadcrumbItem } from '@coreui/react'
 
+import { useLocalStorageContext } from 'src/contexts/LocalStorageContext'
+
+
 const AppBreadcrumb = () => {
   const currentLocation = useLocation().pathname
+
+  const localStorageContext = useLocalStorageContext();
+  const { networkStatus } = localStorageContext;
 
   const getRouteName = (pathname, routes) => {
     const currentRoute = routes.find((route) => route.path === pathname)
@@ -33,7 +39,7 @@ const AppBreadcrumb = () => {
 
   return (
     <CBreadcrumb className="m-0 ms-2">
-      <CBreadcrumbItem><Link to="/">Home</Link></CBreadcrumbItem>
+      <CBreadcrumbItem><Link to={networkStatus === 'OK' ? '/dashboard' : '/'}>Home</Link></CBreadcrumbItem>
       {breadcrumbs.map((breadcrumb, index) => {
         return (
           <CBreadcrumbItem

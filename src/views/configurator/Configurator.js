@@ -1,6 +1,6 @@
 import {React, useState, useCallback, useEffect} from 'react'
-import { CContainer, CCol, CRow, CCard, CCardBody, CCardText, CCardTitle, CAvatar, CButton } from '@coreui/react'
-import {Link} from 'react-router-dom'
+import { CContainer, CCol, CRow, CCard, CCardBody, CCardText, CCardTitle, CAvatar, CButton, CSpinner } from '@coreui/react'
+import {Link, useNavigate} from 'react-router-dom'
 import {cilArrowCircleRight} from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
 
@@ -14,19 +14,22 @@ const Configurator = () => {
   const [formStatus, setStateStatus] = useState({executing: '', status: '', message: ''});
   const configurationContext = useConfiguratorFormContext();
   const localStorageContext = useLocalStorageContext();
-  const [ready, setReady] = useState(true);
+  const [ready, setReady] = useState(false);
 
   const {collators, runtime, coretime } = configurationContext;
   // const {setCollators, setRuntime, setCoretime } = configurationContext;
 
+  const navigate = useNavigate()
+
   useEffect(() => {
     // This function will run after every render (initial render + updates)
-    if (collators && runtime && coretime) {
+    if (collators && runtime.template && coretime.amount && coretime.every) {
       setReady(true)
     }
-  }, [collators, runtime, coretime]);
-
-
+    if(formStatus.executing === 'success') {
+      navigate("/dashboard")
+    }
+  }, [collators, runtime, coretime, formStatus]);
 
   const handleSubmit = useCallback(() => {
     submit({setStateStatus,localStorageContext, configurationContext })
@@ -102,13 +105,14 @@ const Configurator = () => {
       <CRow className="g-0 p-3 col-md-10">
         <CButton 
           onClick={() => handleSubmit()} 
-          disabled={!ready} 
+          disabled={!ready || formStatus.executing === 'executing' || formStatus.status === 'success'} 
           className="col-3 mx-auto" 
           color={ready ? "success" : "danger"} 
           size="lg" variant="outline" 
           style={{"fontWeight":"200"}}
         >
           Deploy
+          { formStatus.executing === 'executing' && <CSpinner component="span" className='ms-3' size="sm" aria-hidden="true" /> }
         </CButton>
       </CRow>
     </CContainer>

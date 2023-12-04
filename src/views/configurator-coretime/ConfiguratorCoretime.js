@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
 import { useConfiguratorFormContext } from 'src/contexts/ConfiguratorFormContext'
-import {Link, useNavigate} from 'react-router-dom'
-import CIcon from '@coreui/icons-react'
-import {cilArrowLeft} from '@coreui/icons'
+import {useNavigate} from 'react-router-dom'
 import { CFormInput, CRow, CCol, CButton, CForm } from '@coreui/react'
 
 const ConfiguratorCoretime = () => {
@@ -48,12 +46,6 @@ const ConfiguratorCoretime = () => {
   return (
     <CForm className="needs-validation" noValidate onSubmit={handleSubmit} validated={validated}>
       <CRow className='d-flex flex-row'>
-        <CCol md={1}>
-          <Link to='/configure'>
-            <CIcon size="lg" className="text-secondary" icon={cilArrowLeft}/>
-          </Link>
-        </CCol>
-        <CCol md={11}>
             <CRow className='mb-3'>
               <p>In order to configure your Coretime needs, you need to select: <strong>Amount</strong> and <strong>Frequency</strong> of validation.</p>
               <p><strong>Amount</strong> dictates how many blocks of your parachain you want to pre-configure to be validated by the Relay Chain. For the purposes of this MVP the cap is 10_000 blocks.</p>
@@ -98,7 +90,6 @@ const ConfiguratorCoretime = () => {
                 />
               </CCol>
             </CRow>
-        </CCol>
       </CRow>
       <CRow className='mt-4'>
         <CCol className='d-flex justify-content-center'>

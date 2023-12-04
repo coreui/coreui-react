@@ -13,13 +13,20 @@ import porticoSVG from 'src/assets/brand/portico-logo-white.svg'
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
 
+import { useLocalStorageContext } from 'src/contexts/LocalStorageContext'
+
 // sidebar nav config
-import navigation from '../_nav'
+import generateNav from '../_nav'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()
   const unfoldable = useSelector((state) => state.sidebarUnfoldable)
   const sidebarShow = useSelector((state) => state.sidebarShow)
+
+  const localStorageContext = useLocalStorageContext();
+  const { networkStatus, network } = localStorageContext;
+
+  const navigation = generateNav(network, networkStatus)
 
   return (
     <CSidebar
