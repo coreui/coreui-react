@@ -2,8 +2,8 @@ import React, { Component, Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { LocalStorageContextProvider } from './contexts/LocalStorageContext'
 import { ConfiguratorFormContextProvider } from './contexts/ConfiguratorFormContext'
-import { ApiConnectRC } from './views/dashboard/polkadot-js-dummy-rc'
-import { ApiConnectPara } from './views/dashboard/polkadot-js-dummy-para'
+import { ApiConnectRC } from './contexts/ConnectRelayContext'
+import { ApiConnectPara } from './contexts/ConnectParaContext'
 import './scss/style.scss'
 
 const loading = (

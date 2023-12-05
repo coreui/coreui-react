@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React from 'react'
 
 import {
   CAvatar,
@@ -55,12 +55,14 @@ import WidgetsBrand from '../widgets/WidgetsBrand'
 import WidgetsDropdown from '../widgets/WidgetsDropdown'
 
 //CONTEXT
-import { useApiContextRC } from './polkadot-js-dummy-rc'
+import { useApiContextRC } from '../../contexts/ConnectRelayContext'
+import { useApiContextPara } from '../../contexts/ConnectParaContext'
 
 const Dashboard = () => {
   const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
 
   const apiContextRC = useApiContextRC()
+  const apiContextPara = useApiContextPara()
 
 
   const progressExample = [

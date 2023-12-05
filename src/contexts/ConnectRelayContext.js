@@ -1,14 +1,8 @@
-//this is just a dummy file to prepare for when the real api is connected
-//it will use Rococo as a relay chain and rococo asset-hub as a parachain
-//this one is for the Rococo-Relaychain
-
-//Dependencies
-
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { ApiPromise, WsProvider } from "@polkadot/api";
 
+//ToDo: change logic to make this connect to the relaychain node spawned by Portico
 const ROCOCO_RPC ='wss://rococo-rpc.polkadot.io'
-// const AH_ROCOCO_RPC ='wss://rococo-asset-hub-rpc.polkadot.io'
 
 const ApiContextRC = createContext();
 
@@ -20,7 +14,6 @@ export function ApiConnectRC ({ children }) {
     // by default this connects to Polkadot
     useEffect(() =>{
         const startApi = async () => {
-            console.log('im running')
             await selectNetworkRPC(ROCOCO_RPC);
         }
         if(!provider){
