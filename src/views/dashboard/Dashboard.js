@@ -64,6 +64,10 @@ const Dashboard = () => {
   const apiContextRC = useApiContextRC()
   const apiContextPara = useApiContextPara()
 
+  console.log('apiContextRC', apiContextRC)
+  console.log('apiContextPara', apiContextPara)
+
+
 
   const progressExample = [
     { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
