@@ -1,25 +1,27 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { ApiPromise, WsProvider } from "@polkadot/api";
-
-//ToDo: change logic to make this connect to the parachain node spawned by Portico
-const AH_ROCOCO_RPC ='wss://rococo-asset-hub-rpc.polkadot.io'
+import { useLocalStorageContext } from './LocalStorageContext';
 
 const ApiContextPara = createContext();
 
 export function ApiConnectPara ({ children }) {
+    const { network } = useLocalStorageContext();
     const [api, setConnectedApi] = useState(null);
     const [isReady, setIsReady] = useState(false);
     const [provider, setProvider] = useState(null);
 
     // by default this connects to Polkadot
     useEffect(() =>{
-        const startApi = async () => {
-            await selectNetworkRPC(AH_ROCOCO_RPC);
+        const startApi = async (wsUri) => {
+            await selectNetworkRPC(wsUri);
         }
-        if(!provider){
-            startApi();
+
+        const firstParasKey = Object.keys(network?.paras || {})[0];
+        const wsUri = network?.paras?.[firstParasKey]?.[0]?.wsUri;
+        if(!provider && wsUri){
+            startApi(wsUri);
         }
-    })
+    }, [network])
 
     //CONNECTS TO RPC
     const selectNetworkRPC = async (rpc) => {
