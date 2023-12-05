@@ -36,7 +36,7 @@ const AppBreadcrumb = () => {
   }
 
   const breadcrumbs = getBreadcrumbs(currentLocation)
-console.log('networkStatus', networkStatus)
+
   return (
     <CBreadcrumb className="m-0 ms-2">
      <CBreadcrumbItem><Link to={networkStatus === 'OK' ? '/dashboard' : '/'}>Home</Link></CBreadcrumbItem> 
