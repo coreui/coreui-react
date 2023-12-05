@@ -20,7 +20,7 @@ import {
 } from '@coreui/react'
 
 import CIcon from '@coreui/icons-react'
-import { cilPlus, cilCloudDownload, cilCog } from '@coreui/icons'
+import { cilPlus, cilCloudDownload, cilCog, cilExitToApp } from '@coreui/icons'
 
 //CONTEXT
 import { useApiContextRC } from '../../contexts/ConnectRelayContext'
@@ -58,6 +58,41 @@ const Dashboard = () => {
       hash: '0x02',
       _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
     },
+    {
+      numb: 3,
+      hash: '0x02',
+      _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
+    },
+    {
+      numb: 3,
+      hash: '0x02',
+      _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
+    },
+    {
+      numb: 3,
+      hash: '0x02',
+      _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
+    },
+    {
+      numb: 3,
+      hash: '0x02',
+      _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
+    },
+    {
+      numb: 3,
+      hash: '0x02',
+      _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
+    },
+    {
+      numb: 3,
+      hash: '0x02',
+      _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
+    },
+    {
+      numb: 3,
+      hash: '0x02',
+      _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
+    }
   ]
 
   const collatorsColumns = [
@@ -92,19 +127,19 @@ const Dashboard = () => {
 
   return (
     <>
-      <CRow>
-        <CCol>
-          {/*this is project name*/}
+      <CRow className='d-flex align-items-center mb-4'>
+        <CCol className={'ps-5'} md={10}>
+          <h3>Project X</h3>
         </CCol>
-        <CCol>
-          {/*this is option to kill or whatever*/}
+        <CCol md={2} className='d-flex justify-content-end pe-5'>
+          <CIcon className="text-danger" size="xl" icon={cilExitToApp} />
         </CCol>
       </CRow>
-      <CRow>
+      <CRow className='mb-3'>
         <CCol>
           {/*this is parachain meta info*/}
-          <CRow>
-            <CCol>
+          <CRow className='mb-3 d-flex justify-content-between'>
+            <CCol className='p-0 me-2'>
               <CCard>
                 <CCardBody>
                   <CCardTitle>ParachainID</CCardTitle>
@@ -115,7 +150,7 @@ const Dashboard = () => {
                 </CCardBody>
               </CCard>
             </CCol>
-            <CCol>
+            <CCol className='p-0 ms-2'>
               <CCard>
                 <CCardBody>
                   <CCardTitle className='d-flex align-items-center'>
@@ -132,7 +167,7 @@ const Dashboard = () => {
               </CCard>
             </CCol>
           </CRow>
-          <CRow>
+          <CRow className='mb-3'>
             <CCard>
               <CCardBody>
                 <CCardTitle>Parachain Head</CCardTitle>
@@ -165,16 +200,16 @@ const Dashboard = () => {
           <CCard>
             <CCardBody>
               <CCardTitle>Recent Parachain Blocks</CCardTitle>
-              <CTable columns={blockColumns} items={blockItems} />
+              <CTable className='overflow-auto' columns={blockColumns} items={blockItems} />
             </CCardBody>
           </CCard>
         </CCol>
       </CRow>
-      <CRow>
+      <CRow className='me-0'>
         <CCard>
-          <CCardBody>
+          <CCardBody >
             <CCardTitle>Collator Nodes</CCardTitle>
-            <CTable className='mt-2' columns={collatorsColumns} items={collatorItems} />
+            <CTable className='mt-2 overflow-auto' columns={collatorsColumns} items={collatorItems} />
           </CCardBody>
         </CCard>
       </CRow>
