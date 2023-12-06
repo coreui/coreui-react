@@ -1,4 +1,5 @@
 import React, {useState, useRef} from 'react'
+import { Link } from 'react-router-dom'
 
 import {
   CCard,
@@ -12,7 +13,10 @@ import {
   CToaster,
   CToast,
   CToastClose,
-  CToastBody
+  CToastBody,
+  CContainer,
+  CPopover,
+  CButton
 } from '@coreui/react'
 
 import CIcon from '@coreui/icons-react'
@@ -57,72 +61,88 @@ const Dashboard = () => {
   const blockItems = paraHeadInfo ? paraHeadInfo.slice(0,10) : []
 
   return (
-    <>
+    <CContainer>
       <CRow className='d-flex align-items-center mb-4'>
-        <CCol className={'ps-5'} md={10}>
+        <CCol xl={{span : 10}}>
           <h3>Project X</h3>
         </CCol>
-        <CCol md={2} className='d-flex justify-content-end pe-5'>
+        <CCol xl={{span: 2}} className='d-flex justify-content-end pe-5'>
           <CIcon className="text-danger" size="xl" icon={cilExitToApp} />
         </CCol>
       </CRow>
-      <CRow className='mb-3'>
-        <CCol>
-          {/*this is parachain meta info*/}
-          <CRow className='mb-3 d-flex justify-content-between'>
-            <CCol className='p-0 me-2'>
-              <CCard>
+      <CRow className='d-flex' xl={{ gutterX: 5 }}>
+        <CCol className='mb-2' xl={{ span: 5}}>
+          <CRow className='d-flex justify-content-between mb-2'>
+              <CCard style={{width:"49%"}}>
                 <CCardBody>
                   <CCardTitle>ParachainID</CCardTitle>
-                  {/* <CCardSubtitle className="mb-2 text-medium-emphasis">ID of Parachain on the Relaychain.</CCardSubtitle> */}
                   <CCardText>
                     {paraID ? paraID : ""}
                   </CCardText>
                 </CCardBody>
               </CCard>
-            </CCol>
-            <CCol className='p-0 ms-2'>
-              <CCard>
+              <CCard style={{width:"49%"}}>
                 <CCardBody>
                   <CCardTitle className='d-flex align-items-center'>
-                    <CCol md={10}>Coretime</CCol>
+                    <CCol md={10}>
+                      <CPopover className={'fw-lighter'} content="Remaining Coretime credits" placement="top" trigger={['hover', 'focus']}>
+                        <span className="d-inline-block" tabIndex={0}>
+                          Coretime
+                        </span>
+                      </CPopover>
+                    </CCol>
                     <CCol md={2} className='d-flex justify-content-end'>
-                      <CIcon size='lg' icon={cilPlus} />
+                      <Link to='/coretime'>
+                        <CIcon size='lg' className="text-dark" icon={cilPlus} />
+                      </Link>
                     </CCol>
                   </CCardTitle>
-                  {/* <CCardSubtitle className="mb-2 text-medium-emphasis">ID of Parachain on the Relaychain.</CCardSubtitle> */}
                   <CCardText>
                     {coretimeLeft ? coretimeLeft : ""}
                   </CCardText>
                 </CCardBody>
               </CCard>
-            </CCol>
           </CRow>
-          <CRow className='mb-3'>
+          <CRow className='mb-2'>
             <CCard>
               <CCardBody>
                 <CCardTitle className='d-flex align-items-center'>
-                  <CCol md={10}> Parachain Head </CCol>
+                  <CCol md={10}>
+                    <CPopover className={'fw-lighter'} content="Latest head of the parachain stored on the relaychain." placement="top" trigger={['hover', 'focus']}>
+                      <span className="d-inline-block " tabIndex={0}>
+                        Parachain Head
+                      </span>
+                    </CPopover>
+                  </CCol>
                   <CCol md={2} className='d-flex justify-content-end align-items-center align-items-center'>
-                      <CIcon size='lg' onClick={() => handleCopyClick()} icon={cilCopy} />
+                      <CButton color="link" className='text-nowrap pe-0' onClick={() => handleCopyClick()}>
+                        <CIcon size='lg' className="text-dark" icon={cilCopy} />
+                      </CButton>
                       <CToaster ref={toaster} push={toast} placement="top-end" />
                   </CCol>
                 </CCardTitle>
-                {/* <CCardSubtitle className="mb-2 text-medium-emphasis">ID of Parachain on the Relaychain.</CCardSubtitle> */}
                 <CCardText>
                   {paraHead ? cutHash(paraHead) : ""}
                 </CCardText>
               </CCardBody>
             </CCard>
           </CRow>
-          <CRow>
+          <CRow className='mb-2'>
             <CCard>
               <CCardBody>
                 <CCardTitle className='d-flex align-items-center'>
-                  <CCol md={10}> Parachain Code Hash </CCol>
+                  <CCol md={10}>
+                  <CPopover className={'fw-lighter'} content="Hash of the parachain code stored on the relaychain." placement="top" trigger={['hover', 'focus']}>
+                    <span className="d-inline-block" tabIndex={0}>
+                      Parachain Code Hash 
+                    </span>
+                  </CPopover>
+                  </CCol>
                   <CCol md={2} className='d-flex justify-content-end align-items-center align-items-center'>
                       <ExportWasm wasmHash={paraCodeHash} paraID={paraID} />
-                      <CIcon size='lg' icon={cilCog} />
+                      <Link to='/runtime-upgrade'>
+                        <CIcon size='lg' className="text-dark" icon={cilCog} />
+                      </Link>
                   </CCol>
                 </CCardTitle>
                 {/* <CCardSubtitle className="mb-2 text-medium-emphasis">ID of Parachain on the Relaychain.</CCardSubtitle> */}
@@ -133,24 +153,26 @@ const Dashboard = () => {
             </CCard>
           </CRow>
         </CCol>
-        <CCol>
-          <CCard>
-            <CCardBody>
-              <CCardTitle>Recent Parachain Blocks</CCardTitle>
-              <CTable className='overflow-auto' columns={blockColumns} items={blockItems} />
-            </CCardBody>
-          </CCard>
+        <CCol className='mb-2' xl={{ span: 7 }}>
+          <CRow>
+            <CCard>
+              <CCardBody className={'overflow-scroll'}>
+                <CCardTitle>Recent Parachain Blocks</CCardTitle>
+                <CTable columns={blockColumns} items={blockItems} />
+              </CCardBody>
+            </CCard>
+          </CRow>
         </CCol>
       </CRow>
-      <CRow className='me-0'>
+      <CRow className='mb-4'>
         <CCard>
-          <CCardBody >
+          <CCardBody className={'overflow-scroll'}>
             <CCardTitle>Collator Nodes</CCardTitle>
-            <CTable className='mt-2 overflow-auto' columns={collatorsColumns} items={paraNodes ? paraNodes : []} />
+            <CTable columns={collatorsColumns} items={paraNodes ? paraNodes : []} />
           </CCardBody>
         </CCard>
       </CRow>
-    </>
+    </CContainer>
   )
 }
 

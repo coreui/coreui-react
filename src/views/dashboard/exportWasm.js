@@ -1,5 +1,6 @@
 //This component will help export a wasm given a particular hash.
 
+import { CButton } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilCloudDownload } from '@coreui/icons'
 
@@ -24,7 +25,9 @@ const ExportWasm = ({wasmHash, paraID}) => {
 
 
     return (
-        <CIcon onClick={() => exportWasm()} className='me-2'  size='lg' icon={cilCloudDownload}/>
+        <CButton color="link" className='text-nowrap pe-1 d-inline-flex' >
+            <CIcon onClick={() => exportWasm()} className='me-2 text-dark'  size='lg' icon={cilCloudDownload}/>
+        </CButton>
     );
 
 }
