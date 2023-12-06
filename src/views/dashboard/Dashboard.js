@@ -25,6 +25,7 @@ import { collatorsColumns } from './collatorTableConfig'
 //CONTEXT
 import { useApiContextRC } from '../../contexts/ConnectRelayContext'
 import { useApiContextPara } from '../../contexts/ConnectParaContext'
+import { useLocalStorageContext } from 'src/contexts/LocalStorageContext'
 
 //UTILITIES
 import { cutHash } from '../../utilities/handleHash'
@@ -33,6 +34,9 @@ const Dashboard = () => {
   
   const {paraID, paraHeadInfo} = useApiContextPara();
   const {coretimeLeft, paraHead, paraCodeHash} = useApiContextRC();
+  const paraNodes = useLocalStorageContext().network?.paras?.[paraID]?.map(node =>{
+    return {...node, address:""}
+  }).sort((node1, node2) => node1.name > node2.name)
 
   // STATE MANAGEMENT
   const [toast, setToast] = useState(0)
@@ -51,15 +55,6 @@ const Dashboard = () => {
     setToast(message)
   }
   const blockItems = paraHeadInfo ? paraHeadInfo.slice(0,10) : []
-
-  const collatorItems = [
-    {
-      name: 1,
-      address: '0x00',
-      ws: 'ws://',
-      _cellProps: { id: { scope: 'row' } },
-    },
-  ]
 
   return (
     <>
@@ -151,7 +146,7 @@ const Dashboard = () => {
         <CCard>
           <CCardBody >
             <CCardTitle>Collator Nodes</CCardTitle>
-            <CTable className='mt-2 overflow-auto' columns={collatorsColumns} items={collatorItems} />
+            <CTable className='mt-2 overflow-auto' columns={collatorsColumns} items={paraNodes ? paraNodes : []} />
           </CCardBody>
         </CCard>
       </CRow>
