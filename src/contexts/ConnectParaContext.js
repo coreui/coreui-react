@@ -1,7 +1,8 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useState, useEffect, useContext, useCallback } from 'react';
 import { ApiPromise, WsProvider } from "@polkadot/api";
 import { useLocalStorageContext } from './LocalStorageContext';
 import useHealthCheck from '../hooks/useHealhCheck';
+import useApiSubscription from '../hooks/unSubHook';
 
 const ApiContextPara = createContext();
 
@@ -10,10 +11,17 @@ export function ApiConnectPara ({ children }) {
     const [api, setConnectedApi] = useState(null);
     const [isReady, setIsReady] = useState(false);
     const [provider, setProvider] = useState(null);
+    const [paraID, setParaID] = useState(null);
+    const [paraHeadInfo, setParaHeadInfo] = useState([])
 
     useEffect(() =>{
         const startApi = async (wsUri) => {
             await selectNetworkRPC(wsUri);
+        }
+
+        const getParaID = async () => {
+            const _paraID = (await api.query.parachainInfo.parachainId()).toNumber()
+            setParaID(_paraID)
         }
 
         const firstParasKey = Object.keys(network?.paras || {})[0];
@@ -21,8 +29,26 @@ export function ApiConnectPara ({ children }) {
         if(!provider && wsUri){
             startApi(wsUri);
         }
-    }, [network])
 
+        if (api) {
+            getParaID();
+        }
+
+    }, [network, api, isReady])
+
+    const getNewParaHeads = useCallback(() => {
+        if(api){
+          return api.rpc.chain.subscribeNewHeads((lastHeader) => {
+            const head =  lastHeader.toHuman().number
+            const headHash = lastHeader.hash.toHuman()
+            //TODO: have state saved only until 10 blocks, no need to show more.
+            setParaHeadInfo(oldHeadInfo => [{head, headHash}, ...oldHeadInfo])
+          })
+        }
+    }, [api]);
+    
+
+    useApiSubscription(getNewParaHeads, isReady);
     
     useHealthCheck(async ()=> {restart(); cleanupState()},network);
 
@@ -52,7 +78,7 @@ export function ApiConnectPara ({ children }) {
     }
 
     return (
-        <ApiContextPara.Provider value={{api, isReady}}>
+        <ApiContextPara.Provider value={{api, isReady, paraID, paraHeadInfo}}>
             { children }
         </ApiContextPara.Provider>
     );
