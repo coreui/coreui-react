@@ -1,5 +1,5 @@
 const submit = async ({setStateStatus,localStorageContext, configurationContext}) => {
-    const {collators, runtime } = configurationContext;
+    const {collators, runtime, coretime  } = configurationContext;
     const {paraId, ss58, tokenSymbol, decimals} = runtime.specs;
     let jsonData = {
         para_id: paraId,
@@ -27,6 +27,7 @@ const submit = async ({setStateStatus,localStorageContext, configurationContext}
     
     if (data.result === 'OK') {
         localStorageContext.setNetwork(data.network);
+        localStorageContext.setCoretime({...coretime, scheduled: false, lastBlock: null});
         configurationContext.restartForm();
         setStateStatus({executing: 'success', status: 'success', message: 'Configuration Submitted'});
     } else {

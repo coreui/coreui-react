@@ -15,7 +15,7 @@ const LocalStorageContext = createContext();
 // Define the context provider component
 export const LocalStorageContextProvider = ({ children }) => {
   const [network, setNetwork] = useState(() => getLocalStorageItem('network', {}));
-  const [coretime, setCoretime] = useState(() => getLocalStorageItem('coretime', {}));
+  const [coretime, setCoretime] = useState(() => getLocalStorageItem('coretime', {amount: null, every: null, scheduled: false, lastBlock: null}));
   //TODO: this might need to be deleted
   const [runtime, setRuntime] = useState(() => getLocalStorageItem('runtime', {}));
 
