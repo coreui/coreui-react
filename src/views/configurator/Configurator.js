@@ -17,7 +17,6 @@ const Configurator = () => {
   const [ready, setReady] = useState(false);
 
   const {collators, runtime, coretime } = configurationContext;
-  // const {setCollators, setRuntime, setCoretime } = configurationContext;
 
   const navigate = useNavigate()
 

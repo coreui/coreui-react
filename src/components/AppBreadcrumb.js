@@ -39,7 +39,7 @@ const AppBreadcrumb = () => {
 
   return (
     <CBreadcrumb className="m-0 ms-2">
-      <CBreadcrumbItem><Link to={networkStatus === 'OK' ? '/dashboard' : '/'}>Home</Link></CBreadcrumbItem>
+     <CBreadcrumbItem><Link to={networkStatus === 'OK' ? '/dashboard' : '/'}>Home</Link></CBreadcrumbItem> 
       {breadcrumbs.map((breadcrumb, index) => {
         return (
           <CBreadcrumbItem

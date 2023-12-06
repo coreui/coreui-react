@@ -27,6 +27,7 @@ const submit = async ({setStateStatus,localStorageContext, configurationContext}
     
     if (data.result === 'OK') {
         localStorageContext.setNetwork(data.network);
+        configurationContext.restartForm();
         setStateStatus({executing: 'success', status: 'success', message: 'Configuration Submitted'});
     } else {
         setStateStatus({executing: 'failed', status: 'danger', message: 'Configuration Submission Failed'});

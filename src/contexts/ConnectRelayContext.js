@@ -1,12 +1,12 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { ApiPromise, WsProvider } from "@polkadot/api";
-
-//ToDo: change logic to make this connect to the relaychain node spawned by Portico
-const ROCOCO_RPC ='wss://rococo-rpc.polkadot.io'
+import { useLocalStorageContext } from './LocalStorageContext';
+import useHealthCheck from '../hooks/useHealhCheck';
 
 const ApiContextRC = createContext();
 
 export function ApiConnectRC ({ children }) {
+    const { network, restart } = useLocalStorageContext();
     const [api, setConnectedApi] = useState(null);
     const [isReady, setIsReady] = useState(false);
     const [provider, setProvider] = useState(null);
@@ -14,12 +14,15 @@ export function ApiConnectRC ({ children }) {
     // by default this connects to Polkadot
     useEffect(() =>{
         const startApi = async () => {
-            await selectNetworkRPC(ROCOCO_RPC);
+            await selectNetworkRPC(wsUri);
         }
-        if(!provider){
-            startApi();
+        const wsUri = network?.relay?.[0]?.wsUri;
+        if(!provider && wsUri){
+            startApi(wsUri);
         }
     })
+
+    useHealthCheck(async ()=> {restart(); cleanupState()},network);
 
     //CONNECTS TO RPC
     const selectNetworkRPC = async (rpc) => {
@@ -39,10 +42,11 @@ export function ApiConnectRC ({ children }) {
     };
 
     //State cleaner to be used when changing networks
-    const cleanupState = () => {
+    const cleanupState = async  () => {
         setIsReady(false);
         setConnectedApi(null);
         setProvider(null)
+        await provider.disconnect();
     }
 
     return (
