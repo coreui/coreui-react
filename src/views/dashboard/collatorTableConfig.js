@@ -5,13 +5,13 @@ export const collatorsColumns = [
       _props: { scope: 'col' },
     },
     {
-      key: 'address',
-      label:'Address',
+      key: 'wsUri',
+      label:'WebSocket URI',
       _props: { scope: 'col' },
     },
     {
-      key: 'ws',
-      label:'WebSocket',
+      key: 'address',
+      label:'Address',
       _props: { scope: 'col' },
-    },
+    }
 ]
