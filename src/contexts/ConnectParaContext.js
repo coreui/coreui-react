@@ -11,7 +11,6 @@ export function ApiConnectPara ({ children }) {
     const [isReady, setIsReady] = useState(false);
     const [provider, setProvider] = useState(null);
 
-    // by default this connects to Polkadot
     useEffect(() =>{
         const startApi = async (wsUri) => {
             await selectNetworkRPC(wsUri);

@@ -11,7 +11,6 @@ export function ApiConnectRC ({ children }) {
     const [isReady, setIsReady] = useState(false);
     const [provider, setProvider] = useState(null);
 
-    // by default this connects to Polkadot
     useEffect(() =>{
         const startApi = async () => {
             await selectNetworkRPC(wsUri);
@@ -20,7 +19,7 @@ export function ApiConnectRC ({ children }) {
         if(!provider && wsUri){
             startApi(wsUri);
         }
-    })
+    }, [network])
 
     useHealthCheck(async ()=> {restart(); cleanupState()},network);
 
