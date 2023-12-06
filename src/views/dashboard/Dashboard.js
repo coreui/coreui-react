@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback, useRef} from 'react'
+import React, {useState, useRef} from 'react'
 
 import {
   CCard,
@@ -11,124 +11,32 @@ import {
   CSpinner,
   CToaster,
   CToast,
-  CToastHeader,
   CToastClose,
   CToastBody
 } from '@coreui/react'
 
 import CIcon from '@coreui/icons-react'
 import { cilPlus, cilCog, cilExitToApp, cilCopy } from '@coreui/icons'
-
 import ExportWasm from './exportWasm'
+import { blockColumns } from './blockTableConfig'
+import { collatorsColumns } from './collatorTableConfig'
+
 
 //CONTEXT
 import { useApiContextRC } from '../../contexts/ConnectRelayContext'
 import { useApiContextPara } from '../../contexts/ConnectParaContext'
 
-//HOOKS
-import useApiSubscription from '../../hooks/unSubHook';
-
 //UTILITIES
-import {parseSchedule} from './parseSchedule'
-import { cutHash } from './handleHash'
+import { cutHash } from '../../utilities/handleHash'
 
 const Dashboard = () => {
+  
+  const {paraID, paraHeadInfo} = useApiContextPara();
+  const {coretimeLeft, paraHead, paraCodeHash} = useApiContextRC();
 
   // STATE MANAGEMENT
-  const [paraHeadInfo, setParaHeadInfo] = useState([])
-  const [rcHeadInfo, setrcHeadInfo] = useState(null)
-  const [paraID, setParaID] = useState(null)
-  const [coretimeLeft, setCoretimeLeft] = useState(null)
-  const [paraHead, setParaHead] = useState(null)
-  const [paraCodeHash, setParaCodeHash] = useState(null)
   const [toast, setToast] = useState(0)
-
   const toaster = useRef()
-
-  //API Info
-  const apiContextRC = useApiContextRC()
-  const apiContextPara = useApiContextPara()
-
-  const paraApi = apiContextPara.api
-  const paraIsReady = apiContextPara.isReady
-  
-  const rcApi = apiContextRC.api
-  const rcIsReady = apiContextRC.isReady
-
-  //Values on Parachain
-  useEffect(() =>{
-    const getParaID = async () => {
-      const _paraID = (await paraApi.query.parachainInfo.parachainId()).toNumber()
-      setParaID(_paraID)
-    }
-
-    if(paraApi) {
-      getParaID();
-    }
-
-  },[paraApi]);
-
-  //Values on Relaychain
-  useEffect(() =>{
-
-    const getSchedule = async () => {
-      const schedule = await rcApi.query.scheduler.agenda.entries();
-      const _coretimeLeft = parseSchedule(schedule, rcApi, paraID)
-      setCoretimeLeft(_coretimeLeft)
-    }
-
-    const getParaHead = async () => {
-      const _paraHead = await (await rcApi.query.paras.heads(paraID)).toHuman()
-      setParaHead(_paraHead)
-    }
-
-    const getParaCodeHash = async () => {
-      const _paraCodeHash = await (await rcApi.query.paras.currentCodeHash(paraID)).toHuman()
-      setParaCodeHash(_paraCodeHash)
-    }
-
-    if(rcApi) {
-      getSchedule();
-      getParaHead();
-      getParaCodeHash();
-    }
-
-  },[rcApi, paraID, rcHeadInfo]);
-
-  //Get parachainHead information
-  const getNewParaHeads = useCallback(() => {
-    if(paraApi){
-      return paraApi.rpc.chain.subscribeNewHeads((lastHeader) => {
-        const head =  lastHeader.toHuman().number
-        const headHash = lastHeader.hash.toHuman()
-        //TODO: have state saved only until 10 blocks, no need to show more.
-
-        setParaHeadInfo(oldHeadInfo => [{head, headHash}, ...oldHeadInfo])
-        // if (blocksCount < 11){
-        //   setParaHeadInfo(oldHeadInfo => [{head, headHash}, ...oldHeadInfo])
-        //   const newBlockCount = blocksCount + 1
-        //   console.log(newBlockCount)
-        //   setBlocksCount(newBlockCount)
-        // } else {
-        //   setParaHeadInfo(oldHeadInfo => [{head, headHash}, ...oldHeadInfo.slice(0,9)])
-        // }
-      })
-    }
-  }, [paraApi]);
-
-  useApiSubscription(getNewParaHeads, paraIsReady);
-
-  //Get relaychainHead information
-  const getNewRCHeads = useCallback(() => {
-    if(rcApi){
-      return rcApi.rpc.chain.subscribeNewHeads((lastHeader) => {
-        const head =  lastHeader.toHuman().number
-        setrcHeadInfo(head)
-      })
-    }
-  }, [rcApi]);
-
-  useApiSubscription(getNewRCHeads, rcIsReady);
 
   const handleCopyClick = () => {
     navigator.clipboard.writeText(paraHead)
@@ -142,38 +50,7 @@ const Dashboard = () => {
     )
     setToast(message)
   }
-
-  const blockColumns = [
-    {
-      key: 'head',
-      label: 'Number',
-      _props: { scope: 'col' },
-    },
-    {
-      key: 'headHash',
-      label:'Block Hash',
-      _props: { scope: 'col' },
-    },
-  ]
-  const blockItems = paraHeadInfo.slice(0,10)
-
-  const collatorsColumns = [
-    {
-      key: 'name',
-      label: 'Name',
-      _props: { scope: 'col' },
-    },
-    {
-      key: 'address',
-      label:'Address',
-      _props: { scope: 'col' },
-    },
-    {
-      key: 'ws',
-      label:'WebSocket',
-      _props: { scope: 'col' },
-    },
-  ]
+  const blockItems = paraHeadInfo ? paraHeadInfo.slice(0,10) : []
 
   const collatorItems = [
     {

@@ -27,8 +27,8 @@ class App extends Component {
       <BrowserRouter>
         <LocalStorageContextProvider>
           <ConfiguratorFormContextProvider>
-            <ApiConnectRC>
-              <ApiConnectPara>
+            <ApiConnectPara>
+              <ApiConnectRC>
                 <Suspense fallback={loading}>
                   <Routes>
                     <Route exact path="/login" name="Login Page" element={<Login />} />
@@ -38,8 +38,8 @@ class App extends Component {
                     <Route path="*" name="Home" element={<DefaultLayout />} />
                   </Routes>
                 </Suspense>
-              </ApiConnectPara>
-            </ApiConnectRC>
+              </ApiConnectRC>
+            </ApiConnectPara>
           </ConfiguratorFormContextProvider>
         </LocalStorageContextProvider>
       </BrowserRouter>
