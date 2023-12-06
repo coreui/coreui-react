@@ -4,13 +4,14 @@ import { useLocalStorageContext } from './LocalStorageContext';
 import { useApiContextPara } from './ConnectParaContext'
 import useHealthCheck from '../hooks/useHealhCheck';
 import useApiSubscription from '../hooks/unSubHook';
+import { Keyring } from "@polkadot/keyring";
 
 import { parseSchedule } from '../utilities/parseSchedule'
 
 const ApiContextRC = createContext();
 
 export function ApiConnectRC ({ children }) {
-    const { network, restart } = useLocalStorageContext();
+    const { network, restart, setCoretime, coretime } = useLocalStorageContext();
     const { paraID } = useApiContextPara();
 
     const [api, setConnectedApi] = useState(null);
@@ -91,8 +92,45 @@ export function ApiConnectRC ({ children }) {
         await provider.disconnect();
     }
 
+    const scheduleCall = async () => {
+        if(!paraID) return;
+        const lastScheduledBlock = rcHeadInfo * (coretime.amount * coretime.every);
+        const scheduledBlock = parseInt(rcHeadInfo) + parseInt(10);
+        const id = [212,53,147,199,21,253,211,28,97,20,26,189,4,169,159,214,130,44,133,88,133,76,205,227,154,86,132,231,165,109,162,125];
+          const keyring = new Keyring({ type: 'sr25519' })
+          const alice = keyring.addFromUri('//Alice');
+          const onDemandCall = api.tx.onDemandAssignmentProvider.forcePlaceOrder(alice.address,10000001, paraID);
+          const schedule = api.tx.scheduler.scheduleNamed(id, scheduledBlock, [coretime.every,coretime.amount], 0, onDemandCall);
+      
+          await api.tx.sudo
+          .sudo(
+            schedule
+          )
+          .signAndSend(alice,({ events = [], status }) => {
+            if (status.isInBlock) {
+              console.log('Successful schedule with hash ' + status.asInBlock.toHex());
+              setCoretime({...coretime, scheduled: true, lastBlock: lastScheduledBlock})
+            } else {
+              console.log('Status of schedule: ' + status.type);
+            }
+        
+          events.forEach(({ phase, event: { data, method, section } }) => {
+            console.log(phase.toString() + ' : ' + section + '.' + method + ' ' + data.toString());
+          });
+        });
+    }
+
+    useEffect(() => {
+        const schedule = async () => {
+            await scheduleCall()
+        }
+        if (isReady && api && coretime.scheduled === false) {
+            schedule()
+        }
+    },[isReady,api,rcHeadInfo])
+
     return (
-        <ApiContextRC.Provider value={{api, isReady, coretimeLeft, paraHead, paraCodeHash}}>
+        <ApiContextRC.Provider value={{api, isReady, coretimeLeft, paraHead, paraCodeHash, scheduleCall}}>
             { children }
         </ApiContextRC.Provider>
     );
