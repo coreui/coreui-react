@@ -12,7 +12,6 @@ const setLocalStorageItem = (key, value) => {
 
 // Create the context
 const LocalStorageContext = createContext();
-
 // Define the context provider component
 export const LocalStorageContextProvider = ({ children }) => {
   const [network, setNetwork] = useState(() => getLocalStorageItem('network', {}));
@@ -39,6 +38,17 @@ export const LocalStorageContextProvider = ({ children }) => {
     setLocalStorageItem('networkStatus', networkStatus);
   }, [networkStatus]);
 
+  const restart = () => {
+    setNetwork({});
+    setLocalStorageItem('network', {});
+    setCoretime({});
+    setLocalStorageItem('coretime', {});
+    setRuntime({});
+    setLocalStorageItem('runtime', {});
+    setNetworkStatus({});
+    setLocalStorageItem('networkStatus', {});
+  }
+
   // Context value
   const contextValue = {
     network,
@@ -48,7 +58,8 @@ export const LocalStorageContextProvider = ({ children }) => {
     runtime,
     setRuntime,
     networkStatus,
-    setNetworkStatus
+    setNetworkStatus,
+    restart
   };
 
   return (

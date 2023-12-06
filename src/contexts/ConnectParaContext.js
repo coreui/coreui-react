@@ -1,11 +1,12 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { ApiPromise, WsProvider } from "@polkadot/api";
 import { useLocalStorageContext } from './LocalStorageContext';
+import useHealthCheck from '../hooks/useHealhCheck';
 
 const ApiContextPara = createContext();
 
 export function ApiConnectPara ({ children }) {
-    const { network } = useLocalStorageContext();
+    const { network, restart} = useLocalStorageContext();
     const [api, setConnectedApi] = useState(null);
     const [isReady, setIsReady] = useState(false);
     const [provider, setProvider] = useState(null);
@@ -22,6 +23,9 @@ export function ApiConnectPara ({ children }) {
             startApi(wsUri);
         }
     }, [network])
+
+    
+    useHealthCheck(async ()=> {restart(); cleanupState()},network);
 
     //CONNECTS TO RPC
     const selectNetworkRPC = async (rpc) => {
@@ -41,10 +45,11 @@ export function ApiConnectPara ({ children }) {
     };
 
     //State cleaner to be used when changing networks
-    const cleanupState = () => {
+    const cleanupState = async () => {
         setIsReady(false);
         setConnectedApi(null);
         setProvider(null)
+        await provider.disconnect();
     }
 
     return (
