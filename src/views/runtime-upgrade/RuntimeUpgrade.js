@@ -146,6 +146,24 @@ const RuntimeUpgrade = () => {
       setEnableRuntimeUpgrade(false);
   }
 
+  const exportWasm = () => {
+    // Create a Blob from the WASM content
+    const blob = new Blob([runtime], { type: 'text/plain;charset=utf-8' });
+    // Create a URL for the Blob
+    const url = URL.createObjectURL(blob);
+
+    // Create a temporary anchor element and trigger download
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'devnet-1010.wasm'; // Set the file name for download
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    // Clean up the URL
+    URL.revokeObjectURL(url);
+};
+
 
   return (
     <>
