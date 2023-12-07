@@ -5,7 +5,7 @@
     padding: 10px;
     white-space: pre-wrap; /* To ensure formatting of multi-line text */
     overflow-y: auto; /* Add scroll for overflow */
-    height: 300px; /* Adjust as needed */
+    height: 600px; /* Adjust as needed */
     border-radius: 5px;
     margin: 10px 0;
 }

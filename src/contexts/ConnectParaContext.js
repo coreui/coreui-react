@@ -13,6 +13,7 @@ export function ApiConnectPara ({ children }) {
     const [provider, setProvider] = useState(null);
     const [paraID, setParaID] = useState(null);
     const [paraHeadInfo, setParaHeadInfo] = useState([])
+    const [tokenSymbol, setTokenSymbol] = useState(null);
 
     useEffect(() =>{
         const startApi = async (wsUri) => {
@@ -46,7 +47,17 @@ export function ApiConnectPara ({ children }) {
           })
         }
     }, [api]);
-    
+
+
+    useEffect(() => {
+        const getSymbol = async () => {
+            const tokenSymbol = await api.registry.chainTokens;
+            setTokenSymbol(tokenSymbol[0]);
+        }
+        if(api){
+            getSymbol()
+        }
+    }, [isReady, api]);
 
     useApiSubscription(getNewParaHeads, isReady);
     
@@ -78,7 +89,7 @@ export function ApiConnectPara ({ children }) {
     }
 
     return (
-        <ApiContextPara.Provider value={{api, isReady, paraID, paraHeadInfo}}>
+        <ApiContextPara.Provider value={{api, isReady, paraID, paraHeadInfo,tokenSymbol}}>
             { children }
         </ApiContextPara.Provider>
     );
