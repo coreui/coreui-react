@@ -51,8 +51,7 @@ const RuntimeUpgrade = () => {
 
 
 
-  const setupChain = async (providedChain) => {
-
+  const setupChain = async () => {
     const endpoint = network?.paras?.[paraID]?.[0]?.wsUri;
 		setChainLoading(true)
       const  chain = await setup({
@@ -73,7 +72,6 @@ const RuntimeUpgrade = () => {
     let spec = {runtime: specVersion.toJSON().specVersion, block:chain.head.number}
     setRuntimeVersions([spec])
 
-
 		setChainLoading(false)
 		setBlocks([{ number: chain.head.number, hash: chain.head.hash }])
     return api
@@ -84,45 +82,69 @@ const RuntimeUpgrade = () => {
   }
 
    const runtimeUpgrade = async () => {
-    const runtime = fileContent
+    const runtime = fileContent   
+    let bob_balance = await chopsticksApi.query.system.account(bob.address)
+    setLines((old) => [...old,`Bob balance before runtime upgrade: ${bob_balance.data.free}`])
+    setLines((old) => [...old,`Calling missing pallet DoSomething before runtime upgrade:`])
+    try {
+      await chopsticksApi.tx.newPallet.doSomething(10).signAndSend(alice)
+    } catch(e){
+      setLines((old) => [...old,`               ${e.message}}`])
+    }
 
-    setLines((old) => [...old,`Executing Runtime upgrade to Spec version 1010`])
-    await chopsticksApi.tx.sudo.sudoUncheckedWeight(chopsticksApi.tx.system.setCode(runtime), (0,0)).signAndSend(alice)
-    setLines((old) => [...old,`Runtime upgrade to Spec version 1010 executed`])
+    setLines((old) => [...old,`-------------`,`Executing Runtime upgrade to Spec version 1010...`])
+    let res = await chopsticksApi.tx.sudo.sudoUncheckedWeight(chopsticksApi.tx.system.setCode(runtime), (0,0)).signAndSend(alice)
+    setLines((old) => [...old,`Runtime upgrade to Spec version 1010 executed ${res.toHex()}`])
+    setLines((old) => [...old,`Executing 4 blocks...`])
     await chain.newBlock()
-    setLines((old) => [...old,`Block ${chain.head.number} / Hash: ${chain.head.hash} executed`])
     await chain.newBlock()
-    setLines((old) => [...old,`Block ${chain.head.number} / Hash: ${chain.head.hash} executed`])
-    await chain.newBlock()
-    setLines((old) => [...old,`Block ${chain.head.number} / Hash: ${chain.head.hash} executed`])
 
-    await disconnect()
-    await setupChain(chain)
+    await chain.newBlock()
+    setLines((old) => [...old,`Block ${chain.head.number} / Hash: ${chain.head.hash} executed`])
+ 
+
+/*     const call =  chopsticksApi.tx.balances.transferKeepAlive(bob.address, 1e12)
+    const tx = chopsticksApi.createType('Call', call);
+    console.log('tx',tx.toHex())
+    const humanTx = tx.toHuman();
+
+const { outcome, storageDiff } = await chain.dryRunExtrinsic({
+  call: tx.toHex(),
+  address: '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY',
+  console.log('outcome',outcome.toHuman())
+}) */
+
+
+ 
+
 
     let specVersion = await chopsticksApi.rpc.state.getRuntimeVersion()
-    setLines((old) => [...old,`Spec Version (Runtime Version): ${specVersion.toJSON().specVersion}`])
+    setLines((old) => [...old,`-------------`,`Spec Version (Runtime Version): ${specVersion.toJSON().specVersion}`])
 
-    await chopsticksApi.tx.balances.transferKeepAlive(bob.address, 1e12).signAndSend(alice)
-    setLines((old) => [...old,`Alice transfers 1 Token to Bob`])
+
+    res =  await chopsticksApi.tx.balances.transferKeepAlive(bob.address, 1e12).signAndSend(alice)
+    setLines((old) => [...old,`Alice transfers 1 Token to Bob / Hash: ${res.toHex()}`])
     await chain.newBlock()
     setLines((old) => [...old,`Block ${chain.head.number} / Hash: ${chain.head.hash} executed`])
-    let bob_balance = await chopsticksApi.query.system.account(bob.address)
-    setLines((old) => [...old,`Bob balance: ${bob_balance.data.free}`])
+     bob_balance = await chopsticksApi.query.system.account(bob.address)
+    setLines((old) => [...old,`Bob balance after: ${bob_balance.data.free}`]) 
+    setLines((old) => [...old,`-------------`,`Executing new pallet call DoSomething`])
+    res = await chopsticksApi.tx.newPallet.doSomething(10).signAndSend(alice)
 
-    setLines((old) => [...old,`Executing new pallet call DoSomething`])
-    await chopsticksApi.tx.newPallet.doSomething(10).signAndSend(alice)
-
-    setLines((old) => [...old,`New pallet call DoSomething executed`])
+    setLines((old) => [...old,`New pallet call DoSomething(10) executed: ${res.toHex()}`])
+    await chain.newBlock()
+    setLines((old) => [...old,`Block ${chain.head.number} / Hash: ${chain.head.hash} executed`])
     let storage_value = await chopsticksApi.query.newPallet.something()
-    console.log('storage_value',storage_value)
+    setLines((old) => [...old,`Querying storage value of new pallet: ${storage_value.value}`])
 
   }
 
   const fork =  async () => {
+    setLines([])
       const api =await setupChain()
       setLines((old) => [...old, `Forking ParaId: ${paraID} from last block ${paraHeadInfo[0].head}...`])
       let specVersion = await api.rpc.state.getRuntimeVersion()
-      setLines((old) => [...old,`Spec Version (Runtime Version): ${specVersion.toJSON().specVersion}`])
+      setLines((old) => [...old,`-------------`,`Spec Version (Runtime Version): ${specVersion.toJSON().specVersion}`])
   
      
   }
@@ -137,7 +159,6 @@ const RuntimeUpgrade = () => {
     <button onClick={runtimeUpgrade}>Runtime Upgrade</button>
     <input type="file" onChange={handleFileChange} />
             {loading && <p>Loading file...</p>}
-      {runtimeVersions.map(({runtime,block}) => <p>number: {runtime}, block: {block}</p>)}
       {lines.length > 0 &&       <div className="console-output">
             {lines.map((line, index) => (
                 <div key={index}>{line}</div>
