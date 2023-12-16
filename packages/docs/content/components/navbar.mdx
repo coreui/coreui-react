@@ -1132,10 +1132,10 @@ export const ExternalContentExample = () => {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <CCollapse id="navbarToggleExternalContent" visible={visible}>
+      <CCollapse id="navbarToggleExternalContent" visible={visible} data-coreui-theme="dark">
         <div className="bg-dark p-4">
-          <h5 className="text-white h4">Collapsed content</h5>
-          <span className="text-body-secondary-inverse">Toggleable via the navbar brand.</span>
+          <h5 className="text-body-emphasis h4">Collapsed content</h5>
+          <span className="text-body-secondary">Toggleable via the navbar brand.</span>
         </div>
       </CCollapse>
       <CNavbar colorScheme="dark" className="bg-dark">
@@ -1159,10 +1159,10 @@ export const ExternalContentExample = () => {
 const [visible, setVisible] = useState(false)
 return (
   <>
-    <CCollapse id="navbarToggleExternalContent" visible={visible}>
+    <CCollapse id="navbarToggleExternalContent" visible={visible} data-coreui-theme="dark">
       <div className="bg-dark p-4">
-        <h5 className="text-white h4">Collapsed content</h5>
-        <span className="text-body-secondary-inverse">Toggleable via the navbar brand.</span>
+        <h5 className="text-body-emphasis h4">Collapsed content</h5>
+        <span className="text-body-secondary">Toggleable via the navbar brand.</span>
       </div>
     </CCollapse>
     <CNavbar colorScheme="dark" className="bg-dark">
