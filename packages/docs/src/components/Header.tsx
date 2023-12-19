@@ -77,7 +77,7 @@ const Header: FC = () => {
                   <CDropdownItem
                     active={colorMode === 'light'}
                     className="d-flex align-items-center"
-                    component="button"
+                    as="button"
                     type="button"
                     onClick={() => setColorMode('light')}
                   >
@@ -86,7 +86,7 @@ const Header: FC = () => {
                   <CDropdownItem
                     active={colorMode === 'dark'}
                     className="d-flex align-items-center"
-                    component="button"
+                    as="button"
                     type="button"
                     onClick={() => setColorMode('dark')}
                   >
@@ -95,7 +95,7 @@ const Header: FC = () => {
                   <CDropdownItem
                     active={colorMode === 'auto'}
                     className="d-flex align-items-center"
-                    component="button"
+                    as="button"
                     type="button"
                     onClick={() => setColorMode('auto')}
                   >

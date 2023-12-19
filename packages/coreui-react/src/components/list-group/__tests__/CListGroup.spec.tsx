@@ -10,7 +10,7 @@ test('loads and displays CListGroup component', async () => {
 
 test('CListGroup customize', async () => {
   const { container } = render(
-    <CListGroup className="bazinga" component="h3" flush={true} layout="horizontal-xl">
+    <CListGroup className="bazinga" as="h3" flush={true} layout="horizontal-xl">
       Test
     </CListGroup>,
   )

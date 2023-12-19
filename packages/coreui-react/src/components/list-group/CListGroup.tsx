@@ -2,15 +2,17 @@ import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import { PolymorphicRefForwardingComponent } from '../../helpers'
+
 export interface CListGroupProps extends HTMLAttributes<HTMLDivElement | HTMLUListElement> {
+  /**
+   * Component used for the root node. Either a string to use a HTML element or a component.
+   */
+  as?: ElementType
   /**
    * A string of all className you want applied to the component.
    */
   className?: string
-  /**
-   * Component used for the root node. Either a string to use a HTML element or a component.
-   */
-  component?: string | ElementType
   /**
    * Remove some borders and rounded corners to render list group items edge-to-edge in a parent component (e.g., `<CCard>`).
    */
@@ -27,30 +29,31 @@ export interface CListGroupProps extends HTMLAttributes<HTMLDivElement | HTMLULi
     | 'horizontal-xxl'
 }
 
-export const CListGroup = forwardRef<HTMLDivElement | HTMLUListElement, CListGroupProps>(
-  ({ children, className, component: Component = 'ul', flush, layout }, ref) => {
-    return (
-      <Component
-        className={classNames(
-          'list-group',
-          {
-            'list-group-flush': flush,
-            [`list-group-${layout}`]: layout,
-          },
-          className,
-        )}
-        ref={ref}
-      >
-        {children}
-      </Component>
-    )
-  },
-)
+export const CListGroup: PolymorphicRefForwardingComponent<'ul', CListGroupProps> = forwardRef<
+  HTMLDivElement | HTMLUListElement,
+  CListGroupProps
+>(({ children, as: Component = 'ul', className, flush, layout }, ref) => {
+  return (
+    <Component
+      className={classNames(
+        'list-group',
+        {
+          'list-group-flush': flush,
+          [`list-group-${layout}`]: layout,
+        },
+        className,
+      )}
+      ref={ref}
+    >
+      {children}
+    </Component>
+  )
+})
 
 CListGroup.propTypes = {
+  as: PropTypes.elementType,
   children: PropTypes.node,
   className: PropTypes.string,
-  component: PropTypes.elementType,
   flush: PropTypes.bool,
   layout: PropTypes.oneOf([
     'horizontal',

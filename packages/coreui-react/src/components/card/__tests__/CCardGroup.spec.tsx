@@ -30,7 +30,7 @@ test('CCardGroup full example', async () => {
   const { container } = render(
     <CCardGroup className="bazinga">
       <CCard>
-        <CCardImage component="svg">Image</CCardImage>
+        <CCardImage as="svg">Image</CCardImage>
         <CCardHeader>Header</CCardHeader>
         <CCardBody>
           <CCardTitle>Title</CCardTitle>

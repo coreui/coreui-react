@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 import { CLink, CLinkProps } from '../link/CLink'
 
+import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { colorPropType } from '../../props'
 import type { Colors, Shapes } from '../../types'
 
@@ -12,6 +13,10 @@ export interface CButtonProps extends Omit<CLinkProps, 'size'> {
    * Toggle the active state for the component.
    */
   active?: boolean
+  /**
+   * Component used for the root node. Either a string to use a HTML element or a component.
+   */
+  as?: ElementType
   /**
    * A string of all className you want applied to the base component.
    */
@@ -22,10 +27,6 @@ export interface CButtonProps extends Omit<CLinkProps, 'size'> {
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
   color?: Colors
-  /**
-   * Component used for the root node. Either a string to use a HTML element or a component.
-   */
-  component?: string | ElementType
   /**
    * Toggle the disabled state for the component.
    */
@@ -59,24 +60,17 @@ export interface CButtonProps extends Omit<CLinkProps, 'size'> {
   variant?: 'outline' | 'ghost'
 }
 
-export const CButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, CButtonProps>(
+export const CButton: PolymorphicRefForwardingComponent<'button', CButtonProps> = forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  CButtonProps
+>(
   (
-    {
-      children,
-      className,
-      color,
-      component = 'button',
-      shape,
-      size,
-      type = 'button',
-      variant,
-      ...rest
-    },
+    { children, as = 'button', className, color, shape, size, type = 'button', variant, ...rest },
     ref,
   ) => {
     return (
       <CLink
-        component={rest.href ? 'a' : component}
+        as={rest.href ? 'a' : as}
         {...(!rest.href && { type: type })}
         className={classNames(
           'btn',
@@ -95,10 +89,10 @@ export const CButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, CButton
 )
 
 CButton.propTypes = {
+  as: PropTypes.elementType,
   children: PropTypes.node,
   className: PropTypes.string,
   color: colorPropType,
-  component: PropTypes.elementType,
   shape: PropTypes.string,
   size: PropTypes.oneOf(['sm', 'lg']),
   type: PropTypes.oneOf(['button', 'submit', 'reset']),

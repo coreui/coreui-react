@@ -10,7 +10,7 @@ test('loads and displays CNavLink component', async () => {
 
 test('CNavLink customize', async () => {
   const { container } = render(
-    <CNavLink active={true} className="bazinga" component="h3" disabled={true} href="/bazinga">
+    <CNavLink active={true} className="bazinga" as="h3" disabled={true} href="/bazinga">
       Test
     </CNavLink>,
   )

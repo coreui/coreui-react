@@ -10,7 +10,7 @@ test('loads and displays CDropdownItemPlain component', async () => {
 
 test('CDropdownItemPlain customize', async () => {
   const { container } = render(
-    <CDropdownItemPlain className="bazinga" component="div">
+    <CDropdownItemPlain className="bazinga" as="div">
       Test
     </CDropdownItemPlain>,
   )

@@ -10,7 +10,7 @@ test('loads and displays CLink component', async () => {
 
 test('CLink customize', async () => {
   const { container } = render(
-    <CLink className="bazinga" active={true} component="button" disabled type="submit">
+    <CLink className="bazinga" active={true} as="button" disabled type="submit">
       Test
     </CLink>,
   )
@@ -38,7 +38,7 @@ test('CLink click on button', async () => {
 test('CLink click on disabled button', async () => {
   const click = jest.fn()
   render(
-    <CLink onClick={click} className="bazinga" component="button" disabled>
+    <CLink onClick={click} className="bazinga" as="button" disabled>
       Test
     </CLink>,
   )

@@ -10,7 +10,7 @@ test('loads and displays CButton component', async () => {
 
 test('CButton customize witch href', async () => {
   const { container } = render(
-    <CButton color="primary" component="span" href="/bazinga">
+    <CButton color="primary" as="span" href="/bazinga">
       Test
     </CButton>,
   )
@@ -23,7 +23,7 @@ test('CButton customize', async () => {
       active={true}
       className="bazinga"
       color="warning"
-      component="span"
+      as="span"
       disabled={true}
       role="bazinga"
       shape="rounded"

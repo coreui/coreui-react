@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Link } from 'gatsby'
 
-import { CBadge, CNavGroup, CNavItem, CSidebarNav } from '@coreui/react/src/index'
+import { CBadge, CNavGroup, CNavItem, CNavLink, CSidebarNav } from '@coreui/react/src/index'
 import CIcon from '@coreui/icons-react'
 
 export type Badge = {
@@ -19,10 +19,9 @@ export type NavItem = {
 
 interface SidebarNavProps {
   items: NavItem[]
-  currentRoute: string
 }
 
-export const SidebarNav = ({ items, currentRoute }: SidebarNavProps) => {
+export const SidebarNav = ({ items }: SidebarNavProps) => {
   const navLink = (name: string | JSX.Element, icon: string | ReactNode, badge?: Badge) => {
     return (
       <>
@@ -40,23 +39,18 @@ export const SidebarNav = ({ items, currentRoute }: SidebarNavProps) => {
   const navItem = (item: NavItem, index: number) => {
     const { name, badge, icon, ...rest } = item
     return (
-      <CNavItem component={Link} activeClassName="active" key={index} {...rest}>
-        {navLink(name, icon, badge)}
+      <CNavItem key={index}>
+        <CNavLink as={Link} activeClassName="active" {...rest}>
+          {navLink(name, icon, badge)}
+        </CNavLink>
       </CNavItem>
     )
   }
 
   const navGroup = (item: NavItem, index: number) => {
-    const { name, icon, to, ...rest } = item
+    const { name, icon, ...rest } = item
     return (
-      <CNavGroup
-        compact
-        toggler={navLink(name, icon)}
-        visible={to.startsWith(currentRoute)}
-        idx={String(index)}
-        key={index}
-        {...rest}
-      >
+      <CNavGroup compact toggler={navLink(name, icon)} idx={String(index)} key={index} {...rest}>
         {item.items?.map((item: NavItem, index: number) =>
           item.items ? navGroup(item, index) : navItem(item, index),
         )}

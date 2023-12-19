@@ -10,7 +10,7 @@ test('loads and displays COffcanvasTitle component', async () => {
 
 test('COffcanvasTitle customize', async () => {
   const { container } = render(
-    <COffcanvasTitle className="bazinga" component="div">
+    <COffcanvasTitle className="bazinga" as="div">
       Test
     </COffcanvasTitle>,
   )

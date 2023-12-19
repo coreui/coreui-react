@@ -21,7 +21,7 @@ test('CDropdown customize', async () => {
     <CDropdown
       alignment={{ lg: 'start' }}
       className="bazinga"
-      component="h3"
+      as="h3"
       dark={true}
       direction="dropstart"
       placement="right-end"

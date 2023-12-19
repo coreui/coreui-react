@@ -10,7 +10,7 @@ test('loads and displays CSpinner component', async () => {
 
 test('CSpinner customize', async () => {
   const { container } = render(
-    <CSpinner className="bazinga" color="warning" component="h3" size="sm" variant="grow">
+    <CSpinner className="bazinga" color="warning" as="h3" size="sm" variant="grow">
       Test
     </CSpinner>,
   )

@@ -15,7 +15,7 @@ test('CListGroupItem customize', async () => {
       active={true}
       color="warning"
       disabled={true}
-      component="button"
+      as="button"
     >
       Test
     </CListGroupItem>,

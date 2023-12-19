@@ -296,7 +296,7 @@ export const NavExample2 = () => {
             onClick={() => setVisible(!visible)}
           />
           <CCollapse className="navbar-collapse" visible={visible}>
-            <CNavbarNav component="nav">
+            <CNavbarNav as="nav">
               <CNavLink href="#" active>
                 Home
               </CNavLink>
@@ -330,7 +330,7 @@ return (
           onClick={() => setVisible(!visible)}
         />
         <CCollapse className="navbar-collapse" visible={visible}>
-          <CNavbarNav component="nav">
+          <CNavbarNav as="nav">
             <CNavLink href="#" active>
               Home
             </CNavLink>

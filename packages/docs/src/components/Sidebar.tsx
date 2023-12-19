@@ -65,7 +65,7 @@ const Sidebar: FC<SidebarProps> = ({ ...props }) => {
               </CDropdownItem>
             </CDropdownMenu>
           </CDropdown>
-          <SidebarNav items={items} currentRoute={props.currentRoute} />
+          <SidebarNav items={items} />
         </CSidebar>
       )}
     </AppContext.Consumer>

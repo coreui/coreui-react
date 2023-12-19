@@ -15,7 +15,7 @@ test('CNavbarBrand witch href', async () => {
 
 test('CNavbarBrand customize', async () => {
   const { container } = render(
-    <CNavbarBrand className="bazinga" component="h3" href="/bazinga">
+    <CNavbarBrand className="bazinga" as="h3" href="/bazinga">
       Test
     </CNavbarBrand>,
   )

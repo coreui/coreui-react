@@ -2,15 +2,18 @@ import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import { PolymorphicRefForwardingComponent } from '../../helpers'
+
 export interface CFormFeedbackProps extends HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
+  /**
+   * Component used for the root node. Either a string to use a HTML element or a component.
+   */
+  as?: ElementType
   /**
    * A string of all className you want applied to the component.
    */
   className?: string
-  /**
-   * Component used for the root node. Either a string to use a HTML element or a component.
-   */
-  component?: string | ElementType
+
   /**
    * Method called immediately after the `value` prop changes.
    */
@@ -25,33 +28,31 @@ export interface CFormFeedbackProps extends HTMLAttributes<HTMLDivElement | HTML
   valid?: boolean
 }
 
-export const CFormFeedback = forwardRef<HTMLDivElement | HTMLSpanElement, CFormFeedbackProps>(
-  (
-    { children, className, component: Component = 'div', invalid, tooltip, valid, ...rest },
-    ref,
-  ) => {
-    return (
-      <Component
-        className={classNames(
-          {
-            [`invalid-${tooltip ? 'tooltip' : 'feedback'}`]: invalid,
-            [`valid-${tooltip ? 'tooltip' : 'feedback'}`]: valid,
-          },
-          className,
-        )}
-        {...rest}
-        ref={ref}
-      >
-        {children}
-      </Component>
-    )
-  },
-)
+export const CFormFeedback: PolymorphicRefForwardingComponent<'div', CFormFeedbackProps> =
+  forwardRef<HTMLDivElement | HTMLSpanElement, CFormFeedbackProps>(
+    ({ children, as: Component = 'div', className, invalid, tooltip, valid, ...rest }, ref) => {
+      return (
+        <Component
+          className={classNames(
+            {
+              [`invalid-${tooltip ? 'tooltip' : 'feedback'}`]: invalid,
+              [`valid-${tooltip ? 'tooltip' : 'feedback'}`]: valid,
+            },
+            className,
+          )}
+          {...rest}
+          ref={ref}
+        >
+          {children}
+        </Component>
+      )
+    },
+  )
 
 CFormFeedback.propTypes = {
+  as: PropTypes.elementType,
   children: PropTypes.node,
   className: PropTypes.string,
-  component: PropTypes.elementType,
   invalid: PropTypes.bool,
   tooltip: PropTypes.bool,
   valid: PropTypes.bool,

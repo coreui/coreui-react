@@ -10,7 +10,7 @@ test('loads and displays CModalTitle component', async () => {
 
 test('CModalTitle customize', async () => {
   const { container } = render(
-    <CModalTitle className="bazinga" component="h3">
+    <CModalTitle className="bazinga" as="h3">
       Test
     </CModalTitle>,
   )

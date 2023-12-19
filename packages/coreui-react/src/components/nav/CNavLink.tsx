@@ -1,29 +1,14 @@
-import React, { ElementType, forwardRef, useContext, useEffect, useRef } from 'react'
+import React, { forwardRef, useContext, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { CLinkProps, CLink } from '../link/CLink'
 import { CNavContext } from '../sidebar/CSidebarNav'
 
+import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { useForkedRef } from '../../hooks'
 
 export interface CNavLinkProps extends Omit<CLinkProps, 'idx'> {
-  /**
-   * Toggle the active state for the component.
-   */
-  active?: boolean
-  /**
-   * A string of all className you want applied to the component.
-   */
-  className?: string
-  /**
-   * Component used for the root node. Either a string to use a HTML element or a component.
-   */
-  component?: string | ElementType
-  /**
-   * Toggle the disabled state for the component.
-   */
-  disabled?: boolean
   /**
    * @ignore
    */
@@ -34,8 +19,8 @@ export interface CNavLinkProps extends Omit<CLinkProps, 'idx'> {
   to?: string
 }
 
-export const CNavLink = forwardRef<
-  HTMLButtonElement | HTMLAnchorElement | HTMLLIElement,
+export const CNavLink: PolymorphicRefForwardingComponent<'a', CNavLinkProps> = forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
   CNavLinkProps
 >(({ children, className, idx, ...rest }, ref) => {
   const navLinkRef = useRef<HTMLAnchorElement>(null)
@@ -56,8 +41,11 @@ export const CNavLink = forwardRef<
 })
 
 CNavLink.propTypes = {
+  active: PropTypes.bool,
+  as: PropTypes.elementType,
   children: PropTypes.node,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   idx: PropTypes.string,
 }
 

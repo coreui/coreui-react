@@ -225,7 +225,7 @@ And putting it to use in a navbar:
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={true} />
     <CCollapse className="navbar-collapse" visible={true}>
       <CNavbarNav>
-        <CDropdown dark component="li" variant="nav-item">
+        <CDropdown dark as="li" variant="nav-item">
           <CDropdownToggle color="dark">Dropdown</CDropdownToggle>
           <CDropdownMenu>
             <CDropdownItem href="#">Action</CDropdownItem>
@@ -378,11 +378,11 @@ Historically dropdown menu contents _had_ to be links, but that's no longer the 
 <CDropdown>
   <CDropdownToggle color="secondary">Dropdown</CDropdownToggle>
   <CDropdownMenu>
-    <CDropdownItem component="button">Action</CDropdownItem>
-    <CDropdownItem component="button">Another action</CDropdownItem>
-    <CDropdownItem component="button">Something else here</CDropdownItem>
+    <CDropdownItem as="button">Action</CDropdownItem>
+    <CDropdownItem as="button">Another action</CDropdownItem>
+    <CDropdownItem as="button">Something else here</CDropdownItem>
     <CDropdownDivider />
-    <CDropdownItem component="button">Separated link</CDropdownItem>
+    <CDropdownItem as="button">Separated link</CDropdownItem>
   </CDropdownMenu>
 </CDropdown>
 ```

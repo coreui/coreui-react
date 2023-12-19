@@ -11,6 +11,7 @@ import React, {
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { useForkedRef, usePopper } from '../../hooks'
 import { placementPropType } from '../../props'
 import type { Placements } from '../../types'
@@ -27,6 +28,10 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
    */
   alignment?: Alignments
   /**
+   * Component used for the root node. Either a string to use a HTML element or a component.
+   */
+  as?: ElementType
+  /**
    * Configure the auto close behavior of the dropdown:
    * - `true` - the dropdown will be closed by clicking outside or inside the dropdown menu.
    * - `false` - the dropdown will be closed by clicking the toggle button and manually calling hide or toggle method. (Also will not be closed by pressing esc key)
@@ -38,10 +43,6 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
    * A string of all className you want applied to the base component.
    */
   className?: string
-  /**
-   * Component used for the root node. Either a string to use a HTML element or a component.
-   */
-  component?: string | ElementType
   /**
    * Appends the react dropdown menu to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`.
    *
@@ -106,11 +107,15 @@ interface ContextProps extends CDropdownProps {
 
 export const CDropdownContext = createContext({} as ContextProps)
 
-export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownProps>(
+export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps> = forwardRef<
+  HTMLDivElement | HTMLLIElement,
+  CDropdownProps
+>(
   (
     {
       children,
       alignment,
+      as = 'div',
       autoClose = true,
       className,
       container,
@@ -123,7 +128,6 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
       popper = true,
       portal = false,
       variant = 'btn-group',
-      component = 'div',
       visible = false,
       ...rest
     },
@@ -137,7 +141,7 @@ export const CDropdown = forwardRef<HTMLDivElement | HTMLLIElement, CDropdownPro
     const [_visible, setVisible] = useState(visible)
     const { initPopper, destroyPopper } = usePopper()
 
-    const Component = variant === 'nav-item' ? 'li' : component
+    const Component = variant === 'nav-item' ? 'li' : as
 
     // Disable popper if responsive aligment is set.
     if (typeof alignment === 'object') {
@@ -279,13 +283,13 @@ CDropdown.propTypes = {
     PropTypes.shape({ xl: alignmentDirection.isRequired }),
     PropTypes.shape({ xxl: alignmentDirection.isRequired }),
   ]),
+  as: PropTypes.elementType,
   autoClose: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.oneOf<'inside' | 'outside'>(['inside', 'outside']),
   ]),
   children: PropTypes.node,
   className: PropTypes.string,
-  component: PropTypes.elementType,
   dark: PropTypes.bool,
   direction: PropTypes.oneOf(['center', 'dropup', 'dropup-center', 'dropend', 'dropstart']),
   offset: PropTypes.any, // TODO: find good proptype

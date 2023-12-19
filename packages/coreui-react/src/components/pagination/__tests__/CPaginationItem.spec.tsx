@@ -10,7 +10,7 @@ test('loads and displays CPaginationItem component', async () => {
 
 test('CPaginationItem customize', async () => {
   const { container } = render(
-    <CPaginationItem className="bazinga" active={true} component="h3" disabled={true}>
+    <CPaginationItem className="bazinga" active={true} as="h3" disabled={true}>
       Test
     </CPaginationItem>,
   )

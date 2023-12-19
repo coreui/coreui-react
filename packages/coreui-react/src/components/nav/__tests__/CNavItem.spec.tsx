@@ -10,7 +10,7 @@ test('loads and displays CNavItem component', async () => {
 
 test('CNavItem customize', async () => {
   const { container } = render(
-    <CNavItem active={true} className="bazinga" component="h3" disabled={true} href="/bazinga">
+    <CNavItem active={true} className="bazinga" as="h3" disabled={true} href="/bazinga">
       Test
     </CNavItem>,
   )

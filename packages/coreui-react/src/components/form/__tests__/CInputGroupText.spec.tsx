@@ -10,7 +10,7 @@ test('loads and displays CInputGroupText component', async () => {
 
 test('renders CInputGroupText component as a label', async () => {
   const { container } = render(
-    <CInputGroupText component="label" htmlFor="input">
+    <CInputGroupText as="label" htmlFor="input">
       Test
     </CInputGroupText>,
   )

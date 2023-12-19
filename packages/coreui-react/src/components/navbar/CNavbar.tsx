@@ -2,10 +2,15 @@ import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { colorPropType } from '../../props'
 import type { Colors } from '../../types'
 
 export interface CNavbarProps extends HTMLAttributes<HTMLDivElement> {
+  /**
+   * Component used for the root node. Either a string to use a HTML element or a component.
+   */
+  as?: ElementType
   /**
    * A string of all className you want applied to the component.
    */
@@ -21,10 +26,6 @@ export interface CNavbarProps extends HTMLAttributes<HTMLDivElement> {
    */
   colorScheme?: 'dark' | 'light'
   /**
-   * Component used for the root node. Either a string to use a HTML element or a component.
-   */
-  component?: string | ElementType
-  /**
    * Defines optional container wrapping children elements.
    */
   container?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fluid'
@@ -38,14 +39,17 @@ export interface CNavbarProps extends HTMLAttributes<HTMLDivElement> {
   placement?: 'fixed-top' | 'fixed-bottom' | 'sticky-top'
 }
 
-export const CNavbar = forwardRef<HTMLDivElement, CNavbarProps>(
+export const CNavbar: PolymorphicRefForwardingComponent<'nav', CNavbarProps> = forwardRef<
+  HTMLDivElement,
+  CNavbarProps
+>(
   (
     {
       children,
+      as: Component = 'nav',
       className,
       color,
       colorScheme,
-      component: Component = 'nav',
       container,
       expand,
       placement,
@@ -81,11 +85,11 @@ export const CNavbar = forwardRef<HTMLDivElement, CNavbarProps>(
 )
 
 CNavbar.propTypes = {
+  as: PropTypes.elementType,
   children: PropTypes.node,
   className: PropTypes.string,
   color: colorPropType,
   colorScheme: PropTypes.oneOf(['dark', 'light']),
-  component: PropTypes.elementType,
   container: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fluid'>([

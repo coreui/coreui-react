@@ -10,7 +10,7 @@ test('loads and displays CDropdownHeader component', async () => {
 
 test('CDropdownHeader customize', async () => {
   const { container } = render(
-    <CDropdownHeader className="bazinga" component="h3">
+    <CDropdownHeader className="bazinga" as="h3">
       Test
     </CDropdownHeader>,
   )

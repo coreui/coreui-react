@@ -11,7 +11,7 @@ test('loads and displays CDropdownMenu component', async () => {
 test('CDropdownMenu customize', async () => {
   const { container } = render(
     <CDropdown visible={true}>
-      <CDropdownMenu className="bazinga" component="div">
+      <CDropdownMenu className="bazinga" as="div">
         Test
       </CDropdownMenu>
     </CDropdown>,

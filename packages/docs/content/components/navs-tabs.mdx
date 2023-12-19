@@ -54,7 +54,7 @@ The base `<CNav>` component is built with flexbox and provide a strong foundatio
 Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, `<ol>` if the order of your items is important, or roll your own with a `<nav>` element. Because the .nav uses display: flex, the nav links behave the same as nav items would, but without the extra markup.
 
 ```jsx preview
-<CNav component="nav">
+<CNav as="nav">
   <CNavLink href="#" active>
     Active
   </CNavLink>
@@ -298,7 +298,7 @@ For equal-width elements, use `layout="justified"`. All horizontal space will be
 If you need responsive nav variations, consider using a series of [flexbox utilities](https://coreui.io/docs/utilities/flex). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, our nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
 
 ```jsx preview
-<CNav component="nav" variant="pills" className="flex-column flex-sm-row">
+<CNav as="nav" variant="pills" className="flex-column flex-sm-row">
   <CNavLink href="#" active>
     Active
   </CNavLink>

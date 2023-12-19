@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 import { CLink } from '../link/CLink'
 
+import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { colorPropType } from '../../props'
 import type { Colors } from '../../types'
 
@@ -13,6 +14,10 @@ export interface CListGroupItemProps
    * Toggle the active state for the component.
    */
   active?: boolean
+  /**
+   * Component used for the root node. Either a string to use a HTML element or a component.
+   */
+  as?: ElementType
   /**
    * A string of all className you want applied to the component.
    */
@@ -27,55 +32,51 @@ export interface CListGroupItemProps
    * Toggle the disabled state for the component.
    */
   disabled?: boolean
-  /**
-   * Component used for the root node. Either a string to use a HTML element or a component.
-   */
-  component?: string | ElementType
 }
 
-export const CListGroupItem = forwardRef<
-  HTMLLIElement | HTMLAnchorElement | HTMLButtonElement,
-  CListGroupItemProps
->(({ children, active, className, disabled, color, component = 'li', ...rest }, ref) => {
-  const Component = component === 'a' || component === 'button' ? CLink : component
+export const CListGroupItem: PolymorphicRefForwardingComponent<'li', CListGroupItemProps> =
+  forwardRef<HTMLLIElement | HTMLAnchorElement | HTMLButtonElement, CListGroupItemProps>(
+    ({ children, active, as = 'li', className, disabled, color, ...rest }, ref) => {
+      const Component = as === 'a' || as === 'button' ? CLink : as
 
-  rest = {
-    ...((component === 'a' || component === 'button') && {
-      active,
-      disabled,
-      component,
-      ref: ref,
-    }),
-    ...(active && { 'aria-current': true }),
-    ...(disabled && { 'aria-disabled': true }),
-    ...rest,
-  }
-
-  return (
-    <Component
-      className={classNames(
-        'list-group-item',
-        {
-          [`list-group-item-${color}`]: color,
-          'list-group-item-action': component === 'a' || component === 'button',
+      rest = {
+        ...((as === 'a' || as === 'button') && {
           active,
           disabled,
-        },
-        className,
-      )}
-      {...rest}
-    >
-      {children}
-    </Component>
+          as,
+          ref: ref,
+        }),
+        ...(active && { 'aria-current': true }),
+        ...(disabled && { 'aria-disabled': true }),
+        ...rest,
+      }
+
+      return (
+        <Component
+          className={classNames(
+            'list-group-item',
+            {
+              [`list-group-item-${color}`]: color,
+              'list-group-item-action': as === 'a' || as === 'button',
+              active,
+              disabled,
+            },
+            className,
+          )}
+          {...rest}
+        >
+          {children}
+        </Component>
+      )
+    },
   )
-})
 
 CListGroupItem.propTypes = {
   active: PropTypes.bool,
+  as: PropTypes.elementType,
   children: PropTypes.node,
   className: PropTypes.string,
   color: colorPropType,
-  component: PropTypes.elementType,
   disabled: PropTypes.bool,
 }
 

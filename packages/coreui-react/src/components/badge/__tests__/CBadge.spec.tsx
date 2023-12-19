@@ -10,7 +10,7 @@ test('loads and displays CBadge component', async () => {
 
 test('CBadge customize', async () => {
   const { container } = render(
-    <CBadge className="bazinga" color="warning" component="div" shape="rounded" textColor="white">
+    <CBadge className="bazinga" color="warning" as="div" shape="rounded" textColor="white">
       Test
     </CBadge>,
   )

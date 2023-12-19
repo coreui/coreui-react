@@ -1,6 +1,8 @@
 import React, {
   CSSProperties,
+  ElementType,
   forwardRef,
+  HTMLAttributes,
   ReactNode,
   useContext,
   useEffect,
@@ -12,9 +14,17 @@ import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
 import type { TransitionStatus } from 'react-transition-group'
 
+import { PolymorphicRefForwardingComponent } from '../../helpers'
+
 import { CNavContext } from '../sidebar/CSidebarNav'
-export interface CNavGroupProps {
-  children?: ReactNode
+
+export interface CNavGroupProps extends HTMLAttributes<HTMLDivElement | HTMLLIElement> {
+  /**
+   * Component used for the root node. Either a string to use a HTML element or a component.
+   *
+   * @since 5.0.0-rc.0
+   */
+  as?: ElementType
   /**
    * A string of all className you want applied to the component.
    */
@@ -44,110 +54,111 @@ const isInVisibleGroup = (el1: string, el2: string) => {
   return array2.every((item, index) => item === array1[index])
 }
 
-export const CNavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
-  ({ children, className, compact, idx, toggler, visible, ...rest }, ref) => {
-    const [height, setHeight] = useState<number | string>()
-    const navItemsRef = useRef<HTMLUListElement>(null)
+export const CNavGroup: PolymorphicRefForwardingComponent<'li', CNavGroupProps> = forwardRef<
+  HTMLDivElement | HTMLLIElement,
+  CNavGroupProps
+>(({ children, as: Component = 'li', className, compact, idx, toggler, visible, ...rest }, ref) => {
+  const [height, setHeight] = useState<number | string>()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const navItemsRef = useRef<any>(null)
 
-    const { visibleGroup, setVisibleGroup } = useContext(CNavContext)
+  const { visibleGroup, setVisibleGroup } = useContext(CNavContext)
 
-    const [_visible, setVisible] = useState(
-      Boolean(visible || (idx && visibleGroup && isInVisibleGroup(visibleGroup, idx))),
+  const [_visible, setVisible] = useState(
+    Boolean(visible || (idx && visibleGroup && isInVisibleGroup(visibleGroup, idx))),
+  )
+
+  useEffect(() => {
+    setVisible(Boolean(idx && visibleGroup && isInVisibleGroup(visibleGroup, idx)))
+  }, [visibleGroup])
+
+  const handleTogglerOnCLick = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault()
+    setVisibleGroup(
+      _visible ? (idx?.toString().includes('.') ? idx.slice(0, idx.lastIndexOf('.')) : '') : idx,
     )
+    setVisible(!_visible)
+  }
 
-    useEffect(() => {
-      setVisible(Boolean(idx && visibleGroup && isInVisibleGroup(visibleGroup, idx)))
-    }, [visibleGroup])
+  const style: CSSProperties = {
+    height: 0,
+  }
 
-    const handleTogglerOnCLick = (event: React.MouseEvent<HTMLElement>) => {
-      event.preventDefault()
-      setVisibleGroup(
-        _visible ? (idx?.toString().includes('.') ? idx.slice(0, idx.lastIndexOf('.')) : '') : idx,
-      )
-      setVisible(!_visible)
-    }
+  const onEntering = () => {
+    navItemsRef.current && setHeight(navItemsRef.current.scrollHeight)
+  }
 
-    const style: CSSProperties = {
-      height: 0,
-    }
+  const onEntered = () => {
+    setHeight('auto')
+  }
 
-    const onEntering = () => {
-      navItemsRef.current && setHeight(navItemsRef.current.scrollHeight)
-    }
+  const onExit = () => {
+    navItemsRef.current && setHeight(navItemsRef.current.scrollHeight)
+  }
 
-    const onEntered = () => {
-      setHeight('auto')
-    }
+  const onExiting = () => {
+    // @ts-expect-error reflow is necessary to get correct height of the element
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const reflow = navItemsRef.current?.offsetHeight
+    setHeight(0)
+  }
 
-    const onExit = () => {
-      navItemsRef.current && setHeight(navItemsRef.current.scrollHeight)
-    }
+  const onExited = () => {
+    setHeight(0)
+  }
 
-    const onExiting = () => {
-      // @ts-expect-error reflow is necessary to get correct height of the element
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const reflow = navItemsRef.current?.offsetHeight
-      setHeight(0)
-    }
+  const transitionStyles = {
+    entering: { display: 'block', height: height },
+    entered: { display: 'block', height: height },
+    exiting: { display: 'block', height: height },
+    exited: { height: height },
+    unmounted: {},
+  }
 
-    const onExited = () => {
-      setHeight(0)
-    }
+  const NavGroupItemsComponent = Component === 'li' ? 'ul' : 'div'
 
-    const transitionStyles = {
-      entering: { display: 'block', height: height },
-      entered: { display: 'block', height: height },
-      exiting: { display: 'block', height: height },
-      exited: { height: height },
-      unmounted: {}
-    }
-
-    return (
-      <li className={classNames('nav-group', { show: _visible }, className)} {...rest} ref={ref}>
-        {toggler && (
-          <a className="nav-link nav-group-toggle" onClick={(event) => handleTogglerOnCLick(event)}>
-            {toggler}
-          </a>
+  return (
+    <Component
+      className={classNames('nav-group', { show: _visible }, className)}
+      {...rest}
+      ref={ref}
+    >
+      {toggler && (
+        <a className="nav-link nav-group-toggle" onClick={(event) => handleTogglerOnCLick(event)}>
+          {toggler}
+        </a>
+      )}
+      <Transition
+        in={_visible}
+        nodeRef={navItemsRef}
+        onEntering={onEntering}
+        onEntered={onEntered}
+        onExit={onExit}
+        onExiting={onExiting}
+        onExited={onExited}
+        timeout={300}
+      >
+        {(state) => (
+          <NavGroupItemsComponent
+            className={classNames('nav-group-items', {
+              compact: compact,
+            })}
+            style={{
+              ...style,
+              ...transitionStyles[state as TransitionStatus],
+            }}
+            ref={navItemsRef}
+          >
+            {children}
+          </NavGroupItemsComponent>
         )}
-        <Transition
-          in={_visible}
-          nodeRef={navItemsRef}
-          onEntering={onEntering}
-          onEntered={onEntered}
-          onExit={onExit}
-          onExiting={onExiting}
-          onExited={onExited}
-          timeout={300}
-        >
-          {(state) => (
-            <ul
-              className={classNames('nav-group-items', {
-                compact: compact,
-              })}
-              style={{
-                ...style,
-                ...transitionStyles[state as TransitionStatus],
-              }}
-              ref={navItemsRef}
-            >
-              {React.Children.map(children, (child, index) => {
-                if (React.isValidElement(child)) {
-                  return React.cloneElement(child as React.ReactElement<any>, {
-                    key: index,
-                    idx: `${idx}.${index}`,
-                  })
-                }
-                return
-              })}
-            </ul>
-          )}
-        </Transition>
-      </li>
-    )
-  },
-)
+      </Transition>
+    </Component>
+  )
+})
 
 CNavGroup.propTypes = {
+  as: PropTypes.elementType,
   children: PropTypes.node,
   className: PropTypes.string,
   compact: PropTypes.bool,

@@ -10,7 +10,7 @@ test('loads and displays CCardTitle component', async () => {
 
 test('CCardTitle customize', async () => {
   const { container } = render(
-    <CCardTitle className="bazinga" component="h3">
+    <CCardTitle className="bazinga" as="h3">
       Test
     </CCardTitle>,
   )

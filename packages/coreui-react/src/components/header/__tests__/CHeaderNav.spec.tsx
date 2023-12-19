@@ -10,7 +10,7 @@ test('loads and displays CHeaderNav component', async () => {
 
 test('CHeaderNav customize', async () => {
   const { container } = render(
-    <CHeaderNav className="bazinga" component="h3">
+    <CHeaderNav className="bazinga" as="h3">
       Test
     </CHeaderNav>,
   )

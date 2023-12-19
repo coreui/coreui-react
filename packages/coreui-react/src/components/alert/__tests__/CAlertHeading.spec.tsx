@@ -10,7 +10,7 @@ test('loads and displays CAlertHeading component', async () => {
 
 test('CAlertHeading customize', async () => {
   const { container } = render(
-    <CAlertHeading component="h3" className="bazinga">
+    <CAlertHeading as="h3" className="bazinga">
       Test
     </CAlertHeading>,
   )

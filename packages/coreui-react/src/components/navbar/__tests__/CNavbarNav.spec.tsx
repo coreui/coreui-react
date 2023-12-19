@@ -10,7 +10,7 @@ test('loads and displays CNavbarNav component', async () => {
 
 test('CNavbarNav customize', async () => {
   const { container } = render(
-    <CNavbarNav className="bazinga" component="h3">
+    <CNavbarNav className="bazinga" as="h3">
       Test
     </CNavbarNav>,
   )

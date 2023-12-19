@@ -2,10 +2,15 @@ import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { colorPropType, shapePropType, textColorsPropType } from '../../props'
 import type { Colors, Shapes, TextColors } from '../../types'
 
 export interface CBadgeProps extends HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
+  /**
+   * Component used for the root node. Either a string to use a HTML element or a component.
+   */
+  as?: ElementType
   /**
    * A string of all className you want applied to the component.
    */
@@ -16,10 +21,6 @@ export interface CBadgeProps extends HTMLAttributes<HTMLDivElement | HTMLSpanEle
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
   color?: Colors
-  /**
-   * Component used for the root node. Either a string to use a HTML element or a component.
-   */
-  component?: string | ElementType
   /**
    * Position badge in one of the corners of a link or button.
    */
@@ -41,13 +42,16 @@ export interface CBadgeProps extends HTMLAttributes<HTMLDivElement | HTMLSpanEle
    */
   textColor?: TextColors
 }
-export const CBadge = forwardRef<HTMLDivElement | HTMLSpanElement, CBadgeProps>(
+export const CBadge: PolymorphicRefForwardingComponent<'span', CBadgeProps> = forwardRef<
+  HTMLDivElement | HTMLSpanElement,
+  CBadgeProps
+>(
   (
     {
       children,
+      as: Component = 'span',
       className,
       color,
-      component: Component = 'span',
       position,
       shape,
       size,
@@ -83,10 +87,10 @@ export const CBadge = forwardRef<HTMLDivElement | HTMLSpanElement, CBadgeProps>(
 )
 
 CBadge.propTypes = {
+  as: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
   color: colorPropType,
-  component: PropTypes.string,
   position: PropTypes.oneOf(['top-start', 'top-end', 'bottom-end', 'bottom-start']),
   shape: shapePropType,
   size: PropTypes.oneOf(['sm']),

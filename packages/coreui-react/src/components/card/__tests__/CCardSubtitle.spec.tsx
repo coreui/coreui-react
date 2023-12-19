@@ -10,7 +10,7 @@ test('loads and displays CCardSubtitle component', async () => {
 
 test('CCardSubtitle customize', async () => {
   const { container } = render(
-    <CCardSubtitle className="bazinga" component="h3">
+    <CCardSubtitle className="bazinga" as="h3">
       Test
     </CCardSubtitle>,
   )

@@ -10,7 +10,7 @@ test('loads and displays CHeaderBrand component', async () => {
 
 test('CHeaderBrand customize', async () => {
   const { container } = render(
-    <CHeaderBrand className="bazinga" component="h3">
+    <CHeaderBrand className="bazinga" as="h3">
       Test
     </CHeaderBrand>,
   )

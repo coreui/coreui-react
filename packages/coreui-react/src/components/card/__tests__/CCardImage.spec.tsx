@@ -10,7 +10,7 @@ test('loads and displays CCardImage component', async () => {
 
 test('CCardImage customize', async () => {
   const { container } = render(
-    <CCardImage className="bazinga" component="div" orientation="bottom" />,
+    <CCardImage className="bazinga" as="div" orientation="bottom" />,
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

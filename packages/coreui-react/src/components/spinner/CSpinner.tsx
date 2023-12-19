@@ -2,10 +2,15 @@ import React, { ElementType, forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { colorPropType } from '../../props'
 import type { Colors } from '../../types'
 
 export interface CSpinnerProps extends HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
+  /**
+   * Component used for the root node. Either a string to use a HTML element or a component.
+   */
+  as?: ElementType
   /**
    * A string of all className you want applied to the component.
    */
@@ -16,10 +21,6 @@ export interface CSpinnerProps extends HTMLAttributes<HTMLDivElement | HTMLSpanE
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
    */
   color?: Colors
-  /**
-   * Component used for the root node. Either a string to use a HTML element or a component.
-   */
-  component?: string | ElementType
   /**
    * Size the component small.
    */
@@ -34,12 +35,15 @@ export interface CSpinnerProps extends HTMLAttributes<HTMLDivElement | HTMLSpanE
   visuallyHiddenLabel?: string
 }
 
-export const CSpinner = forwardRef<HTMLDivElement | HTMLSpanElement, CSpinnerProps>(
+export const CSpinner: PolymorphicRefForwardingComponent<'div', CSpinnerProps> = forwardRef<
+  HTMLDivElement | HTMLSpanElement,
+  CSpinnerProps
+>(
   (
     {
+      as: Component = 'div',
       className,
       color,
-      component: Component = 'div',
       size,
       variant = 'border',
       visuallyHiddenLabel = 'Loading...',
@@ -68,9 +72,9 @@ export const CSpinner = forwardRef<HTMLDivElement | HTMLSpanElement, CSpinnerPro
 )
 
 CSpinner.propTypes = {
+  as: PropTypes.string,
   className: PropTypes.string,
   color: colorPropType,
-  component: PropTypes.string,
   size: PropTypes.oneOf(['sm']),
   variant: PropTypes.oneOf(['border', 'grow']),
   visuallyHiddenLabel: PropTypes.string,

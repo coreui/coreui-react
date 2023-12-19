@@ -10,7 +10,7 @@ test('loads and displays CFormText component', async () => {
 
 test('CFormText customize', async () => {
   const { container } = render(
-    <CFormText className="bazinga" component="h3">
+    <CFormText className="bazinga" as="h3">
       Test
     </CFormText>,
   )
