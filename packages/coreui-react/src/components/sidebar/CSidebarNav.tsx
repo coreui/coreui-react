@@ -3,6 +3,7 @@ import React, {
   ElementType,
   forwardRef,
   HTMLAttributes,
+  ReactElement,
   ReactNode,
   useState,
 } from 'react'
@@ -31,31 +32,34 @@ interface ContextProps {
 
 export const CNavContext = createContext({} as ContextProps)
 
-const recursiveClone = (children: ReactNode, id?: string): ReactNode => {
+const recursiveClone = (children: ReactNode, id?: string, updateId?: boolean): ReactNode => {
   return React.Children.map(children, (child: ReactNode, index: number) => {
-    const _id = id ? `${id}.${index}` : `${index}`
-
     if (!React.isValidElement(child)) {
       return child
     }
+
+    const _id = id ? (updateId ? `${id}.${index}` : `${id}`) : `${index}`
 
     if (child.props && child.props.children) {
       child = React.cloneElement(child, {
         // @ts-expect-error the `displayName` exist in each component. TODO: resolve
         ...((child.type.displayName === 'CNavGroup' || child.type.displayName === 'CNavLink') && {
           idx: _id,
-          test: _id,
         }),
         // @ts-expect-error the `children` exist in each component. TODO: resolve
-        children: recursiveClone(child.props.children, _id),
+        children: recursiveClone(
+          child.props.children,
+          _id,
+          // @ts-expect-error the `displayName` exist in each component. TODO: resolve
+          child.type.displayName === 'CNavItem' ? false : true,
+        ),
       })
     }
 
-    return React.cloneElement(child as React.ReactElement<any>, {
+    return React.cloneElement(child as ReactElement<any>, {
       // @ts-expect-error the `displayName` exist in each component. TODO: resolve
       ...((child.type.displayName === 'CNavGroup' || child.type.displayName === 'CNavLink') && {
         idx: _id,
-        test: _id,
       }),
     })
   })
