@@ -200,10 +200,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     }, [_visible])
 
     const handleClickOutside = (event: Event) => {
-      if (
-        modalContentRef.current &&
-        !modalContentRef.current.contains(event.target as HTMLElement)
-      ) {
+      if (modalRef.current && modalRef.current == event.target) {
         handleDismiss()
       }
     }
