@@ -90,9 +90,10 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
     },
     ref,
   ) => {
-    const tooltipRef = useRef(null)
+    const tooltipRef = useRef<HTMLDivElement>(null)
     const togglerRef = useRef(null)
     const forkedRef = useForkedRef(ref, tooltipRef)
+    const uID = useRef(`tooltip${Math.floor(Math.random() * 1_000_000)}`)
 
     const { initPopper, destroyPopper } = usePopper()
     const [_visible, setVisible] = useState(visible)
@@ -149,6 +150,9 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
     return (
       <>
         {React.cloneElement(children as React.ReactElement<any>, {
+          ...(_visible && {
+            'aria-describedby': uID.current,
+          }),
           ref: togglerRef,
           ...((trigger === 'click' || trigger.includes('click')) && {
             onClick: () => toggleVisible(!_visible),
@@ -188,6 +192,7 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
                   },
                   className,
                 )}
+                id={uID.current}
                 ref={forkedRef}
                 role="tooltip"
                 {...rest}
