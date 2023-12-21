@@ -99,7 +99,8 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
     const popoverRef = useRef(null)
     const togglerRef = useRef(null)
     const forkedRef = useForkedRef(ref, popoverRef)
-
+    const uID = useRef(`popover${Math.floor(Math.random() * 1_000_000)}`)
+    
     const { initPopper, destroyPopper } = usePopper()
     const [_visible, setVisible] = useState(visible)
 
@@ -155,6 +156,9 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
     return (
       <>
         {React.cloneElement(children as React.ReactElement<any>, {
+          ...(_visible && {
+            'aria-describedby': uID.current,
+          }),
           ref: togglerRef,
           ...((trigger === 'click' || trigger.includes('click')) && {
             onClick: () => toggleVisible(!_visible),
@@ -194,6 +198,7 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
                   },
                   className,
                 )}
+                id={uID.current}
                 ref={forkedRef}
                 role="tooltip"
                 {...rest}
