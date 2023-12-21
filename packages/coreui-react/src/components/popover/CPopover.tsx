@@ -100,7 +100,7 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
     const togglerRef = useRef(null)
     const forkedRef = useForkedRef(ref, popoverRef)
     const uID = useRef(`popover${Math.floor(Math.random() * 1_000_000)}`)
-    
+
     const { initPopper, destroyPopper } = usePopper()
     const [_visible, setVisible] = useState(visible)
 
