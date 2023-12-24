@@ -19,7 +19,6 @@ const DefaultLayout: FC<DefaultLayoutProps> = ({ children, data, pageContext, pa
   const title = pageContext.frontmatter ? pageContext.frontmatter.title : ''
   const description = pageContext.frontmatter ? pageContext.frontmatter.description : ''
   const name = pageContext.frontmatter ? pageContext.frontmatter.name : ''
-  const route = pageContext.frontmatter ? pageContext.frontmatter.route : ''
 
   return (
     <AppContext.Provider
@@ -29,7 +28,7 @@ const DefaultLayout: FC<DefaultLayoutProps> = ({ children, data, pageContext, pa
       }}
     >
       <Seo title={title} description={description} name={name} />
-      <Sidebar currentRoute={route} />
+      <Sidebar />
       <div className="wrapper d-flex flex-column min-vh-100">
         <Header />
         <div className="body flex-grow-1 px-3">

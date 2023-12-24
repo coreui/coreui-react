@@ -17,7 +17,7 @@ export interface CConditionalPortalProps {
   children: ReactNode
   /**
    * An HTML element or function that returns a single element, with `document.body` as the default.
-   * 
+   *
    * @since v4.11.0
    */
   container?: Element | (() => Element | null) | null

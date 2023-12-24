@@ -10,13 +10,7 @@ test('loads and displays CListGroupItem component', async () => {
 
 test('CListGroupItem customize', async () => {
   const { container } = render(
-    <CListGroupItem
-      className="bazinga"
-      active={true}
-      color="warning"
-      disabled={true}
-      as="button"
-    >
+    <CListGroupItem className="bazinga" active={true} color="warning" disabled={true} as="button">
       Test
     </CListGroupItem>,
   )

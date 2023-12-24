@@ -14,11 +14,7 @@ import { AppContext } from './../AppContext'
 
 import items from './../nav'
 
-interface SidebarProps {
-  currentRoute: string
-}
-
-const Sidebar: FC<SidebarProps> = ({ ...props }) => {
+const Sidebar: FC = () => {
   return (
     <AppContext.Consumer>
       {(context) => (

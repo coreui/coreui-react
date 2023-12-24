@@ -12,7 +12,9 @@ const NotFoundPage = () => {
       <Seo title="404: Not found" />
       <h1>404: Not Found</h1>
       <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-      <CButton color="primary" href={siteUrl}>Go to documentation</CButton>
+      <CButton color="primary" href={siteUrl}>
+        Go to documentation
+      </CButton>
     </>
   )
 }
