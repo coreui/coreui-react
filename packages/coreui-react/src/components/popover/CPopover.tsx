@@ -96,7 +96,7 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
     },
     ref,
   ) => {
-    const popoverRef = useRef(null)
+    const popoverRef = useRef<HTMLDivElement>(null)
     const togglerRef = useRef(null)
     const forkedRef = useForkedRef(ref, popoverRef)
     const uID = useRef(`popover${Math.floor(Math.random() * 1_000_000)}`)
@@ -134,16 +134,6 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
       setVisible(visible)
     }, [visible])
 
-    useEffect(() => {
-      if (_visible && togglerRef.current && popoverRef.current) {
-        initPopper(togglerRef.current, popoverRef.current, popperConfig)
-      }
-
-      return () => {
-        destroyPopper()
-      }
-    }, [_visible])
-
     const toggleVisible = (visible: boolean) => {
       if (visible) {
         setTimeout(() => setVisible(true), _delay.show)
@@ -177,8 +167,22 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
             in={_visible}
             mountOnEnter
             nodeRef={popoverRef}
-            onEnter={onShow}
+            onEnter={() => {
+              if (togglerRef.current && popoverRef.current) {
+                initPopper(togglerRef.current, popoverRef.current, popperConfig)
+              }
+
+              onShow
+            }}
+            onEntering={() => {
+              if (togglerRef.current && popoverRef.current) {
+                popoverRef.current.style.display = 'initial'
+              }
+            }}
             onExit={onHide}
+            onExited={() => {
+              destroyPopper()
+            }}
             timeout={{
               enter: 0,
               exit: popoverRef.current
@@ -201,6 +205,9 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
                 id={uID.current}
                 ref={forkedRef}
                 role="tooltip"
+                style={{
+                  display: 'none',
+                }}
                 {...rest}
               >
                 <div className="popover-arrow"></div>

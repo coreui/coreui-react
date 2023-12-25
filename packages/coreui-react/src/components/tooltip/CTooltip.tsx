@@ -128,16 +128,6 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
       setVisible(visible)
     }, [visible])
 
-    useEffect(() => {
-      if (_visible && togglerRef.current && tooltipRef.current) {
-        initPopper(togglerRef.current, tooltipRef.current, popperConfig)
-      }
-
-      return () => {
-        destroyPopper()
-      }
-    }, [_visible])
-
     const toggleVisible = (visible: boolean) => {
       if (visible) {
         setTimeout(() => setVisible(true), _delay.show)
@@ -171,8 +161,22 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
             in={_visible}
             mountOnEnter
             nodeRef={tooltipRef}
-            onEnter={onShow}
+            onEnter={() => {
+              if (togglerRef.current && tooltipRef.current) {
+                initPopper(togglerRef.current, tooltipRef.current, popperConfig)
+              }
+
+              onShow
+            }}
+            onEntering={() => {
+              if (togglerRef.current && tooltipRef.current) {
+                tooltipRef.current.style.display = 'initial'
+              }
+            }}
             onExit={onHide}
+            onExited={() => {
+              destroyPopper()
+            }}
             timeout={{
               enter: 0,
               exit: tooltipRef.current
@@ -195,6 +199,9 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
                 id={uID.current}
                 ref={forkedRef}
                 role="tooltip"
+                style={{
+                  display: 'none',
+                }}
                 {...rest}
               >
                 <div className="tooltip-arrow"></div>
