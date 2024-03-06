@@ -65,7 +65,7 @@ export const CBadge: PolymorphicRefForwardingComponent<'span', CBadgeProps> = fo
         className={classNames(
           'badge',
           {
-            [`bg-${color}`]: color,
+            [`text-bg-${color}`]: color,
             'position-absolute translate-middle': position,
             'top-0': position?.includes('top'),
             'top-100': position?.includes('bottom'),
