@@ -21,7 +21,7 @@ export interface CDropdownToggleProps extends Omit<CButtonProps, 'type'> {
   /**
    * If a dropdown `variant` is set to `nav-item` then render the toggler as a link instead of a button.
    *
-   * @since v5.0.0-rc.1
+   * @since v5.0.0-rc.2
    */
   navLink?: boolean
   /**

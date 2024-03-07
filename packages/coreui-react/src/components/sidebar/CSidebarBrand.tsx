@@ -8,7 +8,7 @@ export interface CSidebarBrandProps extends HTMLAttributes<HTMLAnchorElement | H
   /**
    * Component used for the root node. Either a string to use a HTML element or a component.
    *
-   * @since 5.0.0-rc.1
+   * @since 5.0.0-rc.2
    */
   as?: ElementType
   /**

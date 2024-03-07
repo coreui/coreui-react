@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "5.0.0-rc.1",
+  "version": "5.0.0-rc.2",
   "description": "UI Components Library for React.js",
   "keywords": [
     "react",
@@ -41,7 +41,7 @@
     "test:update": "jest --coverage --updateSnapshot"
   },
   "dependencies": {
-    "@coreui/coreui": "^5.0.0-rc.1",
+    "@coreui/coreui": "^5.0.0-rc.2",
     "@popperjs/core": "^2.11.8",
     "prop-types": "^15.8.1"
   },
