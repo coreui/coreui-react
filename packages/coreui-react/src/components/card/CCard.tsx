@@ -22,10 +22,17 @@ export interface CCardProps extends HTMLAttributes<HTMLDivElement> {
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | 'primary-emphasis' | 'secondary-emphasis' | 'success-emphasis' | 'danger-emphasis' | 'warning-emphasis' | 'info-emphasis' | 'light-emphasis' | 'body' | 'body-emphasis' | 'body-secondary' | 'body-tertiary' | 'black' | 'black-50' | 'white' | 'white-50' | string
    */
   textColor?: string
+  /**
+   * Sets the component's color scheme to one of CoreUI's themed colors, ensuring the text color contrast adheres to the WCAG 4.5:1 contrast ratio standard for accessibility.
+   *
+   * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
+   * @since 5.0.0-rc.3
+   */
+  textBgColor?: Colors
 }
 
 export const CCard = forwardRef<HTMLDivElement, CCardProps>(
-  ({ children, className, color, textColor, ...rest }, ref) => {
+  ({ children, className, color, textBgColor, textColor, ...rest }, ref) => {
     return (
       <div
         className={classNames(
@@ -33,6 +40,7 @@ export const CCard = forwardRef<HTMLDivElement, CCardProps>(
           {
             [`bg-${color}`]: color,
             [`text-${textColor}`]: textColor,
+            [`text-bg-${textBgColor}`]: textBgColor,
           },
           className,
         )}
@@ -49,6 +57,7 @@ CCard.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   color: colorPropType,
+  textBgColor: colorPropType,
   textColor: PropTypes.string,
 }
 

@@ -73,6 +73,11 @@
     margin-left: .5rem;
   }
 
+  // Badges
+  > .badge + .badge {
+    margin-left: .25rem;
+  }
+
   // Buttons
   > .btn,
   > .btn-group {

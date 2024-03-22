@@ -99,8 +99,20 @@ Add any of the below-mentioned `color` props to modify the presentation of a rea
 <CBadge color="danger">danger</CBadge>
 <CBadge color="warning">warning</CBadge>
 <CBadge color="info">info</CBadge>
-<CBadge color="light">light</CBadge>
+<CBadge textBgColor="light">light</CBadge>
 <CBadge color="dark">dark</CBadge>
+```
+
+You can also apply contextual variations with the `textBgColor` property, which automatically sets the text color to ensure compliance with the WCAG 4.5:1 contrast ratio standard for enhanced accessibility.
+
+```jsx preview
+<CBadge textBgColor="primary">primary</CBadge>
+<CBadge textBgColor="success">success</CBadge>
+<CBadge textBgColor="danger">danger</CBadge>
+<CBadge textBgColor="warning">warning</CBadge>
+<CBadge textBgColor="info">info</CBadge>
+<CBadge textBgColor="light">light</CBadge>
+<CBadge textBgColor="dark">dark</CBadge>
 ```
 
 ## Pill badges
@@ -113,7 +125,7 @@ Apply the `shape="rounded-pill"` prop to make badges rounded.
 <CBadge color="danger" shape="rounded-pill">danger</CBadge>
 <CBadge color="warning" shape="rounded-pill">warning</CBadge>
 <CBadge color="info" shape="rounded-pill">info</CBadge>
-<CBadge color="light" shape="rounded-pill">light</CBadge>
+<CBadge textBgColor="light" shape="rounded-pill">light</CBadge>
 <CBadge color="dark" shape="rounded-pill">dark</CBadge>
 ```
 

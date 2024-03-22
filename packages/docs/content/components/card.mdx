@@ -449,6 +449,67 @@ Use `color` property to change the appearance of a card.
 <Example>
   <>
     {[
+      { color: 'primary' },
+      { color: 'secondary' },
+      { color: 'success' },
+      { color: 'danger' },
+      { color: 'warning' },
+      { color: 'info' },
+      { color: 'light' },
+      { color: 'dark' },
+    ].map((item, index) => (
+      <CCard
+        textBgColor={item.color}
+        className="mb-3"
+        style={{ maxWidth: '18rem' }}
+        key={index}
+      >
+        <CCardHeader>Header</CCardHeader>
+        <CCardBody>
+          <CCardTitle>{item.color} card title</CCardTitle>
+          <CCardText> Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
+        </CCardBody>
+      </CCard>
+    ))}
+  </>
+</Example>
+
+You can also apply contextual variations with the `textBgColor` property, which automatically sets the text color to ensure compliance with the WCAG 4.5:1 contrast ratio standard for enhanced accessibility.
+
+
+```jsx
+<>
+  {[
+    { color: 'primary' },
+    { color: 'secondary' },
+    { color: 'success' },
+    { color: 'danger' },
+    { color: 'warning' },
+    { color: 'info' },
+    { color: 'light' },
+    { color: 'dark' },
+  ].map((item, index) => (
+    <CCard
+      textBgColor={item.color}
+      className="mb-3"
+      style={{ maxWidth: '18rem' }}
+      key={index}
+    >
+      <CCardHeader>Header</CCardHeader>
+      <CCardBody>
+        <CCardTitle>{item.color} card title</CCardTitle>
+        <CCardText>
+          Some quick example text to build on the card title and make up the bulk of the card's
+          content.
+        </CCardText>
+      </CCardBody>
+    </CCard>
+  ))}
+</>
+```
+<Example>
+  <>
+    {[
       { color: 'primary', textColor: 'white' },
       { color: 'secondary', textColor: 'white' },
       { color: 'success', textColor: 'white' },
