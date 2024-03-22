@@ -41,7 +41,7 @@
     "test:update": "jest --coverage --updateSnapshot"
   },
   "dependencies": {
-    "@coreui/coreui": "^5.0.0-rc.2",
+    "@coreui/coreui": "^5.0.0-rc.3",
     "@popperjs/core": "^2.11.8",
     "prop-types": "^15.8.1"
   },
@@ -50,10 +50,10 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
     "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^14.2.1",
+    "@testing-library/react": "^14.2.2",
     "@types/jest": "^29.5.12",
-    "@types/react": "18.2.63",
-    "@types/react-dom": "^18.2.20",
+    "@types/react": "18.2.67",
+    "@types/react-dom": "^18.2.22",
     "@types/react-transition-group": "^4.4.10",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
@@ -62,10 +62,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-transition-group": "^4.4.5",
-    "rollup": "^4.12.1",
+    "rollup": "^4.13.0",
     "ts-jest": "^29.1.2",
     "tslib": "^2.6.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.3"
   },
   "peerDependencies": {
     "react": ">=17",
