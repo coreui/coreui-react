@@ -8,7 +8,7 @@ export interface CNavGroupItemsProps extends HTMLAttributes<HTMLDivElement | HTM
   /**
    * Component used for the root node. Either a string to use a HTML element or a component.
    *
-   * @since 5.0.0-rc.3
+   * @since 5.0.0
    */
   as?: ElementType
   /**

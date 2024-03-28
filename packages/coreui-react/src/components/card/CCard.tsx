@@ -26,7 +26,7 @@ export interface CCardProps extends HTMLAttributes<HTMLDivElement> {
    * Sets the component's color scheme to one of CoreUI's themed colors, ensuring the text color contrast adheres to the WCAG 4.5:1 contrast ratio standard for accessibility.
    *
    * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
-   * @since 5.0.0-rc.3
+   * @since 5.0.0
    */
   textBgColor?: Colors
 }
