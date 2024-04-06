@@ -2,12 +2,11 @@ import { useRef } from 'react'
 import { createPopper } from '@popperjs/core'
 import type { Instance, Options } from '@popperjs/core'
 
-import { executeAfterTransition } from '../utils'
-
 interface UsePopperOutput {
   popper: Instance | undefined
   initPopper: (reference: HTMLElement, popper: HTMLElement, options: Partial<Options>) => void
   destroyPopper: () => void
+  updatePopper: (options?: Partial<Options>) => void
 }
 
 export const usePopper = (): UsePopperOutput => {
@@ -23,17 +22,28 @@ export const usePopper = (): UsePopperOutput => {
     const popperInstance = _popper.current
 
     if (popperInstance && el.current) {
-      executeAfterTransition(() => {
-        popperInstance.destroy()
-      }, el.current)
+      popperInstance.destroy()
     }
 
     _popper.current = undefined
+  }
+
+  const updatePopper = (options?: Partial<Options>) => {
+    const popperInstance = _popper.current
+
+    if (popperInstance && options) {
+      popperInstance.setOptions(options)
+    }
+
+    if (popperInstance) {
+      popperInstance.update()
+    }
   }
 
   return {
     popper: _popper.current,
     initPopper,
     destroyPopper,
+    updatePopper,
   }
 }

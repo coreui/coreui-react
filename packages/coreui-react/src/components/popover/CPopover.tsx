@@ -1,13 +1,12 @@
 import React, { forwardRef, HTMLAttributes, ReactNode, useRef, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import { Transition } from 'react-transition-group'
 
 import { CConditionalPortal } from '../conditional-portal'
 import { useForkedRef, usePopper } from '../../hooks'
 import { fallbackPlacementsPropType, triggerPropType } from '../../props'
 import type { Placements, Triggers } from '../../types'
-import { getRTLPlacement, getTransitionDurationFromElement } from '../../utils'
+import { executeAfterTransition, getRTLPlacement } from '../../utils'
 
 export interface CPopoverProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content'> {
   /**
@@ -101,6 +100,7 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
     const uID = useRef(`popover${Math.floor(Math.random() * 1_000_000)}`)
 
     const { initPopper, destroyPopper } = usePopper()
+    const [mounted, setMounted] = useState(false)
     const [_visible, setVisible] = useState(visible)
 
     const _delay = typeof delay === 'number' ? { show: delay, hide: delay } : delay
@@ -133,14 +133,39 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
       setVisible(visible)
     }, [visible])
 
-    const toggleVisible = (visible: boolean) => {
-      if (visible) {
-        setTimeout(() => setVisible(true), _delay.show)
-        return
+    useEffect(() => {
+      if (_visible) {
+        setMounted(true)
+
+        if (popoverRef.current) {
+          popoverRef.current.classList.remove('fade', 'show')
+          destroyPopper()
+        }
+
+        setTimeout(() => {
+          if (togglerRef.current && popoverRef.current) {
+            if (animation) {
+              popoverRef.current.classList.add('fade')
+            }
+
+            initPopper(togglerRef.current, popoverRef.current, popperConfig)
+            popoverRef.current.classList.add('show')
+            onShow && onShow()
+          }
+        }, _delay.show)
       }
 
-      setTimeout(() => setVisible(false), _delay.hide)
-    }
+      return () => {
+        if (popoverRef.current) {
+          popoverRef.current.classList.remove('show')
+          onHide && onHide()
+          executeAfterTransition(() => {
+            destroyPopper()
+            setMounted(false)
+          }, popoverRef.current)
+        }
+      }
+    }, [_visible])
 
     return (
       <>
@@ -150,71 +175,31 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
           }),
           ref: togglerRef,
           ...((trigger === 'click' || trigger.includes('click')) && {
-            onClick: () => toggleVisible(!_visible),
+            onClick: () => setVisible(!_visible),
           }),
           ...((trigger === 'focus' || trigger.includes('focus')) && {
-            onFocus: () => toggleVisible(true),
-            onBlur: () => toggleVisible(false),
+            onFocus: () => setVisible(true),
+            onBlur: () => setVisible(false),
           }),
           ...((trigger === 'hover' || trigger.includes('hover')) && {
-            onMouseEnter: () => toggleVisible(true),
-            onMouseLeave: () => toggleVisible(false),
+            onMouseEnter: () => setVisible(true),
+            onMouseLeave: () => setVisible(false),
           }),
         })}
         <CConditionalPortal container={container} portal={true}>
-          <Transition
-            in={_visible}
-            mountOnEnter
-            nodeRef={popoverRef}
-            onEnter={() => {
-              if (togglerRef.current && popoverRef.current) {
-                initPopper(togglerRef.current, popoverRef.current, popperConfig)
-              }
-
-              onShow
-            }}
-            onEntering={() => {
-              if (togglerRef.current && popoverRef.current) {
-                popoverRef.current.style.display = 'initial'
-              }
-            }}
-            onExit={onHide}
-            onExited={() => {
-              destroyPopper()
-            }}
-            timeout={{
-              enter: 0,
-              exit: popoverRef.current
-                ? getTransitionDurationFromElement(popoverRef.current) + 50
-                : 200,
-            }}
-            unmountOnExit
-          >
-            {(state) => (
-              <div
-                className={classNames(
-                  'popover',
-                  'bs-popover-auto',
-                  {
-                    fade: animation,
-                    show: state === 'entered',
-                  },
-                  className,
-                )}
-                id={uID.current}
-                ref={forkedRef}
-                role="tooltip"
-                style={{
-                  display: 'none',
-                }}
-                {...rest}
-              >
-                <div className="popover-arrow"></div>
-                <div className="popover-header">{title}</div>
-                <div className="popover-body">{content}</div>
-              </div>
-            )}
-          </Transition>
+          {mounted && (
+            <div
+              className={classNames('popover', 'bs-popover-auto', className)}
+              id={uID.current}
+              ref={forkedRef}
+              role="tooltip"
+              {...rest}
+            >
+              <div className="popover-arrow"></div>
+              <div className="popover-header">{title}</div>
+              <div className="popover-body">{content}</div>
+            </div>
+          )}
         </CConditionalPortal>
       </>
     )

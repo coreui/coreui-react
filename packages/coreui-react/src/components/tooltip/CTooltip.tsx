@@ -1,13 +1,12 @@
 import React, { forwardRef, HTMLAttributes, ReactNode, useRef, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import { Transition } from 'react-transition-group'
 
 import { CConditionalPortal } from '../conditional-portal'
 import { useForkedRef, usePopper } from '../../hooks'
 import { fallbackPlacementsPropType, triggerPropType } from '../../props'
 import type { Placements, Triggers } from '../../types'
-import { getRTLPlacement, getTransitionDurationFromElement } from '../../utils'
+import { executeAfterTransition, getRTLPlacement } from '../../utils'
 
 export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'content'> {
   /**
@@ -96,6 +95,7 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
     const uID = useRef(`tooltip${Math.floor(Math.random() * 1_000_000)}`)
 
     const { initPopper, destroyPopper } = usePopper()
+    const [mounted, setMounted] = useState(false)
     const [_visible, setVisible] = useState(visible)
 
     const _delay = typeof delay === 'number' ? { show: delay, hide: delay } : delay
@@ -128,14 +128,39 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
       setVisible(visible)
     }, [visible])
 
-    const toggleVisible = (visible: boolean) => {
-      if (visible) {
-        setTimeout(() => setVisible(true), _delay.show)
-        return
+    useEffect(() => {
+      if (_visible) {
+        setMounted(true)
+
+        if (tooltipRef.current) {
+          tooltipRef.current.classList.remove('fade', 'show')
+          destroyPopper()
+        }
+
+        setTimeout(() => {
+          if (togglerRef.current && tooltipRef.current) {
+            if (animation) {
+              tooltipRef.current.classList.add('fade')
+            }
+
+            initPopper(togglerRef.current, tooltipRef.current, popperConfig)
+            tooltipRef.current.classList.add('show')
+            onShow && onShow()
+          }
+        }, _delay.show)
       }
 
-      setTimeout(() => setVisible(false), _delay.hide)
-    }
+      return () => {
+        if (tooltipRef.current) {
+          tooltipRef.current.classList.remove('show')
+          onHide && onHide()
+          executeAfterTransition(() => {
+            destroyPopper()
+            setMounted(false)
+          }, tooltipRef.current)
+        }
+      }
+    }, [_visible])
 
     return (
       <>
@@ -145,70 +170,30 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
           }),
           ref: togglerRef,
           ...((trigger === 'click' || trigger.includes('click')) && {
-            onClick: () => toggleVisible(!_visible),
+            onClick: () => setVisible(!_visible),
           }),
           ...((trigger === 'focus' || trigger.includes('focus')) && {
-            onFocus: () => toggleVisible(true),
-            onBlur: () => toggleVisible(false),
+            onFocus: () => setVisible(true),
+            onBlur: () => setVisible(false),
           }),
           ...((trigger === 'hover' || trigger.includes('hover')) && {
-            onMouseEnter: () => toggleVisible(true),
-            onMouseLeave: () => toggleVisible(false),
+            onMouseEnter: () => setVisible(true),
+            onMouseLeave: () => setVisible(false),
           }),
         })}
         <CConditionalPortal container={container} portal={true}>
-          <Transition
-            in={_visible}
-            mountOnEnter
-            nodeRef={tooltipRef}
-            onEnter={() => {
-              if (togglerRef.current && tooltipRef.current) {
-                initPopper(togglerRef.current, tooltipRef.current, popperConfig)
-              }
-
-              onShow
-            }}
-            onEntering={() => {
-              if (togglerRef.current && tooltipRef.current) {
-                tooltipRef.current.style.display = 'initial'
-              }
-            }}
-            onExit={onHide}
-            onExited={() => {
-              destroyPopper()
-            }}
-            timeout={{
-              enter: 0,
-              exit: tooltipRef.current
-                ? getTransitionDurationFromElement(tooltipRef.current) + 50
-                : 200,
-            }}
-            unmountOnExit
-          >
-            {(state) => (
-              <div
-                className={classNames(
-                  'tooltip',
-                  'bs-tooltip-auto',
-                  {
-                    fade: animation,
-                    show: state === 'entered',
-                  },
-                  className,
-                )}
-                id={uID.current}
-                ref={forkedRef}
-                role="tooltip"
-                style={{
-                  display: 'none',
-                }}
-                {...rest}
-              >
-                <div className="tooltip-arrow"></div>
-                <div className="tooltip-inner">{content}</div>
-              </div>
-            )}
-          </Transition>
+          {mounted && (
+            <div
+              className={classNames('tooltip', 'bs-tooltip-auto', className)}
+              id={uID.current}
+              ref={forkedRef}
+              role="tooltip"
+              {...rest}
+            >
+              <div className="tooltip-arrow"></div>
+              <div className="tooltip-inner">{content}</div>
+            </div>
+          )}
         </CConditionalPortal>
       </>
     )
