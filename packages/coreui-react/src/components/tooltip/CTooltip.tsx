@@ -94,7 +94,7 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
     const forkedRef = useForkedRef(ref, tooltipRef)
     const uID = useRef(`tooltip${Math.floor(Math.random() * 1_000_000)}`)
 
-    const { initPopper, destroyPopper } = usePopper()
+    const { initPopper, destroyPopper, updatePopper } = usePopper()
     const [mounted, setMounted] = useState(false)
     const [_visible, setVisible] = useState(visible)
 
@@ -161,6 +161,10 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
         }
       }
     }, [_visible])
+
+    useEffect(() => {
+      updatePopper()
+    }, [content])
 
     return (
       <>
