@@ -61,7 +61,7 @@ const SEO = ({ title, description, name, image, article }: SEOProps) => {
 
       {seo.name && (
         <script type="application/ld+json">
-          {`
+          {`{
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [{
@@ -75,7 +75,7 @@ const SEO = ({ title, description, name, image, article }: SEOProps) => {
               "name": "${seo.name}",
               "item": "${seo.url.replace('docs//', 'docs/')}"
             }]
-          `}
+          }`}
         </script>
       )}
     </Helmet>
