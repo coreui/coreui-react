@@ -19,13 +19,19 @@ export interface CTabPaneProps extends HTMLAttributes<HTMLDivElement> {
    */
   onShow?: () => void
   /**
+   * Enable fade in and fade out transition.
+   *
+   * @since 5.1.0
+   */
+  transition?: boolean
+  /**
    * Toggle the visibility of component.
    */
   visible?: boolean
 }
 
 export const CTabPane = forwardRef<HTMLDivElement, CTabPaneProps>(
-  ({ children, className, onHide, onShow, visible, ...rest }, ref) => {
+  ({ children, className, onHide, onShow, transition = true, visible, ...rest }, ref) => {
     const tabPaneRef = useRef()
     const forkedRef = useForkedRef(ref, tabPaneRef)
 
@@ -35,9 +41,9 @@ export const CTabPane = forwardRef<HTMLDivElement, CTabPaneProps>(
           <div
             className={classNames(
               'tab-pane',
-              'fade',
               {
                 active: visible,
+                fade: transition,
                 show: state === 'entered',
               },
               className,
@@ -58,6 +64,7 @@ CTabPane.propTypes = {
   className: PropTypes.string,
   onHide: PropTypes.func,
   onShow: PropTypes.func,
+  transition: PropTypes.bool,
   visible: PropTypes.bool,
 }
 
