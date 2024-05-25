@@ -48,10 +48,10 @@ export const SidebarNav = ({ items }: SidebarNavProps) => {
   }
 
   const navGroup = (item: NavItem, index: number) => {
-    const { name, icon, ...rest } = item
+    const { name, icon, items } = item
     return (
-      <CNavGroup compact toggler={navLink(name, icon)} key={index} {...rest}>
-        {item.items?.map((item: NavItem, index: number) =>
+      <CNavGroup compact toggler={navLink(name, icon)} key={index}>
+        {items?.map((item: NavItem, index: number) =>
           item.items ? navGroup(item, index) : navItem(item, index),
         )}
       </CNavGroup>
