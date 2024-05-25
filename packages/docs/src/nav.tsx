@@ -294,6 +294,14 @@ const nav = [
         to: '/components/table/',
       },
       {
+        name: 'Tabs',
+        to: '/components/tabs/',
+        badge: {
+          color: 'success',
+          text: 'New',
+        },
+      },
+      {
         name: 'Toast',
         to: '/components/toast/',
       },

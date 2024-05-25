@@ -1,14 +1,15 @@
 
 ```jsx
-import { CTabPane } from '@coreui/react'
+import { CTabPanel } from '@coreui/react'
 // or
-import CTabPane from '@coreui/react/src/components/tabs/CTabPane'
+import CTabPanel from '@coreui/react/src/components/tabs/CTabPanel'
 ```
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | **className** | A string of all className you want applied to the base component. | `string` | - |
+| **itemKey** | Item key. | `string` \| `number` | - |
 | **onHide** | Callback fired when the component requests to be hidden. | `() => void` | - |
 | **onShow** | Callback fired when the component requests to be shown. | `() => void` | - |
-| **transition** **_5.1.0+_** | Enable fade in and fade out transition. | `boolean` | true |
+| **transition** | Enable fade in and fade out transition. | `boolean` | true |
 | **visible** | Toggle the visibility of component. | `boolean` | - |

@@ -15,10 +15,10 @@ import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { useForkedRef, usePopper } from '../../hooks'
 import { placementPropType } from '../../props'
 import type { Placements } from '../../types'
-import { isRTL } from '../../utils'
+import { getNextActiveElement, isRTL } from '../../utils'
 
 import type { Alignments, Directions } from './types'
-import { getNextActiveElement, getPlacement } from './utils'
+import { getPlacement } from './utils'
 
 export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIElement> {
   /**
