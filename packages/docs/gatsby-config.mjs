@@ -1,4 +1,12 @@
-module.exports = {
+import remarkGfm from 'remark-gfm'
+import remarkCodeTabs from 'remark-code-tabs'
+
+import { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+const config = {
   siteMetadata: {
     title: `CoreUI for React.js`,
     titleTemplate: `%s · React UI Components · CoreUI `,
@@ -52,10 +60,7 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         mdxOptions: {
-          remarkPlugins: [
-            // Add GitHub Flavored Markdown (GFM) support
-            require(`remark-gfm`),
-          ],
+          remarkPlugins: [remarkGfm, remarkCodeTabs],
         },
         gatsbyRemarkPlugins: [
           {
@@ -99,3 +104,5 @@ module.exports = {
     },
   ],
 }
+
+export default config

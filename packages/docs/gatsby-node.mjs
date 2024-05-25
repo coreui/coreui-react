@@ -1,7 +1,12 @@
-const path = require('node:path')
-const { createFilePath } = require('gatsby-source-filesystem')
+import { resolve } from 'node:path'
+import { createFilePath } from 'gatsby-source-filesystem'
 
-exports.onCreateNode = async ({ node, loadNodeContent, actions: { createNodeField }, getNode }) => {
+export const onCreateNode = async ({
+  node,
+  loadNodeContent,
+  actions: { createNodeField },
+  getNode,
+}) => {
   if (node.internal.type === 'Mdx') {
     const slug = createFilePath({ node, getNode })
 
@@ -22,7 +27,11 @@ exports.onCreateNode = async ({ node, loadNodeContent, actions: { createNodeFiel
   }
 }
 
-exports.createPages = async ({ graphql, actions: { createPage, createRedirect }, reporter }) => {
+export const createPages = async ({
+  graphql,
+  actions: { createPage, createRedirect },
+  reporter,
+}) => {
   const result = await graphql(`
     query {
       allMdx {
@@ -50,7 +59,7 @@ exports.createPages = async ({ graphql, actions: { createPage, createRedirect },
     posts.forEach((node) => {
       createPage({
         path: node.fields.slug,
-        component: `${path.resolve(`./src/templates/MdxLayout.tsx`)}?__contentFilePath=${
+        component: `${resolve(`./src/templates/MdxLayout.tsx`)}?__contentFilePath=${
           node.internal.contentFilePath
         }`,
         context: { id: node.id },

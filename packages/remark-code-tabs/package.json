@@ -1,0 +1,19 @@
+{
+  "name": "remark-code-tabs",
+  "type": "module",
+  "license": "MIT",
+  "version": "1.0.0",
+  "author": "Łukasz Holeczek <https://github.com/mrholek>",
+  "repository": "",
+  "keywords": [
+    "code",
+    "jsx",
+    "remark"
+  ],
+  "description": "Gatsby plugin to embed jsx code preview",
+  "dependencies": {
+    "unist-util-is": "^6.0.0",
+    "unist-util-visit": "^5.0.0"
+  },
+  "main": "index.js"
+}

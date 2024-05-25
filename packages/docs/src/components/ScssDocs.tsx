@@ -43,7 +43,7 @@ const ScssDocs = ({ file, capture }: ScssDocsProps) => {
 
   return (
     code && (
-      <div className="highlight">
+      <div className="highlight mb-3">
         <Highlight
           code={code
             .replaceAll('--#{$prefix}', '--cui-')

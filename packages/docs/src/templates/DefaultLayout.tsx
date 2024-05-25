@@ -29,17 +29,15 @@ const DefaultLayout: FC<DefaultLayoutProps> = ({ children, data, pageContext, pa
     >
       <Seo title={title} description={description} name={name} />
       <Sidebar />
-      <div className="wrapper d-flex flex-column min-vh-100">
+      <div className="wrapper flex-grow-1">
         <Header />
-        <div className="body flex-grow-1 px-3">
-          {path === '/404/' ? (
-            <CContainer lg>{children}</CContainer>
-          ) : (
-            <DocsLayout data={data} pageContext={pageContext}>
-              {children}
-            </DocsLayout>
-          )}
-        </div>
+        {path === '/404/' ? (
+          <CContainer lg>{children}</CContainer>
+        ) : (
+          <DocsLayout data={data} pageContext={pageContext}>
+            {children}
+          </DocsLayout>
+        )}
         <Footer />
       </div>
       <Script

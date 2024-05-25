@@ -3,4 +3,52 @@
   @include ltr-rtl("padding-left", var(--cui-sidebar-occupy-start, 0));
   will-change: auto;
   @include transition(padding .15s);
+
+  > .container-lg {
+    --cui-gutter-x: 3rem;
+  }
+}
+
+.docs-sidebar {
+  grid-area: sidebar;
+}
+
+.docs-main {
+  grid-area: main;
+
+  @include media-breakpoint-down(lg) {
+    max-width: 760px;
+    margin-inline: auto;
+  }
+
+  @include media-breakpoint-up(md) {
+    display: grid;
+    grid-template-areas:
+      "intro"
+      "toc"
+      "content";
+    grid-template-rows: auto auto 1fr;
+    gap: $grid-gutter-width;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-template-areas:
+      "intro   toc"
+      "content toc";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 4fr 1fr;
+  }
+}
+
+.docs-intro {
+  grid-area: intro;
+}
+
+.docs-toc {
+  grid-area: toc;
+}
+
+.docs-content {
+  grid-area: content;
+  min-width: 1px; // Fix width when bd-content contains a `<pre>` https://github.com/twbs/bootstrap/issues/25410
 }
