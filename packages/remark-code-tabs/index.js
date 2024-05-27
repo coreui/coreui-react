@@ -144,6 +144,7 @@ function createTabs(tabNodes, { labels }) {
     children: [
       {
         attributes: [
+          { name: 'className', type: 'mdxJsxAttribute', value: 'docs-code-tabs' },
           {
             name: 'variant',
             type: 'mdxJsxAttribute',
@@ -155,7 +156,9 @@ function createTabs(tabNodes, { labels }) {
         type: 'mdxJsxFlowElement',
       },
       {
-        attributes: [{ name: 'className', type: 'mdxJsxAttribute', value: 'mb-3' }],
+        attributes: [
+          { name: 'className', type: 'mdxJsxAttribute', value: 'docs-code-tab-content mb-3' },
+        ],
         children: tabContentChildren,
         name: 'CTabContent',
         type: 'mdxJsxFlowElement',
