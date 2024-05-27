@@ -46,7 +46,7 @@
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/coreui/coreui-react/archive/v5.0.0.zip)
+- [Download the latest release](https://github.com/coreui/coreui-react/archive/v5.1.0.zip)
 - Clone the repo: `git clone https://github.com/coreui/coreui-react.git`
 - Install with [npm](https://www.npmjs.com/): `npm install @coreui/react`
 - Install with [yarn](https://yarnpkg.com/): `yarn add @coreui/react`
