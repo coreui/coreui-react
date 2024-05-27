@@ -15,7 +15,7 @@ export interface CTabPanelProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Item key.
    */
-  itemKey?: number | string
+  itemKey: number | string
   /**
    * Callback fired when the component requests to be hidden.
    */
@@ -88,7 +88,7 @@ export const CTabPanel = forwardRef<HTMLDivElement, CTabPanelProps>(
 CTabPanel.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  itemKey: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  itemKey: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   onHide: PropTypes.func,
   onShow: PropTypes.func,
   transition: PropTypes.bool,

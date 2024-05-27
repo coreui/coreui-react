@@ -12,12 +12,12 @@ export interface CTabProps extends HTMLAttributes<HTMLButtonElement> {
   /**
    * Item key.
    */
-  itemKey?: number | string
+  itemKey: number | string
 }
 
 export const CTab = forwardRef<HTMLButtonElement, CTabProps>(
   ({ children, className, itemKey, ...rest }, ref) => {
-    const { _activeItemKey, setActiveKey, id } = useContext(TabsContext)
+    const { _activeItemKey, setActiveItemKey, id } = useContext(TabsContext)
 
     const isActive = () => itemKey === _activeItemKey
 
@@ -31,8 +31,8 @@ export const CTab = forwardRef<HTMLButtonElement, CTabProps>(
           className,
         )}
         id={`${id}${itemKey}-tab`}
-        onClick={() => setActiveKey(itemKey)}
-        onFocus={() => setActiveKey(itemKey)}
+        onClick={() => setActiveItemKey(itemKey)}
+        onFocus={() => setActiveItemKey(itemKey)}
         role="tab"
         tabIndex={isActive() ? 0 : -1}
         type="button"
@@ -50,7 +50,7 @@ export const CTab = forwardRef<HTMLButtonElement, CTabProps>(
 CTab.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  itemKey: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  itemKey: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 }
 
 CTab.displayName = 'CTab'

@@ -22,12 +22,12 @@ export interface CTabListProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CTabList = forwardRef<HTMLDivElement, CTabListProps>(
   ({ children, className, layout, variant, ...rest }, ref) => {
-    const tabsRef = useRef<HTMLDivElement | HTMLUListElement | HTMLOListElement>(null)
-    const forkedRef = useForkedRef(ref, tabsRef)
+    const tabListRef = useRef<HTMLDivElement>(null)
+    const forkedRef = useForkedRef(ref, tabListRef)
 
     const handleKeydown = (event: KeyboardEvent<HTMLDivElement>) => {
       if (
-        tabsRef.current !== null &&
+        tabListRef.current !== null &&
         (event.key === 'ArrowDown' ||
           event.key === 'ArrowUp' ||
           event.key === 'ArrowLeft' ||
@@ -39,7 +39,7 @@ export const CTabList = forwardRef<HTMLDivElement, CTabListProps>(
         const target = event.target as HTMLElement
         // eslint-disable-next-line unicorn/prefer-spread
         const items: HTMLElement[] = Array.from(
-          tabsRef.current.querySelectorAll('.nav-link:not(.disabled):not(:disabled)'),
+          tabListRef.current.querySelectorAll('.nav-link:not(.disabled):not(:disabled)'),
         )
 
         let nextActiveElement

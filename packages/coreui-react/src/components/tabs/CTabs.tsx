@@ -6,7 +6,7 @@ export interface CTabsProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChan
   /**
    * The active item key.
    */
-  activeItemKey?: number | string
+  activeItemKey: number | string
   /**
    * A string of all className you want applied to the base component.
    */
@@ -19,7 +19,7 @@ export interface CTabsProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChan
 
 export interface TabsContextProps {
   _activeItemKey?: number | string
-  setActiveKey: React.Dispatch<React.SetStateAction<number | string | undefined>>
+  setActiveItemKey: React.Dispatch<React.SetStateAction<number | string | undefined>>
   id?: string
 }
 
@@ -28,14 +28,14 @@ export const TabsContext = createContext({} as TabsContextProps)
 export const CTabs = forwardRef<HTMLDivElement, CTabsProps>(
   ({ children, activeItemKey, className, onChange }, ref) => {
     const id = useId()
-    const [_activeItemKey, setActiveKey] = useState(activeItemKey)
+    const [_activeItemKey, setActiveItemKey] = useState(activeItemKey)
 
     useEffect(() => {
       _activeItemKey && onChange && onChange(_activeItemKey)
     }, [_activeItemKey])
 
     return (
-      <TabsContext.Provider value={{ _activeItemKey, setActiveKey, id }}>
+      <TabsContext.Provider value={{ _activeItemKey, setActiveItemKey, id }}>
         <div className={classNames('tabs', className)} ref={ref}>
           {children}
         </div>
@@ -45,7 +45,7 @@ export const CTabs = forwardRef<HTMLDivElement, CTabsProps>(
 )
 
 CTabs.propTypes = {
-  activeItemKey: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  activeItemKey: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   children: PropTypes.node,
   className: PropTypes.string,
   onChange: PropTypes.func,
