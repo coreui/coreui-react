@@ -54,6 +54,10 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
    */
   dark?: boolean
   /**
+   * Default visibility of dropdown menu component.
+   */
+  defaultVisible?: boolean
+  /**
    * Sets a specified  direction and location of the dropdown menu.
    */
   direction?: 'center' | 'dropup' | 'dropup-center' | 'dropend' | 'dropstart'
@@ -120,6 +124,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
       className,
       container,
       dark,
+      defaultVisible = false,
       direction,
       offset = [0, 2],
       onHide,
@@ -138,7 +143,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
     const dropdownToggleRef = useRef<any>(null)
     const dropdownMenuRef = useRef<HTMLDivElement | HTMLUListElement>(null)
     const forkedRef = useForkedRef(ref, dropdownRef)
-    const [_visible, setVisible] = useState(visible)
+    const [_visible, setVisible] = useState(visible || defaultVisible)
     const { initPopper, destroyPopper } = usePopper()
 
     const Component = variant === 'nav-item' ? 'li' : as
@@ -172,10 +177,6 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
       ],
       placement: getPlacement(placement, direction, alignment, isRTL(dropdownMenuRef.current)),
     }
-
-    useEffect(() => {
-      setVisible(visible)
-    }, [visible])
 
     useEffect(() => {
       if (_visible && dropdownToggleRef.current && dropdownMenuRef.current) {
