@@ -149,6 +149,7 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
             }
 
             initPopper(togglerRef.current, popoverRef.current, popperConfig)
+            popoverRef.current.style.removeProperty('display')
             popoverRef.current.classList.add('show')
             onShow && onShow()
           }
@@ -160,6 +161,10 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
           popoverRef.current.classList.remove('show')
           onHide && onHide()
           executeAfterTransition(() => {
+            if (popoverRef.current) {
+              popoverRef.current.style.display = 'none'
+            }
+
             destroyPopper()
             setMounted(false)
           }, popoverRef.current)
@@ -193,6 +198,9 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
               id={uID.current}
               ref={forkedRef}
               role="tooltip"
+              style={{
+                display: 'none',
+              }}
               {...rest}
             >
               <div className="popover-arrow"></div>

@@ -144,6 +144,7 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
             }
 
             initPopper(togglerRef.current, tooltipRef.current, popperConfig)
+            tooltipRef.current.style.removeProperty('display')
             tooltipRef.current.classList.add('show')
             onShow && onShow()
           }
@@ -155,6 +156,10 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
           tooltipRef.current.classList.remove('show')
           onHide && onHide()
           executeAfterTransition(() => {
+            if (tooltipRef.current) {
+              tooltipRef.current.style.display = 'none'
+            }
+
             destroyPopper()
             setMounted(false)
           }, tooltipRef.current)
@@ -192,6 +197,9 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
               id={uID.current}
               ref={forkedRef}
               role="tooltip"
+              style={{
+                display: 'none',
+              }}
               {...rest}
             >
               <div className="tooltip-arrow"></div>
