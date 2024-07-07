@@ -34,7 +34,7 @@
     "@mdx-js/mdx": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@types/react-helmet": "^6.1.11",
-    "gatsby": "^5.13.5",
+    "gatsby": "^5.13.6",
     "gatsby-plugin-google-tagmanager": "^5.13.1",
     "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-manifest": "^5.13.1",
@@ -58,8 +58,8 @@
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
     "react-imask": "^7.6.1",
-    "rimraf": "^5.0.7",
-    "sass": "^1.77.2"
+    "rimraf": "^5.0.8",
+    "sass": "^1.77.6"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"
