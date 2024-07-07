@@ -2,21 +2,21 @@
 
 exports[`CSidebarBrand customize 1`] = `
 <div>
-  <div
+  <a
     class="sidebar-brand bazinga"
   >
     Test
-  </div>
+  </a>
 </div>
 `;
 
 exports[`loads and displays CSidebarBrand component 1`] = `
 <div>
-  <div
+  <a
     class="sidebar-brand"
     color="primary"
   >
     Test
-  </div>
+  </a>
 </div>
 `;

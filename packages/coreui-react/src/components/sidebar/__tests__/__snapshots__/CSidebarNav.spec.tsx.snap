@@ -4,7 +4,9 @@ exports[`CSidebarNav customize 1`] = `
 <div>
   <ul
     class="sidebar-nav bazinga"
-  />
+  >
+    Test
+  </ul>
 </div>
 `;
 
@@ -12,6 +14,8 @@ exports[`loads and displays CSidebarNav component 1`] = `
 <div>
   <ul
     class="sidebar-nav"
-  />
+  >
+    Test
+  </ul>
 </div>
 `;

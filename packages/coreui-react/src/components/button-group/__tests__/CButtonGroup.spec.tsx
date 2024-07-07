@@ -11,9 +11,9 @@ test('loads and displays CButtonGroup component', async () => {
 test('CButtonGroup customize', async () => {
   const { container } = render(
     <CButtonGroup className="bazinga" size="lg" vertical={false}>
-      <CButton>Test A</CButton>
-      <CButton>Test B</CButton>
-      <CButton>Test C</CButton>
+      <CButton color="primary">Test A</CButton>
+      <CButton color="primary">Test B</CButton>
+      <CButton color="primary">Test C</CButton>
     </CButtonGroup>,
   )
   expect(container).toMatchSnapshot()
@@ -25,9 +25,9 @@ test('CButtonGroup customize', async () => {
 test('CButtonGroup customize vertical', async () => {
   const { container } = render(
     <CButtonGroup className="bazinga" size="lg" vertical={true}>
-      <CButton>Test A</CButton>
-      <CButton>Test B</CButton>
-      <CButton>Test C</CButton>
+      <CButton color="primary">Test A</CButton>
+      <CButton color="primary">Test B</CButton>
+      <CButton color="primary">Test C</CButton>
     </CButtonGroup>,
   )
   expect(container).toMatchSnapshot()

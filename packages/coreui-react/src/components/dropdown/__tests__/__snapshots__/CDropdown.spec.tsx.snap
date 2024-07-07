@@ -17,7 +17,7 @@ exports[`CDropdown example 1`] = `
   >
     <button
       aria-expanded="false"
-      class="btn btn-primary dropdown-toggle"
+      class="btn dropdown-toggle"
       tabindex="0"
       type="button"
     >

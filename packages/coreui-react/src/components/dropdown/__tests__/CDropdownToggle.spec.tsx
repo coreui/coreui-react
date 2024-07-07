@@ -10,7 +10,7 @@ test('loads and displays CDropdownToggle component', async () => {
 
 test('CDropdownToggle customize', async () => {
   const { container } = render(
-    <CDropdownToggle caret={true} split={true} trigger="focus">
+    <CDropdownToggle caret={true} color="primary" split={true} trigger="focus">
       Test
     </CDropdownToggle>,
   )

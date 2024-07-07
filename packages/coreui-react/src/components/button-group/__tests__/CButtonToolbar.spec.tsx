@@ -12,14 +12,14 @@ test('CButtonToolbar customize', async () => {
   const { container } = render(
     <CButtonToolbar className="bazinga" role="group" aria-label="Bazinga">
       <CButtonGroup role="group">
-        <CButton>1</CButton>
-        <CButton>2</CButton>
-        <CButton>3</CButton>
+        <CButton color="primary">1</CButton>
+        <CButton color="primary">2</CButton>
+        <CButton color="primary">3</CButton>
       </CButtonGroup>
       <CButtonGroup role="group">
-        <CButton>A</CButton>
-        <CButton>B</CButton>
-        <CButton>C</CButton>
+        <CButton color="primary">A</CButton>
+        <CButton color="primary">B</CButton>
+        <CButton color="primary">C</CButton>
       </CButtonGroup>
     </CButtonToolbar>,
   )

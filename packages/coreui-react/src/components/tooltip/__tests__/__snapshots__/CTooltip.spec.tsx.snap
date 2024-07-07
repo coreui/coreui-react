@@ -3,6 +3,7 @@
 exports[`CTooltip customize 1`] = `
 <div>
   <a
+    aria-describedby="tooltip97108"
     class="link"
   >
     Test

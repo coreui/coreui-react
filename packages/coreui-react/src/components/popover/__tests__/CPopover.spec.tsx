@@ -6,7 +6,7 @@ import { CPopover, CButton } from '../../../index'
 test('loads and displays CPopover component', async () => {
   const { container } = render(
     <CPopover content="A">
-      <CButton>Test</CButton>
+      <CButton color="primary">Test</CButton>
     </CPopover>,
   )
   expect(container).toMatchSnapshot()
@@ -17,7 +17,7 @@ test('CPopover customize', async () => {
   let arr, element
   const { container } = render(
     <CPopover content="content" title="title" trigger="click" placement="right">
-      <CButton>Test</CButton>
+      <CButton color="primary">Test</CButton>
     </CPopover>,
     { container: document.body },
   )

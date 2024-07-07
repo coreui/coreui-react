@@ -20,7 +20,7 @@ exports[`CDropdownToggle customize 1`] = `
 exports[`loads and displays CDropdownToggle component 1`] = `
 <div>
   <button
-    class="btn btn-primary dropdown-toggle"
+    class="btn dropdown-toggle"
     tabindex="0"
     type="button"
   >

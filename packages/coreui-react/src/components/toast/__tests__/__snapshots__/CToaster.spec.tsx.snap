@@ -6,7 +6,7 @@ exports[`CToaster customize 1`] = `
     class="toaster toast-container bazinga"
   />
   <button
-    class="btn btn-primary"
+    class="btn"
     type="button"
   >
     Send a toast

@@ -9,7 +9,7 @@ exports[`CWidgetStatsC customize 1`] = `
       class="card-body"
     >
       <div
-        class="text-end mb-4"
+        class="text-end mb-4 text-white text-opacity-75"
       >
         icon
       </div>

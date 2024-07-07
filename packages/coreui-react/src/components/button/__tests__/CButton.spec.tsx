@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 import { CButton } from '../../../index'
 
 test('loads and displays CButton component', async () => {
-  const { container } = render(<CButton>Test</CButton>)
+  const { container } = render(<CButton color="primary">Test</CButton>)
   expect(container).toMatchSnapshot()
 })
 

@@ -3,7 +3,7 @@
 exports[`CTabPane customize 1`] = `
 <div>
   <div
-    class="tab-pane fade active show bazinga"
+    class="tab-pane active fade show bazinga"
   >
     Test
   </div>
