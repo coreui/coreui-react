@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { CBadge, CTable } from '@coreui/react/src/index'
-import { Callout, CodeBlock, Example, ScssDocs } from '../components'
+import { Block, Callout, CodeBlock, Example, ScssDocs } from '../components'
 
 interface MdxLayoutProps {
   data: any // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -46,6 +46,11 @@ const MdxLayout: FC<MdxLayoutProps> = ({ children }) => {
               className={`table ${isApiTable && ' table-striped table-api'}`}
             />
           )
+        },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        Block: (props: any) => {
+          const { children, ...rest } = props
+          return <Block {...rest}>{children}</Block>
         },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         Callout: (props: any) => {

@@ -1,5 +1,6 @@
 import Ads from './Ads'
 import Banner from './Banner'
+import Block from './Block'
 import Callout from './Callout'
 import CodeBlock from './CodeBlock'
 import Example from './Example'
@@ -14,6 +15,7 @@ import Toc from './Toc'
 export {
   Ads,
   Banner,
+  Block,
   Callout,
   CodeBlock,
   Example,

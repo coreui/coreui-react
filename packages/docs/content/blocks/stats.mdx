@@ -1,0 +1,34 @@
+---
+title: CoreUI React Stats
+name: Stats
+description: Use these CoreUI stats components to display key metrics and data insights on your application's dashboard. Featuring various layouts and styles, these components help you present statistics, progress indicators, and performance summaries effectively. Built with CoreUI and CoreUI UI React Components, these stats modules are designed to seamlessly integrate with your application’s interface.
+full_width: true
+---
+
+import { default as Stats1 } from './stats/FreeStats1.tsx'
+import { default as Stats1Src } from '!raw-loader!./stats/FreeStats1.tsx'
+
+<Block className="p-5 bg-body-tertiary" code={Stats1Src} title="Primary card with data and chart">
+  <Stats1 />
+</Block>
+
+import { default as Stats2 } from './stats/FreeStats2.tsx'
+import { default as Stats2Src } from '!raw-loader!./stats/FreeStats2.tsx'
+
+<Block className="p-5 bg-body-tertiary" code={Stats2Src} title="Info card with data and chart">
+  <Stats2 />
+</Block>
+
+import { default as Stats3 } from './stats/FreeStats3.tsx'
+import { default as Stats3Src } from '!raw-loader!./stats/FreeStats3.tsx'
+
+<Block className="p-5 bg-body-tertiary" code={Stats3Src} title="Warning card with data and chart">
+  <Stats3 />
+</Block>
+
+import { default as Stats4 } from './stats/FreeStats4.tsx'
+import { default as Stats4Src } from '!raw-loader!./stats/FreeStats4.tsx'
+
+<Block className="p-5 bg-body-tertiary" code={Stats4Src} title="Danger card with data and chart">
+  <Stats4 />
+</Block>

@@ -40,6 +40,26 @@
   }
 }
 
+.docs-main-full-width {
+  grid-area: main;
+  
+  @include media-breakpoint-up(md) {
+    display: grid;
+    grid-template-areas:
+      "intro"
+      "content";
+    grid-template-rows: auto 1fr;
+    gap: $grid-gutter-width;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-template-areas:
+      "intro"
+      "content";
+    grid-template-rows: auto 1fr;
+  }
+}
+
 .docs-intro {
   grid-area: intro;
 }

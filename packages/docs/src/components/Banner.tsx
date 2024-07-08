@@ -11,7 +11,9 @@ const Banner: FC<BannerProps> = ({ pro }) => {
       <h3 className="mb-4">CoreUI PRO Component</h3>
       <p>
         To use this component you must have a CoreUI PRO license. Buy the{' '}
-        <a href="https://coreui.io/pricing/?framework=react&docs=coreui-banner-pro">CoreUI PRO</a>{' '}
+        <a href="https://coreui.io/pricing/?framework=react&src=react-docs&cta=coreui-banner-pro">
+          CoreUI PRO
+        </a>{' '}
         and get access to all PRO components, features, templates, and dedicated support.
       </p>
     </div>
@@ -27,7 +29,7 @@ const Banner: FC<BannerProps> = ({ pro }) => {
       <ul>
         <li>
           Buy the{' '}
-          <CLink href="https://coreui.io/pricing/?framework=react&docs=coreui-banner-free">
+          <CLink href="https://coreui.io/pricing/?framework=react&src=react-docs&cta=coreui-banner-free">
             CoreUI PRO
           </CLink>
           , and get access to PRO components, and dedicated support.

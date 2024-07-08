@@ -127,7 +127,7 @@ const Header: FC = () => {
             <CButton
               className="d-lg-inline-block my-2 my-md-0 ms-md-3"
               color="primary"
-              href="https://coreui.io/pricing/?framework=react&docs=coreui-header-button"
+              href="https://coreui.io/pricing/?framework=react&src=react-docs&cta=coreui-header-button"
             >
               Get CoreUI PRO
             </CButton>

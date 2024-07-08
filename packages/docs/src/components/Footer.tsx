@@ -43,7 +43,10 @@ const Footer: FC = () => {
           .{' '}
           <strong>
             CoreUI PRO requires a{' '}
-            <a href="https://coreui.io/pricing/?framework=react&docs=footer">commercial license</a>.
+            <a href="https://coreui.io/pricing/?framework=react&src=react-docs&cta=footer">
+              commercial license
+            </a>
+            .
           </strong>
         </p>
       </CContainer>

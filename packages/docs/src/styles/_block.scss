@@ -1,0 +1,47 @@
+.docs-block {
+  border: 1px solid var(--#{$prefix}border-color);
+  @include border-radius(var(--#{$prefix}border-radius));
+}
+
+.tabs-blocks {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  background-color: var(--#{$prefix}secondary-bg);
+  padding: .125rem;
+  border-radius: var(--#{$prefix}border-radius);
+  gap: .125rem;
+
+  .nav-link {
+    padding: .375rem .75rem;
+    color: var(--#{$prefix}body-color);
+    white-space: nowrap;
+    
+    &.active .icon {
+      color: var(--#{$prefix}primary);
+    }
+
+    &.active,
+    &:hover {
+      background-color: var(--#{$prefix}body-bg);
+      border-radius: var(--#{$prefix}border-radius-sm);
+    }
+  }
+}
+
+.btn-clipboard {
+  display: block;
+  padding: 0;
+  line-height: 1;
+  color: var(--cui-body-color);
+  background-color: transparent;
+  border: 0;
+  @include border-radius(.25rem);
+
+  &:hover {
+    color: var(--#{$prefix}primary);
+  }
+}
+
+.highlight.blocks pre {
+  max-height: initial !important;
+}

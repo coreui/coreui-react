@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import classNames from 'classnames'
 import { Ads, Banner, Seo, Toc } from '../components'
 import { CContainer } from '@coreui/react/src/'
 
@@ -24,6 +25,7 @@ const humanize = (text: string) => {
 const DocsLayout: FC<DocsLayoutProps> = ({ children, data, pageContext }) => {
   const title = pageContext.frontmatter ? pageContext.frontmatter.title : ''
   const description = pageContext.frontmatter ? pageContext.frontmatter.description : ''
+  const full_width = pageContext.frontmatter ? pageContext.frontmatter.full_width : false
   const name = pageContext.frontmatter ? pageContext.frontmatter.name : ''
   const other_frameworks = pageContext.frontmatter ? pageContext.frontmatter.other_frameworks : ''
   const pro_component = pageContext.frontmatter ? pageContext.frontmatter.pro_component : ''
@@ -35,7 +37,15 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, pageContext }) => {
     <>
       <Seo title={title} description={description} name={name} />
       <CContainer lg className="my-md-4 flex-grow-1">
-        <main className="docs-main order-1">
+        <main
+          className={classNames(
+            {
+              'docs-main': !full_width,
+              'docs-main-full-width': full_width,
+            },
+            'order-1',
+          )}
+        >
           <div className="docs-intro ps-lg-4">
             <Banner pro={pro_component} />
             {name && name !== title ? (
@@ -80,7 +90,9 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, pageContext }) => {
               </>
             )}
           </div>
-          {data && data.mdx && <Toc items={data.mdx.tableOfContents.items} />}
+          {data && data.mdx && data.mdx.tableOfContents.items && (
+            <Toc items={data.mdx.tableOfContents.items} />
+          )}
           <div className="docs-content ps-lg-4">{children}</div>
         </main>
       </CContainer>
