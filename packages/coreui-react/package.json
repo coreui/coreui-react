@@ -41,7 +41,7 @@
     "test:update": "jest --coverage --updateSnapshot"
   },
   "dependencies": {
-    "@coreui/coreui": "^5.0.2",
+    "@coreui/coreui": "^5.1.0",
     "@popperjs/core": "^2.11.8",
     "prop-types": "^15.8.1"
   },
