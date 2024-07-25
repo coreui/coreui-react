@@ -95,6 +95,11 @@
     margin-left: .5rem;
   }
 
+  // Avatars
+  > .avatar + .avatar {
+    margin-left: .25rem;
+  }
+
   // Badges
   > .badge + .badge {
     margin-left: .25rem;
