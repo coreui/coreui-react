@@ -134,6 +134,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 - [React Progress](https://coreui.io/react/docs/components/progress/)
 - [React Radio](https://coreui.io/react/docs/forms/radio/)
 - [React Range](https://coreui.io/react/docs/forms/range/)
+- [React Rating](https://coreui.io/react/docs/forms/rating/)
 - [React Select](https://coreui.io/react/docs/forms/select/)
 - [React Sidebar](https://coreui.io/react/docs/components/sidebar/)
 - [React Smart Pagination](https://coreui.io/react/docs/components/smart-pagination/) **PRO**
