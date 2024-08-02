@@ -20,7 +20,7 @@ export interface CConditionalPortalProps {
   /**
    * An HTML element or function that returns a single element, with `document.body` as the default.
    *
-   * @since v4.11.0
+   * @since 4.11.0
    */
   container?: DocumentFragment | Element | (() => DocumentFragment | Element | null) | null
   /**

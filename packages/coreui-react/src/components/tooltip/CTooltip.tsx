@@ -22,7 +22,7 @@ export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'con
   /**
    * Appends the react tooltip to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`.
    *
-   * @since v4.11.0
+   * @since 4.11.0
    */
   container?: DocumentFragment | Element | (() => DocumentFragment | Element | null) | null
   /**

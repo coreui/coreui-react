@@ -46,7 +46,7 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
   /**
    * Appends the react dropdown menu to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`.
    *
-   * @since v4.11.0
+   * @since 4.11.0
    */
   container?: DocumentFragment | Element | (() => DocumentFragment | Element | null) | null
   /**
