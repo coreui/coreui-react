@@ -48,7 +48,7 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
    *
    * @since v4.11.0
    */
-  container?: Element | (() => Element | null) | null
+  container?: DocumentFragment | Element | (() => DocumentFragment | Element | null) | null
   /**
    * Sets a darker color scheme to match a dark navbar.
    */

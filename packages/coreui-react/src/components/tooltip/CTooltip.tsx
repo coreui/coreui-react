@@ -24,7 +24,7 @@ export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'con
    *
    * @since v4.11.0
    */
-  container?: Element | (() => Element | null) | null
+  container?: DocumentFragment | Element | (() => DocumentFragment | Element | null) | null
   /**
    * Content node for your component.
    */

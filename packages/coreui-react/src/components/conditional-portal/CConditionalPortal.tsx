@@ -2,7 +2,9 @@ import React, { FC, ReactNode, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 
-const getContainer = (container?: Element | (() => Element | null) | null) => {
+const getContainer = (
+  container?: DocumentFragment | Element | (() => DocumentFragment | Element | null) | null,
+) => {
   if (container) {
     return typeof container === 'function' ? container() : container
   }
@@ -20,11 +22,11 @@ export interface CConditionalPortalProps {
    *
    * @since v4.11.0
    */
-  container?: Element | (() => Element | null) | null
+  container?: DocumentFragment | Element | (() => DocumentFragment | Element | null) | null
   /**
    * Render some children into a different part of the DOM
    */
-  portal: boolean | any
+  portal: boolean
 }
 
 export const CConditionalPortal: FC<CConditionalPortalProps> = ({
@@ -48,7 +50,7 @@ export const CConditionalPortal: FC<CConditionalPortalProps> = ({
 CConditionalPortal.propTypes = {
   children: PropTypes.node,
   container: PropTypes.any, // HTMLElement
-  portal: PropTypes.bool,
+  portal: PropTypes.bool.isRequired,
 }
 
 CConditionalPortal.displayName = 'CConditionalPortal'
