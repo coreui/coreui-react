@@ -14,7 +14,7 @@
   "license": "MIT",
   "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
   "scripts": {
-    "api": "rimraf \"content/api/*\" & node build/api.js",
+    "api": "rimraf \"content/api/*\" & node build/api.mjs",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "dist": "run-s api build",
@@ -48,8 +48,7 @@
     "gatsby-remark-external-links": "^0.0.4",
     "gatsby-source-filesystem": "^5.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
-    "glob": "^7.2.3",
-    "globby": "^11.1.0",
+    "globby": "^14.0.2",
     "prism-react-renderer": "^2.3.1",
     "prismjs": "^1.29.0",
     "prop-types": "^15.8.1",

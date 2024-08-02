@@ -2,10 +2,13 @@
 
 'use strict'
 
-const fs = require('node:fs').promises
-const path = require('node:path')
-const globby = require('globby')
-const docgen = require('react-docgen-typescript')
+import { globby } from 'globby'
+import { writeFile } from 'node:fs/promises'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { parse } from 'react-docgen-typescript'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const GLOB = [
   '**/src/**/*.tsx',
@@ -79,9 +82,9 @@ async function createMdx(file, filename, name, props) {
     const deprecated = value.tags.deprecated ? ` **_Deprecated ${value.tags.deprecated}+_**` : ''
     const description = value.description || '-'
     const type = value.type
-      ? (value.type.name.includes('ReactElement')
+      ? value.type.name.includes('ReactElement')
         ? 'ReactElement'
-        : value.type.name)
+        : value.type.name
       : ''
     const defaultValue = value.defaultValue
       ? value.defaultValue.value.replace('undefined', '-')
@@ -97,13 +100,11 @@ async function createMdx(file, filename, name, props) {
     index++
   }
 
-  await fs
-    .writeFile(`content/api/${filename}.api.mdx`, content, {
-      encoding: 'utf8',
-    })
-    .then(() => {
-      console.log(`File created: ${filename}.api.mdx`)
-    })
+  await writeFile(`content/api/${filename}.api.mdx`, content, {
+    encoding: 'utf8',
+  }).then(() => {
+    console.log(`File created: ${filename}.api.mdx`)
+  })
 }
 
 async function main() {
@@ -113,7 +114,8 @@ async function main() {
     await Promise.all(
       files.map((file) => {
         console.log(file)
-        const props = docgen.parse(file, options)
+        // const props = docgen.parse(file, options)
+        const props = parse(file, options)
         if (props && typeof props[0] !== 'undefined') {
           const filename = path.basename(file, '.tsx')
           createMdx(file, filename, props[0].displayName, props[0].props)
