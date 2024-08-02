@@ -10,7 +10,8 @@ import CModal from '@coreui/react/src/components/modal/CModal'
 | **alignment** | Align the modal in the center or top of the screen. | `'top'` \| `'center'` | - |
 | **backdrop** | Apply a backdrop on body while modal is open. | `boolean` \| `'static'` | true |
 | **className** | A string of all className you want applied to the base component. | `string` | - |
-| **focus** **_v4.10.0+_** | Puts the focus on the modal when shown. | `boolean` | true |
+| **container** **_5.3.0+_** | Appends the react modal to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`. | `Element` \| `DocumentFragment` \| `(() => Element` \| `DocumentFragment)` | - |
+| **focus** **_4.10.0+_** | Puts the focus on the modal when shown. | `boolean` | true |
 | **fullscreen** | Set modal to covers the entire user viewport. | `boolean` \| `'sm'` \| `'md'` \| `'lg'` \| `'xl'` \| `'xxl'` | - |
 | **keyboard** | Closes the modal when escape key is pressed. | `boolean` | true |
 | **onClose** | Callback fired when the component requests to be closed. | `() => void` | - |

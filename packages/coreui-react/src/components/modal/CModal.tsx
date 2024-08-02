@@ -32,13 +32,19 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    */
   className?: string
   /**
+   * Appends the react modal to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`.
+   *
+   * @since 5.3.0
+   */
+  container?: DocumentFragment | Element | (() => DocumentFragment | Element | null) | null
+  /**
    * @ignore
    */
   duration?: number
   /**
    * Puts the focus on the modal when shown.
    *
-   * @since v4.10.0
+   * @since 4.10.0
    */
   focus?: boolean
   /**
@@ -101,6 +107,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       alignment,
       backdrop = true,
       className,
+      container,
       duration = 150,
       focus = true,
       fullscreen,
@@ -223,7 +230,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
           timeout={transition ? duration : 0}
         >
           {(state) => (
-            <CConditionalPortal portal={portal}>
+            <CConditionalPortal container={container} portal={portal}>
               <CModalContext.Provider value={contextValues}>
                 <div
                   className={classNames(
@@ -259,7 +266,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
           )}
         </Transition>
         {backdrop && (
-          <CConditionalPortal portal={portal}>
+          <CConditionalPortal container={container} portal={portal}>
             <CBackdrop visible={_visible} />
           </CConditionalPortal>
         )}
@@ -273,6 +280,7 @@ CModal.propTypes = {
   backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'static'>(['static'])]),
   children: PropTypes.node,
   className: PropTypes.string,
+  container: PropTypes.any, // HTMLElement
   duration: PropTypes.number,
   focus: PropTypes.bool,
   fullscreen: PropTypes.oneOfType([
