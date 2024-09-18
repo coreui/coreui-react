@@ -10,6 +10,10 @@ export interface CTabProps extends HTMLAttributes<HTMLButtonElement> {
    */
   className?: string
   /**
+   * Toggle the disabled state for the component.
+   */
+  disabled?: boolean
+  /**
    * Item key.
    */
   itemKey: number | string
@@ -50,6 +54,7 @@ export const CTab = forwardRef<HTMLButtonElement, CTabProps>(
 CTab.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   itemKey: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 }
 
