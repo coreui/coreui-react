@@ -45,7 +45,7 @@ export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
         ...state,
         React.cloneElement(push, {
           index: index.current,
-          key: index.current,
+          innerKey: index.current,
           onClose: (index: number) =>
             setToasts((state) => state.filter((i) => i.props.index !== index)),
         }),
