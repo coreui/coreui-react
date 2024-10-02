@@ -145,14 +145,14 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     useEffect(() => {
       if (_visible) {
         activeElementRef.current = document.activeElement as HTMLElement | null
-        document.addEventListener('mouseup', handleClickOutside)
+        document.addEventListener('mousedown', handleMouseDown)
         document.addEventListener('keydown', handleKeyDown)
       } else {
         activeElementRef.current?.focus()
       }
 
       return () => {
-        document.removeEventListener('mouseup', handleClickOutside)
+        document.removeEventListener('mousedown', handleMouseDown)
         document.removeEventListener('keydown', handleKeyDown)
       }
     }, [_visible])
@@ -205,8 +205,11 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
         }
       }
     }, [_visible])
-
-    const handleClickOutside = (event: Event) => {
+    
+    const handleMouseDown = (event: Event) => {
+      document.addEventListener('mouseup', () => handleMouseUp(event), { once: true })
+    }
+    const handleMouseUp = (event: Event) => {
       if (modalRef.current && modalRef.current == event.target) {
         handleDismiss()
       }
