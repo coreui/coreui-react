@@ -32,7 +32,7 @@ export interface CListGroupProps extends HTMLAttributes<HTMLDivElement | HTMLULi
 export const CListGroup: PolymorphicRefForwardingComponent<'ul', CListGroupProps> = forwardRef<
   HTMLDivElement | HTMLUListElement,
   CListGroupProps
->(({ children, as: Component = 'ul', className, flush, layout }, ref) => {
+>(({ children, as: Component = 'ul', className, flush, layout, ...rest }, ref) => {
   return (
     <Component
       className={classNames(
@@ -43,6 +43,7 @@ export const CListGroup: PolymorphicRefForwardingComponent<'ul', CListGroupProps
         },
         className,
       )}
+      {...rest}
       ref={ref}
     >
       {children}
