@@ -136,7 +136,26 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
     useEffect(() => {
       if (_visible) {
         setMounted(true)
+      }
 
+      return () => {
+        if (popoverRef.current) {
+          popoverRef.current.classList.remove('show')
+          onHide && onHide()
+          executeAfterTransition(() => {
+            if (popoverRef.current) {
+              popoverRef.current.style.display = 'none'
+            }
+
+            destroyPopper()
+            setMounted(false)
+          }, popoverRef.current)
+        }
+      }
+    }, [_visible])
+    useEffect(() => {
+      if (mounted) {
+        // On the render after `setMounted(true)`, the popoverRef will be populated
         if (popoverRef.current) {
           popoverRef.current.classList.remove('fade', 'show')
           destroyPopper()
@@ -155,22 +174,7 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
           }
         }, _delay.show)
       }
-
-      return () => {
-        if (popoverRef.current) {
-          popoverRef.current.classList.remove('show')
-          onHide && onHide()
-          executeAfterTransition(() => {
-            if (popoverRef.current) {
-              popoverRef.current.style.display = 'none'
-            }
-
-            destroyPopper()
-            setMounted(false)
-          }, popoverRef.current)
-        }
-      }
-    }, [_visible])
+    }, [mounted])
 
     return (
       <>
