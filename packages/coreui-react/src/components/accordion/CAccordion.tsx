@@ -2,23 +2,76 @@ import React, { createContext, forwardRef, HTMLAttributes, useState } from 'reac
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import { mergeClassNames } from '../../utils'
+
 export interface CAccordionProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * The active item key.
+   * Determines which accordion item is currently active (expanded) by default.
+   * Accepts a number or string corresponding to the `itemKey` of the desired accordion item.
+   *
+   * @example
+   * <CAccordion activeItemKey="1">...</CAccordion>
    */
   activeItemKey?: number | string
+
   /**
-   * Make accordion items stay open when another item is opened
+   * When set to `true`, multiple accordion items within the React Accordion can be open simultaneously.
+   * This is ideal for scenarios where users need to view multiple sections at once without collapsing others.
+   *
+   * @default false
+   *
+   * @example
+   * <CAccordion alwaysOpen>...</CAccordion>
    */
   alwaysOpen?: boolean
+
   /**
-   * A string of all className you want applied to the base component.
+   * Allows you to apply custom CSS classes to the React Accordion for enhanced styling and theming.
+   *
+   * @example
+   * <CAccordion className="my-custom-accordion">...</CAccordion>
    */
   className?: string
+
   /**
-   * Removes the default background-color, some borders, and some rounded corners to render accordions edge-to-edge with their parent container.
+   * Allows overriding or extending the default CSS class names used in the component.
+   *
+   * - `ACCORDION`: Base class for the accordion component.
+   * - `ACCORDION_FLUSH`: Class applied when the `flush` prop is set to true, ensuring an edge-to-edge layout.
+   *
+   * Use this prop to customize the styles of specific parts of the accordion.
+   *
+   * @example
+   * const customClasses = {
+   *   ACCORDION: 'custom-accordion',
+   *   ACCORDION_FLUSH: 'custom-accordion-flush'
+   * }
+   * <CAccordion customClassNames={customClasses}>...</CAccordion>
+   */
+  customClassNames?: Partial<typeof ACCORDION_CLASS_NAMES>
+
+  /**
+   * When `flush` is set to `true`, the React Accordion renders edge-to-edge with its parent container,
+   * creating a seamless and modern look ideal for minimalist designs.
+   *
+   * @default false
+   *
+   * @example
+   * <CAccordion flush>...</CAccordion>
    */
   flush?: boolean
+}
+
+export const ACCORDION_CLASS_NAMES = {
+  /**
+   * Base class for the accordion container.
+   */
+  ACCORDION: 'accordion',
+
+  /**
+   * Applied when the `flush` prop is enabled.
+   */
+  ACCORDION_FLUSH: 'accordion-flush',
 }
 
 export interface CAccordionContextProps {
@@ -30,12 +83,24 @@ export interface CAccordionContextProps {
 export const CAccordionContext = createContext({} as CAccordionContextProps)
 
 export const CAccordion = forwardRef<HTMLDivElement, CAccordionProps>(
-  ({ children, activeItemKey, alwaysOpen = false, className, flush, ...rest }, ref) => {
+  (
+    { children, activeItemKey, alwaysOpen = false, className, customClassNames, flush, ...rest },
+    ref,
+  ) => {
     const [_activeItemKey, setActiveKey] = useState(activeItemKey)
+
+    const _classNames = mergeClassNames<typeof ACCORDION_CLASS_NAMES>(
+      ACCORDION_CLASS_NAMES,
+      customClassNames,
+    )
 
     return (
       <div
-        className={classNames('accordion', { 'accordion-flush': flush }, className)}
+        className={classNames(
+          _classNames.ACCORDION,
+          { [_classNames.ACCORDION_FLUSH]: flush },
+          className,
+        )}
         {...rest}
         ref={ref}
       >

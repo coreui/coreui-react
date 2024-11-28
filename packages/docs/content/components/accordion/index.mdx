@@ -3,7 +3,7 @@ title: React Accordion Component
 name: Accordion
 description: Build vertically collapsing accordions in combination with our React Accordion component.
 menu: Components
-route: /components/accordion
+route: /components/accordion/
 other_frameworks: accordion
 pro_component: false
 ---
@@ -143,43 +143,3 @@ Add `alwaysOpen` property to make react accordion items stay open when another i
   </CAccordionItem>
 </CAccordion>
 ```
-
-## Customizing
-
-### CSS variables
-
-React accordions use local CSS variables on `.accordion` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
-
-<ScssDocs file="_accordion.scss" capture="accordion-css-vars"/>
-
-#### How to use CSS variables
-
-```jsx
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
-}
-return <CAccordion style={vars}>...</CAccordion>
-```
-
-### SASS variables
-
-<ScssDocs file="_variables.scss" capture="accordion-variables"/>
-
-## API
-
-### CAccordion
-
-`markdown:CAccordion.api.mdx`
-
-### CAccordionBody
-
-`markdown:CAccordionBody.api.mdx`
-
-### CAccordionHeader
-
-`markdown:CAccordionHeader.api.mdx`
-
-### CAccordionItem
-
-`markdown:CAccordionItem.api.mdx`

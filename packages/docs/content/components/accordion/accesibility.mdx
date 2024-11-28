@@ -1,0 +1,66 @@
+---
+title: React Accordion Component Accesibility
+name: Accordion Accesibility
+description: Detailed overview of the accessibility features implemented in CoreUI React Accordion, ensuring compliance with WAI-ARIA guidelines.
+route: /components/accordion/
+---
+
+## Accessible React Accordion
+
+Accordions are a common UI pattern used to toggle the visibility of content. Ensuring that accordions are accessible is crucial for users who rely on assistive technologies. This guide demonstrates how to create an accessible accordion using CoreUI React components, adhering to the [WAI-ARIA Accordion Design Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/).
+
+## Semantic Structure
+
+- **Button Headers**: Each accordion header is rendered as a native `<button>` element. This ensures that headers are inherently focusable and operable via keyboard without additional scripting.
+  
+- **Proper HTML Elements**: Utilizes appropriate HTML elements (`<button>`, `<div>`, etc.) to convey the correct semantic meaning, enhancing compatibility with screen readers and other assistive technologies.
+
+## ARIA Attributes
+
+CoreUI React Accordion incorporates essential ARIA attributes to communicate the state and relationships of accordion items to assistive technologies:
+
+- **`aria-expanded`**: Reflects the current state of the accordion item (`true` when expanded, `false` when collapsed).
+  
+- **`aria-controls`**: Associates each header with its corresponding content panel by referencing the panel's `id`.
+  
+- **`id`**: Unique identifiers for both headers and panels establish clear relationships, ensuring that screen readers can accurately describe the accordion structure.
+
+## Focus Management
+
+- **Automatic Focus Handling**: When an accordion panel is expanded or collapsed, focus is managed to ensure a seamless user experience. This prevents focus from being lost or trapped within the accordion, maintaining accessibility standards.
+
+## Visual Indicators
+
+- **Focus Styles**: Clear visual indicators are provided for focused elements, aiding users who navigate via keyboard.
+  
+- **Active States**: Distinct styling for active (expanded) accordion items helps users identify the current state of each section.
+
+
+## Keyboard Support
+
+The Accordion component supports comprehensive keyboard navigation out of the box:
+
+<div className="table-api table-responsive border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Function</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><kbd>Tab</kbd></td>
+        <td>Moves focus to the next focusable element.</td>
+      </tr>
+      <tr>
+        <td><kbd>Shift</kbd> + <kbd>Tab</kbd></td>
+        <td>Moves focus to the previous focusable element.</td>
+      </tr>
+      <tr>
+        <td><kbd>Space</kbd> or <kbd>Enter</kbd></td>
+        <td>Toggle the expansion of the focused accordion header.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

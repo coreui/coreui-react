@@ -1,0 +1,42 @@
+---
+title: React Accordion Component Customizing
+name: Accordion Customizing
+description: Learn how to customize the React Accordion component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design.
+route: /components/accordion/
+---
+
+import CAccordion from '@coreui/react'
+
+### CSS class names
+
+React Accordion comes with built-in class names that make styling super simple. Here’s a quick rundown of what you can use:
+
+<ClassNamesDocs
+  files={[
+    'components/accordion/CAccordion.tsx',
+    'components/accordion/CAccordionBody.tsx',
+    'components/accordion/CAccordionItem.tsx',
+    'components/accordion/CAccordionHeader.tsx',
+  ]}
+/>
+
+### CSS variables
+
+React Accordion supports CSS variables for easy customization. These variables are set via SASS but allow direct overrides in your stylesheets or inline styles.
+
+<ScssDocs file="_accordion.scss" capture="accordion-css-vars" />
+
+#### How to use CSS variables
+
+```jsx
+const customVars = {
+  '--cui-accordion-color': '#333',
+  '--cui-accordion-bg': '#f8f9fa',
+}
+
+;<CAccordion style={customVars}>{/* Accordion content */}</CAccordion>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="accordion-variables" />
