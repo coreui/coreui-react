@@ -1,24 +1,41 @@
 .table-api {
-  tr td {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  .table {
+    margin: 0;
   }
-  td:nth-child(1n),
-  th:nth-child(1n) {
-    width: 15%;
-    padding-left: 1rem;
-  }
-  td:nth-child(2n) {
-    width: 55%;
-  }
-  td:nth-child(3n) {
-    width: 20%;
-  }
-  td:nth-child(4n) {
-    width: 10%;
-  }
-}
 
-.markdown + h3 {
-  margin-top: 3rem;
+  tr {
+    scroll-margin-top: 80px;
+    scroll-margin-bottom: 100px;
+  }
+
+  tr th {
+    padding: 0.75rem 1rem;
+  }
+
+  tr td {
+    padding: 1rem;
+  }
+
+  th {
+    background-color: var(--cui-tertiary-bg);
+  }
+
+  tr:nth-child(2n-1):has(+ tr td[colspan='3']) td {
+    border-bottom-style: dashed;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .highlight {
+    margin: 1rem -1rem -1rem -1rem !important;
+    padding: 0.25rem 1rem;
+    border: 0;
+    border-radius: 0;
+  }
 }

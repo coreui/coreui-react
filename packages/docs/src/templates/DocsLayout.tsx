@@ -1,10 +1,11 @@
 import React, { FC } from 'react'
 import { Ads, Banner, Seo, Toc } from '../components'
-import { CContainer } from '@coreui/react/src/'
+import { CContainer, CNav, CNavItem, CNavLink } from '@coreui/react/src/'
 
 interface DocsLayoutProps {
   children: any // eslint-disable-line @typescript-eslint/no-explicit-any
   data: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  location: any // eslint-disable-line @typescript-eslint/no-explicit-any
   pageContext: any // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
@@ -21,7 +22,7 @@ const humanize = (text: string) => {
   return string[0].toUpperCase() + string.slice(1)
 }
 
-const DocsLayout: FC<DocsLayoutProps> = ({ children, data, pageContext }) => {
+const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext }) => {
   const title = pageContext.frontmatter ? pageContext.frontmatter.title : ''
   const description = pageContext.frontmatter ? pageContext.frontmatter.description : ''
   const name = pageContext.frontmatter ? pageContext.frontmatter.name : ''
@@ -31,13 +32,59 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, pageContext }) => {
   const frameworks = other_frameworks ? other_frameworks.split(', ') : false
   const otherFrameworks = JSON.parse(JSON.stringify(jsonData))
 
+  const hasNav = data.allMdx.edges.length > 1
+  const hasNavAccesibility = data.allMdx.edges.filter((edge: any) =>
+    edge.node.frontmatter.title.includes('Accesibility'),
+  ).length
+  const hasNavAPI = data.allMdx.edges.filter((edge: any) =>
+    edge.node.frontmatter.title.includes('API'),
+  ).length
+  const hasNavCustomizing = data.allMdx.edges.filter((edge: any) =>
+    edge.node.frontmatter.title.includes('Customizing'),
+  ).length
+
   return (
     <>
       <Seo title={title} description={description} name={name} />
       <CContainer lg className="my-md-4 flex-grow-1">
         <main className="docs-main order-1">
+          {hasNav && (
+            <CNav className="ms-lg-4 docs-nav bg-body" variant="underline-border">
+              <CNavItem>
+                <CNavLink href={`${route}`} active={route === location.pathname}>
+                  Overview
+                </CNavLink>
+              </CNavItem>
+              {hasNavAPI && (
+                <CNavItem>
+                  <CNavLink href={`${route}api/`} active={`${route}api/` === location.pathname}>
+                    API
+                  </CNavLink>
+                </CNavItem>
+              )}
+              {hasNavCustomizing && (
+                <CNavItem>
+                  <CNavLink
+                    href={`${route}customizing/`}
+                    active={`${route}customizing/` === location.pathname}
+                  >
+                    Customizing
+                  </CNavLink>
+                </CNavItem>
+              )}
+              {hasNavAccesibility && (
+                <CNavItem>
+                  <CNavLink
+                    href={`${route}accesibility/`}
+                    active={`${route}accesibility/` === location.pathname}
+                  >
+                    Accesibility
+                  </CNavLink>
+                </CNavItem>
+              )}
+            </CNav>
+          )}
           <div className="docs-intro ps-lg-4">
-            <Banner pro={pro_component} />
             {name && name !== title ? (
               <div className="d-flex flex-column">
                 <h1 className="order-2 h5 mb-4 text-body-secondary" id="content">
@@ -50,6 +97,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, pageContext }) => {
                 {title}
               </h1>
             )}
+            <Banner pro={pro_component} />
             <p className="docs-lead">{description}</p>
             <Ads code="CEAICKJY" location={route} placement="coreuiio" />
             {frameworks && (

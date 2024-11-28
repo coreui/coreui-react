@@ -15,29 +15,38 @@
 
 .docs-main {
   grid-area: main;
+  display: grid;
+  grid-template-areas:
+    "nav"
+    "header"
+    "intro"
+    "toc"
+    "content";
+  grid-template-rows: auto auto 1fr;
+  gap: .5rem;
 
   @include media-breakpoint-down(lg) {
     max-width: 760px;
     margin-inline: auto;
   }
 
-  @include media-breakpoint-up(md) {
-    display: grid;
-    grid-template-areas:
-      "intro"
-      "toc"
-      "content";
-    grid-template-rows: auto auto 1fr;
-    gap: $grid-gutter-width;
-  }
-
   @include media-breakpoint-up(lg) {
     grid-template-areas:
+      "nav     nav"
       "intro   toc"
       "content toc";
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto auto auto;
     grid-template-columns: 4fr 1fr;
+    gap: $grid-gutter-width;
   }
+}
+
+.docs-header {
+  grid-area: header;
+}
+
+.docs-nav {
+  grid-area: nav;
 }
 
 .docs-intro {
