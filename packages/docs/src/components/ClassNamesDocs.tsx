@@ -72,7 +72,7 @@ const extractCLassNames = (code: string) => {
   return classNamesArray
 }
 
-const ClassNamesDocs = ({ files }) => {
+const ClassNamesDocs = ({ files }: { files: string | string[] }) => {
   const _files = Array.isArray(files) ? files : [files]
 
   const classNames = _files.flatMap((file) => {

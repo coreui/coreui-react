@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
 import { Highlight, Prism } from 'prism-react-renderer'
 
-interface CodeBlockProps {
+export interface CodeBlockProps {
   children: any // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 const CodeBlock: FC<CodeBlockProps> = ({ children }) => {
-  ;(typeof global === 'undefined' ? window : global).Prism = Prism
+  ;(typeof globalThis === 'undefined' ? globalThis : globalThis).Prism = Prism
   // eslint-disable-next-line unicorn/prefer-module
   require('prismjs/components/prism-bash')
   require('prismjs/components/prism-scss')

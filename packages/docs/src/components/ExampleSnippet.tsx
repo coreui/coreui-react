@@ -13,7 +13,7 @@ interface CodeSnippets {
   ts?: string
 }
 
-interface ExampleSnippetProps {
+export interface ExampleSnippetProps {
   children: ReactNode
   className?: string
   code: string | CodeSnippets

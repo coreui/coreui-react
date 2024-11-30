@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react'
-interface ExampleProps {
+export interface ExampleProps {
   children: ReactNode
   className: string
 }
