@@ -68,6 +68,7 @@ export const createPages = async ({
         context: {
           id: node.id,
           route: node.frontmatter.route,
+          regex: `/^${node.frontmatter.route}/`,
         },
       })
     })

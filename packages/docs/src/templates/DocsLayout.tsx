@@ -32,16 +32,13 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
   const frameworks = other_frameworks ? other_frameworks.split(', ') : false
   const otherFrameworks = JSON.parse(JSON.stringify(jsonData))
 
-  const hasNav = data.allMdx.edges.length > 1
-  const hasNavAccesibility = data.allMdx.edges.filter((edge: any) =>
-    edge.node.frontmatter.title.includes('Accesibility'),
-  ).length
-  const hasNavAPI = data.allMdx.edges.filter((edge: any) =>
-    edge.node.frontmatter.title.includes('API'),
-  ).length
-  const hasNavCustomizing = data.allMdx.edges.filter((edge: any) =>
-    edge.node.frontmatter.title.includes('Customizing'),
-  ).length
+  const hasNav = data?.allMdx?.edges.length > 1
+  const hasNavAccesibility =
+    hasNav && data.allMdx.edges.some((edge: any) => edge.node.fields.slug.includes('accesibility'))
+  const hasNavAPI =
+    hasNav && data.allMdx.edges.some((edge: any) => edge.node.fields.slug.includes('api'))
+  const hasNavCustomizing =
+    hasNav && data.allMdx.edges.some((edge: any) => edge.node.fields.slug.includes('customizing'))
 
   return (
     <>
@@ -52,7 +49,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
             <CNav className="ms-lg-4 docs-nav bg-body" variant="underline-border">
               <CNavItem>
                 <CNavLink href={`${route}`} active={route === location.pathname}>
-                  Overview
+                  Features
                 </CNavLink>
               </CNavItem>
               {hasNavAPI && (

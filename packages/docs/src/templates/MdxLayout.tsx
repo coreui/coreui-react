@@ -1,7 +1,15 @@
 import React, { FC } from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { Callout, CodeBlock, ClassNamesDocs, Example, JSXDocs, ScssDocs } from '../components'
+import {
+  Callout,
+  CodeBlock,
+  ClassNamesDocs,
+  Example,
+  JSXDocs,
+  ExampleSnippet,
+  ScssDocs,
+} from '../components'
 
 interface MdxLayoutProps {
   data: any // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -12,15 +20,6 @@ const MdxLayout: FC<MdxLayoutProps> = ({ children }) => {
   return (
     <MDXProvider
       components={{
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        JSXDocs: (props: any) => <JSXDocs {...props} />,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ClassNamesDocs: (props: any) => <ClassNamesDocs {...props} />,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ScssDocs: (props: any) => <ScssDocs {...props} />,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        pre: (props: any) => <CodeBlock {...props} />,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         Callout: (props: any) => {
           const { children, title, ...rest } = props
           return (
@@ -30,6 +29,8 @@ const MdxLayout: FC<MdxLayoutProps> = ({ children }) => {
             </Callout>
           )
         },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ClassNamesDocs: (props: any) => <ClassNamesDocs {...props} />,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         Example: (props: any) => {
           const { children, ...rest } = props
@@ -44,6 +45,15 @@ const MdxLayout: FC<MdxLayoutProps> = ({ children }) => {
             </Example>
           )
         },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ExampleSnippet: (props: any) => <ExampleSnippet {...props} />,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        JSXDocs: (props: any) => <JSXDocs {...props} />,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ScssDocs: (props: any) => <ScssDocs {...props} />,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        pre: (props: any) => <CodeBlock {...props} />,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       }}
     >
       {children}
@@ -56,17 +66,16 @@ MdxLayout.displayName = 'MdxLayout'
 export default MdxLayout
 
 export const pageQuery = graphql`
-  query BlogPostQuery($id: String, $route: String!) {
+  query PageQuery($id: String, $regex: String) {
     mdx(id: { eq: $id }) {
       tableOfContents(maxDepth: 3)
     }
-    allMdx(filter: { frontmatter: { route: { eq: $route } } }) {
+    allMdx(filter: { fields: { slug: { regex: $regex } } }) {
       edges {
         node {
           id
-          frontmatter {
-            route
-            title
+          fields {
+            slug
           }
         }
       }

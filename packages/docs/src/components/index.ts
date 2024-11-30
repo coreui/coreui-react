@@ -4,6 +4,7 @@ import Callout from './Callout'
 import CodeBlock from './CodeBlock'
 import ClassNamesDocs from './ClassNamesDocs'
 import Example from './Example'
+import ExampleSnippet from './ExampleSnippet'
 import Footer from './Footer'
 import Header from './Header'
 import JSXDocs from './JSXDocs'
@@ -20,6 +21,7 @@ export {
   CodeBlock,
   ClassNamesDocs,
   Example,
+  ExampleSnippet,
   Footer,
   Header,
   JSXDocs,

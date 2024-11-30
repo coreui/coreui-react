@@ -27,9 +27,39 @@
 .docs-example-snippet {
   border: solid var(--cui-border-color);
   border-width: 1px 0;
+  margin: 0 ($cd-gutter-x * -.5) 1rem ($cd-gutter-x * -.5);
+  padding: 0;
+  @include border-radius(0);
 
-  @include media-breakpoint-up(md) {
+  .docs-example {
+    margin: 0;
+    padding: 1rem;
+    border-width: 0 1px 0 0;
+  }
+
+  .highlight-toolbar {
+    border-top: 1px solid var(--cui-border-color);
+  }
+
+  .highlight {
+    margin: 0;
+    padding: 1rem;
+  }
+
+  .docs-example,
+  .highlight {
+    border: 0
+  }
+
+  .highlight {
+    margin-bottom: 0;
+    @include border-top-radius(0);
+  }
+
+  @include media-breakpoint-up(sm) {
+    margin: 0 0 1rem 0;
     border-width: 1px;
+    @include border-radius(var(--cui-border-radius));
   }
 }
 
