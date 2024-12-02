@@ -5,17 +5,112 @@ import { CSidebar } from '@coreui/react'
 import CSidebar from '@coreui/react/src/components/sidebar/CSidebar'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **className** | A string of all className you want applied to the component. | `string` | - |
-| **colorScheme** | Sets if the color of text should be colored for a light or dark dark background. | `'dark'` \| `'light'` | - |
-| **narrow** | Make sidebar narrow. | `boolean` | - |
-| **onHide** | Callback fired when the component requests to be hidden. | `() => void` | - |
-| **onShow** | Callback fired when the component requests to be shown. | `() => void` | - |
-| **onVisibleChange** | Event emitted after visibility of component changed. | `(visible: boolean) => void` | - |
-| **overlaid** | Set sidebar to overlaid variant. | `boolean` | - |
-| **placement** | Components placement, there’s no default placement. | `'start'` \| `'end'` | - |
-| **position** | Place sidebar in non-static positions. | `'fixed'` \| `'sticky'` | - |
-| **size** | Size the component small, large, or extra large. | `'sm'` \| `'lg'` \| `'xl'` | - |
-| **unfoldable** | Expand narrowed sidebar on hover. | `boolean` | - |
-| **visible** | Toggle the visibility of sidebar component. | `boolean` | - |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="csidebar-className">
+        <td className="text-primary fw-semibold">className<a href="#csidebar-className" aria-label="CSidebar className permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">A string of all className you want applied to the component.</td>
+      </tr>
+      <tr id="csidebar-colorScheme">
+        <td className="text-primary fw-semibold">colorScheme<a href="#csidebar-colorScheme" aria-label="CSidebar colorScheme permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`'dark'`}</code>, <code>{`'light'`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Sets if the color of text should be colored for a light or dark dark background.</td>
+      </tr>
+      <tr id="csidebar-narrow">
+        <td className="text-primary fw-semibold">narrow<a href="#csidebar-narrow" aria-label="CSidebar narrow permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Make sidebar narrow.</td>
+      </tr>
+      <tr id="csidebar-onHide">
+        <td className="text-primary fw-semibold">onHide<a href="#csidebar-onHide" aria-label="CSidebar onHide permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`() => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Callback fired when the component requests to be hidden.</td>
+      </tr>
+      <tr id="csidebar-onShow">
+        <td className="text-primary fw-semibold">onShow<a href="#csidebar-onShow" aria-label="CSidebar onShow permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`() => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Callback fired when the component requests to be shown.</td>
+      </tr>
+      <tr id="csidebar-onVisibleChange">
+        <td className="text-primary fw-semibold">onVisibleChange<a href="#csidebar-onVisibleChange" aria-label="CSidebar onVisibleChange permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`(visible: boolean) => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Event emitted after visibility of component changed.</td>
+      </tr>
+      <tr id="csidebar-overlaid">
+        <td className="text-primary fw-semibold">overlaid<a href="#csidebar-overlaid" aria-label="CSidebar overlaid permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Set sidebar to overlaid variant.</td>
+      </tr>
+      <tr id="csidebar-placement">
+        <td className="text-primary fw-semibold">placement<a href="#csidebar-placement" aria-label="CSidebar placement permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`'start'`}</code>, <code>{`'end'`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Components placement, there’s no default placement.</td>
+      </tr>
+      <tr id="csidebar-position">
+        <td className="text-primary fw-semibold">position<a href="#csidebar-position" aria-label="CSidebar position permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`"fixed"`}</code>, <code>{`"sticky"`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Place sidebar in non-static positions.</td>
+      </tr>
+      <tr id="csidebar-size">
+        <td className="text-primary fw-semibold">size<a href="#csidebar-size" aria-label="CSidebar size permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`"sm"`}</code>, <code>{`"lg"`}</code>, <code>{`"xl"`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Size the component small, large, or extra large.</td>
+      </tr>
+      <tr id="csidebar-unfoldable">
+        <td className="text-primary fw-semibold">unfoldable<a href="#csidebar-unfoldable" aria-label="CSidebar unfoldable permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Expand narrowed sidebar on hover.</td>
+      </tr>
+      <tr id="csidebar-visible">
+        <td className="text-primary fw-semibold">visible<a href="#csidebar-visible" aria-label="CSidebar visible permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Toggle the visibility of sidebar component.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

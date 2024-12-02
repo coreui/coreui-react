@@ -5,21 +5,144 @@ import { CModal } from '@coreui/react'
 import CModal from '@coreui/react/src/components/modal/CModal'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **alignment** | Align the modal in the center or top of the screen. | `'top'` \| `'center'` | - |
-| **backdrop** | Apply a backdrop on body while modal is open. | `boolean` \| `'static'` | true |
-| **className** | A string of all className you want applied to the base component. | `string` | - |
-| **container** **_5.3.0+_** | Appends the react modal to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`. | `Element` \| `DocumentFragment` \| `(() => Element` \| `DocumentFragment)` | - |
-| **focus** **_4.10.0+_** | Puts the focus on the modal when shown. | `boolean` | true |
-| **fullscreen** | Set modal to covers the entire user viewport. | `boolean` \| `'sm'` \| `'md'` \| `'lg'` \| `'xl'` \| `'xxl'` | - |
-| **keyboard** | Closes the modal when escape key is pressed. | `boolean` | true |
-| **onClose** | Callback fired when the component requests to be closed. | `() => void` | - |
-| **onClosePrevented** | Callback fired when the component requests to be closed. | `() => void` | - |
-| **onShow** | Callback fired when the modal is shown, its backdrop is static and a click outside the modal or an escape key press is performed with the keyboard option set to false. | `() => void` | - |
-| **portal** | Generates modal using createPortal. | `boolean` | true |
-| **scrollable** | Create a scrollable modal that allows scrolling the modal body. | `boolean` | - |
-| **size** | Size the component small, large, or extra large. | `'sm'` \| `'lg'` \| `'xl'` | - |
-| **transition** | Remove animation to create modal that simply appear rather than fade in to view. | `boolean` | true |
-| **unmountOnClose** | By default the component is unmounted after close animation, if you want to keep the component mounted set this property to false. | `boolean` | true |
-| **visible** | Toggle the visibility of modal component. | `boolean` | - |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="cmodal-alignment">
+        <td className="text-primary fw-semibold">alignment<a href="#cmodal-alignment" aria-label="CModal alignment permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`"top"`}</code>, <code>{`"center"`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Align the modal in the center or top of the screen.</td>
+      </tr>
+      <tr id="cmodal-backdrop">
+        <td className="text-primary fw-semibold">backdrop<a href="#cmodal-backdrop" aria-label="CModal backdrop permalink" className="anchor-link after">#</a></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code>, <code>{`"static"`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Apply a backdrop on body while modal is open.</td>
+      </tr>
+      <tr id="cmodal-className">
+        <td className="text-primary fw-semibold">className<a href="#cmodal-className" aria-label="CModal className permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">A string of all className you want applied to the base component.</td>
+      </tr>
+      <tr id="cmodal-container">
+        <td className="text-primary fw-semibold">container<a href="#cmodal-container" aria-label="CModal container permalink" className="anchor-link after">#</a><span className="badge bg-success">5.3.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`Element`}</code>, <code>{`DocumentFragment`}</code>, <code>{`(() => Element | DocumentFragment)`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Appends the react modal to a specific element. You can pass an HTML element or function that returns a single element. By default <code>{`document.body`}</code>.</td>
+      </tr>
+      <tr id="cmodal-focus">
+        <td className="text-primary fw-semibold">focus<a href="#cmodal-focus" aria-label="CModal focus permalink" className="anchor-link after">#</a><span className="badge bg-success">4.10.0+</span></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Puts the focus on the modal when shown.</td>
+      </tr>
+      <tr id="cmodal-fullscreen">
+        <td className="text-primary fw-semibold">fullscreen<a href="#cmodal-fullscreen" aria-label="CModal fullscreen permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`boolean`}</code>, <code>{`"sm"`}</code>, <code>{`"md"`}</code>, <code>{`"lg"`}</code>, <code>{`"xl"`}</code>, <code>{`"xxl"`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Set modal to covers the entire user viewport.</td>
+      </tr>
+      <tr id="cmodal-keyboard">
+        <td className="text-primary fw-semibold">keyboard<a href="#cmodal-keyboard" aria-label="CModal keyboard permalink" className="anchor-link after">#</a></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Closes the modal when escape key is pressed.</td>
+      </tr>
+      <tr id="cmodal-onClose">
+        <td className="text-primary fw-semibold">onClose<a href="#cmodal-onClose" aria-label="CModal onClose permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`() => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Callback fired when the component requests to be closed.</td>
+      </tr>
+      <tr id="cmodal-onClosePrevented">
+        <td className="text-primary fw-semibold">onClosePrevented<a href="#cmodal-onClosePrevented" aria-label="CModal onClosePrevented permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`() => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Callback fired when the component requests to be closed.</td>
+      </tr>
+      <tr id="cmodal-onShow">
+        <td className="text-primary fw-semibold">onShow<a href="#cmodal-onShow" aria-label="CModal onShow permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`() => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Callback fired when the modal is shown, its backdrop is static and a click outside the modal or an escape key press is performed with the keyboard option set to false.</td>
+      </tr>
+      <tr id="cmodal-portal">
+        <td className="text-primary fw-semibold">portal<a href="#cmodal-portal" aria-label="CModal portal permalink" className="anchor-link after">#</a></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Generates modal using createPortal.</td>
+      </tr>
+      <tr id="cmodal-scrollable">
+        <td className="text-primary fw-semibold">scrollable<a href="#cmodal-scrollable" aria-label="CModal scrollable permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Create a scrollable modal that allows scrolling the modal body.</td>
+      </tr>
+      <tr id="cmodal-size">
+        <td className="text-primary fw-semibold">size<a href="#cmodal-size" aria-label="CModal size permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`"sm"`}</code>, <code>{`"lg"`}</code>, <code>{`"xl"`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Size the component small, large, or extra large.</td>
+      </tr>
+      <tr id="cmodal-transition">
+        <td className="text-primary fw-semibold">transition<a href="#cmodal-transition" aria-label="CModal transition permalink" className="anchor-link after">#</a></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Remove animation to create modal that simply appear rather than fade in to view.</td>
+      </tr>
+      <tr id="cmodal-unmountOnClose">
+        <td className="text-primary fw-semibold">unmountOnClose<a href="#cmodal-unmountOnClose" aria-label="CModal unmountOnClose permalink" className="anchor-link after">#</a></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">By default the component is unmounted after close animation, if you want to keep the component mounted set this property to false.</td>
+      </tr>
+      <tr id="cmodal-visible">
+        <td className="text-primary fw-semibold">visible<a href="#cmodal-visible" aria-label="CModal visible permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Toggle the visibility of modal component.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
