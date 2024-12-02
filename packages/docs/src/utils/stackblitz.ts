@@ -18,15 +18,15 @@ interface StackBlitzOptions extends ProjectOptions {
 
 // Function to open a StackBlitz project
 export const openStackBlitzProject = (options: StackBlitzOptions) => {
-  const { code, componentName, language, name } = options
+  const { code, componentName, language, name, pro = false } = options
 
   const title = generateTitle(componentName)
   const description = generateDescription(componentName)
   const template = 'create-react-app'
 
   const indexHTML = generateIndexHTML(title)
-  const indexJS = generateIndexJS(name, language, 'stackblitz')
-  const packageJSON = generatePackageJSON(title, description, language, 'stackblitz')
+  const indexJS = generateIndexJS(name, language, pro, 'stackblitz')
+  const packageJSON = generatePackageJSON(title, description, language, pro, 'stackblitz')
 
   const files = {
     'public/index.html': indexHTML,
@@ -40,7 +40,7 @@ export const openStackBlitzProject = (options: StackBlitzOptions) => {
     description,
     template,
     files,
-    dependencies: getDependencies(language),
+    dependencies: getDependencies(language, pro),
     tags: ['coreui', 'react'],
   }
 
