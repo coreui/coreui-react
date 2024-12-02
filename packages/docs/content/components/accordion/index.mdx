@@ -1,0 +1,42 @@
+---
+title: React Accordion Component
+name: Accordion
+description: Build vertically collapsing accordions in combination with our React Accordion component.
+menu: Components
+route: /components/accordion/
+other_frameworks: accordion
+pro_component: false
+---
+
+## How to use React Accordion component.
+
+Click the accordions below to expand/collapse the accordion content.
+
+import { AccordionExample } from './examples/AccordionExample.tsx'
+import AccordionExampleTS from '!!raw-loader!./examples/AccordionExample.tsx'
+
+<ExampleSnippet code={AccordionExampleTS} componentName="React Accordion">
+  <AccordionExample />
+</ExampleSnippet>
+
+### Flush
+
+Add `flush` to remove the default `background-color`, some borders, and some rounded corners to render accordions edge-to-edge with their parent container.
+
+import { AccordionFlushExample } from './examples/AccordionFlushExample.tsx'
+import AccordionFlushExampleTS from '!!raw-loader!./examples/AccordionFlushExample.tsx'
+
+<ExampleSnippet code={AccordionFlushExampleTS} componentName="React Accordion">
+  <AccordionFlushExample />
+</ExampleSnippet>
+
+### Always open
+
+Add `alwaysOpen` property to make react accordion items stay open when another item is opened.
+
+import { AccordionAlwaysOpenExample } from './examples/AccordionAlwaysOpenExample.tsx'
+import AccordionAlwaysOpenExampleTS from '!!raw-loader!./examples/AccordionAlwaysOpenExample.tsx'
+
+<ExampleSnippet code={AccordionAlwaysOpenExampleTS} componentName="React Accordion">
+  <AccordionAlwaysOpenExample />
+</ExampleSnippet>

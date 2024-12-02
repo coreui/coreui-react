@@ -1,54 +1,48 @@
 import React, { FC } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import { CBadge, CTable } from '@coreui/react/src/index'
-import { Callout, CodeBlock, Example, ScssDocs } from '../components'
+import {
+  Callout,
+  CodeBlock,
+  ClassNamesDocs,
+  Example,
+  JSXDocs,
+  ExampleSnippet,
+  ScssDocs,
+} from '../components'
 
-interface MdxLayoutProps {
-  data: any // eslint-disable-line @typescript-eslint/no-explicit-any
-  children: any // eslint-disable-line @typescript-eslint/no-explicit-any
+import { CalloutProps } from '../components/Callout'
+import { CodeBlockProps } from '../components/CodeBlock'
+import { ExampleProps } from '../components/Example'
+import { ExampleSnippetProps } from '../components/ExampleSnippet'
+import { ScssDocsProps } from '../components/ScssDocs'
+import type { TocItem } from '../components/Toc'
+
+interface DataProps {
+  mdx: {
+    tableOfContents: Toc
+  }
+  allMdx: {
+    edges: Array<{
+      node: {
+        id: string
+        fields: {
+          slug: string
+        }
+      }
+    }>
+  }
 }
 
-const MdxLayout: FC<MdxLayoutProps> = ({ children }) => {
+interface Toc {
+  items: TocItem[]
+}
+
+const MdxLayout: FC<PageProps<DataProps>> = ({ children }) => {
   return (
     <MDXProvider
       components={{
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ScssDocs: (props: any) => <ScssDocs {...props} />,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        strong: (props: any) => {
-          if (props.children.type == 'em') {
-            const color = props.children.props.children.includes('Deprecated')
-              ? 'warning'
-              : 'primary'
-            return (
-              <>
-                <br />
-                <CBadge {...props.children.props} color={color} />
-              </>
-            )
-          } else {
-            return <strong>{props.children}</strong>
-          }
-        },
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        pre: (props: any) => <CodeBlock {...props} />,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        table: (props: any) => {
-          // TODO: find better soultion
-          const isApiTable =
-            props.children[0].props.children.props.children[0].props.children &&
-            props.children[0].props.children.props.children[0].props.children.includes('Property')
-          return (
-            <CTable
-              responsive
-              {...props}
-              className={`table ${isApiTable && ' table-striped table-api'}`}
-            />
-          )
-        },
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        Callout: (props: any) => {
+        Callout: (props: CalloutProps) => {
           const { children, title, ...rest } = props
           return (
             <Callout {...rest}>
@@ -57,8 +51,8 @@ const MdxLayout: FC<MdxLayoutProps> = ({ children }) => {
             </Callout>
           )
         },
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        Example: (props: any) => {
+        ClassNamesDocs: (props: { files: string | string[] }) => <ClassNamesDocs {...props} />,
+        Example: (props: ExampleProps) => {
           const { children, ...rest } = props
           return (
             <Example {...rest}>
@@ -71,6 +65,10 @@ const MdxLayout: FC<MdxLayoutProps> = ({ children }) => {
             </Example>
           )
         },
+        ExampleSnippet: (props: ExampleSnippetProps) => <ExampleSnippet {...props} />,
+        JSXDocs: (props: { code: string }) => <JSXDocs {...props} />,
+        ScssDocs: (props: ScssDocsProps) => <ScssDocs {...props} />,
+        pre: (props: CodeBlockProps) => <CodeBlock {...props} />,
       }}
     >
       {children}
@@ -83,9 +81,19 @@ MdxLayout.displayName = 'MdxLayout'
 export default MdxLayout
 
 export const pageQuery = graphql`
-  query BlogPostQuery($id: String) {
+  query PageQuery($id: String, $regex: String) {
     mdx(id: { eq: $id }) {
       tableOfContents(maxDepth: 3)
+    }
+    allMdx(filter: { fields: { slug: { regex: $regex } } }) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+        }
+      }
     }
   }
 `

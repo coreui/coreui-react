@@ -5,6 +5,36 @@ import { CAccordionHeader } from '@coreui/react'
 import CAccordionHeader from '@coreui/react/src/components/accordion/CAccordionHeader'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **className** | A string of all className you want applied to the base component. | `string` | - |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="caccordionheader-className">
+        <td className="text-primary fw-semibold">className<a href="#caccordionheader-className" aria-label="CAccordionHeader className permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">A string of all className you want applied to the base component.</td>
+      </tr>
+      <tr id="caccordionheader-customClassNames">
+        <td className="text-primary fw-semibold">customClassNames<a href="#caccordionheader-customClassNames" aria-label="CAccordionHeader customClassNames permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`Partial\<{ ACCORDION_HEADER: string; ACCORDION_BUTTON: string; }>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Allows overriding or extending the default CSS class names used in the accordion header component.<br/>Accepts a partial object matching the shape of <code>{`ACCORDION_HEADER_CLASS_NAMES`}</code>, which includes:<br/><br/>- <code>{`ACCORDION_HEADER`}</code>: Base class for the accordion header container.<br/>- <code>{`ACCORDION_BUTTON`}</code>: Class applied to the button within the accordion header.<br/><br/>Use this prop to customize the styles of specific parts of the accordion header.<br /><JSXDocs code={`const customClasses = {
+  ACCORDION_HEADER: 'custom-header-class',
+  ACCORDION_BUTTON: 'custom-button-class',
+}
+<CAccordionHeader customClassNames={customClasses}>...</CAccordionHeader>`} /></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

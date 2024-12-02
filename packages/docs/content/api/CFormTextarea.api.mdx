@@ -5,21 +5,144 @@ import { CFormTextarea } from '@coreui/react'
 import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **className** | A string of all className you want applied to the component. | `string` | - |
-| **disabled** | Toggle the disabled state for the component. | `boolean` | - |
-| **feedback** **_4.2.0+_** | Provide valuable, actionable feedback. | `ReactNode` | - |
-| **feedbackInvalid** **_4.2.0+_** | Provide valuable, actionable feedback. | `ReactNode` | - |
-| **feedbackValid** **_4.2.0+_** | Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`. | `ReactNode` | - |
-| **floatingClassName** **_4.5.0+_** | A string of all className you want applied to the floating label wrapper. | `string` | - |
-| **floatingLabel** **_4.2.0+_** | Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`. | `ReactNode` | - |
-| **invalid** | Set component validation state to invalid. | `boolean` | - |
-| **label** **_4.2.0+_** | Add a caption for a component. | `ReactNode` | - |
-| **onChange** | Method called immediately after the `value` prop changes. | `ChangeEventHandler<HTMLTextAreaElement>` | - |
-| **plainText** | Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side `readonly`. | `boolean` | - |
-| **readOnly** | Toggle the readonly state for the component. | `boolean` | - |
-| **text** **_4.2.0+_** | Add helper text to the component. | `ReactNode` | - |
-| **tooltipFeedback** **_4.2.0+_** | Display validation feedback in a styled tooltip. | `boolean` | - |
-| **valid** | Set component validation state to valid. | `boolean` | - |
-| **value** | The `value` attribute of component. | `string` \| `number` \| `string[]` | - |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="cformtextarea-className">
+        <td className="text-primary fw-semibold">className<a href="#cformtextarea-className" aria-label="CFormTextarea className permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">A string of all className you want applied to the component.</td>
+      </tr>
+      <tr id="cformtextarea-disabled">
+        <td className="text-primary fw-semibold">disabled<a href="#cformtextarea-disabled" aria-label="CFormTextarea disabled permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Toggle the disabled state for the component.</td>
+      </tr>
+      <tr id="cformtextarea-feedback">
+        <td className="text-primary fw-semibold">feedback<a href="#cformtextarea-feedback" aria-label="CFormTextarea feedback permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Provide valuable, actionable feedback.</td>
+      </tr>
+      <tr id="cformtextarea-feedbackInvalid">
+        <td className="text-primary fw-semibold">feedbackInvalid<a href="#cformtextarea-feedbackInvalid" aria-label="CFormTextarea feedbackInvalid permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Provide valuable, actionable feedback.</td>
+      </tr>
+      <tr id="cformtextarea-feedbackValid">
+        <td className="text-primary fw-semibold">feedbackValid<a href="#cformtextarea-feedbackValid" aria-label="CFormTextarea feedbackValid permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, <code>{`:invalid`}</code> and <code>{`:valid`}</code>.</td>
+      </tr>
+      <tr id="cformtextarea-floatingClassName">
+        <td className="text-primary fw-semibold">floatingClassName<a href="#cformtextarea-floatingClassName" aria-label="CFormTextarea floatingClassName permalink" className="anchor-link after">#</a><span className="badge bg-success">4.5.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">A string of all className you want applied to the floating label wrapper.</td>
+      </tr>
+      <tr id="cformtextarea-floatingLabel">
+        <td className="text-primary fw-semibold">floatingLabel<a href="#cformtextarea-floatingLabel" aria-label="CFormTextarea floatingLabel permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, <code>{`:invalid`}</code> and <code>{`:valid`}</code>.</td>
+      </tr>
+      <tr id="cformtextarea-invalid">
+        <td className="text-primary fw-semibold">invalid<a href="#cformtextarea-invalid" aria-label="CFormTextarea invalid permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Set component validation state to invalid.</td>
+      </tr>
+      <tr id="cformtextarea-label">
+        <td className="text-primary fw-semibold">label<a href="#cformtextarea-label" aria-label="CFormTextarea label permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Add a caption for a component.</td>
+      </tr>
+      <tr id="cformtextarea-onChange">
+        <td className="text-primary fw-semibold">onChange<a href="#cformtextarea-onChange" aria-label="CFormTextarea onChange permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`ChangeEventHandler\<HTMLTextAreaElement>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Method called immediately after the <code>{`value`}</code> prop changes.</td>
+      </tr>
+      <tr id="cformtextarea-plainText">
+        <td className="text-primary fw-semibold">plainText<a href="#cformtextarea-plainText" aria-label="CFormTextarea plainText permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side <code>{`readonly`}</code>.</td>
+      </tr>
+      <tr id="cformtextarea-readOnly">
+        <td className="text-primary fw-semibold">readOnly<a href="#cformtextarea-readOnly" aria-label="CFormTextarea readOnly permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Toggle the readonly state for the component.</td>
+      </tr>
+      <tr id="cformtextarea-text">
+        <td className="text-primary fw-semibold">text<a href="#cformtextarea-text" aria-label="CFormTextarea text permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Add helper text to the component.</td>
+      </tr>
+      <tr id="cformtextarea-tooltipFeedback">
+        <td className="text-primary fw-semibold">tooltipFeedback<a href="#cformtextarea-tooltipFeedback" aria-label="CFormTextarea tooltipFeedback permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Display validation feedback in a styled tooltip.</td>
+      </tr>
+      <tr id="cformtextarea-valid">
+        <td className="text-primary fw-semibold">valid<a href="#cformtextarea-valid" aria-label="CFormTextarea valid permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Set component validation state to valid.</td>
+      </tr>
+      <tr id="cformtextarea-value">
+        <td className="text-primary fw-semibold">value<a href="#cformtextarea-value" aria-label="CFormTextarea value permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`string`}</code>, <code>{`number`}</code>, <code>{`string[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">The <code>{`value`}</code> attribute of component.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

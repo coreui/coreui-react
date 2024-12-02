@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-'use strict'
-
+/* eslint-disable @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires, unicorn/prefer-module */
 const acorn = require('acorn')
 const fromMarkdown = require('mdast-util-from-markdown')
 const mdxJsx = require('mdast-util-mdx-jsx')
@@ -8,12 +6,13 @@ const mdxMd = require('micromark-extension-mdx-md')
 const syntax = require('micromark-extension-mdx-jsx')
 const visit = require('unist-util-visit')
 
+// eslint-disable-next-line unicorn/no-anonymous-default-export
 module.exports = ({ markdownAST }) => {
   visit(markdownAST, 'code', (node) => {
     if (node.meta && node.meta.includes('preview')) {
       const value = node.value
       const className = /className="(.*)"/.test(node.meta) ? RegExp.$1 : ''
-      const tree = fromMarkdown(value.replace(/(\r\n|\n|\r)/gm, ''), {
+      const tree = fromMarkdown(value.replaceAll(/(\r\n|\n|\r)/gm, ''), {
         extensions: [syntax({ acorn: acorn, addResult: true }), mdxMd],
         mdastExtensions: [mdxJsx.fromMarkdown],
       })

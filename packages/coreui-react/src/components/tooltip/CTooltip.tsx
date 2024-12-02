@@ -1,4 +1,12 @@
-import React, { forwardRef, HTMLAttributes, ReactNode, useRef, useEffect, useState } from 'react'
+import React, {
+  forwardRef,
+  HTMLAttributes,
+  ReactNode,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+} from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
@@ -92,11 +100,12 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
     const tooltipRef = useRef<HTMLDivElement>(null)
     const togglerRef = useRef(null)
     const forkedRef = useForkedRef(ref, tooltipRef)
-    const uID = useRef(`tooltip${Math.floor(Math.random() * 1_000_000)}`)
 
-    const { initPopper, destroyPopper, updatePopper } = usePopper()
+    const id = `tooltip${useId()}`
     const [mounted, setMounted] = useState(false)
     const [_visible, setVisible] = useState(visible)
+
+    const { initPopper, destroyPopper, updatePopper } = usePopper()
 
     const _delay = typeof delay === 'number' ? { show: delay, hide: delay } : delay
 
@@ -125,47 +134,52 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
     }
 
     useEffect(() => {
-      setVisible(visible)
+      if (visible) {
+        handleShow()
+        return
+      }
+
+      handleHide()
     }, [visible])
 
     useEffect(() => {
-      if (_visible) {
-        setMounted(true)
-
-        if (tooltipRef.current) {
-          tooltipRef.current.classList.remove('fade', 'show')
-          destroyPopper()
-        }
-
+      if (mounted && togglerRef.current && tooltipRef.current) {
+        initPopper(togglerRef.current, tooltipRef.current, popperConfig)
         setTimeout(() => {
-          if (togglerRef.current && tooltipRef.current) {
-            if (animation) {
-              tooltipRef.current.classList.add('fade')
-            }
-
-            initPopper(togglerRef.current, tooltipRef.current, popperConfig)
-            tooltipRef.current.style.removeProperty('display')
-            tooltipRef.current.classList.add('show')
-            onShow && onShow()
-          }
+          setVisible(true)
         }, _delay.show)
+
+        return
       }
 
-      return () => {
-        if (tooltipRef.current) {
-          tooltipRef.current.classList.remove('show')
-          onHide && onHide()
-          executeAfterTransition(() => {
-            if (tooltipRef.current) {
-              tooltipRef.current.style.display = 'none'
-            }
+      if (!mounted && togglerRef.current && tooltipRef.current) {
+        destroyPopper()
+      }
+    }, [mounted])
 
-            destroyPopper()
-            setMounted(false)
-          }, tooltipRef.current)
-        }
+    useEffect(() => {
+      if (!_visible && togglerRef.current && tooltipRef.current) {
+        executeAfterTransition(() => {
+          setMounted(false)
+        }, tooltipRef.current)
       }
     }, [_visible])
+
+    const handleShow = () => {
+      setMounted(true)
+      if (onShow) {
+        onShow()
+      }
+    }
+
+    const handleHide = () => {
+      setTimeout(() => {
+        setVisible(false)
+        if (onHide) {
+          onHide()
+        }
+      }, _delay.hide)
+    }
 
     useEffect(() => {
       updatePopper()
@@ -175,31 +189,36 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
       <>
         {React.cloneElement(children as React.ReactElement<any>, {
           ...(_visible && {
-            'aria-describedby': uID.current,
+            'aria-describedby': id,
           }),
           ref: togglerRef,
           ...((trigger === 'click' || trigger.includes('click')) && {
-            onClick: () => setVisible(!_visible),
+            onClick: () => (_visible ? handleHide() : handleShow()),
           }),
           ...((trigger === 'focus' || trigger.includes('focus')) && {
-            onFocus: () => setVisible(true),
-            onBlur: () => setVisible(false),
+            onFocus: () => handleShow(),
+            onBlur: () => handleHide(),
           }),
           ...((trigger === 'hover' || trigger.includes('hover')) && {
-            onMouseEnter: () => setVisible(true),
-            onMouseLeave: () => setVisible(false),
+            onMouseEnter: () => handleShow(),
+            onMouseLeave: () => handleHide(),
           }),
         })}
         <CConditionalPortal container={container} portal={true}>
           {mounted && (
             <div
-              className={classNames('tooltip', 'bs-tooltip-auto', className)}
-              id={uID.current}
+              className={classNames(
+                'tooltip',
+                'bs-tooltip-auto',
+                {
+                  fade: animation,
+                  show: _visible,
+                },
+                className,
+              )}
+              id={id}
               ref={forkedRef}
               role="tooltip"
-              style={{
-                display: 'none',
-              }}
               {...rest}
             >
               <div className="tooltip-arrow"></div>

@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react'
-interface CalloutProps {
+export interface CalloutProps {
   children: ReactNode
   color: string
   title?: string

@@ -1,4 +1,5 @@
 ---
+title: Columns
 name: Columns
 description: Learn how to modify columns with a handful of options for alignment, ordering, and offsetting thanks to our flexbox grid system.
 menu: Layout

@@ -2,7 +2,7 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Highlight, Prism } from 'prism-react-renderer'
 
-interface ScssDocsProps {
+export interface ScssDocsProps {
   file: string
   capture: string
 }

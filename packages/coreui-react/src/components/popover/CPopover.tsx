@@ -1,4 +1,12 @@
-import React, { forwardRef, HTMLAttributes, ReactNode, useRef, useEffect, useState } from 'react'
+import React, {
+  forwardRef,
+  HTMLAttributes,
+  ReactNode,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+} from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
@@ -97,11 +105,12 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
     const popoverRef = useRef<HTMLDivElement>(null)
     const togglerRef = useRef(null)
     const forkedRef = useForkedRef(ref, popoverRef)
-    const uID = useRef(`popover${Math.floor(Math.random() * 1_000_000)}`)
 
-    const { initPopper, destroyPopper } = usePopper()
+    const id = `popover${useId()}`
     const [mounted, setMounted] = useState(false)
     const [_visible, setVisible] = useState(visible)
+
+    const { initPopper, destroyPopper } = usePopper()
 
     const _delay = typeof delay === 'number' ? { show: delay, hide: delay } : delay
 
@@ -130,77 +139,87 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
     }
 
     useEffect(() => {
-      setVisible(visible)
+      if (visible) {
+        handleShow()
+        return
+      }
+
+      handleHide()
     }, [visible])
 
     useEffect(() => {
-      if (_visible) {
-        setMounted(true)
-
-        if (popoverRef.current) {
-          popoverRef.current.classList.remove('fade', 'show')
-          destroyPopper()
-        }
-
+      if (mounted && togglerRef.current && popoverRef.current) {
+        initPopper(togglerRef.current, popoverRef.current, popperConfig)
         setTimeout(() => {
-          if (togglerRef.current && popoverRef.current) {
-            if (animation) {
-              popoverRef.current.classList.add('fade')
-            }
-
-            initPopper(togglerRef.current, popoverRef.current, popperConfig)
-            popoverRef.current.style.removeProperty('display')
-            popoverRef.current.classList.add('show')
-            onShow && onShow()
-          }
+          setVisible(true)
         }, _delay.show)
+
+        return
       }
 
-      return () => {
-        if (popoverRef.current) {
-          popoverRef.current.classList.remove('show')
-          onHide && onHide()
-          executeAfterTransition(() => {
-            if (popoverRef.current) {
-              popoverRef.current.style.display = 'none'
-            }
+      if (!mounted && togglerRef.current && popoverRef.current) {
+        destroyPopper()
+      }
+    }, [mounted])
 
-            destroyPopper()
-            setMounted(false)
-          }, popoverRef.current)
-        }
+    useEffect(() => {
+      if (!_visible && togglerRef.current && popoverRef.current) {
+        executeAfterTransition(() => {
+          setMounted(false)
+        }, popoverRef.current)
       }
     }, [_visible])
+
+    const handleShow = () => {
+      setMounted(true)
+      if (onShow) {
+        onShow()
+      }
+    }
+
+    const handleHide = () => {
+      setTimeout(() => {
+        setVisible(false)
+        if (onHide) {
+          onHide()
+        }
+      }, _delay.hide)
+    }
 
     return (
       <>
         {React.cloneElement(children as React.ReactElement<any>, {
           ...(_visible && {
-            'aria-describedby': uID.current,
+            'aria-describedby': id,
           }),
           ref: togglerRef,
           ...((trigger === 'click' || trigger.includes('click')) && {
-            onClick: () => setVisible(!_visible),
+            onClick: () => (_visible ? handleHide() : handleShow()),
           }),
           ...((trigger === 'focus' || trigger.includes('focus')) && {
-            onFocus: () => setVisible(true),
-            onBlur: () => setVisible(false),
+            onFocus: () => handleShow(),
+            onBlur: () => handleHide(),
           }),
           ...((trigger === 'hover' || trigger.includes('hover')) && {
-            onMouseEnter: () => setVisible(true),
-            onMouseLeave: () => setVisible(false),
+            onMouseEnter: () => handleShow(),
+            onMouseLeave: () => handleHide(),
           }),
         })}
         <CConditionalPortal container={container} portal={true}>
           {mounted && (
             <div
-              className={classNames('popover', 'bs-popover-auto', className)}
-              id={uID.current}
+              className={classNames(
+                'popover',
+                'bs-popover-auto',
+                {
+                  fade: animation,
+                  show: _visible,
+                },
+                className,
+              )}
+              id={id}
               ref={forkedRef}
               role="tooltip"
-              style={{
-                display: 'none',
-              }}
               {...rest}
             >
               <div className="popover-arrow"></div>

@@ -4,6 +4,7 @@ import getRTLPlacement from './getRTLPlacement'
 import getTransitionDurationFromElement from './getTransitionDurationFromElement'
 import isInViewport from './isInViewport'
 import isRTL from './isRTL'
+import mergeClassNames from './mergeClassNames'
 
 export {
   executeAfterTransition,
@@ -12,4 +13,5 @@ export {
   getTransitionDurationFromElement,
   isInViewport,
   isRTL,
+  mergeClassNames,
 }

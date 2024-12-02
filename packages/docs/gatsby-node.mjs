@@ -40,6 +40,9 @@ export const createPages = async ({
           fields {
             slug
           }
+          frontmatter {
+            route
+          }
           internal {
             contentFilePath
           }
@@ -62,7 +65,11 @@ export const createPages = async ({
         component: `${resolve(`./src/templates/MdxLayout.tsx`)}?__contentFilePath=${
           node.internal.contentFilePath
         }`,
-        context: { id: node.id },
+        context: {
+          id: node.id,
+          route: node.frontmatter.route,
+          regex: `/^${node.frontmatter.route}/`,
+        },
       })
     })
     createRedirect({

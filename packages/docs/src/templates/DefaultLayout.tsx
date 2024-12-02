@@ -9,11 +9,12 @@ import { Script } from 'gatsby'
 interface DefaultLayoutProps {
   children: any // eslint-disable-line @typescript-eslint/no-explicit-any
   data: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  location: any // eslint-disable-line @typescript-eslint/no-explicit-any
   pageContext: any // eslint-disable-line @typescript-eslint/no-explicit-any
   path: any // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-const DefaultLayout: FC<DefaultLayoutProps> = ({ children, data, pageContext, path }) => {
+const DefaultLayout: FC<DefaultLayoutProps> = ({ children, data, location, pageContext, path }) => {
   const [sidebarVisible, setSidebarVisible] = useState()
 
   const title = pageContext.frontmatter ? pageContext.frontmatter.title : ''
@@ -34,7 +35,7 @@ const DefaultLayout: FC<DefaultLayoutProps> = ({ children, data, pageContext, pa
         {path === '/404/' ? (
           <CContainer lg>{children}</CContainer>
         ) : (
-          <DocsLayout data={data} pageContext={pageContext}>
+          <DocsLayout data={data} location={location} pageContext={pageContext}>
             {children}
           </DocsLayout>
         )}
@@ -46,12 +47,12 @@ const DefaultLayout: FC<DefaultLayoutProps> = ({ children, data, pageContext, pa
           const searchElement = document.getElementById('docsearch')
 
           // @ts-expect-error global variable
-          if (!window.docsearch || !searchElement) {
+          if (!globalThis.docsearch || !searchElement) {
             return
           }
 
           // @ts-expect-error global variable
-          window.docsearch({
+          globalThis.docsearch({
             appId: 'JIOZIZPLMM',
             apiKey: '6e3f7692d2589d042bb40426b75df1b7',
             indexName: 'coreui-react',

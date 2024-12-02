@@ -14,9 +14,9 @@
   "description": "Gatsby plugin to embed markdown fragments within markdown",
   "dependencies": {
     "normalize-path": "^2.1.1",
-    "unist-util-map": "^1.0.3",
-    "unist-util-visit": "^2.0.3",
-    "unified": "^9.2.1",
+    "unist-util-map": "^1.0.5",
+    "unist-util-visit-parents": "^3.1.1",
+    "unified": "^9.2.2",
     "remark-gfm": "^1.0.0",
     "remark-html": "^13.0.2",
     "remark-parse": "^9.0.0",

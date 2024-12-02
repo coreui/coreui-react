@@ -5,13 +5,80 @@ import { CBadge } from '@coreui/react'
 import CBadge from '@coreui/react/src/components/badge/CBadge'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **as** | Component used for the root node. Either a string to use a HTML element or a component. | `(ElementType & 'symbol')` \| `(ElementType & 'object')` \| `(ElementType & 'span')` \| `(ElementType & 'slot')` \| `(ElementType & 'style')` \| `... 174 more ...` \| `(ElementType & FunctionComponent<...>)` | - |
-| **className** | A string of all className you want applied to the component. | `string` | - |
-| **color** | Sets the color context of the component to one of CoreUI’s themed colors. | `'primary'` \| `'secondary'` \| `'success'` \| `'danger'` \| `'warning'` \| `'info'` \| `'dark'` \| `'light'` \| `string` | - |
-| **position** | Position badge in one of the corners of a link or button. | `'top-start'` \| `'top-end'` \| `'bottom-end'` \| `'bottom-start'` | - |
-| **shape** | Select the shape of the component. | `'rounded'` \| `'rounded-top'` \| `'rounded-end'` \| `'rounded-bottom'` \| `'rounded-start'` \| `'rounded-circle'` \| `'rounded-pill'` \| `'rounded-0'` \| `'rounded-1'` \| `'rounded-2'` \| `'rounded-3'` \| `string` | - |
-| **size** | Size the component small. | `'sm'` | - |
-| **textBgColor** **_5.0.0+_** | Sets the component's color scheme to one of CoreUI's themed colors, ensuring the text color contrast adheres to the WCAG 4.5:1 contrast ratio standard for accessibility. | `'primary'` \| `'secondary'` \| `'success'` \| `'danger'` \| `'warning'` \| `'info'` \| `'dark'` \| `'light'` \| `string` | - |
-| **textColor** | Sets the text color of the component to one of CoreUI’s themed colors. | `'primary'` \| `'secondary'` \| `'success'` \| `'danger'` \| `'warning'` \| `'info'` \| `'dark'` \| `'light'` \| `'primary-emphasis'` \| `'secondary-emphasis'` \| `'success-emphasis'` \| `'danger-emphasis'` \| `'warning-emphasis'` \| `'info-emphasis'` \| `'light-emphasis'` \| `'body'` \| `'body-emphasis'` \| `'body-secondary'` \| `'body-tertiary'` \| `'black'` \| `'black-50'` \| `'white'` \| `'white-50'` \| `string` | - |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="cbadge-as">
+        <td className="text-primary fw-semibold">as<a href="#cbadge-as" aria-label="CBadge as permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`(ElementType & "symbol")`}</code>, <code>{`(ElementType & "object")`}</code>, <code>{`(ElementType & "span")`}</code>, <code>{`(ElementType & "slot")`}</code>, <code>{`(ElementType & "style")`}</code>, <code>{`... 174 more ...`}</code>, <code>{`(ElementType & FunctionComponent\<...>)`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Component used for the root node. Either a string to use a HTML element or a component.</td>
+      </tr>
+      <tr id="cbadge-className">
+        <td className="text-primary fw-semibold">className<a href="#cbadge-className" aria-label="CBadge className permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">A string of all className you want applied to the component.</td>
+      </tr>
+      <tr id="cbadge-color">
+        <td className="text-primary fw-semibold">color<a href="#cbadge-color" aria-label="CBadge color permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`'primary'`}</code>, <code>{`'secondary'`}</code>, <code>{`'success'`}</code>, <code>{`'danger'`}</code>, <code>{`'warning'`}</code>, <code>{`'info'`}</code>, <code>{`'dark'`}</code>, <code>{`'light'`}</code>, <code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Sets the color context of the component to one of CoreUI’s themed colors.</td>
+      </tr>
+      <tr id="cbadge-position">
+        <td className="text-primary fw-semibold">position<a href="#cbadge-position" aria-label="CBadge position permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`"top-start"`}</code>, <code>{`"top-end"`}</code>, <code>{`"bottom-end"`}</code>, <code>{`"bottom-start"`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Position badge in one of the corners of a link or button.</td>
+      </tr>
+      <tr id="cbadge-shape">
+        <td className="text-primary fw-semibold">shape<a href="#cbadge-shape" aria-label="CBadge shape permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`'rounded'`}</code>, <code>{`'rounded-top'`}</code>, <code>{`'rounded-end'`}</code>, <code>{`'rounded-bottom'`}</code>, <code>{`'rounded-start'`}</code>, <code>{`'rounded-circle'`}</code>, <code>{`'rounded-pill'`}</code>, <code>{`'rounded-0'`}</code>, <code>{`'rounded-1'`}</code>, <code>{`'rounded-2'`}</code>, <code>{`'rounded-3'`}</code>, <code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Select the shape of the component.</td>
+      </tr>
+      <tr id="cbadge-size">
+        <td className="text-primary fw-semibold">size<a href="#cbadge-size" aria-label="CBadge size permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`"sm"`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Size the component small.</td>
+      </tr>
+      <tr id="cbadge-textBgColor">
+        <td className="text-primary fw-semibold">textBgColor<a href="#cbadge-textBgColor" aria-label="CBadge textBgColor permalink" className="anchor-link after">#</a><span className="badge bg-success">5.0.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`'primary'`}</code>, <code>{`'secondary'`}</code>, <code>{`'success'`}</code>, <code>{`'danger'`}</code>, <code>{`'warning'`}</code>, <code>{`'info'`}</code>, <code>{`'dark'`}</code>, <code>{`'light'`}</code>, <code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Sets the component's color scheme to one of CoreUI's themed colors, ensuring the text color contrast adheres to the WCAG 4.5:1 contrast ratio standard for accessibility.</td>
+      </tr>
+      <tr id="cbadge-textColor">
+        <td className="text-primary fw-semibold">textColor<a href="#cbadge-textColor" aria-label="CBadge textColor permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`'primary'`}</code>, <code>{`'secondary'`}</code>, <code>{`'success'`}</code>, <code>{`'danger'`}</code>, <code>{`'warning'`}</code>, <code>{`'info'`}</code>, <code>{`'dark'`}</code>, <code>{`'light'`}</code>, <code>{`'primary-emphasis'`}</code>, <code>{`'secondary-emphasis'`}</code>, <code>{`'success-emphasis'`}</code>, <code>{`'danger-emphasis'`}</code>, <code>{`'warning-emphasis'`}</code>, <code>{`'info-emphasis'`}</code>, <code>{`'light-emphasis'`}</code>, <code>{`'body'`}</code>, <code>{`'body-emphasis'`}</code>, <code>{`'body-secondary'`}</code>, <code>{`'body-tertiary'`}</code>, <code>{`'black'`}</code>, <code>{`'black-50'`}</code>, <code>{`'white'`}</code>, <code>{`'white-50'`}</code>, <code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Sets the text color of the component to one of CoreUI’s themed colors.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

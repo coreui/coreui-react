@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react-docs",
-  "version": "5.4.0",
+  "version": "5.4.1",
   "private": true,
   "description": "",
   "homepage": "https://coreui.io/react/",
@@ -15,7 +15,7 @@
   "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
   "scripts": {
     "api": "rimraf \"content/api/*\" & node build/api.mjs",
-    "build": "gatsby build",
+    "build": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
     "dist": "run-s api build",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
@@ -25,14 +25,15 @@
   },
   "dependencies": {
     "@coreui/chartjs": "^4.0.0",
-    "@coreui/coreui": "^5.1.2",
+    "@coreui/coreui": "^5.2.0",
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-react": "^2.3.0",
     "@coreui/react-chartjs": "^3.0.0",
     "@coreui/utils": "^2.0.2",
-    "@docsearch/css": "^3.6.1",
-    "@mdx-js/mdx": "^3.0.1",
-    "@mdx-js/react": "^3.0.1",
+    "@docsearch/css": "^3.6.2",
+    "@mdx-js/mdx": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@stackblitz/sdk": "^1.11.0",
     "@types/react-helmet": "^6.1.11",
     "gatsby": "^5.13.7",
     "gatsby-plugin-google-tagmanager": "^5.13.1",
@@ -57,8 +58,9 @@
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
     "react-imask": "^7.6.1",
+    "react-markdown": "^9.0.1",
     "rimraf": "^6.0.1",
-    "sass": "^1.79.3"
+    "sass": "^1.80.4"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"

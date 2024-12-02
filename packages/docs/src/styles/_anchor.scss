@@ -5,7 +5,7 @@
   padding-left: 0.375em;
   text-decoration: none;
   opacity: 0;
-  @include transition(color .15s ease-in-out);
+  @include transition(opacity 0.1s ease-in-out, color .15s ease-in-out);
 
   &:focus,
   &:hover {
@@ -14,7 +14,7 @@
   }
 }
 
-h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6, td {
   &:hover {
     .anchor-link {
       opacity: 1;

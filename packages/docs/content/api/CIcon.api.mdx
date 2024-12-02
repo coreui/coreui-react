@@ -1,20 +1,108 @@
 
 ```jsx
-import { CIcon } from '@coreui/icons-react'
+import { CIcon } from '@coreui/..'
 // or
-import CIcon from '@coreui/icons-react/src/CIcon'
+import CIcon from '@coreui/../node_modules/@coreui/icons-react/src/CIcon'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **className** | A string of all className you want applied to the component. | `string` | - |
-| **content** **_Deprecated 3.0+_** | Use `icon={...}` instead of | `string` \| `string[]` | - |
-| **customClassName** | Use for replacing default CIcon component classes. Prop is overriding the 'size' prop. | `string` \| `string[]` | - |
-| **height** | The height attribute defines the vertical length of an icon. | `number` | - |
-| **icon** | Name of the icon placed in React object or SVG content. | `string` \| `string[]` | - |
-| **name** **_Deprecated 3.0+_** | Use `icon="..."` instead of | `string` | - |
-| **size** | Size of the icon. Available sizes: 'sm', 'lg', 'xl', 'xxl', '3xl...9xl', 'custom', 'custom-size'. | `'custom'` \| `'custom-size'` \| `'sm'` \| `'lg'` \| `'xl'` \| `'xxl'` \| `'3xl'` \| `'4xl'` \| `'5xl'` \| `'6xl'` \| `'7xl'` \| `'8xl'` \| `'9xl'` | - |
-| **title** | Title tag content. | `string` | - |
-| **use** | If defined component will be rendered using 'use' tag. | `string` | - |
-| **viewBox** | The viewBox attribute defines the position and dimension of an SVG viewport. | `string` | - |
-| **width** | The width attribute defines the horizontal length of an icon. | `number` | - |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="cicon-className">
+        <td className="text-primary fw-semibold">className<a href="#cicon-className" aria-label="CIcon className permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">A string of all className you want applied to the component.</td>
+      </tr>
+      <tr id="cicon-content">
+        <td className="text-primary fw-semibold">content<a href="#cicon-content" aria-label="CIcon content permalink" className="anchor-link after">#</a><span className="badge bg-success">Deprecated undefined</span></td>
+        <td>undefined</td>
+        <td><code>{`string`}</code>, <code>{`string[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Use <code>{`icon={...}`}</code> instead of</td>
+      </tr>
+      <tr id="cicon-customClassName">
+        <td className="text-primary fw-semibold">customClassName<a href="#cicon-customClassName" aria-label="CIcon customClassName permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`string`}</code>, <code>{`string[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Use for replacing default CIcon component classes. Prop is overriding the 'size' prop.</td>
+      </tr>
+      <tr id="cicon-height">
+        <td className="text-primary fw-semibold">height<a href="#cicon-height" aria-label="CIcon height permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`number`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">The height attribute defines the vertical length of an icon.</td>
+      </tr>
+      <tr id="cicon-icon">
+        <td className="text-primary fw-semibold">icon<a href="#cicon-icon" aria-label="CIcon icon permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`string`}</code>, <code>{`string[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Name of the icon placed in React object or SVG content.</td>
+      </tr>
+      <tr id="cicon-name">
+        <td className="text-primary fw-semibold">name<a href="#cicon-name" aria-label="CIcon name permalink" className="anchor-link after">#</a><span className="badge bg-success">Deprecated undefined</span></td>
+        <td>undefined</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Use <code>{`icon="..."`}</code> instead of</td>
+      </tr>
+      <tr id="cicon-size">
+        <td className="text-primary fw-semibold">size<a href="#cicon-size" aria-label="CIcon size permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`"custom"`}</code>, <code>{`"custom-size"`}</code>, <code>{`"sm"`}</code>, <code>{`"lg"`}</code>, <code>{`"xl"`}</code>, <code>{`"xxl"`}</code>, <code>{`"3xl"`}</code>, <code>{`"4xl"`}</code>, <code>{`"5xl"`}</code>, <code>{`"6xl"`}</code>, <code>{`"7xl"`}</code>, <code>{`"8xl"`}</code>, <code>{`"9xl"`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Size of the icon. Available sizes: 'sm', 'lg', 'xl', 'xxl', '3xl...9xl', 'custom', 'custom-size'.</td>
+      </tr>
+      <tr id="cicon-title">
+        <td className="text-primary fw-semibold">title<a href="#cicon-title" aria-label="CIcon title permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">Title tag content.</td>
+      </tr>
+      <tr id="cicon-use">
+        <td className="text-primary fw-semibold">use<a href="#cicon-use" aria-label="CIcon use permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">If defined component will be rendered using 'use' tag.</td>
+      </tr>
+      <tr id="cicon-viewBox">
+        <td className="text-primary fw-semibold">viewBox<a href="#cicon-viewBox" aria-label="CIcon viewBox permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">The viewBox attribute defines the position and dimension of an SVG viewport.</td>
+      </tr>
+      <tr id="cicon-width">
+        <td className="text-primary fw-semibold">width<a href="#cicon-width" aria-label="CIcon width permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`number`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">The width attribute defines the horizontal length of an icon.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
