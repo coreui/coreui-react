@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { CCollapse, CNav } from '@coreui/react/src/index'
 
-type TocItem = {
+export type TocItem = {
   url: string
   title: string
   items: TocItem[]
