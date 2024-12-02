@@ -52,11 +52,14 @@ const DOCGEN_OPTIONS = {
  * List of pro components that require special handling.
  */
 const PRO_COMPONENTS = [
+  'CCalendar',
   'CDatePicker',
   'CDateRangePicker',
   'CFormMask',
   'CLoadingButton',
   'CMultiSelect',
+  'CRating',
+  'CRangeSlider',
   'CRating',
   'CSmartPagination',
   'CSmartTable',
@@ -72,13 +75,10 @@ const PRO_COMPONENTS = [
  */
 function escapeMarkdown(text) {
   if (typeof text !== 'string') return text
-  return (
-    text
-      .replaceAll(/(<)/g, String.raw`\$1`)
-      // .replaceAll(/<C(.*)\/>/g, '`<C$1/>`')
-      .replaceAll('\n', '<br/>')
-      .replaceAll(/`([^`]+)`/g, '<code>{`$1`}</code>')
-  )
+  return text
+    .replaceAll(/(<)/g, String.raw`\$1`)
+    .replaceAll('\n', '<br/>')
+    .replaceAll(/`([^`]+)`/g, '<code>{`$1`}</code>')
 }
 
 /**
@@ -190,10 +190,10 @@ async function createMdx(file, component) {
   let content = `\n\`\`\`jsx\n`
   const importPathParts = relativeFilename.split('/')
   if (importPathParts.length > 1) {
-    content += `import { ${component.displayName} } from '@coreui/${importPathParts[1]}'\n`
+    content += `import { ${component.displayName} } from '@coreui/${importPathParts[0]}'\n`
   }
   content += `// or\n`
-  content += `import ${component.displayName} from '@coreui${relativeFilename.replace('.tsx', '')}'\n`
+  content += `import ${component.displayName} from '@coreui/${relativeFilename.replace('.tsx', '')}'\n`
   content += `\`\`\`\n\n`
 
   const sortedProps = Object.entries(component.props).sort(([a], [b]) => a.localeCompare(b))
