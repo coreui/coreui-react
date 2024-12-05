@@ -19,6 +19,7 @@ export interface ExampleSnippetProps {
   code: string | CodeSnippets
   codeSandbox?: boolean
   componentName?: string
+  pro?: boolean
   stackBlitz?: boolean
 }
 
@@ -28,6 +29,7 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
   code,
   codeSandbox = true,
   componentName,
+  pro = false,
   stackBlitz = true,
 }) => {
   const [language, setLanguage] = useState<'js' | 'ts'>('js')
@@ -87,9 +89,10 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
                 onClick={() =>
                   openCodeSandboxProject({
                     name: React.isValidElement(children) && (children as any).type?.name,
-                    language: language,
+                    language,
                     code: language === 'js' ? codeJS : codeTS || '',
                     componentName,
+                    pro,
                   })
                 }
                 disabled={language === 'ts' && !hasTS}
@@ -107,9 +110,10 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
                 onClick={() =>
                   openStackBlitzProject({
                     name: React.isValidElement(children) && (children as any).type?.name,
-                    language: language,
+                    language,
                     code: language === 'js' ? codeJS : codeTS || '',
                     componentName,
+                    pro,
                   })
                 }
                 disabled={language === 'ts' && !hasTS}

@@ -6,7 +6,7 @@ export interface ProjectOptions {
   componentName?: string
   language: 'js' | 'ts'
   name: string
-  pro?: boolean
+  pro: boolean
 }
 
 // Function to generate title
@@ -23,10 +23,17 @@ export const generateDescription = (componentName?: string): string => {
 }
 
 // Function to generate dependencies
-export const getDependencies = (language: 'js' | 'ts'): Record<string, string> => {
+export const getDependencies = (language: 'js' | 'ts', pro: boolean): Record<string, string> => {
   const dependencies: Record<string, string> = {
-    '@coreui/coreui': 'latest',
-    '@coreui/react': 'latest',
+    ...(pro
+      ? {
+          '@coreui/coreui-pro': 'latest',
+          '@coreui/react-pro': 'latest',
+        }
+      : {
+          '@coreui/coreui': 'latest',
+          '@coreui/react': 'latest',
+        }),
     '@popperjs/core': 'latest',
     react: 'latest',
     'react-dom': 'latest',
@@ -55,22 +62,23 @@ export const getScripts = (): Record<string, string> => {
 // Function to generate index.html content
 export const generateIndexHTML = (title: string): string => {
   return `<!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <title>${title}</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-      <div id="root"></div>
-    </body>
-  </html>`
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <title>${title}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      </head>
+      <body>
+        <div id="root"></div>
+      </body>
+    </html>`
 }
 
 // Function to generate index.js or index.tsx content
 export const generateIndexJS = (
   name: string,
   language: 'js' | 'ts',
+  pro: boolean,
   templateType: 'codesandbox' | 'stackblitz',
 ): string => {
   const importReactDOM =
@@ -98,9 +106,9 @@ export const generateIndexJS = (
 
   return `import React from 'react';
   ${importReactDOM}
-  import '@coreui/coreui/dist/css/coreui.min.css';
+  import '@coreui/${pro ? 'coreui-pro' : 'coreui'}/dist/css/coreui.min.css';
   import { ${name} } from './${name}.${language}x';
-  
+    
   ${renderMethod}`
 }
 
@@ -109,6 +117,7 @@ export const generatePackageJSON = (
   title: string,
   description: string,
   language: 'js' | 'ts',
+  pro: boolean,
   templateType: 'codesandbox' | 'stackblitz',
 ): string => {
   const indexExtension = language === 'ts' ? 'tsx' : 'js'
@@ -119,9 +128,9 @@ export const generatePackageJSON = (
     description,
     main: templateType === 'codesandbox' ? `src/index.${indexExtension}` : `index.js`,
     scripts: getScripts(),
-    dependencies: getDependencies(language),
+    dependencies: getDependencies(language, pro),
     ...(templateType === 'stackblitz' && {
-      devDependencies: language === 'ts' ? getDependencies(language) : {},
+      devDependencies: language === 'ts' ? getDependencies(language, pro) : {},
     }),
   }
 

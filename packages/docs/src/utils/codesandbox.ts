@@ -16,7 +16,7 @@ interface CodeSandboxOptions extends ProjectOptions {
 
 // Function to open a CodeSandbox project
 export const openCodeSandboxProject = async (options: CodeSandboxOptions) => {
-  const { code, componentName, language, name } = options
+  const { code, componentName, language, name, pro = false } = options
 
   const title = generateTitle(componentName)
   const description = generateDescription(componentName)
@@ -24,8 +24,8 @@ export const openCodeSandboxProject = async (options: CodeSandboxOptions) => {
 
   const indexHTML = generateIndexHTML(title)
   const indexExtension = language === 'ts' ? 'tsx' : 'js'
-  const indexJS = generateIndexJS(name, language, 'codesandbox')
-  const packageJSON = generatePackageJSON(title, description, language, 'codesandbox')
+  const indexJS = generateIndexJS(name, language, pro, 'codesandbox')
+  const packageJSON = generatePackageJSON(title, description, language, pro, 'codesandbox')
 
   // Define the files structure
   const files: Record<string, { content: string }> = {
