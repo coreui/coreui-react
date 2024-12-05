@@ -51,14 +51,14 @@ export const CAccordionBody = forwardRef<HTMLDivElement, CAccordionBodyProps>(
   ({ children, className, customClassNames, ...rest }, ref) => {
     const { id, visible } = useContext(CAccordionItemContext)
 
-    const _classNames = mergeClassNames<typeof ACCORDION_BODY_CLASS_NAMES>(
+    const mergedClassNames = mergeClassNames<typeof ACCORDION_BODY_CLASS_NAMES>(
       ACCORDION_BODY_CLASS_NAMES,
       customClassNames,
     )
 
     return (
-      <CCollapse id={id} className={_classNames.ACCORDION_COLLAPSE} visible={visible}>
-        <div className={classNames(_classNames.ACCORDION_BODY, className)} {...rest} ref={ref}>
+      <CCollapse id={id} className={mergedClassNames.ACCORDION_COLLAPSE} visible={visible}>
+        <div className={classNames(mergedClassNames.ACCORDION_BODY, className)} {...rest} ref={ref}>
           {children}
         </div>
       </CCollapse>

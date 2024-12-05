@@ -89,7 +89,7 @@ export const CAccordion = forwardRef<HTMLDivElement, CAccordionProps>(
   ) => {
     const [_activeItemKey, setActiveKey] = useState(activeItemKey)
 
-    const _classNames = mergeClassNames<typeof ACCORDION_CLASS_NAMES>(
+    const mergedClassNames = mergeClassNames<typeof ACCORDION_CLASS_NAMES>(
       ACCORDION_CLASS_NAMES,
       customClassNames,
     )
@@ -97,8 +97,8 @@ export const CAccordion = forwardRef<HTMLDivElement, CAccordionProps>(
     return (
       <div
         className={classNames(
-          _classNames.ACCORDION,
-          { [_classNames.ACCORDION_FLUSH]: flush },
+          mergedClassNames.ACCORDION,
+          { [mergedClassNames.ACCORDION_FLUSH]: flush },
           className,
         )}
         {...rest}

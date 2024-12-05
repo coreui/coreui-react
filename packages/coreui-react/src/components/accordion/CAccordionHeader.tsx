@@ -43,13 +43,15 @@ export const ACCORDION_HEADER_CLASS_NAMES = {
 
 export const CAccordionHeader = forwardRef<HTMLDivElement, CAccordionHeaderProps>(
   ({ children, className, customClassNames, ...rest }, ref) => {
-    const _classNames = mergeClassNames<typeof ACCORDION_HEADER_CLASS_NAMES>(
+    const mergedClassNames = mergeClassNames<typeof ACCORDION_HEADER_CLASS_NAMES>(
       ACCORDION_HEADER_CLASS_NAMES,
       customClassNames,
     )
     return (
-      <div className={classNames(_classNames.ACCORDION_HEADER, className)} {...rest} ref={ref}>
-        <CAccordionButton className={_classNames.ACCORDION_HEADER}>{children}</CAccordionButton>
+      <div className={classNames(mergedClassNames.ACCORDION_HEADER, className)} {...rest} ref={ref}>
+        <CAccordionButton className={mergedClassNames.ACCORDION_HEADER}>
+          {children}
+        </CAccordionButton>
       </div>
     )
   },

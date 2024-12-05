@@ -36,12 +36,17 @@ export const CLASS_NAMES = {
 export const CAccordionButton = forwardRef<HTMLButtonElement, CAccordionButtonProps>(
   ({ children, className, customClassNames, ...rest }, ref) => {
     const { id, visible, setVisible } = useContext(CAccordionItemContext)
-    const _classNames = mergeClassNames<typeof CLASS_NAMES>(CLASS_NAMES, customClassNames)
+
+    const mergedClassNames = mergeClassNames<typeof CLASS_NAMES>(CLASS_NAMES, customClassNames)
 
     return (
       <button
         type="button"
-        className={classNames(_classNames.ACCORDION_BUTTON, { collapsed: !visible }, className)}
+        className={classNames(
+          mergedClassNames.ACCORDION_BUTTON,
+          { collapsed: !visible },
+          className,
+        )}
         aria-controls={id}
         aria-expanded={visible}
         onClick={() => setVisible(!visible)}

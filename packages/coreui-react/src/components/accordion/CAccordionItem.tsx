@@ -65,13 +65,15 @@ export const CAccordionItem = forwardRef<HTMLDivElement, CAccordionItemProps>(
     const { _activeItemKey, alwaysOpen, setActiveKey } = useContext(CAccordionContext)
     const [visible, setVisible] = useState(Boolean(_activeItemKey === _itemKey.current))
 
-    const _classNames = mergeClassNames<typeof ACCORDION_ITEM_CLASS_NAMES>(
+    const mergedClassNames = mergeClassNames<typeof ACCORDION_ITEM_CLASS_NAMES>(
       ACCORDION_ITEM_CLASS_NAMES,
       customClassNames,
     )
 
     useEffect(() => {
-      !alwaysOpen && visible && setActiveKey(_itemKey.current)
+      if (!alwaysOpen && visible) {
+        setActiveKey(_itemKey.current)
+      }
     }, [visible])
 
     useEffect(() => {
@@ -79,7 +81,7 @@ export const CAccordionItem = forwardRef<HTMLDivElement, CAccordionItemProps>(
     }, [_activeItemKey])
 
     return (
-      <div className={classNames(_classNames.ACCORDION_ITEM, className)} {...rest} ref={ref}>
+      <div className={classNames(mergedClassNames.ACCORDION_ITEM, className)} {...rest} ref={ref}>
         <CAccordionItemContext.Provider value={{ id, setVisible, visible }}>
           {children}
         </CAccordionItemContext.Provider>
