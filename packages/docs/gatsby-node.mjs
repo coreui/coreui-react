@@ -34,7 +34,7 @@ export const createPages = async ({
 }) => {
   const result = await graphql(`
     query {
-      allMdx {
+      allMdx(filter: { fields: { slug: { regex: "/^(?!/api/).*/" } } }) {
         nodes {
           id
           fields {

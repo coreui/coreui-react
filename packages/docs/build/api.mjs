@@ -7,18 +7,21 @@ import { writeFile, mkdir } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parse } from 'react-docgen-typescript'
+import showdown from 'showdown'
 
 /**
  * Derive __dirname in ESM
  */
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+const converter = new showdown.Converter({ simpleLineBreaks: true })
 
 /**
  * Glob patterns to locate .tsx files for documentation.
  * Adjust these patterns based on your project structure.
  */
 const GLOB_PATTERNS = [
+  // '**/src/components/date-picker/*.tsx',
   '**/src/**/*.tsx',
   '../node_modules/@coreui/icons-react/src/**/*.tsx',
   '../node_modules/@coreui/react-chartjs/src/**/*.tsx',
@@ -44,7 +47,6 @@ const EXCLUDED_FILES = [] // Currently unused, but can be utilized if needed
  * Options for react-docgen-typescript parser.
  */
 const DOCGEN_OPTIONS = {
-  savePropValueAsString: true,
   shouldIncludePropTagMap: true,
 }
 
@@ -52,17 +54,31 @@ const DOCGEN_OPTIONS = {
  * List of pro components that require special handling.
  */
 const PRO_COMPONENTS = [
+  'CCalendar',
   'CDatePicker',
   'CDateRangePicker',
   'CFormMask',
   'CLoadingButton',
   'CMultiSelect',
   'CRating',
+  'CRangeSlider',
+  'CRating',
   'CSmartPagination',
   'CSmartTable',
   'CTimePicker',
   'CVirtualScroller',
 ]
+
+const TEXT_REPLACEMENTS = {
+  CDatePicker: {
+    description: [{ 'React Calendar': 'React Date Picker' }],
+    example: [{ CCalendar: 'CDatePicker' }],
+  },
+  CDateRangePicker: {
+    description: [{ 'React Calendar': 'React Date Range Picker' }],
+    example: [{ CCalendar: 'CDateRangePicker' }],
+  },
+}
 
 /**
  * Escapes special characters in text to prevent Markdown rendering issues.
@@ -72,13 +88,10 @@ const PRO_COMPONENTS = [
  */
 function escapeMarkdown(text) {
   if (typeof text !== 'string') return text
-  return (
-    text
-      .replaceAll(/(<)/g, String.raw`\$1`)
-      // .replaceAll(/<C(.*)\/>/g, '`<C$1/>`')
-      .replaceAll('\n', '<br/>')
-      .replaceAll(/`([^`]+)`/g, '<code>{`$1`}</code>')
-  )
+  return text
+    .replaceAll(/(<)/g, String.raw`\$1`)
+    .replaceAll('\n', '<br/>')
+    .replaceAll(/`([^`]+)`/g, '<code>{`$1`}</code>')
 }
 
 /**
@@ -110,6 +123,10 @@ function getRelativeFilename(file) {
  * @throws {Error} Throws an error if there are unmatched braces or parentheses in the input.
  */
 function splitOutsideBracesAndParentheses(input) {
+  if (input.endsWith('...')) {
+    return [input]
+  }
+
   const parts = []
   let currentPart = ''
   let braceDepth = 0 // Tracks depth of curly braces {}
@@ -172,6 +189,23 @@ function splitOutsideBracesAndParentheses(input) {
   return parts
 }
 
+function replaceText(componenName, keyName, text) {
+  const keyNames = Object.keys(TEXT_REPLACEMENTS)
+
+  if (keyNames.includes(componenName)) {
+    const replacements = TEXT_REPLACEMENTS[componenName][keyName]
+    for (const replacement of replacements) {
+      for (const [key, value] of Object.entries(replacement)) {
+        if (text && key && value) {
+          return text.replaceAll(key, value)
+        }
+      }
+    }
+  } else {
+    return text
+  }
+}
+
 /**
  * Creates an MDX file with the component's API documentation.
  *
@@ -190,10 +224,10 @@ async function createMdx(file, component) {
   let content = `\n\`\`\`jsx\n`
   const importPathParts = relativeFilename.split('/')
   if (importPathParts.length > 1) {
-    content += `import { ${component.displayName} } from '@coreui/${importPathParts[1]}'\n`
+    content += `import { ${component.displayName} } from '@coreui/${importPathParts[0]}'\n`
   }
   content += `// or\n`
-  content += `import ${component.displayName} from '@coreui${relativeFilename.replace('.tsx', '')}'\n`
+  content += `import ${component.displayName} from '@coreui/${relativeFilename.replace('.tsx', '')}'\n`
   content += `\`\`\`\n\n`
 
   const sortedProps = Object.entries(component.props).sort(([a], [b]) => a.localeCompare(b))
@@ -240,7 +274,9 @@ async function createMdx(file, component) {
     const deprecated = propInfo.tags?.deprecated
       ? `<span className="badge bg-success">Deprecated ${propInfo.tags.since}</span>`
       : ''
-    const description = propInfo.description || '-'
+    const description = propInfo.description
+      ? replaceText(component.displayName, 'description', propInfo.description)
+      : '-'
 
     const type = propInfo.type
       ? propInfo.type.name.includes('ReactElement')
@@ -248,6 +284,9 @@ async function createMdx(file, component) {
         : propInfo.type.name
       : ''
     const defaultValue = propInfo.defaultValue ? `\`${propInfo.defaultValue.value}\`` : `undefined`
+    const example = propInfo.tags?.example
+      ? replaceText(component.displayName, 'example', propInfo.tags?.example)
+      : false
 
     // Format types as inline code
     const types = splitOutsideBracesAndParentheses(type)
@@ -263,7 +302,16 @@ async function createMdx(file, component) {
     content += `        <td>${escapeMarkdown(types)}</td>\n`
     content += `      </tr>\n`
     content += `      <tr>\n`
-    content += `        <td colSpan="3">${escapeMarkdown(description)}${propInfo.tags?.example ? `<br /><JSXDocs code={\`${propInfo.tags.example}\`} />` : ''}</td>\n`
+    content += `        <td colSpan="3">\n`
+    content += `          ${converter
+      .makeHtml(description)
+      .replaceAll(/<code>(.*?)<\/code>/g, '<code>{`$1`}</code>')}\n`
+
+    if (example) {
+      content += `        <JSXDocs code={\`${example.trim()}\`} />\n`
+    }
+
+    content += `        </td>\n`
     content += `      </tr>\n`
 
     if (isLast) {
