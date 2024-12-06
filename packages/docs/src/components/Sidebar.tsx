@@ -24,7 +24,7 @@ const Sidebar: FC = () => {
           size="lg"
           visible={context.sidebarVisible}
           onVisibleChange={(value: boolean) => {
-            context.setSidebarVisible && context.setSidebarVisible(value)
+            context.setSidebarVisible?.(value)
           }}
         >
           <CSidebarBrand className="justify-content-start ps-3">

@@ -49,6 +49,36 @@ interface OtherFrameworks {
   }
 }
 
+interface Fields {
+  slug: string
+}
+
+interface Node {
+  id: string
+  fields: Fields
+}
+
+interface Item {
+  node: Node
+}
+
+const findShortestSlug = (items: Item[]): string | undefined => {
+  if (items.length === 0) {
+    return undefined
+  }
+
+  let shortestSlug = items[0].node.fields.slug
+
+  for (const item of items) {
+    const currentSlug = item.node.fields.slug
+    if (currentSlug.length < shortestSlug.length) {
+      shortestSlug = currentSlug
+    }
+  }
+
+  return shortestSlug
+}
+
 const humanize = (text: string): string => {
   return text
     .split('-')
@@ -57,44 +87,62 @@ const humanize = (text: string): string => {
 }
 
 const DocsNav: FC<{
-  route: string
   locationPathname: string
-  hasNavAPI: boolean
-  hasNavStyling: boolean
-  hasNavAccessibility: boolean
-}> = ({ route, locationPathname, hasNavAPI, hasNavStyling, hasNavAccessibility }) => (
-  <CNav className="ms-lg-4 docs-nav bg-body" variant="underline-border">
-    <CNavItem>
-      <CNavLink href={route} active={route === locationPathname}>
-        Features
-      </CNavLink>
-    </CNavItem>
-    {hasNavAPI && (
+  nodes: Item[]
+}> = ({ locationPathname, nodes }) => {
+  const parentPathname = findShortestSlug(nodes)
+  const hasNavAccessibility = useMemo(
+    () => nodes.some((edge) => edge.node.fields.slug.includes('accessibility')),
+    [nodes],
+  )
+  const hasNavAPI = useMemo(
+    () => nodes.some((edge) => edge.node.fields.slug.includes('api')),
+    [nodes],
+  )
+  const hasNavStyling = useMemo(
+    () => nodes.some((edge) => edge.node.fields.slug.includes('styling')),
+    [nodes],
+  )
+  return (
+    <CNav className="ms-lg-4 docs-nav bg-body" variant="underline-border">
       <CNavItem>
-        <CNavLink href={`${route}api/`} active={`${route}api/` === locationPathname}>
-          API
+        <CNavLink href={parentPathname} active={parentPathname === locationPathname}>
+          Features
         </CNavLink>
       </CNavItem>
-    )}
-    {hasNavStyling && (
-      <CNavItem>
-        <CNavLink href={`${route}styling/`} active={`${route}styling/` === locationPathname}>
-          Styling
-        </CNavLink>
-      </CNavItem>
-    )}
-    {hasNavAccessibility && (
-      <CNavItem>
-        <CNavLink
-          href={`${route}accessibility/`}
-          active={`${route}accessibility/` === locationPathname}
-        >
-          Accessibility
-        </CNavLink>
-      </CNavItem>
-    )}
-  </CNav>
-)
+      {hasNavAPI && (
+        <CNavItem>
+          <CNavLink
+            href={`${parentPathname}api/`}
+            active={`${parentPathname}api/` === locationPathname}
+          >
+            API
+          </CNavLink>
+        </CNavItem>
+      )}
+      {hasNavStyling && (
+        <CNavItem>
+          <CNavLink
+            href={`${parentPathname}styling/`}
+            active={`${parentPathname}styling/` === locationPathname}
+          >
+            Styling
+          </CNavLink>
+        </CNavItem>
+      )}
+      {hasNavAccessibility && (
+        <CNavItem>
+          <CNavLink
+            href={`${parentPathname}accessibility/`}
+            active={`${parentPathname}accessibility/` === locationPathname}
+          >
+            Accessibility
+          </CNavLink>
+        </CNavItem>
+      )}
+    </CNav>
+  )
+}
 
 const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext }) => {
   const frontmatter = pageContext.frontmatter || {}
@@ -113,19 +161,6 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
   )
   const otherFrameworks: OtherFrameworks = useMemo(() => ({ ...jsonData }), [])
   const hasNav = useMemo(() => data?.allMdx?.edges.length > 1, [data])
-  const hasNavAccessibility = useMemo(
-    () =>
-      hasNav && data.allMdx.edges.some((edge) => edge.node.fields.slug.includes('accessibility')),
-    [hasNav, data],
-  )
-  const hasNavAPI = useMemo(
-    () => hasNav && data.allMdx.edges.some((edge) => edge.node.fields.slug.includes('api')),
-    [hasNav, data],
-  )
-  const hasNavStyling = useMemo(
-    () => hasNav && data.allMdx.edges.some((edge) => edge.node.fields.slug.includes('styling')),
-    [hasNav, data],
-  )
 
   return (
     <>
@@ -133,13 +168,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
       <CContainer lg className="my-md-4 flex-grow-1">
         <main className="docs-main order-1">
           {hasNav && (
-            <DocsNav
-              route={route}
-              locationPathname={location.pathname}
-              hasNavAPI={hasNavAPI}
-              hasNavStyling={hasNavStyling}
-              hasNavAccessibility={hasNavAccessibility}
-            />
+            <DocsNav locationPathname={location.pathname} nodes={data?.allMdx?.edges as Item[]} />
           )}
           <div className="docs-intro ps-lg-4">
             {name && name !== title ? (
