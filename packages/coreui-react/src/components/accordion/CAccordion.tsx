@@ -96,11 +96,10 @@ export const CAccordion = forwardRef<HTMLDivElement, CAccordionProps>(
 
     return (
       <div
-        className={classNames(
-          mergedClassNames.ACCORDION,
-          { [mergedClassNames.ACCORDION_FLUSH]: flush },
+        className={classNames(mergedClassNames.ACCORDION, {
+          [mergedClassNames.ACCORDION_FLUSH]: flush,
           className,
-        )}
+        })}
         {...rest}
         ref={ref}
       >
@@ -117,6 +116,7 @@ CAccordion.propTypes = {
   activeItemKey: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   children: PropTypes.node,
   className: PropTypes.string,
+  customClassNames: PropTypes.object,
   flush: PropTypes.bool,
 }
 

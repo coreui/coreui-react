@@ -21,7 +21,11 @@ import CAccordion from '@coreui/react/src/components/accordion/CAccordion'
         <td><code>{`string`}</code>, <code>{`number`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Determines which accordion item is currently active (expanded) by default.<br/>Accepts a number or string corresponding to the <code>{`itemKey`}</code> of the desired accordion item.<br /><JSXDocs code={`<CAccordion activeItemKey="1">...</CAccordion>`} /></td>
+        <td colSpan="3">
+          <p>Determines which accordion item is currently active (expanded) by default.<br />
+Accepts a number or string corresponding to the <code>{`itemKey`}</code> of the desired accordion item.</p>
+        <JSXDocs code={`<CAccordion activeItemKey="1">...</CAccordion>`} />
+        </td>
       </tr>
       <tr id="caccordion-alwaysOpen">
         <td className="text-primary fw-semibold">alwaysOpen<a href="#caccordion-alwaysOpen" aria-label="CAccordion alwaysOpen permalink" className="anchor-link after">#</a></td>
@@ -29,15 +33,22 @@ import CAccordion from '@coreui/react/src/components/accordion/CAccordion'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">When set to <code>{`true`}</code>, multiple accordion items within the React Accordion can be open simultaneously.<br/>This is ideal for scenarios where users need to view multiple sections at once without collapsing others.<br /><JSXDocs code={`<CAccordion alwaysOpen>...</CAccordion>`} /></td>
+        <td colSpan="3">
+          <p>When set to <code>{`true`}</code>, multiple accordion items within the React Accordion can be open simultaneously.<br />
+This is ideal for scenarios where users need to view multiple sections at once without collapsing others.</p>
+        <JSXDocs code={`<CAccordion alwaysOpen>...</CAccordion>`} />
+        </td>
       </tr>
       <tr id="caccordion-className">
         <td className="text-primary fw-semibold">className<a href="#caccordion-className" aria-label="CAccordion className permalink" className="anchor-link after">#</a></td>
         <td>undefined</td>
-        <td><code>{`string`}</code></td>
+        <td><code>{`string`}</code>, <code>{`Partial\<{ ACCORDION: string; ACCORDION_FLUSH: string; }>`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Allows you to apply custom CSS classes to the React Accordion for enhanced styling and theming.<br /><JSXDocs code={`<CAccordion className="my-custom-accordion">...</CAccordion>`} /></td>
+        <td colSpan="3">
+          <p>Allows you to apply custom CSS classes to the React Accordion for enhanced styling and theming.</p>
+        <JSXDocs code={`<CAccordion className="my-custom-accordion">...</CAccordion>`} />
+        </td>
       </tr>
       <tr id="caccordion-customClassNames">
         <td className="text-primary fw-semibold">customClassNames<a href="#caccordion-customClassNames" aria-label="CAccordion customClassNames permalink" className="anchor-link after">#</a></td>
@@ -45,11 +56,19 @@ import CAccordion from '@coreui/react/src/components/accordion/CAccordion'
         <td><code>{`Partial\<{ ACCORDION: string; ACCORDION_FLUSH: string; }>`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Allows overriding or extending the default CSS class names used in the component.<br/><br/>- <code>{`ACCORDION`}</code>: Base class for the accordion component.<br/>- <code>{`ACCORDION_FLUSH`}</code>: Class applied when the <code>{`flush`}</code> prop is set to true, ensuring an edge-to-edge layout.<br/><br/>Use this prop to customize the styles of specific parts of the accordion.<br /><JSXDocs code={`const customClasses = {
+        <td colSpan="3">
+          <p>Allows overriding or extending the default CSS class names used in the component.</p>
+<ul>
+<li><code>{`ACCORDION`}</code>: Base class for the accordion component.</li>
+<li><code>{`ACCORDION_FLUSH`}</code>: Class applied when the <code>{`flush`}</code> prop is set to true, ensuring an edge-to-edge layout.</li>
+</ul>
+<p>Use this prop to customize the styles of specific parts of the accordion.</p>
+        <JSXDocs code={`const customClasses = {
   ACCORDION: 'custom-accordion',
   ACCORDION_FLUSH: 'custom-accordion-flush'
 }
-<CAccordion customClassNames={customClasses}>...</CAccordion>`} /></td>
+<CAccordion customClassNames={customClasses}>...</CAccordion>`} />
+        </td>
       </tr>
       <tr id="caccordion-flush">
         <td className="text-primary fw-semibold">flush<a href="#caccordion-flush" aria-label="CAccordion flush permalink" className="anchor-link after">#</a></td>
@@ -57,7 +76,11 @@ import CAccordion from '@coreui/react/src/components/accordion/CAccordion'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">When <code>{`flush`}</code> is set to <code>{`true`}</code>, the React Accordion renders edge-to-edge with its parent container,<br/>creating a seamless and modern look ideal for minimalist designs.<br /><JSXDocs code={`<CAccordion flush>...</CAccordion>`} /></td>
+        <td colSpan="3">
+          <p>When <code>{`flush`}</code> is set to <code>{`true`}</code>, the React Accordion renders edge-to-edge with its parent container,<br />
+creating a seamless and modern look ideal for minimalist designs.</p>
+        <JSXDocs code={`<CAccordion flush>...</CAccordion>`} />
+        </td>
       </tr>
     </tbody>
   </table>

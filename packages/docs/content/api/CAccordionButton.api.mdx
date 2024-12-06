@@ -21,7 +21,9 @@ import CAccordionButton from '@coreui/react/src/components/accordion/CAccordionB
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Styles the clickable element in the accordion header.</td>
+        <td colSpan="3">
+          <p>Styles the clickable element in the accordion header.</p>
+        </td>
       </tr>
       <tr id="caccordionbutton-customClassNames">
         <td className="text-primary fw-semibold">customClassNames<a href="#caccordionbutton-customClassNames" aria-label="CAccordionButton customClassNames permalink" className="anchor-link after">#</a></td>
@@ -29,10 +31,18 @@ import CAccordionButton from '@coreui/react/src/components/accordion/CAccordionB
         <td><code>{`Partial\<{ ACCORDION_BUTTON: string; }>`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Allows overriding or extending the default CSS class names used in the accordion button component.<br/>Accepts a partial object matching the shape of <code>{`CLASS_NAMES`}</code>, which includes:<br/><br/>- <code>{`ACCORDION_BUTTON`}</code>: Base class for the accordion button.<br/><br/>Use this prop to customize the styles of the accordion button.<br /><JSXDocs code={`const customClasses = {
+        <td colSpan="3">
+          <p>Allows overriding or extending the default CSS class names used in the accordion button component.<br />
+Accepts a partial object matching the shape of <code>{`CLASS_NAMES`}</code>, which includes:</p>
+<ul>
+<li><code>{`ACCORDION_BUTTON`}</code>: Base class for the accordion button.</li>
+</ul>
+<p>Use this prop to customize the styles of the accordion button.</p>
+        <JSXDocs code={`const customClasses = {
   ACCORDION_BUTTON: 'custom-button-class',
 }
-<CAccordionButton customClassNames={customClasses}>...</CAccordionButton>`} /></td>
+<CAccordionButton customClassNames={customClasses}>...</CAccordionButton>`} />
+        </td>
       </tr>
     </tbody>
   </table>
