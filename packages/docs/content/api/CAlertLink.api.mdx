@@ -21,7 +21,28 @@ import CAlertLink from '@coreui/react/src/components/alert/CAlertLink'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the base component.</td>
+        <td colSpan="3">
+          <p>A string of additional CSS class names to apply to the alert link component.</p>
+        <JSXDocs code={`<CAlertLink className="my-custom-link">Custom Styled Link</CAlertLink>`} />
+        </td>
+      </tr>
+      <tr id="calertlink-customClassNames">
+        <td className="text-primary fw-semibold">customClassNames<a href="#calertlink-customClassNames" aria-label="CAlertLink customClassNames permalink" className="anchor-link after">#</a><span className="badge bg-success">v5.0.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`Partial\<{ ALERT_LINK: string; }>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Custom class names to override or extend the default CSS classes used within the <code>{`CAlertLink`}</code> component.<br />
+Each key corresponds to a specific part of the React Alert Link component, allowing for granular styling control.</p>
+        <JSXDocs code={`const customClasses = {
+  ALERT_LINK: 'my-custom-alert-link',
+}
+
+<CAlertLink customClassNames={customClasses} href="#">
+  Custom Class Alert Link
+</CAlertLink>`} />
+        </td>
       </tr>
     </tbody>
   </table>

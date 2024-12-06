@@ -17,11 +17,22 @@ import CAlertHeading from '@coreui/react/src/components/alert/CAlertHeading'
     <tbody>
       <tr id="calertheading-as">
         <td className="text-primary fw-semibold">as<a href="#calertheading-as" aria-label="CAlertHeading as permalink" className="anchor-link after">#</a></td>
-        <td>undefined</td>
+        <td><code>{`'h4'`}</code></td>
         <td><code>{`(ElementType & "symbol")`}</code>, <code>{`(ElementType & "object")`}</code>, <code>{`(ElementType & "h4")`}</code>, <code>{`(ElementType & "slot")`}</code>, <code>{`(ElementType & "style")`}</code>, <code>{`... 174 more ...`}</code>, <code>{`(ElementType & FunctionComponent\<...>)`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Component used for the root node. Either a string to use a HTML element or a component.</td>
+        <td colSpan="3">
+          <p>The component used for the root node. It can be a string representing a HTML element or a React component.</p>
+        <JSXDocs code={`// Using default 'h4' element
+<CAlertHeading>Alert Heading</CAlertHeading>
+
+// Using a custom component
+const CustomHeading = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>((props, ref) => (
+  <div ref={ref} {...props} />
+))
+
+<CAlertHeading as={CustomHeading}>Custom Alert Heading</CAlertHeading>`} />
+        </td>
       </tr>
       <tr id="calertheading-className">
         <td className="text-primary fw-semibold">className<a href="#calertheading-className" aria-label="CAlertHeading className permalink" className="anchor-link after">#</a></td>
@@ -29,7 +40,28 @@ import CAlertHeading from '@coreui/react/src/components/alert/CAlertHeading'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the base component.</td>
+        <td colSpan="3">
+          <p>A string of additional CSS class names to apply to the React Alert Heading component.</p>
+        <JSXDocs code={`<CAlertHeading className="my-custom-class">Custom Class Alert Heading</CAlertHeading>`} />
+        </td>
+      </tr>
+      <tr id="calertheading-customClassNames">
+        <td className="text-primary fw-semibold">customClassNames<a href="#calertheading-customClassNames" aria-label="CAlertHeading customClassNames permalink" className="anchor-link after">#</a><span className="badge bg-success">v5.0.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`Partial\<{ ALERT_HEADING: string; }>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Custom class names to override or extend the default CSS classes used within the <code>{`CAlertHeading`}</code> component.<br />
+Each key corresponds to a specific part of the React Alert Heading component, allowing for granular styling control.</p>
+        <JSXDocs code={`const customClasses = {
+  ALERT_HEADING: 'my-custom-alert-heading',
+}
+
+<CAlertHeading customClassNames={customClasses}>
+  Custom Styled Alert Heading
+</CAlertHeading>`} />
+        </td>
       </tr>
     </tbody>
   </table>

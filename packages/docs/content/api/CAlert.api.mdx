@@ -15,13 +15,27 @@ import CAlert from '@coreui/react/src/components/alert/CAlert'
       </tr>
     </thead>
     <tbody>
+      <tr id="calert-animation">
+        <td className="text-primary fw-semibold">animation<a href="#calert-animation" aria-label="CAlert animation permalink" className="anchor-link after">#</a><span className="badge bg-success">5.5.0+</span></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Apply a CSS fade transition to the alert.</p>
+        <JSXDocs code={`<CAlert animation={false} color="success">No animation alert</CAlert>`} />
+        </td>
+      </tr>
       <tr id="calert-className">
         <td className="text-primary fw-semibold">className<a href="#calert-className" aria-label="CAlert className permalink" className="anchor-link after">#</a></td>
         <td>undefined</td>
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the component.</td>
+        <td colSpan="3">
+          <p>A string of additional CSS class names to apply to the alert component.</p>
+        <JSXDocs code={`<CAlert className="my-custom-class" color="danger">Custom Class Alert</CAlert>`} />
+        </td>
       </tr>
       <tr id="calert-color">
         <td className="text-primary fw-semibold">color<a href="#calert-color" aria-label="CAlert color permalink" className="anchor-link after">#</a></td>
@@ -29,7 +43,27 @@ import CAlert from '@coreui/react/src/components/alert/CAlert'
         <td><code>{`'primary'`}</code>, <code>{`'secondary'`}</code>, <code>{`'success'`}</code>, <code>{`'danger'`}</code>, <code>{`'warning'`}</code>, <code>{`'info'`}</code>, <code>{`'dark'`}</code>, <code>{`'light'`}</code>, <code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Sets the color context of the component to one of CoreUI’s themed colors.</td>
+        <td colSpan="3">
+          <p>Sets the color context of the component to one of CoreUI’s themed colors.</p>
+        <JSXDocs code={`<CAlert color="warning">Warning Alert</CAlert>`} />
+        </td>
+      </tr>
+      <tr id="calert-customClassNames">
+        <td className="text-primary fw-semibold">customClassNames<a href="#calert-customClassNames" aria-label="CAlert customClassNames permalink" className="anchor-link after">#</a><span className="badge bg-success">v5.5.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`Partial\<{ ALERT: string; ALERT_DISMISSIBLE: string; }>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Custom class names to override or extend the default CSS classes used within the <code>{`CAlert`}</code> component.<br />
+Each key corresponds to a specific part of the Alert component, allowing for granular styling control.</p>
+        <JSXDocs code={`const customClasses = {
+  ALERT: 'my-custom-alert',
+  ALERT_DISMISSIBLE: 'my-custom-dismissible',
+}
+
+<CAlert customClassNames={customClasses} />`} />
+        </td>
       </tr>
       <tr id="calert-dismissible">
         <td className="text-primary fw-semibold">dismissible<a href="#calert-dismissible" aria-label="CAlert dismissible permalink" className="anchor-link after">#</a></td>
@@ -37,7 +71,12 @@ import CAlert from '@coreui/react/src/components/alert/CAlert'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Optionally add a close button to alert and allow it to self dismiss.</td>
+        <td colSpan="3">
+          <p>Optionally add a close button to the alert and allow it to self-dismiss.</p>
+        <JSXDocs code={`<CAlert dismissible color="success">
+  Dismissible Alert
+</CAlert>`} />
+        </td>
       </tr>
       <tr id="calert-onClose">
         <td className="text-primary fw-semibold">onClose<a href="#calert-onClose" aria-label="CAlert onClose permalink" className="anchor-link after">#</a></td>
@@ -45,7 +84,16 @@ import CAlert from '@coreui/react/src/components/alert/CAlert'
         <td><code>{`() => void`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Callback fired when the component requests to be closed.</td>
+        <td colSpan="3">
+          <p>Callback fired when the alert requests to be closed. This occurs when the close button is clicked.</p>
+        <JSXDocs code={`const handleClose = () => {
+  console.log('Alert closed')
+}
+
+<CAlert dismissible color="danger" onClose={handleClose}>
+  Dismissible Alert with Callback
+</CAlert>`} />
+        </td>
       </tr>
       <tr id="calert-variant">
         <td className="text-primary fw-semibold">variant<a href="#calert-variant" aria-label="CAlert variant permalink" className="anchor-link after">#</a></td>
@@ -53,7 +101,12 @@ import CAlert from '@coreui/react/src/components/alert/CAlert'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Set the alert variant to a solid.</td>
+        <td colSpan="3">
+          <p>Set the alert variant to a solid background. This changes the alert's appearance to have a solid color.</p>
+        <JSXDocs code={`<CAlert variant="solid" color="primary">
+  Solid Variant Alert
+</CAlert>`} />
+        </td>
       </tr>
       <tr id="calert-visible">
         <td className="text-primary fw-semibold">visible<a href="#calert-visible" aria-label="CAlert visible permalink" className="anchor-link after">#</a></td>
@@ -61,7 +114,14 @@ import CAlert from '@coreui/react/src/components/alert/CAlert'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Toggle the visibility of component.</td>
+        <td colSpan="3">
+          <p>Toggle the visibility of the alert component. When set to <code>{`false`}</code>, the alert will be hidden.</p>
+        <JSXDocs code={`const [visible, setVisible] = useState(true)
+
+<CAlert visible={visible} onClose={() => setVisible(false)} color="info">
+  Toggleable Alert
+</CAlert>`} />
+        </td>
       </tr>
     </tbody>
   </table>
