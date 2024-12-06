@@ -1,0 +1,118 @@
+---
+title: React Alert Component
+name: Alert
+description: React alert component gives contextual feedback information for common user operations. The alert component is delivered with a bunch of usable and adjustable alert messages.
+menu: Components
+route: /components/alert/
+other_frameworks: alert
+---
+
+## How to use React Alert Component.
+
+React Alert is prepared for any length of text, as well as an optional close button. For a styling, use one of the **required** contextual `color` props (e.g., `primary`). For inline dismissal, use the [dismissing prop](#dismissing).
+
+import { AlertExample } from './examples/AlertExample.tsx'
+import AlertExampleTS from '!!raw-loader!./examples/AlertExample.tsx'
+
+<ExampleSnippet code={AlertExampleTS} componentName="React Alert">
+  <AlertExample />
+</ExampleSnippet>
+
+<Callout color="info" title="Conveying meaning to assistive technologies">
+  Using color to add meaning only provides a visual indication, which will not be conveyed to
+  users of assistive technologies – such as screen readers. Ensure that information denoted by the
+  color is either obvious from the content itself (e.g. the visible text), or is included through
+  alternative means, such as additional text hidden with the `.visually-hidden` class.
+</Callout>
+
+### Live example
+
+Click the button below to show an alert (hidden with inline styles to start), then dismiss (and destroy) it with the built-in close button.
+
+import { AlertLiveExample } from './examples/AlertLiveExample.tsx'
+import AlertLiveExampleTS from '!!raw-loader!./examples/AlertLiveExample.tsx'
+
+<ExampleSnippet code={AlertLiveExampleTS} componentName="React Alert">
+  <AlertLiveExample />
+</ExampleSnippet>
+
+### Link color
+
+Use the `<CAlertLink>` component to immediately give matching colored links inside any react alert component.
+
+import { AlertLinkColorExample } from './examples/AlertLinkColorExample.tsx'
+import AlertLinkColorExampleTS from '!!raw-loader!./examples/AlertLinkColorExample.tsx'
+
+<ExampleSnippet code={AlertLinkColorExampleTS} componentName="React Alert">
+  <AlertLinkColorExample />
+</ExampleSnippet>
+
+### Additional content
+
+React Alert can also incorporate supplementary components &amp; elements like heading, paragraph, and divider.
+
+import { AlertAdditionalContentExample } from './examples/AlertAdditionalContentExample.tsx'
+import AlertAdditionalContentExampleTS from '!!raw-loader!./examples/AlertAdditionalContentExample.tsx'
+
+<ExampleSnippet code={AlertAdditionalContentExampleTS} componentName="React Alert">
+  <AlertAdditionalContentExample />
+</ExampleSnippet>
+
+### Icons
+
+Similarly, you can use [flexbox utilities](https//coreui.io/docs/4.0/utilities/flex") and [CoreUI Icons](https://icons.coreui.io) to create react alerts with icons. Depending on your icons and content, you may want to add more utilities or custom styles.
+
+import { AlertIcons1Example } from './examples/AlertIcons1Example.tsx'
+import AlertIcons1ExampleTS from '!!raw-loader!./examples/AlertIcons1Example.tsx'
+
+<ExampleSnippet code={AlertIcons1ExampleTS} componentName="React Alert">
+  <AlertIcons1Example />
+</ExampleSnippet>
+
+
+Need more than one icon for your react alerts? Consider using [CoreUI Icons](https://icons.coreui.io).
+
+import { AlertIcons2Example } from './examples/AlertIcons2Example.tsx'
+import AlertIcons2ExampleTS from '!!raw-loader!./examples/AlertIcons2Example.tsx'
+
+<ExampleSnippet code={AlertIcons2ExampleTS} componentName="React Alert">
+  <AlertIcons2Example />
+</ExampleSnippet>
+
+
+### Solid
+
+Use `variant="solid"` to change contextual colors to solid.
+
+import { AlertSolidExample } from './examples/AlertSolidExample.tsx'
+import AlertSolidExampleTS from '!!raw-loader!./examples/AlertSolidExample.tsx'
+
+<ExampleSnippet code={AlertSolidExampleTS} componentName="React Alert">
+  <AlertSolidExample />
+</ExampleSnippet>
+
+### Dismissing
+
+React Alert component can also be easily dismissed. Just add the `dismissible` prop.
+
+import { AlertDismissingExample } from './examples/AlertDismissingExample.tsx'
+import AlertDismissingExampleTS from '!!raw-loader!./examples/AlertDismissingExample.tsx'
+
+<ExampleSnippet code={AlertDismissingExampleTS} componentName="React Alert">
+  <AlertDismissingExample />
+</ExampleSnippet>
+
+
+<Callout color="warning">
+  When an alert is dismissed, the element is completely removed from the page structure. If a
+  keyboard user dismisses the alert using the close button, their focus will suddenly be lost and,
+  depending on the browser, reset to the start of the page/document.
+</Callout>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CAlert /&gt;](./api/#calert)
+- [&lt;CAlertHeading /&gt;](./api/#calertheading)
+- [&lt;CAlertLink /&gt;](./api/#calertlink)
