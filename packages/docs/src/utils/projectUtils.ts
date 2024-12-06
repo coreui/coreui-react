@@ -62,16 +62,16 @@ export const getScripts = (): Record<string, string> => {
 // Function to generate index.html content
 export const generateIndexHTML = (title: string): string => {
   return `<!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <title>${title}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      </head>
-      <body>
-        <div id="root"></div>
-      </body>
-    </html>`
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>${title}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+      <div id="root"></div>
+    </body>
+  </html>`
 }
 
 // Function to generate index.js or index.tsx content
@@ -89,27 +89,27 @@ export const generateIndexJS = (
   const renderMethod =
     templateType === 'codesandbox'
       ? `ReactDOM.render(
-    <React.StrictMode>
-      <div className="p-3">
-        <${name} />
-      </div>
-    </React.StrictMode>,
-    document.getElementById('root')
-  );`
+  <React.StrictMode>
+    <div className="p-3">
+      <${name} />
+    </div>
+  </React.StrictMode>,
+  document.getElementById('root')
+);`
       : `ReactDOM.createRoot(document.querySelector("#root")).render(
-    <React.StrictMode>
-      <div className="p-3">
-        <${name} />
-      </div>
-    </React.StrictMode>
-  );`
+  <React.StrictMode>
+    <div className="p-3">
+      <${name} />
+    </div>
+  </React.StrictMode>
+);`
 
   return `import React from 'react';
-  ${importReactDOM}
-  import '@coreui/${pro ? 'coreui-pro' : 'coreui'}/dist/css/coreui.min.css';
-  import { ${name} } from './${name}.${language}x';
-    
-  ${renderMethod}`
+${importReactDOM}
+import '@coreui/${pro ? 'coreui-pro' : 'coreui'}/dist/css/coreui.min.css';
+import { ${name} } from './${name}.${language}x';
+  
+${renderMethod}`
 }
 
 // Function to generate package.json content
