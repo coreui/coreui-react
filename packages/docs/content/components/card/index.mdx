@@ -2,35 +2,9 @@
 title: React Card Component
 name: Card
 description: React card component provides a flexible and extensible container for displaying content. Card is delivered with a bunch of variants and options.
-menu: Components
-route: /components/card
+route: /components/card/
 other_frameworks: card
 ---
-
-import {
-  CButton,
-  CCard,
-  CCardBody,
-  CCardFooter,
-  CCardGroup,
-  CCardHeader,
-  CCardImage,
-  CCardImageOverlay,
-  CCardLink,
-  CCardSubtitle,
-  CCardTitle,
-  CCardText,
-  CListGroup,
-  CListGroupItem,
-  CCol,
-  CNav,
-  CNavItem,
-  CNavLink,
-  CRow,
-} from '@coreui/react/src/index'
-
-import ReactImg from './../../assets/images/react.jpg'
-import React400Img from './../../assets/images/react400.jpg'
 
 ## About
 
@@ -42,18 +16,12 @@ Cards are built with as little markup and styles as possible but still manage to
 
 Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they'll naturally fill the full width of its parent element.
 
-```jsx preview
-<CCard style={{ width: '18rem' }}>
-  <CCardImage orientation="top" src={ReactImg} />
-  <CCardBody>
-    <CCardTitle>Card title</CCardTitle>
-    <CCardText>
-      Some quick example text to build on the card title and make up the bulk of the card's content.
-    </CCardText>
-    <CButton color="primary" href="#">Go somewhere</CButton>
-  </CCardBody>
-</CCard>
-```
+import { CardExample } from './examples/CardExample.tsx'
+import CardExampleTS from '!!raw-loader!./examples/CardExample.tsx'
+
+<ExampleSnippet code={CardExampleTS} componentName="React Card">
+  <CardExample />
+</ExampleSnippet>
 
 ## Content types
 
@@ -63,11 +31,13 @@ CoreUI card supports a wide variety of content, including images, text, list gro
 
 The main block of a card is the `<CCardBody>`. Use it whenever you need a padded section within a card.
 
-```jsx preview
-<CCard>
-  <CCardBody>This is some text within a card body.</CCardBody>
-</CCard>
-```
+
+import { CardBodyExample } from './examples/CardBodyExample.tsx'
+import CardBodyExampleTS from '!!raw-loader!./examples/CardBodyExample.tsx'
+
+<ExampleSnippet code={CardBodyExampleTS} componentName="React Card">
+  <CardBodyExample />
+</ExampleSnippet>
 
 ### Titles, text, and links
 
@@ -75,149 +45,93 @@ Card titles are managed by `<CCardTitle>` component. Identically, links are atta
 
 Subtitles are managed by `<CCardSubtitle>` component. If the `<CCardTitle>` also, the `<CCardSubtitle>` items are stored in a `<CCardBody>` item, the card title, and subtitle are arranged rightly.
 
-```jsx preview
-<CCard style={{ width: '18rem' }}>
-  <CCardBody>
-    <CCardTitle>Card title</CCardTitle>
-    <CCardSubtitle className="mb-2 text-body-secondary">Card subtitle</CCardSubtitle>
-    <CCardText>
-      Some quick example text to build on the card title and make up the bulk of the card's content.
-    </CCardText>
-    <CCardLink href="#">Card link</CCardLink>
-    <CCardLink href="#">Another link</CCardLink>
-  </CCardBody>
-</CCard>
-```
+import { CardTitleExample } from './examples/CardTitleExample.tsx'
+import CardTitleExampleTS from '!!raw-loader!./examples/CardTitleExample.tsx'
+
+<ExampleSnippet code={CardTitleExampleTS} componentName="React Card">
+  <CardTitleExample />
+</ExampleSnippet>
 
 ### Images
 
 `orientation="top"` places a picture to the top of the card. With `<CCardText>`, text can be added to the card. Text within `<CCardText>` can additionally be styled with the regular HTML tags.
 
-```jsx preview
-<CCard style={{ width: '18rem' }}>
-  <CCardImage orientation="top" src={ReactImg} />
-  <CCardBody>
-    <CCardText>
-      Some quick example text to build on the card title and make up the bulk of the card's content.
-    </CCardText>
-  </CCardBody>
-</CCard>
-```
+import { CardImagesExample } from './examples/CardImagesExample.tsx'
+import CardImagesExampleTS from '!!raw-loader!./examples/CardImagesExample.tsx'
+
+<ExampleSnippet code={CardImagesExampleTS} componentName="React Card">
+  <CardImagesExample />
+</ExampleSnippet>
 
 ### List groups
 
 Create lists of content in a card with a flush list group.
 
-```jsx preview
-<CCard style={{ width: '18rem' }}>
-  <CListGroup flush>
-    <CListGroupItem>Cras justo odio</CListGroupItem>
-    <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
-    <CListGroupItem>Vestibulum at eros</CListGroupItem>
-  </CListGroup>
-</CCard>
-```
+import { CardListGroupsExample } from './examples/CardListGroupsExample.tsx'
+import CardListGroupsExampleTS from '!!raw-loader!./examples/CardListGroupsExample.tsx'
 
-```jsx preview
-<CCard style={{ width: '18rem' }}>
-  <CCardHeader>Header</CCardHeader>
-  <CListGroup flush>
-    <CListGroupItem>Cras justo odio</CListGroupItem>
-    <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
-    <CListGroupItem>Vestibulum at eros</CListGroupItem>
-  </CListGroup>
-</CCard>
-```
+<ExampleSnippet code={CardListGroupsExampleTS} componentName="React Card">
+  <CardListGroupsExample />
+</ExampleSnippet>
 
-```jsx preview
-<CCard style={{ width: '18rem' }}>
-  <CListGroup flush>
-    <CListGroupItem>Cras justo odio</CListGroupItem>
-    <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
-    <CListGroupItem>Vestibulum at eros</CListGroupItem>
-  </CListGroup>
-  <CCardFooter>Footer</CCardFooter>
-</CCard>
-```
+import { CardListGroups2Example } from './examples/CardListGroups2Example.tsx'
+import CardListGroups2ExampleTS from '!!raw-loader!./examples/CardListGroups2Example.tsx'
+
+<ExampleSnippet code={CardListGroups2ExampleTS} componentName="React Card">
+  <CardListGroups2Example />
+</ExampleSnippet>
+
+import { CardListGroups3Example } from './examples/CardListGroups3Example.tsx'
+import CardListGroups3ExampleTS from '!!raw-loader!./examples/CardListGroups3Example.tsx'
+
+<ExampleSnippet code={CardListGroups3ExampleTS} componentName="React Card">
+  <CardListGroups3Example />
+</ExampleSnippet>
 
 ### Kitchen sink
 
 Combine and match many content types to build the card you need, or throw everything in there. Shown below are image styles, blocks, text styles, and a list group—all wrapped in a fixed-width card.
 
-```jsx preview
-<CCard style={{ width: '18rem' }}>
-  <CCardImage orientation="top" src={ReactImg} />
-  <CCardBody>
-    <CCardTitle>Card title</CCardTitle>
-    <CCardText>
-      Some quick example text to build on the card title and make up the bulk of the card's content.
-    </CCardText>
-  </CCardBody>
-  <CListGroup flush>
-    <CListGroupItem>Cras justo odio</CListGroupItem>
-    <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>
-    <CListGroupItem>Vestibulum at eros</CListGroupItem>
-  </CListGroup>
-  <CCardBody>
-    <CCardLink href="#">Card link</CCardLink>
-    <CCardLink href="#">Another link</CCardLink>
-  </CCardBody>
-</CCard>
-```
+import { CardKitchenSinkExample } from './examples/CardKitchenSinkExample.tsx'
+import CardKitchenSinkExampleTS from '!!raw-loader!./examples/CardKitchenSinkExample.tsx'
+
+<ExampleSnippet code={CardKitchenSinkExampleTS} componentName="React Card">
+  <CardKitchenSinkExample />
+</ExampleSnippet>
 
 ### Header and footer
 
 Add an optional header and/or footer within a card.
 
-```jsx preview
-<CCard>
-  <CCardHeader>Header</CCardHeader>
-  <CCardBody>
-    <CCardTitle>Special title treatment</CCardTitle>
-    <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
-    <CButton color="primary" href="#">Go somewhere</CButton>
-  </CCardBody>
-</CCard>
-```
+import { CardHeaderExample } from './examples/CardHeaderExample.tsx'
+import CardHeaderExampleTS from '!!raw-loader!./examples/CardHeaderExample.tsx'
+
+<ExampleSnippet code={CardHeaderExampleTS} componentName="React Card">
+  <CardHeaderExample />
+</ExampleSnippet>
 
 Card headers can be styled by adding ex. `as="h5"`.
 
-```jsx preview
-<CCard>
-  <CCardHeader as="h5">Header</CCardHeader>
-  <CCardBody>
-    <CCardTitle>Special title treatment</CCardTitle>
-    <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
-    <CButton color="primary" href="#">Go somewhere</CButton>
-  </CCardBody>
-</CCard>
-```
+import { CardHeader2Example } from './examples/CardHeader2Example.tsx'
+import CardHeader2ExampleTS from '!!raw-loader!./examples/CardHeader2Example.tsx'
 
-```jsx preview
-<CCard>
-  <CCardHeader>Quote</CCardHeader>
-  <CCardBody>
-    <blockquote className="blockquote mb-0">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer className="blockquote-footer">
-        Someone famous in <cite title="Source Title">Source Title</cite>
-      </footer>
-    </blockquote>
-  </CCardBody>
-</CCard>
-```
+<ExampleSnippet code={CardHeader2ExampleTS} componentName="React Card">
+  <CardHeader2Example />
+</ExampleSnippet>
 
-```jsx preview
-<CCard className="text-center">
-  <CCardHeader>Header</CCardHeader>
-  <CCardBody>
-    <CCardTitle>Special title treatment</CCardTitle>
-    <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
-    <CButton color="primary" href="#">Go somewhere</CButton>
-  </CCardBody>
-  <CCardFooter className="text-body-secondary">2 days ago</CCardFooter>
-</CCard>
-```
+import { CardHeader3Example } from './examples/CardHeader3Example.tsx'
+import CardHeader3ExampleTS from '!!raw-loader!./examples/CardHeader3Example.tsx'
+
+<ExampleSnippet code={CardHeader3ExampleTS} componentName="React Card">
+  <CardHeader3Example />
+</ExampleSnippet>
+
+import { CardHeaderAndFooterExample } from './examples/CardHeaderAndFooterExample.tsx'
+import CardHeaderAndFooterExampleTS from '!!raw-loader!./examples/CardHeaderAndFooterExample.tsx'
+
+<ExampleSnippet code={CardHeaderAndFooterExampleTS} componentName="React Card">
+  <CardHeaderAndFooterExample />
+</ExampleSnippet>
 
 ## Sizing
 
@@ -227,145 +141,63 @@ Cards assume no specific `width` to start, so they'll be 100% wide unless otherw
 
 Using the grid, wrap cards in columns and rows as needed.
 
-```jsx preview
-<CRow>
-  <CCol sm={6}>
-    <CCard>
-      <CCardBody>
-        <CCardTitle>Special title treatment</CCardTitle>
-        <CCardText>
-          With supporting text below as a natural lead-in to additional content.
-        </CCardText>
-        <CButton color="primary" href="#">Go somewhere</CButton>
-      </CCardBody>
-    </CCard>
-  </CCol>
-  <CCol sm={6}>
-    <CCard>
-      <CCardBody>
-        <CCardTitle>Special title treatment</CCardTitle>
-        <CCardText>
-          With supporting text below as a natural lead-in to additional content.
-        </CCardText>
-        <CButton color="primary" href="#">Go somewhere</CButton>
-      </CCardBody>
-    </CCard>
-  </CCol>
-</CRow>
-```
+import { CardSizingExample } from './examples/CardSizingExample.tsx'
+import CardSizingExampleTS from '!!raw-loader!./examples/CardSizingExample.tsx'
+
+<ExampleSnippet code={CardSizingExampleTS} componentName="React Card">
+  <CardSizingExample />
+</ExampleSnippet>
 
 ### Using utilities
 
 Use some of [available sizing utilities](https://coreui.io/docs/utilities/sizing/) to rapidly set a card's width.
 
-```jsx preview
-  <CCard className="w-75">
-    <CCardBody>
-      <CCardTitle>Card title</CCardTitle>
-      <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
-      <CButton color="primary" href="#">Go somewhere</CButton>
-    </CCardBody>
-  </CCard>
-  <CCard className="w-50">
-    <CCardBody>
-      <CCardTitle>Card title</CCardTitle>
-      <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
-      <CButton color="primary" href="#">Go somewhere</CButton>
-    </CCardBody>
-  </CCard>
-```
+import { CardSizing2Example } from './examples/CardSizing2Example.tsx'
+import CardSizing2ExampleTS from '!!raw-loader!./examples/CardSizing2Example.tsx'
+
+<ExampleSnippet code={CardSizing2ExampleTS} componentName="React Card">
+  <CardSizing2Example />
+</ExampleSnippet>
 
 ### Using custom CSS
 
 Use custom CSS in your stylesheets or as inline styles to set a width.
 
-```jsx preview
-<CCard style={{ width: '18rem' }}>
-  <CCardBody>
-    <CCardTitle>Special title treatment</CCardTitle>
-    <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
-    <CButton color="primary" href="#">Go somewhere</CButton>
-  </CCardBody>
-</CCard>
-```
+import { CardSizing3Example } from './examples/CardSizing3Example.tsx'
+import CardSizing3ExampleTS from '!!raw-loader!./examples/CardSizing3Example.tsx'
+
+<ExampleSnippet code={CardSizing3ExampleTS} componentName="React Card">
+  <CardSizing3Example />
+</ExampleSnippet>
 
 ## Text alignment
 
 You can instantly change the text arrangement of any card—in its whole or specific parts—with [text align classes](https://coreui.io/docs/utilities/text/#text-alignment).
 
-```jsx preview
-  <CCard style={{width: '18rem'}}>
-    <CCardBody>
-      <CCardTitle>Special title treatment</CCardTitle>
-      <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
-      <CButton color="primary" href="#">Go somewhere</CButton>
-    </CCardBody>
-  </CCard>
-  <CCard className="text-center" style={{width: '18rem'}}>
-    <CCardBody>
-      <CCardTitle>Special title treatment</CCardTitle>
-      <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
-      <CButton color="primary" href="#">Go somewhere</CButton>
-    </CCardBody>
-  </CCard>
-  <CCard className="text-end" style={{width: '18rem'}}>
-    <CCardBody>
-      <CCardTitle>Special title treatment</CCardTitle>
-      <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
-      <CButton color="primary" href="#">Go somewhere</CButton>
-    </CCardBody>
-  </CCard>
-```
+import { CardTextAlignmentExample } from './examples/CardTextAlignmentExample.tsx'
+import CardTextAlignmentExampleTS from '!!raw-loader!./examples/CardTextAlignmentExample.tsx'
+
+<ExampleSnippet code={CardTextAlignmentExampleTS} componentName="React Card">
+  <CardTextAlignmentExample />
+</ExampleSnippet>
 
 ## Navigation
 
 Add some navigation to a `<CCardHeader>` with our `<CNav>` component.
 
-```jsx preview
-<CCard className="text-center">
-  <CCardHeader>
-    <CNav variant="tabs" className="card-header-tabs">
-      <CNavItem>
-        <CNavLink href="#" active>Active</CNavLink>
-      </CNavItem>
-      <CNavItem>
-        <CNavLink href="#">Link</CNavLink>
-      </CNavItem>
-      <CNavItem>
-        <CNavLink href="#" disabled>Disabled</CNavLink>
-      </CNavItem>
-    </CNav>
-  </CCardHeader>
-  <CCardBody>
-    <CCardTitle>Special title treatment</CCardTitle>
-    <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
-    <CButton color="primary" href="#">Go somewhere</CButton>
-  </CCardBody>
-</CCard>
-```
+import { CardNavigationExample } from './examples/CardNavigationExample.tsx'
+import CardNavigationExampleTS from '!!raw-loader!./examples/CardNavigationExample.tsx'
 
-```jsx preview
-<CCard className="text-center">
-  <CCardHeader>
-    <CNav variant="pills" className="card-header-pills">
-      <CNavItem>
-        <CNavLink href="#" active>Active</CNavLink>
-      </CNavItem>
-      <CNavItem>
-        <CNavLink href="#">Link</CNavLink>
-      </CNavItem>
-      <CNavItem>
-        <CNavLink href="#" disabled>Disabled</CNavLink>
-      </CNavItem>
-    </CNav>
-  </CCardHeader>
-  <CCardBody>
-    <CCardTitle>Special title treatment</CCardTitle>
-    <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
-    <CButton color="primary" href="#">Go somewhere</CButton>
-  </CCardBody>
-</CCard>
-```
+<ExampleSnippet code={CardNavigationExampleTS} componentName="React Card">
+  <CardNavigationExample />
+</ExampleSnippet>
+
+import { CardNavigation2Example } from './examples/CardNavigation2Example.tsx'
+import CardNavigation2ExampleTS from '!!raw-loader!./examples/CardNavigation2Example.tsx'
+
+<ExampleSnippet code={CardNavigation2ExampleTS} componentName="React Card">
+  <CardNavigation2Example />
+</ExampleSnippet>
 
 ## Images
 
@@ -375,68 +207,34 @@ Cards introduce several options for acting with images. Pick from appending "ima
 
 Similar to headers and footers, cards can include top and bottom "image caps"—images at the top or bottom of a card.
 
-```jsx preview
-<CCard className="mb-3">
-  <CCardImage orientation="top" src={ReactImg} />
-  <CCardBody>
-    <CCardTitle>Card title</CCardTitle>
-    <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
-    <CCardText><small className="text-body-secondary">Last updated 3 mins ago</small></CCardText>
-  </CCardBody>
-</CCard>
-<CCard className="mb-3">
-  <CCardBody>
-    <CCardTitle>Card title</CCardTitle>
-    <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
-    <CCardText><small className="text-body-secondary">Last updated 3 mins ago</small></CCardText>
-  </CCardBody>
-  <CCardImage orientation="bottom" src={ReactImg} />
-</CCard>
-```
+import { CardImageCapsExample } from './examples/CardImageCapsExample.tsx'
+import CardImageCapsExampleTS from '!!raw-loader!./examples/CardImageCapsExample.tsx'
+
+<ExampleSnippet code={CardImageCapsExampleTS} componentName="React Card">
+  <CardImageCapsExample />
+</ExampleSnippet>
 
 ### Image overlays
 
 Adapt an image into a background and overlay your text. Depending on the image, you may need additional styles or utilities.
 
-```jsx preview
-<CCard className="mb-3 bg-dark text-white">
-  <CCardImage src={ReactImg} />
-  <CCardImageOverlay>
-    <CCardTitle>Card title</CCardTitle>
-    <CCardText>
-      This is a wider card with supporting text below as a natural lead-in to additional content.
-      This content is a little bit longer.
-    </CCardText>
-    <CCardText>Last updated 3 mins ago</CCardText>
-  </CCardImageOverlay>
-</CCard>
-```
+import { CardImageOverlaysExample } from './examples/CardImageOverlaysExample.tsx'
+import CardImageOverlaysExampleTS from '!!raw-loader!./examples/CardImageOverlaysExample.tsx'
+
+<ExampleSnippet code={CardImageOverlaysExampleTS} componentName="React Card">
+  <CardImageOverlaysExample />
+</ExampleSnippet>
 
 ## Horizontal
 
 Using a combination of grid and utility classes, cards can be made horizontal in a mobile-friendly and responsive way. In the example below, we remove the grid gutters with `.g-0` and use `.col-md-*` classes to make the card horizontal at the `md` breakpoint. Further adjustments may be needed depending on your card content.
 
-```jsx preview
-<CCard className="mb-3" style={{ maxWidth: '540px' }}>
-  <CRow className="g-0">
-    <CCol md={4}>
-      <CCardImage src={React400Img} />
-    </CCol>
-    <CCol md={8}>
-      <CCardBody>
-        <CCardTitle>Card title</CCardTitle>
-        <CCardText>
-          This is a wider card with supporting text below as a natural lead-in to additional
-          content. This content is a little bit longer.
-        </CCardText>
-        <CCardText>
-          <small className="text-body-secondary">Last updated 3 mins ago</small>
-        </CCardText>
-      </CCardBody>
-    </CCol>
-  </CRow>
-</CCard>
-```
+import { CardImageHorizontalExample } from './examples/CardImageHorizontalExample.tsx'
+import CardImageHorizontalExampleTS from '!!raw-loader!./examples/CardImageHorizontalExample.tsx'
+
+<ExampleSnippet code={CardImageHorizontalExampleTS} componentName="React Card">
+  <CardImageHorizontalExample />
+</ExampleSnippet>
 
 ## Card styles
 
@@ -446,127 +244,12 @@ Cards include various options for customizing their backgrounds, borders, and co
 
 Use `color` property to change the appearance of a card.
 
-<Example>
-  <>
-    {[
-      { color: 'primary' },
-      { color: 'secondary' },
-      { color: 'success' },
-      { color: 'danger' },
-      { color: 'warning' },
-      { color: 'info' },
-      { color: 'light' },
-      { color: 'dark' },
-    ].map((item, index) => (
-      <CCard
-        textBgColor={item.color}
-        className="mb-3"
-        style={{ maxWidth: '18rem' }}
-        key={index}
-      >
-        <CCardHeader>Header</CCardHeader>
-        <CCardBody>
-          <CCardTitle>{item.color} card title</CCardTitle>
-          <CCardText> Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
-        </CCardBody>
-      </CCard>
-    ))}
-  </>
-</Example>
+import { CardStylesBackgroundAndColorExample } from './examples/CardStylesBackgroundAndColorExample.tsx'
+import CardStylesBackgroundAndColorExampleTS from '!!raw-loader!./examples/CardStylesBackgroundAndColorExample.tsx'
 
-You can also apply contextual variations with the `textBgColor` property, which automatically sets the text color to ensure compliance with the WCAG 4.5:1 contrast ratio standard for enhanced accessibility.
-
-
-```jsx
-<>
-  {[
-    { color: 'primary' },
-    { color: 'secondary' },
-    { color: 'success' },
-    { color: 'danger' },
-    { color: 'warning' },
-    { color: 'info' },
-    { color: 'light' },
-    { color: 'dark' },
-  ].map((item, index) => (
-    <CCard
-      textBgColor={item.color}
-      className="mb-3"
-      style={{ maxWidth: '18rem' }}
-      key={index}
-    >
-      <CCardHeader>Header</CCardHeader>
-      <CCardBody>
-        <CCardTitle>{item.color} card title</CCardTitle>
-        <CCardText>
-          Some quick example text to build on the card title and make up the bulk of the card's
-          content.
-        </CCardText>
-      </CCardBody>
-    </CCard>
-  ))}
-</>
-```
-<Example>
-  <>
-    {[
-      { color: 'primary', textColor: 'white' },
-      { color: 'secondary', textColor: 'white' },
-      { color: 'success', textColor: 'white' },
-      { color: 'danger', textColor: 'white' },
-      { color: 'warning' },
-      { color: 'info', textColor: 'white' },
-      { color: 'light' },
-      { color: 'dark', textColor: 'white' },
-    ].map((item, index) => (
-      <CCard
-        color={item.color}
-        textColor={item.textColor}
-        className="mb-3"
-        style={{ maxWidth: '18rem' }}
-        key={index}
-      >
-        <CCardHeader>Header</CCardHeader>
-        <CCardBody>
-          <CCardTitle>{item.color} card title</CCardTitle>
-          <CCardText> Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
-        </CCardBody>
-      </CCard>
-    ))}
-  </>
-</Example>
-
-```jsx
-<>
-  {[
-    { color: 'primary', textColor: 'white' },
-    { color: 'secondary', textColor: 'white' },
-    { color: 'success', textColor: 'white' },
-    { color: 'danger', textColor: 'white' },
-    { color: 'warning' },
-    { color: 'info', textColor: 'white' },
-    { color: 'light' },
-    { color: 'dark', textColor: 'white' },
-  ].map((item, index) => (
-    <CCard
-      color={item.color}
-      textColor={item.textColor}
-      className="mb-3"
-      style={{ maxWidth: '18rem' }}
-      key={index}
-    >
-      <CCardHeader>Header</CCardHeader>
-      <CCardBody>
-        <CCardTitle>{item.color} card title</CCardTitle>
-        <CCardText>
-          Some quick example text to build on the card title and make up the bulk of the card's
-          content.
-        </CCardText>
-      </CCardBody>
-    </CCard>
-  ))}
-</>
-```
+<ExampleSnippet code={CardStylesBackgroundAndColorExampleTS} componentName="React Card">
+  <CardStylesBackgroundAndColorExample />
+</ExampleSnippet>
 
 <Callout color="info" title="Conveying meaning to assistive technologies">
   Using color to add meaning only provides a visual indication, which will not be conveyed to
@@ -579,125 +262,21 @@ You can also apply contextual variations with the `textBgColor` property, which 
 
 Use [border utilities](https://coreui.io/docs/utilities/borders/) to change just the `border-color` of a card. Note that you can set `textColor` property on the `<CCard>` or a subset of the card's contents as shown below.
 
-<Example>
-  <>
-    {[
-      { color: 'primary', textColor: 'primary' },
-      { color: 'secondary', textColor: 'secondary' },
-      { color: 'success', textColor: 'success' },
-      { color: 'danger', textColor: 'danger' },
-      { color: 'warning', textColor: 'warning' },
-      { color: 'info', textColor: 'info' },
-      { color: 'light' },
-      { color: 'dark' },
-    ].map((item, index) => (
-      <CCard
-        textColor={item.textColor}
-        className={`mb-3 border-${item.color}`}
-        style={{ maxWidth: '18rem' }}
-        key={index}
-      >
-        <CCardHeader>Header</CCardHeader>
-        <CCardBody>
-          <CCardTitle>{item.color} card title</CCardTitle>
-          <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
-        </CCardBody>
-      </CCard>
-    ))}
-  </>
-</Example>
+import { CardStylesBorderExample } from './examples/CardStylesBorderExample.tsx'
+import CardStylesBorderExampleTS from '!!raw-loader!./examples/CardStylesBorderExample.tsx'
 
-```jsx
-<>
-  {[
-    { color: 'primary', textColor: 'primary' },
-    { color: 'secondary', textColor: 'secondary' },
-    { color: 'success', textColor: 'success' },
-    { color: 'danger', textColor: 'danger' },
-    { color: 'warning', textColor: 'warning' },
-    { color: 'info', textColor: 'info' },
-    { color: 'light' },
-    { color: 'dark' },
-  ].map((item, index) => (
-    <CCard
-      textColor={item.textColor}
-      className={`mb-3 border-${item.color}`}
-      style={{ maxWidth: '18rem' }}
-      key={index}
-    >
-      <CCardHeader>Header</CCardHeader>
-      <CCardBody>
-        <CCardTitle>{item.color} card title</CCardTitle>
-        <CCardText>
-          Some quick example text to build on the card title and make up the bulk of the card's
-          content.
-        </CCardText>
-      </CCardBody>
-    </CCard>
-  ))}
-</>
-```
+<ExampleSnippet code={CardStylesBorderExampleTS} componentName="React Card">
+  <CardStylesBorderExample />
+</ExampleSnippet>
 
 ### Top border
 
-<Example>
-  <>
-    {[
-      { color: 'primary', textColor: 'primary' },
-      { color: 'secondary', textColor: 'secondary' },
-      { color: 'success', textColor: 'success' },
-      { color: 'danger', textColor: 'danger' },
-      { color: 'warning', textColor: 'warning' },
-      { color: 'info', textColor: 'info' },
-      { color: 'light' },
-      { color: 'dark' },
-    ].map((item, index) => (
-      <CCard
-        textColor={item.textColor}
-        className={`mb-3 border-top-${item.color} border-top-3`}
-        style={{ maxWidth: '18rem' }}
-        key={index}
-      >
-        <CCardHeader>Header</CCardHeader>
-        <CCardBody>
-          <CCardTitle>{item.color} card title</CCardTitle>
-          <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
-        </CCardBody>
-      </CCard>
-    ))}
-  </>
-</Example>
+import { CardStylesTopBorderExample } from './examples/CardStylesTopBorderExample.tsx'
+import CardStylesTopBorderExampleTS from '!!raw-loader!./examples/CardStylesTopBorderExample.tsx'
 
-```jsx
-<>
-  {[
-    { color: 'primary', textColor: 'primary' },
-    { color: 'secondary', textColor: 'secondary' },
-    { color: 'success', textColor: 'success' },
-    { color: 'danger', textColor: 'danger' },
-    { color: 'warning', textColor: 'warning' },
-    { color: 'info', textColor: 'info' },
-    { color: 'light' },
-    { color: 'dark' },
-  ].map((item, index) => (
-    <CCard
-      textColor={item.textColor}
-      className={`mb-3 border-top-${item.color} border-top-3`}
-      style={{ maxWidth: '18rem' }}
-      key={index}
-    >
-      <CCardHeader>Header</CCardHeader>
-      <CCardBody>
-        <CCardTitle>{item.color} card title</CCardTitle>
-        <CCardText>
-          Some quick example text to build on the card title and make up the bulk of the card's
-          content.
-        </CCardText>
-      </CCardBody>
-    </CCard>
-  ))}
-</>
-```
+<ExampleSnippet code={CardStylesTopBorderExampleTS} componentName="React Card">
+  <CardStylesTopBorderExample />
+</ExampleSnippet>
 
 ## Card layout
 
@@ -707,347 +286,59 @@ In addition to styling the content within cards, CoreUI includes a few options f
 
 Use card groups to render cards as a single, attached element with equal width and height columns. Card groups start off stacked and use `display: flex;` to become attached with uniform dimensions starting at the `sm` breakpoint.
 
-```jsx preview
-<CCardGroup>
-  <CCard>
-    <CCardImage orientation="top" src={ReactImg} />
-    <CCardBody>
-      <CCardTitle>Card title</CCardTitle>
-      <CCardText>
-        This is a wider card with supporting text below as a natural lead-in to additional content.
-        This content is a little bit longer.
-      </CCardText>
-      <CCardText>
-        <small className="text-body-secondary">Last updated 3 mins ago</small>
-      </CCardText>
-    </CCardBody>
-  </CCard>
-  <CCard>
-    <CCardImage orientation="top" src={ReactImg} />
-    <CCardBody>
-      <CCardTitle>Card title</CCardTitle>
-      <CCardText>
-        This card has supporting text below as a natural lead-in to additional content.
-      </CCardText>
-      <CCardText>
-        <small className="text-body-secondary">Last updated 3 mins ago</small>
-      </CCardText>
-    </CCardBody>
-  </CCard>
-  <CCard>
-    <CCardImage orientation="top" src={ReactImg} />
-    <CCardBody>
-      <CCardTitle>Card title</CCardTitle>
-      <CCardText>
-        This is a wider card with supporting text below as a natural lead-in to additional content.
-        This card has even longer content than the first to show that equal height action.
-      </CCardText>
-      <CCardText>
-        <small className="text-body-secondary">Last updated 3 mins ago</small>
-      </CCardText>
-    </CCardBody>
-  </CCard>
-</CCardGroup>
-```
+import { CardGroupsExample } from './examples/CardGroupsExample.tsx'
+import CardGroupsExampleTS from '!!raw-loader!./examples/CardGroupsExample.tsx'
+
+<ExampleSnippet code={CardGroupsExampleTS} componentName="React Card">
+  <CardGroupsExample />
+</ExampleSnippet>
 
 When using card groups with footers, their content will automatically line up.
 
-```jsx preview
-<CCardGroup>
-  <CCard>
-    <CCardImage orientation="top" src={ReactImg} />
-    <CCardBody>
-      <CCardTitle>Card title</CCardTitle>
-      <CCardText>
-        This is a wider card with supporting text below as a natural lead-in to additional content.
-        This content is a little bit longer.
-      </CCardText>
-    </CCardBody>
-    <CCardFooter>
-      <small className="text-body-secondary">Last updated 3 mins ago</small>
-    </CCardFooter>
-  </CCard>
-  <CCard>
-    <CCardImage orientation="top" src={ReactImg} />
-    <CCardBody>
-      <CCardTitle>Card title</CCardTitle>
-      <CCardText>
-        This card has supporting text below as a natural lead-in to additional content.
-      </CCardText>
-    </CCardBody>
-    <CCardFooter>
-      <small className="text-body-secondary">Last updated 3 mins ago</small>
-    </CCardFooter>
-  </CCard>
-  <CCard>
-    <CCardImage orientation="top" src={ReactImg} />
-    <CCardBody>
-      <CCardTitle>Card title</CCardTitle>
-      <CCardText>
-        This is a wider card with supporting text below as a natural lead-in to additional content.
-        This card has even longer content than the first to show that equal height action.
-      </CCardText>
-    </CCardBody>
-    <CCardFooter>
-      <small className="text-body-secondary">Last updated 3 mins ago</small>
-    </CCardFooter>
-  </CCard>
-</CCardGroup>
-```
+import { CardGroups2Example } from './examples/CardGroups2Example.tsx'
+import CardGroups2ExampleTS from '!!raw-loader!./examples/CardGroups2Example.tsx'
+
+<ExampleSnippet code={CardGroups2ExampleTS} componentName="React Card">
+  <CardGroups2Example />
+</ExampleSnippet>
 
 ### Grid cards
 
 Use the `CRow` component and set `xs|sm|md|lg|xl|xxl}={{ cols: * }}` property to control how many grid columns (wrapped around your cards) you show per row. For example, here's `xs={{cols: 1}}` laying out the cards on one column, and `md={{cols: 1}}` splitting four cards to equal width across multiple rows, from the medium breakpoint up.
 
-```jsx preview
-<CRow xs={{ cols: 1, gutter: 4 }} md={{ cols: 2 }}>
-  <CCol xs>
-    <CCard>
-      <CCardImage orientation="top" src={ReactImg} />
-      <CCardBody>
-        <CCardTitle>Card title</CCardTitle>
-        <CCardText>
-          This is a wider card with supporting text below as a natural lead-in to additional
-          content. This content is a little bit longer.
-        </CCardText>
-      </CCardBody>
-      <CCardFooter>
-        <small className="text-body-secondary">Last updated 3 mins ago</small>
-      </CCardFooter>
-    </CCard>
-  </CCol>
-  <CCol xs>
-    <CCard>
-      <CCardImage orientation="top" src={ReactImg} />
-      <CCardBody>
-        <CCardTitle>Card title</CCardTitle>
-        <CCardText>
-          This is a wider card with supporting text below as a natural lead-in to additional
-          content. This content is a little bit longer.
-        </CCardText>
-      </CCardBody>
-      <CCardFooter>
-        <small className="text-body-secondary">Last updated 3 mins ago</small>
-      </CCardFooter>
-    </CCard>
-  </CCol>
-  <CCol xs>
-    <CCard>
-      <CCardImage orientation="top" src={ReactImg} />
-      <CCardBody>
-        <CCardTitle>Card title</CCardTitle>
-        <CCardText>
-          This is a wider card with supporting text below as a natural lead-in to additional
-          content. This content is a little bit longer.
-        </CCardText>
-      </CCardBody>
-      <CCardFooter>
-        <small className="text-body-secondary">Last updated 3 mins ago</small>
-      </CCardFooter>
-    </CCard>
-  </CCol>
-  <CCol xs>
-    <CCard>
-      <CCardImage orientation="top" src={ReactImg} />
-      <CCardBody>
-        <CCardTitle>Card title</CCardTitle>
-        <CCardText>
-          This is a wider card with supporting text below as a natural lead-in to additional
-          content. This content is a little bit longer.
-        </CCardText>
-      </CCardBody>
-      <CCardFooter>
-        <small className="text-body-secondary">Last updated 3 mins ago</small>
-      </CCardFooter>
-    </CCard>
-  </CCol>
-</CRow>
-```
+import { CardGridExample } from './examples/CardGridExample.tsx'
+import CardGridExampleTS from '!!raw-loader!./examples/CardGridExample.tsx'
+
+<ExampleSnippet code={CardGridExampleTS} componentName="React Card">
+  <CardGridExample />
+</ExampleSnippet>
 
 Change it to `md={{ cols: 3}}` and you'll see the fourth card wrap.
 
-```jsx preview
-<CRow xs={{ cols: 1, gutter: 4 }} md={{ cols: 3 }}>
-  <CCol xs>
-    <CCard>
-      <CCardImage orientation="top" src={ReactImg} />
-      <CCardBody>
-        <CCardTitle>Card title</CCardTitle>
-        <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
-      </CCardBody>
-      <CCardFooter>
-        <small className="text-body-secondary">Last updated 3 mins ago</small>
-      </CCardFooter>
-    </CCard>
-  </CCol>
-  <CCol xs>
-    <CCard>
-      <CCardImage orientation="top" src={ReactImg} />
-      <CCardBody>
-        <CCardTitle>Card title</CCardTitle>
-        <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
-      </CCardBody>
-      <CCardFooter>
-        <small className="text-body-secondary">Last updated 3 mins ago</small>
-      </CCardFooter>
-    </CCard>
-  </CCol>
-  <CCol xs>
-    <CCard>
-      <CCardImage orientation="top" src={ReactImg} />
-      <CCardBody>
-        <CCardTitle>Card title</CCardTitle>
-        <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
-      </CCardBody>
-      <CCardFooter>
-        <small className="text-body-secondary">Last updated 3 mins ago</small>
-      </CCardFooter>
-    </CCard>
-  </CCol>
-  <CCol xs>
-    <CCard>
-      <CCardImage orientation="top" src={ReactImg} />
-      <CCardBody>
-        <CCardTitle>Card title</CCardTitle>
-        <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
-      </CCardBody>
-      <CCardFooter>
-        <small className="text-body-secondary">Last updated 3 mins ago</small>
-      </CCardFooter>
-    </CCard>
-  </CCol>
-</CRow>
-```
+import { CardGrid2Example } from './examples/CardGrid2Example.tsx'
+import CardGrid2ExampleTS from '!!raw-loader!./examples/CardGrid2Example.tsx'
+
+<ExampleSnippet code={CardGrid2ExampleTS} componentName="React Card">
+  <CardGrid2Example />
+</ExampleSnippet>
 
 When you need equal height, add `.h-100` to the cards. If you want equal heights by default, you can set `$card-height: 100%` in Sass.
 
-```jsx preview
-<CRow xs={{ cols: 1 }} md={{ cols: 3 }} className="g-4">
-  <CCol xs>
-    <CCard className="h-100">
-      <CCardImage orientation="top" src={ReactImg} />
-      <CCardBody>
-        <CCardTitle>Card title</CCardTitle>
-        <CCardText>
-          This is a wider card with supporting text below as a natural lead-in to additional
-          content. This content is a little bit longer.
-        </CCardText>
-      </CCardBody>
-    </CCard>
-  </CCol>
-  <CCol xs>
-    <CCard className="h-100">
-      <CCardImage orientation="top" src={ReactImg} />
-      <CCardBody>
-        <CCardTitle>Card title</CCardTitle>
-        <CCardText>
-          This card has supporting text below as a natural lead-in to additional content.
-        </CCardText>
-      </CCardBody>
-    </CCard>
-  </CCol>
-  <CCol xs>
-    <CCard className="h-100">
-      <CCardImage orientation="top" src={ReactImg} />
-      <CCardBody>
-        <CCardTitle>Card title</CCardTitle>
-        <CCardText>
-          This is a wider card with supporting text below as a natural lead-in to additional
-          content. This card has even longer content than the first to show that equal height
-          action.
-        </CCardText>
-      </CCardBody>
-    </CCard>
-  </CCol>
-  <CCol xs>
-    <CCard className="h-100">
-      <CCardImage orientation="top" src={ReactImg} />
-      <CCardBody>
-        <CCardTitle>Card title</CCardTitle>
-        <CCardText>
-          This is a wider card with supporting text below as a natural lead-in to additional
-          content. This content is a little bit longer.
-        </CCardText>
-      </CCardBody>
-    </CCard>
-  </CCol>
-</CRow>
-```
+import { CardGrid3Example } from './examples/CardGrid3Example.tsx'
+import CardGrid3ExampleTS from '!!raw-loader!./examples/CardGrid3Example.tsx'
+
+<ExampleSnippet code={CardGrid3ExampleTS} componentName="React Card">
+  <CardGrid3Example />
+</ExampleSnippet>
 
 Just like with card groups, card footers will automatically line up.
 
-```jsx preview
-<CRow xs={{ cols: 1 }} md={{ cols: 3 }} className="g-4">
-  <CCol xs>
-    <CCard className="h-100">
-      <CCardImage orientation="top" src={ReactImg} />
-      <CCardBody>
-        <CCardTitle>Card title</CCardTitle>
-        <CCardText>
-          This is a wider card with supporting text below as a natural lead-in to additional
-          content. This content is a little bit longer.
-        </CCardText>
-      </CCardBody>
-      <CCardFooter>
-        <small className="text-body-secondary">Last updated 3 mins ago</small>
-      </CCardFooter>
-    </CCard>
-  </CCol>
-  <CCol xs>
-    <CCard className="h-100">
-      <CCardImage orientation="top" src={ReactImg} />
-      <CCardBody>
-        <CCardTitle>Card title</CCardTitle>
-        <CCardText>
-          This card has supporting text below as a natural lead-in to additional content.
-        </CCardText>
-      </CCardBody>
-      <CCardFooter>
-        <small className="text-body-secondary">Last updated 3 mins ago</small>
-      </CCardFooter>
-    </CCard>
-  </CCol>
-  <CCol xs>
-    <CCard className="h-100">
-      <CCardImage orientation="top" src={ReactImg} />
-      <CCardBody>
-        <CCardTitle>Card title</CCardTitle>
-        <CCardText>
-          This is a wider card with supporting text below as a natural lead-in to additional
-          content. This card has even longer content than the first to show that equal height
-          action.
-        </CCardText>
-      </CCardBody>
-      <CCardFooter>
-        <small className="text-body-secondary">Last updated 3 mins ago</small>
-      </CCardFooter>
-    </CCard>
-  </CCol>
-</CRow>
-```
+import { CardGrid4Example } from './examples/CardGrid4Example.tsx'
+import CardGrid4ExampleTS from '!!raw-loader!./examples/CardGrid4Example.tsx'
 
-
-## Customizing
-
-### CSS variables
-
-React cards use local CSS variables on `.card` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
-
-<ScssDocs file="_card.scss" capture="card-css-vars"/>
-
-#### How to use CSS variables
-
-```jsx
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
-}
-return <CCard style={vars}>...</CCard>
-```
-
-### SASS variables
-
-<ScssDocs file="_variables.scss" capture="card-variables"/>
+<ExampleSnippet code={CardGrid4ExampleTS} componentName="React Card">
+  <CardGrid4Example />
+</ExampleSnippet>
 
 ## API
 
