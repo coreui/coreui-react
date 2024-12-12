@@ -1,0 +1,97 @@
+---
+title: React Badge Component
+name: Badge
+description: React badge component is small count and labeling component.
+route: /components/badge/
+other_frameworks: badge
+---
+
+import { CBadge, CButton } from '@coreui/react/src/index'
+
+## How to use React Badge Component.
+
+React badge component scales to suit the size of the parent element by using relative font sizing and `em` units.
+
+import { BadgeExample } from './examples/BadgeExample.tsx'
+import BadgeExampleTS from '!!raw-loader!./examples/BadgeExample.tsx'
+
+<ExampleSnippet code={BadgeExampleTS} componentName="React Badge">
+  <BadgeExample />
+</ExampleSnippet>
+
+React badges can be used as part of links or buttons to provide a counter.
+
+import { Badge2Example } from './examples/Badge2Example.tsx'
+import Badge2ExampleTS from '!!raw-loader!./examples/Badge2Example.tsx'
+
+<ExampleSnippet code={Badge2ExampleTS} componentName="React Badge">
+  <Badge2Example />
+</ExampleSnippet>
+
+Remark that depending on how you use them, react badges may be complicated for users of screen readers and related assistive technologies.
+
+Unless the context is clear, consider including additional context with a visually hidden piece of additional text.
+
+import { Badge3Example } from './examples/Badge3Example.tsx'
+import Badge3ExampleTS from '!!raw-loader!./examples/Badge3Example.tsx'
+
+<ExampleSnippet code={Badge3ExampleTS} componentName="React Badge">
+  <Badge3Example />
+</ExampleSnippet>
+
+### Positioned
+
+Use `position` prop to modify a component and position it in the corner of a link or button.
+
+import { BadgePositionedExample } from './examples/BadgePositionedExample.tsx'
+import BadgePositionedExampleTS from '!!raw-loader!./examples/BadgePositionedExample.tsx'
+
+<ExampleSnippet code={BadgePositionedExampleTS} componentName="React Badge">
+  <BadgePositionedExample />
+</ExampleSnippet>
+
+You can also create more generic indicators without a counter using a few more utilities.
+
+import { BadgePositioned2Example } from './examples/BadgePositioned2Example.tsx'
+import BadgePositioned2ExampleTS from '!!raw-loader!./examples/BadgePositioned2Example.tsx'
+
+<ExampleSnippet code={BadgePositioned2ExampleTS} componentName="React Badge">
+  <BadgePositioned2Example />
+</ExampleSnippet>
+
+## Contextual variations
+
+Add any of the below-mentioned `color` props to modify the presentation of a react badge.
+
+import { BadgeContextualVariations } from './examples/BadgeContextualVariations.tsx'
+import BadgeContextualVariationsTS from '!!raw-loader!./examples/BadgeContextualVariations.tsx'
+
+<ExampleSnippet code={BadgeContextualVariationsTS} componentName="React Badge">
+  <BadgeContextualVariations />
+</ExampleSnippet>
+
+You can also apply contextual variations with the `textBgColor` property, which automatically sets the text color to ensure compliance with the WCAG 4.5:1 contrast ratio standard for enhanced accessibility.
+
+import { BadgeContextual2Variations } from './examples/BadgeContextual2Variations.tsx'
+import BadgeContextual2VariationsTS from '!!raw-loader!./examples/BadgeContextual2Variations.tsx'
+
+<ExampleSnippet code={BadgeContextual2VariationsTS} componentName="React Badge">
+  <BadgeContextual2Variations />
+</ExampleSnippet>
+
+## Pill badges
+
+Apply the `shape="rounded-pill"` prop to make badges rounded.
+
+import { BadgePillExample } from './examples/BadgePillExample.tsx'
+import BadgePillExampleTS from '!!raw-loader!./examples/BadgePillExample.tsx'
+
+<ExampleSnippet code={BadgePillExampleTS} componentName="React Badge">
+  <BadgePillExample />
+</ExampleSnippet>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CBadge /&gt;](./api/#cbadge)

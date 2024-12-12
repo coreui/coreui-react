@@ -21,15 +21,47 @@ import CFormRange from '@coreui/react/src/components/form/CFormRange'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the component.</td>
+        <td colSpan="3">
+          <p>A string of additional CSS class names to apply to the form range component.</p>
+        <JSXDocs code={`<CFormRange className="my-custom-range" />`} />
+        </td>
+      </tr>
+      <tr id="cformrange-customClassNames">
+        <td className="text-primary fw-semibold">customClassNames<a href="#cformrange-customClassNames" aria-label="CFormRange customClassNames permalink" className="anchor-link after">#</a><span className="badge bg-success">v5.5.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`Partial\<Record\<CombinedCustomClassNamesKeys, string>>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Custom class names to override or extend the default CSS classes used within the <code>{`CFormRange`}</code> component.<br />
+Each key corresponds to a specific part of the Form Range component, allowing for granular styling control.</p>
+<p><strong>Important</strong>: If you want to <strong>replace</strong> an existing class name, prefix your custom class name with <code>{`!`}</code>.<br />
+This ensures that the original class is overridden rather than appended.</p>
+        <JSXDocs code={`// Overriding the default form range class
+const customClasses = {
+  FORM_RANGE: '!my-custom-form-range',
+}
+
+<CFormRange customClassNames={customClasses} />
+
+// Extending the default form range class without replacing it
+const customClasses = {
+  FORM_RANGE: 'my-additional-form-range',
+}
+
+<CFormRange customClassNames={customClasses} />`} />
+        </td>
       </tr>
       <tr id="cformrange-disabled">
         <td className="text-primary fw-semibold">disabled<a href="#cformrange-disabled" aria-label="CFormRange disabled permalink" className="anchor-link after">#</a></td>
-        <td>undefined</td>
+        <td><code>{`false`}</code></td>
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Toggle the disabled state for the component.</td>
+        <td colSpan="3">
+          <p>Toggle the disabled state for the form range component. When <code>{`true`}</code>, the range input is disabled and non-interactive.</p>
+        <JSXDocs code={`<CFormRange disabled />`} />
+        </td>
       </tr>
       <tr id="cformrange-label">
         <td className="text-primary fw-semibold">label<a href="#cformrange-label" aria-label="CFormRange label permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
@@ -37,7 +69,10 @@ import CFormRange from '@coreui/react/src/components/form/CFormRange'
         <td><code>{`ReactNode`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Add a caption for a component.</td>
+        <td colSpan="3">
+          <p>Add a caption for the form range component. Typically used as a label.</p>
+        <JSXDocs code={`<CFormRange label="Volume" />`} />
+        </td>
       </tr>
       <tr id="cformrange-max">
         <td className="text-primary fw-semibold">max<a href="#cformrange-max" aria-label="CFormRange max permalink" className="anchor-link after">#</a></td>
@@ -45,7 +80,10 @@ import CFormRange from '@coreui/react/src/components/form/CFormRange'
         <td><code>{`number`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Specifies the maximum value for the component.</td>
+        <td colSpan="3">
+          <p>Specifies the maximum value for the form range component.</p>
+        <JSXDocs code={`<CFormRange max={100} />`} />
+        </td>
       </tr>
       <tr id="cformrange-min">
         <td className="text-primary fw-semibold">min<a href="#cformrange-min" aria-label="CFormRange min permalink" className="anchor-link after">#</a></td>
@@ -53,7 +91,10 @@ import CFormRange from '@coreui/react/src/components/form/CFormRange'
         <td><code>{`number`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Specifies the minimum value for the component.</td>
+        <td colSpan="3">
+          <p>Specifies the minimum value for the form range component.</p>
+        <JSXDocs code={`<CFormRange min={0} />`} />
+        </td>
       </tr>
       <tr id="cformrange-onChange">
         <td className="text-primary fw-semibold">onChange<a href="#cformrange-onChange" aria-label="CFormRange onChange permalink" className="anchor-link after">#</a></td>
@@ -61,15 +102,25 @@ import CFormRange from '@coreui/react/src/components/form/CFormRange'
         <td><code>{`ChangeEventHandler\<HTMLInputElement>`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Method called immediately after the <code>{`value`}</code> prop changes.</td>
+        <td colSpan="3">
+          <p>Method called immediately after the <code>{`value`}</code> prop changes. Useful for handling range input changes.</p>
+        <JSXDocs code={`const handleRangeChange = (e) => {
+  console.log(e.target.value)
+}
+
+<CFormRange onChange={handleRangeChange} />`} />
+        </td>
       </tr>
       <tr id="cformrange-readOnly">
         <td className="text-primary fw-semibold">readOnly<a href="#cformrange-readOnly" aria-label="CFormRange readOnly permalink" className="anchor-link after">#</a></td>
-        <td>undefined</td>
+        <td><code>{`false`}</code></td>
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Toggle the readonly state for the component.</td>
+        <td colSpan="3">
+          <p>Toggle the readonly state for the form range component. When <code>{`true`}</code>, the range input is read-only and cannot be modified.</p>
+        <JSXDocs code={`<CFormRange readOnly value={50} />`} />
+        </td>
       </tr>
       <tr id="cformrange-step">
         <td className="text-primary fw-semibold">step<a href="#cformrange-step" aria-label="CFormRange step permalink" className="anchor-link after">#</a></td>
@@ -77,7 +128,10 @@ import CFormRange from '@coreui/react/src/components/form/CFormRange'
         <td><code>{`number`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Specifies the interval between legal numbers in the component.</td>
+        <td colSpan="3">
+          <p>Specifies the interval between legal numbers in the form range component.</p>
+        <JSXDocs code={`<CFormRange step={10} />`} />
+        </td>
       </tr>
       <tr id="cformrange-value">
         <td className="text-primary fw-semibold">value<a href="#cformrange-value" aria-label="CFormRange value permalink" className="anchor-link after">#</a></td>
@@ -85,7 +139,12 @@ import CFormRange from '@coreui/react/src/components/form/CFormRange'
         <td><code>{`string`}</code>, <code>{`number`}</code>, <code>{`string[]`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">The <code>{`value`}</code> attribute of component.</td>
+        <td colSpan="3">
+          <p>The <code>{`value`}</code> attribute of the form range component. Represents the current value of the range input.</p>
+        <JSXDocs code={`const [volume, setVolume] = useState(50)
+
+<CFormRange value={volume} onChange={(e) => setVolume(e.target.value)} />`} />
+        </td>
       </tr>
     </tbody>
   </table>

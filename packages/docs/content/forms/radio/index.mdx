@@ -1,0 +1,105 @@
+---
+title: React Radio Components
+name: Radio
+description: Create consistent cross-browser and cross-device radios with our React radio component.
+menu: Forms
+route: /forms/radio
+other_frameworks: radio
+---
+
+## Approach
+
+Browser default radios are replaced with the help of `<CFormCheck type="radio">`. Radios are for selecting one option from many.
+
+## Radios
+
+import { RadioExample } from './examples/RadioExample.tsx'
+import RadioExampleTS from '!!raw-loader!./examples/RadioExample.tsx'
+
+<ExampleSnippet code={RadioExampleTS} componentName="React Form Radio">
+  <RadioExample />
+</ExampleSnippet>
+
+### Disabled
+
+Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input's state.
+
+import { RadioDisabledExample } from './examples/RadioDisabledExample.tsx'
+import RadioDisabledExampleTS from '!!raw-loader!./examples/RadioDisabledExample.tsx'
+
+<ExampleSnippet code={RadioDisabledExampleTS} componentName="React Form Radio">
+  <RadioDisabledExample />
+</ExampleSnippet>
+
+## Default (stacked)
+
+By default, any number of radios that are immediate sibling will be vertically stacked and appropriately spaced.
+
+import { RadioStackedExample } from './examples/RadioStackedExample.tsx'
+import RadioStackedExampleTS from '!!raw-loader!./examples/RadioStackedExample.tsx'
+
+<ExampleSnippet code={RadioStackedExampleTS} componentName="React Form Radio">
+  <RadioStackedExample />
+</ExampleSnippet>
+
+
+## Inline
+
+Group radios on the same horizontal row by adding `inline` boolean property to any `<CFormCheck radio>`.
+
+import { RadioInlineExample } from './examples/RadioInlineExample.tsx'
+import RadioInlineExampleTS from '!!raw-loader!./examples/RadioInlineExample.tsx'
+
+<ExampleSnippet code={RadioInlineExampleTS} componentName="React Form Radio">
+  <RadioInlineExample />
+</ExampleSnippet>
+
+## Reverse 
+
+Put your radios on the opposite side by adding `reverse` boolean property.
+
+import { RadioReverseExample } from './examples/RadioReverseExample.tsx'
+import RadioReverseExampleTS from '!!raw-loader!./examples/RadioReverseExample.tsx'
+
+<ExampleSnippet code={RadioReverseExampleTS} componentName="React Form Radio">
+  <RadioReverseExample />
+</ExampleSnippet>
+
+## Without labels
+
+Remember to still provide some form of accessible name for assistive technologies (for instance, using `aria-label`).
+
+import { RadioWithoutLabelsExample } from './examples/RadioWithoutLabelsExample.tsx'
+import RadioWithoutLabelsExampleTS from '!!raw-loader!./examples/RadioWithoutLabelsExample.tsx'
+
+<ExampleSnippet code={RadioWithoutLabelsExampleTS} componentName="React Form Radio">
+  <RadioWithoutLabelsExample />
+</ExampleSnippet>
+
+## Radio toggle buttons
+
+Create button-like radio buttons by using `button` boolean property on the `<CFormCheck radio>` component. These toggle buttons can further be grouped in a button group if needed.
+
+import { RadioToggleButtonsExample } from './examples/RadioToggleButtonsExample.tsx'
+import RadioToggleButtonsExampleTS from '!!raw-loader!./examples/RadioToggleButtonsExample.tsx'
+
+<ExampleSnippet code={RadioToggleButtonsExampleTS} componentName="React Form Radio">
+  <RadioToggleButtonsExample />
+</ExampleSnippet>
+
+### Outlined styles
+
+Different variants of button, such at the various outlined styles, are supported.
+
+import { RadioToggleButtonsOutlinedStylesExample } from './examples/RadioToggleButtonsOutlinedStylesExample.tsx'
+import RadioToggleButtonsOutlinedStylesExampleTS from '!!raw-loader!./examples/RadioToggleButtonsOutlinedStylesExample.tsx'
+
+<ExampleSnippet code={RadioToggleButtonsOutlinedStylesExampleTS} componentName="React Form Radio">
+  <RadioToggleButtonsOutlinedStylesExample />
+</ExampleSnippet>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CFormCheck /&gt;](./api/#cformcheck)

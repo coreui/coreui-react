@@ -21,7 +21,18 @@ import CFormFeedback from '@coreui/react/src/components/form/CFormFeedback'
         <td><code>{`(ElementType & "symbol")`}</code>, <code>{`(ElementType & "object")`}</code>, <code>{`(ElementType & "div")`}</code>, <code>{`(ElementType & "slot")`}</code>, <code>{`(ElementType & "style")`}</code>, <code>{`... 174 more ...`}</code>, <code>{`(ElementType & FunctionComponent\<...>)`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Component used for the root node. Either a string to use a HTML element or a component.</td>
+        <td colSpan="3">
+          <p>The component used for the root node. It can be a string representing a HTML element or a React component.</p>
+        <JSXDocs code={`// Using default 'div' element
+<CFormFeedback>Invalid input.</CFormFeedback>
+
+// Using a custom component
+const CustomFeedback = forwardRef<HTMLSpanElement, React.HTMLAttributes<HTMLSpanElement>>(
+  (props, ref) => <span ref={ref} {...props} />,
+)
+
+<CFormFeedback as={CustomFeedback}>Custom Feedback Element.</CFormFeedback>`} />
+        </td>
       </tr>
       <tr id="cformfeedback-className">
         <td className="text-primary fw-semibold">className<a href="#cformfeedback-className" aria-label="CFormFeedback className permalink" className="anchor-link after">#</a></td>
@@ -29,7 +40,40 @@ import CFormFeedback from '@coreui/react/src/components/form/CFormFeedback'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the component.</td>
+        <td colSpan="3">
+          <p>A string of additional CSS class names to apply to the form feedback component.</p>
+        <JSXDocs code={`<CFormFeedback className="my-custom-feedback">Invalid input.</CFormFeedback>`} />
+        </td>
+      </tr>
+      <tr id="cformfeedback-customClassNames">
+        <td className="text-primary fw-semibold">customClassNames<a href="#cformfeedback-customClassNames" aria-label="CFormFeedback customClassNames permalink" className="anchor-link after">#</a><span className="badge bg-success">v5.5.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`Partial\<{ INVALID_FEEDBACK: string; INVALID_TOOLTIP: string; VALID_FEEDBACK: string; VALID_TOOLTIP: string; }>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Custom class names to override or extend the default CSS classes used within the <code>{`CFormFeedback`}</code> component.<br />
+Each key corresponds to a specific part of the Form Feedback component, allowing for granular styling control.</p>
+<p><strong>Important</strong>: If you want to <strong>replace</strong> an existing class name, prefix your custom class name with <code>{`!`}</code>.<br />
+This ensures that the original class is overridden rather than appended.</p>
+        <JSXDocs code={`// Overriding the default invalid feedback class
+const customClasses = {
+  INVALID_FEEDBACK: '!my-custom-invalid-feedback',
+}
+
+<CFormFeedback customClassNames={customClasses} invalid>
+  Custom Invalid Feedback.
+</CFormFeedback>
+
+// Extending the default valid feedback class without replacing it
+const customClasses = {
+  VALID_FEEDBACK: 'my-additional-valid-feedback',
+}
+
+<CFormFeedback customClassNames={customClasses} valid>
+  Extended Valid Feedback.
+</CFormFeedback>`} />
+        </td>
       </tr>
       <tr id="cformfeedback-invalid">
         <td className="text-primary fw-semibold">invalid<a href="#cformfeedback-invalid" aria-label="CFormFeedback invalid permalink" className="anchor-link after">#</a></td>
@@ -37,7 +81,12 @@ import CFormFeedback from '@coreui/react/src/components/form/CFormFeedback'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Method called immediately after the <code>{`value`}</code> prop changes.</td>
+        <td colSpan="3">
+          <p>Sets the form feedback state to invalid. When <code>{`true`}</code>, applies the invalid feedback styling.</p>
+        <JSXDocs code={`<CFormFeedback invalid>
+  Please provide a valid email address.
+</CFormFeedback>`} />
+        </td>
       </tr>
       <tr id="cformfeedback-tooltip">
         <td className="text-primary fw-semibold">tooltip<a href="#cformfeedback-tooltip" aria-label="CFormFeedback tooltip permalink" className="anchor-link after">#</a></td>
@@ -45,7 +94,12 @@ import CFormFeedback from '@coreui/react/src/components/form/CFormFeedback'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">If your form layout allows it, you can display validation feedback in a styled tooltip.</td>
+        <td colSpan="3">
+          <p>If enabled, displays validation feedback in a styled tooltip instead of the default block.</p>
+        <JSXDocs code={`<CFormFeedback invalid tooltip>
+  Please provide a valid email address.
+</CFormFeedback>`} />
+        </td>
       </tr>
       <tr id="cformfeedback-valid">
         <td className="text-primary fw-semibold">valid<a href="#cformfeedback-valid" aria-label="CFormFeedback valid permalink" className="anchor-link after">#</a></td>
@@ -53,7 +107,12 @@ import CFormFeedback from '@coreui/react/src/components/form/CFormFeedback'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Set component validation state to valid.</td>
+        <td colSpan="3">
+          <p>Sets the form feedback state to valid. When <code>{`true`}</code>, applies the valid feedback styling.</p>
+        <JSXDocs code={`<CFormFeedback valid>
+  Looks good!
+</CFormFeedback>`} />
+        </td>
       </tr>
     </tbody>
   </table>

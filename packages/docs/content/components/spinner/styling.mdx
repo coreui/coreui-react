@@ -1,0 +1,55 @@
+---
+title: React Spinner Component Styling
+name: Spinner Styling
+description: Learn how to customize the React Spinner component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design.
+route: /components/spinner/
+---
+
+{/* ### CSS class names
+
+React Spinner comes with built-in class names that make styling super simple. Here’s a quick rundown of what you can use:
+
+<ClassNamesDocs
+  files={[
+    'components/spinner/CSpinner.tsx',
+  ]}
+/> */}
+
+### CSS variables
+
+React spinners use local CSS variables on `.spinner-border` and `.spinner-grow` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+Border spinner variables:
+
+<ScssDocs file="_spinners.scss" capture="spinner-border-css-vars" />
+
+Growing spinner variables:
+
+<ScssDocs file="_spinners.scss" capture="spinner-grow-css-vars" />
+
+For both spinners, small spinner modifier classes are used to update the values of these CSS variables as needed. For example, the `.spinner-border-sm` class does the following:
+
+<ScssDocs file="_spinners.scss" capture="spinner-border-sm-css-vars" />
+
+#### How to use CSS variables
+
+```jsx
+const customVars = {
+  '--cui-spinner-width': '3rem',
+  '--cui-spinner-height': '3rem',
+}
+
+return <CCallout style={customVars}>...</CCallout>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="spinner-variables" />
+
+### Keyframes
+
+Used for creating the CSS animations for our spinners. Included in `_spinners.scss`.
+
+<ScssDocs file="_spinners.scss" capture="spinner-border-keyframes" />
+
+<ScssDocs file="_spinners.scss" capture="spinner-grow-keyframes" />

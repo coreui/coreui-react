@@ -21,7 +21,36 @@ import CFormSwitch from '@coreui/react/src/components/form/CFormSwitch'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the component.</td>
+        <td colSpan="3">
+          <p>A string of additional CSS class names to apply to the form switch component.</p>
+        <JSXDocs code={`<CFormSwitch className="my-custom-switch" />`} />
+        </td>
+      </tr>
+      <tr id="cformswitch-customClassNames">
+        <td className="text-primary fw-semibold">customClassNames<a href="#cformswitch-customClassNames" aria-label="CFormSwitch customClassNames permalink" className="anchor-link after">#</a><span className="badge bg-success">v5.5.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`Partial\<{ FORM_SWITCH: string; FORM_CHECK_INPUT: string; FORM_CHECK_LABEL: string; FORM_CHECK_REVERSE: string; FORM_SWITCH_LG: string; FORM_SWITCH_XL: string; IS_INVALID: string; IS_VALID: string; }>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Custom class names to override or extend the default CSS classes used within the <code>{`CFormSwitch`}</code> component.<br />
+Each key corresponds to a specific part of the Form Switch component, allowing for granular styling control.</p>
+<p><strong>Important</strong>: If you want to <strong>replace</strong> an existing class name, prefix your custom class name with <code>{`!`}</code>.<br />
+This ensures that the original class is overridden rather than appended.</p>
+        <JSXDocs code={`// Overriding the default form switch class
+const customClasses = {
+  FORM_SWITCH: '!my-custom-form-switch',
+}
+
+<CFormSwitch customClassNames={customClasses} />
+
+// Extending the default form switch class without replacing it
+const customClasses = {
+  FORM_SWITCH: 'my-additional-form-switch',
+}
+
+<CFormSwitch customClassNames={customClasses} />`} />
+        </td>
       </tr>
       <tr id="cformswitch-id">
         <td className="text-primary fw-semibold">id<a href="#cformswitch-id" aria-label="CFormSwitch id permalink" className="anchor-link after">#</a></td>
@@ -29,7 +58,10 @@ import CFormSwitch from '@coreui/react/src/components/form/CFormSwitch'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">The id global attribute defines an identifier (ID) that must be unique in the whole document.</td>
+        <td colSpan="3">
+          <p>The ID of the form switch. Associates the label with the switch for accessibility.</p>
+        <JSXDocs code={`<CFormSwitch id="darkMode" label="Enable Dark Mode" />`} />
+        </td>
       </tr>
       <tr id="cformswitch-invalid">
         <td className="text-primary fw-semibold">invalid<a href="#cformswitch-invalid" aria-label="CFormSwitch invalid permalink" className="anchor-link after">#</a></td>
@@ -37,7 +69,10 @@ import CFormSwitch from '@coreui/react/src/components/form/CFormSwitch'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Set component validation state to invalid.</td>
+        <td colSpan="3">
+          <p>Set the form switch validation state to invalid. When <code>{`true`}</code>, applies the invalid feedback styling.</p>
+        <JSXDocs code={`<CFormSwitch invalid label="Accept Terms" />`} />
+        </td>
       </tr>
       <tr id="cformswitch-label">
         <td className="text-primary fw-semibold">label<a href="#cformswitch-label" aria-label="CFormSwitch label permalink" className="anchor-link after">#</a></td>
@@ -45,15 +80,36 @@ import CFormSwitch from '@coreui/react/src/components/form/CFormSwitch'
         <td><code>{`ReactNode`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">The element represents a caption for a component.</td>
+        <td colSpan="3">
+          <p>The label for the form switch component. Provides a caption or description.</p>
+        <JSXDocs code={`<CFormSwitch label="Subscribe to Newsletter" />`} />
+        </td>
+      </tr>
+      <tr id="cformswitch-onChange">
+        <td className="text-primary fw-semibold">onChange<a href="#cformswitch-onChange" aria-label="CFormSwitch onChange permalink" className="anchor-link after">#</a></td>
+        <td>undefined</td>
+        <td><code>{`ChangeEventHandler\<HTMLInputElement>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Method called immediately after the <code>{`value`}</code> prop changes. Useful for handling switch state changes.</p>
+        <JSXDocs code={`const handleSwitchChange = (e) => {
+  console.log(e.target.checked)
+}
+
+<CFormSwitch onChange={handleSwitchChange} label="Enable Feature" />`} />
+        </td>
       </tr>
       <tr id="cformswitch-reverse">
-        <td className="text-primary fw-semibold">reverse<a href="#cformswitch-reverse" aria-label="CFormSwitch reverse permalink" className="anchor-link after">#</a></td>
+        <td className="text-primary fw-semibold">reverse<a href="#cformswitch-reverse" aria-label="CFormSwitch reverse permalink" className="anchor-link after">#</a><span className="badge bg-success">4.7.0+</span></td>
         <td>undefined</td>
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Put switch on the opposite side.</td>
+        <td colSpan="3">
+          <p>Put switch on the opposite side. Useful for right-to-left layouts or specific design requirements.</p>
+        <JSXDocs code={`<CFormSwitch reverse label="Enable Notifications" />`} />
+        </td>
       </tr>
       <tr id="cformswitch-size">
         <td className="text-primary fw-semibold">size<a href="#cformswitch-size" aria-label="CFormSwitch size permalink" className="anchor-link after">#</a></td>
@@ -61,7 +117,12 @@ import CFormSwitch from '@coreui/react/src/components/form/CFormSwitch'
         <td><code>{`"lg"`}</code>, <code>{`"xl"`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Size the component large or extra large. Works only with <code>{`switch`}</code>.</td>
+        <td colSpan="3">
+          <p>Size the form switch component as large (<code>{`lg`}</code>) or extra large (<code>{`xl`}</code>). Works only with <code>{`switch`}</code>.</p>
+        <JSXDocs code={`<CFormSwitch size="lg" label="Large Switch" />
+
+<CFormSwitch size="xl" label="Extra Large Switch" />`} />
+        </td>
       </tr>
       <tr id="cformswitch-type">
         <td className="text-primary fw-semibold">type<a href="#cformswitch-type" aria-label="CFormSwitch type permalink" className="anchor-link after">#</a></td>
@@ -69,7 +130,10 @@ import CFormSwitch from '@coreui/react/src/components/form/CFormSwitch'
         <td><code>{`"checkbox"`}</code>, <code>{`"radio"`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Specifies the type of component.</td>
+        <td colSpan="3">
+          <p>Specifies the type of form switch component. Can be either <code>{`checkbox`}</code> or <code>{`radio`}</code>.</p>
+        <JSXDocs code={`<CFormSwitch type="radio" label="Option A" />`} />
+        </td>
       </tr>
       <tr id="cformswitch-valid">
         <td className="text-primary fw-semibold">valid<a href="#cformswitch-valid" aria-label="CFormSwitch valid permalink" className="anchor-link after">#</a></td>
@@ -77,7 +141,10 @@ import CFormSwitch from '@coreui/react/src/components/form/CFormSwitch'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Set component validation state to valid.</td>
+        <td colSpan="3">
+          <p>Set the form switch validation state to valid. When <code>{`true`}</code>, applies the valid feedback styling.</p>
+        <JSXDocs code={`<CFormSwitch valid label="Accept Terms" />`} />
+        </td>
       </tr>
     </tbody>
   </table>

@@ -21,15 +21,47 @@ import CFormLabel from '@coreui/react/src/components/form/CFormLabel'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the component.</td>
+        <td colSpan="3">
+          <p>A string of additional CSS class names to apply to the form label component.</p>
+        <JSXDocs code={`<CFormLabel className="my-custom-label">Email Address</CFormLabel>`} />
+        </td>
       </tr>
       <tr id="cformlabel-customClassName">
-        <td className="text-primary fw-semibold">customClassName<a href="#cformlabel-customClassName" aria-label="CFormLabel customClassName permalink" className="anchor-link after">#</a></td>
+        <td className="text-primary fw-semibold">customClassName<a href="#cformlabel-customClassName" aria-label="CFormLabel customClassName permalink" className="anchor-link after">#</a><span className="badge bg-danger">Deprecated v5.5.0 - Use `customClassNames` instead for better flexibility and maintainability.</span></td>
         <td>undefined</td>
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want to be applied to the component, and override standard className value.</td>
+        <td colSpan="3">
+          <p>A string of CSS class names to be applied to the form label component, overriding the standard <code>{`className`}</code> value.</p>
+        <JSXDocs code={`<CFormLabel customClassName="my-deprecated-class">Email Address</CFormLabel>`} />
+        </td>
+      </tr>
+      <tr id="cformlabel-customClassNames">
+        <td className="text-primary fw-semibold">customClassNames<a href="#cformlabel-customClassNames" aria-label="CFormLabel customClassNames permalink" className="anchor-link after">#</a><span className="badge bg-success">v5.5.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`Partial\<{ FORM_LABEL: string; }>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Custom class names to override or extend the default CSS classes used within the <code>{`CFormLabel`}</code> component.<br />
+Each key corresponds to a specific part of the Form Label component, allowing for granular styling control.</p>
+<p><strong>Important</strong>: If you want to <strong>replace</strong> an existing class name, prefix your custom class name with <code>{`!`}</code>.<br />
+This ensures that the original class is overridden rather than appended.</p>
+        <JSXDocs code={`// Overriding the default form label class
+const customClasses = {
+  FORM_LABEL: '!my-custom-form-label',
+}
+
+<CFormLabel customClassNames={customClasses}>Email Address</CFormLabel>
+
+// Extending the default form label class without replacing it
+const customClasses = {
+  FORM_LABEL: 'my-additional-form-label',
+}
+
+<CFormLabel customClassNames={customClasses}>Email Address</CFormLabel>`} />
+        </td>
       </tr>
     </tbody>
   </table>

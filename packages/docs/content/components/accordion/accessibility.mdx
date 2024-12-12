@@ -9,13 +9,13 @@ route: /components/accordion/
 
 Accordions are a common UI pattern used to toggle the visibility of content. Ensuring that accordions are accessible is crucial for users who rely on assistive technologies. This guide demonstrates how to create an accessible accordion using CoreUI React components, adhering to the [WAI-ARIA Accordion Design Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/).
 
-## Semantic Structure
+### Semantic Structure
 
 - **Button Headers**: Each accordion header is rendered as a native `<button>` element. This ensures that headers are inherently focusable and operable via keyboard without additional scripting.
   
 - **Proper HTML Elements**: Utilizes appropriate HTML elements (`<button>`, `<div>`, etc.) to convey the correct semantic meaning, enhancing compatibility with screen readers and other assistive technologies.
 
-## ARIA Attributes
+### ARIA Attributes
 
 CoreUI React Accordion incorporates essential ARIA attributes to communicate the state and relationships of accordion items to assistive technologies:
 
@@ -25,18 +25,18 @@ CoreUI React Accordion incorporates essential ARIA attributes to communicate the
   
 - **`id`**: Unique identifiers for both headers and panels establish clear relationships, ensuring that screen readers can accurately describe the accordion structure.
 
-## Focus Management
+### Focus Management
 
 - **Automatic Focus Handling**: When an accordion panel is expanded or collapsed, focus is managed to ensure a seamless user experience. This prevents focus from being lost or trapped within the accordion, maintaining accessibility standards.
 
-## Visual Indicators
+### Visual Indicators
 
 - **Focus Styles**: Clear visual indicators are provided for focused elements, aiding users who navigate via keyboard.
   
 - **Active States**: Distinct styling for active (expanded) accordion items helps users identify the current state of each section.
 
 
-## Keyboard Support
+### Keyboard Support
 
 The Accordion component supports comprehensive keyboard navigation out of the box:
 

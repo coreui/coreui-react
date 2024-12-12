@@ -21,7 +21,36 @@ import CForm from '@coreui/react/src/components/form/CForm'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the component.</td>
+        <td colSpan="3">
+          <p>A string of additional CSS class names to apply to the form component.</p>
+        <JSXDocs code={`<CForm className="my-custom-form" />`} />
+        </td>
+      </tr>
+      <tr id="cform-customClassNames">
+        <td className="text-primary fw-semibold">customClassNames<a href="#cform-customClassNames" aria-label="CForm customClassNames permalink" className="anchor-link after">#</a><span className="badge bg-success">v5.5.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`Partial\<{ FORM: string; FORM_VALIDATED: string; }>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Custom class names to override or extend the default CSS classes used within the <code>{`CForm`}</code> component.<br />
+Each key corresponds to a specific part of the Form component, allowing for granular styling control.</p>
+<p><strong>Important</strong>: If you want to <strong>replace</strong> an existing class name, prefix your custom class name with <code>{`!`}</code>.<br />
+This ensures that the original class is overridden rather than appended.</p>
+        <JSXDocs code={`// Overriding the default form class
+const customClasses = {
+  FORM: '!my-custom-form',
+}
+
+<CForm customClassNames={customClasses} />
+
+// Extending the default form class without replacing it
+const customClasses = {
+  FORM: 'my-additional-form-class',
+}
+
+<CForm customClassNames={customClasses} />`} />
+        </td>
       </tr>
       <tr id="cform-validated">
         <td className="text-primary fw-semibold">validated<a href="#cform-validated" aria-label="CForm validated permalink" className="anchor-link after">#</a></td>
@@ -29,7 +58,12 @@ import CForm from '@coreui/react/src/components/form/CForm'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Mark a form as validated. If you set it <code>{`true`}</code>, all validation styles will be applied to the forms component.</td>
+        <td colSpan="3">
+          <p>Mark a form as validated. If set to <code>{`true`}</code>, all validation styles will be applied to the form component.</p>
+        <JSXDocs code={`<CForm validated>
+  // Form elements
+</CForm>`} />
+        </td>
       </tr>
     </tbody>
   </table>

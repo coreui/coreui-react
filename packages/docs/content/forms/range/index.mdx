@@ -1,0 +1,59 @@
+---
+title: React Range Component
+name: Range
+description: React range component. Use our custom range inputs for consistent cross-browser styling and built-in customization.
+route: /forms/range/
+other_frameworks: range
+---
+
+import { CForm, CFormLabel, CFormRange } from '@coreui/react/src/index'
+
+## Overview
+
+Create custom `<input type="range">` controls with `<CFormRange>`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only Edge Legacy and Firefox supports "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.
+
+import { FormRangeExample } from './examples/FormRangeExample.tsx'
+import FormRangeExampleTS from '!!raw-loader!./examples/FormRangeExample.tsx'
+
+<ExampleSnippet code={FormRangeExampleTS} componentName="React Form Range">
+  <FormRangeExample />
+</ExampleSnippet>
+
+## Disabled
+
+Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
+
+import { FormRangeDisabledExample } from './examples/FormRangeDisabledExample.tsx'
+import FormRangeDisabledExampleTS from '!!raw-loader!./examples/FormRangeDisabledExample.tsx'
+
+<ExampleSnippet code={FormRangeDisabledExampleTS} componentName="React Form Range">
+  <FormRangeDisabledExample />
+</ExampleSnippet>
+
+## Min and max
+
+Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
+
+import { FormRangeMinAndMaxExample } from './examples/FormRangeMinAndMaxExample.tsx'
+import FormRangeMinAndMaxExampleTS from '!!raw-loader!./examples/FormRangeMinAndMaxExample.tsx'
+
+<ExampleSnippet code={FormRangeMinAndMaxExampleTS} componentName="React Form Range">
+  <FormRangeMinAndMaxExample />
+</ExampleSnippet>
+
+## Steps
+
+By default, range inputs "snap" to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `step={0.5}`.
+
+import { FormRangeStepsExample } from './examples/FormRangeStepsExample.tsx'
+import FormRangeStepsExampleTS from '!!raw-loader!./examples/FormRangeStepsExample.tsx'
+
+<ExampleSnippet code={FormRangeStepsExampleTS} componentName="React Form Range">
+  <FormRangeStepsExample />
+</ExampleSnippet>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CFormRange /&gt;](./api/#cformrange)

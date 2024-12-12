@@ -1,0 +1,457 @@
+---
+title: React Offcanvas Component
+name: Offcanvas
+description: React alert component allows build hidden sidebars into your project for navigation, shopping carts.
+route: /components/offcanvas/
+other_frameworks: offcanvas
+---
+
+import { useState } from 'react'
+
+import {
+  CAlert,
+  CButton,
+  CCloseButton,
+  CCallout,
+  COffcanvas,
+  COffcanvasBody,
+  COffcanvasHeader,
+  COffcanvasTitle,
+} from '@coreui/react/src/index'
+
+## Examples
+
+### Offcanvas components
+
+Below is an offcanvas example that is shown by default (via `visible={true}`). Offcanvas includes support for a header with a close button and an optional body class for some initial `padding`. We suggest that you include offcanvas headers with dismiss actions whenever possible, or provide an explicit dismiss action.
+
+```jsx preview className="docs-example-offcanvas bg-body-tertiary p-0 overflow-hidden"
+<COffcanvas backdrop={false} placement="start" visible={true}>
+  <COffcanvasHeader>
+    <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+    <CCloseButton className="text-reset" />
+  </COffcanvasHeader>
+  <COffcanvasBody>
+    Content for the offcanvas goes here. You can place just about any React component or custom
+    elements here.
+  </COffcanvasBody>
+</COffcanvas>
+```
+
+### Live demo
+
+Use the buttons below to show and hide an offcanvas component.
+
+- `visible={false}` hides content (default)
+- `visible` or `visible={true}` shows content
+
+export const LiveDemoExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <CButton color="primary" onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
+      <COffcanvas placement="start" visible={visible} onHide={() => setVisible(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          Content for the offcanvas goes here. You can place just about any React component or
+          custom elements here.
+        </COffcanvasBody>
+      </COffcanvas>
+    </>
+  )
+}
+
+<Example>
+  <LiveDemoExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <>
+    <CButton color="primary" onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
+    <COffcanvas placement="start" visible={visible} onHide={() => setVisible(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        Content for the offcanvas goes here. You can place just about any React component or
+        custom elements here.
+      </COffcanvasBody>
+    </COffcanvas>
+  </>
+)
+```
+### Body scrolling
+
+Scrolling the `<body>` element is disabled when an offcanvas and its backdrop are visible. Use the scroll property to toggle `<body>` scrolling and backdrop to toggle the backdrop.
+
+export const BodyScrollingExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <CButton color="primary" onClick={() => setVisible(true)}>Enable body scrolling</CButton>
+      <COffcanvas backdrop={false} placement="start" scroll={true} visible={visible} onHide={() => setVisible(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Offcanvas with body scrolling</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          Try scrolling the rest of the page to see this option in action.
+        </COffcanvasBody>
+      </COffcanvas>
+    </>
+  )
+}
+
+<Example>
+  <BodyScrollingExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <>
+    <CButton color="primary" onClick={() => setVisible(true)}>Enable body scrolling</CButton>
+    <COffcanvas backdrop={false} placement="start" scroll={true} visible={visible} onHide={() => setVisible(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Offcanvas with body scrolling</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        Try scrolling the rest of the page to see this option in action.
+      </COffcanvasBody>
+    </COffcanvas>
+  </>
+)
+```
+
+### Body scrolling and backdrop
+
+You can also enable `<body>` scrolling with a visible backdrop.
+
+export const BodyScrollingAndBackdropExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <CButton color="primary" onClick={() => setVisible(true)}>Enable both scrolling &amp; backdrop</CButton>
+      <COffcanvas placement="start" scroll={true} visible={visible} onHide={() => setVisible(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Backdrop with scrolling</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          Try scrolling the rest of the page to see this option in action.
+        </COffcanvasBody>
+      </COffcanvas>
+    </>
+  )
+}
+
+<Example>
+  <BodyScrollingAndBackdropExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <>
+    <CButton color="primary" onClick={() => setVisible(true)}>Enable both scrolling &amp; backdrop</CButton>
+    <COffcanvas placement="start" scroll={true} visible={visible} onHide={() => setVisible(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Backdrop with scrolling</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        Try scrolling the rest of the page to see this option in action.
+      </COffcanvasBody>
+    </COffcanvas>
+  </>
+)
+```
+
+### Static backdrop
+
+If you set a `backdrop` to `static`, your React offcanvas component will not close when clicking outside of it.
+
+export const StaticBackdropExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <CButton color="primary" onClick={() => setVisible(true)}>Toggle static offcanvas</CButton>
+      <COffcanvas backdrop="static" placement="start" visible={visible} onHide={() => setVisible(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Backdrop with scrolling</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          I will not close if you click outside of me.
+        </COffcanvasBody>
+      </COffcanvas>
+    </>
+  )
+}
+
+<Example>
+  <StaticBackdropExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <>
+    <CButton color="primary" onClick={() => setVisible(true)}>Toggle static offcanvas</CButton>
+    <COffcanvas backdrop="static" placement="start" visible={visible} onHide={() => setVisible(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Backdrop with scrolling</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        I will not close if you click outside of me.
+      </COffcanvasBody>
+    </COffcanvas>
+  </>
+)
+```
+
+## Dark offcanvas
+
+Change the appearance of offcanvases with `dark` boolean property to better match them to different contexts like dark navbars.
+
+```jsx preview className="docs-example-offcanvas bg-body-secondary p-0 overflow-hidden"
+<COffcanvas backdrop={false} dark placement="start" visible={true}>
+  <COffcanvasHeader>
+    <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+    <CCloseButton className="text-reset" />
+  </COffcanvasHeader>
+  <COffcanvasBody>
+    Content for the offcanvas goes here. You can place just about any React component or custom
+    elements here.
+  </COffcanvasBody>
+</COffcanvas>
+```
+
+## Responsive 
+
+Responsive offcanvas properties hide content outside the viewport from a specified breakpoint and down.
+Above that breakpoint, the contents within will behave as usual. 
+For example, `responsive="lg"` hides content in an offcanvas below the lg breakpoint, but shows the content above the lg breakpoint.
+
+export const ResponsiveExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <CButton color="primary" className="d-lg-none" onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
+      <CAlert className="d-none d-lg-block" color="info">Resize your browser to show the responsive offcanvas toggle.</CAlert>
+      <COffcanvas placement="start" responsive="lg" visible={visible} onHide={() => setVisible(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Responsive offcanvas</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          <p>This is content within an <code>.offcanvas-lg</code></p>.
+        </COffcanvasBody>
+      </COffcanvas>
+    </>
+  )
+}
+
+<Example>
+  <ResponsiveExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <>
+    <CButton color="primary" className="d-lg-none" onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
+    <CAlert className="d-none d-lg-block" color="info">Resize your browser to show the responsive offcanvas toggle.</CAlert>
+    <COffcanvas backdrop="static" placement="start" visible={visible} onHide={() => setVisible(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Responsive offcanvas</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        This is content within an <code>.offcanvas-lg</code>.
+      </COffcanvasBody>
+    </COffcanvas>
+  </>
+)
+```
+
+
+## Placement
+
+There's no default placement for offcanvas components, so you must add one of the modifier classes below;
+
+- `placement="start"` places offcanvas on the left of the viewport (shown above)
+- `placement="end"` places offcanvas on the right of the viewport
+- `placement="top"` places offcanvas on the top of the viewport
+- `placement="bottom"` places offcanvas on the bottom of the viewport
+
+Try the top, right, and bottom examples out below.
+
+export const PlacementTopExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <CButton color="primary" onClick={() => setVisible(true)}>Toggle top offcanvas</CButton>
+      <COffcanvas placement="top" visible={visible} onHide={() => setVisible(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          Content for the offcanvas goes here. You can place just about any React component or
+          custom elements here.
+        </COffcanvasBody>
+      </COffcanvas>
+    </>
+  )
+}
+
+<Example>
+  <PlacementTopExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <>
+    <CButton color="primary" onClick={() => setVisible(true)}>Toggle top offcanvas</CButton>
+    <COffcanvas placement="top" visible={visible} onHide={() => setVisible(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        Content for the offcanvas goes here. You can place just about any React component or
+        custom elements here.
+      </COffcanvasBody>
+    </COffcanvas>
+  </>
+)
+```
+
+export const PlacementRightExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <CButton color="primary" onClick={() => setVisible(true)}>Toggle right offcanvas</CButton>
+      <COffcanvas placement="end" visible={visible} onHide={() => setVisible(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          Content for the offcanvas goes here. You can place just about any React component or
+          custom elements here.
+        </COffcanvasBody>
+      </COffcanvas>
+    </>
+  )
+}
+
+<Example>
+  <PlacementRightExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <>
+    <CButton color="primary" onClick={() => setVisible(true)}>Toggle right offcanvas</CButton>
+    <COffcanvas placement="right" visible={visible} onHide={() => setVisible(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        Content for the offcanvas goes here. You can place just about any React component or
+        custom elements here.
+      </COffcanvasBody>
+    </COffcanvas>
+  </>
+)
+```
+
+export const PlacementBottomExample = () => {
+  const [visible, setVisible] = useState(false)
+  return (
+    <>
+      <CButton color="primary" onClick={() => setVisible(true)}>Toggle bottom offcanvas</CButton>
+      <COffcanvas placement="bottom" visible={visible} onHide={() => setVisible(false)}>
+        <COffcanvasHeader>
+          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+          <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          Content for the offcanvas goes here. You can place just about any React component or
+          custom elements here.
+        </COffcanvasBody>
+      </COffcanvas>
+    </>
+  )
+}
+
+<Example>
+  <PlacementBottomExample />
+</Example>
+
+```jsx
+const [visible, setVisible] = useState(false)
+return (
+  <>
+    <CButton color="primary" onClick={() => setVisible(true)}>Toggle bottom offcanvas</CButton>
+    <COffcanvas placement="bottom" visible={visible} onHide={() => setVisible(false)}>
+      <COffcanvasHeader>
+        <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+        <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        Content for the offcanvas goes here. You can place just about any React component or
+        custom elements here.
+      </COffcanvasBody>
+    </COffcanvas>
+  </>
+)
+```
+
+## Accessibility
+
+Since the offcanvas panel is conceptually a modal dialog, be sure to add `aria-labelledby="..."`—referencing the offcanvas title—to `<COffcanvas>`. Note that you don’t need to add `role="dialog"` since we already add it automatically.
+
+## Customizing
+
+### CSS variables
+
+React offcanvas uses local CSS variables on `.offcanvas` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+<ScssDocs file="_offcanvas.scss" capture="offcanvas-css-vars"/>
+
+#### How to use CSS variables
+
+```jsx
+const vars = { 
+  '--my-css-var': 10,
+  '--my-another-css-var': "red" 
+}
+return <COffcanvas style={vars}>...</COffcanvas>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="offcanvas-variables"/>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;COffcanvas /&gt;](./api/#coffcanvas)
+- [&lt;COffcanvasBody /&gt;](./api/#coffcanvasbody)
+- [&lt;COffcanvasHeader /&gt;](./api/#coffcanvasheader)
+- [&lt;COffcanvasTitle /&gt;](./api/#coffcanvastitle)

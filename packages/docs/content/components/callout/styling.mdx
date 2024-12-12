@@ -1,0 +1,36 @@
+---
+title: React Calout Component Styling
+name: Calout Styling
+description: Learn how to customize the React Calout component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design.
+route: /components/callout/
+---
+
+{/* ### CSS class names
+
+React Calout comes with built-in class names that make styling super simple. Here’s a quick rundown of what you can use:
+
+<ClassNamesDocs
+  files={[
+    'components/callout/CCalout.tsx',
+  ]}
+/> */}
+
+### CSS variables
+
+React Calout supports CSS variables for easy customization. These variables are set via SASS but allow direct overrides in your stylesheets or inline styles.
+
+<ScssDocs file="_callout.scss" capture="callout-css-vars"/>
+
+#### How to use CSS variables
+
+```jsx
+const vars = { 
+  '--my-css-var': 10,
+  '--my-another-css-var': "red" 
+}
+return <CCallout style={vars}>...</CCallout>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="callout-variables"/>

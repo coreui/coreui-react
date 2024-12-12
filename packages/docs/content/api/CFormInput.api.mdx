@@ -21,7 +21,36 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the component.</td>
+        <td colSpan="3">
+          <p>A string of additional CSS class names to apply to the form input component.</p>
+        <JSXDocs code={`<CFormInput className="my-custom-input" />`} />
+        </td>
+      </tr>
+      <tr id="cforminput-customClassNames">
+        <td className="text-primary fw-semibold">customClassNames<a href="#cforminput-customClassNames" aria-label="CFormInput customClassNames permalink" className="anchor-link after">#</a><span className="badge bg-success">v5.5.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`Partial\<Record\<CombinedCustomClassNamesKeys`}</code>, <code>{`"FORM_CONTROL"`}</code>, <code>{`"FORM_CONTROL_COLOR"`}</code>, <code>{`"FORM_CONTROL_PLAINTEXT"`}</code>, <code>{`"FORM_CONTROL_SM"`}</code>, <code>{`"FORM_CONTROL_LG"`}</code>, <code>{`"IS_INVALID"`}</code>, <code>{`"IS_VALID", string>>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Custom class names to override or extend the default CSS classes used within the <code>{`CFormControlWrapper`}</code> component.<br />
+Each key corresponds to a specific part of the Form Input component, allowing for granular styling control.</p>
+<p><strong>Important</strong>: If you want to <strong>replace</strong> an existing class name, prefix your custom class name with <code>{`!`}</code>.<br />
+This ensures that the original class is overridden rather than appended.</p>
+        <JSXDocs code={`// Overriding the default form control class
+const customClasses = {
+  FORM_CONTROL: '!my-custom-form-control',
+}
+
+<CFormInput customClassNames={customClasses} />
+
+// Extending the default form control class without replacing it
+const customClasses = {
+  FORM_CONTROL: 'my-additional-form-control',
+}
+
+<CFormInput customClassNames={customClasses} />`} />
+        </td>
       </tr>
       <tr id="cforminput-delay">
         <td className="text-primary fw-semibold">delay<a href="#cforminput-delay" aria-label="CFormInput delay permalink" className="anchor-link after">#</a></td>
@@ -29,7 +58,15 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`number`}</code>, <code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Delay onChange event while typing. If set to true onChange event will be delayed 500ms, you can also provide the number of milliseconds you want to delay the onChange event.</td>
+        <td colSpan="3">
+          <p>Delay the <code>{`onChange`}</code> event while typing. If set to <code>{`true`}</code>, the <code>{`onChange`}</code> event will be delayed by 500ms.<br />
+You can also provide a specific number of milliseconds to customize the delay duration.</p>
+        <JSXDocs code={`// Delaying the onChange event by 500ms
+<CFormInput delay onChange={(e) => console.log(e.target.value)} />
+
+// Custom delay duration of 1000ms
+<CFormInput delay={1000} onChange={(e) => console.log(e.target.value)} />`} />
+        </td>
       </tr>
       <tr id="cforminput-disabled">
         <td className="text-primary fw-semibold">disabled<a href="#cforminput-disabled" aria-label="CFormInput disabled permalink" className="anchor-link after">#</a></td>
@@ -37,7 +74,10 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Toggle the disabled state for the component.</td>
+        <td colSpan="3">
+          <p>Toggle the disabled state for the form input component. When <code>{`true`}</code>, the input is disabled and non-interactive.</p>
+        <JSXDocs code={`<CFormInput disabled />`} />
+        </td>
       </tr>
       <tr id="cforminput-feedback">
         <td className="text-primary fw-semibold">feedback<a href="#cforminput-feedback" aria-label="CFormInput feedback permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
@@ -45,7 +85,10 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`ReactNode`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Provide valuable, actionable feedback.</td>
+        <td colSpan="3">
+          <p>Provide valuable, actionable feedback.</p>
+        <JSXDocs code={`<CFormInput feedback="This field is required." />`} />
+        </td>
       </tr>
       <tr id="cforminput-feedbackInvalid">
         <td className="text-primary fw-semibold">feedbackInvalid<a href="#cforminput-feedbackInvalid" aria-label="CFormInput feedbackInvalid permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
@@ -53,7 +96,10 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`ReactNode`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Provide valuable, actionable feedback.</td>
+        <td colSpan="3">
+          <p>Provide valuable, actionable feedback when the form control is in an invalid state.</p>
+        <JSXDocs code={`<CFormInput feedbackInvalid="Invalid input." />`} />
+        </td>
       </tr>
       <tr id="cforminput-feedbackValid">
         <td className="text-primary fw-semibold">feedbackValid<a href="#cforminput-feedbackValid" aria-label="CFormInput feedbackValid permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
@@ -61,7 +107,10 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`ReactNode`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, <code>{`:invalid`}</code> and <code>{`:valid`}</code>.</td>
+        <td colSpan="3">
+          <p>Provide valuable, actionable feedback when the form control is in a valid state.</p>
+        <JSXDocs code={`<CFormInput feedbackValid="Looks good!" />`} />
+        </td>
       </tr>
       <tr id="cforminput-floatingClassName">
         <td className="text-primary fw-semibold">floatingClassName<a href="#cforminput-floatingClassName" aria-label="CFormInput floatingClassName permalink" className="anchor-link after">#</a><span className="badge bg-success">4.5.0+</span></td>
@@ -69,7 +118,9 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the floating label wrapper.</td>
+        <td colSpan="3">
+          <p>A string of all className you want applied to the floating label wrapper.</p>
+        </td>
       </tr>
       <tr id="cforminput-floatingLabel">
         <td className="text-primary fw-semibold">floatingLabel<a href="#cforminput-floatingLabel" aria-label="CFormInput floatingLabel permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
@@ -77,7 +128,10 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`ReactNode`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, <code>{`:invalid`}</code> and <code>{`:valid`}</code>.</td>
+        <td colSpan="3">
+          <p>Provide a floating label for the form control. This label will float above the input when focused or when the input has a value.</p>
+        <JSXDocs code={`<CFormControlWrapper floatingLabel="Email Address" />`} />
+        </td>
       </tr>
       <tr id="cforminput-invalid">
         <td className="text-primary fw-semibold">invalid<a href="#cforminput-invalid" aria-label="CFormInput invalid permalink" className="anchor-link after">#</a></td>
@@ -85,7 +139,10 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Set component validation state to invalid.</td>
+        <td colSpan="3">
+          <p>Set the form control validation state to invalid. When <code>{`true`}</code>, applies the invalid feedback styling.</p>
+        <JSXDocs code={`<CFormInput invalid feedback="Invalid input." />`} />
+        </td>
       </tr>
       <tr id="cforminput-label">
         <td className="text-primary fw-semibold">label<a href="#cforminput-label" aria-label="CFormInput label permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
@@ -93,7 +150,10 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`ReactNode`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Add a caption for a component.</td>
+        <td colSpan="3">
+          <p>Add a caption for the form control. Typically used as a label.</p>
+        <JSXDocs code={`<CFormControlWrapper label="Username" />`} />
+        </td>
       </tr>
       <tr id="cforminput-onChange">
         <td className="text-primary fw-semibold">onChange<a href="#cforminput-onChange" aria-label="CFormInput onChange permalink" className="anchor-link after">#</a></td>
@@ -101,7 +161,14 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`ChangeEventHandler\<HTMLInputElement>`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Method called immediately after the <code>{`value`}</code> prop changes.</td>
+        <td colSpan="3">
+          <p>Method called immediately after the <code>{`value`}</code> prop changes. Useful for handling input changes with optional delay.</p>
+        <JSXDocs code={`const handleChange = (event) => {
+  console.log(event.target.value)
+}
+
+<CFormInput onChange={handleChange} />`} />
+        </td>
       </tr>
       <tr id="cforminput-plainText">
         <td className="text-primary fw-semibold">plainText<a href="#cforminput-plainText" aria-label="CFormInput plainText permalink" className="anchor-link after">#</a></td>
@@ -109,7 +176,11 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side <code>{`readonly`}</code>.</td>
+        <td colSpan="3">
+          <p>Render the form input component styled as plain text. Removes the default form field styling and preserves the correct margin and padding.<br />
+Recommended to use only alongside <code>{`readOnly`}</code>.</p>
+        <JSXDocs code={`<CFormInput plainText readOnly value="Plain Text Value" />`} />
+        </td>
       </tr>
       <tr id="cforminput-readOnly">
         <td className="text-primary fw-semibold">readOnly<a href="#cforminput-readOnly" aria-label="CFormInput readOnly permalink" className="anchor-link after">#</a></td>
@@ -117,7 +188,10 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Toggle the readonly state for the component.</td>
+        <td colSpan="3">
+          <p>Toggle the readonly state for the form input component. When <code>{`true`}</code>, the input is read-only and cannot be modified.</p>
+        <JSXDocs code={`<CFormInput readOnly value="Read-Only Value" />`} />
+        </td>
       </tr>
       <tr id="cforminput-size">
         <td className="text-primary fw-semibold">size<a href="#cforminput-size" aria-label="CFormInput size permalink" className="anchor-link after">#</a></td>
@@ -125,7 +199,11 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`"sm"`}</code>, <code>{`"lg"`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Size the component small or large.</td>
+        <td colSpan="3">
+          <p>Size the form input component as small (<code>{`sm`}</code>) or large (<code>{`lg`}</code>).</p>
+        <JSXDocs code={`<CFormInput size="sm" />
+<CFormInput size="lg" />`} />
+        </td>
       </tr>
       <tr id="cforminput-text">
         <td className="text-primary fw-semibold">text<a href="#cforminput-text" aria-label="CFormInput text permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
@@ -133,7 +211,10 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`ReactNode`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Add helper text to the component.</td>
+        <td colSpan="3">
+          <p>Add helper text to the form control. Provides additional guidance to the user.</p>
+        <JSXDocs code={`<CFormControlWrapper text="Your username must be unique." />`} />
+        </td>
       </tr>
       <tr id="cforminput-tooltipFeedback">
         <td className="text-primary fw-semibold">tooltipFeedback<a href="#cforminput-tooltipFeedback" aria-label="CFormInput tooltipFeedback permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
@@ -141,7 +222,10 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Display validation feedback in a styled tooltip.</td>
+        <td colSpan="3">
+          <p>Display validation feedback in a styled tooltip.</p>
+        <JSXDocs code={`<CFormInput invalid tooltipFeedback feedback="Invalid input." />`} />
+        </td>
       </tr>
       <tr id="cforminput-type">
         <td className="text-primary fw-semibold">type<a href="#cforminput-type" aria-label="CFormInput type permalink" className="anchor-link after">#</a></td>
@@ -149,7 +233,12 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Specifies the type of component.</td>
+        <td colSpan="3">
+          <p>Specifies the type of the form input component. It can be any valid HTML input type.</p>
+        <JSXDocs code={`<CFormInput type="email" />
+<CFormInput type="password" />
+<CFormInput type="file" />`} />
+        </td>
       </tr>
       <tr id="cforminput-valid">
         <td className="text-primary fw-semibold">valid<a href="#cforminput-valid" aria-label="CFormInput valid permalink" className="anchor-link after">#</a></td>
@@ -157,7 +246,10 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Set component validation state to valid.</td>
+        <td colSpan="3">
+          <p>Set the form control validation state to valid. When <code>{`true`}</code>, applies the valid feedback styling.</p>
+        <JSXDocs code={`<CFormInput valid feedbackValid="Looks good!" />`} />
+        </td>
       </tr>
       <tr id="cforminput-value">
         <td className="text-primary fw-semibold">value<a href="#cforminput-value" aria-label="CFormInput value permalink" className="anchor-link after">#</a></td>
@@ -165,7 +257,12 @@ import CFormInput from '@coreui/react/src/components/form/CFormInput'
         <td><code>{`string`}</code>, <code>{`number`}</code>, <code>{`string[]`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">The <code>{`value`}</code> attribute of component.</td>
+        <td colSpan="3">
+          <p>The <code>{`value`}</code> attribute of the form input component. Represents the current value of the input.</p>
+        <JSXDocs code={`const [inputValue, setInputValue] = useState('')
+
+<CFormInput value={inputValue} onChange={(e) => setInputValue(e.target.value)} />`} />
+        </td>
       </tr>
     </tbody>
   </table>

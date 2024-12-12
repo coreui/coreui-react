@@ -1,0 +1,147 @@
+---
+title: React Chart.js Component
+name: Chart
+description: React wrapper for Chart.js 4.x, the most popular charting library.
+route: /components/chart/
+---
+
+import {
+  CChart,
+  CChartBar,
+  CChartBubble,
+  CChartDoughnut,
+  CChartLine,
+  CChartPolarArea,
+  CChartRadar,
+  CChartScatter,
+} from '@coreui/react-chartjs'
+
+import { useEffect, useRef, useState } from 'react'
+import { getStyle } from '@coreui/utils'
+
+## Installation
+
+If you want to use our Chart.js React wrapper you have to install an additional package.
+
+### Npm
+
+```bash
+npm install @coreui/react-chartjs
+```
+
+### Yarn
+
+```bash
+yarn add @coreui/react-chartjs
+```
+
+## Chart Types
+
+### Line Chart
+
+A line chart is a way of plotting data points on a line. Often, it is used to show trend data, or the comparison of two data sets.
+[Line Chart properties](https://www.chartjs.org/docs/latest/charts/line.html#dataset-properties)
+
+import { ChartLineExample } from './examples/ChartLineExample.tsx'
+import ChartLineExampleJS from '!!raw-loader!./examples/ChartLineExample.jsx'
+import ChartLineExampleTS from '!!raw-loader!./examples/ChartLineExample.tsx'
+
+<ExampleSnippet
+  code={{ js: ChartLineExampleJS, ts: ChartLineExampleTS }}
+  componentName="React Chart"
+>
+  <ChartLineExample />
+</ExampleSnippet>
+
+### Bar Chart
+
+A bar chart provides a way of showing data values represented as vertical bars. It is sometimes used to show trend data, and the comparison of multiple data sets side by side. [Bar Chart properties](https://www.chartjs.org/docs/latest/charts/bar.html#dataset-properties)
+
+import { ChartBarExample } from './examples/ChartBarExample.tsx'
+import ChartBarExampleJS from '!!raw-loader!./examples/ChartBarExample.jsx'
+import ChartBarExampleTS from '!!raw-loader!./examples/ChartBarExample.tsx'
+
+<ExampleSnippet code={{ js: ChartBarExampleJS, ts: ChartBarExampleTS }} componentName="React Chart">
+  <ChartBarExample />
+</ExampleSnippet>
+
+### Radar Chart
+
+A radar chart is a way of showing multiple data points and the variation between them. They are often useful for comparing the points of two or more different data sets. [Radar Chart properties](https://www.chartjs.org/docs/latest/charts/radar.html#dataset-properties)
+
+import { ChartRadarExample } from './examples/ChartRadarExample.tsx'
+import ChartRadarExampleJS from '!!raw-loader!./examples/ChartRadarExample.jsx'
+import ChartRadarExampleTS from '!!raw-loader!./examples/ChartRadarExample.tsx'
+
+<ExampleSnippet
+  code={{ js: ChartRadarExampleJS, ts: ChartRadarExampleTS }}
+  componentName="React Chart"
+>
+  <ChartRadarExample />
+</ExampleSnippet>
+
+### Doughnut and Pie Charts
+
+Pie and doughnut charts are probably the most commonly used charts. They are divided into segments, the arc of each segment shows the proportional value of each piece of data. [Doughnut and Pie Charts properties](https://www.chartjs.org/docs/latest/charts/doughnut.html#dataset-properties)
+
+import { ChartDoughnutAndPieExample } from './examples/ChartDoughnutAndPieExample.tsx'
+import ChartDoughnutAndPieExampleJS from '!!raw-loader!./examples/ChartDoughnutAndPieExample.jsx'
+import ChartDoughnutAndPieExampleTS from '!!raw-loader!./examples/ChartDoughnutAndPieExample.tsx'
+
+<ExampleSnippet
+  code={{ js: ChartDoughnutAndPieExampleJS, ts: ChartDoughnutAndPieExampleTS }}
+  componentName="React Chart"
+>
+  <ChartDoughnutAndPieExample />
+</ExampleSnippet>
+
+### Polar Area Chart
+
+Polar area charts are similar to pie charts, but each segment has the same angle - the radius of the segment differs depending on the value. [Polar Area Chart properties](https://www.chartjs.org/docs/latest/charts/polar.html#dataset-properties)
+
+import { ChartPolarAreaExample } from './examples/ChartPolarAreaExample.tsx'
+import ChartPolarAreaExampleJS from '!!raw-loader!./examples/ChartPolarAreaExample.jsx'
+import ChartPolarAreaExampleTS from '!!raw-loader!./examples/ChartPolarAreaExample.tsx'
+
+<ExampleSnippet
+  code={{ js: ChartPolarAreaExampleJS, ts: ChartPolarAreaExampleTS }}
+  componentName="React Chart"
+>
+  <ChartPolarAreaExample />
+</ExampleSnippet>
+
+### Bubble Chart
+
+A bubble chart is used to display three dimensions of data at the same time. The location of the bubble is determined by the first two dimensions and the corresponding horizontal and vertical axes. The third dimension is represented by the size of the individual bubbles. [Bubble Chart properties](https://www.chartjs.org/docs/latest/charts/bubble.html#dataset-properties)
+
+import { ChartBubbleExample } from './examples/ChartBubbleExample.tsx'
+import ChartBubbleExampleJS from '!!raw-loader!./examples/ChartBubbleExample.jsx'
+import ChartBubbleExampleTS from '!!raw-loader!./examples/ChartBubbleExample.tsx'
+
+<ExampleSnippet
+  code={{ js: ChartBubbleExampleJS, ts: ChartBubbleExampleTS }}
+  componentName="React Chart"
+>
+  <ChartBubbleExample />
+</ExampleSnippet>
+
+### Scatter Chart
+
+A bubble chart is used to display three dimensions of data at the same time. The location of the bubble is determined by the first two dimensions and the corresponding horizontal and vertical axes. The third dimension is represented by the size of the individual bubbles. [Scatter Chart properties](https://www.chartjs.org/docs/latest/charts/scatter.html#dataset-properties)
+
+import { ChartScatterExample } from './examples/ChartScatterExample.tsx'
+import ChartScatterExampleJS from '!!raw-loader!./examples/ChartScatterExample.jsx'
+import ChartScatterExampleTS from '!!raw-loader!./examples/ChartScatterExample.tsx'
+
+<ExampleSnippet
+  code={{ js: ChartScatterExampleJS, ts: ChartScatterExampleTS }}
+  componentName="React Chart"
+>
+  <ChartScatterExample />
+</ExampleSnippet>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CChart /&gt;](./api/#cchart)

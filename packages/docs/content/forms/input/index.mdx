@@ -1,0 +1,108 @@
+---
+title: React Form Input Component
+name: Form control
+description: React input components. Give textual form `<input>`s an upgrade with custom styles, sizing, focus states, validation, and more.
+menu: Forms
+route: /forms/input
+other_frameworks: input
+---
+
+## Example
+
+import { FormInputExample } from './examples/FormInputExample.tsx'
+import FormInputExampleTS from '!!raw-loader!./examples/FormInputExample.tsx'
+
+<ExampleSnippet code={FormInputExampleTS} componentName="React Form Input">
+  <FormInputExample />
+</ExampleSnippet>
+
+If you need to add custom classNames to form's components, or need to add some custom elements you can add each form component separately. Please check the example below.
+
+```jsx
+<CForm>
+  <CFormLabel htmlFor="exampleFormControlInput1">Email address</CFormLabel>
+  <CFormInput type="email" id="exampleFormControlInput1" placeholder="name@example.com" aria-describedby="exampleFormControlInputHelpInline" />
+  <CFormText as="span" id="exampleFormControlInputHelpInline">
+    Must be 8-20 characters long.
+  </CFormText>
+</CForm>
+```
+
+## Sizing
+
+Set heights using `size` property like `size="lg"` and `size="sm"`.
+
+import { FormInputSizingExample } from './examples/FormInputSizingExample.tsx'
+import FormInputSizingExampleTS from '!!raw-loader!./examples/FormInputSizingExample.tsx'
+
+<ExampleSnippet code={FormInputSizingExampleTS} componentName="React Form Input">
+  <FormInputSizingExample />
+</ExampleSnippet>
+
+## Disabled
+
+Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
+
+import { FormInputDisabledExample } from './examples/FormInputDisabledExample.tsx'
+import FormInputDisabledExampleTS from '!!raw-loader!./examples/FormInputDisabledExample.tsx'
+
+<ExampleSnippet code={FormInputDisabledExampleTS} componentName="React Form Input">
+  <FormInputDisabledExample />
+</ExampleSnippet>
+
+## Readonly
+
+Add the `readOnly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
+
+import { FormInputReadonlyExample } from './examples/FormInputReadonlyExample.tsx'
+import FormInputReadonlyExampleTS from '!!raw-loader!./examples/FormInputReadonlyExample.tsx'
+
+<ExampleSnippet code={FormInputReadonlyExampleTS} componentName="React Form Input">
+  <FormInputReadonlyExample />
+</ExampleSnippet>
+
+## Readonly plain text
+
+If you want to have `<input readonly>` elements in your form styled as plain text, use the `plainText` boolean property to remove the default form field styling and preserve the correct margin and padding.
+
+import { FormInputReadonlyPlainTextExample } from './examples/FormInputReadonlyPlainTextExample.tsx'
+import FormInputReadonlyPlainTextExampleTS from '!!raw-loader!./examples/FormInputReadonlyPlainTextExample.tsx'
+
+<ExampleSnippet code={FormInputReadonlyPlainTextExampleTS} componentName="React Form Input">
+  <FormInputReadonlyPlainTextExample />
+</ExampleSnippet>
+
+import { FormInputReadonlyPlainText2Example } from './examples/FormInputReadonlyPlainText2Example.tsx'
+import FormInputReadonlyPlainText2ExampleTS from '!!raw-loader!./examples/FormInputReadonlyPlainText2Example.tsx'
+
+<ExampleSnippet code={FormInputReadonlyPlainText2ExampleTS} componentName="React Form Input">
+  <FormInputReadonlyPlainText2Example />
+</ExampleSnippet>
+
+## File input
+
+import { FormInputFileExample } from './examples/FormInputFileExample.tsx'
+import FormInputFileExampleTS from '!!raw-loader!./examples/FormInputFileExample.tsx'
+
+<ExampleSnippet code={FormInputFileExampleTS} componentName="React Form Input">
+  <FormInputFileExample />
+</ExampleSnippet>
+
+## Color
+
+import { FormInputColorExample } from './examples/FormInputColorExample.tsx'
+import FormInputColorExampleTS from '!!raw-loader!./examples/FormInputColorExample.tsx'
+
+<ExampleSnippet code={FormInputColorExampleTS} componentName="React Form Input">
+  <FormInputColorExample />
+</ExampleSnippet>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CFormInput /&gt;](./api/#cforminput)
+- [&lt;CFormFeedback /&gt;](./api/#cformfeedback)
+- [&lt;CFormLabel /&gt;](./api/#cformlabel)
+- [&lt;CFormText /&gt;](./api/#cformtext)
+

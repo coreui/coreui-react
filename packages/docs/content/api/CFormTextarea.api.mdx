@@ -21,7 +21,36 @@ import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the component.</td>
+        <td colSpan="3">
+          <p>A string of additional CSS class names to apply to the form textarea component.</p>
+        <JSXDocs code={`<CFormTextarea className="my-custom-textarea" />`} />
+        </td>
+      </tr>
+      <tr id="cformtextarea-customClassNames">
+        <td className="text-primary fw-semibold">customClassNames<a href="#cformtextarea-customClassNames" aria-label="CFormTextarea customClassNames permalink" className="anchor-link after">#</a><span className="badge bg-success">v5.5.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`Partial\<Record\<CombinedCustomClassNamesKeys`}</code>, <code>{`"FORM_CONTROL"`}</code>, <code>{`"FORM_CONTROL_PLAINTEXT"`}</code>, <code>{`"IS_INVALID"`}</code>, <code>{`"IS_VALID", string>>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Custom class names to override or extend the default CSS classes used within the <code>{`CFormTextarea`}</code> component.<br />
+Each key corresponds to a specific part of the Form Textarea component, allowing for granular styling control.</p>
+<p><strong>Important</strong>: If you want to <strong>replace</strong> an existing class name, prefix your custom class name with <code>{`!`}</code>.<br />
+This ensures that the original class is overridden rather than appended.</p>
+        <JSXDocs code={`// Overriding the default form control class
+const customClasses = {
+  FORM_CONTROL: '!my-custom-form-control',
+}
+
+<CFormTextarea customClassNames={customClasses} />
+
+// Extending the default form control class without replacing it
+const customClasses = {
+  FORM_CONTROL: 'my-additional-form-control',
+}
+
+<CFormTextarea customClassNames={customClasses} />`} />
+        </td>
       </tr>
       <tr id="cformtextarea-disabled">
         <td className="text-primary fw-semibold">disabled<a href="#cformtextarea-disabled" aria-label="CFormTextarea disabled permalink" className="anchor-link after">#</a></td>
@@ -29,7 +58,10 @@ import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Toggle the disabled state for the component.</td>
+        <td colSpan="3">
+          <p>Toggle the disabled state for the form textarea component. When <code>{`true`}</code>, the textarea is disabled and non-interactive.</p>
+        <JSXDocs code={`<CFormTextarea disabled />`} />
+        </td>
       </tr>
       <tr id="cformtextarea-feedback">
         <td className="text-primary fw-semibold">feedback<a href="#cformtextarea-feedback" aria-label="CFormTextarea feedback permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
@@ -37,7 +69,10 @@ import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
         <td><code>{`ReactNode`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Provide valuable, actionable feedback.</td>
+        <td colSpan="3">
+          <p>Provide valuable, actionable feedback.</p>
+        <JSXDocs code={`<CFormTextarea feedback="This field is required." />`} />
+        </td>
       </tr>
       <tr id="cformtextarea-feedbackInvalid">
         <td className="text-primary fw-semibold">feedbackInvalid<a href="#cformtextarea-feedbackInvalid" aria-label="CFormTextarea feedbackInvalid permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
@@ -45,7 +80,10 @@ import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
         <td><code>{`ReactNode`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Provide valuable, actionable feedback.</td>
+        <td colSpan="3">
+          <p>Provide valuable, actionable feedback when the form control is in an invalid state.</p>
+        <JSXDocs code={`<CFormTextarea feedbackInvalid="Invalid input." />`} />
+        </td>
       </tr>
       <tr id="cformtextarea-feedbackValid">
         <td className="text-primary fw-semibold">feedbackValid<a href="#cformtextarea-feedbackValid" aria-label="CFormTextarea feedbackValid permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
@@ -53,7 +91,10 @@ import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
         <td><code>{`ReactNode`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, <code>{`:invalid`}</code> and <code>{`:valid`}</code>.</td>
+        <td colSpan="3">
+          <p>Provide valuable, actionable feedback when the form control is in a valid state.</p>
+        <JSXDocs code={`<CFormTextarea feedbackValid="Looks good!" />`} />
+        </td>
       </tr>
       <tr id="cformtextarea-floatingClassName">
         <td className="text-primary fw-semibold">floatingClassName<a href="#cformtextarea-floatingClassName" aria-label="CFormTextarea floatingClassName permalink" className="anchor-link after">#</a><span className="badge bg-success">4.5.0+</span></td>
@@ -61,7 +102,9 @@ import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the floating label wrapper.</td>
+        <td colSpan="3">
+          <p>A string of all className you want applied to the floating label wrapper.</p>
+        </td>
       </tr>
       <tr id="cformtextarea-floatingLabel">
         <td className="text-primary fw-semibold">floatingLabel<a href="#cformtextarea-floatingLabel" aria-label="CFormTextarea floatingLabel permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
@@ -69,7 +112,10 @@ import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
         <td><code>{`ReactNode`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, <code>{`:invalid`}</code> and <code>{`:valid`}</code>.</td>
+        <td colSpan="3">
+          <p>Provide a floating label for the form control. This label will float above the input when focused or when the input has a value.</p>
+        <JSXDocs code={`<CFormControlWrapper floatingLabel="Email Address" />`} />
+        </td>
       </tr>
       <tr id="cformtextarea-invalid">
         <td className="text-primary fw-semibold">invalid<a href="#cformtextarea-invalid" aria-label="CFormTextarea invalid permalink" className="anchor-link after">#</a></td>
@@ -77,7 +123,10 @@ import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Set component validation state to invalid.</td>
+        <td colSpan="3">
+          <p>Set the form control validation state to invalid. When <code>{`true`}</code>, applies the invalid feedback styling.</p>
+        <JSXDocs code={`<CFormTextarea invalid feedback="Invalid input." />`} />
+        </td>
       </tr>
       <tr id="cformtextarea-label">
         <td className="text-primary fw-semibold">label<a href="#cformtextarea-label" aria-label="CFormTextarea label permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
@@ -85,7 +134,10 @@ import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
         <td><code>{`ReactNode`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Add a caption for a component.</td>
+        <td colSpan="3">
+          <p>Add a caption for the form control. Typically used as a label.</p>
+        <JSXDocs code={`<CFormControlWrapper label="Username" />`} />
+        </td>
       </tr>
       <tr id="cformtextarea-onChange">
         <td className="text-primary fw-semibold">onChange<a href="#cformtextarea-onChange" aria-label="CFormTextarea onChange permalink" className="anchor-link after">#</a></td>
@@ -93,7 +145,14 @@ import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
         <td><code>{`ChangeEventHandler\<HTMLTextAreaElement>`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Method called immediately after the <code>{`value`}</code> prop changes.</td>
+        <td colSpan="3">
+          <p>Method called immediately after the <code>{`value`}</code> prop changes. Useful for handling textarea changes.</p>
+        <JSXDocs code={`const handleChange = (e) => {
+  console.log(e.target.value)
+}
+
+<CFormTextarea onChange={handleChange} />`} />
+        </td>
       </tr>
       <tr id="cformtextarea-plainText">
         <td className="text-primary fw-semibold">plainText<a href="#cformtextarea-plainText" aria-label="CFormTextarea plainText permalink" className="anchor-link after">#</a></td>
@@ -101,7 +160,11 @@ import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side <code>{`readonly`}</code>.</td>
+        <td colSpan="3">
+          <p>Render the textarea component styled as plain text. Removes the default form field styling and preserves the correct margin and padding.<br />
+Recommended to use only alongside <code>{`readOnly`}</code>.</p>
+        <JSXDocs code={`<CFormTextarea plainText readOnly value="This is plain text." />`} />
+        </td>
       </tr>
       <tr id="cformtextarea-readOnly">
         <td className="text-primary fw-semibold">readOnly<a href="#cformtextarea-readOnly" aria-label="CFormTextarea readOnly permalink" className="anchor-link after">#</a></td>
@@ -109,7 +172,10 @@ import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Toggle the readonly state for the component.</td>
+        <td colSpan="3">
+          <p>Toggle the readonly state for the form textarea component. When <code>{`true`}</code>, the textarea is read-only and cannot be modified.</p>
+        <JSXDocs code={`<CFormTextarea readOnly value="Read-Only Textarea" />`} />
+        </td>
       </tr>
       <tr id="cformtextarea-text">
         <td className="text-primary fw-semibold">text<a href="#cformtextarea-text" aria-label="CFormTextarea text permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
@@ -117,7 +183,10 @@ import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
         <td><code>{`ReactNode`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Add helper text to the component.</td>
+        <td colSpan="3">
+          <p>Add helper text to the form control. Provides additional guidance to the user.</p>
+        <JSXDocs code={`<CFormControlWrapper text="Your username must be unique." />`} />
+        </td>
       </tr>
       <tr id="cformtextarea-tooltipFeedback">
         <td className="text-primary fw-semibold">tooltipFeedback<a href="#cformtextarea-tooltipFeedback" aria-label="CFormTextarea tooltipFeedback permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
@@ -125,7 +194,10 @@ import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Display validation feedback in a styled tooltip.</td>
+        <td colSpan="3">
+          <p>Display validation feedback in a styled tooltip.</p>
+        <JSXDocs code={`<CFormTextarea invalid tooltipFeedback feedback="Invalid input." />`} />
+        </td>
       </tr>
       <tr id="cformtextarea-valid">
         <td className="text-primary fw-semibold">valid<a href="#cformtextarea-valid" aria-label="CFormTextarea valid permalink" className="anchor-link after">#</a></td>
@@ -133,7 +205,10 @@ import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Set component validation state to valid.</td>
+        <td colSpan="3">
+          <p>Set the form control validation state to valid. When <code>{`true`}</code>, applies the valid feedback styling.</p>
+        <JSXDocs code={`<CFormTextarea valid feedbackValid="Looks good!" />`} />
+        </td>
       </tr>
       <tr id="cformtextarea-value">
         <td className="text-primary fw-semibold">value<a href="#cformtextarea-value" aria-label="CFormTextarea value permalink" className="anchor-link after">#</a></td>
@@ -141,7 +216,12 @@ import CFormTextarea from '@coreui/react/src/components/form/CFormTextarea'
         <td><code>{`string`}</code>, <code>{`number`}</code>, <code>{`string[]`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">The <code>{`value`}</code> attribute of component.</td>
+        <td colSpan="3">
+          <p>The <code>{`value`}</code> attribute of the form textarea component. Represents the current value of the textarea.</p>
+        <JSXDocs code={`const [text, setText] = useState('')
+
+<CFormTextarea value={text} onChange={(e) => setText(e.target.value)} />`} />
+        </td>
       </tr>
     </tbody>
   </table>

@@ -1,0 +1,146 @@
+---
+title: React Button Group Component
+name: Button group
+description: React button group component allows to group a series of buttons and power them with JavaScript.
+route: /components/button-group/
+other_frameworks: button-group
+---
+
+import {
+  CButtonGroup,
+  CButtonToolbar,
+  CButton,
+  CDropdown,
+  CDropdownDivider,
+  CDropdownHeader,
+  CDropdownItem,
+  CDropdownItemPlain,
+  CDropdownMenu,
+  CDropdownToggle,
+  CFormCheck,
+  CFormInput,
+  CInputGroup,
+  CInputGroupText,
+} from '@coreui/react/src/index'
+
+## How to use React Button Group Component.
+
+Wrap a series of `<CButton>` components in `<CButtonGroup>`.
+
+import { ButtonGroupExample } from './examples/ButtonGroupExample.tsx'
+import ButtonGroupExampleTS from '!!raw-loader!./examples/ButtonGroupExample.tsx'
+
+<ExampleSnippet code={ButtonGroupExampleTS} componentName="React Button Group">
+  <ButtonGroupExample />
+</ExampleSnippet>
+
+<Callout color="info" title="Conveying meaning to assistive technologies">
+  For assistive technologies (ex. screen readers) to communicate that a series of buttons are grouped, a proper <code>role</code> attribute has to be provided. For button groups, this should be <code>role="group"</code>, while toolbars should have a <code>role="toolbar"</code>.
+  
+  Besides, groups and toolbars should be provided an understandable label, as most assistive technologies will otherwise not declare them, despite the appearance of the specific role attribute. In the following examples provided here, we apply <code>aria-label</code>, but options such as <code>aria-labelledby</code> can also be used.
+</Callout>
+
+These classes can also be added to groups of links, as an alternative to the [`CNav`](./../navs-tabs/#base-nav) components.
+
+import { ButtonGroup2Example } from './examples/ButtonGroup2Example.tsx'
+import ButtonGroup2ExampleTS from '!!raw-loader!./examples/ButtonGroup2Example.tsx'
+
+<ExampleSnippet code={ButtonGroup2ExampleTS} componentName="React Button Group">
+  <ButtonGroup2Example />
+</ExampleSnippet>
+
+## Mixed styles
+
+import { ButtonGroupMixedStylesExample } from './examples/ButtonGroupMixedStylesExample.tsx'
+import ButtonGroupMixedStylesExampleTS from '!!raw-loader!./examples/ButtonGroupMixedStylesExample.tsx'
+
+<ExampleSnippet code={ButtonGroupMixedStylesExampleTS} componentName="React Button Group">
+  <ButtonGroupMixedStylesExample />
+</ExampleSnippet>
+
+## Outlined styles
+
+import { ButtonGroupOutlinedStylesExample } from './examples/ButtonGroupOutlinedStylesExample.tsx'
+import ButtonGroupOutlinedStylesExampleTS from '!!raw-loader!./examples/ButtonGroupOutlinedStylesExample.tsx'
+
+<ExampleSnippet code={ButtonGroupOutlinedStylesExampleTS} componentName="React Button Group">
+  <ButtonGroupOutlinedStylesExample />
+</ExampleSnippet>
+
+## Checkbox and radio button groups
+
+Combine button-like checkbox and radio toggle buttons into a seamless looking button group.
+
+import { ButtonGroupCheckboxAndRadioExample } from './examples/ButtonGroupCheckboxAndRadioExample.tsx'
+import ButtonGroupCheckboxAndRadioExampleTS from '!!raw-loader!./examples/ButtonGroupCheckboxAndRadioExample.tsx'
+
+<ExampleSnippet code={ButtonGroupCheckboxAndRadioExampleTS} componentName="React Button Group">
+  <ButtonGroupCheckboxAndRadioExample />
+</ExampleSnippet>
+
+import { ButtonGroupCheckboxAndRadio2Example } from './examples/ButtonGroupCheckboxAndRadio2Example.tsx'
+import ButtonGroupCheckboxAndRadio2ExampleTS from '!!raw-loader!./examples/ButtonGroupCheckboxAndRadio2Example.tsx'
+
+<ExampleSnippet code={ButtonGroupCheckboxAndRadio2ExampleTS} componentName="React Button Group">
+  <ButtonGroupCheckboxAndRadio2Example />
+</ExampleSnippet>
+
+## Button toolbar
+
+Join sets of button groups into button toolbars for more complicated components. Use utility classes as needed to space out groups, buttons, and more.
+
+import { ButtonToolbarExample } from './examples/ButtonToolbarExample.tsx'
+import ButtonToolbarExampleTS from '!!raw-loader!./examples/ButtonToolbarExample.tsx'
+
+<ExampleSnippet code={ButtonToolbarExampleTS} componentName="React Button Group">
+  <ButtonToolbarExample />
+</ExampleSnippet>
+
+Feel free to combine input groups with button groups in your toolbars. Similar to the example above, you’ll likely need some utilities through to space items correctly.
+
+import { ButtonToolbar2Example } from './examples/ButtonToolbar2Example.tsx'
+import ButtonToolbar2ExampleTS from '!!raw-loader!./examples/ButtonToolbar2Example.tsx'
+
+<ExampleSnippet code={ButtonToolbar2ExampleTS} componentName="React Button Group">
+  <ButtonToolbar2Example />
+</ExampleSnippet>
+
+## Sizing
+
+Alternatively, of implementing button sizing classes to each button in a group, set `size` property to all `<CButtonGroup>`'s, including each one when nesting multiple groups.
+
+import { ButtonGroupSizingExample } from './examples/ButtonGroupSizingExample.tsx'
+import ButtonGroupSizingExampleTS from '!!raw-loader!./examples/ButtonGroupSizingExample.tsx'
+
+<ExampleSnippet code={ButtonGroupSizingExampleTS} componentName="React Button Group">
+  <ButtonGroupSizingExample />
+</ExampleSnippet>
+
+## Nesting
+
+Put a `<CButtonGroup>` inside another `<CButtonGroup>` when you need dropdown menus combined with a series of buttons.
+
+import { ButtonGroupNestingExample } from './examples/ButtonGroupNestingExample.tsx'
+import ButtonGroupNestingExampleTS from '!!raw-loader!./examples/ButtonGroupNestingExample.tsx'
+
+<ExampleSnippet code={ButtonGroupNestingExampleTS} componentName="React Button Group">
+  <ButtonGroupNestingExample />
+</ExampleSnippet>
+
+## Vertical variation
+
+Create a set of buttons that appear vertically stacked rather than horizontally. **Split button dropdowns are not supported here.**
+
+import { ButtonGroupVerticalExample } from './examples/ButtonGroupVerticalExample.tsx'
+import ButtonGroupVerticalExampleTS from '!!raw-loader!./examples/ButtonGroupVerticalExample.tsx'
+
+<ExampleSnippet code={ButtonGroupVerticalExampleTS} componentName="React Button Group">
+  <ButtonGroupVerticalExample />
+</ExampleSnippet>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CButtonGroup /&gt;](./api/#cbuttongroup)
+- [&lt;CButtonToolbar /&gt;](./api/#cbuttontoolbar)

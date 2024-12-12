@@ -21,7 +21,18 @@ import CFormText from '@coreui/react/src/components/form/CFormText'
         <td><code>{`(ElementType & "symbol")`}</code>, <code>{`(ElementType & "object")`}</code>, <code>{`(ElementType & "div")`}</code>, <code>{`(ElementType & "slot")`}</code>, <code>{`(ElementType & "style")`}</code>, <code>{`... 174 more ...`}</code>, <code>{`(ElementType & FunctionComponent\<...>)`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Component used for the root node. Either a string to use a HTML element or a component.</td>
+        <td colSpan="3">
+          <p>The component used for the root node. It can be a string representing a HTML element or a React component.</p>
+        <JSXDocs code={`// Using default 'div' element
+<CFormText>This is some helpful form text.</CFormText>
+
+// Using a custom component
+const CustomText = forwardRef<HTMLSpanElement, React.HTMLAttributes<HTMLSpanElement>>(
+  (props, ref) => <span ref={ref} {...props} />,
+);
+
+<CFormText as={CustomText}>Custom Form Text Element.</CFormText>`} />
+        </td>
       </tr>
       <tr id="cformtext-className">
         <td className="text-primary fw-semibold">className<a href="#cformtext-className" aria-label="CFormText className permalink" className="anchor-link after">#</a></td>
@@ -29,7 +40,40 @@ import CFormText from '@coreui/react/src/components/form/CFormText'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the component.</td>
+        <td colSpan="3">
+          <p>A string of additional CSS class names to apply to the form text component.</p>
+        <JSXDocs code={`<CFormText className="my-custom-text">Custom Styled Form Text</CFormText>`} />
+        </td>
+      </tr>
+      <tr id="cformtext-customClassNames">
+        <td className="text-primary fw-semibold">customClassNames<a href="#cformtext-customClassNames" aria-label="CFormText customClassNames permalink" className="anchor-link after">#</a><span className="badge bg-success">v5.5.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`Partial\<{ FORM_TEXT: string; }>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Custom class names to override or extend the default CSS classes used within the <code>{`CFormText`}</code> component.<br />
+Each key corresponds to a specific part of the Form Text component, allowing for granular styling control.</p>
+<p><strong>Important</strong>: If you want to <strong>replace</strong> an existing class name, prefix your custom class name with <code>{`!`}</code>.<br />
+This ensures that the original class is overridden rather than appended.</p>
+        <JSXDocs code={`// Overriding the default form text class
+const customClasses = {
+  FORM_TEXT: '!my-custom-form-text',
+};
+
+<CFormText customClassNames={customClasses}>
+  Custom Form Text.
+</CFormText>
+
+// Extending the default form text class without replacing it
+const customClasses = {
+  FORM_TEXT: 'my-additional-form-text',
+};
+
+<CFormText customClassNames={customClasses}>
+  Extended Form Text.
+</CFormText>`} />
+        </td>
       </tr>
     </tbody>
   </table>

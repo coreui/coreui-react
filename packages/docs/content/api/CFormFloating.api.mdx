@@ -21,7 +21,45 @@ import CFormFloating from '@coreui/react/src/components/form/CFormFloating'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the component.</td>
+        <td colSpan="3">
+          <p>A string of additional CSS class names to apply to the form floating component.</p>
+        <JSXDocs code={`<CFormFloating className="my-custom-floating">
+  <input type="text" className="form-control" id="username" placeholder=" " />
+  <label htmlFor="username">Username</label>
+</CFormFloating>`} />
+        </td>
+      </tr>
+      <tr id="cformfloating-customClassNames">
+        <td className="text-primary fw-semibold">customClassNames<a href="#cformfloating-customClassNames" aria-label="CFormFloating customClassNames permalink" className="anchor-link after">#</a><span className="badge bg-success">v5.5.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`Partial\<{ FORM_FLOATING: string; }>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Custom class names to override or extend the default CSS classes used within the <code>{`CFormFloating`}</code> component.<br />
+Each key corresponds to a specific part of the Form Floating component, allowing for granular styling control.</p>
+<p><strong>Important</strong>: If you want to <strong>replace</strong> an existing class name, prefix your custom class name with <code>{`!`}</code>.<br />
+This ensures that the original class is overridden rather than appended.</p>
+        <JSXDocs code={`// Overriding the default form floating label class
+const customClasses = {
+  FORM_FLOATING_LABEL: '!my-custom-form-floating-label',
+}
+
+<CFormFloating customClassNames={customClasses}>
+  <input type="text" className="form-control" id="username" placeholder=" " />
+  <label htmlFor="username">Username</label>
+</CFormFloating>
+
+// Extending the default form floating label class without replacing it
+const customClasses = {
+  FORM_FLOATING_LABEL: 'my-additional-form-floating-label',
+}
+
+<CFormFloating customClassNames={customClasses}>
+  <input type="password" className="form-control" id="password" placeholder=" " />
+  <label htmlFor="password">Password</label>
+</CFormFloating>`} />
+        </td>
       </tr>
     </tbody>
   </table>

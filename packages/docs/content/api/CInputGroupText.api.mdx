@@ -21,7 +21,12 @@ import CInputGroupText from '@coreui/react/src/components/form/CInputGroupText'
         <td><code>{`(ElementType & "symbol")`}</code>, <code>{`(ElementType & "object")`}</code>, <code>{`(ElementType & "span")`}</code>, <code>{`(ElementType & "form")`}</code>, <code>{`(ElementType & "slot")`}</code>, <code>{`... 174 more ...`}</code>, <code>{`(ElementType & FunctionComponent\<...>)`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Component used for the root node. Either a string to use a HTML element or a component.</td>
+        <td colSpan="3">
+          <p>Component used for the root node. Either a string to use a HTML element or a component.</p>
+        <JSXDocs code={`<CInputGroupText as="label">Label Text</CInputGroupText>
+
+<CInputGroupText as={CustomComponent}>Custom Component Text</CInputGroupText>`} />
+        </td>
       </tr>
       <tr id="cinputgrouptext-className">
         <td className="text-primary fw-semibold">className<a href="#cinputgrouptext-className" aria-label="CInputGroupText className permalink" className="anchor-link after">#</a></td>
@@ -29,7 +34,36 @@ import CInputGroupText from '@coreui/react/src/components/form/CInputGroupText'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the component.</td>
+        <td colSpan="3">
+          <p>A string of additional CSS class names to apply to the input group text component.</p>
+        <JSXDocs code={`<CInputGroupText className="my-custom-input-group-text" />`} />
+        </td>
+      </tr>
+      <tr id="cinputgrouptext-customClassNames">
+        <td className="text-primary fw-semibold">customClassNames<a href="#cinputgrouptext-customClassNames" aria-label="CInputGroupText customClassNames permalink" className="anchor-link after">#</a><span className="badge bg-success">v5.5.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`Partial\<{ INPUT_GROUP_TEXT: string; }>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Custom class names to override or extend the default CSS classes used within the <code>{`CInputGroupText`}</code> component.<br />
+Each key corresponds to a specific part of the Input Group Text component, allowing for granular styling control.</p>
+<p><strong>Important</strong>: If you want to <strong>replace</strong> an existing class name, prefix your custom class name with <code>{`!`}</code>.<br />
+This ensures that the original class is overridden rather than appended.</p>
+        <JSXDocs code={`// Overriding the default input group text class
+const customClasses = {
+  INPUT_GROUP_TEXT: '!my-custom-input-group-text',
+}
+
+<CInputGroupText customClassNames={customClasses}>Custom Text</CInputGroupText>
+
+// Extending the default input group text class without replacing it
+const customClasses = {
+  INPUT_GROUP_TEXT: 'my-additional-input-group-text',
+}
+
+<CInputGroupText customClassNames={customClasses}>Extended Text</CInputGroupText>`} />
+        </td>
       </tr>
     </tbody>
   </table>

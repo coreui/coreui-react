@@ -1,0 +1,50 @@
+---
+title: React Dropdown Component Styling
+name: Dropdown Styling
+description: Learn how to customize the React Dropdown component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design.
+route: /components/dropdown/
+---
+
+{/* ### CSS class names
+
+React Dropdown comes with built-in class names that make styling super simple. Here’s a quick rundown of what you can use:
+
+<ClassNamesDocs
+  files={[
+    'components/dropdown/CDropdown.tsx',
+  ]}
+/> */}
+
+### CSS variables
+
+React Button supports CSS variables for easy customization. These variables are set via SASS but allow direct overrides in your stylesheets or inline styles.
+
+<ScssDocs file="_dropdown.scss" capture="dropdown-css-vars"/>
+
+Customization through CSS variables can be seen on the `.dropdown-menu-dark` class where we override specific values without adding duplicate CSS selectors.
+
+<ScssDocs file="_dropdown.scss" capture="dropdown-dark-css-vars"/>
+
+#### How to use CSS variables
+
+```jsx
+const customVars = {
+  '--cui-dropdown-color': '#777',
+  '--cui-dropdown-bg': '#efefef',
+}
+
+return <CDropdown style={customVars}>{/* Dropdown content */}</CDropdown>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="dropdown-variables"/>
+
+Variables for the dark dropdown:
+
+<ScssDocs file="_variables.scss" capture="dropdown-dark-variables"/>
+
+Variables for the CSS-based carets that indicate a dropdown's interactivity:
+
+<ScssDocs file="_variables.scss" capture="caret-variables"/>
+

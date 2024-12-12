@@ -21,7 +21,36 @@ import CInputGroup from '@coreui/react/src/components/form/CInputGroup'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the component.</td>
+        <td colSpan="3">
+          <p>A string of additional CSS class names to apply to the input group component.</p>
+        <JSXDocs code={`<CInputGroup className="my-custom-input-group" />`} />
+        </td>
+      </tr>
+      <tr id="cinputgroup-customClassNames">
+        <td className="text-primary fw-semibold">customClassNames<a href="#cinputgroup-customClassNames" aria-label="CInputGroup customClassNames permalink" className="anchor-link after">#</a><span className="badge bg-success">v5.5.0+</span></td>
+        <td>undefined</td>
+        <td><code>{`Partial\<{ INPUT_GROUP: string; INPUT_GROUP_SM: string; INPUT_GROUP_LG: string; }>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Custom class names to override or extend the default CSS classes used within the <code>{`CInputGroup`}</code> component.<br />
+Each key corresponds to a specific part of the Input Group component, allowing for granular styling control.</p>
+<p><strong>Important</strong>: If you want to <strong>replace</strong> an existing class name, prefix your custom class name with <code>{`!`}</code>.<br />
+This ensures that the original class is overridden rather than appended.</p>
+        <JSXDocs code={`// Overriding the default input group class
+const customClasses = {
+  INPUT_GROUP: '!my-custom-input-group',
+}
+
+<CInputGroup customClassNames={customClasses} />
+
+// Extending the default input group class without replacing it
+const customClasses = {
+  INPUT_GROUP: 'my-additional-input-group',
+}
+
+<CInputGroup customClassNames={customClasses} />`} />
+        </td>
       </tr>
       <tr id="cinputgroup-size">
         <td className="text-primary fw-semibold">size<a href="#cinputgroup-size" aria-label="CInputGroup size permalink" className="anchor-link after">#</a></td>
@@ -29,7 +58,16 @@ import CInputGroup from '@coreui/react/src/components/form/CInputGroup'
         <td><code>{`"sm"`}</code>, <code>{`"lg"`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Size the component small or large.</td>
+        <td colSpan="3">
+          <p>Size the input group component as small (<code>{`sm`}</code>) or large (<code>{`lg`}</code>).</p>
+        <JSXDocs code={`<CInputGroup size="sm">
+  <CFormInput placeholder="Small input" />
+</CInputGroup>
+
+<CInputGroup size="lg">
+  <CFormInput placeholder="Large input" />
+</CInputGroup>`} />
+        </td>
       </tr>
     </tbody>
   </table>

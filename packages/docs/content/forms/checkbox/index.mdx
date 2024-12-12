@@ -1,0 +1,114 @@
+---
+title: React Checkbox Components
+name: Checkbox
+description: Create consistent cross-browser and cross-device checkboxes with our React checkbox components.
+route: /forms/checkbox/
+other_frameworks: checkbox
+---
+
+## Approach
+
+Browser default checkboxes and radios are replaced with the help of `<CFormCheck>`. Checkboxes are for selecting one or several options in a list.
+
+## Checkboxes
+
+import { CheckboxExample } from './examples/CheckboxExample.tsx'
+import CheckboxExampleTS from '!!raw-loader!./examples/CheckboxExample.tsx'
+
+<ExampleSnippet code={CheckboxExampleTS} componentName="React Form Checkbox">
+  <CheckboxExample />
+</ExampleSnippet>
+
+### Indeterminate
+
+Checkboxes can utilize the `:indeterminate` pseudo-class when manually set via `indeterminate` property.
+
+import { CheckboxIndeterminateExample } from './examples/CheckboxIndeterminateExample.tsx'
+import CheckboxIndeterminateExampleTS from '!!raw-loader!./examples/CheckboxIndeterminateExample.tsx'
+
+<ExampleSnippet code={CheckboxIndeterminateExampleTS} componentName="React Form Checkbox">
+  <CheckboxIndeterminateExample />
+</ExampleSnippet>
+
+### Disabled
+
+Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input's state.
+
+import { CheckboxDisabledExample } from './examples/CheckboxDisabledExample.tsx'
+import CheckboxDisabledExampleTS from '!!raw-loader!./examples/CheckboxDisabledExample.tsx'
+
+<ExampleSnippet code={CheckboxDisabledExampleTS} componentName="React Form Checkbox">
+  <CheckboxDisabledExample />
+</ExampleSnippet>
+
+## Default (stacked)
+
+By default, any number of checkboxes that are immediate sibling will be vertically stacked and appropriately spaced.
+
+import { CheckboxStackedExample } from './examples/CheckboxStackedExample.tsx'
+import CheckboxStackedExampleTS from '!!raw-loader!./examples/CheckboxStackedExample.tsx'
+
+<ExampleSnippet code={CheckboxStackedExampleTS} componentName="React Form Checkbox">
+  <CheckboxStackedExample />
+</ExampleSnippet>
+
+## Inline
+
+Group checkboxes on the same horizontal row by adding `inline` boolean property to any `<CFormCheck>`.
+
+import { CheckboxInlineExample } from './examples/CheckboxInlineExample.tsx'
+import CheckboxInlineExampleTS from '!!raw-loader!./examples/CheckboxInlineExample.tsx'
+
+<ExampleSnippet code={CheckboxInlineExampleTS} componentName="React Form Checkbox">
+  <CheckboxInlineExample />
+</ExampleSnippet>
+
+## Reverse 
+
+Put your checkboxes on the opposite side by adding `reverse` boolean property.
+
+import { CheckboxReverseExample } from './examples/CheckboxReverseExample.tsx'
+import CheckboxReverseExampleTS from '!!raw-loader!./examples/CheckboxReverseExample.tsx'
+
+<ExampleSnippet code={CheckboxReverseExampleTS} componentName="React Form Checkbox">
+  <CheckboxReverseExample />
+</ExampleSnippet>
+
+## Without labels
+
+Remember to still provide some form of accessible name for assistive technologies (for instance, using `aria-label`).
+
+import { CheckboxWithoutLabelsExample } from './examples/CheckboxWithoutLabelsExample.tsx'
+import CheckboxWithoutLabelsExampleTS from '!!raw-loader!./examples/CheckboxWithoutLabelsExample.tsx'
+
+<ExampleSnippet code={CheckboxWithoutLabelsExampleTS} componentName="React Form Checkbox">
+  <CheckboxWithoutLabelsExample />
+</ExampleSnippet>
+
+## Checkbox toggle buttons
+
+Create button-like checkboxes and radio buttons by using `button` boolean property on the `<CFormCheck>` component. These toggle buttons can further be grouped in a button group if needed.
+
+import { CheckboxToggleButtonsExample } from './examples/CheckboxToggleButtonsExample.tsx'
+import CheckboxToggleButtonsExampleTS from '!!raw-loader!./examples/CheckboxToggleButtonsExample.tsx'
+
+<ExampleSnippet code={CheckboxToggleButtonsExampleTS} componentName="React Form Checkbox">
+  <CheckboxToggleButtonsExample />
+</ExampleSnippet>
+
+### Outlined styles
+
+Different variants of button, such at the various outlined styles, are supported.
+
+import { CheckboxToggleButtonsOutlinedStylesExample } from './examples/CheckboxToggleButtonsOutlinedStylesExample.tsx'
+import CheckboxToggleButtonsOutlinedStylesExampleTS from '!!raw-loader!./examples/CheckboxToggleButtonsOutlinedStylesExample.tsx'
+
+<ExampleSnippet code={CheckboxToggleButtonsOutlinedStylesExampleTS} componentName="React Form Checkbox">
+  <CheckboxToggleButtonsOutlinedStylesExample />
+</ExampleSnippet>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CFormCheck /&gt;](./api/#cformcheck)

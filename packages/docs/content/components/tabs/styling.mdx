@@ -1,0 +1,49 @@
+---
+title: React Tabs Component Styling
+name: Tabs Styling
+description: Learn how to customize the React Tabs component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design.
+route: /components/tabs/
+---
+
+### CSS variables
+
+React navs use local CSS variables on `.nav`, `.nav-tabs`, `.nav-pills`, `.nav-underline` and `.nav-underline-border` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+On the `.nav` base class:
+
+<ScssDocs file="_nav.scss" capture="nav-css-vars"/>
+
+On the `.nav-tabs` modifier class:
+
+<ScssDocs file="_nav.scss" capture="nav-tabs-css-vars"/>
+
+On the `.nav-pills` modifier class:
+
+<ScssDocs file="_nav.scss" capture="nav-pills-css-vars"/>
+
+<small className="d-inline-flex mb-3 px-2 py-1 fw-semibold text-success bg-success bg-opacity-10 border border-success border-opacity-10 rounded-2">Added in v5.0.0</small>
+
+On the `.nav-underline` modifier class:
+
+<ScssDocs file="_nav.scss" capture="nav-underline-css-vars"/>
+
+<small className="d-inline-flex mb-3 px-2 py-1 fw-semibold text-success bg-success bg-opacity-10 border border-success border-opacity-10 rounded-2">Added in v5.0.0</small>
+
+On the `.nav-underline-border` modifier class:
+
+<ScssDocs file="_nav.scss" capture="nav-underline-border-css-vars"/>
+
+#### How to use CSS variables
+
+```jsx
+const customVars = {
+  '--cui-nav-link-color': '#555',
+  '--cui-nav-link-disabled-color': '#afaeef',
+}
+
+return <CTabs style={customVars}>{/* Tabs content */}</CTabs>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="nav-variables"/>

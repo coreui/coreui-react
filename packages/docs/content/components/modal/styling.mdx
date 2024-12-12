@@ -1,0 +1,45 @@
+---
+title: React Modal Component Styling
+name: Modal Styling
+description: Learn how to customize the React Modal component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design.
+route: /components/modal/
+---
+
+{/* ### CSS class names
+
+React Modal comes with built-in class names that make styling super simple. Here’s a quick rundown of what you can use:
+
+<ClassNamesDocs
+  files={[
+    'components/modal/CModal.tsx',
+  ]}
+/> */}
+
+### CSS variables
+
+React Modal supports CSS variables for easy customization. These variables are set via SASS but allow direct overrides in your stylesheets or inline styles.
+
+<ScssDocs file="_modal.scss" capture="modal-css-vars" />
+
+<ScssDocs file="_modal.scss" capture="modal-backdrop-css-vars" />
+
+#### How to use CSS variables
+
+```jsx
+const customVars = {
+  '--cui-modal-color': '#555',
+  '--cui-modal-bg': '#efefef',
+}
+
+return <CModal style={customVars}>{/* Modal content */}</CModal>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="modal-variables" />
+
+### SASS loops
+
+[Responsive fullscreen modals](#fullscreen-modal) are generated via the `$breakpoints` map and a loop in `scss/_modal.scss`.
+
+<ScssDocs file="_modal.scss" capture="modal-fullscreen-loop" />

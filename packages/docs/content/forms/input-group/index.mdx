@@ -1,0 +1,131 @@
+---
+title: React Input Group Component
+name: Input group
+description: Easily extend form controls by adding text, buttons, or button groups on either side of textual inputs, custom selects, and custom file inputs.
+route: /forms/input-group/
+other_frameworks: input-group
+---
+
+## Basic example
+
+Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place `<CFormLabel>`s outside the input group.
+
+import { InputGroupExample } from './examples/InputGroupExample.tsx'
+import InputGroupExampleTS from '!!raw-loader!./examples/InputGroupExample.tsx'
+
+<ExampleSnippet code={InputGroupExampleTS} componentName="React Form Input Group">
+  <InputGroupExample />
+</ExampleSnippet>
+
+## Wrapping
+
+Input groups wrap by default via `flex-wrap: wrap` in order to accommodate custom form field validation within an input group. You may disable this with `.flex-nowrap`.
+
+import { InputGroupWrappingExample } from './examples/InputGroupWrappingExample.tsx'
+import InputGroupWrappingExampleTS from '!!raw-loader!./examples/InputGroupWrappingExample.tsx'
+
+<ExampleSnippet code={InputGroupWrappingExampleTS} componentName="React Form Input Group">
+  <InputGroupWrappingExample />
+</ExampleSnippet>
+
+## Sizing
+
+Add the relative form sizing classes to the `<CInputGroup>` itself and contents within will automatically resize—no need for repeating the form control size classes on each element.
+
+**Sizing on the individual input group elements isn't supported.**
+
+import { InputGroupSizingExample } from './examples/InputGroupSizingExample.tsx'
+import InputGroupSizingExampleTS from '!!raw-loader!./examples/InputGroupSizingExample.tsx'
+
+<ExampleSnippet code={InputGroupSizingExampleTS} componentName="React Form Input Group">
+  <InputGroupSizingExample />
+</ExampleSnippet>
+
+## Checkboxes and radios
+
+Place any checkbox or radio option within an input group's addon instead of text.
+
+import { InputGroupCheckboxesAndRadiosExample } from './examples/InputGroupCheckboxesAndRadiosExample.tsx'
+import InputGroupCheckboxesAndRadiosExampleTS from '!!raw-loader!./examples/InputGroupCheckboxesAndRadiosExample.tsx'
+
+<ExampleSnippet code={InputGroupCheckboxesAndRadiosExampleTS} componentName="React Form Input Group">
+  <InputGroupCheckboxesAndRadiosExample />
+</ExampleSnippet>
+
+## Multiple inputs
+
+While multiple `<CFormInput>`s are supported visually, validation styles are only available for input groups with a single `<CFormInput>`.
+
+import { InputGroupMultipleInputsExample } from './examples/InputGroupMultipleInputsExample.tsx'
+import InputGroupMultipleInputsExampleTS from '!!raw-loader!./examples/InputGroupMultipleInputsExample.tsx'
+
+<ExampleSnippet code={InputGroupMultipleInputsExampleTS} componentName="React Form Input Group">
+  <InputGroupMultipleInputsExample />
+</ExampleSnippet>
+
+## Multiple addons
+
+Multiple add-ons are supported and can be mixed with checkbox and radio input versions.
+
+import { InputGroupMultipleAddonsExample } from './examples/InputGroupMultipleAddonsExample.tsx'
+import InputGroupMultipleAddonsExampleTS from '!!raw-loader!./examples/InputGroupMultipleAddonsExample.tsx'
+
+<ExampleSnippet code={InputGroupMultipleAddonsExampleTS} componentName="React Form Input Group">
+  <InputGroupMultipleAddonsExample />
+</ExampleSnippet>
+
+## Button addons
+
+import { InputGroupButtonAddonsExample } from './examples/InputGroupButtonAddonsExample.tsx'
+import InputGroupButtonAddonsExampleTS from '!!raw-loader!./examples/InputGroupButtonAddonsExample.tsx'
+
+<ExampleSnippet code={InputGroupButtonAddonsExampleTS} componentName="React Form Input Group">
+  <InputGroupButtonAddonsExample />
+</ExampleSnippet>
+
+## Buttons with dropdowns
+
+import { InputGroupButtonsWithDropdownsExample } from './examples/InputGroupButtonsWithDropdownsExample.tsx'
+import InputGroupButtonsWithDropdownsExampleTS from '!!raw-loader!./examples/InputGroupButtonsWithDropdownsExample.tsx'
+
+<ExampleSnippet code={InputGroupButtonsWithDropdownsExampleTS} componentName="React Form Input Group">
+  <InputGroupButtonsWithDropdownsExample />
+</ExampleSnippet>
+
+## Segmented buttons
+
+import { InputGroupSegmentedButtonsExample } from './examples/InputGroupSegmentedButtonsExample.tsx'
+import InputGroupSegmentedButtonsExampleTS from '!!raw-loader!./examples/InputGroupSegmentedButtonsExample.tsx'
+
+<ExampleSnippet code={InputGroupSegmentedButtonsExampleTS} componentName="React Form Input Group">
+  <InputGroupSegmentedButtonsExample />
+</ExampleSnippet>
+
+## Custom forms
+
+Input groups include support for custom selects and custom file inputs. Browser default versions of these are not supported.
+
+### Custom select
+
+import { InputGroupCustomSelectExample } from './examples/InputGroupCustomSelectExample.tsx'
+import InputGroupCustomSelectExampleTS from '!!raw-loader!./examples/InputGroupCustomSelectExample.tsx'
+
+<ExampleSnippet code={InputGroupCustomSelectExampleTS} componentName="React Form Input Group">
+  <InputGroupCustomSelectExample />
+</ExampleSnippet>
+
+### Custom file input
+
+import { InputGroupCustomFileInputExample } from './examples/InputGroupCustomFileInputExample.tsx'
+import InputGroupCustomFileInputExampleTS from '!!raw-loader!./examples/InputGroupCustomFileInputExample.tsx'
+
+<ExampleSnippet code={InputGroupCustomFileInputExampleTS} componentName="React Form Input Group">
+  <InputGroupCustomFileInputExample />
+</ExampleSnippet>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CInputGroup /&gt;](./api/#cinputgroup)
+- [&lt;CInputGroupText /&gt;](./api/#cinputgrouptext)
