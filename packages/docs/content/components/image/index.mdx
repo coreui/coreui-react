@@ -6,49 +6,27 @@ route: /components/image/
 other_frameworks: image
 ---
 
-import { CImage } from '@coreui/react/src/index'
-
-import ReactImg from './../../assets/images/react.jpg'
-import React400Img from './../../assets/images/react400.jpg'
-
 ## Responsive images
 
 Images in CoreUI for React.js are made responsive with `fluid` property. This applies `max-width: 100%;` and `height: auto;` to the image so that it scales with the parent element.
 
-```jsx preview
-<CImage fluid src={ReactImg} />
-```
+<ExampleSnippet2 component="ImageResponsiveExample" componentName="React Image" />
 
 ## Image thumbnails
 
 In addition to our [border-radius utilities](https://coreui.io/docs/utilities/borders), you can use prop`thumbnail` to give an image a rounded 1px border appearance.
 
-```jsx preview
-<CImage rounded thumbnail src={React400Img} width={200} height={200} />
-```
+<ExampleSnippet2 component="ImageThumbnailExample" componentName="React Image" />
 
 ## Aligning images
 
 Align images with the `align` property.
 
-```jsx preview
-<div className="clearfix">
-  <CImage align="start" rounded src={React400Img} width={200} height={200} />
-  <CImage align="end" rounded src={React400Img} width={200} height={200} />
-</div>
-```
+<ExampleSnippet2 component="ImageAligningExample" componentName="React Image" />
 
-```jsx preview
-<div className="clearfix">
-  <CImage align="center" rounded src={React400Img} width={200} height={200} />
-</div>
-```
+<ExampleSnippet2 component="ImageAligning2Example" componentName="React Image" />
 
-```jsx preview
-<div className="text-center">
-  <CImage rounded src={React400Img} width={200} height={200} />
-</div>
-```
+<ExampleSnippet2 component="ImageAligning3Example" componentName="React Image" />
 
 ## API
 
