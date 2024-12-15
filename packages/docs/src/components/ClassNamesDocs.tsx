@@ -106,13 +106,15 @@ const ClassNamesDocs = ({ files }: { files: string | string[] }) => {
       <table className="table">
         <thead>
           <tr>
+            <th>customClassNames</th>
             <th>Class Name</th>
             <th>Description</th>
           </tr>
         </thead>
         <tbody>
           {sortedClassNames.map((className, index) => (
-            <tr key={index}>
+            <tr className="align-middle" key={index}>
+              <td className="fw-semibold text-primary small">{className.className}</td>
               <td>
                 <code className="text-nowrap">.{className.value}</code>
               </td>
