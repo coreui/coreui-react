@@ -69,6 +69,11 @@ const MdxLayout: FC<PageProps<DataProps>> = ({ children }) => {
         JSXDocs: (props: { code: string }) => <JSXDocs {...props} />,
         ScssDocs: (props: ScssDocsProps) => <ScssDocs {...props} />,
         pre: (props: CodeBlockProps) => <CodeBlock {...props} />,
+        table: (props) => (
+          <div className="table-responsive table-docs border rounded mb-3">
+            <table className="table table-docs" {...props} />
+          </div>
+        ),
       }}
     >
       {children}
