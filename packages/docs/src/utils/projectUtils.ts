@@ -1,12 +1,28 @@
-// projectUtils.ts
-
-// Define a unified options interface
 export interface ProjectOptions {
   code: string
   componentName?: string
   language: 'js' | 'ts'
   name: string
   pro: boolean
+}
+
+export const extractDependencies = (code: string, exclude: string[] = []) => {
+  const importRegex = /import\s+(?:{[^}]+}|\S+)\s+from\s+['"]([^'"]+)['"]/g
+  const dependencies = []
+
+  let match
+  while ((match = importRegex.exec(code)) !== null) {
+    const dependency = match[1]
+    if (dependency.startsWith('@assets/images')) {
+      dependencies.push('@coreui/projects-assets')
+    }
+
+    if (!exclude.includes(dependency) && !exclude.some((prefix) => dependency.startsWith(prefix))) {
+      dependencies.push(dependency)
+    }
+  }
+
+  return dependencies
 }
 
 // Function to generate title
@@ -23,7 +39,11 @@ export const generateDescription = (componentName?: string): string => {
 }
 
 // Function to generate dependencies
-export const getDependencies = (language: 'js' | 'ts', pro: boolean): Record<string, string> => {
+export const getDependencies = (
+  language: 'js' | 'ts',
+  pro: boolean,
+  code: string,
+): Record<string, string> => {
   const dependencies: Record<string, string> = {
     ...(pro
       ? {
@@ -40,6 +60,12 @@ export const getDependencies = (language: 'js' | 'ts', pro: boolean): Record<str
     'react-scripts': 'latest',
   }
 
+  const externalDependencies = extractDependencies(code, ['@assets/images/'])
+
+  for (const dependency of externalDependencies) {
+    dependencies[`${dependency}`] = 'latest'
+  }
+
   if (language === 'ts') {
     dependencies['typescript'] = 'latest'
     dependencies['@types/jest'] = 'latest'
@@ -48,7 +74,13 @@ export const getDependencies = (language: 'js' | 'ts', pro: boolean): Record<str
     dependencies['@types/react-dom'] = 'latest'
   }
 
-  return dependencies
+  const sortedDependencies: Record<string, string> = {}
+  const keys = Object.keys(dependencies).sort()
+  for (const key of keys) {
+    sortedDependencies[key] = dependencies[key]
+  }
+
+  return sortedDependencies
 }
 
 // Function to generate scripts
@@ -62,16 +94,16 @@ export const getScripts = (): Record<string, string> => {
 // Function to generate index.html content
 export const generateIndexHTML = (title: string): string => {
   return `<!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <title>${title}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      </head>
-      <body>
-        <div id="root"></div>
-      </body>
-    </html>`
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>${title}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+      <div id="root"></div>
+    </body>
+  </html>`
 }
 
 // Function to generate index.js or index.tsx content
@@ -89,27 +121,27 @@ export const generateIndexJS = (
   const renderMethod =
     templateType === 'codesandbox'
       ? `ReactDOM.render(
-    <React.StrictMode>
-      <div className="p-3">
-        <${name} />
-      </div>
-    </React.StrictMode>,
-    document.getElementById('root')
-  );`
+  <React.StrictMode>
+    <div className="p-3">
+      <${name} />
+    </div>
+  </React.StrictMode>,
+  document.getElementById('root')
+);`
       : `ReactDOM.createRoot(document.querySelector("#root")).render(
-    <React.StrictMode>
-      <div className="p-3">
-        <${name} />
-      </div>
-    </React.StrictMode>
-  );`
+  <React.StrictMode>
+    <div className="p-3">
+      <${name} />
+    </div>
+  </React.StrictMode>
+);`
 
   return `import React from 'react';
-  ${importReactDOM}
-  import '@coreui/${pro ? 'coreui-pro' : 'coreui'}/dist/css/coreui.min.css';
-  import { ${name} } from './${name}.${language}x';
-    
-  ${renderMethod}`
+${importReactDOM}
+import '@coreui/${pro ? 'coreui-pro' : 'coreui'}/dist/css/coreui.min.css';
+import { ${name} } from './${name}.${language}x';
+  
+${renderMethod}`
 }
 
 // Function to generate package.json content
@@ -118,6 +150,7 @@ export const generatePackageJSON = (
   description: string,
   language: 'js' | 'ts',
   pro: boolean,
+  code: string,
   templateType: 'codesandbox' | 'stackblitz',
 ): string => {
   const indexExtension = language === 'ts' ? 'tsx' : 'js'
@@ -128,9 +161,9 @@ export const generatePackageJSON = (
     description,
     main: templateType === 'codesandbox' ? `src/index.${indexExtension}` : `index.js`,
     scripts: getScripts(),
-    dependencies: getDependencies(language, pro),
+    dependencies: getDependencies(language, pro, code),
     ...(templateType === 'stackblitz' && {
-      devDependencies: language === 'ts' ? getDependencies(language, pro) : {},
+      devDependencies: language === 'ts' ? getDependencies(language, pro, code) : {},
     }),
   }
 

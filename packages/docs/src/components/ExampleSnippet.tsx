@@ -1,10 +1,8 @@
-import React, { FC, ReactNode, useState } from 'react'
+import React, { FC, lazy, ReactNode, Suspense, useEffect, useMemo, useState } from 'react'
 import { Highlight, Language } from 'prism-react-renderer'
-
 import CIcon from '@coreui/icons-react'
 import { cibCodesandbox, cilCheckAlt, cilCopy } from '@coreui/icons'
 import { CNav, CNavLink, CTooltip, useClipboard } from '@coreui/react'
-
 import { openStackBlitzProject } from '../utils/stackblitz'
 import { openCodeSandboxProject } from '../utils/codesandbox'
 
@@ -16,8 +14,9 @@ interface CodeSnippets {
 export interface ExampleSnippetProps {
   children: ReactNode
   className?: string
-  code: string | CodeSnippets
+  code?: string | CodeSnippets
   codeSandbox?: boolean
+  component?: string
   componentName?: string
   pro?: boolean
   stackBlitz?: boolean
@@ -28,22 +27,62 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
   className = '',
   code,
   codeSandbox = true,
+  component,
   componentName,
   pro = false,
   stackBlitz = true,
 }) => {
+  const [codeJS, setCodeJS] = useState<string>()
+  const [codeTS, setCodeTS] = useState<string>()
   const [language, setLanguage] = useState<'js' | 'ts'>('js')
   const { copy, isCopied } = useClipboard()
 
-  // Type Guards to determine the shape of 'code' prop
-  const isCodeString = typeof code === 'string'
-  const codeJS = isCodeString ? code : code.js || code.ts
-  const codeTS = isCodeString ? code : code.ts
-  const hasJS = Boolean(codeJS)
-  const hasTS = Boolean(codeTS)
+  const Preview = useMemo(() => {
+    if (!component) return null
+    return lazy(() =>
+      import(`@example/${component}.tsx`)
+        .then((module) => ({ default: module[component] }))
+        .catch((error) => {
+          console.error(`Failed to load Preview component for ${component}:`, error)
+          return { default: () => <div>Preview not available.</div> }
+        }),
+    )
+  }, [component])
 
-  // Set initial language based on available code snippets
-  React.useEffect(() => {
+  useEffect(() => {
+    const loadCode = async () => {
+      if (code) {
+        if (typeof code === 'string') {
+          setCodeJS(code)
+        } else {
+          setCodeJS(code.js)
+          setCodeTS(code.ts)
+        }
+      } else if (component) {
+        try {
+          const tsModule = await import(`!!raw-loader!@example/${component}.tsx`)
+          setCodeTS(tsModule.default)
+          setCodeJS(tsModule.default)
+        } catch (error) {
+          console.error(`Failed to load TypeScript code for component ${component}:`, error)
+        }
+
+        try {
+          const jsModule = await import(`!!raw-loader!@example/${component}.jsx`)
+          setCodeJS(jsModule.default)
+        } catch {
+          // JSX version may not exist
+        }
+      }
+    }
+
+    loadCode()
+  }, [code, component])
+
+  const hasJS = codeJS !== undefined && codeJS !== ''
+  const hasTS = codeTS !== undefined && codeTS !== ''
+
+  useEffect(() => {
     if (!hasJS && hasTS) {
       setLanguage('ts')
     } else {
@@ -53,20 +92,35 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
 
   const handleCopy = () => {
     const codeToCopy = language === 'js' ? codeJS : codeTS
-    if (codeToCopy) {
-      copy(codeToCopy)
-    }
+    if (codeToCopy) copy(codeToCopy)
   }
 
   const prismLanguage: Language = language === 'js' ? 'jsx' : 'tsx'
-
-  // Determine if both languages are available
-  const showJSTab = hasJS && (isCodeString || code.js !== code.ts)
+  const showJSTab = hasJS && !(typeof code === 'object' && code?.js === code?.ts)
   const showTSTab = hasTS
+
+  const getProjectName = (): string => {
+    if (React.isValidElement(children)) {
+      const childType = (children as React.ReactElement).type
+      if (typeof childType === 'string') return childType
+      if (typeof childType === 'function' && childType.name) return childType.name
+    }
+    return 'ExampleProject'
+  }
 
   return (
     <div className="docs-example-snippet">
-      {children && <div className={`docs-example ${className}`}>{children}</div>}
+      <div className={`docs-example ${className}`}>
+        {children ? (
+          children
+        ) : Preview ? (
+          <Suspense fallback={<div>Loading preview...</div>}>
+            <Preview />
+          </Suspense>
+        ) : (
+          <div>No component specified.</div>
+        )}
+      </div>
       <div className="highlight-toolbar border-top">
         <CNav className="px-3" variant="underline-border">
           {showJSTab && (
@@ -88,9 +142,9 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
                 aria-label="Try it on CodeSandbox"
                 onClick={() =>
                   openCodeSandboxProject({
-                    name: React.isValidElement(children) && (children as any).type?.name,
+                    name: component || getProjectName(),
                     language,
-                    code: language === 'js' ? codeJS : codeTS || '',
+                    code: language === 'js' ? codeJS || '' : codeTS || '',
                     componentName,
                     pro,
                   })
@@ -109,9 +163,9 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
                 aria-label="Try it on StackBlitz"
                 onClick={() =>
                   openStackBlitzProject({
-                    name: React.isValidElement(children) && (children as any).type?.name,
+                    name: component || getProjectName(),
                     language,
-                    code: language === 'js' ? codeJS : codeTS || '',
+                    code: language === 'js' ? codeJS || '' : codeTS || '',
                     componentName,
                     pro,
                   })
@@ -148,25 +202,27 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
         </CNav>
       </div>
 
-      <div className="highlight">
-        <Highlight
-          code={language === 'js' ? codeJS : codeTS || ''}
-          language={prismLanguage}
-          theme={{ plain: {}, styles: [] }}
-        >
-          {({ className, style, tokens, getLineProps, getTokenProps }) => (
-            <pre className={className} style={style}>
-              {tokens.map((line, i) => (
-                <div {...getLineProps({ line, key: i })} key={i}>
-                  {line.map((token, key) => (
-                    <span {...getTokenProps({ token, key })} key={key} />
-                  ))}
-                </div>
-              ))}
-            </pre>
-          )}
-        </Highlight>
-      </div>
+      {(hasJS || hasTS) && (
+        <div className="highlight">
+          <Highlight
+            code={language === 'js' ? codeJS || '' : codeTS || ''}
+            language={prismLanguage}
+            theme={{ plain: {}, styles: [] }}
+          >
+            {({ className: highlightClass, style, tokens, getLineProps, getTokenProps }) => (
+              <pre className={highlightClass} style={style}>
+                {tokens.map((line, i) => (
+                  <div {...getLineProps({ line, key: i })} key={i}>
+                    {line.map((token, key) => (
+                      <span {...getTokenProps({ token, key })} key={key} />
+                    ))}
+                  </div>
+                ))}
+              </pre>
+            )}
+          </Highlight>
+        </div>
+      )}
     </div>
   )
 }
