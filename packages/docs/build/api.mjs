@@ -18,10 +18,8 @@ const converter = new showdown.Converter({ simpleLineBreaks: true })
 
 /**
  * Glob patterns to locate .tsx files for documentation.
- * Adjust these patterns based on your project structure.
  */
 const GLOB_PATTERNS = [
-  // '**/src/components/date-picker/*.tsx',
   '**/src/**/*.tsx',
   '../node_modules/@coreui/icons-react/src/**/*.tsx',
   '../node_modules/@coreui/react-chartjs/src/**/*.tsx',
@@ -39,7 +37,6 @@ const GLOBBY_OPTIONS = {
 
 /**
  * Excluded files list (currently unused).
- * Can be utilized for additional exclusion patterns if needed.
  */
 const EXCLUDED_FILES = [] // Currently unused, but can be utilized if needed
 
@@ -69,6 +66,9 @@ const PRO_COMPONENTS = [
   'CVirtualScroller',
 ]
 
+/**
+ * Text replacements for certain components.
+ */
 const TEXT_REPLACEMENTS = {
   CDatePicker: {
     description: [{ 'React Calendar': 'React Date Picker' }],
@@ -78,6 +78,15 @@ const TEXT_REPLACEMENTS = {
     description: [{ 'React Calendar': 'React Date Range Picker' }],
     example: [{ CCalendar: 'CDateRangePicker' }],
   },
+  CFormInput: {
+    example: [{ CFormControlValidation: 'CFormInput' }, { CFormControlWrapper: 'CFormInput' }],
+  },
+  CFormTextarea: {
+    example: [
+      { CFormControlValidation: 'CFormTextarea' },
+      { CFormControlWrapper: 'CFormTextarea' },
+    ],
+  },
 }
 
 /**
@@ -86,7 +95,7 @@ const TEXT_REPLACEMENTS = {
  * @param {string} text - The text to escape.
  * @returns {string} - The escaped text.
  */
-function escapeMarkdown(text) {
+const escapeMarkdown = (text) => {
   if (typeof text !== 'string') return text
   return text
     .replaceAll(/(<)/g, String.raw`\$1`)
@@ -100,9 +109,8 @@ function escapeMarkdown(text) {
  * @param {string} file - The absolute file path.
  * @returns {string} - The relative filename.
  */
-function getRelativeFilename(file) {
-  let relativePath
-  relativePath = file.includes('node_modules')
+const getRelativeFilename = (file) => {
+  let relativePath = file.includes('node_modules')
     ? path.relative(path.join(__dirname, '..', '..'), file).replace('coreui-', '')
     : path.relative(GLOBBY_OPTIONS.cwd, file).replace('coreui-', '')
 
@@ -122,15 +130,15 @@ function getRelativeFilename(file) {
  * @returns {string[]} An array of split parts, trimmed of whitespace.
  * @throws {Error} Throws an error if there are unmatched braces or parentheses in the input.
  */
-function splitOutsideBracesAndParentheses(input) {
+const splitOutsideBracesAndParentheses = (input) => {
   if (input.endsWith('...')) {
     return [input]
   }
 
   const parts = []
   let currentPart = ''
-  let braceDepth = 0 // Tracks depth of curly braces {}
-  let parenthesisDepth = 0 // Tracks depth of parentheses ()
+  let braceDepth = 0
+  let parenthesisDepth = 0
 
   for (const char of input) {
     switch (char) {
@@ -161,19 +169,17 @@ function splitOutsideBracesAndParentheses(input) {
         if (braceDepth === 0 && parenthesisDepth === 0 && currentPart.trim()) {
           parts.push(currentPart.trim())
           currentPart = ''
-          continue // Skip adding the '|' to currentPart
+          continue
         }
         break
       }
       default: {
-        // No action needed for other characters
         break
       }
     }
     currentPart += char
   }
 
-  // After processing all characters, check for unmatched opening braces or parentheses
   if (braceDepth !== 0) {
     throw new Error('Unmatched opening curly brace detected.')
   }
@@ -181,7 +187,6 @@ function splitOutsideBracesAndParentheses(input) {
     throw new Error('Unmatched opening parenthesis detected.')
   }
 
-  // Add the last accumulated part if it's not empty
   if (currentPart.trim()) {
     parts.push(currentPart.trim())
   }
@@ -189,10 +194,18 @@ function splitOutsideBracesAndParentheses(input) {
   return parts
 }
 
-function replaceText(componenName, keyName, text) {
+/**
+ * Replaces specified text within component documentation.
+ *
+ * @param {string} componenName - The name of the component.
+ * @param {string} keyName - The key of the text replacement (e.g., 'description', 'example').
+ * @param {string} text - The text to be replaced.
+ * @returns {string} The replaced text.
+ */
+const replaceText = (componenName, keyName, text) => {
   const keyNames = Object.keys(TEXT_REPLACEMENTS)
 
-  if (keyNames.includes(componenName)) {
+  if (keyNames.includes(componenName) && TEXT_REPLACEMENTS[componenName][keyName]) {
     const replacements = TEXT_REPLACEMENTS[componenName][keyName]
     for (const replacement of replacements) {
       for (const [key, value] of Object.entries(replacement)) {
@@ -210,17 +223,14 @@ function replaceText(componenName, keyName, text) {
  * Creates an MDX file with the component's API documentation.
  *
  * @param {string} file - The absolute path to the component file.
- * @param {object} component - The component information extracted by react-docgen-typescript.
+ * @param {object} component - The component info extracted by react-docgen-typescript.
  */
-async function createMdx(file, component) {
-  if (!component) {
-    return
-  }
+const createMdx = async (file, component) => {
+  if (!component) return
 
   const filename = path.basename(file, '.tsx')
   const relativeFilename = getRelativeFilename(file)
 
-  // Construct import statements
   let content = `\n\`\`\`jsx\n`
   const importPathParts = relativeFilename.split('/')
   if (importPathParts.length > 1) {
@@ -230,11 +240,17 @@ async function createMdx(file, component) {
   content += `import ${component.displayName} from '@coreui/${relativeFilename.replace('.tsx', '')}'\n`
   content += `\`\`\`\n\n`
 
-  const sortedProps = Object.entries(component.props).sort(([a], [b]) => a.localeCompare(b))
+  const filteredProps = Object.entries(component.props)
+    .filter(([_, value]) => {
+      if (!value.parent?.fileName) return true
+      return (
+        !value.parent.fileName.includes('@types/react/index.d.ts') &&
+        !value.parent.fileName.includes('@types/react/ts5.0/index.d.ts')
+      )
+    })
+    .sort(([a], [b]) => a.localeCompare(b))
 
-  // Initialize table headers
-  for (const [index, [propName, propInfo]] of sortedProps.entries()) {
-    const isLast = index === sortedProps.length - 1
+  for (const [index, [propName, propInfo]] of filteredProps.entries()) {
     if (index === 0) {
       content += `<div className="table-responsive table-api border rounded mb-3">\n`
       content += `  <table className="table">\n`
@@ -248,20 +264,6 @@ async function createMdx(file, component) {
       content += `    <tbody>\n`
     }
 
-    // Skip props from React's type definitions
-    if (
-      propInfo.parent?.fileName?.includes('@types/react/index.d.ts') ||
-      propInfo.parent?.fileName?.includes('@types/react/ts5.0/index.d.ts')
-    ) {
-      if (isLast) {
-        content += `    </tbody>\n`
-        content += `  </table>\n`
-        content += `</div>\n`
-      }
-
-      continue
-    }
-
     // Skip props marked to be ignored
     if (propInfo.tags?.ignore === '') {
       continue
@@ -272,12 +274,11 @@ async function createMdx(file, component) {
       ? `<span className="badge bg-success">${propInfo.tags.since}+</span>`
       : ''
     const deprecated = propInfo.tags?.deprecated
-      ? `<span className="badge bg-success">Deprecated ${propInfo.tags.since}</span>`
+      ? `<span className="badge bg-danger">Deprecated ${propInfo.tags.deprecated}</span>`
       : ''
     const description = propInfo.description
       ? replaceText(component.displayName, 'description', propInfo.description)
       : '-'
-
     const type = propInfo.type
       ? propInfo.type.name.includes('ReactElement')
         ? 'ReactElement'
@@ -285,7 +286,7 @@ async function createMdx(file, component) {
       : ''
     const defaultValue = propInfo.defaultValue ? `\`${propInfo.defaultValue.value}\`` : `undefined`
     const example = propInfo.tags?.example
-      ? replaceText(component.displayName, 'example', propInfo.tags?.example)
+      ? replaceText(component.displayName, 'example', propInfo.tags.example)
       : false
 
     // Format types as inline code
@@ -305,7 +306,8 @@ async function createMdx(file, component) {
     content += `        <td colSpan="3">\n`
     content += `          ${converter
       .makeHtml(description)
-      .replaceAll(/<code>(.*?)<\/code>/g, '<code>{`$1`}</code>')}\n`
+      .replaceAll(/<code>(.*?)<\/code>/g, '<code>{`$1`}</code>')
+      .replaceAll(/<code>{`&lt;(.*?)&gt;`}<\/code>/g, '<code>{`<$1>`}</code>')}\n`
 
     if (example) {
       content += `        <JSXDocs code={\`${example.trim()}\`} />\n`
@@ -313,19 +315,15 @@ async function createMdx(file, component) {
 
     content += `        </td>\n`
     content += `      </tr>\n`
-
-    if (isLast) {
-      content += `    </tbody>\n`
-      content += `  </table>\n`
-      content += `</div>\n`
-    }
   }
 
-  // Define the output directory and ensure it exists
+  content += `    </tbody>\n`
+  content += `  </table>\n`
+  content += `</div>\n`
+
   const outputDir = path.join('content', 'api')
   const outputPath = path.join(outputDir, `${filename}.api.mdx`)
 
-  // Create the directory if it doesn't exist
   try {
     await mkdir(outputDir, { recursive: true })
     await writeFile(outputPath, content, { encoding: 'utf8' })
@@ -336,19 +334,16 @@ async function createMdx(file, component) {
 }
 
 /**
- * Main function to execute the script.
+ * Main execution function.
  */
-async function main() {
+const main = async () => {
   try {
-    // Retrieve all matching files based on the glob patterns
     const files = await globby(GLOB_PATTERNS, GLOBBY_OPTIONS)
 
-    // Process each file concurrently
     await Promise.all(
       files.map(async (file) => {
         console.log(`Processing file: ${file}`)
         let components
-
         try {
           components = parse(file, DOCGEN_OPTIONS)
         } catch (parseError) {
