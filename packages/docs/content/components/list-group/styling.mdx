@@ -1,0 +1,27 @@
+---
+title: React ListGroup Component Styling
+name: ListGroup Styling
+description: Learn how to customize the React ListGroup component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design.
+route: /components/list-group/
+---
+
+### CSS variables
+
+React List Group supports CSS variables for easy customization. These variables are set via SASS but allow direct overrides in your stylesheets or inline styles.
+
+<ScssDocs file="_list-group.scss" capture="list-group-css-vars"/>
+
+#### How to use CSS variables
+
+```jsx
+const customVars = {
+  '--cui-list-group-color': '#ffe484',
+  '--cui-list-group-bg': '#efefef',
+}
+
+return <CListGroup style={customVars}>{/* List Group content */}</CListGroup>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="list-group-variables"/>

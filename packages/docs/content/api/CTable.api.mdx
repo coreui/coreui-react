@@ -21,7 +21,9 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Set the vertical aligment.</td>
+        <td colSpan="3">
+          <p>Set the vertical aligment.</p>
+        </td>
       </tr>
       <tr id="ctable-borderColor">
         <td className="text-primary fw-semibold">borderColor<a href="#ctable-borderColor" aria-label="CTable borderColor permalink" className="anchor-link after">#</a></td>
@@ -29,7 +31,9 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`'primary'`}</code>, <code>{`'secondary'`}</code>, <code>{`'success'`}</code>, <code>{`'danger'`}</code>, <code>{`'warning'`}</code>, <code>{`'info'`}</code>, <code>{`'dark'`}</code>, <code>{`'light'`}</code>, <code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Sets the border color of the component to one of CoreUI’s themed colors.</td>
+        <td colSpan="3">
+          <p>Sets the border color of the component to one of CoreUI’s themed colors.</p>
+        </td>
       </tr>
       <tr id="ctable-bordered">
         <td className="text-primary fw-semibold">bordered<a href="#ctable-bordered" aria-label="CTable bordered permalink" className="anchor-link after">#</a></td>
@@ -37,7 +41,9 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Add borders on all sides of the table and cells.</td>
+        <td colSpan="3">
+          <p>Add borders on all sides of the table and cells.</p>
+        </td>
       </tr>
       <tr id="ctable-borderless">
         <td className="text-primary fw-semibold">borderless<a href="#ctable-borderless" aria-label="CTable borderless permalink" className="anchor-link after">#</a></td>
@@ -45,7 +51,9 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Remove borders on all sides of the table and cells.</td>
+        <td colSpan="3">
+          <p>Remove borders on all sides of the table and cells.</p>
+        </td>
       </tr>
       <tr id="ctable-caption">
         <td className="text-primary fw-semibold">caption<a href="#ctable-caption" aria-label="CTable caption permalink" className="anchor-link after">#</a></td>
@@ -53,7 +61,9 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Put the caption on the top if you set <code>{`caption="top"`}</code> of the table or set the text of the table caption.</td>
+        <td colSpan="3">
+          <p>Put the caption on the top if you set <code>{`caption="top"`}</code> of the table or set the text of the table caption.</p>
+        </td>
       </tr>
       <tr id="ctable-captionTop">
         <td className="text-primary fw-semibold">captionTop<a href="#ctable-captionTop" aria-label="CTable captionTop permalink" className="anchor-link after">#</a><span className="badge bg-success">4.3.0+</span></td>
@@ -61,7 +71,9 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Set the text of the table caption and the caption on the top of the table.</td>
+        <td colSpan="3">
+          <p>Set the text of the table caption and the caption on the top of the table.</p>
+        </td>
       </tr>
       <tr id="ctable-className">
         <td className="text-primary fw-semibold">className<a href="#ctable-className" aria-label="CTable className permalink" className="anchor-link after">#</a></td>
@@ -69,7 +81,9 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the component.</td>
+        <td colSpan="3">
+          <p>A string of all className you want applied to the component.</p>
+        </td>
       </tr>
       <tr id="ctable-color">
         <td className="text-primary fw-semibold">color<a href="#ctable-color" aria-label="CTable color permalink" className="anchor-link after">#</a></td>
@@ -77,7 +91,9 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`'primary'`}</code>, <code>{`'secondary'`}</code>, <code>{`'success'`}</code>, <code>{`'danger'`}</code>, <code>{`'warning'`}</code>, <code>{`'info'`}</code>, <code>{`'dark'`}</code>, <code>{`'light'`}</code>, <code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Sets the color context of the component to one of CoreUI’s themed colors.</td>
+        <td colSpan="3">
+          <p>Sets the color context of the component to one of CoreUI’s themed colors.</p>
+        </td>
       </tr>
       <tr id="ctable-columns">
         <td className="text-primary fw-semibold">columns<a href="#ctable-columns" aria-label="CTable columns permalink" className="anchor-link after">#</a><span className="badge bg-success">4.3.0+</span></td>
@@ -85,7 +101,18 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`(string | Column)[]`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Prop for table columns configuration. If prop is not defined, table will display columns based on the first item keys, omitting keys that begins with underscore (e.g. '_props')<br/><br/>In columns prop each array item represents one column. Item might be specified in two ways:<br/>String: each item define column name equal to item value.<br/>Object: item is object with following keys available as column configuration:<br/>- key (required)(String) - define column name equal to item key.<br/>- label (String) - define visible label of column. If not defined, label will be generated automatically based on column name, by converting kebab-case and snake_case to individual words and capitalization of each word.<br/>- _props (Object) - adds classes to all cels in column, ex. <code>{`_props: { scope: 'col', className: 'custom-class' }`}</code>,<br/>- _style (Object) - adds styles to the column header (useful for defining widths)</td>
+        <td colSpan="3">
+          <p>Prop for table columns configuration. If prop is not defined, table will display columns based on the first item keys, omitting keys that begins with underscore (e.g. '_props')</p>
+<p>In columns prop each array item represents one column. Item might be specified in two ways:<br />
+String: each item define column name equal to item value.<br />
+Object: item is object with following keys available as column configuration:</p>
+<ul>
+<li>key (required)(String) - define column name equal to item key.</li>
+<li>label (String) - define visible label of column. If not defined, label will be generated automatically based on column name, by converting kebab-case and snake_case to individual words and capitalization of each word.</li>
+<li>_props (Object) - adds classes to all cels in column, ex. <code>{`_props: { scope: 'col', className: 'custom-class' }`}</code>,</li>
+<li>_style (Object) - adds styles to the column header (useful for defining widths)</li>
+</ul>
+        </td>
       </tr>
       <tr id="ctable-footer">
         <td className="text-primary fw-semibold">footer<a href="#ctable-footer" aria-label="CTable footer permalink" className="anchor-link after">#</a><span className="badge bg-success">4.3.0+</span></td>
@@ -93,7 +120,13 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`(string | FooterItem)[]`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Array of objects or strings, where each element represents one cell in the table footer.<br/><br/>Example items:<br/><code>{`['FooterCell', 'FooterCell', 'FooterCell']`}</code><br/>or<br/><code>{`[{ label: 'FooterCell', _props: { color: 'success' }, ...]`}</code></td>
+        <td colSpan="3">
+          <p>Array of objects or strings, where each element represents one cell in the table footer.</p>
+<p>Example items:<br />
+<code>{`['FooterCell', 'FooterCell', 'FooterCell']`}</code><br />
+or<br />
+<code>{`[{ label: 'FooterCell', _props: { color: 'success' }, ...]`}</code></p>
+        </td>
       </tr>
       <tr id="ctable-hover">
         <td className="text-primary fw-semibold">hover<a href="#ctable-hover" aria-label="CTable hover permalink" className="anchor-link after">#</a></td>
@@ -101,7 +134,9 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Enable a hover state on table rows within a <code>{`\<CTableBody>`}</code>.</td>
+        <td colSpan="3">
+          <p>Enable a hover state on table rows within a <code>{`<CTableBody>`}</code>.</p>
+        </td>
       </tr>
       <tr id="ctable-items">
         <td className="text-primary fw-semibold">items<a href="#ctable-items" aria-label="CTable items permalink" className="anchor-link after">#</a><span className="badge bg-success">4.3.0+</span></td>
@@ -109,7 +144,11 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`Item[]`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Array of objects, where each object represents one item - row in table. Additionally, you can add style classes to each row by passing them by '_props' key and to single cell by '_cellProps'.<br/><br/>Example item:<br/><code>{`{ name: 'John' , age: 12, _props: { color: 'success' }, _cellProps: { age: { className: 'fw-bold'}}}`}</code></td>
+        <td colSpan="3">
+          <p>Array of objects, where each object represents one item - row in table. Additionally, you can add style classes to each row by passing them by '<em>props' key and to single cell by '</em>cellProps'.</p>
+<p>Example item:<br />
+<code>{`{ name: 'John' , age: 12, _props: { color: 'success' }, _cellProps: { age: { className: 'fw-bold'}}}`}</code></p>
+        </td>
       </tr>
       <tr id="ctable-responsive">
         <td className="text-primary fw-semibold">responsive<a href="#ctable-responsive" aria-label="CTable responsive permalink" className="anchor-link after">#</a></td>
@@ -117,7 +156,9 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`boolean`}</code>, <code>{`"sm"`}</code>, <code>{`"md"`}</code>, <code>{`"lg"`}</code>, <code>{`"xl"`}</code>, <code>{`"xxl"`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Make any table responsive across all viewports or pick a maximum breakpoint with which to have a responsive table up to.</td>
+        <td colSpan="3">
+          <p>Make any table responsive across all viewports or pick a maximum breakpoint with which to have a responsive table up to.</p>
+        </td>
       </tr>
       <tr id="ctable-small">
         <td className="text-primary fw-semibold">small<a href="#ctable-small" aria-label="CTable small permalink" className="anchor-link after">#</a></td>
@@ -125,7 +166,9 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Make table more compact by cutting all cell <code>{`padding`}</code> in half.</td>
+        <td colSpan="3">
+          <p>Make table more compact by cutting all cell <code>{`padding`}</code> in half.</p>
+        </td>
       </tr>
       <tr id="ctable-striped">
         <td className="text-primary fw-semibold">striped<a href="#ctable-striped" aria-label="CTable striped permalink" className="anchor-link after">#</a></td>
@@ -133,7 +176,9 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Add zebra-striping to any table row within the <code>{`\<CTableBody>`}</code>.</td>
+        <td colSpan="3">
+          <p>Add zebra-striping to any table row within the <code>{`<CTableBody>`}</code>.</p>
+        </td>
       </tr>
       <tr id="ctable-stripedColumns">
         <td className="text-primary fw-semibold">stripedColumns<a href="#ctable-stripedColumns" aria-label="CTable stripedColumns permalink" className="anchor-link after">#</a><span className="badge bg-success">4.3.0+</span></td>
@@ -141,7 +186,9 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Add zebra-striping to any table column.</td>
+        <td colSpan="3">
+          <p>Add zebra-striping to any table column.</p>
+        </td>
       </tr>
       <tr id="ctable-tableFootProps">
         <td className="text-primary fw-semibold">tableFootProps<a href="#ctable-tableFootProps" aria-label="CTable tableFootProps permalink" className="anchor-link after">#</a><span className="badge bg-success">4.3.0+</span></td>
@@ -149,7 +196,9 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`CTableFootProps`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Properties that will be passed to the table footer component.</td>
+        <td colSpan="3">
+          <p>Properties that will be passed to the table footer component.</p>
+        </td>
       </tr>
       <tr id="ctable-tableHeadProps">
         <td className="text-primary fw-semibold">tableHeadProps<a href="#ctable-tableHeadProps" aria-label="CTable tableHeadProps permalink" className="anchor-link after">#</a><span className="badge bg-success">4.3.0+</span></td>
@@ -157,7 +206,9 @@ import CTable from '@coreui/react/src/components/table/CTable'
         <td><code>{`CTableHeadProps`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Properties that will be passed to the table head component.</td>
+        <td colSpan="3">
+          <p>Properties that will be passed to the table head component.</p>
+        </td>
       </tr>
     </tbody>
   </table>

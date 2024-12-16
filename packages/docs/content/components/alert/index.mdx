@@ -1,0 +1,75 @@
+---
+title: React Alert Component
+name: Alert
+description: React alert component gives contextual feedback information for common user operations. The alert component is delivered with a bunch of usable and adjustable alert messages.
+menu: Components
+route: /components/alert/
+other_frameworks: alert
+---
+
+## How to use React Alert Component.
+
+React Alert is prepared for any length of text, as well as an optional close button. For a styling, use one of the **required** contextual `color` props (e.g., `primary`). For inline dismissal, use the [dismissing prop](#dismissing).
+
+<ExampleSnippet component="AlertExample" componentName="React Alert" />
+
+<Callout color="info" title="Conveying meaning to assistive technologies">
+  Using color to add meaning only provides a visual indication, which will not be conveyed to
+  users of assistive technologies – such as screen readers. Ensure that information denoted by the
+  color is either obvious from the content itself (e.g. the visible text), or is included through
+  alternative means, such as additional text hidden with the `.visually-hidden` class.
+</Callout>
+
+### Live example
+
+Click the button below to show an alert (hidden with inline styles to start), then dismiss (and destroy) it with the built-in close button.
+
+<ExampleSnippet component="AlertLiveExample" componentName="React Alert" />
+
+### Link color
+
+Use the `<CAlertLink>` component to immediately give matching colored links inside any react alert component.
+
+<ExampleSnippet component="AlertLinkColorExample" componentName="React Alert" />
+
+### Additional content
+
+React Alert can also incorporate supplementary components &amp; elements like heading, paragraph, and divider.
+
+<ExampleSnippet component="AlertAdditionalContentExample" componentName="React Alert" />
+
+### Icons
+
+Similarly, you can use [flexbox utilities](https//coreui.io/docs/4.0/utilities/flex") and [CoreUI Icons](https://coreui.io/icons/) to create react alerts with icons. Depending on your icons and content, you may want to add more utilities or custom styles.
+
+<ExampleSnippet component="AlertIcons1Example" componentName="React Alert" />
+
+Need more than one icon for your react alerts? Consider using [CoreUI Icons](https://coreui.io/icons/).
+
+<ExampleSnippet component="AlertIcons2Example" componentName="React Alert" />
+
+### Solid
+
+Use `variant="solid"` to change contextual colors to solid.
+
+<ExampleSnippet component="AlertSolidExample" componentName="React Alert" />
+
+### Dismissing
+
+React Alert component can also be easily dismissed. Just add the `dismissible` prop.
+
+<ExampleSnippet component="AlertDismissingExample" componentName="React Alert" />
+
+<Callout color="warning">
+  When an alert is dismissed, the element is completely removed from the page structure. If a
+  keyboard user dismisses the alert using the close button, their focus will suddenly be lost and,
+  depending on the browser, reset to the start of the page/document.
+</Callout>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CAlert /&gt;](./api/#calert)
+- [&lt;CAlertHeading /&gt;](./api/#calertheading)
+- [&lt;CAlertLink /&gt;](./api/#calertlink)

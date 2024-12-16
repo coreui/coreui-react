@@ -1,0 +1,206 @@
+---
+title: React Card Component
+name: Card
+description: React card component provides a flexible and extensible container for displaying content. Card is delivered with a bunch of variants and options.
+route: /components/card/
+other_frameworks: card
+---
+
+## About
+
+A react card component is a content container. It incorporates options for images, headers, and footers, a wide variety of content, contextual background colors, and excellent display options.
+
+## Example
+
+Cards are built with as little markup and styles as possible but still manage to deliver a bunch of control and customization. Built with flexbox, they offer easy alignment and mix well with other CoreUI components. Cards have no top, left, and right margins by default, so use [spacing utilities](https://coreui.io/bootstrap/docs/utilities/spacing) as needed. They have no fixed width to start, so they'll fill the full width of its parent.
+
+Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they'll naturally fill the full width of its parent element.
+
+<ExampleSnippet component="CardExample" componentName="React Card" />
+
+## Content types
+
+CoreUI card supports a wide variety of content, including images, text, list groups, links, and more. Below are examples of those elements.
+
+### Body
+
+The main block of a card is the `<CCardBody>`. Use it whenever you need a padded section within a card.
+
+<ExampleSnippet component="CardBodyExample" componentName="React Card" />
+
+### Titles, text, and links
+
+Card titles are managed by `<CCardTitle>` component. Identically, links are attached and collected next to each other by `<CCardLink>` component.
+
+Subtitles are managed by `<CCardSubtitle>` component. If the `<CCardTitle>` also, the `<CCardSubtitle>` items are stored in a `<CCardBody>` item, the card title, and subtitle are arranged rightly.
+
+<ExampleSnippet component="CardTitleExample" componentName="React Card" />
+
+### Images
+
+`orientation="top"` places a picture to the top of the card. With `<CCardText>`, text can be added to the card. Text within `<CCardText>` can additionally be styled with the regular HTML tags.
+
+<ExampleSnippet component="CardImagesExample" componentName="React Card" />
+
+### List groups
+
+Create lists of content in a card with a flush list group.
+
+<ExampleSnippet component="CardListGroupsExample" componentName="React Card" />
+
+<ExampleSnippet component="CardListGroups2Example" componentName="React Card" />
+
+<ExampleSnippet component="CardListGroups3Example" componentName="React Card" />
+
+### Kitchen sink
+
+Combine and match many content types to build the card you need, or throw everything in there. Shown below are image styles, blocks, text styles, and a list group—all wrapped in a fixed-width card.
+
+<ExampleSnippet component="CardKitchenSinkExample" componentName="React Card" />
+
+### Header and footer
+
+Add an optional header and/or footer within a card.
+
+<ExampleSnippet component="CardHeaderExample" componentName="React Card" />
+
+Card headers can be styled by adding ex. `as="h5"`.
+
+<ExampleSnippet component="CardHeader2Example" componentName="React Card" />
+
+<ExampleSnippet component="CardHeader3Example" componentName="React Card" />
+
+<ExampleSnippet component="CardHeaderAndFooterExample" componentName="React Card" />
+
+## Sizing
+
+Cards assume no specific `width` to start, so they'll be 100% wide unless otherwise stated. You can adjust this as required with custom CSS, grid classes, grid Sass mixins, or services.
+
+### Using grid markup
+
+Using the grid, wrap cards in columns and rows as needed.
+
+<ExampleSnippet component="CardSizingExample" componentName="React Card" />
+
+### Using utilities
+
+Use some of [available sizing utilities](https://coreui.io/bootstrap/docs/utilities/sizing/) to rapidly set a card's width.
+
+<ExampleSnippet component="CardSizing2Example" componentName="React Card" />
+
+### Using custom CSS
+
+Use custom CSS in your stylesheets or as inline styles to set a width.
+
+<ExampleSnippet component="CardSizing3Example" componentName="React Card" />
+
+## Text alignment
+
+You can instantly change the text arrangement of any card—in its whole or specific parts—with [text align classes](https://coreui.io/bootstrap/docs/utilities/text/#text-alignment).
+
+<ExampleSnippet component="CardTextAlignmentExample" componentName="React Card" />
+
+## Navigation
+
+Add some navigation to a `<CCardHeader>` with our `<CNav>` component.
+
+<ExampleSnippet component="CardNavigationExample" componentName="React Card" />
+
+<ExampleSnippet component="CardNavigation2Example" componentName="React Card" />
+
+## Images
+
+Cards introduce several options for acting with images. Pick from appending "image caps" at either end of a card, overlaying images with content, or just inserting the image in a card.
+
+### Image caps
+
+Similar to headers and footers, cards can include top and bottom "image caps"—images at the top or bottom of a card.
+
+<ExampleSnippet component="CardImageCapsExample" componentName="React Card" />
+
+### Image overlays
+
+Adapt an image into a background and overlay your text. Depending on the image, you may need additional styles or utilities.
+
+<ExampleSnippet component="CardImageOverlaysExample" componentName="React Card" />
+
+## Horizontal
+
+Using a combination of grid and utility classes, cards can be made horizontal in a mobile-friendly and responsive way. In the example below, we remove the grid gutters with `.g-0` and use `.col-md-*` classes to make the card horizontal at the `md` breakpoint. Further adjustments may be needed depending on your card content.
+
+<ExampleSnippet component="CardImageHorizontalExample" componentName="React Card" />
+
+## Card styles
+
+Cards include various options for customizing their backgrounds, borders, and color.
+
+### Background and color
+
+Use `color` property to change the appearance of a card.
+
+<ExampleSnippet component="CardStylesBackgroundAndColorExample" componentName="React Card" />
+
+<Callout color="info" title="Conveying meaning to assistive technologies">
+  Using color to add meaning only provides a visual indication, which will not be conveyed to
+  users of assistive technologies – such as screen readers. Ensure that information denoted by the
+  color is either obvious from the content itself (e.g. the visible text), or is included through
+  alternative means, such as additional text hidden with the `.visually-hidden` class.
+</Callout>
+
+### Border
+
+Use [border utilities](https://coreui.io/bootstrap/docs/utilities/borders/) to change just the `border-color` of a card. Note that you can set `textColor` property on the `<CCard>` or a subset of the card's contents as shown below.
+
+<ExampleSnippet component="CardStylesBorderExample" componentName="React Card" />
+
+### Top border
+
+<ExampleSnippet component="CardStylesTopBorderExample" componentName="React Card" />
+
+## Card layout
+
+In addition to styling the content within cards, CoreUI includes a few options for laying out series of cards. For the time being, **these layout options are not yet responsive**.
+
+### Card groups
+
+Use card groups to render cards as a single, attached element with equal width and height columns. Card groups start off stacked and use `display: flex;` to become attached with uniform dimensions starting at the `sm` breakpoint.
+
+<ExampleSnippet component="CardGroupsExample" componentName="React Card" />
+
+When using card groups with footers, their content will automatically line up.
+
+<ExampleSnippet component="CardGroups2Example" componentName="React Card" />
+
+### Grid cards
+
+Use the `CRow` component and set `xs|sm|md|lg|xl|xxl}={{ cols: * }}` property to control how many grid columns (wrapped around your cards) you show per row. For example, here's `xs={{cols: 1}}` laying out the cards on one column, and `md={{cols: 1}}` splitting four cards to equal width across multiple rows, from the medium breakpoint up.
+
+<ExampleSnippet component="CardGridExample" componentName="React Card" />
+
+Change it to `md={{ cols: 3}}` and you'll see the fourth card wrap.
+
+<ExampleSnippet component="CardGrid2Example" componentName="React Card" />
+
+When you need equal height, add `.h-100` to the cards. If you want equal heights by default, you can set `$card-height: 100%` in Sass.
+
+<ExampleSnippet component="CardGrid3Example" componentName="React Card" />
+
+Just like with card groups, card footers will automatically line up.
+
+<ExampleSnippet component="CardGrid4Example" componentName="React Card" />
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CCard /&gt;](./api/#ccard)
+- [&lt;CCardBody /&gt;](./api/#ccardbody)
+- [&lt;CCardFooter /&gt;](./api/#ccardfooter)
+- [&lt;CCardGroup /&gt;](./api/#ccardgroup)
+- [&lt;CCardHeader /&gt;](./api/#ccardheader)
+- [&lt;CCardImage /&gt;](./api/#ccardimage)
+- [&lt;CCardImageOverlay /&gt;](./api/#ccardimageoverlay)
+- [&lt;CCardLink /&gt;](./api/#ccardlink)
+- [&lt;CCardSubtitle /&gt;](./api/#ccardsubtitle)
+- [&lt;CCardText /&gt;](./api/#ccardtext)
+- [&lt;CCardTitle /&gt;](./api/#ccardtitle)

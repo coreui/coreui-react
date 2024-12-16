@@ -1,0 +1,27 @@
+---
+title: React Popover Component Styling
+name: Popover Styling
+description: Learn how to customize the React Popover component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design.
+route: /components/popover/
+---
+
+### CSS variables
+
+React Popover supports CSS variables for easy customization. These variables are set via SASS but allow direct overrides in your stylesheets or inline styles.
+
+<ScssDocs file="_popover.scss" capture="popover-css-vars"/>
+
+#### How to use CSS variables
+
+```jsx
+const customVars = {
+  '--cui-popover-body-color': '#888',
+  '--cui-popover-bg': '#f2f4f6',
+}
+
+return <CPopover style={customVars}>{/* Popover content */}</CPopover>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="popover-variables"/>

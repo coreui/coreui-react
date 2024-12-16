@@ -1,0 +1,37 @@
+---
+title: React Range Component
+name: Range
+description: React range component. Use our custom range inputs for consistent cross-browser styling and built-in customization.
+route: /forms/range/
+other_frameworks: range
+---
+
+## Overview
+
+Create custom `<input type="range">` controls with `<CFormRange>`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only Edge Legacy and Firefox supports "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.
+
+<ExampleSnippet component="FormRangeExample" componentName="React Form Range" />
+
+## Disabled
+
+Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
+
+<ExampleSnippet component="FormRangeDisabledExample" componentName="React Form Range" />
+
+## Min and max
+
+Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
+
+<ExampleSnippet component="FormRangeMinAndMaxExample" componentName="React Form Range" />
+
+## Steps
+
+By default, range inputs "snap" to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `step={0.5}`.
+
+<ExampleSnippet component="FormRangeStepsExample" componentName="React Form Range" />
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CFormRange /&gt;](./api/#cformrange)

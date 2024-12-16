@@ -1,0 +1,55 @@
+---
+title: React Badge Component
+name: Badge
+description: React badge component is small count and labeling component.
+route: /components/badge/
+other_frameworks: badge
+---
+
+## How to use React Badge Component.
+
+React badge component scales to suit the size of the parent element by using relative font sizing and `em` units.
+
+<ExampleSnippet component="BadgeExample" componentName="React Badge" />
+
+React badges can be used as part of links or buttons to provide a counter.
+
+<ExampleSnippet component="Badge2Example" componentName="React Badge" />
+
+Remark that depending on how you use them, react badges may be complicated for users of screen readers and related assistive technologies.
+
+Unless the context is clear, consider including additional context with a visually hidden piece of additional text.
+
+<ExampleSnippet component="Badge3Example" componentName="React Badge" />
+
+### Positioned
+
+Use `position` prop to modify a component and position it in the corner of a link or button.
+
+<ExampleSnippet component="BadgePositionedExample" componentName="React Badge" />
+
+You can also create more generic indicators without a counter using a few more utilities.
+
+<ExampleSnippet component="BadgePositioned2Example" componentName="React Badge" />
+
+## Contextual variations
+
+Add any of the below-mentioned `color` props to modify the presentation of a react badge.
+
+<ExampleSnippet component="BadgeContextualVariations" componentName="React Badge" />
+
+You can also apply contextual variations with the `textBgColor` property, which automatically sets the text color to ensure compliance with the WCAG 4.5:1 contrast ratio standard for enhanced accessibility.
+
+<ExampleSnippet component="BadgeContextual2Variations" componentName="React Badge" />
+
+## Pill badges
+
+Apply the `shape="rounded-pill"` prop to make badges rounded.
+
+<ExampleSnippet component="BadgePillExample" componentName="React Badge" />
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CBadge /&gt;](./api/#cbadge)

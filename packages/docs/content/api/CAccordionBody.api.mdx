@@ -21,7 +21,10 @@ import CAccordionBody from '@coreui/react/src/components/accordion/CAccordionBod
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Allows you to apply custom CSS classes to the React Accordion Body for enhanced styling and theming.<br /><JSXDocs code={`<CAccordionBody className="custom-accordion-body">...</CAccordionBody>`} /></td>
+        <td colSpan="3">
+          <p>Allows you to apply custom CSS classes to the React Accordion Body for enhanced styling and theming.</p>
+        <JSXDocs code={`<CAccordionBody className="custom-accordion-body">...</CAccordionBody>`} />
+        </td>
       </tr>
       <tr id="caccordionbody-customClassNames">
         <td className="text-primary fw-semibold">customClassNames<a href="#caccordionbody-customClassNames" aria-label="CAccordionBody customClassNames permalink" className="anchor-link after">#</a></td>
@@ -29,11 +32,20 @@ import CAccordionBody from '@coreui/react/src/components/accordion/CAccordionBod
         <td><code>{`Partial\<{ ACCORDION_COLLAPSE: string; ACCORDION_BODY: string; }>`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Allows overriding or extending the default CSS class names used in the accordion body component.<br/>Accepts a partial object matching the shape of <code>{`ACCORDION_BODY_CLASS_NAMES`}</code>, which includes:<br/><br/>- <code>{`ACCORDION_COLLAPSE`}</code>: Base class for the collapse container in the accordion body.<br/>- <code>{`ACCORDION_BODY`}</code>: Base class for the main content container inside the accordion body.<br/><br/>Use this prop to customize the styles of specific parts of the accordion body.<br /><JSXDocs code={`const customClasses = {
+        <td colSpan="3">
+          <p>Allows overriding or extending the default CSS class names used in the accordion body component.<br />
+Accepts a partial object matching the shape of <code>{`ACCORDION_BODY_CLASS_NAMES`}</code>, which includes:</p>
+<ul>
+<li><code>{`ACCORDION_COLLAPSE`}</code>: Base class for the collapse container in the accordion body.</li>
+<li><code>{`ACCORDION_BODY`}</code>: Base class for the main content container inside the accordion body.</li>
+</ul>
+<p>Use this prop to customize the styles of specific parts of the accordion body.</p>
+        <JSXDocs code={`const customClasses = {
   ACCORDION_COLLAPSE: 'custom-collapse-class',
   ACCORDION_BODY: 'custom-body-class',
 }
-<CAccordionBody customClassNames={customClasses}>...</CAccordionBody>`} /></td>
+<CAccordionBody customClassNames={customClasses}>...</CAccordionBody>`} />
+        </td>
       </tr>
     </tbody>
   </table>

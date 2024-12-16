@@ -1,0 +1,96 @@
+---
+title: React Progress Component
+name: Progress
+description: Documentation and examples for using React progress bars featuring support for stacked bars, animated backgrounds, and text labels.
+route: /components/progress/
+other_frameworks: progress
+---
+
+## Example
+
+Progress components are built with two HTML elements, some CSS to set the width, and a few attributes. We don't use [the HTML5 `<progress>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress), ensuring you can stack progress bars, animate them, and place text labels over them.
+
+## Basic usage
+
+<ExampleSnippet component="ProgressExample" componentName="React Progress" />
+
+## Labels
+
+Add labels to your progress bars by placing text within the `<CProgressBar>`.
+
+<ExampleSnippet component="ProgressLabelsExample" componentName="React Progress" />
+
+Please note that the default setting for the content within the `<CProgressBar />` is to be limited by the `overflow: hidden property`, preventing it from extending beyond the bar's boundaries. If the progress bar is shorter than its label, the content will be truncated and could be difficult to read. To modify this behavior, you can utilize the `.overflow-visible` class from the overflow utilities. However, it is important to specify a specific text color to ensure readability. It's worth noting that this approach currently does not consider color modes.
+
+<ExampleSnippet component="ProgressLabels2Example" componentName="React Progress" />
+
+Since **v4.9.0** you can also use the `progressBarClassName` property directly on the `<CProgress />` component to achieve the same.
+
+```jsx
+<CProgress progressBarClassName="overflow-visible text-dark px-2" color="success" value={10}>Long label text for the progress bar, set to a dark color</CProgress>
+```
+
+## Height
+
+We only set a `height` value on the `<CProgress>`, so if you change that value the inner `<CProgressBar>` will automatically resize accordingly.
+
+<ExampleSnippet component="ProgressHeightExample" componentName="React Progress" />
+
+<ExampleSnippet component="ProgressHeight2Example" componentName="React Progress" />
+
+## Backgrounds
+
+Use `color` prop to change the appearance of individual progress bars.
+
+<ExampleSnippet component="ProgressBackgroundsExample" componentName="React Progress" />
+
+Ensure that when you incorporate labels into progress bars featuring a custom background color, you also select an appropriate text color to ensure readability and maintain adequate contrast for the labels.
+
+<ExampleSnippet component="ProgressBackgrounds2Example" componentName="React Progress" />
+
+Since **v4.9.0** you can also use the `progressBarClassName` property directly on the `<CProgress />` component to achieve the same.
+
+```jsx
+<CProgress color="success" value={25}>25%</CProgress>
+<CProgress color="info" progressBarClassName="text-dark" value={50}>50%</CProgress>
+<CProgress color="warning" progressBarClassName="text-dark" value={75}>75%</CProgress>
+<CProgress color="danger" value={100}>100%</CProgress>
+```
+
+## Multiple bars
+
+Include multiple progress bars in a progress component if you need. In **v4.9.0**
+
+<Callout color="info" title="New markup in v4.9.0">
+  In version 4.9.0, we introduced a new `<CProgressStacked>` component to more logically wrap multiple progress bars into a single stacked progress bar. The previous structure will continue to work until the next major version.
+</Callout>
+
+<ExampleSnippet component="ProgressMultipleBarsExample" componentName="React Progress" />
+
+**Previous markup**
+```jsx
+<CProgress>
+  <CProgressBar value={15} />
+  <CProgressBar color="success" value={30} />
+  <CProgressBar color="info" value={20} />
+</CProgress>
+```
+
+## Striped
+
+Add `variant="striped"` to any `<CProgressBar>` to apply a stripe via CSS gradient over the progress bar's background color.
+
+<ExampleSnippet component="ProgressStripedExample" componentName="React Progress" />
+
+## Animated stripes
+
+The striped gradient can also be animated. Add `animated` property to `<CProgressBar>` to animate the stripes right to left via CSS3 animations.
+
+<ExampleSnippet component="ProgressAnimatedStripedExample" componentName="React Progress" />
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CProgress /&gt;](./api/#cprogress)
+- [&lt;CProgressBar /&gt;](./api/#cprogressbar)
