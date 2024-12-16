@@ -5,7 +5,7 @@ export const AccordionExample = () => {
   return (
     <CAccordion activeItemKey={2}>
       <CAccordionItem itemKey={1}>
-        <CAccordionHeader>Accordion Item #1 TSX</CAccordionHeader>
+        <CAccordionHeader>Accordion Item #1</CAccordionHeader>
         <CAccordionBody>
           <strong>This is the first item&#39;s accordion body.</strong> It is hidden by default,
           until the collapse plugin adds the appropriate classes that we use to style each element.

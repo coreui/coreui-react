@@ -5,60 +5,21 @@ import classNames from 'classnames'
 import { CAccordionItemContext } from './CAccordionItem'
 
 import { CCollapse } from './../collapse/CCollapse'
-import { mergeClassNames } from '../../utils'
 
 export interface CAccordionBodyProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * Allows you to apply custom CSS classes to the React Accordion Body for enhanced styling and theming.
-   *
-   * @example
-   * <CAccordionBody className="custom-accordion-body">...</CAccordionBody>
+   * A string of all className you want applied to the base component.
    */
   className?: string
-
-  /**
-   * Allows overriding or extending the default CSS class names used in the accordion body component.
-   * Accepts a partial object matching the shape of `ACCORDION_BODY_CLASS_NAMES`, which includes:
-   *
-   * - `ACCORDION_COLLAPSE`: Base class for the collapse container in the accordion body.
-   * - `ACCORDION_BODY`: Base class for the main content container inside the accordion body.
-   *
-   * Use this prop to customize the styles of specific parts of the accordion body.
-   *
-   * @example
-   * const customClasses = {
-   *   ACCORDION_COLLAPSE: 'custom-collapse-class',
-   *   ACCORDION_BODY: 'custom-body-class',
-   * }
-   * <CAccordionBody customClassNames={customClasses}>...</CAccordionBody>
-   */
-  customClassNames?: Partial<typeof ACCORDION_BODY_CLASS_NAMES>
-}
-
-export const ACCORDION_BODY_CLASS_NAMES = {
-  /**
-   * Used for managing collapsible behavior in the accordion body.
-   */
-  ACCORDION_COLLAPSE: 'accordion-collapse',
-
-  /**
-   * Styles the main content container inside the accordion.
-   */
-  ACCORDION_BODY: 'accordion-body',
 }
 
 export const CAccordionBody = forwardRef<HTMLDivElement, CAccordionBodyProps>(
-  ({ children, className, customClassNames, ...rest }, ref) => {
-    const { id, visible } = useContext(CAccordionItemContext)
-
-    const mergedClassNames = mergeClassNames<typeof ACCORDION_BODY_CLASS_NAMES>(
-      ACCORDION_BODY_CLASS_NAMES,
-      customClassNames,
-    )
+  ({ children, className, ...rest }, ref) => {
+    const { visible } = useContext(CAccordionItemContext)
 
     return (
-      <CCollapse id={id} className={mergedClassNames.ACCORDION_COLLAPSE} visible={visible}>
-        <div className={classNames(mergedClassNames.ACCORDION_BODY, className)} {...rest} ref={ref}>
+      <CCollapse className="accordion-collapse" visible={visible}>
+        <div className={classNames('accordion-body', className)} {...rest} ref={ref}>
           {children}
         </div>
       </CCollapse>
