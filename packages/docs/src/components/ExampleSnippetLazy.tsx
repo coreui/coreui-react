@@ -1,17 +1,18 @@
-import React, { FC, lazy, ReactNode, Suspense, useEffect, useMemo, useState } from 'react'
+import React, { FC, lazy, ReactNode, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { Highlight, Language } from 'prism-react-renderer'
 import CIcon from '@coreui/icons-react'
 import { cibCodesandbox, cilCheckAlt, cilCopy } from '@coreui/icons'
 import { CNav, CNavLink, CTooltip, useClipboard } from '@coreui/react'
 import { openStackBlitzProject } from '../utils/stackblitz'
 import { openCodeSandboxProject } from '../utils/codesandbox'
+import { isInViewport } from '@coreui/react/src/utils'
 
 interface CodeSnippets {
   js?: string
   ts?: string
 }
 
-export interface ExampleSnippetProps {
+export interface ExampleSnippetLazyProps {
   children: ReactNode
   className?: string
   code?: string | CodeSnippets
@@ -22,7 +23,7 @@ export interface ExampleSnippetProps {
   stackBlitz?: boolean
 }
 
-const ExampleSnippet: FC<ExampleSnippetProps> = ({
+const ExampleSnippetLazy: FC<ExampleSnippetLazyProps> = ({
   children,
   className = '',
   code,
@@ -32,9 +33,11 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
   pro = false,
   stackBlitz = true,
 }) => {
+  const exampleSnippetRef = useRef<HTMLDivElement>(null)
   const [codeJS, setCodeJS] = useState<string>()
   const [codeTS, setCodeTS] = useState<string>()
   const [language, setLanguage] = useState<'js' | 'ts'>('js')
+  const [visible, setVisible] = useState(false)
   const { copy, isCopied } = useClipboard()
 
   const Preview = useMemo(() => {
@@ -48,6 +51,28 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
         }),
     )
   }, [component])
+
+  const handleScroll = () => {
+    setVisible(true)
+  }
+
+  useEffect(() => {
+    if (exampleSnippetRef.current && isInViewport(exampleSnippetRef.current)) {
+      setVisible(true)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (visible) {
+      window.removeEventListener('scroll', handleScroll)
+    } else {
+      window.addEventListener('scroll', handleScroll)
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   useEffect(() => {
     const loadCode = async () => {
@@ -109,18 +134,20 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
   }
 
   return (
-    <div className="docs-example-snippet">
-      <div className={`docs-example ${className}`}>
-        {children ? (
-          children
-        ) : Preview ? (
-          <Suspense fallback={<div>Loading preview...</div>}>
-            <Preview />
-          </Suspense>
-        ) : (
-          <div>No component specified.</div>
-        )}
-      </div>
+    <div className="docs-example-snippet" ref={exampleSnippetRef}>
+      {visible && (
+        <div className={`docs-example ${className}`}>
+          {children ? (
+            children
+          ) : Preview ? (
+            <Suspense fallback={<div>Loading preview...</div>}>
+              <Preview />
+            </Suspense>
+          ) : (
+            <div>No component specified.</div>
+          )}
+        </div>
+      )}
       <div className="highlight-toolbar border-top">
         <CNav className="px-3" variant="underline-border">
           {showJSTab && (
@@ -201,7 +228,7 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
           </CTooltip>
         </CNav>
       </div>
-      {(hasJS || hasTS) && (
+      {visible && (hasJS || hasTS) && (
         <div className="highlight">
           <Highlight
             code={language === 'js' ? codeJS || '' : codeTS || ''}
@@ -226,6 +253,6 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
   )
 }
 
-ExampleSnippet.displayName = 'ExampleSnippet'
+ExampleSnippetLazy.displayName = 'ExampleSnippetLazy'
 
-export default ExampleSnippet
+export default ExampleSnippetLazy
