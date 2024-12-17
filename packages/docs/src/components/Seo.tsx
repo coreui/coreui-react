@@ -1,5 +1,4 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
 import { useLocation } from '@reach/router'
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -34,8 +33,11 @@ const SEO = ({ title, description, name, image, article }: SEOProps) => {
     url: `${siteUrl}${pathname.replace(`${prefix}/`, '')}`,
   }
 
+  const formattedTitle = title ? titleTemplate.replace('%s', title) : 'My Gatsby Site'
+
   return (
-    <Helmet title={seo.title} titleTemplate={titleTemplate}>
+    <>
+      <title>{formattedTitle}</title>
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
 
@@ -78,7 +80,7 @@ const SEO = ({ title, description, name, image, article }: SEOProps) => {
           }`}
         </script>
       )}
-    </Helmet>
+    </>
   )
 }
 

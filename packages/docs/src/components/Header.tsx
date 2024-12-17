@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { DocSearch } from '@docsearch/react'
 
 import CIcon from '@coreui/icons-react'
 import {
@@ -36,13 +37,19 @@ const Header: FC = () => {
           <CHeader className="mb-5" position="sticky">
             <CHeaderToggler
               className="ms-md-3"
-              onClick={() => {
+              aria-label="Close"
+              onClick={() =>
                 context.setSidebarVisible && context.setSidebarVisible(!context.sidebarVisible)
-              }}
+              }
             >
               <CIcon icon={cilMenu} size="lg" />
             </CHeaderToggler>
-            <div className="docs-search" id="docsearch"></div>
+            <DocSearch
+              appId="JIOZIZPLMM"
+              indexName="coreui-react"
+              apiKey="6e3f7692d2589d042bb40426b75df1b7"
+            />
+            {/* <div className="docs-search" id="docsearch"></div> */}
             <CHeaderNav className="ms-auto">
               <CNavItem
                 href="https://github.com/coreui/coreui-react/"
@@ -63,15 +70,20 @@ const Header: FC = () => {
                 <div className="vr d-none d-lg-flex h-100 mx-lg-2 text-body text-opacity-75"></div>
                 <hr className="d-lg-none my-2 text-white-50" />
               </li>
-              <CDropdown variant="nav-item" placement="bottom-end">
-                <CDropdownToggle className="nav-link" color="link" caret={false}>
+              <CDropdown placement="bottom-end">
+                <CDropdownToggle
+                  className="nav-link"
+                  color="link"
+                  caret={false}
+                  aria-label="Light/Dark mode switch"
+                >
                   {colorMode === 'dark' ? (
                     <CIcon icon={cilMoon} size="xl" />
-                  ) : (colorMode === 'auto' ? (
+                  ) : colorMode === 'auto' ? (
                     <CIcon icon={cilContrast} size="xl" />
                   ) : (
                     <CIcon icon={cilSun} size="xl" />
-                  ))}
+                  )}
                 </CDropdownToggle>
                 <CDropdownMenu>
                   <CDropdownItem

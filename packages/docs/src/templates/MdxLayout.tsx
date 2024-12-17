@@ -6,9 +6,10 @@ import {
   CodeBlock,
   ClassNamesDocs,
   Example,
-  JSXDocs,
   ExampleSnippet,
+  JSXDocs,
   ScssDocs,
+  Seo,
 } from '../components'
 
 import { CalloutProps } from '../components/Callout'
@@ -31,6 +32,14 @@ interface DataProps {
         }
       }
     }>
+  }
+}
+
+interface PageContextType {
+  frontmatter: {
+    title: string
+    description: string
+    name: string
   }
 }
 
@@ -84,6 +93,21 @@ const MdxLayout: FC<PageProps<DataProps>> = ({ children }) => {
 MdxLayout.displayName = 'MdxLayout'
 
 export default MdxLayout
+
+export const Head = ({ pageContext }: { pageContext: PageContextType }) => {
+  const { frontmatter } = pageContext
+
+  const title = frontmatter?.title || ''
+  const description = frontmatter?.description || ''
+  const name = frontmatter?.name || ''
+
+  return (
+    <>
+      <html lang="en" />
+      <Seo title={title} description={description} name={name} />
+    </>
+  )
+}
 
 export const pageQuery = graphql`
   query PageQuery($id: String, $regex: String) {
