@@ -15,35 +15,14 @@ import CAccordionHeader from '@coreui/react/src/components/accordion/CAccordionH
       </tr>
     </thead>
     <tbody>
-      <tr id="caccordionheader-className">
-        <td className="text-primary fw-semibold">className<a href="#caccordionheader-className" aria-label="CAccordionHeader className permalink" className="anchor-link after">#</a></td>
+      <tr id="caccordionheader-class-name">
+        <td className="text-primary fw-semibold">className<a href="#caccordionheader-class-name" aria-label="CAccordionHeader className permalink" className="anchor-link after">#</a></td>
         <td>undefined</td>
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
           <p>A string of all className you want applied to the base component.</p>
-        </td>
-      </tr>
-      <tr id="caccordionheader-customClassNames">
-        <td className="text-primary fw-semibold">customClassNames<a href="#caccordionheader-customClassNames" aria-label="CAccordionHeader customClassNames permalink" className="anchor-link after">#</a></td>
-        <td>undefined</td>
-        <td><code>{`Partial\<{ ACCORDION_HEADER: string; ACCORDION_BUTTON: string; }>`}</code></td>
-      </tr>
-      <tr>
-        <td colSpan="3">
-          <p>Allows overriding or extending the default CSS class names used in the accordion header component.<br />
-Accepts a partial object matching the shape of <code>{`ACCORDION_HEADER_CLASS_NAMES`}</code>, which includes:</p>
-<ul>
-<li><code>{`ACCORDION_HEADER`}</code>: Base class for the accordion header container.</li>
-<li><code>{`ACCORDION_BUTTON`}</code>: Class applied to the button within the accordion header.</li>
-</ul>
-<p>Use this prop to customize the styles of specific parts of the accordion header.</p>
-        <JSXDocs code={`const customClasses = {
-  ACCORDION_HEADER: 'custom-header-class',
-  ACCORDION_BUTTON: 'custom-button-class',
-}
-<CAccordionHeader customClassNames={customClasses}>...</CAccordionHeader>`} />
         </td>
       </tr>
     </tbody>

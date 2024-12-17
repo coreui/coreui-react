@@ -15,36 +15,14 @@ import CAccordionBody from '@coreui/react/src/components/accordion/CAccordionBod
       </tr>
     </thead>
     <tbody>
-      <tr id="caccordionbody-className">
-        <td className="text-primary fw-semibold">className<a href="#caccordionbody-className" aria-label="CAccordionBody className permalink" className="anchor-link after">#</a></td>
+      <tr id="caccordionbody-class-name">
+        <td className="text-primary fw-semibold">className<a href="#caccordionbody-class-name" aria-label="CAccordionBody className permalink" className="anchor-link after">#</a></td>
         <td>undefined</td>
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Allows you to apply custom CSS classes to the React Accordion Body for enhanced styling and theming.</p>
-        <JSXDocs code={`<CAccordionBody className="custom-accordion-body">...</CAccordionBody>`} />
-        </td>
-      </tr>
-      <tr id="caccordionbody-customClassNames">
-        <td className="text-primary fw-semibold">customClassNames<a href="#caccordionbody-customClassNames" aria-label="CAccordionBody customClassNames permalink" className="anchor-link after">#</a></td>
-        <td>undefined</td>
-        <td><code>{`Partial\<{ ACCORDION_COLLAPSE: string; ACCORDION_BODY: string; }>`}</code></td>
-      </tr>
-      <tr>
-        <td colSpan="3">
-          <p>Allows overriding or extending the default CSS class names used in the accordion body component.<br />
-Accepts a partial object matching the shape of <code>{`ACCORDION_BODY_CLASS_NAMES`}</code>, which includes:</p>
-<ul>
-<li><code>{`ACCORDION_COLLAPSE`}</code>: Base class for the collapse container in the accordion body.</li>
-<li><code>{`ACCORDION_BODY`}</code>: Base class for the main content container inside the accordion body.</li>
-</ul>
-<p>Use this prop to customize the styles of specific parts of the accordion body.</p>
-        <JSXDocs code={`const customClasses = {
-  ACCORDION_COLLAPSE: 'custom-collapse-class',
-  ACCORDION_BODY: 'custom-body-class',
-}
-<CAccordionBody customClassNames={customClasses}>...</CAccordionBody>`} />
+          <p>A string of all className you want applied to the base component.</p>
         </td>
       </tr>
     </tbody>
