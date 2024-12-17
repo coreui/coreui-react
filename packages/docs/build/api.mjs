@@ -294,7 +294,7 @@ const createMdx = async (file, component) => {
       .map((_type) => `\`${_type.trim()}\``)
       .join(', ')
 
-    const id = `${component.displayName.toLowerCase()}-${propName}`
+    const id = `${component.displayName.toLowerCase()}-${propName.replaceAll(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}`
     const anchor = `<a href="#${id}" aria-label="${component.displayName} ${displayName} permalink" className="anchor-link after">#</a>`
 
     content += `      <tr id="${id}">\n`
@@ -340,22 +340,22 @@ const main = async () => {
   try {
     const files = await globby(GLOB_PATTERNS, GLOBBY_OPTIONS)
 
-    await Promise.all(
-      files.map(async (file) => {
-        console.log(`Processing file: ${file}`)
-        let components
-        try {
-          components = parse(file, DOCGEN_OPTIONS)
-        } catch (parseError) {
-          console.error(`Failed to parse ${file}:`, parseError)
-          return
-        }
+    for (const file of files) {
+      console.log(`Processing file: ${file}`)
+      let components
+      try {
+        components = parse(file, DOCGEN_OPTIONS)
+      } catch (parseError) {
+        console.error(`Failed to parse ${file}:`, parseError)
+        continue // Skip to the next file
+      }
 
-        if (components && components.length > 0) {
-          await Promise.all(components.map((component) => createMdx(file, component)))
+      if (components && components.length > 0) {
+        for (const component of components) {
+          await createMdx(file, component) // Sequentially create MDX files
         }
-      }),
-    )
+      }
+    }
   } catch (error) {
     console.error('An error occurred:', error)
     process.exit(1)
