@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import {
@@ -48,46 +48,44 @@ interface Toc {
 }
 
 const MdxLayout: FC<PageProps<DataProps>> = ({ children }) => {
-  return (
-    <MDXProvider
-      components={{
-        Callout: (props: CalloutProps) => {
-          const { children, title, ...rest } = props
-          return (
-            <Callout {...rest}>
-              {title && <h5>{title}</h5>}
-              {children}
-            </Callout>
-          )
-        },
-        ClassNamesDocs: (props: { files: string | string[] }) => <ClassNamesDocs {...props} />,
-        Example: (props: ExampleProps) => {
-          const { children, ...rest } = props
-          return (
-            <Example {...rest}>
-              {React.Children.map(children, (child) => {
-                if (React.isValidElement(child)) {
-                  return React.cloneElement(child)
-                }
-                return
-              })}
-            </Example>
-          )
-        },
-        ExampleSnippet: (props: ExampleSnippetProps) => <ExampleSnippet {...props} />,
-        JSXDocs: (props: { code: string }) => <JSXDocs {...props} />,
-        ScssDocs: (props: ScssDocsProps) => <ScssDocs {...props} />,
-        pre: (props: CodeBlockProps) => <CodeBlock {...props} />,
-        table: (props) => (
-          <div className="table-responsive table-docs border rounded mb-3">
-            <table className="table table-docs" {...props} />
-          </div>
-        ),
-      }}
-    >
-      {children}
-    </MDXProvider>
+  const components = useMemo(
+    () => ({
+      Callout: (props: CalloutProps) => {
+        const { children, title, ...rest } = props
+        return (
+          <Callout {...rest}>
+            {title && <h5>{title}</h5>}
+            {children}
+          </Callout>
+        )
+      },
+      ClassNamesDocs: (props: { files: string | string[] }) => <ClassNamesDocs {...props} />,
+      Example: (props: ExampleProps) => {
+        const { children, ...rest } = props
+        return (
+          <Example {...rest}>
+            {React.Children.map(children, (child) => {
+              if (React.isValidElement(child)) {
+                return React.cloneElement(child)
+              }
+              return
+            })}
+          </Example>
+        )
+      },
+      ExampleSnippet: (props: ExampleSnippetProps) => <ExampleSnippet {...props} />,
+      JSXDocs: (props: { code: string }) => <JSXDocs {...props} />,
+      ScssDocs: (props: ScssDocsProps) => <ScssDocs {...props} />,
+      pre: (props: CodeBlockProps) => <CodeBlock {...props} />,
+      table: (props) => (
+        <div className="table-responsive table-docs border rounded mb-3">
+          <table className="table table-docs" {...props} />
+        </div>
+      ),
+    }),
+    [],
   )
+  return <MDXProvider components={components}>{children}</MDXProvider>
 }
 
 MdxLayout.displayName = 'MdxLayout'

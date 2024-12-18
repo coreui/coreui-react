@@ -1,19 +1,11 @@
-import React, { FC, useState } from 'react'
-import { Footer, Header, Sidebar } from '../components'
-import { CContainer } from '@coreui/react/src/'
-import DocsLayout from './DocsLayout'
-
+import React, { FC, ReactNode, useState } from 'react'
 import { AppContext } from '../AppContext'
 
 interface DefaultLayoutProps {
-  children: any // eslint-disable-line @typescript-eslint/no-explicit-any
-  data: any // eslint-disable-line @typescript-eslint/no-explicit-any
-  location: any // eslint-disable-line @typescript-eslint/no-explicit-any
-  pageContext: any // eslint-disable-line @typescript-eslint/no-explicit-any
-  path: any // eslint-disable-line @typescript-eslint/no-explicit-any
+  children: ReactNode
 }
 
-const DefaultLayout: FC<DefaultLayoutProps> = ({ children, data, location, pageContext, path }) => {
+const DefaultLayout: FC<DefaultLayoutProps> = ({ children }) => {
   const [sidebarVisible, setSidebarVisible] = useState()
   return (
     <AppContext.Provider
@@ -22,18 +14,7 @@ const DefaultLayout: FC<DefaultLayoutProps> = ({ children, data, location, pageC
         setSidebarVisible,
       }}
     >
-      <Sidebar />
-      <div className="wrapper flex-grow-1">
-        <Header />
-        {path === '/404/' ? (
-          <CContainer lg>{children}</CContainer>
-        ) : (
-          <DocsLayout data={data} location={location} pageContext={pageContext}>
-            {children}
-          </DocsLayout>
-        )}
-        <Footer />
-      </div>
+      {children}
     </AppContext.Provider>
   )
 }

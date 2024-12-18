@@ -1,5 +1,5 @@
 import React, { FC, ReactNode, useMemo } from 'react'
-import { Ads, Banner, Seo, Toc } from '../components'
+import { Ads, Banner, Footer, Header, Sidebar, Toc } from '../components'
 import { CContainer, CNav, CNavItem, CNavLink } from '@coreui/react'
 // @ts-expect-error json file
 import jsonData from './../data/other_frameworks.json'
@@ -11,6 +11,7 @@ interface DocsLayoutProps {
   data: DocsData
   location: Location
   pageContext: PageContext
+  path: string
 }
 
 interface DocsData {
@@ -144,7 +145,7 @@ const DocsNav: FC<{
   )
 }
 
-const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext }) => {
+const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext, path }) => {
   const frontmatter = pageContext.frontmatter || {}
 
   const {
@@ -164,58 +165,69 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
 
   return (
     <>
-      <Seo title={title} description={description} name={name} />
-      <CContainer lg className="my-md-4 flex-grow-1">
-        <main className="docs-main order-1">
-          {hasNav && (
-            <DocsNav locationPathname={location.pathname} nodes={data?.allMdx?.edges as Item[]} />
-          )}
-          <div className="docs-intro ps-lg-4">
-            {name && name !== title ? (
-              <div className="d-flex flex-column">
-                <h1 className="order-2 h5 mb-4 text-body-secondary" id="content">
-                  {title}
-                </h1>
-                <h2 className="docs-title order-1 h1">{name}</h2>
+      <Sidebar />
+      <div className="wrapper flex-grow-1">
+        <Header />
+        {path === '/404/' ? (
+          <CContainer lg>{children}</CContainer>
+        ) : (
+          <CContainer lg className="my-md-4 flex-grow-1">
+            <main className="docs-main order-1">
+              {hasNav && (
+                <DocsNav
+                  locationPathname={location.pathname}
+                  nodes={data?.allMdx?.edges as Item[]}
+                />
+              )}
+              <div className="docs-intro ps-lg-4">
+                {name && name !== title ? (
+                  <div className="d-flex flex-column">
+                    <h1 className="order-2 h5 mb-4 text-body-secondary" id="content">
+                      {title}
+                    </h1>
+                    <h2 className="docs-title order-1 h1">{name}</h2>
+                  </div>
+                ) : (
+                  <h1 className="docs-title" id="content">
+                    {title}
+                  </h1>
+                )}
+                <Banner pro={proComponent} />
+                <p className="docs-lead">{description}</p>
+                <Ads code="CEAICKJY" location={route} placement="coreuiio" />
+                {frameworks.length > 0 && (
+                  <>
+                    <h2>Other Frameworks</h2>
+                    <p>
+                      CoreUI components are available as native Angular, Bootstrap (Vanilla JS), and
+                      Vue components. To learn more please visit the following pages.
+                    </p>
+                    <ul>
+                      {frameworks.map((item) => (
+                        <React.Fragment key={item}>
+                          {Object.entries(otherFrameworks[item] || {})
+                            .filter(([key]) => key !== 'react')
+                            .map(([framework, url]) => (
+                              <li key={framework}>
+                                <a href={url}>
+                                  {framework.charAt(0).toUpperCase() + framework.slice(1)}{' '}
+                                  {humanize(item)}
+                                </a>
+                              </li>
+                            ))}
+                        </React.Fragment>
+                      ))}
+                    </ul>
+                  </>
+                )}
               </div>
-            ) : (
-              <h1 className="docs-title" id="content">
-                {title}
-              </h1>
-            )}
-            <Banner pro={proComponent} />
-            <p className="docs-lead">{description}</p>
-            <Ads code="CEAICKJY" location={route} placement="coreuiio" />
-            {frameworks.length > 0 && (
-              <>
-                <h2>Other Frameworks</h2>
-                <p>
-                  CoreUI components are available as native Angular, Bootstrap (Vanilla JS), and Vue
-                  components. To learn more please visit the following pages.
-                </p>
-                <ul>
-                  {frameworks.map((item) => (
-                    <React.Fragment key={item}>
-                      {Object.entries(otherFrameworks[item] || {})
-                        .filter(([key]) => key !== 'react')
-                        .map(([framework, url]) => (
-                          <li key={framework}>
-                            <a href={url}>
-                              {framework.charAt(0).toUpperCase() + framework.slice(1)}{' '}
-                              {humanize(item)}
-                            </a>
-                          </li>
-                        ))}
-                    </React.Fragment>
-                  ))}
-                </ul>
-              </>
-            )}
-          </div>
-          {data?.mdx && <Toc items={data.mdx.tableOfContents.items} />}
-          <div className="docs-content ps-lg-4">{children}</div>
-        </main>
-      </CContainer>
+              {data?.mdx && <Toc items={data.mdx.tableOfContents.items} />}
+              <div className="docs-content ps-lg-4">{children}</div>
+            </main>
+          </CContainer>
+        )}
+        <Footer />
+      </div>
     </>
   )
 }
