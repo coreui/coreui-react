@@ -96,7 +96,7 @@ export const CBadge: PolymorphicRefForwardingComponent<'span', CBadgeProps> = fo
 )
 
 CBadge.propTypes = {
-  as: PropTypes.string,
+  as: PropTypes.ElementType,
   children: PropTypes.node,
   className: PropTypes.string,
   color: colorPropType,
