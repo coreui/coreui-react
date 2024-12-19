@@ -124,7 +124,11 @@ export const CNavGroup: PolymorphicRefForwardingComponent<'li', CNavGroupProps> 
       ref={ref}
     >
       {toggler && (
-        <a className="nav-link nav-group-toggle" onClick={(event) => handleTogglerOnCLick(event)}>
+        <a
+          className="nav-link nav-group-toggle"
+          href="#"
+          onClick={(event) => handleTogglerOnCLick(event)}
+        >
           {toggler}
         </a>
       )}
