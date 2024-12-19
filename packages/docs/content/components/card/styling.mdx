@@ -1,0 +1,27 @@
+---
+title: React Card Component Styling
+name: Card Styling
+description: Learn how to customize the React Card component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design.
+route: /components/card/
+---
+
+### CSS variables
+
+React Card supports CSS variables for easy customization. These variables are set via SASS but allow direct overrides in your stylesheets or inline styles.
+
+<ScssDocs file="_card.scss" capture="card-css-vars"/>
+
+#### How to use CSS variables
+
+```jsx
+const customVars = {
+  '--cui-card-cap-bg': '#555',
+  '--cui-card-color': '#efefef',
+}
+
+return <CCard style={customVars}>{/* Card content */}</CCard>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="card-variables"/>

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { forwardRef, useState } from 'react'
 import { CCollapse, CNav } from '@coreui/react/src/index'
 
 export type TocItem = {
@@ -32,12 +32,16 @@ const toc = (items: TocItem[]) => {
   )
 }
 
-const Toc: FC<TocProps> = ({ items }) => {
+const Toc = forwardRef<HTMLDivElement, TocProps>(({ items, ...rest }, ref) => {
   const [visible, setVisible] = useState(false)
   return (
-    <div className="docs-toc mt-4 mb-5 my-md-0 ps-xl-5 mb-lg-5 text-body-secondary">
+    <div
+      className="docs-toc mt-4 mb-5 my-lg-0 ps-xl-5 mb-lg-5 text-body-secondary"
+      ref={ref}
+      {...rest}
+    >
       <button
-        className="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none docs-toc-toggle d-md-none"
+        className="btn btn-link p-lg-0 mb-2 mb-lg-0 text-decoration-none docs-toc-toggle d-lg-none"
         type="button"
         aria-expanded={visible ? true : false}
         aria-controls="tocContents"
@@ -46,7 +50,7 @@ const Toc: FC<TocProps> = ({ items }) => {
         On this page
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="icon d-md-none ms-2"
+          className="icon d-lg-none ms-2"
           aria-hidden="true"
           viewBox="0 0 512 512"
         >
@@ -57,7 +61,7 @@ const Toc: FC<TocProps> = ({ items }) => {
           />
         </svg>
       </button>
-      <strong className="d-none d-md-block h6 mb-2 pb-2 border-bottom">On this page</strong>
+      <strong className="d-none d-lg-block h6 mb-2 pb-2 border-bottom">On this page</strong>
       <CCollapse className="docs-toc-collapse" id="tocContents" visible={visible}>
         <CNav as="nav">
           <ul>{toc(items)}</ul>
@@ -65,6 +69,8 @@ const Toc: FC<TocProps> = ({ items }) => {
       </CCollapse>
     </div>
   )
-}
+})
+
+Toc.displayName = 'Toc'
 
 export default Toc

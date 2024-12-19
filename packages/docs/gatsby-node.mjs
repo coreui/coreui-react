@@ -1,5 +1,26 @@
-import { resolve } from 'node:path'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { createFilePath } from 'gatsby-source-filesystem'
+import { glob } from 'glob'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+export const onCreateWebpackConfig = ({ actions }) => {
+  const { setWebpackConfig } = actions
+
+  // Find all 'examples' directories
+  const examplePaths = glob.sync(resolve(__dirname, 'content/**/**/examples'))
+
+  // Create Webpack alias
+  setWebpackConfig({
+    resolve: {
+      alias: {
+        '@assets': resolve(__dirname, 'content/assets'),
+        '@example': examplePaths, // Adds all paths to a single alias
+      },
+    },
+  })
+}
 
 export const onCreateNode = async ({
   node,

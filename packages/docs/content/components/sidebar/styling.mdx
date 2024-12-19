@@ -1,0 +1,39 @@
+---
+title: React Sidebar Component Styling
+name: Sidebar Styling
+description: Learn how to customize the React Sidebar component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design.
+route: /components/sidebar/
+---
+
+### CSS variables
+
+React sidebars use local CSS variables on `.sidebar` and `.sidebar-backdrop` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+<ScssDocs file="sidebar/_sidebar.scss" capture="sidebar-css-vars" />
+
+<ScssDocs file="sidebar/_sidebar.scss" capture="sidebar-overlaid-css-vars" />
+
+<ScssDocs file="sidebar/_sidebar-narrow.scss" capture="sidebar-narrow-css-vars" />
+
+<ScssDocs file="sidebar/_sidebar-nav.scss" capture="sidebar-nav-css-vars" />
+
+<ScssDocs file="sidebar/_sidebar.scss" capture="sidebar-toggler-css-vars" />
+
+<ScssDocs file="sidebar/_sidebar.scss" capture="sidebar-backdrop-css-vars" />
+
+#### How to use CSS variables
+
+```jsx
+const customVars = {
+  '--cui-sidebar-bg': '#121212',
+  '--cui-sidebar-color': '#eee',
+}
+
+return <CSidebar style={customVars}>{/* Sidebar content */}</CSidebar>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="sidebar-variables" />
+
+<ScssDocs file="_variables.scss" capture="sidebar-toggler" />

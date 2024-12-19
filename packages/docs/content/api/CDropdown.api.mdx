@@ -21,7 +21,9 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
         <td><code>{`'start'`}</code>, <code>{`'end'`}</code>, <code>{`{ xs: 'start' | 'end' }`}</code>, <code>{`{ sm: 'start' | 'end' }`}</code>, <code>{`{ md: 'start' | 'end' }`}</code>, <code>{`{ lg: 'start' | 'end' }`}</code>, <code>{`{ xl: 'start' | 'end'}`}</code>, <code>{`{ xxl: 'start' | 'end'}`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Set aligment of dropdown menu.</td>
+        <td colSpan="3">
+          <p>Set aligment of dropdown menu.</p>
+        </td>
       </tr>
       <tr id="cdropdown-as">
         <td className="text-primary fw-semibold">as<a href="#cdropdown-as" aria-label="CDropdown as permalink" className="anchor-link after">#</a></td>
@@ -29,23 +31,35 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
         <td><code>{`(ElementType & "symbol")`}</code>, <code>{`(ElementType & "object")`}</code>, <code>{`(ElementType & "div")`}</code>, <code>{`(ElementType & "slot")`}</code>, <code>{`(ElementType & "style")`}</code>, <code>{`... 174 more ...`}</code>, <code>{`(ElementType & FunctionComponent\<...>)`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Component used for the root node. Either a string to use a HTML element or a component.</td>
+        <td colSpan="3">
+          <p>Component used for the root node. Either a string to use a HTML element or a component.</p>
+        </td>
       </tr>
-      <tr id="cdropdown-autoClose">
-        <td className="text-primary fw-semibold">autoClose<a href="#cdropdown-autoClose" aria-label="CDropdown autoClose permalink" className="anchor-link after">#</a></td>
+      <tr id="cdropdown-auto-close">
+        <td className="text-primary fw-semibold">autoClose<a href="#cdropdown-auto-close" aria-label="CDropdown autoClose permalink" className="anchor-link after">#</a></td>
         <td><code>{`true`}</code></td>
         <td><code>{`boolean`}</code>, <code>{`"inside"`}</code>, <code>{`"outside"`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Configure the auto close behavior of the dropdown:<br/>- <code>{`true`}</code> - the dropdown will be closed by clicking outside or inside the dropdown menu.<br/>- <code>{`false`}</code> - the dropdown will be closed by clicking the toggle button and manually calling hide or toggle method. (Also will not be closed by pressing esc key)<br/>- <code>{`'inside'`}</code> - the dropdown will be closed (only) by clicking inside the dropdown menu.<br/>- <code>{`'outside'`}</code> - the dropdown will be closed (only) by clicking outside the dropdown menu.</td>
+        <td colSpan="3">
+          <p>Configure the auto close behavior of the dropdown:</p>
+<ul>
+<li><code>{`true`}</code> - the dropdown will be closed by clicking outside or inside the dropdown menu.</li>
+<li><code>{`false`}</code> - the dropdown will be closed by clicking the toggle button and manually calling hide or toggle method. (Also will not be closed by pressing esc key)</li>
+<li><code>{`'inside'`}</code> - the dropdown will be closed (only) by clicking inside the dropdown menu.</li>
+<li><code>{`'outside'`}</code> - the dropdown will be closed (only) by clicking outside the dropdown menu.</li>
+</ul>
+        </td>
       </tr>
-      <tr id="cdropdown-className">
-        <td className="text-primary fw-semibold">className<a href="#cdropdown-className" aria-label="CDropdown className permalink" className="anchor-link after">#</a></td>
+      <tr id="cdropdown-class-name">
+        <td className="text-primary fw-semibold">className<a href="#cdropdown-class-name" aria-label="CDropdown className permalink" className="anchor-link after">#</a></td>
         <td>undefined</td>
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">A string of all className you want applied to the base component.</td>
+        <td colSpan="3">
+          <p>A string of all className you want applied to the base component.</p>
+        </td>
       </tr>
       <tr id="cdropdown-container">
         <td className="text-primary fw-semibold">container<a href="#cdropdown-container" aria-label="CDropdown container permalink" className="anchor-link after">#</a><span className="badge bg-success">4.11.0+</span></td>
@@ -53,7 +67,9 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
         <td><code>{`Element`}</code>, <code>{`DocumentFragment`}</code>, <code>{`(() => Element | DocumentFragment)`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Appends the react dropdown menu to a specific element. You can pass an HTML element or function that returns a single element. By default <code>{`document.body`}</code>.</td>
+        <td colSpan="3">
+          <p>Appends the react dropdown menu to a specific element. You can pass an HTML element or function that returns a single element. By default <code>{`document.body`}</code>.</p>
+        </td>
       </tr>
       <tr id="cdropdown-dark">
         <td className="text-primary fw-semibold">dark<a href="#cdropdown-dark" aria-label="CDropdown dark permalink" className="anchor-link after">#</a></td>
@@ -61,7 +77,9 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Sets a darker color scheme to match a dark navbar.</td>
+        <td colSpan="3">
+          <p>Sets a darker color scheme to match a dark navbar.</p>
+        </td>
       </tr>
       <tr id="cdropdown-direction">
         <td className="text-primary fw-semibold">direction<a href="#cdropdown-direction" aria-label="CDropdown direction permalink" className="anchor-link after">#</a></td>
@@ -69,7 +87,9 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
         <td><code>{`"center"`}</code>, <code>{`"dropup"`}</code>, <code>{`"dropup-center"`}</code>, <code>{`"dropend"`}</code>, <code>{`"dropstart"`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Sets a specified  direction and location of the dropdown menu.</td>
+        <td colSpan="3">
+          <p>Sets a specified  direction and location of the dropdown menu.</p>
+        </td>
       </tr>
       <tr id="cdropdown-offset">
         <td className="text-primary fw-semibold">offset<a href="#cdropdown-offset" aria-label="CDropdown offset permalink" className="anchor-link after">#</a></td>
@@ -77,23 +97,29 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
         <td><code>{`[number, number]`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Offset of the dropdown menu relative to its target.</td>
+        <td colSpan="3">
+          <p>Offset of the dropdown menu relative to its target.</p>
+        </td>
       </tr>
-      <tr id="cdropdown-onHide">
-        <td className="text-primary fw-semibold">onHide<a href="#cdropdown-onHide" aria-label="CDropdown onHide permalink" className="anchor-link after">#</a><span className="badge bg-success">4.9.0+</span></td>
+      <tr id="cdropdown-on-hide">
+        <td className="text-primary fw-semibold">onHide<a href="#cdropdown-on-hide" aria-label="CDropdown onHide permalink" className="anchor-link after">#</a><span className="badge bg-success">4.9.0+</span></td>
         <td>undefined</td>
         <td><code>{`() => void`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Callback fired when the component requests to be hidden.</td>
+        <td colSpan="3">
+          <p>Callback fired when the component requests to be hidden.</p>
+        </td>
       </tr>
-      <tr id="cdropdown-onShow">
-        <td className="text-primary fw-semibold">onShow<a href="#cdropdown-onShow" aria-label="CDropdown onShow permalink" className="anchor-link after">#</a></td>
+      <tr id="cdropdown-on-show">
+        <td className="text-primary fw-semibold">onShow<a href="#cdropdown-on-show" aria-label="CDropdown onShow permalink" className="anchor-link after">#</a></td>
         <td>undefined</td>
         <td><code>{`() => void`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Callback fired when the component requests to be shown.</td>
+        <td colSpan="3">
+          <p>Callback fired when the component requests to be shown.</p>
+        </td>
       </tr>
       <tr id="cdropdown-placement">
         <td className="text-primary fw-semibold">placement<a href="#cdropdown-placement" aria-label="CDropdown placement permalink" className="anchor-link after">#</a></td>
@@ -101,7 +127,9 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
         <td><code>{`'auto'`}</code>, <code>{`'top-end'`}</code>, <code>{`'top'`}</code>, <code>{`'top-start'`}</code>, <code>{`'bottom-end'`}</code>, <code>{`'bottom'`}</code>, <code>{`'bottom-start'`}</code>, <code>{`'right-start'`}</code>, <code>{`'right'`}</code>, <code>{`'right-end'`}</code>, <code>{`'left-start'`}</code>, <code>{`'left'`}</code>, <code>{`'left-end'`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.</td>
+        <td colSpan="3">
+          <p>Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.</p>
+        </td>
       </tr>
       <tr id="cdropdown-popper">
         <td className="text-primary fw-semibold">popper<a href="#cdropdown-popper" aria-label="CDropdown popper permalink" className="anchor-link after">#</a></td>
@@ -109,7 +137,9 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">If you want to disable dynamic positioning set this property to <code>{`true`}</code>.</td>
+        <td colSpan="3">
+          <p>If you want to disable dynamic positioning set this property to <code>{`true`}</code>.</p>
+        </td>
       </tr>
       <tr id="cdropdown-portal">
         <td className="text-primary fw-semibold">portal<a href="#cdropdown-portal" aria-label="CDropdown portal permalink" className="anchor-link after">#</a><span className="badge bg-success">4.8.0+</span></td>
@@ -117,7 +147,9 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Generates dropdown menu using createPortal.</td>
+        <td colSpan="3">
+          <p>Generates dropdown menu using createPortal.</p>
+        </td>
       </tr>
       <tr id="cdropdown-variant">
         <td className="text-primary fw-semibold">variant<a href="#cdropdown-variant" aria-label="CDropdown variant permalink" className="anchor-link after">#</a></td>
@@ -125,7 +157,9 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
         <td><code>{`"btn-group"`}</code>, <code>{`"dropdown"`}</code>, <code>{`"input-group"`}</code>, <code>{`"nav-item"`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Set the dropdown variant to an btn-group, dropdown, input-group, and nav-item.</td>
+        <td colSpan="3">
+          <p>Set the dropdown variant to an btn-group, dropdown, input-group, and nav-item.</p>
+        </td>
       </tr>
       <tr id="cdropdown-visible">
         <td className="text-primary fw-semibold">visible<a href="#cdropdown-visible" aria-label="CDropdown visible permalink" className="anchor-link after">#</a></td>
@@ -133,7 +167,9 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
-        <td colSpan="3">Toggle the visibility of dropdown menu component.</td>
+        <td colSpan="3">
+          <p>Toggle the visibility of dropdown menu component.</p>
+        </td>
       </tr>
     </tbody>
   </table>

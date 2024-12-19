@@ -19,7 +19,7 @@ export const Ads: FC<AdsProps> = ({ code, location, placement }) => {
     }
   }, [location])
 
-  return <div ref={ref} />
+  return <div className="carbonads-wrapper" ref={ref} />
 }
 
 Ads.displayName = 'Ads'

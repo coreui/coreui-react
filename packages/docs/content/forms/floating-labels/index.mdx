@@ -1,0 +1,63 @@
+---
+title: React Floating labels
+name: Floating labels
+description: React floating label component. Create beautifully simple form labels that float over your input fields.
+route: /forms/floating-labels/
+other_frameworks: floating-labels
+---
+
+## Example
+
+Use `floatingLabel` property on `<CFormInput>`, `<CFormSelect>` or `<CFormTextarea>` to enable floating labels with textual form fields. A `placeholder` is required on each `<CFormInput>`, `<CFormSelect>` and `<CFormTextarea>` as our method of CSS-only floating labels uses the `:placeholder-shown` pseudo-element.
+
+<ExampleSnippet component="FloatingLabelsExample" componentName="React Form Floating Labels" />
+
+You can create the same form control by wrapping a pair of `<CFormInput>` and `<CFormLabel>` elements in `<CFormFloating>` to enable floating labels with textual form fields. A `placeholder` is required on each `<CFormInput>` as our method of CSS-only floating labels uses the `:placeholder-shown` pseudo-element. Also, note that the `<CFormInput>` must come first so we can utilize a sibling selector (e.g., `~`).
+
+```jsx
+<CFormFloating className="mb-3">
+  <CFormInput type="email" id="floatingInput" placeholder="name@example.com" />
+  <CFormLabel htmlFor="floatingInput">Email address</CFormLabel>
+</CFormFloating>
+<CFormFloating>
+  <CFormInput type="password" id="floatingPassword" placeholder="Password" />
+  <CFormLabel htmlFor="exampleFormControlTextarea1">Password</CFormLabel>
+</CFormFloating>
+```
+
+When there's a `value` already defined, `<CFormLabel>`s will automatically adjust to their floated position.
+
+<ExampleSnippet component="FloatingLabels2Example" componentName="React Form Floating Labels" />
+
+
+Form validation styles also work as expected.
+
+<ExampleSnippet component="FloatingLabelsValidationExample" componentName="React Form Floating Labels" />
+
+## Textareas
+
+By default, `<CFormTextarea>`s will be the same height as `<CFormInput>`s.
+
+<ExampleSnippet component="FloatingLabelsTextareaExample" componentName="React Form Floating Labels" />
+
+To set a custom height on your `<CFormTextarea>`, do not use the `rows` attribute. Instead, set an explicit `height` (either inline or via custom CSS).
+
+<ExampleSnippet component="FloatingLabelsTextarea2Example" componentName="React Form Floating Labels" />
+
+## Selects
+
+Other than `<CFormInput>`, floating labels are only available on `<CFormSelect>`s. They work in the same way, but unlike `<CFormInput>`s, they'll always show the `<CFormLabel>` in its floated state. **Selects with `size` and `multiple` are not supported.**
+
+<ExampleSnippet component="FloatingLabelsSelectExample" componentName="React Form Floating Labels" />
+
+## Layout
+
+When working with the CoreUI for Bootstrap grid system, be sure to place form elements within column classes.
+
+<ExampleSnippet component="FloatingLabelsLayoutExample" componentName="React Form Floating Labels" />
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CFormFloating /&gt;](./api/#cformfloating)

@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { Link } from 'gatsby'
 
 import {
   CDropdown,
@@ -23,11 +24,16 @@ const Sidebar: FC = () => {
           position="fixed"
           size="lg"
           visible={context.sidebarVisible}
-          onVisibleChange={(value: boolean) => {
+          onVisibleChange={(value: boolean) =>
             context.setSidebarVisible && context.setSidebarVisible(value)
-          }}
+          }
         >
-          <CSidebarBrand className="justify-content-start ps-3">
+          <CSidebarBrand
+            as={Link}
+            className="justify-content-start ps-3"
+            to="/"
+            aria-label="Go to CoreUI for React.js documentation"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 615 134"

@@ -1,5 +1,3 @@
-// openCodeSandboxProject.ts
-
 import {
   ProjectOptions,
   generateTitle,
@@ -25,7 +23,7 @@ export const openCodeSandboxProject = async (options: CodeSandboxOptions) => {
   const indexHTML = generateIndexHTML(title)
   const indexExtension = language === 'ts' ? 'tsx' : 'js'
   const indexJS = generateIndexJS(name, language, pro, 'codesandbox')
-  const packageJSON = generatePackageJSON(title, description, language, pro, 'codesandbox')
+  const packageJSON = generatePackageJSON(title, description, language, pro, code, 'codesandbox')
 
   // Define the files structure
   const files: Record<string, { content: string }> = {
@@ -33,7 +31,7 @@ export const openCodeSandboxProject = async (options: CodeSandboxOptions) => {
       content: indexHTML,
     },
     [`src/${name}.${language}x`]: {
-      content: code,
+      content: code.replaceAll('@assets/images/', '@coreui/projects-assets/images/'),
     },
     [`src/index.${indexExtension}`]: {
       content: indexJS,

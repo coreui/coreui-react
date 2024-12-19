@@ -1,0 +1,27 @@
+---
+title: React Button Component Styling
+name: Button Styling
+description: Learn how to customize the React Button component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design.
+route: /components/button/
+---
+
+### CSS variables
+
+React Button supports CSS variables for easy customization. These variables are set via SASS but allow direct overrides in your stylesheets or inline styles.
+
+<ScssDocs file="_buttons.scss" capture="btn-css-vars" />
+
+#### How to use CSS variables
+
+```jsx
+const customVars = {
+  '--cui-btn-color': '#ffe484',
+  '--cui-btn-bg': '#efefef',
+}
+
+return <CButton style={customVars}>{/* Button content */}</CButton>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="btn-variables" />

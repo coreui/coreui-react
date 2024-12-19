@@ -3,6 +3,7 @@ import Banner from './Banner'
 import Callout from './Callout'
 import CodeBlock from './CodeBlock'
 import ClassNamesDocs from './ClassNamesDocs'
+import ComponentSubNav from './ComponentSubNav'
 import Example from './Example'
 import ExampleSnippet from './ExampleSnippet'
 import Footer from './Footer'
@@ -20,6 +21,7 @@ export {
   Callout,
   CodeBlock,
   ClassNamesDocs,
+  ComponentSubNav,
   Example,
   ExampleSnippet,
   Footer,

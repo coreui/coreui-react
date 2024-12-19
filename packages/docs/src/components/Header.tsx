@@ -1,4 +1,5 @@
-import React, { FC } from 'react'
+import React, { forwardRef } from 'react'
+import { DocSearch } from '@docsearch/react'
 
 import CIcon from '@coreui/icons-react'
 import {
@@ -27,23 +28,28 @@ import {
 } from '@coreui/react/src'
 import { AppContext } from './../AppContext'
 
-const Header: FC = () => {
+const Header = forwardRef<HTMLDivElement>(({}, ref) => {
   const { colorMode, setColorMode } = useColorModes('coreui-react-docs-theme')
   return (
     <>
       <AppContext.Consumer>
         {(context) => (
-          <CHeader className="mb-5" position="sticky">
+          <CHeader className="mb-5" position="sticky" ref={ref}>
             <CHeaderToggler
               className="ms-md-3"
-              onClick={() => {
+              aria-label="Close"
+              onClick={() =>
                 context.setSidebarVisible && context.setSidebarVisible(!context.sidebarVisible)
-              }}
+              }
             >
               <CIcon icon={cilMenu} size="lg" />
             </CHeaderToggler>
-            <div className="docs-search" id="docsearch"></div>
-            <CHeaderNav className="ms-auto">
+            <DocSearch
+              appId="JIOZIZPLMM"
+              indexName="coreui-react"
+              apiKey="6e3f7692d2589d042bb40426b75df1b7"
+            />
+            <CHeaderNav className="ms-auto" role={undefined}>
               <CNavItem
                 href="https://github.com/coreui/coreui-react/"
                 aria-label="Visit our GitHub"
@@ -63,15 +69,19 @@ const Header: FC = () => {
                 <div className="vr d-none d-lg-flex h-100 mx-lg-2 text-body text-opacity-75"></div>
                 <hr className="d-lg-none my-2 text-white-50" />
               </li>
-              <CDropdown variant="nav-item" placement="bottom-end">
-                <CDropdownToggle className="nav-link" color="link" caret={false}>
+              <CDropdown placement="bottom-end" variant="nav-item">
+                <CDropdownToggle
+                  color="link"
+                  caret={false}
+                  aria-label="Light/Dark mode switch"
+                >
                   {colorMode === 'dark' ? (
                     <CIcon icon={cilMoon} size="xl" />
-                  ) : (colorMode === 'auto' ? (
+                  ) : colorMode === 'auto' ? (
                     <CIcon icon={cilContrast} size="xl" />
                   ) : (
                     <CIcon icon={cilSun} size="xl" />
-                  ))}
+                  )}
                 </CDropdownToggle>
                 <CDropdownMenu>
                   <CDropdownItem
@@ -136,7 +146,7 @@ const Header: FC = () => {
       </AppContext.Consumer>
     </>
   )
-}
+})
 
 Header.displayName = 'Header'
 

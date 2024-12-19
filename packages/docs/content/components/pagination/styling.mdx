@@ -1,0 +1,28 @@
+---
+title: React Pagination Component Styling
+name: Pagination Styling
+description: Learn how to customize the React Pagination component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design.
+route: /components/pagination/
+---
+
+### CSS variables
+
+React pagination uses local CSS variables on `.pagination` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+<ScssDocs file="_pagination.scss" capture="pagination-css-vars"/>
+
+#### How to use CSS variables
+
+```jsx
+const customVars = {
+  '--cui-pagination-color': '#555',
+  '--cui-pagination-bg': '#fff',
+}
+
+return <CPagination style={customVars}>{/* Pagination content */}</CPagination>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="pagination-variables"/>
+

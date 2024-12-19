@@ -90,7 +90,7 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
 
     if (variant === 'nav-item' && navLink) {
       return (
-        <a href="#" {...togglerProps} role="button" ref={dropdownToggleRef}>
+        <a href="#" {...togglerProps} role="button" {...rest} ref={dropdownToggleRef}>
           {children}
         </a>
       )

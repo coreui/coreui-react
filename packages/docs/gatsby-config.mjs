@@ -19,7 +19,6 @@ const config = {
   },
   pathPrefix: `react/docs/`,
   plugins: [
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -101,6 +100,9 @@ const config = {
       options: {
         id: `GTM-KX4JH47`,
       },
+    },
+    {
+      resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
     },
   ],
 }

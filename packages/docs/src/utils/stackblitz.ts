@@ -1,5 +1,3 @@
-// openStackBlitzProject.ts
-
 import sdk, { Project } from '@stackblitz/sdk'
 import {
   ProjectOptions,
@@ -26,11 +24,14 @@ export const openStackBlitzProject = (options: StackBlitzOptions) => {
 
   const indexHTML = generateIndexHTML(title)
   const indexJS = generateIndexJS(name, language, pro, 'stackblitz')
-  const packageJSON = generatePackageJSON(title, description, language, pro, 'stackblitz')
+  const packageJSON = generatePackageJSON(title, description, language, pro, code, 'stackblitz')
 
   const files = {
     'public/index.html': indexHTML,
-    [`src/${name}.${language}x`]: code,
+    [`src/${name}.${language}x`]: code.replaceAll(
+      '@assets/images/',
+      '@coreui/projects-assets/images/',
+    ),
     [`src/index.js`]: indexJS, // StackBlitz uses 'index.js' regardless of language
     'package.json': packageJSON,
   }
@@ -40,7 +41,7 @@ export const openStackBlitzProject = (options: StackBlitzOptions) => {
     description,
     template,
     files,
-    dependencies: getDependencies(language, pro),
+    dependencies: getDependencies(language, pro, code),
     tags: ['coreui', 'react'],
   }
 
