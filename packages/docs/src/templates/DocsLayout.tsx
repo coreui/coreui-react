@@ -1,9 +1,10 @@
-import React, { FC, ReactNode, useMemo } from 'react'
-import { Ads, Banner, Footer, Header, Sidebar, Toc } from '../components'
-import { CContainer, CNav, CNavItem, CNavLink } from '@coreui/react'
+import React, { FC, ReactNode, useEffect, useMemo, useRef, useState } from 'react'
+import { CContainer } from '@coreui/react'
+import { Ads, Banner, ComponentSubNav, Footer, Header, Sidebar, Toc } from '../components'
 // @ts-expect-error json file
 import jsonData from './../data/other_frameworks.json'
 
+import { Item } from '../components/ComponentSubNav'
 import type { TocItem } from '../components/Toc'
 
 interface DocsLayoutProps {
@@ -50,36 +51,6 @@ interface OtherFrameworks {
   }
 }
 
-interface Fields {
-  slug: string
-}
-
-interface Node {
-  id: string
-  fields: Fields
-}
-
-interface Item {
-  node: Node
-}
-
-const findShortestSlug = (items: Item[]): string | undefined => {
-  if (items.length === 0) {
-    return undefined
-  }
-
-  let shortestSlug = items[0].node.fields.slug
-
-  for (const item of items) {
-    const currentSlug = item.node.fields.slug
-    if (currentSlug.length < shortestSlug.length) {
-      shortestSlug = currentSlug
-    }
-  }
-
-  return shortestSlug
-}
-
 const humanize = (text: string): string => {
   return text
     .split('-')
@@ -87,65 +58,11 @@ const humanize = (text: string): string => {
     .join(' ')
 }
 
-const DocsNav: FC<{
-  locationPathname: string
-  nodes: Item[]
-}> = ({ locationPathname, nodes }) => {
-  const parentPathname = findShortestSlug(nodes)
-  const hasNavAccessibility = useMemo(
-    () => nodes.some((edge) => edge.node.fields.slug.includes('accessibility')),
-    [nodes],
-  )
-  const hasNavAPI = useMemo(
-    () => nodes.some((edge) => edge.node.fields.slug.includes('api')),
-    [nodes],
-  )
-  const hasNavStyling = useMemo(
-    () => nodes.some((edge) => edge.node.fields.slug.includes('styling')),
-    [nodes],
-  )
-  return (
-    <CNav className="ms-lg-4 docs-nav bg-body" variant="underline-border">
-      <CNavItem>
-        <CNavLink href={parentPathname} active={parentPathname === locationPathname}>
-          Features
-        </CNavLink>
-      </CNavItem>
-      {hasNavAPI && (
-        <CNavItem>
-          <CNavLink
-            href={`${parentPathname}api/`}
-            active={`${parentPathname}api/` === locationPathname}
-          >
-            API
-          </CNavLink>
-        </CNavItem>
-      )}
-      {hasNavStyling && (
-        <CNavItem>
-          <CNavLink
-            href={`${parentPathname}styling/`}
-            active={`${parentPathname}styling/` === locationPathname}
-          >
-            Styling
-          </CNavLink>
-        </CNavItem>
-      )}
-      {hasNavAccessibility && (
-        <CNavItem>
-          <CNavLink
-            href={`${parentPathname}accessibility/`}
-            active={`${parentPathname}accessibility/` === locationPathname}
-          >
-            Accessibility
-          </CNavLink>
-        </CNavItem>
-      )}
-    </CNav>
-  )
-}
-
-const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext, path }) => {
+const DocsLayout: FC<DocsLayoutProps> = ({ children, data, pageContext, path }) => {
+  const docsNavRef = useRef<HTMLDivElement>(null)
+  const headerRef = useRef<HTMLDivElement>(null)
+  const [docsNavHeight, setDocsNavHeigh] = useState<number>(0)
+  const [headerHeight, setHeaderHeight] = useState<number>(0)
   const frontmatter = pageContext.frontmatter || {}
 
   const {
@@ -163,23 +80,43 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
   const otherFrameworks: OtherFrameworks = useMemo(() => ({ ...jsonData }), [])
   const hasNav = useMemo(() => data?.allMdx?.edges.length > 1, [data])
 
+  const handleScroll = () => {
+    if (docsNavRef.current) {
+      setDocsNavHeigh(docsNavRef.current.offsetHeight)
+    }
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   return (
     <>
       <Sidebar />
       <div className="wrapper flex-grow-1">
-        <Header />
+        <Header ref={headerRef} />
+        {hasNav && (
+          <ComponentSubNav
+            nodes={data?.allMdx?.edges as Item[]}
+            style={{ top: `${headerHeight}px` } as React.CSSProperties}
+            ref={docsNavRef}
+          />
+        )}
         {path === '/404/' ? (
-          <CContainer lg>{children}</CContainer>
+          <CContainer lg className="px-4">
+            {children}
+          </CContainer>
         ) : (
-          <CContainer lg className="my-md-4 flex-grow-1">
+          <CContainer lg className="my-md-4 flex-grow-1 px-4">
             <main className="docs-main order-1">
-              {hasNav && (
-                <DocsNav
-                  locationPathname={location.pathname}
-                  nodes={data?.allMdx?.edges as Item[]}
-                />
-              )}
-              <div className="docs-intro ps-lg-4">
+              <div className="docs-intro">
                 {name && name !== title ? (
                   <div className="d-flex flex-column">
                     <h1 className="order-2 h5 mb-4 text-body-secondary" id="content">
@@ -221,8 +158,13 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
                   </>
                 )}
               </div>
-              {data?.mdx && <Toc items={data.mdx.tableOfContents.items} />}
-              <div className="docs-content ps-lg-4">{children}</div>
+              {data?.mdx && (
+                <Toc
+                  items={data.mdx.tableOfContents.items}
+                  style={{ top: `${docsNavHeight + headerHeight + 16}px` }}
+                />
+              )}
+              <div className="docs-content">{children}</div>
             </main>
           </CContainer>
         )}

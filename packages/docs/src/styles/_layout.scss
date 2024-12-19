@@ -3,10 +3,6 @@
   @include ltr-rtl("padding-left", var(--cui-sidebar-occupy-start, 0));
   will-change: auto;
   @include transition(padding .15s);
-
-  > .container-lg {
-    --cui-gutter-x: 3rem;
-  }
 }
 
 .docs-sidebar {
@@ -17,7 +13,6 @@
   grid-area: main;
   display: grid;
   grid-template-areas:
-    "nav"
     "header"
     "intro"
     "toc"
@@ -30,12 +25,11 @@
     margin-inline: auto;
   }
 
-  @include media-breakpoint-up(lg) {
+  @include media-breakpoint-up(xl) {
     grid-template-areas:
-      "nav     nav"
       "intro   toc"
       "content toc";
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto;
     grid-template-columns: 4fr 1fr;
     gap: $grid-gutter-width;
   }
@@ -43,10 +37,6 @@
 
 .docs-header {
   grid-area: header;
-}
-
-.docs-nav {
-  grid-area: nav;
 }
 
 .docs-intro {

@@ -122,7 +122,7 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
         )}
       </div>
       <div className="highlight-toolbar border-top">
-        <CNav className="px-3" variant="underline-border">
+        <CNav as="div" className="px-3" variant="underline-border" role={undefined}>
           {showJSTab && (
             <CNavLink as="button" active={language === 'js'} onClick={() => setLanguage('js')}>
               JavaScript
