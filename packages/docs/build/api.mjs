@@ -111,7 +111,7 @@ const escapeMarkdown = (text) => {
  */
 const getRelativeFilename = (file) => {
   let relativePath = file.includes('node_modules')
-    ? path.relative(path.join(__dirname, '..', '..'), file).replace('coreui-', '')
+    ? file.split('node_modules/@coreui/')[1]
     : path.relative(GLOBBY_OPTIONS.cwd, file).replace('coreui-', '')
 
   // Remove '-pro' from the filename if not a pro component
@@ -284,14 +284,14 @@ const createMdx = async (file, component) => {
         ? 'ReactElement'
         : propInfo.type.name
       : ''
-    const defaultValue = propInfo.defaultValue ? `\`${propInfo.defaultValue.value}\`` : `undefined`
+    const defaultValue = propInfo.defaultValue ? `\`${propInfo.defaultValue.value}\`` : '-'
     const example = propInfo.tags?.example
       ? replaceText(component.displayName, 'example', propInfo.tags.example)
       : false
 
     // Format types as inline code
     const types = splitOutsideBracesAndParentheses(type)
-      .map((_type) => `\`${_type.trim()}\``)
+      .map((_type) => `\`${_type.trim().replaceAll('"', "'")}\``)
       .join(', ')
 
     const id = `${component.displayName.toLowerCase()}-${propName.replaceAll(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}`
