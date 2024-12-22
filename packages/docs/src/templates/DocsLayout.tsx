@@ -58,7 +58,7 @@ const humanize = (text: string): string => {
     .join(' ')
 }
 
-const DocsLayout: FC<DocsLayoutProps> = ({ children, data, pageContext, path }) => {
+const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext, path }) => {
   const docsNavRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
   const [docsNavHeight, setDocsNavHeigh] = useState<number>(0)
@@ -131,7 +131,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, pageContext, path }) 
                 )}
                 <Banner pro={proComponent} />
                 <p className="docs-lead">{description}</p>
-                <Ads code="CEAICKJY" location={route} placement="coreuiio" />
+                <Ads code="CEAICKJY" location={location.pathname} placement="coreuiio" />
                 {frameworks.length > 0 && (
                   <>
                     <h2>Other Frameworks</h2>
