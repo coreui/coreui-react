@@ -17,7 +17,7 @@ const config = {
     image: ``, // Path to your image you placed in the `static` folder
     twitterUsername: `@coreui_io`,
   },
-  pathPrefix: `react/docs/`,
+  pathPrefix: `/react/docs/`,
   plugins: [
     `gatsby-plugin-image`,
     {
