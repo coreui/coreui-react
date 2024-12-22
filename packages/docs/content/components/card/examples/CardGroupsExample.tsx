@@ -1,13 +1,11 @@
 import React from 'react'
 import { CCard, CCardBody, CCardGroup, CCardImage, CCardText, CCardTitle } from '@coreui/react'
 
-import ReactImg from '@assets/images/react.jpg'
-
 export const CardGroupsExample = () => {
   return (
     <CCardGroup>
       <CCard>
-        <CCardImage orientation="top" src={ReactImg} />
+        <CCardImage orientation="top" src="../../images/react.jpg" />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -20,7 +18,7 @@ export const CardGroupsExample = () => {
         </CCardBody>
       </CCard>
       <CCard>
-        <CCardImage orientation="top" src={ReactImg} />
+        <CCardImage orientation="top" src="../../images/react.jpg" />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -32,7 +30,7 @@ export const CardGroupsExample = () => {
         </CCardBody>
       </CCard>
       <CCard>
-        <CCardImage orientation="top" src={ReactImg} />
+        <CCardImage orientation="top" src="../../images/react.jpg" />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>

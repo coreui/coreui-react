@@ -22,7 +22,7 @@ export const openCodeSandboxProject = async (options: CodeSandboxOptions) => {
 
   const indexHTML = generateIndexHTML(title)
   const indexExtension = language === 'ts' ? 'tsx' : 'js'
-  const indexJS = generateIndexJS(name, language, pro, 'codesandbox')
+  const indexJS = generateIndexJS(name, language, pro)
   const packageJSON = generatePackageJSON(title, description, language, pro, code, 'codesandbox')
 
   // Define the files structure
@@ -31,7 +31,7 @@ export const openCodeSandboxProject = async (options: CodeSandboxOptions) => {
       content: indexHTML,
     },
     [`src/${name}.${language}x`]: {
-      content: code.replaceAll('@assets/images/', '@coreui/projects-assets/images/'),
+      content: code.replaceAll('../../images/', 'https://assets.coreui.io/images/'),
     },
     [`src/index.${indexExtension}`]: {
       content: indexJS,

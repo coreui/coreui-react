@@ -10,12 +10,10 @@ import {
   CListGroupItem,
 } from '@coreui/react'
 
-import ReactImg from '@assets/images/react.jpg'
-
 export const CardKitchenSinkExample = () => {
   return (
     <CCard style={{ width: '18rem' }}>
-      <CCardImage orientation="top" src={ReactImg} />
+      <CCardImage orientation="top" src="../../images/react.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>

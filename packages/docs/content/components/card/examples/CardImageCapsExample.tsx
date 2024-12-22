@@ -1,13 +1,11 @@
 import React from 'react'
 import { CCard, CCardBody, CCardImage, CCardText, CCardTitle } from '@coreui/react'
 
-import ReactImg from '@assets/images/react.jpg'
-
 export const CardImageCapsExample = () => {
   return (
     <>
       <CCard className="mb-3">
-        <CCardImage orientation="top" src={ReactImg} />
+        <CCardImage orientation="top" src="../../images/react.jpg" />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -30,7 +28,7 @@ export const CardImageCapsExample = () => {
             <small className="text-body-secondary">Last updated 3 mins ago</small>
           </CCardText>
         </CCardBody>
-        <CCardImage orientation="bottom" src={ReactImg} />
+        <CCardImage orientation="bottom" src="../../images/react.jpg" />
       </CCard>
     </>
   )

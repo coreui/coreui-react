@@ -1,39 +1,30 @@
-import React, { FC, lazy, ReactNode, Suspense, useEffect, useMemo, useState } from 'react'
+import React, { FC, lazy, Suspense, useEffect, useMemo, useState } from 'react'
 import { Highlight, Language } from 'prism-react-renderer'
 import CIcon from '@coreui/icons-react'
 import { cibCodesandbox, cilCheckAlt, cilCopy } from '@coreui/icons'
-import { CNav, CNavLink, CTooltip, useClipboard } from '@coreui/react'
+import { CNav, CNavLink, CTooltip, useClipboard } from '@coreui/react/src/'
 import { openStackBlitzProject } from '../utils/stackblitz'
 import { openCodeSandboxProject } from '../utils/codesandbox'
 
-interface CodeSnippets {
-  js?: string
-  ts?: string
-}
-
 export interface ExampleSnippetProps {
-  children: ReactNode
   className?: string
-  code?: string | CodeSnippets
   codeSandbox?: boolean
-  component?: string
+  component: string
   componentName?: string
   pro?: boolean
   stackBlitz?: boolean
 }
 
 const ExampleSnippet: FC<ExampleSnippetProps> = ({
-  children,
   className = '',
-  code,
   codeSandbox = true,
   component,
-  componentName,
+  componentName = 'Example Component',
   pro = false,
   stackBlitz = true,
 }) => {
-  const [codeJS, setCodeJS] = useState<string>()
-  const [codeTS, setCodeTS] = useState<string>()
+  const [clipboardCode, setClipboardCode] = useState<string>()
+  const [highlightCode, setHighlightCode] = useState<string>()
   const [language, setLanguage] = useState<'js' | 'ts'>('js')
   const { copy, isCopied } = useClipboard()
 
@@ -51,69 +42,46 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
 
   useEffect(() => {
     const loadCode = async () => {
-      if (code) {
-        if (typeof code === 'string') {
-          setCodeJS(code)
-        } else {
-          setCodeJS(code.js)
-          setCodeTS(code.ts)
-        }
-      } else if (component) {
-        try {
-          const tsModule = await import(`!!raw-loader!@example/${component}.tsx`)
-          setCodeTS(tsModule.default)
-          setCodeJS(tsModule.default)
-        } catch (error) {
-          console.error(`Failed to load TypeScript code for component ${component}:`, error)
-        }
+      try {
+        const module = await import(`!!raw-loader!@example/${component}.${language}x`)
+        setClipboardCode(module.default)
+      } catch {
+        const tsModule = await import(`!!raw-loader!@example/${component}.tsx`)
+        setClipboardCode(tsModule.default)
+      }
+    }
 
+    loadCode()
+  }, [component, language])
+
+  useEffect(() => {
+    const loadCode = async () => {
+      try {
+        const module = await import(`!!raw-loader!@example/${component}.short.${language}x`)
+        setHighlightCode(module.default)
+      } catch {
         try {
-          const jsModule = await import(`!!raw-loader!@example/${component}.jsx`)
-          setCodeJS(jsModule.default)
+          const tsModule = await import(`!!raw-loader!@example/${component}.short.tsx`)
+          setHighlightCode(tsModule.default)
         } catch {
-          // JSX version may not exist
+          setHighlightCode(clipboardCode)
         }
       }
     }
 
     loadCode()
-  }, [code, component])
-
-  const hasJS = codeJS !== undefined && codeJS !== ''
-  const hasTS = codeTS !== undefined && codeTS !== ''
-
-  useEffect(() => {
-    if (!hasJS && hasTS) {
-      setLanguage('ts')
-    } else {
-      setLanguage('js')
-    }
-  }, [hasJS, hasTS])
+  }, [clipboardCode])
 
   const handleCopy = () => {
-    const codeToCopy = language === 'js' ? codeJS : codeTS
-    if (codeToCopy) copy(codeToCopy)
+    if (clipboardCode) copy(clipboardCode)
   }
 
   const prismLanguage: Language = language === 'js' ? 'jsx' : 'tsx'
-  const showJSTab = hasJS && !(typeof code === 'object' && code?.js === code?.ts)
-  const showTSTab = hasTS
-
-  const getProjectName = (): string => {
-    if (React.isValidElement(children)) {
-      const childType = (children as React.ReactElement).type
-      if (typeof childType === 'string') return childType
-      if (typeof childType === 'function' && childType.name) return childType.name
-    }
-    return 'ExampleProject'
-  }
 
   return (
     <div className="docs-example-snippet">
       <div className={`docs-example ${className}`}>
-        {children ? (
-          children
-        ) : Preview ? (
+        {Preview ? (
           <Suspense fallback={<div>Loading preview...</div>}>
             <Preview />
           </Suspense>
@@ -123,18 +91,14 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
       </div>
       <div className="highlight-toolbar border-top">
         <CNav as="div" className="px-3" variant="underline-border" role={undefined}>
-          {showJSTab && (
-            <CNavLink as="button" active={language === 'js'} onClick={() => setLanguage('js')}>
-              JavaScript
-            </CNavLink>
-          )}
-          {showTSTab && (
-            <CNavLink as="button" active={language === 'ts'} onClick={() => setLanguage('ts')}>
-              TypeScript
-            </CNavLink>
-          )}
+          <CNavLink as="button" active={language === 'js'} onClick={() => setLanguage('js')}>
+            JavaScript
+          </CNavLink>
+          <CNavLink as="button" active={language === 'ts'} onClick={() => setLanguage('ts')}>
+            TypeScript
+          </CNavLink>
           <span className="ms-auto"></span>
-          {codeSandbox && (
+          {codeSandbox && clipboardCode && (
             <CTooltip content="Try it on CodeSandbox">
               <button
                 type="button"
@@ -142,20 +106,19 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
                 aria-label="Try it on CodeSandbox"
                 onClick={() =>
                   openCodeSandboxProject({
-                    name: component || getProjectName(),
+                    name: component,
                     language,
-                    code: language === 'js' ? codeJS || '' : codeTS || '',
+                    code: clipboardCode,
                     componentName,
                     pro,
                   })
                 }
-                disabled={language === 'ts' && !hasTS}
               >
                 <CIcon icon={cibCodesandbox} />
               </button>
             </CTooltip>
           )}
-          {stackBlitz && (
+          {stackBlitz && clipboardCode && (
             <CTooltip content="Try it on StackBlitz">
               <button
                 type="button"
@@ -163,14 +126,13 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
                 aria-label="Try it on StackBlitz"
                 onClick={() =>
                   openStackBlitzProject({
-                    name: component || getProjectName(),
+                    name: component,
                     language,
-                    code: language === 'js' ? codeJS || '' : codeTS || '',
+                    code: clipboardCode,
                     componentName,
                     pro,
                   })
                 }
-                disabled={language === 'ts' && !hasTS}
               >
                 <svg
                   className="icon"
@@ -194,17 +156,16 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
               className="btn btn-transparent px-1"
               aria-label="Copy to clipboard"
               onClick={handleCopy}
-              disabled={(language === 'js' && !hasJS) || (language === 'ts' && !hasTS)}
             >
               <CIcon icon={isCopied ? cilCheckAlt : cilCopy} />
             </button>
           </CTooltip>
         </CNav>
       </div>
-      {(hasJS || hasTS) && (
+      {highlightCode && (
         <div className="highlight">
           <Highlight
-            code={language === 'js' ? codeJS || '' : codeTS || ''}
+            code={highlightCode}
             language={prismLanguage}
             theme={{ plain: {}, styles: [] }}
           >

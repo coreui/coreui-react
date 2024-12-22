@@ -15,7 +15,6 @@ export const onCreateWebpackConfig = ({ actions }) => {
   setWebpackConfig({
     resolve: {
       alias: {
-        '@assets': resolve(__dirname, 'content/assets'),
         '@example': examplePaths, // Adds all paths to a single alias
       },
     },

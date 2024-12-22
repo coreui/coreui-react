@@ -7,15 +7,12 @@ export interface ProjectOptions {
 }
 
 export const extractDependencies = (code: string, exclude: string[] = []) => {
-  const importRegex = /import\s+(?:{[^}]+}|\S+)\s+from\s+['"]([^'"]+)['"]/g
+  const importRegex = /import\s+(?:{[^}]+}|\S+)\s+from\s+["']([^"']+)["']/g
   const dependencies = []
 
   let match
   while ((match = importRegex.exec(code)) !== null) {
     const dependency = match[1]
-    if (dependency.startsWith('@assets/images')) {
-      dependencies.push('@coreui/projects-assets')
-    }
 
     if (!exclude.includes(dependency) && !exclude.some((prefix) => dependency.startsWith(prefix))) {
       dependencies.push(dependency)
@@ -55,12 +52,12 @@ export const getDependencies = (
           '@coreui/react': 'latest',
         }),
     '@popperjs/core': 'latest',
-    react: 'latest',
-    'react-dom': 'latest',
+    react: '~18.3',
+    'react-dom': '~18.3',
     'react-scripts': 'latest',
   }
 
-  const externalDependencies = extractDependencies(code, ['@assets/images/'])
+  const externalDependencies = extractDependencies(code, ['react', 'react-dom'])
 
   for (const dependency of externalDependencies) {
     dependencies[`${dependency}`] = 'latest'
@@ -70,8 +67,8 @@ export const getDependencies = (
     dependencies['typescript'] = 'latest'
     dependencies['@types/jest'] = 'latest'
     dependencies['@types/node'] = 'latest'
-    dependencies['@types/react'] = 'latest'
-    dependencies['@types/react-dom'] = 'latest'
+    dependencies['@types/react'] = '~18.3'
+    dependencies['@types/react-dom'] = '~18.3'
   }
 
   const sortedDependencies: Record<string, string> = {}
@@ -107,41 +104,19 @@ export const generateIndexHTML = (title: string): string => {
 }
 
 // Function to generate index.js or index.tsx content
-export const generateIndexJS = (
-  name: string,
-  language: 'js' | 'ts',
-  pro: boolean,
-  templateType: 'codesandbox' | 'stackblitz',
-): string => {
-  const importReactDOM =
-    templateType === 'codesandbox'
-      ? `import ReactDOM from 'react-dom';`
-      : `import * as ReactDOM from 'react-dom/client';`
-
-  const renderMethod =
-    templateType === 'codesandbox'
-      ? `ReactDOM.render(
-  <React.StrictMode>
-    <div className="p-3">
-      <${name} />
-    </div>
-  </React.StrictMode>,
-  document.getElementById('root')
-);`
-      : `ReactDOM.createRoot(document.querySelector("#root")).render(
+export const generateIndexJS = (name: string, language: 'js' | 'ts', pro: boolean): string => {
+  return `import React from 'react';
+import * as ReactDOM from 'react-dom/client';
+import '@coreui/${pro ? 'coreui-pro' : 'coreui'}/dist/css/coreui.min.css';
+import { ${name} } from './${name}.${language}x';
+  
+ReactDOM.createRoot(document.querySelector("#root")).render(
   <React.StrictMode>
     <div className="p-3">
       <${name} />
     </div>
   </React.StrictMode>
 );`
-
-  return `import React from 'react';
-${importReactDOM}
-import '@coreui/${pro ? 'coreui-pro' : 'coreui'}/dist/css/coreui.min.css';
-import { ${name} } from './${name}.${language}x';
-  
-${renderMethod}`
 }
 
 // Function to generate package.json content

@@ -23,14 +23,14 @@ export const openStackBlitzProject = (options: StackBlitzOptions) => {
   const template = 'create-react-app'
 
   const indexHTML = generateIndexHTML(title)
-  const indexJS = generateIndexJS(name, language, pro, 'stackblitz')
+  const indexJS = generateIndexJS(name, language, pro)
   const packageJSON = generatePackageJSON(title, description, language, pro, code, 'stackblitz')
 
   const files = {
     'public/index.html': indexHTML,
     [`src/${name}.${language}x`]: code.replaceAll(
-      '@assets/images/',
-      '@coreui/projects-assets/images/',
+      '../../images/',
+      'https://assets.coreui.io/images/',
     ),
     [`src/index.js`]: indexJS, // StackBlitz uses 'index.js' regardless of language
     'package.json': packageJSON,

@@ -1,12 +1,10 @@
 import React from 'react'
 import { CButton, CCard, CCardBody, CCardImage, CCardText, CCardTitle } from '@coreui/react'
 
-import ReactImg from '@assets/images/react.jpg'
-
 export const CardExample = () => {
   return (
     <CCard style={{ width: '18rem' }}>
-      <CCardImage orientation="top" src={ReactImg} />
+      <CCardImage orientation="top" src="../../images/react.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>

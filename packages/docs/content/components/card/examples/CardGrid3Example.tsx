@@ -1,14 +1,12 @@
 import React from 'react'
 import { CCard, CCardBody, CCardImage, CCardText, CCardTitle, CCol, CRow } from '@coreui/react'
 
-import ReactImg from '@assets/images/react.jpg'
-
 export const CardGrid3Example = () => {
   return (
     <CRow xs={{ cols: 1 }} md={{ cols: 3 }} className="g-4">
       <CCol xs>
         <CCard className="h-100">
-          <CCardImage orientation="top" src={ReactImg} />
+          <CCardImage orientation="top" src="../../images/react.jpg" />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>
@@ -20,7 +18,7 @@ export const CardGrid3Example = () => {
       </CCol>
       <CCol xs>
         <CCard className="h-100">
-          <CCardImage orientation="top" src={ReactImg} />
+          <CCardImage orientation="top" src="../../images/react.jpg" />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>
@@ -31,7 +29,7 @@ export const CardGrid3Example = () => {
       </CCol>
       <CCol xs>
         <CCard className="h-100">
-          <CCardImage orientation="top" src={ReactImg} />
+          <CCardImage orientation="top" src="../../images/react.jpg" />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>
@@ -44,7 +42,7 @@ export const CardGrid3Example = () => {
       </CCol>
       <CCol xs>
         <CCard className="h-100">
-          <CCardImage orientation="top" src={ReactImg} />
+          <CCardImage orientation="top" src="../../images/react.jpg" />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>

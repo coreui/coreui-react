@@ -10,14 +10,12 @@ import {
   CRow,
 } from '@coreui/react'
 
-import ReactImg from '@assets/images/react.jpg'
-
 export const CardGridExample = () => {
   return (
     <CRow xs={{ cols: 1, gutter: 4 }} md={{ cols: 2 }}>
       <CCol xs>
         <CCard>
-          <CCardImage orientation="top" src={ReactImg} />
+          <CCardImage orientation="top" src="../../images/react.jpg" />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>
@@ -32,7 +30,7 @@ export const CardGridExample = () => {
       </CCol>
       <CCol xs>
         <CCard>
-          <CCardImage orientation="top" src={ReactImg} />
+          <CCardImage orientation="top" src="../../images/react.jpg" />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>
@@ -47,7 +45,7 @@ export const CardGridExample = () => {
       </CCol>
       <CCol xs>
         <CCard>
-          <CCardImage orientation="top" src={ReactImg} />
+          <CCardImage orientation="top" src="../../images/react.jpg" />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>
@@ -62,7 +60,7 @@ export const CardGridExample = () => {
       </CCol>
       <CCol xs>
         <CCard>
-          <CCardImage orientation="top" src={ReactImg} />
+          <CCardImage orientation="top" src="../../images/react.jpg" />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>
