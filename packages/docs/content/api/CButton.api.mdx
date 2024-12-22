@@ -17,7 +17,7 @@ import CButton from '@coreui/react/src/components/button/CButton'
     <tbody>
       <tr id="cbutton-active">
         <td className="text-primary fw-semibold">active<a href="#cbutton-active" aria-label="CButton active permalink" className="anchor-link after">#</a></td>
-        <td>undefined</td>
+        <td>-</td>
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
@@ -28,7 +28,7 @@ import CButton from '@coreui/react/src/components/button/CButton'
       <tr id="cbutton-as">
         <td className="text-primary fw-semibold">as<a href="#cbutton-as" aria-label="CButton as permalink" className="anchor-link after">#</a></td>
         <td><code>{`button`}</code></td>
-        <td><code>{`(ElementType & "symbol")`}</code>, <code>{`(ElementType & "object")`}</code>, <code>{`(ElementType & "button")`}</code>, <code>{`(ElementType & "cite")`}</code>, <code>{`(ElementType & "data")`}</code>, <code>{`... 174 more ...`}</code>, <code>{`(ElementType & FunctionComponent\<...>)`}</code></td>
+        <td><code>{`(ElementType & 'symbol')`}</code>, <code>{`(ElementType & 'object')`}</code>, <code>{`(ElementType & 'button')`}</code>, <code>{`(ElementType & 'cite')`}</code>, <code>{`(ElementType & 'data')`}</code>, <code>{`... 174 more ...`}</code>, <code>{`(ElementType & FunctionComponent\<...>)`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
@@ -37,7 +37,7 @@ import CButton from '@coreui/react/src/components/button/CButton'
       </tr>
       <tr id="cbutton-class-name">
         <td className="text-primary fw-semibold">className<a href="#cbutton-class-name" aria-label="CButton className permalink" className="anchor-link after">#</a></td>
-        <td>undefined</td>
+        <td>-</td>
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
@@ -47,7 +47,7 @@ import CButton from '@coreui/react/src/components/button/CButton'
       </tr>
       <tr id="cbutton-color">
         <td className="text-primary fw-semibold">color<a href="#cbutton-color" aria-label="CButton color permalink" className="anchor-link after">#</a></td>
-        <td>undefined</td>
+        <td>-</td>
         <td><code>{`'primary'`}</code>, <code>{`'secondary'`}</code>, <code>{`'success'`}</code>, <code>{`'danger'`}</code>, <code>{`'warning'`}</code>, <code>{`'info'`}</code>, <code>{`'dark'`}</code>, <code>{`'light'`}</code>, <code>{`string`}</code></td>
       </tr>
       <tr>
@@ -57,7 +57,7 @@ import CButton from '@coreui/react/src/components/button/CButton'
       </tr>
       <tr id="cbutton-disabled">
         <td className="text-primary fw-semibold">disabled<a href="#cbutton-disabled" aria-label="CButton disabled permalink" className="anchor-link after">#</a></td>
-        <td>undefined</td>
+        <td>-</td>
         <td><code>{`boolean`}</code></td>
       </tr>
       <tr>
@@ -67,7 +67,7 @@ import CButton from '@coreui/react/src/components/button/CButton'
       </tr>
       <tr id="cbutton-href">
         <td className="text-primary fw-semibold">href<a href="#cbutton-href" aria-label="CButton href permalink" className="anchor-link after">#</a></td>
-        <td>undefined</td>
+        <td>-</td>
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
@@ -77,7 +77,7 @@ import CButton from '@coreui/react/src/components/button/CButton'
       </tr>
       <tr id="cbutton-role">
         <td className="text-primary fw-semibold">role<a href="#cbutton-role" aria-label="CButton role permalink" className="anchor-link after">#</a></td>
-        <td>undefined</td>
+        <td>-</td>
         <td><code>{`string`}</code></td>
       </tr>
       <tr>
@@ -87,7 +87,7 @@ import CButton from '@coreui/react/src/components/button/CButton'
       </tr>
       <tr id="cbutton-shape">
         <td className="text-primary fw-semibold">shape<a href="#cbutton-shape" aria-label="CButton shape permalink" className="anchor-link after">#</a></td>
-        <td>undefined</td>
+        <td>-</td>
         <td><code>{`'rounded'`}</code>, <code>{`'rounded-top'`}</code>, <code>{`'rounded-end'`}</code>, <code>{`'rounded-bottom'`}</code>, <code>{`'rounded-start'`}</code>, <code>{`'rounded-circle'`}</code>, <code>{`'rounded-pill'`}</code>, <code>{`'rounded-0'`}</code>, <code>{`'rounded-1'`}</code>, <code>{`'rounded-2'`}</code>, <code>{`'rounded-3'`}</code>, <code>{`string`}</code></td>
       </tr>
       <tr>
@@ -97,8 +97,8 @@ import CButton from '@coreui/react/src/components/button/CButton'
       </tr>
       <tr id="cbutton-size">
         <td className="text-primary fw-semibold">size<a href="#cbutton-size" aria-label="CButton size permalink" className="anchor-link after">#</a></td>
-        <td>undefined</td>
-        <td><code>{`"sm"`}</code>, <code>{`"lg"`}</code></td>
+        <td>-</td>
+        <td><code>{`'sm'`}</code>, <code>{`'lg'`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
@@ -108,7 +108,7 @@ import CButton from '@coreui/react/src/components/button/CButton'
       <tr id="cbutton-type">
         <td className="text-primary fw-semibold">type<a href="#cbutton-type" aria-label="CButton type permalink" className="anchor-link after">#</a></td>
         <td><code>{`button`}</code></td>
-        <td><code>{`"button"`}</code>, <code>{`"submit"`}</code>, <code>{`"reset"`}</code></td>
+        <td><code>{`'button'`}</code>, <code>{`'submit'`}</code>, <code>{`'reset'`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
@@ -118,8 +118,8 @@ Different browsers may use different default types for the <code>{`<button>`}</c
       </tr>
       <tr id="cbutton-variant">
         <td className="text-primary fw-semibold">variant<a href="#cbutton-variant" aria-label="CButton variant permalink" className="anchor-link after">#</a></td>
-        <td>undefined</td>
-        <td><code>{`"outline"`}</code>, <code>{`"ghost"`}</code></td>
+        <td>-</td>
+        <td><code>{`'outline'`}</code>, <code>{`'ghost'`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
