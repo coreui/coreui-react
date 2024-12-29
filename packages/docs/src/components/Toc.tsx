@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react'
+import React, { CSSProperties, forwardRef, useState } from 'react'
 import { CCollapse, CNav } from '@coreui/react/src/index'
 
 export type TocItem = {
@@ -9,6 +9,7 @@ export type TocItem = {
 
 interface TocProps {
   items: TocItem[]
+  style: CSSProperties
 }
 
 const toc = (items: TocItem[]) => {
