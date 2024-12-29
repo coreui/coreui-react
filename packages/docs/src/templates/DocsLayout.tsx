@@ -1,4 +1,5 @@
 import React, { FC, ReactNode, useEffect, useMemo, useRef, useState } from 'react'
+import { Link } from 'gatsby'
 import { CContainer } from '@coreui/react'
 import { Ads, Banner, ComponentSubNav, Footer, Header, Sidebar, Toc } from '../components'
 // @ts-expect-error json file
@@ -58,6 +59,28 @@ const humanize = (text: string): string => {
     .join(' ')
 }
 
+const getDescription = (location: Location, description: string) => {
+  if (location.pathname.includes('api') || location.pathname.includes('styling')) {
+    const regex = /React\s[A-Z][A-Za-z]*/
+    const parts = description.split(regex)
+    const matches = description.match(regex)
+
+    if (matches && parts.length > 1) {
+      return (
+        <>
+          {parts[0]}
+          <Link to="../">{matches[0]}</Link>
+          {parts[1]}
+        </>
+      )
+    }
+
+    return description
+  }
+
+  return description
+}
+
 const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext, path }) => {
   const docsNavRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
@@ -71,7 +94,6 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
     name = '',
     other_frameworks: otherFrameworksStr = '',
     pro_component: proComponent = false,
-    route = '',
   } = frontmatter
   const frameworks = useMemo(
     () => otherFrameworksStr.split(', ').filter(Boolean),
@@ -130,7 +152,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
                   </h1>
                 )}
                 <Banner pro={proComponent} />
-                <p className="docs-lead">{description}</p>
+                <p className="docs-lead">{getDescription(location, description)}</p>
                 <Ads code="CEAICKJY" location={location.pathname} placement="coreuiio" />
                 {frameworks.length > 0 && (
                   <>
