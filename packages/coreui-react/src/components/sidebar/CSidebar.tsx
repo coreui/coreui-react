@@ -1,4 +1,4 @@
-import React, { forwardRef, HTMLAttributes, useEffect, useRef, useState } from 'react'
+import React, { ElementType, forwardRef, HTMLAttributes, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
@@ -7,8 +7,13 @@ import { CBackdrop } from '../backdrop'
 
 import { isInViewport } from '../../utils'
 import { useForkedRef } from '../../hooks'
+import { PolymorphicRefForwardingComponent } from '../../helpers'
 
 export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
+  /**
+   * Component used for the root node. Either a string to use a HTML element or a component.
+   */
+  as?: ElementType
   /**
    * A string of all className you want applied to the component.
    */
@@ -65,10 +70,14 @@ export interface CSidebarProps extends HTMLAttributes<HTMLDivElement> {
 const isOnMobile = (element: HTMLDivElement) =>
   Boolean(getComputedStyle(element).getPropertyValue('--cui-is-mobile'))
 
-export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
+export const CSidebar: PolymorphicRefForwardingComponent<'div', CSidebarProps> = forwardRef<
+  HTMLDivElement,
+  CSidebarProps
+>(
   (
     {
       children,
+      as: Component = 'div',
       className,
       colorScheme,
       narrow,
@@ -183,7 +192,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
 
     return (
       <>
-        <div
+        <Component
           className={classNames(
             'sidebar',
             {
@@ -203,7 +212,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
           ref={forkedRef}
         >
           {children}
-        </div>
+        </Component>
         {typeof window !== 'undefined' &&
           mobile &&
           createPortal(
@@ -216,6 +225,7 @@ export const CSidebar = forwardRef<HTMLDivElement, CSidebarProps>(
 )
 
 CSidebar.propTypes = {
+  as: PropTypes.elementType,
   children: PropTypes.node,
   className: PropTypes.string,
   colorScheme: PropTypes.oneOf(['dark', 'light']),
