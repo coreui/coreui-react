@@ -8,7 +8,7 @@ import {
   CDropdownItem,
   CSidebar,
   CSidebarBrand,
-} from '@coreui/react/src'
+} from '@coreui/react'
 import { SidebarNav } from '.'
 
 import { AppContext } from './../AppContext'

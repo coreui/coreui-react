@@ -25,7 +25,7 @@ import {
   CHeaderToggler,
   CNavItem,
   useColorModes,
-} from '@coreui/react/src'
+} from '@coreui/react'
 import { AppContext } from './../AppContext'
 
 const Header = forwardRef<HTMLDivElement>(({}, ref) => {

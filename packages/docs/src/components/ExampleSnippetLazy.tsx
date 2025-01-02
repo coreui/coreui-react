@@ -5,7 +5,7 @@ import { cibCodesandbox, cilCheckAlt, cilCopy } from '@coreui/icons'
 import { CNav, CNavLink, CTooltip, useClipboard } from '@coreui/react'
 import { openStackBlitzProject } from '../utils/stackblitz'
 import { openCodeSandboxProject } from '../utils/codesandbox'
-import { isInViewport } from '@coreui/react/src/utils'
+import { isInViewport } from '@coreui/react'
 
 interface CodeSnippets {
   js?: string

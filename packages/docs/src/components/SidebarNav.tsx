@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Link } from 'gatsby'
 
-import { CBadge, CNavGroup, CNavItem, CNavLink, CSidebarNav } from '@coreui/react/src/index'
+import { CBadge, CNavGroup, CNavItem, CNavLink, CSidebarNav } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
 export type Badge = {

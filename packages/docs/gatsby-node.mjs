@@ -15,6 +15,7 @@ export const onCreateWebpackConfig = ({ actions }) => {
   setWebpackConfig({
     resolve: {
       alias: {
+        '@coreui/react': resolve(__dirname, '..', 'coreui-react/src/index.ts'),
         '@example': examplePaths, // Adds all paths to a single alias
       },
     },
