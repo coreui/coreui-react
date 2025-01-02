@@ -1,5 +1,5 @@
 import React, { CSSProperties, forwardRef, useState } from 'react'
-import { CCollapse, CNav } from '@coreui/react/src/index'
+import { CCollapse, CNav } from '@coreui/react'
 
 export type TocItem = {
   url: string

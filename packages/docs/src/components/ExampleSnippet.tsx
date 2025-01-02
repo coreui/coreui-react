@@ -2,7 +2,7 @@ import React, { FC, lazy, Suspense, useEffect, useMemo, useState } from 'react'
 import { Highlight, Language } from 'prism-react-renderer'
 import CIcon from '@coreui/icons-react'
 import { cibCodesandbox, cilCheckAlt, cilCopy } from '@coreui/icons'
-import { CNav, CNavLink, CTooltip, useClipboard } from '@coreui/react/src/'
+import { CNav, CNavLink, CTooltip, useClipboard } from '@coreui/react'
 import { openStackBlitzProject } from '../utils/stackblitz'
 import { openCodeSandboxProject } from '../utils/codesandbox'
 
