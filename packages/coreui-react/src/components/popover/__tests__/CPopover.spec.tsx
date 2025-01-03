@@ -31,7 +31,7 @@ test('CPopover customize', async () => {
   expect(container).toMatchSnapshot()
   let arrLength = container.getElementsByClassName('popover').length
   expect(arrLength).toBe(1)
-  arrLength = container.getElementsByClassName('bs-popover-end').length
+  arrLength = container.getElementsByClassName('bs-popover-auto').length
   expect(arrLength).toBe(1)
   arrLength = container.getElementsByClassName('popover-arrow').length
   expect(arrLength).toBe(1)
