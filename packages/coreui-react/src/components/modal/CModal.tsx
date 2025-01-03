@@ -158,13 +158,12 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     }, [_visible])
 
     const handleDismiss = () => {
+      console.log('handleDismiss')
       if (backdrop === 'static') {
         return setStaticBackdrop(true)
       }
 
       setVisible(false)
-
-      return onClose && onClose()
     }
 
     useLayoutEffect(() => {

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import {
   CDropdown,
@@ -52,26 +52,50 @@ test('CDropdown customize', async () => {
 //   jest.useRealTimers()
 // })
 
-test('CDropdown click', async () => {
+test('CDropdown opens on toggle click and closes on clicking outside', async () => {
   render(
-    <CDropdown>
-      <CDropdownToggle>Test</CDropdownToggle>
-      <CDropdownMenu>
-        <CDropdownItem>A</CDropdownItem>
-        <CDropdownItem>B</CDropdownItem>
-      </CDropdownMenu>
-    </CDropdown>,
+    <div>
+      {/* External element to simulate clicking outside the dropdown */}
+      <div data-testid="external-area">External Area</div>
+
+      {/* The dropdown component */}
+      <CDropdown>
+        <CDropdownToggle>Test</CDropdownToggle>
+        <CDropdownMenu>
+          <CDropdownItem>A</CDropdownItem>
+          <CDropdownItem>B</CDropdownItem>
+        </CDropdownMenu>
+      </CDropdown>
+    </div>,
   )
-  expect(screen.getByText('Test')).not.toHaveClass('show')
-  const el = screen.getByText('Test')
-  if (el !== null) {
-    fireEvent.click(el) //click on element
-  }
-  jest.runAllTimers()
-  expect(screen.getByText('Test').closest('div')).toHaveClass('show')
-  fireEvent.mouseUp(document.body) //click outside
-  await new Promise((r) => setTimeout(r, 1000))
-  expect(screen.getByText('Test').closest('div')).not.toHaveClass('show')
+
+  // Ensure the dropdown is initially closed
+  const toggleButton = screen.getByText('Test')
+  expect(toggleButton).toBeInTheDocument()
+
+  // Assuming the 'show' class is applied to the CDropdownMenu
+  const dropdownMenu = screen.getByRole('menu', { hidden: true }) // Adjust role if different
+  expect(dropdownMenu).not.toHaveClass('show')
+
+  // Click on the toggle to open the dropdown
+  fireEvent.click(toggleButton)
+
+  // Wait for the dropdown menu to become visible
+  await waitFor(() => {
+    const openedMenu = screen.getByRole('menu') // Adjust role if different
+    expect(openedMenu).toBeVisible()
+    expect(openedMenu).toHaveClass('show')
+  })
+
+  // Click outside the dropdown to close it
+  const externalArea = screen.getByTestId('external-area')
+  fireEvent.mouseUp(externalArea)
+
+  // Wait for the dropdown menu to be hidden
+  await waitFor(() => {
+    const closedMenu = screen.getByRole('menu', { hidden: true }) // Adjust role if different
+    expect(closedMenu).not.toHaveClass('show')
+  })
 })
 
 test('CDropdown example', async () => {

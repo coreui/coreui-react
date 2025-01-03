@@ -1,6 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
-import { getByText } from '@testing-library/dom'
+import { render, fireEvent, getByText } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { CCarousel, CCarouselCaption, CCarouselItem } from '../../../index'
 
