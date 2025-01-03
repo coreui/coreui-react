@@ -7,13 +7,13 @@ interface UseColorModesOutput {
 }
 
 const getStoredTheme = (localStorageItemName: string) =>
-  typeof window !== 'undefined' && localStorage.getItem(localStorageItemName)
+  typeof globalThis !== 'undefined' && localStorage.getItem(localStorageItemName)
 
 const setStoredTheme = (localStorageItemName: string, colorMode: string) =>
   localStorage.setItem(localStorageItemName, colorMode)
 
 const getPreferredColorScheme = (localStorageItemName: string) => {
-  if (typeof window === 'undefined') {
+  if (typeof globalThis === 'undefined') {
     return 'light'
   }
 
@@ -23,12 +23,12 @@ const getPreferredColorScheme = (localStorageItemName: string) => {
     return storedTheme
   }
 
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  return globalThis.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
 
 const setTheme = (colorMode: string) => {
   document.documentElement.dataset.coreuiTheme =
-    colorMode === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches
+    colorMode === 'auto' && globalThis.matchMedia('(prefers-color-scheme: dark)').matches
       ? 'dark'
       : colorMode
 
@@ -51,7 +51,7 @@ export const useColorModes = (
   }, [colorMode])
 
   useEffect(() => {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    globalThis.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
       const storedTheme = getStoredTheme(localStorageItemName)
       if (storedTheme !== 'light' && storedTheme !== 'dark' && colorMode) {
         setTheme(colorMode)
