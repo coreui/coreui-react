@@ -23,6 +23,10 @@ export const CAccordionItemContext = createContext({} as CAccordionItemContextPr
 
 export interface CAccordionItemProps extends HTMLAttributes<HTMLDivElement> {
   /**
+   * The id global attribute defines an identifier (ID) that must be unique in the whole document.
+   */
+  id?: string
+  /**
    * A string of all className you want applied to the base component.
    */
   className?: string
@@ -33,9 +37,9 @@ export interface CAccordionItemProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const CAccordionItem = forwardRef<HTMLDivElement, CAccordionItemProps>(
-  ({ children, className, itemKey, ...rest }, ref) => {
-    const id = useId()
-    const _itemKey = useRef(itemKey ?? id)
+  ({ children, className, id, itemKey, ...rest }, ref) => {
+    const _id = id ?? useId()
+    const _itemKey = useRef(itemKey ?? _id)
 
     const { _activeItemKey, alwaysOpen, setActiveKey } = useContext(CAccordionContext)
     const [visible, setVisible] = useState(Boolean(_activeItemKey === _itemKey.current))
@@ -52,12 +56,12 @@ export const CAccordionItem = forwardRef<HTMLDivElement, CAccordionItemProps>(
 
     return (
       <div className={classNames('accordion-item', className)} {...rest} ref={ref}>
-        <CAccordionItemContext.Provider value={{ id, setVisible, visible }}>
+        <CAccordionItemContext.Provider value={{ id: _id, setVisible, visible }}>
           {children}
         </CAccordionItemContext.Provider>
       </div>
     )
-  },
+  }
 )
 
 CAccordionItem.propTypes = {
