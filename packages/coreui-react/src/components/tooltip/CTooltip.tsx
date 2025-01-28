@@ -9,6 +9,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import type { Options } from '@popperjs/core'
 
 import { CConditionalPortal } from '../conditional-portal'
 import { useForkedRef, usePopper } from '../../hooks'
@@ -18,61 +19,124 @@ import { executeAfterTransition, getRTLPlacement } from '../../utils'
 
 export interface CTooltipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'content'> {
   /**
-   * Apply a CSS fade transition to the tooltip.
+   * Enables or disables the CSS fade transition for the React Tooltip.
    *
    * @since 4.9.0
    */
   animation?: boolean
+
   /**
-   * A string of all className you want applied to the component.
+   * Adds a custom class name to the React Tooltip container. Useful for overriding default styles or applying additional design choices.
    */
   className?: string
+
   /**
-   * Appends the react tooltip to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`.
+   * Appends the React Tooltip to a specific element instead of the default `document.body`. You may pass:
+   * - A DOM element (`HTMLElement` or `DocumentFragment`)
+   * - A function that returns a single element
+   * - `null`
    *
+   * @example
+   * <CTooltip container={document.getElementById('my-container')}>...</CTooltip>
+   *
+   * @default document.body
    * @since 4.11.0
    */
   container?: DocumentFragment | Element | (() => DocumentFragment | Element | null) | null
+
   /**
-   * Content node for your component.
+   * Content to be displayed within the React Tooltip. Can be a string or any valid React node.
    */
   content: ReactNode | string
+
   /**
-   * The delay for displaying and hiding the tooltip (in milliseconds). When a numerical value is provided, the delay applies to both the hide and show actions. The object structure for specifying the delay is as follows: delay: `{ 'show': 500, 'hide': 100 }`.
+   * The delay (in milliseconds) before showing or hiding the React Tooltip.
+   * - If provided as a number, the delay is applied to both "show" and "hide".
+   * - If provided as an object, it should have distinct "show" and "hide" values.
+   *
+   * @example
+   * // Delays 300ms on both show and hide
+   * <CTooltip delay={300}>...</CTooltip>
+   *
+   * // Delays 500ms on show and 100ms on hide
+   * <CTooltip delay={{ show: 500, hide: 100 }}>...</CTooltip>
    *
    * @since 4.9.0
    */
   delay?: number | { show: number; hide: number }
+
   /**
-   * Specify the desired order of fallback placements by providing a list of placements as an array. The placements should be prioritized based on preference.
+   * Array of fallback placements for the React Tooltip to use when the preferred placement cannot be achieved. These placements are tried in order.
    *
+   * @type 'top', 'right', 'bottom', 'left' | ('top', 'right', 'bottom', 'left')[]
    * @since 4.9.0
    */
   fallbackPlacements?: Placements | Placements[]
+
   /**
-   * Offset of the tooltip relative to its target.
+   * Adjusts the offset of the React Tooltip relative to its target. Expects a tuple `[x-axis, y-axis]`.
+   *
+   * @example
+   * // Offset the menu 0px in X and 10px in Y direction
+   * <CTooltip offset={[0, 10]}>...</CTooltip>
+   *
+   * // Offset the menu 5px in both X and Y direction
+   * <CTooltip offset={[5, 5]}>...</CTooltip>
    */
   offset?: [number, number]
+
   /**
-   * Callback fired when the component requests to be hidden.
+   * Callback fired immediately after the React Tooltip is hidden.
    */
   onHide?: () => void
+
   /**
-   * Callback fired when the component requests to be shown.
+   * Callback fired immediately after the React Tooltip is shown.
    */
   onShow?: () => void
+
   /**
-   * Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.
-   *
-   * @type 'hover' | 'focus' | 'click'
-   */
-  trigger?: Triggers | Triggers[]
-  /**
-   * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.
+   * Initial placement of the React Tooltip. Note that Popper.js modifiers may alter this placement automatically if there's insufficient space in the chosen position.
    */
   placement?: 'auto' | 'top' | 'right' | 'bottom' | 'left'
+
   /**
-   * Toggle the visibility of tooltip component.
+   * Customize the Popper.js configuration used to position the React Tooltip. Pass either an object or a function returning a modified config. [Learn more](https://popper.js.org/docs/v2/constructors/#options)
+   *
+   * @example
+   * <CTooltip
+   *   popperConfig={(defaultConfig) => ({
+   *     ...defaultConfig,
+   *     strategy: 'fixed',
+   *     modifiers: [
+   *       ...defaultConfig.modifiers,
+   *       { name: 'computeStyles', options: { adaptive: false } },
+   *     ],
+   *   })}
+   * >...</CTooltip>
+   *
+   * @since 5.5.0
+   */
+  popperConfig?: Partial<Options> | ((defaultPopperConfig: Partial<Options>) => Partial<Options>)
+
+  /**
+   * Determines the events that toggle the visibility of the React Tooltip. Can be a single trigger or an array of triggers.
+   *
+   * @example
+   * // Hover-only tooltip
+   * <CTooltip trigger="hover">...</CTooltip>
+   *
+   * // Hover + click combined
+   * <CTooltip trigger={['hover', 'click']}>...</CTooltip>
+   *
+   * @type 'hover' | 'focus' | 'click' | ('hover' | 'focus' | 'click')[]
+   */
+  trigger?: Triggers | Triggers[]
+
+  /**
+   * Controls the visibility of the React Tooltip.
+   * - `true` to show the tooltip.
+   * - `false` to hide the tooltip.
    */
   visible?: boolean
 }
@@ -91,11 +155,12 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
       onHide,
       onShow,
       placement = 'top',
+      popperConfig,
       trigger = ['hover', 'focus'],
       visible,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const tooltipRef = useRef<HTMLDivElement>(null)
     const togglerRef = useRef(null)
@@ -109,28 +174,18 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
 
     const _delay = typeof delay === 'number' ? { show: delay, hide: delay } : delay
 
-    const popperConfig = {
+    const defaultPopperConfig: Partial<Options> = {
       modifiers: [
-        {
-          name: 'arrow',
-          options: {
-            element: '.tooltip-arrow',
-          },
-        },
-        {
-          name: 'flip',
-          options: {
-            fallbackPlacements: fallbackPlacements,
-          },
-        },
-        {
-          name: 'offset',
-          options: {
-            offset: offset,
-          },
-        },
+        { name: 'arrow', options: { element: '.tooltip-arrow' } },
+        { name: 'flip', options: { fallbackPlacements } },
+        { name: 'offset', options: { offset } },
       ],
       placement: getRTLPlacement(placement, togglerRef.current),
+    }
+
+    const computedPopperConfig: Partial<Options> = {
+      ...defaultPopperConfig,
+      ...(typeof popperConfig === 'function' ? popperConfig(defaultPopperConfig) : popperConfig),
     }
 
     useEffect(() => {
@@ -144,7 +199,7 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
 
     useEffect(() => {
       if (mounted && togglerRef.current && tooltipRef.current) {
-        initPopper(togglerRef.current, tooltipRef.current, popperConfig)
+        initPopper(togglerRef.current, tooltipRef.current, computedPopperConfig)
         setTimeout(() => {
           setVisible(true)
         }, _delay.show)
@@ -214,7 +269,7 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
                   fade: animation,
                   show: _visible,
                 },
-                className,
+                className
               )}
               id={id}
               ref={forkedRef}
@@ -228,7 +283,7 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
         </CConditionalPortal>
       </>
     )
-  },
+  }
 )
 
 CTooltip.propTypes = {
@@ -248,6 +303,7 @@ CTooltip.propTypes = {
   onHide: PropTypes.func,
   onShow: PropTypes.func,
   placement: PropTypes.oneOf(['auto', 'top', 'right', 'bottom', 'left']),
+  popperConfig: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   trigger: triggerPropType,
   visible: PropTypes.bool,
 }

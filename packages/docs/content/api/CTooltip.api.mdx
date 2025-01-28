@@ -22,7 +22,7 @@ import CTooltip from '@coreui/react/src/components/tooltip/CTooltip'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Apply a CSS fade transition to the tooltip.</p>
+          <p>Enables or disables the CSS fade transition for the React Tooltip.</p>
         </td>
       </tr>
       <tr id="ctooltip-class-name">
@@ -32,17 +32,23 @@ import CTooltip from '@coreui/react/src/components/tooltip/CTooltip'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>A string of all className you want applied to the component.</p>
+          <p>Adds a custom class name to the React Tooltip container. Useful for overriding default styles or applying additional design choices.</p>
         </td>
       </tr>
       <tr id="ctooltip-container">
         <td className="text-primary fw-semibold">container<a href="#ctooltip-container" aria-label="CTooltip container permalink" className="anchor-link after">#</a><span className="badge bg-success">4.11.0+</span></td>
-        <td>-</td>
+        <td><code>{`document.body`}</code></td>
         <td><code>{`Element`}</code>, <code>{`DocumentFragment`}</code>, <code>{`(() => Element | DocumentFragment)`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Appends the react tooltip to a specific element. You can pass an HTML element or function that returns a single element. By default <code>{`document.body`}</code>.</p>
+          <p>Appends the React Tooltip to a specific element instead of the default <code>{`document.body`}</code>. You may pass:</p>
+<ul>
+<li>A DOM element (<code>{`HTMLElement`}</code> or <code>{`DocumentFragment`}</code>)</li>
+<li>A function that returns a single element</li>
+<li><code>{`null`}</code></li>
+</ul>
+        <JSXDocs code={`<CTooltip container={document.getElementById('my-container')}>...</CTooltip>`} />
         </td>
       </tr>
       <tr id="ctooltip-content">
@@ -52,7 +58,7 @@ import CTooltip from '@coreui/react/src/components/tooltip/CTooltip'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Content node for your component.</p>
+          <p>Content to be displayed within the React Tooltip. Can be a string or any valid React node.</p>
         </td>
       </tr>
       <tr id="ctooltip-delay">
@@ -62,17 +68,26 @@ import CTooltip from '@coreui/react/src/components/tooltip/CTooltip'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>The delay for displaying and hiding the tooltip (in milliseconds). When a numerical value is provided, the delay applies to both the hide and show actions. The object structure for specifying the delay is as follows: delay: <code>{`{ 'show': 500, 'hide': 100 }`}</code>.</p>
+          <p>The delay (in milliseconds) before showing or hiding the React Tooltip.</p>
+<ul>
+<li>If provided as a number, the delay is applied to both "show" and "hide".</li>
+<li>If provided as an object, it should have distinct "show" and "hide" values.</li>
+</ul>
+        <JSXDocs code={`// Delays 300ms on both show and hide
+<CTooltip delay={300}>...</CTooltip>
+
+// Delays 500ms on show and 100ms on hide
+<CTooltip delay={{ show: 500, hide: 100 }}>...</CTooltip>`} />
         </td>
       </tr>
       <tr id="ctooltip-fallback-placements">
         <td className="text-primary fw-semibold">fallbackPlacements<a href="#ctooltip-fallback-placements" aria-label="CTooltip fallbackPlacements permalink" className="anchor-link after">#</a><span className="badge bg-success">4.9.0+</span></td>
         <td><code>{`['top', 'right', 'bottom', 'left']`}</code></td>
-        <td><code>{`Placements`}</code>, <code>{`Placements[]`}</code></td>
+        <td><code>{`'top', 'right', 'bottom', 'left'`}</code>, <code>{`('top', 'right', 'bottom', 'left')[]`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Specify the desired order of fallback placements by providing a list of placements as an array. The placements should be prioritized based on preference.</p>
+          <p>Array of fallback placements for the React Tooltip to use when the preferred placement cannot be achieved. These placements are tried in order.</p>
         </td>
       </tr>
       <tr id="ctooltip-offset">
@@ -82,7 +97,12 @@ import CTooltip from '@coreui/react/src/components/tooltip/CTooltip'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Offset of the tooltip relative to its target.</p>
+          <p>Adjusts the offset of the React Tooltip relative to its target. Expects a tuple <code>{`[x-axis, y-axis]`}</code>.</p>
+        <JSXDocs code={`// Offset the menu 0px in X and 10px in Y direction
+<CTooltip offset={[0, 10]}>...</CTooltip>
+
+// Offset the menu 5px in both X and Y direction
+<CTooltip offset={[5, 5]}>...</CTooltip>`} />
         </td>
       </tr>
       <tr id="ctooltip-on-hide">
@@ -92,7 +112,7 @@ import CTooltip from '@coreui/react/src/components/tooltip/CTooltip'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Callback fired when the component requests to be hidden.</p>
+          <p>Callback fired immediately after the React Tooltip is hidden.</p>
         </td>
       </tr>
       <tr id="ctooltip-on-show">
@@ -102,7 +122,7 @@ import CTooltip from '@coreui/react/src/components/tooltip/CTooltip'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Callback fired when the component requests to be shown.</p>
+          <p>Callback fired immediately after the React Tooltip is shown.</p>
         </td>
       </tr>
       <tr id="ctooltip-placement">
@@ -112,17 +132,42 @@ import CTooltip from '@coreui/react/src/components/tooltip/CTooltip'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.</p>
+          <p>Initial placement of the React Tooltip. Note that Popper.js modifiers may alter this placement automatically if there's insufficient space in the chosen position.</p>
+        </td>
+      </tr>
+      <tr id="ctooltip-popper-config">
+        <td className="text-primary fw-semibold">popperConfig<a href="#ctooltip-popper-config" aria-label="CTooltip popperConfig permalink" className="anchor-link after">#</a><span className="badge bg-success">5.5.0+</span></td>
+        <td>-</td>
+        <td><code>{`Partial\<Options>`}</code>, <code>{`((defaultPopperConfig: Partial\<Options>) => Partial\<Options>)`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Customize the Popper.js configuration used to position the React Tooltip. Pass either an object or a function returning a modified config. <a href="https://popper.js.org/docs/v2/constructors/#options">Learn more</a></p>
+        <JSXDocs code={`<CTooltip
+  popperConfig={(defaultConfig) => ({
+    ...defaultConfig,
+    strategy: 'fixed',
+    modifiers: [
+      ...defaultConfig.modifiers,
+      { name: 'computeStyles', options: { adaptive: false } },
+    ],
+  })}
+>...</CTooltip>`} />
         </td>
       </tr>
       <tr id="ctooltip-trigger">
         <td className="text-primary fw-semibold">trigger<a href="#ctooltip-trigger" aria-label="CTooltip trigger permalink" className="anchor-link after">#</a></td>
         <td><code>{`['hover', 'focus']`}</code></td>
-        <td><code>{`'hover'`}</code>, <code>{`'focus'`}</code>, <code>{`'click'`}</code></td>
+        <td><code>{`'hover'`}</code>, <code>{`'focus'`}</code>, <code>{`'click'`}</code>, <code>{`('hover' | 'focus' | 'click')[]`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.</p>
+          <p>Determines the events that toggle the visibility of the React Tooltip. Can be a single trigger or an array of triggers.</p>
+        <JSXDocs code={`// Hover-only tooltip
+<CTooltip trigger="hover">...</CTooltip>
+
+// Hover + click combined
+<CTooltip trigger={['hover', 'click']}>...</CTooltip>`} />
         </td>
       </tr>
       <tr id="ctooltip-visible">
@@ -132,7 +177,11 @@ import CTooltip from '@coreui/react/src/components/tooltip/CTooltip'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Toggle the visibility of tooltip component.</p>
+          <p>Controls the visibility of the React Tooltip.</p>
+<ul>
+<li><code>{`true`}</code> to show the tooltip.</li>
+<li><code>{`false`}</code> to hide the tooltip.</li>
+</ul>
         </td>
       </tr>
     </tbody>

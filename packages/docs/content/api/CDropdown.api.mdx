@@ -22,7 +22,15 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Set aligment of dropdown menu.</p>
+          <p>Specifies the alignment of the React Dropdown Menu within this React Dropdown.</p>
+        <JSXDocs code={`// Align dropdown menu to the end on large devices, otherwise start
+<CDropdown alignment={{ lg: 'end', xs: 'start' }}>
+  <CDropdownToggle>Toggle dropdown</CDropdownToggle>
+  <CDropdownMenu>
+    <CDropdownItem>Action</CDropdownItem>
+    <CDropdownItem>Another Action</CDropdownItem>
+  </CDropdownMenu>
+</CDropdown>`} />
         </td>
       </tr>
       <tr id="cdropdown-as">
@@ -32,7 +40,7 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Component used for the root node. Either a string to use a HTML element or a component.</p>
+          <p>Determines the root node component (native HTML element or a custom React component) for the React Dropdown.</p>
         </td>
       </tr>
       <tr id="cdropdown-auto-close">
@@ -42,13 +50,15 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Configure the auto close behavior of the dropdown:</p>
+          <p>Configures automatic closing behavior for the React Dropdown:</p>
 <ul>
-<li><code>{`true`}</code> - the dropdown will be closed by clicking outside or inside the dropdown menu.</li>
-<li><code>{`false`}</code> - the dropdown will be closed by clicking the toggle button and manually calling hide or toggle method. (Also will not be closed by pressing esc key)</li>
-<li><code>{`'inside'`}</code> - the dropdown will be closed (only) by clicking inside the dropdown menu.</li>
-<li><code>{`'outside'`}</code> - the dropdown will be closed (only) by clicking outside the dropdown menu.</li>
+<li><code>{`true`}</code> - Close on clicks inside or outside of the React Dropdown Menu.</li>
+<li><code>{`false`}</code> - Disable auto-close; manually call <code>{`hide`}</code> or <code>{`toggle`}</code> (also not closed by <code>{`Escape`}</code>).</li>
+<li><code>{`'inside'`}</code> - Close only when clicking inside the React Dropdown Menu.</li>
+<li><code>{`'outside'`}</code> - Close only when clicking outside the React Dropdown Menu.</li>
 </ul>
+        <JSXDocs code={`// Close only when user clicks outside of the menu
+<CDropdown autoClose="outside" />`} />
         </td>
       </tr>
       <tr id="cdropdown-class-name">
@@ -58,7 +68,7 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>A string of all className you want applied to the base component.</p>
+          <p>Adds custom classes to the React Dropdown root element.</p>
         </td>
       </tr>
       <tr id="cdropdown-container">
@@ -68,7 +78,11 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Appends the react dropdown menu to a specific element. You can pass an HTML element or function that returns a single element. By default <code>{`document.body`}</code>.</p>
+          <p>Appends the React Dropdown Menu to a specific element. You can pass an HTML element or a function returning an element. Defaults to <code>{`document.body`}</code>.</p>
+        <JSXDocs code={`// Append the menu to a custom container
+const myContainer = document.getElementById('my-container')
+
+<CDropdown container={myContainer} />`} />
         </td>
       </tr>
       <tr id="cdropdown-dark">
@@ -78,7 +92,7 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Sets a darker color scheme to match a dark navbar.</p>
+          <p>Applies a darker color scheme to the React Dropdown Menu, often used within dark navbars.</p>
         </td>
       </tr>
       <tr id="cdropdown-direction">
@@ -88,7 +102,7 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Sets a specified  direction and location of the dropdown menu.</p>
+          <p>Specifies the direction of the React Dropdown.</p>
         </td>
       </tr>
       <tr id="cdropdown-offset">
@@ -98,7 +112,11 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Offset of the dropdown menu relative to its target.</p>
+          <p>Defines x and y offsets ([x, y]) for the React Dropdown Menu relative to its target.</p>
+        <JSXDocs code={`// Offset the menu 10px in X and 5px in Y direction
+<CDropdown offset={[10, 5]}>
+  ...
+</CDropdown>`} />
         </td>
       </tr>
       <tr id="cdropdown-on-hide">
@@ -108,7 +126,7 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Callback fired when the component requests to be hidden.</p>
+          <p>Callback fired right before the React Dropdown becomes hidden.</p>
         </td>
       </tr>
       <tr id="cdropdown-on-show">
@@ -118,17 +136,17 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Callback fired when the component requests to be shown.</p>
+          <p>Callback fired immediately after the React Dropdown is displayed.</p>
         </td>
       </tr>
       <tr id="cdropdown-placement">
         <td className="text-primary fw-semibold">placement<a href="#cdropdown-placement" aria-label="CDropdown placement permalink" className="anchor-link after">#</a></td>
         <td><code>{`bottom-start`}</code></td>
-        <td><code>{`'auto'`}</code>, <code>{`'top-end'`}</code>, <code>{`'top'`}</code>, <code>{`'top-start'`}</code>, <code>{`'bottom-end'`}</code>, <code>{`'bottom'`}</code>, <code>{`'bottom-start'`}</code>, <code>{`'right-start'`}</code>, <code>{`'right'`}</code>, <code>{`'right-end'`}</code>, <code>{`'left-start'`}</code>, <code>{`'left'`}</code>, <code>{`'left-end'`}</code></td>
+        <td><code>{`'auto'`}</code>, <code>{`'auto-start'`}</code>, <code>{`'auto-end'`}</code>, <code>{`'top-end'`}</code>, <code>{`'top'`}</code>, <code>{`'top-start'`}</code>, <code>{`'bottom-end'`}</code>, <code>{`'bottom'`}</code>, <code>{`'bottom-start'`}</code>, <code>{`'right-start'`}</code>, <code>{`'right'`}</code>, <code>{`'right-end'`}</code>, <code>{`'left-start'`}</code>, <code>{`'left'`}</code>, <code>{`'left-end'`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.</p>
+          <p>Determines the placement of the React Dropdown Menu after Popper.js modifiers.</p>
         </td>
       </tr>
       <tr id="cdropdown-popper">
@@ -138,7 +156,28 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>If you want to disable dynamic positioning set this property to <code>{`true`}</code>.</p>
+          <p>Enables or disables dynamic positioning via Popper.js for the React Dropdown Menu.</p>
+        </td>
+      </tr>
+      <tr id="cdropdown-popper-config">
+        <td className="text-primary fw-semibold">popperConfig<a href="#cdropdown-popper-config" aria-label="CDropdown popperConfig permalink" className="anchor-link after">#</a><span className="badge bg-success">5.5.0+</span></td>
+        <td>-</td>
+        <td><code>{`Partial\<Options>`}</code>, <code>{`((defaultPopperConfig: Partial\<Options>) => Partial\<Options>)`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provides a custom Popper.js configuration or a function that returns a modified Popper.js configuration for advanced positioning of the React Dropdown Menu. <a href="https://popper.js.org/docs/v2/constructors/#options">Read more</a></p>
+        <JSXDocs code={`// Providing a custom popper config
+<CDropdown
+  popperConfig={{
+    modifiers: [
+      {
+        name: 'flip',
+        options: { fallbackPlacements: ['bottom', 'top'] },
+      },
+    ],
+  }}
+>...</CDropdown>`} />
         </td>
       </tr>
       <tr id="cdropdown-portal">
@@ -148,7 +187,7 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Generates dropdown menu using createPortal.</p>
+          <p>Renders the React Dropdown Menu using a React Portal, allowing it to escape the DOM hierarchy for improved positioning.</p>
         </td>
       </tr>
       <tr id="cdropdown-variant">
@@ -158,7 +197,7 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Set the dropdown variant to an btn-group, dropdown, input-group, and nav-item.</p>
+          <p>Defines the visual variant of the React Dropdown</p>
         </td>
       </tr>
       <tr id="cdropdown-visible">
@@ -168,7 +207,17 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Toggle the visibility of dropdown menu component.</p>
+          <p>Controls the visibility of the React Dropdown Menu:</p>
+<ul>
+<li><code>{`true`}</code> - Visible</li>
+<li><code>{`false`}</code> - Hidden</li>
+</ul>
+        <JSXDocs code={`// Programmatically manage the dropdown visibility
+const [visible, setVisible] = useState(false)
+
+<CDropdown visible={visible}>
+  ...
+</CDropdown>`} />
         </td>
       </tr>
     </tbody>
