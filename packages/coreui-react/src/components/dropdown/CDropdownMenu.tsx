@@ -42,7 +42,6 @@ export const CDropdownMenu: PolymorphicRefForwardingComponent<'ul', CDropdownMen
             )}
             ref={forkedRef}
             role="menu"
-            aria-hidden={!visible}
             {...(!popper && { 'data-coreui-popper': 'static' })}
             {...(dark && { 'data-coreui-theme': 'dark' })}
             {...rest}
