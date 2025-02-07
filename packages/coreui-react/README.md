@@ -259,4 +259,4 @@ Thanks to all the backers and sponsors! Support this project by [becoming a back
 
 ## Copyright and license
 
-Copyright 2024 creativeLabs Łukasz Holeczek. Code released under the [MIT License](https://github.com/coreui/coreui-react/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
+Copyright 2025 creativeLabs Łukasz Holeczek. Code released under the [MIT License](https://github.com/coreui/coreui-react/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
