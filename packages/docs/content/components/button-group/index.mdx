@@ -12,10 +12,10 @@ Wrap a series of `<CButton>` components in `<CButtonGroup>`.
 
 <ExampleSnippet component="ButtonGroupExample" componentName="React Button Group" />
 
-<Callout color="info" title="Conveying meaning to assistive technologies">
-  For assistive technologies (ex. screen readers) to communicate that a series of buttons are grouped, a proper <code>role</code> attribute has to be provided. For button groups, this should be <code>role="group"</code>, while toolbars should have a <code>role="toolbar"</code>.
+<Callout color="info" title={<>Ensure the correct <code>role</code> and provide a label</>}>
+  For assistive technologies (ex. screen readers) to communicate that a series of buttons are grouped, a proper `role` attribute has to be provided. For button groups, this should be `role="group"`, while toolbars should have a `role="toolbar"`.
   
-  Besides, groups and toolbars should be provided an understandable label, as most assistive technologies will otherwise not declare them, despite the appearance of the specific role attribute. In the following examples provided here, we apply <code>aria-label</code>, but options such as <code>aria-labelledby</code> can also be used.
+  Besides, groups and toolbars should be provided an understandable label, as most assistive technologies will otherwise not declare them, despite the appearance of the specific role attribute. In the following examples provided here, we apply `aria-label`, but options such as `aria-labelledby` can also be used.
 </Callout>
 
 These classes can also be added to groups of links, as an alternative to the [`CNav`](./../navs-tabs/#base-nav) components.

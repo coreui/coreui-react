@@ -7,6 +7,19 @@ export interface ScssDocsProps {
   capture: string
 }
 
+const unindent = (text: string) => {
+  const lines = text.split('\n')
+  // Find first non-empty line to determine indentation
+  const firstLine = lines.find((line) => line.trim().length > 0) || ''
+  const indentMatch = firstLine.match(/^( *)/)
+  const indent = indentMatch ? indentMatch[1] : ''
+  const regex = new RegExp(`^${indent}`)
+  return lines
+    .map((line) => line.replace(regex, ''))
+    .join('\n')
+    .trimEnd()
+}
+
 const ScssDocs = ({ file, capture }: ScssDocsProps) => {
   ;(typeof global === 'undefined' ? window : global).Prism = Prism
   // eslint-disable-next-line unicorn/prefer-module
@@ -31,11 +44,11 @@ const ScssDocs = ({ file, capture }: ScssDocsProps) => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const _file = data.allFile.edges.find((node: any) => node.node.relativePath === file)
-  const captureStart = `// scss-docs-start ${capture}`
-  const captureEnd = `// scss-docs-end ${capture}`
-  const re = new RegExp(`${captureStart}((?:.|\n)*)${captureEnd}`)
+  const captureStart = `// scss-docs-start ${capture}\n`
+  const captureEnd = `// scss-docs-end ${capture}\n`
+  const re = new RegExp(`${captureStart}([\\s\\S]*?)${captureEnd}`, 'm')
   const captured = re.exec(_file.node.internal.content)
-  const code = captured ? captured[1].trim() : undefined
+  const code = captured ? captured[1] : undefined
 
   if (code === undefined) {
     console.error(`Can't find "${capture}" in ${_file.node.relativePath}`)
@@ -45,10 +58,7 @@ const ScssDocs = ({ file, capture }: ScssDocsProps) => {
     code && (
       <div className="highlight mb-3">
         <Highlight
-          code={code
-            .replaceAll('--#{$prefix}', '--cui-')
-            .replaceAll('\n  -', '\n-')
-            .replaceAll('\n  @', '\n@')}
+          code={unindent(code).replaceAll('--#{$prefix}', '--cui-')}
           language="scss"
           theme={{ plain: {}, styles: [] }}
         >
