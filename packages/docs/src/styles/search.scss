@@ -1,5 +1,22 @@
-// stylelint-disable selector-class-pattern
+/*!
+ * CoreUI Docs (https://coreui.io/bootstrap/docs/)
+ * Copyright 2025 creativeLabs Łukasz Holeczek
+ * Licensed under the Creative Commons Attribution 3.0 Unported License.
+ * For details, see https://creativecommons.org/licenses/by/3.0/.
+ */
 
+@use "@coreui/coreui/scss/mixins/border-radius" as *;
+@use "@coreui/coreui/scss/mixins/box-shadow" as *;
+@use "@coreui/coreui/scss/mixins/breakpoints" as *;
+@use "@coreui/coreui/scss/mixins/color-mode" as *;
+@use "@coreui/coreui/scss/mixins/transition" as *;
+@use "@coreui/coreui/scss/vendor/rfs" as *;
+@use "@coreui/coreui/scss/variables" as *;
+ 
+@forward "@docsearch/css/dist/style";
+
+
+// stylelint-disable selector-class-pattern
 :root {
   --docsearch-primary-color: var(--cui-primary);
   --docsearch-logo-color: var(--cui-primary);
@@ -29,6 +46,7 @@
   --docsearch-muted-color: var(--cui-secondary-color);
   --docsearch-hit-shadow: none;
 
+  position: fixed;
   z-index: 2000; // Make sure to be over all components showcased in the documentation
   cursor: auto; // Needed because of [role="button"] in Algolia search modal. Remove once https://github.com/algolia/docsearch/issues/1370 is tackled.
 
@@ -39,11 +57,7 @@
 
 .DocSearch-Button {
   --docsearch-searchbox-background: #{rgba($black, .1)};
-  // --docsearch-searchbox-color: #{$white};
   --docsearch-searchbox-focus-background: #{rgba($black, .25)};
-  // --docsearch-searchbox-shadow: #{0 0 0 .25rem rgba($bd-accent, .4)};
-  // --docsearch-text-color: #{$white};
-  // --docsearch-muted-color: #{rgba($white, .65)};
 
   min-width: 200px;
   min-height: 38px;
@@ -58,7 +72,6 @@
 
   // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
   @include border-radius($btn-border-radius);
-
   @include box-shadow($input-box-shadow);
   @include transition($input-transition);
 

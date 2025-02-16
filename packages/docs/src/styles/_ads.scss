@@ -1,19 +1,18 @@
 // stylelint-disable declaration-no-important, selector-max-id
+@use "@coreui/coreui/scss/mixins/border-radius" as *;
+@use "@coreui/coreui/scss/mixins/breakpoints" as *;
+@use "@coreui/coreui/scss/vendor/rfs" as *;
 
 //
 // Carbon ads
 //
-
-.carbonads-wrapper {
-  min-height: 130px;
-  margin: 2rem 0;
-}
 
 #carbonads {
   position: static;
   display: block;
   max-width: 400px;
   padding: 15px 15px 15px 160px;
+  margin: 2rem 0;
   overflow: hidden;
   @include font-size(.8125rem);
   line-height: 1.4;

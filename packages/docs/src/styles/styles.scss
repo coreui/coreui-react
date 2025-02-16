@@ -1,19 +1,21 @@
-@import "@coreui/coreui/scss/coreui";
+@use "@coreui/coreui/scss/coreui" with (
+  $enable-deprecation-messages: false
+);
 
 // Import Chart.js custom tooltips styles
-@import "@coreui/chartjs/scss/coreui-chartjs";
+@use "@coreui/chartjs/scss/coreui-chartjs";
 
-@import "variables";
-@import "ads";
-@import "anchor";
-@import "callouts";
-@import "component-examples";
-@import "component-sub-nav";
-@import "footer";
-@import "layout";
-@import "prism";
-@import "scrolling";
-@import "search";
-@import "sidebar";
-@import "table-api";
-@import "toc";
+// Load docs components
+@forward "root";
+@forward "ads";
+@forward "anchor";
+@forward "callouts";
+@forward "component-examples";
+@forward "component-sub-nav";
+@forward "footer";
+@forward "layout";
+@forward "prism";
+@forward "scrolling";
+@forward "sidebar";
+@forward "table-api";
+@forward "toc";

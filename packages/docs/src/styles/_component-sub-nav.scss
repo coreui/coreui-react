@@ -1,3 +1,5 @@
+@use "@coreui/coreui/scss/mixins/transition" as *;
+
 .component-sub-nav-wrapper {
   @include transition(box-shadow 0.2s linear);
   &:before {
