@@ -2,7 +2,7 @@ import React, { FC, ReactNode } from 'react'
 import { Highlight } from 'prism-react-renderer'
 import { cilClone, cilCode, cilMediaPlay } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
-import { CTab, CTabContent, CTabList, CTabPanel, CTabs, CTooltip } from '@coreui/react/src/index'
+import { CTab, CTabContent, CTabList, CTabPanel, CTabs, CTooltip } from '@coreui/react'
 
 interface BlockProps {
   children: ReactNode

@@ -1,4 +1,7 @@
 // stylelint-disable declaration-no-important, selector-max-id
+@use "@coreui/coreui/scss/mixins/border-radius" as *;
+@use "@coreui/coreui/scss/mixins/breakpoints" as *;
+@use "@coreui/coreui/scss/vendor/rfs" as *;
 
 //
 // Carbon ads

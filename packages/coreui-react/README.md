@@ -46,7 +46,7 @@
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/coreui/coreui-react/archive/v5.1.0.zip)
+- [Download the latest release](https://github.com/coreui/coreui-react/archive/v5.5.0.zip)
 - Clone the repo: `git clone https://github.com/coreui/coreui-react.git`
 - Install with [npm](https://www.npmjs.com/): `npm install @coreui/react`
 - Install with [yarn](https://yarnpkg.com/): `yarn add @coreui/react`
@@ -134,6 +134,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 - [React Progress](https://coreui.io/react/docs/components/progress/)
 - [React Radio](https://coreui.io/react/docs/forms/radio/)
 - [React Range](https://coreui.io/react/docs/forms/range/)
+- [React Rating](https://coreui.io/react/docs/forms/rating/)
 - [React Select](https://coreui.io/react/docs/forms/select/)
 - [React Sidebar](https://coreui.io/react/docs/components/sidebar/)
 - [React Smart Pagination](https://coreui.io/react/docs/components/smart-pagination/) **PRO**
@@ -258,4 +259,4 @@ Thanks to all the backers and sponsors! Support this project by [becoming a back
 
 ## Copyright and license
 
-Copyright 2024 creativeLabs Łukasz Holeczek. Code released under the [MIT License](https://github.com/coreui/coreui-react/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
+Copyright 2025 creativeLabs Łukasz Holeczek. Code released under the [MIT License](https://github.com/coreui/coreui-react/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).

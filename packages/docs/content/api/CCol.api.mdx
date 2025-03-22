@@ -5,12 +5,86 @@ import { CCol } from '@coreui/react'
 import CCol from '@coreui/react/src/components/grid/CCol'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **className** | A string of all className you want applied to the base component. | `string` | - |
-| **lg** | The number of columns/offset/order on large devices (\<1200px). | `{ 'auto'` \| `number` \| `string` \| `boolean` \| `{ span: 'auto'` \| `number` \| `string` \| `boolean }` \| `{ offset: number` \| `string }` \| `{ order: 'first'` \| `'last'` \| `number` \| `string }}` | - |
-| **md** | The number of columns/offset/order on medium devices (\<992px). | `{ 'auto'` \| `number` \| `string` \| `boolean` \| `{ span: 'auto'` \| `number` \| `string` \| `boolean }` \| `{ offset: number` \| `string }` \| `{ order: 'first'` \| `'last'` \| `number` \| `string }}` | - |
-| **sm** | The number of columns/offset/order on small devices (\<768px). | `{ 'auto'` \| `number` \| `string` \| `boolean` \| `{ span: 'auto'` \| `number` \| `string` \| `boolean }` \| `{ offset: number` \| `string }` \| `{ order: 'first'` \| `'last'` \| `number` \| `string }}` | - |
-| **xl** | The number of columns/offset/order on X-Large devices (\<1400px). | `{ 'auto'` \| `number` \| `string` \| `boolean` \| `{ span: 'auto'` \| `number` \| `string` \| `boolean }` \| `{ offset: number` \| `string }` \| `{ order: 'first'` \| `'last'` \| `number` \| `string }}` | - |
-| **xs** | The number of columns/offset/order on extra small devices (\<576px). | `{ 'auto'` \| `number` \| `string` \| `boolean` \| `{ span: 'auto'` \| `number` \| `string` \| `boolean }` \| `{ offset: number` \| `string }` \| `{ order: 'first'` \| `'last'` \| `number` \| `string }}` | - |
-| **xxl** | The number of columns/offset/order on XX-Large devices (≥1400px). | `{ 'auto'` \| `number` \| `string` \| `boolean` \| `{ span: 'auto'` \| `number` \| `string` \| `boolean }` \| `{ offset: number` \| `string }` \| `{ order: 'first'` \| `'last'` \| `number` \| `string }}` | - |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="ccol-class-name">
+        <td className="text-primary fw-semibold">className<a href="#ccol-class-name" aria-label="CCol className permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>A string of all className you want applied to the base component.</p>
+        </td>
+      </tr>
+      <tr id="ccol-lg">
+        <td className="text-primary fw-semibold">lg<a href="#ccol-lg" aria-label="CCol lg permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`{ 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The number of columns/offset/order on large devices (&lt;1200px).</p>
+        </td>
+      </tr>
+      <tr id="ccol-md">
+        <td className="text-primary fw-semibold">md<a href="#ccol-md" aria-label="CCol md permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`{ 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The number of columns/offset/order on medium devices (&lt;992px).</p>
+        </td>
+      </tr>
+      <tr id="ccol-sm">
+        <td className="text-primary fw-semibold">sm<a href="#ccol-sm" aria-label="CCol sm permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`{ 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The number of columns/offset/order on small devices (&lt;768px).</p>
+        </td>
+      </tr>
+      <tr id="ccol-xl">
+        <td className="text-primary fw-semibold">xl<a href="#ccol-xl" aria-label="CCol xl permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`{ 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The number of columns/offset/order on X-Large devices (&lt;1400px).</p>
+        </td>
+      </tr>
+      <tr id="ccol-xs">
+        <td className="text-primary fw-semibold">xs<a href="#ccol-xs" aria-label="CCol xs permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`{ 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The number of columns/offset/order on extra small devices (&lt;576px).</p>
+        </td>
+      </tr>
+      <tr id="ccol-xxl">
+        <td className="text-primary fw-semibold">xxl<a href="#ccol-xxl" aria-label="CCol xxl permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`{ 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The number of columns/offset/order on XX-Large devices (≥1400px).</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

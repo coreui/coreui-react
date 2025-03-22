@@ -1,0 +1,38 @@
+@use "@coreui/coreui/scss/mixins/transition" as *;
+
+.component-sub-nav-wrapper {
+  @include transition(box-shadow 0.2s linear);
+  &:before {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 90%;
+    max-width: 1140px;
+    margin: 0 auto;
+    background: var(--cui-border-color);
+    @include transition(max-width .2s ease-in-out, width .2s ease-in-out);
+  }
+
+  .component-sub-nav {
+    .nav-link {
+      @include transition(padding .2s linear);
+    }
+  }
+
+  &.sticky {
+    &::before {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .component-sub-nav {
+      .nav-link {
+        --cui-nav-underline-border-link-padding-y: .75rem;
+      }
+    }
+  }
+}

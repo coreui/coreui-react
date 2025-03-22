@@ -1,3 +1,6 @@
+@use "@coreui/coreui/scss/mixins/border-radius" as *;
+@use "@coreui/coreui/scss/variables" as *;
+
 .docs-block {
   border: 1px solid var(--#{$prefix}border-color);
   @include border-radius(var(--#{$prefix}border-radius));

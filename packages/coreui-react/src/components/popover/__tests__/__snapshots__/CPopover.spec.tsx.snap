@@ -3,15 +3,14 @@
 exports[`CPopover customize 1`] = `
 <body>
   <button
-    aria-describedby="popover744956"
     class="btn btn-primary"
     type="button"
   >
     Test
   </button>
   <div
-    class="popover bs-popover-auto fade show"
-    id="popover744956"
+    class="popover bs-popover-auto fade"
+    id="popover:r1:"
     role="tooltip"
     style="position: absolute; left: 0px; top: 0px; margin: 0px;"
   >

@@ -5,24 +5,206 @@ import { CFormInput } from '@coreui/react'
 import CFormInput from '@coreui/react/src/components/form/CFormInput'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **className** | A string of all className you want applied to the component. | `string` | - |
-| **delay** | Delay onChange event while typing. If set to true onChange event will be delayed 500ms, you can also provide the number of milliseconds you want to delay the onChange event. | `number` \| `boolean` | false |
-| **disabled** | Toggle the disabled state for the component. | `boolean` | - |
-| **feedback** **_4.2.0+_** | Provide valuable, actionable feedback. | `ReactNode` | - |
-| **feedbackInvalid** **_4.2.0+_** | Provide valuable, actionable feedback. | `ReactNode` | - |
-| **feedbackValid** **_4.2.0+_** | Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`. | `ReactNode` | - |
-| **floatingClassName** **_4.5.0+_** | A string of all className you want applied to the floating label wrapper. | `string` | - |
-| **floatingLabel** **_4.2.0+_** | Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`. | `ReactNode` | - |
-| **invalid** | Set component validation state to invalid. | `boolean` | - |
-| **label** **_4.2.0+_** | Add a caption for a component. | `ReactNode` | - |
-| **onChange** | Method called immediately after the `value` prop changes. | `ChangeEventHandler<HTMLInputElement>` | - |
-| **plainText** | Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side `readonly`. | `boolean` | - |
-| **readOnly** | Toggle the readonly state for the component. | `boolean` | - |
-| **size** | Size the component small or large. | `'sm'` \| `'lg'` | - |
-| **text** **_4.2.0+_** | Add helper text to the component. | `ReactNode` | - |
-| **tooltipFeedback** **_4.2.0+_** | Display validation feedback in a styled tooltip. | `boolean` | - |
-| **type** | Specifies the type of component. | `string` | text |
-| **valid** | Set component validation state to valid. | `boolean` | - |
-| **value** | The `value` attribute of component. | `string` \| `number` \| `string[]` | - |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="cforminput-class-name">
+        <td className="text-primary fw-semibold">className<a href="#cforminput-class-name" aria-label="CFormInput className permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>A string of all className you want applied to the component.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-delay">
+        <td className="text-primary fw-semibold">delay<a href="#cforminput-delay" aria-label="CFormInput delay permalink" className="anchor-link after">#</a></td>
+        <td><code>{`false`}</code></td>
+        <td><code>{`number`}</code>, <code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Delay onChange event while typing. If set to true onChange event will be delayed 500ms, you can also provide the number of milliseconds you want to delay the onChange event.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-disabled">
+        <td className="text-primary fw-semibold">disabled<a href="#cforminput-disabled" aria-label="CFormInput disabled permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Toggle the disabled state for the component.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-feedback">
+        <td className="text-primary fw-semibold">feedback<a href="#cforminput-feedback" aria-label="CFormInput feedback permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provide valuable, actionable feedback.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-feedback-invalid">
+        <td className="text-primary fw-semibold">feedbackInvalid<a href="#cforminput-feedback-invalid" aria-label="CFormInput feedbackInvalid permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provide valuable, actionable feedback.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-feedback-valid">
+        <td className="text-primary fw-semibold">feedbackValid<a href="#cforminput-feedback-valid" aria-label="CFormInput feedbackValid permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, <code>{`:invalid`}</code> and <code>{`:valid`}</code>.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-floating-class-name">
+        <td className="text-primary fw-semibold">floatingClassName<a href="#cforminput-floating-class-name" aria-label="CFormInput floatingClassName permalink" className="anchor-link after">#</a><span className="badge bg-success">4.5.0+</span></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>A string of all className you want applied to the floating label wrapper.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-floating-label">
+        <td className="text-primary fw-semibold">floatingLabel<a href="#cforminput-floating-label" aria-label="CFormInput floatingLabel permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, <code>{`:invalid`}</code> and <code>{`:valid`}</code>.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-invalid">
+        <td className="text-primary fw-semibold">invalid<a href="#cforminput-invalid" aria-label="CFormInput invalid permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Set component validation state to invalid.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-label">
+        <td className="text-primary fw-semibold">label<a href="#cforminput-label" aria-label="CFormInput label permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Add a caption for a component.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-on-change">
+        <td className="text-primary fw-semibold">onChange<a href="#cforminput-on-change" aria-label="CFormInput onChange permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`ChangeEventHandler\<HTMLInputElement>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Method called immediately after the <code>{`value`}</code> prop changes.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-plain-text">
+        <td className="text-primary fw-semibold">plainText<a href="#cforminput-plain-text" aria-label="CFormInput plainText permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side <code>{`readonly`}</code>.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-read-only">
+        <td className="text-primary fw-semibold">readOnly<a href="#cforminput-read-only" aria-label="CFormInput readOnly permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Toggle the readonly state for the component.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-size">
+        <td className="text-primary fw-semibold">size<a href="#cforminput-size" aria-label="CFormInput size permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`'sm'`}</code>, <code>{`'lg'`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Size the component small or large.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-text">
+        <td className="text-primary fw-semibold">text<a href="#cforminput-text" aria-label="CFormInput text permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Add helper text to the component.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-tooltip-feedback">
+        <td className="text-primary fw-semibold">tooltipFeedback<a href="#cforminput-tooltip-feedback" aria-label="CFormInput tooltipFeedback permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Display validation feedback in a styled tooltip.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-type">
+        <td className="text-primary fw-semibold">type<a href="#cforminput-type" aria-label="CFormInput type permalink" className="anchor-link after">#</a></td>
+        <td><code>{`text`}</code></td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Specifies the type of component.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-valid">
+        <td className="text-primary fw-semibold">valid<a href="#cforminput-valid" aria-label="CFormInput valid permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Set component validation state to valid.</p>
+        </td>
+      </tr>
+      <tr id="cforminput-value">
+        <td className="text-primary fw-semibold">value<a href="#cforminput-value" aria-label="CFormInput value permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code>, <code>{`number`}</code>, <code>{`string[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The <code>{`value`}</code> attribute of component.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

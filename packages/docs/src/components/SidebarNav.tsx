@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Link } from 'gatsby'
 
-import { CBadge, CNavGroup, CNavItem, CNavLink, CSidebarNav } from '@coreui/react/src/index'
+import { CBadge, CNavGroup, CNavItem, CNavLink, CSidebarNav } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
 export type Badge = {
@@ -40,7 +40,7 @@ export const SidebarNav = ({ items }: SidebarNavProps) => {
     const { name, badge, icon, ...rest } = item
     return (
       <CNavItem key={index}>
-        <CNavLink as={Link} activeClassName="active" {...rest}>
+        <CNavLink as={Link} activeClassName="active" partiallyActive {...rest}>
           {navLink(name, icon, badge)}
         </CNavLink>
       </CNavItem>

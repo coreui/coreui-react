@@ -1,0 +1,47 @@
+---
+title: React Popover Component
+name: Popover
+description: Documentation and examples for adding React popovers, like those found in iOS, to any element on your site.
+route: /components/popover/
+other_frameworks: popover
+---
+
+## Examples
+
+### Live demo
+
+<ExampleSnippet component="PopoverLiveExample" componentName="React Popover" />
+
+### Four directions
+
+Four options are available: top, right, bottom, and left aligned. Directions are mirrored when using CoreUI for React in RTL.
+
+<ExampleSnippet component="PopoverFourDirectionsExample" componentName="React Popover" />
+
+### Custom popovers
+
+You can customize the appearance of popovers using [CSS variables](./styling/#css-variables). We set a custom `style` to scope our custom appearance and use it to override some of the local CSS variables.
+
+<ExampleSnippet component="PopoverCustomPopoversExample" componentName="React Popover" />
+
+### Dismiss on next click
+
+Use the `focus` trigger to dismiss popovers on the user's next click of a different element than the toggle element.
+
+<ExampleSnippet component="PopoverDismissExample" componentName="React Popover" />
+
+## Usage
+
+### Disabled elements
+
+Elements with the disabled attribute aren't interactive, meaning users cannot hover or click them to trigger a popover (or tooltip). As a workaround, you'll want to trigger the popover from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
+
+For disabled popover triggers, you may also prefer `trigger={['hover', 'focus']}` so that the popover appears as immediate visual feedback to your users as they may not expect to click on a disabled element.
+
+<ExampleSnippet component="PopoverDisabledElementsExample" componentName="React Popover" />
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CPopover /&gt;](./api/#cpopover)

@@ -1,7 +1,12 @@
 // stylelint-disable selector-max-type
 
+@use "@coreui/coreui/scss/functions/math" as *;
+@use "@coreui/coreui/scss/mixins/border-radius" as *;
+@use "@coreui/coreui/scss/mixins/breakpoints" as *;
+@use "@coreui/coreui/scss/vendor/rfs" as *;
+
 .docs-toc {
-  @include media-breakpoint-up(lg) {
+  @include media-breakpoint-up(xl) {
     position: sticky;
     top: 5rem;
     right: 0;
@@ -45,12 +50,12 @@
   display: flex;
   align-items: center;
 
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(lg) {
     justify-content: space-between;
     width: 100%;
   }
 
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(lg) {
     color: var(--cui-body-color);
     border: 1px solid var(--cui-border-color);
     @include border-radius(var(--cui-border-radius));
@@ -72,7 +77,7 @@
 }
 
 .docs-toc-collapse {
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(lg) {
     nav {
       padding: 1.25rem 1.25rem 1.25rem 1rem;
       background-color: var(--cui-tertiary-bg);
@@ -81,7 +86,7 @@
     }
   }
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     display: block !important; // stylelint-disable-line declaration-no-important
   }
 }

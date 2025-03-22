@@ -5,21 +5,181 @@ import { CFormSelect } from '@coreui/react'
 import CFormSelect from '@coreui/react/src/components/form/CFormSelect'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **className** | A string of all className you want applied to the component. | `string` | - |
-| **feedback** **_4.2.0+_** | Provide valuable, actionable feedback. | `ReactNode` | - |
-| **feedbackInvalid** **_4.2.0+_** | Provide valuable, actionable feedback. | `ReactNode` | - |
-| **feedbackValid** **_4.2.0+_** | Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`. | `ReactNode` | - |
-| **floatingClassName** **_4.5.0+_** | A string of all className you want applied to the floating label wrapper. | `string` | - |
-| **floatingLabel** **_4.2.0+_** | Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`. | `ReactNode` | - |
-| **htmlSize** | Specifies the number of visible options in a drop-down list. | `number` | - |
-| **invalid** | Set component validation state to invalid. | `boolean` | - |
-| **label** **_4.2.0+_** | Add a caption for a component. | `ReactNode` | - |
-| **onChange** | Method called immediately after the `value` prop changes. | `ChangeEventHandler<HTMLSelectElement>` | - |
-| **options** | Options list of the select component. Available keys: `label`, `value`, `disabled`.<br/>Examples:<br/>- `options={[{ value: 'js', label: 'JavaScript' }, { value: 'html', label: 'HTML', disabled: true }]}`<br/>- `options={['js', 'html']}` | `Option[]` \| `string[]` | - |
-| **size** | Size the component small or large. | `'sm'` \| `'lg'` | - |
-| **text** **_4.2.0+_** | Add helper text to the component. | `ReactNode` | - |
-| **tooltipFeedback** **_4.2.0+_** | Display validation feedback in a styled tooltip. | `boolean` | - |
-| **valid** | Set component validation state to valid. | `boolean` | - |
-| **value** | The `value` attribute of component. | `string` \| `number` \| `string[]` | - |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="cformselect-class-name">
+        <td className="text-primary fw-semibold">className<a href="#cformselect-class-name" aria-label="CFormSelect className permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>A string of all className you want applied to the component.</p>
+        </td>
+      </tr>
+      <tr id="cformselect-feedback">
+        <td className="text-primary fw-semibold">feedback<a href="#cformselect-feedback" aria-label="CFormSelect feedback permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provide valuable, actionable feedback.</p>
+        </td>
+      </tr>
+      <tr id="cformselect-feedback-invalid">
+        <td className="text-primary fw-semibold">feedbackInvalid<a href="#cformselect-feedback-invalid" aria-label="CFormSelect feedbackInvalid permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provide valuable, actionable feedback.</p>
+        </td>
+      </tr>
+      <tr id="cformselect-feedback-valid">
+        <td className="text-primary fw-semibold">feedbackValid<a href="#cformselect-feedback-valid" aria-label="CFormSelect feedbackValid permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, <code>{`:invalid`}</code> and <code>{`:valid`}</code>.</p>
+        </td>
+      </tr>
+      <tr id="cformselect-floating-class-name">
+        <td className="text-primary fw-semibold">floatingClassName<a href="#cformselect-floating-class-name" aria-label="CFormSelect floatingClassName permalink" className="anchor-link after">#</a><span className="badge bg-success">4.5.0+</span></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>A string of all className you want applied to the floating label wrapper.</p>
+        </td>
+      </tr>
+      <tr id="cformselect-floating-label">
+        <td className="text-primary fw-semibold">floatingLabel<a href="#cformselect-floating-label" aria-label="CFormSelect floatingLabel permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, <code>{`:invalid`}</code> and <code>{`:valid`}</code>.</p>
+        </td>
+      </tr>
+      <tr id="cformselect-html-size">
+        <td className="text-primary fw-semibold">htmlSize<a href="#cformselect-html-size" aria-label="CFormSelect htmlSize permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`number`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Specifies the number of visible options in a drop-down list.</p>
+        </td>
+      </tr>
+      <tr id="cformselect-invalid">
+        <td className="text-primary fw-semibold">invalid<a href="#cformselect-invalid" aria-label="CFormSelect invalid permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Set component validation state to invalid.</p>
+        </td>
+      </tr>
+      <tr id="cformselect-label">
+        <td className="text-primary fw-semibold">label<a href="#cformselect-label" aria-label="CFormSelect label permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Add a caption for a component.</p>
+        </td>
+      </tr>
+      <tr id="cformselect-on-change">
+        <td className="text-primary fw-semibold">onChange<a href="#cformselect-on-change" aria-label="CFormSelect onChange permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`ChangeEventHandler\<HTMLSelectElement>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Method called immediately after the <code>{`value`}</code> prop changes.</p>
+        </td>
+      </tr>
+      <tr id="cformselect-options">
+        <td className="text-primary fw-semibold">options<a href="#cformselect-options" aria-label="CFormSelect options permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`Option[]`}</code>, <code>{`string[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Options list of the select component. Available keys: <code>{`label`}</code>, <code>{`value`}</code>, <code>{`disabled`}</code>.<br />
+Examples:</p>
+<ul>
+<li><code>{`options={[{ value: 'js', label: 'JavaScript' }, { value: 'html', label: 'HTML', disabled: true }]}`}</code></li>
+<li><code>{`options={['js', 'html']}`}</code></li>
+</ul>
+        </td>
+      </tr>
+      <tr id="cformselect-size">
+        <td className="text-primary fw-semibold">size<a href="#cformselect-size" aria-label="CFormSelect size permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`'sm'`}</code>, <code>{`'lg'`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Size the component small or large.</p>
+        </td>
+      </tr>
+      <tr id="cformselect-text">
+        <td className="text-primary fw-semibold">text<a href="#cformselect-text" aria-label="CFormSelect text permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Add helper text to the component.</p>
+        </td>
+      </tr>
+      <tr id="cformselect-tooltip-feedback">
+        <td className="text-primary fw-semibold">tooltipFeedback<a href="#cformselect-tooltip-feedback" aria-label="CFormSelect tooltipFeedback permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Display validation feedback in a styled tooltip.</p>
+        </td>
+      </tr>
+      <tr id="cformselect-valid">
+        <td className="text-primary fw-semibold">valid<a href="#cformselect-valid" aria-label="CFormSelect valid permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Set component validation state to valid.</p>
+        </td>
+      </tr>
+      <tr id="cformselect-value">
+        <td className="text-primary fw-semibold">value<a href="#cformselect-value" aria-label="CFormSelect value permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code>, <code>{`number`}</code>, <code>{`string[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The <code>{`value`}</code> attribute of component.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -37,6 +37,23 @@ your-project/
 
 In your `custom.scss`, you'll import CoreUI's source Sass files. You have two options: include all of CoreUI, or pick the parts you need. We encourage the latter, though be aware there are some requirements and dependencies across our components. You also will need to include some JavaScript for our plugins.
 
+<Callout color="info" type="dartSassModules" />
+
+```scss
+@use "sass:map";
+@use "@coreui/coreui/scss/variables" as *;
+
+$custom-colors: (
+  "custom-color": #900
+);
+
+$theme-colors: map.merge($theme-colors, $custom-colors);
+
+@use "@coreui/coreui/scss/coreui";
+```
+
+<Callout color="warning" type="dartSassDeprecations" />
+
 ```scss
 // Custom.scss
 // Option A: Include all of CoreUI
@@ -92,6 +109,17 @@ Variable overrides must come after our functions are imported, but before the re
 
 Here's an example that changes the `background-color` and `color` for the `<body>` when importing and compiling CoreUI for Bootstrap via npm:
 
+<Callout color="info" type="dartSassModules" />
+
+```scss
+@use "@coreui/coreui/scss/coreui" with (
+  $body-bg: #000,
+  $body-color: #111
+)
+```
+
+<Callout color="warning" type="dartSassDeprecations" />
+
 ```scss
 // Required
 @import "../node_modules/@coreui/coreui/scss/functions";
@@ -142,6 +170,23 @@ $theme-colors: (
 
 Add new colors to `$theme-colors`, or any other map, by creating a new Sass map with your custom values and merging it with the original map. In this case, we'll create a new `$custom-colors` map and merge it with `$theme-colors`.
 
+<Callout color="info" type="dartSassModules" />
+
+```scss
+@use "sass:map";
+@use "@coreui/coreui/scss/variables" as *;
+
+$custom-colors: (
+  "custom-color": #900
+);
+
+$theme-colors: map.merge($theme-colors, $custom-colors);
+
+@use "@coreui/coreui/scss/coreui";
+```
+
+<Callout color="warning" type="dartSassDeprecations" />
+
 ```scss
 // Create your own map
 $custom-colors: (
@@ -155,6 +200,21 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 ### Remove from map
 
 To remove colors from `$theme-colors`, or any other map, use `map-remove`. Be aware you must insert it between our requirements and options:
+
+<Callout color="info" type="dartSassModules" />
+
+```scss
+@use "sass:map";
+@use "@coreui/coreui/scss/variables" as *;
+@use "@coreui/coreui/scss/maps" as *;
+
+$theme-colors: map-remove($theme-colors, "info", "light", "dark");
+$theme-colors-border-subtle: map.remove($theme-colors-border-subtle, "info", "light", "dark");
+
+@use "@coreui/coreui/scss/coreui";
+```
+
+<Callout color="warning" type="dartSassDeprecations" />
 
 ```scss
 // Required
@@ -213,6 +273,8 @@ You can lighten or darken colors with CoreUI's `tint-color()` and `shade-color()
 In practice, you'd call the function and pass in the color and weight parameters.
 
 ```scss
+@use "@coreui/coreui/scss/functions/color" as *;
+
 .custom-element {
   color: tint-color($primary, 10%);
 }
@@ -231,6 +293,8 @@ An additional function we include in CoreUI for Bootstrap is the color contrast 
 For example, to generate color swatches from our `$theme-colors` map:
 
 ```scss
+@use "@coreui/coreui/scss/functions/color-contrast" as *;
+
 @each $color, $value in $theme-colors {
   .swatch-#{$color} {
     color: color-contrast($value);
@@ -241,6 +305,8 @@ For example, to generate color swatches from our `$theme-colors` map:
 It can also be used for one-off contrast needs:
 
 ```scss
+@use "@coreui/coreui/scss/functions/color-contrast" as *;
+
 .custom-element {
   color: color-contrast(#000); // returns `color: #fff`
 }
@@ -249,6 +315,8 @@ It can also be used for one-off contrast needs:
 You can also specify a base color with our color map functions:
 
 ```scss
+@use "@coreui/coreui/scss/functions/color-contrast" as *;
+
 .custom-element {
   color: color-contrast($dark); // returns `color: #fff`
 }
@@ -265,6 +333,8 @@ We use the `add` and `subtract` functions to wrap the CSS `calc` function. The p
 Example where the calc is valid:
 
 ```scss
+@use "@coreui/coreui/scss/functions/math" as *;
+
 $border-radius: .25rem;
 $border-width: 1px;
 
@@ -282,6 +352,8 @@ $border-width: 1px;
 Example where the calc is invalid:
 
 ```scss
+@use "@coreui/coreui/scss/functions/math" as *;
+
 $border-radius: .25rem;
 $border-width: 0;
 
@@ -304,15 +376,12 @@ Our `@coreui/coreui/scss/mixins/` directory has a ton of mixins that power parts
 
 A shorthand mixin for the `prefers-color-scheme` media query is available with support for `light`, `dark`, and custom color schemes.
 
-```scss
-@mixin color-scheme($name) {
-  @media (prefers-color-scheme: #{$name}) {
-    @content;
-  }
-}
-```
+
+<ScssDocs file="mixins/_color-scheme.scss" capture="mixin-color-scheme" />
 
 ```scss
+@use "@coreui/coreui/scss/mixins/color-scheme" as *;
+
 .custom-element {
   @include color-scheme(dark) {
     // Insert dark mode styles here

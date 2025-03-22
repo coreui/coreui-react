@@ -5,23 +5,211 @@ import { CTable } from '@coreui/react'
 import CTable from '@coreui/react/src/components/table/CTable'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **align** | Set the vertical aligment. | `string` | - |
-| **borderColor** | Sets the border color of the component to one of CoreUI’s themed colors. | `'primary'` \| `'secondary'` \| `'success'` \| `'danger'` \| `'warning'` \| `'info'` \| `'dark'` \| `'light'` \| `string` | - |
-| **bordered** | Add borders on all sides of the table and cells. | `boolean` | - |
-| **borderless** | Remove borders on all sides of the table and cells. | `boolean` | - |
-| **caption** | Put the caption on the top if you set `caption="top"` of the table or set the text of the table caption. | `string` | - |
-| **captionTop** **_4.3.0+_** | Set the text of the table caption and the caption on the top of the table. | `string` | - |
-| **className** | A string of all className you want applied to the component. | `string` | - |
-| **color** | Sets the color context of the component to one of CoreUI’s themed colors. | `'primary'` \| `'secondary'` \| `'success'` \| `'danger'` \| `'warning'` \| `'info'` \| `'dark'` \| `'light'` \| `string` | - |
-| **columns** **_4.3.0+_** | Prop for table columns configuration. If prop is not defined, table will display columns based on the first item keys, omitting keys that begins with underscore (e.g. '_props')<br/><br/>In columns prop each array item represents one column. Item might be specified in two ways:<br/>String: each item define column name equal to item value.<br/>Object: item is object with following keys available as column configuration:<br/>- key (required)(String) - define column name equal to item key.<br/>- label (String) - define visible label of column. If not defined, label will be generated automatically based on column name, by converting kebab-case and snake_case to individual words and capitalization of each word.<br/>- _props (Object) - adds classes to all cels in column, ex. `_props: { scope: 'col', className: 'custom-class' }`,<br/>- _style (Object) - adds styles to the column header (useful for defining widths) | `(string` \| `Column)[]` | - |
-| **footer** **_4.3.0+_** | Array of objects or strings, where each element represents one cell in the table footer.<br/><br/>Example items:<br/>`['FooterCell', 'FooterCell', 'FooterCell']`<br/>or<br/>`[{ label: 'FooterCell', _props: { color: 'success' }, ...]` | `(string` \| `FooterItem)[]` | - |
-| **hover** | Enable a hover state on table rows within a `<CTableBody>`. | `boolean` | - |
-| **items** **_4.3.0+_** | Array of objects, where each object represents one item - row in table. Additionally, you can add style classes to each row by passing them by '_props' key and to single cell by '_cellProps'.<br/><br/>Example item:<br/>`{ name: 'John' , age: 12, _props: { color: 'success' }, _cellProps: { age: { className: 'fw-bold'}}}` | `Item[]` | - |
-| **responsive** | Make any table responsive across all viewports or pick a maximum breakpoint with which to have a responsive table up to. | `boolean` \| `'sm'` \| `'md'` \| `'lg'` \| `'xl'` \| `'xxl'` | - |
-| **small** | Make table more compact by cutting all cell `padding` in half. | `boolean` | - |
-| **striped** | Add zebra-striping to any table row within the `<CTableBody>`. | `boolean` | - |
-| **stripedColumns** **_4.3.0+_** | Add zebra-striping to any table column. | `boolean` | - |
-| **tableFootProps** **_4.3.0+_** | Properties that will be passed to the table footer component. | `CTableFootProps` | - |
-| **tableHeadProps** **_4.3.0+_** | Properties that will be passed to the table head component. | `CTableHeadProps` | - |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="ctable-align">
+        <td className="text-primary fw-semibold">align<a href="#ctable-align" aria-label="CTable align permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Set the vertical aligment.</p>
+        </td>
+      </tr>
+      <tr id="ctable-border-color">
+        <td className="text-primary fw-semibold">borderColor<a href="#ctable-border-color" aria-label="CTable borderColor permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`'primary'`}</code>, <code>{`'secondary'`}</code>, <code>{`'success'`}</code>, <code>{`'danger'`}</code>, <code>{`'warning'`}</code>, <code>{`'info'`}</code>, <code>{`'dark'`}</code>, <code>{`'light'`}</code>, <code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets the border color of the component to one of CoreUI’s themed colors.</p>
+        </td>
+      </tr>
+      <tr id="ctable-bordered">
+        <td className="text-primary fw-semibold">bordered<a href="#ctable-bordered" aria-label="CTable bordered permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Add borders on all sides of the table and cells.</p>
+        </td>
+      </tr>
+      <tr id="ctable-borderless">
+        <td className="text-primary fw-semibold">borderless<a href="#ctable-borderless" aria-label="CTable borderless permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Remove borders on all sides of the table and cells.</p>
+        </td>
+      </tr>
+      <tr id="ctable-caption">
+        <td className="text-primary fw-semibold">caption<a href="#ctable-caption" aria-label="CTable caption permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Put the caption on the top if you set <code>{`caption="top"`}</code> of the table or set the text of the table caption.</p>
+        </td>
+      </tr>
+      <tr id="ctable-caption-top">
+        <td className="text-primary fw-semibold">captionTop<a href="#ctable-caption-top" aria-label="CTable captionTop permalink" className="anchor-link after">#</a><span className="badge bg-success">4.3.0+</span></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Set the text of the table caption and the caption on the top of the table.</p>
+        </td>
+      </tr>
+      <tr id="ctable-class-name">
+        <td className="text-primary fw-semibold">className<a href="#ctable-class-name" aria-label="CTable className permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>A string of all className you want applied to the component.</p>
+        </td>
+      </tr>
+      <tr id="ctable-color">
+        <td className="text-primary fw-semibold">color<a href="#ctable-color" aria-label="CTable color permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`'primary'`}</code>, <code>{`'secondary'`}</code>, <code>{`'success'`}</code>, <code>{`'danger'`}</code>, <code>{`'warning'`}</code>, <code>{`'info'`}</code>, <code>{`'dark'`}</code>, <code>{`'light'`}</code>, <code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets the color context of the component to one of CoreUI’s themed colors.</p>
+        </td>
+      </tr>
+      <tr id="ctable-columns">
+        <td className="text-primary fw-semibold">columns<a href="#ctable-columns" aria-label="CTable columns permalink" className="anchor-link after">#</a><span className="badge bg-success">4.3.0+</span></td>
+        <td>-</td>
+        <td><code>{`(string | Column)[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Prop for table columns configuration. If prop is not defined, table will display columns based on the first item keys, omitting keys that begins with underscore (e.g. '_props')</p>
+<p>In columns prop each array item represents one column. Item might be specified in two ways:<br />
+String: each item define column name equal to item value.<br />
+Object: item is object with following keys available as column configuration:</p>
+<ul>
+<li>key (required)(String) - define column name equal to item key.</li>
+<li>label (String) - define visible label of column. If not defined, label will be generated automatically based on column name, by converting kebab-case and snake_case to individual words and capitalization of each word.</li>
+<li>_props (Object) - adds classes to all cels in column, ex. <code>{`_props: { scope: 'col', className: 'custom-class' }`}</code>,</li>
+<li>_style (Object) - adds styles to the column header (useful for defining widths)</li>
+</ul>
+        </td>
+      </tr>
+      <tr id="ctable-footer">
+        <td className="text-primary fw-semibold">footer<a href="#ctable-footer" aria-label="CTable footer permalink" className="anchor-link after">#</a><span className="badge bg-success">4.3.0+</span></td>
+        <td>-</td>
+        <td><code>{`(string | FooterItem)[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Array of objects or strings, where each element represents one cell in the table footer.</p>
+<p>Example items:<br />
+<code>{`['FooterCell', 'FooterCell', 'FooterCell']`}</code><br />
+or<br />
+<code>{`[{ label: 'FooterCell', _props: { color: 'success' }, ...]`}</code></p>
+        </td>
+      </tr>
+      <tr id="ctable-hover">
+        <td className="text-primary fw-semibold">hover<a href="#ctable-hover" aria-label="CTable hover permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Enable a hover state on table rows within a <code>{`<CTableBody>`}</code>.</p>
+        </td>
+      </tr>
+      <tr id="ctable-items">
+        <td className="text-primary fw-semibold">items<a href="#ctable-items" aria-label="CTable items permalink" className="anchor-link after">#</a><span className="badge bg-success">4.3.0+</span></td>
+        <td>-</td>
+        <td><code>{`Item[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Array of objects, where each object represents one item - row in table. Additionally, you can add style classes to each row by passing them by '<em>props' key and to single cell by '</em>cellProps'.</p>
+<p>Example item:<br />
+<code>{`{ name: 'John' , age: 12, _props: { color: 'success' }, _cellProps: { age: { className: 'fw-bold'}}}`}</code></p>
+        </td>
+      </tr>
+      <tr id="ctable-responsive">
+        <td className="text-primary fw-semibold">responsive<a href="#ctable-responsive" aria-label="CTable responsive permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code>, <code>{`'sm'`}</code>, <code>{`'md'`}</code>, <code>{`'lg'`}</code>, <code>{`'xl'`}</code>, <code>{`'xxl'`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Make any table responsive across all viewports or pick a maximum breakpoint with which to have a responsive table up to.</p>
+        </td>
+      </tr>
+      <tr id="ctable-small">
+        <td className="text-primary fw-semibold">small<a href="#ctable-small" aria-label="CTable small permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Make table more compact by cutting all cell <code>{`padding`}</code> in half.</p>
+        </td>
+      </tr>
+      <tr id="ctable-striped">
+        <td className="text-primary fw-semibold">striped<a href="#ctable-striped" aria-label="CTable striped permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Add zebra-striping to any table row within the <code>{`<CTableBody>`}</code>.</p>
+        </td>
+      </tr>
+      <tr id="ctable-striped-columns">
+        <td className="text-primary fw-semibold">stripedColumns<a href="#ctable-striped-columns" aria-label="CTable stripedColumns permalink" className="anchor-link after">#</a><span className="badge bg-success">4.3.0+</span></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Add zebra-striping to any table column.</p>
+        </td>
+      </tr>
+      <tr id="ctable-table-foot-props">
+        <td className="text-primary fw-semibold">tableFootProps<a href="#ctable-table-foot-props" aria-label="CTable tableFootProps permalink" className="anchor-link after">#</a><span className="badge bg-success">4.3.0+</span></td>
+        <td>-</td>
+        <td><code>{`CTableFootProps`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Properties that will be passed to the table footer component.</p>
+        </td>
+      </tr>
+      <tr id="ctable-table-head-props">
+        <td className="text-primary fw-semibold">tableHeadProps<a href="#ctable-table-head-props" aria-label="CTable tableHeadProps permalink" className="anchor-link after">#</a><span className="badge bg-success">4.3.0+</span></td>
+        <td>-</td>
+        <td><code>{`CTableHeadProps`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Properties that will be passed to the table head component.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

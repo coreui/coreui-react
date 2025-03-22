@@ -10,6 +10,7 @@ import React, {
 } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import type { Options } from '@popperjs/core'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { useForkedRef, usePopper } from '../../hooks'
@@ -22,77 +23,148 @@ import { getPlacement } from './utils'
 
 export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIElement> {
   /**
-   * Set aligment of dropdown menu.
+   * Specifies the alignment of the React Dropdown Menu within this React Dropdown.
+   *
+   * @example
+   * // Align dropdown menu to the end on large devices, otherwise start
+   * <CDropdown alignment={{ lg: 'end', xs: 'start' }}>
+   *   <CDropdownToggle>Toggle dropdown</CDropdownToggle>
+   *   <CDropdownMenu>
+   *     <CDropdownItem>Action</CDropdownItem>
+   *     <CDropdownItem>Another Action</CDropdownItem>
+   *   </CDropdownMenu>
+   * </CDropdown>
    *
    * @type 'start' | 'end' | { xs: 'start' | 'end' } | { sm: 'start' | 'end' } | { md: 'start' | 'end' } | { lg: 'start' | 'end' } | { xl: 'start' | 'end'} | { xxl: 'start' | 'end'}
    */
   alignment?: Alignments
+
   /**
-   * Component used for the root node. Either a string to use a HTML element or a component.
+   * Determines the root node component (native HTML element or a custom React component) for the React Dropdown.
    */
   as?: ElementType
+
   /**
-   * Configure the auto close behavior of the dropdown:
-   * - `true` - the dropdown will be closed by clicking outside or inside the dropdown menu.
-   * - `false` - the dropdown will be closed by clicking the toggle button and manually calling hide or toggle method. (Also will not be closed by pressing esc key)
-   * - `'inside'` - the dropdown will be closed (only) by clicking inside the dropdown menu.
-   * - `'outside'` - the dropdown will be closed (only) by clicking outside the dropdown menu.
+   * Configures automatic closing behavior for the React Dropdown:
+   * - `true` - Close on clicks inside or outside of the React Dropdown Menu.
+   * - `false` - Disable auto-close; manually call `hide` or `toggle` (also not closed by `Escape`).
+   * - `'inside'` - Close only when clicking inside the React Dropdown Menu.
+   * - `'outside'` - Close only when clicking outside the React Dropdown Menu.
+   *
+   * @example
+   * // Close only when user clicks outside of the menu
+   * <CDropdown autoClose="outside" />
    */
   autoClose?: 'inside' | 'outside' | boolean
+
   /**
-   * A string of all className you want applied to the base component.
+   * Adds custom classes to the React Dropdown root element.
    */
   className?: string
+
   /**
-   * Appends the react dropdown menu to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`.
+   * Appends the React Dropdown Menu to a specific element. You can pass an HTML element or a function returning an element. Defaults to `document.body`.
    *
-   * @since v4.11.0
+   * @example
+   * // Append the menu to a custom container
+   * const myContainer = document.getElementById('my-container')
+   *
+   * <CDropdown container={myContainer} />
+   *
+   * @since 4.11.0
    */
-  container?: Element | (() => Element | null) | null
+  container?: DocumentFragment | Element | (() => DocumentFragment | Element | null) | null
+
   /**
-   * Sets a darker color scheme to match a dark navbar.
+   * Applies a darker color scheme to the React Dropdown Menu, often used within dark navbars.
    */
   dark?: boolean
+
   /**
-   * Sets a specified  direction and location of the dropdown menu.
+   * Specifies the direction of the React Dropdown.
    */
   direction?: 'center' | 'dropup' | 'dropup-center' | 'dropend' | 'dropstart'
+
   /**
-   * Offset of the dropdown menu relative to its target.
+   * Defines x and y offsets ([x, y]) for the React Dropdown Menu relative to its target.
+   *
+   * @example
+   * // Offset the menu 10px in X and 5px in Y direction
+   * <CDropdown offset={[10, 5]}>
+   *   ...
+   * </CDropdown>
    */
   offset?: [number, number]
+
   /**
-   * Callback fired when the component requests to be hidden.
+   * Callback fired right before the React Dropdown becomes hidden.
    *
    * @since 4.9.0
    */
   onHide?: () => void
+
   /**
-   * Callback fired when the component requests to be shown.
+   * Callback fired immediately after the React Dropdown is displayed.
    */
   onShow?: () => void
+
   /**
-   * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.
+   * Determines the placement of the React Dropdown Menu after Popper.js modifiers.
    *
-   * @type 'auto' | 'top-end' | 'top' | 'top-start' | 'bottom-end' | 'bottom' | 'bottom-start' | 'right-start' | 'right' | 'right-end' | 'left-start' | 'left' | 'left-end'
+   * @type 'auto' | 'auto-start' | 'auto-end' | 'top-end' | 'top' | 'top-start' | 'bottom-end' | 'bottom' | 'bottom-start' | 'right-start' | 'right' | 'right-end' | 'left-start' | 'left' | 'left-end'
    */
   placement?: Placements
+
   /**
-   * If you want to disable dynamic positioning set this property to `true`.
+   * Enables or disables dynamic positioning via Popper.js for the React Dropdown Menu.
    */
   popper?: boolean
+
   /**
-   * Generates dropdown menu using createPortal.
+   * Provides a custom Popper.js configuration or a function that returns a modified Popper.js configuration for advanced positioning of the React Dropdown Menu. [Read more](https://popper.js.org/docs/v2/constructors/#options)
+   *
+   * @example
+   * // Providing a custom popper config
+   * <CDropdown
+   *   popperConfig={{
+   *     modifiers: [
+   *       {
+   *         name: 'flip',
+   *         options: { fallbackPlacements: ['bottom', 'top'] },
+   *       },
+   *     ],
+   *   }}
+   * >...</CDropdown>
+   *
+   * @since 5.5.0
+   */
+  popperConfig?: Partial<Options> | ((defaultPopperConfig: Partial<Options>) => Partial<Options>)
+
+  /**
+   * Renders the React Dropdown Menu using a React Portal, allowing it to escape the DOM hierarchy for improved positioning.
    *
    * @since 4.8.0
    */
   portal?: boolean
+
   /**
-   * Set the dropdown variant to an btn-group, dropdown, input-group, and nav-item.
+   * Defines the visual variant of the React Dropdown
    */
   variant?: 'btn-group' | 'dropdown' | 'input-group' | 'nav-item'
+
   /**
-   * Toggle the visibility of dropdown menu component.
+   * Controls the visibility of the React Dropdown Menu:
+   * - `true` - Visible
+   * - `false` - Hidden
+   *
+   * @example
+   * // Programmatically manage the dropdown visibility
+   * const [visible, setVisible] = useState(false)
+   *
+   * <CDropdown visible={visible}>
+   *   ...
+   * </CDropdown>
+   *
    */
   visible?: boolean
 }
@@ -126,12 +198,13 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
       onShow,
       placement = 'bottom-start',
       popper = true,
+      popperConfig,
       portal = false,
       variant = 'btn-group',
       visible = false,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const dropdownRef = useRef<HTMLDivElement>(null)
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -161,7 +234,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
       setVisible,
     }
 
-    const popperConfig = {
+    const defaultPopperConfig = {
       modifiers: [
         {
           name: 'offset',
@@ -173,6 +246,11 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
       placement: getPlacement(placement, direction, alignment, isRTL(dropdownMenuRef.current)),
     }
 
+    const computedPopperConfig: Partial<Options> = {
+      ...defaultPopperConfig,
+      ...(typeof popperConfig === 'function' ? popperConfig(defaultPopperConfig) : popperConfig),
+    }
+
     useEffect(() => {
       setVisible(visible)
     }, [visible])
@@ -180,7 +258,8 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
     useEffect(() => {
       if (_visible && dropdownToggleRef.current && dropdownMenuRef.current) {
         dropdownToggleRef.current.focus()
-        popper && initPopper(dropdownToggleRef.current, dropdownMenuRef.current, popperConfig)
+        popper &&
+          initPopper(dropdownToggleRef.current, dropdownMenuRef.current, computedPopperConfig)
         window.addEventListener('mouseup', handleMouseUp)
         window.addEventListener('keyup', handleKeyup)
         dropdownToggleRef.current.addEventListener('keydown', handleKeydown)
@@ -209,7 +288,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
         event.preventDefault()
         const target = event.target as HTMLElement
         const items: HTMLElement[] = Array.from(
-          dropdownMenuRef.current.querySelectorAll('.dropdown-item:not(.disabled):not(:disabled)'),
+          dropdownMenuRef.current.querySelectorAll('.dropdown-item:not(.disabled):not(:disabled)')
         )
         getNextActiveElement(items, target, event.key === 'ArrowDown', true).focus()
       }
@@ -258,7 +337,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
                 [`${direction}`]:
                   direction && direction !== 'center' && direction !== 'dropup-center',
               },
-              className,
+              className
             )}
             {...rest}
             ref={forkedRef}
@@ -268,7 +347,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
         )}
       </CDropdownContext.Provider>
     )
-  },
+  }
 )
 
 const alignmentDirection = PropTypes.oneOf<Directions>(['start', 'end'])
@@ -297,6 +376,7 @@ CDropdown.propTypes = {
   onShow: PropTypes.func,
   placement: placementPropType,
   popper: PropTypes.bool,
+  popperConfig: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   portal: PropTypes.bool,
   variant: PropTypes.oneOf(['btn-group', 'dropdown', 'input-group', 'nav-item']),
   visible: PropTypes.bool,

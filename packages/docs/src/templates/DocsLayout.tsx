@@ -1,101 +1,197 @@
-import React, { FC } from 'react'
-import classNames from 'classnames'
-import { Ads, Banner, Seo, Toc } from '../components'
-import { CContainer } from '@coreui/react/src/'
-
-interface DocsLayoutProps {
-  children: any // eslint-disable-line @typescript-eslint/no-explicit-any
-  data: any // eslint-disable-line @typescript-eslint/no-explicit-any
-  pageContext: any // eslint-disable-line @typescript-eslint/no-explicit-any
-}
-
+import React, { FC, ReactNode, useEffect, useMemo, useRef, useState } from 'react'
+import { Link } from 'gatsby'
+import { CContainer } from '@coreui/react'
+import { Ads, Banner, ComponentSubNav, Footer, Header, Sidebar, Toc } from '../components'
 // @ts-expect-error json file
 import jsonData from './../data/other_frameworks.json'
 
-const humanize = (text: string) => {
-  const string = text
-    .split('-')
-    .reduce(
-      (accumulator, currentValue) =>
-        accumulator + ' ' + currentValue[0].toUpperCase() + currentValue.slice(1),
-    )
-  return string[0].toUpperCase() + string.slice(1)
+import { Item } from '../components/ComponentSubNav'
+import type { TocItem } from '../components/Toc'
+
+interface DocsLayoutProps {
+  children: ReactNode
+  data: DocsData
+  location: Location
+  pageContext: PageContext
+  path: string
 }
 
-const DocsLayout: FC<DocsLayoutProps> = ({ children, data, pageContext }) => {
-  const title = pageContext.frontmatter ? pageContext.frontmatter.title : ''
-  const description = pageContext.frontmatter ? pageContext.frontmatter.description : ''
-  const full_width = pageContext.frontmatter ? pageContext.frontmatter.full_width : false
-  const name = pageContext.frontmatter ? pageContext.frontmatter.name : ''
-  const other_frameworks = pageContext.frontmatter ? pageContext.frontmatter.other_frameworks : ''
-  const pro_component = pageContext.frontmatter ? pageContext.frontmatter.pro_component : ''
-  const route = pageContext.frontmatter ? pageContext.frontmatter.route : ''
-  const frameworks = other_frameworks ? other_frameworks.split(', ') : false
-  const otherFrameworks = JSON.parse(JSON.stringify(jsonData))
+interface DocsData {
+  allMdx: {
+    edges: Array<{
+      node: {
+        fields: {
+          slug: string
+        }
+      }
+    }>
+  }
+  mdx?: {
+    tableOfContents: {
+      items: TocItem[]
+    }
+  }
+}
+
+interface PageContext {
+  frontmatter?: Frontmatter
+}
+
+interface Frontmatter {
+  title?: string
+  description?: string
+  name?: string
+  other_frameworks?: string
+  pro_component?: boolean
+  route?: string
+}
+
+interface OtherFrameworks {
+  [key: string]: {
+    [key: string]: string
+  }
+}
+
+const humanize = (text: string): string => {
+  return text
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+}
+
+const getDescription = (location: Location, description: string) => {
+  if (location.pathname.includes('api') || location.pathname.includes('styling')) {
+    const regex = /React\s[A-Z][A-Za-z]*/
+    const parts = description.split(regex)
+    const matches = description.match(regex)
+
+    if (matches && parts.length > 1) {
+      return (
+        <>
+          {parts[0]}
+          <Link to="../">{matches[0]}</Link>
+          {parts[1]}
+        </>
+      )
+    }
+
+    return description
+  }
+
+  return description
+}
+
+const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext, path }) => {
+  const docsNavRef = useRef<HTMLDivElement>(null)
+  const headerRef = useRef<HTMLDivElement>(null)
+  const [docsNavHeight, setDocsNavHeigh] = useState<number>(0)
+  const [headerHeight, setHeaderHeight] = useState<number>(0)
+  const frontmatter = pageContext.frontmatter || {}
+
+  const {
+    title = '',
+    description = '',
+    name = '',
+    other_frameworks: otherFrameworksStr = '',
+    pro_component: proComponent = false,
+  } = frontmatter
+  const frameworks = useMemo(
+    () => otherFrameworksStr.split(', ').filter(Boolean),
+    [otherFrameworksStr],
+  )
+  const otherFrameworks: OtherFrameworks = useMemo(() => ({ ...jsonData }), [])
+  const hasNav = useMemo(() => data?.allMdx?.edges.length > 1, [data])
+
+  const handleScroll = () => {
+    if (docsNavRef.current) {
+      setDocsNavHeigh(docsNavRef.current.offsetHeight)
+    }
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   return (
     <>
-      <Seo title={title} description={description} name={name} />
-      <CContainer lg className="my-md-4 flex-grow-1">
-        <main
-          className={classNames(
-            {
-              'docs-main': !full_width,
-              'docs-main-full-width': full_width,
-            },
-            'order-1',
-          )}
-        >
-          <div className="docs-intro ps-lg-4">
-            <Banner pro={pro_component} />
-            {name && name !== title ? (
-              <div className="d-flex flex-column">
-                <h1 className="order-2 h5 mb-4 text-body-secondary" id="content">
-                  {title}
-                </h1>
-                <h2 className="docs-title order-1 h1">{name}</h2>
+      <Sidebar />
+      <div className="wrapper flex-grow-1">
+        <Header ref={headerRef} />
+        {hasNav && (
+          <ComponentSubNav
+            nodes={data?.allMdx?.edges as Item[]}
+            style={{ top: `${headerHeight}px` } as React.CSSProperties}
+            ref={docsNavRef}
+          />
+        )}
+        {path === '/404/' ? (
+          <CContainer lg className="px-4">
+            {children}
+          </CContainer>
+        ) : (
+          <CContainer lg className="my-md-4 flex-grow-1 px-4">
+            <main className="docs-main order-1">
+              <div className="docs-intro">
+                {name && name !== title ? (
+                  <div className="d-flex flex-column">
+                    <h1 className="order-2 h5 mb-4 text-body-secondary" id="content">
+                      {title}
+                    </h1>
+                    <h2 className="docs-title order-1 h1">{name}</h2>
+                  </div>
+                ) : (
+                  <h1 className="docs-title" id="content">
+                    {title}
+                  </h1>
+                )}
+                <Banner pro={proComponent} />
+                <p className="docs-lead">{getDescription(location, description)}</p>
+                <Ads code="CEAICKJY" location={location.pathname} placement="coreuiio" />
+                {frameworks.length > 0 && (
+                  <>
+                    <h2>Other Frameworks</h2>
+                    <p>
+                      CoreUI components are available as native Angular, Bootstrap (Vanilla JS), and
+                      Vue components. To learn more please visit the following pages.
+                    </p>
+                    <ul>
+                      {frameworks.map((item) => (
+                        <React.Fragment key={item}>
+                          {Object.entries(otherFrameworks[item] || {})
+                            .filter(([key]) => key !== 'react')
+                            .map(([framework, url]) => (
+                              <li key={framework}>
+                                <a href={url}>
+                                  {framework.charAt(0).toUpperCase() + framework.slice(1)}{' '}
+                                  {humanize(item)}
+                                </a>
+                              </li>
+                            ))}
+                        </React.Fragment>
+                      ))}
+                    </ul>
+                  </>
+                )}
               </div>
-            ) : (
-              <h1 className="docs-title" id="content">
-                {title}
-              </h1>
-            )}
-            <p className="docs-lead">{description}</p>
-            <Ads code="CEAICKJY" location={route} placement="coreuiio" />
-            {frameworks && (
-              <>
-                <h2>Other frameworks</h2>
-                <p>
-                  CoreUI components are available as native Angular, Bootstrap (Vanilla JS), and Vue
-                  components. To learn more please visit the following pages.
-                </p>
-                <ul>
-                  {frameworks.map((item: string, index: number) => (
-                    <React.Fragment key={index}>
-                      {Object.keys(otherFrameworks[item]).map(
-                        (el, index) =>
-                          el !== 'react' && (
-                            <li key={index}>
-                              <a href={otherFrameworks[item][el]}>
-                                <>
-                                  {el[0].toUpperCase() + el.slice(1)} {humanize(item)}
-                                </>
-                              </a>
-                            </li>
-                          ),
-                      )}
-                    </React.Fragment>
-                  ))}
-                </ul>
-              </>
-            )}
-          </div>
-          {data && data.mdx && data.mdx.tableOfContents.items && (
-            <Toc items={data.mdx.tableOfContents.items} />
-          )}
-          <div className="docs-content ps-lg-4">{children}</div>
-        </main>
-      </CContainer>
+              {data?.mdx && (
+                <Toc
+                  items={data.mdx.tableOfContents.items}
+                  style={{ top: `${docsNavHeight + headerHeight + 16}px` }}
+                />
+              )}
+              <div className="docs-content">{children}</div>
+            </main>
+          </CContainer>
+        )}
+        <Footer />
+      </div>
     </>
   )
 }

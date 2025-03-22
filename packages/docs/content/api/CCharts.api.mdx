@@ -5,19 +5,156 @@ import { CChartBar } from '@coreui/react-chartjs'
 import CChartBar from '@coreui/react-chartjs/src/CCharts'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **className** | A string of all className you want applied to the base component. | `string` | - |
-| **customTooltips** | Enables custom html based tooltips instead of standard tooltips. | `boolean` | true |
-| **data** | The data object that is passed into the Chart.js chart (more info). | `ChartData<keyof ChartTypeRegistry, (number` \| `[number, number]` \| `Point` \| `BubbleDataPoint)[], unknown>` \| `((canvas: HTMLCanvasElement) => ChartData<...>)` | - |
-| **fallbackContent** | A fallback for when the canvas cannot be rendered. Can be used for accessible chart descriptions. | `React.ReactNode` | - |
-| **getDatasetAtEvent** | Proxy for Chart.js getDatasetAtEvent. Calls with dataset and triggering event. | `(dataset: InteractionItem[], event: React.MouseEvent<HTMLCanvasElement>) => void` | - |
-| **getElementAtEvent** | Proxy for Chart.js getElementAtEvent. Calls with single element array and triggering event. | `(element: InteractionItem[], event: React.MouseEvent<HTMLCanvasElement>) => void` | - |
-| **getElementsAtEvent** | Proxy for Chart.js getElementsAtEvent. Calls with element array and triggering event. | `(elements: InteractionItem[], event: React.MouseEvent<HTMLCanvasElement>) => void` | - |
-| **height** | Height attribute applied to the rendered canvas. | `number` | 150 |
-| **id** | ID attribute applied to the rendered canvas. | `string` | - |
-| **options** | The options object that is passed into the Chart.js chart. | `_DeepPartialObject<CoreChartOptions<keyof ChartTypeRegistry> & ElementChartOptions<keyof ChartTypeRegistry> & PluginChartOptions<...> & DatasetChartOptions<...> & ScaleChartOptions<...>>` | - |
-| **plugins** | The plugins array that is passed into the Chart.js chart (more info) | `Plugin<keyof ChartTypeRegistry, AnyObject>[]` | - |
-| **redraw** | If true, will tear down and redraw chart on all updates. | `boolean` | false |
-| **width** | Width attribute applied to the rendered canvas. | `number` | 300 |
-| **wrapper** | Put the chart into the wrapper div element. | `boolean` | true |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="cchartbar-class-name">
+        <td className="text-primary fw-semibold">className<a href="#cchartbar-class-name" aria-label="CChartBar className permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>A string of all className you want applied to the base component.</p>
+        </td>
+      </tr>
+      <tr id="cchartbar-custom-tooltips">
+        <td className="text-primary fw-semibold">customTooltips<a href="#cchartbar-custom-tooltips" aria-label="CChartBar customTooltips permalink" className="anchor-link after">#</a></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Enables custom html based tooltips instead of standard tooltips.</p>
+        </td>
+      </tr>
+      <tr id="cchartbar-data">
+        <td className="text-primary fw-semibold">data<a href="#cchartbar-data" aria-label="CChartBar data permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`ChartData\<keyof ChartTypeRegistry, (number | [number, number] | Point | BubbleDataPoint)[], unknown>`}</code>, <code>{`((canvas: HTMLCanvasElement) => ChartData\<...>)`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The data object that is passed into the Chart.js chart (more info).</p>
+        </td>
+      </tr>
+      <tr id="cchartbar-fallback-content">
+        <td className="text-primary fw-semibold">fallbackContent<a href="#cchartbar-fallback-content" aria-label="CChartBar fallbackContent permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`React.ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>A fallback for when the canvas cannot be rendered. Can be used for accessible chart descriptions.</p>
+        </td>
+      </tr>
+      <tr id="cchartbar-get-dataset-at-event">
+        <td className="text-primary fw-semibold">getDatasetAtEvent<a href="#cchartbar-get-dataset-at-event" aria-label="CChartBar getDatasetAtEvent permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`(dataset: InteractionItem[], event: React.MouseEvent\<HTMLCanvasElement>) => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Proxy for Chart.js getDatasetAtEvent. Calls with dataset and triggering event.</p>
+        </td>
+      </tr>
+      <tr id="cchartbar-get-element-at-event">
+        <td className="text-primary fw-semibold">getElementAtEvent<a href="#cchartbar-get-element-at-event" aria-label="CChartBar getElementAtEvent permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`(element: InteractionItem[], event: React.MouseEvent\<HTMLCanvasElement>) => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Proxy for Chart.js getElementAtEvent. Calls with single element array and triggering event.</p>
+        </td>
+      </tr>
+      <tr id="cchartbar-get-elements-at-event">
+        <td className="text-primary fw-semibold">getElementsAtEvent<a href="#cchartbar-get-elements-at-event" aria-label="CChartBar getElementsAtEvent permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`(elements: InteractionItem[], event: React.MouseEvent\<HTMLCanvasElement>) => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Proxy for Chart.js getElementsAtEvent. Calls with element array and triggering event.</p>
+        </td>
+      </tr>
+      <tr id="cchartbar-height">
+        <td className="text-primary fw-semibold">height<a href="#cchartbar-height" aria-label="CChartBar height permalink" className="anchor-link after">#</a></td>
+        <td><code>{`150`}</code></td>
+        <td><code>{`number`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Height attribute applied to the rendered canvas.</p>
+        </td>
+      </tr>
+      <tr id="cchartbar-id">
+        <td className="text-primary fw-semibold">id<a href="#cchartbar-id" aria-label="CChartBar id permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>ID attribute applied to the rendered canvas.</p>
+        </td>
+      </tr>
+      <tr id="cchartbar-options">
+        <td className="text-primary fw-semibold">options<a href="#cchartbar-options" aria-label="CChartBar options permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`_DeepPartialObject\<CoreChartOptions\<keyof ChartTypeRegistry> & ElementChartOptions\<keyof ChartTypeRegistry> & PluginChartOptions\<...> & DatasetChartOptions\<...> & ScaleChartOptions\<...>>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The options object that is passed into the Chart.js chart.</p>
+        </td>
+      </tr>
+      <tr id="cchartbar-plugins">
+        <td className="text-primary fw-semibold">plugins<a href="#cchartbar-plugins" aria-label="CChartBar plugins permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`Plugin\<keyof ChartTypeRegistry, AnyObject>[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The plugins array that is passed into the Chart.js chart (more info)</p>
+        </td>
+      </tr>
+      <tr id="cchartbar-redraw">
+        <td className="text-primary fw-semibold">redraw<a href="#cchartbar-redraw" aria-label="CChartBar redraw permalink" className="anchor-link after">#</a></td>
+        <td><code>{`false`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>If true, will tear down and redraw chart on all updates.</p>
+        </td>
+      </tr>
+      <tr id="cchartbar-width">
+        <td className="text-primary fw-semibold">width<a href="#cchartbar-width" aria-label="CChartBar width permalink" className="anchor-link after">#</a></td>
+        <td><code>{`300`}</code></td>
+        <td><code>{`number`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Width attribute applied to the rendered canvas.</p>
+        </td>
+      </tr>
+      <tr id="cchartbar-wrapper">
+        <td className="text-primary fw-semibold">wrapper<a href="#cchartbar-wrapper" aria-label="CChartBar wrapper permalink" className="anchor-link after">#</a></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Put the chart into the wrapper div element.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

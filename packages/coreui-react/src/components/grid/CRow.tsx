@@ -91,7 +91,7 @@ export const CRow = forwardRef<HTMLDivElement, CRowProps>(
     })
 
     return (
-      <div className={classNames('row', repsonsiveClassNames, className)} ref={ref}>
+      <div className={classNames('row', repsonsiveClassNames, className)} {...rest} ref={ref}>
         {children}
       </div>
     )

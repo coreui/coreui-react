@@ -1,0 +1,77 @@
+---
+title: React Sidebar Component
+name: Sidebar
+description:
+route: /components/sidebar/
+other_frameworks: sidebar
+---
+
+## Supported content
+
+Sidebar come with built-in support for a handful of sub-components. Choose from the following as needed:
+
+- `<CSidebarHeader>` for optional header.
+- `<CSidebarBrand>` for your company, product, or project name.
+- `<CSidebarNav>` for a full-height and lightweight navigation (including support for dropdowns).
+- `<CSidebarFooter>` for optional footer.
+- `<CSidebarToggler>` for use with our minimizer plugin.
+
+## Examples
+
+### Sidebar component
+
+Below is an sidebar example that is shown by default on desktop devices.
+
+<ExampleSnippet
+  className="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden"
+  component="SidebarExample"
+  componentName="React Sidebar"
+/>
+
+### Narrow sidebar
+
+Add the `narrow` property to make the sidebar narrow.
+
+<ExampleSnippet
+  className="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden"
+  component="SidebarNarrowExample"
+  componentName="React Sidebar"
+/>
+
+### Unfoldable sidebar
+
+Add the `unfoldable` property to make the sidebar narrow with unfoldable on hover.
+
+<ExampleSnippet
+  className="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden"
+  component="SidebarUnfoldableExample"
+  componentName="React Sidebar"
+/>
+
+## Dark sidebar
+
+Change the appearance of sidebars with the `colorScheme="dark"`.
+
+<ExampleSnippet
+  className="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden"
+  component="SidebarDarkExample"
+  componentName="React Sidebar"
+/>
+
+## Placement
+
+By default placement for sidebar components is on the left of the viewport, but you can add one of the modifier classes below.
+
+- `placement="start"` places sidebar on the left of the viewport (shown above)
+- `placement="end"` places sidebar on the right of the viewport
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CSidebar /&gt;](./api/#csidebar)
+- [&lt;CSidebarBrand /&gt;](./api/#csidebarbrand)
+- [&lt;CSidebarFooter /&gt;](./api/#csidebarfooter)
+- [&lt;CSidebarHeader /&gt;](./api/#csidebarheader)
+- [&lt;CSidebarNav /&gt;](./api/#csidebarnav)
+- [&lt;CSidebarToggler /&gt;](./api/#csidebartoggler)

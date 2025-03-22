@@ -1,24 +1,52 @@
-.table-api {
+.table-api,
+.table-docs {
+  .table {
+    margin: 0;
+  }
+
+  tr {
+    scroll-margin-top: 80px;
+    scroll-margin-bottom: 100px;
+  }
+
+  tr th {
+    padding: 0.75rem 1rem;
+  }
+
   tr td {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding: 1rem;
   }
-  td:nth-child(1n),
-  th:nth-child(1n) {
-    width: 15%;
-    padding-left: 1rem;
+
+  th {
+    background-color: var(--cui-tertiary-bg);
   }
-  td:nth-child(2n) {
-    width: 55%;
+
+  tr:nth-child(2n-1):has(+ tr td[colspan='3']) td {
+    border-bottom-style: dashed;
   }
-  td:nth-child(3n) {
-    width: 20%;
+
+  p {
+    margin: 0;
   }
-  td:nth-child(4n) {
-    width: 10%;
+
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .highlight {
+    margin: 1rem -1rem -1rem -1rem !important;
+    padding: 0.25rem 1rem;
+    border: 0;
+    border-radius: 0;
+    border: 2px solid var(--cui-body-bg);
+
+    code[class*='language-'],
+    pre[class*='language-'] {
+      white-space: pre-wrap;
+    }
   }
 }
 
-.markdown + h3 {
-  margin-top: 3rem;
+.table-api tr th:nth-child(3) {
+  width: 50%;
 }

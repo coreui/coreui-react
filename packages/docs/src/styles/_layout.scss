@@ -1,12 +1,12 @@
+@use "@coreui/coreui/scss/mixins/breakpoints" as *;
+@use "@coreui/coreui/scss/mixins/transition" as *;
+@use "@coreui/coreui/scss/variables" as *;
+
 .wrapper {
   width: 100%;
-  @include ltr-rtl("padding-left", var(--cui-sidebar-occupy-start, 0));
+  padding-inline-start: var(--cui-sidebar-occupy-start, 0);
   will-change: auto;
   @include transition(padding .15s);
-
-  > .container-lg {
-    --cui-gutter-x: 3rem;
-  }
 }
 
 .docs-sidebar {
@@ -15,49 +15,32 @@
 
 .docs-main {
   grid-area: main;
+  display: grid;
+  grid-template-areas:
+    "header"
+    "intro"
+    "toc"
+    "content";
+  grid-template-rows: auto auto 1fr;
+  gap: .5rem;
 
   @include media-breakpoint-down(lg) {
     max-width: 760px;
     margin-inline: auto;
   }
 
-  @include media-breakpoint-up(md) {
-    display: grid;
-    grid-template-areas:
-      "intro"
-      "toc"
-      "content";
-    grid-template-rows: auto auto 1fr;
-    gap: $grid-gutter-width;
-  }
-
-  @include media-breakpoint-up(lg) {
+  @include media-breakpoint-up(xl) {
     grid-template-areas:
       "intro   toc"
       "content toc";
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto auto;
     grid-template-columns: 4fr 1fr;
+    gap: $grid-gutter-width;
   }
 }
 
-.docs-main-full-width {
-  grid-area: main;
-  
-  @include media-breakpoint-up(md) {
-    display: grid;
-    grid-template-areas:
-      "intro"
-      "content";
-    grid-template-rows: auto 1fr;
-    gap: $grid-gutter-width;
-  }
-
-  @include media-breakpoint-up(lg) {
-    grid-template-areas:
-      "intro"
-      "content";
-    grid-template-rows: auto 1fr;
-  }
+.docs-header {
+  grid-area: header;
 }
 
 .docs-intro {

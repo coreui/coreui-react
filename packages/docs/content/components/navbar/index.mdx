@@ -1,0 +1,154 @@
+---
+title: React Navbar Component
+name: Navbar
+description: Documentation and examples for the React navbar powerful, responsive navigation header component. Includes support for branding, links, dropdowns, and more.
+route: /components/navbar/
+other_frameworks: navbar
+---
+
+## Supported content
+
+`<CNavbar>` come with built-in support for a handful of sub-components. Choose from the following as needed:
+
+- `<CNavbarBrand>` for your company, product, or project name.
+- `<CNavbarNav>` for a full-height and lightweight navigation (including support for dropdowns).
+- `<CNavbarToggler>` for use with our collapse plugin and other [navigation toggling](#responsive-behaviors) behaviors.
+- Flex and spacing utilities for any form controls and actions.
+- `<CNavbarText>` for adding vertically centered strings of text.
+- `<CCollapse>` for grouping and hiding navbar contents by a parent breakpoint.
+
+Here's an example of all the sub-components included in a responsive light-themed navbar that automatically collapses at the `lg` (large) breakpoint.
+
+## Basic usage
+
+<ExampleSnippet component="NavbarExample" componentName="React Navbar" />
+
+### Brand
+
+The `<CNavbarBrand>` can be applied to most elements, but an anchor works best, as some elements might require utility classes or custom styles.
+
+<ExampleSnippet component="NavbarBrandExample" componentName="React Navbar" />
+
+Adding images to the `<CNavbarBrand>` will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.
+
+<ExampleSnippet component="NavbarBrand2Example" componentName="React Navbar" />
+
+<ExampleSnippet component="NavbarBrand3Example" componentName="React Navbar" />
+
+### Nav
+
+`<CNavbar>` navigation is based on `<CNavbarNav>`. **Navigation in navbars will also grow to occupy as much horizontal space as possible** to keep your navbar contents securely aligned.
+
+<ExampleSnippet component="NavbarNavExample" componentName="React Navbar" />
+
+And because we use classes for our navs, you can avoid the list-based approach entirely if you like.
+
+<ExampleSnippet component="NavbarNav2Example" componentName="React Navbar" />
+
+You can also use dropdowns in your navbar. Please note that `<CDropdown>` component requires `variant="nav-item"`.
+
+<ExampleSnippet component="NavbarNav3Example" componentName="React Navbar" />
+
+### Forms
+
+Place various form controls and components within a navbar:
+
+<ExampleSnippet component="NavbarFormsExample" componentName="React Navbar" />
+
+Immediate child elements of `<CNavbar>` use flex layout and will default to `justify-content: space-between`. Use additional [flex utilities](https://coreui.io/bootstrap/docs/utilities/flex/) as needed to adjust this behavior.
+
+<ExampleSnippet component="NavbarForms2Example" componentName="React Navbar" />
+
+Input groups work, too. If your navbar is an entire form, or mostly a form, you can use the `<CForm>` element as the container and save some HTML.
+
+<ExampleSnippet component="NavbarForms3Example" componentName="React Navbar" />
+
+Various buttons are supported as part of these navbar forms, too. This is also a great reminder that vertical alignment utilities can be used to align different sized elements.
+
+<ExampleSnippet component="NavbarForms4Example" componentName="React Navbar" />
+
+### Text
+
+Navbars may contain bits of text with the help of `<CNavbarText>`. This class adjusts vertical alignment and horizontal spacing for strings of text.
+
+<ExampleSnippet component="NavbarText" componentName="React Navbar" />
+
+## Color schemes
+
+Theming the navbar has never been easier thanks to the combination of theming classes and `background-color` utilities. Set `colorScheme="light"` for use with light background colors, or `colorScheme="dark"` for dark background colors. Then, customize with `.bg-*` utilities.
+
+<ExampleSnippet component="NavbarColorSchemesExample" componentName="React Navbar" />
+
+## Containers
+
+Although it's not required, you can wrap a `<CNavbar>` in a `<CContainer>` to center it on a page–though note that an inner container is still required. Or you can add a container inside the `<CNavbar>` to only center the contents of a [fixed or static top navbar](#placement).
+
+<ExampleSnippet component="NavbarContainersExample" componentName="React Navbar" />
+
+Use any of the responsive containers to change how wide the content in your navbar is presented.
+
+<ExampleSnippet component="NavbarContainers2Example" componentName="React Navbar" />
+
+## Placement
+
+Use our `placement` properly to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top (scrolls with the page until it reaches the top, then stays there). Fixed navbars use `position: fixed`, meaning they're pulled from the normal flow of the DOM and may require custom CSS (e.g., `padding-top` on the `<body>`) to prevent overlap with other elements.
+
+Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully supported in every browser](https://caniuse.com/css-sticky)**.
+
+<ExampleSnippet component="NavbarPlacementExample" componentName="React Navbar" />
+
+<ExampleSnippet className="p-4 overflow-hidden" component="NavbarPlacementFixedTopExample" componentName="React Navbar" />
+
+<ExampleSnippet className="p-4" component="NavbarPlacementFixedBottomExample" componentName="React Navbar" />
+
+<ExampleSnippet className="p-4 overflow-hidden" component="NavbarPlacementStickyTopExample" componentName="React Navbar" />
+
+## Responsive behaviors
+
+Navbars can use `<CNavbarToggler>`, `<CCollapse>`, and `expand="{sm|md|lg|xl|xxl}"` property to determine when their content collapses behind a button. In combination with other utilities, you can easily choose when to show or hide particular elements.
+
+For navbars that never collapse, add the `expand` boolean property on the `<CNavbar>`. For navbars that always collapse, don't add any property.
+
+### Toggler
+
+Navbar togglers are left-aligned by default, but should they follow a sibling element like a `<CNavbarBrand>`, they'll automatically be aligned to the far right. Reversing your markup will reverse the placement of the toggler. Below are examples of different toggle styles.
+
+With no `<CNavbarBrand>` shown at the smallest breakpoint:
+
+<ExampleSnippet component="NavbarResponsiveTogglerExample" componentName="React Navbar" />
+
+With a brand name shown on the left and toggler on the right:
+
+<ExampleSnippet component="NavbarResponsiveToggler2Example" componentName="React Navbar" />
+
+With a toggler on the left and brand name on the right:
+
+<ExampleSnippet component="NavbarResponsiveToggler3Example" componentName="React Navbar" />
+
+### External content
+
+Sometimes you want to use the collapse plugin to trigger a container element for content that structurally sits outside of the `<CNavbar>`.
+
+<ExampleSnippet component="NavbarResponsiveExternalContentExample" componentName="React Navbar" />
+
+### Offcanvas
+
+Transform your expanding and collapsing navbar into an offcanvas drawer with the offcanvas plugin. We extend both the offcanvas default styles and use our `expand="*"` prop to create a dynamic and flexible navigation sidebar.
+
+In the example below, to create an offcanvas navbar that is always collapsed across all breakpoints, omit the `expand="*"` prop entirely.
+
+<ExampleSnippet component="NavbarResponsiveOffcanvasExample" componentName="React Navbar" />
+
+To create an offcanvas navbar that expands into a normal navbar at a specific breakpoint like `xxl`, use `expand="xxl"` property.
+
+<ExampleSnippet component="NavbarResponsiveOffcanvas2Example" componentName="React Navbar" />
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CNavbar /&gt;](./api/#cnavbar)
+- [&lt;CNavbarBrand /&gt;](./api/#cnavbarbrand)
+- [&lt;CNavbarNav /&gt;](./api/#cnavbarnav)
+- [&lt;CNavbarText /&gt;](./api/#cnavbartext)
+- [&lt;CNavbarToggler /&gt;](./api/#cnavbartoggler)

@@ -17,7 +17,7 @@ export interface CProgressProps
    */
   height?: number
   /**
-   * A string of all className you want applied to the <CProgressBar/> component.
+   * A string of all className you want applied to the `<CProgressBar/>` component.
    *
    * @since 4.9.0
    */

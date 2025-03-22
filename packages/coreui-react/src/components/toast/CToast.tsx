@@ -44,7 +44,7 @@ export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
   /**
    * @ignore
    */
-  key?: number
+  innerKey?: number | string
   /**
    * Callback fired when the component requests to be closed.
    */
@@ -76,7 +76,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
       color,
       delay = 5000,
       index,
-      key,
+      innerKey,
       visible = false,
       onClose,
       onShow,
@@ -143,7 +143,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
               onMouseEnter={() => clearTimeout(timeout.current)}
               onMouseLeave={() => _autohide()}
               {...rest}
-              key={key}
+              key={innerKey}
               ref={forkedRef}
             >
               {children}
@@ -163,7 +163,10 @@ CToast.propTypes = {
   color: colorPropType,
   delay: PropTypes.number,
   index: PropTypes.number,
-  key: PropTypes.number,
+  innerKey: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ]),
   onClose: PropTypes.func,
   onShow: PropTypes.func,
   visible: PropTypes.bool,

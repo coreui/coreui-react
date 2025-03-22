@@ -1,0 +1,74 @@
+---
+title: React Button Group Component
+name: Button group
+description: React button group component allows to group a series of buttons and power them with JavaScript.
+route: /components/button-group/
+other_frameworks: button-group
+---
+
+## How to use React Button Group Component.
+
+Wrap a series of `<CButton>` components in `<CButtonGroup>`.
+
+<ExampleSnippet component="ButtonGroupExample" componentName="React Button Group" />
+
+<Callout color="info" title={<>Ensure the correct <code>role</code> and provide a label</>}>
+  For assistive technologies (ex. screen readers) to communicate that a series of buttons are grouped, a proper `role` attribute has to be provided. For button groups, this should be `role="group"`, while toolbars should have a `role="toolbar"`.
+  
+  Besides, groups and toolbars should be provided an understandable label, as most assistive technologies will otherwise not declare them, despite the appearance of the specific role attribute. In the following examples provided here, we apply `aria-label`, but options such as `aria-labelledby` can also be used.
+</Callout>
+
+These classes can also be added to groups of links, as an alternative to the [`CNav`](./../navs-tabs/#base-nav) components.
+
+<ExampleSnippet component="ButtonGroup2Example" componentName="React Button Group" />
+
+## Mixed styles
+
+<ExampleSnippet component="ButtonGroupMixedStylesExample" componentName="React Button Group" />
+
+## Outlined styles
+
+<ExampleSnippet component="ButtonGroupOutlinedStylesExample" componentName="React Button Group" />
+
+## Checkbox and radio button groups
+
+Combine button-like checkbox and radio toggle buttons into a seamless looking button group.
+
+<ExampleSnippet component="ButtonGroupCheckboxAndRadioExample" componentName="React Button Group" />
+
+<ExampleSnippet component="ButtonGroupCheckboxAndRadio2Example" componentName="React Button Group" />
+
+## Button toolbar
+
+Join sets of button groups into button toolbars for more complicated components. Use utility classes as needed to space out groups, buttons, and more.
+
+<ExampleSnippet component="ButtonToolbarExample" componentName="React Button Group" />
+
+Feel free to combine input groups with button groups in your toolbars. Similar to the example above, you’ll likely need some utilities through to space items correctly.
+
+<ExampleSnippet component="ButtonToolbar2Example" componentName="React Button Group" />
+
+## Sizing
+
+Alternatively, of implementing button sizing classes to each button in a group, set `size` property to all `<CButtonGroup>`'s, including each one when nesting multiple groups.
+
+<ExampleSnippet component="ButtonGroupSizingExample" componentName="React Button Group" />
+
+## Nesting
+
+Put a `<CButtonGroup>` inside another `<CButtonGroup>` when you need dropdown menus combined with a series of buttons.
+
+<ExampleSnippet component="ButtonGroupNestingExample" componentName="React Button Group" />
+
+## Vertical variation
+
+Create a set of buttons that appear vertically stacked rather than horizontally. **Split button dropdowns are not supported here.**
+
+<ExampleSnippet component="ButtonGroupVerticalExample" componentName="React Button Group" />
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CButtonGroup /&gt;](./api/#cbuttongroup)
+- [&lt;CButtonToolbar /&gt;](./api/#cbuttontoolbar)

@@ -7,12 +7,13 @@ exports[`CNavGroup customize 1`] = `
   >
     <a
       class="nav-link nav-group-toggle"
+      href="#"
     >
       anchorText
     </a>
     <ul
       class="nav-group-items"
-      style="display: block; height: 0px;"
+      style="height: 0px; display: block;"
     />
   </li>
 </div>
@@ -25,11 +26,13 @@ exports[`loads and displays CNavGroup component 1`] = `
   >
     <a
       class="nav-link nav-group-toggle"
+      href="#"
     >
       anchorText
     </a>
     <ul
       class="nav-group-items"
+      style="height: 0px;"
     />
   </li>
 </div>

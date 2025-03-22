@@ -58,7 +58,7 @@ export const CNavGroup: PolymorphicRefForwardingComponent<'li', CNavGroupProps> 
   HTMLDivElement | HTMLLIElement,
   CNavGroupProps
 >(({ children, as: Component = 'li', className, compact, idx, toggler, visible, ...rest }, ref) => {
-  const [height, setHeight] = useState<number | string>()
+  const [height, setHeight] = useState<number | string>(0)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const navItemsRef = useRef<any>(null)
 
@@ -124,7 +124,11 @@ export const CNavGroup: PolymorphicRefForwardingComponent<'li', CNavGroupProps> 
       ref={ref}
     >
       {toggler && (
-        <a className="nav-link nav-group-toggle" onClick={(event) => handleTogglerOnCLick(event)}>
+        <a
+          className="nav-link nav-group-toggle"
+          href="#"
+          onClick={(event) => handleTogglerOnCLick(event)}
+        >
           {toggler}
         </a>
       )}

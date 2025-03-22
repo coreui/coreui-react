@@ -5,17 +5,185 @@ import { CTooltip } from '@coreui/react'
 import CTooltip from '@coreui/react/src/components/tooltip/CTooltip'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **animation** **_4.9.0+_** | Apply a CSS fade transition to the tooltip. | `boolean` | true |
-| **className** | A string of all className you want applied to the component. | `string` | - |
-| **container** **_v4.11.0+_** | Appends the react tooltip to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`. | `Element` \| `(() => Element)` | - |
-| **content** | Content node for your component. | `ReactNode` | - |
-| **delay** **_4.9.0+_** | The delay for displaying and hiding the tooltip (in milliseconds). When a numerical value is provided, the delay applies to both the hide and show actions. The object structure for specifying the delay is as follows: delay: `{ 'show': 500, 'hide': 100 }`. | `number` \| `{ show: number; hide: number; }` | 0 |
-| **fallbackPlacements** **_4.9.0+_** | Specify the desired order of fallback placements by providing a list of placements as an array. The placements should be prioritized based on preference. | `Placements` \| `Placements[]` | ['top', 'right', 'bottom', 'left'] |
-| **offset** | Offset of the tooltip relative to its target. | `[number, number]` | [0, 6] |
-| **onHide** | Callback fired when the component requests to be hidden. | `() => void` | - |
-| **onShow** | Callback fired when the component requests to be shown. | `() => void` | - |
-| **placement** | Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property. | `'auto'` \| `'top'` \| `'bottom'` \| `'right'` \| `'left'` | top |
-| **trigger** | Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them. | `'hover'` \| `'focus'` \| `'click'` | ['hover', 'focus'] |
-| **visible** | Toggle the visibility of tooltip component. | `boolean` | - |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="ctooltip-animation">
+        <td className="text-primary fw-semibold">animation<a href="#ctooltip-animation" aria-label="CTooltip animation permalink" className="anchor-link after">#</a><span className="badge bg-success">4.9.0+</span></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Enables or disables the CSS fade transition for the React Tooltip.</p>
+        </td>
+      </tr>
+      <tr id="ctooltip-class-name">
+        <td className="text-primary fw-semibold">className<a href="#ctooltip-class-name" aria-label="CTooltip className permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Adds a custom class name to the React Tooltip container. Useful for overriding default styles or applying additional design choices.</p>
+        </td>
+      </tr>
+      <tr id="ctooltip-container">
+        <td className="text-primary fw-semibold">container<a href="#ctooltip-container" aria-label="CTooltip container permalink" className="anchor-link after">#</a><span className="badge bg-success">4.11.0+</span></td>
+        <td><code>{`document.body`}</code></td>
+        <td><code>{`Element`}</code>, <code>{`DocumentFragment`}</code>, <code>{`(() => Element | DocumentFragment)`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Appends the React Tooltip to a specific element instead of the default <code>{`document.body`}</code>. You may pass:</p>
+<ul>
+<li>A DOM element (<code>{`HTMLElement`}</code> or <code>{`DocumentFragment`}</code>)</li>
+<li>A function that returns a single element</li>
+<li><code>{`null`}</code></li>
+</ul>
+        <JSXDocs code={`<CTooltip container={document.getElementById('my-container')}>...</CTooltip>`} />
+        </td>
+      </tr>
+      <tr id="ctooltip-content">
+        <td className="text-primary fw-semibold">content<a href="#ctooltip-content" aria-label="CTooltip content permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Content to be displayed within the React Tooltip. Can be a string or any valid React node.</p>
+        </td>
+      </tr>
+      <tr id="ctooltip-delay">
+        <td className="text-primary fw-semibold">delay<a href="#ctooltip-delay" aria-label="CTooltip delay permalink" className="anchor-link after">#</a><span className="badge bg-success">4.9.0+</span></td>
+        <td><code>{`0`}</code></td>
+        <td><code>{`number`}</code>, <code>{`{ show: number; hide: number; }`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The delay (in milliseconds) before showing or hiding the React Tooltip.</p>
+<ul>
+<li>If provided as a number, the delay is applied to both "show" and "hide".</li>
+<li>If provided as an object, it should have distinct "show" and "hide" values.</li>
+</ul>
+        <JSXDocs code={`// Delays 300ms on both show and hide
+<CTooltip delay={300}>...</CTooltip>
+
+// Delays 500ms on show and 100ms on hide
+<CTooltip delay={{ show: 500, hide: 100 }}>...</CTooltip>`} />
+        </td>
+      </tr>
+      <tr id="ctooltip-fallback-placements">
+        <td className="text-primary fw-semibold">fallbackPlacements<a href="#ctooltip-fallback-placements" aria-label="CTooltip fallbackPlacements permalink" className="anchor-link after">#</a><span className="badge bg-success">4.9.0+</span></td>
+        <td><code>{`['top', 'right', 'bottom', 'left']`}</code></td>
+        <td><code>{`'top', 'right', 'bottom', 'left'`}</code>, <code>{`('top', 'right', 'bottom', 'left')[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Array of fallback placements for the React Tooltip to use when the preferred placement cannot be achieved. These placements are tried in order.</p>
+        </td>
+      </tr>
+      <tr id="ctooltip-offset">
+        <td className="text-primary fw-semibold">offset<a href="#ctooltip-offset" aria-label="CTooltip offset permalink" className="anchor-link after">#</a></td>
+        <td><code>{`[0, 6]`}</code></td>
+        <td><code>{`[number, number]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Adjusts the offset of the React Tooltip relative to its target. Expects a tuple <code>{`[x-axis, y-axis]`}</code>.</p>
+        <JSXDocs code={`// Offset the menu 0px in X and 10px in Y direction
+<CTooltip offset={[0, 10]}>...</CTooltip>
+
+// Offset the menu 5px in both X and Y direction
+<CTooltip offset={[5, 5]}>...</CTooltip>`} />
+        </td>
+      </tr>
+      <tr id="ctooltip-on-hide">
+        <td className="text-primary fw-semibold">onHide<a href="#ctooltip-on-hide" aria-label="CTooltip onHide permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`() => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Callback fired immediately after the React Tooltip is hidden.</p>
+        </td>
+      </tr>
+      <tr id="ctooltip-on-show">
+        <td className="text-primary fw-semibold">onShow<a href="#ctooltip-on-show" aria-label="CTooltip onShow permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`() => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Callback fired immediately after the React Tooltip is shown.</p>
+        </td>
+      </tr>
+      <tr id="ctooltip-placement">
+        <td className="text-primary fw-semibold">placement<a href="#ctooltip-placement" aria-label="CTooltip placement permalink" className="anchor-link after">#</a></td>
+        <td><code>{`top`}</code></td>
+        <td><code>{`'auto'`}</code>, <code>{`'top'`}</code>, <code>{`'bottom'`}</code>, <code>{`'right'`}</code>, <code>{`'left'`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Initial placement of the React Tooltip. Note that Popper.js modifiers may alter this placement automatically if there's insufficient space in the chosen position.</p>
+        </td>
+      </tr>
+      <tr id="ctooltip-popper-config">
+        <td className="text-primary fw-semibold">popperConfig<a href="#ctooltip-popper-config" aria-label="CTooltip popperConfig permalink" className="anchor-link after">#</a><span className="badge bg-success">5.5.0+</span></td>
+        <td>-</td>
+        <td><code>{`Partial\<Options>`}</code>, <code>{`((defaultPopperConfig: Partial\<Options>) => Partial\<Options>)`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Customize the Popper.js configuration used to position the React Tooltip. Pass either an object or a function returning a modified config. <a href="https://popper.js.org/docs/v2/constructors/#options">Learn more</a></p>
+        <JSXDocs code={`<CTooltip
+  popperConfig={(defaultConfig) => ({
+    ...defaultConfig,
+    strategy: 'fixed',
+    modifiers: [
+      ...defaultConfig.modifiers,
+      { name: 'computeStyles', options: { adaptive: false } },
+    ],
+  })}
+>...</CTooltip>`} />
+        </td>
+      </tr>
+      <tr id="ctooltip-trigger">
+        <td className="text-primary fw-semibold">trigger<a href="#ctooltip-trigger" aria-label="CTooltip trigger permalink" className="anchor-link after">#</a></td>
+        <td><code>{`['hover', 'focus']`}</code></td>
+        <td><code>{`'hover'`}</code>, <code>{`'focus'`}</code>, <code>{`'click'`}</code>, <code>{`('hover' | 'focus' | 'click')[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Determines the events that toggle the visibility of the React Tooltip. Can be a single trigger or an array of triggers.</p>
+        <JSXDocs code={`// Hover-only tooltip
+<CTooltip trigger="hover">...</CTooltip>
+
+// Hover + click combined
+<CTooltip trigger={['hover', 'click']}>...</CTooltip>`} />
+        </td>
+      </tr>
+      <tr id="ctooltip-visible">
+        <td className="text-primary fw-semibold">visible<a href="#ctooltip-visible" aria-label="CTooltip visible permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Controls the visibility of the React Tooltip.</p>
+<ul>
+<li><code>{`true`}</code> to show the tooltip.</li>
+<li><code>{`false`}</code> to hide the tooltip.</li>
+</ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

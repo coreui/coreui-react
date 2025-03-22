@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { CButton } from '@coreui/react/src/index'
+import { CButton } from '@coreui/react'
 
-import Seo from './../components/Seo'
+import Seo from '../components/Seo'
 
 const NotFoundPage = () => {
   const { site } = useStaticQuery(query)

@@ -5,18 +5,198 @@ import { CPopover } from '@coreui/react'
 import CPopover from '@coreui/react/src/components/popover/CPopover'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **animation** **_4.9.0+_** | Apply a CSS fade transition to the popover. | `boolean` | true |
-| **className** | A string of all className you want applied to the component. | `string` | - |
-| **container** **_v4.11.0+_** | Appends the react popover to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`. | `Element` \| `(() => Element)` | - |
-| **content** | Content node for your component. | `ReactNode` | - |
-| **delay** **_4.9.0+_** | The delay for displaying and hiding the popover (in milliseconds). When a numerical value is provided, the delay applies to both the hide and show actions. The object structure for specifying the delay is as follows: delay: `{ 'show': 500, 'hide': 100 }`. | `number` \| `{ show: number; hide: number; }` | 0 |
-| **fallbackPlacements** **_4.9.0+_** | Specify the desired order of fallback placements by providing a list of placements as an array. The placements should be prioritized based on preference. | `Placements` \| `Placements[]` | ['top', 'right', 'bottom', 'left'] |
-| **offset** | Offset of the popover relative to its target. | `[number, number]` | [0, 8] |
-| **onHide** | Callback fired when the component requests to be hidden. | `() => void` | - |
-| **onShow** | Callback fired when the component requests to be shown. | `() => void` | - |
-| **placement** | Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property. | `'auto'` \| `'top'` \| `'bottom'` \| `'right'` \| `'left'` | top |
-| **title** | Title node for your component. | `ReactNode` | - |
-| **trigger** | Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them. | `'hover'` \| `'focus'` \| `'click'` | click |
-| **visible** | Toggle the visibility of popover component. | `boolean` | - |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="cpopover-animation">
+        <td className="text-primary fw-semibold">animation<a href="#cpopover-animation" aria-label="CPopover animation permalink" className="anchor-link after">#</a><span className="badge bg-success">4.9.0+</span></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Adds a fade transition animation to the React Popover.</p>
+        </td>
+      </tr>
+      <tr id="cpopover-class-name">
+        <td className="text-primary fw-semibold">className<a href="#cpopover-class-name" aria-label="CPopover className permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Custom class name(s) for additional styling.</p>
+        </td>
+      </tr>
+      <tr id="cpopover-container">
+        <td className="text-primary fw-semibold">container<a href="#cpopover-container" aria-label="CPopover container permalink" className="anchor-link after">#</a><span className="badge bg-success">4.11.0+</span></td>
+        <td><code>{`document.body`}</code></td>
+        <td><code>{`Element`}</code>, <code>{`DocumentFragment`}</code>, <code>{`(() => Element | DocumentFragment)`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Defines the container element to which the React Popover is appended.<br />
+Accepts:</p>
+<ul>
+<li>A DOM element (<code>{`HTMLElement`}</code> or <code>{`DocumentFragment`}</code>)</li>
+<li>A function that returns a single element</li>
+<li><code>{`null`}</code> (defaults to <code>{`document.body`}</code>)</li>
+</ul>
+        <JSXDocs code={`<CPopover container={document.getElementById('my-container')}>...</CPopover>`} />
+        </td>
+      </tr>
+      <tr id="cpopover-content">
+        <td className="text-primary fw-semibold">content<a href="#cpopover-content" aria-label="CPopover content permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Main content of the React Popover. It can be a string or any valid React node.</p>
+        </td>
+      </tr>
+      <tr id="cpopover-delay">
+        <td className="text-primary fw-semibold">delay<a href="#cpopover-delay" aria-label="CPopover delay permalink" className="anchor-link after">#</a><span className="badge bg-success">4.9.0+</span></td>
+        <td><code>{`0`}</code></td>
+        <td><code>{`number`}</code>, <code>{`{ show: number; hide: number; }`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Delay (in milliseconds) before showing or hiding the React Popover.</p>
+<ul>
+<li>If a number is provided, that delay applies to both "show" and "hide".</li>
+<li>If an object is provided, use separate values for "show" and "hide".</li>
+</ul>
+        <JSXDocs code={`// Delays 300ms on both show and hide
+<CPopover delay={300}>...</CPopover>
+
+// Delays 500ms on show and 100ms on hide
+<CPopover delay={{ show: 500, hide: 100 }}>...</CPopover>`} />
+        </td>
+      </tr>
+      <tr id="cpopover-fallback-placements">
+        <td className="text-primary fw-semibold">fallbackPlacements<a href="#cpopover-fallback-placements" aria-label="CPopover fallbackPlacements permalink" className="anchor-link after">#</a><span className="badge bg-success">4.9.0+</span></td>
+        <td><code>{`['top', 'right', 'bottom', 'left']`}</code></td>
+        <td><code>{`'top', 'right', 'bottom', 'left'`}</code>, <code>{`('top', 'right', 'bottom', 'left')[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Specifies the fallback placements when the preferred <code>{`placement`}</code> cannot be met.</p>
+        </td>
+      </tr>
+      <tr id="cpopover-offset">
+        <td className="text-primary fw-semibold">offset<a href="#cpopover-offset" aria-label="CPopover offset permalink" className="anchor-link after">#</a></td>
+        <td><code>{`[0, 8]`}</code></td>
+        <td><code>{`[number, number]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Offset of the React Popover relative to its toggle element, in the form <code>{`[x, y]`}</code>.</p>
+        <JSXDocs code={`// Offset the menu 0px in X and 10px in Y direction
+<CPopover offset={[0, 10]}>...</CPopover>
+
+// Offset the menu 5px in both X and Y direction
+<CPopover offset={[5, 5]}>...</CPopover>`} />
+        </td>
+      </tr>
+      <tr id="cpopover-on-hide">
+        <td className="text-primary fw-semibold">onHide<a href="#cpopover-on-hide" aria-label="CPopover onHide permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`() => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Invoked when the React Popover is about to hide.</p>
+        </td>
+      </tr>
+      <tr id="cpopover-on-show">
+        <td className="text-primary fw-semibold">onShow<a href="#cpopover-on-show" aria-label="CPopover onShow permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`() => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Invoked when the React Popover is about to show.</p>
+        </td>
+      </tr>
+      <tr id="cpopover-placement">
+        <td className="text-primary fw-semibold">placement<a href="#cpopover-placement" aria-label="CPopover placement permalink" className="anchor-link after">#</a></td>
+        <td><code>{`top`}</code></td>
+        <td><code>{`'auto'`}</code>, <code>{`'top'`}</code>, <code>{`'bottom'`}</code>, <code>{`'right'`}</code>, <code>{`'left'`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Placement of the React Popover. Popper.js may override this based on available space.</p>
+        </td>
+      </tr>
+      <tr id="cpopover-popper-config">
+        <td className="text-primary fw-semibold">popperConfig<a href="#cpopover-popper-config" aria-label="CPopover popperConfig permalink" className="anchor-link after">#</a><span className="badge bg-success">5.5.0+</span></td>
+        <td>-</td>
+        <td><code>{`Partial\<Options>`}</code>, <code>{`((defaultPopperConfig: Partial\<Options>) => Partial\<Options>)`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Allows customization of the Popper.js configuration for the React Popover.<br />
+Can be an object or a function returning a modified configuration.<br />
+<a href="https://popper.js.org/docs/v2/constructors/#options">Learn more</a></p>
+        <JSXDocs code={`<CPopover
+  popperConfig={(defaultConfig) => ({
+    ...defaultConfig,
+    strategy: 'fixed',
+    modifiers: [
+      ...defaultConfig.modifiers,
+      { name: 'computeStyles', options: { adaptive: false } },
+    ],
+  })}
+>...</CPopover>`} />
+        </td>
+      </tr>
+      <tr id="cpopover-title">
+        <td className="text-primary fw-semibold">title<a href="#cpopover-title" aria-label="CPopover title permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Title for the React Popover header. Can be a string or any valid React node.</p>
+        </td>
+      </tr>
+      <tr id="cpopover-trigger">
+        <td className="text-primary fw-semibold">trigger<a href="#cpopover-trigger" aria-label="CPopover trigger permalink" className="anchor-link after">#</a></td>
+        <td><code>{`click`}</code></td>
+        <td><code>{`'hover'`}</code>, <code>{`'focus'`}</code>, <code>{`'click'`}</code>, <code>{`('hover' | 'focus' | 'click')[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Determines which events trigger the visibility of the React Popover. Can be a single trigger or an array of triggers.</p>
+        <JSXDocs code={`// Hover-only tooltip
+<CPopover trigger="hover">...</CPopover>
+
+// Hover + click combined
+<CPopover trigger={['hover', 'click']}>...</CPopover>`} />
+        </td>
+      </tr>
+      <tr id="cpopover-visible">
+        <td className="text-primary fw-semibold">visible<a href="#cpopover-visible" aria-label="CPopover visible permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Controls the visibility of the React Popover.</p>
+<ul>
+<li><code>{`true`}</code> shows the popover.</li>
+<li><code>{`false`}</code> hides the popover.</li>
+</ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

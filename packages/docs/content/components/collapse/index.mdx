@@ -1,0 +1,35 @@
+---
+title: React Collapse Component
+name: Collapse
+description: React collapse component toggles the visibility of content across your project with a few classes and some scripts. Useful for a large amount of content.
+route: /components/collapse/
+other_frameworks: collapse
+---
+
+## How it works
+
+The collapse component is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. Collapsing an element will animate the `height` from its current value to `0`. Given how CSS handles animations, you cannot use `padding` on a `.collapse` element. Instead, use the class as an independent wrapping element.
+
+## Example
+
+You can use a link or a button component.
+
+<ExampleSnippet component="CollapseExample" componentName="React Collapse" />
+
+## Horizontal
+
+The collapse plugin also supports horizontal collapsing. Add the `horizontal` property to transition the `width` instead of `height` and set a `width` on the immediate child element.
+
+<ExampleSnippet component="CollapseHorizontalExample" componentName="React Collapse" />
+
+## Multiple targets
+
+A `<CButton>` can show and hide multiple elements.
+
+<ExampleSnippet component="CollapseMultipleTargetsExample" componentName="React Collapse" />
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CCollapse /&gt;](./api/#ccollapse)

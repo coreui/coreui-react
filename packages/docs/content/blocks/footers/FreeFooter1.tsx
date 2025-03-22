@@ -3,9 +3,10 @@ import { cibFacebookF, cibGithub, cibInstagram, cibLinkedin, cibYoutube } from '
 import CIcon from '@coreui/icons-react'
 import { CCol, CRow } from '@coreui/react'
 
-import CoreUISignetImg from './../../assets/images/brand/coreui-signet.svg'
+import CoreUISignetImg from './../assets/images/brand/coreui-signet.svg'
 
 export default function FreeFooter1() {
+  console.log(CoreUISignetImg)
   return (
     <div className="p-5">
       <CRow className="py-3">

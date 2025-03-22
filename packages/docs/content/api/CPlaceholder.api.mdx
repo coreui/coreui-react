@@ -5,16 +5,126 @@ import { CPlaceholder } from '@coreui/react'
 import CPlaceholder from '@coreui/react/src/components/placeholder/CPlaceholder'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **animation** | Set animation type to better convey the perception of something being actively loaded. | `'glow'` \| `'wave'` | - |
-| **as** | Component used for the root node. Either a string to use a HTML element or a component. | `(ElementType & 'symbol')` \| `(ElementType & 'object')` \| `(ElementType & 'span')` \| `(ElementType & 'slot')` \| `(ElementType & 'style')` \| `... 174 more ...` \| `(ElementType & FunctionComponent<...>)` | - |
-| **className** | A string of all className you want applied to the component. | `string` | - |
-| **color** | Sets the color context of the component to one of CoreUI’s themed colors. | `'primary'` \| `'secondary'` \| `'success'` \| `'danger'` \| `'warning'` \| `'info'` \| `'dark'` \| `'light'` \| `string` | - |
-| **lg** | The number of columns on large devices (\<1200px). | `number` | - |
-| **md** | The number of columns on medium devices (\<992px). | `number` | - |
-| **size** | Size the component extra small, small, or large. | `'xs'` \| `'sm'` \| `'lg'` | - |
-| **sm** | The number of columns on small devices (\<768px). | `number` | - |
-| **xl** | The number of columns on X-Large devices (\<1400px). | `number` | - |
-| **xs** | The number of columns on extra small devices (\<576px). | `number` | - |
-| **xxl** | The number of columns on XX-Large devices (≥1400px). | `number` | - |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="cplaceholder-animation">
+        <td className="text-primary fw-semibold">animation<a href="#cplaceholder-animation" aria-label="CPlaceholder animation permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`'glow'`}</code>, <code>{`'wave'`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Set animation type to better convey the perception of something being actively loaded.</p>
+        </td>
+      </tr>
+      <tr id="cplaceholder-as">
+        <td className="text-primary fw-semibold">as<a href="#cplaceholder-as" aria-label="CPlaceholder as permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`(ElementType & 'symbol')`}</code>, <code>{`(ElementType & 'object')`}</code>, <code>{`(ElementType & 'span')`}</code>, <code>{`(ElementType & 'slot')`}</code>, <code>{`(ElementType & 'style')`}</code>, <code>{`... 174 more ...`}</code>, <code>{`(ElementType & FunctionComponent\<...>)`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Component used for the root node. Either a string to use a HTML element or a component.</p>
+        </td>
+      </tr>
+      <tr id="cplaceholder-class-name">
+        <td className="text-primary fw-semibold">className<a href="#cplaceholder-class-name" aria-label="CPlaceholder className permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>A string of all className you want applied to the component.</p>
+        </td>
+      </tr>
+      <tr id="cplaceholder-color">
+        <td className="text-primary fw-semibold">color<a href="#cplaceholder-color" aria-label="CPlaceholder color permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`'primary'`}</code>, <code>{`'secondary'`}</code>, <code>{`'success'`}</code>, <code>{`'danger'`}</code>, <code>{`'warning'`}</code>, <code>{`'info'`}</code>, <code>{`'dark'`}</code>, <code>{`'light'`}</code>, <code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets the color context of the component to one of CoreUI’s themed colors.</p>
+        </td>
+      </tr>
+      <tr id="cplaceholder-lg">
+        <td className="text-primary fw-semibold">lg<a href="#cplaceholder-lg" aria-label="CPlaceholder lg permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`number`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The number of columns on large devices (&lt;1200px).</p>
+        </td>
+      </tr>
+      <tr id="cplaceholder-md">
+        <td className="text-primary fw-semibold">md<a href="#cplaceholder-md" aria-label="CPlaceholder md permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`number`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The number of columns on medium devices (&lt;992px).</p>
+        </td>
+      </tr>
+      <tr id="cplaceholder-size">
+        <td className="text-primary fw-semibold">size<a href="#cplaceholder-size" aria-label="CPlaceholder size permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`'xs'`}</code>, <code>{`'sm'`}</code>, <code>{`'lg'`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Size the component extra small, small, or large.</p>
+        </td>
+      </tr>
+      <tr id="cplaceholder-sm">
+        <td className="text-primary fw-semibold">sm<a href="#cplaceholder-sm" aria-label="CPlaceholder sm permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`number`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The number of columns on small devices (&lt;768px).</p>
+        </td>
+      </tr>
+      <tr id="cplaceholder-xl">
+        <td className="text-primary fw-semibold">xl<a href="#cplaceholder-xl" aria-label="CPlaceholder xl permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`number`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The number of columns on X-Large devices (&lt;1400px).</p>
+        </td>
+      </tr>
+      <tr id="cplaceholder-xs">
+        <td className="text-primary fw-semibold">xs<a href="#cplaceholder-xs" aria-label="CPlaceholder xs permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`number`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The number of columns on extra small devices (&lt;576px).</p>
+        </td>
+      </tr>
+      <tr id="cplaceholder-xxl">
+        <td className="text-primary fw-semibold">xxl<a href="#cplaceholder-xxl" aria-label="CPlaceholder xxl permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`number`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The number of columns on XX-Large devices (≥1400px).</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

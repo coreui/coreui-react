@@ -5,17 +5,136 @@ import { CCarousel } from '@coreui/react'
 import CCarousel from '@coreui/react/src/components/carousel/CCarousel'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **activeIndex** | index of the active item. | `number` | 0 |
-| **className** | A string of all className you want applied to the base component. | `string` | - |
-| **controls** | Adding in the previous and next controls. | `boolean` | - |
-| **dark** | Add darker controls, indicators, and captions. | `boolean` | - |
-| **indicators** | Adding indicators at the bottom of the carousel for each item. | `boolean` | - |
-| **interval** | The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle. | `number` \| `boolean` | 5000 |
-| **onSlid** | Callback fired when a slide transition end. | `(active: number, direction: string) => void` | - |
-| **onSlide** | Callback fired when a slide transition starts. | `(active: number, direction: string) => void` | - |
-| **pause** | If set to 'hover', pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave. If set to false, hovering over the carousel won't pause it. | `boolean` \| `'hover'` | hover |
-| **touch** **_4.5.0+_** | Set whether the carousel should support left/right swipe interactions on touchscreen devices. | `boolean` | true |
-| **transition** | Set type of the transition. | `'slide'` \| `'crossfade'` | - |
-| **wrap** | Set whether the carousel should cycle continuously or have hard stops. | `boolean` | true |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="ccarousel-active-index">
+        <td className="text-primary fw-semibold">activeIndex<a href="#ccarousel-active-index" aria-label="CCarousel activeIndex permalink" className="anchor-link after">#</a></td>
+        <td><code>{`0`}</code></td>
+        <td><code>{`number`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>index of the active item.</p>
+        </td>
+      </tr>
+      <tr id="ccarousel-class-name">
+        <td className="text-primary fw-semibold">className<a href="#ccarousel-class-name" aria-label="CCarousel className permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>A string of all className you want applied to the base component.</p>
+        </td>
+      </tr>
+      <tr id="ccarousel-controls">
+        <td className="text-primary fw-semibold">controls<a href="#ccarousel-controls" aria-label="CCarousel controls permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Adding in the previous and next controls.</p>
+        </td>
+      </tr>
+      <tr id="ccarousel-dark">
+        <td className="text-primary fw-semibold">dark<a href="#ccarousel-dark" aria-label="CCarousel dark permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Add darker controls, indicators, and captions.</p>
+        </td>
+      </tr>
+      <tr id="ccarousel-indicators">
+        <td className="text-primary fw-semibold">indicators<a href="#ccarousel-indicators" aria-label="CCarousel indicators permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Adding indicators at the bottom of the carousel for each item.</p>
+        </td>
+      </tr>
+      <tr id="ccarousel-interval">
+        <td className="text-primary fw-semibold">interval<a href="#ccarousel-interval" aria-label="CCarousel interval permalink" className="anchor-link after">#</a></td>
+        <td><code>{`5000`}</code></td>
+        <td><code>{`number`}</code>, <code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.</p>
+        </td>
+      </tr>
+      <tr id="ccarousel-on-slid">
+        <td className="text-primary fw-semibold">onSlid<a href="#ccarousel-on-slid" aria-label="CCarousel onSlid permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`(active: number, direction: string) => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Callback fired when a slide transition end.</p>
+        </td>
+      </tr>
+      <tr id="ccarousel-on-slide">
+        <td className="text-primary fw-semibold">onSlide<a href="#ccarousel-on-slide" aria-label="CCarousel onSlide permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`(active: number, direction: string) => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Callback fired when a slide transition starts.</p>
+        </td>
+      </tr>
+      <tr id="ccarousel-pause">
+        <td className="text-primary fw-semibold">pause<a href="#ccarousel-pause" aria-label="CCarousel pause permalink" className="anchor-link after">#</a></td>
+        <td><code>{`hover`}</code></td>
+        <td><code>{`boolean`}</code>, <code>{`'hover'`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>If set to 'hover', pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave. If set to false, hovering over the carousel won't pause it.</p>
+        </td>
+      </tr>
+      <tr id="ccarousel-touch">
+        <td className="text-primary fw-semibold">touch<a href="#ccarousel-touch" aria-label="CCarousel touch permalink" className="anchor-link after">#</a><span className="badge bg-success">4.5.0+</span></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Set whether the carousel should support left/right swipe interactions on touchscreen devices.</p>
+        </td>
+      </tr>
+      <tr id="ccarousel-transition">
+        <td className="text-primary fw-semibold">transition<a href="#ccarousel-transition" aria-label="CCarousel transition permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`'slide'`}</code>, <code>{`'crossfade'`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Set type of the transition.</p>
+        </td>
+      </tr>
+      <tr id="ccarousel-wrap">
+        <td className="text-primary fw-semibold">wrap<a href="#ccarousel-wrap" aria-label="CCarousel wrap permalink" className="anchor-link after">#</a></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Set whether the carousel should cycle continuously or have hard stops.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

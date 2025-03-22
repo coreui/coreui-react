@@ -10,7 +10,7 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
-} from '@coreui/react/src/index'
+} from '@coreui/react'
 
 export default function FreeStats2() {
   return (

@@ -1,5 +1,26 @@
-import { resolve } from 'node:path'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { createFilePath } from 'gatsby-source-filesystem'
+import { glob } from 'glob'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+export const onCreateWebpackConfig = ({ actions }) => {
+  const { setWebpackConfig } = actions
+
+  // Find all 'examples' directories
+  const examplePaths = glob.sync(resolve(__dirname, 'content/**/**/examples'))
+
+  // Create Webpack alias
+  setWebpackConfig({
+    resolve: {
+      alias: {
+        '@coreui/react': resolve(__dirname, '..', 'coreui-react/src/index.ts'),
+        '@example': examplePaths, // Adds all paths to a single alias
+      },
+    },
+  })
+}
 
 export const onCreateNode = async ({
   node,
@@ -34,11 +55,14 @@ export const createPages = async ({
 }) => {
   const result = await graphql(`
     query {
-      allMdx {
+      allMdx(filter: { fields: { slug: { regex: "/^(?!/api/).*/" } } }) {
         nodes {
           id
           fields {
             slug
+          }
+          frontmatter {
+            route
           }
           internal {
             contentFilePath
@@ -62,7 +86,11 @@ export const createPages = async ({
         component: `${resolve(`./src/templates/MdxLayout.tsx`)}?__contentFilePath=${
           node.internal.contentFilePath
         }`,
-        context: { id: node.id },
+        context: {
+          id: node.id,
+          route: node.frontmatter.route,
+          regex: `/^${node.frontmatter.route}/`,
+        },
       })
     })
     createRedirect({

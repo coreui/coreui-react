@@ -5,21 +5,176 @@ import { CFormCheck } from '@coreui/react'
 import CFormCheck from '@coreui/react/src/components/form/CFormCheck'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **button** | Create button-like checkboxes and radio buttons. | `ButtonObject` | - |
-| **className** | A string of all className you want applied to the component. | `string` | - |
-| **feedback** **_4.2.0+_** | Provide valuable, actionable feedback. | `ReactNode` | - |
-| **feedbackInvalid** **_4.2.0+_** | Provide valuable, actionable feedback. | `ReactNode` | - |
-| **feedbackValid** **_4.2.0+_** | Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`. | `ReactNode` | - |
-| **floatingLabel** **_4.2.0+_** | Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`. | `ReactNode` | - |
-| **hitArea** | Sets hit area to the full area of the component. | `'full'` | - |
-| **id** | The id global attribute defines an identifier (ID) that must be unique in the whole document. | `string` | - |
-| **indeterminate** | Input Checkbox indeterminate Property. | `boolean` | - |
-| **inline** | Group checkboxes or radios on the same horizontal row. | `boolean` | - |
-| **invalid** | Set component validation state to invalid. | `boolean` | - |
-| **label** | The element represents a caption for a component. | `ReactNode` | - |
-| **reverse** | Put checkboxes or radios on the opposite side. | `boolean` | - |
-| **tooltipFeedback** **_4.2.0+_** | Display validation feedback in a styled tooltip. | `boolean` | - |
-| **type** | Specifies the type of component. | `'checkbox'` \| `'radio'` | checkbox |
-| **valid** | Set component validation state to valid. | `boolean` | - |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="cformcheck-button">
+        <td className="text-primary fw-semibold">button<a href="#cformcheck-button" aria-label="CFormCheck button permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`ButtonObject`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Create button-like checkboxes and radio buttons.</p>
+        </td>
+      </tr>
+      <tr id="cformcheck-class-name">
+        <td className="text-primary fw-semibold">className<a href="#cformcheck-class-name" aria-label="CFormCheck className permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>A string of all className you want applied to the component.</p>
+        </td>
+      </tr>
+      <tr id="cformcheck-feedback">
+        <td className="text-primary fw-semibold">feedback<a href="#cformcheck-feedback" aria-label="CFormCheck feedback permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provide valuable, actionable feedback.</p>
+        </td>
+      </tr>
+      <tr id="cformcheck-feedback-invalid">
+        <td className="text-primary fw-semibold">feedbackInvalid<a href="#cformcheck-feedback-invalid" aria-label="CFormCheck feedbackInvalid permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provide valuable, actionable feedback.</p>
+        </td>
+      </tr>
+      <tr id="cformcheck-feedback-valid">
+        <td className="text-primary fw-semibold">feedbackValid<a href="#cformcheck-feedback-valid" aria-label="CFormCheck feedbackValid permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, <code>{`:invalid`}</code> and <code>{`:valid`}</code>.</p>
+        </td>
+      </tr>
+      <tr id="cformcheck-floating-label">
+        <td className="text-primary fw-semibold">floatingLabel<a href="#cformcheck-floating-label" aria-label="CFormCheck floatingLabel permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, <code>{`:invalid`}</code> and <code>{`:valid`}</code>.</p>
+        </td>
+      </tr>
+      <tr id="cformcheck-hit-area">
+        <td className="text-primary fw-semibold">hitArea<a href="#cformcheck-hit-area" aria-label="CFormCheck hitArea permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`'full'`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets hit area to the full area of the component.</p>
+        </td>
+      </tr>
+      <tr id="cformcheck-id">
+        <td className="text-primary fw-semibold">id<a href="#cformcheck-id" aria-label="CFormCheck id permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The id global attribute defines an identifier (ID) that must be unique in the whole document.</p>
+        </td>
+      </tr>
+      <tr id="cformcheck-indeterminate">
+        <td className="text-primary fw-semibold">indeterminate<a href="#cformcheck-indeterminate" aria-label="CFormCheck indeterminate permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Input Checkbox indeterminate Property.</p>
+        </td>
+      </tr>
+      <tr id="cformcheck-inline">
+        <td className="text-primary fw-semibold">inline<a href="#cformcheck-inline" aria-label="CFormCheck inline permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Group checkboxes or radios on the same horizontal row.</p>
+        </td>
+      </tr>
+      <tr id="cformcheck-invalid">
+        <td className="text-primary fw-semibold">invalid<a href="#cformcheck-invalid" aria-label="CFormCheck invalid permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Set component validation state to invalid.</p>
+        </td>
+      </tr>
+      <tr id="cformcheck-label">
+        <td className="text-primary fw-semibold">label<a href="#cformcheck-label" aria-label="CFormCheck label permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>The element represents a caption for a component.</p>
+        </td>
+      </tr>
+      <tr id="cformcheck-reverse">
+        <td className="text-primary fw-semibold">reverse<a href="#cformcheck-reverse" aria-label="CFormCheck reverse permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Put checkboxes or radios on the opposite side.</p>
+        </td>
+      </tr>
+      <tr id="cformcheck-tooltip-feedback">
+        <td className="text-primary fw-semibold">tooltipFeedback<a href="#cformcheck-tooltip-feedback" aria-label="CFormCheck tooltipFeedback permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Display validation feedback in a styled tooltip.</p>
+        </td>
+      </tr>
+      <tr id="cformcheck-type">
+        <td className="text-primary fw-semibold">type<a href="#cformcheck-type" aria-label="CFormCheck type permalink" className="anchor-link after">#</a></td>
+        <td><code>{`checkbox`}</code></td>
+        <td><code>{`'checkbox'`}</code>, <code>{`'radio'`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Specifies the type of component.</p>
+        </td>
+      </tr>
+      <tr id="cformcheck-valid">
+        <td className="text-primary fw-semibold">valid<a href="#cformcheck-valid" aria-label="CFormCheck valid permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Set component validation state to valid.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

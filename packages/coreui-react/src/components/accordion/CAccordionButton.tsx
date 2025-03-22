@@ -13,13 +13,14 @@ export interface CAccordionButtonProps extends HTMLAttributes<HTMLButtonElement>
 
 export const CAccordionButton = forwardRef<HTMLButtonElement, CAccordionButtonProps>(
   ({ children, className, ...rest }, ref) => {
-    const { visible, setVisible } = useContext(CAccordionItemContext)
+    const { id, visible, setVisible } = useContext(CAccordionItemContext)
 
     return (
       <button
         type="button"
         className={classNames('accordion-button', { collapsed: !visible }, className)}
-        aria-expanded={!visible}
+        aria-controls={id}
+        aria-expanded={visible}
         onClick={() => setVisible(!visible)}
         {...rest}
         ref={ref}

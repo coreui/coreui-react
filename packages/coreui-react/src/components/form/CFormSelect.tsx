@@ -7,6 +7,7 @@ import { CFormControlWrapper, CFormControlWrapperProps } from './CFormControlWra
 type Option = {
   disabled?: boolean
   label?: string
+  selected?: boolean
   value?: string
 }
 

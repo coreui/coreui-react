@@ -3,7 +3,7 @@ import { cibFacebookF, cibGithub, cibInstagram, cibLinkedin, cibYoutube } from '
 import CIcon from '@coreui/icons-react'
 import { CButton, CCol, CForm, CFormInput, CRow } from '@coreui/react'
 
-import CoreUISignetImg from './../../assets/images/brand/coreui-signet.svg'
+import CoreUISignetImg from './../assets/images/brand/coreui-signet.svg'
 
 export default function ProFooter1() {
   return (

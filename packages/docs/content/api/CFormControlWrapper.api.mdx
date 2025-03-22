@@ -5,15 +5,116 @@ import { CFormControlWrapper } from '@coreui/react'
 import CFormControlWrapper from '@coreui/react/src/components/form/CFormControlWrapper'
 ```
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| **feedback** **_4.2.0+_** | Provide valuable, actionable feedback. | `ReactNode` | - |
-| **feedbackInvalid** **_4.2.0+_** | Provide valuable, actionable feedback. | `ReactNode` | - |
-| **feedbackValid** **_4.2.0+_** | Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`. | `ReactNode` | - |
-| **floatingClassName** **_4.5.0+_** | A string of all className you want applied to the floating label wrapper. | `string` | - |
-| **floatingLabel** **_4.2.0+_** | Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`. | `ReactNode` | - |
-| **invalid** | Set component validation state to invalid. | `boolean` | - |
-| **label** **_4.2.0+_** | Add a caption for a component. | `ReactNode` | - |
-| **text** **_4.2.0+_** | Add helper text to the component. | `ReactNode` | - |
-| **tooltipFeedback** **_4.2.0+_** | Display validation feedback in a styled tooltip. | `boolean` | - |
-| **valid** | Set component validation state to valid. | `boolean` | - |
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="cformcontrolwrapper-feedback">
+        <td className="text-primary fw-semibold">feedback<a href="#cformcontrolwrapper-feedback" aria-label="CFormControlWrapper feedback permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provide valuable, actionable feedback.</p>
+        </td>
+      </tr>
+      <tr id="cformcontrolwrapper-feedback-invalid">
+        <td className="text-primary fw-semibold">feedbackInvalid<a href="#cformcontrolwrapper-feedback-invalid" aria-label="CFormControlWrapper feedbackInvalid permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provide valuable, actionable feedback.</p>
+        </td>
+      </tr>
+      <tr id="cformcontrolwrapper-feedback-valid">
+        <td className="text-primary fw-semibold">feedbackValid<a href="#cformcontrolwrapper-feedback-valid" aria-label="CFormControlWrapper feedbackValid permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, <code>{`:invalid`}</code> and <code>{`:valid`}</code>.</p>
+        </td>
+      </tr>
+      <tr id="cformcontrolwrapper-floating-class-name">
+        <td className="text-primary fw-semibold">floatingClassName<a href="#cformcontrolwrapper-floating-class-name" aria-label="CFormControlWrapper floatingClassName permalink" className="anchor-link after">#</a><span className="badge bg-success">4.5.0+</span></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>A string of all className you want applied to the floating label wrapper.</p>
+        </td>
+      </tr>
+      <tr id="cformcontrolwrapper-floating-label">
+        <td className="text-primary fw-semibold">floatingLabel<a href="#cformcontrolwrapper-floating-label" aria-label="CFormControlWrapper floatingLabel permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, <code>{`:invalid`}</code> and <code>{`:valid`}</code>.</p>
+        </td>
+      </tr>
+      <tr id="cformcontrolwrapper-invalid">
+        <td className="text-primary fw-semibold">invalid<a href="#cformcontrolwrapper-invalid" aria-label="CFormControlWrapper invalid permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Set component validation state to invalid.</p>
+        </td>
+      </tr>
+      <tr id="cformcontrolwrapper-label">
+        <td className="text-primary fw-semibold">label<a href="#cformcontrolwrapper-label" aria-label="CFormControlWrapper label permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Add a caption for a component.</p>
+        </td>
+      </tr>
+      <tr id="cformcontrolwrapper-text">
+        <td className="text-primary fw-semibold">text<a href="#cformcontrolwrapper-text" aria-label="CFormControlWrapper text permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Add helper text to the component.</p>
+        </td>
+      </tr>
+      <tr id="cformcontrolwrapper-tooltip-feedback">
+        <td className="text-primary fw-semibold">tooltipFeedback<a href="#cformcontrolwrapper-tooltip-feedback" aria-label="CFormControlWrapper tooltipFeedback permalink" className="anchor-link after">#</a><span className="badge bg-success">4.2.0+</span></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Display validation feedback in a styled tooltip.</p>
+        </td>
+      </tr>
+      <tr id="cformcontrolwrapper-valid">
+        <td className="text-primary fw-semibold">valid<a href="#cformcontrolwrapper-valid" aria-label="CFormControlWrapper valid permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Set component validation state to valid.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
