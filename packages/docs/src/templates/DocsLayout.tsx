@@ -61,16 +61,18 @@ const humanize = (text: string): string => {
 
 const getDescription = (location: Location, description: string) => {
   if (location.pathname.includes('api') || location.pathname.includes('styling')) {
-    const regex = /React\s[A-Z][A-Za-z]*/
+    const regex = /React\s+(.*?)\s+component/
     const parts = description.split(regex)
     const matches = description.match(regex)
+
+    console.log('parts', parts)
 
     if (matches && parts.length > 1) {
       return (
         <>
           {parts[0]}
-          <Link to="../">{matches[0]}</Link>
-          {parts[1]}
+          <Link to="../">React {parts[1]}</Link> component
+          {parts[2]}
         </>
       )
     }
