@@ -38,7 +38,7 @@ export const CTabPanel = forwardRef<HTMLDivElement, CTabPanelProps>(
   ({ children, className, itemKey, onHide, onShow, transition = true, visible, ...rest }, ref) => {
     const { _activeItemKey, id } = useContext(TabsContext)
 
-    const tabPaneRef = useRef()
+    const tabPaneRef = useRef(null)
     const forkedRef = useForkedRef(ref, tabPaneRef)
 
     const [_visible, setVisible] = useState(visible || _activeItemKey === itemKey)

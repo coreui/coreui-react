@@ -32,7 +32,7 @@ export interface CTabPaneProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CTabPane = forwardRef<HTMLDivElement, CTabPaneProps>(
   ({ children, className, onHide, onShow, transition = true, visible, ...rest }, ref) => {
-    const tabPaneRef = useRef()
+    const tabPaneRef = useRef(null)
     const forkedRef = useForkedRef(ref, tabPaneRef)
 
     return (

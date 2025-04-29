@@ -10,8 +10,8 @@ interface UsePopperOutput {
 }
 
 export const usePopper = (): UsePopperOutput => {
-  const _popper = useRef<Instance>()
-  const el = useRef<HTMLElement>()
+  const _popper = useRef<Instance>(undefined)
+  const el = useRef<HTMLElement>(null)
 
   const initPopper = (reference: HTMLElement, popper: HTMLElement, options: Partial<Options>) => {
     _popper.current = createPopper(reference, popper, options)

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { CConditionalPortal } from '../conditional-portal'
 
+import type { CToastProps } from './CToast'
+
 export interface CToasterProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * A string of all className you want applied to the base component.
@@ -27,20 +29,22 @@ export interface CToasterProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Adds new `CToast` to `CToaster`.
    */
-  push?: ReactElement
+  push?: ReactElement<CToastProps>
 }
 
 export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
   ({ children, className, placement, push, ...rest }, ref) => {
-    const [toasts, setToasts] = useState<ReactElement[]>([])
+    const [toasts, setToasts] = useState<ReactElement<CToastProps>[]>([])
     const index = useRef<number>(0)
 
     useEffect(() => {
       index.current++
-      push && addToast(push)
+      if (push) {
+        addToast(push)
+      }
     }, [push])
 
-    const addToast = (push: ReactElement) => {
+    const addToast = (push: ReactElement<CToastProps>) => {
       setToasts((state) => [
         ...state,
         React.cloneElement(push, {
@@ -67,18 +71,18 @@ export const CToaster = forwardRef<HTMLDivElement, CToasterProps>(
                 'start-50 translate-middle-x': placement && placement.includes('center'),
                 'end-0': placement && placement.includes('end'),
               },
-              className,
+              className
             )}
             {...rest}
             ref={ref}
           >
             {children}
-            {toasts.map((toast) => React.cloneElement(toast, { visible: true }))}
+            {toasts.map((toast, index) => React.cloneElement(toast, { visible: true, key: index }))}
           </div>
         ) : null}
       </CConditionalPortal>
     )
-  },
+  }
 )
 
 CToaster.propTypes = {

@@ -82,12 +82,12 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
       onShow,
       ...rest
     },
-    ref,
+    ref
   ) => {
-    const toastRef = useRef()
+    const toastRef = useRef(null)
     const forkedRef = useForkedRef(ref, toastRef)
     const [_visible, setVisible] = useState(false)
-    const timeout = useRef<number>()
+    const timeout = useRef<number>(undefined)
 
     useEffect(() => {
       setVisible(visible)
@@ -135,7 +135,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
                   'show showing': state === 'entering' || state === 'exiting',
                   show: state === 'entered',
                 },
-                className,
+                className
               )}
               aria-live="assertive"
               aria-atomic="true"
@@ -152,7 +152,7 @@ export const CToast = forwardRef<HTMLDivElement, CToastProps>(
         )}
       </Transition>
     )
-  },
+  }
 )
 
 CToast.propTypes = {
@@ -163,10 +163,7 @@ CToast.propTypes = {
   color: colorPropType,
   delay: PropTypes.number,
   index: PropTypes.number,
-  innerKey: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ]),
+  innerKey: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   onClose: PropTypes.func,
   onShow: PropTypes.func,
   visible: PropTypes.bool,

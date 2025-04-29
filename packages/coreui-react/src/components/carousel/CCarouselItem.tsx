@@ -29,7 +29,7 @@ export const CCarouselItem = forwardRef<HTMLDivElement, CCarouselItemProps>(
     const carouselItemRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, carouselItemRef)
 
-    const prevActive = useRef<boolean>()
+    const prevActive = useRef<boolean>(undefined)
     const [directionClassName, setDirectionClassName] = useState<string>()
     const [orderClassName, setOrderClassName] = useState<string>()
     const [activeClassName, setActiveClassName] = useState(active && 'active')
@@ -101,7 +101,7 @@ export const CCarouselItem = forwardRef<HTMLDivElement, CCarouselItemProps>(
           activeClassName,
           directionClassName,
           orderClassName,
-          className,
+          className
         )}
         ref={forkedRef}
         {...rest}
@@ -109,7 +109,7 @@ export const CCarouselItem = forwardRef<HTMLDivElement, CCarouselItemProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CCarouselItem.propTypes = {

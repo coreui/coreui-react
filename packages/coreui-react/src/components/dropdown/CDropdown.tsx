@@ -171,8 +171,8 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
 
 interface ContextProps extends CDropdownProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dropdownToggleRef: RefObject<any | undefined>
-  dropdownMenuRef: RefObject<HTMLDivElement | HTMLUListElement | undefined>
+  dropdownToggleRef: RefObject<any | null>
+  dropdownMenuRef: RefObject<HTMLDivElement | HTMLUListElement | null>
   setVisible: React.Dispatch<React.SetStateAction<boolean | undefined>>
   portal: boolean
 }
