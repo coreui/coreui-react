@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
 
-import { TabsContext } from './CTabs'
+import { CTabsContext } from './CTabsContext'
 import { useForkedRef } from '../../hooks'
 import { getTransitionDurationFromElement } from '../../utils'
 
@@ -36,7 +36,7 @@ export interface CTabPanelProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CTabPanel = forwardRef<HTMLDivElement, CTabPanelProps>(
   ({ children, className, itemKey, onHide, onShow, transition = true, visible, ...rest }, ref) => {
-    const { _activeItemKey, id } = useContext(TabsContext)
+    const { _activeItemKey, id } = useContext(CTabsContext)
 
     const tabPaneRef = useRef(null)
     const forkedRef = useForkedRef(ref, tabPaneRef)

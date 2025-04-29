@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { CTab, CTabContent, CTabList, CTabPanel, CTabs } from '@coreui/react'
 
-export const TabsUnstyledExample = () => {
+export const TabsControlledExample = () => {
+  const [activeTab, setActiveTab] = useState<number | string>('profile')
+
   return (
-    <CTabs defaultActiveItemKey="profile">
-      <CTabList>
+    <CTabs activeItemKey={activeTab} onChange={setActiveTab}>
+      <CTabList variant="tabs">
         <CTab itemKey="home">Home</CTab>
         <CTab itemKey="profile">Profile</CTab>
         <CTab itemKey="contact">Contact</CTab>

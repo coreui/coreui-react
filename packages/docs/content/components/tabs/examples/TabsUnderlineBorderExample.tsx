@@ -3,7 +3,7 @@ import { CTab, CTabContent, CTabList, CTabPanel, CTabs } from '@coreui/react'
 
 export const TabsUnderlineBorderExample = () => {
   return (
-    <CTabs activeItemKey={2}>
+    <CTabs defaultActiveItemKey={2}>
       <CTabList variant="underline-border">
         <CTab aria-controls="home-tab-pane" itemKey={1}>Home</CTab>
         <CTab aria-controls="profile-tab-pane" itemKey={2}>Profile</CTab>

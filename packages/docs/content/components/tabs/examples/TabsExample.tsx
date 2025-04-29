@@ -3,7 +3,7 @@ import { CTab, CTabContent, CTabList, CTabPanel, CTabs } from '@coreui/react'
 
 export const TabsExample = () => {
   return (
-    <CTabs activeItemKey="profile">
+    <CTabs defaultActiveItemKey="profile">
       <CTabList variant="tabs">
         <CTab itemKey="home">Home</CTab>
         <CTab itemKey="profile">Profile</CTab>

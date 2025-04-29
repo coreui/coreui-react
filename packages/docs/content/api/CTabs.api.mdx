@@ -22,7 +22,11 @@ import CTabs from '@coreui/react/src/components/tabs/CTabs'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>The active item key.</p>
+          <p>Controls the currently active tab.</p>
+<p>When provided, the component operates in a controlled mode.<br />
+You must handle tab switching manually by updating this prop.</p>
+        <JSXDocs code={`const [activeTab, setActiveTab] = useState(0);
+<CTabs activeItemKey={activeTab} onChange={setActiveTab} />`} />
         </td>
       </tr>
       <tr id="ctabs-class-name">
@@ -35,6 +39,19 @@ import CTabs from '@coreui/react/src/components/tabs/CTabs'
           <p>A string of all className you want applied to the base component.</p>
         </td>
       </tr>
+      <tr id="ctabs-default-active-item-key">
+        <td className="text-primary fw-semibold">defaultActiveItemKey<a href="#ctabs-default-active-item-key" aria-label="CTabs defaultActiveItemKey permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code>, <code>{`number`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets the initially active tab when the component mounts.</p>
+<p>After initialization, the component manages active tab changes internally.</p>
+<p>Use <code>{`defaultActiveItemKey`}</code> for uncontrolled usage.</p>
+        <JSXDocs code={`<CTabs defaultActiveItemKey={1} />`} />
+        </td>
+      </tr>
       <tr id="ctabs-on-change">
         <td className="text-primary fw-semibold">onChange<a href="#ctabs-on-change" aria-label="CTabs onChange permalink" className="anchor-link after">#</a></td>
         <td>-</td>
@@ -42,7 +59,12 @@ import CTabs from '@coreui/react/src/components/tabs/CTabs'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>The callback is fired when the active tab changes.</p>
+          <p>Callback fired when the active tab changes.</p>
+<ul>
+<li>In controlled mode (<code>{`activeItemKey`}</code> provided), you must update <code>{`activeItemKey`}</code> yourself based on the value received.</li>
+<li>In uncontrolled mode, this callback is called after internal state updates.</li>
+</ul>
+        <JSXDocs code={`<CTabs onChange={(key) => console.log('Tab changed to', key)} />`} />
         </td>
       </tr>
     </tbody>

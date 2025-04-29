@@ -3,7 +3,7 @@ import { CTab, CTabContent, CTabList, CTabPanel, CTabs } from '@coreui/react'
 
 export const TabsUnstyledFillAndJustify2Example = () => {
   return (
-    <CTabs activeItemKey={2}>
+    <CTabs defaultActiveItemKey={2}>
       <CTabList variant="tabs" layout="justified">
         <CTab aria-controls="home-tab-pane" itemKey={1}>Home</CTab>
         <CTab aria-controls="profile-tab-pane" itemKey={2}>Profile</CTab>

@@ -50,6 +50,26 @@ For equal-width elements, use `layout="justified"`. All horizontal space will be
 
 <ExampleSnippet component="TabsUnstyledFillAndJustify2Example" componentName="React Spinner" />
 
+Sure! Here's a polished, production-ready **documentation section** (Markdown-style) explaining the **controlled usage** of the `<CTabs>` component, with a clear example:
+
+---
+
+## Controlled Tabs
+
+Use the `activeItemKey` prop to control which tab is currently active. In this mode, the parent component is responsible for managing the active state and responding to user interactions via the `onChange` callback.
+
+This is useful when you need to synchronize the tab state with your application logic, such as routing or complex UI state management.
+
+**Key Points**
+
+- `activeItemKey` sets the currently active tab.
+- `onChange` receives the new `itemKey` when a tab is clicked.
+- You must manually update `activeItemKey` in your state based on `onChange`.
+
+> 💡 If you prefer the tabs to manage their own state, use `defaultActiveItemKey` instead.
+
+<ExampleSnippet component="TabsControlledExample" componentName="React Spinner" />
+
 
 ## Accessibility
 

@@ -2,7 +2,7 @@ import React, { forwardRef, HTMLAttributes, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { TabsContext } from './CTabs'
+import { CTabsContext } from './CTabsContext'
 
 export interface CTabProps extends HTMLAttributes<HTMLButtonElement> {
   /**
@@ -21,7 +21,7 @@ export interface CTabProps extends HTMLAttributes<HTMLButtonElement> {
 
 export const CTab = forwardRef<HTMLButtonElement, CTabProps>(
   ({ children, className, itemKey, ...rest }, ref) => {
-    const { _activeItemKey, setActiveItemKey, id } = useContext(TabsContext)
+    const { _activeItemKey, setActiveItemKey, id } = useContext(CTabsContext)
 
     const isActive = () => itemKey === _activeItemKey
 
