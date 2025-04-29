@@ -65,8 +65,6 @@ const getDescription = (location: Location, description: string) => {
     const parts = description.split(regex)
     const matches = description.match(regex)
 
-    console.log('parts', parts)
-
     if (matches && parts.length > 1) {
       return (
         <>
