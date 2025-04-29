@@ -25,7 +25,7 @@ export const CDropdownItemPlain: PolymorphicRefForwardingComponent<
         {children}
       </Component>
     )
-  },
+  }
 )
 
 CDropdownItemPlain.propTypes = {

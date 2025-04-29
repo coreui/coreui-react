@@ -38,7 +38,7 @@ export const CDropdownMenu: PolymorphicRefForwardingComponent<'ul', CDropdownMen
                 show: visible,
               },
               alignment && getAlignmentClassNames(alignment),
-              className,
+              className
             )}
             ref={forkedRef}
             role="menu"
@@ -57,7 +57,7 @@ export const CDropdownMenu: PolymorphicRefForwardingComponent<'ul', CDropdownMen
           </Component>
         </CConditionalPortal>
       )
-    },
+    }
   )
 
 CDropdownMenu.propTypes = {

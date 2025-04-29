@@ -23,7 +23,7 @@ export const CDropdownHeader: PolymorphicRefForwardingComponent<'h6', CDropdownH
           {children}
         </Component>
       )
-    },
+    }
   )
 
 CDropdownHeader.propTypes = {

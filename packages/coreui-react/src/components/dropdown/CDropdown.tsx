@@ -207,8 +207,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
     ref
   ) => {
     const dropdownRef = useRef<HTMLDivElement>(null)
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const dropdownToggleRef = useRef<any>(null)
+    const dropdownToggleRef = useRef<HTMLElement>(null)
     const dropdownMenuRef = useRef<HTMLDivElement | HTMLUListElement>(null)
     const forkedRef = useForkedRef(ref, dropdownRef)
     const [_visible, setVisible] = useState(visible)
@@ -256,28 +255,45 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
     }, [visible])
 
     useEffect(() => {
-      if (_visible && dropdownToggleRef.current && dropdownMenuRef.current) {
-        dropdownToggleRef.current.focus()
-        popper &&
-          initPopper(dropdownToggleRef.current, dropdownMenuRef.current, computedPopperConfig)
+      const toggleElement = dropdownToggleRef.current
+      const menuElement = dropdownMenuRef.current
+
+      if (_visible && toggleElement && menuElement) {
+        if (popper) {
+          initPopper(toggleElement, menuElement, computedPopperConfig)
+        }
+
+        toggleElement.focus()
+        toggleElement.addEventListener('keydown', handleKeydown)
+        menuElement.addEventListener('keydown', handleKeydown)
+
         window.addEventListener('mouseup', handleMouseUp)
         window.addEventListener('keyup', handleKeyup)
-        dropdownToggleRef.current.addEventListener('keydown', handleKeydown)
-        dropdownMenuRef.current.addEventListener('keydown', handleKeydown)
-        onShow && onShow()
+
+        onShow?.()
       }
 
       return () => {
-        popper && destroyPopper()
+        if (popper) {
+          destroyPopper()
+        }
+
+        toggleElement?.removeEventListener('keydown', handleKeydown)
+        menuElement?.removeEventListener('keydown', handleKeydown)
+
         window.removeEventListener('mouseup', handleMouseUp)
         window.removeEventListener('keyup', handleKeyup)
-        dropdownToggleRef.current &&
-          dropdownToggleRef.current.removeEventListener('keydown', handleKeydown)
-        dropdownMenuRef.current &&
-          dropdownMenuRef.current.removeEventListener('keydown', handleKeydown)
-        onHide && onHide()
+
+        onHide?.()
       }
-    }, [_visible])
+    }, [
+      computedPopperConfig,
+      destroyPopper,
+      dropdownMenuRef,
+      dropdownToggleRef,
+      initPopper,
+      _visible,
+    ])
 
     const handleKeydown = (event: KeyboardEvent) => {
       if (

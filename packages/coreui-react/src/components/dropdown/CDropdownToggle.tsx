@@ -69,7 +69,7 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
         'dropdown-toggle-split': split,
         show: visible,
       },
-      className,
+      className
     ),
     'aria-expanded': visible,
     ...(!rest.disabled && { ...triggers }),
