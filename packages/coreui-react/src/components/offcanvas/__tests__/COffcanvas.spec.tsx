@@ -1,7 +1,8 @@
 import * as React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { COffcanvas } from '../../../index'
+
+import { COffcanvas } from '../index'
 
 test('loads and displays COffcanvas component', async () => {
   const { container } = render(<COffcanvas placement="top" />)
@@ -19,7 +20,7 @@ test('COffcanvas customize one', async () => {
       visible={false}
     >
       Test
-    </COffcanvas>,
+    </COffcanvas>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('offcanvas')
@@ -29,7 +30,8 @@ test('COffcanvas customize one', async () => {
 })
 
 test('COffcanvas customize and event on click backdrop', async () => {
-  // jest.useFakeTimers()
+  jest.useFakeTimers()
+
   const onHide = jest.fn()
   const { container } = render(
     <COffcanvas
@@ -42,8 +44,9 @@ test('COffcanvas customize and event on click backdrop', async () => {
       onHide={onHide}
     >
       Test
-    </COffcanvas>,
+    </COffcanvas>
   )
+
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('offcanvas')
   expect(container.firstChild).toHaveClass('offcanvas-end')
@@ -51,18 +54,32 @@ test('COffcanvas customize and event on click backdrop', async () => {
   expect(container.firstChild).toHaveClass('show')
   expect(container.firstChild).toHaveTextContent('Test')
   expect(onHide).toHaveBeenCalledTimes(0)
+
   const backdrop = document.querySelector('.offcanvas-backdrop')
+
   if (backdrop !== null) {
-    fireEvent.click(backdrop)
+    act(() => {
+      fireEvent.click(backdrop)
+      jest.runAllTimers()
+    })
   }
+
   expect(onHide).toHaveBeenCalledTimes(1)
   expect(container.firstChild).toHaveClass('show')
   expect(container.firstChild).toHaveClass('hiding')
-  await new Promise((r) => setTimeout(r, 1000))
+
+  act(() => {
+    jest.runAllTimers()
+  })
+
   expect(container.firstChild).not.toHaveClass('show')
+
+  jest.useRealTimers()
 })
 
 test('COffcanvas customize and event on keypress', async () => {
+  jest.useFakeTimers()
+
   const onHide = jest.fn()
   const { container } = render(
     <COffcanvas
@@ -75,28 +92,39 @@ test('COffcanvas customize and event on keypress', async () => {
       onHide={onHide}
     >
       Test
-    </COffcanvas>,
+    </COffcanvas>
   )
+
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('offcanvas')
   expect(container.firstChild).toHaveClass('offcanvas-end')
   expect(container.firstChild).toHaveClass('bazinga')
   expect(container.firstChild).toHaveClass('show')
   expect(onHide).toHaveBeenCalledTimes(0)
+
   const canvas = document.querySelector('.offcanvas')
-  if (canvas === null) {
-    expect(true).toBe(false)
-  } else {
-    fireEvent.keyDown(canvas, {
-      key: 'Escape',
-      code: 'Escape',
-      keyCode: 27,
-      charCode: 27,
+
+  if (canvas !== null) {
+    act(() => {
+      fireEvent.keyDown(canvas, {
+        key: 'Escape',
+        code: 'Escape',
+        keyCode: 27,
+        charCode: 27,
+      })
+      jest.runAllTimers()
     })
   }
+
   expect(onHide).toHaveBeenCalledTimes(1)
   expect(container.firstChild).toHaveClass('show')
   expect(container.firstChild).toHaveClass('hiding')
-  await new Promise((r) => setTimeout(r, 1000))
+
+  act(() => {
+    jest.runAllTimers()
+  })
+
   expect(container.firstChild).not.toHaveClass('show')
+
+  jest.useRealTimers()
 })

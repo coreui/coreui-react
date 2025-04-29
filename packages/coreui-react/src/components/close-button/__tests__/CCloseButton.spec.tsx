@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CCloseButton } from '../../../index'
+import { CCloseButton } from '../index'
 
 test('loads and displays CCloseButton component', async () => {
   const { container } = render(<CCloseButton />)

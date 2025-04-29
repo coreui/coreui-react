@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CCardImage } from '../../../index'
+import { CCardImage } from '../index'
 
 test('loads and displays CCardImage component', async () => {
   const { container } = render(<CCardImage />)

@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { render, fireEvent, waitFor } from '@testing-library/react'
+import { render, fireEvent, waitFor, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CToast, CToastBody, CToastHeader } from '../../../index'
+import { CToast, CToastBody, CToastHeader } from '../index'
 
 test('loads and displays CToast component', async () => {
   const { container } = render(<CToast>Test</CToast>)
@@ -10,16 +10,9 @@ test('loads and displays CToast component', async () => {
 
 test('CToast customize', async () => {
   const { container } = render(
-    <CToast
-      className="bazinga"
-      autohide={false}
-      color="warning"
-      delay={100}
-      visible={true}
-      //onClose
-    >
+    <CToast className="bazinga" autohide={false} color="warning" delay={100} visible={true}>
       Test
-    </CToast>,
+    </CToast>
   )
   await waitFor(() => {
     expect(container).toMatchSnapshot()
@@ -32,7 +25,8 @@ test('CToast customize', async () => {
 })
 
 test('CToast click on dismiss button', async () => {
-  // jest.useFakeTimers()
+  jest.useFakeTimers()
+
   const onClose = jest.fn()
   const { container } = render(
     <CToast
@@ -59,41 +53,52 @@ test('CToast click on dismiss button', async () => {
         <small>7 min ago</small>
       </CToastHeader>
       <CToastBody>Hello, world! This is a toast message.</CToastBody>
-    </CToast>,
+    </CToast>
   )
+
   await waitFor(() => {
     expect(container.firstChild).toHaveClass('show')
   })
 
   expect(onClose).toHaveBeenCalledTimes(0)
+
   const btn = document.querySelector('.btn-close')
+
   if (btn !== null) {
-    fireEvent.click(btn)
+    act(() => {
+      fireEvent.click(btn)
+      jest.runAllTimers()
+    })
   }
-  jest.runAllTimers()
-  await new Promise((r) => setTimeout(r, 1000))
-  expect(onClose).toHaveBeenCalledTimes(1)
-  expect(container.firstChild).toBeNull()
+
+  await waitFor(() => {
+    expect(onClose).toHaveBeenCalledTimes(1)
+    expect(container.firstChild).toBeNull()
+  })
+
   jest.useRealTimers()
 })
 
 test('CToast test autohide', async () => {
+  jest.useFakeTimers()
+
   const { container } = render(
     <CToast autohide={true} delay={1000} visible={true}>
       Test
-    </CToast>,
+    </CToast>
   )
 
   await waitFor(() => {
     expect(container.firstChild).toHaveClass('show')
   })
 
-  await waitFor(
-    () => {
-      expect(container.firstChild).toBeNull()
-    },
-    {
-      timeout: 5000,
-    },
-  )
+  act(() => {
+    jest.advanceTimersByTime(1000)
+  })
+
+  await waitFor(() => {
+    expect(container.firstChild).toBeNull()
+  })
+
+  jest.useRealTimers()
 })

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CModalTitle } from '../../../index'
+import { CModalTitle } from '../index'
 
 test('loads and displays CModalTitle component', async () => {
   const { container } = render(<CModalTitle>Test</CModalTitle>)

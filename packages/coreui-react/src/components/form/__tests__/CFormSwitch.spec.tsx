@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CFormSwitch } from '../../../index'
+import { CFormSwitch } from '../index'
 
 test('loads and displays CFormSwitch component', async () => {
   const { container } = render(<CFormSwitch />)

@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import {
   CSidebar /* , CSidebarNav, CNavLink, CNavGroup, CNavGroupItems, CNavItem */,
-} from '../../../index'
+} from '../index'
 
 test('loads and displays CSidebar component', async () => {
   const { container } = render(<CSidebar>Test</CSidebar>)

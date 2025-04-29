@@ -1,37 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CPopover customize 1`] = `
-<body>
-  <button
-    class="btn btn-primary"
-    type="button"
-  >
-    Test
-  </button>
-  <div
-    class="popover bs-popover-auto fade"
-    id="popover:r1:"
-    role="tooltip"
-    style="position: absolute; left: 0px; top: 0px; margin: 0px;"
-  >
-    <div
-      class="popover-arrow"
-      style="position: absolute;"
-    />
-    <div
-      class="popover-header"
-    >
-      title
-    </div>
-    <div
-      class="popover-body"
-    >
-      content
-    </div>
-  </div>
-</body>
-`;
-
 exports[`loads and displays CPopover component 1`] = `
 <div>
   <button

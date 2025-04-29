@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CPaginationItem } from '../../../index'
+import { CPaginationItem } from '../index'
 
 test('loads and displays CPaginationItem component', async () => {
   const { container } = render(<CPaginationItem>Test</CPaginationItem>)

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CContainer } from '../../../index'
+import { CContainer } from '../index'
 
 test('loads and displays CContainer component', async () => {
   const { container } = render(<CContainer>Test</CContainer>)

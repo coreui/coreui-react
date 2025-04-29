@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { COffcanvasTitle } from '../../../index'
+import { COffcanvasTitle } from '../index'
 
 test('loads and displays COffcanvasTitle component', async () => {
   const { container } = render(<COffcanvasTitle />)

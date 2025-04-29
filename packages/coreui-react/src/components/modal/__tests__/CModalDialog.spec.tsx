@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CModalDialog } from '../../../index'
+import { CModalDialog } from '../index'
 
 test('loads and displays CModalDialog component', async () => {
   const { container } = render(<CModalDialog>Test</CModalDialog>)

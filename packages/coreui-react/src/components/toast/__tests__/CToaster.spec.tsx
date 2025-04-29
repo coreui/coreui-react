@@ -1,7 +1,8 @@
 import React from 'react' //  useState,
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CToast, CToaster, CToastBody, CToastHeader, CButton } from '../../../index'
+import { CButton } from '../../button'
+import { CToast, CToaster, CToastBody, CToastHeader } from '../index'
 
 test('loads and displays CToaster component', async () => {
   const { container } = render(<CToaster>Test</CToaster>)

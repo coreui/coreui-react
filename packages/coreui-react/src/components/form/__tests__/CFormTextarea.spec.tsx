@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CFormTextarea } from '../../../index'
+import { CFormTextarea } from '../index'
 
 test('loads and displays CFormTextarea component', async () => {
   const { container } = render(<CFormTextarea defaultValue="Some value" />)

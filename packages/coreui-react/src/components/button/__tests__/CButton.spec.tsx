@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CButton } from '../../../index'
+import { CButton } from '../index'
 
 test('loads and displays CButton component', async () => {
   const { container } = render(<CButton color="primary">Test</CButton>)

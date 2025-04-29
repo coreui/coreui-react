@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CRow } from '../../../index'
+import { CRow } from '../index'
 
 test('CRow not-customize', async () => {
   const { container } = render(<CRow>Test</CRow>)

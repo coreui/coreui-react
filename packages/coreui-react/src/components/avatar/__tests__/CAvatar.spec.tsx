@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CAvatar } from '../../../index'
+import { CAvatar } from '../index'
 
 test('loads and displays CAvatar component', async () => {
   const { container } = render(<CAvatar color="primary">Test</CAvatar>)

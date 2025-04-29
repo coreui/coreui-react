@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CHeaderToggler } from '../../../index'
+import { CHeaderToggler } from '../index'
 
 test('loads and displays CHeaderToggler component', async () => {
   const { container } = render(<CHeaderToggler>Test</CHeaderToggler>)

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CBackdrop } from '../../../index'
+import { CBackdrop } from '../index'
 
 test('loads and displays CBackdrop component', async () => {
   const { container } = render(<CBackdrop>Test</CBackdrop>)

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CSidebarHeader } from '../../../index'
+import { CSidebarHeader } from '../index'
 
 test('loads and displays CSidebarHeader component', async () => {
   const { container } = render(<CSidebarHeader>Test</CSidebarHeader>)

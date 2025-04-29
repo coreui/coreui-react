@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CHeaderText } from '../../../index'
+import { CHeaderText } from '../index'
 
 test('loads and displays CHeaderText component', async () => {
   const { container } = render(<CHeaderText>Test</CHeaderText>)

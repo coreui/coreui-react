@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CPlaceholder } from '../../../index'
+import { CPlaceholder } from '../index'
 
 test('loads and displays CPlaceholder component', async () => {
   const { container } = render(<CPlaceholder color="primary" />)

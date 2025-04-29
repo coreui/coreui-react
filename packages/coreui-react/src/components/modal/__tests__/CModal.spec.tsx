@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, fireEvent, screen, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CModal } from '../../../index'
+import { CModal } from '../index'
 
 test('loads and displays CModal component', async () => {
   const { container } = render(<CModal portal={false}>Test</CModal>)

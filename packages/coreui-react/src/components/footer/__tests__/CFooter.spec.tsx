@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CFooter } from '../../../index'
+import { CFooter } from '../index'
 
 test('loads and displays CFooter component', async () => {
   const { container } = render(<CFooter>Test</CFooter>)

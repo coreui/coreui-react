@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CDropdownHeader } from '../../../index'
+import { CDropdownHeader } from '../index'
 
 test('loads and displays CDropdownHeader component', async () => {
   const { container } = render(<CDropdownHeader>Test</CDropdownHeader>)

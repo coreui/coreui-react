@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CNavbar } from '../../../index'
+import { CNavbar } from '../index'
 
 test('loads and displays CNavbar component', async () => {
   const { container } = render(<CNavbar>Test</CNavbar>)

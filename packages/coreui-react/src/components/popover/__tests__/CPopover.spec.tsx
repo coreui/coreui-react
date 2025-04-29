@@ -1,84 +1,92 @@
 import * as React from 'react'
-import { act, render, fireEvent } from '@testing-library/react'
+import { act, cleanup, render, fireEvent, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CPopover, CButton } from '../../../index'
+
+import { CButton } from '../../button'
+import { CPopover } from '../index'
+
+let container: HTMLDivElement | null = null
+
+beforeEach(() => {
+  container = document.createElement('div')
+  document.body.appendChild(container)
+})
+
+afterEach(() => {
+  cleanup()
+})
 
 test('loads and displays CPopover component', async () => {
   const { container } = render(
     <CPopover content="A">
       <CButton color="primary">Test</CButton>
-    </CPopover>,
+    </CPopover>
   )
   expect(container).toMatchSnapshot()
 })
 
 test('CPopover customize', async () => {
   jest.useFakeTimers()
-  let arr, element
-  const { container } = render(
+
+  render(
     <CPopover content="content" title="title" trigger="click" placement="right">
       <CButton color="primary">Test</CButton>
     </CPopover>,
-    { container: document.body },
+    { container: container! }
   )
-  const btn = document.querySelector('.btn')
+
+  const btn = screen.getByRole('button', { name: /test/i })
+
   act(() => {
-    if (btn !== null) {
-      fireEvent.click(btn)
-    }
+    fireEvent.click(btn)
+    jest.runAllTimers()
   })
-  jest.runAllTimers()
-  expect(container).toMatchSnapshot()
-  let arrLength = container.getElementsByClassName('popover').length
-  expect(arrLength).toBe(1)
-  arrLength = container.getElementsByClassName('bs-popover-auto').length
-  expect(arrLength).toBe(1)
-  arrLength = container.getElementsByClassName('popover-arrow').length
-  expect(arrLength).toBe(1)
-  arrLength = container.getElementsByClassName('popover-header').length
-  expect(arrLength).toBe(1)
-  arrLength = container.getElementsByClassName('popover-body').length
-  expect(arrLength).toBe(1)
-  arr = container.getElementsByClassName('popover-header')
-  if (arr.length > 0) {
-    element = arr[0]
-    expect(element.innerHTML).toBe('title')
-  } else {
-    expect(true).toBe(false)
-  }
-  arr = container.getElementsByClassName('popover-body')
-  if (arr.length > 0) {
-    element = arr[0]
-    expect(element.innerHTML).toBe('content')
-  } else {
-    expect(true).toBe(false)
-  }
+
+  expect(document.querySelector('.popover')).toBeInTheDocument()
+  expect(document.querySelector('.bs-popover-auto')).toBeInTheDocument()
+  expect(document.querySelector('.popover-arrow')).toBeInTheDocument()
+  expect(document.querySelector('.popover-header')).toBeInTheDocument()
+  expect(document.querySelector('.popover-body')).toBeInTheDocument()
+
+  expect(document.querySelector('.popover-header')?.innerHTML).toBe('title')
+  expect(document.querySelector('.popover-body')?.innerHTML).toBe('content')
+
   jest.useRealTimers()
 })
 
-// test('CPopover onToggle', async () => {
-//   let btn
-//   jest.useFakeTimers()
-//   const onToggle = jest.fn()
-//   render(
-//     <CPopover onToggle={onToggle} content="content" trigger="click">
-//       <CButton>Test</CButton>
-//     </CPopover>,
-//   )
-//   expect(onToggle).toHaveBeenCalledTimes(0)
-//   btn = document.querySelector('.btn')
-//   if (btn !== null) {
-//     fireEvent.click(btn)
-//   }
-//   jest.runAllTimers()
-//   expect(onToggle).toHaveBeenCalledTimes(1)
-//   btn = document.querySelector('.btn')
-//   if (btn !== null) {
-//     fireEvent.click(btn)
-//   }
-//   jest.runAllTimers()
-//   expect(onToggle).toHaveBeenCalledTimes(2)
-//   jest.useRealTimers()
-// })
+test('CPopover onShow and onHide', async () => {
+  jest.useFakeTimers()
 
-//TODO: test visible on focus, click and mouseEnter
+  render(
+    <CPopover content="content" title="title" trigger="click" placement="right" visible={true}>
+      <CButton color="primary">Test</CButton>
+    </CPopover>,
+    { container: container! }
+  )
+
+  const onShow = jest.fn()
+  const onHide = jest.fn()
+
+  const btn = screen.getByRole('button', { name: /test/i })
+
+  expect(onShow).toHaveBeenCalledTimes(0)
+  expect(onHide).toHaveBeenCalledTimes(0)
+
+  act(() => {
+    fireEvent.click(btn)
+    jest.runAllTimers()
+  })
+
+  expect(onShow).toHaveBeenCalledTimes(1)
+  expect(onHide).toHaveBeenCalledTimes(0)
+
+  act(() => {
+    fireEvent.click(btn)
+    jest.runAllTimers()
+  })
+
+  expect(onShow).toHaveBeenCalledTimes(1)
+  expect(onHide).toHaveBeenCalledTimes(1)
+
+  jest.useRealTimers()
+})

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CHeaderBrand } from '../../../index'
+import { CHeaderBrand } from '../index'
 
 test('loads and displays CHeaderBrand component', async () => {
   const { container } = render(<CHeaderBrand>Test</CHeaderBrand>)

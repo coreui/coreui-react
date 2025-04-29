@@ -1,15 +1,8 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import {
-  CNav,
-  CNavItem,
-  CNavLink,
-  CDropdown,
-  CDropdownToggle,
-  CDropdownMenu,
-  CDropdownItem,
-} from '../../../index'
+import { CDropdown, CDropdownItem, CDropdownMenu, CDropdownToggle } from '../../dropdown'
+import { CNav, CNavItem, CNavLink } from '../index'
 
 test('loads and displays CNav component', async () => {
   const { container } = render(<CNav>Test</CNav>)
@@ -20,7 +13,7 @@ test('CNav customize', async () => {
   const { container } = render(
     <CNav className="bazinga" as="h3" layout="justified" variant="pills">
       Test
-    </CNav>,
+    </CNav>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('nav')
@@ -56,7 +49,7 @@ test('CNav example', async () => {
           Disabled
         </CNavLink>
       </CNavItem>
-    </CNav>,
+    </CNav>
   )
   expect(container).toMatchSnapshot()
 })

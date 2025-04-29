@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CBreadcrumb, CBreadcrumbItem } from '../../../index'
+import { CBreadcrumb, CBreadcrumbItem } from '../index'
 
 test('loads and displays CBreadcrumb component', async () => {
   const { container } = render(<CBreadcrumb></CBreadcrumb>)

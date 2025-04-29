@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, fireEvent, getByText } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CCarousel, CCarouselCaption, CCarouselItem } from '../../../index'
+import { CCarousel, CCarouselCaption, CCarouselItem } from '../index'
 
 test('loads and displays CCarousel component', async () => {
   const { container } = render(

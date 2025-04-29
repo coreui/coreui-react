@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CSidebarNav } from '../../../index'
+import { CSidebarNav } from '../index'
 
 test('loads and displays CSidebarNav component', async () => {
   const { container } = render(<CSidebarNav>Test</CSidebarNav>)

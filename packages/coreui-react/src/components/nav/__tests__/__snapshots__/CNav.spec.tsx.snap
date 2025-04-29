@@ -50,7 +50,6 @@ exports[`CNav example 1`] = `
         A
       </a>
       <ul
-        aria-hidden="true"
         class="dropdown-menu"
         role="menu"
       >

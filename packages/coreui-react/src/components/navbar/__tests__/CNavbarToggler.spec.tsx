@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CNavbarToggler } from '../../../index'
+import { CNavbarToggler } from '../index'
 
 test('CNavbarToggler witch children', async () => {
   const { container } = render(<CNavbarToggler>Test</CNavbarToggler>)

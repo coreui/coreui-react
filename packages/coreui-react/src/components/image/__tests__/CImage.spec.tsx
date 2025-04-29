@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CImage } from '../../../index'
+import { CImage } from '../index'
 
 test('loads and displays CImage component', async () => {
   const { container } = render(<CImage />)

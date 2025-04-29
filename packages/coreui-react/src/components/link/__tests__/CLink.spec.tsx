@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CLink } from '../../../index'
+import { CLink } from '../index'
 
 test('loads and displays CLink component', async () => {
   const { container } = render(<CLink>Test</CLink>)

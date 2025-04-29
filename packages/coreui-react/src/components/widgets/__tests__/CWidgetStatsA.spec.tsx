@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CWidgetStatsA } from '../../../index'
+import { CWidgetStatsA } from '../index'
 
 test('loads and displays CWidgetStatsA component', async () => {
   const { container } = render(<CWidgetStatsA />)

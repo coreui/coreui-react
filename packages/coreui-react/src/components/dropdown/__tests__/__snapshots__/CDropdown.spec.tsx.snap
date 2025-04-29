@@ -24,7 +24,6 @@ exports[`CDropdown example 1`] = `
       Test
     </button>
     <ul
-      aria-hidden="true"
       class="dropdown-menu"
       role="menu"
     >

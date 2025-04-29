@@ -9,7 +9,7 @@ import {
   CDropdownItemPlain,
   CDropdownHeader,
   CDropdownDivider,
-} from '../../../index'
+} from '../index'
 
 test('loads and displays CDropdown component', async () => {
   const { container } = render(<CDropdown>Test</CDropdown>)

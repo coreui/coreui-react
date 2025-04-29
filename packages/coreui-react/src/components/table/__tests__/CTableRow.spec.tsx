@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CTableBody, CTableHeaderCell, CTableRow } from '../../../index'
+import { CTableBody, CTableHeaderCell, CTableRow } from '../index'
 
 test('loads and displays CTableRow component', async () => {
   const table = document.createElement('table')

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CAccordionItem } from '../../../index'
+import { CAccordionItem } from '../index'
 
 test('loads and displays CAccordionItem component', async () => {
   const { container } = render(<CAccordionItem>Test</CAccordionItem>)

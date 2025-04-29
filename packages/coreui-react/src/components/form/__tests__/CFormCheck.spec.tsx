@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CFormCheck } from '../../../index'
+import { CFormCheck } from '../index'
 
 test('loads and displays CFormCheck component', async () => {
   const { container } = render(<CFormCheck />)

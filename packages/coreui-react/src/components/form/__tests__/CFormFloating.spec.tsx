@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CFormFloating } from '../../../index'
+import { CFormFloating } from '../index'
 
 test('loads and displays CFormFloating component', async () => {
   const { container } = render(<CFormFloating />)

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CTableCaption } from '../../../index'
+import { CTableCaption } from '../index'
 
 test('loads and displays CTableCaption component', async () => {
   const table = document.createElement('table')

@@ -1,8 +1,9 @@
 import * as React from 'react'
-import { act } from 'react-dom/test-utils'
-import { fireEvent, render } from '@testing-library/react'
+import { act, fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CTooltip, CLink } from '../../../index'
+import { CLink } from '../../link'
+import { CTooltip } from '../index'
+import { CButton } from '../../button'
 
 let container: HTMLDivElement | null
 
@@ -20,44 +21,64 @@ test('loads and displays CTooltip component', async () => {
   const { container } = render(
     <CTooltip content="content">
       <CLink>Test</CLink>
-    </CTooltip>,
+    </CTooltip>
   )
   expect(container).toMatchSnapshot()
 })
 
 test('CTooltip customize', async () => {
-  const { container } = render(
+  jest.useFakeTimers()
+
+  render(
     <CTooltip trigger="hover" placement="right" content="content">
-      <CLink className="link">Test</CLink>
-    </CTooltip>,
+      <CLink href="#">Test</CLink>
+    </CTooltip>
   )
-  const link = document.querySelector('.link')
+
+  const link = screen.getByText('Test')
+
   act(() => {
-    if (link !== null) {
-      fireEvent.mouseOver(link)
-    }
+    fireEvent.mouseOver(link)
+    jest.runAllTimers()
   })
-  expect(container).toMatchSnapshot()
+
+  expect(document.querySelector('.tooltip')).toBeInTheDocument()
+
+  jest.useRealTimers()
 })
 
-// test('CTooltip on toggle', async () => {
-//   jest.useFakeTimers()
-//   const onToggle = jest.fn()
-//   render(
-//     <CTooltip
-//       trigger="click"
-//       placement="right-end"
-//       content="content"
-//       visible={true}
-//       onToggle={onToggle}
-//     >
-//       <CButton>Test</CButton>
-//     </CTooltip>,
-//   )
-//   expect(onToggle).toHaveBeenCalledTimes(0)
-//   const btn = document.querySelector('.btn')
-//   if (btn !== null) {
-//     fireEvent.click(btn)
-//   }
-//   expect(onToggle).toHaveBeenCalledTimes(1)
-// })
+test('CTooltip onShow and onHide', async () => {
+  jest.useFakeTimers()
+
+  const onShow = jest.fn()
+  const onHide = jest.fn()
+
+  render(
+    <CTooltip trigger="click" placement="right" content="content" onShow={onShow} onHide={onHide}>
+      <CButton>Test</CButton>
+    </CTooltip>
+  )
+
+  const btn = screen.getByRole('button', { name: /test/i })
+
+  expect(onShow).toHaveBeenCalledTimes(0)
+  expect(onHide).toHaveBeenCalledTimes(0)
+
+  act(() => {
+    fireEvent.click(btn)
+    jest.runAllTimers()
+  })
+
+  expect(onShow).toHaveBeenCalledTimes(1)
+  expect(onHide).toHaveBeenCalledTimes(0)
+
+  act(() => {
+    fireEvent.click(btn)
+    jest.runAllTimers()
+  })
+
+  expect(onShow).toHaveBeenCalledTimes(1)
+  expect(onHide).toHaveBeenCalledTimes(1)
+
+  jest.useRealTimers()
+})

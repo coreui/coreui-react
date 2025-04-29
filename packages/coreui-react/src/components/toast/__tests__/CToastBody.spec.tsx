@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CToastBody } from '../../../index'
+import { CToastBody } from '../index'
 
 test('loads and displays CToastBody component', async () => {
   const { container } = render(<CToastBody>Test</CToastBody>)

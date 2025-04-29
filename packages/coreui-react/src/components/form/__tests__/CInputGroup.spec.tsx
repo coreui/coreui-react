@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CInputGroup } from '../../../index'
+import { CInputGroup } from '../index'
 
 test('loads and displays CInputGroup component', async () => {
   const { container } = render(<CInputGroup>Test</CInputGroup>)

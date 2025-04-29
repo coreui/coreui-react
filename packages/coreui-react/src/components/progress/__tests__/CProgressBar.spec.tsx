@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CProgressBar } from '../../../index'
+import { CProgressBar } from '../index'
 
 test('loads and displays CProgressBar component', async () => {
   const { container } = render(<CProgressBar color="warning">Test</CProgressBar>)

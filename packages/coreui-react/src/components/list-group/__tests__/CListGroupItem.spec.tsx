@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CListGroupItem } from '../../../index'
+import { CListGroupItem } from '../index'
 
 test('loads and displays CListGroupItem component', async () => {
   const { container } = render(<CListGroupItem>Test</CListGroupItem>)

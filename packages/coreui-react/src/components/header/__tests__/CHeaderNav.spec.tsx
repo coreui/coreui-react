@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CHeaderNav } from '../../../index'
+import { CHeaderNav } from '../index'
 
 test('loads and displays CHeaderNav component', async () => {
   const { container } = render(<CHeaderNav>Test</CHeaderNav>)

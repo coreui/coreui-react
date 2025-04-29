@@ -6,7 +6,6 @@ exports[`CDropdownMenu customize 1`] = `
     class="btn-group"
   >
     <div
-      aria-hidden="false"
       class="dropdown-menu show bazinga"
       role="menu"
     >
@@ -19,7 +18,6 @@ exports[`CDropdownMenu customize 1`] = `
 exports[`loads and displays CDropdownMenu component 1`] = `
 <div>
   <ul
-    aria-hidden="true"
     class="dropdown-menu"
     data-coreui-popper="static"
     role="menu"

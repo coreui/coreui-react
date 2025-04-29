@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CTableDataCell } from '../../../index'
+import { CTableDataCell } from '../index'
 import { CTableBody } from '../CTableBody'
 import { CTableRow } from '../CTableRow'
 

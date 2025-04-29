@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CCardSubtitle } from '../../../index'
+import { CCardSubtitle } from '../index'
 
 test('loads and displays CCardSubtitle component', async () => {
   const { container } = render(<CCardSubtitle>Test</CCardSubtitle>)

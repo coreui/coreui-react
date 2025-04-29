@@ -10,7 +10,7 @@ import {
   CTableBody,
   CTableDataCell,
   CTableFoot,
-} from '../../../index'
+} from '../index'
 
 test('loads and displays CTable component', async () => {
   const { container } = render(<CTable />)

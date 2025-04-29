@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CFormRange } from '../../../index'
+import { CFormRange } from '../index'
 
 test('loads and displays CFormRange component', async () => {
   const { container } = render(<CFormRange step={3} />)

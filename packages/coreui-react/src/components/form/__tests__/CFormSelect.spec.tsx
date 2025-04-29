@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CFormSelect } from '../../../index'
+import { CFormSelect } from '../index'
 
 test('loads and displays CFormSelect component', async () => {
   const { container } = render(<CFormSelect></CFormSelect>)

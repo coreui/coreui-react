@@ -12,7 +12,7 @@ import {
   CCardTitle,
   CCardText,
   CCardGroup,
-} from '../../../index'
+} from '../index'
 
 test('loads and displays CCardGroup component', async () => {
   const { container } = render(<CCardGroup>Test</CCardGroup>)

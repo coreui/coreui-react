@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CFormText } from '../../../index'
+import { CFormText } from '../index'
 
 test('loads and displays CFormText component', async () => {
   const { container } = render(<CFormText>Test</CFormText>)

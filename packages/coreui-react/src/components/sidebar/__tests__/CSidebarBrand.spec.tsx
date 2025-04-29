@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { CSidebarBrand } from '../../../index'
+import { CSidebarBrand } from '../index'
 
 test('loads and displays CSidebarBrand component', async () => {
   const { container } = render(<CSidebarBrand color="primary">Test</CSidebarBrand>)
