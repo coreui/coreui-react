@@ -1,16 +1,9 @@
-import React, {
-  createContext,
-  ElementType,
-  forwardRef,
-  HTMLAttributes,
-  RefObject,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, { ElementType, forwardRef, HTMLAttributes, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import type { Options } from '@popperjs/core'
+
+import { CDropdownContext } from './CDropdownContext'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { useForkedRef, usePopper } from '../../hooks'
@@ -168,16 +161,6 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
    */
   visible?: boolean
 }
-
-interface ContextProps extends CDropdownProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dropdownToggleRef: RefObject<any | null>
-  dropdownMenuRef: RefObject<HTMLDivElement | HTMLUListElement | null>
-  setVisible: React.Dispatch<React.SetStateAction<boolean | undefined>>
-  portal: boolean
-}
-
-export const CDropdownContext = createContext({} as ContextProps)
 
 export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps> = forwardRef<
   HTMLDivElement | HTMLLIElement,

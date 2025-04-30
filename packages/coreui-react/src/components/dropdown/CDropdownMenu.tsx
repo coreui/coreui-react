@@ -2,8 +2,8 @@ import React, { ElementType, forwardRef, HTMLAttributes, useContext } from 'reac
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { CDropdownContext } from './CDropdown'
 import { CConditionalPortal } from '../conditional-portal'
+import { CDropdownContext } from './CDropdownContext'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { useForkedRef } from '../../hooks'

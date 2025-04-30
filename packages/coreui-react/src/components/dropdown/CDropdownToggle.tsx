@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { CButton, CButtonProps } from '../button/CButton'
-
-import { CDropdownContext } from './CDropdown'
+import { CDropdownContext } from './CDropdownContext'
 
 import { triggerPropType } from '../../props'
 import type { Triggers } from '../../types'
