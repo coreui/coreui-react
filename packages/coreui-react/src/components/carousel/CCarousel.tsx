@@ -1,6 +1,5 @@
 import React, {
   Children,
-  createContext,
   forwardRef,
   HTMLAttributes,
   TouchEvent,
@@ -13,6 +12,8 @@ import classNames from 'classnames'
 
 import { isInViewport } from '../../utils'
 import { useForkedRef } from '../../hooks'
+
+import { CCarouselContext } from './CCarouselContext'
 
 export interface CCarouselProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -71,13 +72,6 @@ interface DataType {
   timeout?: null | ReturnType<typeof setTimeout>
 }
 
-export interface ContextProps {
-  setAnimating: (a: boolean) => void
-  setCustomInterval: (a: boolean | number) => void
-}
-
-export const CCarouselContext = createContext({} as ContextProps)
-
 export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
   (
     {
@@ -96,7 +90,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
       wrap = true,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const carouselRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, carouselRef)
@@ -141,7 +135,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
       if (typeof interval === 'number') {
         data.timeout = setTimeout(
           () => nextItemWhenVisible(),
-          typeof customInterval === 'number' ? customInterval : interval,
+          typeof customInterval === 'number' ? customInterval : interval
         )
       }
     }
@@ -228,7 +222,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
           {
             'carousel-fade': transition === 'crossfade',
           },
-          className,
+          className
         )}
         {...(dark && { 'data-coreui-theme': 'dark' })}
         onMouseEnter={_pause}
@@ -288,7 +282,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
         </CCarouselContext.Provider>
       </div>
     )
-  },
+  }
 )
 
 CCarousel.propTypes = {

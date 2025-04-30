@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { useForkedRef } from '../../hooks'
-import { CCarouselContext } from './CCarousel'
+
+import { CCarouselContext } from './CCarouselContext'
+
 export interface CCarouselItemProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * @ignore
