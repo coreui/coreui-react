@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { CLinkProps, CLink } from '../link/CLink'
-import { CNavContext } from '../sidebar/CSidebarNav'
+import { CSidebarNavContext } from '../sidebar/CSidebarNavContext'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { useForkedRef } from '../../hooks'
@@ -26,7 +26,7 @@ export const CNavLink: PolymorphicRefForwardingComponent<'a', CNavLinkProps> = f
   const navLinkRef = useRef<HTMLAnchorElement>(null)
   const forkedRef = useForkedRef(ref, navLinkRef)
 
-  const { setVisibleGroup } = useContext(CNavContext)
+  const { setVisibleGroup } = useContext(CSidebarNavContext)
 
   useEffect(() => {
     rest.active = navLinkRef.current?.classList.contains('active')

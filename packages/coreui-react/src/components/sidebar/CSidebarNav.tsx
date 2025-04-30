@@ -1,5 +1,4 @@
 import React, {
-  createContext,
   ElementType,
   forwardRef,
   HTMLAttributes,
@@ -13,6 +12,9 @@ import classNames from 'classnames'
 import type { CNavGroupProps } from '../nav/CNavGroup'
 import type { CNavLinkProps } from '../nav/CNavLink'
 import type { CNavItemProps } from '../nav/CNavItem'
+
+import { CSidebarNavContext } from './CSidebarNavContext'
+
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 
 export interface CSidebarNavProps extends HTMLAttributes<HTMLUListElement> {
@@ -27,13 +29,6 @@ export interface CSidebarNavProps extends HTMLAttributes<HTMLUListElement> {
    */
   className?: string
 }
-
-interface ContextProps {
-  visibleGroup: string
-  setVisibleGroup: React.Dispatch<React.SetStateAction<string | undefined>>
-}
-
-export const CNavContext = createContext({} as ContextProps)
 
 const isNavElement = (
   child: ReactNode
@@ -82,11 +77,11 @@ export const CSidebarNav: PolymorphicRefForwardingComponent<'ul', CSidebarNavPro
   }
 
   return (
-    <CNavContext.Provider value={CNavContextValues}>
+    <CSidebarNavContext.Provider value={CNavContextValues}>
       <Component className={classNames('sidebar-nav', className)} ref={ref} {...rest}>
         {recursiveClone(children)}
       </Component>
-    </CNavContext.Provider>
+    </CSidebarNavContext.Provider>
   )
 })
 

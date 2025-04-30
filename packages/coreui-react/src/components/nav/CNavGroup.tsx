@@ -16,7 +16,7 @@ import type { TransitionStatus } from 'react-transition-group'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 
-import { CNavContext } from '../sidebar/CSidebarNav'
+import { CSidebarNavContext } from '../sidebar/CSidebarNavContext'
 
 export interface CNavGroupProps extends HTMLAttributes<HTMLDivElement | HTMLLIElement> {
   /**
@@ -62,7 +62,7 @@ export const CNavGroup: PolymorphicRefForwardingComponent<'li', CNavGroupProps> 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const navItemsRef = useRef<any>(null)
 
-  const { visibleGroup, setVisibleGroup } = useContext(CNavContext)
+  const { visibleGroup, setVisibleGroup } = useContext(CSidebarNavContext)
 
   const [_visible, setVisible] = useState(
     Boolean(visible || (idx && visibleGroup && isInVisibleGroup(visibleGroup, idx))),
