@@ -1,5 +1,4 @@
 import React, {
-  createContext,
   forwardRef,
   HTMLAttributes,
   useEffect,
@@ -14,6 +13,7 @@ import { Transition } from 'react-transition-group'
 import { CBackdrop } from '../backdrop'
 import { CConditionalPortal } from '../conditional-portal'
 import { CModalContent } from './CModalContent'
+import { CModalContext } from './CModalContext'
 import { CModalDialog } from './CModalDialog'
 
 import { useForkedRef } from '../../hooks'
@@ -93,13 +93,6 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
   visible?: boolean
 }
 
-interface ModalContextProps {
-  visible?: boolean
-  setVisible: React.Dispatch<React.SetStateAction<boolean | undefined>>
-}
-
-export const CModalContext = createContext({} as ModalContextProps)
-
 export const CModal = forwardRef<HTMLDivElement, CModalProps>(
   (
     {
@@ -123,7 +116,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       visible,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const activeElementRef = useRef<HTMLElement | null>(null)
     const modalRef = useRef<HTMLDivElement>(null)
@@ -184,7 +177,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
           () => {
             focus && modalRef.current?.focus()
           },
-          transition ? duration : 0,
+          transition ? duration : 0
         )
       } else {
         document.body.classList.remove('modal-open')
@@ -238,7 +231,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
                       fade: transition,
                       show: state === 'entered',
                     },
-                    className,
+                    className
                   )}
                   tabIndex={-1}
                   {...(_visible
@@ -270,7 +263,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
         )}
       </>
     )
-  },
+  }
 )
 
 CModal.propTypes = {

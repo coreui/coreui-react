@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { CCloseButton } from '../close-button/CCloseButton'
-import { CModalContext } from './CModal'
+import { CModalContext } from './CModalContext'
 
 export interface CModalHeaderProps extends HTMLAttributes<HTMLDivElement> {
   /**
