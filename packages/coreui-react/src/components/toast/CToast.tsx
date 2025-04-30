@@ -1,14 +1,9 @@
-import React, {
-  createContext,
-  forwardRef,
-  HTMLAttributes,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, { forwardRef, HTMLAttributes, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Transition } from 'react-transition-group'
+
+import { CToastContext } from './CToastContext'
 
 import { useForkedRef } from '../../hooks'
 import { colorPropType } from '../../props'
@@ -58,13 +53,6 @@ export interface CToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
    */
   visible?: boolean
 }
-
-interface ContextProps extends CToastProps {
-  visible?: boolean
-  setVisible: React.Dispatch<React.SetStateAction<boolean | undefined>>
-}
-
-export const CToastContext = createContext({} as ContextProps)
 
 export const CToast = forwardRef<HTMLDivElement, CToastProps>(
   (

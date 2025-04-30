@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 
 import { CButtonProps } from '../button/CButton'
 import { CCloseButton, CCloseButtonProps } from '../close-button/CCloseButton'
-
-import { CToastContext } from './CToast'
+import { CToastContext } from './CToastContext'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 
