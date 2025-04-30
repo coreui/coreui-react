@@ -2,7 +2,7 @@ import React, { forwardRef, HTMLAttributes, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { CProgressStackedContext } from './CProgressStacked'
+import { CProgressStackedContext } from './CProgressStackedContext'
 import { CProgressBar, CProgressBarProps } from './CProgressBar'
 
 export interface CProgressProps

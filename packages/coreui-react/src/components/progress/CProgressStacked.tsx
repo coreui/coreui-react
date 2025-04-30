@@ -1,6 +1,8 @@
-import React, { createContext, forwardRef, HTMLAttributes } from 'react'
+import React, { forwardRef, HTMLAttributes } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+
+import { CProgressStackedContext } from './CProgressStackedContext'
 
 export interface CProgressStackedProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -8,12 +10,6 @@ export interface CProgressStackedProps extends HTMLAttributes<HTMLDivElement> {
    */
   className?: string
 }
-
-export interface CProgressStackedContextProps {
-  stacked?: boolean
-}
-
-export const CProgressStackedContext = createContext({} as CProgressStackedContextProps)
 
 export const CProgressStacked = forwardRef<HTMLDivElement, CProgressStackedProps>(
   ({ children, className, ...rest }, ref) => {
@@ -28,7 +24,7 @@ export const CProgressStacked = forwardRef<HTMLDivElement, CProgressStackedProps
         </CProgressStackedContext.Provider>
       </div>
     )
-  },
+  }
 )
 
 CProgressStacked.propTypes = {

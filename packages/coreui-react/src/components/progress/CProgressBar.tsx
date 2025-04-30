@@ -2,9 +2,10 @@ import React, { forwardRef, HTMLAttributes, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { CProgressStackedContext } from './CProgressStacked'
 import { colorPropType } from '../../props'
 import type { Colors } from '../../types'
+
+import { CProgressStackedContext } from './CProgressStackedContext'
 
 export interface CProgressBarProps extends HTMLAttributes<HTMLDivElement> {
   /**
