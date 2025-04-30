@@ -2,7 +2,7 @@ import React, { forwardRef, HTMLAttributes, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { CAccordionItemContext } from './CAccordionItem'
+import { CAccordionItemContext } from './CAccordionItemContext'
 
 export interface CAccordionButtonProps extends HTMLAttributes<HTMLButtonElement> {
   /**
@@ -28,7 +28,7 @@ export const CAccordionButton = forwardRef<HTMLButtonElement, CAccordionButtonPr
         {children}
       </button>
     )
-  },
+  }
 )
 
 CAccordionButton.propTypes = {

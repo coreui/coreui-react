@@ -1,5 +1,4 @@
 import React, {
-  createContext,
   forwardRef,
   HTMLAttributes,
   useContext,
@@ -11,15 +10,8 @@ import React, {
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { CAccordionContext } from './CAccordion'
-
-export interface CAccordionItemContextProps {
-  id: string
-  setVisible: (a: boolean) => void
-  visible?: boolean
-}
-
-export const CAccordionItemContext = createContext({} as CAccordionItemContextProps)
+import { CAccordionContext } from './CAccordionContext'
+import { CAccordionItemContext } from './CAccordionItemContext'
 
 export interface CAccordionItemProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -38,7 +30,8 @@ export interface CAccordionItemProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CAccordionItem = forwardRef<HTMLDivElement, CAccordionItemProps>(
   ({ children, className, id, itemKey, ...rest }, ref) => {
-    const _id = id ?? useId()
+    const uniqueId = useId()
+    const _id = id ?? uniqueId
     const _itemKey = useRef(itemKey ?? _id)
 
     const { _activeItemKey, alwaysOpen, setActiveKey } = useContext(CAccordionContext)

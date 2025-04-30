@@ -1,6 +1,8 @@
-import React, { createContext, forwardRef, HTMLAttributes, useState } from 'react'
+import React, { forwardRef, HTMLAttributes, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+
+import { CAccordionContext } from './CAccordionContext'
 
 export interface CAccordionProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -21,14 +23,6 @@ export interface CAccordionProps extends HTMLAttributes<HTMLDivElement> {
   flush?: boolean
 }
 
-export interface CAccordionContextProps {
-  _activeItemKey?: number | string
-  alwaysOpen?: boolean
-  setActiveKey: React.Dispatch<React.SetStateAction<number | string | undefined>>
-}
-
-export const CAccordionContext = createContext({} as CAccordionContextProps)
-
 export const CAccordion = forwardRef<HTMLDivElement, CAccordionProps>(
   ({ children, activeItemKey, alwaysOpen = false, className, flush, ...rest }, ref) => {
     const [_activeItemKey, setActiveKey] = useState(activeItemKey)
@@ -48,8 +42,8 @@ export const CAccordion = forwardRef<HTMLDivElement, CAccordionProps>(
 )
 
 CAccordion.propTypes = {
-  alwaysOpen: PropTypes.bool,
   activeItemKey: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  alwaysOpen: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
   flush: PropTypes.bool,

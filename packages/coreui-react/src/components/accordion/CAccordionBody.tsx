@@ -2,9 +2,8 @@ import React, { forwardRef, HTMLAttributes, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { CAccordionItemContext } from './CAccordionItem'
-
 import { CCollapse } from './../collapse/CCollapse'
+import { CAccordionItemContext } from './CAccordionItemContext'
 
 export interface CAccordionBodyProps extends HTMLAttributes<HTMLDivElement> {
   /**
