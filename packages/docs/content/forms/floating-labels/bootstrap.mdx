@@ -1,0 +1,72 @@
+---
+title: React Bootstrap Floating Labels Component
+name: Floating Labels with Bootstrap Styling
+description: Learn how to create clean and accessible floating form labels in React using CoreUI components styled with Bootstrap.
+route: /forms/floating-labels/
+bootstrap_component: true
+---
+
+## How to use React Bootstrap Floating Labels component
+
+Use CoreUI’s `<CFormFloating>`, `<CFormInput>`, `<CFormSelect>`, and `<CFormTextarea>` components with Bootstrap styling to create floating labels in React. Floating labels automatically animate above form fields when content is entered or focused.
+
+### Basic example
+
+Enable floating labels by setting the `floatingLabel` prop on supported form controls. A `placeholder` is required as the floating label effect relies on the `:placeholder-shown` pseudo-class.
+
+<ExampleSnippet className="theme-bootstrap" component="FloatingLabelsExample" componentName="React Bootstrap Floating Labels" />
+
+### Using `<CFormFloating>`
+
+You can also wrap a `<CFormInput>` and `<CFormLabel>` pair inside a `<CFormFloating>` container. Make sure the input comes first to enable proper sibling selector behavior.
+
+```jsx
+<CFormFloating className="mb-3">
+  <CFormInput type="email" id="floatingInput" placeholder="name@example.com" />
+  <CFormLabel htmlFor="floatingInput">Email address</CFormLabel>
+</CFormFloating>
+<CFormFloating>
+  <CFormInput type="password" id="floatingPassword" placeholder="Password" />
+  <CFormLabel htmlFor="floatingPassword">Password</CFormLabel>
+</CFormFloating>
+```
+
+### Pre-filled values
+
+Floating labels adjust automatically when inputs have a preset value.
+
+<ExampleSnippet className="theme-bootstrap" component="FloatingLabels2Example" componentName="React Bootstrap Floating Labels" />
+
+### Validation support
+
+Floating labels integrate seamlessly with form validation styles.
+
+<ExampleSnippet className="theme-bootstrap" component="FloatingLabelsValidationExample" componentName="React Bootstrap Floating Labels" />
+
+## Textareas
+
+Textareas styled with floating labels maintain the same height as inputs by default.
+
+<ExampleSnippet className="theme-bootstrap" component="FloatingLabelsTextareaExample" componentName="React Bootstrap Floating Labels" />
+
+To change the height, set an explicit `height` via inline styles or custom CSS rather than using the `rows` attribute.
+
+<ExampleSnippet className="theme-bootstrap" component="FloatingLabelsTextarea2Example" componentName="React Bootstrap Floating Labels" />
+
+## Select elements
+
+Floating labels also support `<CFormSelect>`. The label always appears in the floated state. **Note:** This is not compatible with `size` or `multiple`.
+
+<ExampleSnippet className="theme-bootstrap" component="FloatingLabelsSelectExample" componentName="React Bootstrap Floating Labels" />
+
+## Grid layout support
+
+Use floating labels within the CoreUI Bootstrap grid system by nesting inputs inside column classes.
+
+<ExampleSnippet className="theme-bootstrap" component="FloatingLabelsLayoutExample" componentName="React Bootstrap Floating Labels" />
+
+## API reference
+
+Refer to the API documentation for detailed descriptions of all available props and configuration options.
+
+- [&lt;CFormFloating /&gt;](./api/#cformfloating)

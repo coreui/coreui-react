@@ -1,0 +1,82 @@
+---
+title: React Bootstrap Spinner Component
+name: Spinner with Bootstrap Styling
+description: Learn how to use the React Bootstrap Spinner component from CoreUI to show loading states in your app with animated indicators, color options, alignment, and sizing.
+route: /components/spinner/
+bootstrap_component: true
+---
+
+## React Bootstrap Spinner Component
+
+The React Bootstrap Spinner component displays a visual loading indicator in your app. Use it to communicate that content is loading, such as form submissions, page data, or background processes.
+
+All spinners are built with HTML and CSS—no JavaScript needed. You can easily customize appearance, color, size, and placement using utility classes.
+
+## Border spinner
+
+Use the border spinner as a lightweight, animated loading indicator.
+
+<ExampleSnippet className="theme-bootstrap" component="SpinnerBorderExample" componentName="React Bootstrap Spinner" />
+
+### Spinner colors
+
+The React Bootstrap Spinner uses `currentColor`, so you can customize it using any text color utility class.
+
+<ExampleSnippet className="theme-bootstrap" component="SpinnerBorderColorsExample" componentName="React Bootstrap Spinner" />
+
+## Grow spinner
+
+An alternative to the border version is the grow spinner. It expands and fades instead of spinning.
+
+<ExampleSnippet className="theme-bootstrap" component="SpinnerGrowExample" componentName="React Bootstrap Spinner" />
+<ExampleSnippet className="theme-bootstrap" component="SpinnerGrowColorsExample" componentName="React Bootstrap Spinner" />
+
+## Spinner alignment
+
+React Bootstrap Spinners use `inline-flex`, so they align well in many layout contexts.
+
+### Margin utilities
+
+Use Bootstrap spacing utilities for control over margin and spacing.
+
+<ExampleSnippet className="theme-bootstrap" component="SpinnerBorderMarginExample" componentName="React Bootstrap Spinner" />
+
+### Flex alignment
+
+<ExampleSnippet className="theme-bootstrap" component="SpinnerBorderPlacementFlexExample" componentName="React Bootstrap Spinner" />
+<ExampleSnippet className="theme-bootstrap" component="SpinnerBorderPlacementFlex2Example" componentName="React Bootstrap Spinner" />
+
+### Float placement
+
+<ExampleSnippet className="theme-bootstrap" component="SpinnerBorderPlacementFloatsExample" componentName="React Bootstrap Spinner" />
+
+### Text alignment
+
+<ExampleSnippet className="theme-bootstrap" component="SpinnerBorderPlacementTextAlignExample" componentName="React Bootstrap Spinner" />
+
+## Spinner size
+
+Use the `size="sm"` prop for a compact spinner.
+
+<ExampleSnippet className="theme-bootstrap" component="SpinnerSizeSmallExample" componentName="React Bootstrap Spinner" />
+
+For full control, use inline styles or custom CSS:
+
+<ExampleSnippet className="theme-bootstrap" component="SpinnerSizeCustomExample" componentName="React Bootstrap Spinner" />
+
+## Spinners in buttons
+
+Show React Bootstrap Spinners inside buttons to indicate loading states during form submissions or API requests.
+
+<ExampleSnippet className="theme-bootstrap" component="SpinnerButtonsExample" componentName="React Bootstrap Spinner" />
+<ExampleSnippet className="theme-bootstrap" component="SpinnerButtons2Example" componentName="React Bootstrap Spinner" />
+
+## Accessibility
+
+Each spinner includes `role="status"` and a visually hidden `<span>` with `"Loading..."` for screen readers. You can customize the text based on context.
+
+## API reference
+
+Explore the full API for the React Bootstrap Spinner component:
+
+- [&lt;CSpinner /&gt;](./api/#cspinner)

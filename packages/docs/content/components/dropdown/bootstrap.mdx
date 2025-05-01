@@ -1,0 +1,143 @@
+---
+title: React Bootstrap Dropdown Component
+name: Dropdown with Bootstrap Styling
+description: Learn how to use the React Bootstrap Dropdown component from CoreUI to create toggleable, contextual overlays with links, buttons, forms, and more, styled the Bootstrap way.
+route: /components/dropdown/
+bootstrap_component: true
+---
+
+## Overview of React Bootstrap Dropdown component
+
+The React Bootstrap Dropdown component provides toggleable, contextual overlays for displaying lists, links, forms, and more. It’s powered by [Popper.js](https://popper.js.org/) for positioning, although navbar dropdowns don’t require dynamic placement.
+
+## React Bootstrap Dropdown examples
+
+### Single button dropdowns
+
+You can trigger dropdowns using `<button>` elements:
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownSingleButtonExample" componentName="React Bootstrap Dropdown" />
+
+Or with `<a>` elements:
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownSingleButton2Example" componentName="React Bootstrap Dropdown" />
+
+It works with all button variants:
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownSingleButton3Example" componentName="React Bootstrap Dropdown" />
+
+### Split button dropdowns
+
+Use the `split` prop to create a split button dropdown. This adds a dropdown toggle next to the main button.
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownSplitButtonExample" componentName="React Bootstrap Dropdown" />
+
+## Sizing
+
+React Bootstrap Dropdowns support all button sizes:
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownSizingLargeExample" componentName="React Bootstrap Dropdown" />
+<ExampleSnippet className="theme-bootstrap" component="DropdownSizingSmallExample" componentName="React Bootstrap Dropdown" />
+
+## Dark variant
+
+Use the `dark` prop to style the dropdown with a dark theme.
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownDarkExample" componentName="React Bootstrap Dropdown" />
+<ExampleSnippet className="theme-bootstrap" component="DropdownDark2Example" componentName="React Bootstrap Dropdown" />
+
+## Directions
+
+<Callout color="info" title="RTL">
+  Directions are mirrored in RTL layouts. For example, `.dropstart` appears on the right.
+</Callout>
+
+### Centered dropdown
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownCenteredExample" componentName="React Bootstrap Dropdown" />
+
+### Dropup
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownDropupExample" componentName="React Bootstrap Dropdown" />
+
+### Dropup centered
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownDropupCenteredExample" componentName="React Bootstrap Dropdown" />
+
+### Dropend
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownDropendExample" componentName="React Bootstrap Dropdown" />
+
+### Dropstart
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownDropstartExample" componentName="React Bootstrap Dropdown" />
+
+## Dropdown menu items
+
+React Bootstrap Dropdowns can include `<a>` or `<button>` elements:
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownMenuItemsExample" componentName="React Bootstrap Dropdown" />
+
+Use `<CDropdownItemPlain>` for non-interactive items:
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownMenuItems2Example" componentName="React Bootstrap Dropdown" />
+
+### Active and disabled items
+
+To mark an item as active:
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownMenuItemsActiveExample" componentName="React Bootstrap Dropdown" />
+
+To mark an item as disabled:
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownMenuItemsDisabledExample" componentName="React Bootstrap Dropdown" />
+
+## Menu alignment
+
+Right-align the dropdown using the `alignment="end"` prop:
+
+<Callout color="info">
+  <strong>Heads up!</strong> Dropdowns use Popper.js for positioning.
+</Callout>
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownMenuAlignmentExample" componentName="React Bootstrap Dropdown" />
+
+### Responsive alignment
+
+Right-align from a specific breakpoint with `alignment="sm:end"` and similar values:
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownResponsiveAlignmentExample" componentName="React Bootstrap Dropdown" />
+
+Left-align from a breakpoint with `alignment="md:start"`:
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownResponsiveAlignment2Example" componentName="React Bootstrap Dropdown" />
+
+## Dropdown menu content
+
+### Headers
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownMenuContentHeadersExample" componentName="React Bootstrap Dropdown" />
+
+### Dividers
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownMenuContentDividersExample" componentName="React Bootstrap Dropdown" />
+
+### Text
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownMenuContentTextExample" componentName="React Bootstrap Dropdown" />
+
+### Forms
+
+<ExampleSnippet className="theme-bootstrap" component="DropdownMenuContentFormsExample" componentName="React Bootstrap Dropdown" />
+
+## API reference
+
+Refer to the API below for full details on available components and props in the React Bootstrap Dropdown:
+
+- [&lt;CDropdown /&gt;](./api/#cdropdown)
+- [&lt;CDropdownDivider /&gt;](./api/#cdropdowndivider)
+- [&lt;CDropdownHeader /&gt;](./api/#cdropdownheader)
+- [&lt;CDropdownItem /&gt;](./api/#cdropdownitem)
+- [&lt;CDropdownItemPlain /&gt;](./api/#cdropdownitemplain)
+- [&lt;CDropdownMenu /&gt;](./api/#cdropdownmenu)
+- [&lt;CDropdownToggle /&gt;](./api/#cdropdowntoggle)

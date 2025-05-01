@@ -1,0 +1,57 @@
+---
+title: React Bootstrap Form Validation
+name: Form Validation with Bootstrap Styling
+description: Learn how to use Bootstrap-style validation in React forms using CoreUI components. Show validation messages, use custom styles, and support native browser behavior.
+route: /forms/validation/
+bootstrap_component: true
+---
+
+## How to use React Bootstrap Form Validation
+
+React Bootstrap validation lets you provide custom or native HTML5 feedback styles for form controls. CoreUI components support both approaches for a better user experience.
+
+### Custom validation styles
+
+Disable the browser’s native validation UI with the `noValidate` prop on `<CForm>`, and use the `validated` prop to enable feedback based on custom logic. Try submitting the form below to see how validation classes like `:invalid` and `:valid` are applied.
+
+<ExampleSnippet className="theme-bootstrap" component="ValidationExample" componentName="React Bootstrap Form Validation" />
+
+### Browser default behavior
+
+If you prefer to rely on native browser validation, skip `noValidate` and `validated`. Submit the form and let the browser handle feedback based on built-in rules.
+
+<ExampleSnippet className="theme-bootstrap" component="ValidationBrowserDefaultsExample" componentName="React Bootstrap Form Validation" />
+
+### Manual validation
+
+Use the `valid` and `invalid` props directly on components like `<CFormInput>` to apply validation styles manually, which is useful for server-side validation or complex form logic.
+
+<ExampleSnippet className="theme-bootstrap" component="ValidationCustomExample" componentName="React Bootstrap Form Validation" />
+
+### Supported components
+
+These CoreUI components support Bootstrap validation classes:
+
+- `<CFormCheck>`
+- `<CFormInput>`
+- `<CFormSelect>`
+- `<CFormTextarea>`
+
+<ExampleSnippet className="theme-bootstrap" component="ValidationSupportedElementsExample" componentName="React Bootstrap Form Validation" />
+
+### Tooltip feedback
+
+For compact layouts, validation messages can appear as tooltips. Make sure the parent container has `position: relative` to position tooltips correctly.
+
+<ExampleSnippet className="theme-bootstrap" component="ValidationTooltipsExample" componentName="React Bootstrap Form Validation" />
+
+## API reference
+
+Refer to the API documentation for detailed descriptions of the props and features available:
+
+- [&lt;CForm /&gt;](./api/#cform)
+- [&lt;CFormCheck /&gt;](./api/#cformcheck)
+- [&lt;CFormInput /&gt;](./api/#cforminput)
+- [&lt;CFormSelect /&gt;](./api/#cformselect)
+- [&lt;CFormTextarea /&gt;](./api/#cformtextarea)
+- [&lt;CFormFeedback /&gt;](./api/#cformfeedback)

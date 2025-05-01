@@ -13,7 +13,7 @@ export const PlaceholderExample = () => {
   return (
     <>
       <CCard style={{ width: '18rem' }}>
-        <CCardImage orientation="top" src="../../images/react.jpg" />
+        <CCardImage orientation="top" src={'/images/react.jpg'} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>

@@ -7,7 +7,7 @@ export const NavbarBrand3Example = () => {
       <CContainer fluid>
         <CNavbarBrand href="#">
           <img
-            src="../../images/brand/coreui-signet.svg"
+            src={'/images/brand/coreui-signet.svg'}
             alt="CoreUI Signet"
             width="22"
             height="24"

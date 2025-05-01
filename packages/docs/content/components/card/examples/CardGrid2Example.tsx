@@ -15,7 +15,7 @@ export const CardGrid2Example = () => {
     <CRow xs={{ cols: 1, gutter: 4 }} md={{ cols: 3 }}>
       <CCol xs>
         <CCard>
-          <CCardImage orientation="top" src="../../images/react.jpg" />
+          <CCardImage orientation="top" src={'/images/react.jpg'} />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>
@@ -30,7 +30,7 @@ export const CardGrid2Example = () => {
       </CCol>
       <CCol xs>
         <CCard>
-          <CCardImage orientation="top" src="../../images/react.jpg" />
+          <CCardImage orientation="top" src={'/images/react.jpg'} />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>
@@ -45,7 +45,7 @@ export const CardGrid2Example = () => {
       </CCol>
       <CCol xs>
         <CCard>
-          <CCardImage orientation="top" src="../../images/react.jpg" />
+          <CCardImage orientation="top" src={'/images/react.jpg'} />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>
@@ -60,7 +60,7 @@ export const CardGrid2Example = () => {
       </CCol>
       <CCol xs>
         <CCard>
-          <CCardImage orientation="top" src="../../images/react.jpg" />
+          <CCardImage orientation="top" src={'/images/react.jpg'} />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>

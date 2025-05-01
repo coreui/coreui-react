@@ -1,0 +1,91 @@
+---
+title: React Bootstrap Offcanvas Component
+name: Offcanvas with Bootstrap Styling
+description: Learn how to use the React Bootstrap Offcanvas component from CoreUI to create hidden sidebars and sliding panels for navigation, shopping carts, or any additional UI element.
+route: /components/offcanvas/
+bootstrap_component: true
+---
+
+## React Bootstrap Offcanvas examples
+
+The React Bootstrap Offcanvas component allows you to build sidebar-like panels that slide into view from any edge of the screen. These panels are great for navigation menus, shopping carts, and more.
+
+### Static offcanvas component
+
+Here’s a React Bootstrap Offcanvas that is shown by default using `visible={true}`. It includes a header with a close button and a padded body.
+
+<ExampleSnippet
+  className="theme-bootstrap docs-example-offcanvas bg-body-tertiary p-0 overflow-hidden"
+  component="OffcanvasExample"
+  componentName="React Bootstrap Offcanvas"
+/>
+
+### Live demo
+
+Click the buttons to toggle visibility of the offcanvas.
+
+<ExampleSnippet className="theme-bootstrap" component="OffcanvasLiveExample" componentName="React Bootstrap Offcanvas" />
+
+### Scrollable body
+
+Use the `scroll` prop to allow page scrolling while the offcanvas is visible. Combine it with `backdrop` to control overlay behavior.
+
+<ExampleSnippet className="theme-bootstrap" component="OffcanvasBodyScrollingExample" componentName="React Bootstrap Offcanvas" />
+
+### Scrollable body with backdrop
+
+<ExampleSnippet
+  className="theme-bootstrap"
+  component="OffcanvasBodyScrollingAndBackdropExample"
+  componentName="React Bootstrap Offcanvas"
+/>
+
+### Static backdrop
+
+Prevent closing the React Bootstrap Offcanvas on backdrop click by setting `backdrop="static"`.
+
+<ExampleSnippet className="theme-bootstrap" component="OffcanvasStaticBackdropExample" componentName="React Bootstrap Offcanvas" />
+
+## Dark variant
+
+Add the `dark` prop to match the React Bootstrap Offcanvas with dark themes or layouts.
+
+<ExampleSnippet
+  className="theme-bootstrap docs-example-offcanvas bg-body-secondary p-0 overflow-hidden"
+  component="OffcanvasDarkExample"
+  componentName="React Bootstrap Offcanvas"
+/>
+
+## Responsive behavior
+
+Use the `responsive` prop to show the offcanvas below specific breakpoints (e.g., `responsive="lg"`). Above that breakpoint, the offcanvas behaves as a regular visible container.
+
+<ExampleSnippet className="theme-bootstrap" component="OffcanvasResponsiveExample" componentName="React Bootstrap Offcanvas" />
+
+## Placement options for React Bootstrap Offcanvas
+
+Choose the offcanvas placement with the `placement` prop:
+
+- `placement="start"` – left
+- `placement="end"` – right
+- `placement="top"` – top
+- `placement="bottom"` – bottom
+
+Examples:
+
+<ExampleSnippet className="theme-bootstrap" component="OffcanvasPlacementTopExample" componentName="React Bootstrap Offcanvas" />
+<ExampleSnippet className="theme-bootstrap" component="OffcanvasPlacementRightExample" componentName="React Bootstrap Offcanvas" />
+<ExampleSnippet className="theme-bootstrap" component="OffcanvasPlacementBottomExample" componentName="React Bootstrap Offcanvas" />
+
+## Accessibility considerations
+
+React Bootstrap Offcanvas behaves like a modal. Use `aria-labelledby` to link the offcanvas title to assistive technologies. CoreUI automatically adds `role="dialog"` and other ARIA attributes for accessibility.
+
+## API reference
+
+Review the full API for the React Bootstrap Offcanvas component and its parts:
+
+- [&lt;COffcanvas /&gt;](./api/#coffcanvas)
+- [&lt;COffcanvasBody /&gt;](./api/#coffcanvasbody)
+- [&lt;COffcanvasHeader /&gt;](./api/#coffcanvasheader)
+- [&lt;COffcanvasTitle /&gt;](./api/#coffcanvastitle)

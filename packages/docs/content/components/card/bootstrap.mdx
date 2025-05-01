@@ -1,0 +1,169 @@
+---
+title: React Bootstrap Card Component
+name: Card with Bootstrap Styling
+description: Learn how to use CoreUI’s React Bootstrap Card component to build flexible content containers with headers, footers, images, list groups, and responsive layouts.
+route: /components/card/
+bootstrap_component: true
+---
+
+## About React Bootstrap Card Component
+
+The React Bootstrap Card component is a versatile container used to display content in a structured and responsive way. It supports images, headers, footers, background styles, and more—styled to match Bootstrap's visual language.
+
+## Example usage
+
+React Bootstrap Cards require minimal markup and offer maximum flexibility. They use flexbox for layout, have no default margins, and fill their parent container by default.
+
+<ExampleSnippet className="theme-bootstrap" component="CardExample" componentName="React Bootstrap Card" />
+
+## Content types supported by React Bootstrap Card
+
+### Card body
+
+The main block of the card is wrapped in `<CCardBody>` for consistent padding.
+
+<ExampleSnippet className="theme-bootstrap" component="CardBodyExample" componentName="React Bootstrap Card" />
+
+### Titles, text, and links
+
+Use `<CCardTitle>`, `<CCardSubtitle>`, and `<CCardLink>` to structure text and links inside cards.
+
+<ExampleSnippet className="theme-bootstrap" component="CardTitleExample" componentName="React Bootstrap Card" />
+
+### Images
+
+Use `orientation="top"` to position an image at the top of the card. Use `<CCardText>` to add and style text content.
+
+<ExampleSnippet className="theme-bootstrap" component="CardImagesExample" componentName="React Bootstrap Card" />
+
+### List groups
+
+Display structured lists inside cards using flush list groups.
+
+<ExampleSnippet className="theme-bootstrap" component="CardListGroupsExample" componentName="React Bootstrap Card" />
+
+<ExampleSnippet className="theme-bootstrap" component="CardListGroups2Example" componentName="React Bootstrap Card" />
+
+<ExampleSnippet className="theme-bootstrap" component="CardListGroups3Example" componentName="React Bootstrap Card" />
+
+### Kitchen sink
+
+Combine multiple content elements (e.g. image, text, list group) to create a comprehensive card layout.
+
+<ExampleSnippet className="theme-bootstrap" component="CardKitchenSinkExample" componentName="React Bootstrap Card" />
+
+### Header and footer
+
+Use `<CCardHeader>` and `<CCardFooter>` to add headers and footers. You can style headers with `as="h5"` or similar props.
+
+<ExampleSnippet className="theme-bootstrap" component="CardHeaderExample" componentName="React Bootstrap Card" />
+
+<ExampleSnippet className="theme-bootstrap" component="CardHeader2Example" componentName="React Bootstrap Card" />
+
+<ExampleSnippet className="theme-bootstrap" component="CardHeader3Example" componentName="React Bootstrap Card" />
+
+<ExampleSnippet className="theme-bootstrap" component="CardHeaderAndFooterExample" componentName="React Bootstrap Card" />
+
+## Sizing React Bootstrap Cards
+
+Cards are full-width by default. Control width using layout grids, utilities, or custom CSS.
+
+### Grid layout
+
+<ExampleSnippet className="theme-bootstrap" component="CardSizingExample" componentName="React Bootstrap Card" />
+
+### Utility classes
+
+<ExampleSnippet className="theme-bootstrap" component="CardSizing2Example" componentName="React Bootstrap Card" />
+
+### Custom CSS
+
+<ExampleSnippet className="theme-bootstrap" component="CardSizing3Example" componentName="React Bootstrap Card" />
+
+## Text alignment
+
+Use Bootstrap's text alignment utilities to position card content.
+
+<ExampleSnippet className="theme-bootstrap" component="CardTextAlignmentExample" componentName="React Bootstrap Card" />
+
+## Navigation
+
+Add navigational elements using `<CNav>` inside a card header.
+
+<ExampleSnippet className="theme-bootstrap" component="CardNavigationExample" componentName="React Bootstrap Card" />
+
+<ExampleSnippet className="theme-bootstrap" component="CardNavigation2Example" componentName="React Bootstrap Card" />
+
+## Image placement in React Bootstrap Cards
+
+### Image caps (top or bottom)
+
+<ExampleSnippet className="theme-bootstrap" component="CardImageCapsExample" componentName="React Bootstrap Card" />
+
+### Image overlays
+
+Overlay content on top of background images using Bootstrap utility classes.
+
+<ExampleSnippet className="theme-bootstrap" component="CardImageOverlaysExample" componentName="React Bootstrap Card" />
+
+## Horizontal layout
+
+Use `.g-0` and grid column classes to create responsive horizontal cards.
+
+<ExampleSnippet className="theme-bootstrap" component="CardImageHorizontalExample" componentName="React Bootstrap Card" />
+
+## Styling options
+
+### Background and text color
+
+Use the `color` prop to control card background and text color.
+
+<ExampleSnippet className="theme-bootstrap" component="CardStylesBackgroundAndColorExample" componentName="React Bootstrap Card" />
+
+<Callout color="warning" type="colorAssistiveTechnologies" />
+
+### Border customization
+
+Apply Bootstrap border utilities or the `textColor` prop to customize card borders.
+
+<ExampleSnippet className="theme-bootstrap" component="CardStylesBorderExample" componentName="React Bootstrap Card" />
+
+### Top border only
+
+<ExampleSnippet className="theme-bootstrap" component="CardStylesTopBorderExample" componentName="React Bootstrap Card" />
+
+## Layout variations
+
+### Card groups
+
+Group cards to render them with equal width and height.
+
+<ExampleSnippet className="theme-bootstrap" component="CardGroupsExample" componentName="React Bootstrap Card" />
+
+<ExampleSnippet className="theme-bootstrap" component="CardGroups2Example" componentName="React Bootstrap Card" />
+
+### Grid-based cards
+
+Use `<CRow>` and grid props to control the layout of multiple cards in a responsive grid.
+
+<ExampleSnippet className="theme-bootstrap" component="CardGridExample" componentName="React Bootstrap Card" />
+
+<ExampleSnippet className="theme-bootstrap" component="CardGrid2Example" componentName="React Bootstrap Card" />
+
+<ExampleSnippet className="theme-bootstrap" component="CardGrid3Example" componentName="React Bootstrap Card" />
+
+<ExampleSnippet className="theme-bootstrap" component="CardGrid4Example" componentName="React Bootstrap Card" />
+
+## API reference
+
+- [&lt;CCard /&gt;](./api/#ccard)
+- [&lt;CCardBody /&gt;](./api/#ccardbody)
+- [&lt;CCardFooter /&gt;](./api/#ccardfooter)
+- [&lt;CCardGroup /&gt;](./api/#ccardgroup)
+- [&lt;CCardHeader /&gt;](./api/#ccardheader)
+- [&lt;CCardImage /&gt;](./api/#ccardimage)
+- [&lt;CCardImageOverlay /&gt;](./api/#ccardimageoverlay)
+- [&lt;CCardLink /&gt;](./api/#ccardlink)
+- [&lt;CCardSubtitle /&gt;](./api/#ccardsubtitle)
+- [&lt;CCardText /&gt;](./api/#ccardtext)
+- [&lt;CCardTitle /&gt;](./api/#ccardtitle)

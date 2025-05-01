@@ -42,15 +42,20 @@ const ComponentSubNav = forwardRef<HTMLDivElement, ComponentSubNavProps>(
     const parentPathname = findShortestSlug(nodes)
     const hasNavAccessibility = useMemo(
       () => nodes.some((edge) => edge.node.fields.slug.includes('accessibility')),
-      [nodes],
+      [nodes]
     )
     const hasNavAPI = useMemo(
       () => nodes.some((edge) => edge.node.fields.slug.includes('api')),
-      [nodes],
+      [nodes]
     )
     const hasNavStyling = useMemo(
       () => nodes.some((edge) => edge.node.fields.slug.includes('styling')),
-      [nodes],
+      [nodes]
+    )
+
+    const hasNavBootstrap = useMemo(
+      () => nodes.some((edge) => edge.node.fields.slug.includes('bootstrap')),
+      [nodes]
     )
 
     // Ref for the sentinel element
@@ -103,12 +108,19 @@ const ComponentSubNav = forwardRef<HTMLDivElement, ComponentSubNavProps>(
                   </CNavLink>
                 </CNavItem>
               )}
+              {hasNavBootstrap && (
+                <CNavItem>
+                  <CNavLink as={Link} to={`${parentPathname}bootstrap/`} activeClassName="active">
+                    Use with Bootstrap
+                  </CNavLink>
+                </CNavItem>
+              )}
             </CNav>
           </CContainer>
         </div>
       </>
     )
-  },
+  }
 )
 
 ComponentSubNav.displayName = 'ComponentSubNav'

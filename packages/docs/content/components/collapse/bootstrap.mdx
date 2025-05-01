@@ -1,0 +1,37 @@
+---
+title: React Bootstrap Collapse Component
+name: Collapse with Bootstrap Styling
+description: Learn how to use the React Bootstrap Collapse component from CoreUI to toggle visibility of content panels using animations and Bootstrap-compatible transitions.
+route: /components/collapse/
+bootstrap_component: true
+---
+
+## How the React Bootstrap Collapse component works
+
+The React Bootstrap Collapse component allows you to toggle the visibility of content using animated height or width transitions. It’s perfect for creating expandable sections, FAQs, and collapsible panels with clean and accessible markup.
+
+Triggers such as buttons or anchor elements are connected to collapsible targets. The collapse animation modifies the `height` or `width` property, so padding should not be applied directly to the `.collapse` element.
+
+## React Bootstrap Collapse example
+
+You can trigger collapsible content using a button or a link. Below is a simple example using CoreUI components styled with Bootstrap.
+
+<ExampleSnippet className="theme-bootstrap" component="CollapseExample" componentName="React Bootstrap Collapse" />
+
+## Horizontal React Bootstrap Collapse
+
+Use the `horizontal` prop on the React Bootstrap Collapse component to transition the `width` instead of `height`. Don’t forget to apply a specific width to the immediate child of the collapse element.
+
+<ExampleSnippet className="theme-bootstrap" component="CollapseHorizontalExample" componentName="React Bootstrap Collapse" />
+
+## Multiple collapse targets
+
+React Bootstrap Collapse supports multiple targets toggled by a single trigger. Use a `<CButton>` to show or hide more than one collapsible element at the same time.
+
+<ExampleSnippet className="theme-bootstrap" component="CollapseMultipleTargetsExample" componentName="React Bootstrap Collapse" />
+
+## API reference
+
+Check the API documentation below to explore all available props for the React Bootstrap Collapse component:
+
+- [&lt;CCollapse /&gt;](./api/#ccollapse)

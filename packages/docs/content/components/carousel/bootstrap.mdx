@@ -1,0 +1,59 @@
+---
+title: React Bootstrap Carousel Component
+name: Carousel with Bootstrap Styling
+description: Discover how to use the React Bootstrap Carousel component from CoreUI to build responsive, customizable image and content sliders with indicators, captions, and transitions.
+route: /components/carousel/
+bootstrap_component: true
+---
+
+## How the React Bootstrap Carousel component works
+
+The React Bootstrap Carousel component is a responsive slideshow for cycling through a set of images, text, or custom HTML content. It supports controls, indicators, captions, transitions, and responsive behavior out of the box.
+
+The component also supports the [Page Visibility API](https://www.w3.org/TR/page-visibility/), ensuring slides don’t transition when the browser tab is inactive.
+
+## React Bootstrap Carousel examples
+
+### Slides only
+
+Basic React Bootstrap Carousel with no controls or indicators.
+
+<ExampleSnippet className="theme-bootstrap" component="CarouselSlidesOnlyExample" componentName="React Bootstrap Carousel" />
+
+### With controls
+
+Add `controls` prop to include previous/next navigation arrows.
+
+<ExampleSnippet className="theme-bootstrap" component="CarouselWithControlsExample" componentName="React Bootstrap Carousel" />
+
+### With indicators
+
+Include slide indicators alongside the navigation arrows for better user interaction.
+
+<ExampleSnippet className="theme-bootstrap" component="CarouselWithIndicatorsExample" componentName="React Bootstrap Carousel" />
+
+### With captions
+
+Enhance each carousel slide with a caption using the `<CCarouselCaption>` component. Use responsive utility classes like `.d-none` and `.d-md-block` to control visibility across devices.
+
+<ExampleSnippet className="theme-bootstrap" component="CarouselWithCaptionsExample" componentName="React Bootstrap Carousel" />
+
+### Crossfade transition
+
+Apply `transition="crossfade"` to enable a fade animation instead of the default sliding effect.
+
+<ExampleSnippet className="theme-bootstrap" component="CarouselCrossfadeExample" componentName="React Bootstrap Carousel" />
+
+## Dark variant of React Bootstrap Carousel
+
+Use the `dark` prop on `<CCarousel>` to enable dark-themed controls, indicators, and captions. This uses CSS filters and Sass variables to invert styles and maintain readability on dark backgrounds.
+
+<ExampleSnippet className="theme-bootstrap" component="CarouselDarkVariantExample" componentName="React Bootstrap Carousel" />
+
+## API reference
+
+Refer to the API documentation below for all supported props of the React Bootstrap Carousel component:
+
+- [&lt;CCarousel /&gt;](./api/#ccarousel)
+- [&lt;CCarouselCaption /&gt;](./api/#ccarouselcaption)
+- [&lt;CCarouselItem /&gt;](./api/#ccarouselitem)

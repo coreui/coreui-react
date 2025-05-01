@@ -1,0 +1,103 @@
+---
+title: React Bootstrap Button Component
+name: Buttons with Bootstrap Styling
+description: Learn how to use CoreUI’s React Button component with Bootstrap styling to build interactive, accessible, and responsive buttons for forms, tables, modals, and more.
+route: /components/button/
+bootstrap_component: true
+---
+
+## How to use React Bootstrap Button component
+
+CoreUI provides a set of prebuilt React Button components styled with Bootstrap. Buttons signal actions to users and can initiate events both in the UI and behind the scenes.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonExample" componentName="React Bootstrap Button" />
+
+<Callout color="warning" type="colorAssistiveTechnologies" />
+
+## Disable text wrapping
+
+To prevent text wrapping inside a button, apply the `.text-nowrap` class to the `<CButton>`. Alternatively, set `$btn-white-space: nowrap` in Sass to apply it globally.
+
+## Button components
+
+The `<CButton>` component can render as a `<button>`, `<a>`, or `<input>` element. When using it as an anchor for functionality (like toggles), add `role="button"` for accessibility.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonComponentsExample" componentName="React Bootstrap Button" />
+
+## Outline buttons
+
+Use `variant="outline"` to create buttons with a transparent background and colored border — a more subtle alternative to standard buttons.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonOutlineExample" componentName="React Bootstrap Button" />
+
+## Ghost buttons
+
+For minimal buttons with no background or border, use `variant="ghost"`. These are great for secondary actions.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonGhostExample" componentName="React Bootstrap Button" />
+
+<Callout color="info">
+  Some button styles use light text colors and should be placed on dark backgrounds to maintain contrast.
+</Callout>
+
+## Sizes
+
+Create large or small buttons with the `size="lg"` or `size="sm"` props.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonSizesExample" componentName="React Bootstrap Button" />
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonSizes2Example" componentName="React Bootstrap Button" />
+
+You can also use CSS variables for fully custom sizes.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonSizes3Example" componentName="React Bootstrap Button" />
+
+## Shapes
+
+### Pill buttons
+
+Use pill-shaped buttons for a soft, rounded appearance.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonShapePillExample" componentName="React Bootstrap Button" />
+
+### Square buttons
+
+Use square-shaped buttons for compact, uniform interactions.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonShapeSquareExample" componentName="React Bootstrap Button" />
+
+## Disabled state
+
+Disable any `<CButton>` by passing the `disabled` prop. This applies `pointer-events: none` and dims the button.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonDisabledExample" componentName="React Bootstrap Button" />
+
+Disabling anchor elements (`<a>`) requires additional steps: CoreUI applies the `.disabled` class, adds `aria-disabled="true"`, and sets `tabindex="-1"`.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonDisabled2Example" componentName="React Bootstrap Button" />
+
+These steps prevent users from interacting with disabled links via keyboard or mouse.
+
+## Block buttons
+
+To make buttons span the full width of their container, use Bootstrap's layout utilities like `.d-grid`, `.w-100`, and `.col-*`.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonBlockExample" componentName="React Bootstrap Button" />
+
+Responsive layout: vertically stacked until the `md` breakpoint, where `.d-md-block` reverts to inline.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonBlock2Example" componentName="React Bootstrap Button" />
+
+You can also create column-based buttons using `.col-6` and center them with `.mx-auto`.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonBlock3Example" componentName="React Bootstrap Button" />
+
+Use flex utilities and margin helpers to align buttons horizontally when they're no longer stacked.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonBlock4Example" componentName="React Bootstrap Button" />
+
+## API reference
+
+See the full API reference for all available props in the Bootstrap-styled React Button component.
+
+- [&lt;CButton /&gt;](./api/#cbutton)

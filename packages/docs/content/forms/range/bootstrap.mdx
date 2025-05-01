@@ -1,0 +1,41 @@
+---
+title: React Bootstrap Range Component
+name: Range with Bootstrap Styling
+description: Learn how to create customizable and consistent cross-browser range sliders using CoreUI’s React components styled with Bootstrap.
+route: /forms/range/
+bootstrap_component: true
+---
+
+## How to use React Bootstrap Range component
+
+Use CoreUI’s `<CFormRange>` component to create custom range inputs with Bootstrap styling. It provides consistent appearance and behavior across modern browsers and supports customization via standard props.
+
+### Basic example
+
+The `<CFormRange>` component renders a stylized `<input type="range">` element.
+
+<ExampleSnippet className="theme-bootstrap" component="FormRangeExample" componentName="React Bootstrap Range" />
+
+### Disabled state
+
+Add the `disabled` prop to visually gray out the slider and disable interaction.
+
+<ExampleSnippet className="theme-bootstrap" component="FormRangeDisabledExample" componentName="React Bootstrap Range" />
+
+### Minimum and maximum values
+
+Customize the slider’s value range using the `min` and `max` props.
+
+<ExampleSnippet className="theme-bootstrap" component="FormRangeMinAndMaxExample" componentName="React Bootstrap Range" />
+
+### Custom step values
+
+Set a custom `step` size to control the interval between selectable values.
+
+<ExampleSnippet className="theme-bootstrap" component="FormRangeStepsExample" componentName="React Bootstrap Range" />
+
+## API reference
+
+Refer to the API documentation below for detailed descriptions of all available props.
+
+- [&lt;CFormRange /&gt;](./api/#cformrange)

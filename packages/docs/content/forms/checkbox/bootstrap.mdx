@@ -1,0 +1,69 @@
+---
+title: React Checkbox Components
+name: Checkbox
+description: Create consistent cross-browser and cross-device checkboxes with our React checkbox components.
+route: /forms/checkbox/
+other_frameworks: checkbox
+---
+
+## Approach
+
+Browser default checkboxes and radios are replaced with the help of `<CFormCheck>`. Checkboxes are for selecting one or several options in a list.
+
+## Checkboxes
+
+<ExampleSnippet component="CheckboxExample" componentName="React Form Checkbox" />
+
+### Indeterminate
+
+Checkboxes can utilize the `:indeterminate` pseudo-class when manually set via `indeterminate` property.
+
+<ExampleSnippet component="CheckboxIndeterminateExample" componentName="React Form Checkbox" />
+
+### Disabled
+
+Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input's state.
+
+<ExampleSnippet component="CheckboxDisabledExample" componentName="React Form Checkbox" />
+
+## Default (stacked)
+
+By default, any number of checkboxes that are immediate sibling will be vertically stacked and appropriately spaced.
+
+<ExampleSnippet component="CheckboxStackedExample" componentName="React Form Checkbox" />
+
+## Inline
+
+Group checkboxes on the same horizontal row by adding `inline` boolean property to any `<CFormCheck>`.
+
+<ExampleSnippet component="CheckboxInlineExample" componentName="React Form Checkbox" />
+
+## Reverse 
+
+Put your checkboxes on the opposite side by adding `reverse` boolean property.
+
+<ExampleSnippet component="CheckboxReverseExample" componentName="React Form Checkbox" />
+
+## Without labels
+
+Remember to still provide some form of accessible name for assistive technologies (for instance, using `aria-label`).
+
+<ExampleSnippet component="CheckboxWithoutLabelsExample" componentName="React Form Checkbox" />
+
+## Checkbox toggle buttons
+
+Create button-like checkboxes and radio buttons by using `button` boolean property on the `<CFormCheck>` component. These toggle buttons can further be grouped in a button group if needed.
+
+<ExampleSnippet component="CheckboxToggleButtonsExample" componentName="React Form Checkbox" />
+
+### Outlined styles
+
+Different variants of button, such at the various outlined styles, are supported.
+
+<ExampleSnippet component="CheckboxToggleButtonsOutlinedStylesExample" componentName="React Form Checkbox" />
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CFormCheck /&gt;](./api/#cformcheck)

@@ -1,0 +1,48 @@
+---
+title: React Bootstrap Pagination Component
+name: Pagination with Bootstrap Styling
+description: Learn how to use the React Bootstrap Pagination component from CoreUI to create accessible and responsive navigation between pages, including sizing, alignment, and icon support.
+route: /components/pagination/
+bootstrap_component: true
+---
+
+## Overview of React Bootstrap Pagination
+
+The React Bootstrap Pagination component helps you build navigation for multi-page content, such as search results or article listings. It's based on semantic HTML with `<ul>` and `<li>` elements, ensuring accessibility and screen reader compatibility.
+
+Wrap the component in a `<nav>` element and use a descriptive `aria-label` like `aria-label="Search results pages"` for clarity.
+
+<ExampleSnippet className="theme-bootstrap" component="PaginationExample" componentName="React Bootstrap Pagination" />
+
+## Using icons in pagination
+
+You can replace text in pagination buttons with icons or symbols. Make sure to include proper `aria-labels` for accessibility.
+
+<ExampleSnippet className="theme-bootstrap" component="PaginationWorkingWithIconsExample" componentName="React Bootstrap Pagination" />
+
+## Disabled and active pagination items
+
+Use the `disabled` prop to indicate non-interactive items and the `.active` class to highlight the current page. CoreUI handles keyboard accessibility with `tabindex="-1"` and JS-based interaction disabling.
+
+<ExampleSnippet className="theme-bootstrap" component="PaginationDisabledAndActiveExample" componentName="React Bootstrap Pagination" />
+
+## Pagination sizing
+
+Adjust the size of the React Bootstrap Pagination component with the `size` prop. Available values: `lg` (large), `sm` (small).
+
+<ExampleSnippet className="theme-bootstrap" component="PaginationSizingLargeExample" componentName="React Bootstrap Pagination" />
+<ExampleSnippet className="theme-bootstrap" component="PaginationSizingSmallExample" componentName="React Bootstrap Pagination" />
+
+## Pagination alignment
+
+Change pagination alignment using the `align` prop: `"start"`, `"center"`, or `"end"`.
+
+<ExampleSnippet className="theme-bootstrap" component="PaginationAlignmentExample" componentName="React Bootstrap Pagination" />
+<ExampleSnippet className="theme-bootstrap" component="PaginationAlignment2Example" componentName="React Bootstrap Pagination" />
+
+## API reference
+
+Here’s the API reference for the React Bootstrap Pagination component:
+
+- [&lt;CPagination /&gt;](./api/#cpagination)
+- [&lt;CPaginationItem /&gt;](./api/#cpaginationitem)

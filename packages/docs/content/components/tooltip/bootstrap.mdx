@@ -1,0 +1,41 @@
+---
+title: React Bootstrap Tooltip Component
+name: Tooltip with Bootstrap Styling
+description: Learn how to add Bootstrap-style tooltips in your React app using CoreUI components styled to match Bootstrap.
+route: /components/tooltip/
+bootstrap_component: true
+---
+
+## How to use React Bootstrap Tooltip component
+
+Use CoreUI's React components styled with Bootstrap to show additional contextual information when users hover over elements, similar to native Bootstrap tooltips.
+
+### Tooltips on links
+
+Hover over the links below to see Bootstrap-style tooltips.
+
+<ExampleSnippet className="theme-bootstrap text-body-secondary" component="TooltipOnLinksExample" componentName="React Bootstrap Tooltip" />
+
+### Custom tooltips
+
+You can customize the appearance of tooltips using [CSS variables](./styling/#css-variables). Below is an example with scoped overrides for a unique appearance.
+
+<ExampleSnippet className="theme-bootstrap text-body-secondary" component="TooltipCustomExample" componentName="React Bootstrap Tooltip" />
+
+### Tooltip directions
+
+You can place tooltips on the top, right, bottom, or left of the element. Directions are automatically mirrored in RTL layouts.
+
+<ExampleSnippet className="theme-bootstrap text-body-secondary" component="TooltipDirectionsExample" componentName="React Bootstrap Tooltip" />
+
+### Disabled elements
+
+Because disabled elements do not trigger events, wrap them in a `<span>` or `<div>` with `tabIndex="0"` to enable tooltip behavior.
+
+<ExampleSnippet className="theme-bootstrap text-body-secondary" component="TooltipDisabledElementsExample" componentName="React Bootstrap Tooltip" />
+
+## API reference
+
+Refer to the API documentation for detailed descriptions of all available props and customization options.
+
+- [&lt;CTooltip /&gt;](./api/#ctooltip)

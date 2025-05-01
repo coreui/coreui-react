@@ -1,0 +1,68 @@
+---
+title: React Bootstrap Tabs Component
+name: Tabs with Bootstrap Styling
+description: Learn how to create tabbed navigation interfaces in React using CoreUI's components styled like Bootstrap tabs and pills.
+route: /components/tabs/
+bootstrap_component: true
+---
+
+## How to use React Bootstrap Tabs component
+
+Use CoreUI's React tabs styled with Bootstrap to organize content into multiple sections that users can switch between using tabs or pills.
+
+### Tabs style
+
+The default `variant="tabs"` creates traditional Bootstrap-style tabbed navigation.
+
+<ExampleSnippet className="theme-bootstrap" component="TabsExample" componentName="React Bootstrap Tabs" />
+
+### Unstyled
+
+Without the `variant` prop, tabs render with minimal default styles.
+
+<ExampleSnippet className="theme-bootstrap" component="TabsUnstyledExample" componentName="React Bootstrap Tabs" />
+
+### Pills style
+
+Use `variant="pills"` to display tabs styled like Bootstrap pills.
+
+<ExampleSnippet className="theme-bootstrap" component="TabsPillsExample" componentName="React Bootstrap Tabs" />
+
+### Underline style
+
+Use `variant="underline"` to show a bottom border underline beneath the active tab.
+
+<ExampleSnippet className="theme-bootstrap" component="TabsUnderlineExample" componentName="React Bootstrap Tabs" />
+
+### Underline border
+
+Use `variant="underline-border"` to show a full underline across the width of the tab.
+
+<ExampleSnippet className="theme-bootstrap" component="TabsUnderlineBorderExample" componentName="React Bootstrap Tabs" />
+
+### Fill and justify
+
+Use `layout="fill"` or `layout="justified"` to control how tabs stretch to fill the horizontal space.
+
+<ExampleSnippet className="theme-bootstrap" component="TabsUnstyledFillAndJustifyExample" componentName="React Bootstrap Tabs" />
+<ExampleSnippet className="theme-bootstrap" component="TabsUnstyledFillAndJustify2Example" componentName="React Bootstrap Tabs" />
+
+### Controlled tabs
+
+Use `activeItemKey` and `onChange` to fully control the active tab from your component state.
+
+<ExampleSnippet className="theme-bootstrap" component="TabsControlledExample" componentName="React Bootstrap Tabs" />
+
+## Accessibility
+
+CoreUI's Tabs component automatically manages `aria-` and `role="..."` attributes to match Bootstrap and WAI-ARIA accessibility guidelines for tabs.
+
+## API reference
+
+Refer to the API documentation for detailed descriptions of all available props and usage patterns.
+
+- [&lt;CTabs /&gt;](./api/#ctabs)
+- [&lt;CTabList /&gt;](./api/#ctablist)
+- [&lt;CTab /&gt;](./api/#ctab)
+- [&lt;CTabContent /&gt;](./api/#ctabcontent)
+- [&lt;CTabPanel /&gt;](./api/#ctabpanel)

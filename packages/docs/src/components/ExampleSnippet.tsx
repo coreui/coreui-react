@@ -36,7 +36,7 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
         .catch((error) => {
           console.error(`Failed to load Preview component for ${component}:`, error)
           return { default: () => <div>Preview not available.</div> }
-        }),
+        })
     )
   }, [component])
 

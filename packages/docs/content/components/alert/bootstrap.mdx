@@ -1,0 +1,70 @@
+---
+title: React Bootstrap Alert Component
+name: Alert with Bootstrap Styling
+description: Learn how to use CoreUI’s React Alert component styled with Bootstrap for contextual feedback messages and dismissible UI alerts.
+menu: Components
+route: /components/alert/
+bootstrap_component: true
+---
+
+## How to use React Bootstrap Alert component
+
+CoreUI’s React Bootstrap Alerts provide contextual feedback messages for typical user interactions. Each alert supports Bootstrap-based colors and can include additional content and dismiss functionality.
+
+<ExampleSnippet className="theme-bootstrap" component="AlertExample" componentName="React Bootstrap Alert" />
+
+<Callout color="warning" type="colorAssistiveTechnologies" />
+
+### Live example
+
+Click the button below to display an alert (initially hidden), then dismiss it using the built-in close button — styled the Bootstrap way.
+
+<ExampleSnippet className="theme-bootstrap" component="AlertLiveExample" componentName="React Bootstrap Alert" />
+
+### Link color
+
+To include links inside your alert, use the `<CAlertLink>` component — it automatically adopts the contextual Bootstrap color of the parent alert.
+
+<ExampleSnippet className="theme-bootstrap" component="AlertLinkColorExample" componentName="React Bootstrap Alert" />
+
+### Additional content
+
+React Bootstrap Alerts can include extra structured content such as headings, paragraphs, and horizontal rules for enhanced readability.
+
+<ExampleSnippet className="theme-bootstrap" component="AlertAdditionalContentExample" componentName="React Bootstrap Alert" />
+
+### Icons
+
+Use CoreUI Icons and flexbox utilities to add icons to your alerts. Combine them with spacing utilities for precise layout control.
+
+<ExampleSnippet className="theme-bootstrap" component="AlertIcons1Example" componentName="React Bootstrap Alert" />
+
+Need more than one icon in your alert? CoreUI Icons can be stacked or arranged using flex utilities.
+
+<ExampleSnippet className="theme-bootstrap" component="AlertIcons2Example" componentName="React Bootstrap Alert" />
+
+### Solid style
+
+Add `variant="solid"` to give the alert a solid background color, in line with Bootstrap’s solid alert variants.
+
+<ExampleSnippet className="theme-bootstrap" component="AlertSolidExample" componentName="React Bootstrap Alert" />
+
+### Dismissing
+
+Use the `dismissible` prop to allow users to close the alert. This will completely remove it from the DOM.
+
+<ExampleSnippet className="theme-bootstrap" component="AlertDismissingExample" componentName="React Bootstrap Alert" />
+
+<Callout color="warning">
+  When an alert is dismissed, the element is completely removed from the page structure. If a
+  keyboard user dismisses the alert using the close button, their focus will suddenly be lost and,
+  depending on the browser, reset to the start of the page/document.
+</Callout>
+
+## API reference
+
+Review the API documentation for detailed information about the props available in the Bootstrap-styled React Alert component.
+
+- [&lt;CAlert /&gt;](./api/#calert)
+- [&lt;CAlertHeading /&gt;](./api/#calertheading)
+- [&lt;CAlertLink /&gt;](./api/#calertlink)

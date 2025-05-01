@@ -1,0 +1,49 @@
+---
+title: React Bootstrap Popover Component
+name: Popover with Bootstrap Styling
+description: Learn how to use the React Bootstrap Popover component from CoreUI to create interactive overlays for additional information, tooltips, or custom content.
+route: /components/popover/
+bootstrap_component: true
+---
+
+## React Bootstrap Popover examples
+
+The React Bootstrap Popover component lets you display small overlay content on hover, click, or focus. Use it for tooltips, inline help, or contextual info without cluttering the UI.
+
+### Live demo
+
+Trigger the React Bootstrap Popover on click.
+
+<ExampleSnippet className="theme-bootstrap" component="PopoverLiveExample" componentName="React Bootstrap Popover" />
+
+### Four directions
+
+React Bootstrap Popovers support top, right, bottom, and left placement. Direction is automatically mirrored in RTL layouts.
+
+<ExampleSnippet className="theme-bootstrap" component="PopoverFourDirectionsExample" componentName="React Bootstrap Popover" />
+
+### Custom popovers
+
+Use inline `style` or CSS variables to override the popover's appearance.
+
+<ExampleSnippet className="theme-bootstrap" component="PopoverCustomPopoversExample" componentName="React Bootstrap Popover" />
+
+### Dismiss on next click
+
+Use `trigger="focus"` to automatically hide the popover when clicking outside the element.
+
+<ExampleSnippet className="theme-bootstrap" component="PopoverDismissExample" componentName="React Bootstrap Popover" />
+
+## Usage details
+
+### Popovers on disabled elements
+
+HTML elements with the `disabled` attribute cannot trigger popovers. Wrap them in a `<span>` or `<div>` and use `tabIndex="0"` to keep the element accessible. You can also use `trigger={['hover', 'focus']}` to ensure visual feedback.
+
+<ExampleSnippet className="theme-bootstrap" component="PopoverDisabledElementsExample" componentName="React Bootstrap Popover" />
+
+## API reference
+
+Explore the full API for the React Bootstrap Popover component:
+
+- [&lt;CPopover /&gt;](./api/#cpopover)

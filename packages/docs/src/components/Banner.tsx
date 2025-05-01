@@ -3,13 +3,40 @@ import { StaticImage } from 'gatsby-plugin-image'
 import { CButton, CCol, CRow } from '@coreui/react'
 
 interface BannerProps {
+  bootstrap?: boolean | string
   preview?: boolean | string
   pro?: boolean
 }
 
-const Banner: FC<BannerProps> = ({ preview, pro }) => {
+const Banner: FC<BannerProps> = ({ bootstrap, preview, pro }) => {
   return (
     <>
+      {bootstrap && (
+        <div className="bg-primary bg-opacity-10 border border-2 border-primary text-primary-emphasis rounded p-3 px-xl-4 mb-5">
+          <CRow className="d-flex align-items-center flex-xl-nowrap">
+            <CCol className="d-none d-xl-block p-0" xs={12} xl="auto">
+              <StaticImage
+                src="../assets/images/hex_bootstrap.png"
+                alt="CoreUI PRO for React.js & Bootstrap"
+                height={160}
+                width={160}
+              />
+            </CCol>
+            <CCol className="px-lg-4" xs={12} md>
+              <h4>Bootstrap 5 components designed for React.js</h4>
+              <p>
+                This component is part of the CoreUI for React.js UI components library, which
+                offers all Bootstrap components designed to work seamlessly with React.js.
+              </p>
+              <p className="mb-0">
+                If you want to use Bootstrap 5 in a React.js environment while also needing advanced
+                components that Bootstrap does not offer and dedicated developer support, then this
+                library is the best solution for you.
+              </p>
+            </CCol>
+          </CRow>
+        </div>
+      )}
       {pro && (
         <div className="bg-info bg-opacity-10 border border-2 border-info rounded p-3 px-xl-4 mb-5">
           <CRow className="d-flex align-items-center flex-xl-nowrap">

@@ -1,0 +1,102 @@
+---
+title: React Bootstrap Navs and Tabs Component
+name: Navs and Tabs with Bootstrap Styling
+description: Learn how to use the React Bootstrap Navs and Tabs component from CoreUI to build navigations, tabbed interfaces, dropdowns, and more with responsive and accessible markup.
+route: /components/navs-tabs/
+bootstrap_component: true
+---
+
+## React Bootstrap Base Nav
+
+The React Bootstrap Navs and Tabs component provides a flexible base for building navigations. The `<CNav>` component is built with flexbox and supports active, disabled, tabbed, and pill-styled variations.
+
+<ExampleSnippet className="theme-bootstrap" component="NavExample" componentName="React Bootstrap Nav" />
+
+You can structure navigation with `<ul>`, `<ol>`, or even `<nav>`, as seen here:
+
+<ExampleSnippet className="theme-bootstrap" component="Nav2Example" componentName="React Bootstrap Nav" />
+
+## React Bootstrap Nav Styles
+
+### Horizontal alignment
+
+Use flexbox utilities to align nav items center or right.
+
+<ExampleSnippet className="theme-bootstrap" component="NavHorizontalAlignmentExample" componentName="React Bootstrap Nav" />
+<ExampleSnippet className="theme-bootstrap" component="NavHorizontalAlignment2Example" componentName="React Bootstrap Nav" />
+
+### Vertical navs
+
+Stack items vertically using `.flex-column`.
+
+<ExampleSnippet className="theme-bootstrap" component="NavVerticalExample" componentName="React Bootstrap Nav" />
+
+### Tabs
+
+Switch to tabbed navigation with `variant="tabs"`.
+
+<ExampleSnippet className="theme-bootstrap" component="NavTabsExample" componentName="React Bootstrap Nav" />
+
+### Pills
+
+Use `variant="pills"` for pill-style nav links.
+
+<ExampleSnippet className="theme-bootstrap" component="NavPillsExample" componentName="React Bootstrap Nav" />
+
+### Underline
+
+Switch to underline style using `variant="underline"`.
+
+<ExampleSnippet className="theme-bootstrap" component="NavUnderlineExample" componentName="React Bootstrap Nav" />
+
+### Underline border
+
+Apply `variant="underline-border"` to create a bordered underline nav.
+
+<ExampleSnippet className="theme-bootstrap" component="NavUnderlineBorderExample" componentName="React Bootstrap Nav" />
+
+### Fill and justify navs
+
+Use `layout="fill"` to fill available space, or `layout="justified"` for equal width nav items.
+
+<ExampleSnippet className="theme-bootstrap" component="NavFillAndJustifyExample" componentName="React Bootstrap Nav" />
+<ExampleSnippet className="theme-bootstrap" component="NavFillAndJustify2Example" componentName="React Bootstrap Nav" />
+
+## Flex utility-based responsive navs
+
+Combine responsive flex utilities for fully adaptive nav layouts.
+
+<ExampleSnippet className="theme-bootstrap" component="NavWorkingWithFlexUtilitiesExample" componentName="React Bootstrap Nav" />
+
+## Accessibility in React Bootstrap Navs and Tabs
+
+- Use `role="navigation"` on a parent container.
+- Don’t use `role="tablist"` unless you’re building dynamic tab panels.
+- CoreUI handles dynamic tab ARIA attributes automatically.
+
+## React Bootstrap Navs with Dropdowns
+
+### Tabs with dropdowns
+
+<ExampleSnippet className="theme-bootstrap" component="NavTabsWithDropdownExample" componentName="React Bootstrap Nav" />
+
+### Pills with dropdowns
+
+<ExampleSnippet className="theme-bootstrap" component="NavPillsWithDropdownExample" componentName="React Bootstrap Nav" />
+
+## React Bootstrap Tab Panes
+
+Build dynamic tabbed interfaces using `<CTabContent>` and `<CTabPane>`. These components follow ARIA best practices.
+
+<ExampleSnippet className="theme-bootstrap" component="NavTabPanesExample" componentName="React Bootstrap Nav" />
+<ExampleSnippet className="theme-bootstrap" component="NavTabPanes2Example" componentName="React Bootstrap Nav" />
+
+## API reference
+
+Explore the full list of props and components used in React Bootstrap Navs and Tabs:
+
+- [&lt;CNav /&gt;](./api/#cnav)
+- [&lt;CNavItem /&gt;](./api/#cnavitem)
+- [&lt;CNavLink /&gt;](./api/#cnavlink)
+- [&lt;CTabContent /&gt;](./api/#ctabcontent)
+- [&lt;CTabPane /&gt;](./api/#ctabpane)

@@ -1,0 +1,105 @@
+---
+title: React Bootstrap Navbar Component
+name: Navbar with Bootstrap Styling
+description: Learn how to use the React Bootstrap Navbar component from CoreUI to create responsive navigation headers with branding, dropdowns, collapsible content, and placement options.
+route: /components/navbar/
+bootstrap_component: true
+---
+
+## Supported subcomponents in React Bootstrap Navbar
+
+The React Bootstrap Navbar component includes flexible subcomponents for building responsive headers:
+
+- `<CNavbarBrand>` – branding/logo.
+- `<CNavbarNav>` – navigation links and dropdowns.
+- `<CNavbarToggler>` – toggles content collapse.
+- `<CNavbarText>` – inline text.
+- `<CCollapse>` – groups and hides navbar content.
+
+## Basic usage of React Bootstrap Navbar
+
+<ExampleSnippet className="theme-bootstrap" component="NavbarExample" componentName="React Bootstrap Navbar" />
+
+### Branding
+
+Use `<CNavbarBrand>` to display your brand name or logo.
+
+<ExampleSnippet className="theme-bootstrap" component="NavbarBrandExample" componentName="React Bootstrap Navbar" />
+<ExampleSnippet className="theme-bootstrap" component="NavbarBrand2Example" componentName="React Bootstrap Navbar" />
+<ExampleSnippet className="theme-bootstrap" component="NavbarBrand3Example" componentName="React Bootstrap Navbar" />
+
+### Navigation links and dropdowns
+
+Navigation inside the React Bootstrap Navbar uses `<CNavbarNav>`.
+
+<ExampleSnippet className="theme-bootstrap" component="NavbarNavExample" componentName="React Bootstrap Navbar" />
+<ExampleSnippet className="theme-bootstrap" component="NavbarNav2Example" componentName="React Bootstrap Navbar" />
+<ExampleSnippet className="theme-bootstrap" component="NavbarNav3Example" componentName="React Bootstrap Navbar" />
+
+### Forms in navbars
+
+Include inputs, buttons, or entire forms in your navbar layout.
+
+<ExampleSnippet className="theme-bootstrap" component="NavbarFormsExample" componentName="React Bootstrap Navbar" />
+<ExampleSnippet className="theme-bootstrap" component="NavbarForms2Example" componentName="React Bootstrap Navbar" />
+<ExampleSnippet className="theme-bootstrap" component="NavbarForms3Example" componentName="React Bootstrap Navbar" />
+<ExampleSnippet className="theme-bootstrap" component="NavbarForms4Example" componentName="React Bootstrap Navbar" />
+
+### Text in navbars
+
+Use `<CNavbarText>` for inline text blocks.
+
+<ExampleSnippet className="theme-bootstrap" component="NavbarText" componentName="React Bootstrap Navbar" />
+
+## React Bootstrap Navbar color schemes
+
+Use `colorScheme="light"` or `colorScheme="dark"` combined with `.bg-*` utilities for full control of background and text colors.
+
+<ExampleSnippet className="theme-bootstrap" component="NavbarColorSchemesExample" componentName="React Bootstrap Navbar" />
+
+## Containers
+
+Wrap your navbar in a `<CContainer>` to center its content or apply spacing.
+
+<ExampleSnippet className="theme-bootstrap" component="NavbarContainersExample" componentName="React Bootstrap Navbar" />
+<ExampleSnippet className="theme-bootstrap" component="NavbarContainers2Example" componentName="React Bootstrap Navbar" />
+
+## Navbar placement
+
+Use the `placement` prop to fix navbars to the top or bottom or make them sticky.
+
+<ExampleSnippet className="theme-bootstrap" component="NavbarPlacementExample" componentName="React Bootstrap Navbar" />
+<ExampleSnippet className="theme-bootstrap p-4 overflow-hidden" component="NavbarPlacementFixedTopExample" componentName="React Bootstrap Navbar" />
+<ExampleSnippet className="theme-bootstrap p-4" component="NavbarPlacementFixedBottomExample" componentName="React Bootstrap Navbar" />
+<ExampleSnippet className="theme-bootstrap p-4 overflow-hidden" component="NavbarPlacementStickyTopExample" componentName="React Bootstrap Navbar" />
+
+## Responsive behaviors in React Bootstrap Navbar
+
+Use `expand` prop to control when the navbar collapses:
+
+<ExampleSnippet className="theme-bootstrap" component="NavbarResponsiveTogglerExample" componentName="React Bootstrap Navbar" />
+<ExampleSnippet className="theme-bootstrap" component="NavbarResponsiveToggler2Example" componentName="React Bootstrap Navbar" />
+<ExampleSnippet className="theme-bootstrap" component="NavbarResponsiveToggler3Example" componentName="React Bootstrap Navbar" />
+
+### External content
+
+You can toggle external containers using collapse plugins.
+
+<ExampleSnippet className="theme-bootstrap" component="NavbarResponsiveExternalContentExample" componentName="React Bootstrap Navbar" />
+
+### Offcanvas navbars
+
+Turn the responsive navbar into an offcanvas drawer with `expand="*"` or `expand="xxl"`.
+
+<ExampleSnippet className="theme-bootstrap" component="NavbarResponsiveOffcanvasExample" componentName="React Bootstrap Navbar" />
+<ExampleSnippet className="theme-bootstrap" component="NavbarResponsiveOffcanvas2Example" componentName="React Bootstrap Navbar" />
+
+## API reference
+
+Explore the full API for React Bootstrap Navbar components:
+
+- [&lt;CNavbar /&gt;](./api/#cnavbar)
+- [&lt;CNavbarBrand /&gt;](./api/#cnavbarbrand)
+- [&lt;CNavbarNav /&gt;](./api/#cnavbarnav)
+- [&lt;CNavbarText /&gt;](./api/#cnavbartext)
+- [&lt;CNavbarToggler /&gt;](./api/#cnavbartoggler)

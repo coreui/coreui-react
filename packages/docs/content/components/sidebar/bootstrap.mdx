@@ -1,0 +1,81 @@
+---
+title: React Bootstrap Sidebar Component
+name: Sidebar with Bootstrap Styling
+description: Learn how to use the React Bootstrap Sidebar component from CoreUI to build customizable side navigation panels with support for branding, dropdowns, dark mode, and responsive behavior.
+route: /components/sidebar/
+bootstrap_component: true
+---
+
+## React Bootstrap Sidebar Component
+
+The React Bootstrap Sidebar component provides a flexible vertical navigation layout with support for branding, navigation links, toggling, and theming. It’s perfect for admin panels, dashboards, and mobile navigation.
+
+## Supported sub-components
+
+The sidebar includes built-in support for these components:
+
+- `<CSidebarHeader>` – optional top section.
+- `<CSidebarBrand>` – brand or logo section.
+- `<CSidebarNav>` – main vertical navigation area.
+- `<CSidebarFooter>` – optional bottom section.
+- `<CSidebarToggler>` – toggler for sidebar minimization or expansion.
+
+## React Bootstrap Sidebar examples
+
+### Standard sidebar
+
+By default, the sidebar is shown on desktop viewports and hidden on mobile.
+
+<ExampleSnippet
+  className="theme-bootstrap bg-body-secondary p-0 rounded-bottom-0 overflow-hidden"
+  component="SidebarExample"
+  componentName="React Bootstrap Sidebar"
+/>
+
+### Narrow sidebar
+
+Use the `narrow` prop to collapse the sidebar into a compact version, showing only icons.
+
+<ExampleSnippet
+  className="theme-bootstrap bg-body-secondary p-0 rounded-bottom-0 overflow-hidden"
+  component="SidebarNarrowExample"
+  componentName="React Bootstrap Sidebar"
+/>
+
+### Unfoldable sidebar
+
+Add `unfoldable` to create a narrow sidebar that expands on hover.
+
+<ExampleSnippet
+  className="theme-bootstrap bg-body-secondary p-0 rounded-bottom-0 overflow-hidden"
+  component="SidebarUnfoldableExample"
+  componentName="React Bootstrap Sidebar"
+/>
+
+## Dark mode sidebar
+
+Apply `colorScheme="dark"` to match your sidebar to a dark theme.
+
+<ExampleSnippet
+  className="theme-bootstrap bg-body-secondary p-0 rounded-bottom-0 overflow-hidden"
+  component="SidebarDarkExample"
+  componentName="React Bootstrap Sidebar"
+/>
+
+## Sidebar placement
+
+By default, the React Bootstrap Sidebar appears on the left. Use the `placement` prop to change this:
+
+- `placement="start"` – left side (default)
+- `placement="end"` – right side
+
+## API reference
+
+Explore the available props for the React Bootstrap Sidebar component and its subcomponents:
+
+- [&lt;CSidebar /&gt;](./api/#csidebar)
+- [&lt;CSidebarBrand /&gt;](./api/#csidebarbrand)
+- [&lt;CSidebarFooter /&gt;](./api/#csidebarfooter)
+- [&lt;CSidebarHeader /&gt;](./api/#csidebarheader)
+- [&lt;CSidebarNav /&gt;](./api/#csidebarnav)
+- [&lt;CSidebarToggler /&gt;](./api/#csidebartoggler)

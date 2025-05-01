@@ -1,0 +1,78 @@
+---
+title: React Bootstrap Button Group Component
+name: Button Group with Bootstrap Styling
+description: Learn how to group buttons using the React Bootstrap Button Group component from CoreUI. Create accessible, styled toolbars and button sets with ease.
+route: /components/button-group/
+bootstrap_component: true
+---
+
+## How to use React Bootstrap Button Group component
+
+The React Bootstrap Button Group component allows you to group multiple buttons together into a single toolbar-like unit. Wrap a series of `<CButton>` components in a `<CButtonGroup>` to get started.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonGroupExample" componentName="React Bootstrap Button Group" />
+
+<Callout color="info" title={<>Ensure the correct <code>role</code> and provide a label</>}>
+  For assistive technologies (e.g. screen readers) to identify a set of buttons as grouped, use `role="group"` for button groups and `role="toolbar"` for toolbars.
+
+  Always include an accessible label using `aria-label` or `aria-labelledby` to clarify the purpose of the group.
+</Callout>
+
+React Bootstrap Button Groups can also be applied to a group of links instead of using the [`CNav`](./../navs-tabs/#base-nav) component.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonGroup2Example" componentName="React Bootstrap Button Group" />
+
+## Mixed styles in React Bootstrap Button Groups
+
+Combine buttons with different styles within a single group for more flexible UI designs.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonGroupMixedStylesExample" componentName="React Bootstrap Button Group" />
+
+## Outlined button styles
+
+Use `variant="outline"` on grouped buttons to apply Bootstrap's outline button style across the group.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonGroupOutlinedStylesExample" componentName="React Bootstrap Button Group" />
+
+## Checkbox and radio button groups
+
+Create interactive grouped controls by combining button-style checkboxes and radio buttons inside a React Bootstrap Button Group.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonGroupCheckboxAndRadioExample" componentName="React Bootstrap Button Group" />
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonGroupCheckboxAndRadio2Example" componentName="React Bootstrap Button Group" />
+
+## React Bootstrap Button Toolbar
+
+Group multiple button groups together into a toolbar using `<CButtonToolbar>`. Combine with layout utilities to control spacing and alignment.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonToolbarExample" componentName="React Bootstrap Button Group" />
+
+You can also combine input groups with button groups to create interactive toolbars.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonToolbar2Example" componentName="React Bootstrap Button Group" />
+
+## Sizing React Bootstrap Button Groups
+
+Instead of setting size on individual buttons, apply the `size` prop to the `<CButtonGroup>` to make all buttons within it uniformly sized.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonGroupSizingExample" componentName="React Bootstrap Button Group" />
+
+## Nesting button groups
+
+Nest a `<CButtonGroup>` inside another to combine dropdowns with standard buttons, as supported in React Bootstrap Button Group usage.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonGroupNestingExample" componentName="React Bootstrap Button Group" />
+
+## Vertical React Bootstrap Button Groups
+
+Stack buttons vertically using the vertical variation of React Bootstrap Button Group. Note: split dropdowns are not supported in vertical mode.
+
+<ExampleSnippet className="theme-bootstrap" component="ButtonGroupVerticalExample" componentName="React Bootstrap Button Group" />
+
+## API reference
+
+Explore the API documentation for available props and configuration for the React Bootstrap Button Group component and toolbars.
+
+- [&lt;CButtonGroup /&gt;](./api/#cbuttongroup)
+- [&lt;CButtonToolbar /&gt;]()

@@ -6,7 +6,7 @@ export const CardImageHorizontalExample = () => {
     <CCard className="mb-3" style={{ maxWidth: '540px' }}>
       <CRow className="g-0">
         <CCol md={4}>
-          <CCardImage src="../../images/react400.jpg" />
+          <CCardImage src={'/images/react400.jpg'} />
         </CCol>
         <CCol md={8}>
           <CCardBody>

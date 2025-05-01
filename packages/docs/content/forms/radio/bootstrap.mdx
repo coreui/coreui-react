@@ -1,0 +1,59 @@
+---
+title: React Bootstrap Radio Component
+name: Radio with Bootstrap Styling
+description: Learn how to build consistent, accessible, and customizable radio buttons using CoreUI’s React components styled with Bootstrap.
+route: /forms/radio/
+bootstrap_component: true
+---
+
+## How to use React Bootstrap Radio component
+
+Use CoreUI’s `<CFormCheck type="radio">` component to create Bootstrap-styled radio buttons for selecting one option from many. These components are built to be accessible, customizable, and responsive.
+
+### Default stacked radios
+
+By default, multiple radio buttons rendered as siblings will be stacked vertically with proper spacing.
+
+<ExampleSnippet className="theme-bootstrap" component="RadioExample" componentName="React Bootstrap Radio" />
+
+### Disabled state
+
+Add the `disabled` prop to disable a radio button. The associated label will also receive a muted style to reflect its state.
+
+<ExampleSnippet className="theme-bootstrap" component="RadioDisabledExample" componentName="React Bootstrap Radio" />
+
+### Inline radios
+
+Display radio buttons in a horizontal row by adding the `inline` prop to each `<CFormCheck type="radio">`.
+
+<ExampleSnippet className="theme-bootstrap" component="RadioInlineExample" componentName="React Bootstrap Radio" />
+
+### Reverse layout
+
+Use the `reverse` prop to position the label text on the opposite side of the radio input.
+
+<ExampleSnippet className="theme-bootstrap" component="RadioReverseExample" componentName="React Bootstrap Radio" />
+
+### Radios without labels
+
+You can omit visual labels, but make sure to provide accessible names using `aria-label` for screen readers.
+
+<ExampleSnippet className="theme-bootstrap" component="RadioWithoutLabelsExample" componentName="React Bootstrap Radio" />
+
+### Radio toggle buttons
+
+Turn your radios into button-like toggles using the `button` prop. These can also be grouped using a button group component.
+
+<ExampleSnippet className="theme-bootstrap" component="RadioToggleButtonsExample" componentName="React Bootstrap Radio" />
+
+#### Outlined toggle styles
+
+You can apply outlined styles to toggle radios using Bootstrap's button variant system.
+
+<ExampleSnippet className="theme-bootstrap" component="RadioToggleButtonsOutlinedStylesExample" componentName="React Bootstrap Radio" />
+
+## API reference
+
+Refer to the API documentation below for a complete list of props supported by the React Bootstrap radio component.
+
+- [&lt;CFormCheck /&gt;](./api/#cformcheck)

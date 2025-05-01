@@ -13,7 +13,7 @@ export const CardGroups2Example = () => {
   return (
     <CCardGroup>
       <CCard>
-        <CCardImage orientation="top" src="../../images/react.jpg" />
+        <CCardImage orientation="top" src={'/images/react.jpg'} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -26,7 +26,7 @@ export const CardGroups2Example = () => {
         </CCardFooter>
       </CCard>
       <CCard>
-        <CCardImage orientation="top" src="../../images/react.jpg" />
+        <CCardImage orientation="top" src={'/images/react.jpg'} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -38,7 +38,7 @@ export const CardGroups2Example = () => {
         </CCardFooter>
       </CCard>
       <CCard>
-        <CCardImage orientation="top" src="../../images/react.jpg" />
+        <CCardImage orientation="top" src={'/images/react.jpg'} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>

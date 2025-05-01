@@ -1,0 +1,47 @@
+---
+title: React Bootstrap Textarea Component
+name: Form Textarea with Bootstrap Styling
+description: Learn how to style and enhance Bootstrap-style textarea fields in React using CoreUI components with custom sizing, disabled states, and validation feedback.
+route: /forms/textarea/
+other_frameworks: textarea
+bootstrap_component: true
+---
+
+## How to use React Bootstrap Textarea component
+
+Use `<CFormTextarea>` to create multi-line text inputs in your forms, styled to match Bootstrap’s design system.
+
+### Basic example
+
+Use the component with a label and help text for accessibility and usability.
+
+<ExampleSnippet className="theme-bootstrap" component="FormTextareaExample" componentName="React Bootstrap Textarea" />
+
+You can also build the same structure manually using individual form components:
+
+```jsx
+<CFormLabel htmlFor="exampleFormControlTextarea1">Example textarea</CFormLabel>
+<CFormTextarea id="exampleFormControlTextarea1" rows={3}></CFormTextarea>
+<CFormText as="span" id="passwordHelpInline">Must be 8-20 words long.</CFormText>
+```
+
+### Disabled state
+
+Add the `disabled` prop to make the textarea inactive and visually grayed out.
+
+<ExampleSnippet className="theme-bootstrap" component="FormTextareaDisabledExample" componentName="React Bootstrap Textarea" />
+
+### Read-only
+
+Use the `readOnly` prop to prevent edits while still allowing text selection and copying.
+
+<ExampleSnippet className="theme-bootstrap" component="FormTextareaReadonlyExample" componentName="React Bootstrap Textarea" />
+
+## API reference
+
+Refer to the API documentation below for a complete list of available props and subcomponents used to build Bootstrap-style textareas in React.
+
+- [&lt;CFormTextarea /&gt;](./api/#cformtextarea)
+- [&lt;CFormFeedback /&gt;](./api/#cformfeedback)
+- [&lt;CFormLabel /&gt;](./api/#cformlabel)
+- [&lt;CFormText /&gt;](./api/#cformtext)

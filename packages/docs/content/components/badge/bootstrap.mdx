@@ -1,0 +1,53 @@
+---
+title: React Bootstrap Badge Component
+name: Badge with Bootstrap Styling
+description: Learn how to use CoreUI’s React Badge component with Bootstrap styles to display counters, labels, and indicators within buttons, links, and UI elements.
+route: /components/badge/
+bootstrap_component: true
+---
+
+## How to use React Bootstrap Badge component
+
+React Bootstrap Badges scale based on their parent using `em` units, making them easy to embed inside headings, buttons, or navigation items.
+
+<ExampleSnippet className="theme-bootstrap" component="BadgeExample" componentName="React Bootstrap Badge" />
+
+You can also use badges inside buttons and links to display counters or notifications.
+
+<ExampleSnippet className="theme-bootstrap" component="Badge2Example" componentName="React Bootstrap Badge" />
+
+Keep in mind that depending on usage, badges might be challenging for screen reader users. Add visually hidden helper text when needed to improve accessibility.
+
+<ExampleSnippet className="theme-bootstrap" component="Badge3Example" componentName="React Bootstrap Badge" />
+
+### Positioned badges
+
+Use the `position` prop to place the badge in the corner of a button or link, mimicking the Bootstrap positioning helpers.
+
+<ExampleSnippet className="theme-bootstrap" component="BadgePositionedExample" componentName="React Bootstrap Badge" />
+
+You can also create generic status indicators without a number by combining badges with utility classes.
+
+<ExampleSnippet className="theme-bootstrap" component="BadgePositioned2Example" componentName="React Bootstrap Badge" />
+
+## Contextual variations
+
+Apply `color` props like `primary`, `danger`, or `success` to control the background color of the badge in a Bootstrap-consistent way.
+
+<ExampleSnippet className="theme-bootstrap" component="BadgeContextualVariations" componentName="React Bootstrap Badge" />
+
+Use `textBgColor` to automatically set contrasting text and background colors according to WCAG accessibility standards.
+
+<ExampleSnippet className="theme-bootstrap" component="BadgeContextual2Variations" componentName="React Bootstrap Badge" />
+
+## Pill badges
+
+To make badges more rounded, use the `shape="rounded-pill"` prop. This mirrors Bootstrap’s pill-style badge appearance.
+
+<ExampleSnippet className="theme-bootstrap" component="BadgePillExample" componentName="React Bootstrap Badge" />
+
+## API reference
+
+See below for the full API reference for all available props for the Bootstrap-styled React Badge component.
+
+- [&lt;CBadge /&gt;](./api/#cbadge)

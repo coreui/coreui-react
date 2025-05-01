@@ -94,10 +94,11 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
     name = '',
     other_frameworks: otherFrameworksStr = '',
     pro_component: proComponent = false,
+    bootstrap_component: bootstrapComponent = false,
   } = frontmatter
   const frameworks = useMemo(
     () => otherFrameworksStr.split(', ').filter(Boolean),
-    [otherFrameworksStr],
+    [otherFrameworksStr]
   )
   const otherFrameworks: OtherFrameworks = useMemo(() => ({ ...jsonData }), [])
   const hasNav = useMemo(() => data?.allMdx?.edges.length > 1, [data])
@@ -151,6 +152,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
                     {title}
                   </h1>
                 )}
+                <Banner bootstrap={bootstrapComponent} />
                 <Banner pro={proComponent} />
                 <p className="docs-lead">{getDescription(location, description)}</p>
                 <Ads code="CEAICKJY" location={location.pathname} placement="coreuiio" />

@@ -1,0 +1,82 @@
+---
+title: React Bootstrap List Group Component
+name: List Group with Bootstrap Styling
+description: Learn how to use the React Bootstrap List Group component from CoreUI to display flexible and interactive lists with badges, buttons, contextual styles, and more.
+route: /components/list-group/
+bootstrap_component: true
+---
+
+## Basic usage of React Bootstrap List Group
+
+The React Bootstrap List Group component allows you to display a list of content using Bootstrap-styled list items. The default setup uses an unordered list with proper classes.
+
+<ExampleSnippet className="theme-bootstrap" component="ListGroupExample" componentName="React Bootstrap List Group" />
+
+## Active items
+
+Add the `active` prop to a `<CListGroupItem>` to visually mark it as the selected item.
+
+<ExampleSnippet className="theme-bootstrap" component="ListGroupActiveItemsExample" componentName="React Bootstrap List Group" />
+
+## Disabled items
+
+Use the `disabled` prop to disable interaction with a list item.
+
+<ExampleSnippet className="theme-bootstrap" component="ListGroupDisabledItemsExample" componentName="React Bootstrap List Group" />
+
+## List group as links or buttons
+
+You can use `<a>` or `<button>` elements for actionable React Bootstrap List Group items. Add the `as="a"` or `as="button"` prop as needed.
+
+<ExampleSnippet className="theme-bootstrap" component="ListGroupLinksAndButtonsExample" componentName="React Bootstrap List Group" />
+<ExampleSnippet className="theme-bootstrap" component="ListGroupLinksAndButtons2Example" componentName="React Bootstrap List Group" />
+
+## Flush list group
+
+Remove borders and padding using the `flush` prop. This is especially useful inside Bootstrap-styled cards.
+
+<ExampleSnippet className="theme-bootstrap" component="ListGroupFlushExample" componentName="React Bootstrap List Group" />
+
+## Horizontal list group
+
+Add `layout="horizontal"` to display the list items horizontally. For responsive behavior, use values like `horizontal-md`, `horizontal-lg`, etc.
+
+<ExampleSnippet className="theme-bootstrap" component="ListGroupHorizontalExample" componentName="React Bootstrap List Group" />
+
+> ⚠️ Horizontal list groups cannot be used in combination with `flush`.
+
+## Contextual styling for list items
+
+Use Bootstrap contextual classes such as `color="primary"`, `color="success"`, etc. to style list items based on intent or state.
+
+<ExampleSnippet className="theme-bootstrap" component="ListGroupContextualClassesExample" componentName="React Bootstrap List Group" />
+<ExampleSnippet className="theme-bootstrap" component="ListGroupContextualClasses2Example" componentName="React Bootstrap List Group" />
+
+<Callout color="warning" type="colorAssistiveTechnologies" />
+
+## List group with badges
+
+Combine list items with badges to indicate notifications, counts, or statuses.
+
+<ExampleSnippet className="theme-bootstrap" component="ListGroupWithBadgesExample" componentName="React Bootstrap List Group" />
+
+## Custom content inside list group
+
+React Bootstrap List Groups support custom content such as headings, paragraphs, or even full layouts using [Flex utilities](https://coreui.io/bootstrap/docs/utilities/flex/).
+
+<ExampleSnippet className="theme-bootstrap" component="ListGroupCustomContentExample" componentName="React Bootstrap List Group" />
+
+## List group with checkboxes and radios
+
+Embed checkboxes or radio buttons inside list items for interactive list selection.
+
+<ExampleSnippet className="theme-bootstrap" component="ListGroupCheckboxesAndRadiosExample" componentName="React Bootstrap List Group" />
+<ExampleSnippet className="theme-bootstrap" component="ListGroupCheckboxesAndRadios2Example" componentName="React Bootstrap List Group" />
+<ExampleSnippet className="theme-bootstrap" component="ListGroupCheckboxesAndRadios3Example" componentName="React Bootstrap List Group" />
+
+## API reference
+
+Explore the full API for the React Bootstrap List Group components:
+
+- [&lt;CListGroup /&gt;](./api/#clistgroup)
+- [&lt;CListGroupItem /&gt;](./api/#clistgroupitem)

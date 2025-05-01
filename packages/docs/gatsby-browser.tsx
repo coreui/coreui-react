@@ -10,5 +10,9 @@ export const wrapRootElement = ({ element }: { element: ReactNode }) => {
 }
 
 export const wrapPageElement = ({ element, props }: { element: ReactNode; props: any }) => {
+  const path = props.location.pathname
+  if (path.endsWith('/bootstrap') || path.endsWith('/bootstrap/')) {
+    require('./src/styles/bootstrap-examples.scss')
+  }
   return <DocsLayout {...props}>{element}</DocsLayout>
 }

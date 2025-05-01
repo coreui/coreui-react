@@ -1,0 +1,57 @@
+---
+title: React Bootstrap Select Component
+name: Select with Bootstrap Styling
+description: Learn how to build accessible and customizable dropdown menus using CoreUI’s React select component styled with Bootstrap.
+route: /forms/select/
+bootstrap_component: true
+---
+
+## How to use React Bootstrap Select component
+
+Use CoreUI’s `<CFormSelect>` to create custom-styled `<select>` elements that match the Bootstrap look and feel. It supports single and multiple selections, custom sizing, and full accessibility.
+
+### Basic usage
+
+The default select renders a Bootstrap-styled native dropdown.
+
+<ExampleSnippet className="theme-bootstrap" component="FormSelectExample" componentName="React Bootstrap Select" />
+
+You can also define options manually using JSX:
+
+```jsx
+<CFormSelect aria-label="Default select example">
+  <option>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3" disabled>Three</option>
+</CFormSelect>
+```
+
+### Sizing
+
+Use the `size` prop with values like `"sm"` or `"lg"` to change the select height.
+
+<ExampleSnippet className="theme-bootstrap" component="FormSelectSizingExample" componentName="React Bootstrap Select" />
+
+You can also enable multi-select behavior using the `multiple` prop:
+
+<ExampleSnippet className="theme-bootstrap" component="FormSelectSizing2Example" componentName="React Bootstrap Select" />
+
+And specify a fixed visible size using the `htmlSize` prop:
+
+<ExampleSnippet className="theme-bootstrap" component="FormSelectSizing3Example" componentName="React Bootstrap Select" />
+
+### Disabled state
+
+Add the `disabled` prop to disable user interaction and apply a muted appearance.
+
+<ExampleSnippet className="theme-bootstrap" component="FormSelectDisabledExample" componentName="React Bootstrap Select" />
+
+## API reference
+
+Refer to the API documentation below for detailed descriptions of all available props and subcomponents.
+
+- [&lt;CFormSelect /&gt;](./api/#cformselect)
+- [&lt;CFormFeedback /&gt;](./api/#cformfeedback)
+- [&lt;CFormLabel /&gt;](./api/#cformlabel)
+- [&lt;CFormText /&gt;](./api/#cformtext)

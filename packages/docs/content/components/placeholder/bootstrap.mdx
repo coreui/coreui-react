@@ -1,0 +1,63 @@
+---
+title: React Bootstrap Placeholder Component
+name: Placeholder with Bootstrap Styling
+description: Learn how to use the React Bootstrap Placeholder component from CoreUI to create animated loading placeholders that simulate content before it loads.
+route: /components/placeholder/
+bootstrap_component: true
+---
+
+## About React Bootstrap Placeholder
+
+The React Bootstrap Placeholder component lets you create skeleton loading effects using only HTML and CSS. It's useful for improving perceived performance while content is loading.
+
+React placeholders are fully customizable using utility classes and support animations, sizing, colors, and layout variations.
+
+## React Bootstrap Placeholder example
+
+Here we simulate a "loading card" layout using placeholder elements. The dimensions match the final content layout for a seamless transition.
+
+<ExampleSnippet
+  className="theme-bootstrap d-flex justify-content-around"
+  component="PlaceholderExample"
+  componentName="React Bootstrap Placeholder"
+/>
+
+## How React Bootstrap Placeholder works
+
+Use the `<CPlaceholder>` component and specify width using grid props like `xs={6}` or utility classes. You can place it inside existing elements or use it standalone.
+
+<ExampleSnippet className="theme-bootstrap" component="Placeholder2Example" componentName="React Bootstrap Placeholder" />
+
+<Callout className="mb-4" color="info">
+  The use of <code>aria-hidden="true"</code> hides the placeholder from screen readers. You may need JavaScript to toggle content and notify assistive technologies of updates.
+</Callout>
+
+### Width
+
+Set the width of placeholders with utility classes, inline styles, or grid props.
+
+<ExampleSnippet className="theme-bootstrap" component="PlaceholderWidthExample" componentName="React Bootstrap Placeholder" />
+
+### Color
+
+By default, placeholders use `currentColor`, but you can apply any color using Bootstrap utility classes.
+
+<ExampleSnippet className="theme-bootstrap" component="PlaceholderColorExample" componentName="React Bootstrap Placeholder" />
+
+### Sizing
+
+Use the `size` prop (`lg`, `sm`, or `xs`) to adjust the height and line spacing of placeholders to match the parent typography.
+
+<ExampleSnippet className="theme-bootstrap" component="PlaceholderSizingExample" componentName="React Bootstrap Placeholder" />
+
+### Animation
+
+Make React Bootstrap Placeholder elements feel dynamic by using `animation="glow"` or `animation="wave"`.
+
+<ExampleSnippet className="theme-bootstrap" component="PlaceholderAnimationExample" componentName="React Bootstrap Placeholder" />
+
+## API reference
+
+Review the available props for the React Bootstrap Placeholder component:
+
+- [&lt;CPlaceholder /&gt;](./api/#cplaceholder)

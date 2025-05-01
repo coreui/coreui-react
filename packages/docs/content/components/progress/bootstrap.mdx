@@ -1,0 +1,100 @@
+---
+title: React Bootstrap Progress Component
+name: Progress with Bootstrap Styling
+description: Learn how to use the React Bootstrap Progress component from CoreUI to create progress bars with labels, stripes, animation, stacked sections, and custom colors.
+route: /components/progress/
+bootstrap_component: true
+---
+
+## React Bootstrap Progress Component
+
+The React Bootstrap Progress component helps you visually represent progress or completion rates in tasks, processes, or downloads. These bars are fully customizable with colors, labels, sizes, and animations.
+
+## Basic usage
+
+Create a simple React Bootstrap progress bar using `<CProgress>` and `<CProgressBar>`.
+
+<ExampleSnippet className="theme-bootstrap" component="ProgressExample" componentName="React Bootstrap Progress" />
+
+## Labels inside progress bars
+
+Add text labels to your progress bar by inserting content inside the `<CProgressBar>` element.
+
+<ExampleSnippet className="theme-bootstrap" component="ProgressLabelsExample" componentName="React Bootstrap Progress" />
+
+When using long labels, ensure they are visible by applying `.overflow-visible` and setting a readable text color.
+
+<ExampleSnippet className="theme-bootstrap" component="ProgressLabels2Example" componentName="React Bootstrap Progress" />
+
+Or use the `progressBarClassName` prop directly on `<CProgress>`:
+
+```jsx
+<CProgress progressBarClassName="overflow-visible text-dark px-2" color="success" value={10}>
+  Long label text for the progress bar
+</CProgress>
+```
+
+## Adjusting height
+
+Change the height of the React Bootstrap Progress component with utility classes or inline styles.
+
+<ExampleSnippet className="theme-bootstrap" component="ProgressHeightExample" componentName="React Bootstrap Progress" />
+<ExampleSnippet className="theme-bootstrap" component="ProgressHeight2Example" componentName="React Bootstrap Progress" />
+
+## Custom backgrounds
+
+Use the `color` prop to set background colors for progress bars.
+
+<ExampleSnippet className="theme-bootstrap" component="ProgressBackgroundsExample" componentName="React Bootstrap Progress" />
+
+If using labels, apply an appropriate text color for contrast:
+
+<ExampleSnippet className="theme-bootstrap" component="ProgressBackgrounds2Example" componentName="React Bootstrap Progress" />
+
+Or use the `progressBarClassName` prop:
+
+```jsx
+<CProgress color="success" value={25}>25%</CProgress>
+<CProgress color="info" progressBarClassName="text-dark" value={50}>50%</CProgress>
+<CProgress color="warning" progressBarClassName="text-dark" value={75}>75%</CProgress>
+<CProgress color="danger" value={100}>100%</CProgress>
+```
+
+## Stacked progress bars
+
+React Bootstrap Progress supports multiple stacked bars inside a single `<CProgress>` or using the newer `<CProgressStacked>`.
+
+<Callout color="info" title="New markup in v4.9.0">
+  Use the `<CProgressStacked>` component introduced in v4.9.0 for stacked progress bars. Older syntax remains supported for now.
+</Callout>
+
+<ExampleSnippet className="theme-bootstrap" component="ProgressMultipleBarsExample" componentName="React Bootstrap Progress" />
+
+Previous structure:
+
+```jsx
+<CProgress>
+  <CProgressBar value={15} />
+  <CProgressBar color="success" value={30} />
+  <CProgressBar color="info" value={20} />
+</CProgress>
+```
+
+## Striped variant
+
+Add stripes to any progress bar using `variant="striped"`.
+
+<ExampleSnippet className="theme-bootstrap" component="ProgressStripedExample" componentName="React Bootstrap Progress" />
+
+## Animated stripes
+
+Make stripes animated using the `animated` prop.
+
+<ExampleSnippet className="theme-bootstrap" component="ProgressAnimatedStripedExample" componentName="React Bootstrap Progress" />
+
+## API reference
+
+Explore the full API for the React Bootstrap Progress component:
+
+- [&lt;CProgress /&gt;](./api/#cprogress)
+- [&lt;CProgressBar /&gt;](./api/#cprogressbar)

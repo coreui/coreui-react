@@ -1,0 +1,80 @@
+---
+title: React Bootstrap Form Layout Component
+name: Form Layout with Bootstrap Styling
+description: Learn how to build responsive and structured form layouts using CoreUI’s React components styled with Bootstrap.
+route: /forms/layout/
+bootstrap_component: true
+---
+
+## How to use React Bootstrap Form Layout
+
+Use CoreUI’s React form components together with Bootstrap’s layout system to build flexible, responsive, and well-structured forms.
+
+### Form container
+
+Wrap form elements in the `<CForm>` component to enable default browser behaviors such as validation and submission.
+
+- CoreUI does not apply default styles to `<CForm>`, giving you full control.
+- All `<CButton>` components inside `<CForm>` default to `type="submit"` unless specified otherwise.
+- You can disable all fields by setting the `disabled` prop on `<CForm>`.
+
+### Form layout using grid
+
+Combine CoreUI form components with the Bootstrap grid system for complex form layouts.
+
+<ExampleSnippet className="theme-bootstrap" component="LayoutFormGridExample" componentName="React Bootstrap Form Layout" />
+
+### Gutters
+
+Control spacing between columns using Bootstrap's gutter utilities.
+
+<ExampleSnippet className="theme-bootstrap" component="LayoutGuttersExample" componentName="React Bootstrap Form Layout" />
+
+You can also create advanced layouts by customizing both horizontal and vertical spacing.
+
+<ExampleSnippet className="theme-bootstrap" component="LayoutGutters2Example" componentName="React Bootstrap Form Layout" />
+
+### Horizontal form layout
+
+To create horizontal forms, use Bootstrap’s `.row` and `.col-*` grid classes. Add `.col-form-label` to `<CFormLabel>` to align labels vertically with form controls.
+
+<ExampleSnippet className="theme-bootstrap" component="LayoutHorizontalFormExample" componentName="React Bootstrap Form Layout" />
+
+#### Sizing horizontal labels
+
+Use `.col-form-label-sm` or `.col-form-label-lg` to match form control sizes.
+
+<ExampleSnippet className="theme-bootstrap" component="LayoutHorizontalFormLabelSizingExample" componentName="React Bootstrap Form Layout" />
+
+### Column sizing
+
+Use CoreUI’s `<CRow>` and `<CCol>` components to automatically distribute or manually control the width of form inputs.
+
+<ExampleSnippet className="theme-bootstrap" component="LayoutColumnSizingExample" componentName="React Bootstrap Form Layout" />
+
+### Auto sizing columns
+
+Use `<CCol xs="auto">` to allow input elements to take up only as much space as needed.
+
+<ExampleSnippet className="theme-bootstrap" component="LayoutAutoSizingExample" componentName="React Bootstrap Form Layout" />
+
+This can be combined with custom sizing to match your UI needs.
+
+<ExampleSnippet className="theme-bootstrap" component="LayoutAutoSizing2Example" componentName="React Bootstrap Form Layout" />
+
+### Inline form layout
+
+Use inline layouts to group form controls in a horizontal row, perfect for compact forms. Use `xs="auto"` and `g-2` for spacing, and `align-items-center` for vertical alignment.
+
+<ExampleSnippet className="theme-bootstrap" component="LayoutInlineFormsExample" componentName="React Bootstrap Form Layout" />
+
+## API reference
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CForm /&gt;](./api/#cform)
+- [&lt;CRow /&gt;](./api/#crow)
+- [&lt;CCol /&gt;](./api/#ccol)
+- [&lt;CFormLabel /&gt;](./api/#cformlabel)
+- [&lt;CFormCheck /&gt;](./api/#cformcheck)
+- [&lt;CFormInput /&gt;](./api/#cforminput)
