@@ -1,4 +1,5 @@
 import React from 'react'
+import { withPrefix } from 'gatsby'
 import { CCard, CCardBody, CCardImage, CCardText, CCardTitle, CCol, CRow } from '@coreui/react'
 
 export const CardImageHorizontalExample = () => {
@@ -6,7 +7,7 @@ export const CardImageHorizontalExample = () => {
     <CCard className="mb-3" style={{ maxWidth: '540px' }}>
       <CRow className="g-0">
         <CCol md={4}>
-          <CCardImage src={'/images/react400.jpg'} />
+          <CCardImage src={withPrefix('/images/react400.jpg')} />
         </CCol>
         <CCol md={8}>
           <CCardBody>

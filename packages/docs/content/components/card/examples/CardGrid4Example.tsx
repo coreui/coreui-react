@@ -1,4 +1,5 @@
 import React from 'react'
+import { withPrefix } from 'gatsby'
 import {
   CCard,
   CCardBody,
@@ -15,7 +16,7 @@ export const CardGrid4Example = () => {
     <CRow xs={{ cols: 1 }} md={{ cols: 3 }} className="g-4">
       <CCol xs>
         <CCard className="h-100">
-          <CCardImage orientation="top" src={'/images/react.jpg'} />
+          <CCardImage orientation="top" src={withPrefix('/images/react.jpg')} />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>
@@ -30,7 +31,7 @@ export const CardGrid4Example = () => {
       </CCol>
       <CCol xs>
         <CCard className="h-100">
-          <CCardImage orientation="top" src={'/images/react.jpg'} />
+          <CCardImage orientation="top" src={withPrefix('/images/react.jpg')} />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>
@@ -44,7 +45,7 @@ export const CardGrid4Example = () => {
       </CCol>
       <CCol xs>
         <CCard className="h-100">
-          <CCardImage orientation="top" src={'/images/react.jpg'} />
+          <CCardImage orientation="top" src={withPrefix('/images/react.jpg')} />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>

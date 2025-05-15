@@ -1,4 +1,5 @@
 import React from 'react'
+import { withPrefix } from 'gatsby'
 import { CContainer, CNavbar, CNavbarBrand } from '@coreui/react'
 
 export const NavbarBrand2Example = () => {
@@ -7,7 +8,7 @@ export const NavbarBrand2Example = () => {
       <CContainer fluid>
         <CNavbarBrand href="#">
           <img
-            src={'/images/brand/coreui-signet.svg'}
+            src={withPrefix('/images/brand/coreui-signet.svg')}
             alt="CoreUI Signet"
             width="22"
             height="24"

@@ -1,4 +1,5 @@
 import React from 'react'
+import { withPrefix } from 'gatsby'
 import {
   CCard,
   CCardBody,
@@ -15,7 +16,7 @@ export const CardGridExample = () => {
     <CRow xs={{ cols: 1, gutter: 4 }} md={{ cols: 2 }}>
       <CCol xs>
         <CCard>
-          <CCardImage orientation="top" src={'/images/react.jpg'} />
+          <CCardImage orientation="top" src={withPrefix('/images/react.jpg')} />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>
@@ -30,7 +31,7 @@ export const CardGridExample = () => {
       </CCol>
       <CCol xs>
         <CCard>
-          <CCardImage orientation="top" src={'/images/react.jpg'} />
+          <CCardImage orientation="top" src={withPrefix('/images/react.jpg')} />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>
@@ -45,7 +46,7 @@ export const CardGridExample = () => {
       </CCol>
       <CCol xs>
         <CCard>
-          <CCardImage orientation="top" src={'/images/react.jpg'} />
+          <CCardImage orientation="top" src={withPrefix('/images/react.jpg')} />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>
@@ -60,7 +61,7 @@ export const CardGridExample = () => {
       </CCol>
       <CCol xs>
         <CCard>
-          <CCardImage orientation="top" src={'/images/react.jpg'} />
+          <CCardImage orientation="top" src={withPrefix('/images/react.jpg')} />
           <CCardBody>
             <CCardTitle>Card title</CCardTitle>
             <CCardText>

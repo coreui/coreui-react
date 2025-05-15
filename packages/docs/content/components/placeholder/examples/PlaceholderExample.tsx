@@ -1,4 +1,5 @@
 import React from 'react'
+import { withPrefix } from 'gatsby'
 import {
   CButton,
   CCard,
@@ -13,7 +14,7 @@ export const PlaceholderExample = () => {
   return (
     <>
       <CCard style={{ width: '18rem' }}>
-        <CCardImage orientation="top" src={'/images/react.jpg'} />
+        <CCardImage orientation="top" src={withPrefix('/images/react.jpg')} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>

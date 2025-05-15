@@ -1,11 +1,12 @@
 import React from 'react'
+import { withPrefix } from 'gatsby'
 import { CCard, CCardBody, CCardImage, CCardText, CCardTitle } from '@coreui/react'
 
 export const CardImageCapsExample = () => {
   return (
     <>
       <CCard className="mb-3">
-        <CCardImage orientation="top" src={'/images/react.jpg'} />
+        <CCardImage orientation="top" src={withPrefix('/images/react.jpg')} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -28,7 +29,7 @@ export const CardImageCapsExample = () => {
             <small className="text-body-secondary">Last updated 3 mins ago</small>
           </CCardText>
         </CCardBody>
-        <CCardImage orientation="bottom" src={'/images/react.jpg'} />
+        <CCardImage orientation="bottom" src={withPrefix('/images/react.jpg')} />
       </CCard>
     </>
   )

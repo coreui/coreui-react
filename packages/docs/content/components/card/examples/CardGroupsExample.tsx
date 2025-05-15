@@ -1,11 +1,12 @@
 import React from 'react'
+import { withPrefix } from 'gatsby'
 import { CCard, CCardBody, CCardGroup, CCardImage, CCardText, CCardTitle } from '@coreui/react'
 
 export const CardGroupsExample = () => {
   return (
     <CCardGroup>
       <CCard>
-        <CCardImage orientation="top" src={'/images/react.jpg'} />
+        <CCardImage orientation="top" src={withPrefix('/images/react.jpg')} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -18,7 +19,7 @@ export const CardGroupsExample = () => {
         </CCardBody>
       </CCard>
       <CCard>
-        <CCardImage orientation="top" src={'/images/react.jpg'} />
+        <CCardImage orientation="top" src={withPrefix('/images/react.jpg')} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
@@ -30,7 +31,7 @@ export const CardGroupsExample = () => {
         </CCardBody>
       </CCard>
       <CCard>
-        <CCardImage orientation="top" src={'/images/react.jpg'} />
+        <CCardImage orientation="top" src={withPrefix('/images/react.jpg')} />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText>
