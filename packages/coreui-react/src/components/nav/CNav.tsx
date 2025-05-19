@@ -21,7 +21,7 @@ export interface CNavProps
   /**
    * Set the nav variant to tabs or pills.
    */
-  variant?: 'pills' | 'tabs' | 'underline' | 'underline-border'
+  variant?: 'enclosed' | 'enclosed-pills' | 'pills' | 'tabs' | 'underline' | 'underline-border'
 }
 
 export const CNav: PolymorphicRefForwardingComponent<'ul', CNavProps> = forwardRef<
@@ -32,11 +32,12 @@ export const CNav: PolymorphicRefForwardingComponent<'ul', CNavProps> = forwardR
     <Component
       className={classNames(
         'nav',
+        variant === 'enclosed-pills' && 'nav-enclosed', // Enclosed pills variant required for `.nav-enclosed` class
         {
           [`nav-${layout}`]: layout,
           [`nav-${variant}`]: variant,
         },
-        className,
+        className
       )}
       role="navigation"
       {...rest}
@@ -52,7 +53,14 @@ CNav.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   layout: PropTypes.oneOf(['fill', 'justified']),
-  variant: PropTypes.oneOf(['pills', 'tabs', 'underline', 'underline-border']),
+  variant: PropTypes.oneOf([
+    'enclosed',
+    'enclosed-pills',
+    'pills',
+    'tabs',
+    'underline',
+    'underline-border',
+  ]),
 }
 
 CNav.displayName = 'CNav'
