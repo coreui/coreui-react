@@ -17,7 +17,7 @@ export interface CTabListProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Set the nav variant to tabs or pills.
    */
-  variant?: 'pills' | 'tabs' | 'underline' | 'underline-border'
+  variant?: 'enclosed' | 'enclosed-pills' | 'pills' | 'tabs' | 'underline' | 'underline-border'
 }
 
 export const CTabList = forwardRef<HTMLDivElement, CTabListProps>(
@@ -39,7 +39,7 @@ export const CTabList = forwardRef<HTMLDivElement, CTabListProps>(
         const target = event.target as HTMLElement
         // eslint-disable-next-line unicorn/prefer-spread
         const items: HTMLElement[] = Array.from(
-          tabListRef.current.querySelectorAll('.nav-link:not(.disabled):not(:disabled)'),
+          tabListRef.current.querySelectorAll('.nav-link:not(.disabled):not(:disabled)')
         )
 
         let nextActiveElement
@@ -51,7 +51,7 @@ export const CTabList = forwardRef<HTMLDivElement, CTabListProps>(
             items,
             target,
             event.key === 'ArrowDown' || event.key === 'ArrowRight',
-            true,
+            true
           )
         }
 
@@ -65,11 +65,12 @@ export const CTabList = forwardRef<HTMLDivElement, CTabListProps>(
       <div
         className={classNames(
           'nav',
+          variant === 'enclosed-pills' && 'nav-enclosed', // Enclosed pills variant required for `.nav-enclosed` class
           {
             [`nav-${layout}`]: layout,
             [`nav-${variant}`]: variant,
           },
-          className,
+          className
         )}
         role="tablist"
         onKeyDown={handleKeydown}
@@ -79,14 +80,21 @@ export const CTabList = forwardRef<HTMLDivElement, CTabListProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CTabList.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   layout: PropTypes.oneOf(['fill', 'justified']),
-  variant: PropTypes.oneOf(['pills', 'tabs', 'underline', 'underline-border']),
+  variant: PropTypes.oneOf([
+    'enclosed',
+    'enclosed-pills',
+    'pills',
+    'tabs',
+    'underline',
+    'underline-border',
+  ]),
 }
 
 CTabList.displayName = 'CTabList'

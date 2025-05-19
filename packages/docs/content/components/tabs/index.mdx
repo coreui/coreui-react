@@ -10,7 +10,7 @@ since: 5.1.0
 
 The basic React tabs example uses the `variant="tabs"` props to generate a tabbed interface.
 
-<ExampleSnippet component="TabsExample" componentName="React Spinner" />
+<ExampleSnippet component="TabsExample" componentName="React Tabs" />
 
 ## Available styles
 
@@ -20,35 +20,47 @@ Change the style of `<CTabs>`'s component with modifiers and utilities. Mix and 
 
 If you don’t provide the `variant` prop, the component will default to a basic style.
 
-<ExampleSnippet component="TabsUnstyledExample" componentName="React Spinner" />
+<ExampleSnippet component="TabsUnstyledExample" componentName="React Tabs" />
 
 ### Pills
 
 Take that same code, but use `variant="pills"` instead:
 
-<ExampleSnippet component="TabsPillsExample" componentName="React Spinner" />
+<ExampleSnippet component="TabsPillsExample" componentName="React Tabs" />
 
 ### Underline
 
 Take that same code, but use `variant="underline"` instead:
 
-<ExampleSnippet component="TabsUnderlineExample" componentName="React Spinner" />
+<ExampleSnippet component="TabsUnderlineExample" componentName="React Tabs" />
 
 ### Underline border
 
 Take that same code, but use `variant="underline-border"` instead:
 
-<ExampleSnippet component="TabsUnderlineBorderExample" componentName="React Spinner" />
+<ExampleSnippet component="TabsUnderlineBorderExample" componentName="React Tabs" />
+
+### Enclosed
+
+Use the `variant="enclosed"` class to give your navigation items a subtle border and rounded styling.
+
+<ExampleSnippet component="TabsEnclosedExample" componentName="React Tabs" />
+
+### Enclosed pills 
+
+Use the `variant="enclosed-pills"` to achieve a pill-style appearance for each nav item, using pill-shaped borders and smoother outlines.
+
+<ExampleSnippet component="TabsEnclosedPillsExample" componentName="React Tabs" />
 
 ### Fill and justify
 
 Force your `<CTabs>`'s contents to extend the full available width one of two modifier classes. To proportionately fill all available space use `layout="fill"`. Notice that all horizontal space is occupied, but not every nav item has the same width.
 
-<ExampleSnippet component="TabsUnstyledFillAndJustifyExample" componentName="React Spinner" />
+<ExampleSnippet component="TabsUnstyledFillAndJustifyExample" componentName="React Tabs" />
 
 For equal-width elements, use `layout="justified"`. All horizontal space will be occupied by nav links, but unlike the `layout="fill"` above, every nav item will be the same width.
 
-<ExampleSnippet component="TabsUnstyledFillAndJustify2Example" componentName="React Spinner" />
+<ExampleSnippet component="TabsUnstyledFillAndJustify2Example" componentName="React Tabs" />
 
 Sure! Here's a polished, production-ready **documentation section** (Markdown-style) explaining the **controlled usage** of the `<CTabs>` component, with a clear example:
 
@@ -68,7 +80,7 @@ This is useful when you need to synchronize the tab state with your application 
 
 > 💡 If you prefer the tabs to manage their own state, use `defaultActiveItemKey` instead.
 
-<ExampleSnippet component="TabsControlledExample" componentName="React Spinner" />
+<ExampleSnippet component="TabsControlledExample" componentName="React Tabs" />
 
 
 ## Accessibility
