@@ -58,7 +58,7 @@
     "react-imask": "^7.6.1",
     "react-markdown": "^10.1.0",
     "rimraf": "^6.0.1",
-    "sass": "^1.87.0",
+    "sass": "^1.89.0",
     "showdown": "^2.1.0"
   },
   "devDependencies": {
