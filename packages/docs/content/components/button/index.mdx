@@ -28,20 +28,40 @@ If you're using `<CButton>` component as `<a>` elements that are used to trigger
 
 ## Outline buttons
 
-If you need a button, but without the strong background colors. Set `variant="outline"` prop to remove all background colors.
+### Base outline style
+
+The `variant="outline` property provides a neutral outline button style without any color modifiers. It’s useful as a foundation for minimal buttons without background color or strong visual emphasis.
+
+<ExampleSnippet component="ButtonOutlineBaseClassExample" componentName="React Button" />
+
+These React buttons use a transparent background, subtle border, and inherit text color from the parent context. They’re best suited for minimalist UI elements like modals, toolbars, or secondary actions.
+
+### Themed outline variants
+
+If you need a button, but without the strong background colors, set `color` and `variant=" outline"` props to remove all background colors.
 
 <ExampleSnippet component="ButtonOutlineExample" componentName="React Button" />
 
-## Ghost buttons
-
-If you need a ghost variant of react button, set `variant="ghost"` prop to remove all background colors.
-
-<ExampleSnippet component="ButtonGhostExample" componentName="React Button" />
+These outline variants of our React.js buttons retain transparent backgrounds by default, but display a background tint on hover or focus to indicate interactivity. They’re ideal for secondary actions when you want to differentiate from the standard buttons visually.
 
 <Callout color="info">
   Some of the button styles use a relatively light foreground color, and should only be used on a
   dark background in order to have sufficient contrast.
 </Callout>
+
+## Ghost buttons
+
+### Base ghost style
+
+Use the `variant="ghost"` property to create ultra-minimalist buttons with no borders and a fully transparent background. These React buttons rely solely on text color for visibility and apply a background highlight when hovered over or in an active state.
+
+They’re perfect for interfaces where you want buttons to be present but visually unobtrusive—such as action buttons in modals, cards, or toolbars.
+
+<ExampleSnippet component="ButtonGhostBaseClassExample" componentName="React Button" />
+
+To apply theme colors to React ghost buttons, use the `color` and `variant="ghost"` properties. By default, these variants color only the text. On hover or focus, they add a background that corresponds to the theme color.
+
+<ExampleSnippet component="ButtonGhostExample" componentName="React Button" />
 
 ## Sizes
 
