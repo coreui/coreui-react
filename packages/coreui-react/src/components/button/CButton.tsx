@@ -74,9 +74,10 @@ export const CButton: PolymorphicRefForwardingComponent<'button', CButtonProps> 
         {...(!rest.href && { type: type })}
         className={classNames(
           'btn',
-          variant && color ? `btn-${variant}-${color}` : `btn-${variant}`,
           {
-            [`btn-${color}`]: color && !variant,
+            [`btn-${variant}-${color}`]: variant && color,
+            [`btn-${variant}`]: variant && !color,
+            [`btn-${color}`]: !variant && color,
             [`btn-${size}`]: size,
           },
           shape,
