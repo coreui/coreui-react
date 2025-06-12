@@ -140,7 +140,7 @@ function createTabs(tabNodes, { labels }) {
   })
 
   return {
-    attributes: [{ name: 'activeItemKey', type: 'mdxJsxAttribute', value: 0 }],
+    attributes: [{ name: 'defaultActiveItemKey', type: 'mdxJsxAttribute', value: 0 }],
     children: [
       {
         attributes: [
