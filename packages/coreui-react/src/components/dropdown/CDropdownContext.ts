@@ -5,9 +5,8 @@ export interface CDropdownContextProps {
   alignment?: Alignments
   container?: DocumentFragment | Element | (() => DocumentFragment | Element | null) | null
   dark?: boolean
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dropdownToggleRef: RefObject<any | null>
   dropdownMenuRef: RefObject<HTMLDivElement | HTMLUListElement | null>
+  dropdownToggleRef: (node: HTMLElement | null) => void
   setVisible: React.Dispatch<React.SetStateAction<boolean | undefined>>
   popper?: boolean
   portal?: boolean

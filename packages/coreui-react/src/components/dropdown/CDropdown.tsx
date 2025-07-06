@@ -1,4 +1,13 @@
-import React, { ElementType, forwardRef, HTMLAttributes, useEffect, useRef, useState } from 'react'
+import React, {
+  ElementType,
+  forwardRef,
+  HTMLAttributes,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import type { Options } from '@popperjs/core'
@@ -190,59 +199,63 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
     ref
   ) => {
     const dropdownRef = useRef<HTMLDivElement>(null)
-    const dropdownToggleRef = useRef<HTMLElement>(null)
     const dropdownMenuRef = useRef<HTMLDivElement | HTMLUListElement>(null)
     const forkedRef = useForkedRef(ref, dropdownRef)
+    const [dropdownToggleElement, setDropdownToggleElement] = useState<HTMLElement | null>(null)
     const [_visible, setVisible] = useState(visible)
     const { initPopper, destroyPopper } = usePopper()
 
-    const Component = variant === 'nav-item' ? 'li' : as
+    const dropdownToggleRef = useCallback((node: HTMLElement | null) => {
+      if (node) {
+        setDropdownToggleElement(node)
+      }
+    }, [])
 
-    // Disable popper if responsive aligment is set.
-    if (typeof alignment === 'object') {
-      popper = false
-    }
+    const allowPopperUse = popper && typeof alignment !== 'object'
+    const Component = variant === 'nav-item' ? 'li' : as
 
     const contextValues = {
       alignment,
       container,
       dark,
-      dropdownToggleRef,
       dropdownMenuRef,
-      popper,
+      dropdownToggleRef,
+      popper: allowPopperUse,
       portal,
       variant,
       visible: _visible,
       setVisible,
     }
 
-    const defaultPopperConfig = {
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: offset,
+    const computedPopperConfig: Partial<Options> = useMemo(() => {
+      const defaultPopperConfig = {
+        modifiers: [
+          {
+            name: 'offset',
+            options: {
+              offset,
+            },
           },
-        },
-      ],
-      placement: getPlacement(placement, direction, alignment, isRTL(dropdownMenuRef.current)),
-    }
+        ],
+        placement: getPlacement(placement, direction, alignment, isRTL(dropdownMenuRef.current)),
+      }
 
-    const computedPopperConfig: Partial<Options> = {
-      ...defaultPopperConfig,
-      ...(typeof popperConfig === 'function' ? popperConfig(defaultPopperConfig) : popperConfig),
-    }
+      return {
+        ...defaultPopperConfig,
+        ...(typeof popperConfig === 'function' ? popperConfig(defaultPopperConfig) : popperConfig),
+      }
+    }, [offset, placement, direction, alignment, popperConfig])
 
     useEffect(() => {
       setVisible(visible)
     }, [visible])
 
     useEffect(() => {
-      const toggleElement = dropdownToggleRef.current
+      const toggleElement = dropdownToggleElement
       const menuElement = dropdownMenuRef.current
 
       if (_visible && toggleElement && menuElement) {
-        if (popper) {
+        if (allowPopperUse) {
           initPopper(toggleElement, menuElement, computedPopperConfig)
         }
 
@@ -257,7 +270,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
       }
 
       return () => {
-        if (popper) {
+        if (allowPopperUse) {
           destroyPopper()
         }
 
@@ -269,14 +282,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
 
         onHide?.()
       }
-    }, [
-      computedPopperConfig,
-      destroyPopper,
-      dropdownMenuRef,
-      dropdownToggleRef,
-      initPopper,
-      _visible,
-    ])
+    }, [dropdownToggleElement, _visible])
 
     const handleKeydown = (event: KeyboardEvent) => {
       if (
@@ -304,11 +310,11 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
     }
 
     const handleMouseUp = (event: Event) => {
-      if (!dropdownToggleRef.current || !dropdownMenuRef.current) {
+      if (!dropdownToggleElement || !dropdownMenuRef.current) {
         return
       }
 
-      if (dropdownToggleRef.current.contains(event.target as HTMLElement)) {
+      if (dropdownToggleElement.contains(event.target as HTMLElement)) {
         return
       }
 

@@ -74,36 +74,32 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
     ...(!rest.disabled && { ...triggers }),
   }
 
-  const Toggler = () => {
-    if (custom && React.isValidElement(children)) {
-      return (
-        <>
-          {React.cloneElement(children as React.ReactElement<any>, {
-            'aria-expanded': visible,
-            ...(!rest.disabled && { ...triggers }),
-            ref: dropdownToggleRef,
-          })}
-        </>
-      )
-    }
-
-    if (variant === 'nav-item' && navLink) {
-      return (
-        <a href="#" {...togglerProps} role="button" {...rest} ref={dropdownToggleRef}>
-          {children}
-        </a>
-      )
-    }
-
+  if (custom && React.isValidElement(children)) {
     return (
-      <CButton {...togglerProps} tabIndex={0} {...rest} ref={dropdownToggleRef}>
-        {children}
-        {split && <span className="visually-hidden">Toggle Dropdown</span>}
-      </CButton>
+      <>
+        {React.cloneElement(children as React.ReactElement<any>, {
+          'aria-expanded': visible,
+          ...(!rest.disabled && { ...triggers }),
+          ref: dropdownToggleRef,
+        })}
+      </>
     )
   }
 
-  return <Toggler />
+  if (variant === 'nav-item' && navLink) {
+    return (
+      <a href="#" {...togglerProps} role="button" {...rest} ref={dropdownToggleRef}>
+        {children}
+      </a>
+    )
+  }
+
+  return (
+    <CButton {...togglerProps} tabIndex={0} {...rest} ref={dropdownToggleRef}>
+      {children}
+      {split && <span className="visually-hidden">Toggle Dropdown</span>}
+    </CButton>
+  )
 }
 
 CDropdownToggle.propTypes = {
