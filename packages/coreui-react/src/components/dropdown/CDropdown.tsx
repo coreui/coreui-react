@@ -214,19 +214,6 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
     const allowPopperUse = popper && typeof alignment !== 'object'
     const Component = variant === 'nav-item' ? 'li' : as
 
-    const contextValues = {
-      alignment,
-      container,
-      dark,
-      dropdownMenuRef,
-      dropdownToggleRef,
-      popper: allowPopperUse,
-      portal,
-      variant,
-      visible: _visible,
-      setVisible,
-    }
-
     const computedPopperConfig: Partial<Options> = useMemo(() => {
       const defaultPopperConfig = {
         modifiers: [
@@ -247,14 +234,28 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
     }, [offset, placement, direction, alignment, popperConfig])
 
     useEffect(() => {
-      setVisible(visible)
+      if (visible) {
+        handleShow()
+      } else {
+        handleHide()
+      }
     }, [visible])
 
     useEffect(() => {
       const toggleElement = dropdownToggleElement
       const menuElement = dropdownMenuRef.current
+      if (allowPopperUse && menuElement && toggleElement && _visible) {
+        initPopper(toggleElement, menuElement, computedPopperConfig)
+      }
+    }, [dropdownToggleElement])
 
-      if (_visible && toggleElement && menuElement) {
+    const handleShow = () => {
+      const toggleElement = dropdownToggleElement
+      const menuElement = dropdownMenuRef.current
+
+      if (toggleElement && menuElement) {
+        setVisible(true)
+
         if (allowPopperUse) {
           initPopper(toggleElement, menuElement, computedPopperConfig)
         }
@@ -268,21 +269,26 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
 
         onShow?.()
       }
+    }
 
-      return () => {
-        if (allowPopperUse) {
-          destroyPopper()
-        }
+    const handleHide = () => {
+      setVisible(false)
 
-        toggleElement?.removeEventListener('keydown', handleKeydown)
-        menuElement?.removeEventListener('keydown', handleKeydown)
+      const toggleElement = dropdownToggleElement
+      const menuElement = dropdownMenuRef.current
 
-        window.removeEventListener('mouseup', handleMouseUp)
-        window.removeEventListener('keyup', handleKeyup)
-
-        onHide?.()
+      if (allowPopperUse) {
+        destroyPopper()
       }
-    }, [dropdownToggleElement, _visible])
+
+      toggleElement?.removeEventListener('keydown', handleKeydown)
+      menuElement?.removeEventListener('keydown', handleKeydown)
+
+      window.removeEventListener('mouseup', handleMouseUp)
+      window.removeEventListener('keyup', handleKeyup)
+
+      onHide?.()
+    }
 
     const handleKeydown = (event: KeyboardEvent) => {
       if (
@@ -305,7 +311,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
       }
 
       if (event.key === 'Escape') {
-        setVisible(false)
+        handleHide()
       }
     }
 
@@ -323,9 +329,23 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
         (autoClose === 'inside' && dropdownMenuRef.current.contains(event.target as HTMLElement)) ||
         (autoClose === 'outside' && !dropdownMenuRef.current.contains(event.target as HTMLElement))
       ) {
-        setTimeout(() => setVisible(false), 1)
+        setTimeout(() => handleHide(), 1)
         return
       }
+    }
+
+    const contextValues = {
+      alignment,
+      container,
+      dark,
+      dropdownMenuRef,
+      dropdownToggleRef,
+      handleHide,
+      handleShow,
+      popper: allowPopperUse,
+      portal,
+      variant,
+      visible: _visible,
     }
 
     return (

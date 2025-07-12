@@ -7,7 +7,8 @@ export interface CDropdownContextProps {
   dark?: boolean
   dropdownMenuRef: RefObject<HTMLDivElement | HTMLUListElement | null>
   dropdownToggleRef: (node: HTMLElement | null) => void
-  setVisible: React.Dispatch<React.SetStateAction<boolean | undefined>>
+  handleHide?: () => void
+  handleShow?: () => void
   popper?: boolean
   portal?: boolean
   variant?: 'btn-group' | 'dropdown' | 'input-group' | 'nav-item'

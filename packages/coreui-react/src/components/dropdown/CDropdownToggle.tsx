@@ -45,18 +45,24 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
   trigger = 'click',
   ...rest
 }) => {
-  const { dropdownToggleRef, variant, visible, setVisible } = useContext(CDropdownContext)
+  const { dropdownToggleRef, handleHide, handleShow, variant, visible } =
+    useContext(CDropdownContext)
 
   const triggers = {
     ...((trigger === 'click' || trigger.includes('click')) && {
       onClick: (event: React.MouseEvent<HTMLElement>) => {
         event.preventDefault()
-        setVisible(!visible)
+
+        if (visible) {
+          handleHide?.()
+        } else {
+          handleShow?.()
+        }
       },
     }),
     ...((trigger === 'focus' || trigger.includes('focus')) && {
-      onFocus: () => setVisible(true),
-      onBlur: () => setVisible(false),
+      onFocus: () => handleShow?.(),
+      onBlur: () => handleHide?.(),
     }),
   }
 
