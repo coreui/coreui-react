@@ -98,11 +98,12 @@ export const Head = ({ pageContext }: { pageContext: PageContextType }) => {
   const title = frontmatter?.title || ''
   const description = frontmatter?.description || ''
   const name = frontmatter?.name || ''
+  const pro = frontmatter?.pro_component || false
 
   return (
     <>
       <html lang="en" />
-      <Seo title={title} description={description} name={name} />
+      <Seo title={title} description={description} name={name} pro={pro} />
     </>
   )
 }
