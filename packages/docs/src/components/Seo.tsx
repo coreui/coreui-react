@@ -94,7 +94,7 @@ const SEO = ({ title, description, name, image, article, pro }: SEOProps) => {
       return 'Complete guide to CoreUI React migration. Track and review changes to the CoreUI for React.js components to help you migrate to the latest version.'
     }
 
-    return  'Complete guide to CoreUI for React.js components and implementation.'
+    return 'Complete guide to CoreUI for React.js components and implementation.'
   }
 
   const schema = [
@@ -127,7 +127,7 @@ const SEO = ({ title, description, name, image, article, pro }: SEOProps) => {
       '@context': 'https://schema.org',
       '@type': 'TechArticle',
       headline: `${seo.title} documentation`,
-      description: getDynamicDescription(seo.url, name,),
+      description: getDynamicDescription(seo.url, name),
       author: {
         '@type': 'Organization',
         name: 'CoreUI Team',
