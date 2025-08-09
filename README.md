@@ -101,6 +101,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 - [React Accordion](https://coreui.io/react/docs/components/accordion/)
 - [React Alert](https://coreui.io/react/docs/components/alert/)
+- [React Autocomplete](https://coreui.io/react/docs/forms/autocomplete/) **PRO**
 - [React Avatar](https://coreui.io/react/docs/components/avatar/)
 - [React Badge](https://coreui.io/react/docs/components/badge/)
 - [React Breadcrumb](https://coreui.io/react/docs/components/breadcrumb/)
@@ -134,7 +135,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 - [React Progress](https://coreui.io/react/docs/components/progress/)
 - [React Radio](https://coreui.io/react/docs/forms/radio/)
 - [React Range](https://coreui.io/react/docs/forms/range/)
-- [React Rating](https://coreui.io/react/docs/forms/rating/)
+- [React Range Slider](https://coreui.io/react/docs/forms/range-slider/) **PRO**
+- [React Rating](https://coreui.io/react/docs/forms/rating/) **PRO**
 - [React Select](https://coreui.io/react/docs/forms/select/)
 - [React Sidebar](https://coreui.io/react/docs/components/sidebar/)
 - [React Smart Pagination](https://coreui.io/react/docs/components/smart-pagination/) **PRO**
