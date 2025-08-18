@@ -44,17 +44,24 @@ const SEO = ({ title, description, name, image, article, pro }: SEOProps) => {
   }
 
   const breadcrumbList = (startIndex = 1) => {
-    return seo.url
+    const segments = seo.url
       .replace('docs//', 'docs/')
       .replace(siteUrl, '')
       .split('/')
       .filter(Boolean)
-      .map((item, index) => ({
+
+    return segments.map((item, index) => {
+      const pathSegments = segments.slice(0, index + 1)
+      const path = pathSegments.join('/')
+      const fullPath = `${siteUrl}/${path}/`.replaceAll(/([^:])\/+/g, '$1/') // Zastąp wielokrotne slashe, ale nie po dwukropku
+
+      return {
         '@type': 'ListItem',
         position: index + startIndex,
         name: humanize(item),
-        item: `${siteUrl}${item}`,
-      }))
+        item: fullPath,
+      }
+    })
   }
 
   const getDynamicDescription = (pathname: string, name?: string): string => {
