@@ -20,6 +20,7 @@
 
     ul {
       padding-left: 0;
+      margin-bottom: 0;
       list-style: none;
 
       ul {
@@ -50,7 +51,7 @@
   display: flex;
   align-items: center;
 
-  @include media-breakpoint-down(lg) {
+  @include media-breakpoint-down(sm) {
     justify-content: space-between;
     width: 100%;
   }
