@@ -163,7 +163,7 @@ const Header = forwardRef<HTMLDivElement>(({}, ref) => {
               </li>
             </CHeaderNav>
             <CButton
-              className="d-lg-inline-block ms-md-3"
+              className="d-none d-lg-inline-block ms-md-3"
               color="primary"
               href="https://coreui.io/about/services/?docs=coreui-header-button"
               variant="outline"
