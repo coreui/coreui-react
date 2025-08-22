@@ -80,8 +80,9 @@ const Header = forwardRef<HTMLDivElement>(({}, ref) => {
                 apiKey="6e3f7692d2589d042bb40426b75df1b7"
               />
             </div>
-            <CHeaderNav className="ms-2 d-none d-sm-flex" role={undefined}>
+            <CHeaderNav className="ms-2" role={undefined}>
               <CNavItem
+                className="d-none d-sm-block"
                 href="https://github.com/coreui/coreui-react/"
                 aria-label="Visit our GitHub"
                 target="_blank"
@@ -90,8 +91,9 @@ const Header = forwardRef<HTMLDivElement>(({}, ref) => {
                 <CIcon icon={cibGithub} size="xl" />
               </CNavItem>
               <CNavItem
+                className="d-none d-sm-block"
                 href="https://x.com/core_ui"
-                aria-label="Visit our Twitter"
+                aria-label="Visit our X (Twitter)"
                 target="_blank"
                 rel="noopener"
               >
@@ -102,6 +104,7 @@ const Header = forwardRef<HTMLDivElement>(({}, ref) => {
                 </CIconSvg>
               </CNavItem>
               <CNavItem
+                className="d-none d-sm-block"
                 href="https://discord.gg/pQRWe5XdGm"
                 aria-label="Visit our Discord"
                 target="_blank"
