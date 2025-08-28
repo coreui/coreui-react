@@ -13,7 +13,7 @@ export default typescriptEslint.config(
     extends: [
       eslint.configs.recommended,
       ...typescriptEslint.configs.recommended,
-      eslintPluginUnicorn.configs['flat/recommended'],
+      eslintPluginUnicorn.configs.recommended,
       eslintPluginReact.configs.flat.recommended,
       eslintPluginReact.configs.flat['jsx-runtime'],
     ],
