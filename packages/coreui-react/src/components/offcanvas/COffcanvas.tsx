@@ -7,6 +7,7 @@ import { CBackdrop } from '../backdrop'
 import { CConditionalPortal } from '../conditional-portal'
 
 import { useForkedRef } from '../../hooks'
+import { CFocusTrap } from '../focus-trap'
 
 export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -74,7 +75,7 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
       visible = false,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const [_visible, setVisible] = useState<boolean>(visible)
     const offcanvasRef = useRef<HTMLDivElement>(null)
@@ -119,33 +120,34 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
           in={_visible}
           nodeRef={offcanvasRef}
           onEnter={onShow}
-          onEntered={() => offcanvasRef.current?.focus()}
           onExit={onHide}
           timeout={300}
         >
           {(state) => (
             <CConditionalPortal portal={portal}>
-              <div
-                className={classNames(
-                  {
-                    [`offcanvas${typeof responsive === 'string' ? '-' + responsive : ''}`]:
-                      responsive,
-                    [`offcanvas-${placement}`]: placement,
-                    showing: state === 'entering',
-                    show: state === 'entered',
-                    'show hiding': state === 'exiting',
-                  },
-                  className,
-                )}
-                role="dialog"
-                tabIndex={-1}
-                onKeyDown={handleKeyDown}
-                {...(dark && { 'data-coreui-theme': 'dark' })}
-                {...rest}
-                ref={forkedRef}
-              >
-                {children}
-              </div>
+              <CFocusTrap active={_visible && Boolean(backdrop)} restoreFocus>
+                <div
+                  className={classNames(
+                    {
+                      [`offcanvas${typeof responsive === 'string' ? '-' + responsive : ''}`]:
+                        responsive,
+                      [`offcanvas-${placement}`]: placement,
+                      showing: state === 'entering',
+                      show: state === 'entered',
+                      'show hiding': state === 'exiting',
+                    },
+                    className
+                  )}
+                  role="dialog"
+                  tabIndex={-1}
+                  onKeyDown={handleKeyDown}
+                  {...(dark && { 'data-coreui-theme': 'dark' })}
+                  {...rest}
+                  ref={forkedRef}
+                >
+                  {children}
+                </div>
+              </CFocusTrap>
             </CConditionalPortal>
           )}
         </Transition>
@@ -160,7 +162,7 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
         )}
       </>
     )
-  },
+  }
 )
 
 COffcanvas.propTypes = {

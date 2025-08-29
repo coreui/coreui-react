@@ -1,0 +1,267 @@
+---
+title: React Focus Trap Accessibility
+name: Focus Trap Accessibility
+description: Learn how to implement WCAG 2.1 compliant focus management with the React Focus Trap component for better accessibility.
+route: /components/focus-trap/
+---
+
+## WCAG 2.1 Compliance
+
+The React Focus Trap component helps achieve WCAG 2.1 compliance by implementing proper focus management patterns required for accessible web applications. Focus traps are essential for meeting several WCAG success criteria:
+
+### Success Criteria Met
+
+- **2.1.2 No Keyboard Trap (Level A)**: Ensures users can navigate away from trapped content using standard keyboard commands
+- **2.4.3 Focus Order (Level A)**: Maintains logical focus order within the trapped area
+- **2.4.7 Focus Visible (Level AA)**: Preserves focus indicators within the trap
+- **3.2.1 On Focus (Level A)**: Prevents unexpected context changes when focus moves
+
+## Keyboard Navigation
+
+### Tab and Shift+Tab Cycling
+
+When a focus trap is active, the Tab and Shift+Tab keys cycle through focusable elements within the trapped container:
+
+1. **Tab**: Moves focus to the next focusable element
+2. **Shift+Tab**: Moves focus to the previous focusable element
+3. **Wrapping**: When reaching the last element, Tab wraps to the first element
+4. **Reverse Wrapping**: When reaching the first element, Shift+Tab wraps to the last element
+
+### Escape Key Handling
+
+While React Focus Trap doesn't handle the Escape key directly, it's recommended to implement Escape key handling in your application:
+
+```jsx
+useEffect(() => {
+  const handleEscape = (e: KeyboardEvent) => {
+    if (e.key === 'Escape' && trapActive) {
+      setTrapActive(false)
+    }
+  }
+
+  document.addEventListener('keydown', handleEscape)
+  return () => document.removeEventListener('keydown', handleEscape)
+}, [trapActive])
+```
+
+## Screen Reader Support
+
+### Focus Management
+
+React Focus Trap works seamlessly with screen readers by:
+
+- **Maintaining Focus Flow**: Screen readers follow the trapped focus order
+- **Preserving Announcements**: Focus changes trigger appropriate screen reader announcements
+- **Supporting Navigation**: Screen reader navigation commands work within the trapped area
+
+### ARIA Implementation
+
+When using React Focus Trap, ensure proper ARIA attributes on the container:
+
+```jsx
+// Modal Dialog
+<CFocusTrap active={isModalOpen} restoreFocus={true}>
+  <div 
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+    aria-describedby="modal-description"
+  >
+    <h2 id="modal-title">Dialog Title</h2>
+    <p id="modal-description">Dialog description</p>
+    {/* Modal content */}
+  </div>
+</CFocusTrap>
+
+// Menu
+<CFocusTrap active={isMenuOpen} focusFirstElement={true}>
+  <div role="menu" aria-orientation="vertical">
+    <button role="menuitem">Option 1</button>
+    <button role="menuitem">Option 2</button>
+  </div>
+</CFocusTrap>
+```
+
+## Best Practices
+
+### When to Use Focus Traps
+
+✅ **Always Use For:**
+- Modal dialogs and overlays
+- Dropdown and popup menus
+- Temporary slide-out panels
+- Multi-step wizards or forms
+
+❌ **Avoid Using For:**
+- Main page content
+- Persistent navigation elements
+- Non-interactive content areas
+
+### Focus Restoration
+
+Always use `restoreFocus={true}` for temporary UI elements:
+
+```jsx
+// ✅ Good - Temporary overlay
+<CFocusTrap active={showModal} restoreFocus={true}>
+  <div role="dialog">Modal content</div>
+</CFocusTrap>
+
+// ⚠️ Consider carefully - Navigation change
+<CFocusTrap active={showSidebar} restoreFocus={false}>
+  <nav>Permanent navigation</nav>
+</CFocusTrap>
+```
+
+### Initial Focus Strategies
+
+Choose the appropriate `focusFirstElement` setting:
+
+- **`focusFirstElement={true}`**: For forms, menus, and interactive content
+- **`focusFirstElement={false}`**: For containers, scrollable regions, or when the container itself should receive focus
+
+### Container Requirements
+
+Ensure your container meets accessibility requirements:
+
+```jsx
+// ✅ Proper container setup
+<CFocusTrap active={true}>
+  <div 
+    tabIndex={-1}           // Make container focusable
+    role="dialog"           // Appropriate role
+    aria-label="Settings"  // Accessible name
+  >
+    {/* Focusable content */}
+  </div>
+</CFocusTrap>
+```
+
+## Testing Guidelines
+
+### Manual Testing
+
+1. **Keyboard Navigation Test**:
+   - Use only Tab and Shift+Tab to navigate
+   - Verify focus stays within the trapped area
+   - Test focus wrapping (first ↔ last element)
+
+2. **Screen Reader Test**:
+   - Test with NVDA, JAWS, or VoiceOver
+   - Verify proper announcements
+   - Check element labels and descriptions
+
+3. **Focus Restoration Test**:
+   - Activate trap from different starting elements
+   - Verify focus returns to the correct element
+   - Test with keyboard and mouse activation
+
+### Automated Testing
+
+```jsx
+import { render, screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+test('focus trap maintains keyboard navigation', async () => {
+  const user = userEvent.setup()
+  
+  render(
+    <CFocusTrap active={true} focusFirstElement={true}>
+      <div>
+        <button data-testid="first">First</button>
+        <button data-testid="second">Second</button>
+      </div>
+    </CFocusTrap>
+  )
+
+  // First element should receive focus
+  await waitFor(() => {
+    expect(screen.getByTestId('first')).toHaveFocus()
+  })
+
+  // Tab should move to second element
+  await user.tab()
+  expect(screen.getByTestId('second')).toHaveFocus()
+
+  // Tab should wrap to first element
+  await user.tab()
+  expect(screen.getByTestId('first')).toHaveFocus()
+})
+```
+
+## Common Accessibility Issues
+
+### Issue 1: Missing Focus Indicators
+
+**Problem**: Focus indicators are removed or unclear within the trap.
+
+```css
+/* ❌ Bad - Removes focus indicators */
+.focus-trap *:focus {
+  outline: none;
+}
+
+/* ✅ Good - Maintains or improves focus indicators */
+.focus-trap *:focus {
+  outline: 2px solid #0d6efd;
+  outline-offset: 2px;
+}
+```
+
+### Issue 2: Inaccessible Elements
+
+**Problem**: Elements within the trap cannot receive focus.
+
+```jsx
+// ❌ Bad - Button cannot receive focus
+<button tabIndex={-1} disabled>Inaccessible</button>
+
+// ✅ Good - Properly focusable elements
+<button type="button">Accessible Button</button>
+<input type="text" aria-label="Search" />
+```
+
+### Issue 3: Missing Labels
+
+**Problem**: Focusable elements lack accessible names.
+
+```jsx
+// ❌ Bad - No accessible name
+<button onClick={close}>×</button>
+
+// ✅ Good - Clear accessible name
+<button onClick={close} aria-label="Close dialog">×</button>
+```
+
+## Integration with Other Accessibility Tools
+
+### React Testing Library
+
+Use the `@testing-library/jest-dom` matchers for accessibility testing:
+
+```jsx
+expect(element).toHaveFocus()
+expect(element).toBeVisible()
+expect(element).toHaveAccessibleName('Close dialog')
+```
+
+### axe-core Integration
+
+Test focus traps with automated accessibility testing:
+
+```javascript
+import { axe, toHaveNoViolations } from 'jest-axe'
+
+test('focus trap has no accessibility violations', async () => {
+  const { container } = render(<FocusTrapComponent />)
+  const results = await axe(container)
+  expect(results).toHaveNoViolations()
+})
+```
+
+## Resources
+
+- [ARIA Authoring Practices Guide - Dialog Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/)
+- [WebAIM - Keyboard Accessibility](https://webaim.org/techniques/keyboard/)
+- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+- [MDN - Using tabindex](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CFocusTrap CFocusTrap with custom props 1`] = `
+<div>
+  <div
+    data-testid="custom-container"
+    tabindex="-1"
+  >
+    Custom Content
+  </div>
+</div>
+`;
+
+exports[`CFocusTrap loads and displays CFocusTrap component 1`] = `
+<div>
+  <div
+    data-testid="test-content"
+    tabindex="-1"
+  >
+    Test Content
+  </div>
+</div>
+`;

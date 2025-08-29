@@ -1,0 +1,134 @@
+---
+title: React Focus Trap Component
+name: Focus Trap
+description: React Focus Trap component ensures keyboard navigation stays within a designated container element. Essential for creating accessible modal dialogs, dropdown menus, and overlay components that comply with WCAG 2.1 accessibility standards.
+route: /components/focus-trap/
+---
+
+## Overview
+
+The React Focus Trap component is an accessibility utility that constrains keyboard focus within a specific container element. When active, it prevents Tab and Shift+Tab navigation from leaving the trapped area, ensuring users stay within the intended interactive region. This is essential for modal dialogs, dropdown menus, and other overlay components that need to maintain focus for screen reader users and keyboard navigation compliance.
+
+Focus traps are a critical accessibility pattern required by WCAG 2.1 guidelines for modal dialogs and temporary overlay content. By containing focus within the relevant UI section, focus traps help create predictable and accessible user experiences.
+
+## Key Features
+
+- **WCAG 2.1 Compliant**: Meets accessibility standards for focus management
+- **Lightweight**: No extra DOM wrappers - uses ref forwarding
+- **Flexible**: Works with any single React element that forwards refs
+- **Smart Focus**: Configurable first focus target and automatic focus restoration
+- **Event Callbacks**: Activation and deactivation event handlers
+
+## Basic Usage
+
+The most basic implementation wraps a single element and activates the focus trap:
+
+<ExampleSnippet component="FocusTrapBasicExample" componentName="React Focus Trap" />
+
+## CoreUI Components with Built-in Focus Trapping
+
+Most CoreUI overlay components already include React Focus Trap internally, so you don't need to add it manually:
+
+- **CModal** - Includes built-in focus trapping for modal dialogs
+- **COffcanvas** - Has focus trapping for slide-out panels  
+- **CDropdown** - Can be enhanced with focus trapping for better accessibility
+
+For these components, focus trapping is handled automatically with proper focus restoration, escape key support, and WCAG 2.1 compliance.
+
+### Modal Dialog with CModal
+
+CModal includes built-in focus trapping, so you don't need to add CFocusTrap manually:
+
+<ExampleSnippet component="FocusTrapModalExample" componentName="React Focus Trap Modal" />
+
+### Enhanced Dropdown Menu
+
+You can enhance CDropdown with CFocusTrap for improved keyboard accessibility:
+
+<ExampleSnippet component="FocusTrapDropdownExample" componentName="React Focus Trap Dropdown" />
+
+### Sidebar Navigation with COffcanvas
+
+COffcanvas includes built-in focus trapping for slide-out navigation panels:
+
+<ExampleSnippet component="FocusTrapSidebarExample" componentName="React Focus Trap Sidebar" />
+
+## Focus Control Options
+
+### Focus First Element vs Container
+
+The `focusFirstElement` prop controls the initial focus behavior:
+
+- `focusFirstElement={true}`: Focuses the first tabbable element (good for menus, forms)
+- `focusFirstElement={false}`: Focuses the container element (good for panels, scrollable regions)
+
+<ExampleSnippet component="FocusTrapFocusControlExample" componentName="React Focus Trap Focus Control" />
+
+### Focus Restoration
+
+The `restoreFocus` prop controls whether focus returns to the previously focused element when the trap deactivates. Focus on a button, then activate the trap. When you deactivate it, notice where focus returns based on the `restoreFocus` setting:
+
+<ExampleSnippet component="FocusTrapRestoreFocusExample" componentName="React Focus Trap Restore Focus" />
+
+## Event Handling
+
+Use the `onActivate` and `onDeactivate` callbacks to trigger additional behavior such as screen reader announcements, analytics events, updating application state, or managing other UI components:
+
+<ExampleSnippet component="FocusTrapEventsExample" componentName="React Focus Trap Events" />
+
+## Conditional Focus Trapping
+
+Focus traps can be conditionally activated based on application state:
+
+<ExampleSnippet component="FocusTrapConditionalExample" componentName="React Focus Trap Conditional" />
+
+## Usage Guidelines
+
+### When to Use Focus Traps
+
+- **Modal Dialogs**: Always use focus traps for modal dialogs and overlays
+- **Dropdown Menus**: Implement focus traps for keyboard-navigable dropdown menus
+- **Slide-out Panels**: Use focus traps for temporary navigation panels or sidebars
+- **Custom Overlays**: Any overlay content that should contain keyboard focus
+
+### Accessibility Best Practices
+
+1. **Always include focusable elements** within the trapped container
+2. **Use `restoreFocus={true}`** for temporary overlays like modals and dropdowns
+3. **Include proper ARIA attributes** on the container (`role="dialog"`, `aria-modal="true"`)
+4. **Provide escape mechanisms** like Escape key handling or close buttons
+5. **Test with keyboard navigation** to ensure proper focus flow
+
+### Container Requirements
+
+The child element must meet these requirements:
+
+- **Single element**: Cannot be a fragment or multiple elements
+- **Ref forwarding**: Must properly forward refs to a DOM element  
+- **Focusable content**: Should contain elements that can receive focus
+
+```jsx
+// ✅ Good - Single element with proper ref forwarding
+<CFocusTrap active={true}>
+  <div tabIndex={-1}>Content with focusable elements</div>
+</CFocusTrap>
+
+// ❌ Bad - Multiple children
+<CFocusTrap active={true}>
+  <div>First</div>
+  <div>Second</div>
+</CFocusTrap>
+
+// ❌ Bad - Fragment
+<CFocusTrap active={true}>
+  <>
+    <div>Content</div>
+  </>
+</CFocusTrap>
+```
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the React.js Focus Trap component.
+
+- [&lt;CFocusTrap /&gt;](./api/#cfocustrap)

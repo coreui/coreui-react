@@ -230,6 +230,10 @@ const nav = [
         to: '/components/dropdown/',
       },
       {
+        name: 'Focus Trap',
+        to: '/components/focus-trap/',
+      },
+      {
         name: 'Footer',
         to: '/components/footer/',
       },

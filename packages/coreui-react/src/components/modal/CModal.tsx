@@ -17,6 +17,7 @@ import { CModalContext } from './CModalContext'
 import { CModalDialog } from './CModalDialog'
 
 import { useForkedRef } from '../../hooks'
+import { CFocusTrap } from '../focus-trap'
 
 export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -118,7 +119,6 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     },
     ref
   ) => {
-    const activeElementRef = useRef<HTMLElement | null>(null)
     const modalRef = useRef<HTMLDivElement>(null)
     const modalContentRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, modalRef)
@@ -137,11 +137,8 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
 
     useEffect(() => {
       if (_visible) {
-        activeElementRef.current = document.activeElement as HTMLElement | null
         document.addEventListener('mouseup', handleClickOutside)
         document.addEventListener('keydown', handleKeyDown)
-      } else {
-        activeElementRef.current?.focus()
       }
 
       return () => {
@@ -159,7 +156,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     }
 
     useLayoutEffect(() => {
-      onClosePrevented && onClosePrevented()
+      onClosePrevented?.()
       setTimeout(() => setStaticBackdrop(false), duration)
     }, [staticBackdrop])
 
@@ -172,13 +169,6 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
           document.body.style.overflow = 'hidden'
           document.body.style.paddingRight = '0px'
         }
-
-        setTimeout(
-          () => {
-            focus && modalRef.current?.focus()
-          },
-          transition ? duration : 0
-        )
       } else {
         document.body.classList.remove('modal-open')
 
@@ -249,7 +239,9 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
                     scrollable={scrollable}
                     size={size}
                   >
-                    <CModalContent ref={modalContentRef}>{children}</CModalContent>
+                    <CFocusTrap active={focus && state === 'entered'} restoreFocus>
+                      <CModalContent ref={modalContentRef}>{children}</CModalContent>
+                    </CFocusTrap>
                   </CModalDialog>
                 </div>
               </CModalContext.Provider>
