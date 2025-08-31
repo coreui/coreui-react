@@ -1,6 +1,6 @@
 const mergeClassNames = <T extends object>(
   defaultClassNames: T,
-  customClassNames?: Partial<T>,
+  customClassNames?: Partial<T>
 ): T => {
   if (customClassNames === undefined || typeof customClassNames !== 'object') {
     return defaultClassNames

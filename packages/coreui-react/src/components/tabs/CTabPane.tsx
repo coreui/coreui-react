@@ -46,7 +46,7 @@ export const CTabPane = forwardRef<HTMLDivElement, CTabPaneProps>(
                 fade: transition,
                 show: state === 'entered',
               },
-              className,
+              className
             )}
             {...rest}
             ref={forkedRef}
@@ -56,7 +56,7 @@ export const CTabPane = forwardRef<HTMLDivElement, CTabPaneProps>(
         )}
       </Transition>
     )
-  },
+  }
 )
 
 CTabPane.propTypes = {

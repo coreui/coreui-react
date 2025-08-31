@@ -12,7 +12,7 @@ test('CSpinner customize', async () => {
   const { container } = render(
     <CSpinner className="bazinga" color="warning" as="h3" size="sm" variant="grow">
       Test
-    </CSpinner>,
+    </CSpinner>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

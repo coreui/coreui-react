@@ -34,7 +34,7 @@ export const CPaginationItem: PolymorphicRefForwardingComponent<'a', CPagination
               active: rest.active,
               disabled: rest.disabled,
             },
-            className,
+            className
           )}
           {...(rest.active && { 'aria-current': 'page' })}
         >
@@ -49,7 +49,7 @@ export const CPaginationItem: PolymorphicRefForwardingComponent<'a', CPagination
           )}
         </li>
       )
-    },
+    }
   )
 
 CPaginationItem.propTypes = {

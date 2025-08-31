@@ -48,7 +48,7 @@ export const CProgress = forwardRef<HTMLDivElement, CProgressProps>(
             'progress-thin': thin,
             'progress-white': white,
           },
-          className,
+          className
         )}
         {...(value !== undefined && {
           role: 'progressbar',
@@ -64,7 +64,7 @@ export const CProgress = forwardRef<HTMLDivElement, CProgressProps>(
       >
         {React.Children.toArray(children).some(
           // @ts-expect-error displayName is set in the CProgressBar component
-          (child) => child.type && child.type.displayName === 'CProgressBar',
+          (child) => child.type && child.type.displayName === 'CProgressBar'
         ) ? (
           React.Children.map(children, (child) => {
             // @ts-expect-error displayName is set in the CProgressBar component
@@ -88,7 +88,7 @@ export const CProgress = forwardRef<HTMLDivElement, CProgressProps>(
         )}
       </div>
     )
-  },
+  }
 )
 
 CProgress.propTypes = {

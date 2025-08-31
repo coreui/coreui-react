@@ -20,7 +20,7 @@ test('CAvatar customize', async () => {
       textColor="white"
     >
       Test
-    </CAvatar>,
+    </CAvatar>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')
@@ -45,7 +45,7 @@ test('CAvatar customize image', async () => {
       src="/bazinga"
     >
       Test
-    </CAvatar>,
+    </CAvatar>
   )
   expect(container).toMatchSnapshot()
 

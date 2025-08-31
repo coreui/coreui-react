@@ -27,7 +27,7 @@ export const CTableBody = forwardRef<HTMLTableSectionElement, CTableBodyProps>(
             {
               [`table-${color}`]: color,
             },
-            className,
+            className
           ) || undefined
         }
         {...rest}
@@ -36,7 +36,7 @@ export const CTableBody = forwardRef<HTMLTableSectionElement, CTableBodyProps>(
         {children}
       </tbody>
     )
-  },
+  }
 )
 
 CTableBody.propTypes = {

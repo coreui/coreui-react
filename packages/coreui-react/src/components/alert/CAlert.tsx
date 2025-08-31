@@ -50,7 +50,7 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
       onClose,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const alertRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, alertRef)
@@ -78,7 +78,7 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
                 'alert-dismissible fade': dismissible,
                 show: state === 'entered',
               },
-              className,
+              className
             )}
             role="alert"
             {...rest}
@@ -90,7 +90,7 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
         )}
       </Transition>
     )
-  },
+  }
 )
 
 CAlert.propTypes = {

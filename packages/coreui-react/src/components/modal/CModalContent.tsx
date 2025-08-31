@@ -16,7 +16,7 @@ export const CModalContent = forwardRef<HTMLDivElement, CModalContentProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CModalContent.propTypes = {

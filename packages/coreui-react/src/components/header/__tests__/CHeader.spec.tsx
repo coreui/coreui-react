@@ -12,7 +12,7 @@ test('CHeader customize', async () => {
   const { container } = render(
     <CHeader className="bazinga" container="lg" position="sticky">
       Test
-    </CHeader>,
+    </CHeader>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

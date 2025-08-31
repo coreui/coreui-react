@@ -22,7 +22,7 @@ test('CButtonToolbar customize', async () => {
         <CButton color="primary">B</CButton>
         <CButton color="primary">C</CButton>
       </CButtonGroup>
-    </CButtonToolbar>,
+    </CButtonToolbar>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

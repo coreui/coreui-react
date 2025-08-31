@@ -16,7 +16,7 @@ export const CButtonToolbar = forwardRef<HTMLDivElement, CButtonToolbarProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CButtonToolbar.propTypes = {

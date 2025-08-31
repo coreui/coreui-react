@@ -13,7 +13,7 @@ test('CFormSelect customize', async () => {
     <CFormSelect className="bazinga" size="lg">
       <option value="A">B</option>
       <option>C</option>
-    </CFormSelect>,
+    </CFormSelect>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

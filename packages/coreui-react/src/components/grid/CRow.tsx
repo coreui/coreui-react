@@ -95,7 +95,7 @@ export const CRow = forwardRef<HTMLDivElement, CRowProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 const bp = PropTypes.shape({

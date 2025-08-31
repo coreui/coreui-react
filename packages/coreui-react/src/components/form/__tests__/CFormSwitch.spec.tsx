@@ -18,7 +18,7 @@ test('CFormSwitch customize', async () => {
       size="xl"
       type="radio"
       valid={true}
-    />,
+    />
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('form-check')

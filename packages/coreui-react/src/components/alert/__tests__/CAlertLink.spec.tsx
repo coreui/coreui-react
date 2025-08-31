@@ -12,7 +12,7 @@ test('CAlertLink customize', async () => {
   const { container } = render(
     <CAlertLink className="bazinga" href="/bazinga">
       Test
-    </CAlertLink>,
+    </CAlertLink>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

@@ -23,7 +23,7 @@ export const CToastHeader = forwardRef<HTMLDivElement, CToastHeaderProps>(
         {closeButton && <CToastClose />}
       </div>
     )
-  },
+  }
 )
 
 CToastHeader.propTypes = {

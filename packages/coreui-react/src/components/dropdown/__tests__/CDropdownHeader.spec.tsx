@@ -12,7 +12,7 @@ test('CDropdownHeader customize', async () => {
   const { container } = render(
     <CDropdownHeader className="bazinga" as="h3">
       Test
-    </CDropdownHeader>,
+    </CDropdownHeader>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

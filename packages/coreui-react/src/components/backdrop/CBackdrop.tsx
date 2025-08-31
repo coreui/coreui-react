@@ -34,7 +34,7 @@ export const CBackdrop = forwardRef<HTMLDivElement, CBackdropProps>(
         )}
       </Transition>
     )
-  },
+  }
 )
 
 CBackdrop.propTypes = {

@@ -22,7 +22,7 @@ export const CCardLink = forwardRef<HTMLAnchorElement, CCardLinkProps>(
         {children}
       </CLink>
     )
-  },
+  }
 )
 
 CCardLink.propTypes = {

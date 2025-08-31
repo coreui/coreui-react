@@ -16,7 +16,7 @@ export const CSidebarHeader = forwardRef<HTMLDivElement, CSidebarHeaderProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CSidebarHeader.propTypes = {

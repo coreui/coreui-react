@@ -105,7 +105,7 @@ export const CCol = forwardRef<HTMLDivElement, CColProps>(
       <div
         className={classNames(
           repsonsiveClassNames.length > 0 ? repsonsiveClassNames : 'col',
-          className,
+          className
         )}
         {...rest}
         ref={ref}
@@ -113,7 +113,7 @@ export const CCol = forwardRef<HTMLDivElement, CColProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 const span = PropTypes.oneOfType([

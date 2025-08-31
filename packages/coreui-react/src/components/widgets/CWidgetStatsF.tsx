@@ -53,7 +53,7 @@ export const CWidgetStatsF = forwardRef<HTMLDivElement, CWidgetStatsFProps>(
         {footer && <CCardFooter>{footer}</CCardFooter>}
       </CCard>
     )
-  },
+  }
 )
 
 CWidgetStatsF.propTypes = {

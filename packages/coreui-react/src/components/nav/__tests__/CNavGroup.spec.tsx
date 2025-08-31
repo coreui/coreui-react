@@ -10,7 +10,7 @@ test('loads and displays CNavGroup component', async () => {
 
 test('CNavGroup customize', async () => {
   const { container } = render(
-    <CNavGroup className="bazinga" toggler="anchorText" visible={true} idx="1" />,
+    <CNavGroup className="bazinga" toggler="anchorText" visible={true} idx="1" />
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('nav-group')

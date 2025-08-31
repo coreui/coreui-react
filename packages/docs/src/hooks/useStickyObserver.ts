@@ -2,7 +2,7 @@ import { useEffect, useState, RefObject } from 'react'
 
 const useStickyObserver = (
   sentinelRef: RefObject<HTMLElement>,
-  options?: IntersectionObserverInit,
+  options?: IntersectionObserverInit
 ): boolean => {
   const [isSticky, setIsSticky] = useState(false)
 

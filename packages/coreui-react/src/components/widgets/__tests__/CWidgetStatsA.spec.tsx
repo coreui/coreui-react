@@ -19,7 +19,7 @@ test('CWidgetStatsA customize', async () => {
       value="value"
     >
       Test
-    </CWidgetStatsA>,
+    </CWidgetStatsA>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bg-info')

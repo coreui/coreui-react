@@ -20,7 +20,7 @@ test('CModal customize', async () => {
       visible={true}
     >
       Test
-    </CModal>,
+    </CModal>
   )
   expect(container).toMatchSnapshot()
 })
@@ -30,7 +30,7 @@ test('CModal dialog close on press ESC', async () => {
   render(
     <CModal onClose={onClose} portal={false} visible>
       Test
-    </CModal>,
+    </CModal>
   )
   expect(onClose).toHaveBeenCalledTimes(0)
 

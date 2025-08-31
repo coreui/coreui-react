@@ -12,7 +12,7 @@ test('CButton customize witch href', async () => {
   const { container } = render(
     <CButton color="primary" as="span" href="/bazinga">
       Test
-    </CButton>,
+    </CButton>
   )
   expect(container).toMatchSnapshot()
 })
@@ -32,7 +32,7 @@ test('CButton customize', async () => {
       variant="ghost"
     >
       Test
-    </CButton>,
+    </CButton>
   )
   expect(container).toMatchSnapshot()
 

@@ -21,7 +21,7 @@ test('CTableHead customize', async () => {
     </CTableHead>,
     {
       container: document.body.appendChild(table),
-    },
+    }
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('table-info')

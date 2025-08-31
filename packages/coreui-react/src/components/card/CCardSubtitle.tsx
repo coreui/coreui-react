@@ -23,7 +23,7 @@ export const CCardSubtitle: PolymorphicRefForwardingComponent<'h6', CCardSubtitl
           {children}
         </Component>
       )
-    },
+    }
   )
 
 CCardSubtitle.propTypes = {

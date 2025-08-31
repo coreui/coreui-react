@@ -18,7 +18,7 @@ test('CFormInput customize', async () => {
       size="lg"
       type="color"
       value="value"
-    />,
+    />
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

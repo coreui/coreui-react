@@ -55,7 +55,7 @@ export const CNavbar: PolymorphicRefForwardingComponent<'nav', CNavbarProps> = f
       placement,
       ...rest
     },
-    ref,
+    ref
   ) => {
     return (
       <Component
@@ -66,7 +66,7 @@ export const CNavbar: PolymorphicRefForwardingComponent<'nav', CNavbarProps> = f
             [typeof expand === 'boolean' ? 'navbar-expand' : `navbar-expand-${expand}`]: expand,
           },
           placement,
-          className,
+          className
         )}
         {...(colorScheme && { 'data-coreui-theme': colorScheme })}
         {...rest}
@@ -81,7 +81,7 @@ export const CNavbar: PolymorphicRefForwardingComponent<'nav', CNavbarProps> = f
         )}
       </Component>
     )
-  },
+  }
 )
 
 CNavbar.propTypes = {

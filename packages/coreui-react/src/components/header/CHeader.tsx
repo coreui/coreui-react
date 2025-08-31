@@ -34,7 +34,7 @@ export const CHeader = forwardRef<HTMLDivElement, CHeaderProps>(
         )}
       </div>
     )
-  },
+  }
 )
 
 CHeader.propTypes = {

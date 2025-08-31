@@ -16,7 +16,7 @@ export const CModalFooter = forwardRef<HTMLDivElement, CModalFooterProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CModalFooter.propTypes = {

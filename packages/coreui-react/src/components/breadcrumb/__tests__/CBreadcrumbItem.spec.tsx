@@ -12,7 +12,7 @@ test('CBreadcrumbItem customize', async () => {
   const { container } = render(
     <CBreadcrumbItem active={true} className="bazinga">
       Test
-    </CBreadcrumbItem>,
+    </CBreadcrumbItem>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

@@ -15,7 +15,7 @@ test('CButtonGroup customize', async () => {
       <CButton color="primary">Test A</CButton>
       <CButton color="primary">Test B</CButton>
       <CButton color="primary">Test C</CButton>
-    </CButtonGroup>,
+    </CButtonGroup>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')
@@ -29,7 +29,7 @@ test('CButtonGroup customize vertical', async () => {
       <CButton color="primary">Test A</CButton>
       <CButton color="primary">Test B</CButton>
       <CButton color="primary">Test C</CButton>
-    </CButtonGroup>,
+    </CButtonGroup>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

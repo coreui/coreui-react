@@ -20,7 +20,7 @@ test('CFormTextarea customize', async () => {
       valid={true}
       defaultValue="Some value"
       rows={2}
-    />,
+    />
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('form-control-plaintext')

@@ -16,7 +16,7 @@ export const CHeaderToggler = forwardRef<HTMLButtonElement, CHeaderTogglerProps>
         {children ?? <span className="header-toggler-icon"></span>}
       </button>
     )
-  },
+  }
 )
 
 CHeaderToggler.propTypes = {

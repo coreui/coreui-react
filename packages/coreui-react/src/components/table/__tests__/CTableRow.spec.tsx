@@ -11,7 +11,7 @@ test('loads and displays CTableRow component', async () => {
     </CTableBody>,
     {
       container: document.body.appendChild(table),
-    },
+    }
   )
   expect(container).toMatchSnapshot()
 })
@@ -26,7 +26,7 @@ test('CTableRow customize', async () => {
     </CTableBody>,
     {
       container: document.body.appendChild(table),
-    },
+    }
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild?.firstChild).toHaveClass('align-middle')

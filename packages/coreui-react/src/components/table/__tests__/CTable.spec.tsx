@@ -82,7 +82,7 @@ test('CTable customize', async () => {
           <CTableDataCell>Test</CTableDataCell>
         </CTableRow>
       </CTableBody>
-    </CTable>,
+    </CTable>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('table-responsive-xl')
@@ -144,7 +144,7 @@ test('CTable full example test', async () => {
           <CTableHeaderCell>Heading</CTableHeaderCell>
         </CTableRow>
       </CTableFoot>
-    </CTable>,
+    </CTable>
   )
   expect(container).toMatchSnapshot()
 })

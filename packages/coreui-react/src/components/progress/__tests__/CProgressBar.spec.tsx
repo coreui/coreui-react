@@ -12,7 +12,7 @@ test('CProgressBar customize', async () => {
   const { container } = render(
     <CProgressBar color="warning" className="bazinga" animated={true} value={50} variant="striped">
       Test
-    </CProgressBar>,
+    </CProgressBar>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

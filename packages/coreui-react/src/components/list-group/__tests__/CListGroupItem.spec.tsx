@@ -12,7 +12,7 @@ test('CListGroupItem customize', async () => {
   const { container } = render(
     <CListGroupItem className="bazinga" active={true} color="warning" disabled={true} as="button">
       Test
-    </CListGroupItem>,
+    </CListGroupItem>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

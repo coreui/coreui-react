@@ -65,7 +65,7 @@ export const CNavGroup: PolymorphicRefForwardingComponent<'li', CNavGroupProps> 
   const { visibleGroup, setVisibleGroup } = useContext(CSidebarNavContext)
 
   const [_visible, setVisible] = useState(
-    Boolean(visible || (idx && visibleGroup && isInVisibleGroup(visibleGroup, idx))),
+    Boolean(visible || (idx && visibleGroup && isInVisibleGroup(visibleGroup, idx)))
   )
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export const CNavGroup: PolymorphicRefForwardingComponent<'li', CNavGroupProps> 
   const handleTogglerOnCLick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
     setVisibleGroup(
-      _visible ? (idx?.toString().includes('.') ? idx.slice(0, idx.lastIndexOf('.')) : '') : idx,
+      _visible ? (idx?.toString().includes('.') ? idx.slice(0, idx.lastIndexOf('.')) : '') : idx
     )
     setVisible(!_visible)
   }

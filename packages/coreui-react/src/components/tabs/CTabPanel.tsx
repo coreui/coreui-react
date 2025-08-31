@@ -68,7 +68,7 @@ export const CTabPanel = forwardRef<HTMLDivElement, CTabPanelProps>(
                 fade: transition,
                 show: state === 'entered',
               },
-              className,
+              className
             )}
             id={`${id}${itemKey}-tab-pane`}
             role="tabpanel"
@@ -82,7 +82,7 @@ export const CTabPanel = forwardRef<HTMLDivElement, CTabPanelProps>(
         )}
       </Transition>
     )
-  },
+  }
 )
 
 CTabPanel.propTypes = {

@@ -58,7 +58,7 @@ export const CAvatar = forwardRef<HTMLDivElement, CAvatarProps>(
             [`text-${textColor}`]: textColor,
           },
           shape,
-          className,
+          className
         )}
         {...rest}
         ref={ref}
@@ -67,7 +67,7 @@ export const CAvatar = forwardRef<HTMLDivElement, CAvatarProps>(
         {status && <span className={statusClassName}></span>}
       </div>
     )
-  },
+  }
 )
 
 CAvatar.propTypes = {

@@ -12,7 +12,7 @@ test('CModalTitle customize', async () => {
   const { container } = render(
     <CModalTitle className="bazinga" as="h3">
       Test
-    </CModalTitle>,
+    </CModalTitle>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

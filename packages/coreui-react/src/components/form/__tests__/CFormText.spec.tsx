@@ -12,7 +12,7 @@ test('CFormText customize', async () => {
   const { container } = render(
     <CFormText className="bazinga" as="h3">
       Test
-    </CFormText>,
+    </CFormText>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

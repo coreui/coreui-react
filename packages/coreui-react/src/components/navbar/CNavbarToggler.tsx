@@ -16,7 +16,7 @@ export const CNavbarToggler = forwardRef<HTMLButtonElement, CNavbarTogglerProps>
         {children ?? <span className="navbar-toggler-icon"></span>}
       </button>
     )
-  },
+  }
 )
 
 CNavbarToggler.propTypes = {

@@ -16,7 +16,7 @@ export const CTabContent = forwardRef<HTMLDivElement, CTabContentProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CTabContent.propTypes = {

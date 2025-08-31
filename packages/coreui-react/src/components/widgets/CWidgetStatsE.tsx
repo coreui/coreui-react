@@ -36,7 +36,7 @@ export const CWidgetStatsE = forwardRef<HTMLDivElement, CWidgetStatsEProps>(
         </CCardBody>
       </CCard>
     )
-  },
+  }
 )
 
 CWidgetStatsE.propTypes = {

@@ -12,7 +12,7 @@ test('CPagination customize', async () => {
   const { container } = render(
     <CPagination className="bazinga" aria-label="ariaLabel" size="lg">
       Test
-    </CPagination>,
+    </CPagination>
   )
   expect(container).toMatchSnapshot()
   let element = container.firstChild
@@ -32,7 +32,7 @@ test('CPagination example', async () => {
       <CPaginationItem>A</CPaginationItem>
       <CPaginationItem>B</CPaginationItem>
       <CPaginationItem>C</CPaginationItem>
-    </CPagination>,
+    </CPagination>
   )
   expect(container).toMatchSnapshot()
 })

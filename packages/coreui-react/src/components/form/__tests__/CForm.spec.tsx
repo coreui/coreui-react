@@ -13,7 +13,7 @@ test('CForm customize', async () => {
   const { container } = render(
     <CForm className="bazinga" validated={true}>
       Test
-    </CForm>,
+    </CForm>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')
@@ -30,7 +30,7 @@ test('CForm example', async () => {
       <CButton type="submit" color="primary">
         E
       </CButton>
-    </CForm>,
+    </CForm>
   )
   expect(container).toMatchSnapshot()
 })

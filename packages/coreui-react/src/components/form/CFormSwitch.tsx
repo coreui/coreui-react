@@ -53,7 +53,7 @@ export const CFormSwitch = forwardRef<HTMLInputElement, CFormSwitchProps>(
             'is-invalid': invalid,
             'is-valid': valid,
           },
-          className,
+          className
         )}
       >
         <input
@@ -73,7 +73,7 @@ export const CFormSwitch = forwardRef<HTMLInputElement, CFormSwitchProps>(
         )}
       </div>
     )
-  },
+  }
 )
 
 CFormSwitch.propTypes = {

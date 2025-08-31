@@ -12,7 +12,7 @@ test('CCallout customize', async () => {
   const { container } = render(
     <CCallout className="bazinga" color="primary">
       Test
-    </CCallout>,
+    </CCallout>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

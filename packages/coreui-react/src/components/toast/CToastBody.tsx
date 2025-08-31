@@ -16,7 +16,7 @@ export const CToastBody = forwardRef<HTMLDivElement, CToastBodyProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CToastBody.propTypes = {

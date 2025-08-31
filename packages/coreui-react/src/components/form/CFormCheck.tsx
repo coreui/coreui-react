@@ -103,7 +103,7 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
       valid,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const inputRef = useRef<HTMLInputElement>(null)
     const forkedRef = useForkedRef(ref, inputRef)
@@ -151,9 +151,9 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
                 {
                   [`btn-${button.size}`]: button.size,
                 },
-                `${button.shape}`,
+                `${button.shape}`
               )
-            : 'form-check-label',
+            : 'form-check-label'
         )}
         {...(id && { htmlFor: id })}
       >
@@ -194,7 +194,7 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
                 'is-invalid': invalid,
                 'is-valid': valid,
               },
-              className,
+              className
             )}
           >
             <FormControl />
@@ -208,7 +208,7 @@ export const CFormCheck = forwardRef<HTMLInputElement, CFormCheckProps>(
     }
 
     return <FormCheck />
-  },
+  }
 )
 
 CFormCheck.propTypes = {

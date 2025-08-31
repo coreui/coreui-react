@@ -12,7 +12,7 @@ test('CContainer customize fluid', async () => {
   const { container } = render(
     <CContainer className="bazinga" fluid>
       Test
-    </CContainer>,
+    </CContainer>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')
@@ -23,7 +23,7 @@ test('CContainer customize', async () => {
   const { container } = render(
     <CContainer md className="bazinga">
       Test
-    </CContainer>,
+    </CContainer>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

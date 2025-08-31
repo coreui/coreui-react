@@ -27,7 +27,7 @@ export const CCallout = forwardRef<HTMLDivElement, CCalloutProps>(
           {
             [`callout-${color}`]: color,
           },
-          className,
+          className
         )}
         {...rest}
         ref={ref}
@@ -35,7 +35,7 @@ export const CCallout = forwardRef<HTMLDivElement, CCalloutProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CCallout.propTypes = {

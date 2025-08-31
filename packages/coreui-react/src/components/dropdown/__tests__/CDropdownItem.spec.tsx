@@ -12,7 +12,7 @@ test('CDropdownItem customize', async () => {
   const { container } = render(
     <CDropdownItem className="bazinga" as="div">
       Test
-    </CDropdownItem>,
+    </CDropdownItem>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

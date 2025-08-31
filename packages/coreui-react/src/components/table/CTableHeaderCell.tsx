@@ -27,7 +27,7 @@ export const CTableHeaderCell = forwardRef<HTMLTableCellElement, CTableHeaderCel
             {
               [`table-${color}`]: color,
             },
-            className,
+            className
           ) || undefined
         }
         {...rest}
@@ -36,7 +36,7 @@ export const CTableHeaderCell = forwardRef<HTMLTableCellElement, CTableHeaderCel
         {children}
       </th>
     )
-  },
+  }
 )
 
 CTableHeaderCell.propTypes = {

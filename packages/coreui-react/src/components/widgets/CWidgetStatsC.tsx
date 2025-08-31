@@ -58,7 +58,7 @@ export const CWidgetStatsC = forwardRef<HTMLDivElement, CWidgetStatsCProps>(
             <div
               className={classNames(
                 'text-end mb-4',
-                inverse ? 'text-white text-opacity-75' : 'text-body-secondary',
+                inverse ? 'text-white text-opacity-75' : 'text-body-secondary'
               )}
             >
               {icon}
@@ -79,7 +79,7 @@ export const CWidgetStatsC = forwardRef<HTMLDivElement, CWidgetStatsCProps>(
         </CCardBody>
       </CCard>
     )
-  },
+  }
 )
 
 CWidgetStatsC.propTypes = {

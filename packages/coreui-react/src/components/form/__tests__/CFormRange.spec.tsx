@@ -18,7 +18,7 @@ test('CFormRange customize', async () => {
       min={20}
       readOnly={true}
       value={80}
-    />,
+    />
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('form-range')

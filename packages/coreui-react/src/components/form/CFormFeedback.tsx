@@ -38,7 +38,7 @@ export const CFormFeedback: PolymorphicRefForwardingComponent<'div', CFormFeedba
               [`invalid-${tooltip ? 'tooltip' : 'feedback'}`]: invalid,
               [`valid-${tooltip ? 'tooltip' : 'feedback'}`]: valid,
             },
-            className,
+            className
           )}
           {...rest}
           ref={ref}
@@ -46,7 +46,7 @@ export const CFormFeedback: PolymorphicRefForwardingComponent<'div', CFormFeedba
           {children}
         </Component>
       )
-    },
+    }
   )
 
 CFormFeedback.propTypes = {

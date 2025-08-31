@@ -10,7 +10,7 @@ test('loads and displays CPlaceholder component', async () => {
 
 test('CPlaceholder customize', async () => {
   const { container } = render(
-    <CPlaceholder animation="glow" className="bazinga" color="secondary" size="lg" sm={7} />,
+    <CPlaceholder animation="glow" className="bazinga" color="secondary" size="lg" sm={7} />
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

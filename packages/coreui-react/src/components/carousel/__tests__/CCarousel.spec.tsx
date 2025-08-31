@@ -18,7 +18,7 @@ test('loads and displays CCarousel component', async () => {
         Item-3
         <CCarouselCaption>Caption-3</CCarouselCaption>
       </CCarouselItem>
-    </CCarousel>,
+    </CCarousel>
   )
 
   const carousel = document.querySelector('.carousel')
@@ -74,7 +74,7 @@ test('CCarousel click on indicator', async () => {
         Item-3
         <CCarouselCaption>Caption-3</CCarouselCaption>
       </CCarouselItem>
-    </CCarousel>,
+    </CCarousel>
   )
   const item1 = getByText(container, 'Item-1')
   const item2 = getByText(container, 'Item-2')
@@ -118,7 +118,7 @@ test('CCarousel click on button', async () => {
         Item-3
         <CCarouselCaption>Caption-3</CCarouselCaption>
       </CCarouselItem>
-    </CCarousel>,
+    </CCarousel>
   )
   const item1 = getByText(container, 'Item-1')
   const item2 = getByText(container, 'Item-2')

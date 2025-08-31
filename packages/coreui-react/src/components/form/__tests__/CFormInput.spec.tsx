@@ -26,7 +26,7 @@ test('CFormInput customize two', async () => {
       type="color"
       valid={true}
       value="#888888"
-    />,
+    />
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('form-control-lg')

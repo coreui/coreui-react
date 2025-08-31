@@ -18,7 +18,7 @@ export const CAlertLink = forwardRef<HTMLAnchorElement, CAlertLinkProps>(
         {children}
       </CLink>
     )
-  },
+  }
 )
 
 CAlertLink.propTypes = {

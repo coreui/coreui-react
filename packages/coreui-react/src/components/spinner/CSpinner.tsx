@@ -49,7 +49,7 @@ export const CSpinner: PolymorphicRefForwardingComponent<'div', CSpinnerProps> =
       visuallyHiddenLabel = 'Loading...',
       ...rest
     },
-    ref,
+    ref
   ) => {
     return (
       <Component
@@ -59,7 +59,7 @@ export const CSpinner: PolymorphicRefForwardingComponent<'div', CSpinnerProps> =
             [`spinner-${variant}-${size}`]: size,
             [`text-${color}`]: color,
           },
-          className,
+          className
         )}
         role="status"
         {...rest}
@@ -68,7 +68,7 @@ export const CSpinner: PolymorphicRefForwardingComponent<'div', CSpinnerProps> =
         <span className="visually-hidden">{visuallyHiddenLabel}</span>
       </Component>
     )
-  },
+  }
 )
 
 CSpinner.propTypes = {

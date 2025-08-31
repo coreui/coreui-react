@@ -13,7 +13,7 @@ test('CCol customize breakpoints are numbers', async () => {
   const { container } = render(
     <CCol className="bazinga" xs={1} sm={2} md={3} lg={4} xl={5} xxl={6}>
       Test
-    </CCol>,
+    </CCol>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')
@@ -29,7 +29,7 @@ test('CCol customize breakpoints are boolean', async () => {
   const { container } = render(
     <CCol className="bazinga" xs={true} sm={true} md={true} lg={true} xl={true} xxl={true}>
       Test
-    </CCol>,
+    </CCol>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

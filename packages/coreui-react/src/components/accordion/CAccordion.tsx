@@ -38,7 +38,7 @@ export const CAccordion = forwardRef<HTMLDivElement, CAccordionProps>(
         </CAccordionContext.Provider>
       </div>
     )
-  },
+  }
 )
 
 CAccordion.propTypes = {

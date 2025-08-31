@@ -12,7 +12,7 @@ test('CCardSubtitle customize', async () => {
   const { container } = render(
     <CCardSubtitle className="bazinga" as="h3">
       Test
-    </CCardSubtitle>,
+    </CCardSubtitle>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

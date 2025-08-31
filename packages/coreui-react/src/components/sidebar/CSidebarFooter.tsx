@@ -16,7 +16,7 @@ export const CSidebarFooter = forwardRef<HTMLDivElement, CSidebarFooterProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CSidebarFooter.propTypes = {

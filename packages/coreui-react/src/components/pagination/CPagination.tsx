@@ -28,14 +28,14 @@ export const CPagination = forwardRef<HTMLUListElement, CPaginationProps>(
               [`justify-content-${align}`]: align,
               [`pagination-${size}`]: size,
             },
-            className,
+            className
           )}
         >
           {children}
         </ul>
       </nav>
     )
-  },
+  }
 )
 
 CPagination.propTypes = {

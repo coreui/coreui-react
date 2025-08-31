@@ -23,7 +23,7 @@ export const CAlertHeading: PolymorphicRefForwardingComponent<'h4', CAlertHeadin
           {children}
         </Component>
       )
-    },
+    }
   )
 
 CAlertHeading.propTypes = {

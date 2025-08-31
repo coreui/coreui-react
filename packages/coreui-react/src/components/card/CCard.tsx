@@ -42,7 +42,7 @@ export const CCard = forwardRef<HTMLDivElement, CCardProps>(
             [`text-${textColor}`]: textColor,
             [`text-bg-${textBgColor}`]: textBgColor,
           },
-          className,
+          className
         )}
         {...rest}
         ref={ref}
@@ -50,7 +50,7 @@ export const CCard = forwardRef<HTMLDivElement, CCardProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CCard.propTypes = {

@@ -25,7 +25,7 @@ export const CNavGroupItems: PolymorphicRefForwardingComponent<'ul', CNavGroupIt
           {children}
         </Component>
       )
-    },
+    }
   )
 
 CNavGroupItems.propTypes = {

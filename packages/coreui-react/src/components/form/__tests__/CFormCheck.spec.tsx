@@ -10,7 +10,7 @@ test('loads and displays CFormCheck component', async () => {
 
 test('CFormCheck customize button=false', async () => {
   const { container } = render(
-    <CFormCheck className="bazinga" id="id" inline={true} label="label" type="radio" />,
+    <CFormCheck className="bazinga" id="id" inline={true} label="label" type="radio" />
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')
@@ -27,7 +27,7 @@ test('CFormCheck customize button=true', async () => {
       inline={true}
       label="label"
       type="radio"
-    />,
+    />
   )
   expect(container).toMatchSnapshot()
 })

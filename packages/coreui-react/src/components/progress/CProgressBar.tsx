@@ -45,7 +45,7 @@ export const CProgressBar = forwardRef<HTMLDivElement, CProgressBarProps>(
             [`progress-bar-${variant}`]: variant,
             'progress-bar-animated': animated,
           },
-          className,
+          className
         )}
         {...(!stacked && { style: { width: `${value}%` } })}
         {...rest}
@@ -54,7 +54,7 @@ export const CProgressBar = forwardRef<HTMLDivElement, CProgressBarProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 CProgressBar.propTypes = {
   animated: PropTypes.bool,

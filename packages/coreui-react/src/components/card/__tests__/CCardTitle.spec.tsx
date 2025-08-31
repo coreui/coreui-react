@@ -12,7 +12,7 @@ test('CCardTitle customize', async () => {
   const { container } = render(
     <CCardTitle className="bazinga" as="h3">
       Test
-    </CCardTitle>,
+    </CCardTitle>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

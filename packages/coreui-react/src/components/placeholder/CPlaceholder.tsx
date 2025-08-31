@@ -93,7 +93,7 @@ export const CPlaceholder: PolymorphicRefForwardingComponent<'span', CPlaceholde
               [`placeholder-${size}`]: size,
             },
             repsonsiveClassNames,
-            className,
+            className
           )}
           {...rest}
           ref={ref}
@@ -101,7 +101,7 @@ export const CPlaceholder: PolymorphicRefForwardingComponent<'span', CPlaceholde
           {children}
         </Component>
       )
-    },
+    }
   )
 
 CPlaceholder.propTypes = {

@@ -16,7 +16,7 @@ export const COffcanvasBody = forwardRef<HTMLDivElement, COffcanvasBodyProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 COffcanvasBody.propTypes = {

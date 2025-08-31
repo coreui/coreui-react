@@ -18,7 +18,7 @@ export const CAccordionHeader = forwardRef<HTMLDivElement, CAccordionHeaderProps
         <CAccordionButton>{children}</CAccordionButton>
       </div>
     )
-  },
+  }
 )
 
 CAccordionHeader.propTypes = {

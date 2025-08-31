@@ -41,7 +41,7 @@ export const CListGroup: PolymorphicRefForwardingComponent<'ul', CListGroupProps
           'list-group-flush': flush,
           [`list-group-${layout}`]: layout,
         },
-        className,
+        className
       )}
       {...rest}
       ref={ref}

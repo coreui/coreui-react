@@ -12,7 +12,7 @@ test('CHeaderBrand customize', async () => {
   const { container } = render(
     <CHeaderBrand className="bazinga" as="h3">
       Test
-    </CHeaderBrand>,
+    </CHeaderBrand>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

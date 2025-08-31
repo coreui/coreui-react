@@ -18,7 +18,7 @@ test('CModalDialog customize', async () => {
       size="xl"
     >
       Test
-    </CModalDialog>,
+    </CModalDialog>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

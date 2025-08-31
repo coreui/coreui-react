@@ -21,7 +21,7 @@ test('CSidebar customize show', async () => {
       overlaid={true}
     >
       Test
-    </CSidebar>,
+    </CSidebar>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')
@@ -37,7 +37,7 @@ test('CSidebar customize hide', async () => {
   const { container } = render(
     <CSidebar className="bazinga" position="sticky" visible={false} overlaid={false}>
       Test
-    </CSidebar>,
+    </CSidebar>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

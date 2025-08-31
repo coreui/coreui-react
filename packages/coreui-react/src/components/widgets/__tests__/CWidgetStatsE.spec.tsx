@@ -12,7 +12,7 @@ test('CWidgetStatsE customize', async () => {
   const { container } = render(
     <CWidgetStatsE className="bazinga" title="title" value="value">
       Test
-    </CWidgetStatsE>,
+    </CWidgetStatsE>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

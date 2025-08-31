@@ -61,14 +61,14 @@ export const CListGroupItem: PolymorphicRefForwardingComponent<'li', CListGroupI
               active,
               disabled,
             },
-            className,
+            className
           )}
           {...rest}
         >
           {children}
         </Component>
       )
-    },
+    }
   )
 
 CListGroupItem.propTypes = {

@@ -16,7 +16,7 @@ export const CCardFooter = forwardRef<HTMLDivElement, CCardFooterProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CCardFooter.propTypes = {

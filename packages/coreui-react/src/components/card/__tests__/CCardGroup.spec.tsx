@@ -45,7 +45,7 @@ test('CCardGroup full example', async () => {
           <CCardTitle>Card Title</CCardTitle>
         </CCardBody>
       </CCard>
-    </CCardGroup>,
+    </CCardGroup>
   )
   expect(container).toMatchSnapshot()
 })

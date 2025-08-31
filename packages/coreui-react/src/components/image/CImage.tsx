@@ -38,14 +38,14 @@ export const CImage = forwardRef<HTMLImageElement, CImageProps>(
               rounded: rounded,
               'img-thumbnail': thumbnail,
             },
-            className,
+            className
           ) || undefined
         }
         {...rest}
         ref={ref}
       />
     )
-  },
+  }
 )
 
 CImage.propTypes = {

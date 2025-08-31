@@ -12,7 +12,7 @@ test('CListGroup customize', async () => {
   const { container } = render(
     <CListGroup className="bazinga" as="h3" flush={true} layout="horizontal-xl">
       Test
-    </CListGroup>,
+    </CListGroup>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')
@@ -27,7 +27,7 @@ test('CListGroup example', async () => {
       <CListGroupItem>A</CListGroupItem>
       <CListGroupItem>B</CListGroupItem>
       <CListGroupItem>C</CListGroupItem>
-    </CListGroup>,
+    </CListGroup>
   )
   expect(container).toMatchSnapshot()
 })

@@ -13,7 +13,7 @@ test('loads and displays CTableHeaderCell component', async () => {
     </CTableHead>,
     {
       container: document.body.appendChild(table),
-    },
+    }
   )
   expect(container).toMatchSnapshot()
 })
@@ -30,7 +30,7 @@ test('CTableHeaderCell customize', async () => {
     </CTableHead>,
     {
       container: document.body.appendChild(table),
-    },
+    }
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild?.firstChild?.firstChild).toHaveClass('table-info')

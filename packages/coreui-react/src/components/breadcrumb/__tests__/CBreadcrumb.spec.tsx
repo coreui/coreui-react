@@ -14,7 +14,7 @@ test('CBreadcrumb customize', async () => {
       <CBreadcrumbItem>Test A</CBreadcrumbItem>
       <CBreadcrumbItem active={false}>Test B</CBreadcrumbItem>
       <CBreadcrumbItem active={true}>Test C</CBreadcrumbItem>
-    </CBreadcrumb>,
+    </CBreadcrumb>
   )
   const ol = container.querySelector('ol')
   expect(container).toMatchSnapshot()

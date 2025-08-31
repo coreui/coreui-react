@@ -23,7 +23,7 @@ export const COffcanvasTitle: PolymorphicRefForwardingComponent<'h5', COffcanvas
           {children}
         </Component>
       )
-    },
+    }
   )
 
 COffcanvasTitle.propTypes = {

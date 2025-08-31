@@ -20,7 +20,7 @@ export const CFormLabel = forwardRef<HTMLLabelElement, CFormLabelProps>(
         {children}
       </label>
     )
-  },
+  }
 )
 
 CFormLabel.propTypes = {

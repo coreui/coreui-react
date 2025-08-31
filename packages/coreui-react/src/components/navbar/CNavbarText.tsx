@@ -16,7 +16,7 @@ export const CNavbarText = forwardRef<HTMLSpanElement, CNavbarTextProps>(
         {children}
       </span>
     )
-  },
+  }
 )
 
 CNavbarText.propTypes = {

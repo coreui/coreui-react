@@ -12,7 +12,7 @@ test('CLink customize', async () => {
   const { container } = render(
     <CLink className="bazinga" active={true} as="button" disabled type="submit">
       Test
-    </CLink>,
+    </CLink>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')
@@ -25,7 +25,7 @@ test('CLink click on button', async () => {
   render(
     <CLink onClick={onClick} className="bazinga">
       Test
-    </CLink>,
+    </CLink>
   )
   expect(onClick).toHaveBeenCalledTimes(0)
   const link = document.querySelector('.bazinga')
@@ -40,7 +40,7 @@ test('CLink click on disabled button', async () => {
   render(
     <CLink onClick={click} className="bazinga" as="button" disabled>
       Test
-    </CLink>,
+    </CLink>
   )
   expect(click).toHaveBeenCalledTimes(0)
   const link = document.querySelector('.bazinga')

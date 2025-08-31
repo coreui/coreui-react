@@ -24,7 +24,7 @@ export const CInputGroupText: PolymorphicRefForwardingComponent<'span', CInputGr
           {children}
         </Component>
       )
-    },
+    }
   )
 
 CInputGroupText.propTypes = {

@@ -10,7 +10,7 @@ test('loads and displays CFormFeedback component', async () => {
 
 test('CFormFeedback customize one', async () => {
   const { container } = render(
-    <CFormFeedback className="bazinga" invalid={true} valid={true} tooltip={true} />,
+    <CFormFeedback className="bazinga" invalid={true} valid={true} tooltip={true} />
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('invalid-tooltip')
@@ -20,7 +20,7 @@ test('CFormFeedback customize one', async () => {
 
 test('CFormFeedback customize two', async () => {
   const { container } = render(
-    <CFormFeedback className="bazinga" invalid={true} valid={true} tooltip={false} />,
+    <CFormFeedback className="bazinga" invalid={true} valid={true} tooltip={false} />
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('invalid-feedback')

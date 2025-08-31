@@ -24,7 +24,7 @@ export const CFooter = forwardRef<HTMLDivElement, CFooterProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CFooter.propTypes = {

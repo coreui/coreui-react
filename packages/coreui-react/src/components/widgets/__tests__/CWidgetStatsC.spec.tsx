@@ -20,7 +20,7 @@ test('CWidgetStatsC customize', async () => {
       value="value"
     >
       Test
-    </CWidgetStatsC>,
+    </CWidgetStatsC>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

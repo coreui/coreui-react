@@ -16,7 +16,7 @@ export const CCardBody = forwardRef<HTMLDivElement, CCardBodyProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CCardBody.propTypes = {

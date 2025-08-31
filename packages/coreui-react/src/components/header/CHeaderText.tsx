@@ -16,7 +16,7 @@ export const CHeaderText = forwardRef<HTMLSpanElement, CHeaderTextProps>(
         {children}
       </span>
     )
-  },
+  }
 )
 
 CHeaderText.propTypes = {

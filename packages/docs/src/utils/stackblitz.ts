@@ -30,7 +30,7 @@ export const openStackBlitzProject = (options: StackBlitzOptions) => {
     'public/index.html': indexHTML,
     [`src/${name}.${language}x`]: code.replaceAll(
       '../../images/',
-      'https://assets.coreui.io/images/',
+      'https://assets.coreui.io/images/'
     ),
     [`src/index.js`]: indexJS, // StackBlitz uses 'index.js' regardless of language
     'package.json': packageJSON,

@@ -54,7 +54,7 @@ export const CFormRange = forwardRef<HTMLInputElement, CFormRangeProps>(
         <input type="range" className={classNames('form-range', className)} {...rest} ref={ref} />
       </>
     )
-  },
+  }
 )
 
 CFormRange.propTypes = {

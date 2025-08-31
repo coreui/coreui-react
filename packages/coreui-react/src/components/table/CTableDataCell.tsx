@@ -45,7 +45,7 @@ export const CTableDataCell = forwardRef<HTMLTableCellElement, CTableDataCellPro
               'table-active': active,
               [`table-${color}`]: color,
             },
-            className,
+            className
           ) || undefined
         }
         {...rest}
@@ -54,7 +54,7 @@ export const CTableDataCell = forwardRef<HTMLTableCellElement, CTableDataCellPro
         {children}
       </Component>
     )
-  },
+  }
 )
 
 CTableDataCell.propTypes = {

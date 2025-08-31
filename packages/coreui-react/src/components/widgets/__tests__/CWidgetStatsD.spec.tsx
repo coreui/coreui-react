@@ -17,7 +17,7 @@ test('CWidgetStatsD customize', async () => {
         { title: 'friends', value: '89K' },
         { title: 'feeds', value: '459' },
       ]}
-    />,
+    />
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

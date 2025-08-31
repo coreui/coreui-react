@@ -12,7 +12,7 @@ test('CProgress customize', async () => {
   const { container } = render(
     <CProgress className="bazinga" height={100} color="warning" value={50}>
       Test
-    </CProgress>,
+    </CProgress>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

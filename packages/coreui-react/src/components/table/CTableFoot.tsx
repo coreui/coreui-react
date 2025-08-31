@@ -27,7 +27,7 @@ export const CTableFoot = forwardRef<HTMLTableSectionElement, CTableFootProps>(
             {
               [`table-${color}`]: color,
             },
-            className,
+            className
           ) || undefined
         }
         {...rest}
@@ -36,7 +36,7 @@ export const CTableFoot = forwardRef<HTMLTableSectionElement, CTableFootProps>(
         {children}
       </tfoot>
     )
-  },
+  }
 )
 
 CTableFoot.propTypes = {

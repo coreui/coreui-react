@@ -14,7 +14,7 @@ test('CDropdownMenu customize', async () => {
       <CDropdownMenu className="bazinga" as="div">
         Test
       </CDropdownMenu>
-    </CDropdown>,
+    </CDropdown>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild?.firstChild).toHaveClass('bazinga')

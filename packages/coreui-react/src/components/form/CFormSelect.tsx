@@ -66,7 +66,7 @@ export const CFormSelect = forwardRef<HTMLSelectElement, CFormSelectProps>(
       valid,
       ...rest
     },
-    ref,
+    ref
   ) => {
     return (
       <CFormControlWrapper
@@ -92,7 +92,7 @@ export const CFormSelect = forwardRef<HTMLSelectElement, CFormSelectProps>(
               'is-invalid': invalid,
               'is-valid': valid,
             },
-            className,
+            className
           )}
           size={htmlSize}
           {...rest}
@@ -116,7 +116,7 @@ export const CFormSelect = forwardRef<HTMLSelectElement, CFormSelectProps>(
         </select>
       </CFormControlWrapper>
     )
-  },
+  }
 )
 
 CFormSelect.propTypes = {

@@ -12,7 +12,7 @@ test('CFooter customize', async () => {
   const { container } = render(
     <CFooter className="bazinga" position="fixed">
       Test
-    </CFooter>,
+    </CFooter>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

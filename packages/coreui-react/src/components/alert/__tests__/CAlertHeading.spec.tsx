@@ -12,7 +12,7 @@ test('CAlertHeading customize', async () => {
   const { container } = render(
     <CAlertHeading as="h3" className="bazinga">
       Test
-    </CAlertHeading>,
+    </CAlertHeading>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

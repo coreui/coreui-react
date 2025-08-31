@@ -54,7 +54,7 @@ export const CFormTextarea = forwardRef<HTMLTextAreaElement, CFormTextareaProps>
       valid,
       ...rest
     },
-    ref,
+    ref
   ) => {
     return (
       <CFormControlWrapper
@@ -78,7 +78,7 @@ export const CFormTextarea = forwardRef<HTMLTextAreaElement, CFormTextareaProps>
               'is-invalid': invalid,
               'is-valid': valid,
             },
-            className,
+            className
           )}
           id={id}
           {...rest}
@@ -88,7 +88,7 @@ export const CFormTextarea = forwardRef<HTMLTextAreaElement, CFormTextareaProps>
         </textarea>
       </CFormControlWrapper>
     )
-  },
+  }
 )
 
 CFormTextarea.propTypes = {

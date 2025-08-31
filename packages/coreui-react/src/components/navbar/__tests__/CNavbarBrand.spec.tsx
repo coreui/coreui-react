@@ -17,7 +17,7 @@ test('CNavbarBrand customize', async () => {
   const { container } = render(
     <CNavbarBrand className="bazinga" as="h3" href="/bazinga">
       Test
-    </CNavbarBrand>,
+    </CNavbarBrand>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('navbar-brand')

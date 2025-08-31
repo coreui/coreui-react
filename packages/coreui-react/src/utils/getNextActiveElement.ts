@@ -2,7 +2,7 @@ const getNextActiveElement = (
   list: HTMLElement[],
   activeElement: HTMLElement,
   shouldGetNext: boolean,
-  isCycleAllowed: boolean,
+  isCycleAllowed: boolean
 ) => {
   const listLength = list.length
   let index = list.indexOf(activeElement)

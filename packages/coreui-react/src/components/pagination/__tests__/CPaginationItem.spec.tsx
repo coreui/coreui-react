@@ -12,7 +12,7 @@ test('CPaginationItem customize', async () => {
   const { container } = render(
     <CPaginationItem className="bazinga" active={true} as="h3" disabled={true}>
       Test
-    </CPaginationItem>,
+    </CPaginationItem>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

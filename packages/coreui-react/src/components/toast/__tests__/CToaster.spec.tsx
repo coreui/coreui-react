@@ -27,13 +27,13 @@ test('CToaster customize', async () => {
                 <CToastHeader closeButton>Lorem ipsum</CToastHeader>
                 <CToastBody>Hello, world! This is a toast message.</CToastBody>
               </CToast>
-            </>,
+            </>
           )
         }
       >
         Send a toast
       </CButton>
-    </>,
+    </>
   )
   expect(container).toMatchSnapshot()
   const btn = document.querySelector('.btn')

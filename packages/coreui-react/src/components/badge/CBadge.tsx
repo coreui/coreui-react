@@ -66,7 +66,7 @@ export const CBadge: PolymorphicRefForwardingComponent<'span', CBadgeProps> = fo
       textColor,
       ...rest
     },
-    ref,
+    ref
   ) => {
     return (
       <Component
@@ -84,7 +84,7 @@ export const CBadge: PolymorphicRefForwardingComponent<'span', CBadgeProps> = fo
             [`text-bg-${textBgColor}`]: textBgColor,
           },
           shape,
-          className,
+          className
         )}
         {...rest}
         ref={ref}
@@ -92,7 +92,7 @@ export const CBadge: PolymorphicRefForwardingComponent<'span', CBadgeProps> = fo
         {children}
       </Component>
     )
-  },
+  }
 )
 
 CBadge.propTypes = {

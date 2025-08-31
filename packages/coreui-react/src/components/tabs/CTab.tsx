@@ -32,7 +32,7 @@ export const CTab = forwardRef<HTMLButtonElement, CTabProps>(
           {
             active: isActive(),
           },
-          className,
+          className
         )}
         id={`${id}${itemKey}-tab`}
         onClick={() => setActiveItemKey(itemKey)}
@@ -48,7 +48,7 @@ export const CTab = forwardRef<HTMLButtonElement, CTabProps>(
         {children}
       </button>
     )
-  },
+  }
 )
 
 CTab.propTypes = {

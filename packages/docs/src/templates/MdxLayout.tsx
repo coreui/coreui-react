@@ -83,7 +83,7 @@ const MdxLayout: FC<PageProps<DataProps>> = ({ children }) => {
         </div>
       ),
     }),
-    [],
+    []
   )
   return <MDXProvider components={components}>{children}</MDXProvider>
 }

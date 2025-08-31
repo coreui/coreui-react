@@ -151,7 +151,7 @@ export const CTable = forwardRef<HTMLTableElement, CTableProps>(
       tableHeadProps,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const columnNames = useMemo(() => getColumnNames(columns, items), [columns, items])
 
@@ -172,7 +172,7 @@ export const CTable = forwardRef<HTMLTableElement, CTableProps>(
               'table-striped': striped,
               'table-striped-columns': stripedColumns,
             },
-            className,
+            className
           )}
           {...rest}
           ref={ref}
@@ -236,7 +236,7 @@ export const CTable = forwardRef<HTMLTableElement, CTableProps>(
         </table>
       </CTableResponsiveWrapper>
     )
-  },
+  }
 )
 
 CTable.propTypes = {

@@ -16,7 +16,7 @@ export const CSidebarToggler = forwardRef<HTMLButtonElement, CSidebarTogglerProp
         {children}
       </button>
     )
-  },
+  }
 )
 
 CSidebarToggler.propTypes = {

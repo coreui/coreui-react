@@ -39,7 +39,7 @@ export const generateDescription = (componentName?: string): string => {
 export const getDependencies = (
   language: 'js' | 'ts',
   pro: boolean,
-  code: string,
+  code: string
 ): Record<string, string> => {
   const dependencies: Record<string, string> = {
     ...(pro
@@ -126,7 +126,7 @@ export const generatePackageJSON = (
   language: 'js' | 'ts',
   pro: boolean,
   code: string,
-  templateType: 'codesandbox' | 'stackblitz',
+  templateType: 'codesandbox' | 'stackblitz'
 ): string => {
   const indexExtension = language === 'ts' ? 'tsx' : 'js'
 

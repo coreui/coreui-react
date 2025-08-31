@@ -111,7 +111,7 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
         }}
       </CSSTransition>
     )
-  },
+  }
 )
 
 CCollapse.propTypes = {

@@ -12,7 +12,7 @@ test('CNavItem customize', async () => {
   const { container } = render(
     <CNavItem active={true} className="bazinga" as="h3" disabled={true} href="/bazinga">
       Test
-    </CNavItem>,
+    </CNavItem>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild?.firstChild).toHaveClass('nav-link')

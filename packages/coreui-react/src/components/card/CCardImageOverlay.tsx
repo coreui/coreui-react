@@ -16,7 +16,7 @@ export const CCardImageOverlay = forwardRef<HTMLDivElement, CCardImageOverlayPro
         {children}
       </div>
     )
-  },
+  }
 )
 
 CCardImageOverlay.propTypes = {

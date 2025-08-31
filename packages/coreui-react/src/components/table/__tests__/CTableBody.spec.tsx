@@ -21,7 +21,7 @@ test('CTableBody customize', async () => {
     </CTableBody>,
     {
       container: document.body.appendChild(table),
-    },
+    }
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('table-info')

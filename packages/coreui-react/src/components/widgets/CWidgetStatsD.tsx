@@ -47,7 +47,7 @@ export const CWidgetStatsD = forwardRef<HTMLDivElement, CWidgetStatsDProps>(
             'position-relative d-flex justify-content-center align-items-center',
             {
               [`bg-${color}`]: color,
-            },
+            }
           )}
         >
           {icon}
@@ -69,7 +69,7 @@ export const CWidgetStatsD = forwardRef<HTMLDivElement, CWidgetStatsDProps>(
         </CCardBody>
       </CCard>
     )
-  },
+  }
 )
 
 CWidgetStatsD.propTypes = {

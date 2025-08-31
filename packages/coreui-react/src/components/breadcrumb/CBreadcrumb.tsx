@@ -18,7 +18,7 @@ export const CBreadcrumb = forwardRef<HTMLOListElement, CBreadcrumbProps>(
         </ol>
       </nav>
     )
-  },
+  }
 )
 
 CBreadcrumb.propTypes = {

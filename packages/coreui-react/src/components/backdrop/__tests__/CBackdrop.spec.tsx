@@ -22,7 +22,7 @@ test('CBackdrop customize 2', async () => {
   const { container } = render(
     <CBackdrop className="bazinga" visible={true}>
       Test
-    </CBackdrop>,
+    </CBackdrop>
   )
   jest.runAllTimers()
   expect(container).toMatchSnapshot()

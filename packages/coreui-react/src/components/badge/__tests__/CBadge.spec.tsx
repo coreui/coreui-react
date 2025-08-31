@@ -12,7 +12,7 @@ test('CBadge customize', async () => {
   const { container } = render(
     <CBadge className="bazinga" color="warning" as="div" shape="rounded" textColor="white">
       Test
-    </CBadge>,
+    </CBadge>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

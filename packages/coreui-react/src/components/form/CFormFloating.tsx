@@ -16,7 +16,7 @@ export const CFormFloating = forwardRef<HTMLDivElement, CFormFloatingProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CFormFloating.propTypes = {

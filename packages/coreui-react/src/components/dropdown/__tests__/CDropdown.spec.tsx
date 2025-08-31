@@ -30,7 +30,7 @@ test('CDropdown customize', async () => {
       visible={true}
     >
       Test
-    </CDropdown>,
+    </CDropdown>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')
@@ -66,7 +66,7 @@ test('CDropdown opens on toggle click and closes on clicking outside', async () 
           <CDropdownItem>B</CDropdownItem>
         </CDropdownMenu>
       </CDropdown>
-    </div>,
+    </div>
   )
 
   // Ensure the dropdown is initially closed
@@ -110,7 +110,7 @@ test('CDropdown example', async () => {
         <CDropdownDivider />
         <CDropdownItem>D</CDropdownItem>
       </CDropdownMenu>
-    </CDropdown>,
+    </CDropdown>
   )
   expect(container).toMatchSnapshot()
 })

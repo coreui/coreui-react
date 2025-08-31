@@ -26,7 +26,7 @@ export const CModalHeader = forwardRef<HTMLDivElement, CModalHeaderProps>(
         {closeButton && <CCloseButton onClick={() => setVisible(false)} />}
       </div>
     )
-  },
+  }
 )
 
 CModalHeader.propTypes = {

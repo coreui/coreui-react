@@ -27,7 +27,7 @@ export const CTableHead = forwardRef<HTMLTableSectionElement, CTableHeadProps>(
             {
               [`table-${color}`]: color,
             },
-            className,
+            className
           ) || undefined
         }
         {...rest}
@@ -36,7 +36,7 @@ export const CTableHead = forwardRef<HTMLTableSectionElement, CTableHeadProps>(
         {children}
       </thead>
     )
-  },
+  }
 )
 
 CTableHead.propTypes = {

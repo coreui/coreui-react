@@ -16,7 +16,7 @@ test('CImage customize one', async () => {
 
 test('CImage customize two', async () => {
   const { container } = render(
-    <CImage className="bazinga" align="center" fluid={true} rounded={true} thumbnail={true} />,
+    <CImage className="bazinga" align="center" fluid={true} rounded={true} thumbnail={true} />
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('d-block')

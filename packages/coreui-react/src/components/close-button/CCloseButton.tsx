@@ -35,7 +35,7 @@ export const CCloseButton = forwardRef<HTMLButtonElement, CCloseButtonProps>(
             'btn-close-white': white,
           },
           disabled,
-          className,
+          className
         )}
         aria-label="Close"
         disabled={disabled}
@@ -44,7 +44,7 @@ export const CCloseButton = forwardRef<HTMLButtonElement, CCloseButtonProps>(
         ref={ref}
       />
     )
-  },
+  }
 )
 
 CCloseButton.propTypes = {

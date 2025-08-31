@@ -16,7 +16,7 @@ export const COffcanvasHeader = forwardRef<HTMLDivElement, COffcanvasHeaderProps
         {children}
       </div>
     )
-  },
+  }
 )
 
 COffcanvasHeader.propTypes = {

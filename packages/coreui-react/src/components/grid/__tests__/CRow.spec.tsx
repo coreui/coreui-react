@@ -20,7 +20,7 @@ test('CRow customize cols', async () => {
       xxl={{ cols: 6 }}
     >
       Test
-    </CRow>,
+    </CRow>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')
@@ -36,7 +36,7 @@ test('CRow customize gutter single gutter', async () => {
   const { container } = render(
     <CRow className="bazinga" xs={{ gutter: 7 }}>
       Test
-    </CRow>,
+    </CRow>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')
@@ -55,7 +55,7 @@ test('CRow customize gutter', async () => {
       xxl={{ gutter: 6 }}
     >
       Test
-    </CRow>,
+    </CRow>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')
@@ -79,7 +79,7 @@ test('CRow customize gutterX', async () => {
       xxl={{ gutterX: 6 }}
     >
       Test
-    </CRow>,
+    </CRow>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')
@@ -103,7 +103,7 @@ test('CRow customize gutterY', async () => {
       xxl={{ gutterY: 6 }}
     >
       Test
-    </CRow>,
+    </CRow>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

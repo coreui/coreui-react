@@ -22,7 +22,7 @@ export const CInputGroup = forwardRef<HTMLDivElement, CInputGroupProps>(
           {
             [`input-group-${size}`]: size,
           },
-          className,
+          className
         )}
         {...rest}
         ref={ref}
@@ -30,7 +30,7 @@ export const CInputGroup = forwardRef<HTMLDivElement, CInputGroupProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CInputGroup.propTypes = {

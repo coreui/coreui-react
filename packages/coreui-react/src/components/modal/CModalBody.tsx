@@ -16,7 +16,7 @@ export const CModalBody = forwardRef<HTMLDivElement, CModalBodyProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CModalBody.propTypes = {

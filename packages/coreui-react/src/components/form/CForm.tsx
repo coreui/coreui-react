@@ -24,7 +24,7 @@ export const CForm = forwardRef<HTMLFormElement, CFormProps>(
         {children}
       </form>
     )
-  },
+  }
 )
 
 CForm.propTypes = {

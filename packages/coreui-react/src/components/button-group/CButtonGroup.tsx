@@ -24,7 +24,7 @@ export const CButtonGroup = forwardRef<HTMLDivElement, CButtonGroupProps>(
         className={classNames(
           vertical ? 'btn-group-vertical' : 'btn-group',
           { [`btn-group-${size}`]: size },
-          className,
+          className
         )}
         {...rest}
         ref={ref}
@@ -32,7 +32,7 @@ export const CButtonGroup = forwardRef<HTMLDivElement, CButtonGroupProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CButtonGroup.propTypes = {

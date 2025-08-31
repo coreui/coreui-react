@@ -37,7 +37,7 @@ export const CBreadcrumbItem: PolymorphicRefForwardingComponent<'li', CBreadcrum
             {
               active: active,
             },
-            className,
+            className
           )}
           {...(active && { 'aria-current': 'page' })}
           {...rest}
@@ -52,7 +52,7 @@ export const CBreadcrumbItem: PolymorphicRefForwardingComponent<'li', CBreadcrum
           )}
         </li>
       )
-    },
+    }
   )
 
 CBreadcrumbItem.propTypes = {

@@ -37,7 +37,7 @@ export const CTableRow = forwardRef<HTMLTableRowElement, CTableRowProps>(
               'table-active': active,
               [`table-${color}`]: color,
             },
-            className,
+            className
           ) || undefined
         }
         {...rest}
@@ -46,7 +46,7 @@ export const CTableRow = forwardRef<HTMLTableRowElement, CTableRowProps>(
         {children}
       </tr>
     )
-  },
+  }
 )
 
 CTableRow.propTypes = {

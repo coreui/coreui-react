@@ -76,14 +76,14 @@ export const CFormInput = forwardRef<HTMLInputElement, CFormInputProps>(
       valid,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const [value, setValue] = useState<React.ChangeEvent<HTMLInputElement>>()
 
     useEffect(() => {
       const timeOutId = setTimeout(
         () => value && onChange && onChange(value),
-        typeof delay === 'number' ? delay : 500,
+        typeof delay === 'number' ? delay : 500
       )
 
       return () => clearTimeout(timeOutId)
@@ -113,7 +113,7 @@ export const CFormInput = forwardRef<HTMLInputElement, CFormInputProps>(
               'is-invalid': invalid,
               'is-valid': valid,
             },
-            className,
+            className
           )}
           id={id}
           type={type}
@@ -125,7 +125,7 @@ export const CFormInput = forwardRef<HTMLInputElement, CFormInputProps>(
         </input>
       </CFormControlWrapper>
     )
-  },
+  }
 )
 
 CFormInput.propTypes = {

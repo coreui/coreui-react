@@ -12,7 +12,7 @@ test('CNavbarNav customize', async () => {
   const { container } = render(
     <CNavbarNav className="bazinga" as="h3">
       Test
-    </CNavbarNav>,
+    </CNavbarNav>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('bazinga')

@@ -12,7 +12,7 @@ test('COffcanvasTitle customize', async () => {
   const { container } = render(
     <COffcanvasTitle className="bazinga" as="div">
       Test
-    </COffcanvasTitle>,
+    </COffcanvasTitle>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('offcanvas-title')

@@ -16,7 +16,7 @@ export const CCardGroup = forwardRef<HTMLDivElement, CCardGroupProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CCardGroup.propTypes = {

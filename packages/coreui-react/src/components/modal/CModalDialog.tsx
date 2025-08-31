@@ -39,7 +39,7 @@ export const CModalDialog = forwardRef<HTMLDivElement, CModalDialogProps>(
             'modal-dialog-scrollable': scrollable,
             [`modal-${size}`]: size,
           },
-          className,
+          className
         )}
         {...rest}
         ref={ref}
@@ -47,7 +47,7 @@ export const CModalDialog = forwardRef<HTMLDivElement, CModalDialogProps>(
         {children}
       </div>
     )
-  },
+  }
 )
 
 CModalDialog.propTypes = {

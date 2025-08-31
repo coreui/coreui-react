@@ -12,7 +12,7 @@ test('renders CInputGroupText component as a label', async () => {
   const { container } = render(
     <CInputGroupText as="label" htmlFor="input">
       Test
-    </CInputGroupText>,
+    </CInputGroupText>
   )
   expect(container).toMatchSnapshot()
 })
