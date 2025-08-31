@@ -102,16 +102,8 @@ import CTable from '@coreui/react/src/components/table/CTable'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Prop for table columns configuration. If prop is not defined, table will display columns based on the first item keys, omitting keys that begins with underscore (e.g. '_props')</p>
-<p>In columns prop each array item represents one column. Item might be specified in two ways:<br />
-String: each item define column name equal to item value.<br />
-Object: item is object with following keys available as column configuration:</p>
-<ul>
-<li>key (required)(String) - define column name equal to item key.</li>
-<li>label (String) - define visible label of column. If not defined, label will be generated automatically based on column name, by converting kebab-case and snake_case to individual words and capitalization of each word.</li>
-<li>_props (Object) - adds classes to all cels in column, ex. <code>{`_props: { scope: 'col', className: 'custom-class' }`}</code>,</li>
-<li>_style (Object) - adds styles to the column header (useful for defining widths)</li>
-</ul>
+          <p>Prop for table columns configuration. If prop is not defined, table will display columns based on the first item keys, omitting keys that begins with underscore (e.g. '<em>props')
+ In columns prop each array item represents one column. Item might be specified in two ways: String: each item define column name equal to item value. Object: item is object with following keys available as column configuration: - key (required)(String) - define column name equal to item key. - label (String) - define visible label of column. If not defined, label will be generated automatically based on column name, by converting kebab-case and snake</em>case to individual words and capitalization of each word. - _props (Object) - adds classes to all cels in column, ex. <code>{`_props: { scope: 'col', className: 'custom-class' }`}</code>, - _style (Object) - adds styles to the column header (useful for defining widths)</p>
         </td>
       </tr>
       <tr id="ctable-footer">
@@ -121,11 +113,8 @@ Object: item is object with following keys available as column configuration:</p
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Array of objects or strings, where each element represents one cell in the table footer.</p>
-<p>Example items:<br />
-<code>{`['FooterCell', 'FooterCell', 'FooterCell']`}</code><br />
-or<br />
-<code>{`[{ label: 'FooterCell', _props: { color: 'success' }, ...]`}</code></p>
+          <p>Array of objects or strings, where each element represents one cell in the table footer.<br />
+ Example items: <code>{`['FooterCell', 'FooterCell', 'FooterCell']`}</code> or <code>{`[{ label: 'FooterCell', _props: { color: 'success' }, ...]`}</code></p>
         </td>
       </tr>
       <tr id="ctable-hover">
@@ -145,9 +134,8 @@ or<br />
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Array of objects, where each object represents one item - row in table. Additionally, you can add style classes to each row by passing them by '<em>props' key and to single cell by '</em>cellProps'.</p>
-<p>Example item:<br />
-<code>{`{ name: 'John' , age: 12, _props: { color: 'success' }, _cellProps: { age: { className: 'fw-bold'}}}`}</code></p>
+          <p>Array of objects, where each object represents one item - row in table. Additionally, you can add style classes to each row by passing them by '<em>props' key and to single cell by '</em>cellProps'.<br />
+ Example item: <code>{`{ name: 'John' , age: 12, _props: { color: 'success' }, _cellProps: { age: { className: 'fw-bold'}}}`}</code></p>
         </td>
       </tr>
       <tr id="ctable-responsive">
