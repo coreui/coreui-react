@@ -1,6 +1,5 @@
-import React, { FC, ReactElement, cloneElement, useCallback, useEffect, useRef } from 'react'
-import { mergeRefs, isTabbable } from './utils'
-import { TABBABLE_SELECTOR } from './const'
+import React, { FC, ReactElement, cloneElement, useEffect, useRef } from 'react'
+import { mergeRefs, focusableChildren } from './utils'
 
 export interface CFocusTrapProps {
   /**
@@ -11,6 +10,13 @@ export interface CFocusTrapProps {
    * @default true
    */
   active?: boolean
+
+  /**
+   * Additional container elements to include in the focus trap.
+   * Useful for floating elements like tooltips or popovers that are
+   * rendered outside the main container but should be part of the trap.
+   */
+  additionalContainer?: React.RefObject<HTMLElement | null>
 
   /**
    * Single React element that renders a DOM node and forwards refs properly.
@@ -61,6 +67,7 @@ export interface CFocusTrapProps {
 
 export const CFocusTrap: FC<CFocusTrapProps> = ({
   active = true,
+  additionalContainer,
   children,
   focusFirstElement = false,
   onActivate,
@@ -69,141 +76,176 @@ export const CFocusTrap: FC<CFocusTrapProps> = ({
 }) => {
   const containerRef = useRef<HTMLElement | null>(null)
   const prevFocusedRef = useRef<HTMLElement | null>(null)
-  const addedTabIndexRef = useRef<boolean>(false)
   const isActiveRef = useRef<boolean>(false)
-  const focusingRef = useRef<boolean>(false)
-
-  const getTabbables = useCallback((): HTMLElement[] => {
-    const container = containerRef.current
-    if (!container) {
-      return []
-    }
-
-    // eslint-disable-next-line unicorn/prefer-spread
-    const candidates = Array.from(container.querySelectorAll<HTMLElement>(TABBABLE_SELECTOR))
-    return candidates.filter((el) => isTabbable(el))
-  }, [])
-
-  const focusFirst = useCallback(() => {
-    const container = containerRef.current
-    if (!container || focusingRef.current) {
-      return
-    }
-
-    focusingRef.current = true
-
-    const tabbables = getTabbables()
-    const target = focusFirstElement ? (tabbables[0] ?? container) : container
-    // Ensure root can receive focus if there are no tabbables
-    if (target === container && container.getAttribute('tabindex') == null) {
-      container.setAttribute('tabindex', '-1')
-      addedTabIndexRef.current = true
-    }
-
-    target.focus({ preventScroll: true })
-
-    // Reset the flag after a short delay to allow the focus event to complete
-    setTimeout(() => {
-      focusingRef.current = false
-    }, 0)
-  }, [getTabbables, focusFirstElement])
+  const lastTabNavDirectionRef = useRef<'forward' | 'backward'>('forward')
+  const tabEventSourceRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     const container = containerRef.current
+    const _additionalContainer = additionalContainer?.current || null
+
     if (!active || !container) {
       if (isActiveRef.current) {
         // Deactivate cleanup
-        if (restoreFocus && prevFocusedRef.current && document.contains(prevFocusedRef.current)) {
+        if (restoreFocus && prevFocusedRef.current?.isConnected) {
           prevFocusedRef.current.focus({ preventScroll: true })
-        }
-
-        if (addedTabIndexRef.current) {
-          container?.removeAttribute('tabindex')
-          addedTabIndexRef.current = false
         }
 
         onDeactivate?.()
         isActiveRef.current = false
+        prevFocusedRef.current = null
       }
 
       return
     }
 
+    // Remember focused element BEFORE we move focus into the trap
+    prevFocusedRef.current = document.activeElement as HTMLElement | null
+
     // Activating…
     isActiveRef.current = true
+
+    // Set initial focus
+    if (focusFirstElement) {
+      const elements = focusableChildren(container)
+      if (elements.length > 0) {
+        elements[0].focus({ preventScroll: true })
+      } else {
+        // Fallback to container if no focusable elements
+        container.focus({ preventScroll: true })
+      }
+    } else {
+      container.focus({ preventScroll: true })
+    }
+
     onActivate?.()
 
-    // Remember focused element BEFORE we move focus into the trap
-    prevFocusedRef.current = (document.activeElement as HTMLElement) ?? null
-
-    // Move focus inside if focus is outside the container
-    if (!container.contains(document.activeElement)) {
-      focusFirst()
-    }
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key !== 'Tab') {
+    const handleFocusIn = (event: FocusEvent) => {
+      // Only handle focus events from tab navigation
+      if (containerRef.current !== tabEventSourceRef.current) {
         return
       }
 
-      const tabbables = getTabbables()
-      const current = document.activeElement as HTMLElement | null
+      const target = event.target as Node
 
-      if (tabbables.length === 0) {
+      // Allow focus within container
+      if (target === document || target === container || container.contains(target)) {
+        return
+      }
+
+      // Allow focus within additional elements
+      if (
+        _additionalContainer &&
+        (target === _additionalContainer || _additionalContainer.contains(target))
+      ) {
+        return
+      }
+
+      // Focus escaped, bring it back
+      const elements = focusableChildren(container)
+
+      if (elements.length === 0) {
         container.focus({ preventScroll: true })
-        e.preventDefault()
+      } else if (lastTabNavDirectionRef.current === 'backward') {
+        elements.at(-1)?.focus({ preventScroll: true })
+      } else {
+        elements[0].focus({ preventScroll: true })
+      }
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Tab') {
         return
       }
 
-      const first = tabbables[0]
-      const last = tabbables.at(-1)!
+      tabEventSourceRef.current = container
+      lastTabNavDirectionRef.current = event.shiftKey ? 'backward' : 'forward'
 
-      if (e.shiftKey) {
-        if (!current || !container.contains(current) || current === first) {
-          last.focus({ preventScroll: true })
-          e.preventDefault()
+      if (!_additionalContainer) {
+        return
+      }
+
+      const containerElements = focusableChildren(container)
+      const additionalElements = focusableChildren(_additionalContainer)
+
+      if (containerElements.length === 0 && additionalElements.length === 0) {
+        // No focusable elements, prevent tab
+        event.preventDefault()
+        return
+      }
+
+      const activeElement = document.activeElement as HTMLElement
+      const isInContainer = containerElements.includes(activeElement)
+      const isInAdditional = additionalElements.includes(activeElement)
+
+      // Handle tab navigation between container and additional elements
+      if (isInContainer) {
+        const index = containerElements.indexOf(activeElement)
+
+        if (
+          !event.shiftKey &&
+          index === containerElements.length - 1 &&
+          additionalElements.length > 0
+        ) {
+          // Tab forward from last container element to first additional element
+          event.preventDefault()
+          additionalElements[0].focus({ preventScroll: true })
+        } else if (event.shiftKey && index === 0 && additionalElements.length > 0) {
+          // Tab backward from first container element to last additional element
+          event.preventDefault()
+          additionalElements.at(-1)?.focus({ preventScroll: true })
         }
-      } else {
-        if (!current || !container.contains(current) || current === last) {
-          first.focus({ preventScroll: true })
-          e.preventDefault()
+      } else if (isInAdditional) {
+        const index = additionalElements.indexOf(activeElement)
+
+        if (
+          !event.shiftKey &&
+          index === additionalElements.length - 1 &&
+          containerElements.length > 0
+        ) {
+          // Tab forward from last additional element to first container element
+          event.preventDefault()
+          containerElements[0].focus({ preventScroll: true })
+        } else if (event.shiftKey && index === 0 && containerElements.length > 0) {
+          // Tab backward from first additional element to last container element
+          event.preventDefault()
+          containerElements.at(-1)?.focus({ preventScroll: true })
         }
       }
     }
 
-    const handleFocusIn = (e: FocusEvent) => {
-      const target = e.target as Node
-      if (!container.contains(target) && !focusingRef.current) {
-        // Redirect stray focus back into the trap
-        focusFirst()
-      }
+    // Add event listeners
+    container.addEventListener('keydown', handleKeyDown, true)
+    if (_additionalContainer) {
+      _additionalContainer.addEventListener('keydown', handleKeyDown, true)
     }
-
-    document.addEventListener('keydown', handleKeyDown, true)
     document.addEventListener('focusin', handleFocusIn, true)
 
+    // Cleanup function
     return () => {
-      document.removeEventListener('keydown', handleKeyDown, true)
+      container.removeEventListener('keydown', handleKeyDown, true)
+      if (_additionalContainer) {
+        _additionalContainer.removeEventListener('keydown', handleKeyDown, true)
+      }
       document.removeEventListener('focusin', handleFocusIn, true)
 
       // On unmount (also considered deactivation)
-      if (restoreFocus && prevFocusedRef.current && document.contains(prevFocusedRef.current)) {
+      if (restoreFocus && prevFocusedRef.current?.isConnected) {
         prevFocusedRef.current.focus({ preventScroll: true })
       }
 
-      if (addedTabIndexRef.current) {
-        container.removeAttribute('tabindex')
-        addedTabIndexRef.current = false
+      if (isActiveRef.current) {
+        onDeactivate?.()
+        isActiveRef.current = false
       }
 
-      onDeactivate?.()
-      isActiveRef.current = false
+      prevFocusedRef.current = null
     }
-  }, [active, focusFirst, getTabbables, onActivate, onDeactivate, restoreFocus])
+  }, [active, additionalContainer, focusFirstElement, onActivate, onDeactivate, restoreFocus])
 
-  // Attach our ref to the ONLY child — no extra wrappers.
+  // Attach our ref to the ONLY child — no extra wrappers
   const onlyChild = React.Children.only(children)
-  const childRef = (onlyChild as ReactElement & { ref?: React.Ref<HTMLElement> }).ref
+  const childRef = (onlyChild as React.ReactElement & { ref?: React.Ref<HTMLElement> }).ref
   const mergedRef = mergeRefs(childRef, (node: HTMLElement | null) => {
     containerRef.current = node
   })

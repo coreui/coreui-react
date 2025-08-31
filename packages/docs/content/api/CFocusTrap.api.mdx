@@ -1,0 +1,93 @@
+
+```jsx
+import { CFocusTrap } from '@coreui/react'
+// or
+import CFocusTrap from '@coreui/react/src/components/focus-trap/CFocusTrap'
+```
+
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="cfocustrap-active">
+        <td className="text-primary fw-semibold">active<a href="#cfocustrap-active" aria-label="CFocusTrap active permalink" className="anchor-link after">#</a></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Controls whether the focus trap is active or inactive. When <code>{`true`}</code>, focus will be trapped within the child element. When <code>{`false`}</code>, normal focus behavior is restored.</p>
+        </td>
+      </tr>
+      <tr id="cfocustrap-additional-container">
+        <td className="text-primary fw-semibold">additionalContainer<a href="#cfocustrap-additional-container" aria-label="CFocusTrap additionalContainer permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`RefObject\<HTMLElement>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Additional container elements to include in the focus trap. Useful for floating elements like tooltips or popovers that are rendered outside the main container but should be part of the trap.</p>
+        </td>
+      </tr>
+      <tr id="cfocustrap-children">
+        <td className="text-primary fw-semibold">children<a href="#cfocustrap-children" aria-label="CFocusTrap children permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`ReactElement`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Single React element that renders a DOM node and forwards refs properly. The focus trap will be applied to this element and all its focusable descendants.<br />
+ Requirements: - Must be a single ReactElement (not an array or fragment) - Must forward the ref to a DOM element - Should contain focusable elements for proper trap behavior</p>
+        </td>
+      </tr>
+      <tr id="cfocustrap-focus-first-element">
+        <td className="text-primary fw-semibold">focusFirstElement<a href="#cfocustrap-focus-first-element" aria-label="CFocusTrap focusFirstElement permalink" className="anchor-link after">#</a></td>
+        <td><code>{`false`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Controls whether to focus the first selectable element or the container itself. When <code>{`true`}</code>, focuses the first tabbable element within the container. When <code>{`false`}</code>, focuses the container element directly.<br />
+ This is useful for containers that should receive focus themselves, such as scrollable regions or custom interactive components.</p>
+        </td>
+      </tr>
+      <tr id="cfocustrap-on-activate">
+        <td className="text-primary fw-semibold">onActivate<a href="#cfocustrap-on-activate" aria-label="CFocusTrap onActivate permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`() => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Callback function invoked when the focus trap becomes active. Useful for triggering additional accessibility announcements or analytics.</p>
+        </td>
+      </tr>
+      <tr id="cfocustrap-on-deactivate">
+        <td className="text-primary fw-semibold">onDeactivate<a href="#cfocustrap-on-deactivate" aria-label="CFocusTrap onDeactivate permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`() => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Callback function invoked when the focus trap is deactivated. Can be used for cleanup, analytics, or triggering state changes.</p>
+        </td>
+      </tr>
+      <tr id="cfocustrap-restore-focus">
+        <td className="text-primary fw-semibold">restoreFocus<a href="#cfocustrap-restore-focus" aria-label="CFocusTrap restoreFocus permalink" className="anchor-link after">#</a></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Automatically restores focus to the previously focused element when the trap is deactivated. This is crucial for accessibility as it maintains the user's place in the document when returning from modal dialogs or overlay components.<br />
+ Recommended to be <code>{`true`}</code> for modal dialogs and popover components.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
