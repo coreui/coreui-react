@@ -37,12 +37,15 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
    *   </CDropdownMenu>
    * </CDropdown>
    *
-   * @type 'start' | 'end' | { xs: 'start' | 'end' } | { sm: 'start' | 'end' } | { md: 'start' | 'end' } | { lg: 'start' | 'end' } | { xl: 'start' | 'end'} | { xxl: 'start' | 'end'}
+   * @type 'start' | 'end' | { xs: 'start' | 'end' } | { sm: 'start' | 'end' } |
+   * { md: 'start' | 'end' } | { lg: 'start' | 'end' } | { xl: 'start' | 'end'} |
+   * { xxl: 'start' | 'end'}
    */
   alignment?: Alignments
 
   /**
-   * Determines the root node component (native HTML element or a custom React component) for the React Dropdown.
+   * Determines the root node component (native HTML element or a custom React
+   * component) for the React Dropdown.
    */
   as?: ElementType
 
@@ -65,7 +68,8 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
   className?: string
 
   /**
-   * Appends the React Dropdown Menu to a specific element. You can pass an HTML element or a function returning an element. Defaults to `document.body`.
+   * Appends the React Dropdown Menu to a specific element. You can pass an HTML
+   * element or a function returning an element. Defaults to `document.body`.
    *
    * @example
    * // Append the menu to a custom container
@@ -78,7 +82,8 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
   container?: DocumentFragment | Element | (() => DocumentFragment | Element | null) | null
 
   /**
-   * Applies a darker color scheme to the React Dropdown Menu, often used within dark navbars.
+   * Applies a darker color scheme to the React Dropdown Menu, often used within
+   * dark navbars.
    */
   dark?: boolean
 
@@ -88,7 +93,8 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
   direction?: 'center' | 'dropup' | 'dropup-center' | 'dropend' | 'dropstart'
 
   /**
-   * Defines x and y offsets ([x, y]) for the React Dropdown Menu relative to its target.
+   * Defines x and y offsets ([x, y]) for the React Dropdown Menu relative to
+   * its target.
    *
    * @example
    * // Offset the menu 10px in X and 5px in Y direction
@@ -111,19 +117,23 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
   onShow?: () => void
 
   /**
-   * Determines the placement of the React Dropdown Menu after Popper.js modifiers.
+   * Determines the placement of the React Dropdown Menu after Popper.js
+   * modifiers.
    *
    * @type 'auto' | 'auto-start' | 'auto-end' | 'top-end' | 'top' | 'top-start' | 'bottom-end' | 'bottom' | 'bottom-start' | 'right-start' | 'right' | 'right-end' | 'left-start' | 'left' | 'left-end'
    */
   placement?: Placements
 
   /**
-   * Enables or disables dynamic positioning via Popper.js for the React Dropdown Menu.
+   * Enables or disables dynamic positioning via Popper.js for the React
+   * Dropdown Menu.
    */
   popper?: boolean
 
   /**
-   * Provides a custom Popper.js configuration or a function that returns a modified Popper.js configuration for advanced positioning of the React Dropdown Menu. [Read more](https://popper.js.org/docs/v2/constructors/#options)
+   * Provides a custom Popper.js configuration or a function that returns a
+   * modified Popper.js configuration for advanced positioning of the React
+   * Dropdown Menu. [Read more](https://popper.js.org/docs/v2/constructors/#options)
    *
    * @example
    * // Providing a custom popper config
@@ -143,7 +153,8 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
   popperConfig?: Partial<Options> | ((defaultPopperConfig: Partial<Options>) => Partial<Options>)
 
   /**
-   * Renders the React Dropdown Menu using a React Portal, allowing it to escape the DOM hierarchy for improved positioning.
+   * Renders the React Dropdown Menu using a React Portal, allowing it to escape
+   * the DOM hierarchy for improved positioning.
    *
    * @since 4.8.0
    */
@@ -202,6 +213,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
     const dropdownMenuRef = useRef<HTMLDivElement | HTMLUListElement>(null)
     const forkedRef = useForkedRef(ref, dropdownRef)
     const [dropdownToggleElement, setDropdownToggleElement] = useState<HTMLElement | null>(null)
+    const [pendingKeyDownEvent, setPendingKeyDownEvent] = useState<KeyboardEvent | null>(null)
     const [_visible, setVisible] = useState(visible)
     const { initPopper, destroyPopper } = usePopper()
 
@@ -249,29 +261,14 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
       }
     }, [dropdownToggleElement])
 
-    const handleShow = () => {
-      const toggleElement = dropdownToggleElement
-      const menuElement = dropdownMenuRef.current
-
-      if (toggleElement && menuElement) {
-        setVisible(true)
-
-        if (allowPopperUse) {
-          initPopper(toggleElement, menuElement, computedPopperConfig)
-        }
-
-        toggleElement.focus()
-        toggleElement.addEventListener('keydown', handleKeydown)
-        menuElement.addEventListener('keydown', handleKeydown)
-
-        window.addEventListener('mouseup', handleMouseUp)
-        window.addEventListener('keyup', handleKeyup)
-
-        onShow?.()
+    useEffect(() => {
+      if (pendingKeyDownEvent !== null) {
+        handleKeydown(pendingKeyDownEvent)
+        setPendingKeyDownEvent(null)
       }
-    }
+    }, [pendingKeyDownEvent])
 
-    const handleHide = () => {
+    const handleHide = useCallback(() => {
       setVisible(false)
 
       const toggleElement = dropdownToggleElement
@@ -288,51 +285,96 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
       window.removeEventListener('keyup', handleKeyup)
 
       onHide?.()
-    }
+    }, [dropdownToggleElement, allowPopperUse, destroyPopper, onHide])
 
-    const handleKeydown = (event: KeyboardEvent) => {
-      if (
-        _visible &&
-        dropdownMenuRef.current &&
-        (event.key === 'ArrowDown' || event.key === 'ArrowUp')
-      ) {
+    const handleKeydown = useCallback((event: KeyboardEvent) => {
+      if (dropdownMenuRef.current && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
         event.preventDefault()
         const target = event.target as HTMLElement
-        const items: HTMLElement[] = Array.from(
-          dropdownMenuRef.current.querySelectorAll('.dropdown-item:not(.disabled):not(:disabled)')
-        )
+        const items = [
+          ...dropdownMenuRef.current.querySelectorAll(
+            '.dropdown-item:not(.disabled):not(:disabled)'
+          ),
+        ] as HTMLElement[]
         getNextActiveElement(items, target, event.key === 'ArrowDown', true).focus()
       }
-    }
+    }, [])
 
-    const handleKeyup = (event: KeyboardEvent) => {
-      if (autoClose === false) {
-        return
-      }
+    const handleKeyup = useCallback(
+      (event: KeyboardEvent) => {
+        if (autoClose === false) {
+          return
+        }
 
-      if (event.key === 'Escape') {
-        handleHide()
-      }
-    }
+        if (event.key === 'Escape') {
+          handleHide()
+          dropdownToggleElement?.focus()
+        }
+      },
+      [autoClose, handleHide]
+    )
 
-    const handleMouseUp = (event: Event) => {
-      if (!dropdownToggleElement || !dropdownMenuRef.current) {
-        return
-      }
+    const handleMouseUp = useCallback(
+      (event: Event) => {
+        if (!dropdownToggleElement || !dropdownMenuRef.current) {
+          return
+        }
 
-      if (dropdownToggleElement.contains(event.target as HTMLElement)) {
-        return
-      }
+        if (dropdownToggleElement.contains(event.target as HTMLElement)) {
+          return
+        }
 
-      if (
-        autoClose === true ||
-        (autoClose === 'inside' && dropdownMenuRef.current.contains(event.target as HTMLElement)) ||
-        (autoClose === 'outside' && !dropdownMenuRef.current.contains(event.target as HTMLElement))
-      ) {
-        setTimeout(() => handleHide(), 1)
-        return
-      }
-    }
+        if (
+          autoClose === true ||
+          (autoClose === 'inside' &&
+            dropdownMenuRef.current.contains(event.target as HTMLElement)) ||
+          (autoClose === 'outside' &&
+            !dropdownMenuRef.current.contains(event.target as HTMLElement))
+        ) {
+          setTimeout(() => handleHide(), 1)
+          return
+        }
+      },
+      [autoClose, dropdownToggleElement, handleHide]
+    )
+
+    const handleShow = useCallback(
+      (event?: KeyboardEvent) => {
+        const toggleElement = dropdownToggleElement
+        const menuElement = dropdownMenuRef.current
+
+        if (toggleElement && menuElement) {
+          setVisible(true)
+
+          if (allowPopperUse) {
+            initPopper(toggleElement, menuElement, computedPopperConfig)
+          }
+
+          toggleElement.focus()
+          toggleElement.addEventListener('keydown', handleKeydown)
+          menuElement.addEventListener('keydown', handleKeydown)
+
+          window.addEventListener('mouseup', handleMouseUp)
+          window.addEventListener('keyup', handleKeyup)
+
+          if (event && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
+            setPendingKeyDownEvent(event)
+          }
+
+          onShow?.()
+        }
+      },
+      [
+        dropdownToggleElement,
+        allowPopperUse,
+        initPopper,
+        computedPopperConfig,
+        handleKeydown,
+        handleMouseUp,
+        handleKeyup,
+        onShow,
+      ]
+    )
 
     const contextValues = {
       alignment,

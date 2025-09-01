@@ -8,7 +8,7 @@ export interface CDropdownContextProps {
   dropdownMenuRef: RefObject<HTMLDivElement | HTMLUListElement | null>
   dropdownToggleRef: (node: HTMLElement | null) => void
   handleHide?: () => void
-  handleShow?: () => void
+  handleShow?: (event?: KeyboardEvent) => void
   popper?: boolean
   portal?: boolean
   variant?: 'btn-group' | 'dropdown' | 'input-group' | 'nav-item'

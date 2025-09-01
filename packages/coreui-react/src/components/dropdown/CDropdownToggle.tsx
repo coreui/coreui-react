@@ -18,17 +18,21 @@ export interface CDropdownToggleProps extends Omit<CButtonProps, 'type'> {
    */
   custom?: boolean
   /**
-   * If a dropdown `variant` is set to `nav-item` then render the toggler as a link instead of a button.
+   * If a dropdown `variant` is set to `nav-item` then render the toggler as a
+   * link instead of a button.
    *
    * @since 5.0.0
    */
   navLink?: boolean
   /**
-   * Similarly, create split button dropdowns with virtually the same markup as single button dropdowns, but with the addition of `.dropdown-toggle-split` className for proper spacing around the dropdown caret.
+   * Similarly, create split button dropdowns with virtually the same markup as
+   * single button dropdowns, but with the addition of `.dropdown-toggle-split`
+   * className for proper spacing around the dropdown caret.
    */
   split?: boolean
   /**
-   * Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.
+   * Sets which event handlers you'd like provided to your toggle prop. You can
+   * specify one trigger or an array of them.
    *
    * @type 'hover' | 'focus' | 'click'
    */
@@ -64,6 +68,12 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
       onFocus: () => handleShow?.(),
       onBlur: () => handleHide?.(),
     }),
+    onKeyDown: (event: KeyboardEvent) => {
+      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault()
+        handleShow?.(event)
+      }
+    },
   }
 
   const togglerProps = {
