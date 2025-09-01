@@ -42,7 +42,12 @@ import CPopover from '@coreui/react/src/components/popover/CPopover'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Defines the container element to which the React Popover is appended. Accepts: - A DOM element (<code>{`HTMLElement`}</code> or <code>{`DocumentFragment`}</code>) - A function that returns a single element - <code>{`null`}</code> (defaults to <code>{`document.body`}</code>)</p>
+          <p>Defines the container element to which the React Popover is appended. Accepts:</p>
+<ul>
+<li>A DOM element (<code>{`HTMLElement`}</code> or <code>{`DocumentFragment`}</code>)</li>
+<li>A function that returns a single element</li>
+<li><code>{`null`}</code> (defaults to <code>{`document.body`}</code>)</li>
+</ul>
         <JSXDocs code={`<CPopover container={document.getElementById('my-container')}>...</CPopover>`} />
         </td>
       </tr>
@@ -63,7 +68,11 @@ import CPopover from '@coreui/react/src/components/popover/CPopover'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Delay (in milliseconds) before showing or hiding the React Popover. - If a number is provided, that delay applies to both "show" and "hide". - If an object is provided, use separate values for "show" and "hide".</p>
+          <p>Delay (in milliseconds) before showing or hiding the React Popover.</p>
+<ul>
+<li>If a number is provided, that delay applies to both "show" and "hide".</li>
+<li>If an object is provided, use separate values for "show" and "hide".</li>
+</ul>
         <JSXDocs code={`// Delays 300ms on both show and hide
 <CPopover delay={300}>...</CPopover>
 
@@ -178,7 +187,11 @@ import CPopover from '@coreui/react/src/components/popover/CPopover'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Controls the visibility of the React Popover. - <code>{`true`}</code> shows the popover. - <code>{`false`}</code> hides the popover.</p>
+          <p>Controls the visibility of the React Popover.</p>
+<ul>
+<li><code>{`true`}</code> shows the popover.</li>
+<li><code>{`false`}</code> hides the popover.</li>
+</ul>
         </td>
       </tr>
     </tbody>

@@ -50,7 +50,13 @@ import CDropdown from '@coreui/react/src/components/dropdown/CDropdown'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Configures automatic closing behavior for the React Dropdown: - <code>{`true`}</code> - Close on clicks inside or outside of the React Dropdown Menu. - <code>{`false`}</code> - Disable auto-close; manually call <code>{`hide`}</code> or <code>{`toggle`}</code> (also not closed by <code>{`Escape`}</code>). - <code>{`'inside'`}</code> - Close only when clicking inside the React Dropdown Menu. - <code>{`'outside'`}</code> - Close only when clicking outside the React Dropdown Menu.</p>
+          <p>Configures automatic closing behavior for the React Dropdown:</p>
+<ul>
+<li><code>{`true`}</code> - Close on clicks inside or outside of the React Dropdown Menu.</li>
+<li><code>{`false`}</code> - Disable auto-close; manually call <code>{`hide`}</code> or <code>{`toggle`}</code> (also not closed by <code>{`Escape`}</code>).</li>
+<li><code>{`'inside'`}</code> - Close only when clicking inside the React Dropdown Menu.</li>
+<li><code>{`'outside'`}</code> - Close only when clicking outside the React Dropdown Menu.</li>
+</ul>
         <JSXDocs code={`// Close only when user clicks outside of the menu
 <CDropdown autoClose="outside" />`} />
         </td>
@@ -201,7 +207,11 @@ const myContainer = document.getElementById('my-container')
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Controls the visibility of the React Dropdown Menu: - <code>{`true`}</code> - Visible - <code>{`false`}</code> - Hidden</p>
+          <p>Controls the visibility of the React Dropdown Menu:</p>
+<ul>
+<li><code>{`true`}</code> - Visible</li>
+<li><code>{`false`}</code> - Hidden</li>
+</ul>
         <JSXDocs code={`// Programmatically manage the dropdown visibility
 const [visible, setVisible] = useState(false)
 

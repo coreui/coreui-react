@@ -42,7 +42,12 @@ import CTooltip from '@coreui/react/src/components/tooltip/CTooltip'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Appends the React Tooltip to a specific element instead of the default <code>{`document.body`}</code>. You may pass: - A DOM element (<code>{`HTMLElement`}</code> or <code>{`DocumentFragment`}</code>) - A function that returns a single element - <code>{`null`}</code></p>
+          <p>Appends the React Tooltip to a specific element instead of the default <code>{`document.body`}</code>. You may pass:</p>
+<ul>
+<li>A DOM element (<code>{`HTMLElement`}</code> or <code>{`DocumentFragment`}</code>)</li>
+<li>A function that returns a single element</li>
+<li><code>{`null`}</code></li>
+</ul>
         <JSXDocs code={`<CTooltip container={document.getElementById('my-container')}>...</CTooltip>`} />
         </td>
       </tr>
@@ -63,7 +68,11 @@ import CTooltip from '@coreui/react/src/components/tooltip/CTooltip'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>The delay (in milliseconds) before showing or hiding the React Tooltip. - If provided as a number, the delay is applied to both "show" and "hide". - If provided as an object, it should have distinct "show" and "hide" values.</p>
+          <p>The delay (in milliseconds) before showing or hiding the React Tooltip.</p>
+<ul>
+<li>If provided as a number, the delay is applied to both "show" and "hide".</li>
+<li>If provided as an object, it should have distinct "show" and "hide" values.</li>
+</ul>
         <JSXDocs code={`// Delays 300ms on both show and hide
 <CTooltip delay={300}>...</CTooltip>
 
@@ -168,7 +177,11 @@ import CTooltip from '@coreui/react/src/components/tooltip/CTooltip'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Controls the visibility of the React Tooltip. - <code>{`true`}</code> to show the tooltip. - <code>{`false`}</code> to hide the tooltip.</p>
+          <p>Controls the visibility of the React Tooltip.</p>
+<ul>
+<li><code>{`true`}</code> to show the tooltip.</li>
+<li><code>{`false`}</code> to hide the tooltip.</li>
+</ul>
         </td>
       </tr>
     </tbody>
