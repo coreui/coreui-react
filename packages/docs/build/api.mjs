@@ -277,7 +277,7 @@ const createMdx = async (file, component) => {
       ? `<span className="badge bg-danger">Deprecated ${propInfo.tags.deprecated}</span>`
       : ''
     const description = propInfo.description
-      ? replaceText(component.displayName, 'description', propInfo.description).replace(/\n(?!\n)/g, ' ').replace(/\n\n/g, '\n')
+      ? replaceText(component.displayName, 'description', propInfo.description).replace(/\n(?![\n-])/g, ' ').replace(/\n\n/g, '\n')
       : '-'
     const type = propInfo.type
       ? propInfo.type.name.includes('ReactElement')
