@@ -5,9 +5,9 @@ import { Transition } from 'react-transition-group'
 
 import { CBackdrop } from '../backdrop'
 import { CConditionalPortal } from '../conditional-portal'
+import { CFocusTrap } from '../focus-trap'
 
 import { useForkedRef } from '../../hooks'
-import { CFocusTrap } from '../focus-trap'
 
 export interface COffcanvasProps extends HTMLAttributes<HTMLDivElement> {
   /**

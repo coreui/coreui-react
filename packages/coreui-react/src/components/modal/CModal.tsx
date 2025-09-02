@@ -12,12 +12,12 @@ import { Transition } from 'react-transition-group'
 
 import { CBackdrop } from '../backdrop'
 import { CConditionalPortal } from '../conditional-portal'
+import { CFocusTrap } from '../focus-trap'
 import { CModalContent } from './CModalContent'
 import { CModalContext } from './CModalContext'
 import { CModalDialog } from './CModalDialog'
 
 import { useForkedRef } from '../../hooks'
-import { CFocusTrap } from '../focus-trap'
 
 export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
   /**
