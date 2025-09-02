@@ -48,7 +48,7 @@
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/coreui/coreui-react/archive/v5.7.1.zip)
+- [Download the latest release](https://github.com/coreui/coreui-react/archive/v5.8.0.zip)
 - Clone the repo: `git clone https://github.com/coreui/coreui-react.git`
 - Install with [npm](https://www.npmjs.com/): `npm install @coreui/react`
 - Install with [yarn](https://yarnpkg.com/): `yarn add @coreui/react`
@@ -119,6 +119,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 - [React Date Range Picker](https://coreui.io/react/docs/forms/date-range-picker/) **PRO**
 - [React Dropdown](https://coreui.io/react/docs/components/dropdown/)
 - [React Floating Labels](https://coreui.io/react/docs/forms/floating-labels/)
+- [React Focus Trap](https://coreui.io/react/docs/components/focus-trap/)
 - [React Footer](https://coreui.io/react/docs/components/footer/)
 - [React Header](https://coreui.io/react/docs/components/header/)
 - [React Image](https://coreui.io/react/docs/components/image/)

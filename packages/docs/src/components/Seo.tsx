@@ -154,7 +154,7 @@ const SEO = ({ title, description, name, image, article, pro }: SEOProps) => {
         '@type': 'WebPage',
         '@id': seo.url.replace('docs//', 'docs/'),
       },
-      version: pro ? '5.17.1' : '5.7.1',
+      version: pro ? '5.17.1' : '5.8.0',
       proficiencyLevel: 'Beginner',
     },
   ]
