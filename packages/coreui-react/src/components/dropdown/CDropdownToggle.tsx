@@ -68,10 +68,10 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
       onFocus: () => handleShow?.(),
       onBlur: () => handleHide?.(),
     }),
-    onKeyDown: (event: KeyboardEvent) => {
+    onKeyDown: (event: React.KeyboardEvent) => {
       if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
         event.preventDefault()
-        handleShow?.(event)
+        handleShow?.(event.nativeEvent)
       }
     },
   }
