@@ -56,12 +56,6 @@ export const isElement = (object: unknown): object is Element => {
     return false
   }
 
-  // Handle jQuery objects
-  if ('jquery' in object && object.jquery !== undefined) {
-    const jQueryObject = object as { [key: number]: Element }
-    return isElement(jQueryObject[0])
-  }
-
   return 'nodeType' in object && typeof object.nodeType === 'number'
 }
 
