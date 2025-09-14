@@ -22,6 +22,7 @@ import { getNextActiveElement, isRTL } from '../../utils'
 
 import type { Alignments, Directions } from './types'
 import { getPlacement } from './utils'
+import { CFocusTrap } from '../focus-trap'
 
 export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIElement> {
   /**
@@ -288,7 +289,11 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
     }, [dropdownToggleElement, allowPopperUse, destroyPopper, onHide])
 
     const handleKeydown = useCallback((event: KeyboardEvent) => {
-      if (dropdownMenuRef.current && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
+      if (!dropdownMenuRef.current) {
+        return
+      }
+
+      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
         event.preventDefault()
         const target = event.target as HTMLElement
         const items = [
@@ -404,26 +409,28 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
 
     return (
       <CDropdownContext.Provider value={contextValues}>
-        {variant === 'input-group' ? (
-          <>{children}</>
-        ) : (
-          <Component
-            className={classNames(
-              variant === 'nav-item' ? 'nav-item dropdown' : variant,
-              {
-                'dropdown-center': direction === 'center',
-                'dropup dropup-center': direction === 'dropup-center',
-                [`${direction}`]:
-                  direction && direction !== 'center' && direction !== 'dropup-center',
-              },
-              className
-            )}
-            {...rest}
-            ref={forkedRef}
-          >
-            {children}
-          </Component>
-        )}
+        <CFocusTrap active={portal && _visible} additionalContainer={dropdownMenuRef} restoreFocus>
+          {variant === 'input-group' ? (
+            <>{children}</>
+          ) : (
+            <Component
+              className={classNames(
+                variant === 'nav-item' ? 'nav-item dropdown' : variant,
+                {
+                  'dropdown-center': direction === 'center',
+                  'dropup dropup-center': direction === 'dropup-center',
+                  [`${direction}`]:
+                    direction && direction !== 'center' && direction !== 'dropup-center',
+                },
+                className
+              )}
+              {...rest}
+              ref={forkedRef}
+            >
+              {children}
+            </Component>
+          )}
+        </CFocusTrap>
       </CDropdownContext.Provider>
     )
   }

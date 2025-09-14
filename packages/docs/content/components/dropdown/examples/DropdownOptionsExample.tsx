@@ -12,9 +12,11 @@ export const DropdownOptionsExample = () => {
           <CDropdownItem href="#">Something else here</CDropdownItem>
         </CDropdownMenu>
       </CDropdown>
-      <CDropdown portal>
-        <CDropdownToggle color="secondary">Portal</CDropdownToggle>
-        <CDropdownMenu>
+      <CDropdown portal variant="input-group">
+        <CDropdownToggle color="secondary" aria-controls="dropdownMenuInPortal">
+          Portal
+        </CDropdownToggle>
+        <CDropdownMenu id="dropdownMenuInPortal">
           <CDropdownItem href="#">Action</CDropdownItem>
           <CDropdownItem href="#">Another action</CDropdownItem>
           <CDropdownItem href="#">Something else here</CDropdownItem>
