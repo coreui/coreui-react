@@ -15,6 +15,7 @@ export interface CDropdownMenuProps extends HTMLAttributes<HTMLDivElement | HTML
    * Component used for the root node. Either a string to use a HTML element or a component.
    */
   as?: ElementType
+
   /**
    * A string of all className you want applied to the base component.
    */

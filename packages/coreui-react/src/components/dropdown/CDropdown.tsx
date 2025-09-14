@@ -277,6 +277,14 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
     }, [visible])
 
     useEffect(() => {
+      return () => {
+        if (_visible) {
+          handleHide()
+        }
+      }
+    }, [])
+
+    useEffect(() => {
       const referenceElement = getReferenceElement(reference, dropdownToggleElement, dropdownRef)
       const menuElement = dropdownMenuRef.current
       if (allowPopperUse && menuElement && referenceElement && _visible) {
@@ -371,7 +379,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
           (autoClose === 'inside' && isOnMenu) ||
           (autoClose === 'outside' && !isOnMenu)
         ) {
-          setTimeout(() => handleHide(), 1)
+          handleHide()
         }
       },
       [autoClose, dropdownToggleElement, handleHide]
@@ -417,19 +425,34 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
       ]
     )
 
-    const contextValues = {
-      alignment,
-      container,
-      dark,
-      dropdownMenuRef,
-      dropdownToggleRef,
-      handleHide,
-      handleShow,
-      popper: allowPopperUse,
-      portal,
-      variant,
-      visible: _visible,
-    }
+    const contextValues = useMemo(
+      () => ({
+        alignment,
+        container,
+        dark,
+        dropdownMenuRef,
+        dropdownToggleRef,
+        handleHide,
+        handleShow,
+        popper: allowPopperUse,
+        portal,
+        variant,
+        visible: _visible,
+      }),
+      [
+        alignment,
+        container,
+        dark,
+        dropdownMenuRef,
+        dropdownToggleRef,
+        handleHide,
+        handleShow,
+        allowPopperUse,
+        portal,
+        variant,
+        _visible,
+      ]
+    )
 
     return (
       <CDropdownContext.Provider value={contextValues}>
