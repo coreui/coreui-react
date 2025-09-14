@@ -281,7 +281,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
       toggleElement?.removeEventListener('keydown', handleKeydown)
       menuElement?.removeEventListener('keydown', handleKeydown)
 
-      window.removeEventListener('mouseup', handleMouseUp)
+      window.removeEventListener('click', handleClick)
       window.removeEventListener('keyup', handleKeyup)
 
       onHide?.()
@@ -314,25 +314,37 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
       [autoClose, handleHide]
     )
 
-    const handleMouseUp = useCallback(
-      (event: Event) => {
+    const handleClick = useCallback(
+      (event: MouseEvent) => {
         if (!dropdownToggleElement || !dropdownMenuRef.current) {
           return
         }
 
-        if (dropdownToggleElement.contains(event.target as HTMLElement)) {
+        if ((event as MouseEvent).button === 2) {
+          return
+        }
+
+        const composedPath = event.composedPath()
+        const isOnToggle = composedPath.includes(dropdownToggleElement)
+        const isOnMenu = composedPath.includes(dropdownMenuRef.current)
+
+        if (isOnToggle) {
+          return
+        }
+
+        const target = event.target as HTMLElement | null
+        const FORM_TAG_RE = /^(input|select|option|textarea|form|button|label)$/i
+
+        if (isOnMenu && target && FORM_TAG_RE.test(target.tagName)) {
           return
         }
 
         if (
           autoClose === true ||
-          (autoClose === 'inside' &&
-            dropdownMenuRef.current.contains(event.target as HTMLElement)) ||
-          (autoClose === 'outside' &&
-            !dropdownMenuRef.current.contains(event.target as HTMLElement))
+          (autoClose === 'inside' && isOnMenu) ||
+          (autoClose === 'outside' && !isOnMenu)
         ) {
           setTimeout(() => handleHide(), 1)
-          return
         }
       },
       [autoClose, dropdownToggleElement, handleHide]
@@ -354,7 +366,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
           toggleElement.addEventListener('keydown', handleKeydown)
           menuElement.addEventListener('keydown', handleKeydown)
 
-          window.addEventListener('mouseup', handleMouseUp)
+          window.addEventListener('click', handleClick)
           window.addEventListener('keyup', handleKeyup)
 
           if (event && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
@@ -369,8 +381,8 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
         allowPopperUse,
         initPopper,
         computedPopperConfig,
+        handleClick,
         handleKeydown,
-        handleMouseUp,
         handleKeyup,
         onShow,
       ]

@@ -172,6 +172,22 @@ Put a form within a dropdown menu, or make it into a dropdown menu.
 
 <ExampleSnippet component="DropdownMenuContentFormsExample" componentName="React Dropdown" />
 
+## Dropdown options
+
+Use `offset` to displace the dropdown from its default position. The value is a string with two numbers separated by a comma, e.g. `offset={[10, 20]}`. Use `portal` property to render dropdowns in `body` instead of the parent element. This helps to avoid any overflow or z-index issues.
+
+<ExampleSnippet component="DropdownOptionsExample" componentName="React Dropdown" />
+
+### Auto close behavior
+
+By default, dropdowns are closed when clicking outside of the dropdown menu or the toggle button. You can change this behavior with the `autoClose` property. Set `autoClose` to: 
+
+- `true` - Close on clicks inside or outside of the React.js dropdown menu.
+- `false` - Disable auto-close; close manually by setting the `visible={false}` (also not closed by `Escape`).
+- `'inside'` - Close only when clicking inside the React.js dropdown menu.
+- `'outside'` - Close only when clicking outside the React.js dropdown menu.
+
+<ExampleSnippet component="DropdownOptionsAutoCloseBehaviorExample" componentName="React Dropdown" />
 
 ## API
 
