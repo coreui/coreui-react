@@ -1,3 +1,4 @@
+import React from 'react'
 import type { Placement } from '@popperjs/core'
 import type { Placements } from '../../types'
 import type { Alignments, Breakpoints } from './types'
@@ -48,4 +49,24 @@ export const getPlacement = (
   }
 
   return _placement
+}
+
+export const getReferenceElement = (
+  reference: 'parent' | 'toggle' | React.RefObject<HTMLElement | null> | HTMLElement,
+  dropdownToggleElement: HTMLElement | null,
+  dropdownRef: React.RefObject<HTMLElement | null>
+): HTMLElement | null => {
+  if (reference === 'parent') {
+    return dropdownRef.current
+  }
+
+  if (reference instanceof HTMLElement) {
+    return reference
+  }
+
+  if (reference instanceof Object && 'current' in reference) {
+    return reference.current
+  }
+
+  return dropdownToggleElement
 }

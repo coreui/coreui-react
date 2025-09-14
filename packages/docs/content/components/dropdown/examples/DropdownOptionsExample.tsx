@@ -1,5 +1,5 @@
 import React from 'react'
-import { CDropdown, CDropdownItem, CDropdownMenu, CDropdownToggle } from '@coreui/react'
+import { CButton, CDropdown, CDropdownItem, CDropdownMenu, CDropdownToggle } from '@coreui/react'
 
 export const DropdownOptionsExample = () => {
   return (
@@ -12,11 +12,20 @@ export const DropdownOptionsExample = () => {
           <CDropdownItem href="#">Something else here</CDropdownItem>
         </CDropdownMenu>
       </CDropdown>
-      <CDropdown portal variant="input-group">
+      <CDropdown portal>
         <CDropdownToggle color="secondary" aria-controls="dropdownMenuInPortal">
           Portal
         </CDropdownToggle>
         <CDropdownMenu id="dropdownMenuInPortal">
+          <CDropdownItem href="#">Action</CDropdownItem>
+          <CDropdownItem href="#">Another action</CDropdownItem>
+          <CDropdownItem href="#">Something else here</CDropdownItem>
+        </CDropdownMenu>
+      </CDropdown>
+      <CDropdown reference="parent">
+        <CButton color="secondary">Reference</CButton>
+        <CDropdownToggle color="secondary" split />
+        <CDropdownMenu>
           <CDropdownItem href="#">Action</CDropdownItem>
           <CDropdownItem href="#">Another action</CDropdownItem>
           <CDropdownItem href="#">Something else here</CDropdownItem>

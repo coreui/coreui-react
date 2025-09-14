@@ -21,7 +21,7 @@ import type { Placements } from '../../types'
 import { getNextActiveElement, isRTL } from '../../utils'
 
 import type { Alignments, Directions } from './types'
-import { getPlacement } from './utils'
+import { getPlacement, getReferenceElement } from './utils'
 import { CFocusTrap } from '../focus-trap'
 
 export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIElement> {
@@ -162,6 +162,27 @@ export interface CDropdownProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
   portal?: boolean
 
   /**
+   * Sets the reference element for positioning the React Dropdown Menu.
+   * - `toggle` - The React Dropdown Toggle button (default).
+   * - `parent` - The React Dropdown wrapper element.
+   * - `HTMLElement` - A custom HTML element.
+   * - `React.RefObject` - A custom reference element.
+   *
+   * @example
+   * // Use the parent element as reference for positioning
+   * <CDropdown reference="parent">
+   *   <CDropdownToggle>Toggle dropdown</CDropdownToggle>
+   *   <CDropdownMenu>
+   *     <CDropdownItem>Action</CDropdownItem>
+   *     <CDropdownItem>Another Action</CDropdownItem>
+   *   </CDropdownMenu>
+   * </CDropdown>
+   *
+   * @since 5.9.0
+   */
+  reference?: 'parent' | 'toggle' | HTMLElement | React.RefObject<HTMLElement | null>
+
+  /**
    * Defines the visual variant of the React Dropdown
    */
   variant?: 'btn-group' | 'dropdown' | 'input-group' | 'nav-item'
@@ -204,6 +225,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
       popper = true,
       popperConfig,
       portal = false,
+      reference = 'toggle',
       variant = 'btn-group',
       visible = false,
       ...rest
@@ -255,12 +277,12 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
     }, [visible])
 
     useEffect(() => {
-      const toggleElement = dropdownToggleElement
+      const referenceElement = getReferenceElement(reference, dropdownToggleElement, dropdownRef)
       const menuElement = dropdownMenuRef.current
-      if (allowPopperUse && menuElement && toggleElement && _visible) {
-        initPopper(toggleElement, menuElement, computedPopperConfig)
+      if (allowPopperUse && menuElement && referenceElement && _visible) {
+        initPopper(referenceElement, menuElement, computedPopperConfig)
       }
-    }, [dropdownToggleElement])
+    }, [dropdownToggleElement, reference])
 
     useEffect(() => {
       if (pendingKeyDownEvent !== null) {
@@ -272,21 +294,21 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
     const handleHide = useCallback(() => {
       setVisible(false)
 
-      const toggleElement = dropdownToggleElement
       const menuElement = dropdownMenuRef.current
+      const toggleElement = dropdownToggleElement
 
       if (allowPopperUse) {
         destroyPopper()
       }
 
-      toggleElement?.removeEventListener('keydown', handleKeydown)
       menuElement?.removeEventListener('keydown', handleKeydown)
+      toggleElement?.removeEventListener('keydown', handleKeydown)
 
       window.removeEventListener('click', handleClick)
       window.removeEventListener('keyup', handleKeyup)
 
       onHide?.()
-    }, [dropdownToggleElement, allowPopperUse, destroyPopper, onHide])
+    }, [allowPopperUse, dropdownToggleElement, destroyPopper, onHide])
 
     const handleKeydown = useCallback((event: KeyboardEvent) => {
       if (!dropdownMenuRef.current) {
@@ -316,7 +338,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
           dropdownToggleElement?.focus()
         }
       },
-      [autoClose, handleHide]
+      [autoClose, dropdownToggleElement, handleHide]
     )
 
     const handleClick = useCallback(
@@ -357,14 +379,15 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
 
     const handleShow = useCallback(
       (event?: KeyboardEvent) => {
-        const toggleElement = dropdownToggleElement
         const menuElement = dropdownMenuRef.current
+        const referenceElement = getReferenceElement(reference, dropdownToggleElement, dropdownRef)
+        const toggleElement = dropdownToggleElement
 
-        if (toggleElement && menuElement) {
+        if (menuElement && referenceElement && toggleElement) {
           setVisible(true)
 
           if (allowPopperUse) {
-            initPopper(toggleElement, menuElement, computedPopperConfig)
+            initPopper(referenceElement, menuElement, computedPopperConfig)
           }
 
           toggleElement.focus()
@@ -382,13 +405,14 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
         }
       },
       [
-        dropdownToggleElement,
         allowPopperUse,
-        initPopper,
         computedPopperConfig,
+        dropdownToggleElement,
+        reference,
         handleClick,
         handleKeydown,
         handleKeyup,
+        initPopper,
         onShow,
       ]
     )

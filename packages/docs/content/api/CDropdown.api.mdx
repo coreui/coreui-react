@@ -190,6 +190,30 @@ const myContainer = document.getElementById('my-container')
           <p>Renders the React Dropdown Menu using a React Portal, allowing it to escape the DOM hierarchy for improved positioning.</p>
         </td>
       </tr>
+      <tr id="cdropdown-reference">
+        <td className="text-primary fw-semibold">reference<a href="#cdropdown-reference" aria-label="CDropdown reference permalink" className="anchor-link after">#</a><span className="badge bg-success">5.9.0+</span></td>
+        <td><code>{`toggle`}</code></td>
+        <td><code>{`HTMLElement`}</code>, <code>{`'parent'`}</code>, <code>{`'toggle'`}</code>, <code>{`RefObject\<HTMLElement>`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets the reference element for positioning the React Dropdown Menu.</p>
+<ul>
+<li><code>{`toggle`}</code> - The React Dropdown Toggle button (default).</li>
+<li><code>{`parent`}</code> - The React Dropdown wrapper element.</li>
+<li><code>{`HTMLElement`}</code> - A custom HTML element.</li>
+<li><code>{`React.RefObject`}</code> - A custom reference element.</li>
+</ul>
+        <JSXDocs code={`// Use the parent element as reference for positioning
+<CDropdown reference="parent">
+  <CDropdownToggle>Toggle dropdown</CDropdownToggle>
+  <CDropdownMenu>
+    <CDropdownItem>Action</CDropdownItem>
+    <CDropdownItem>Another Action</CDropdownItem>
+  </CDropdownMenu>
+</CDropdown>`} />
+        </td>
+      </tr>
       <tr id="cdropdown-variant">
         <td className="text-primary fw-semibold">variant<a href="#cdropdown-variant" aria-label="CDropdown variant permalink" className="anchor-link after">#</a></td>
         <td><code>{`btn-group`}</code></td>
