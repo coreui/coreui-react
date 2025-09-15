@@ -25,7 +25,7 @@ export const DropdownDropstartExample = () => {
 
       <CButtonGroup>
         <CDropdown variant="btn-group" direction="dropstart">
-          <CDropdownToggle color="secondary" split />
+          <CDropdownToggle color="secondary" split splitLabel="Toggle Dropstart" />
           <CDropdownMenu>
             <CDropdownItem href="#">Action</CDropdownItem>
             <CDropdownItem href="#">Another action</CDropdownItem>

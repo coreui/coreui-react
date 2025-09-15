@@ -35,6 +35,14 @@ export interface CDropdownToggleProps extends Omit<CButtonProps, 'type'> {
   split?: boolean
 
   /**
+   * Screen reader label for split button dropdown toggle.
+   *
+   * @default 'Toggle Dropdown'
+   * @since 5.9.0
+   */
+  splitLabel?: string
+
+  /**
    * Sets which event handlers you'd like provided to your toggle prop. You can
    * specify one trigger or an array of them.
    *
@@ -50,6 +58,7 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
   className,
   navLink = true,
   split,
+  splitLabel = 'Toggle Dropdown',
   trigger = 'click',
   ...rest
 }) => {
@@ -117,7 +126,7 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
   return (
     <CButton {...togglerProps} tabIndex={0} {...rest} ref={dropdownToggleRef}>
       {children}
-      {split && <span className="visually-hidden">Toggle Dropdown</span>}
+      {split && <span className="visually-hidden">{splitLabel}</span>}
     </CButton>
   )
 }
@@ -128,6 +137,7 @@ CDropdownToggle.propTypes = {
   className: PropTypes.string,
   custom: PropTypes.bool,
   split: PropTypes.bool,
+  splitLabel: PropTypes.string,
   trigger: triggerPropType,
 }
 

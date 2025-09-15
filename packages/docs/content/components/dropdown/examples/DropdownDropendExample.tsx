@@ -24,7 +24,7 @@ export const DropdownDropendExample = () => {
 
       <CDropdown variant="btn-group" direction="dropend">
         <CButton color="secondary">Small split button</CButton>
-        <CDropdownToggle color="secondary" split />
+        <CDropdownToggle color="secondary" split splitLabel="Toggle Dropend" />
         <CDropdownMenu>
           <CDropdownItem href="#">Action</CDropdownItem>
           <CDropdownItem href="#">Another action</CDropdownItem>
