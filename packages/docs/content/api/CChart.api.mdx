@@ -38,7 +38,7 @@ import CChart from '@coreui/react-chartjs/src/CChart'
       <tr id="cchart-data">
         <td className="text-primary fw-semibold">data<a href="#cchart-data" aria-label="CChart data permalink" className="anchor-link after">#</a></td>
         <td>-</td>
-        <td><code>{`ChartData\<keyof ChartTypeRegistry, (number | [number, number] | Point | BubbleDataPoint)[], unknown>`}</code>, <code>{`((canvas: HTMLCanvasElement) => ChartData\<...>)`}</code></td>
+        <td><code>{`ChartData<keyof ChartTypeRegistry, (number | [number, number] | Point | BubbleDataPoint)[], unknown>`}</code>, <code>{`((canvas: HTMLCanvasElement) => ChartData<...>)`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
@@ -58,7 +58,7 @@ import CChart from '@coreui/react-chartjs/src/CChart'
       <tr id="cchart-get-dataset-at-event">
         <td className="text-primary fw-semibold">getDatasetAtEvent<a href="#cchart-get-dataset-at-event" aria-label="CChart getDatasetAtEvent permalink" className="anchor-link after">#</a></td>
         <td>-</td>
-        <td><code>{`(dataset: InteractionItem[], event: MouseEvent\<HTMLCanvasElement, MouseEvent>) => void`}</code></td>
+        <td><code>{`(dataset: InteractionItem[], event: MouseEvent<HTMLCanvasElement, MouseEvent>) => void`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
@@ -68,7 +68,7 @@ import CChart from '@coreui/react-chartjs/src/CChart'
       <tr id="cchart-get-element-at-event">
         <td className="text-primary fw-semibold">getElementAtEvent<a href="#cchart-get-element-at-event" aria-label="CChart getElementAtEvent permalink" className="anchor-link after">#</a></td>
         <td>-</td>
-        <td><code>{`(element: InteractionItem[], event: MouseEvent\<HTMLCanvasElement, MouseEvent>) => void`}</code></td>
+        <td><code>{`(element: InteractionItem[], event: MouseEvent<HTMLCanvasElement, MouseEvent>) => void`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
@@ -78,7 +78,7 @@ import CChart from '@coreui/react-chartjs/src/CChart'
       <tr id="cchart-get-elements-at-event">
         <td className="text-primary fw-semibold">getElementsAtEvent<a href="#cchart-get-elements-at-event" aria-label="CChart getElementsAtEvent permalink" className="anchor-link after">#</a></td>
         <td>-</td>
-        <td><code>{`(elements: InteractionItem[], event: MouseEvent\<HTMLCanvasElement, MouseEvent>) => void`}</code></td>
+        <td><code>{`(elements: InteractionItem[], event: MouseEvent<HTMLCanvasElement, MouseEvent>) => void`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
@@ -108,7 +108,7 @@ import CChart from '@coreui/react-chartjs/src/CChart'
       <tr id="cchart-options">
         <td className="text-primary fw-semibold">options<a href="#cchart-options" aria-label="CChart options permalink" className="anchor-link after">#</a></td>
         <td>-</td>
-        <td><code>{`_DeepPartialObject\<CoreChartOptions\<keyof ChartTypeRegistry> & ElementChartOptions\<keyof ChartTypeRegistry> & PluginChartOptions\<...> & DatasetChartOptions\<...> & ScaleChartOptions\<...>>`}</code></td>
+        <td><code>{`_DeepPartialObject<CoreChartOptions<keyof ChartTypeRegistry> & ElementChartOptions<keyof ChartTypeRegistry> & PluginChartOptions<...> & DatasetChartOptions<...> & ScaleChartOptions<...>>`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
@@ -118,7 +118,7 @@ import CChart from '@coreui/react-chartjs/src/CChart'
       <tr id="cchart-plugins">
         <td className="text-primary fw-semibold">plugins<a href="#cchart-plugins" aria-label="CChart plugins permalink" className="anchor-link after">#</a></td>
         <td><code>{`[]`}</code></td>
-        <td><code>{`Plugin\<keyof ChartTypeRegistry, AnyObject>[]`}</code></td>
+        <td><code>{`Plugin<keyof ChartTypeRegistry, AnyObject>[]`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
