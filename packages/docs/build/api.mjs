@@ -95,12 +95,28 @@ const TEXT_REPLACEMENTS = {
  * @param {string} text - The text to escape.
  * @returns {string} - The escaped text.
  */
+const escInsideCode = (s) =>
+  s
+    .replaceAll(/\\/g, '\\\\')
+    .replaceAll(/`/g, '\\`')
+    .replaceAll(/\$\{/g, '\\${')
+    .replaceAll(/[{}]/g, (m) => '\\' + m)
+
 const escapeMarkdown = (text) => {
   if (typeof text !== 'string') return text
-  return text
-    .replaceAll(/(<)/g, String.raw`\$1`)
-    .replaceAll('\n', '<br/>')
-    .replaceAll(/`([^`]+)`/g, '<code>{`$1`}</code>')
+
+  let out = text
+
+  // 1) przypadek template literal: `... `...``
+  out = out.replace(/`([\s\S]*?)``/g, (_, raw) => {
+    const safe = escInsideCode(raw)
+    return `<code>{\`${safe}\`}</code>`
+  })
+
+  // 2) przypadek listowych wartości: `...` przed przecinkiem albo końcem
+  out = out.replace(/`([^`]+?)`(?=\s*,|\s*$)/g, '<code>{`$1`}</code>')
+
+  return out
 }
 
 /**
