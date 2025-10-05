@@ -120,7 +120,6 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     ref
   ) => {
     const modalRef = useRef<HTMLDivElement>(null)
-    const modalContentRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, modalRef)
 
     const [_visible, setVisible] = useState(visible)
@@ -213,37 +212,37 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
           {(state) => (
             <CConditionalPortal container={container} portal={portal}>
               <CModalContext.Provider value={contextValues}>
-                <div
-                  className={classNames(
-                    'modal',
-                    {
-                      'modal-static': staticBackdrop,
-                      fade: transition,
-                      show: state === 'entered',
-                    },
-                    className
-                  )}
-                  tabIndex={-1}
-                  {...(_visible
-                    ? { 'aria-modal': true, role: 'dialog' }
-                    : { 'aria-hidden': 'true' })}
-                  style={{
-                    ...(state !== 'exited' && { display: 'block' }),
-                  }}
-                  {...rest}
-                  ref={forkedRef}
-                >
-                  <CModalDialog
-                    alignment={alignment}
-                    fullscreen={fullscreen}
-                    scrollable={scrollable}
-                    size={size}
+                <CFocusTrap active={focus && state === 'entered'}>
+                  <div
+                    className={classNames(
+                      'modal',
+                      {
+                        'modal-static': staticBackdrop,
+                        fade: transition,
+                        show: state === 'entered',
+                      },
+                      className
+                    )}
+                    tabIndex={-1}
+                    {...(_visible
+                      ? { 'aria-modal': true, role: 'dialog' }
+                      : { 'aria-hidden': 'true' })}
+                    style={{
+                      ...(state !== 'exited' && { display: 'block' }),
+                    }}
+                    {...rest}
+                    ref={forkedRef}
                   >
-                    <CFocusTrap active={focus && state === 'entered'} restoreFocus>
-                      <CModalContent ref={modalContentRef}>{children}</CModalContent>
-                    </CFocusTrap>
-                  </CModalDialog>
-                </div>
+                    <CModalDialog
+                      alignment={alignment}
+                      fullscreen={fullscreen}
+                      scrollable={scrollable}
+                      size={size}
+                    >
+                      <CModalContent>{children}</CModalContent>
+                    </CModalDialog>
+                  </div>
+                </CFocusTrap>
               </CModalContext.Provider>
             </CConditionalPortal>
           )}
