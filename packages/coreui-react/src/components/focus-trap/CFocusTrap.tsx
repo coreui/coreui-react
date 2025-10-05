@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, cloneElement, use, useEffect, useRef } from 'react'
+import React, { FC, ReactElement, cloneElement, useEffect, useRef } from 'react'
 import { mergeRefs, focusableChildren, getChildRef } from './utils'
 
 export interface CFocusTrapProps {
