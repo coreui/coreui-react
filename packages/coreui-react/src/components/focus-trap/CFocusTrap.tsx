@@ -1,5 +1,5 @@
-import React, { FC, ReactElement, cloneElement, useEffect, useRef } from 'react'
-import { mergeRefs, focusableChildren } from './utils'
+import React, { FC, ReactElement, cloneElement, use, useEffect, useRef } from 'react'
+import { mergeRefs, focusableChildren, getChildRef } from './utils'
 
 export interface CFocusTrapProps {
   /**
@@ -146,7 +146,10 @@ export const CFocusTrap: FC<CFocusTrapProps> = ({
 
       if (elements.length === 0) {
         container.focus({ preventScroll: true })
-      } else if (lastTabNavDirectionRef.current === 'backward') {
+        return
+      }
+
+      if (lastTabNavDirectionRef.current === 'backward') {
         elements.at(-1)?.focus({ preventScroll: true })
       } else {
         elements[0].focus({ preventScroll: true })
@@ -161,12 +164,8 @@ export const CFocusTrap: FC<CFocusTrapProps> = ({
       tabEventSourceRef.current = container
       lastTabNavDirectionRef.current = event.shiftKey ? 'backward' : 'forward'
 
-      if (!_additionalContainer) {
-        return
-      }
-
       const containerElements = focusableChildren(container)
-      const additionalElements = focusableChildren(_additionalContainer)
+      const additionalElements = _additionalContainer ? focusableChildren(_additionalContainer) : []
 
       if (containerElements.length === 0 && additionalElements.length === 0) {
         // No focusable elements, prevent tab
@@ -174,7 +173,28 @@ export const CFocusTrap: FC<CFocusTrapProps> = ({
         return
       }
 
+      const focusableElements = [...containerElements, ...additionalElements]
+
+      const firstFocusableElement = focusableElements[0] as HTMLElement
+      const lastFocusableElement = focusableElements.at(-1) as HTMLElement
       const activeElement = document.activeElement as HTMLElement
+
+      if (event.shiftKey && activeElement === firstFocusableElement) {
+        event.preventDefault()
+        lastFocusableElement.focus()
+        return
+      }
+
+      if (!event.shiftKey && activeElement === lastFocusableElement) {
+        event.preventDefault()
+        firstFocusableElement.focus()
+        return
+      }
+
+      if (!_additionalContainer) {
+        return
+      }
+
       const isInContainer = containerElements.includes(activeElement)
       const isInAdditional = additionalElements.includes(activeElement)
 
@@ -245,7 +265,12 @@ export const CFocusTrap: FC<CFocusTrapProps> = ({
 
   // Attach our ref to the ONLY child — no extra wrappers
   const onlyChild = React.Children.only(children)
-  const childRef = (onlyChild as React.ReactElement & { ref?: React.Ref<HTMLElement> }).ref
+
+  // Handle different ref access patterns between React versions
+  // React 19+: ref is accessed via element.props.ref
+  // React 18 and earlier: ref is accessed via element.ref
+  const childRef: React.Ref<HTMLElement> | undefined = getChildRef(onlyChild)
+
   const mergedRef = mergeRefs(childRef, (node: HTMLElement | null) => {
     containerRef.current = node
   })

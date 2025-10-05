@@ -24,6 +24,30 @@ export const focusableChildren = (element: HTMLElement): HTMLElement[] => {
 }
 
 /**
+ * Extracts the ref from a React element, handling version differences between React 18 and 19+.
+ *
+ * In React 18 and earlier, refs are stored directly on the element object.
+ * In React 19+, refs are stored in the element's props object due to changes in React's internals.
+ * This function automatically detects the React version and uses the appropriate access pattern.
+ * @param child - The React element to extract the ref from
+ * @returns The ref attached to the element, or undefined if no ref is present
+ */
+export const getChildRef = (child: React.ReactElement): React.Ref<HTMLElement> | undefined => {
+  const major = Number(React.version?.split?.('.')[0] ?? 18)
+  // React 18 stores ref directly on the element
+  if (major <= 18 && 'ref' in child && child.ref !== undefined) {
+    return (child as React.ReactElement & { ref?: React.Ref<HTMLElement> }).ref
+  }
+
+  // React 19 stores ref in props
+  if (child.props && typeof child.props === 'object' && 'ref' in child.props) {
+    return (child.props as { ref?: React.Ref<HTMLElement> }).ref
+  }
+
+  return undefined
+}
+
+/**
  * Checks if an element is disabled.
  * Considers various ways an element can be disabled including CSS classes and attributes.
  * @param element - The HTML element to check
