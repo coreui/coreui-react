@@ -132,7 +132,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 - [React Navs & Tabs](https://coreui.io/react/docs/components/navs-tabs/)
 - [React Navbar](https://coreui.io/react/docs/components/navbar/)
 - [React Offcanvas](https://coreui.io/react/docs/components/offcanvas/)
+- [React One-Time Password Input](https://coreui.io/react/docs/forms/one-time-password-input/) **PRO**
 - [React Pagination](https://coreui.io/react/docs/components/pagination/)
+- [React Password Input](https://coreui.io/react/docs/forms/password-input/) **PRO**
 - [React Placeholder](https://coreui.io/react/docs/components/placeholder/)
 - [React Popover](https://coreui.io/react/docs/components/popover/)
 - [React Progress](https://coreui.io/react/docs/components/progress/)
