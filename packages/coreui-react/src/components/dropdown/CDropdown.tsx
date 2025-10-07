@@ -368,7 +368,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
         }
 
         const target = event.target as HTMLElement | null
-        const FORM_TAG_RE = /^(input|select|option|textarea|form|button|label)$/i
+        const FORM_TAG_RE = /^(input|select|option|textarea|form)$/i
 
         if (isOnMenu && target && FORM_TAG_RE.test(target.tagName)) {
           return
