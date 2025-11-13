@@ -105,6 +105,8 @@ export const CFormSelect = forwardRef<HTMLSelectElement, CFormSelectProps>(
                     {...(typeof option === 'object' &&
                       option.disabled && { disabled: option.disabled })}
                     {...(typeof option === 'object' &&
+                      option.selected && { selected: option.selected })}
+                    {...(typeof option === 'object' &&
                       option.value !== undefined && { value: option.value })}
                     key={index}
                   >
