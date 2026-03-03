@@ -112,6 +112,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 - [React Callout](https://coreui.io/react/docs/components/callout/)
 - [React Card](https://coreui.io/react/docs/components/card/)
 - [React Carousel](https://coreui.io/react/docs/components/carousel/)
+- [React Chip](https://coreui.io/react/docs/components/chip/)
+- [React Chip Input](https://coreui.io/react/docs/forms/chip-input/)
 - [React Checkbox](https://coreui.io/react/docs/forms/checkbox/)
 - [React Close Button](https://coreui.io/react/docs/components/close-button/)
 - [React Collapse](https://coreui.io/react/docs/components/collapse/)
