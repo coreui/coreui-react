@@ -1,5 +1,6 @@
 import { CForm } from './CForm'
 import { CFormCheck } from './CFormCheck'
+import { CChipInput } from './CChipInput'
 import { CFormControlValidation } from './CFormControlValidation'
 import { CFormControlWrapper } from './CFormControlWrapper'
 import { CFormFeedback } from './CFormFeedback'
@@ -17,6 +18,7 @@ import { CInputGroupText } from './CInputGroupText'
 export {
   CForm,
   CFormCheck,
+  CChipInput,
   CFormControlValidation,
   CFormControlWrapper,
   CFormFeedback,

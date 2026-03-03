@@ -1,0 +1,86 @@
+---
+title: React Chip Input Component
+name: Chip Input
+description: React Chip Input component for CoreUI helps you create tag-like multi-value inputs for skills, categories, or recipients with keyboard support, selection, and form integration.
+route: /forms/chip-input/
+# other_frameworks: chip-input
+pre_release: true
+---
+
+## Overview
+
+The CoreUI **React Chip Input component** lets users enter multiple values as chips inside a single field. Use it as a tag input, multi-value selector, or token field for skills, categories, email recipients, and more. The chip input component supports keyboard-friendly entry, chip removal, and optional selection for bulk actions.
+
+- Type values and press `Enter` or a separator to create chips.
+- Chips can be removable and selectable.
+- The input stays inline and grows as you type.
+- Form integration is supported with a hidden input when `name` is provided.
+
+## When to use Chip Input
+
+Use the React Chip Input component when you need:
+
+- A **tag input** or **token field** for free-form multi-value entry
+- An **email or recipient input** where users add multiple addresses
+- A **skills or category selector** in forms
+- A **filterable multi-select** that integrates with standard HTML forms
+
+## Basic example
+
+Use `CChipInput` to render a multi-value field with predefined chips and inline input.
+
+<ExampleSnippet component="ChipInputExample" componentName="React Chip Input" />
+
+> Note: `CChipInput` renders the inline text input automatically. When `name` is provided, it also renders a hidden input so chip values can participate in standard form submission.
+
+## Variants
+
+Use contextual chip classes inside React Chip Input to represent categories, status, or priority.
+
+<ExampleSnippet component="ChipInputVariantsExample" componentName="React Chip Input" />
+
+In the example below, chip color is assigned dynamically based on the chip text using the `chipClassName` callback.
+
+<ExampleSnippet component="ChipInputClassNameExample" componentName="React Chip Input" />
+
+## Sizes
+
+Use `size="sm"` and `size="lg"` to match surrounding form controls. Default size is provided without a size modifier.
+
+<ExampleSnippet component="ChipInputSizesExample" componentName="React Chip Input" />
+
+## Empty state
+
+Start with just the input and let users add chips as they type.
+
+<ExampleSnippet component="ChipInputEmptyStateExample" componentName="React Chip Input" />
+
+## With label
+
+Use a standard form label for accessibility.
+
+<ExampleSnippet component="ChipInputWithLabelExample" componentName="React Chip Input" />
+
+## Disabled
+
+Set disabled state on the component to make the input and chips non-interactive. Combine it with `removable={false}` for disabled, non-removable chips.
+
+<ExampleSnippet component="ChipInputDisabledExample" componentName="React Chip Input" />
+
+## Readonly
+
+Use readonly state when chips should stay visible and focusable, but values must not change.
+
+<ExampleSnippet component="ChipInputReadonlyExample" componentName="React Chip Input" />
+
+## Selectable chips
+
+Enable selection for chips managed by Chip Input. In this example, `onSelect` updates a live list of selected values below the field.
+
+<ExampleSnippet component="ChipInputSelectableExample" componentName="React Chip Input" />
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CChipInput /&gt;](./api/#cchipinput)

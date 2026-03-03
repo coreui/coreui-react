@@ -1,0 +1,131 @@
+---
+title: React Chip Component with Bootstrap Styling
+name: Chip with Bootstrap Styling
+description: Learn how to build Bootstrap-styled React Chip components in CoreUI with the same examples and behaviors as the CoreUI Bootstrap Chip documentation.
+route: /components/chip/
+bootstrap_component: true
+---
+
+## Overview
+
+The CoreUI **React Bootstrap Chip component** lets you build compact, interactive UI elements for labels, tags, filters, and selections. Chips support icons, avatars, removal, keyboard navigation, and themed styling.
+
+Chips are similar to badges, but they have a single size and more defined visual styles useful for indicating state and selection.
+
+- Chips are statically sized and do not scale with the parent by default.
+- Chips can include icons, avatars, and remove controls.
+- Chips can be active or disabled.
+- Chips automatically gain focus when they are `selectable` or `removable`.
+- Chips support keyboard navigation and selection in their container.
+
+## When to use chips
+
+Use this React Chip Component when you need:
+
+- Multi-select filters in forms or search interfaces
+- Removable tags for selected values
+- Keyboard-navigable selection groups
+- Compact status tokens with icons or avatars
+
+## Basic chips
+
+Use `CChip` for standalone Bootstrap-styled chips.
+
+<ExampleSnippet className="theme-bootstrap" component="ChipExample" componentName="React Chip" />
+
+## Outline chips
+
+Use `variant="outline"` to remove all background images and colors on any chip.
+
+<ExampleSnippet
+  className="theme-bootstrap"
+  component="ChipOutlineExample"
+  componentName="React Chip"
+/>
+
+## Chips with icons
+
+Wrap `CIcon` in a `<span className="chip-icon">` for leading icons.
+
+<ExampleSnippet
+  className="theme-bootstrap"
+  component="ChipIconExample"
+  componentName="React Chip"
+/>
+
+## Chips with avatars
+
+Use `.chip-img` for image avatars or combine `CChip` with `CAvatar`.
+
+<ExampleSnippet
+  className="theme-bootstrap"
+  component="ChipAvatarExample"
+  componentName="React Chip"
+/>
+
+## Variants
+
+Apply color variants to your chips. Chips are subtle by default as this allows for a clear themed active state.
+
+<ExampleSnippet
+  className="theme-bootstrap"
+  component="ChipVariantsExample"
+  componentName="React Chip"
+/>
+
+<ExampleSnippet
+  className="theme-bootstrap"
+  component="ChipOutlineVariantsExample"
+  componentName="React Chip"
+/>
+
+### Active state
+
+Add `active` to make chips use the solid appearance.
+
+<ExampleSnippet
+  className="theme-bootstrap"
+  component="ChipActiveStateExample"
+  componentName="React Chip"
+/>
+
+## Sizes
+
+Use `size="sm"` and `size="lg"` for different sizes.
+
+<ExampleSnippet className="theme-bootstrap" component="ChipSizesExample" componentName="React Chip" />
+
+## Interactive chips
+
+Use `selectable`, `removable`, `selected`, and `disabled` to match the interactive chip examples from CoreUI.
+
+<ExampleSnippet
+  className="theme-bootstrap"
+  component="ChipInteractiveExample"
+  componentName="React Chip"
+/>
+
+## Remove button
+
+If `removable` is enabled, the remove button is rendered automatically.
+
+<ExampleSnippet
+  className="theme-bootstrap"
+  component="ChipDismissButtonExample"
+  componentName="React Chip"
+/>
+
+## Keyboard behavior
+
+Focusable chips (`selectable` or `removable`) support keyboard navigation and actions:
+
+- `Enter` / `Space`: toggle selected state
+- `Backspace` / `Delete`: run remove action
+- `ArrowLeft` / `ArrowRight`: move focus to previous or next chip
+- `Home` / `End`: jump focus to first or last chip in the group
+
+## API reference
+
+See below for the full API reference for all available props for the Bootstrap-styled React Chip Component.
+
+- [&lt;CChip /&gt;](../api/#cchip)

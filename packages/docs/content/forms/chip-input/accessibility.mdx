@@ -1,0 +1,97 @@
+---
+title: React Chip Input Component Accesibility
+name: Chip Input Accesibility
+description: Detailed overview of the accessibility and keyboard support features implemented in the CoreUI React Chip Input component.
+route: /forms/chip-input/
+---
+
+## Accessible React Chip Input
+
+Chip inputs are commonly used for tags, labels, recipients, and tokenized multi-value entry. When used in forms, they should remain keyboard accessible, clearly labeled, and understandable to assistive technologies. This guide explains how CoreUI React Chip Input supports accessible usage patterns.
+
+### Semantic Structure
+
+- **Inline text input**: `CChipInput` renders a real text input for entering new values, which keeps typing, focus, and screen reader behavior predictable.
+
+- **Chip list pattern**: Existing values are rendered as chips before the inline input, making the field readable as a tokenized sequence of values.
+
+- **Form compatibility**: When `name` is provided, a hidden input is rendered so chip values can participate in traditional form submission.
+
+### ARIA Attributes
+
+CoreUI React Chip Input supports accessible labeling and chip state communication:
+
+- **External labels**: Associate the input with a `<label>` using `id` and `htmlFor` for clear screen reader context.
+
+- **Chip selection state**: Selectable chips expose `aria-selected` through the underlying `CChip` component.
+
+- **Disabled and readonly states**: Disabled and readonly states are reflected so assistive technologies can identify interaction constraints.
+
+### Focus Management
+
+- **Input-first workflow**: Users can type directly into the inline input without extra setup.
+
+- **Chip navigation**: When the input is empty, keyboard navigation can move focus to chips for selection or removal.
+
+- **Selectable chips**: Focusable chips can be traversed with arrow keys once focus enters the chip list.
+
+### Visual Indicators
+
+- **Visible focus states**: The input and focusable chips provide visible focus styles for keyboard users.
+
+- **Selected chips**: Active chips are visually differentiated when `selectable` is enabled.
+
+- **Disabled and readonly styling**: Reduced emphasis communicates when the field or chips are not editable.
+
+### Keyboard Support
+
+The React Chip Input component supports keyboard interaction for both the input and the rendered chips:
+
+<div className="table-api table-responsive border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Function</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><kbd>Enter</kbd></td>
+        <td>Create a chip from the current input value.</td>
+      </tr>
+      <tr>
+        <td><kbd>,</kbd> or separator key</td>
+        <td>Create a chip from the current input value when a separator is configured.</td>
+      </tr>
+      <tr>
+        <td><kbd>Backspace</kbd> or <kbd>Delete</kbd></td>
+        <td>When the input is empty, move focus to the last chip. When a removable chip is focused, remove it.</td>
+      </tr>
+      <tr>
+        <td><kbd>Left Arrow</kbd></td>
+        <td>When the caret is at the start of the input, move focus to the last chip. When a chip is focused, move to the previous chip.</td>
+      </tr>
+      <tr>
+        <td><kbd>Right Arrow</kbd></td>
+        <td>When a chip is focused, move to the next chip.</td>
+      </tr>
+      <tr>
+        <td><kbd>Space</kbd> or <kbd>Enter</kbd> on a chip</td>
+        <td>Toggle selected state when `selectable` is enabled.</td>
+      </tr>
+      <tr>
+        <td><kbd>Home</kbd></td>
+        <td>Move focus to the first focusable chip.</td>
+      </tr>
+      <tr>
+        <td><kbd>End</kbd></td>
+        <td>Move focus to the last focusable chip.</td>
+      </tr>
+      <tr>
+        <td><kbd>Escape</kbd></td>
+        <td>Clear the current input value and blur the input.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

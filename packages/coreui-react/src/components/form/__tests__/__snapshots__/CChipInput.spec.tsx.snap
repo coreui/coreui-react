@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`loads and displays CChipInput component 1`] = `
+<div>
+  <div
+    class="chip-input"
+  >
+    <span
+      class="chip"
+      data-coreui-chip-focusable="true"
+      tabindex="0"
+    >
+      React
+      <button
+        aria-label="Remove React"
+        class="chip-remove"
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          fill="none"
+          height="16"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-width="2"
+          viewBox="0 0 16 16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="4"
+            x2="12"
+            y1="4"
+            y2="12"
+          />
+          <line
+            x1="12"
+            x2="4"
+            y1="4"
+            y2="12"
+          />
+        </svg>
+      </button>
+    </span>
+    <span
+      class="chip"
+      data-coreui-chip-focusable="true"
+      tabindex="0"
+    >
+      TypeScript
+      <button
+        aria-label="Remove TypeScript"
+        class="chip-remove"
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          fill="none"
+          height="16"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-width="2"
+          viewBox="0 0 16 16"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="4"
+            x2="12"
+            y1="4"
+            y2="12"
+          />
+          <line
+            x1="12"
+            x2="4"
+            y1="4"
+            y2="12"
+          />
+        </svg>
+      </button>
+    </span>
+    <input
+      class="chip-input-field"
+      placeholder=""
+      size="1"
+      type="text"
+      value=""
+    />
+  </div>
+</div>
+`;
