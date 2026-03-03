@@ -48,7 +48,7 @@
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/coreui/coreui-react/archive/v5.9.2.zip)
+- [Download the latest release](https://github.com/coreui/coreui-react/archive/v5.10.0.zip)
 - Clone the repo: `git clone https://github.com/coreui/coreui-react.git`
 - Install with [npm](https://www.npmjs.com/): `npm install @coreui/react`
 - Install with [yarn](https://yarnpkg.com/): `yarn add @coreui/react`
@@ -112,9 +112,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 - [React Callout](https://coreui.io/react/docs/components/callout/)
 - [React Card](https://coreui.io/react/docs/components/card/)
 - [React Carousel](https://coreui.io/react/docs/components/carousel/)
+- [React Checkbox](https://coreui.io/react/docs/forms/checkbox/)
 - [React Chip](https://coreui.io/react/docs/components/chip/)
 - [React Chip Input](https://coreui.io/react/docs/forms/chip-input/)
-- [React Checkbox](https://coreui.io/react/docs/forms/checkbox/)
 - [React Close Button](https://coreui.io/react/docs/components/close-button/)
 - [React Collapse](https://coreui.io/react/docs/components/collapse/)
 - [React Date Picker](https://coreui.io/react/docs/forms/date-picker/) **PRO**
@@ -237,4 +237,4 @@ CoreUI is an MIT-licensed open source project and is completely free to use. How
 
 ## Copyright and license
 
-Copyright 2025 creativeLabs Łukasz Holeczek. Code released under the [MIT License](https://github.com/coreui/coreui-react/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
+Copyright 2026 creativeLabs Łukasz Holeczek. Code released under the [MIT License](https://github.com/coreui/coreui-react/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
