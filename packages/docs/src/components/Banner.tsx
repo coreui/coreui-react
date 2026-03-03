@@ -4,11 +4,11 @@ import { CButton, CCol, CRow } from '@coreui/react'
 
 interface BannerProps {
   bootstrap?: boolean | string
-  preview?: boolean | string
+  preRelease?: boolean | string
   pro?: boolean
 }
 
-const Banner: FC<BannerProps> = ({ bootstrap, preview, pro }) => {
+const Banner: FC<BannerProps> = ({ bootstrap, preRelease, pro }) => {
   return (
     <>
       {bootstrap && (
@@ -65,14 +65,12 @@ const Banner: FC<BannerProps> = ({ bootstrap, preview, pro }) => {
           </CRow>
         </div>
       )}
-      {preview && (
+      {preRelease && (
         <div className="bg-warning d-none d-lg-block bg-opacity-10 border-start border-start-5 border-start-warning p-4 pb-3 mb-5">
-          <h3 className="mb-4">Alpha release</h3>
+          <h3 className="mb-4">Release candidate (RC)</h3>
           <p>
-            This component is in the Alpha phase and has an experimental API, which can be changed
-            in the final release. If you want to use this component, please install{' '}
-            <strong>@coreui/coreui-pro {preview}</strong> and{' '}
-            <strong>@coreui/react-pro {preview}</strong>
+            This component is in the Release Candidate phase and its API is considered stable. Minor
+            adjustments may still occur before the final release.
           </p>
         </div>
       )}

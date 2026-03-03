@@ -1,0 +1,111 @@
+---
+title: React Chip Component
+name: Chip
+description: React Chip component for CoreUI lets you build compact, interactive labels, tags, filters, and selections with icons, avatars, remove buttons, and keyboard support.
+route: /components/chip/
+# other_frameworks: chip
+pre_release: true
+---
+
+## Overview
+
+The CoreUI **React Chip component** lets you build compact, interactive UI elements for labels, tags, filters, and selections. Chips support icons, avatars, removal, keyboard navigation, and theme-aware styling.
+
+Chips are similar to badges, but they have a single size and more defined visual styles useful for indicating state and selection.
+
+- Chips are statically sized and do not scale with the parent element by default.
+- Chips can have icons, avatars, and remove buttons.
+- Chips can be active or disabled.
+- Chips automatically gain focus when they are `selectable` or `removable`.
+- Chips support keyboard navigation and selection in their container.
+
+See examples of all of this in action below.
+
+## When to use chips
+
+Use the React Chip component when you need:
+
+- Multi-select filters in search or form interfaces
+- Removable tags for selected items or applied filters
+- Keyboard-navigable selection groups
+- Compact status indicators with icon or avatar support
+
+## Basic chips
+
+Use `CChip` for standalone chips.
+
+<ExampleSnippet component="ChipExample" componentName="React Chip" />
+
+## Outline chips
+
+Use `variant="outline"` to remove all background images and colors on any chip.
+
+<ExampleSnippet component="ChipOutlineExample" componentName="React Chip" />
+
+## Chips with icons
+
+Wrap `CIcon` in a `<span className="chip-icon">` to render a leading icon.
+
+<ExampleSnippet component="ChipIconExample" componentName="React Chip" />
+
+## Chips with avatars
+
+Use `.chip-img` for an image-like avatar or combine `CChip` with `CAvatar`.
+
+<ExampleSnippet component="ChipAvatarExample" componentName="React Chip" />
+
+## Variants
+
+Apply color variants to your chips. Chips are subtle by default as this allows for a clear themed active state.
+
+<ExampleSnippet component="ChipVariantsExample" componentName="React Chip" />
+
+<ExampleSnippet component="ChipOutlineVariantsExample" componentName="React Chip" />
+
+### Active state
+
+Add `active` to make chips use the solid appearance. This is useful for toggle-style chip selections.
+
+<ExampleSnippet component="ChipActiveStateExample" componentName="React Chip" />
+
+## Sizes
+
+Use `size="sm"` or `size="lg"` for different sizes.
+
+<ExampleSnippet component="ChipSizesExample" componentName="React Chip" />
+
+## Interactive chips
+
+Use `selectable`, `removable`, `selected`, and `disabled` to match the interactive chip examples from CoreUI.
+
+<ExampleSnippet component="ChipInteractiveExample" componentName="React Chip" />
+
+## Remove button
+
+If `removable` is enabled, the remove button is rendered automatically.
+
+<ExampleSnippet component="ChipDismissButtonExample" componentName="React Chip" />
+
+## Keyboard behavior
+
+Chips support keyboard navigation when they are `selectable` and/or `removable`.
+
+### When a chip is focused
+
+- `Enter` / `Space`: toggle selection when `selectable` is enabled
+- `Backspace` / `Delete`: close chip when `removable` is enabled
+- `ArrowLeft`: move focus to previous chip
+- `ArrowRight`: move focus to next chip
+- `Home`: move focus to the first chip in the container
+- `End`: move focus to the last chip in the container
+
+### Mouse interaction
+
+- Click chip: toggle selection when `selectable` is enabled
+- Click remove: close chip when `removable` is enabled
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CChip /&gt;](./api/#cchip)

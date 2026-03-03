@@ -1,0 +1,27 @@
+---
+title: React Chip Input Component Styling
+name: Chip Input Styling
+description: Learn how to customize the React Chip Input component with CSS variables and SASS for flexible styling and better form integration.
+route: /forms/chip-input/
+---
+
+### CSS variables
+
+React Chip Input supports CSS variables for inline and stylesheet-level customization. These variables are provided by CoreUI Sass and can be overridden to adapt spacing, sizing, and colors.
+
+<ScssDocs file="forms/_chip-input.scss" capture="chip-input-css-vars" />
+
+#### How to use CSS variables
+
+```jsx
+const customVars = {
+  '--cui-chip-input-padding-y': '0.5rem',
+  '--cui-chip-input-border-color': 'var(--cui-primary)',
+}
+
+return <CChipInput style={customVars} placeholder="Add value" />
+```
+
+### SASS variables
+
+<ScssDocs file="forms/_chip-input.scss" capture="chip-input-variables" />

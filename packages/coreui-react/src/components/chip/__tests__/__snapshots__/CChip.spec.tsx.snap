@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CChip customize 1`] = `
+<div>
+  <button
+    aria-disabled="true"
+    class="chip active disabled chip-warning chip-lg chip-clickable chip-outline bazinga"
+    disabled=""
+  >
+    Test
+  </button>
+</div>
+`;
+
+exports[`CChip removable 1`] = `
+<div>
+  <span
+    class="chip"
+    data-coreui-chip-focusable="true"
+    tabindex="0"
+  >
+    Test
+    <button
+      aria-label="Remove test"
+      class="chip-remove"
+      tabindex="-1"
+      type="button"
+    >
+      <svg
+        fill="none"
+        height="16"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-width="2"
+        viewBox="0 0 16 16"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="4"
+          x2="12"
+          y1="4"
+          y2="12"
+        />
+        <line
+          x1="12"
+          x2="4"
+          y1="4"
+          y2="12"
+        />
+      </svg>
+    </button>
+  </span>
+</div>
+`;
+
+exports[`loads and displays CChip component 1`] = `
+<div>
+  <span
+    class="chip"
+  >
+    Test
+  </span>
+</div>
+`;

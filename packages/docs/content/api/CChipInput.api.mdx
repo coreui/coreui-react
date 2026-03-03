@@ -1,0 +1,230 @@
+
+```jsx
+import { CChipInput } from '@coreui/react'
+// or
+import CChipInput from '@coreui/react/src/components/form/CChipInput'
+```
+
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="cchipinput-chip-class-name">
+        <td className="text-primary fw-semibold">chipClassName<a href="#cchipinput-chip-class-name" aria-label="CChipInput chipClassName permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`ChipClassName`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Adds custom classes to chips rendered by the React Chip Input component. Accepts a static className or a resolver function based on chip value.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-class-name">
+        <td className="text-primary fw-semibold">className<a href="#cchipinput-class-name" aria-label="CChipInput className permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Adds custom classes to the React Chip Input component root element.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-create-on-blur">
+        <td className="text-primary fw-semibold">createOnBlur<a href="#cchipinput-create-on-blur" aria-label="CChipInput createOnBlur permalink" className="anchor-link after">#</a></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Creates a new chip when the React Chip Input component loses focus with a pending value.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-default-value">
+        <td className="text-primary fw-semibold">defaultValue<a href="#cchipinput-default-value" aria-label="CChipInput defaultValue permalink" className="anchor-link after">#</a></td>
+        <td><code>{`[]`}</code></td>
+        <td><code>{`string[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets the initial uncontrolled values rendered by the React Chip Input component.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-disabled">
+        <td className="text-primary fw-semibold">disabled<a href="#cchipinput-disabled" aria-label="CChipInput disabled permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Disables the React Chip Input component and prevents adding, removing, or selecting chips.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-id">
+        <td className="text-primary fw-semibold">id<a href="#cchipinput-id" aria-label="CChipInput id permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets the <code>{`id`}</code> of the internal text input rendered by the React Chip Input component.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-label">
+        <td className="text-primary fw-semibold">label<a href="#cchipinput-label" aria-label="CChipInput label permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Renders an inline label inside the React Chip Input component container.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-max-chips">
+        <td className="text-primary fw-semibold">maxChips<a href="#cchipinput-max-chips" aria-label="CChipInput maxChips permalink" className="anchor-link after">#</a></td>
+        <td><code>{`null`}</code></td>
+        <td><code>{`number`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets the maximum number of chips that can be created in the React Chip Input component.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-name">
+        <td className="text-primary fw-semibold">name<a href="#cchipinput-name" aria-label="CChipInput name permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets the name of the hidden input used by the React Chip Input component for form submission.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-on-add">
+        <td className="text-primary fw-semibold">onAdd<a href="#cchipinput-on-add" aria-label="CChipInput onAdd permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`(value: string) => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Callback fired when the React Chip Input component adds a new chip.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-on-change">
+        <td className="text-primary fw-semibold">onChange<a href="#cchipinput-on-change" aria-label="CChipInput onChange permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`(values: string[]) => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Callback fired when the value list of the React Chip Input component changes.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-on-input">
+        <td className="text-primary fw-semibold">onInput<a href="#cchipinput-on-input" aria-label="CChipInput onInput permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`(value: string) => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Callback fired when the internal text input value changes in the React Chip Input component.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-on-remove">
+        <td className="text-primary fw-semibold">onRemove<a href="#cchipinput-on-remove" aria-label="CChipInput onRemove permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`(value: string) => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Callback fired when the React Chip Input component removes a chip.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-on-select">
+        <td className="text-primary fw-semibold">onSelect<a href="#cchipinput-on-select" aria-label="CChipInput onSelect permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`(selected: string[]) => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Callback fired when the selected chip values change in the React Chip Input component.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-placeholder">
+        <td className="text-primary fw-semibold">placeholder<a href="#cchipinput-placeholder" aria-label="CChipInput placeholder permalink" className="anchor-link after">#</a></td>
+        <td>``</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets placeholder text for the internal input of the React Chip Input component.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-read-only">
+        <td className="text-primary fw-semibold">readOnly<a href="#cchipinput-read-only" aria-label="CChipInput readOnly permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Makes the React Chip Input component readonly while keeping values visible.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-removable">
+        <td className="text-primary fw-semibold">removable<a href="#cchipinput-removable" aria-label="CChipInput removable permalink" className="anchor-link after">#</a></td>
+        <td><code>{`true`}</code></td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Displays remove buttons on chips managed by the React Chip Input component.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-selectable">
+        <td className="text-primary fw-semibold">selectable<a href="#cchipinput-selectable" aria-label="CChipInput selectable permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Enables chip selection behavior in the React Chip Input component.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-separator">
+        <td className="text-primary fw-semibold">separator<a href="#cchipinput-separator" aria-label="CChipInput separator permalink" className="anchor-link after">#</a></td>
+        <td><code>{`,`}</code></td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets the separator character used to create chips while typing or pasting in the React Chip Input component.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-size">
+        <td className="text-primary fw-semibold">size<a href="#cchipinput-size" aria-label="CChipInput size permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`'sm'`}</code>, <code>{`'lg'`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets the size of the React Chip Input component to small or large.</p>
+        </td>
+      </tr>
+      <tr id="cchipinput-value">
+        <td className="text-primary fw-semibold">value<a href="#cchipinput-value" aria-label="CChipInput value permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string[]`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Controls the values rendered by the React Chip Input component.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

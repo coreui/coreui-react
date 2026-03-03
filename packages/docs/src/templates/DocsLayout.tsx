@@ -93,6 +93,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
     description = '',
     name = '',
     other_frameworks: otherFrameworksStr = '',
+    pre_release: preRelease = false,
     pro_component: proComponent = false,
     bootstrap_component: bootstrapComponent = false,
   } = frontmatter
@@ -132,7 +133,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
             ref={docsNavRef}
           />
         )}
-        {path === '/404/' ? (
+        {(path === '/404/' || path.includes('pricing')) ? (
           <CContainer lg className="px-4">
             {children}
           </CContainer>
@@ -152,8 +153,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
                     {title}
                   </h1>
                 )}
-                <Banner bootstrap={bootstrapComponent} />
-                <Banner pro={proComponent} />
+                <Banner bootstrap={bootstrapComponent} preRelease={preRelease} pro={proComponent} />
                 <p className="docs-lead">{getDescription(location, description)}</p>
                 <Ads code="CEAICKJY" location={location.pathname} placement="coreuiio" />
                 {frameworks.length > 0 && (

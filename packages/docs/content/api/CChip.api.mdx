@@ -1,0 +1,190 @@
+
+```jsx
+import { CChip } from '@coreui/react'
+// or
+import CChip from '@coreui/react/src/components/chip/CChip'
+```
+
+<div className="table-responsive table-api border rounded mb-3">
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Default</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="cchip-active">
+        <td className="text-primary fw-semibold">active<a href="#cchip-active" aria-label="CChip active permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Toggles the active state of the React Chip component for non-selectable usage.</p>
+        </td>
+      </tr>
+      <tr id="cchip-aria-remove-label">
+        <td className="text-primary fw-semibold">ariaRemoveLabel<a href="#cchip-aria-remove-label" aria-label="CChip ariaRemoveLabel permalink" className="anchor-link after">#</a></td>
+        <td><code>{`Remove`}</code></td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Provides an accessible label for the remove button in the React Chip component.</p>
+        </td>
+      </tr>
+      <tr id="cchip-as">
+        <td className="text-primary fw-semibold">as<a href="#cchip-as" aria-label="CChip as permalink" className="anchor-link after">#</a></td>
+        <td><code>{`span`}</code></td>
+        <td><code>{`(ElementType & 'symbol')`}</code>, <code>{`(ElementType & 'object')`}</code>, <code>{`(ElementType & 'span')`}</code>, <code>{`(ElementType & 'slot')`}</code>, <code>{`(ElementType & 'style')`}</code>, <code>{`... 174 more ...`}</code>, <code>{`(ElementType & FunctionComponent<...>)`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Specifies the root element or custom component used by the React Chip component.</p>
+        </td>
+      </tr>
+      <tr id="cchip-class-name">
+        <td className="text-primary fw-semibold">className<a href="#cchip-class-name" aria-label="CChip className permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Adds custom classes to the React Chip root element.</p>
+        </td>
+      </tr>
+      <tr id="cchip-clickable">
+        <td className="text-primary fw-semibold">clickable<a href="#cchip-clickable" aria-label="CChip clickable permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Enables interactive hover styling and pointer cursor for the React Chip component.</p>
+        </td>
+      </tr>
+      <tr id="cchip-color">
+        <td className="text-primary fw-semibold">color<a href="#cchip-color" aria-label="CChip color permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`'primary'`}</code>, <code>{`'secondary'`}</code>, <code>{`'success'`}</code>, <code>{`'danger'`}</code>, <code>{`'warning'`}</code>, <code>{`'info'`}</code>, <code>{`'dark'`}</code>, <code>{`'light'`}</code>, <code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets the contextual color of the React Chip component using CoreUI theme colors.</p>
+        </td>
+      </tr>
+      <tr id="cchip-disabled">
+        <td className="text-primary fw-semibold">disabled<a href="#cchip-disabled" aria-label="CChip disabled permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Disables the React Chip component and removes interactive behavior.</p>
+        </td>
+      </tr>
+      <tr id="cchip-on-deselect">
+        <td className="text-primary fw-semibold">onDeselect<a href="#cchip-on-deselect" aria-label="CChip onDeselect permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`(event: MouseEvent<HTMLElement, MouseEvent> | KeyboardEvent<HTMLElement>) => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Callback fired when the React Chip component becomes deselected.</p>
+        </td>
+      </tr>
+      <tr id="cchip-on-remove">
+        <td className="text-primary fw-semibold">onRemove<a href="#cchip-on-remove" aria-label="CChip onRemove permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`(event: KeyboardEvent<HTMLElement> | MouseEvent<HTMLButtonElement, MouseEvent>) => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Callback fired when the React Chip component requests removal by button click or keyboard action.</p>
+        </td>
+      </tr>
+      <tr id="cchip-on-select">
+        <td className="text-primary fw-semibold">onSelect<a href="#cchip-on-select" aria-label="CChip onSelect permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`(event: MouseEvent<HTMLElement, MouseEvent> | KeyboardEvent<HTMLElement>) => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Callback fired when the React Chip component becomes selected.</p>
+        </td>
+      </tr>
+      <tr id="cchip-on-selected-change">
+        <td className="text-primary fw-semibold">onSelectedChange<a href="#cchip-on-selected-change" aria-label="CChip onSelectedChange permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`(selected: boolean, event: MouseEvent<HTMLElement, MouseEvent> | KeyboardEvent<HTMLElement>) => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Callback fired when the selected state of the React Chip component changes.</p>
+        </td>
+      </tr>
+      <tr id="cchip-removable">
+        <td className="text-primary fw-semibold">removable<a href="#cchip-removable" aria-label="CChip removable permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Displays a remove button inside the React Chip component.</p>
+        </td>
+      </tr>
+      <tr id="cchip-remove-icon">
+        <td className="text-primary fw-semibold">removeIcon<a href="#cchip-remove-icon" aria-label="CChip removeIcon permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Replaces the default remove icon with a custom icon node in the React Chip component.</p>
+        </td>
+      </tr>
+      <tr id="cchip-selectable">
+        <td className="text-primary fw-semibold">selectable<a href="#cchip-selectable" aria-label="CChip selectable permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Enables selectable behavior and keyboard toggle support for the React Chip component.</p>
+        </td>
+      </tr>
+      <tr id="cchip-selected">
+        <td className="text-primary fw-semibold">selected<a href="#cchip-selected" aria-label="CChip selected permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Controls the selected state of a selectable React Chip component.</p>
+        </td>
+      </tr>
+      <tr id="cchip-size">
+        <td className="text-primary fw-semibold">size<a href="#cchip-size" aria-label="CChip size permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`'sm'`}</code>, <code>{`'lg'`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets the size of the React Chip component to small or large.</p>
+        </td>
+      </tr>
+      <tr id="cchip-variant">
+        <td className="text-primary fw-semibold">variant<a href="#cchip-variant" aria-label="CChip variant permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`'outline'`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets the visual variant of the React Chip component to outline style.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

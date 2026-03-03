@@ -113,6 +113,10 @@ const nav = [
         to: '/forms/checkbox/',
       },
       {
+        name: 'Chip Input',
+        to: '/forms/chip-input/',
+      },
+      {
         name: 'Input',
         to: '/forms/input/',
       },
@@ -216,6 +220,10 @@ const nav = [
       {
         name: 'Chart',
         to: '/components/chart/',
+      },
+      {
+        name: 'Chip',
+        to: '/components/chip/',
       },
       {
         name: 'Close Button',
