@@ -28,6 +28,7 @@
     "@coreui/coreui": "^5.6.0",
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-react": "^2.3.0",
+    "@coreui/internal-links": "^5.0.0",
     "@coreui/react-chartjs": "^3.0.0",
     "@coreui/utils": "^2.0.2",
     "@docsearch/css": "^4.6.0",

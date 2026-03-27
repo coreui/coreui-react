@@ -1,9 +1,16 @@
 import React, { FC, ReactNode, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'gatsby'
 import { CContainer } from '@coreui/react'
-import { Ads, Banner, ComponentSubNav, Footer, Header, Sidebar, Toc } from '../components'
-// @ts-expect-error json file
-import jsonData from './../data/other_frameworks.json'
+import {
+  Ads,
+  Banner,
+  ComponentSubNav,
+  Footer,
+  Header,
+  OtherFrameworks,
+  Sidebar,
+  Toc,
+} from '../components'
 
 import { Item } from '../components/ComponentSubNav'
 import type { TocItem } from '../components/Toc'
@@ -46,19 +53,6 @@ interface Frontmatter {
   route?: string
 }
 
-interface OtherFrameworks {
-  [key: string]: {
-    [key: string]: string
-  }
-}
-
-const humanize = (text: string): string => {
-  return text
-    .split('-')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
-}
-
 const getDescription = (location: Location, description: string) => {
   if (location.pathname.includes('api') || location.pathname.includes('styling')) {
     const regex = /React\s+(.*?)\s+component/
@@ -99,9 +93,8 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
   } = frontmatter
   const frameworks = useMemo(
     () => otherFrameworksStr.split(', ').filter(Boolean),
-    [otherFrameworksStr]
+    [otherFrameworksStr],
   )
-  const otherFrameworks: OtherFrameworks = useMemo(() => ({ ...jsonData }), [])
   const hasNav = useMemo(() => data?.allMdx?.edges.length > 1, [data])
 
   const handleScroll = () => {
@@ -156,31 +149,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
                 <Banner bootstrap={bootstrapComponent} preRelease={preRelease} pro={proComponent} />
                 <p className="docs-lead">{getDescription(location, description)}</p>
                 <Ads code="CEAICKJY" location={location.pathname} placement="coreuiio" />
-                {frameworks.length > 0 && (
-                  <>
-                    <h2>Other Frameworks</h2>
-                    <p>
-                      CoreUI components are available as native Angular, Bootstrap (Vanilla JS), and
-                      Vue components. To learn more please visit the following pages.
-                    </p>
-                    <ul>
-                      {frameworks.map((item) => (
-                        <React.Fragment key={item}>
-                          {Object.entries(otherFrameworks[item] || {})
-                            .filter(([key]) => key !== 'react')
-                            .map(([framework, url]) => (
-                              <li key={framework}>
-                                <a href={url}>
-                                  {framework.charAt(0).toUpperCase() + framework.slice(1)}{' '}
-                                  {humanize(item)}
-                                </a>
-                              </li>
-                            ))}
-                        </React.Fragment>
-                      ))}
-                    </ul>
-                  </>
-                )}
+                <OtherFrameworks frameworks={frameworks} title={title} />
               </div>
               {data?.mdx && (
                 <Toc

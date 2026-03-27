@@ -9,6 +9,7 @@ import ExampleSnippet from './ExampleSnippet'
 import Footer from './Footer'
 import Header from './Header'
 import JSXDocs from './JSXDocs'
+import OtherFrameworks from './OtherFrameworks'
 import ScssDocs from './ScssDocs'
 import Seo from './Seo'
 import Sidebar from './Sidebar'
@@ -27,6 +28,7 @@ export {
   Footer,
   Header,
   JSXDocs,
+  OtherFrameworks,
   ScssDocs,
   Seo,
   Sidebar,
