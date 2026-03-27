@@ -20,8 +20,6 @@
   ·
   <a href="https://github.com/coreui/coreui-react/issues/new?template=feature_request.md">Request feature</a>
   ·
-  <a href="https://coreui.requestshub.com/p/coreui-for-reactjs/roadmap">Roadmap</a>
-  ·
   <a href="https://coreui.io/blog/">Blog</a>
 </p>
 
@@ -162,7 +160,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/coreui/coreui-react/blob/v4/.github/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/coreui/coreui-react/issues/new).
+Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/coreui/coreui-react/blob/main/.github/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/coreui/coreui-react/issues/new).
 
 ## Documentation
 
@@ -196,9 +194,9 @@ Fully featured, out-of-the-box, templates for your application based on CoreUI.
 
 ## Contributing
 
-Please read through our [contributing guidelines](https://github.com/coreui/coreui-react/blob/.github/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
+Please read through our [contributing guidelines](https://github.com/coreui/coreui-react/blob/main/.github/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
 
-Editor preferences are available in the [editor config](https://github.com/coreui/coreui-react/blob/.editorconfig) for easy use in common text editors. Read more and download plugins at <https://editorconfig.org/>.
+Editor preferences are available in the [editor config](https://github.com/coreui/coreui-react/blob/main/.editorconfig) for easy use in common text editors. Read more and download plugins at <https://editorconfig.org/>.
 
 ## Community
 
