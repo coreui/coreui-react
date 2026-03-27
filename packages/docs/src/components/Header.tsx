@@ -64,14 +64,6 @@ const Header = forwardRef<HTMLDivElement>(({}, ref) => {
               <CNavItem href="https://coreui.io/pricing/?framework=react&src=react-docs&cta=coreui-header-pricing">
                 Pricing
               </CNavItem>
-              <CNavItem
-                href="https://coreui.requestshub.com/p/coreui-for-reactjs/roadmap"
-                target="blank"
-                rel="noopener noreferrer"
-              >
-                Roadmap
-                <CIcon icon={cilExternalLink} className="ms-2" size="sm" />
-              </CNavItem>
             </CHeaderNav>
             <div className="docs-search ms-auto">
               <DocSearch
