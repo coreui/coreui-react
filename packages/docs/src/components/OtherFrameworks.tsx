@@ -56,9 +56,7 @@ const OtherFrameworks: FC<OtherFrameworksProps> = ({ frameworks, title }) => {
     <section aria-labelledby="other-frameworks-heading">
       <h2 id="other-frameworks-heading">Available in Other JavaScript Frameworks</h2>
       <p>
-        CoreUI {title} {availableFrameworks.length === 1 ? 'component is' : 'components are'}{' '}
-        available as {formatFrameworkList()}{' '}
-        {availableFrameworks.length === 1 ? 'component' : 'components'}. Explore framework-specific
+        CoreUI {title} is also available for {formatFrameworkList()}. Explore framework-specific
         implementations below:
       </p>
       <nav aria-label="Framework-specific component links">
