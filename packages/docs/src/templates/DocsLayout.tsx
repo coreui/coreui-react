@@ -93,7 +93,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
   } = frontmatter
   const frameworks = useMemo(
     () => otherFrameworksStr.split(', ').filter(Boolean),
-    [otherFrameworksStr],
+    [otherFrameworksStr]
   )
   const hasNav = useMemo(() => data?.allMdx?.edges.length > 1, [data])
 
@@ -126,7 +126,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
             ref={docsNavRef}
           />
         )}
-        {(path === '/404/' || path.includes('pricing')) ? (
+        {path === '/404/' ? (
           <CContainer lg className="px-4">
             {children}
           </CContainer>
@@ -148,7 +148,9 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, data, location, pageContext
                 )}
                 <Banner bootstrap={bootstrapComponent} preRelease={preRelease} pro={proComponent} />
                 <p className="docs-lead">{getDescription(location, description)}</p>
-                <Ads code="CEAICKJY" location={location.pathname} placement="coreuiio" />
+                {!proComponent && (
+                  <Ads code="CEAICKJY" location={location.pathname} placement="coreuiio" />
+                )}
                 <OtherFrameworks frameworks={frameworks} title={title} />
               </div>
               {data?.mdx && (
