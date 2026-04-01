@@ -66,6 +66,9 @@ test('CTooltip onShow and onHide', async () => {
 
   act(() => {
     fireEvent.click(btn)
+  })
+
+  act(() => {
     jest.runAllTimers()
   })
 
@@ -74,6 +77,9 @@ test('CTooltip onShow and onHide', async () => {
 
   act(() => {
     fireEvent.click(btn)
+  })
+
+  act(() => {
     jest.runAllTimers()
   })
 

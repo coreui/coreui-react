@@ -57,15 +57,15 @@ test('CPopover customize', async () => {
 test('CPopover onShow and onHide', async () => {
   jest.useFakeTimers()
 
+  const onShow = jest.fn()
+  const onHide = jest.fn()
+
   render(
-    <CPopover content="content" title="title" trigger="click" placement="right" visible={true}>
+    <CPopover content="content" title="title" trigger="click" placement="right" onShow={onShow} onHide={onHide}>
       <CButton color="primary">Test</CButton>
     </CPopover>,
     { container: container! }
   )
-
-  const onShow = jest.fn()
-  const onHide = jest.fn()
 
   const btn = screen.getByRole('button', { name: /test/i })
 
@@ -74,6 +74,9 @@ test('CPopover onShow and onHide', async () => {
 
   act(() => {
     fireEvent.click(btn)
+  })
+
+  act(() => {
     jest.runAllTimers()
   })
 
@@ -82,6 +85,9 @@ test('CPopover onShow and onHide', async () => {
 
   act(() => {
     fireEvent.click(btn)
+  })
+
+  act(() => {
     jest.runAllTimers()
   })
 

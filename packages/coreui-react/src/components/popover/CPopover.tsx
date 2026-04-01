@@ -197,13 +197,24 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
       ...(typeof popperConfig === 'function' ? popperConfig(defaultPopperConfig) : popperConfig),
     }
 
-    useEffect(() => {
-      if (visible) {
-        handleShow()
-        return
-      }
+    const handleShow = () => {
+      setMounted(true)
+      onShow?.()
+    }
 
-      handleHide()
+    const handleHide = () => {
+      setTimeout(() => {
+        setVisible(false)
+        onHide?.()
+      }, _delay.hide)
+    }
+
+    useEffect(() => {
+      if (visible === true) {
+        handleShow()
+      } else if (visible === false) {
+        handleHide()
+      }
     }, [visible])
 
     useEffect(() => {
@@ -228,22 +239,6 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
         }, popoverRef.current)
       }
     }, [_visible])
-
-    const handleShow = () => {
-      setMounted(true)
-      if (onShow) {
-        onShow()
-      }
-    }
-
-    const handleHide = () => {
-      setTimeout(() => {
-        setVisible(false)
-        if (onHide) {
-          onHide()
-        }
-      }, _delay.hide)
-    }
 
     return (
       <>
