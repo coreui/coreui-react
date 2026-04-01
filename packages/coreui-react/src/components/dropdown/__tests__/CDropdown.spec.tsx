@@ -89,7 +89,7 @@ test('CDropdown opens on toggle click and closes on clicking outside', async () 
 
   // Click outside the dropdown to close it
   const externalArea = screen.getByTestId('external-area')
-  fireEvent.mouseUp(externalArea)
+  fireEvent.click(externalArea)
 
   // Wait for the dropdown menu to be hidden
   await waitFor(() => {

@@ -13,7 +13,7 @@ exports[`CDropdown customize 1`] = `
 exports[`CDropdown example 1`] = `
 <div>
   <div
-    class="btn-group"
+    class="dropdown"
   >
     <button
       aria-expanded="false"
@@ -68,7 +68,7 @@ exports[`CDropdown example 1`] = `
 exports[`loads and displays CDropdown component 1`] = `
 <div>
   <div
-    class="btn-group"
+    class="dropdown"
   >
     Test
   </div>

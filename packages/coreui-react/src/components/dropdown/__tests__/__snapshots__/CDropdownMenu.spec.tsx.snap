@@ -3,7 +3,7 @@
 exports[`CDropdownMenu customize 1`] = `
 <div>
   <div
-    class="btn-group"
+    class="dropdown"
   >
     <div
       class="dropdown-menu show bazinga"
