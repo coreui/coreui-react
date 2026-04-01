@@ -226,7 +226,7 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
       popperConfig,
       portal = false,
       reference = 'toggle',
-      variant = 'btn-group',
+      variant = 'dropdown',
       visible = false,
       ...rest
     },

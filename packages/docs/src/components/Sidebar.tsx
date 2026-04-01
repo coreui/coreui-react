@@ -52,7 +52,7 @@ const Sidebar: FC = () => {
           </CSidebarBrand>
           <div className="text-body-secondary mx-3 mb-2 small fw-semibold">Framework:</div>
           <CDropdown className="mx-3 mb-4">
-            <CDropdownToggle color="primary" variant="outline">
+            <CDropdownToggle className="w-100" color="primary" variant="outline">
               React.js
             </CDropdownToggle>
             <CDropdownMenu className="w-100">
