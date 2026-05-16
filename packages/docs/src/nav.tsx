@@ -115,6 +115,10 @@ const nav = [
       {
         name: 'Chip Input',
         to: '/forms/chip-input/',
+        badge: {
+          color: 'success',
+          text: 'New',
+        },
       },
       {
         name: 'Input',
@@ -224,6 +228,10 @@ const nav = [
       {
         name: 'Chip',
         to: '/components/chip/',
+        badge: {
+          color: 'success',
+          text: 'New',
+        },
       },
       {
         name: 'Close Button',
@@ -294,8 +302,20 @@ const nav = [
         to: '/components/progress/',
       },
       {
+        name: 'Search Button',
+        to: '/components/search-button/',
+        badge: {
+          color: 'success',
+          text: 'New',
+        },
+      },
+      {
         name: 'Sidebar',
         to: '/components/sidebar/',
+        badge: {
+          color: 'success',
+          text: 'New',
+        },
       },
       {
         name: 'Spinner',

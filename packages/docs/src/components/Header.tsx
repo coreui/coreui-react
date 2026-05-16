@@ -33,6 +33,10 @@ import { Link } from 'gatsby'
 
 const Header = forwardRef<HTMLDivElement>(({}, ref) => {
   const { colorMode, setColorMode } = useColorModes('coreui-react-docs-theme')
+  const isSearchButtonDocsPage =
+    typeof window !== 'undefined' &&
+    window.location.pathname.includes('/components/search-button/')
+
   return (
     <>
       <AppContext.Consumer>
@@ -70,6 +74,9 @@ const Header = forwardRef<HTMLDivElement>(({}, ref) => {
                 appId="JIOZIZPLMM"
                 indexName="coreui-react"
                 apiKey="6e3f7692d2589d042bb40426b75df1b7"
+                keyboardShortcuts={{
+                  '/': !isSearchButtonDocsPage,
+                }}
               />
             </div>
             <CHeaderNav className="ms-2" role={undefined}>

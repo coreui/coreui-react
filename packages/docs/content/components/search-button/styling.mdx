@@ -1,0 +1,34 @@
+---
+title: React Search Button Component Styling
+name: Search Button Styling
+description: Learn how to customize the React Search Button component with CSS variables and SASS for flexible styling and seamless integration into your design.
+route: /components/search-button/
+---
+
+### CSS variables
+
+React Search Button uses local CSS variables on `.search-button` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+<ScssDocs file="_search-button.scss" capture="search-button-css-vars" />
+
+#### How to use CSS variables
+
+```jsx
+const customVars = {
+  '--cui-search-button-bg': 'var(--cui-tertiary-bg)',
+  '--cui-search-button-color': 'var(--cui-body-color)',
+  '--cui-search-button-border-color': 'var(--cui-primary)',
+}
+
+return (
+  <CSearchButton
+    placeholder="Search docs"
+    onTrigger={() => {}}
+    style={customVars}
+  />
+)
+```
+
+### SASS variables
+
+<ScssDocs file="_search-button.scss" capture="search-button-variables" />
