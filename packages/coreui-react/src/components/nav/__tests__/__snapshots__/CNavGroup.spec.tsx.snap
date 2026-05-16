@@ -3,7 +3,7 @@
 exports[`CNavGroup customize 1`] = `
 <div>
   <li
-    class="nav-group bazinga"
+    class="nav-group show bazinga"
   >
     <a
       class="nav-link nav-group-toggle"

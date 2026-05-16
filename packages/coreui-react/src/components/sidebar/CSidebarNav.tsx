@@ -28,6 +28,18 @@ export interface CSidebarNavProps extends HTMLAttributes<HTMLUListElement> {
    * A string of all className you want applied to the component.
    */
   className?: string
+  /**
+   * Make navigation more compact by cutting link padding in half.
+   *
+   * @since 5.11.0
+   */
+  compact?: boolean
+  /**
+   * Sets the navigation variant.
+   *
+   * @since 5.11.0
+   */
+  variant?: 'tree'
 }
 
 const isNavElement = (
@@ -69,7 +81,7 @@ const recursiveClone = (children: ReactNode, id?: string, updateId?: boolean): R
 export const CSidebarNav: PolymorphicRefForwardingComponent<'ul', CSidebarNavProps> = forwardRef<
   HTMLUListElement,
   CSidebarNavProps
->(({ children, as: Component = 'ul', className, ...rest }, ref) => {
+>(({ children, as: Component = 'ul', className, compact, variant, ...rest }, ref) => {
   const [visibleGroup, setVisibleGroup] = useState('')
   const CNavContextValues = {
     visibleGroup,
@@ -78,7 +90,18 @@ export const CSidebarNav: PolymorphicRefForwardingComponent<'ul', CSidebarNavPro
 
   return (
     <CSidebarNavContext.Provider value={CNavContextValues}>
-      <Component className={classNames('sidebar-nav', className)} ref={ref} {...rest}>
+      <Component
+        className={classNames(
+          'sidebar-nav',
+          {
+            compact,
+            'sidebar-nav-tree': variant === 'tree',
+          },
+          className
+        )}
+        ref={ref}
+        {...rest}
+      >
         {recursiveClone(children)}
       </Component>
     </CSidebarNavContext.Provider>
@@ -89,6 +112,8 @@ CSidebarNav.propTypes = {
   as: PropTypes.elementType,
   children: PropTypes.node,
   className: PropTypes.string,
+  compact: PropTypes.bool,
+  variant: PropTypes.oneOf(['tree']),
 }
 
 CSidebarNav.displayName = 'CSidebarNav'

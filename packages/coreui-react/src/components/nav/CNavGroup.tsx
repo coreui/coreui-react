@@ -17,7 +17,6 @@ import type { TransitionStatus } from 'react-transition-group'
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 
 import { CSidebarNavContext } from '../sidebar/CSidebarNavContext'
-
 export interface CNavGroupProps extends HTMLAttributes<HTMLDivElement | HTMLLIElement> {
   /**
    * Component used for the root node. Either a string to use a HTML element or a component.
@@ -36,7 +35,7 @@ export interface CNavGroupProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
   /**
    * Set group toggler label.
    */
-  toggler?: string | ReactNode
+  toggler?: string | ReactNode | (({ visible }: { visible: boolean }) => ReactNode)
   /**
    * Show nav group items.
    */
@@ -69,8 +68,12 @@ export const CNavGroup: PolymorphicRefForwardingComponent<'li', CNavGroupProps> 
   )
 
   useEffect(() => {
-    setVisible(Boolean(idx && visibleGroup && isInVisibleGroup(visibleGroup, idx)))
-  }, [visibleGroup])
+    visible !== undefined && setVisible(visible)
+  }, [visible])
+
+  useEffect(() => {
+    visibleGroup && setVisible(Boolean(idx && visibleGroup && isInVisibleGroup(visibleGroup, idx)))
+  }, [idx, visibleGroup])
 
   const handleTogglerOnCLick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
@@ -116,6 +119,7 @@ export const CNavGroup: PolymorphicRefForwardingComponent<'li', CNavGroupProps> 
   }
 
   const NavGroupItemsComponent = Component === 'li' ? 'ul' : 'div'
+  const togglerContent = typeof toggler === 'function' ? toggler({ visible: _visible }) : toggler
 
   return (
     <Component
@@ -129,10 +133,11 @@ export const CNavGroup: PolymorphicRefForwardingComponent<'li', CNavGroupProps> 
           href="#"
           onClick={(event) => handleTogglerOnCLick(event)}
         >
-          {toggler}
+          {togglerContent}
         </a>
       )}
       <Transition
+        appear
         in={_visible}
         nodeRef={navItemsRef}
         onEntering={onEntering}
@@ -167,7 +172,7 @@ CNavGroup.propTypes = {
   className: PropTypes.string,
   compact: PropTypes.bool,
   idx: PropTypes.string,
-  toggler: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  toggler: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.func]),
   visible: PropTypes.bool,
 }
 

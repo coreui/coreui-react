@@ -22,6 +22,7 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
   componentName = 'Example Component',
   pro = false,
   stackBlitz = true,
+  ...rest
 }) => {
   const [clipboardCode, setClipboardCode] = useState<string>()
   const [highlightCode, setHighlightCode] = useState<string>()
@@ -80,7 +81,7 @@ const ExampleSnippet: FC<ExampleSnippetProps> = ({
 
   return (
     <div className="docs-example-snippet">
-      <div className={`docs-example ${className}`}>
+      <div className={`docs-example ${className}`} {...rest}>
         {Preview ? (
           <Suspense fallback={<div>Loading preview...</div>}>
             <Preview />
