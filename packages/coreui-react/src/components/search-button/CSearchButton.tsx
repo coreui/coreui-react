@@ -14,7 +14,6 @@ import classNames from 'classnames'
 
 import { useForkedRef } from '../../hooks'
 import {
-  DEFAULT_SHORTCUT,
   formatShortcutTokens,
   getPreferredShortcut,
   getPressedKeys,
