@@ -19,9 +19,20 @@ The chip set forwards `selectable`, `filter`, `removable`, `disabled`, `removeIc
 
 ## Basic chip set
 
-Wrap your chips in `CChipSet`.
+Pass a `chips` array to render the chips from data. Each item is a string or an object with a `value`, an optional `label`, and any `CChip` props (so per-chip overrides work).
 
 <ExampleSnippet component="ChipSetExample" componentName="React Chip Set" />
+
+You can also compose `CChip` children instead of passing `chips`:
+
+```jsx
+<CChipSet>
+  <CChip value="apple">Apple</CChip>
+  <CChip value="banana">Banana</CChip>
+  <CChip value="cherry">Cherry</CChip>
+  <CChip value="date">Date</CChip>
+</CChipSet>
+```
 
 ## Selectable chips
 
@@ -45,15 +56,9 @@ Customize the check with the `selectedIcon` prop, the same way you customize the
 
 ## Removable chips
 
-Set `removable` to add a remove button to every chip. The chips are controlled by their rendered children, so drop the chip from your data in the `onRemove` callback. When a chip is removed, focus moves to a neighboring chip.
+Set `removable` to add a remove button to every chip. The chips are controlled by your data, so drop the chip in the `onRemove` callback. When a chip is removed, focus moves to a neighboring chip.
 
 <ExampleSnippet component="ChipSetRemovableExample" componentName="React Chip Set" />
-
-## Rendering from data
-
-Instead of composing `CChip` children, pass a `chips` array. Each item is a string or an object with a `value`, an optional `label`, and any `CChip` props (so per-chip overrides still work). Children are used when `chips` is omitted.
-
-<ExampleSnippet component="ChipSetDataExample" componentName="React Chip Set" />
 
 ## Keyboard behavior
 

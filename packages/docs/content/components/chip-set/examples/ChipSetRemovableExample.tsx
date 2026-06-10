@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CChip, CChipSet } from '@coreui/react'
+import { CChipSet } from '@coreui/react'
 
 export const ChipSetRemovableExample = () => {
   const [chips, setChips] = useState([
@@ -11,13 +11,8 @@ export const ChipSetRemovableExample = () => {
   return (
     <CChipSet
       removable
+      chips={chips}
       onRemove={(value) => setChips((prev) => prev.filter((chip) => chip.value !== value))}
-    >
-      {chips.map((chip) => (
-        <CChip key={chip.value} value={chip.value} disabled={chip.disabled}>
-          {chip.label}
-        </CChip>
-      ))}
-    </CChipSet>
+    />
   )
 }
