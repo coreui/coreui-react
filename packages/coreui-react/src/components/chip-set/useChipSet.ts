@@ -11,6 +11,7 @@ import React, {
 import type { CChipProps } from '../chip/CChip'
 import { SELECTOR_CHIP_FOCUSABLE } from '../chip/const'
 import { resolveChipValue } from './utils'
+import { isRTL } from '../../utils'
 
 export interface UseChipSetOptions {
   ariaRemoveLabel?: string
@@ -131,17 +132,19 @@ export const useChipSet = (options: UseChipSetOptions) => {
 
     const chips = getFocusableChips()
     const index = chips.indexOf(chip)
+    // In RTL the visual direction is mirrored, so left/right swap.
+    const rtl = isRTL(rootRef.current)
 
     switch (event.key) {
       case 'ArrowLeft': {
         event.preventDefault()
-        chips[index - 1]?.focus()
+        chips[rtl ? index + 1 : index - 1]?.focus()
         return true
       }
 
       case 'ArrowRight': {
         event.preventDefault()
-        chips[index + 1]?.focus()
+        chips[rtl ? index - 1 : index + 1]?.focus()
         return true
       }
 

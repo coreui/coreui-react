@@ -72,3 +72,19 @@ test('CChipInput ArrowRight on the last chip moves focus to the input', async ()
   fireEvent.keyDown(lastChip, { key: 'ArrowRight' })
   expect(input).toHaveFocus()
 })
+
+test('CChipInput ArrowLeft on the last chip moves focus to the input in RTL', async () => {
+  document.documentElement.dir = 'rtl'
+
+  const { container } = render(<CChipInput defaultValue={['React', 'Vue']} />)
+
+  const chips = container.querySelectorAll<HTMLElement>('.chip')
+  const lastChip = chips[chips.length - 1]
+  const input = container.querySelector('.chip-input-field') as HTMLInputElement
+  lastChip.focus()
+
+  fireEvent.keyDown(lastChip, { key: 'ArrowLeft' })
+  expect(input).toHaveFocus()
+
+  document.documentElement.dir = ''
+})

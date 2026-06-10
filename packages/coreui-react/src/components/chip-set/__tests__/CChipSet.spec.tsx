@@ -113,6 +113,30 @@ test('CChipSet moves focus between chips with the keyboard', async () => {
   expect(first).toHaveFocus()
 })
 
+test('CChipSet mirrors arrow keys in RTL', async () => {
+  document.documentElement.dir = 'rtl'
+
+  const { getByText } = render(
+    <CChipSet selectable>
+      <CChip value="first">First</CChip>
+      <CChip value="second">Second</CChip>
+    </CChipSet>,
+  )
+
+  const first = getByText('First')
+  const second = getByText('Second')
+
+  first.focus()
+  // In RTL, ArrowLeft moves to the next chip.
+  fireEvent.keyDown(first, { key: 'ArrowLeft' })
+  expect(second).toHaveFocus()
+
+  fireEvent.keyDown(second, { key: 'ArrowRight' })
+  expect(first).toHaveFocus()
+
+  document.documentElement.dir = ''
+})
+
 test('CChipSet fires onRemove so the parent can drop the chip', async () => {
   const onRemove = jest.fn()
 

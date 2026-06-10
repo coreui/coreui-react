@@ -15,6 +15,7 @@ import classNames from 'classnames'
 import { CChip } from '../chip/CChip'
 import { useChipSet } from '../chip-set/useChipSet'
 import { useForkedRef } from '../../hooks'
+import { isRTL } from '../../utils'
 
 type ChipClassName = string | ((value: string) => string)
 
@@ -254,8 +255,16 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
           break
         }
 
-        case 'ArrowLeft': {
-          if (event.currentTarget.selectionStart === 0 && event.currentTarget.selectionEnd === 0) {
+        case 'ArrowLeft':
+        case 'ArrowRight': {
+          // The arrow pointing toward the chips (left in LTR, right in RTL) jumps
+          // to the last chip when the caret is at the start of the input.
+          const towardChipsKey = isRTL(rootRef.current) ? 'ArrowRight' : 'ArrowLeft'
+          if (
+            event.key === towardChipsKey &&
+            event.currentTarget.selectionStart === 0 &&
+            event.currentTarget.selectionEnd === 0
+          ) {
             event.preventDefault()
             focusLastChip()
           }
@@ -355,8 +364,8 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
         return
       }
 
-      // ArrowRight past the last chip moves focus into the text field.
-      if (event.key === 'ArrowRight') {
+      // The arrow past the last chip moves focus into the text field (mirrored in RTL).
+      if (event.key === (isRTL(rootRef.current) ? 'ArrowLeft' : 'ArrowRight')) {
         const chips = getFocusableChips()
         const lastChip = chips[chips.length - 1]
         if (lastChip?.contains(event.target as Node)) {
