@@ -2,21 +2,11 @@ import React, { ElementType, HTMLAttributes, KeyboardEvent, ReactNode, forwardRe
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { CChip, type CChipProps } from '../chip/CChip'
-import { useChipSet } from './useChipSet'
+import { useChipSet, type CChipSetItem } from './useChipSet'
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { useForkedRef } from '../../hooks'
 
-export interface CChipSetItem extends Omit<CChipProps, 'value' | 'children'> {
-  /**
-   * The value that identifies the chip and tracks its selection.
-   */
-  value: string
-  /**
-   * The chip content. Falls back to `value` when omitted.
-   */
-  label?: ReactNode
-}
+export type { CChipSetItem }
 
 export interface CChipSetProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /**
@@ -38,7 +28,7 @@ export interface CChipSetProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onC
   /**
    * Sets the initial uncontrolled selection of the React Chip Set component.
    */
-  defaultValue?: string[]
+  defaultSelected?: string[]
   /**
    * Disables every chip rendered by the React Chip Set component.
    */
@@ -76,11 +66,11 @@ export interface CChipSetProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onC
    */
   selectionMode?: 'single' | 'multiple'
   /**
-   * Controls the selected chip values rendered by the React Chip Set component.
+   * Controls the selected chip values of the React Chip Set component.
    *
    * @controllable onChange
    */
-  value?: string[]
+  selected?: string[]
 }
 
 export const CChipSet: PolymorphicRefForwardingComponent<'div', CChipSetProps> = forwardRef<
@@ -94,7 +84,7 @@ export const CChipSet: PolymorphicRefForwardingComponent<'div', CChipSetProps> =
       children,
       chips,
       className,
-      defaultValue,
+      defaultSelected,
       disabled,
       filter,
       onChange,
@@ -103,48 +93,28 @@ export const CChipSet: PolymorphicRefForwardingComponent<'div', CChipSetProps> =
       removable,
       removeIcon,
       selectable,
+      selected,
       selectedIcon,
       selectionMode,
-      value,
       ...rest
     },
     ref
   ) => {
-    const { rootRef, handleKeyDown, renderChips } = useChipSet({
+    const { rootRef, handleKeyDown, renderChips, renderChipsFromData } = useChipSet({
       ariaRemoveLabel,
-      defaultValue,
+      defaultSelected,
       disabled,
       filter,
       removable,
       removeIcon,
       selectable,
+      selected,
       selectedIcon,
       selectionMode,
-      value,
       onRemoveChip: onRemove,
       onSelectionChange: onChange,
     })
     const forkedRef = useForkedRef(ref, rootRef)
-
-    // `chips` renders from data; otherwise the children/slot drives the set.
-    const content = chips
-      ? chips.map((chip) => {
-          if (typeof chip === 'string') {
-            return (
-              <CChip key={chip} value={chip}>
-                {chip}
-              </CChip>
-            )
-          }
-
-          const { label, value: chipValue, ...chipProps } = chip
-          return (
-            <CChip key={chipValue} value={chipValue} {...chipProps}>
-              {label ?? chipValue}
-            </CChip>
-          )
-        })
-      : children
 
     return (
       <Component
@@ -157,7 +127,7 @@ export const CChipSet: PolymorphicRefForwardingComponent<'div', CChipSetProps> =
         {...rest}
         ref={forkedRef}
       >
-        {renderChips(content)}
+        {chips ? renderChipsFromData(chips) : renderChips(children)}
       </Component>
     )
   }
@@ -169,7 +139,7 @@ CChipSet.propTypes = {
   children: PropTypes.node,
   chips: PropTypes.array,
   className: PropTypes.string,
-  defaultValue: PropTypes.array,
+  defaultSelected: PropTypes.array,
   disabled: PropTypes.bool,
   filter: PropTypes.bool,
   onChange: PropTypes.func,
@@ -177,9 +147,9 @@ CChipSet.propTypes = {
   removable: PropTypes.bool,
   removeIcon: PropTypes.node,
   selectable: PropTypes.bool,
+  selected: PropTypes.array,
   selectedIcon: PropTypes.node,
   selectionMode: PropTypes.oneOf(['single', 'multiple']),
-  value: PropTypes.array,
 }
 
 CChipSet.displayName = 'CChipSet'

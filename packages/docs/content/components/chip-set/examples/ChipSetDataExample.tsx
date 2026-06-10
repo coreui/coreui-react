@@ -8,5 +8,5 @@ export const ChipSetDataExample = () => {
     { value: 'angular', label: 'Angular' },
   ]
 
-  return <CChipSet selectable chips={chips} defaultValue={['vue']} />
+  return <CChipSet selectable chips={chips} defaultSelected={['vue']} />
 }

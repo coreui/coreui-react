@@ -62,9 +62,9 @@ test('CChipSet deselects siblings in single selection mode', async () => {
   expect(onChange).toHaveBeenLastCalledWith(['b'])
 })
 
-test('CChipSet honors a controlled value', async () => {
+test('CChipSet honors a controlled selected', async () => {
   const { getByText } = render(
-    <CChipSet selectable={true} value={['b']}>
+    <CChipSet selectable={true} selected={['b']}>
       <CChip value="a">A</CChip>
       <CChip value="b">B</CChip>
     </CChipSet>,
@@ -76,7 +76,7 @@ test('CChipSet honors a controlled value', async () => {
 
 test('CChipSet forwards filter so a selected chip shows a check icon', async () => {
   const { getByText, container } = render(
-    <CChipSet filter={true} value={['a']}>
+    <CChipSet filter={true} selected={['a']}>
       <CChip value="a">A</CChip>
     </CChipSet>,
   )

@@ -8,14 +8,35 @@ import React, {
   useState,
 } from 'react'
 
-import type { CChipProps } from '../chip/CChip'
+import { CChip, type CChipProps } from '../chip/CChip'
 import { SELECTOR_CHIP_FOCUSABLE } from '../chip/const'
 import { resolveChipValue } from './utils'
 import { isRTL } from '../../utils'
 
+export interface CChipSetItem extends Omit<CChipProps, 'value' | 'children'> {
+  /**
+   * The value that identifies the chip and tracks its selection.
+   */
+  value: string
+  /**
+   * The chip content. Falls back to `value` when omitted.
+   */
+  label?: ReactNode
+}
+
+// Build a CChip element from a data item (string or descriptor).
+const buildChip = (item: string | CChipSetItem) => {
+  if (typeof item === 'string') {
+    return React.createElement(CChip, { key: item, value: item }, item)
+  }
+
+  const { label, value, ...chipProps } = item
+  return React.createElement(CChip, { key: value, value, ...chipProps }, label ?? value)
+}
+
 export interface UseChipSetOptions {
   ariaRemoveLabel?: string
-  defaultValue?: string[]
+  defaultSelected?: string[]
   disabled?: boolean
   filter?: boolean
   removable?: boolean
@@ -27,9 +48,9 @@ export interface UseChipSetOptions {
    */
   restoreFocusOnRemove?: boolean
   selectable?: boolean
+  selected?: string[]
   selectedIcon?: ReactNode
   selectionMode?: 'single' | 'multiple'
-  value?: string[]
   onRemoveChip?: (value: string) => void
   onSelectionChange?: (selected: string[]) => void
 }
@@ -44,27 +65,27 @@ export interface UseChipSetOptions {
 export const useChipSet = (options: UseChipSetOptions) => {
   const {
     ariaRemoveLabel,
-    defaultValue = [],
+    defaultSelected = [],
     disabled,
     filter,
     removable,
     removeIcon,
     restoreFocusOnRemove = true,
     selectable,
+    selected,
     selectedIcon,
     selectionMode = 'multiple',
-    value,
     onRemoveChip,
     onSelectionChange,
   } = options
 
   const rootRef = useRef<HTMLDivElement>(null)
   const pendingFocusValue = useRef<string | null>(null)
-  const isControlled = value !== undefined
-  const [_selected, setSelected] = useState<string[]>(defaultValue)
-  // In controlled mode the value prop drives selection directly; _selected is
+  const isControlled = selected !== undefined
+  const [_selected, setSelected] = useState<string[]>(defaultSelected)
+  // In controlled mode the selected prop drives selection directly; _selected is
   // only read when uncontrolled, so no syncing effect is needed.
-  const selectedValues = isControlled ? (value as string[]) : _selected
+  const selectedValues = isControlled ? (selected as string[]) : _selected
 
   // Focus the saved neighbor once the removed chip has left the DOM.
   useEffect(() => {
@@ -189,11 +210,11 @@ export const useChipSet = (options: UseChipSetOptions) => {
         ...(isCoordinated && {
           selected: selectedValues.includes(chipValue),
           onSelectedChange: (
-            selected: boolean,
+            nextSelected: boolean,
             event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>
           ) => {
-            updateSelection(chipValue, selected)
-            child.props.onSelectedChange?.(selected, event)
+            updateSelection(chipValue, nextSelected)
+            child.props.onSelectedChange?.(nextSelected, event)
           },
         }),
         ...(childRemovable && {
@@ -205,5 +226,18 @@ export const useChipSet = (options: UseChipSetOptions) => {
       })
     })
 
-  return { rootRef, selectedValues, clearSelection, getFocusableChips, handleKeyDown, renderChips }
+  // Build CChip elements from data, then run them through the same transform —
+  // used by CChipSet's `chips` prop and by CChipInput's value list.
+  const renderChipsFromData = (items: (string | CChipSetItem)[]): ReactNode =>
+    renderChips(items.map((item) => buildChip(item)))
+
+  return {
+    rootRef,
+    selectedValues,
+    clearSelection,
+    getFocusableChips,
+    handleKeyDown,
+    renderChips,
+    renderChipsFromData,
+  }
 }

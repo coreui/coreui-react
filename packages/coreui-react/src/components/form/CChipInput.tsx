@@ -13,7 +13,6 @@ import React, {
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { CChip } from '../chip/CChip'
 import { useChipSet } from '../chip-set/useChipSet'
 import { useForkedRef } from '../../hooks'
 import { isRTL } from '../../utils'
@@ -203,16 +202,17 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
     // Build CChipInput on the same engine as CChipSet: selection coordination,
     // roving focus, and chip prop injection all live in useChipSet. CChipInput
     // owns the chip list and adds the text-input layer on top.
-    const { rootRef, clearSelection, getFocusableChips, handleKeyDown, renderChips } = useChipSet({
-      ariaRemoveLabel: undefined,
-      disabled,
-      filter,
-      removable: Boolean(removable && !disabled && !readOnly),
-      selectable,
-      restoreFocusOnRemove: false,
-      onSelectionChange: onSelect,
-      onRemoveChip: (chipValue) => remove(chipValue),
-    })
+    const { rootRef, clearSelection, getFocusableChips, handleKeyDown, renderChipsFromData } =
+      useChipSet({
+        ariaRemoveLabel: undefined,
+        disabled,
+        filter,
+        removable: Boolean(removable && !disabled && !readOnly),
+        selectable,
+        restoreFocusOnRemove: false,
+        onSelectionChange: onSelect,
+        onRemoveChip: (chipValue) => remove(chipValue),
+      })
     const forkedRef = useForkedRef(ref, rootRef)
 
     const emitValuesChange = (nextValues: string[]) => {
@@ -445,17 +445,13 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
           </label>
         )}
 
-        {renderChips(
-          values.map((chipValue) => (
-            <CChip
-              key={chipValue}
-              value={chipValue}
-              className={resolveChipClassName(chipClassName, chipValue)}
-              ariaRemoveLabel={`Remove ${chipValue}`}
-            >
-              {chipValue}
-            </CChip>
-          ))
+        {renderChipsFromData(
+          values.map((chipValue) => ({
+            value: chipValue,
+            label: chipValue,
+            className: resolveChipClassName(chipClassName, chipValue),
+            ariaRemoveLabel: `Remove ${chipValue}`,
+          }))
         )}
 
         <input

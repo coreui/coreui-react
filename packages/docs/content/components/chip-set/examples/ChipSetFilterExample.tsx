@@ -3,7 +3,7 @@ import { CChip, CChipSet } from '@coreui/react'
 
 export const ChipSetFilterExample = () => {
   return (
-    <CChipSet filter defaultValue={['development', 'sales']}>
+    <CChipSet filter defaultSelected={['development', 'sales']}>
       <CChip value="design">Design</CChip>
       <CChip value="development">Development</CChip>
       <CChip value="marketing">Marketing</CChip>
