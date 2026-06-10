@@ -1,4 +1,11 @@
-import React, { ElementType, HTMLAttributes, KeyboardEvent, ReactNode, forwardRef } from 'react'
+import React, {
+  ElementType,
+  HTMLAttributes,
+  KeyboardEvent,
+  ReactNode,
+  forwardRef,
+  useState,
+} from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -7,6 +14,9 @@ import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { useForkedRef } from '../../hooks'
 
 export type { CChipSetItem }
+
+const itemValue = (item: string | CChipSetItem): string =>
+  typeof item === 'string' ? item : item.value
 
 export interface CChipSetProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   /**
@@ -25,6 +35,10 @@ export interface CChipSetProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onS
    * Adds custom classes to the React Chip Set root element.
    */
   className?: string
+  /**
+   * Sets the initial uncontrolled chips. In this mode the React Chip Set component owns the list and removes chips itself; use `chips` (with `onRemove`) for a controlled list.
+   */
+  defaultChips?: (string | CChipSetItem)[]
   /**
    * Sets the initial uncontrolled selection of the React Chip Set component.
    */
@@ -84,6 +98,7 @@ export const CChipSet: PolymorphicRefForwardingComponent<'div', CChipSetProps> =
       children,
       chips,
       className,
+      defaultChips,
       defaultSelected,
       disabled,
       filter,
@@ -100,6 +115,11 @@ export const CChipSet: PolymorphicRefForwardingComponent<'div', CChipSetProps> =
     },
     ref
   ) => {
+    // The chip list is controlled by `chips` (or children) or, with `defaultChips`,
+    // uncontrolled — then the set owns the list and removes chips itself.
+    const isUncontrolledList = chips === undefined && defaultChips !== undefined
+    const [_chips, setChips] = useState<(string | CChipSetItem)[]>(defaultChips ?? [])
+
     const { rootRef, handleKeyDown, renderChips, renderChipsFromData } = useChipSet({
       ariaRemoveLabel,
       defaultSelected,
@@ -111,10 +131,17 @@ export const CChipSet: PolymorphicRefForwardingComponent<'div', CChipSetProps> =
       selected,
       selectedIcon,
       selectionMode,
-      onRemoveChip: onRemove,
+      onRemoveChip: (value) => {
+        if (isUncontrolledList) {
+          setChips((prev) => prev.filter((item) => itemValue(item) !== value))
+        }
+        onRemove?.(value)
+      },
       onSelectionChange: onSelect,
     })
     const forkedRef = useForkedRef(ref, rootRef)
+
+    const items = chips ?? (isUncontrolledList ? _chips : undefined)
 
     return (
       <Component
@@ -127,7 +154,7 @@ export const CChipSet: PolymorphicRefForwardingComponent<'div', CChipSetProps> =
         {...rest}
         ref={forkedRef}
       >
-        {chips ? renderChipsFromData(chips) : renderChips(children)}
+        {items ? renderChipsFromData(items) : renderChips(children)}
       </Component>
     )
   }
@@ -139,6 +166,7 @@ CChipSet.propTypes = {
   children: PropTypes.node,
   chips: PropTypes.array,
   className: PropTypes.string,
+  defaultChips: PropTypes.array,
   defaultSelected: PropTypes.array,
   disabled: PropTypes.bool,
   filter: PropTypes.bool,

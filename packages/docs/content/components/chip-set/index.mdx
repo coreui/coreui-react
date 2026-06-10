@@ -56,9 +56,25 @@ Customize the check with the `selectedIcon` prop, the same way you customize the
 
 ## Removable chips
 
-Set `removable` to add a remove button to every chip. The chips are controlled by your data, so drop the chip in the `onRemove` callback. When a chip is removed, focus moves to a neighboring chip.
+Set `removable` to add a remove button to every chip. When a chip is removed, focus moves to a neighboring chip.
+
+With `defaultChips` the set keeps the list **uncontrolled** and removes chips for you (`onRemove` just notifies):
 
 <ExampleSnippet component="ChipSetRemovableExample" componentName="React Chip Set" />
+
+For a **controlled** list use `chips` and drop the chip from your data in `onRemove`:
+
+```jsx
+const [chips, setChips] = useState(['Apple', 'Banana', 'Cherry'])
+
+return (
+  <CChipSet
+    removable
+    chips={chips}
+    onRemove={(value) => setChips((prev) => prev.filter((chip) => chip !== value))}
+  />
+)
+```
 
 ## Keyboard behavior
 

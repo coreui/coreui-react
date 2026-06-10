@@ -169,6 +169,19 @@ test('CChipSet fires onRemove so the parent can drop the chip', async () => {
   expect(getByText('B')).toBeInTheDocument()
 })
 
+test('CChipSet with defaultChips removes the chip itself (uncontrolled list)', async () => {
+  const onRemove = jest.fn()
+  const { getByText, queryByText } = render(
+    <CChipSet removable defaultChips={['a', { value: 'b', label: 'B' }]} onRemove={onRemove} />,
+  )
+
+  fireEvent.click(getByText('a').querySelector('.chip-remove') as Element)
+
+  expect(onRemove).toHaveBeenCalledWith('a')
+  expect(queryByText('a')).not.toBeInTheDocument()
+  expect(getByText('B')).toBeInTheDocument()
+})
+
 test('CChipSet renders chips from the chips prop (strings and objects)', async () => {
   const { getByText, container } = render(
     <CChipSet
