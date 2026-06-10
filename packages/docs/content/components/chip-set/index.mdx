@@ -49,6 +49,12 @@ Set `removable` to add a remove button to every chip. The chips are controlled b
 
 <ExampleSnippet component="ChipSetRemovableExample" componentName="React Chip Set" />
 
+## Rendering from data
+
+Instead of composing `CChip` children, pass a `chips` array. Each item is a string or an object with a `value`, an optional `label`, and any `CChip` props (so per-chip overrides still work). Children are used when `chips` is omitted.
+
+<ExampleSnippet component="ChipSetDataExample" componentName="React Chip Set" />
+
 ## Keyboard behavior
 
 When a chip inside a chip set is focused:

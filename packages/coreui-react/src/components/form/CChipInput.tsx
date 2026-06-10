@@ -5,6 +5,7 @@ import React, {
   KeyboardEvent,
   ReactNode,
   forwardRef,
+  isValidElement,
   useMemo,
   useRef,
   useState,
@@ -23,6 +24,10 @@ export interface CChipInputProps extends Omit<
   HTMLAttributes<HTMLDivElement>,
   'onChange' | 'onInput' | 'onSelect'
 > {
+  /**
+   * Declarative `CChip` children used as the initial chips. Their values seed the uncontrolled value when `defaultValue` is not provided (parity with the vanilla Chip Input).
+   */
+  children?: ReactNode
   /**
    * Adds custom classes to the React Chip Input component root element.
    */
@@ -132,9 +137,31 @@ const uniqueValues = (values: string[]) => [
   ...new Set(values.map((value) => value.trim()).filter(Boolean)),
 ]
 
+// Initial chip values can be supplied declaratively as CChip children (parity
+// with the vanilla ChipInput, which reads existing .chip elements on init).
+const valuesFromChildren = (children: ReactNode): string[] => {
+  const values: string[] = []
+  React.Children.forEach(children, (child) => {
+    if (!isValidElement(child)) {
+      return
+    }
+
+    const { value, children: childContent } = child.props as {
+      value?: string
+      children?: ReactNode
+    }
+    const chipValue = value ?? (typeof childContent === 'string' ? childContent : undefined)
+    if (chipValue) {
+      values.push(chipValue)
+    }
+  })
+  return values
+}
+
 export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
   (
     {
+      children,
       className,
       chipClassName,
       createOnBlur = true,
@@ -162,7 +189,9 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
     ref
   ) => {
     const isControlled = value !== undefined
-    const [_values, setValues] = useState<string[]>(() => uniqueValues(defaultValue))
+    const [_values, setValues] = useState<string[]>(() =>
+      uniqueValues(defaultValue.length > 0 ? defaultValue : valuesFromChildren(children))
+    )
     const [inputValue, setInputValue] = useState('')
     const inputRef = useRef<HTMLInputElement>(null)
 
@@ -453,6 +482,7 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
 )
 
 CChipInput.propTypes = {
+  children: PropTypes.node,
   chipClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   className: PropTypes.string,
   createOnBlur: PropTypes.bool,

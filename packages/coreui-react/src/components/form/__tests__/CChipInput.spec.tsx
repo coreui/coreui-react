@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { fireEvent, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { CChip } from '../../chip'
 import { CChipInput } from '../index'
 
 test('loads and displays CChipInput component', async () => {
@@ -87,4 +88,17 @@ test('CChipInput ArrowLeft on the last chip moves focus to the input in RTL', as
   expect(input).toHaveFocus()
 
   document.documentElement.dir = ''
+})
+
+test('CChipInput seeds initial chips from CChip children', () => {
+  const { container, getByText } = render(
+    <CChipInput>
+      <CChip value="React">React</CChip>
+      <CChip value="Vue">Vue</CChip>
+    </CChipInput>,
+  )
+
+  expect(container.querySelectorAll('.chip')).toHaveLength(2)
+  expect(getByText('React')).toBeInTheDocument()
+  expect(getByText('Vue')).toBeInTheDocument()
 })

@@ -169,6 +169,23 @@ test('CChipSet fires onRemove so the parent can drop the chip', async () => {
   expect(getByText('B')).toBeInTheDocument()
 })
 
+test('CChipSet renders chips from the chips prop (strings and objects)', async () => {
+  const { getByText, container } = render(
+    <CChipSet
+      selectable
+      chips={['react', { value: 'vue', label: 'Vue' }, { value: 'ng', label: 'Angular', selectable: false }]}
+    />,
+  )
+
+  expect(container.querySelectorAll('.chip')).toHaveLength(3)
+  expect(getByText('react')).toBeInTheDocument()
+  expect(getByText('Vue')).toBeInTheDocument()
+
+  // Per-item override still works with the data-driven API.
+  fireEvent.click(getByText('Angular'))
+  expect(getByText('Angular')).not.toHaveClass('active')
+})
+
 test('CChipSet disables every chip', async () => {
   const { getByText } = render(
     <CChipSet disabled={true} removable={true}>

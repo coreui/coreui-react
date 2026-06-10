@@ -2,9 +2,21 @@ import React, { ElementType, HTMLAttributes, KeyboardEvent, ReactNode, forwardRe
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import { CChip, type CChipProps } from '../chip/CChip'
 import { useChipSet } from './useChipSet'
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { useForkedRef } from '../../hooks'
+
+export interface CChipSetItem extends Omit<CChipProps, 'value' | 'children'> {
+  /**
+   * The value that identifies the chip and tracks its selection.
+   */
+  value: string
+  /**
+   * The chip content. Falls back to `value` when omitted.
+   */
+  label?: ReactNode
+}
 
 export interface CChipSetProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /**
@@ -19,6 +31,10 @@ export interface CChipSetProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onC
    * Adds custom classes to the React Chip Set root element.
    */
   className?: string
+  /**
+   * Renders chips from data instead of children. Each item is a string or an object with a `value`, an optional `label`, and any `CChip` props. Children are used when this is omitted.
+   */
+  chips?: (string | CChipSetItem)[]
   /**
    * Sets the initial uncontrolled selection of the React Chip Set component.
    */
@@ -76,6 +92,7 @@ export const CChipSet: PolymorphicRefForwardingComponent<'div', CChipSetProps> =
       ariaRemoveLabel,
       as: Component = 'div',
       children,
+      chips,
       className,
       defaultValue,
       disabled,
@@ -109,6 +126,26 @@ export const CChipSet: PolymorphicRefForwardingComponent<'div', CChipSetProps> =
     })
     const forkedRef = useForkedRef(ref, rootRef)
 
+    // `chips` renders from data; otherwise the children/slot drives the set.
+    const content = chips
+      ? chips.map((chip) => {
+          if (typeof chip === 'string') {
+            return (
+              <CChip key={chip} value={chip}>
+                {chip}
+              </CChip>
+            )
+          }
+
+          const { label, value: chipValue, ...chipProps } = chip
+          return (
+            <CChip key={chipValue} value={chipValue} {...chipProps}>
+              {label ?? chipValue}
+            </CChip>
+          )
+        })
+      : children
+
     return (
       <Component
         className={classNames('chip-set', { disabled }, className)}
@@ -120,7 +157,7 @@ export const CChipSet: PolymorphicRefForwardingComponent<'div', CChipSetProps> =
         {...rest}
         ref={forkedRef}
       >
-        {renderChips(children)}
+        {renderChips(content)}
       </Component>
     )
   }
@@ -130,6 +167,7 @@ CChipSet.propTypes = {
   ariaRemoveLabel: PropTypes.string,
   as: PropTypes.elementType,
   children: PropTypes.node,
+  chips: PropTypes.array,
   className: PropTypes.string,
   defaultValue: PropTypes.array,
   disabled: PropTypes.bool,
