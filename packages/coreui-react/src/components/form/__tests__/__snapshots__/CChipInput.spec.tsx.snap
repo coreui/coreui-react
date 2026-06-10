@@ -8,6 +8,7 @@ exports[`loads and displays CChipInput component 1`] = `
     <span
       class="chip"
       data-coreui-chip-focusable="true"
+      data-coreui-chip-value="React"
       tabindex="0"
     >
       React
@@ -45,6 +46,7 @@ exports[`loads and displays CChipInput component 1`] = `
     <span
       class="chip"
       data-coreui-chip-focusable="true"
+      data-coreui-chip-value="TypeScript"
       tabindex="0"
     >
       TypeScript

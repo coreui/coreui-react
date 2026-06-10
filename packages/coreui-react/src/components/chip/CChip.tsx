@@ -50,6 +50,10 @@ export interface CChipProps extends HTMLAttributes<HTMLSpanElement | HTMLButtonE
    */
   disabled?: boolean
   /**
+   * Turns the React Chip component into a filter chip. A filter chip is selectable and shows a leading check icon while selected.
+   */
+  filter?: boolean
+  /**
    * Callback fired when the React Chip component becomes deselected.
    */
   onDeselect?: (event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>) => void
@@ -85,16 +89,22 @@ export interface CChipProps extends HTMLAttributes<HTMLSpanElement | HTMLButtonE
    */
   selected?: boolean
   /**
+   * Replaces the default selected icon shown by a filter React Chip component with a custom icon node.
+   */
+  selectedIcon?: ReactNode
+  /**
    * Sets the size of the React Chip component to small or large.
    */
   size?: 'sm' | 'lg'
+  /**
+   * Sets the value associated with the React Chip component, used by `CChipSet` to track selection.
+   */
+  value?: string
   /**
    * Sets the visual variant of the React Chip component to outline style.
    */
   variant?: 'outline'
 }
-
-const SELECTOR_FOCUSABLE_ITEMS = '[data-coreui-chip-focusable="true"]:not(.disabled)'
 
 export const CChip: PolymorphicRefForwardingComponent<'span', CChipProps> = forwardRef<
   HTMLSpanElement | HTMLButtonElement,
@@ -110,6 +120,7 @@ export const CChip: PolymorphicRefForwardingComponent<'span', CChipProps> = forw
       clickable,
       color,
       disabled,
+      filter,
       onClick,
       onDeselect,
       onKeyDown,
@@ -120,13 +131,17 @@ export const CChip: PolymorphicRefForwardingComponent<'span', CChipProps> = forw
       removeIcon,
       selectable,
       selected,
+      selectedIcon,
       size,
       tabIndex,
+      value,
       variant,
       ...rest
     },
     ref
   ) => {
+    // A filter chip is selectable by definition.
+    const isSelectable = Boolean(selectable || filter)
     const chipRef = useRef<HTMLSpanElement | HTMLButtonElement>(null)
     const forkedRef = useForkedRef(ref, chipRef)
     const isSelectedControlled = selected !== undefined
@@ -140,47 +155,15 @@ export const CChip: PolymorphicRefForwardingComponent<'span', CChipProps> = forw
     }, [isSelectedControlled, selected])
 
     const isFocusable = useMemo(
-      () => Boolean(!disabled && (selectable || removable)),
-      [disabled, selectable, removable]
+      () => Boolean(!disabled && (isSelectable || removable)),
+      [disabled, isSelectable, removable]
     )
-
-    const getFocusableSibling = (shouldGetNext: boolean) => {
-      const currentElement = chipRef.current
-      if (!currentElement?.parentElement) {
-        return null
-      }
-
-      const chips = Array.from(
-        currentElement.parentElement.querySelectorAll<HTMLElement>(SELECTOR_FOCUSABLE_ITEMS)
-      )
-
-      const index = chips.indexOf(currentElement as unknown as HTMLElement)
-      if (index === -1 || chips.length <= 1) {
-        return null
-      }
-
-      const targetIndex = shouldGetNext ? index + 1 : index - 1
-      return chips[targetIndex] ?? null
-    }
-
-    const navigateToEdge = (targetIndex: 0 | -1) => {
-      const currentElement = chipRef.current
-      if (!currentElement?.parentElement) {
-        return
-      }
-
-      const chips = Array.from(
-        currentElement.parentElement.querySelectorAll<HTMLElement>(SELECTOR_FOCUSABLE_ITEMS)
-      )
-      const edgeChip = targetIndex === -1 ? chips[chips.length - 1] : chips[0]
-      edgeChip?.focus()
-    }
 
     const setSelectableState = (
       nextSelected: boolean,
       event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>
     ) => {
-      if (!selectable || disabled || nextSelected === selectedState) {
+      if (!isSelectable || disabled || nextSelected === selectedState) {
         return
       }
 
@@ -219,7 +202,7 @@ export const CChip: PolymorphicRefForwardingComponent<'span', CChipProps> = forw
         return
       }
 
-      if (selectable) {
+      if (isSelectable) {
         toggleSelectedState(event)
       }
 
@@ -236,7 +219,7 @@ export const CChip: PolymorphicRefForwardingComponent<'span', CChipProps> = forw
         case 'Enter':
         case ' ':
         case 'Spacebar': {
-          if (selectable) {
+          if (isSelectable) {
             event.preventDefault()
             toggleSelectedState(event)
           }
@@ -247,42 +230,8 @@ export const CChip: PolymorphicRefForwardingComponent<'span', CChipProps> = forw
         case 'Delete': {
           if (removable) {
             event.preventDefault()
-            const sibling = getFocusableSibling(false) || getFocusableSibling(true)
-            sibling?.focus()
             handleRemove(event)
           }
-          break
-        }
-
-        case 'ArrowLeft': {
-          event.preventDefault()
-          const sibling = getFocusableSibling(false)
-          sibling?.focus()
-          if (selectedState && event.shiftKey) {
-            sibling?.dispatchEvent(new CustomEvent('coreui-chip-select'))
-          }
-          break
-        }
-
-        case 'ArrowRight': {
-          event.preventDefault()
-          const sibling = getFocusableSibling(true)
-          sibling?.focus()
-          if (selectedState && event.shiftKey) {
-            sibling?.dispatchEvent(new CustomEvent('coreui-chip-select'))
-          }
-          break
-        }
-
-        case 'Home': {
-          event.preventDefault()
-          navigateToEdge(0)
-          break
-        }
-
-        case 'End': {
-          event.preventDefault()
-          navigateToEdge(-1)
           break
         }
 
@@ -297,18 +246,19 @@ export const CChip: PolymorphicRefForwardingComponent<'span', CChipProps> = forw
         className={classNames(
           'chip',
           {
-            active: selectable ? selectedState : active,
+            active: isSelectable ? selectedState : active,
             disabled,
             [`chip-${color}`]: color,
             [`chip-${size}`]: size,
-            'chip-clickable': clickable || selectable || Boolean(onClick),
+            'chip-clickable': clickable || isSelectable || Boolean(onClick),
             'chip-outline': variant === 'outline',
           },
           className
         )}
         data-coreui-chip-focusable={isFocusable || undefined}
+        data-coreui-chip-value={value}
         {...(disabled && { 'aria-disabled': true })}
-        {...(selectable && { 'aria-selected': selectedState })}
+        {...(isSelectable && { 'aria-selected': selectedState })}
         {...(isFocusable && tabIndex === undefined && { tabIndex: 0 })}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
@@ -316,6 +266,21 @@ export const CChip: PolymorphicRefForwardingComponent<'span', CChipProps> = forw
         {...rest}
         ref={forkedRef}
       >
+        {filter && selectedState && (
+          <span className="chip-check" aria-hidden="true">
+            {selectedIcon ?? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 512 512"
+                fill="currentColor"
+              >
+                <path d="M425.373 89.373 196 318.745 86.627 209.373l-45.254 45.254L196 409.255l274.627-274.628z" />
+              </svg>
+            )}
+          </span>
+        )}
         {children}
         {removable && (
           <button
@@ -357,6 +322,7 @@ CChip.propTypes = {
   clickable: PropTypes.bool,
   color: colorPropType,
   disabled: PropTypes.bool,
+  filter: PropTypes.bool,
   onDeselect: PropTypes.func,
   onRemove: PropTypes.func,
   onSelect: PropTypes.func,
@@ -365,7 +331,9 @@ CChip.propTypes = {
   removeIcon: PropTypes.node,
   selectable: PropTypes.bool,
   selected: PropTypes.bool,
+  selectedIcon: PropTypes.node,
   size: PropTypes.oneOf(['sm', 'lg']),
+  value: PropTypes.string,
   variant: PropTypes.oneOf(['outline']),
 }
 

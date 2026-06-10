@@ -80,6 +80,8 @@ Use `selectable`, `removable`, `selected`, and `disabled` to match the interacti
 
 <ExampleSnippet component="ChipInteractiveExample" componentName="React Chip" />
 
+To group chips and coordinate their selection — including filter chips with a leading check icon — wrap them in a [`CChipSet`](/components/chip-set/).
+
 ## Remove button
 
 If `removable` is enabled, the remove button is rendered automatically.
@@ -88,21 +90,23 @@ If `removable` is enabled, the remove button is rendered automatically.
 
 ## Keyboard behavior
 
-Chips support keyboard navigation when they are `selectable` and/or `removable`.
+A standalone chip handles its own selection and removal from the keyboard when it is `selectable` and/or `removable`. Roving focus between chips (arrow keys, `Home`/`End`) is provided by the parent [`CChipSet`](/components/chip-set/) container.
 
 ### When a chip is focused
 
-- `Enter` / `Space`: toggle selection when `selectable` is enabled
-- `Backspace` / `Delete`: close chip when `removable` is enabled
-- `ArrowLeft`: move focus to previous chip
-- `ArrowRight`: move focus to next chip
-- `Home`: move focus to the first chip in the container
-- `End`: move focus to the last chip in the container
+| Key | Action |
+| --- | --- |
+| `Enter` / `Space` | Toggle selection (only when `selectable` is enabled) |
+| `Backspace` / `Delete` | Close chip when `removable` is enabled |
+
+When chips are grouped in a [`CChipSet`](/components/chip-set/), the arrow keys, `Home`, and `End` move focus between chips, and focus moves to a neighboring chip after one is removed.
 
 ### Mouse interaction
 
-- Click chip: toggle selection when `selectable` is enabled
-- Click remove: close chip when `removable` is enabled
+| Action | Effect |
+| --- | --- |
+| Click chip | Toggle selection (only when `selectable` is enabled) |
+| Click remove | Close chip (only when `removable` is enabled) |
 
 ## API
 

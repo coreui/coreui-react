@@ -71,28 +71,35 @@ test('CChip selectable', async () => {
   expect(onDeselect).toHaveBeenCalledTimes(1)
 })
 
-test('CChip keyboard navigation', async () => {
-  const { getByText } = render(
-    <div>
-      <CChip selectable={true}>First</CChip>
-      <CChip selectable={true}>Second</CChip>
-      <CChip selectable={true}>Third</CChip>
-    </div>,
+test('CChip filter shows a check icon while selected and implies selectable', async () => {
+  const onSelect = jest.fn()
+  const { getByText, container } = render(
+    <CChip filter={true} onSelect={onSelect}>
+      Filter
+    </CChip>,
+  )
+  const chip = getByText('Filter')
+
+  expect(chip).toHaveAttribute('aria-selected', 'false')
+  expect(container.querySelector('.chip-check')).not.toBeInTheDocument()
+
+  fireEvent.click(chip)
+  expect(chip).toHaveClass('active')
+  expect(onSelect).toHaveBeenCalledTimes(1)
+  expect(container.querySelector('.chip-check')).toBeInTheDocument()
+
+  fireEvent.click(chip)
+  expect(container.querySelector('.chip-check')).not.toBeInTheDocument()
+})
+
+test('CChip filter renders a custom selectedIcon', async () => {
+  const { container } = render(
+    <CChip filter={true} selected={true} selectedIcon={<span data-testid="custom-check" />}>
+      Filter
+    </CChip>,
   )
 
-  const first = getByText('First')
-  const second = getByText('Second')
-  const third = getByText('Third')
-
-  first.focus()
-  fireEvent.keyDown(first, { key: 'ArrowRight' })
-  expect(second).toHaveFocus()
-
-  fireEvent.keyDown(second, { key: 'End' })
-  expect(third).toHaveFocus()
-
-  fireEvent.keyDown(third, { key: 'Home' })
-  expect(first).toHaveFocus()
+  expect(container.querySelector('.chip-check [data-testid="custom-check"]')).toBeInTheDocument()
 })
 
 test('CChip delete triggers remove callback', async () => {

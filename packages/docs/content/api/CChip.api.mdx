@@ -38,7 +38,7 @@ import CChip from '@coreui/react/src/components/chip/CChip'
       <tr id="cchip-as">
         <td className="text-primary fw-semibold">as<a href="#cchip-as" aria-label="CChip as permalink" className="anchor-link after">#</a></td>
         <td><code>{`span`}</code></td>
-        <td><code>{`(ElementType & 'symbol')`}</code>, <code>{`(ElementType & 'object')`}</code>, <code>{`(ElementType & 'span')`}</code>, <code>{`(ElementType & 'slot')`}</code>, <code>{`(ElementType & 'style')`}</code>, <code>{`... 174 more ...`}</code>, <code>{`(ElementType & FunctionComponent<...>)`}</code></td>
+        <td><code>{`(ElementType & 'symbol')`}</code>, <code>{`(ElementType & 'object')`}</code>, <code>{`(ElementType & 'span')`}</code>, <code>{`(ElementType & 'filter')`}</code>, <code>{`(ElementType & 'slot')`}</code>, <code>{`... 174 more ...`}</code>, <code>{`(ElementType & FunctionComponent<...>)`}</code></td>
       </tr>
       <tr>
         <td colSpan="3">
@@ -83,6 +83,16 @@ import CChip from '@coreui/react/src/components/chip/CChip'
       <tr>
         <td colSpan="3">
           <p>Disables the React Chip component and removes interactive behavior.</p>
+        </td>
+      </tr>
+      <tr id="cchip-filter">
+        <td className="text-primary fw-semibold">filter<a href="#cchip-filter" aria-label="CChip filter permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`boolean`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Turns the React Chip component into a filter chip. A filter chip is selectable and shows a leading check icon while selected.</p>
         </td>
       </tr>
       <tr id="cchip-on-deselect">
@@ -165,6 +175,16 @@ import CChip from '@coreui/react/src/components/chip/CChip'
           <p>Controls the selected state of a selectable React Chip component.</p>
         </td>
       </tr>
+      <tr id="cchip-selected-icon">
+        <td className="text-primary fw-semibold">selectedIcon<a href="#cchip-selected-icon" aria-label="CChip selectedIcon permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`ReactNode`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Replaces the default selected icon shown by a filter React Chip component with a custom icon node.</p>
+        </td>
+      </tr>
       <tr id="cchip-size">
         <td className="text-primary fw-semibold">size<a href="#cchip-size" aria-label="CChip size permalink" className="anchor-link after">#</a></td>
         <td>-</td>
@@ -173,6 +193,16 @@ import CChip from '@coreui/react/src/components/chip/CChip'
       <tr>
         <td colSpan="3">
           <p>Sets the size of the React Chip component to small or large.</p>
+        </td>
+      </tr>
+      <tr id="cchip-value">
+        <td className="text-primary fw-semibold">value<a href="#cchip-value" aria-label="CChip value permalink" className="anchor-link after">#</a></td>
+        <td>-</td>
+        <td><code>{`string`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Sets the value associated with the React Chip component, used by <code>{`CChipSet`}</code> to track selection.</p>
         </td>
       </tr>
       <tr id="cchip-variant">
