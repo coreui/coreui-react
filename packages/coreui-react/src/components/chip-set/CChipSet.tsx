@@ -18,13 +18,13 @@ export interface CChipSetProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onS
    */
   as?: ElementType
   /**
-   * Adds custom classes to the React Chip Set root element.
-   */
-  className?: string
-  /**
    * Renders chips from data instead of children. Each item is a string or an object with a `value`, an optional `label`, and any `CChip` props. Children are used when this is omitted.
    */
   chips?: (string | CChipSetItem)[]
+  /**
+   * Adds custom classes to the React Chip Set root element.
+   */
+  className?: string
   /**
    * Sets the initial uncontrolled selection of the React Chip Set component.
    */
@@ -58,6 +58,12 @@ export interface CChipSetProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onS
    */
   selectable?: boolean
   /**
+   * Controls the selected chip values of the React Chip Set component.
+   *
+   * @controllable onSelect
+   */
+  selected?: string[]
+  /**
    * Replaces the default selected icon shown by filter chips with a custom icon node.
    */
   selectedIcon?: ReactNode
@@ -65,12 +71,6 @@ export interface CChipSetProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onS
    * Sets how many chips can be selected at once in the React Chip Set component.
    */
   selectionMode?: 'single' | 'multiple'
-  /**
-   * Controls the selected chip values of the React Chip Set component.
-   *
-   * @controllable onSelect
-   */
-  selected?: string[]
 }
 
 export const CChipSet: PolymorphicRefForwardingComponent<'div', CChipSetProps> = forwardRef<

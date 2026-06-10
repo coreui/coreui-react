@@ -28,13 +28,13 @@ export interface CChipInputProps extends Omit<
    */
   children?: ReactNode
   /**
-   * Adds custom classes to the React Chip Input component root element.
-   */
-  className?: string
-  /**
    * Adds custom classes to chips rendered by the React Chip Input component. Accepts a static className or a resolver function based on chip value.
    */
   chipClassName?: ChipClassName
+  /**
+   * Adds custom classes to the React Chip Input component root element.
+   */
+  className?: string
   /**
    * Creates a new chip when the React Chip Input component loses focus with a pending value.
    */
