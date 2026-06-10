@@ -29,9 +29,9 @@ test('CChipSet passes selectable down to its chips', async () => {
 })
 
 test('CChipSet allows multiple selected chips by default', async () => {
-  const onChange = jest.fn()
+  const onSelect = jest.fn()
   const { getByText } = render(
-    <CChipSet selectable={true} onChange={onChange}>
+    <CChipSet selectable={true} onSelect={onSelect}>
       <CChip value="a">A</CChip>
       <CChip value="b">B</CChip>
     </CChipSet>,
@@ -42,13 +42,13 @@ test('CChipSet allows multiple selected chips by default', async () => {
 
   expect(getByText('A')).toHaveClass('active')
   expect(getByText('B')).toHaveClass('active')
-  expect(onChange).toHaveBeenLastCalledWith(['a', 'b'])
+  expect(onSelect).toHaveBeenLastCalledWith(['a', 'b'])
 })
 
 test('CChipSet deselects siblings in single selection mode', async () => {
-  const onChange = jest.fn()
+  const onSelect = jest.fn()
   const { getByText } = render(
-    <CChipSet selectable={true} selectionMode="single" onChange={onChange}>
+    <CChipSet selectable={true} selectionMode="single" onSelect={onSelect}>
       <CChip value="a">A</CChip>
       <CChip value="b">B</CChip>
     </CChipSet>,
@@ -59,7 +59,7 @@ test('CChipSet deselects siblings in single selection mode', async () => {
 
   expect(getByText('A')).not.toHaveClass('active')
   expect(getByText('B')).toHaveClass('active')
-  expect(onChange).toHaveBeenLastCalledWith(['b'])
+  expect(onSelect).toHaveBeenLastCalledWith(['b'])
 })
 
 test('CChipSet honors a controlled selected', async () => {

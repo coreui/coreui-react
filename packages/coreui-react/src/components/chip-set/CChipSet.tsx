@@ -8,7 +8,7 @@ import { useForkedRef } from '../../hooks'
 
 export type { CChipSetItem }
 
-export interface CChipSetProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface CChipSetProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   /**
    * Provides an accessible label for the remove button of every chip rendered by the React Chip Set component.
    */
@@ -38,13 +38,13 @@ export interface CChipSetProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onC
    */
   filter?: boolean
   /**
-   * Callback fired when the selected chip values of the React Chip Set component change.
-   */
-  onChange?: (selected: string[]) => void
-  /**
    * Callback fired when a chip requests removal. The chips are controlled by their rendered children, so remove the chip from your data in response.
    */
   onRemove?: (value: string) => void
+  /**
+   * Callback fired when the selected chip values of the React Chip Set component change.
+   */
+  onSelect?: (selected: string[]) => void
   /**
    * Displays a remove button on every chip rendered by the React Chip Set component.
    */
@@ -68,7 +68,7 @@ export interface CChipSetProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onC
   /**
    * Controls the selected chip values of the React Chip Set component.
    *
-   * @controllable onChange
+   * @controllable onSelect
    */
   selected?: string[]
 }
@@ -87,9 +87,9 @@ export const CChipSet: PolymorphicRefForwardingComponent<'div', CChipSetProps> =
       defaultSelected,
       disabled,
       filter,
-      onChange,
       onKeyDown,
       onRemove,
+      onSelect,
       removable,
       removeIcon,
       selectable,
@@ -112,7 +112,7 @@ export const CChipSet: PolymorphicRefForwardingComponent<'div', CChipSetProps> =
       selectedIcon,
       selectionMode,
       onRemoveChip: onRemove,
-      onSelectionChange: onChange,
+      onSelectionChange: onSelect,
     })
     const forkedRef = useForkedRef(ref, rootRef)
 
@@ -142,8 +142,8 @@ CChipSet.propTypes = {
   defaultSelected: PropTypes.array,
   disabled: PropTypes.bool,
   filter: PropTypes.bool,
-  onChange: PropTypes.func,
   onRemove: PropTypes.func,
+  onSelect: PropTypes.func,
   removable: PropTypes.bool,
   removeIcon: PropTypes.node,
   selectable: PropTypes.bool,
