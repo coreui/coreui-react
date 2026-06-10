@@ -355,6 +355,17 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
         return
       }
 
+      // ArrowRight past the last chip moves focus into the text field.
+      if (event.key === 'ArrowRight') {
+        const chips = getFocusableChips()
+        const lastChip = chips[chips.length - 1]
+        if (lastChip?.contains(event.target as Node)) {
+          event.preventDefault()
+          inputRef.current?.focus()
+          return
+        }
+      }
+
       if (handleKeyDown(event)) {
         return
       }

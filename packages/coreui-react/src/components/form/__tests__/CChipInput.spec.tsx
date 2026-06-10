@@ -60,3 +60,15 @@ test('CChipInput selectable chips', async () => {
   expect(chip).toHaveClass('active')
   expect(onSelect).toHaveBeenCalledWith(['React'])
 })
+
+test('CChipInput ArrowRight on the last chip moves focus to the input', async () => {
+  const { container } = render(<CChipInput defaultValue={['React', 'Vue']} />)
+
+  const chips = container.querySelectorAll<HTMLElement>('.chip')
+  const lastChip = chips[chips.length - 1]
+  const input = container.querySelector('.chip-input-field') as HTMLInputElement
+  lastChip.focus()
+
+  fireEvent.keyDown(lastChip, { key: 'ArrowRight' })
+  expect(input).toHaveFocus()
+})
