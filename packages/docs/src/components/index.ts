@@ -1,3 +1,4 @@
+import AddedIn from './AddedIn'
 import Ads from './Ads'
 import Banner from './Banner'
 import Callout from './Callout'
@@ -17,6 +18,7 @@ import { SidebarNav } from './SidebarNav'
 import Toc from './Toc'
 
 export {
+  AddedIn,
   Ads,
   Banner,
   Callout,
