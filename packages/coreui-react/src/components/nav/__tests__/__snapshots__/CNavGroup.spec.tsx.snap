@@ -6,6 +6,7 @@ exports[`CNavGroup customize 1`] = `
     class="nav-group show bazinga"
   >
     <a
+      aria-expanded="true"
       class="nav-link nav-group-toggle"
       href="#"
     >
@@ -25,6 +26,7 @@ exports[`loads and displays CNavGroup component 1`] = `
     class="nav-group"
   >
     <a
+      aria-expanded="false"
       class="nav-link nav-group-toggle"
       href="#"
     >

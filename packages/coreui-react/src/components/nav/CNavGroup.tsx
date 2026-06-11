@@ -6,6 +6,8 @@ import React, {
   ReactNode,
   useContext,
   useEffect,
+  useId,
+  useMemo,
   useRef,
   useState,
 } from 'react'
@@ -16,6 +18,7 @@ import type { TransitionStatus } from 'react-transition-group'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 
+import { CNavGroupContext } from './CNavGroupContext'
 import { CSidebarNavContext } from '../sidebar/CSidebarNavContext'
 export interface CNavGroupProps extends HTMLAttributes<HTMLDivElement | HTMLLIElement> {
   /**
@@ -33,145 +36,214 @@ export interface CNavGroupProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
    */
   compact?: boolean
   /**
+   * Callback fired when the user toggles the group. Receives the requested visibility. Provide
+   * it together with `visible` for controlled mode—update `visible` from here, or ignore the
+   * change to keep the group as is.
+   *
+   * @since 5.12.0
+   */
+  onVisibleChange?: (visible: boolean) => void
+  /**
    * Set group toggler label.
    */
   toggler?: string | ReactNode | (({ visible }: { visible: boolean }) => ReactNode)
   /**
-   * Show nav group items.
+   * Show nav group items. Acts as the initial state when used on its own, or as the controlled
+   * value when paired with `onVisibleChange`.
    */
   visible?: boolean
-  /**
-   * @ignore
-   */
-  idx?: string
 }
 
-const isInVisibleGroup = (el1: string, el2: string) => {
-  const array1 = el1.toString().split('.')
-  const array2 = el2.toString().split('.')
-
-  return array2.every((item, index) => item === array1[index])
-}
+const isPrefix = (chain: string[], other: string[]) =>
+  chain.every((id, index) => other[index] === id)
 
 export const CNavGroup: PolymorphicRefForwardingComponent<'li', CNavGroupProps> = forwardRef<
   HTMLDivElement | HTMLLIElement,
   CNavGroupProps
->(({ children, as: Component = 'li', className, compact, idx, toggler, visible, ...rest }, ref) => {
-  const [height, setHeight] = useState<number | string>(0)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const navItemsRef = useRef<any>(null)
+>(
+  (
+    {
+      children,
+      as: Component = 'li',
+      className,
+      compact,
+      onVisibleChange,
+      toggler,
+      visible,
+      ...rest
+    },
+    ref
+  ) => {
+    const id = useId()
+    const parentChain = useContext(CNavGroupContext)
+    const chain = useMemo(() => [...parentChain, id], [parentChain, id])
 
-  const { visibleGroup, setVisibleGroup } = useContext(CSidebarNavContext)
+    const navContext = useContext(CSidebarNavContext)
+    const setOpenChain = navContext?.setOpenChain
 
-  const [_visible, setVisible] = useState(
-    Boolean(visible || (idx && visibleGroup && isInVisibleGroup(visibleGroup, idx)))
-  )
+    const [height, setHeight] = useState<number | string>(0)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const navItemsRef = useRef<any>(null)
 
-  useEffect(() => {
-    visible !== undefined && setVisible(visible)
-  }, [visible])
+    const [uncontrolledVisible, setUncontrolledVisible] = useState(Boolean(visible))
 
-  useEffect(() => {
-    visibleGroup && setVisible(Boolean(idx && visibleGroup && isInVisibleGroup(visibleGroup, idx)))
-  }, [idx, visibleGroup])
+    const controlled = visible !== undefined && onVisibleChange !== undefined
 
-  const handleTogglerOnCLick = (event: React.MouseEvent<HTMLElement>) => {
-    event.preventDefault()
-    setVisibleGroup(
-      _visible ? (idx?.toString().includes('.') ? idx.slice(0, idx.lastIndexOf('.')) : '') : idx
-    )
-    setVisible(!_visible)
-  }
+    const _visible = controlled
+      ? Boolean(visible)
+      : navContext
+        ? chain.length > 0 && isPrefix(chain, navContext.openChain)
+        : uncontrolledVisible
 
-  const style: CSSProperties = {
-    height: 0,
-  }
+    // Sync the accordion with the `visible` prop: seeds default-open groups and follows later
+    // changes (and keeps controlled groups in sync). `setOpenChain` is stable, so this does not
+    // re-run on unrelated accordion updates—letting a default-open group be collapsed manually.
+    useEffect(() => {
+      if (!setOpenChain || visible === undefined) {
+        return
+      }
 
-  const onEntering = () => {
-    navItemsRef.current && setHeight(navItemsRef.current.scrollHeight)
-  }
+      if (visible) {
+        setOpenChain((prev) => (chain.length > prev.length && isPrefix(prev, chain) ? chain : prev))
+      } else {
+        setOpenChain((prev) => (isPrefix(chain, prev) ? parentChain : prev))
+      }
+    }, [visible, setOpenChain, chain, parentChain])
 
-  const onEntered = () => {
-    setHeight('auto')
-  }
+    // Standalone (no sidebar): mirror the `visible` prop into local state.
+    useEffect(() => {
+      if (navContext || visible === undefined) {
+        return
+      }
 
-  const onExit = () => {
-    navItemsRef.current && setHeight(navItemsRef.current.scrollHeight)
-  }
+      setUncontrolledVisible(visible)
+    }, [visible, navContext])
 
-  const onExiting = () => {
-    // @ts-expect-error reflow is necessary to get correct height of the element
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const reflow = navItemsRef.current?.offsetHeight
-    setHeight(0)
-  }
+    // Accordion: when another branch opens, a controlled group must close too. As its
+    // visibility is owned by the parent, request the change through `onVisibleChange`.
+    useEffect(() => {
+      if (!controlled || !navContext || !visible) {
+        return
+      }
 
-  const onExited = () => {
-    setHeight(0)
-  }
+      const openHere = chain.length > 0 && isPrefix(chain, navContext.openChain)
+      if (!openHere && navContext.openChain.length > 0) {
+        onVisibleChange?.(false)
+      }
+    }, [controlled, navContext, visible, chain, onVisibleChange])
 
-  const transitionStyles = {
-    entering: { display: 'block', height: height },
-    entered: { display: 'block', height: height },
-    exiting: { display: 'block', height: height },
-    exited: { height: height },
-    unmounted: {},
-  }
+    const handleTogglerOnClick = (event: React.MouseEvent<HTMLElement>) => {
+      event.preventDefault()
+      const next = !_visible
 
-  const NavGroupItemsComponent = Component === 'li' ? 'ul' : 'div'
-  const togglerContent = typeof toggler === 'function' ? toggler({ visible: _visible }) : toggler
+      if (!controlled) {
+        if (setOpenChain) {
+          setOpenChain(next ? chain : parentChain)
+        } else {
+          setUncontrolledVisible(next)
+        }
+      }
 
-  return (
-    <Component
-      className={classNames('nav-group', { show: _visible }, className)}
-      {...rest}
-      ref={ref}
-    >
-      {toggler && (
-        <a
-          className="nav-link nav-group-toggle"
-          href="#"
-          onClick={(event) => handleTogglerOnCLick(event)}
+      onVisibleChange?.(next)
+    }
+
+    const style: CSSProperties = {
+      height: 0,
+    }
+
+    const onEntering = () => {
+      if (navItemsRef.current) {
+        setHeight(navItemsRef.current.scrollHeight)
+      }
+    }
+
+    const onEntered = () => {
+      setHeight('auto')
+    }
+
+    const onExit = () => {
+      if (navItemsRef.current) {
+        setHeight(navItemsRef.current.scrollHeight)
+      }
+    }
+
+    const onExiting = () => {
+      // @ts-expect-error reflow is necessary to get correct height of the element
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const reflow = navItemsRef.current?.offsetHeight
+      setHeight(0)
+    }
+
+    const onExited = () => {
+      setHeight(0)
+    }
+
+    const transitionStyles = {
+      entering: { display: 'block', height: height },
+      entered: { display: 'block', height: height },
+      exiting: { display: 'block', height: height },
+      exited: { height: height },
+      unmounted: {},
+    }
+
+    const NavGroupItemsComponent = Component === 'li' ? 'ul' : 'div'
+    const togglerContent = typeof toggler === 'function' ? toggler({ visible: _visible }) : toggler
+
+    return (
+      <CNavGroupContext.Provider value={chain}>
+        <Component
+          className={classNames('nav-group', { show: _visible }, className)}
+          {...rest}
+          ref={ref}
         >
-          {togglerContent}
-        </a>
-      )}
-      <Transition
-        appear
-        in={_visible}
-        nodeRef={navItemsRef}
-        onEntering={onEntering}
-        onEntered={onEntered}
-        onExit={onExit}
-        onExiting={onExiting}
-        onExited={onExited}
-        timeout={300}
-      >
-        {(state) => (
-          <NavGroupItemsComponent
-            className={classNames('nav-group-items', {
-              compact: compact,
-            })}
-            style={{
-              ...style,
-              ...transitionStyles[state as TransitionStatus],
-            }}
-            ref={navItemsRef}
+          {toggler && (
+            <a
+              aria-expanded={_visible}
+              className="nav-link nav-group-toggle"
+              href="#"
+              onClick={handleTogglerOnClick}
+            >
+              {togglerContent}
+            </a>
+          )}
+          <Transition
+            appear
+            in={_visible}
+            nodeRef={navItemsRef}
+            onEntering={onEntering}
+            onEntered={onEntered}
+            onExit={onExit}
+            onExiting={onExiting}
+            onExited={onExited}
+            timeout={300}
           >
-            {children}
-          </NavGroupItemsComponent>
-        )}
-      </Transition>
-    </Component>
-  )
-})
+            {(state) => (
+              <NavGroupItemsComponent
+                className={classNames('nav-group-items', {
+                  compact: compact,
+                })}
+                style={{
+                  ...style,
+                  ...transitionStyles[state as TransitionStatus],
+                }}
+                ref={navItemsRef}
+              >
+                {children}
+              </NavGroupItemsComponent>
+            )}
+          </Transition>
+        </Component>
+      </CNavGroupContext.Provider>
+    )
+  }
+)
 
 CNavGroup.propTypes = {
   as: PropTypes.elementType,
   children: PropTypes.node,
   className: PropTypes.string,
   compact: PropTypes.bool,
-  idx: PropTypes.string,
+  onVisibleChange: PropTypes.func,
   toggler: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.func]),
   visible: PropTypes.bool,
 }

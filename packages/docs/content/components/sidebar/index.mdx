@@ -138,6 +138,20 @@ Use `.show` and `.hide` classes inside `.nav-group-toggle-indicator` to control 
   componentName="React Sidebar"
 />
 
+### Controlled navigation group
+
+<AddedIn version="5.12.0" />
+
+`CNavGroup` works uncontrolled by default—clicking the toggler expands and collapses it. To control it from the parent, set `visible` and handle `onVisibleChange`. In controlled mode the toggler only requests a change through `onVisibleChange`; the group follows the `visible` prop, so the parent has the final say.
+
+This makes it possible to keep a section open even when the user clicks to collapse it—useful for a route-aware sidebar that must keep the active section expanded. Toggle the lock and try to collapse the group: while locked, the parent rejects the change and the group stays open.
+
+<ExampleSnippet
+  className="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden"
+  component="SidebarControlledGroupExample"
+  componentName="React Sidebar"
+/>
+
 ## Dark sidebar
 
 Change the appearance of sidebars with `colorScheme="dark"`.
