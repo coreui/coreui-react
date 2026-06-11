@@ -207,4 +207,5 @@ test('CChipSet disables every chip', async () => {
   )
 
   expect(getByText('A')).toHaveClass('disabled')
+  expect(getByText('A').querySelector('.chip-remove')).toBeNull()
 })

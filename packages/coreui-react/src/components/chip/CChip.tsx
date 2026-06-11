@@ -282,14 +282,13 @@ export const CChip: PolymorphicRefForwardingComponent<'span', CChipProps> = forw
           </span>
         )}
         {children}
-        {removable && (
+        {removable && !disabled && (
           <button
             type="button"
             className="chip-remove"
             aria-label={ariaRemoveLabel}
             onClick={handleRemoveClick}
             tabIndex={-1}
-            disabled={disabled}
           >
             {removeIcon ?? (
               <svg
