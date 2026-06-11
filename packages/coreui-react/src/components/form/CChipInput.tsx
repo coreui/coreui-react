@@ -5,7 +5,8 @@ import React, {
   KeyboardEvent,
   ReactNode,
   forwardRef,
-  useEffect,
+  isValidElement,
+  useId,
   useMemo,
   useRef,
   useState,
@@ -13,8 +14,9 @@ import React, {
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { CChip } from '../chip/CChip'
+import { useChipSet } from '../chip-set/useChipSet'
 import { useForkedRef } from '../../hooks'
+import { isRTL } from '../../utils'
 
 type ChipClassName = string | ((value: string) => string)
 
@@ -23,13 +25,17 @@ export interface CChipInputProps extends Omit<
   'onChange' | 'onInput' | 'onSelect'
 > {
   /**
-   * Adds custom classes to the React Chip Input component root element.
+   * Declarative `CChip` children used as the initial chips. Their values seed the uncontrolled value when `defaultValue` is not provided (parity with the vanilla Chip Input).
    */
-  className?: string
+  children?: ReactNode
   /**
    * Adds custom classes to chips rendered by the React Chip Input component. Accepts a static className or a resolver function based on chip value.
    */
   chipClassName?: ChipClassName
+  /**
+   * Adds custom classes to the React Chip Input component root element.
+   */
+  className?: string
   /**
    * Creates a new chip when the React Chip Input component loses focus with a pending value.
    */
@@ -42,6 +48,10 @@ export interface CChipInputProps extends Omit<
    * Disables the React Chip Input component and prevents adding, removing, or selecting chips.
    */
   disabled?: boolean
+  /**
+   * Renders the chips as filter chips, each showing a leading check icon while selected. Implies `selectable`.
+   */
+  filter?: boolean
   /**
    * Sets the `id` of the internal text input rendered by the React Chip Input component.
    */
@@ -95,6 +105,10 @@ export interface CChipInputProps extends Omit<
    */
   selectable?: boolean
   /**
+   * Sets how many chips can be selected at once in the React Chip Input component.
+   */
+  selectionMode?: 'single' | 'multiple'
+  /**
    * Sets the separator character used to create chips while typing or pasting in the React Chip Input component.
    */
   separator?: string | null
@@ -127,14 +141,37 @@ const uniqueValues = (values: string[]) => [
   ...new Set(values.map((value) => value.trim()).filter(Boolean)),
 ]
 
+// Initial chip values can be supplied declaratively as CChip children (parity
+// with the vanilla ChipInput, which reads existing .chip elements on init).
+const valuesFromChildren = (children: ReactNode): string[] => {
+  const values: string[] = []
+  React.Children.forEach(children, (child) => {
+    if (!isValidElement(child)) {
+      return
+    }
+
+    const { value, children: childContent } = child.props as {
+      value?: string
+      children?: ReactNode
+    }
+    const chipValue = value ?? (typeof childContent === 'string' ? childContent : undefined)
+    if (chipValue) {
+      values.push(chipValue)
+    }
+  })
+  return values
+}
+
 export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
   (
     {
+      children,
       className,
       chipClassName,
       createOnBlur = true,
       defaultValue = [],
       disabled,
+      filter,
       id,
       label,
       maxChips = null,
@@ -148,6 +185,7 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
       readOnly,
       removable = true,
       selectable,
+      selectionMode,
       separator = ',',
       size,
       value,
@@ -156,21 +194,34 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
     ref
   ) => {
     const isControlled = value !== undefined
-    const [_values, setValues] = useState<string[]>(() => uniqueValues(defaultValue))
+    const [_values, setValues] = useState<string[]>(() =>
+      uniqueValues(defaultValue.length > 0 ? defaultValue : valuesFromChildren(children))
+    )
     const [inputValue, setInputValue] = useState('')
-    const [selectedValues, setSelectedValues] = useState<string[]>([])
-    const rootRef = useRef<HTMLDivElement>(null)
     const inputRef = useRef<HTMLInputElement>(null)
-    const forkedRef = useForkedRef(ref, rootRef)
+    const generatedName = useId()
 
     const values = useMemo(
       () => uniqueValues(isControlled ? (value as string[]) : _values),
       [isControlled, value, _values]
     )
 
-    useEffect(() => {
-      setSelectedValues((prev) => prev.filter((item) => values.includes(item)))
-    }, [values])
+    // Build CChipInput on the same engine as CChipSet: selection coordination,
+    // roving focus, and chip prop injection all live in useChipSet. CChipInput
+    // owns the chip list and adds the text-input layer on top.
+    const { rootRef, clearSelection, getFocusableChips, handleKeyDown, renderChipsFromData } =
+      useChipSet({
+        ariaRemoveLabel: undefined,
+        disabled,
+        filter,
+        removable: Boolean(removable && !disabled && !readOnly),
+        selectable,
+        selectionMode,
+        restoreFocusOnRemove: false,
+        onSelectionChange: onSelect,
+        onRemoveChip: (chipValue) => remove(chipValue),
+      })
+    const forkedRef = useForkedRef(ref, rootRef)
 
     const emitValuesChange = (nextValues: string[]) => {
       if (!isControlled) {
@@ -206,16 +257,10 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
         return false
       }
 
-      const nextValues = values.filter((item) => item !== valueToRemove)
-      emitValuesChange(nextValues)
-      setSelectedValues((prev) => {
-        const nextSelected = prev.filter((item) => item !== valueToRemove)
-        if (nextSelected.length !== prev.length) {
-          onSelect?.(nextSelected)
-        }
-        return nextSelected
-      })
+      // Selection is cleaned up by useChipSet; here we just drop the value.
+      emitValuesChange(values.filter((item) => item !== valueToRemove))
       onRemove?.(valueToRemove)
+      inputRef.current?.focus()
       return true
     }
 
@@ -226,19 +271,8 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
     }
 
     const focusLastChip = () => {
-      if (!rootRef.current) {
-        return
-      }
-
-      const focusableChips = [
-        ...rootRef.current.querySelectorAll<HTMLElement>(
-          '[data-coreui-chip-focusable="true"]:not(.disabled)'
-        ),
-      ]
-      if (focusableChips.length === 0) {
-        return
-      }
-      focusableChips[focusableChips.length - 1].focus()
+      const chips = getFocusableChips()
+      chips[chips.length - 1]?.focus()
     }
 
     const handleInputKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -258,8 +292,16 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
           break
         }
 
-        case 'ArrowLeft': {
-          if (event.currentTarget.selectionStart === 0 && event.currentTarget.selectionEnd === 0) {
+        case 'ArrowLeft':
+        case 'ArrowRight': {
+          // The arrow pointing toward the chips (left in LTR, right in RTL) jumps
+          // to the last chip when the caret is at the start of the input.
+          const towardChipsKey = isRTL(rootRef.current) ? 'ArrowRight' : 'ArrowLeft'
+          if (
+            event.key === towardChipsKey &&
+            event.currentTarget.selectionStart === 0 &&
+            event.currentTarget.selectionEnd === 0
+          ) {
             event.preventDefault()
             focusLastChip()
           }
@@ -359,6 +401,21 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
         return
       }
 
+      // The arrow past the last chip moves focus into the text field (mirrored in RTL).
+      if (event.key === (isRTL(rootRef.current) ? 'ArrowLeft' : 'ArrowRight')) {
+        const chips = getFocusableChips()
+        const lastChip = chips[chips.length - 1]
+        if (lastChip?.contains(event.target as Node)) {
+          event.preventDefault()
+          inputRef.current?.focus()
+          return
+        }
+      }
+
+      if (handleKeyDown(event)) {
+        return
+      }
+
       if (event.key.length === 1) {
         inputRef.current?.focus()
       }
@@ -368,16 +425,6 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
       if (event.target === rootRef.current) {
         inputRef.current?.focus()
       }
-    }
-
-    const handleSelectedChange = (chipValue: string, selected: boolean) => {
-      setSelectedValues((prev) => {
-        const nextSelected = selected
-          ? uniqueValues([...prev, chipValue])
-          : prev.filter((value) => value !== chipValue)
-        onSelect?.(nextSelected)
-        return nextSelected
-      })
     }
 
     const inputSize = Math.max(placeholder.length, inputValue.length, 1)
@@ -406,21 +453,14 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
           </label>
         )}
 
-        {values.map((chipValue) => (
-          <CChip
-            key={chipValue}
-            className={resolveChipClassName(chipClassName, chipValue)}
-            removable={Boolean(removable && !disabled && !readOnly)}
-            ariaRemoveLabel={`Remove ${chipValue}`}
-            disabled={disabled}
-            onRemove={() => remove(chipValue)}
-            selectable={selectable}
-            selected={selectedValues.includes(chipValue)}
-            onSelectedChange={(selected) => handleSelectedChange(chipValue, selected)}
-          >
-            {chipValue}
-          </CChip>
-        ))}
+        {renderChipsFromData(
+          values.map((chipValue) => ({
+            value: chipValue,
+            label: chipValue,
+            className: resolveChipClassName(chipClassName, chipValue),
+            ariaRemoveLabel: `Remove ${chipValue}`,
+          }))
+        )}
 
         <input
           type="text"
@@ -435,27 +475,24 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
           onChange={(event) => handleInputChange(event.target.value)}
           onKeyDown={handleInputKeyDown}
           onPaste={handlePaste}
-          onFocus={() => {
-            if (selectedValues.length > 0) {
-              setSelectedValues([])
-              onSelect?.([])
-            }
-          }}
+          onFocus={clearSelection}
           ref={inputRef}
         />
 
-        {name && <input type="hidden" name={name} value={values.join(',')} />}
+        <input type="hidden" name={name ?? generatedName} value={values.join(',')} />
       </div>
     )
   }
 )
 
 CChipInput.propTypes = {
+  children: PropTypes.node,
   chipClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   className: PropTypes.string,
   createOnBlur: PropTypes.bool,
   defaultValue: PropTypes.array,
   disabled: PropTypes.bool,
+  filter: PropTypes.bool,
   id: PropTypes.string,
   label: PropTypes.node,
   maxChips: PropTypes.number,
@@ -469,6 +506,7 @@ CChipInput.propTypes = {
   readOnly: PropTypes.bool,
   removable: PropTypes.bool,
   selectable: PropTypes.bool,
+  selectionMode: PropTypes.oneOf(['single', 'multiple']),
   separator: PropTypes.string,
   size: PropTypes.oneOf(['sm', 'lg']),
   value: PropTypes.array,

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`loads and displays CChipSet component 1`] = `
+<div>
+  <div
+    class="chip-set"
+  >
+    <span
+      class="chip"
+      data-coreui-chip-value="a"
+    >
+      A
+    </span>
+    <span
+      class="chip"
+      data-coreui-chip-value="b"
+    >
+      B
+    </span>
+  </div>
+</div>
+`;

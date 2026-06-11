@@ -234,6 +234,14 @@ const nav = [
         },
       },
       {
+        name: 'Chip Set',
+        to: '/components/chip-set/',
+        badge: {
+          color: 'success',
+          text: 'New',
+        },
+      },
+      {
         name: 'Close Button',
         to: '/components/close-button/',
       },
