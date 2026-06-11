@@ -88,6 +88,11 @@ exports[`loads and displays CChipInput component 1`] = `
       type="text"
       value=""
     />
+    <input
+      name=":r0:"
+      type="hidden"
+      value="React,TypeScript"
+    />
   </div>
 </div>
 `;

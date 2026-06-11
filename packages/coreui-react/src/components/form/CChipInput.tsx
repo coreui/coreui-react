@@ -6,6 +6,7 @@ import React, {
   ReactNode,
   forwardRef,
   isValidElement,
+  useId,
   useMemo,
   useRef,
   useState,
@@ -104,6 +105,10 @@ export interface CChipInputProps extends Omit<
    */
   selectable?: boolean
   /**
+   * Sets how many chips can be selected at once in the React Chip Input component.
+   */
+  selectionMode?: 'single' | 'multiple'
+  /**
    * Sets the separator character used to create chips while typing or pasting in the React Chip Input component.
    */
   separator?: string | null
@@ -180,6 +185,7 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
       readOnly,
       removable = true,
       selectable,
+      selectionMode,
       separator = ',',
       size,
       value,
@@ -193,6 +199,7 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
     )
     const [inputValue, setInputValue] = useState('')
     const inputRef = useRef<HTMLInputElement>(null)
+    const generatedName = useId()
 
     const values = useMemo(
       () => uniqueValues(isControlled ? (value as string[]) : _values),
@@ -209,6 +216,7 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
         filter,
         removable: Boolean(removable && !disabled && !readOnly),
         selectable,
+        selectionMode,
         restoreFocusOnRemove: false,
         onSelectionChange: onSelect,
         onRemoveChip: (chipValue) => remove(chipValue),
@@ -471,7 +479,7 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
           ref={inputRef}
         />
 
-        {name && <input type="hidden" name={name} value={values.join(',')} />}
+        <input type="hidden" name={name ?? generatedName} value={values.join(',')} />
       </div>
     )
   }
@@ -498,6 +506,7 @@ CChipInput.propTypes = {
   readOnly: PropTypes.bool,
   removable: PropTypes.bool,
   selectable: PropTypes.bool,
+  selectionMode: PropTypes.oneOf(['single', 'multiple']),
   separator: PropTypes.string,
   size: PropTypes.oneOf(['sm', 'lg']),
   value: PropTypes.array,

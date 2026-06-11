@@ -62,6 +62,28 @@ test('CChipInput selectable chips', async () => {
   expect(onSelect).toHaveBeenCalledWith(['React'])
 })
 
+test('CChipInput always renders a hidden input for form submission', async () => {
+  const { container } = render(<CChipInput defaultValue={['React']} />)
+
+  const hidden = container.querySelector('input[type="hidden"]')
+  expect(hidden).not.toBeNull()
+  expect(hidden).toHaveAttribute('name')
+  expect(hidden).toHaveValue('React')
+})
+
+test('CChipInput single selection deselects siblings', async () => {
+  const { container } = render(
+    <CChipInput defaultValue={['React', 'Vue']} selectable selectionMode="single" />,
+  )
+
+  const chips = container.querySelectorAll<HTMLElement>('.chip')
+  fireEvent.click(chips[0])
+  fireEvent.click(chips[1])
+
+  expect(chips[0]).not.toHaveClass('active')
+  expect(chips[1]).toHaveClass('active')
+})
+
 test('CChipInput ArrowRight on the last chip moves focus to the input', async () => {
   const { container } = render(<CChipInput defaultValue={['React', 'Vue']} />)
 
