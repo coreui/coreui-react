@@ -145,6 +145,61 @@ test('a locked controlled group stays open when another group opens', async () =
   expect(locked).toHaveClass('show')
 })
 
+test('opening an uncontrolled group collapses its sibling', async () => {
+  const { container } = render(
+    <CSidebarNav>
+      <CNavGroup toggler="A">
+        <CNavItem href="#">Item</CNavItem>
+      </CNavGroup>
+      <CNavGroup toggler="B">
+        <CNavItem href="#">Item</CNavItem>
+      </CNavGroup>
+    </CSidebarNav>
+  )
+
+  const [groupA, groupB] = Array.from(container.querySelectorAll('.nav-group'))
+  const [togglerA, togglerB] = Array.from(container.querySelectorAll('.nav-group-toggle'))
+
+  fireEvent.click(togglerA as HTMLElement)
+  expect(groupA).toHaveClass('show')
+  expect(groupB).not.toHaveClass('show')
+
+  fireEvent.click(togglerB as HTMLElement)
+  expect(groupA).not.toHaveClass('show')
+  expect(groupB).toHaveClass('show')
+})
+
+test('reopening a parent restores the open state of its nested subgroups', async () => {
+  const { container } = render(
+    <CSidebarNav>
+      <CNavGroup toggler="A" visible>
+        <CNavGroup toggler="B" visible>
+          <CNavGroup toggler="C" visible>
+            <CNavItem href="#">Item</CNavItem>
+          </CNavGroup>
+        </CNavGroup>
+      </CNavGroup>
+    </CSidebarNav>
+  )
+
+  const [groupA, groupB, groupC] = Array.from(container.querySelectorAll('.nav-group'))
+  expect(groupA).toHaveClass('show')
+  expect(groupB).toHaveClass('show')
+  expect(groupC).toHaveClass('show')
+
+  const outerToggler = container.querySelectorAll('.nav-group-toggle')[0] as HTMLElement
+
+  // Collapse the parent: the whole branch is hidden.
+  fireEvent.click(outerToggler)
+  expect(groupA).not.toHaveClass('show')
+
+  // Reopen the parent: nested subgroups come back open (matches vanilla/Vue).
+  fireEvent.click(outerToggler)
+  expect(groupA).toHaveClass('show')
+  expect(groupB).toHaveClass('show')
+  expect(groupC).toHaveClass('show')
+})
+
 test('nested default-open groups render open and stay independently toggleable', async () => {
   const { container } = render(
     <CSidebarNav>

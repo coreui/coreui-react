@@ -4,7 +4,6 @@ import classNames from 'classnames'
 
 import { CLinkProps, CLink } from '../link/CLink'
 import { CNavGroupContext } from './CNavGroupContext'
-import { CSidebarNavContext } from '../sidebar/CSidebarNavContext'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { useForkedRef } from '../../hooks'
@@ -23,13 +22,12 @@ export const CNavLink: PolymorphicRefForwardingComponent<'a', CNavLinkProps> = f
   const navLinkRef = useRef<HTMLAnchorElement>(null)
   const forkedRef = useForkedRef(ref, navLinkRef)
 
-  const parentChain = useContext(CNavGroupContext)
-  const setOpenChain = useContext(CSidebarNavContext)?.setOpenChain
+  const openBranch = useContext(CNavGroupContext)?.openBranch
 
   useEffect(() => {
     const element = navLinkRef.current
 
-    if (!element || !setOpenChain || parentChain.length === 0) {
+    if (!element || !openBranch) {
       return
     }
 
@@ -37,7 +35,7 @@ export const CNavLink: PolymorphicRefForwardingComponent<'a', CNavLinkProps> = f
     const sync = () => {
       const active = element.classList.contains('active')
       if (active && !wasActive) {
-        setOpenChain(parentChain)
+        openBranch()
       }
 
       wasActive = active
@@ -48,7 +46,7 @@ export const CNavLink: PolymorphicRefForwardingComponent<'a', CNavLinkProps> = f
     observer.observe(element, { attributes: true, attributeFilter: ['class'] })
 
     return () => observer.disconnect()
-  }, [parentChain, setOpenChain])
+  }, [openBranch])
 
   return (
     <CLink className={classNames('nav-link', className)} {...rest} ref={forkedRef}>

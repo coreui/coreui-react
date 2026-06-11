@@ -4,6 +4,7 @@ import React, {
   forwardRef,
   HTMLAttributes,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
   useId,
@@ -18,8 +19,7 @@ import type { TransitionStatus } from 'react-transition-group'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 
-import { CNavGroupContext } from './CNavGroupContext'
-import { CSidebarNavContext } from '../sidebar/CSidebarNavContext'
+import { CNavGroupContext, CNavGroupContextValue } from './CNavGroupContext'
 export interface CNavGroupProps extends HTMLAttributes<HTMLDivElement | HTMLLIElement> {
   /**
    * Component used for the root node. Either a string to use a HTML element or a component.
@@ -54,9 +54,6 @@ export interface CNavGroupProps extends HTMLAttributes<HTMLDivElement | HTMLLIEl
   visible?: boolean
 }
 
-const isPrefix = (chain: string[], other: string[]) =>
-  chain.every((id, index) => other[index] === id)
-
 export const CNavGroup: PolymorphicRefForwardingComponent<'li', CNavGroupProps> = forwardRef<
   HTMLDivElement | HTMLLIElement,
   CNavGroupProps
@@ -75,70 +72,87 @@ export const CNavGroup: PolymorphicRefForwardingComponent<'li', CNavGroupProps> 
     ref
   ) => {
     const id = useId()
-    const parentChain = useContext(CNavGroupContext)
-    const chain = useMemo(() => [...parentChain, id], [parentChain, id])
 
-    const navContext = useContext(CSidebarNavContext)
-    const setOpenChain = navContext?.setOpenChain
+    // Accordion of the parent level: lets this group read whether it is the open one and request
+    // its own open/close. `null` when rendered outside a `CSidebarNav`.
+    const parentContext = useContext(CNavGroupContext)
+    const parentContextRef = useRef(parentContext)
+    parentContextRef.current = parentContext
 
     const [height, setHeight] = useState<number | string>(0)
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const navItemsRef = useRef<any>(null)
 
     const [uncontrolledVisible, setUncontrolledVisible] = useState(Boolean(visible))
+    // This group's own accordion state for its children. It survives the group being collapsed,
+    // so reopening the group restores whichever child was previously open.
+    const [activeChildId, setActiveChildId] = useState<string | undefined>()
 
     const controlled = visible !== undefined && onVisibleChange !== undefined
 
     const _visible = controlled
       ? Boolean(visible)
-      : navContext
-        ? chain.length > 0 && isPrefix(chain, navContext.openChain)
+      : parentContext
+        ? parentContext.activeId === id
         : uncontrolledVisible
 
     // Sync the accordion with the `visible` prop: seeds default-open groups and follows later
-    // changes (and keeps controlled groups in sync). `setOpenChain` is stable, so this does not
-    // re-run on unrelated accordion updates—letting a default-open group be collapsed manually.
+    // changes (and keeps controlled groups in sync). Watching only `visible` keeps this from
+    // re-running on unrelated accordion updates—so a default-open group can be collapsed manually.
     useEffect(() => {
-      if (!setOpenChain || visible === undefined) {
+      if (visible === undefined) {
         return
       }
 
-      if (visible) {
-        setOpenChain((prev) => (chain.length > prev.length && isPrefix(prev, chain) ? chain : prev))
+      const parentSetActiveId = parentContextRef.current?.setActiveId
+      if (parentSetActiveId) {
+        if (visible) {
+          parentSetActiveId(id)
+        } else {
+          parentSetActiveId((prev) => (prev === id ? undefined : prev))
+        }
       } else {
-        setOpenChain((prev) => (isPrefix(chain, prev) ? parentChain : prev))
+        setUncontrolledVisible(visible)
       }
-    }, [visible, setOpenChain, chain, parentChain])
+    }, [visible, id])
 
-    // Standalone (no sidebar): mirror the `visible` prop into local state.
+    // Accordion: when another branch opens, a controlled group must close too. As its visibility
+    // is owned by the parent, request the change through `onVisibleChange`.
     useEffect(() => {
-      if (navContext || visible === undefined) {
+      if (!controlled || !visible) {
         return
       }
 
-      setUncontrolledVisible(visible)
-    }, [visible, navContext])
-
-    // Accordion: when another branch opens, a controlled group must close too. As its
-    // visibility is owned by the parent, request the change through `onVisibleChange`.
-    useEffect(() => {
-      if (!controlled || !navContext || !visible) {
-        return
-      }
-
-      const openHere = chain.length > 0 && isPrefix(chain, navContext.openChain)
-      if (!openHere && navContext.openChain.length > 0) {
+      const activeId = parentContext?.activeId
+      if (activeId !== undefined && activeId !== id) {
         onVisibleChange?.(false)
       }
-    }, [controlled, navContext, visible, chain, onVisibleChange])
+    }, [controlled, visible, parentContext?.activeId, id, onVisibleChange])
+
+    // Open this group within its parent level and cascade up to the root, revealing the whole
+    // branch. Used by an active nav link and by nested groups to bubble the request upwards.
+    const openBranch = useCallback(() => {
+      const parent = parentContextRef.current
+      if (!parent) {
+        return
+      }
+
+      parent.setActiveId(id)
+      parent.openBranch()
+    }, [id])
+
+    const childContextValue = useMemo<CNavGroupContextValue>(
+      () => ({ activeId: activeChildId, setActiveId: setActiveChildId, openBranch }),
+      [activeChildId, openBranch]
+    )
 
     const handleTogglerOnClick = (event: React.MouseEvent<HTMLElement>) => {
       event.preventDefault()
       const next = !_visible
 
       if (!controlled) {
-        if (setOpenChain) {
-          setOpenChain(next ? chain : parentChain)
+        if (parentContext) {
+          parentContext.setActiveId(next ? id : undefined)
         } else {
           setUncontrolledVisible(next)
         }
@@ -190,7 +204,7 @@ export const CNavGroup: PolymorphicRefForwardingComponent<'li', CNavGroupProps> 
     const togglerContent = typeof toggler === 'function' ? toggler({ visible: _visible }) : toggler
 
     return (
-      <CNavGroupContext.Provider value={chain}>
+      <CNavGroupContext.Provider value={childContextValue}>
         <Component
           className={classNames('nav-group', { show: _visible }, className)}
           {...rest}
