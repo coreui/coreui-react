@@ -1,17 +1,6 @@
-import React, {
-  ElementType,
-  forwardRef,
-  HTMLAttributes,
-  ReactElement,
-  ReactNode,
-  useState,
-} from 'react'
+import React, { ElementType, forwardRef, HTMLAttributes, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-
-import type { CNavGroupProps } from '../nav/CNavGroup'
-import type { CNavLinkProps } from '../nav/CNavLink'
-import type { CNavItemProps } from '../nav/CNavItem'
 
 import { CSidebarNavContext } from './CSidebarNavContext'
 
@@ -42,54 +31,15 @@ export interface CSidebarNavProps extends HTMLAttributes<HTMLUListElement> {
   variant?: 'tree'
 }
 
-const isNavElement = (
-  child: ReactNode
-): child is ReactElement<CNavGroupProps | CNavLinkProps | CNavItemProps> => {
-  if (!React.isValidElement(child)) return false
-  const type = child.type as { displayName?: string }
-  return (
-    type.displayName === 'CNavGroup' ||
-    type.displayName === 'CNavLink' ||
-    type.displayName === 'CNavItem'
-  )
-}
-
-const recursiveClone = (children: ReactNode, id?: string, updateId?: boolean): ReactNode => {
-  return React.Children.map(children, (child, index) => {
-    if (!isNavElement(child)) {
-      return child
-    }
-
-    const _id = id ? (updateId ? `${id}.${index}` : `${id}`) : `${index}`
-
-    if (child.props.children) {
-      const type = child.type as { displayName?: string }
-      const shouldUpdateId = type.displayName !== 'CNavItem'
-
-      return React.cloneElement(child, {
-        idx: _id,
-        children: recursiveClone(child.props.children, _id, shouldUpdateId),
-      })
-    }
-
-    return React.cloneElement(child, {
-      idx: _id,
-    })
-  })
-}
-
 export const CSidebarNav: PolymorphicRefForwardingComponent<'ul', CSidebarNavProps> = forwardRef<
   HTMLUListElement,
   CSidebarNavProps
 >(({ children, as: Component = 'ul', className, compact, variant, ...rest }, ref) => {
-  const [visibleGroup, setVisibleGroup] = useState('')
-  const CNavContextValues = {
-    visibleGroup,
-    setVisibleGroup,
-  }
+  const [openChain, setOpenChain] = useState<string[]>([])
+  const contextValue = useMemo(() => ({ openChain, setOpenChain }), [openChain])
 
   return (
-    <CSidebarNavContext.Provider value={CNavContextValues}>
+    <CSidebarNavContext.Provider value={contextValue}>
       <Component
         className={classNames(
           'sidebar-nav',
@@ -102,7 +52,7 @@ export const CSidebarNav: PolymorphicRefForwardingComponent<'ul', CSidebarNavPro
         ref={ref}
         {...rest}
       >
-        {recursiveClone(children)}
+        {children}
       </Component>
     </CSidebarNavContext.Provider>
   )

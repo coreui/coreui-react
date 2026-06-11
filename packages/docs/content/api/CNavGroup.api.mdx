@@ -45,6 +45,16 @@ import CNavGroup from '@coreui/react/src/components/nav/CNavGroup'
           <p>Make nav group more compact by cutting all <code>{`padding`}</code> in half.</p>
         </td>
       </tr>
+      <tr id="cnavgroup-on-visible-change">
+        <td className="text-primary fw-semibold">onVisibleChange<a href="#cnavgroup-on-visible-change" aria-label="CNavGroup onVisibleChange permalink" className="anchor-link after">#</a><span className="badge bg-success">5.12.0+</span></td>
+        <td>-</td>
+        <td><code>{`(visible: boolean) => void`}</code></td>
+      </tr>
+      <tr>
+        <td colSpan="3">
+          <p>Callback fired when the user toggles the group. Receives the requested visibility. In controlled mode (<code>{`visible`}</code> set), update <code>{`visible`}</code> from here—or ignore the change to keep the group as is.</p>
+        </td>
+      </tr>
       <tr id="cnavgroup-toggler">
         <td className="text-primary fw-semibold">toggler<a href="#cnavgroup-toggler" aria-label="CNavGroup toggler permalink" className="anchor-link after">#</a></td>
         <td>-</td>

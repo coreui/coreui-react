@@ -146,6 +146,35 @@ export const SidebarExample = () => {
             </CNavGroup>
           </CNavGroup>
         </CNavGroup>
+        <CNavGroup
+          toggler={({ visible }) => (
+            <>
+              <CIcon customClassName="nav-icon" icon={cilSettings} /> Settings group
+              <span className="nav-group-toggle-indicator">
+                <CIcon className="icon icon-sm" icon={visible ? cilMinus : cilPlus} />
+              </span>
+            </>
+          )}
+        >
+          <CNavItem href="#">Item</CNavItem>
+          <CNavItem href="#">Item</CNavItem>
+          <CNavGroup
+            toggler={({ visible }) => (
+              <>
+                <span className="nav-icon">
+                  <span className="nav-icon-bullet"></span>
+                </span>{' '}
+                Nested group
+                <span className="nav-group-toggle-indicator">
+                  <CIcon className="icon icon-sm" icon={visible ? cilMinus : cilPlus} />
+                </span>
+              </>
+            )}
+          >
+            <CNavItem href="#">Item</CNavItem>
+            <CNavItem href="#">Item</CNavItem>
+          </CNavGroup>
+        </CNavGroup>
         <CNavItem href="https://coreui.io">
           <CIcon customClassName="nav-icon" icon={cilCloudDownload} /> Download CoreUI
         </CNavItem>
