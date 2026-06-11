@@ -2,6 +2,7 @@ import React, { FC, useMemo } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import {
+  AddedIn,
   Callout,
   CodeBlock,
   ClassNamesDocs,
@@ -12,6 +13,7 @@ import {
   Seo,
 } from '../components'
 
+import { AddedInProps } from '../components/AddedIn'
 import { CalloutProps } from '../components/Callout'
 import { CodeBlockProps } from '../components/CodeBlock'
 import { ExampleProps } from '../components/Example'
@@ -50,6 +52,7 @@ interface Toc {
 const MdxLayout: FC<PageProps<DataProps>> = ({ children }) => {
   const components = useMemo(
     () => ({
+      AddedIn: (props: AddedInProps) => <AddedIn {...props} />,
       Callout: (props: CalloutProps) => {
         const { children, title, ...rest } = props
         return (
