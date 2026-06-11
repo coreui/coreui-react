@@ -4,7 +4,7 @@
     "outDir": "dist",
     "module": "esnext",
     "target": "es2015",
-    "lib": ["dom", "es2015", "es2016", "es2017", "es2018", "es2019", "es2020", "es2021"],
+    "lib": ["dom", "es2023"],
     "sourceMap": true,
     "allowJs": false,
     "declaration": true,
