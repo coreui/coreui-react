@@ -1,8 +1,15 @@
-import React, { ElementType, forwardRef, HTMLAttributes, useMemo, useState } from 'react'
+import React, {
+  ElementType,
+  forwardRef,
+  HTMLAttributes,
+  useCallback,
+  useMemo,
+  useState,
+} from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { CSidebarNavContext } from './CSidebarNavContext'
+import { CNavGroupContext, CNavGroupContextValue } from '../nav/CNavGroupContext'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 
@@ -35,11 +42,15 @@ export const CSidebarNav: PolymorphicRefForwardingComponent<'ul', CSidebarNavPro
   HTMLUListElement,
   CSidebarNavProps
 >(({ children, as: Component = 'ul', className, compact, variant, ...rest }, ref) => {
-  const [openChain, setOpenChain] = useState<string[]>([])
-  const contextValue = useMemo(() => ({ openChain, setOpenChain }), [openChain])
+  const [activeId, setActiveId] = useState<string | undefined>()
+  const openBranch = useCallback(() => {}, [])
+  const contextValue = useMemo<CNavGroupContextValue>(
+    () => ({ activeId, setActiveId, openBranch }),
+    [activeId, openBranch]
+  )
 
   return (
-    <CSidebarNavContext.Provider value={contextValue}>
+    <CNavGroupContext.Provider value={contextValue}>
       <Component
         className={classNames(
           'sidebar-nav',
@@ -54,7 +65,7 @@ export const CSidebarNav: PolymorphicRefForwardingComponent<'ul', CSidebarNavPro
       >
         {children}
       </Component>
-    </CSidebarNavContext.Provider>
+    </CNavGroupContext.Provider>
   )
 })
 
