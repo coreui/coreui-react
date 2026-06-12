@@ -8,7 +8,7 @@ export const SearchButtonCustomShortcutExample = () => {
     <div>
       <CSearchButton
         placeholder="Command palette"
-        shortcut="meta+k,ctrl+k"
+        shortcut="meta+i,ctrl+i"
         onTrigger={() => setCount((value) => value + 1)}
         aria-label="Open command palette"
       />
