@@ -8,8 +8,9 @@ import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { colorPropType } from '../../props'
 import type { Colors } from '../../types'
 
-export interface CListGroupItemProps
-  extends AnchorHTMLAttributes<HTMLLIElement | HTMLAnchorElement | HTMLButtonElement> {
+export interface CListGroupItemProps extends AnchorHTMLAttributes<
+  HTMLLIElement | HTMLAnchorElement | HTMLButtonElement
+> {
   /**
    * Toggle the active state for the component.
    */

@@ -55,7 +55,7 @@ test('CChip selectable', async () => {
   const { getByText } = render(
     <CChip selectable={true} onSelect={onSelect} onDeselect={onDeselect}>
       Selectable
-    </CChip>,
+    </CChip>
   )
   const chip = getByText('Selectable')
 
@@ -76,7 +76,7 @@ test('CChip filter shows a check icon while selected and implies selectable', as
   const { getByText, container } = render(
     <CChip filter={true} onSelect={onSelect}>
       Filter
-    </CChip>,
+    </CChip>
   )
   const chip = getByText('Filter')
 
@@ -96,7 +96,7 @@ test('CChip filter renders a custom selectedIcon', async () => {
   const { container } = render(
     <CChip filter={true} selected={true} selectedIcon={<span data-testid="custom-check" />}>
       Filter
-    </CChip>,
+    </CChip>
   )
 
   expect(container.querySelector('.chip-check [data-testid="custom-check"]')).toBeInTheDocument()
@@ -110,7 +110,7 @@ test('CChip delete triggers remove callback', async () => {
         First
       </CChip>
       <CChip removable={true}>Second</CChip>
-    </div>,
+    </div>
   )
 
   const first = getByText('First')

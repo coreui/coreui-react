@@ -92,7 +92,7 @@ export const CSidebar: PolymorphicRefForwardingComponent<'div', CSidebarProps> =
       visible,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const sidebarRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, sidebarRef)
@@ -101,7 +101,7 @@ export const CSidebar: PolymorphicRefForwardingComponent<'div', CSidebarProps> =
     const [mobile, setMobile] = useState(false)
     const [visibleMobile, setVisibleMobile] = useState<boolean>(false)
     const [visibleDesktop, setVisibleDesktop] = useState<boolean>(
-      visible !== undefined ? visible : overlaid ? false : true,
+      visible !== undefined ? visible : overlaid ? false : true
     )
 
     useEffect(() => {
@@ -206,7 +206,7 @@ export const CSidebar: PolymorphicRefForwardingComponent<'div', CSidebarProps> =
               show: (mobile && visibleMobile) || (overlaid && visibleDesktop),
               hide: visibleDesktop === false && !mobile && !overlaid,
             },
-            className,
+            className
           )}
           {...rest}
           ref={forkedRef}
@@ -217,11 +217,11 @@ export const CSidebar: PolymorphicRefForwardingComponent<'div', CSidebarProps> =
           mobile &&
           createPortal(
             <CBackdrop className="sidebar-backdrop" visible={mobile && visibleMobile} />,
-            document.body,
+            document.body
           )}
       </>
     )
-  },
+  }
 )
 
 CSidebar.propTypes = {

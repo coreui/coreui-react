@@ -11,8 +11,7 @@ import classNames from 'classnames'
 import { CFormControlWrapper, CFormControlWrapperProps } from './CFormControlWrapper'
 
 export interface CFormInputProps
-  extends CFormControlWrapperProps,
-    Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  extends CFormControlWrapperProps, Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /**
    * A string of all className you want applied to the component.
    */

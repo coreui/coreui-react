@@ -34,8 +34,7 @@ import { Link } from 'gatsby'
 const Header = forwardRef<HTMLDivElement>(({}, ref) => {
   const { colorMode, setColorMode } = useColorModes('coreui-react-docs-theme')
   const isSearchButtonDocsPage =
-    typeof window !== 'undefined' &&
-    window.location.pathname.includes('/components/search-button/')
+    typeof window !== 'undefined' && window.location.pathname.includes('/components/search-button/')
 
   return (
     <>

@@ -4,8 +4,9 @@ import classNames from 'classnames'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 
-export interface CHeaderBrandProps
-  extends AnchorHTMLAttributes<HTMLAnchorElement | HTMLSpanElement> {
+export interface CHeaderBrandProps extends AnchorHTMLAttributes<
+  HTMLAnchorElement | HTMLSpanElement
+> {
   /**
    * Component used for the root node. Either a string to use a HTML element or a component.
    */

@@ -9,7 +9,7 @@ test('loads and displays CChipSet component', async () => {
     <CChipSet>
       <CChip value="a">A</CChip>
       <CChip value="b">B</CChip>
-    </CChipSet>,
+    </CChipSet>
   )
   expect(container).toMatchSnapshot()
   expect(container.firstChild).toHaveClass('chip-set')
@@ -20,7 +20,7 @@ test('CChipSet passes selectable down to its chips', async () => {
     <CChipSet selectable={true}>
       <CChip value="a">A</CChip>
       <CChip value="b">B</CChip>
-    </CChipSet>,
+    </CChipSet>
   )
 
   expect(getByText('A')).toHaveAttribute('aria-selected', 'false')
@@ -34,7 +34,7 @@ test('CChipSet allows multiple selected chips by default', async () => {
     <CChipSet selectable={true} onSelect={onSelect}>
       <CChip value="a">A</CChip>
       <CChip value="b">B</CChip>
-    </CChipSet>,
+    </CChipSet>
   )
 
   fireEvent.click(getByText('A'))
@@ -51,7 +51,7 @@ test('CChipSet deselects siblings in single selection mode', async () => {
     <CChipSet selectable={true} selectionMode="single" onSelect={onSelect}>
       <CChip value="a">A</CChip>
       <CChip value="b">B</CChip>
-    </CChipSet>,
+    </CChipSet>
   )
 
   fireEvent.click(getByText('A'))
@@ -67,7 +67,7 @@ test('CChipSet honors a controlled selected', async () => {
     <CChipSet selectable={true} selected={['b']}>
       <CChip value="a">A</CChip>
       <CChip value="b">B</CChip>
-    </CChipSet>,
+    </CChipSet>
   )
 
   expect(getByText('A')).not.toHaveClass('active')
@@ -78,7 +78,7 @@ test('CChipSet forwards filter so a selected chip shows a check icon', async () 
   const { getByText, container } = render(
     <CChipSet filter={true} selected={['a']}>
       <CChip value="a">A</CChip>
-    </CChipSet>,
+    </CChipSet>
   )
 
   expect(getByText('A')).toHaveClass('active')
@@ -91,7 +91,7 @@ test('CChipSet moves focus between chips with the keyboard', async () => {
       <CChip value="first">First</CChip>
       <CChip value="second">Second</CChip>
       <CChip value="third">Third</CChip>
-    </CChipSet>,
+    </CChipSet>
   )
 
   const first = getByText('First')
@@ -120,7 +120,7 @@ test('CChipSet mirrors arrow keys in RTL', async () => {
     <CChipSet selectable>
       <CChip value="first">First</CChip>
       <CChip value="second">Second</CChip>
-    </CChipSet>,
+    </CChipSet>
   )
 
   const first = getByText('First')
@@ -172,7 +172,7 @@ test('CChipSet fires onRemove so the parent can drop the chip', async () => {
 test('CChipSet with defaultChips removes the chip itself (uncontrolled list)', async () => {
   const onRemove = jest.fn()
   const { getByText, queryByText } = render(
-    <CChipSet removable defaultChips={['a', { value: 'b', label: 'B' }]} onRemove={onRemove} />,
+    <CChipSet removable defaultChips={['a', { value: 'b', label: 'B' }]} onRemove={onRemove} />
   )
 
   fireEvent.click(getByText('a').querySelector('.chip-remove') as Element)
@@ -186,8 +186,12 @@ test('CChipSet renders chips from the chips prop (strings and objects)', async (
   const { getByText, container } = render(
     <CChipSet
       selectable
-      chips={['react', { value: 'vue', label: 'Vue' }, { value: 'ng', label: 'Angular', selectable: false }]}
-    />,
+      chips={[
+        'react',
+        { value: 'vue', label: 'Vue' },
+        { value: 'ng', label: 'Angular', selectable: false },
+      ]}
+    />
   )
 
   expect(container.querySelectorAll('.chip')).toHaveLength(3)
@@ -203,7 +207,7 @@ test('CChipSet disables every chip', async () => {
   const { getByText } = render(
     <CChipSet disabled={true} removable={true}>
       <CChip value="a">A</CChip>
-    </CChipSet>,
+    </CChipSet>
   )
 
   expect(getByText('A')).toHaveClass('disabled')

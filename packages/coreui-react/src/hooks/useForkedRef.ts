@@ -30,7 +30,7 @@ export function useForkedRef<RefValueType = any>(
 export function assignRef<RefValueType = any>(
   ref: AssignableRef<RefValueType> | null | undefined,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  value: any,
+  value: any
 ) {
   if (ref == null) return
   if (isFunction(ref)) {

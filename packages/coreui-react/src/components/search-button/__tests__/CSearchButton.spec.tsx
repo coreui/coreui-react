@@ -26,7 +26,7 @@ test('loads and displays CSearchButton component', async () => {
 
 test('CSearchButton customize', async () => {
   const { container } = render(
-    <CSearchButton className="bazinga" placeholder="Command palette" shortcut="meta+k,ctrl+k" />,
+    <CSearchButton className="bazinga" placeholder="Command palette" shortcut="meta+k,ctrl+k" />
   )
 
   expect(container).toMatchSnapshot()
@@ -56,7 +56,7 @@ test('CSearchButton ignores plain typing in editable fields', async () => {
     <>
       <input aria-label="Search input" />
       <CSearchButton onClick={onClick} shortcut="k" />
-    </>,
+    </>
   )
 
   fireEvent.keyDown(screen.getByLabelText('Search input'), { key: 'k' })

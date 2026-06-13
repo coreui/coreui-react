@@ -12,8 +12,7 @@ type Option = {
 }
 
 export interface CFormSelectProps
-  extends CFormControlWrapperProps,
-    Omit<InputHTMLAttributes<HTMLSelectElement>, 'size'> {
+  extends CFormControlWrapperProps, Omit<InputHTMLAttributes<HTMLSelectElement>, 'size'> {
   /**
    * A string of all className you want applied to the component.
    */

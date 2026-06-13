@@ -129,7 +129,14 @@ test('CPopover onShow and onHide', async () => {
   const onHide = jest.fn()
 
   render(
-    <CPopover content="content" title="title" trigger="click" placement="right" onShow={onShow} onHide={onHide}>
+    <CPopover
+      content="content"
+      title="title"
+      trigger="click"
+      placement="right"
+      onShow={onShow}
+      onHide={onHide}
+    >
       <CButton color="primary">Test</CButton>
     </CPopover>,
     { container: container! }
