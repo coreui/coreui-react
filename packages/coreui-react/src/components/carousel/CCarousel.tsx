@@ -106,7 +106,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
 
     useEffect(() => {
       setItemsNumber(Children.toArray(children).length)
-    })
+    }, [children])
 
     useEffect(() => {
       visible && cycle()
@@ -124,10 +124,21 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
       return () => {
         window.removeEventListener('scroll', handleScroll)
       }
-    })
+    }, [])
+
+    useEffect(() => {
+      return () => clearCycleTimeout()
+    }, [])
+
+    const clearCycleTimeout = () => {
+      if (data.timeout) {
+        clearTimeout(data.timeout)
+        data.timeout = null
+      }
+    }
 
     const cycle = () => {
-      _pause()
+      clearCycleTimeout()
       if (!wrap && active === itemsNumber - 1) {
         return
       }
@@ -139,7 +150,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
         )
       }
     }
-    const _pause = () => pause && data.timeout && clearTimeout(data.timeout)
+    const _pause = () => pause && clearCycleTimeout()
 
     const nextItemWhenVisible = () => {
       // Don't call next when the page isn't visible
