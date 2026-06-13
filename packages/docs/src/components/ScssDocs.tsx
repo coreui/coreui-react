@@ -1,6 +1,8 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import { Highlight, Prism } from 'prism-react-renderer'
+import { Highlight } from 'prism-react-renderer'
+
+import '../utils/prism'
 
 export interface ScssDocsProps {
   file: string
@@ -21,10 +23,6 @@ const unindent = (text: string) => {
 }
 
 const ScssDocs = ({ file, capture }: ScssDocsProps) => {
-  ;(typeof global === 'undefined' ? window : global).Prism = Prism
-  // eslint-disable-next-line unicorn/prefer-module
-  require('prismjs/components/prism-scss')
-
   const data = useStaticQuery(graphql`
     query {
       allFile(filter: { ext: { eq: ".scss" } }) {
