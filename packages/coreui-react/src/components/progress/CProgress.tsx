@@ -6,8 +6,7 @@ import { CProgressStackedContext } from './CProgressStackedContext'
 import { CProgressBar, CProgressBarProps } from './CProgressBar'
 
 export interface CProgressProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'color'>,
-    CProgressBarProps {
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'color'>, CProgressBarProps {
   /**
    * A string of all className you want applied to the component.
    */

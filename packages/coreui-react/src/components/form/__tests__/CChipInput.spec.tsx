@@ -53,7 +53,9 @@ test('CChipInput removes chip via remove button', async () => {
 
 test('CChipInput selectable chips', async () => {
   const onSelect = jest.fn()
-  const { container } = render(<CChipInput defaultValue={['React']} selectable onSelect={onSelect} />)
+  const { container } = render(
+    <CChipInput defaultValue={['React']} selectable onSelect={onSelect} />
+  )
 
   const chip = container.querySelector('.chip') as HTMLElement
   fireEvent.click(chip)
@@ -73,7 +75,7 @@ test('CChipInput always renders a hidden input for form submission', async () =>
 
 test('CChipInput single selection deselects siblings', async () => {
   const { container } = render(
-    <CChipInput defaultValue={['React', 'Vue']} selectable selectionMode="single" />,
+    <CChipInput defaultValue={['React', 'Vue']} selectable selectionMode="single" />
   )
 
   const chips = container.querySelectorAll<HTMLElement>('.chip')
@@ -117,7 +119,7 @@ test('CChipInput seeds initial chips from CChip children', () => {
     <CChipInput>
       <CChip value="React">React</CChip>
       <CChip value="Vue">Vue</CChip>
-    </CChipInput>,
+    </CChipInput>
   )
 
   expect(container.querySelectorAll('.chip')).toHaveLength(2)

@@ -32,8 +32,7 @@ export type ButtonObject = {
 }
 
 export interface CFormCheckProps
-  extends CFormControlValidationProps,
-    InputHTMLAttributes<HTMLInputElement> {
+  extends CFormControlValidationProps, InputHTMLAttributes<HTMLInputElement> {
   /**
    * Create button-like checkboxes and radio buttons.
    */

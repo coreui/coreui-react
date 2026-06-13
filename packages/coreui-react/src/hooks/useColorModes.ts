@@ -37,10 +37,10 @@ const setTheme = (colorMode: string) => {
 }
 
 export const useColorModes = (
-  localStorageItemName = 'coreui-react-color-scheme',
+  localStorageItemName = 'coreui-react-color-scheme'
 ): UseColorModesOutput => {
   const [colorMode, setColorMode] = useState<string | undefined>(
-    getPreferredColorScheme(localStorageItemName),
+    getPreferredColorScheme(localStorageItemName)
   )
 
   useEffect(() => {

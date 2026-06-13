@@ -4,8 +4,9 @@ import classNames from 'classnames'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 
-export interface CCardImageProps
-  extends ImgHTMLAttributes<HTMLImageElement | HTMLOrSVGElement | HTMLOrSVGImageElement> {
+export interface CCardImageProps extends ImgHTMLAttributes<
+  HTMLImageElement | HTMLOrSVGElement | HTMLOrSVGImageElement
+> {
   /**
    * Component used for the root node. Either a string to use a HTML element or a component.
    */

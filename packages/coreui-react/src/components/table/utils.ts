@@ -11,7 +11,7 @@ export const pretifyName = (name: string) => {
 }
 
 export const getColumnLabel = (column: Column | string) =>
-  typeof column === 'object' ? column.label ?? pretifyName(column.key) : pretifyName(column)
+  typeof column === 'object' ? (column.label ?? pretifyName(column.key)) : pretifyName(column)
 
 export const getColumnNames = (columns: (string | Column)[] | undefined, items?: Item[]) =>
   columns

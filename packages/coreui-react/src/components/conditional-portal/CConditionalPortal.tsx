@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 
 const getContainer = (
-  container?: DocumentFragment | Element | (() => DocumentFragment | Element | null) | null,
+  container?: DocumentFragment | Element | (() => DocumentFragment | Element | null) | null
 ) => {
   if (container) {
     return typeof container === 'function' ? container() : container

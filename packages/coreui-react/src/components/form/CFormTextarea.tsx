@@ -5,8 +5,7 @@ import classNames from 'classnames'
 import { CFormControlWrapper, CFormControlWrapperProps } from './CFormControlWrapper'
 
 export interface CFormTextareaProps
-  extends CFormControlWrapperProps,
-    TextareaHTMLAttributes<HTMLTextAreaElement> {
+  extends CFormControlWrapperProps, TextareaHTMLAttributes<HTMLTextAreaElement> {
   /**
    * A string of all className you want applied to the component.
    */

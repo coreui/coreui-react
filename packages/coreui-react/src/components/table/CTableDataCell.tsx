@@ -6,7 +6,8 @@ import { colorPropType } from '../../props'
 import type { Colors } from '../../types'
 
 export interface CTableDataCellProps
-  extends Omit<TdHTMLAttributes<HTMLTableCellElement>, 'align'>,
+  extends
+    Omit<TdHTMLAttributes<HTMLTableCellElement>, 'align'>,
     Omit<ThHTMLAttributes<HTMLTableCellElement>, 'align'> {
   /**
    * Highlight a table row or cell.

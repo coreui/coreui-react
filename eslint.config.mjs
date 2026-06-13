@@ -45,6 +45,9 @@ export default typescriptEslint.config(
       ...eslintPluginReactHooks.configs.recommended.rules,
       'no-console': 'off',
       'no-debugger': 'off',
+      // the library compiles with the classic JSX transform (tsconfig "jsx": "react"),
+      // so the React import is required and must count as used
+      'react/jsx-uses-react': 'error',
       'unicorn/filename-case': 'off',
       'unicorn/no-array-for-each': 'off',
       'unicorn/no-null': 'off',
@@ -104,5 +107,5 @@ export default typescriptEslint.config(
       'unicorn/prefer-module': 'off',
     },
   },
-  eslintPluginPrettierRecommended,
+  eslintPluginPrettierRecommended
 )

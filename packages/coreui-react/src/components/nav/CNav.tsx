@@ -4,8 +4,9 @@ import classNames from 'classnames'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 
-export interface CNavProps
-  extends HTMLAttributes<HTMLDivElement | HTMLUListElement | HTMLOListElement> {
+export interface CNavProps extends HTMLAttributes<
+  HTMLDivElement | HTMLUListElement | HTMLOListElement
+> {
   /**
    * Component used for the root node. Either a string to use a HTML element or a component.
    */

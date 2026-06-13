@@ -4,8 +4,10 @@ import classNames from 'classnames'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 
-export interface CLinkProps
-  extends Omit<AllHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>, 'as'> {
+export interface CLinkProps extends Omit<
+  AllHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,
+  'as'
+> {
   /**
    * Toggle the active state for the component.
    */
