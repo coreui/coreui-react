@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { createPopper } from '@popperjs/core'
 import {
   CDropdown,
   CDropdownToggle,
@@ -10,6 +11,14 @@ import {
   CDropdownHeader,
   CDropdownDivider,
 } from '../index'
+
+jest.mock('@popperjs/core', () => {
+  const actual = jest.requireActual('@popperjs/core')
+  return {
+    ...actual,
+    createPopper: jest.fn(actual.createPopper),
+  }
+})
 
 test('loads and displays CDropdown component', async () => {
   const { container } = render(<CDropdown>Test</CDropdown>)
@@ -95,6 +104,52 @@ test('CDropdown opens on toggle click and closes on clicking outside', async () 
   await waitFor(() => {
     const closedMenu = screen.getByRole('menu', { hidden: true }) // Adjust role if different
     expect(closedMenu).not.toHaveClass('show')
+  })
+})
+
+test('CDropdown keeps absolute positioning attached to a replaced toggler', async () => {
+  const createPopperMock = createPopper as jest.Mock
+  createPopperMock.mockClear()
+
+  const DropdownApp = ({ togglerKey }: { togglerKey: string }) => (
+    <CDropdown>
+      <CDropdownToggle key={togglerKey} data-testid={`toggler-${togglerKey}`}>
+        Toggle
+      </CDropdownToggle>
+      <CDropdownMenu>
+        <CDropdownItem>A</CDropdownItem>
+      </CDropdownMenu>
+    </CDropdown>
+  )
+
+  const { rerender } = render(<DropdownApp togglerKey="first" />)
+
+  fireEvent.click(screen.getByTestId('toggler-first'))
+
+  const menu = screen.getByRole('menu')
+  await waitFor(() => {
+    expect(menu).toHaveStyle('position: absolute')
+    expect(menu).toHaveAttribute('data-popper-placement', 'bottom-start')
+  })
+
+  expect(createPopperMock).toHaveBeenCalledTimes(1)
+  expect(createPopperMock.mock.calls[0][0]).toBe(screen.getByTestId('toggler-first'))
+
+  const firstPopper = createPopperMock.mock.results[0].value
+  const destroySpy = jest.spyOn(firstPopper, 'destroy')
+
+  rerender(<DropdownApp togglerKey="second" />)
+
+  await waitFor(() => {
+    expect(createPopperMock).toHaveBeenCalledTimes(2)
+  })
+
+  expect(destroySpy).toHaveBeenCalledTimes(1)
+  expect(createPopperMock.mock.calls[1][0]).toBe(screen.getByTestId('toggler-second'))
+
+  await waitFor(() => {
+    expect(menu).toHaveStyle('position: absolute')
+    expect(menu).toHaveAttribute('data-popper-placement', 'bottom-start')
   })
 })
 

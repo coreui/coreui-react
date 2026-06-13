@@ -271,18 +271,14 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
     useEffect(() => {
       if (visible) {
         handleShow()
-      } else {
+      } else if (_visible) {
         handleHide()
       }
     }, [visible])
 
     useEffect(() => {
-      return () => {
-        if (_visible) {
-          handleHide()
-        }
-      }
-    }, [])
+      return () => destroyPopper()
+    }, [destroyPopper])
 
     useEffect(() => {
       const referenceElement = getReferenceElement(reference, dropdownToggleElement, dropdownRef)
@@ -302,21 +298,12 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
     const handleHide = useCallback(() => {
       setVisible(false)
 
-      const menuElement = dropdownMenuRef.current
-      const toggleElement = dropdownToggleElement
-
       if (allowPopperUse) {
         destroyPopper()
       }
 
-      menuElement?.removeEventListener('keydown', handleKeydown)
-      toggleElement?.removeEventListener('keydown', handleKeydown)
-
-      window.removeEventListener('click', handleClick)
-      window.removeEventListener('keyup', handleKeyup)
-
       onHide?.()
-    }, [allowPopperUse, dropdownToggleElement, destroyPopper, onHide])
+    }, [allowPopperUse, destroyPopper, onHide])
 
     const handleKeydown = useCallback((event: KeyboardEvent) => {
       if (!dropdownMenuRef.current) {
@@ -399,11 +386,6 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
           }
 
           toggleElement.focus()
-          toggleElement.addEventListener('keydown', handleKeydown)
-          menuElement.addEventListener('keydown', handleKeydown)
-
-          window.addEventListener('click', handleClick)
-          window.addEventListener('keyup', handleKeyup)
 
           if (event && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
             setPendingKeyDownEvent(event)
@@ -412,18 +394,31 @@ export const CDropdown: PolymorphicRefForwardingComponent<'div', CDropdownProps>
           onShow?.()
         }
       },
-      [
-        allowPopperUse,
-        computedPopperConfig,
-        dropdownToggleElement,
-        reference,
-        handleClick,
-        handleKeydown,
-        handleKeyup,
-        initPopper,
-        onShow,
-      ]
+      [allowPopperUse, computedPopperConfig, dropdownToggleElement, reference, initPopper, onShow]
     )
+
+    useEffect(() => {
+      if (!_visible) {
+        return
+      }
+
+      const menuElement = dropdownMenuRef.current
+      const toggleElement = dropdownToggleElement
+
+      toggleElement?.addEventListener('keydown', handleKeydown)
+      menuElement?.addEventListener('keydown', handleKeydown)
+
+      window.addEventListener('click', handleClick)
+      window.addEventListener('keyup', handleKeyup)
+
+      return () => {
+        toggleElement?.removeEventListener('keydown', handleKeydown)
+        menuElement?.removeEventListener('keydown', handleKeydown)
+
+        window.removeEventListener('click', handleClick)
+        window.removeEventListener('keyup', handleKeyup)
+      }
+    }, [_visible, dropdownToggleElement, handleClick, handleKeydown, handleKeyup])
 
     const contextValues = useMemo(
       () => ({
