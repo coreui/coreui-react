@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useCallback, useRef } from 'react'
 import { createPopper } from '@popperjs/core'
 import type { Instance, Options } from '@popperjs/core'
 
@@ -13,12 +13,16 @@ export const usePopper = (): UsePopperOutput => {
   const _popper = useRef<Instance>(undefined)
   const el = useRef<HTMLElement>(null)
 
-  const initPopper = (reference: HTMLElement, popper: HTMLElement, options: Partial<Options>) => {
-    _popper.current = createPopper(reference, popper, options)
-    el.current = popper
-  }
+  const initPopper = useCallback(
+    (reference: HTMLElement, popper: HTMLElement, options: Partial<Options>) => {
+      _popper.current?.destroy()
+      _popper.current = createPopper(reference, popper, options)
+      el.current = popper
+    },
+    []
+  )
 
-  const destroyPopper = () => {
+  const destroyPopper = useCallback(() => {
     const popperInstance = _popper.current
 
     if (popperInstance && el.current) {
@@ -26,9 +30,9 @@ export const usePopper = (): UsePopperOutput => {
     }
 
     _popper.current = undefined
-  }
+  }, [])
 
-  const updatePopper = (options?: Partial<Options>) => {
+  const updatePopper = useCallback((options?: Partial<Options>) => {
     const popperInstance = _popper.current
 
     if (popperInstance && options) {
@@ -38,7 +42,7 @@ export const usePopper = (): UsePopperOutput => {
     if (popperInstance) {
       popperInstance.update()
     }
-  }
+  }, [])
 
   return {
     popper: _popper.current,
