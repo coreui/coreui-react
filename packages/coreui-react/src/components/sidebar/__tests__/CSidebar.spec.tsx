@@ -44,3 +44,29 @@ test('CSidebar customize hide', async () => {
   expect(container.firstChild).toHaveClass('sidebar')
   expect(container.firstChild).toHaveClass('sidebar-sticky')
 })
+
+test('CSidebar removes the exact transitionend listener reference on cleanup', async () => {
+  const addSpy = jest.spyOn(HTMLElement.prototype, 'addEventListener')
+  const removeSpy = jest.spyOn(HTMLElement.prototype, 'removeEventListener')
+
+  const { container, unmount } = render(<CSidebar>Test</CSidebar>)
+  const sidebar = container.querySelector('.sidebar')
+  unmount()
+
+  const handlersOn = (spy: jest.SpyInstance) =>
+    spy.mock.calls
+      .map((args, index) => ({ args, context: spy.mock.contexts[index] }))
+      .filter(({ args, context }) => args[0] === 'transitionend' && context === sidebar)
+      .map(({ args }) => args[1])
+
+  const added = handlersOn(addSpy)
+  const removed = handlersOn(removeSpy)
+
+  expect(added.length).toBeGreaterThan(0)
+  for (const handler of added) {
+    expect(removed).toContain(handler)
+  }
+
+  addSpy.mockRestore()
+  removeSpy.mockRestore()
+})

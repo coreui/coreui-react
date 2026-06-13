@@ -42,8 +42,9 @@ export const CLink: PolymorphicRefForwardingComponent<'a', CLinkProps> = forward
       {...(Component === 'a' && disabled && { 'aria-disabled': true, tabIndex: -1 })}
       {...((Component === 'a' || Component === 'button') && {
         onClick: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
-          event.preventDefault
-          !disabled && rest.onClick && rest.onClick(event)
+          if (!disabled) {
+            rest.onClick?.(event)
+          }
         },
       })}
       disabled={disabled}
