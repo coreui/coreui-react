@@ -2,18 +2,7 @@ import React, { forwardRef } from 'react'
 import { DocSearch } from '@docsearch/react'
 
 import CIcon, { CIconSvg } from '@coreui/icons-react'
-import {
-  cibGithub,
-  cibOpenCollective,
-  cibTwitter,
-  cilCloudDownload,
-  cilMenu,
-  cilSun,
-  cilMoon,
-  cilContrast,
-  cilHandshake,
-  cilExternalLink,
-} from '@coreui/icons'
+import { cibGithub, cilMenu, cilSun, cilMoon, cilContrast, cilHandshake } from '@coreui/icons'
 
 import {
   CButton,
@@ -31,7 +20,7 @@ import {
 import { AppContext } from './../AppContext'
 import { Link } from 'gatsby'
 
-const Header = forwardRef<HTMLDivElement>(({}, ref) => {
+const Header = forwardRef<HTMLDivElement>((_, ref) => {
   const { colorMode, setColorMode } = useColorModes('coreui-react-docs-theme')
   const isSearchButtonDocsPage =
     typeof window !== 'undefined' && window.location.pathname.includes('/components/search-button/')

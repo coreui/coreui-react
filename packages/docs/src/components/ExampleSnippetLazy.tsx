@@ -137,15 +137,14 @@ const ExampleSnippetLazy: FC<ExampleSnippetLazyProps> = ({
     <div className="docs-example-snippet" ref={exampleSnippetRef}>
       {visible && (
         <div className={`docs-example ${className}`}>
-          {children ? (
-            children
-          ) : Preview ? (
-            <Suspense fallback={<div>Loading preview...</div>}>
-              <Preview />
-            </Suspense>
-          ) : (
-            <div>No component specified.</div>
-          )}
+          {children ||
+            (Preview ? (
+              <Suspense fallback={<div>Loading preview...</div>}>
+                <Preview />
+              </Suspense>
+            ) : (
+              <div>No component specified.</div>
+            ))}
         </div>
       )}
       <div className="highlight-toolbar border-top">

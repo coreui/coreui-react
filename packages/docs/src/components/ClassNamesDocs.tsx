@@ -95,7 +95,7 @@ const ClassNamesDocs = ({ files }: { files: string | string[] }) => {
     return extractCLassNames(_file.default)
   })
 
-  const sortedClassNames = classNames.sort((a, b) => {
+  const sortedClassNames = classNames.toSorted((a, b) => {
     if (a.className < b.className) return -1
     if (a.className > b.className) return 1
     return 0
