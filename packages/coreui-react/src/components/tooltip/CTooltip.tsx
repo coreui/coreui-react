@@ -173,6 +173,14 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
     const { initPopper, destroyPopper, updatePopper } = usePopper()
 
     const _delay = typeof delay === 'number' ? { show: delay, hide: delay } : delay
+    const timer = useRef<ReturnType<typeof setTimeout>>(undefined)
+
+    const clearTimer = () => {
+      if (timer.current) {
+        clearTimeout(timer.current)
+        timer.current = undefined
+      }
+    }
 
     const defaultPopperConfig: Partial<Options> = {
       modifiers: [
@@ -189,12 +197,23 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
     }
 
     const handleShow = () => {
-      setMounted(true)
+      clearTimer()
+
+      if (mounted) {
+        timer.current = setTimeout(() => {
+          setVisible(true)
+        }, _delay.show)
+      } else {
+        setMounted(true)
+      }
+
       onShow?.()
     }
 
     const handleHide = () => {
-      setTimeout(() => {
+      clearTimer()
+
+      timer.current = setTimeout(() => {
         setVisible(false)
         onHide?.()
       }, _delay.hide)
@@ -211,7 +230,7 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
     useEffect(() => {
       if (mounted && togglerRef.current && tooltipRef.current) {
         initPopper(togglerRef.current, tooltipRef.current, computedPopperConfig)
-        setTimeout(() => {
+        timer.current = setTimeout(() => {
           setVisible(true)
         }, _delay.show)
 
@@ -222,6 +241,13 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
         destroyPopper()
       }
     }, [mounted])
+
+    useEffect(() => {
+      return () => {
+        clearTimer()
+        destroyPopper()
+      }
+    }, [])
 
     useEffect(() => {
       if (!_visible && togglerRef.current && tooltipRef.current) {
@@ -235,23 +261,47 @@ export const CTooltip = forwardRef<HTMLDivElement, CTooltipProps>(
       updatePopper()
     }, [content])
 
+    const child = children as React.ReactElement<
+      React.HTMLAttributes<HTMLElement> & { ref?: React.Ref<HTMLElement> }
+    >
+
     return (
       <>
-        {React.cloneElement(children as React.ReactElement<any>, {
+        {React.cloneElement(child, {
           ...(_visible && {
             'aria-describedby': id,
           }),
           ref: togglerRef,
           ...((trigger === 'click' || trigger.includes('click')) && {
-            onClick: () => (_visible ? handleHide() : handleShow()),
+            onClick: (event: React.MouseEvent<HTMLElement>) => {
+              child.props.onClick?.(event)
+
+              if (_visible) {
+                handleHide()
+              } else {
+                handleShow()
+              }
+            },
           }),
           ...((trigger === 'focus' || trigger.includes('focus')) && {
-            onFocus: () => handleShow(),
-            onBlur: () => handleHide(),
+            onFocus: (event: React.FocusEvent<HTMLElement>) => {
+              child.props.onFocus?.(event)
+              handleShow()
+            },
+            onBlur: (event: React.FocusEvent<HTMLElement>) => {
+              child.props.onBlur?.(event)
+              handleHide()
+            },
           }),
           ...((trigger === 'hover' || trigger.includes('hover')) && {
-            onMouseEnter: () => handleShow(),
-            onMouseLeave: () => handleHide(),
+            onMouseEnter: (event: React.MouseEvent<HTMLElement>) => {
+              child.props.onMouseEnter?.(event)
+              handleShow()
+            },
+            onMouseLeave: (event: React.MouseEvent<HTMLElement>) => {
+              child.props.onMouseLeave?.(event)
+              handleHide()
+            },
           }),
         })}
         <CConditionalPortal container={container} portal={true}>

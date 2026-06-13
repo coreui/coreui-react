@@ -16,6 +16,74 @@ afterEach(() => {
   cleanup()
 })
 
+test('CPopover stays visible when re-hovered during the hide delay', async () => {
+  jest.useFakeTimers()
+
+  render(
+    <CPopover trigger="hover" delay={{ show: 0, hide: 300 }} content="content">
+      <CButton color="primary">Test</CButton>
+    </CPopover>
+  )
+
+  const btn = screen.getByRole('button', { name: /test/i })
+
+  act(() => {
+    fireEvent.mouseOver(btn)
+  })
+
+  act(() => {
+    jest.runAllTimers()
+  })
+
+  expect(document.querySelector('.popover')).toHaveClass('show')
+
+  act(() => {
+    fireEvent.mouseOut(btn)
+    jest.advanceTimersByTime(100)
+  })
+
+  act(() => {
+    fireEvent.mouseOver(btn)
+    jest.advanceTimersByTime(1000)
+  })
+
+  expect(document.querySelector('.popover')).toHaveClass('show')
+
+  jest.useRealTimers()
+})
+
+test('CPopover preserves event handlers of the child element', async () => {
+  jest.useFakeTimers()
+
+  const onClick = jest.fn()
+  const onMouseEnter = jest.fn()
+
+  render(
+    <CPopover trigger={['hover', 'click']} content="content">
+      <CButton color="primary" onClick={onClick} onMouseEnter={onMouseEnter}>
+        Test
+      </CButton>
+    </CPopover>
+  )
+
+  const btn = screen.getByRole('button', { name: /test/i })
+
+  act(() => {
+    fireEvent.mouseOver(btn)
+    jest.runAllTimers()
+  })
+
+  act(() => {
+    fireEvent.click(btn)
+    jest.runAllTimers()
+  })
+
+  expect(onMouseEnter).toHaveBeenCalledTimes(1)
+  expect(onClick).toHaveBeenCalledTimes(1)
+
+  jest.useRealTimers()
+})
+
 test('loads and displays CPopover component', async () => {
   const { container } = render(
     <CPopover content="A">

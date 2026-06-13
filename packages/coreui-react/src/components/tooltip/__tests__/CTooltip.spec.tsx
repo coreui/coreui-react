@@ -47,6 +47,101 @@ test('CTooltip customize', async () => {
   jest.useRealTimers()
 })
 
+test('CTooltip stays visible when re-hovered during the hide delay', async () => {
+  jest.useFakeTimers()
+
+  render(
+    <CTooltip trigger="hover" delay={{ show: 0, hide: 300 }} content="content">
+      <CLink>Test</CLink>
+    </CTooltip>
+  )
+
+  const link = screen.getByText('Test')
+
+  act(() => {
+    fireEvent.mouseOver(link)
+  })
+
+  act(() => {
+    jest.runAllTimers()
+  })
+
+  expect(document.querySelector('.tooltip')).toHaveClass('show')
+
+  act(() => {
+    fireEvent.mouseOut(link)
+    jest.advanceTimersByTime(100)
+  })
+
+  act(() => {
+    fireEvent.mouseOver(link)
+    jest.advanceTimersByTime(1000)
+  })
+
+  expect(document.querySelector('.tooltip')).toHaveClass('show')
+
+  jest.useRealTimers()
+})
+
+test('CTooltip cancels the pending show timer when pointer leaves before the show delay', async () => {
+  jest.useFakeTimers()
+
+  render(
+    <CTooltip trigger="hover" delay={{ show: 300, hide: 0 }} content="content">
+      <CLink>Test</CLink>
+    </CTooltip>
+  )
+
+  const link = screen.getByText('Test')
+
+  act(() => {
+    fireEvent.mouseOver(link)
+    jest.advanceTimersByTime(100)
+  })
+
+  act(() => {
+    fireEvent.mouseOut(link)
+    jest.advanceTimersByTime(1000)
+  })
+
+  expect(document.querySelector('.tooltip.show')).toBeNull()
+  expect(link).not.toHaveAttribute('aria-describedby')
+
+  jest.useRealTimers()
+})
+
+test('CTooltip preserves event handlers of the child element', async () => {
+  jest.useFakeTimers()
+
+  const onClick = jest.fn()
+  const onMouseEnter = jest.fn()
+
+  render(
+    <CTooltip trigger={['hover', 'click']} content="content">
+      <CButton onClick={onClick} onMouseEnter={onMouseEnter}>
+        Test
+      </CButton>
+    </CTooltip>
+  )
+
+  const btn = screen.getByRole('button', { name: /test/i })
+
+  act(() => {
+    fireEvent.mouseOver(btn)
+    jest.runAllTimers()
+  })
+
+  act(() => {
+    fireEvent.click(btn)
+    jest.runAllTimers()
+  })
+
+  expect(onMouseEnter).toHaveBeenCalledTimes(1)
+  expect(onClick).toHaveBeenCalledTimes(1)
+
+  jest.useRealTimers()
+})
+
 test('CTooltip onShow and onHide', async () => {
   jest.useFakeTimers()
 
