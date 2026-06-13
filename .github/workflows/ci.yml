@@ -22,8 +22,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: yarn
-      - run: yarn install --frozen-lockfile
+      # yarn.lock is gitignored in this repo, so there is no lockfile to pin
+      # against or to key a cache on — install resolves from package.json.
+      - run: yarn install
       - run: yarn lib:build
       - run: yarn lib:test
 
@@ -39,6 +40,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22.x
-          cache: yarn
-      - run: yarn install --frozen-lockfile
+      - run: yarn install
       - run: yarn lint
