@@ -120,6 +120,7 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     ref
   ) => {
     const modalRef = useRef<HTMLDivElement>(null)
+    const mouseDownTarget = useRef<EventTarget | null>(null)
     const forkedRef = useForkedRef(ref, modalRef)
 
     const [_visible, setVisible] = useState(visible)
@@ -136,11 +137,13 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
 
     useEffect(() => {
       if (_visible) {
+        document.addEventListener('mousedown', handleMouseDown)
         document.addEventListener('mouseup', handleClickOutside)
         document.addEventListener('keydown', handleKeyDown)
       }
 
       return () => {
+        document.removeEventListener('mousedown', handleMouseDown)
         document.removeEventListener('mouseup', handleClickOutside)
         document.removeEventListener('keydown', handleKeyDown)
       }
@@ -155,8 +158,14 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
     }
 
     useLayoutEffect(() => {
+      if (!staticBackdrop) {
+        return
+      }
+
       onClosePrevented?.()
-      setTimeout(() => setStaticBackdrop(false), duration)
+      const timeout = setTimeout(() => setStaticBackdrop(false), duration)
+
+      return () => clearTimeout(timeout)
     }, [staticBackdrop])
 
     // Set focus to modal after open
@@ -186,8 +195,16 @@ export const CModal = forwardRef<HTMLDivElement, CModalProps>(
       }
     }, [_visible])
 
+    const handleMouseDown = (event: Event) => {
+      mouseDownTarget.current = event.target
+    }
+
     const handleClickOutside = (event: Event) => {
-      if (modalRef.current && modalRef.current == event.target) {
+      if (
+        modalRef.current &&
+        modalRef.current == event.target &&
+        mouseDownTarget.current == event.target
+      ) {
         handleDismiss()
       }
     }

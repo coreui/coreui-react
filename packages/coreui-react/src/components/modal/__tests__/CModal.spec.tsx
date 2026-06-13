@@ -48,6 +48,49 @@ test('CModal dialog close on press ESC', async () => {
   }
 })
 
+test('CModal calls onClosePrevented only when closing is actually prevented', async () => {
+  const onClosePrevented = jest.fn()
+
+  render(
+    <CModal backdrop="static" onClosePrevented={onClosePrevented} portal={false} visible>
+      Test
+    </CModal>
+  )
+
+  expect(onClosePrevented).toHaveBeenCalledTimes(0)
+
+  const modal = screen.getByText('Test').closest('.modal') as HTMLElement
+  fireEvent.keyDown(modal, { key: 'Escape' })
+
+  await waitFor(() => {
+    expect(onClosePrevented).toHaveBeenCalledTimes(1)
+    expect(modal).toHaveClass('modal-static')
+  })
+})
+
+test('CModal does not close when a press started inside the dialog is released over the backdrop area', async () => {
+  const onClose = jest.fn()
+
+  render(
+    <CModal onClose={onClose} portal={false} visible>
+      <div data-testid="content">Test</div>
+    </CModal>
+  )
+
+  const modal = screen.getByText('Test').closest('.modal') as HTMLElement
+  const content = screen.getByTestId('content')
+
+  fireEvent.mouseDown(content)
+  fireEvent.mouseUp(modal)
+  expect(onClose).toHaveBeenCalledTimes(0)
+
+  fireEvent.mouseDown(modal)
+  fireEvent.mouseUp(modal)
+  await waitFor(() => {
+    expect(onClose).toHaveBeenCalledTimes(1)
+  })
+})
+
 // test('CModal dialog closes when clicking outside the modal', async () => {
 //   const onClose = jest.fn()
 
