@@ -72,7 +72,7 @@ export const getDependencies = (
   }
 
   const sortedDependencies: Record<string, string> = {}
-  const keys = Object.keys(dependencies).sort()
+  const keys = Object.keys(dependencies).toSorted()
   for (const key of keys) {
     sortedDependencies[key] = dependencies[key]
   }

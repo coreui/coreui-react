@@ -46,7 +46,7 @@ const ScssDocs = ({ file, capture }: ScssDocsProps) => {
   const _file = data.allFile.edges.find((node: any) => node.node.relativePath === file)
   const captureStart = `// scss-docs-start ${capture}\n`
   const captureEnd = `// scss-docs-end ${capture}\n`
-  const re = new RegExp(`${captureStart}([\\s\\S]*?)${captureEnd}`, 'm')
+  const re = new RegExp(String.raw`${captureStart}([\s\S]*?)${captureEnd}`, 'm')
   const captured = re.exec(_file.node.internal.content)
   const code = captured ? captured[1] : undefined
 
