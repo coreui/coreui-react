@@ -106,7 +106,7 @@ export const CDropdownToggle: FC<CDropdownToggleProps> = ({
   if (custom && React.isValidElement(children)) {
     return (
       <>
-        {React.cloneElement(children as React.ReactElement<any>, {
+        {React.cloneElement(children as React.ReactElement<Record<string, unknown>>, {
           'aria-expanded': visible,
           ...(!rest.disabled && { ...triggers }),
           ref: dropdownToggleRef,
