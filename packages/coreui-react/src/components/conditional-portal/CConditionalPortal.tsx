@@ -37,7 +37,9 @@ export const CConditionalPortal: FC<CConditionalPortalProps> = ({
   const [_container, setContainer] = useState<ReturnType<typeof getContainer>>(null)
 
   useEffect(() => {
-    portal && setContainer(getContainer(container) || document.body)
+    if (portal) {
+      setContainer(getContainer(container) || document.body)
+    }
   }, [container, portal])
 
   return typeof window !== 'undefined' && portal && _container ? (

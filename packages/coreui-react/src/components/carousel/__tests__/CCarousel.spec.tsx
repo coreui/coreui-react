@@ -129,7 +129,7 @@ test('CCarousel click on indicator', async () => {
 
   // click
   const ci = document.querySelector('.carousel-indicators')
-  ci && fireEvent.click(ci.children[1])
+  fireEvent.click(ci!.children[1])
   fireEvent.transitionEnd(item1)
   fireEvent.transitionEnd(item2)
 
@@ -137,7 +137,7 @@ test('CCarousel click on indicator', async () => {
   expect(item2).toHaveClass('active')
 
   // goback-click
-  ci && fireEvent.click(ci.children[0])
+  fireEvent.click(ci!.children[0])
   fireEvent.transitionEnd(item1)
   fireEvent.transitionEnd(item2)
 
@@ -173,7 +173,7 @@ test('CCarousel click on button', async () => {
 
   // click
   const buttonNext = document.querySelector('.carousel-control-next')
-  buttonNext && fireEvent.click(buttonNext)
+  fireEvent.click(buttonNext!)
   fireEvent.transitionEnd(item1)
   fireEvent.transitionEnd(item2)
 
@@ -182,7 +182,7 @@ test('CCarousel click on button', async () => {
 
   // goback-click
   const buttonPrev = document.querySelector('.carousel-control-prev')
-  buttonPrev && fireEvent.click(buttonPrev)
+  fireEvent.click(buttonPrev!)
   fireEvent.transitionEnd(item1)
   fireEvent.transitionEnd(item2)
 

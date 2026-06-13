@@ -50,7 +50,9 @@ export const CContainer = forwardRef<HTMLDivElement, CContainerProps>(
       const breakpoint = rest[bp]
       delete rest[bp]
 
-      breakpoint && repsonsiveClassNames.push(`container-${bp}`)
+      if (breakpoint) {
+        repsonsiveClassNames.push(`container-${bp}`)
+      }
     })
 
     return (

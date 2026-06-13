@@ -109,13 +109,18 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
     }, [children])
 
     useEffect(() => {
-      visible && cycle()
+      if (visible) {
+        cycle()
+      }
     }, [visible])
 
     useEffect(() => {
-      !animating && cycle()
-      !animating && onSlid && onSlid(active, direction)
-      animating && onSlide && onSlide(active, direction)
+      if (animating) {
+        onSlide?.(active, direction)
+      } else {
+        cycle()
+        onSlid?.(active, direction)
+      }
     }, [animating])
 
     useEffect(() => {
@@ -169,9 +174,9 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
       }
       setDirection(direction)
       if (direction === 'next') {
-        active === itemsNumber - 1 ? setActive(0) : setActive(active + 1)
+        setActive(active === itemsNumber - 1 ? 0 : active + 1)
       } else {
-        active === 0 ? setActive(itemsNumber - 1) : setActive(active - 1)
+        setActive(active === 0 ? itemsNumber - 1 : active - 1)
       }
     }
 
@@ -255,7 +260,9 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
                   <button
                     key={`indicator${index}`}
                     onClick={() => {
-                      !animating && handleIndicatorClick(index)
+                      if (!animating) {
+                        handleIndicatorClick(index)
+                      }
                     }}
                     className={classNames({
                       active: active === index,

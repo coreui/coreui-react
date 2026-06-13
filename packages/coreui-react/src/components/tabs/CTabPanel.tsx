@@ -44,7 +44,9 @@ export const CTabPanel = forwardRef<HTMLDivElement, CTabPanelProps>(
     const [_visible, setVisible] = useState(visible || _activeItemKey === itemKey)
 
     useEffect(() => {
-      visible !== undefined && setVisible(visible)
+      if (visible !== undefined) {
+        setVisible(visible)
+      }
     }, [visible])
 
     useEffect(() => {
