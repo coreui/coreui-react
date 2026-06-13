@@ -64,37 +64,36 @@ export const CCarouselItem = forwardRef<HTMLDivElement, CCarouselItemProps>(
     }, [active])
 
     useEffect(() => {
-      carouselItemRef.current?.addEventListener('transitionstart', () => {
-        active && setAnimating(true)
-      })
-      carouselItemRef.current?.addEventListener('transitionend', () => {
-        active && setAnimating(false)
+      const element = carouselItemRef.current
+
+      if (!element) {
+        return
+      }
+
+      const handleTransitionStart = () => {
+        if (active) {
+          setAnimating(true)
+        }
+      }
+
+      const handleTransitionEnd = () => {
+        if (active) {
+          setAnimating(false)
+        }
+
         setDirectionClassName('')
         setOrderClassName('')
-        if (active) {
-          setActiveClassName('active')
-        }
-        if (!active) {
-          setActiveClassName('')
-        }
-      })
-      return () => {
-        carouselItemRef.current?.removeEventListener('transitionstart', () => {
-          active && setAnimating(true)
-        })
-        carouselItemRef.current?.removeEventListener('transitionend', () => {
-          active && setAnimating(false)
-          setDirectionClassName('')
-          setOrderClassName('')
-          if (active) {
-            setActiveClassName('active')
-          }
-          if (!active) {
-            setActiveClassName('')
-          }
-        })
+        setActiveClassName(active ? 'active' : '')
       }
-    })
+
+      element.addEventListener('transitionstart', handleTransitionStart)
+      element.addEventListener('transitionend', handleTransitionEnd)
+
+      return () => {
+        element.removeEventListener('transitionstart', handleTransitionStart)
+        element.removeEventListener('transitionend', handleTransitionEnd)
+      }
+    }, [active])
 
     return (
       <div

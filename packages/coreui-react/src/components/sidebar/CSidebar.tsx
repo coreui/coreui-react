@@ -101,46 +101,65 @@ export const CSidebar: PolymorphicRefForwardingComponent<'div', CSidebarProps> =
     const [mobile, setMobile] = useState(false)
     const [visibleMobile, setVisibleMobile] = useState<boolean>(false)
     const [visibleDesktop, setVisibleDesktop] = useState<boolean>(
-      visible !== undefined ? visible : overlaid ? false : true
+      visible === undefined ? !overlaid : visible
     )
 
     useEffect(() => {
-      sidebarRef.current && setMobile(isOnMobile(sidebarRef.current))
-      visible !== undefined && handleVisibleChange(visible)
+      if (sidebarRef.current) {
+        setMobile(isOnMobile(sidebarRef.current))
+      }
+
+      if (visible !== undefined) {
+        handleVisibleChange(visible)
+      }
     }, [visible])
 
     useEffect(() => {
-      inViewport !== undefined && onVisibleChange && onVisibleChange(inViewport)
-      !inViewport && onHide && onHide()
-      inViewport && onShow && onShow()
+      if (inViewport !== undefined) {
+        onVisibleChange?.(inViewport)
+      }
+
+      if (inViewport) {
+        onShow?.()
+      } else {
+        onHide?.()
+      }
     }, [inViewport])
 
     useEffect(() => {
-      mobile && setVisibleMobile(false)
+      if (mobile) {
+        setVisibleMobile(false)
+      }
     }, [mobile])
 
     useEffect(() => {
-      sidebarRef.current && setMobile(isOnMobile(sidebarRef.current))
-      sidebarRef.current && setInViewport(isInViewport(sidebarRef.current))
+      const element = sidebarRef.current
+
+      if (element) {
+        setMobile(isOnMobile(element))
+        setInViewport(isInViewport(element))
+      }
+
+      const handleTransitionEnd = () => {
+        if (element) {
+          setInViewport(isInViewport(element))
+        }
+      }
 
       window.addEventListener('resize', handleResize)
       window.addEventListener('mouseup', handleClickOutside)
       window.addEventListener('keyup', handleKeyup)
 
-      sidebarRef.current?.addEventListener('mouseup', handleOnClick)
-      sidebarRef.current?.addEventListener('transitionend', () => {
-        sidebarRef.current && setInViewport(isInViewport(sidebarRef.current))
-      })
+      element?.addEventListener('mouseup', handleOnClick)
+      element?.addEventListener('transitionend', handleTransitionEnd)
 
       return () => {
         window.removeEventListener('resize', handleResize)
         window.removeEventListener('mouseup', handleClickOutside)
         window.removeEventListener('keyup', handleKeyup)
 
-        sidebarRef.current?.removeEventListener('mouseup', handleOnClick)
-        sidebarRef.current?.removeEventListener('transitionend', () => {
-          sidebarRef.current && setInViewport(isInViewport(sidebarRef.current))
-        })
+        element?.removeEventListener('mouseup', handleOnClick)
+        element?.removeEventListener('transitionend', handleTransitionEnd)
       }
     })
 
@@ -158,8 +177,10 @@ export const CSidebar: PolymorphicRefForwardingComponent<'div', CSidebarProps> =
     }
 
     const handleResize = () => {
-      sidebarRef.current && setMobile(isOnMobile(sidebarRef.current))
-      sidebarRef.current && setInViewport(isInViewport(sidebarRef.current))
+      if (sidebarRef.current) {
+        setMobile(isOnMobile(sidebarRef.current))
+        setInViewport(isInViewport(sidebarRef.current))
+      }
     }
 
     const handleKeyup = (event: Event) => {
@@ -183,11 +204,15 @@ export const CSidebar: PolymorphicRefForwardingComponent<'div', CSidebarProps> =
 
     const handleOnClick = (event: Event) => {
       const target = event.target as HTMLAnchorElement
-      target &&
+
+      if (
+        target &&
         target.classList.contains('nav-link') &&
         !target.classList.contains('nav-group-toggle') &&
-        mobile &&
+        mobile
+      ) {
         handleHide()
+      }
     }
 
     return (
