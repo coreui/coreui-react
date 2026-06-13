@@ -8,7 +8,7 @@ export interface AsProp<As extends ElementType = ElementType> {
   as?: As
 }
 
-export interface Props<As extends ElementType = ElementType> extends AsProp<As> {}
+export type Props<As extends ElementType = ElementType> = AsProp<As>
 
 export interface PolymorphicRefForwardingComponent<TInitial extends ElementType, P = unknown> {
   <As extends ElementType = TInitial>(

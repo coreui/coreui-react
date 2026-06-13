@@ -1,3 +1,5 @@
+import { CSSProperties } from 'react'
+
 import { CTableDataCellProps } from '../table/CTableDataCell'
 import { CTableHeaderCellProps } from '../table/CTableHeaderCell'
 import { CTableRowProps } from '../table/CTableRow'
@@ -5,7 +7,7 @@ import { CTableRowProps } from '../table/CTableRow'
 export type Column = {
   label?: string
   key: string
-  _style?: any
+  _style?: CSSProperties
   _props?: CTableHeaderCellProps
 }
 

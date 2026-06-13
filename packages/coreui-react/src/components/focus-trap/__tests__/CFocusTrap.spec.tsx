@@ -6,7 +6,7 @@ import { CFocusTrap } from '../CFocusTrap'
 // Helper function to create a test component with focusable elements
 interface TestComponentProps {
   children?: React.ReactNode
-  [key: string]: any
+  [key: string]: unknown
 }
 
 const TestComponent = ({ children, ...props }: TestComponentProps) => (

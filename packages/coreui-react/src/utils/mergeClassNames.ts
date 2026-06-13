@@ -9,7 +9,7 @@ const mergeClassNames = <T extends object>(
   const classNames: T = { ...defaultClassNames }
 
   for (const key in customClassNames) {
-    if (customClassNames.hasOwnProperty(key)) {
+    if (Object.hasOwn(customClassNames, key)) {
       const typedKey = key as keyof T
       const customClassName = customClassNames[typedKey]?.toString()
 

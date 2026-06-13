@@ -278,8 +278,8 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
           <div className="carousel-inner">
             {Children.map(children, (child, index) => {
               if (React.isValidElement(child)) {
-                return React.cloneElement(child as React.ReactElement<any>, {
-                  active: active === index ? true : false,
+                return React.cloneElement(child as React.ReactElement<Record<string, unknown>>, {
+                  active: active === index,
                   direction: direction,
                   key: index,
                 })

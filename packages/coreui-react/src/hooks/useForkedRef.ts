@@ -13,17 +13,23 @@ export type AssignableRef<ValueType> =
 export function useForkedRef<RefValueType = any>(
   ...refs: (AssignableRef<RefValueType> | null | undefined)[]
 ) {
-  return useMemo(() => {
-    if (refs.every((ref) => ref == null)) {
-      return null
-    }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return (node: any) => {
-      refs.forEach((ref) => {
-        assignRef(ref, node)
-      })
-    }
-  }, refs)
+  return useMemo(
+    () => {
+      if (refs.every((ref) => ref == null)) {
+        return null
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return (node: any) => {
+        refs.forEach((ref) => {
+          assignRef(ref, node)
+        })
+      }
+    },
+    // useForkedRef accepts a variable number of refs, so the dependency list
+    // cannot be a static array literal; the refs are compared element-wise.
+    // eslint-disable-next-line react-hooks/use-memo, react-hooks/exhaustive-deps
+    refs
+  )
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -44,7 +50,6 @@ export function assignRef<RefValueType = any>(
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
-export function isFunction(value: any): value is Function {
-  return !!(value && {}.toString.call(value) == '[object Function]')
+export function isFunction(value: unknown): value is (...args: unknown[]) => unknown {
+  return typeof value === 'function'
 }
