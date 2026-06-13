@@ -5,6 +5,7 @@ import getTransitionDurationFromElement from './getTransitionDurationFromElement
 import isInViewport from './isInViewport'
 import isRTL from './isRTL'
 import mergeClassNames from './mergeClassNames'
+import Swipe from './swipe'
 
 export {
   executeAfterTransition,
@@ -14,4 +15,5 @@ export {
   isInViewport,
   isRTL,
   mergeClassNames,
+  Swipe,
 }

@@ -1,16 +1,8 @@
-import React, {
-  Children,
-  forwardRef,
-  HTMLAttributes,
-  TouchEvent,
-  useState,
-  useEffect,
-  useRef,
-} from 'react'
+import React, { Children, forwardRef, HTMLAttributes, useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { isInViewport } from '../../utils'
+import { isInViewport, isRTL, Swipe } from '../../utils'
 import { useForkedRef } from '../../hooks'
 
 import { CCarouselContext } from './CCarouselContext'
@@ -95,13 +87,13 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
     const carouselRef = useRef<HTMLDivElement>(null)
     const forkedRef = useForkedRef(ref, carouselRef)
     const data = useRef<DataType>({}).current
+    const handleControlClickRef = useRef<(direction: string) => void>(() => undefined)
 
     const [active, setActive] = useState<number>(activeIndex)
     const [animating, setAnimating] = useState<boolean>(false)
     const [customInterval, setCustomInterval] = useState<boolean | number>()
     const [direction, setDirection] = useState<string>('next')
     const [itemsNumber, setItemsNumber] = useState<number>(0)
-    const [touchPosition, setTouchPosition] = useState<number | null>(null)
     const [visible, setVisible] = useState<boolean>()
 
     useEffect(() => {
@@ -130,6 +122,19 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
         window.removeEventListener('scroll', handleScroll)
       }
     }, [])
+
+    useEffect(() => {
+      if (!touch || !carouselRef.current) {
+        return
+      }
+
+      const swipe = new Swipe(carouselRef.current, {
+        onLeft: () => handleControlClickRef.current(isRTL(carouselRef.current) ? 'prev' : 'next'),
+        onRight: () => handleControlClickRef.current(isRTL(carouselRef.current) ? 'next' : 'prev'),
+      })
+
+      return () => swipe.dispose()
+    }, [touch])
 
     useEffect(() => {
       return () => clearCycleTimeout()
@@ -179,6 +184,7 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
         setActive(active === 0 ? itemsNumber - 1 : active - 1)
       }
     }
+    handleControlClickRef.current = handleControlClick
 
     const handleIndicatorClick = (index: number) => {
       if (active === index) {
@@ -205,32 +211,6 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
       }
     }
 
-    const handleTouchMove = (e: TouchEvent) => {
-      const touchDown = touchPosition
-
-      if (touchDown === null) {
-        return
-      }
-
-      const currentTouch = e.touches[0].clientX
-      const diff = touchDown - currentTouch
-
-      if (diff > 5) {
-        handleControlClick('next')
-      }
-
-      if (diff < -5) {
-        handleControlClick('prev')
-      }
-
-      setTouchPosition(null)
-    }
-
-    const handleTouchStart = (e: TouchEvent) => {
-      const touchDown = e.touches[0].clientX
-      setTouchPosition(touchDown)
-    }
-
     return (
       <div
         className={classNames(
@@ -243,7 +223,6 @@ export const CCarousel = forwardRef<HTMLDivElement, CCarouselProps>(
         {...(dark && { 'data-coreui-theme': 'dark' })}
         onMouseEnter={_pause}
         onMouseLeave={cycle}
-        {...(touch && { onTouchStart: handleTouchStart, onTouchMove: handleTouchMove })}
         {...rest}
         ref={forkedRef}
       >
