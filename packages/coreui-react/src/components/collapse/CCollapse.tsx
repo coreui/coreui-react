@@ -37,13 +37,19 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
     const [width, setWidth] = useState<number>()
 
     const onEntering = () => {
-      onShow && onShow()
+      onShow?.()
 
       if (horizontal) {
-        collapseRef.current && setWidth(collapseRef.current.scrollWidth)
+        if (collapseRef.current) {
+          setWidth(collapseRef.current.scrollWidth)
+        }
+
         return
       }
-      collapseRef.current && setHeight(collapseRef.current.scrollHeight)
+
+      if (collapseRef.current) {
+        setHeight(collapseRef.current.scrollHeight)
+      }
     }
 
     const onEntered = () => {
@@ -56,14 +62,20 @@ export const CCollapse = forwardRef<HTMLDivElement, CCollapseProps>(
 
     const onExit = () => {
       if (horizontal) {
-        collapseRef.current && setWidth(collapseRef.current.scrollWidth)
+        if (collapseRef.current) {
+          setWidth(collapseRef.current.scrollWidth)
+        }
+
         return
       }
-      collapseRef.current && setHeight(collapseRef.current.scrollHeight)
+
+      if (collapseRef.current) {
+        setHeight(collapseRef.current.scrollHeight)
+      }
     }
 
     const onExiting = () => {
-      onHide && onHide()
+      onHide?.()
       if (horizontal) {
         setWidth(0)
         return
