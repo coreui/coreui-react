@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react-docs",
-  "version": "5.11.0",
+  "version": "5.12.0",
   "private": true,
   "description": "",
   "homepage": "https://coreui.io/react/",
@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@coreui/chartjs": "^4.2.0",
-    "@coreui/coreui": "^5.7.0",
+    "@coreui/coreui": "^5.8.0",
     "@coreui/icons": "^3.1.0",
     "@coreui/icons-react": "^2.3.0",
     "@coreui/internal-links": "^5.1.0",
@@ -60,7 +60,7 @@
     "react-imask": "^7.6.1",
     "react-markdown": "^10.1.0",
     "rimraf": "^6.1.3",
-    "sass": "^1.99.0",
+    "sass": "^1.101.0",
     "showdown": "^2.1.0"
   },
   "devDependencies": {

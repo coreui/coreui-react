@@ -52,7 +52,7 @@ import CNavGroup from '@coreui/react/src/components/nav/CNavGroup'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Callback fired when the user toggles the group. Receives the requested visibility. In controlled mode (<code>{`visible`}</code> set), update <code>{`visible`}</code> from here—or ignore the change to keep the group as is.</p>
+          <p>Callback fired when the user toggles the group. Receives the requested visibility. Provide it together with <code>{`visible`}</code> for controlled mode—update <code>{`visible`}</code> from here, or ignore the change to keep the group as is.</p>
         </td>
       </tr>
       <tr id="cnavgroup-toggler">
@@ -72,7 +72,7 @@ import CNavGroup from '@coreui/react/src/components/nav/CNavGroup'
       </tr>
       <tr>
         <td colSpan="3">
-          <p>Show nav group items.</p>
+          <p>Show nav group items. Acts as the initial state when used on its own, or as the controlled value when paired with <code>{`onVisibleChange`}</code>.</p>
         </td>
       </tr>
     </tbody>
