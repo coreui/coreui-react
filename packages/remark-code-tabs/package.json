@@ -12,8 +12,8 @@
   ],
   "description": "Gatsby plugin to embed jsx code preview",
   "dependencies": {
-    "unist-util-is": "^6.0.0",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-is": "^6.0.1",
+    "unist-util-visit": "^5.1.0"
   },
   "main": "index.js"
 }
