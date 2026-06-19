@@ -1,0 +1,85 @@
+---
+title: "React Bootstrap Badge Component"
+name: "Badge with Bootstrap Styling"
+description: "Learn how to use CoreUI’s React Badge component with Bootstrap styles to display counters, labels, and indicators within buttons, links, and UI elements."
+bootstrap: true
+---
+
+import { BadgeExample } from './examples/BadgeExample'
+import BadgeExampleRaw from './examples/BadgeExample.tsx?raw'
+import { Badge2Example } from './examples/Badge2Example'
+import Badge2ExampleRaw from './examples/Badge2Example.tsx?raw'
+import { Badge3Example } from './examples/Badge3Example'
+import Badge3ExampleRaw from './examples/Badge3Example.tsx?raw'
+import { BadgePositionedExample } from './examples/BadgePositionedExample'
+import BadgePositionedExampleRaw from './examples/BadgePositionedExample.tsx?raw'
+import { BadgePositioned2Example } from './examples/BadgePositioned2Example'
+import BadgePositioned2ExampleRaw from './examples/BadgePositioned2Example.tsx?raw'
+import { BadgeContextualVariations } from './examples/BadgeContextualVariations'
+import BadgeContextualVariationsRaw from './examples/BadgeContextualVariations.tsx?raw'
+import { BadgeContextual2Variations } from './examples/BadgeContextual2Variations'
+import BadgeContextual2VariationsRaw from './examples/BadgeContextual2Variations.tsx?raw'
+import { BadgePillExample } from './examples/BadgePillExample'
+import BadgePillExampleRaw from './examples/BadgePillExample.tsx?raw'
+
+## How to use React Bootstrap Badge component
+
+React Bootstrap Badges scale based on their parent using `em` units, making them easy to embed inside headings, buttons, or navigation items.
+
+<Example code={BadgeExampleRaw} lang="tsx" name="BadgeExample" componentName="React Bootstrap Badge" class="theme-bootstrap">
+  <BadgeExample client:only="react" />
+</Example>
+
+You can also use badges inside buttons and links to display counters or notifications.
+
+<Example code={Badge2ExampleRaw} lang="tsx" name="Badge2Example" componentName="React Bootstrap Badge" class="theme-bootstrap">
+  <Badge2Example client:only="react" />
+</Example>
+
+Keep in mind that depending on usage, badges might be challenging for screen reader users. Add visually hidden helper text when needed to improve accessibility.
+
+<Example code={Badge3ExampleRaw} lang="tsx" name="Badge3Example" componentName="React Bootstrap Badge" class="theme-bootstrap">
+  <Badge3Example client:only="react" />
+</Example>
+
+### Positioned badges
+
+Use the `position` prop to place the badge in the corner of a button or link, mimicking the Bootstrap positioning helpers.
+
+<Example code={BadgePositionedExampleRaw} lang="tsx" name="BadgePositionedExample" componentName="React Bootstrap Badge" class="theme-bootstrap">
+  <BadgePositionedExample client:only="react" />
+</Example>
+
+You can also create generic status indicators without a number by combining badges with utility classes.
+
+<Example code={BadgePositioned2ExampleRaw} lang="tsx" name="BadgePositioned2Example" componentName="React Bootstrap Badge" class="theme-bootstrap">
+  <BadgePositioned2Example client:only="react" />
+</Example>
+
+## Contextual variations
+
+Apply `color` props like `primary`, `danger`, or `success` to control the background color of the badge in a Bootstrap-consistent way.
+
+<Example code={BadgeContextualVariationsRaw} lang="tsx" name="BadgeContextualVariations" componentName="React Bootstrap Badge" class="theme-bootstrap">
+  <BadgeContextualVariations client:only="react" />
+</Example>
+
+Use `textBgColor` to automatically set contrasting text and background colors according to WCAG accessibility standards.
+
+<Example code={BadgeContextual2VariationsRaw} lang="tsx" name="BadgeContextual2Variations" componentName="React Bootstrap Badge" class="theme-bootstrap">
+  <BadgeContextual2Variations client:only="react" />
+</Example>
+
+## Pill badges
+
+To make badges more rounded, use the `shape="rounded-pill"` prop. This mirrors Bootstrap’s pill-style badge appearance.
+
+<Example code={BadgePillExampleRaw} lang="tsx" name="BadgePillExample" componentName="React Bootstrap Badge" class="theme-bootstrap">
+  <BadgePillExample client:only="react" />
+</Example>
+
+## API reference
+
+See below for the full API reference for all available props for the Bootstrap-styled React Badge component.
+
+- [&lt;CBadge /&gt;](../api/#cbadge)

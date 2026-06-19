@@ -1,0 +1,54 @@
+{
+  "name": "CAlert",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "color",
+      "type": "'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string",
+      "default": "primary",
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "dismissible",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Optionally add a close button to alert and allow it to self dismiss.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onClose",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the component requests to be closed.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "variant",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Set the alert variant to a solid.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Toggle the visibility of component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CAlert } from '@coreui/react'"
+}

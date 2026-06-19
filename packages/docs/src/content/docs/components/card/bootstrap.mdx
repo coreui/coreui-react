@@ -1,0 +1,289 @@
+---
+title: "React Bootstrap Card Component"
+name: "Card with Bootstrap Styling"
+description: "Learn how to use CoreUI’s React Bootstrap Card component to build flexible content containers with headers, footers, images, list groups, and responsive layouts."
+bootstrap: true
+---
+
+import { CardExample } from './examples/CardExample'
+import CardExampleRaw from './examples/CardExample.tsx?raw'
+import { CardBodyExample } from './examples/CardBodyExample'
+import CardBodyExampleRaw from './examples/CardBodyExample.tsx?raw'
+import { CardTitleExample } from './examples/CardTitleExample'
+import CardTitleExampleRaw from './examples/CardTitleExample.tsx?raw'
+import { CardImagesExample } from './examples/CardImagesExample'
+import CardImagesExampleRaw from './examples/CardImagesExample.tsx?raw'
+import { CardListGroupsExample } from './examples/CardListGroupsExample'
+import CardListGroupsExampleRaw from './examples/CardListGroupsExample.tsx?raw'
+import { CardListGroups2Example } from './examples/CardListGroups2Example'
+import CardListGroups2ExampleRaw from './examples/CardListGroups2Example.tsx?raw'
+import { CardListGroups3Example } from './examples/CardListGroups3Example'
+import CardListGroups3ExampleRaw from './examples/CardListGroups3Example.tsx?raw'
+import { CardKitchenSinkExample } from './examples/CardKitchenSinkExample'
+import CardKitchenSinkExampleRaw from './examples/CardKitchenSinkExample.tsx?raw'
+import { CardHeaderExample } from './examples/CardHeaderExample'
+import CardHeaderExampleRaw from './examples/CardHeaderExample.tsx?raw'
+import { CardHeader2Example } from './examples/CardHeader2Example'
+import CardHeader2ExampleRaw from './examples/CardHeader2Example.tsx?raw'
+import { CardHeader3Example } from './examples/CardHeader3Example'
+import CardHeader3ExampleRaw from './examples/CardHeader3Example.tsx?raw'
+import { CardHeaderAndFooterExample } from './examples/CardHeaderAndFooterExample'
+import CardHeaderAndFooterExampleRaw from './examples/CardHeaderAndFooterExample.tsx?raw'
+import { CardSizingExample } from './examples/CardSizingExample'
+import CardSizingExampleRaw from './examples/CardSizingExample.tsx?raw'
+import { CardSizing2Example } from './examples/CardSizing2Example'
+import CardSizing2ExampleRaw from './examples/CardSizing2Example.tsx?raw'
+import { CardSizing3Example } from './examples/CardSizing3Example'
+import CardSizing3ExampleRaw from './examples/CardSizing3Example.tsx?raw'
+import { CardTextAlignmentExample } from './examples/CardTextAlignmentExample'
+import CardTextAlignmentExampleRaw from './examples/CardTextAlignmentExample.tsx?raw'
+import { CardNavigationExample } from './examples/CardNavigationExample'
+import CardNavigationExampleRaw from './examples/CardNavigationExample.tsx?raw'
+import { CardNavigation2Example } from './examples/CardNavigation2Example'
+import CardNavigation2ExampleRaw from './examples/CardNavigation2Example.tsx?raw'
+import { CardImageCapsExample } from './examples/CardImageCapsExample'
+import CardImageCapsExampleRaw from './examples/CardImageCapsExample.tsx?raw'
+import { CardImageOverlaysExample } from './examples/CardImageOverlaysExample'
+import CardImageOverlaysExampleRaw from './examples/CardImageOverlaysExample.tsx?raw'
+import { CardImageHorizontalExample } from './examples/CardImageHorizontalExample'
+import CardImageHorizontalExampleRaw from './examples/CardImageHorizontalExample.tsx?raw'
+import { CardStylesBackgroundAndColorExample } from './examples/CardStylesBackgroundAndColorExample'
+import CardStylesBackgroundAndColorExampleRaw from './examples/CardStylesBackgroundAndColorExample.tsx?raw'
+import { CardStylesBorderExample } from './examples/CardStylesBorderExample'
+import CardStylesBorderExampleRaw from './examples/CardStylesBorderExample.tsx?raw'
+import { CardStylesTopBorderExample } from './examples/CardStylesTopBorderExample'
+import CardStylesTopBorderExampleRaw from './examples/CardStylesTopBorderExample.tsx?raw'
+import { CardGroupsExample } from './examples/CardGroupsExample'
+import CardGroupsExampleRaw from './examples/CardGroupsExample.tsx?raw'
+import { CardGroups2Example } from './examples/CardGroups2Example'
+import CardGroups2ExampleRaw from './examples/CardGroups2Example.tsx?raw'
+import { CardGridExample } from './examples/CardGridExample'
+import CardGridExampleRaw from './examples/CardGridExample.tsx?raw'
+import { CardGrid2Example } from './examples/CardGrid2Example'
+import CardGrid2ExampleRaw from './examples/CardGrid2Example.tsx?raw'
+import { CardGrid3Example } from './examples/CardGrid3Example'
+import CardGrid3ExampleRaw from './examples/CardGrid3Example.tsx?raw'
+import { CardGrid4Example } from './examples/CardGrid4Example'
+import CardGrid4ExampleRaw from './examples/CardGrid4Example.tsx?raw'
+
+## About React Bootstrap Card Component
+
+The React Bootstrap Card component is a versatile container used to display content in a structured and responsive way. It supports images, headers, footers, background styles, and more—styled to match Bootstrap's visual language.
+
+## Example usage
+
+React Bootstrap Cards require minimal markup and offer maximum flexibility. They use flexbox for layout, have no default margins, and fill their parent container by default.
+
+<Example code={CardExampleRaw} lang="tsx" name="CardExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardExample client:only="react" />
+</Example>
+
+## Content types supported by React Bootstrap Card
+
+### Card body
+
+The main block of the card is wrapped in `<CCardBody>` for consistent padding.
+
+<Example code={CardBodyExampleRaw} lang="tsx" name="CardBodyExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardBodyExample client:only="react" />
+</Example>
+
+### Titles, text, and links
+
+Use `<CCardTitle>`, `<CCardSubtitle>`, and `<CCardLink>` to structure text and links inside cards.
+
+<Example code={CardTitleExampleRaw} lang="tsx" name="CardTitleExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardTitleExample client:only="react" />
+</Example>
+
+### Images
+
+Use `orientation="top"` to position an image at the top of the card. Use `<CCardText>` to add and style text content.
+
+<Example code={CardImagesExampleRaw} lang="tsx" name="CardImagesExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardImagesExample client:only="react" />
+</Example>
+
+### List groups
+
+Display structured lists inside cards using flush list groups.
+
+<Example code={CardListGroupsExampleRaw} lang="tsx" name="CardListGroupsExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardListGroupsExample client:only="react" />
+</Example>
+
+<Example code={CardListGroups2ExampleRaw} lang="tsx" name="CardListGroups2Example" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardListGroups2Example client:only="react" />
+</Example>
+
+<Example code={CardListGroups3ExampleRaw} lang="tsx" name="CardListGroups3Example" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardListGroups3Example client:only="react" />
+</Example>
+
+### Kitchen sink
+
+Combine multiple content elements (e.g. image, text, list group) to create a comprehensive card layout.
+
+<Example code={CardKitchenSinkExampleRaw} lang="tsx" name="CardKitchenSinkExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardKitchenSinkExample client:only="react" />
+</Example>
+
+### Header and footer
+
+Use `<CCardHeader>` and `<CCardFooter>` to add headers and footers. You can style headers with `as="h5"` or similar props.
+
+<Example code={CardHeaderExampleRaw} lang="tsx" name="CardHeaderExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardHeaderExample client:only="react" />
+</Example>
+
+<Example code={CardHeader2ExampleRaw} lang="tsx" name="CardHeader2Example" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardHeader2Example client:only="react" />
+</Example>
+
+<Example code={CardHeader3ExampleRaw} lang="tsx" name="CardHeader3Example" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardHeader3Example client:only="react" />
+</Example>
+
+<Example code={CardHeaderAndFooterExampleRaw} lang="tsx" name="CardHeaderAndFooterExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardHeaderAndFooterExample client:only="react" />
+</Example>
+
+## Sizing React Bootstrap Cards
+
+Cards are full-width by default. Control width using layout grids, utilities, or custom CSS.
+
+### Grid layout
+
+<Example code={CardSizingExampleRaw} lang="tsx" name="CardSizingExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardSizingExample client:only="react" />
+</Example>
+
+### Utility classes
+
+<Example code={CardSizing2ExampleRaw} lang="tsx" name="CardSizing2Example" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardSizing2Example client:only="react" />
+</Example>
+
+### Custom CSS
+
+<Example code={CardSizing3ExampleRaw} lang="tsx" name="CardSizing3Example" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardSizing3Example client:only="react" />
+</Example>
+
+## Text alignment
+
+Use Bootstrap's text alignment utilities to position card content.
+
+<Example code={CardTextAlignmentExampleRaw} lang="tsx" name="CardTextAlignmentExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardTextAlignmentExample client:only="react" />
+</Example>
+
+## Navigation
+
+Add navigational elements using `<CNav>` inside a card header.
+
+<Example code={CardNavigationExampleRaw} lang="tsx" name="CardNavigationExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardNavigationExample client:only="react" />
+</Example>
+
+<Example code={CardNavigation2ExampleRaw} lang="tsx" name="CardNavigation2Example" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardNavigation2Example client:only="react" />
+</Example>
+
+## Image placement in React Bootstrap Cards
+
+### Image caps (top or bottom)
+
+<Example code={CardImageCapsExampleRaw} lang="tsx" name="CardImageCapsExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardImageCapsExample client:only="react" />
+</Example>
+
+### Image overlays
+
+Overlay content on top of background images using Bootstrap utility classes.
+
+<Example code={CardImageOverlaysExampleRaw} lang="tsx" name="CardImageOverlaysExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardImageOverlaysExample client:only="react" />
+</Example>
+
+## Horizontal layout
+
+Use `.g-0` and grid column classes to create responsive horizontal cards.
+
+<Example code={CardImageHorizontalExampleRaw} lang="tsx" name="CardImageHorizontalExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardImageHorizontalExample client:only="react" />
+</Example>
+
+## Styling options
+
+### Background and text color
+
+Use the `color` prop to control card background and text color.
+
+<Example code={CardStylesBackgroundAndColorExampleRaw} lang="tsx" name="CardStylesBackgroundAndColorExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardStylesBackgroundAndColorExample client:only="react" />
+</Example>
+
+<Callout color="warning" type="colorAssistiveTechnologies" />
+
+### Border customization
+
+Apply Bootstrap border utilities or the `textColor` prop to customize card borders.
+
+<Example code={CardStylesBorderExampleRaw} lang="tsx" name="CardStylesBorderExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardStylesBorderExample client:only="react" />
+</Example>
+
+### Top border only
+
+<Example code={CardStylesTopBorderExampleRaw} lang="tsx" name="CardStylesTopBorderExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardStylesTopBorderExample client:only="react" />
+</Example>
+
+## Layout variations
+
+### Card groups
+
+Group cards to render them with equal width and height.
+
+<Example code={CardGroupsExampleRaw} lang="tsx" name="CardGroupsExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardGroupsExample client:only="react" />
+</Example>
+
+<Example code={CardGroups2ExampleRaw} lang="tsx" name="CardGroups2Example" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardGroups2Example client:only="react" />
+</Example>
+
+### Grid-based cards
+
+Use `<CRow>` and grid props to control the layout of multiple cards in a responsive grid.
+
+<Example code={CardGridExampleRaw} lang="tsx" name="CardGridExample" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardGridExample client:only="react" />
+</Example>
+
+<Example code={CardGrid2ExampleRaw} lang="tsx" name="CardGrid2Example" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardGrid2Example client:only="react" />
+</Example>
+
+<Example code={CardGrid3ExampleRaw} lang="tsx" name="CardGrid3Example" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardGrid3Example client:only="react" />
+</Example>
+
+<Example code={CardGrid4ExampleRaw} lang="tsx" name="CardGrid4Example" componentName="React Bootstrap Card" class="theme-bootstrap">
+  <CardGrid4Example client:only="react" />
+</Example>
+
+## API reference
+
+- [&lt;CCard /&gt;](../api/#ccard)
+- [&lt;CCardBody /&gt;](../api/#ccardbody)
+- [&lt;CCardFooter /&gt;](../api/#ccardfooter)
+- [&lt;CCardGroup /&gt;](../api/#ccardgroup)
+- [&lt;CCardHeader /&gt;](../api/#ccardheader)
+- [&lt;CCardImage /&gt;](../api/#ccardimage)
+- [&lt;CCardImageOverlay /&gt;](../api/#ccardimageoverlay)
+- [&lt;CCardLink /&gt;](../api/#ccardlink)
+- [&lt;CCardSubtitle /&gt;](../api/#ccardsubtitle)
+- [&lt;CCardText /&gt;](../api/#ccardtext)
+- [&lt;CCardTitle /&gt;](../api/#ccardtitle)

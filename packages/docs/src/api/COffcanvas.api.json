@@ -1,0 +1,94 @@
+{
+  "name": "COffcanvas",
+  "props": [
+    {
+      "name": "backdrop",
+      "type": "boolean | \"static\" | undefined",
+      "default": true,
+      "description": "Apply a backdrop on body while offcanvas is open.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "dark",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Sets a darker color scheme.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "keyboard",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Closes the offcanvas when escape key is pressed.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onHide",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the component requests to be hidden.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onShow",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the component requests to be shown.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "placement",
+      "type": "\"start\" | \"end\" | \"top\" | \"bottom\"",
+      "default": null,
+      "description": "Components placement, there’s no default placement.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "portal",
+      "type": "boolean | undefined",
+      "default": false,
+      "description": "Generates modal using createPortal.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "responsive",
+      "type": "boolean | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"xxl\" | undefined",
+      "default": true,
+      "description": "Responsive offcanvas property hide content outside the viewport from a specified breakpoint and down.",
+      "since": "4.6.0",
+      "deprecated": null
+    },
+    {
+      "name": "scroll",
+      "type": "boolean | undefined",
+      "default": false,
+      "description": "Allow body scrolling while offcanvas is open",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean | undefined",
+      "default": false,
+      "description": "Toggle the visibility of offcanvas component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { COffcanvas } from '@coreui/react'"
+}

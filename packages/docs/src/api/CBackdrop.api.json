@@ -1,0 +1,22 @@
+{
+  "name": "CBackdrop",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": "modal-backdrop",
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Toggle the visibility of modal component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CBackdrop } from '@coreui/react'"
+}

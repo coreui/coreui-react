@@ -1,0 +1,83 @@
+---
+title: "React Bootstrap Avatar Component"
+name: "Avatar with Bootstrap Styling"
+description: "Learn how to use CoreUI’s React Avatar component styled with Bootstrap to display profile images, icons, initials, and status indicators in a consistent and responsive design."
+bootstrap: true
+---
+
+import { AvatarImage } from './examples/AvatarImage'
+import AvatarImageRaw from './examples/AvatarImage.tsx?raw'
+import { AvatarLetter } from './examples/AvatarLetter'
+import AvatarLetterRaw from './examples/AvatarLetter.tsx?raw'
+import { AvatarIcon } from './examples/AvatarIcon'
+import AvatarIconRaw from './examples/AvatarIcon.tsx?raw'
+import { AvatarRounded } from './examples/AvatarRounded'
+import AvatarRoundedRaw from './examples/AvatarRounded.tsx?raw'
+import { AvatarSquare } from './examples/AvatarSquare'
+import AvatarSquareRaw from './examples/AvatarSquare.tsx?raw'
+import { AvatarSizes } from './examples/AvatarSizes'
+import AvatarSizesRaw from './examples/AvatarSizes.tsx?raw'
+import { AvatarWithStatus } from './examples/AvatarWithStatus'
+import AvatarWithStatusRaw from './examples/AvatarWithStatus.tsx?raw'
+
+## Image avatars
+
+Use Bootstrap-styled React avatars to display user profile images in a circular format — ideal for representing user accounts and contacts.
+
+<Example code={AvatarImageRaw} lang="tsx" name="AvatarImage" componentName="React Bootstrap Avatar" class="theme-bootstrap">
+  <AvatarImage client:only="react" />
+</Example>
+
+## Letter avatars
+
+Display user initials using letter-based avatars. A perfect fallback when images aren’t available, and still visually consistent with Bootstrap styling.
+
+<Example code={AvatarLetterRaw} lang="tsx" name="AvatarLetter" componentName="React Bootstrap Avatar" class="theme-bootstrap">
+  <AvatarLetter client:only="react" />
+</Example>
+
+## Icon avatars
+
+Insert icons into avatars for representing roles, objects, or placeholder users. Supports vector icons with Bootstrap-friendly layout.
+
+<Example code={AvatarIconRaw} lang="tsx" name="AvatarIcon" componentName="React Bootstrap Avatar" class="theme-bootstrap">
+  <AvatarIcon client:only="react" />
+</Example>
+
+## Rounded avatars
+
+Use the `shape="rounded"` prop to apply Bootstrap’s rounded corners to the avatar, giving it a subtle square-rounded appearance.
+
+<Example code={AvatarRoundedRaw} lang="tsx" name="AvatarRounded" componentName="React Bootstrap Avatar" class="theme-bootstrap">
+  <AvatarRounded client:only="react" />
+</Example>
+
+## Square avatars
+
+To make avatars fully square with no border radius, apply `shape="rounded-0"`, matching Bootstrap’s `rounded-0` utility style.
+
+<Example code={AvatarSquareRaw} lang="tsx" name="AvatarSquare" componentName="React Bootstrap Avatar" class="theme-bootstrap">
+  <AvatarSquare client:only="react" />
+</Example>
+
+## Sizes
+
+Customize avatar size using the `size` prop. Available options include `xl`, `lg`, `md`, and `sm`, aligning with Bootstrap’s scalable design system.
+
+<Example code={AvatarSizesRaw} lang="tsx" name="AvatarSizes" componentName="React Bootstrap Avatar" class="theme-bootstrap">
+  <AvatarSizes client:only="react" />
+</Example>
+
+## Avatars with status
+
+Add a small status indicator (e.g. online, offline) to avatars using the `status` prop — useful for chat interfaces or user dashboards.
+
+<Example code={AvatarWithStatusRaw} lang="tsx" name="AvatarWithStatus" componentName="React Bootstrap Avatar" class="theme-bootstrap">
+  <AvatarWithStatus client:only="react" />
+</Example>
+
+## API reference
+
+Refer to the API below for all configurable props used with the Bootstrap-styled React Avatar component.
+
+- [&lt;CAvatar /&gt;](../api/#cavatar)

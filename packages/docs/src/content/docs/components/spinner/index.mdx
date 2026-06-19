@@ -1,0 +1,140 @@
+---
+title: "React Spinner Component"
+name: "Spinner"
+description: "Indicate the loading state of a component or page with CoreUI spinners, built entirely with HTML, CSS, and no JavaScript."
+otherFrameworks:
+  - spinner
+---
+
+import { SpinnerBorderExample } from './examples/SpinnerBorderExample'
+import SpinnerBorderExampleRaw from './examples/SpinnerBorderExample.tsx?raw'
+import { SpinnerBorderColorsExample } from './examples/SpinnerBorderColorsExample'
+import SpinnerBorderColorsExampleRaw from './examples/SpinnerBorderColorsExample.tsx?raw'
+import { SpinnerGrowExample } from './examples/SpinnerGrowExample'
+import SpinnerGrowExampleRaw from './examples/SpinnerGrowExample.tsx?raw'
+import { SpinnerGrowColorsExample } from './examples/SpinnerGrowColorsExample'
+import SpinnerGrowColorsExampleRaw from './examples/SpinnerGrowColorsExample.tsx?raw'
+import { SpinnerBorderMarginExample } from './examples/SpinnerBorderMarginExample'
+import SpinnerBorderMarginExampleRaw from './examples/SpinnerBorderMarginExample.tsx?raw'
+import { SpinnerBorderPlacementFlexExample } from './examples/SpinnerBorderPlacementFlexExample'
+import SpinnerBorderPlacementFlexExampleRaw from './examples/SpinnerBorderPlacementFlexExample.tsx?raw'
+import { SpinnerBorderPlacementFlex2Example } from './examples/SpinnerBorderPlacementFlex2Example'
+import SpinnerBorderPlacementFlex2ExampleRaw from './examples/SpinnerBorderPlacementFlex2Example.tsx?raw'
+import { SpinnerBorderPlacementFloatsExample } from './examples/SpinnerBorderPlacementFloatsExample'
+import SpinnerBorderPlacementFloatsExampleRaw from './examples/SpinnerBorderPlacementFloatsExample.tsx?raw'
+import { SpinnerBorderPlacementTextAlignExample } from './examples/SpinnerBorderPlacementTextAlignExample'
+import SpinnerBorderPlacementTextAlignExampleRaw from './examples/SpinnerBorderPlacementTextAlignExample.tsx?raw'
+import { SpinnerSizeSmallExample } from './examples/SpinnerSizeSmallExample'
+import SpinnerSizeSmallExampleRaw from './examples/SpinnerSizeSmallExample.tsx?raw'
+import { SpinnerSizeCustomExample } from './examples/SpinnerSizeCustomExample'
+import SpinnerSizeCustomExampleRaw from './examples/SpinnerSizeCustomExample.tsx?raw'
+import { SpinnerButtonsExample } from './examples/SpinnerButtonsExample'
+import SpinnerButtonsExampleRaw from './examples/SpinnerButtonsExample.tsx?raw'
+import { SpinnerButtons2Example } from './examples/SpinnerButtons2Example'
+import SpinnerButtons2ExampleRaw from './examples/SpinnerButtons2Example.tsx?raw'
+
+## About
+
+CoreUI "spinners" can be used to show the loading state in your projects. They're built only with HTML and CSS, meaning you don't need any JavaScript to create them. You will, however, need some custom JavaScript to toggle their visibility. Their appearance, alignment, and sizing can be easily customized with our amazing utility classes.
+
+For accessibility purposes, each loader here includes `role="status"` and a nested `<span className="visually-hidden">Loading...</span>`.
+
+## Border spinner
+
+Use the border spinners for a lightweight loading indicator.
+
+<Example code={SpinnerBorderExampleRaw} lang="tsx" name="SpinnerBorderExample" componentName="React Spinner">
+  <SpinnerBorderExample client:only="react" />
+</Example>
+
+### Colors
+
+The border spinner uses `currentColor` for its `border-color`. You can use any of our text color utilities on the standard spinner.
+
+<Example code={SpinnerBorderColorsExampleRaw} lang="tsx" name="SpinnerBorderColorsExample" componentName="React Spinner">
+  <SpinnerBorderColorsExample client:only="react" />
+</Example>
+
+## Growing spinner
+
+If you don't fancy a border spinner, switch to the grow spinner. While it doesn't technically spin, it does repeatedly grow!
+
+<Example code={SpinnerGrowExampleRaw} lang="tsx" name="SpinnerGrowExample" componentName="React Spinner">
+  <SpinnerGrowExample client:only="react" />
+</Example>
+
+Once again, this spinner is built with `currentColor`, so you can easily change its appearance. Here it is in blue, along with the supported variants.
+
+<Example code={SpinnerGrowColorsExampleRaw} lang="tsx" name="SpinnerGrowColorsExample" componentName="React Spinner">
+  <SpinnerGrowColorsExample client:only="react" />
+</Example>
+
+## Alignment
+
+CoreUI React spinners are built with `rems`, `currentColor`, and `display: inline-flex`. This means they can easily be resized, recolored, and quickly aligned.
+
+### Margin
+
+Use [margin utilities](https://coreui.io/bootstrap/docs/utilities/spacing/#margin-and-padding) like `.m-5` for easy spacing.
+
+<Example code={SpinnerBorderMarginExampleRaw} lang="tsx" name="SpinnerBorderMarginExample" componentName="React Spinner">
+  <SpinnerBorderMarginExample client:only="react" />
+</Example>
+
+### Placement
+
+Use [flexbox utilities](https://coreui.io/bootstrap/docs/utilities/flex/), [float utilities](https://coreui.io/bootstrap/docs/utilities/float/), or [text alignment](https://coreui.io/bootstrap/docs/utilities/text/) utilities to place spinners exactly where you need them in any situation.
+
+#### Flex
+
+<Example code={SpinnerBorderPlacementFlexExampleRaw} lang="tsx" name="SpinnerBorderPlacementFlexExample" componentName="React Spinner">
+  <SpinnerBorderPlacementFlexExample client:only="react" />
+</Example>
+
+<Example code={SpinnerBorderPlacementFlex2ExampleRaw} lang="tsx" name="SpinnerBorderPlacementFlex2Example" componentName="React Spinner">
+  <SpinnerBorderPlacementFlex2Example client:only="react" />
+</Example>
+
+#### Floats
+
+<Example code={SpinnerBorderPlacementFloatsExampleRaw} lang="tsx" name="SpinnerBorderPlacementFloatsExample" componentName="React Spinner">
+  <SpinnerBorderPlacementFloatsExample client:only="react" />
+</Example>
+
+#### Text align
+
+<Example code={SpinnerBorderPlacementTextAlignExampleRaw} lang="tsx" name="SpinnerBorderPlacementTextAlignExample" componentName="React Spinner">
+  <SpinnerBorderPlacementTextAlignExample client:only="react" />
+</Example>
+
+## Size
+
+Add `size="sm"` property to make a smaller spinner that can quickly be used within other components.
+
+<Example code={SpinnerSizeSmallExampleRaw} lang="tsx" name="SpinnerSizeSmallExample" componentName="React Spinner">
+  <SpinnerSizeSmallExample client:only="react" />
+</Example>
+
+Or, use custom CSS or inline styles to change the dimensions as needed.
+
+<Example code={SpinnerSizeCustomExampleRaw} lang="tsx" name="SpinnerSizeCustomExample" componentName="React Spinner">
+  <SpinnerSizeCustomExample client:only="react" />
+</Example>
+
+## Buttons
+
+Use spinners within buttons to indicate an action is currently processing or taking place. You may also swap the text out of the spinner element and utilize button text as needed.
+
+<Example code={SpinnerButtonsExampleRaw} lang="tsx" name="SpinnerButtonsExample" componentName="React Spinner">
+  <SpinnerButtonsExample client:only="react" />
+</Example>
+
+<Example code={SpinnerButtons2ExampleRaw} lang="tsx" name="SpinnerButtons2Example" componentName="React Spinner">
+  <SpinnerButtons2Example client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CSpinner /&gt;](./api/#cspinner)

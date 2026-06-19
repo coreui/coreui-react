@@ -1,0 +1,134 @@
+{
+  "name": "CModal",
+  "props": [
+    {
+      "name": "alignment",
+      "type": "\"top\" | \"center\" | undefined",
+      "default": null,
+      "description": "Align the modal in the center or top of the screen.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "backdrop",
+      "type": "boolean | \"static\" | undefined",
+      "default": true,
+      "description": "Apply a backdrop on body while modal is open.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "container",
+      "type": "Element | DocumentFragment | (() => Element | DocumentFragment | null) | null | undefined",
+      "default": null,
+      "description": "Appends the react modal to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`.",
+      "since": "5.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "focus",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Puts the focus on the modal when shown.",
+      "since": "4.10.0",
+      "deprecated": null
+    },
+    {
+      "name": "fullscreen",
+      "type": "boolean | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"xxl\" | undefined",
+      "default": null,
+      "description": "Set modal to covers the entire user viewport.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "keyboard",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Closes the modal when escape key is pressed.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onClose",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the component requests to be closed.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onClosePrevented",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the component requests to be closed.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onShow",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the modal is shown, its backdrop is static and a click outside the modal or an escape key press is performed with the keyboard option set to false.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "portal",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Generates modal using createPortal.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "scrollable",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Create a scrollable modal that allows scrolling the modal body.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"lg\" | \"xl\" | undefined",
+      "default": null,
+      "description": "Size the component small, large, or extra large.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "transition",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Remove animation to create modal that simply appear rather than fade in to view.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "unmountOnClose",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "By default the component is unmounted after close animation, if you want to keep the component mounted set this property to false.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Toggle the visibility of modal component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CModal } from '@coreui/react'"
+}

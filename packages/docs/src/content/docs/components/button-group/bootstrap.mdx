@@ -1,0 +1,122 @@
+---
+title: "React Bootstrap Button Group Component"
+name: "Button Group with Bootstrap Styling"
+description: "Learn how to group buttons using the React Bootstrap Button Group component from CoreUI. Create accessible, styled toolbars and button sets with ease."
+bootstrap: true
+---
+
+import { ButtonGroupExample } from './examples/ButtonGroupExample'
+import ButtonGroupExampleRaw from './examples/ButtonGroupExample.tsx?raw'
+import { ButtonGroup2Example } from './examples/ButtonGroup2Example'
+import ButtonGroup2ExampleRaw from './examples/ButtonGroup2Example.tsx?raw'
+import { ButtonGroupMixedStylesExample } from './examples/ButtonGroupMixedStylesExample'
+import ButtonGroupMixedStylesExampleRaw from './examples/ButtonGroupMixedStylesExample.tsx?raw'
+import { ButtonGroupOutlinedStylesExample } from './examples/ButtonGroupOutlinedStylesExample'
+import ButtonGroupOutlinedStylesExampleRaw from './examples/ButtonGroupOutlinedStylesExample.tsx?raw'
+import { ButtonGroupCheckboxAndRadioExample } from './examples/ButtonGroupCheckboxAndRadioExample'
+import ButtonGroupCheckboxAndRadioExampleRaw from './examples/ButtonGroupCheckboxAndRadioExample.tsx?raw'
+import { ButtonGroupCheckboxAndRadio2Example } from './examples/ButtonGroupCheckboxAndRadio2Example'
+import ButtonGroupCheckboxAndRadio2ExampleRaw from './examples/ButtonGroupCheckboxAndRadio2Example.tsx?raw'
+import { ButtonToolbarExample } from './examples/ButtonToolbarExample'
+import ButtonToolbarExampleRaw from './examples/ButtonToolbarExample.tsx?raw'
+import { ButtonToolbar2Example } from './examples/ButtonToolbar2Example'
+import ButtonToolbar2ExampleRaw from './examples/ButtonToolbar2Example.tsx?raw'
+import { ButtonGroupSizingExample } from './examples/ButtonGroupSizingExample'
+import ButtonGroupSizingExampleRaw from './examples/ButtonGroupSizingExample.tsx?raw'
+import { ButtonGroupNestingExample } from './examples/ButtonGroupNestingExample'
+import ButtonGroupNestingExampleRaw from './examples/ButtonGroupNestingExample.tsx?raw'
+import { ButtonGroupVerticalExample } from './examples/ButtonGroupVerticalExample'
+import ButtonGroupVerticalExampleRaw from './examples/ButtonGroupVerticalExample.tsx?raw'
+
+## How to use React Bootstrap Button Group component
+
+The React Bootstrap Button Group component allows you to group multiple buttons together into a single toolbar-like unit. Wrap a series of `<CButton>` components in a `<CButtonGroup>` to get started.
+
+<Example code={ButtonGroupExampleRaw} lang="tsx" name="ButtonGroupExample" componentName="React Bootstrap Button Group" class="theme-bootstrap">
+  <ButtonGroupExample client:only="react" />
+</Example>
+
+<Callout color="info" title={<>Ensure the correct <code>role</code> and provide a label</>}>
+  For assistive technologies (e.g. screen readers) to identify a set of buttons as grouped, use `role="group"` for button groups and `role="toolbar"` for toolbars.
+
+  Always include an accessible label using `aria-label` or `aria-labelledby` to clarify the purpose of the group.
+</Callout>
+
+React Bootstrap Button Groups can also be applied to a group of links instead of using the [`CNav`](./../navs-tabs/#base-nav) component.
+
+<Example code={ButtonGroup2ExampleRaw} lang="tsx" name="ButtonGroup2Example" componentName="React Bootstrap Button Group" class="theme-bootstrap">
+  <ButtonGroup2Example client:only="react" />
+</Example>
+
+## Mixed styles in React Bootstrap Button Groups
+
+Combine buttons with different styles within a single group for more flexible UI designs.
+
+<Example code={ButtonGroupMixedStylesExampleRaw} lang="tsx" name="ButtonGroupMixedStylesExample" componentName="React Bootstrap Button Group" class="theme-bootstrap">
+  <ButtonGroupMixedStylesExample client:only="react" />
+</Example>
+
+## Outlined button styles
+
+Use `variant="outline"` on grouped buttons to apply Bootstrap's outline button style across the group.
+
+<Example code={ButtonGroupOutlinedStylesExampleRaw} lang="tsx" name="ButtonGroupOutlinedStylesExample" componentName="React Bootstrap Button Group" class="theme-bootstrap">
+  <ButtonGroupOutlinedStylesExample client:only="react" />
+</Example>
+
+## Checkbox and radio button groups
+
+Create interactive grouped controls by combining button-style checkboxes and radio buttons inside a React Bootstrap Button Group.
+
+<Example code={ButtonGroupCheckboxAndRadioExampleRaw} lang="tsx" name="ButtonGroupCheckboxAndRadioExample" componentName="React Bootstrap Button Group" class="theme-bootstrap">
+  <ButtonGroupCheckboxAndRadioExample client:only="react" />
+</Example>
+
+<Example code={ButtonGroupCheckboxAndRadio2ExampleRaw} lang="tsx" name="ButtonGroupCheckboxAndRadio2Example" componentName="React Bootstrap Button Group" class="theme-bootstrap">
+  <ButtonGroupCheckboxAndRadio2Example client:only="react" />
+</Example>
+
+## React Bootstrap Button Toolbar
+
+Group multiple button groups together into a toolbar using `<CButtonToolbar>`. Combine with layout utilities to control spacing and alignment.
+
+<Example code={ButtonToolbarExampleRaw} lang="tsx" name="ButtonToolbarExample" componentName="React Bootstrap Button Group" class="theme-bootstrap">
+  <ButtonToolbarExample client:only="react" />
+</Example>
+
+You can also combine input groups with button groups to create interactive toolbars.
+
+<Example code={ButtonToolbar2ExampleRaw} lang="tsx" name="ButtonToolbar2Example" componentName="React Bootstrap Button Group" class="theme-bootstrap">
+  <ButtonToolbar2Example client:only="react" />
+</Example>
+
+## Sizing React Bootstrap Button Groups
+
+Instead of setting size on individual buttons, apply the `size` prop to the `<CButtonGroup>` to make all buttons within it uniformly sized.
+
+<Example code={ButtonGroupSizingExampleRaw} lang="tsx" name="ButtonGroupSizingExample" componentName="React Bootstrap Button Group" class="theme-bootstrap">
+  <ButtonGroupSizingExample client:only="react" />
+</Example>
+
+## Nesting button groups
+
+Nest a `<CButtonGroup>` inside another to combine dropdowns with standard buttons, as supported in React Bootstrap Button Group usage.
+
+<Example code={ButtonGroupNestingExampleRaw} lang="tsx" name="ButtonGroupNestingExample" componentName="React Bootstrap Button Group" class="theme-bootstrap">
+  <ButtonGroupNestingExample client:only="react" />
+</Example>
+
+## Vertical React Bootstrap Button Groups
+
+Stack buttons vertically using the vertical variation of React Bootstrap Button Group. Note: split dropdowns are not supported in vertical mode.
+
+<Example code={ButtonGroupVerticalExampleRaw} lang="tsx" name="ButtonGroupVerticalExample" componentName="React Bootstrap Button Group" class="theme-bootstrap">
+  <ButtonGroupVerticalExample client:only="react" />
+</Example>
+
+## API reference
+
+Explore the API documentation for available props and configuration for the React Bootstrap Button Group component and toolbars.
+
+- [&lt;CButtonGroup /&gt;](../api/#cbuttongroup)
+- [&lt;CButtonToolbar /&gt;]()

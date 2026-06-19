@@ -1,0 +1,46 @@
+---
+title: "React Bootstrap Accordion Component"
+name: "Accordion with Bootstrap Styling"
+description: "Learn how to create vertically collapsing Bootstrap-style accordions using CoreUI’s React components."
+bootstrap: true
+---
+
+import { AccordionExample } from './examples/AccordionExample'
+import AccordionExampleRaw from './examples/AccordionExample.tsx?raw'
+import { AccordionFlushExample } from './examples/AccordionFlushExample'
+import AccordionFlushExampleRaw from './examples/AccordionFlushExample.tsx?raw'
+import { AccordionAlwaysOpenExample } from './examples/AccordionAlwaysOpenExample'
+import AccordionAlwaysOpenExampleRaw from './examples/AccordionAlwaysOpenExample.tsx?raw'
+
+## How to use React Bootstrap Accordion component
+
+Use CoreUI's React components styled with Bootstrap to build interactive and collapsible accordion sections.
+
+<Example code={AccordionExampleRaw} lang="tsx" name="AccordionExample" componentName="React Bootstrap Accordion" class="theme-bootstrap">
+  <AccordionExample client:only="react" />
+</Example>
+
+### Flush style
+
+Add the `flush` prop to remove default borders, background colors, and border radius — making the accordion items align flush with their container, following Bootstrap’s visual style.
+
+<Example code={AccordionFlushExampleRaw} lang="tsx" name="AccordionFlushExample" componentName="React Bootstrap Accordion" class="theme-bootstrap">
+  <AccordionFlushExample client:only="react" />
+</Example>
+
+### Always open behavior
+
+Use the `alwaysOpen` property to keep multiple accordion items expanded at the same time, mimicking Bootstrap’s multiple-item open functionality.
+
+<Example code={AccordionAlwaysOpenExampleRaw} lang="tsx" name="AccordionAlwaysOpenExample" componentName="React Bootstrap Accordion" class="theme-bootstrap">
+  <AccordionAlwaysOpenExample client:only="react" />
+</Example>
+
+## API reference
+
+Refer to the API documentation for detailed descriptions of all the available props and components used to create Bootstrap-styled accordions in React.
+
+- [&lt;CAccordion /&gt;](../api/#caccordion)
+- [&lt;CAccordionBody /&gt;](../api/#caccordionbody)
+- [&lt;CAccordionHeader /&gt;](../api/#caccordionheader)
+- [&lt;CAccordionItem /&gt;](../api/#caccordionitem)

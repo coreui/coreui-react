@@ -1,0 +1,166 @@
+{
+  "name": "CChip",
+  "props": [
+    {
+      "name": "active",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Toggles the active state of the React Chip component for non-selectable usage.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "ariaRemoveLabel",
+      "type": "string | undefined",
+      "default": "Remove",
+      "description": "Provides an accessible label for the remove button in the React Chip component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "as",
+      "type": "(ElementType & \"symbol\") | (ElementType & \"object\") | (ElementType & \"span\") | (ElementType & \"filter\") | (ElementType & \"slot\") | ... 175 more ... | undefined",
+      "default": "span",
+      "description": "Specifies the root element or custom component used by the React Chip component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Adds custom classes to the React Chip root element.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "clickable",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Enables interactive hover styling and pointer cursor for the React Chip component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "color",
+      "type": "'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string",
+      "default": null,
+      "description": "Sets the contextual color of the React Chip component using CoreUI theme colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "disabled",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Disables the React Chip component and removes interactive behavior.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "filter",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Turns the React Chip component into a filter chip. A filter chip is selectable and shows a leading check icon while selected.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onDeselect",
+      "type": "((event: MouseEvent<HTMLElement, MouseEvent> | KeyboardEvent<HTMLElement>) => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the React Chip component becomes deselected.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onRemove",
+      "type": "((event: KeyboardEvent<HTMLElement> | MouseEvent<HTMLButtonElement, MouseEvent>) => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the React Chip component requests removal by button click or keyboard action.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onSelect",
+      "type": "((event: MouseEvent<HTMLElement, MouseEvent> | KeyboardEvent<HTMLElement>) => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the React Chip component becomes selected.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onSelectedChange",
+      "type": "((selected: boolean, event: MouseEvent<HTMLElement, MouseEvent> | KeyboardEvent<HTMLElement>) => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the selected state of the React Chip component changes.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "removable",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Displays a remove button inside the React Chip component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "removeIcon",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Replaces the default remove icon with a custom icon node in the React Chip component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "selectable",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Enables selectable behavior and keyboard toggle support for the React Chip component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "selected",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Controls the selected state of a selectable React Chip component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "selectedIcon",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Replaces the default selected icon shown by a filter React Chip component with a custom icon node.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"lg\" | undefined",
+      "default": null,
+      "description": "Sets the size of the React Chip component to small or large.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "value",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Sets the value associated with the React Chip component, used by `CChipSet` to track selection.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "variant",
+      "type": "\"outline\" | undefined",
+      "default": null,
+      "description": "Sets the visual variant of the React Chip component to outline style.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CChip } from '@coreui/react'"
+}

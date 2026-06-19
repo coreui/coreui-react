@@ -1,0 +1,38 @@
+siteName: CoreUI
+edition: free
+framework: React.js
+frameworkKey: react
+gtm: GTM-KX4JH47
+
+header:
+  pricing: https://coreui.io/pricing/?framework=react&src=react-docs&cta=coreui-header-pricing
+  github: https://github.com/coreui/coreui-react/
+  x: https://x.com/core_ui
+  discord: https://discord.gg/pQRWe5XdGm
+  hireUs: https://coreui.io/about/services/?docs=coreui-header-button
+  getCoreUI: https://coreui.io/pricing/?framework=react&docs=coreui-header-button
+
+seo:
+  url: https://coreui.io/react/docs
+  titleTemplate: "%s · CoreUI"
+  description: CoreUI for React.js is a UI component library written in TypeScript and ready for your next React.js project.
+  image: https://coreui.io/react/docs/images/coreui-react-social.jpg
+  twitter: core_ui
+  author: CoreUI
+  themeColor: "#321fdb"
+  favicon: /favicon.svg
+  breadcrumb:
+    - { name: CoreUI, item: https://coreui.io }
+    - { name: React, item: https://coreui.io/react/ }
+    - { name: Documentation, item: https://coreui.io/react/docs/ }
+
+# Carbon Ads — shown only on free component pages.
+ads:
+  code: CEAICKJY
+  placement: coreuiio
+
+# DocSearch (Algolia) — the public, search-only keys of the live React docs.
+search:
+  appId: JIOZIZPLMM
+  apiKey: 6e3f7692d2589d042bb40426b75df1b7
+  indexName: coreui-react

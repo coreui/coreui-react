@@ -1,0 +1,22 @@
+{
+  "name": "CSidebarBrand",
+  "props": [
+    {
+      "name": "as",
+      "type": "(ElementType & \"symbol\") | (ElementType & \"object\") | (ElementType & \"a\") | (ElementType & \"slot\") | (ElementType & \"style\") | ... 175 more ... | undefined",
+      "default": "a",
+      "description": "Component used for the root node. Either a string to use a HTML element or a component.",
+      "since": "5.0.0",
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CSidebarBrand } from '@coreui/react'"
+}

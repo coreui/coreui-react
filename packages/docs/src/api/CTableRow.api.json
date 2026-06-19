@@ -1,0 +1,38 @@
+{
+  "name": "CTableRow",
+  "props": [
+    {
+      "name": "active",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Highlight a table row or cell..",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "align",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Set the vertical aligment.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "color",
+      "type": "'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CTableRow } from '@coreui/react'"
+}

@@ -1,0 +1,70 @@
+---
+title: "React Bootstrap Popover Component"
+name: "Popover with Bootstrap Styling"
+description: "Learn how to use the React Bootstrap Popover component from CoreUI to create interactive overlays for additional information, tooltips, or custom content."
+bootstrap: true
+---
+
+import { PopoverLiveExample } from './examples/PopoverLiveExample'
+import PopoverLiveExampleRaw from './examples/PopoverLiveExample.tsx?raw'
+import { PopoverFourDirectionsExample } from './examples/PopoverFourDirectionsExample'
+import PopoverFourDirectionsExampleRaw from './examples/PopoverFourDirectionsExample.tsx?raw'
+import { PopoverCustomPopoversExample } from './examples/PopoverCustomPopoversExample'
+import PopoverCustomPopoversExampleRaw from './examples/PopoverCustomPopoversExample.tsx?raw'
+import PopoverCustomPopoversExampleJsRaw from './examples/PopoverCustomPopoversExample.jsx?raw'
+import { PopoverDismissExample } from './examples/PopoverDismissExample'
+import PopoverDismissExampleRaw from './examples/PopoverDismissExample.tsx?raw'
+import { PopoverDisabledElementsExample } from './examples/PopoverDisabledElementsExample'
+import PopoverDisabledElementsExampleRaw from './examples/PopoverDisabledElementsExample.tsx?raw'
+
+## React Bootstrap Popover examples
+
+The React Bootstrap Popover component lets you display small overlay content on hover, click, or focus. Use it for tooltips, inline help, or contextual info without cluttering the UI.
+
+### Live demo
+
+Trigger the React Bootstrap Popover on click.
+
+<Example code={PopoverLiveExampleRaw} lang="tsx" name="PopoverLiveExample" componentName="React Bootstrap Popover" class="theme-bootstrap">
+  <PopoverLiveExample client:only="react" />
+</Example>
+
+### Four directions
+
+React Bootstrap Popovers support top, right, bottom, and left placement. Direction is automatically mirrored in RTL layouts.
+
+<Example code={PopoverFourDirectionsExampleRaw} lang="tsx" name="PopoverFourDirectionsExample" componentName="React Bootstrap Popover" class="theme-bootstrap">
+  <PopoverFourDirectionsExample client:only="react" />
+</Example>
+
+### Custom popovers
+
+Use inline `style` or CSS variables to override the popover's appearance.
+
+<Example code={PopoverCustomPopoversExampleRaw} codeJs={PopoverCustomPopoversExampleJsRaw} lang="tsx" name="PopoverCustomPopoversExample" componentName="React Bootstrap Popover" class="theme-bootstrap">
+  <PopoverCustomPopoversExample client:only="react" />
+</Example>
+
+### Dismiss on next click
+
+Use `trigger="focus"` to automatically hide the popover when clicking outside the element.
+
+<Example code={PopoverDismissExampleRaw} lang="tsx" name="PopoverDismissExample" componentName="React Bootstrap Popover" class="theme-bootstrap">
+  <PopoverDismissExample client:only="react" />
+</Example>
+
+## Usage details
+
+### Popovers on disabled elements
+
+HTML elements with the `disabled` attribute cannot trigger popovers. Wrap them in a `<span>` or `<div>` and use `tabIndex="0"` to keep the element accessible. You can also use `trigger={['hover', 'focus']}` to ensure visual feedback.
+
+<Example code={PopoverDisabledElementsExampleRaw} lang="tsx" name="PopoverDisabledElementsExample" componentName="React Bootstrap Popover" class="theme-bootstrap">
+  <PopoverDisabledElementsExample client:only="react" />
+</Example>
+
+## API reference
+
+Explore the full API for the React Bootstrap Popover component:
+
+- [&lt;CPopover /&gt;](../api/#cpopover)

@@ -1,0 +1,111 @@
+---
+title: "React Bootstrap Form Input Component"
+name: "Form Input with Bootstrap Styling"
+description: "Learn how to use CoreUI’s React input components styled with Bootstrap to create accessible, styled, and responsive form inputs."
+bootstrap: true
+---
+
+import { FormInputExample } from './examples/FormInputExample'
+import FormInputExampleRaw from './examples/FormInputExample.tsx?raw'
+import { FormInputSizingExample } from './examples/FormInputSizingExample'
+import FormInputSizingExampleRaw from './examples/FormInputSizingExample.tsx?raw'
+import { FormInputDisabledExample } from './examples/FormInputDisabledExample'
+import FormInputDisabledExampleRaw from './examples/FormInputDisabledExample.tsx?raw'
+import { FormInputReadonlyExample } from './examples/FormInputReadonlyExample'
+import FormInputReadonlyExampleRaw from './examples/FormInputReadonlyExample.tsx?raw'
+import { FormInputReadonlyPlainTextExample } from './examples/FormInputReadonlyPlainTextExample'
+import FormInputReadonlyPlainTextExampleRaw from './examples/FormInputReadonlyPlainTextExample.tsx?raw'
+import { FormInputReadonlyPlainText2Example } from './examples/FormInputReadonlyPlainText2Example'
+import FormInputReadonlyPlainText2ExampleRaw from './examples/FormInputReadonlyPlainText2Example.tsx?raw'
+import { FormInputFileExample } from './examples/FormInputFileExample'
+import FormInputFileExampleRaw from './examples/FormInputFileExample.tsx?raw'
+import { FormInputColorExample } from './examples/FormInputColorExample'
+import FormInputColorExampleRaw from './examples/FormInputColorExample.tsx?raw'
+
+## How to use React Bootstrap Form Input component
+
+Use CoreUI’s `<CFormInput>` and related components styled with Bootstrap to create customizable and accessible form inputs in React. Easily control size, disabled state, readonly fields, file uploads, color pickers, and more.
+
+### Basic usage
+
+<Example code={FormInputExampleRaw} lang="tsx" name="FormInputExample" componentName="React Bootstrap Form Input" class="theme-bootstrap">
+  <FormInputExample client:only="react" />
+</Example>
+
+To build more complex form controls with labels and help text, you can compose the form manually using CoreUI components:
+
+```jsx
+<CForm>
+  <CFormLabel htmlFor="exampleFormControlInput1">Email address</CFormLabel>
+  <CFormInput
+    type="email"
+    id="exampleFormControlInput1"
+    placeholder="name@example.com"
+    aria-describedby="exampleFormControlInputHelpInline"
+  />
+  <CFormText as="span" id="exampleFormControlInputHelpInline">
+    Must be 8–20 characters long.
+  </CFormText>
+</CForm>
+```
+
+## Input sizing
+
+Change input sizes using the `size` prop (`"sm"` or `"lg"`).
+
+<Example code={FormInputSizingExampleRaw} lang="tsx" name="FormInputSizingExample" componentName="React Bootstrap Form Input" class="theme-bootstrap">
+  <FormInputSizingExample client:only="react" />
+</Example>
+
+## Disabled inputs
+
+Add the `disabled` prop to visually disable the input and remove pointer events.
+
+<Example code={FormInputDisabledExampleRaw} lang="tsx" name="FormInputDisabledExample" componentName="React Bootstrap Form Input" class="theme-bootstrap">
+  <FormInputDisabledExample client:only="react" />
+</Example>
+
+## Read-only inputs
+
+Use the `readOnly` prop to prevent editing while maintaining focus and tab behavior.
+
+<Example code={FormInputReadonlyExampleRaw} lang="tsx" name="FormInputReadonlyExample" componentName="React Bootstrap Form Input" class="theme-bootstrap">
+  <FormInputReadonlyExample client:only="react" />
+</Example>
+
+## Plaintext read-only inputs
+
+Add `plainText` for inputs that appear as plain text but retain layout spacing.
+
+<Example code={FormInputReadonlyPlainTextExampleRaw} lang="tsx" name="FormInputReadonlyPlainTextExample" componentName="React Bootstrap Form Input" class="theme-bootstrap">
+  <FormInputReadonlyPlainTextExample client:only="react" />
+</Example>
+
+<Example code={FormInputReadonlyPlainText2ExampleRaw} lang="tsx" name="FormInputReadonlyPlainText2Example" componentName="React Bootstrap Form Input" class="theme-bootstrap">
+  <FormInputReadonlyPlainText2Example client:only="react" />
+</Example>
+
+## File input
+
+Use CoreUI's `<CFormInput type="file" />` for custom-styled file upload fields.
+
+<Example code={FormInputFileExampleRaw} lang="tsx" name="FormInputFileExample" componentName="React Bootstrap Form Input" class="theme-bootstrap">
+  <FormInputFileExample client:only="react" />
+</Example>
+
+## Color input
+
+Color inputs are supported using `type="color"`.
+
+<Example code={FormInputColorExampleRaw} lang="tsx" name="FormInputColorExample" componentName="React Bootstrap Form Input" class="theme-bootstrap">
+  <FormInputColorExample client:only="react" />
+</Example>
+
+## API reference
+
+Refer to the API documentation for detailed descriptions of all the props and configuration options.
+
+- [&lt;CFormInput /&gt;](../api/#cforminput)
+- [&lt;CFormFeedback /&gt;](../api/#cformfeedback)
+- [&lt;CFormLabel /&gt;](../api/#cformlabel)
+- [&lt;CFormText /&gt;](../api/#cformtext)

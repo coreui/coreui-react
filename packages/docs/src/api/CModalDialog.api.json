@@ -1,0 +1,46 @@
+{
+  "name": "CModalDialog",
+  "props": [
+    {
+      "name": "alignment",
+      "type": "\"top\" | \"center\" | undefined",
+      "default": null,
+      "description": "Align the modal in the center or top of the screen.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "fullscreen",
+      "type": "boolean | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"xxl\" | undefined",
+      "default": null,
+      "description": "Set modal to covers the entire user viewport.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "scrollable",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Does the modal dialog itself scroll, or does the whole dialog scroll within the window.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"lg\" | \"xl\" | undefined",
+      "default": null,
+      "description": "Size the component small, large, or extra large.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CModalDialog } from '@coreui/react'"
+}

@@ -1,0 +1,59 @@
+---
+title: "React Tooltip Component"
+name: "Tooltip"
+description: "Documentation and examples for adding React Tooltips."
+otherFrameworks:
+  - tooltip
+---
+
+import { TooltipOnLinksExample } from './examples/TooltipOnLinksExample'
+import TooltipOnLinksExampleRaw from './examples/TooltipOnLinksExample.tsx?raw'
+import { TooltipCustomExample } from './examples/TooltipCustomExample'
+import TooltipCustomExampleRaw from './examples/TooltipCustomExample.tsx?raw'
+import TooltipCustomExampleJsRaw from './examples/TooltipCustomExample.jsx?raw'
+import { TooltipDirectionsExample } from './examples/TooltipDirectionsExample'
+import TooltipDirectionsExampleRaw from './examples/TooltipDirectionsExample.tsx?raw'
+import { TooltipDisabledElementsExample } from './examples/TooltipDisabledElementsExample'
+import TooltipDisabledElementsExampleRaw from './examples/TooltipDisabledElementsExample.tsx?raw'
+
+## Examples
+
+### Tooltips on links
+
+Hover over the links below to see tooltips:
+
+<Example code={TooltipOnLinksExampleRaw} lang="tsx" name="TooltipOnLinksExample" componentName="React Tooltip" class="text-body-secondary">
+  <TooltipOnLinksExample client:only="react" />
+</Example>
+
+### Custom tooltips
+
+You can customize the appearance of tooltips using [CSS variables](./styling/#css-variables). We set a custom `style` to scope our custom appearance and use it to override some of the local CSS variables.
+
+<Example code={TooltipCustomExampleRaw} codeJs={TooltipCustomExampleJsRaw} lang="tsx" name="TooltipCustomExample" componentName="React Tooltip" class="text-body-secondary">
+  <TooltipCustomExample client:only="react" />
+</Example>
+
+### Directions
+
+Hover over the buttons below to see the four tooltips directions: top, right, bottom, and left. Directions are mirrored when using CoreUI in RTL.
+
+<Example code={TooltipDirectionsExampleRaw} lang="tsx" name="TooltipDirectionsExample" componentName="React Tooltip" class="text-body-secondary">
+  <TooltipDirectionsExample client:only="react" />
+</Example>
+
+## Usage
+
+### Disabled elements
+
+Elements with the disabled attribute aren’t interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you’ll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
+
+<Example code={TooltipDisabledElementsExampleRaw} lang="tsx" name="TooltipDisabledElementsExample" componentName="React Tooltip" class="text-body-secondary">
+  <TooltipDisabledElementsExample client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CTooltip /&gt;](./api/#ctooltip)

@@ -1,0 +1,69 @@
+---
+title: "React Form Validation"
+name: "Validation"
+description: "Provide valuable, actionable feedback to your users with HTML5 form validation, via browser default behaviors or custom styles and JavaScript."
+---
+
+import { ValidationExample } from './examples/ValidationExample'
+import ValidationExampleRaw from './examples/ValidationExample.tsx?raw'
+import ValidationExampleJsRaw from './examples/ValidationExample.jsx?raw'
+import { ValidationBrowserDefaultsExample } from './examples/ValidationBrowserDefaultsExample'
+import ValidationBrowserDefaultsExampleRaw from './examples/ValidationBrowserDefaultsExample.tsx?raw'
+import { ValidationCustomExample } from './examples/ValidationCustomExample'
+import ValidationCustomExampleRaw from './examples/ValidationCustomExample.tsx?raw'
+import { ValidationSupportedElementsExample } from './examples/ValidationSupportedElementsExample'
+import ValidationSupportedElementsExampleRaw from './examples/ValidationSupportedElementsExample.tsx?raw'
+import { ValidationTooltipsExample } from './examples/ValidationTooltipsExample'
+import ValidationTooltipsExampleRaw from './examples/ValidationTooltipsExample.tsx?raw'
+import ValidationTooltipsExampleJsRaw from './examples/ValidationTooltipsExample.jsx?raw'
+
+## Example
+
+For custom CoreUI form validation messages, you'll need to add the `noValidate` boolean property to your `<CForm>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you. When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to your form controls.
+
+Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback.
+
+<Example code={ValidationExampleRaw} codeJs={ValidationExampleJsRaw} lang="tsx" name="ValidationExample" componentName="React Form Validation">
+  <ValidationExample client:only="react" />
+</Example>
+
+## Browser defaults
+
+Not interested in custom validation feedback messages or writing JavaScript to change form behaviors? All good, you can use the browser defaults. Try submitting the form below. Depending on your browser and OS, you'll see a slightly different style of feedback.
+
+While these feedback styles cannot be styled with CSS, you can still customize the feedback text through JavaScript.
+
+<Example code={ValidationBrowserDefaultsExampleRaw} lang="tsx" name="ValidationBrowserDefaultsExample" componentName="React Form Validation">
+  <ValidationBrowserDefaultsExample client:only="react" />
+</Example>
+
+## Custom validation
+
+In case you require custom or server-side validation, you can indicate invalid and valid form fields with `invalid` and `valid` boolean properties.
+
+For invalid fields, ensure that the invalid feedback/error message is associated with the relevant form field using `aria-describedby` (noting that this attribute allows more than one `id` to be referenced, in case the field already points to additional form text).
+
+<Example code={ValidationCustomExampleRaw} lang="tsx" name="ValidationCustomExample" componentName="React Form Validation">
+  <ValidationCustomExample client:only="react" />
+</Example>
+
+## Supported elements
+
+Validation styles are available for the following form controls and components:
+
+- `<CFormCheck>`s
+- `<CFormInput>`s
+- `<CFormSelect>`s
+- `<CFormTextarea>`s
+
+<Example code={ValidationSupportedElementsExampleRaw} lang="tsx" name="ValidationSupportedElementsExample" componentName="React Form Validation">
+  <ValidationSupportedElementsExample client:only="react" />
+</Example>
+
+## Tooltips
+
+If your form layout allows it, you can swap the text for the tooltip to display validation feedback in a styled tooltip. Be sure to have a parent with `position: relative` on it for tooltip positioning. In the example below, our column classes have this already, but your project may require an alternative setup.
+
+<Example code={ValidationTooltipsExampleRaw} codeJs={ValidationTooltipsExampleJsRaw} lang="tsx" name="ValidationTooltipsExample" componentName="React Form Validation">
+  <ValidationTooltipsExample client:only="react" />
+</Example>

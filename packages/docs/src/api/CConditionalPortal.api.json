@@ -1,0 +1,22 @@
+{
+  "name": "CConditionalPortal",
+  "props": [
+    {
+      "name": "container",
+      "type": "DocumentFragment | Element | (() => DocumentFragment | Element | null) | null | undefined",
+      "default": null,
+      "description": "An HTML element or function that returns a single element, with `document.body` as the default.",
+      "since": "4.11.0",
+      "deprecated": null
+    },
+    {
+      "name": "portal",
+      "type": "boolean",
+      "default": null,
+      "description": "Render some children into a different part of the DOM",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CConditionalPortal } from '@coreui/react'"
+}

@@ -1,0 +1,46 @@
+{
+  "name": "CTabPane",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onHide",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the component requests to be hidden.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onShow",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the component requests to be shown.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "transition",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Enable fade in and fade out transition.",
+      "since": "5.1.0",
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Toggle the visibility of component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CTabPane } from '@coreui/react'"
+}

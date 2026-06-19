@@ -1,0 +1,22 @@
+{
+  "name": "CCarouselItem",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "interval",
+      "type": "number | boolean | undefined",
+      "default": false,
+      "description": "The amount of time to delay between automatically cycling an item.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CCarouselItem } from '@coreui/react'"
+}

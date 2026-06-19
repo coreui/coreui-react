@@ -1,0 +1,134 @@
+{
+  "name": "CChipSet",
+  "props": [
+    {
+      "name": "ariaRemoveLabel",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Provides an accessible label for the remove button of every chip rendered by the React Chip Set component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "as",
+      "type": "(ElementType & \"symbol\") | (ElementType & \"object\") | (ElementType & \"div\") | (ElementType & \"slot\") | (ElementType & \"style\") | ... 175 more ... | undefined",
+      "default": "div",
+      "description": "Specifies the root element or custom component used by the React Chip Set component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "chips",
+      "type": "(string | CChipSetItem)[] | undefined",
+      "default": null,
+      "description": "Renders chips from data instead of children. Each item is a string or an object with a `value`, an optional `label`, and any `CChip` props. Children are used when this is omitted.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Adds custom classes to the React Chip Set root element.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "defaultChips",
+      "type": "(string | CChipSetItem)[] | undefined",
+      "default": null,
+      "description": "Sets the initial uncontrolled chips. In this mode the React Chip Set component owns the list and removes chips itself; use `chips` (with `onRemove`) for a controlled list.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "defaultSelected",
+      "type": "string[] | undefined",
+      "default": null,
+      "description": "Sets the initial uncontrolled selection of the React Chip Set component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "disabled",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Disables every chip rendered by the React Chip Set component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "filter",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Turns the chips into filter chips, each showing a leading check icon while selected.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onRemove",
+      "type": "((value: string) => void) | undefined",
+      "default": null,
+      "description": "Callback fired when a chip requests removal. The chips are controlled by their rendered children, so remove the chip from your data in response.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onSelect",
+      "type": "((selected: string[]) => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the selected chip values of the React Chip Set component change.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "removable",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Displays a remove button on every chip rendered by the React Chip Set component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "removeIcon",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Replaces the default remove icon on every chip with a custom icon node.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "selectable",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Enables selection behavior for the chips rendered by the React Chip Set component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "selected",
+      "type": "string[] | undefined",
+      "default": null,
+      "description": "Controls the selected chip values of the React Chip Set component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "selectedIcon",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Replaces the default selected icon shown by filter chips with a custom icon node.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "selectionMode",
+      "type": "\"single\" | \"multiple\" | undefined",
+      "default": null,
+      "description": "Sets how many chips can be selected at once in the React Chip Set component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CChipSet } from '@coreui/react'"
+}

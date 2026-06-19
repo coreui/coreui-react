@@ -1,0 +1,30 @@
+{
+  "name": "CPagination",
+  "props": [
+    {
+      "name": "align",
+      "type": "\"start\" | \"center\" | \"end\" | undefined",
+      "default": null,
+      "description": "Set the alignment of pagination components.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"lg\" | undefined",
+      "default": null,
+      "description": "Size the component small or large.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CPagination } from '@coreui/react'"
+}

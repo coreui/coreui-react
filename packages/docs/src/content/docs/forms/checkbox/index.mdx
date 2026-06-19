@@ -1,0 +1,106 @@
+---
+title: "React Checkbox Components"
+name: "Checkbox"
+description: "Create consistent cross-browser and cross-device checkboxes with our React checkbox components."
+otherFrameworks:
+  - checkbox
+---
+
+import { CheckboxExample } from './examples/CheckboxExample'
+import CheckboxExampleRaw from './examples/CheckboxExample.tsx?raw'
+import { CheckboxIndeterminateExample } from './examples/CheckboxIndeterminateExample'
+import CheckboxIndeterminateExampleRaw from './examples/CheckboxIndeterminateExample.tsx?raw'
+import { CheckboxDisabledExample } from './examples/CheckboxDisabledExample'
+import CheckboxDisabledExampleRaw from './examples/CheckboxDisabledExample.tsx?raw'
+import { CheckboxStackedExample } from './examples/CheckboxStackedExample'
+import CheckboxStackedExampleRaw from './examples/CheckboxStackedExample.tsx?raw'
+import { CheckboxInlineExample } from './examples/CheckboxInlineExample'
+import CheckboxInlineExampleRaw from './examples/CheckboxInlineExample.tsx?raw'
+import { CheckboxReverseExample } from './examples/CheckboxReverseExample'
+import CheckboxReverseExampleRaw from './examples/CheckboxReverseExample.tsx?raw'
+import { CheckboxWithoutLabelsExample } from './examples/CheckboxWithoutLabelsExample'
+import CheckboxWithoutLabelsExampleRaw from './examples/CheckboxWithoutLabelsExample.tsx?raw'
+import { CheckboxToggleButtonsExample } from './examples/CheckboxToggleButtonsExample'
+import CheckboxToggleButtonsExampleRaw from './examples/CheckboxToggleButtonsExample.tsx?raw'
+import { CheckboxToggleButtonsOutlinedStylesExample } from './examples/CheckboxToggleButtonsOutlinedStylesExample'
+import CheckboxToggleButtonsOutlinedStylesExampleRaw from './examples/CheckboxToggleButtonsOutlinedStylesExample.tsx?raw'
+
+## Approach
+
+Browser default checkboxes and radios are replaced with the help of `<CFormCheck>`. Checkboxes are for selecting one or several options in a list.
+
+## Checkboxes
+
+<Example code={CheckboxExampleRaw} lang="tsx" name="CheckboxExample" componentName="React Form Checkbox">
+  <CheckboxExample client:only="react" />
+</Example>
+
+### Indeterminate
+
+Checkboxes can utilize the `:indeterminate` pseudo-class when manually set via `indeterminate` property.
+
+<Example code={CheckboxIndeterminateExampleRaw} lang="tsx" name="CheckboxIndeterminateExample" componentName="React Form Checkbox">
+  <CheckboxIndeterminateExample client:only="react" />
+</Example>
+
+### Disabled
+
+Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input's state.
+
+<Example code={CheckboxDisabledExampleRaw} lang="tsx" name="CheckboxDisabledExample" componentName="React Form Checkbox">
+  <CheckboxDisabledExample client:only="react" />
+</Example>
+
+## Default (stacked)
+
+By default, any number of checkboxes that are immediate sibling will be vertically stacked and appropriately spaced.
+
+<Example code={CheckboxStackedExampleRaw} lang="tsx" name="CheckboxStackedExample" componentName="React Form Checkbox">
+  <CheckboxStackedExample client:only="react" />
+</Example>
+
+## Inline
+
+Group checkboxes on the same horizontal row by adding `inline` boolean property to any `<CFormCheck>`.
+
+<Example code={CheckboxInlineExampleRaw} lang="tsx" name="CheckboxInlineExample" componentName="React Form Checkbox">
+  <CheckboxInlineExample client:only="react" />
+</Example>
+
+## Reverse 
+
+Put your checkboxes on the opposite side by adding `reverse` boolean property.
+
+<Example code={CheckboxReverseExampleRaw} lang="tsx" name="CheckboxReverseExample" componentName="React Form Checkbox">
+  <CheckboxReverseExample client:only="react" />
+</Example>
+
+## Without labels
+
+Remember to still provide some form of accessible name for assistive technologies (for instance, using `aria-label`).
+
+<Example code={CheckboxWithoutLabelsExampleRaw} lang="tsx" name="CheckboxWithoutLabelsExample" componentName="React Form Checkbox">
+  <CheckboxWithoutLabelsExample client:only="react" />
+</Example>
+
+## Checkbox toggle buttons
+
+Create button-like checkboxes and radio buttons by using `button` boolean property on the `<CFormCheck>` component. These toggle buttons can further be grouped in a button group if needed.
+
+<Example code={CheckboxToggleButtonsExampleRaw} lang="tsx" name="CheckboxToggleButtonsExample" componentName="React Form Checkbox">
+  <CheckboxToggleButtonsExample client:only="react" />
+</Example>
+
+### Outlined styles
+
+Different variants of button, such at the various outlined styles, are supported.
+
+<Example code={CheckboxToggleButtonsOutlinedStylesExampleRaw} lang="tsx" name="CheckboxToggleButtonsOutlinedStylesExample" componentName="React Form Checkbox">
+  <CheckboxToggleButtonsOutlinedStylesExample client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CFormCheck /&gt;](./api/#cformcheck)

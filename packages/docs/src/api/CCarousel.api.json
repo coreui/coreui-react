@@ -1,0 +1,102 @@
+{
+  "name": "CCarousel",
+  "props": [
+    {
+      "name": "activeIndex",
+      "type": "number | undefined",
+      "default": 0,
+      "description": "index of the active item.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "controls",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Adding in the previous and next controls.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "dark",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Add darker controls, indicators, and captions.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "indicators",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Adding indicators at the bottom of the carousel for each item.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "interval",
+      "type": "number | boolean | undefined",
+      "default": 5000,
+      "description": "The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onSlid",
+      "type": "((active: number, direction: string) => void) | undefined",
+      "default": null,
+      "description": "Callback fired when a slide transition end.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onSlide",
+      "type": "((active: number, direction: string) => void) | undefined",
+      "default": null,
+      "description": "Callback fired when a slide transition starts.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "pause",
+      "type": "boolean | \"hover\" | undefined",
+      "default": "hover",
+      "description": "If set to 'hover', pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave. If set to false, hovering over the carousel won't pause it.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "touch",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Set whether the carousel should support left/right swipe interactions on touchscreen devices.",
+      "since": "4.5.0",
+      "deprecated": null
+    },
+    {
+      "name": "transition",
+      "type": "\"slide\" | \"crossfade\" | undefined",
+      "default": null,
+      "description": "Set type of the transition.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "wrap",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Set whether the carousel should cycle continuously or have hard stops.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CCarousel } from '@coreui/react'"
+}

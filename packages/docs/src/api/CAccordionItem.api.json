@@ -1,0 +1,30 @@
+{
+  "name": "CAccordionItem",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "id",
+      "type": "string | undefined",
+      "default": null,
+      "description": "The id global attribute defines an identifier (ID) that must be unique in the whole document.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "itemKey",
+      "type": "string | number | undefined",
+      "default": null,
+      "description": "Item key.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CAccordionItem } from '@coreui/react'"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "CCardFooter",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CCardFooter } from '@coreui/react'"
+}

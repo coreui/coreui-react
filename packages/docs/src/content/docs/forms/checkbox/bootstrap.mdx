@@ -1,0 +1,107 @@
+---
+title: "React Bootstrap Checkbox Component"
+name: "Checkbox with Bootstrap Styling"
+description: "Learn how to build accessible and consistent Bootstrap-style checkboxes in React using CoreUI components."
+bootstrap: true
+---
+
+import { CheckboxExample } from './examples/CheckboxExample'
+import CheckboxExampleRaw from './examples/CheckboxExample.tsx?raw'
+import { CheckboxIndeterminateExample } from './examples/CheckboxIndeterminateExample'
+import CheckboxIndeterminateExampleRaw from './examples/CheckboxIndeterminateExample.tsx?raw'
+import { CheckboxDisabledExample } from './examples/CheckboxDisabledExample'
+import CheckboxDisabledExampleRaw from './examples/CheckboxDisabledExample.tsx?raw'
+import { CheckboxStackedExample } from './examples/CheckboxStackedExample'
+import CheckboxStackedExampleRaw from './examples/CheckboxStackedExample.tsx?raw'
+import { CheckboxInlineExample } from './examples/CheckboxInlineExample'
+import CheckboxInlineExampleRaw from './examples/CheckboxInlineExample.tsx?raw'
+import { CheckboxReverseExample } from './examples/CheckboxReverseExample'
+import CheckboxReverseExampleRaw from './examples/CheckboxReverseExample.tsx?raw'
+import { CheckboxWithoutLabelsExample } from './examples/CheckboxWithoutLabelsExample'
+import CheckboxWithoutLabelsExampleRaw from './examples/CheckboxWithoutLabelsExample.tsx?raw'
+import { CheckboxToggleButtonsExample } from './examples/CheckboxToggleButtonsExample'
+import CheckboxToggleButtonsExampleRaw from './examples/CheckboxToggleButtonsExample.tsx?raw'
+import { CheckboxToggleButtonsOutlinedStylesExample } from './examples/CheckboxToggleButtonsOutlinedStylesExample'
+import CheckboxToggleButtonsOutlinedStylesExampleRaw from './examples/CheckboxToggleButtonsOutlinedStylesExample.tsx?raw'
+
+## How to use React Bootstrap Checkbox component
+
+Use CoreUI’s `<CFormCheck>` to create cross-browser, accessible, and Bootstrap-styled checkboxes in React. Checkboxes are ideal for selecting one or more options from a list and can be styled, stacked, or grouped using layout utilities.
+
+### Basic example
+
+Use the `<CFormCheck>` component to render a standard Bootstrap-style checkbox.
+
+<Example code={CheckboxExampleRaw} lang="tsx" name="CheckboxExample" componentName="React Bootstrap Checkbox" class="theme-bootstrap">
+  <CheckboxExample client:only="react" />
+</Example>
+
+### Indeterminate state
+
+Set the `indeterminate` property to render a checkbox in an indeterminate state, commonly used to indicate partial selections.
+
+<Example code={CheckboxIndeterminateExampleRaw} lang="tsx" name="CheckboxIndeterminateExample" componentName="React Bootstrap Checkbox" class="theme-bootstrap">
+  <CheckboxIndeterminateExample client:only="react" />
+</Example>
+
+### Disabled state
+
+Add the `disabled` prop to disable a checkbox and automatically style its label in a muted color, following Bootstrap conventions.
+
+<Example code={CheckboxDisabledExampleRaw} lang="tsx" name="CheckboxDisabledExample" componentName="React Bootstrap Checkbox" class="theme-bootstrap">
+  <CheckboxDisabledExample client:only="react" />
+</Example>
+
+### Stacked layout (default)
+
+By default, multiple checkboxes stack vertically and are spaced evenly.
+
+<Example code={CheckboxStackedExampleRaw} lang="tsx" name="CheckboxStackedExample" componentName="React Bootstrap Checkbox" class="theme-bootstrap">
+  <CheckboxStackedExample client:only="react" />
+</Example>
+
+### Inline checkboxes
+
+Use the `inline` boolean prop to place multiple checkboxes on the same horizontal row.
+
+<Example code={CheckboxInlineExampleRaw} lang="tsx" name="CheckboxInlineExample" componentName="React Bootstrap Checkbox" class="theme-bootstrap">
+  <CheckboxInlineExample client:only="react" />
+</Example>
+
+### Reversed checkboxes
+
+Use the `reverse` prop to position the checkbox on the opposite side of the label.
+
+<Example code={CheckboxReverseExampleRaw} lang="tsx" name="CheckboxReverseExample" componentName="React Bootstrap Checkbox" class="theme-bootstrap">
+  <CheckboxReverseExample client:only="react" />
+</Example>
+
+### Without labels
+
+If omitting a label, remember to include `aria-label` for accessibility compliance.
+
+<Example code={CheckboxWithoutLabelsExampleRaw} lang="tsx" name="CheckboxWithoutLabelsExample" componentName="React Bootstrap Checkbox" class="theme-bootstrap">
+  <CheckboxWithoutLabelsExample client:only="react" />
+</Example>
+
+## Checkbox toggle buttons
+
+Transform checkboxes into Bootstrap-style toggle buttons using the `button` prop. You can also group them with button groups.
+
+<Example code={CheckboxToggleButtonsExampleRaw} lang="tsx" name="CheckboxToggleButtonsExample" componentName="React Bootstrap Checkbox" class="theme-bootstrap">
+  <CheckboxToggleButtonsExample client:only="react" />
+</Example>
+
+### Outlined toggle styles
+
+Use outlined button variants for a lighter, bordered appearance.
+
+<Example code={CheckboxToggleButtonsOutlinedStylesExampleRaw} lang="tsx" name="CheckboxToggleButtonsOutlinedStylesExample" componentName="React Bootstrap Checkbox" class="theme-bootstrap">
+  <CheckboxToggleButtonsOutlinedStylesExample client:only="react" />
+</Example>
+
+## API reference
+
+Refer to the API documentation for detailed descriptions of all the available props and configuration options.
+
+- [&lt;CFormCheck /&gt;](../api/#cformcheck)

@@ -1,0 +1,46 @@
+{
+  "name": "CWidgetStatsD",
+  "props": [
+    {
+      "name": "chart",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Chart node for your component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "color",
+      "type": "'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "icon",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Icon node for your component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "values",
+      "type": "Value[] | undefined",
+      "default": null,
+      "description": "Values and titles for your component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CWidgetStatsD } from '@coreui/react'"
+}

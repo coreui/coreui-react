@@ -1,0 +1,30 @@
+{
+  "name": "CToaster",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "placement",
+      "type": "'top-start' | 'top' | 'top-end' | 'middle-start' | 'middle' | 'middle-end' | 'bottom-start' | 'bottom' | 'bottom-end' | string",
+      "default": null,
+      "description": "Describes the placement of your component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "push",
+      "type": "ReactElement",
+      "default": null,
+      "description": "Adds new `CToast` to `CToaster`.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CToaster } from '@coreui/react'"
+}

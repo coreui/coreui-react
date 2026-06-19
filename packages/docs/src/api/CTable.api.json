@@ -1,0 +1,150 @@
+{
+  "name": "CTable",
+  "props": [
+    {
+      "name": "align",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Set the vertical aligment.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "borderColor",
+      "type": "'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string",
+      "default": null,
+      "description": "Sets the border color of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "bordered",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Add borders on all sides of the table and cells.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "borderless",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Remove borders on all sides of the table and cells.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "caption",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Put the caption on the top if you set `caption=\"top\"` of the table or set the text of the table caption.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "captionTop",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Set the text of the table caption and the caption on the top of the table.",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "color",
+      "type": "'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "columns",
+      "type": "(string | Column)[] | undefined",
+      "default": null,
+      "description": "Prop for table columns configuration. If prop is not defined, table will display columns based on the first item keys, omitting keys that begins with underscore (e.g. '_props')\n\nIn columns prop each array item represents one column. Item might be specified in two ways:\nString: each item define column name equal to item value.\nObject: item is object with following keys available as column configuration:\n- key (required)(String) - define column name equal to item key.\n- label (String) - define visible label of column. If not defined, label will be generated automatically based on column name, by converting kebab-case and snake_case to individual words and capitalization of each word.\n- _props (Object) - adds classes to all cels in column, ex. `_props: { scope: 'col', className: 'custom-class' }`,\n- _style (Object) - adds styles to the column header (useful for defining widths)",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "footer",
+      "type": "(string | FooterItem)[] | undefined",
+      "default": null,
+      "description": "Array of objects or strings, where each element represents one cell in the table footer.\n\nExample items:\n`['FooterCell', 'FooterCell', 'FooterCell']`\nor\n`[{ label: 'FooterCell', _props: { color: 'success' }, ...]`",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "hover",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Enable a hover state on table rows within a `<CTableBody>`.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "items",
+      "type": "Item[] | undefined",
+      "default": null,
+      "description": "Array of objects, where each object represents one item - row in table. Additionally, you can add style classes to each row by passing them by '_props' key and to single cell by '_cellProps'.\n\nExample item:\n`{ name: 'John' , age: 12, _props: { color: 'success' }, _cellProps: { age: { className: 'fw-bold'}}}`",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "responsive",
+      "type": "boolean | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"xxl\" | undefined",
+      "default": null,
+      "description": "Make any table responsive across all viewports or pick a maximum breakpoint with which to have a responsive table up to.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "small",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Make table more compact by cutting all cell `padding` in half.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "striped",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Add zebra-striping to any table row within the `<CTableBody>`.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "stripedColumns",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Add zebra-striping to any table column.",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "tableFootProps",
+      "type": "CTableFootProps | undefined",
+      "default": null,
+      "description": "Properties that will be passed to the table footer component.",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "tableHeadProps",
+      "type": "CTableHeadProps | undefined",
+      "default": null,
+      "description": "Properties that will be passed to the table head component.",
+      "since": "4.3.0",
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CTable } from '@coreui/react'"
+}

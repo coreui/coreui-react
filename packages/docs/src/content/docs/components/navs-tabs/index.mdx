@@ -1,0 +1,207 @@
+---
+title: "React Navs & Tabs Components"
+name: "Navs & Tabs"
+description: "Documentation and examples for how to use CoreUI's included React navigation components."
+otherFrameworks:
+  - navs-tabs
+---
+
+import { NavExample } from './examples/NavExample'
+import NavExampleRaw from './examples/NavExample.tsx?raw'
+import { Nav2Example } from './examples/Nav2Example'
+import Nav2ExampleRaw from './examples/Nav2Example.tsx?raw'
+import { NavHorizontalAlignmentExample } from './examples/NavHorizontalAlignmentExample'
+import NavHorizontalAlignmentExampleRaw from './examples/NavHorizontalAlignmentExample.tsx?raw'
+import { NavHorizontalAlignment2Example } from './examples/NavHorizontalAlignment2Example'
+import NavHorizontalAlignment2ExampleRaw from './examples/NavHorizontalAlignment2Example.tsx?raw'
+import { NavVerticalExample } from './examples/NavVerticalExample'
+import NavVerticalExampleRaw from './examples/NavVerticalExample.tsx?raw'
+import { NavTabsExample } from './examples/NavTabsExample'
+import NavTabsExampleRaw from './examples/NavTabsExample.tsx?raw'
+import { NavPillsExample } from './examples/NavPillsExample'
+import NavPillsExampleRaw from './examples/NavPillsExample.tsx?raw'
+import { NavUnderlineExample } from './examples/NavUnderlineExample'
+import NavUnderlineExampleRaw from './examples/NavUnderlineExample.tsx?raw'
+import { NavUnderlineBorderExample } from './examples/NavUnderlineBorderExample'
+import NavUnderlineBorderExampleRaw from './examples/NavUnderlineBorderExample.tsx?raw'
+import { NavEnclosedExample } from './examples/NavEnclosedExample'
+import NavEnclosedExampleRaw from './examples/NavEnclosedExample.tsx?raw'
+import { NavEnclosedPillsExample } from './examples/NavEnclosedPillsExample'
+import NavEnclosedPillsExampleRaw from './examples/NavEnclosedPillsExample.tsx?raw'
+import { NavFillAndJustifyExample } from './examples/NavFillAndJustifyExample'
+import NavFillAndJustifyExampleRaw from './examples/NavFillAndJustifyExample.tsx?raw'
+import { NavFillAndJustify2Example } from './examples/NavFillAndJustify2Example'
+import NavFillAndJustify2ExampleRaw from './examples/NavFillAndJustify2Example.tsx?raw'
+import { NavWorkingWithFlexUtilitiesExample } from './examples/NavWorkingWithFlexUtilitiesExample'
+import NavWorkingWithFlexUtilitiesExampleRaw from './examples/NavWorkingWithFlexUtilitiesExample.tsx?raw'
+import { NavTabsWithDropdownExample } from './examples/NavTabsWithDropdownExample'
+import NavTabsWithDropdownExampleRaw from './examples/NavTabsWithDropdownExample.tsx?raw'
+import { NavPillsWithDropdownExample } from './examples/NavPillsWithDropdownExample'
+import NavPillsWithDropdownExampleRaw from './examples/NavPillsWithDropdownExample.tsx?raw'
+import { NavTabPanesExample } from './examples/NavTabPanesExample'
+import NavTabPanesExampleRaw from './examples/NavTabPanesExample.tsx?raw'
+import { NavTabPanes2Example } from './examples/NavTabPanes2Example'
+import NavTabPanes2ExampleRaw from './examples/NavTabPanes2Example.tsx?raw'
+
+## Base nav
+
+Navigation available in CoreUI for React share general markup and styles, from the base `.nav` class to the active and disabled states. Swap modifier classes to switch between each style.
+
+The base `<CNav>` component is built with flexbox and provide a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling.
+
+<Example code={NavExampleRaw} lang="tsx" name="NavExample" componentName="React Nav">
+  <NavExample client:only="react" />
+</Example>
+
+Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, `<ol>` if the order of your items is important, or roll your own with a `<nav>` element. Because the .nav uses display: flex, the nav links behave the same as nav items would, but without the extra markup.
+
+<Example code={Nav2ExampleRaw} lang="tsx" name="Nav2Example" componentName="React Nav">
+  <Nav2Example client:only="react" />
+</Example>
+
+## Available styles
+
+Change the style of `<CNav>`'s component with modifiers and utilities. Mix and match as needed, or build your own.
+
+### Horizontal alignment
+
+Change the horizontal alignment of your nav with [flexbox utilities](https://coreui.io/bootstrap/docs/layout/grid/#horizontal-alignment). By default, navs are left-aligned, but you can easily change them to center or right aligned.
+
+Centered with `.justify-content-center`:
+
+<Example code={NavHorizontalAlignmentExampleRaw} lang="tsx" name="NavHorizontalAlignmentExample" componentName="React Nav">
+  <NavHorizontalAlignmentExample client:only="react" />
+</Example>
+
+Right-aligned with `.justify-content-end`:
+
+<Example code={NavHorizontalAlignment2ExampleRaw} lang="tsx" name="NavHorizontalAlignment2Example" componentName="React Nav">
+  <NavHorizontalAlignment2Example client:only="react" />
+</Example>
+
+### Vertical
+
+Stack your navigation by changing the flex item direction with the `.flex-column` utility. Need to stack them on some viewports but not others? Use the responsive versions (e.g., `.flex-sm-column`).
+
+<Example code={NavVerticalExampleRaw} lang="tsx" name="NavVerticalExample" componentName="React Nav">
+  <NavVerticalExample client:only="react" />
+</Example>
+
+### Tabs
+
+Takes the basic nav from above and adds the `variant="tabs"` class to generate a tabbed interface
+
+<Example code={NavTabsExampleRaw} lang="tsx" name="NavTabsExample" componentName="React Nav">
+  <NavTabsExample client:only="react" />
+</Example>
+
+### Pills
+
+Take that same code, but use `variant="pills"` instead:
+
+<Example code={NavPillsExampleRaw} lang="tsx" name="NavPillsExample" componentName="React Nav">
+  <NavPillsExample client:only="react" />
+</Example>
+
+### Underline
+
+Take that same code, but use `variant="underline"` instead:
+
+<Example code={NavUnderlineExampleRaw} lang="tsx" name="NavUnderlineExample" componentName="React Nav">
+  <NavUnderlineExample client:only="react" />
+</Example>
+
+### Underline border
+
+Take that same code, but use `variant="underline-border"` instead:
+
+<Example code={NavUnderlineBorderExampleRaw} lang="tsx" name="NavUnderlineBorderExample" componentName="React Nav">
+  <NavUnderlineBorderExample client:only="react" />
+</Example>
+
+### Enclosed
+
+Use the `variant="enclosed"` class to give your navigation items a subtle border and rounded styling.
+
+<Example code={NavEnclosedExampleRaw} lang="tsx" name="NavEnclosedExample" componentName="React Nav">
+  <NavEnclosedExample client:only="react" />
+</Example>
+
+### Enclosed pills 
+
+Use the `variant="enclosed-pills"` to achieve a pill-style appearance for each nav item, using pill-shaped borders and smoother outlines.
+
+<Example code={NavEnclosedPillsExampleRaw} lang="tsx" name="NavEnclosedPillsExample" componentName="React Nav">
+  <NavEnclosedPillsExample client:only="react" />
+</Example>
+
+
+### Fill and justify
+
+Force your `<CNav>`'s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your `.nav-item`s, use `layout="fill"`. Notice that all horizontal space is occupied, but not every nav item has the same width.
+
+<Example code={NavFillAndJustifyExampleRaw} lang="tsx" name="NavFillAndJustifyExample" componentName="React Nav">
+  <NavFillAndJustifyExample client:only="react" />
+</Example>
+
+For equal-width elements, use `layout="justified"`. All horizontal space will be occupied by nav links, but unlike the .nav-fill above, every nav item will be the same width.
+
+<Example code={NavFillAndJustify2ExampleRaw} lang="tsx" name="NavFillAndJustify2Example" componentName="React Nav">
+  <NavFillAndJustify2Example client:only="react" />
+</Example>
+
+## Working with flex utilities
+
+If you need responsive nav variations, consider using a series of [flexbox utilities](https://coreui.io/bootstrap/docs/utilities/flex). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, our nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
+
+<Example code={NavWorkingWithFlexUtilitiesExampleRaw} lang="tsx" name="NavWorkingWithFlexUtilitiesExample" componentName="React Nav">
+  <NavWorkingWithFlexUtilitiesExample client:only="react" />
+</Example>
+
+## Regarding accessibility
+
+If you're using navs to provide a navigation bar, be sure to add a `role="navigation"` to the most logical parent container of the `<ul>`, or wrap a `<nav>` element around the whole navigation. Do not add the role to the `<ul>` itself, as this would prevent it from being announced as an actual list by assistive technologies.
+
+Note that navigation bars, even if visually styled as tabs with the `.nav-tabs` class, should **not** be given `role="tablist"`, `role="tab"` or `role="tabpanel"` attributes. These are only appropriate for dynamic tabbed interfaces, as described in the [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel). See [JavaScript behavior](#javascript-behavior) for dynamic tabbed interfaces in this section for an example. The `aria-current` attribute is not necessary on dynamic tabbed interfaces since our JavaScript handles the selected state by adding `aria-selected="true"` on the active tab.
+
+## Using dropdowns
+
+Add dropdown menus with a little extra HTML.
+
+### Tabs with dropdowns
+
+<Example code={NavTabsWithDropdownExampleRaw} lang="tsx" name="NavTabsWithDropdownExample" componentName="React Nav">
+  <NavTabsWithDropdownExample client:only="react" />
+</Example>
+
+### Pills with dropdowns
+
+<Example code={NavPillsWithDropdownExampleRaw} lang="tsx" name="NavPillsWithDropdownExample" componentName="React Nav">
+  <NavPillsWithDropdownExample client:only="react" />
+</Example>
+
+## Tab panes
+
+Dynamic tabbed interfaces, as described in the [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel), require `role="tablist"`, `role="tab"`, `role="tabpanel"`, and additional `aria-` attributes in order to convey their structure, functionality and current state to users of assistive technologies (such as screen readers).
+
+Note that dynamic tabbed interfaces should not contain dropdown menus, as this causes both usability and accessibility issues. From a usability perspective, the fact that the currently displayed tab's trigger element is not immediately visible (as it's inside the closed dropdown menu) can cause confusion. From an accessibility point of view, there is currently no sensible way to map this sort of construct to a standard WAI ARIA pattern, meaning that it cannot be easily made understandable to users of assistive technologies.
+
+<Example code={NavTabPanesExampleRaw} lang="tsx" name="NavTabPanesExample" componentName="React Nav">
+  <NavTabPanesExample client:only="react" />
+</Example>
+
+The tabs also works with pills.
+
+<Example code={NavTabPanes2ExampleRaw} lang="tsx" name="NavTabPanes2Example" componentName="React Nav">
+  <NavTabPanes2Example client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CNav /&gt;](./api/#cnav)
+- [&lt;CNavItem /&gt;](./api/#cnavitem)
+- [&lt;CNavLink /&gt;](./api/#cnavlink)
+- [&lt;CTabContent /&gt;](./api/#ctabcontent)
+- [&lt;CTabPane /&gt;](./api/#ctabpane)

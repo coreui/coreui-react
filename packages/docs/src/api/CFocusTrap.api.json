@@ -1,0 +1,62 @@
+{
+  "name": "CFocusTrap",
+  "props": [
+    {
+      "name": "active",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Controls whether the focus trap is active or inactive.\nWhen `true`, focus will be trapped within the child element.\nWhen `false`, normal focus behavior is restored.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "additionalContainer",
+      "type": "RefObject<HTMLElement | null> | undefined",
+      "default": null,
+      "description": "Additional container elements to include in the focus trap.\nUseful for floating elements like tooltips or popovers that are\nrendered outside the main container but should be part of the trap.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "children",
+      "type": "ReactElement",
+      "default": null,
+      "description": "Single React element that renders a DOM node and forwards refs properly.\nThe focus trap will be applied to this element and all its focusable descendants.\n\nRequirements:\n- Must be a single ReactElement (not an array or fragment)\n- Must forward the ref to a DOM element\n- Should contain focusable elements for proper trap behavior",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "focusFirstElement",
+      "type": "boolean | undefined",
+      "default": false,
+      "description": "Controls whether to focus the first selectable element or the container itself.\nWhen `true`, focuses the first tabbable element within the container.\nWhen `false`, focuses the container element directly.\n\nThis is useful for containers that should receive focus themselves,\nsuch as scrollable regions or custom interactive components.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onActivate",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback function invoked when the focus trap becomes active.\nUseful for triggering additional accessibility announcements or analytics.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onDeactivate",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback function invoked when the focus trap is deactivated.\nCan be used for cleanup, analytics, or triggering state changes.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "restoreFocus",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Automatically restores focus to the previously focused element when the trap is deactivated.\nThis is crucial for accessibility as it maintains the user's place in the document\nwhen returning from modal dialogs or overlay components.\n\nRecommended to be `true` for modal dialogs and popover components.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CFocusTrap } from '@coreui/react'"
+}

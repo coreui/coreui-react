@@ -1,0 +1,121 @@
+---
+title: "React Input Group Component"
+name: "Input group"
+description: "Easily extend form controls by adding text, buttons, or button groups on either side of textual inputs, custom selects, and custom file inputs."
+otherFrameworks:
+  - input-group
+---
+
+import { InputGroupExample } from './examples/InputGroupExample'
+import InputGroupExampleRaw from './examples/InputGroupExample.tsx?raw'
+import { InputGroupWrappingExample } from './examples/InputGroupWrappingExample'
+import InputGroupWrappingExampleRaw from './examples/InputGroupWrappingExample.tsx?raw'
+import { InputGroupSizingExample } from './examples/InputGroupSizingExample'
+import InputGroupSizingExampleRaw from './examples/InputGroupSizingExample.tsx?raw'
+import { InputGroupCheckboxesAndRadiosExample } from './examples/InputGroupCheckboxesAndRadiosExample'
+import InputGroupCheckboxesAndRadiosExampleRaw from './examples/InputGroupCheckboxesAndRadiosExample.tsx?raw'
+import { InputGroupMultipleInputsExample } from './examples/InputGroupMultipleInputsExample'
+import InputGroupMultipleInputsExampleRaw from './examples/InputGroupMultipleInputsExample.tsx?raw'
+import { InputGroupMultipleAddonsExample } from './examples/InputGroupMultipleAddonsExample'
+import InputGroupMultipleAddonsExampleRaw from './examples/InputGroupMultipleAddonsExample.tsx?raw'
+import { InputGroupButtonAddonsExample } from './examples/InputGroupButtonAddonsExample'
+import InputGroupButtonAddonsExampleRaw from './examples/InputGroupButtonAddonsExample.tsx?raw'
+import { InputGroupButtonsWithDropdownsExample } from './examples/InputGroupButtonsWithDropdownsExample'
+import InputGroupButtonsWithDropdownsExampleRaw from './examples/InputGroupButtonsWithDropdownsExample.tsx?raw'
+import { InputGroupSegmentedButtonsExample } from './examples/InputGroupSegmentedButtonsExample'
+import InputGroupSegmentedButtonsExampleRaw from './examples/InputGroupSegmentedButtonsExample.tsx?raw'
+import { InputGroupCustomSelectExample } from './examples/InputGroupCustomSelectExample'
+import InputGroupCustomSelectExampleRaw from './examples/InputGroupCustomSelectExample.tsx?raw'
+import { InputGroupCustomFileInputExample } from './examples/InputGroupCustomFileInputExample'
+import InputGroupCustomFileInputExampleRaw from './examples/InputGroupCustomFileInputExample.tsx?raw'
+
+## Basic example
+
+Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place `<CFormLabel>`s outside the input group.
+
+<Example code={InputGroupExampleRaw} lang="tsx" name="InputGroupExample" componentName="React Form Input Group">
+  <InputGroupExample client:only="react" />
+</Example>
+
+## Wrapping
+
+Input groups wrap by default via `flex-wrap: wrap` in order to accommodate custom form field validation within an input group. You may disable this with `.flex-nowrap`.
+
+<Example code={InputGroupWrappingExampleRaw} lang="tsx" name="InputGroupWrappingExample" componentName="React Form Input Group">
+  <InputGroupWrappingExample client:only="react" />
+</Example>
+
+## Sizing
+
+Add the relative form sizing classes to the `<CInputGroup>` itself and contents within will automatically resize—no need for repeating the form control size classes on each element.
+
+**Sizing on the individual input group elements isn't supported.**
+
+<Example code={InputGroupSizingExampleRaw} lang="tsx" name="InputGroupSizingExample" componentName="React Form Input Group">
+  <InputGroupSizingExample client:only="react" />
+</Example>
+
+## Checkboxes and radios
+
+Place any checkbox or radio option within an input group's addon instead of text.
+
+<Example code={InputGroupCheckboxesAndRadiosExampleRaw} lang="tsx" name="InputGroupCheckboxesAndRadiosExample" componentName="React Form Input Group">
+  <InputGroupCheckboxesAndRadiosExample client:only="react" />
+</Example>
+
+## Multiple inputs
+
+While multiple `<CFormInput>`s are supported visually, validation styles are only available for input groups with a single `<CFormInput>`.
+
+<Example code={InputGroupMultipleInputsExampleRaw} lang="tsx" name="InputGroupMultipleInputsExample" componentName="React Form Input Group">
+  <InputGroupMultipleInputsExample client:only="react" />
+</Example>
+
+## Multiple addons
+
+Multiple add-ons are supported and can be mixed with checkbox and radio input versions.
+
+<Example code={InputGroupMultipleAddonsExampleRaw} lang="tsx" name="InputGroupMultipleAddonsExample" componentName="React Form Input Group">
+  <InputGroupMultipleAddonsExample client:only="react" />
+</Example>
+
+## Button addons
+
+<Example code={InputGroupButtonAddonsExampleRaw} lang="tsx" name="InputGroupButtonAddonsExample" componentName="React Form Input Group">
+  <InputGroupButtonAddonsExample client:only="react" />
+</Example>
+
+## Buttons with dropdowns
+
+<Example code={InputGroupButtonsWithDropdownsExampleRaw} lang="tsx" name="InputGroupButtonsWithDropdownsExample" componentName="React Form Input Group">
+  <InputGroupButtonsWithDropdownsExample client:only="react" />
+</Example>
+
+## Segmented buttons
+
+<Example code={InputGroupSegmentedButtonsExampleRaw} lang="tsx" name="InputGroupSegmentedButtonsExample" componentName="React Form Input Group">
+  <InputGroupSegmentedButtonsExample client:only="react" />
+</Example>
+
+## Custom forms
+
+Input groups include support for custom selects and custom file inputs. Browser default versions of these are not supported.
+
+### Custom select
+
+<Example code={InputGroupCustomSelectExampleRaw} lang="tsx" name="InputGroupCustomSelectExample" componentName="React Form Input Group">
+  <InputGroupCustomSelectExample client:only="react" />
+</Example>
+
+### Custom file input
+
+<Example code={InputGroupCustomFileInputExampleRaw} lang="tsx" name="InputGroupCustomFileInputExample" componentName="React Form Input Group">
+  <InputGroupCustomFileInputExample client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CInputGroup /&gt;](./api/#cinputgroup)
+- [&lt;CInputGroupText /&gt;](./api/#cinputgrouptext)

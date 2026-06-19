@@ -1,0 +1,62 @@
+{
+  "name": "CRow",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "lg",
+      "type": "{{ cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }}",
+      "default": null,
+      "description": "The number of columns/offset/order on large devices (<1200px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "md",
+      "type": "{{ cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }}",
+      "default": null,
+      "description": "The number of columns/offset/order on medium devices (<992px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "sm",
+      "type": "{{ cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }}",
+      "default": null,
+      "description": "The number of columns/offset/order on small devices (<768px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xl",
+      "type": "{{ cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }}",
+      "default": null,
+      "description": "The number of columns/offset/order on X-Large devices (<1400px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xs",
+      "type": "{{ cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }}",
+      "default": null,
+      "description": "The number of columns/offset/order on extra small devices (<576px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xxl",
+      "type": "{{ cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }}",
+      "default": null,
+      "description": "The number of columns/offset/order on XX-Large devices (≥1400px).",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CRow } from '@coreui/react'"
+}

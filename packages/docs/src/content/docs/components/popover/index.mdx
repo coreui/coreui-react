@@ -1,0 +1,69 @@
+---
+title: "React Popover Component"
+name: "Popover"
+description: "Documentation and examples for adding React popovers, like those found in iOS, to any element on your site."
+otherFrameworks:
+  - popover
+---
+
+import { PopoverLiveExample } from './examples/PopoverLiveExample'
+import PopoverLiveExampleRaw from './examples/PopoverLiveExample.tsx?raw'
+import { PopoverFourDirectionsExample } from './examples/PopoverFourDirectionsExample'
+import PopoverFourDirectionsExampleRaw from './examples/PopoverFourDirectionsExample.tsx?raw'
+import { PopoverCustomPopoversExample } from './examples/PopoverCustomPopoversExample'
+import PopoverCustomPopoversExampleRaw from './examples/PopoverCustomPopoversExample.tsx?raw'
+import PopoverCustomPopoversExampleJsRaw from './examples/PopoverCustomPopoversExample.jsx?raw'
+import { PopoverDismissExample } from './examples/PopoverDismissExample'
+import PopoverDismissExampleRaw from './examples/PopoverDismissExample.tsx?raw'
+import { PopoverDisabledElementsExample } from './examples/PopoverDisabledElementsExample'
+import PopoverDisabledElementsExampleRaw from './examples/PopoverDisabledElementsExample.tsx?raw'
+
+## Examples
+
+### Live demo
+
+<Example code={PopoverLiveExampleRaw} lang="tsx" name="PopoverLiveExample" componentName="React Popover">
+  <PopoverLiveExample client:only="react" />
+</Example>
+
+### Four directions
+
+Four options are available: top, right, bottom, and left aligned. Directions are mirrored when using CoreUI for React in RTL.
+
+<Example code={PopoverFourDirectionsExampleRaw} lang="tsx" name="PopoverFourDirectionsExample" componentName="React Popover">
+  <PopoverFourDirectionsExample client:only="react" />
+</Example>
+
+### Custom popovers
+
+You can customize the appearance of popovers using [CSS variables](./styling/#css-variables). We set a custom `style` to scope our custom appearance and use it to override some of the local CSS variables.
+
+<Example code={PopoverCustomPopoversExampleRaw} codeJs={PopoverCustomPopoversExampleJsRaw} lang="tsx" name="PopoverCustomPopoversExample" componentName="React Popover">
+  <PopoverCustomPopoversExample client:only="react" />
+</Example>
+
+### Dismiss on next click
+
+Use the `focus` trigger to dismiss popovers on the user's next click of a different element than the toggle element.
+
+<Example code={PopoverDismissExampleRaw} lang="tsx" name="PopoverDismissExample" componentName="React Popover">
+  <PopoverDismissExample client:only="react" />
+</Example>
+
+## Usage
+
+### Disabled elements
+
+Elements with the disabled attribute aren't interactive, meaning users cannot hover or click them to trigger a popover (or tooltip). As a workaround, you'll want to trigger the popover from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
+
+For disabled popover triggers, you may also prefer `trigger={['hover', 'focus']}` so that the popover appears as immediate visual feedback to your users as they may not expect to click on a disabled element.
+
+<Example code={PopoverDisabledElementsExampleRaw} lang="tsx" name="PopoverDisabledElementsExample" componentName="React Popover">
+  <PopoverDisabledElementsExample client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CPopover /&gt;](./api/#cpopover)

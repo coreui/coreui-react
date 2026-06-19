@@ -1,0 +1,38 @@
+{
+  "name": "CCloseButton",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "dark",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Invert the default color.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "disabled",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Toggle the disabled state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "white",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Change the default color to white.",
+      "since": null,
+      "deprecated": "5.0.0"
+    }
+  ],
+  "imports": "import { CCloseButton } from '@coreui/react'"
+}

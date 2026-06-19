@@ -1,0 +1,82 @@
+---
+title: "React Bootstrap Toast Component"
+name: "Toast with Bootstrap Styling"
+description: "Learn how to create lightweight, customizable toast notifications using CoreUI’s React components styled with Bootstrap."
+bootstrap: true
+---
+
+import { ToastExample } from './examples/ToastExample'
+import ToastExampleRaw from './examples/ToastExample.tsx?raw'
+import { ToastLiveExample } from './examples/ToastLiveExample'
+import ToastLiveExampleRaw from './examples/ToastLiveExample.tsx?raw'
+import ToastLiveExampleJsRaw from './examples/ToastLiveExample.jsx?raw'
+import { ToastTranslucentExample } from './examples/ToastTranslucentExample'
+import ToastTranslucentExampleRaw from './examples/ToastTranslucentExample.tsx?raw'
+import { ToastStackingExample } from './examples/ToastStackingExample'
+import ToastStackingExampleRaw from './examples/ToastStackingExample.tsx?raw'
+import { ToastCustomContentExample } from './examples/ToastCustomContentExample'
+import ToastCustomContentExampleRaw from './examples/ToastCustomContentExample.tsx?raw'
+import { ToastCustomContent2Example } from './examples/ToastCustomContent2Example'
+import ToastCustomContent2ExampleRaw from './examples/ToastCustomContent2Example.tsx?raw'
+import { ToastColorSchemesExample } from './examples/ToastColorSchemesExample'
+import ToastColorSchemesExampleRaw from './examples/ToastColorSchemesExample.tsx?raw'
+
+## How to use React Bootstrap Toast component
+
+Use CoreUI's React toast notifications styled like Bootstrap to provide lightweight, dismissible alerts for your application. Toasts can include headers, body content, icons, or be customized entirely.
+
+### Basic usage
+
+Toasts support headers and body content. Use the `autohide` prop to configure automatic dismissal behavior.
+
+<Example code={ToastExampleRaw} lang="tsx" name="ToastExample" componentName="React Bootstrap Toast" class="theme-bootstrap">
+  <ToastExample client:only="react" />
+</Example>
+<Example code={ToastLiveExampleRaw} codeJs={ToastLiveExampleJsRaw} lang="tsx" name="ToastLiveExample" componentName="React Bootstrap Toast" class="theme-bootstrap">
+  <ToastLiveExample client:only="react" />
+</Example>
+
+### Translucent background
+
+Toasts have a slightly translucent background by default, giving a modern Bootstrap feel.
+
+<Example code={ToastTranslucentExampleRaw} lang="tsx" name="ToastTranslucentExample" componentName="React Bootstrap Toast" class="theme-bootstrap bg-dark">
+  <ToastTranslucentExample client:only="react" />
+</Example>
+
+### Stacked toasts
+
+Wrap multiple toasts in a container to stack them vertically with spacing.
+
+<Example code={ToastStackingExampleRaw} lang="tsx" name="ToastStackingExample" componentName="React Bootstrap Toast" class="theme-bootstrap">
+  <ToastStackingExample client:only="react" />
+</Example>
+
+### Custom content
+
+You can customize toasts by omitting headers, replacing close buttons, or applying utility classes and icons.
+
+<Example code={ToastCustomContentExampleRaw} lang="tsx" name="ToastCustomContentExample" componentName="React Bootstrap Toast" class="theme-bootstrap">
+  <ToastCustomContentExample client:only="react" />
+</Example>
+<Example code={ToastCustomContent2ExampleRaw} lang="tsx" name="ToastCustomContent2Example" componentName="React Bootstrap Toast" class="theme-bootstrap">
+  <ToastCustomContent2Example client:only="react" />
+</Example>
+
+### Color schemes
+
+Use CoreUI’s utility classes and props like `color`, `text-white`, and `border-0` to create Bootstrap-styled toast variants.
+
+<Example code={ToastColorSchemesExampleRaw} lang="tsx" name="ToastColorSchemesExample" componentName="React Bootstrap Toast" class="theme-bootstrap">
+  <ToastColorSchemesExample client:only="react" />
+</Example>
+
+## API reference
+
+Refer to the API documentation for detailed descriptions of all the available props and components used to build Bootstrap-style toasts in React.
+
+- [&lt;CToast /&gt;](../api/#ctoast)
+- [&lt;CToastHeader /&gt;](../api/#ctoastheader)
+- [&lt;CToastBody /&gt;](../api/#ctoastbody)
+- [&lt;CToastClose /&gt;](../api/#ctoastclose)
+- [&lt;CToaster /&gt;](../api/#ctoaster)

@@ -1,0 +1,96 @@
+---
+title: "React Search Button Component"
+name: "Search Button"
+description: "React search button component for keyboard-aware search entry points, command palettes, modals, and offcanvas panels."
+preRelease: true
+otherFrameworks:
+  - search-button
+---
+
+import { SearchButtonExample } from './examples/SearchButtonExample'
+import SearchButtonExampleRaw from './examples/SearchButtonExample.tsx?raw'
+import { SearchButtonCustomShortcutExample } from './examples/SearchButtonCustomShortcutExample'
+import SearchButtonCustomShortcutExampleRaw from './examples/SearchButtonCustomShortcutExample.tsx?raw'
+import { SearchButtonOffcanvasExample } from './examples/SearchButtonOffcanvasExample'
+import SearchButtonOffcanvasExampleRaw from './examples/SearchButtonOffcanvasExample.tsx?raw'
+
+## Overview
+
+The CoreUI React Search Button component is a trigger element designed for search entry points and command-style actions. It behaves like a regular button on click, but it can also react to a configurable keyboard shortcut such as `meta+/` or `ctrl+/`.
+
+- Use it as a standalone trigger for a custom search UI.
+- Pair it with React state to open a modal, offcanvas, or command palette.
+- Shortcut keys are rendered automatically.
+- Displayed shortcut keys react to keyboard interaction and receive an `.active` state while pressed.
+
+## Basic example
+
+Use `<CSearchButton />` as the entry point for a controlled search interface. Use `onTrigger` as the main activation callback for both direct interaction and keyboard shortcuts.
+
+<Example code={SearchButtonExampleRaw} lang="tsx" name="SearchButtonExample" componentName="React Search Button">
+  <SearchButtonExample client:only="react" />
+</Example>
+
+## Custom shortcut
+
+Configure the shortcut with the `shortcut` prop. On macOS, the component prefers the `meta` variant for the visible label. On Windows and Linux, it prefers the `ctrl` variant.
+
+<Callout color="warning">
+  Shortcuts such as `meta+f`, `ctrl+f`, `meta+s`, or `ctrl+s` can override native browser or system shortcuts. Prefer safer combinations such as `meta+/` and `ctrl+/` unless replacing the default behavior is intentional.
+</Callout>
+
+<Example code={SearchButtonCustomShortcutExampleRaw} lang="tsx" name="SearchButtonCustomShortcutExample" componentName="React Search Button">
+  <SearchButtonCustomShortcutExample client:only="react" />
+</Example>
+
+## Launch an offcanvas
+
+The component works naturally with controlled React state and also supports a dedicated `onTrigger` callback. This demo uses `meta+shift+o` / `ctrl+shift+o` to avoid colliding with other live examples on the page.
+
+<Example code={SearchButtonOffcanvasExampleRaw} lang="tsx" name="SearchButtonOffcanvasExample" componentName="React Search Button">
+  <SearchButtonOffcanvasExample client:only="react" />
+</Example>
+
+## Keyboard behavior
+
+### When the configured shortcut is pressed
+
+| Key | Action |
+| --- | --- |
+| `Enter` / `Space` on a focused search button | Trigger the component activation callback |
+| Configured shortcut, e.g. `⌘/` / `Ctrl+/` | Trigger the component activation callback |
+| Modifier key inside the visible shortcut | Add `.active` to the corresponding `.search-button-key` while pressed |
+| Final key inside the visible shortcut | Add `.active` to the corresponding `.search-button-key` while pressed |
+
+### Keyboard state behavior
+
+| Interaction | Effect |
+| --- | --- |
+| Matching shortcut on `keydown` | Optionally prevents the browser's default behavior and calls `onTrigger` |
+| Plain typing inside `input`, `textarea`, `select`, or `contenteditable` | Does not trigger the component without `meta` or `ctrl` |
+| `keyup` after a shortcut key press | Removes `.active` from the rendered shortcut keys |
+| Browser window `blur` | Clears all active shortcut key states |
+| Multiple configured shortcuts | The component listens to all configured shortcuts and renders the platform-preferred one in the UI |
+
+## Accessibility
+
+Accessibility is an important part of the Search Button design. The component includes built-in behaviors that help preserve expected keyboard interaction and reduce conflicts with assistive technologies, but accessible results still depend on choosing the right markup and shortcut combinations.
+
+### Built-in accessibility behavior
+
+- Native button semantics are preserved because `<CSearchButton>` renders a `<button type="button">` by default.
+- Rendered `.search-button-keys` are treated as visual hints only and are hidden from assistive technologies.
+- Plain typing inside editable fields does not trigger the component unless the shortcut also includes `meta` or `ctrl`.
+- The component keeps standard button keyboard behavior such as `Enter` and `Space`.
+
+### Author responsibilities
+
+- Choose shortcuts carefully and avoid overriding common browser or system shortcuts unless that behavior is intentional and clearly communicated.
+- Make sure the visible button label clearly describes the action, for example `Search`, `Open search`, or `Command palette`.
+- Mark decorative icons as `aria-hidden="true"` when you provide a custom `icon`.
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the component.
+
+- [&lt;CSearchButton /&gt;](./api/#csearchbutton)

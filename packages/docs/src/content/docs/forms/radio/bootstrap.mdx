@@ -1,0 +1,87 @@
+---
+title: "React Bootstrap Radio Component"
+name: "Radio with Bootstrap Styling"
+description: "Learn how to build consistent, accessible, and customizable radio buttons using CoreUI’s React components styled with Bootstrap."
+bootstrap: true
+---
+
+import { RadioExample } from './examples/RadioExample'
+import RadioExampleRaw from './examples/RadioExample.tsx?raw'
+import { RadioDisabledExample } from './examples/RadioDisabledExample'
+import RadioDisabledExampleRaw from './examples/RadioDisabledExample.tsx?raw'
+import { RadioInlineExample } from './examples/RadioInlineExample'
+import RadioInlineExampleRaw from './examples/RadioInlineExample.tsx?raw'
+import { RadioReverseExample } from './examples/RadioReverseExample'
+import RadioReverseExampleRaw from './examples/RadioReverseExample.tsx?raw'
+import { RadioWithoutLabelsExample } from './examples/RadioWithoutLabelsExample'
+import RadioWithoutLabelsExampleRaw from './examples/RadioWithoutLabelsExample.tsx?raw'
+import { RadioToggleButtonsExample } from './examples/RadioToggleButtonsExample'
+import RadioToggleButtonsExampleRaw from './examples/RadioToggleButtonsExample.tsx?raw'
+import { RadioToggleButtonsOutlinedStylesExample } from './examples/RadioToggleButtonsOutlinedStylesExample'
+import RadioToggleButtonsOutlinedStylesExampleRaw from './examples/RadioToggleButtonsOutlinedStylesExample.tsx?raw'
+
+## How to use React Bootstrap Radio component
+
+Use CoreUI’s `<CFormCheck type="radio">` component to create Bootstrap-styled radio buttons for selecting one option from many. These components are built to be accessible, customizable, and responsive.
+
+### Default stacked radios
+
+By default, multiple radio buttons rendered as siblings will be stacked vertically with proper spacing.
+
+<Example code={RadioExampleRaw} lang="tsx" name="RadioExample" componentName="React Bootstrap Radio" class="theme-bootstrap">
+  <RadioExample client:only="react" />
+</Example>
+
+### Disabled state
+
+Add the `disabled` prop to disable a radio button. The associated label will also receive a muted style to reflect its state.
+
+<Example code={RadioDisabledExampleRaw} lang="tsx" name="RadioDisabledExample" componentName="React Bootstrap Radio" class="theme-bootstrap">
+  <RadioDisabledExample client:only="react" />
+</Example>
+
+### Inline radios
+
+Display radio buttons in a horizontal row by adding the `inline` prop to each `<CFormCheck type="radio">`.
+
+<Example code={RadioInlineExampleRaw} lang="tsx" name="RadioInlineExample" componentName="React Bootstrap Radio" class="theme-bootstrap">
+  <RadioInlineExample client:only="react" />
+</Example>
+
+### Reverse layout
+
+Use the `reverse` prop to position the label text on the opposite side of the radio input.
+
+<Example code={RadioReverseExampleRaw} lang="tsx" name="RadioReverseExample" componentName="React Bootstrap Radio" class="theme-bootstrap">
+  <RadioReverseExample client:only="react" />
+</Example>
+
+### Radios without labels
+
+You can omit visual labels, but make sure to provide accessible names using `aria-label` for screen readers.
+
+<Example code={RadioWithoutLabelsExampleRaw} lang="tsx" name="RadioWithoutLabelsExample" componentName="React Bootstrap Radio" class="theme-bootstrap">
+  <RadioWithoutLabelsExample client:only="react" />
+</Example>
+
+### Radio toggle buttons
+
+Turn your radios into button-like toggles using the `button` prop. These can also be grouped using a button group component.
+
+<Example code={RadioToggleButtonsExampleRaw} lang="tsx" name="RadioToggleButtonsExample" componentName="React Bootstrap Radio" class="theme-bootstrap">
+  <RadioToggleButtonsExample client:only="react" />
+</Example>
+
+#### Outlined toggle styles
+
+You can apply outlined styles to toggle radios using Bootstrap's button variant system.
+
+<Example code={RadioToggleButtonsOutlinedStylesExampleRaw} lang="tsx" name="RadioToggleButtonsOutlinedStylesExample" componentName="React Bootstrap Radio" class="theme-bootstrap">
+  <RadioToggleButtonsOutlinedStylesExample client:only="react" />
+</Example>
+
+## API reference
+
+Refer to the API documentation below for a complete list of props supported by the React Bootstrap radio component.
+
+- [&lt;CFormCheck /&gt;](../api/#cformcheck)

@@ -1,0 +1,110 @@
+{
+  "name": "CTooltip",
+  "props": [
+    {
+      "name": "animation",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Enables or disables the CSS fade transition for the React Tooltip.",
+      "since": "4.9.0",
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Adds a custom class name to the React Tooltip container. Useful for overriding default styles or applying additional design choices.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "container",
+      "type": "Element | DocumentFragment | (() => Element | DocumentFragment | null) | null | undefined",
+      "default": "document.body",
+      "description": "Appends the React Tooltip to a specific element instead of the default `document.body`. You may pass:\n- A DOM element (`HTMLElement` or `DocumentFragment`)\n- A function that returns a single element\n- `null`",
+      "since": "4.11.0",
+      "deprecated": null
+    },
+    {
+      "name": "content",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Content to be displayed within the React Tooltip. Can be a string or any valid React node.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "delay",
+      "type": "number | { show: number; hide: number; } | undefined",
+      "default": 0,
+      "description": "The delay (in milliseconds) before showing or hiding the React Tooltip.\n- If provided as a number, the delay is applied to both \"show\" and \"hide\".\n- If provided as an object, it should have distinct \"show\" and \"hide\" values.",
+      "since": "4.9.0",
+      "deprecated": null
+    },
+    {
+      "name": "fallbackPlacements",
+      "type": "'top', 'right', 'bottom', 'left' | ('top', 'right', 'bottom', 'left')[]",
+      "default": "['top', 'right', 'bottom', 'left']",
+      "description": "Array of fallback placements for the React Tooltip to use when the preferred placement cannot be achieved. These placements are tried in order.",
+      "since": "4.9.0",
+      "deprecated": null
+    },
+    {
+      "name": "offset",
+      "type": "[number, number] | undefined",
+      "default": "[0, 6]",
+      "description": "Adjusts the offset of the React Tooltip relative to its target. Expects a tuple `[x-axis, y-axis]`.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onHide",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback fired immediately after the React Tooltip is hidden.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onShow",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback fired immediately after the React Tooltip is shown.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "placement",
+      "type": "\"auto\" | \"top\" | \"bottom\" | \"right\" | \"left\" | undefined",
+      "default": "top",
+      "description": "Initial placement of the React Tooltip. Note that Popper.js modifiers may alter this placement automatically if there's insufficient space in the chosen position.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "popperConfig",
+      "type": "Partial<Options> | ((defaultPopperConfig: Partial<Options>) => Partial<Options>) | undefined",
+      "default": null,
+      "description": "Customize the Popper.js configuration used to position the React Tooltip. Pass either an object or a function returning a modified config. [Learn more](https://popper.js.org/docs/v2/constructors/#options)",
+      "since": "5.5.0",
+      "deprecated": null
+    },
+    {
+      "name": "trigger",
+      "type": "'hover' | 'focus' | 'click' | ('hover' | 'focus' | 'click')[]",
+      "default": "['hover', 'focus']",
+      "description": "Determines the events that toggle the visibility of the React Tooltip. Can be a single trigger or an array of triggers.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Controls the visibility of the React Tooltip.\n- `true` to show the tooltip.\n- `false` to hide the tooltip.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CTooltip } from '@coreui/react'"
+}

@@ -1,0 +1,46 @@
+{
+  "name": "CProgressBar",
+  "props": [
+    {
+      "name": "animated",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Use to animate the stripes right to left via CSS3 animations.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "color",
+      "type": "'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "value",
+      "type": "number | undefined",
+      "default": 0,
+      "description": "The percent to progress the ProgressBar.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "variant",
+      "type": "\"striped\" | undefined",
+      "default": null,
+      "description": "Set the progress bar variant to optional striped.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CProgressBar } from '@coreui/react'"
+}

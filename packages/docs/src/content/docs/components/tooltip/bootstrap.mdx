@@ -1,0 +1,58 @@
+---
+title: "React Bootstrap Tooltip Component"
+name: "Tooltip with Bootstrap Styling"
+description: "Learn how to add Bootstrap-style tooltips in your React app using CoreUI components styled to match Bootstrap."
+bootstrap: true
+---
+
+import { TooltipOnLinksExample } from './examples/TooltipOnLinksExample'
+import TooltipOnLinksExampleRaw from './examples/TooltipOnLinksExample.tsx?raw'
+import { TooltipCustomExample } from './examples/TooltipCustomExample'
+import TooltipCustomExampleRaw from './examples/TooltipCustomExample.tsx?raw'
+import TooltipCustomExampleJsRaw from './examples/TooltipCustomExample.jsx?raw'
+import { TooltipDirectionsExample } from './examples/TooltipDirectionsExample'
+import TooltipDirectionsExampleRaw from './examples/TooltipDirectionsExample.tsx?raw'
+import { TooltipDisabledElementsExample } from './examples/TooltipDisabledElementsExample'
+import TooltipDisabledElementsExampleRaw from './examples/TooltipDisabledElementsExample.tsx?raw'
+
+## How to use React Bootstrap Tooltip component
+
+Use CoreUI's React components styled with Bootstrap to show additional contextual information when users hover over elements, similar to native Bootstrap tooltips.
+
+### Tooltips on links
+
+Hover over the links below to see Bootstrap-style tooltips.
+
+<Example code={TooltipOnLinksExampleRaw} lang="tsx" name="TooltipOnLinksExample" componentName="React Bootstrap Tooltip" class="theme-bootstrap text-body-secondary">
+  <TooltipOnLinksExample client:only="react" />
+</Example>
+
+### Custom tooltips
+
+You can customize the appearance of tooltips using [CSS variables](./styling/#css-variables). Below is an example with scoped overrides for a unique appearance.
+
+<Example code={TooltipCustomExampleRaw} codeJs={TooltipCustomExampleJsRaw} lang="tsx" name="TooltipCustomExample" componentName="React Bootstrap Tooltip" class="theme-bootstrap text-body-secondary">
+  <TooltipCustomExample client:only="react" />
+</Example>
+
+### Tooltip directions
+
+You can place tooltips on the top, right, bottom, or left of the element. Directions are automatically mirrored in RTL layouts.
+
+<Example code={TooltipDirectionsExampleRaw} lang="tsx" name="TooltipDirectionsExample" componentName="React Bootstrap Tooltip" class="theme-bootstrap text-body-secondary">
+  <TooltipDirectionsExample client:only="react" />
+</Example>
+
+### Disabled elements
+
+Because disabled elements do not trigger events, wrap them in a `<span>` or `<div>` with `tabIndex="0"` to enable tooltip behavior.
+
+<Example code={TooltipDisabledElementsExampleRaw} lang="tsx" name="TooltipDisabledElementsExample" componentName="React Bootstrap Tooltip" class="theme-bootstrap text-body-secondary">
+  <TooltipDisabledElementsExample client:only="react" />
+</Example>
+
+## API reference
+
+Refer to the API documentation for detailed descriptions of all available props and customization options.
+
+- [&lt;CTooltip /&gt;](../api/#ctooltip)

@@ -1,0 +1,43 @@
+---
+title: "React Bootstrap Close Button Component"
+name: "Close Button with Bootstrap Styling"
+description: "Learn how to use the React Bootstrap Close Button component from CoreUI to add dismiss functionality to modals, alerts, and other UI elements with accessible and customizable styles."
+bootstrap: true
+---
+
+import { CloseButtonExample } from './examples/CloseButtonExample'
+import CloseButtonExampleRaw from './examples/CloseButtonExample.tsx?raw'
+import { CloseButtonDisabledExample } from './examples/CloseButtonDisabledExample'
+import CloseButtonDisabledExampleRaw from './examples/CloseButtonDisabledExample.tsx?raw'
+import { CloseButtonDarkExample } from './examples/CloseButtonDarkExample'
+import CloseButtonDarkExampleRaw from './examples/CloseButtonDarkExample.tsx?raw'
+
+## Using the React Bootstrap Close Button component
+
+The React Bootstrap Close Button component provides a simple and accessible way to dismiss modals, alerts, or other interface elements. It's fully customizable and built with Bootstrap-compatible styles.
+
+<Example code={CloseButtonExampleRaw} lang="tsx" name="CloseButtonExample" componentName="React Bootstrap Close Button" class="theme-bootstrap">
+  <CloseButtonExample client:only="react" />
+</Example>
+
+## Disabled state
+
+React Bootstrap Close Button can be disabled using the `disabled` prop. This changes its `opacity` and applies `pointer-events: none` and `user-select: none` to prevent interactions.
+
+<Example code={CloseButtonDisabledExampleRaw} lang="tsx" name="CloseButtonDisabledExample" componentName="React Bootstrap Close Button" class="theme-bootstrap">
+  <CloseButtonDisabledExample client:only="react" />
+</Example>
+
+## Dark variant
+
+Use the `dark` prop to apply a dark version of the close button. This inverts the icon using the `filter` CSS property for better visibility on dark backgrounds.
+
+<Example code={CloseButtonDarkExampleRaw} lang="tsx" name="CloseButtonDarkExample" componentName="React Bootstrap Close Button" class="theme-bootstrap bg-dark">
+  <CloseButtonDarkExample client:only="react" />
+</Example>
+
+## API reference
+
+Check the API documentation below for the full list of props available in the React Bootstrap Close Button component:
+
+- [&lt;CCloseButton /&gt;](../api/#cclosebutton)

@@ -1,0 +1,46 @@
+{
+  "name": "CDropdownItem",
+  "props": [
+    {
+      "name": "active",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Toggle the active state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "as",
+      "type": "(ElementType & \"symbol\") | (ElementType & \"object\") | (ElementType & \"a\") | (ElementType & \"cite\") | (ElementType & \"data\") | ... 175 more ... | undefined",
+      "default": "a",
+      "description": "Component used for the root node. Either a string to use a HTML element or a component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "disabled",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Toggle the disabled state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "href",
+      "type": "string | undefined",
+      "default": null,
+      "description": "The href attribute specifies the URL of the page the link goes to.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CDropdownItem } from '@coreui/react'"
+}

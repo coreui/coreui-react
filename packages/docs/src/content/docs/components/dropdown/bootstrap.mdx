@@ -1,0 +1,239 @@
+---
+title: "React Bootstrap Dropdown Component"
+name: "Dropdown with Bootstrap Styling"
+description: "Learn how to use the React Bootstrap Dropdown component from CoreUI to create toggleable, contextual overlays with links, buttons, forms, and more, styled the Bootstrap way."
+bootstrap: true
+---
+
+import { DropdownSingleButtonExample } from './examples/DropdownSingleButtonExample'
+import DropdownSingleButtonExampleRaw from './examples/DropdownSingleButtonExample.tsx?raw'
+import { DropdownSingleButton2Example } from './examples/DropdownSingleButton2Example'
+import DropdownSingleButton2ExampleRaw from './examples/DropdownSingleButton2Example.tsx?raw'
+import { DropdownSingleButton3Example } from './examples/DropdownSingleButton3Example'
+import DropdownSingleButton3ExampleRaw from './examples/DropdownSingleButton3Example.tsx?raw'
+import { DropdownSplitButtonExample } from './examples/DropdownSplitButtonExample'
+import DropdownSplitButtonExampleRaw from './examples/DropdownSplitButtonExample.tsx?raw'
+import { DropdownSizingLargeExample } from './examples/DropdownSizingLargeExample'
+import DropdownSizingLargeExampleRaw from './examples/DropdownSizingLargeExample.tsx?raw'
+import { DropdownSizingSmallExample } from './examples/DropdownSizingSmallExample'
+import DropdownSizingSmallExampleRaw from './examples/DropdownSizingSmallExample.tsx?raw'
+import { DropdownDarkExample } from './examples/DropdownDarkExample'
+import DropdownDarkExampleRaw from './examples/DropdownDarkExample.tsx?raw'
+import { DropdownDark2Example } from './examples/DropdownDark2Example'
+import DropdownDark2ExampleRaw from './examples/DropdownDark2Example.tsx?raw'
+import { DropdownCenteredExample } from './examples/DropdownCenteredExample'
+import DropdownCenteredExampleRaw from './examples/DropdownCenteredExample.tsx?raw'
+import { DropdownDropupExample } from './examples/DropdownDropupExample'
+import DropdownDropupExampleRaw from './examples/DropdownDropupExample.tsx?raw'
+import { DropdownDropupCenteredExample } from './examples/DropdownDropupCenteredExample'
+import DropdownDropupCenteredExampleRaw from './examples/DropdownDropupCenteredExample.tsx?raw'
+import { DropdownDropendExample } from './examples/DropdownDropendExample'
+import DropdownDropendExampleRaw from './examples/DropdownDropendExample.tsx?raw'
+import { DropdownDropstartExample } from './examples/DropdownDropstartExample'
+import DropdownDropstartExampleRaw from './examples/DropdownDropstartExample.tsx?raw'
+import { DropdownMenuItemsExample } from './examples/DropdownMenuItemsExample'
+import DropdownMenuItemsExampleRaw from './examples/DropdownMenuItemsExample.tsx?raw'
+import { DropdownMenuItems2Example } from './examples/DropdownMenuItems2Example'
+import DropdownMenuItems2ExampleRaw from './examples/DropdownMenuItems2Example.tsx?raw'
+import { DropdownMenuItemsActiveExample } from './examples/DropdownMenuItemsActiveExample'
+import DropdownMenuItemsActiveExampleRaw from './examples/DropdownMenuItemsActiveExample.tsx?raw'
+import { DropdownMenuItemsDisabledExample } from './examples/DropdownMenuItemsDisabledExample'
+import DropdownMenuItemsDisabledExampleRaw from './examples/DropdownMenuItemsDisabledExample.tsx?raw'
+import { DropdownMenuAlignmentExample } from './examples/DropdownMenuAlignmentExample'
+import DropdownMenuAlignmentExampleRaw from './examples/DropdownMenuAlignmentExample.tsx?raw'
+import { DropdownResponsiveAlignmentExample } from './examples/DropdownResponsiveAlignmentExample'
+import DropdownResponsiveAlignmentExampleRaw from './examples/DropdownResponsiveAlignmentExample.tsx?raw'
+import { DropdownResponsiveAlignment2Example } from './examples/DropdownResponsiveAlignment2Example'
+import DropdownResponsiveAlignment2ExampleRaw from './examples/DropdownResponsiveAlignment2Example.tsx?raw'
+import { DropdownMenuContentHeadersExample } from './examples/DropdownMenuContentHeadersExample'
+import DropdownMenuContentHeadersExampleRaw from './examples/DropdownMenuContentHeadersExample.tsx?raw'
+import { DropdownMenuContentDividersExample } from './examples/DropdownMenuContentDividersExample'
+import DropdownMenuContentDividersExampleRaw from './examples/DropdownMenuContentDividersExample.tsx?raw'
+import { DropdownMenuContentTextExample } from './examples/DropdownMenuContentTextExample'
+import DropdownMenuContentTextExampleRaw from './examples/DropdownMenuContentTextExample.tsx?raw'
+import { DropdownMenuContentFormsExample } from './examples/DropdownMenuContentFormsExample'
+import DropdownMenuContentFormsExampleRaw from './examples/DropdownMenuContentFormsExample.tsx?raw'
+
+## Overview of React Bootstrap Dropdown component
+
+The React Bootstrap Dropdown component provides toggleable, contextual overlays for displaying lists, links, forms, and more. It’s powered by [Popper.js](https://popper.js.org/) for positioning, although navbar dropdowns don’t require dynamic placement.
+
+## React Bootstrap Dropdown examples
+
+### Single button dropdowns
+
+You can trigger dropdowns using `<button>` elements:
+
+<Example code={DropdownSingleButtonExampleRaw} lang="tsx" name="DropdownSingleButtonExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownSingleButtonExample client:only="react" />
+</Example>
+
+Or with `<a>` elements:
+
+<Example code={DropdownSingleButton2ExampleRaw} lang="tsx" name="DropdownSingleButton2Example" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownSingleButton2Example client:only="react" />
+</Example>
+
+It works with all button variants:
+
+<Example code={DropdownSingleButton3ExampleRaw} lang="tsx" name="DropdownSingleButton3Example" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownSingleButton3Example client:only="react" />
+</Example>
+
+### Split button dropdowns
+
+Use the `split` prop to create a split button dropdown. This adds a dropdown toggle next to the main button.
+
+<Example code={DropdownSplitButtonExampleRaw} lang="tsx" name="DropdownSplitButtonExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownSplitButtonExample client:only="react" />
+</Example>
+
+## Sizing
+
+React Bootstrap Dropdowns support all button sizes:
+
+<Example code={DropdownSizingLargeExampleRaw} lang="tsx" name="DropdownSizingLargeExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownSizingLargeExample client:only="react" />
+</Example>
+<Example code={DropdownSizingSmallExampleRaw} lang="tsx" name="DropdownSizingSmallExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownSizingSmallExample client:only="react" />
+</Example>
+
+## Dark variant
+
+Use the `dark` prop to style the dropdown with a dark theme.
+
+<Example code={DropdownDarkExampleRaw} lang="tsx" name="DropdownDarkExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownDarkExample client:only="react" />
+</Example>
+<Example code={DropdownDark2ExampleRaw} lang="tsx" name="DropdownDark2Example" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownDark2Example client:only="react" />
+</Example>
+
+## Directions
+
+<Callout color="info" title="RTL">
+  Directions are mirrored in RTL layouts. For example, `.dropstart` appears on the right.
+</Callout>
+
+### Centered dropdown
+
+<Example code={DropdownCenteredExampleRaw} lang="tsx" name="DropdownCenteredExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownCenteredExample client:only="react" />
+</Example>
+
+### Dropup
+
+<Example code={DropdownDropupExampleRaw} lang="tsx" name="DropdownDropupExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownDropupExample client:only="react" />
+</Example>
+
+### Dropup centered
+
+<Example code={DropdownDropupCenteredExampleRaw} lang="tsx" name="DropdownDropupCenteredExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownDropupCenteredExample client:only="react" />
+</Example>
+
+### Dropend
+
+<Example code={DropdownDropendExampleRaw} lang="tsx" name="DropdownDropendExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownDropendExample client:only="react" />
+</Example>
+
+### Dropstart
+
+<Example code={DropdownDropstartExampleRaw} lang="tsx" name="DropdownDropstartExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownDropstartExample client:only="react" />
+</Example>
+
+## Dropdown menu items
+
+React Bootstrap Dropdowns can include `<a>` or `<button>` elements:
+
+<Example code={DropdownMenuItemsExampleRaw} lang="tsx" name="DropdownMenuItemsExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownMenuItemsExample client:only="react" />
+</Example>
+
+Use `<CDropdownItemPlain>` for non-interactive items:
+
+<Example code={DropdownMenuItems2ExampleRaw} lang="tsx" name="DropdownMenuItems2Example" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownMenuItems2Example client:only="react" />
+</Example>
+
+### Active and disabled items
+
+To mark an item as active:
+
+<Example code={DropdownMenuItemsActiveExampleRaw} lang="tsx" name="DropdownMenuItemsActiveExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownMenuItemsActiveExample client:only="react" />
+</Example>
+
+To mark an item as disabled:
+
+<Example code={DropdownMenuItemsDisabledExampleRaw} lang="tsx" name="DropdownMenuItemsDisabledExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownMenuItemsDisabledExample client:only="react" />
+</Example>
+
+## Menu alignment
+
+Right-align the dropdown using the `alignment="end"` prop:
+
+<Callout color="info">
+  <strong>Heads up!</strong> Dropdowns use Popper.js for positioning.
+</Callout>
+
+<Example code={DropdownMenuAlignmentExampleRaw} lang="tsx" name="DropdownMenuAlignmentExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownMenuAlignmentExample client:only="react" />
+</Example>
+
+### Responsive alignment
+
+Right-align from a specific breakpoint with `alignment="sm:end"` and similar values:
+
+<Example code={DropdownResponsiveAlignmentExampleRaw} lang="tsx" name="DropdownResponsiveAlignmentExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownResponsiveAlignmentExample client:only="react" />
+</Example>
+
+Left-align from a breakpoint with `alignment="md:start"`:
+
+<Example code={DropdownResponsiveAlignment2ExampleRaw} lang="tsx" name="DropdownResponsiveAlignment2Example" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownResponsiveAlignment2Example client:only="react" />
+</Example>
+
+## Dropdown menu content
+
+### Headers
+
+<Example code={DropdownMenuContentHeadersExampleRaw} lang="tsx" name="DropdownMenuContentHeadersExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownMenuContentHeadersExample client:only="react" />
+</Example>
+
+### Dividers
+
+<Example code={DropdownMenuContentDividersExampleRaw} lang="tsx" name="DropdownMenuContentDividersExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownMenuContentDividersExample client:only="react" />
+</Example>
+
+### Text
+
+<Example code={DropdownMenuContentTextExampleRaw} lang="tsx" name="DropdownMenuContentTextExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownMenuContentTextExample client:only="react" />
+</Example>
+
+### Forms
+
+<Example code={DropdownMenuContentFormsExampleRaw} lang="tsx" name="DropdownMenuContentFormsExample" componentName="React Bootstrap Dropdown" class="theme-bootstrap">
+  <DropdownMenuContentFormsExample client:only="react" />
+</Example>
+
+## API reference
+
+Refer to the API below for full details on available components and props in the React Bootstrap Dropdown:
+
+- [&lt;CDropdown /&gt;](../api/#cdropdown)
+- [&lt;CDropdownDivider /&gt;](../api/#cdropdowndivider)
+- [&lt;CDropdownHeader /&gt;](../api/#cdropdownheader)
+- [&lt;CDropdownItem /&gt;](../api/#cdropdownitem)
+- [&lt;CDropdownItemPlain /&gt;](../api/#cdropdownitemplain)
+- [&lt;CDropdownMenu /&gt;](../api/#cdropdownmenu)
+- [&lt;CDropdownToggle /&gt;](../api/#cdropdowntoggle)

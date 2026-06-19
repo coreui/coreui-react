@@ -1,0 +1,77 @@
+---
+title: "React Bootstrap Select Component"
+name: "Select with Bootstrap Styling"
+description: "Learn how to build accessible and customizable dropdown menus using CoreUI’s React select component styled with Bootstrap."
+bootstrap: true
+---
+
+import { FormSelectExample } from './examples/FormSelectExample'
+import FormSelectExampleRaw from './examples/FormSelectExample.tsx?raw'
+import { FormSelectSizingExample } from './examples/FormSelectSizingExample'
+import FormSelectSizingExampleRaw from './examples/FormSelectSizingExample.tsx?raw'
+import { FormSelectSizing2Example } from './examples/FormSelectSizing2Example'
+import FormSelectSizing2ExampleRaw from './examples/FormSelectSizing2Example.tsx?raw'
+import { FormSelectSizing3Example } from './examples/FormSelectSizing3Example'
+import FormSelectSizing3ExampleRaw from './examples/FormSelectSizing3Example.tsx?raw'
+import { FormSelectDisabledExample } from './examples/FormSelectDisabledExample'
+import FormSelectDisabledExampleRaw from './examples/FormSelectDisabledExample.tsx?raw'
+
+## How to use React Bootstrap Select component
+
+Use CoreUI’s `<CFormSelect>` to create custom-styled `<select>` elements that match the Bootstrap look and feel. It supports single and multiple selections, custom sizing, and full accessibility.
+
+### Basic usage
+
+The default select renders a Bootstrap-styled native dropdown.
+
+<Example code={FormSelectExampleRaw} lang="tsx" name="FormSelectExample" componentName="React Bootstrap Select" class="theme-bootstrap">
+  <FormSelectExample client:only="react" />
+</Example>
+
+You can also define options manually using JSX:
+
+```jsx
+<CFormSelect aria-label="Default select example">
+  <option>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3" disabled>Three</option>
+</CFormSelect>
+```
+
+### Sizing
+
+Use the `size` prop with values like `"sm"` or `"lg"` to change the select height.
+
+<Example code={FormSelectSizingExampleRaw} lang="tsx" name="FormSelectSizingExample" componentName="React Bootstrap Select" class="theme-bootstrap">
+  <FormSelectSizingExample client:only="react" />
+</Example>
+
+You can also enable multi-select behavior using the `multiple` prop:
+
+<Example code={FormSelectSizing2ExampleRaw} lang="tsx" name="FormSelectSizing2Example" componentName="React Bootstrap Select" class="theme-bootstrap">
+  <FormSelectSizing2Example client:only="react" />
+</Example>
+
+And specify a fixed visible size using the `htmlSize` prop:
+
+<Example code={FormSelectSizing3ExampleRaw} lang="tsx" name="FormSelectSizing3Example" componentName="React Bootstrap Select" class="theme-bootstrap">
+  <FormSelectSizing3Example client:only="react" />
+</Example>
+
+### Disabled state
+
+Add the `disabled` prop to disable user interaction and apply a muted appearance.
+
+<Example code={FormSelectDisabledExampleRaw} lang="tsx" name="FormSelectDisabledExample" componentName="React Bootstrap Select" class="theme-bootstrap">
+  <FormSelectDisabledExample client:only="react" />
+</Example>
+
+## API reference
+
+Refer to the API documentation below for detailed descriptions of all available props and subcomponents.
+
+- [&lt;CFormSelect /&gt;](../api/#cformselect)
+- [&lt;CFormFeedback /&gt;](../api/#cformfeedback)
+- [&lt;CFormLabel /&gt;](../api/#cformlabel)
+- [&lt;CFormText /&gt;](../api/#cformtext)

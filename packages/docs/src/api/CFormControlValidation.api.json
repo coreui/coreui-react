@@ -1,0 +1,62 @@
+{
+  "name": "CFormControlValidation",
+  "props": [
+    {
+      "name": "feedback",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Provide valuable, actionable feedback.",
+      "since": "4.2.0",
+      "deprecated": null
+    },
+    {
+      "name": "feedbackInvalid",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Provide valuable, actionable feedback.",
+      "since": "4.2.0",
+      "deprecated": null
+    },
+    {
+      "name": "feedbackValid",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.",
+      "since": "4.2.0",
+      "deprecated": null
+    },
+    {
+      "name": "floatingLabel",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.",
+      "since": "4.2.0",
+      "deprecated": null
+    },
+    {
+      "name": "invalid",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Set component validation state to invalid.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "tooltipFeedback",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Display validation feedback in a styled tooltip.",
+      "since": "4.2.0",
+      "deprecated": null
+    },
+    {
+      "name": "valid",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Set component validation state to valid.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CFormControlValidation } from '@coreui/react'"
+}

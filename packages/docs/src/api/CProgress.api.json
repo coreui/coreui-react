@@ -1,0 +1,78 @@
+{
+  "name": "CProgress",
+  "props": [
+    {
+      "name": "animated",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Use to animate the stripes right to left via CSS3 animations.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "color",
+      "type": "'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "height",
+      "type": "number | undefined",
+      "default": null,
+      "description": "Sets the height of the component. If you set that value the inner `<CProgressBar>` will automatically resize accordingly.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "progressBarClassName",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the `<CProgressBar/>` component.",
+      "since": "4.9.0",
+      "deprecated": null
+    },
+    {
+      "name": "thin",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Makes progress bar thinner.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "value",
+      "type": "number | undefined",
+      "default": null,
+      "description": "The percent to progress the ProgressBar (out of 100).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "variant",
+      "type": "\"striped\" | undefined",
+      "default": null,
+      "description": "Set the progress bar variant to optional striped.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "white",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Change the default color to white.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CProgress } from '@coreui/react'"
+}

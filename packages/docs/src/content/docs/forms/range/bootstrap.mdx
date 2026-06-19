@@ -1,0 +1,57 @@
+---
+title: "React Bootstrap Range Component"
+name: "Range with Bootstrap Styling"
+description: "Learn how to create customizable and consistent cross-browser range sliders using CoreUI’s React components styled with Bootstrap."
+bootstrap: true
+---
+
+import { FormRangeExample } from './examples/FormRangeExample'
+import FormRangeExampleRaw from './examples/FormRangeExample.tsx?raw'
+import { FormRangeDisabledExample } from './examples/FormRangeDisabledExample'
+import FormRangeDisabledExampleRaw from './examples/FormRangeDisabledExample.tsx?raw'
+import { FormRangeMinAndMaxExample } from './examples/FormRangeMinAndMaxExample'
+import FormRangeMinAndMaxExampleRaw from './examples/FormRangeMinAndMaxExample.tsx?raw'
+import { FormRangeStepsExample } from './examples/FormRangeStepsExample'
+import FormRangeStepsExampleRaw from './examples/FormRangeStepsExample.tsx?raw'
+
+## How to use React Bootstrap Range component
+
+Use CoreUI’s `<CFormRange>` component to create custom range inputs with Bootstrap styling. It provides consistent appearance and behavior across modern browsers and supports customization via standard props.
+
+### Basic example
+
+The `<CFormRange>` component renders a stylized `<input type="range">` element.
+
+<Example code={FormRangeExampleRaw} lang="tsx" name="FormRangeExample" componentName="React Bootstrap Range" class="theme-bootstrap">
+  <FormRangeExample client:only="react" />
+</Example>
+
+### Disabled state
+
+Add the `disabled` prop to visually gray out the slider and disable interaction.
+
+<Example code={FormRangeDisabledExampleRaw} lang="tsx" name="FormRangeDisabledExample" componentName="React Bootstrap Range" class="theme-bootstrap">
+  <FormRangeDisabledExample client:only="react" />
+</Example>
+
+### Minimum and maximum values
+
+Customize the slider’s value range using the `min` and `max` props.
+
+<Example code={FormRangeMinAndMaxExampleRaw} lang="tsx" name="FormRangeMinAndMaxExample" componentName="React Bootstrap Range" class="theme-bootstrap">
+  <FormRangeMinAndMaxExample client:only="react" />
+</Example>
+
+### Custom step values
+
+Set a custom `step` size to control the interval between selectable values.
+
+<Example code={FormRangeStepsExampleRaw} lang="tsx" name="FormRangeStepsExample" componentName="React Bootstrap Range" class="theme-bootstrap">
+  <FormRangeStepsExample client:only="react" />
+</Example>
+
+## API reference
+
+Refer to the API documentation below for detailed descriptions of all available props.
+
+- [&lt;CFormRange /&gt;](../api/#cformrange)

@@ -1,0 +1,119 @@
+---
+title: "React Button Group Component"
+name: "Button group"
+description: "React button group component allows to group a series of buttons and power them with JavaScript."
+otherFrameworks:
+  - button-group
+---
+
+import { ButtonGroupExample } from './examples/ButtonGroupExample'
+import ButtonGroupExampleRaw from './examples/ButtonGroupExample.tsx?raw'
+import { ButtonGroup2Example } from './examples/ButtonGroup2Example'
+import ButtonGroup2ExampleRaw from './examples/ButtonGroup2Example.tsx?raw'
+import { ButtonGroupMixedStylesExample } from './examples/ButtonGroupMixedStylesExample'
+import ButtonGroupMixedStylesExampleRaw from './examples/ButtonGroupMixedStylesExample.tsx?raw'
+import { ButtonGroupOutlinedStylesExample } from './examples/ButtonGroupOutlinedStylesExample'
+import ButtonGroupOutlinedStylesExampleRaw from './examples/ButtonGroupOutlinedStylesExample.tsx?raw'
+import { ButtonGroupCheckboxAndRadioExample } from './examples/ButtonGroupCheckboxAndRadioExample'
+import ButtonGroupCheckboxAndRadioExampleRaw from './examples/ButtonGroupCheckboxAndRadioExample.tsx?raw'
+import { ButtonGroupCheckboxAndRadio2Example } from './examples/ButtonGroupCheckboxAndRadio2Example'
+import ButtonGroupCheckboxAndRadio2ExampleRaw from './examples/ButtonGroupCheckboxAndRadio2Example.tsx?raw'
+import { ButtonToolbarExample } from './examples/ButtonToolbarExample'
+import ButtonToolbarExampleRaw from './examples/ButtonToolbarExample.tsx?raw'
+import { ButtonToolbar2Example } from './examples/ButtonToolbar2Example'
+import ButtonToolbar2ExampleRaw from './examples/ButtonToolbar2Example.tsx?raw'
+import { ButtonGroupSizingExample } from './examples/ButtonGroupSizingExample'
+import ButtonGroupSizingExampleRaw from './examples/ButtonGroupSizingExample.tsx?raw'
+import { ButtonGroupNestingExample } from './examples/ButtonGroupNestingExample'
+import ButtonGroupNestingExampleRaw from './examples/ButtonGroupNestingExample.tsx?raw'
+import { ButtonGroupVerticalExample } from './examples/ButtonGroupVerticalExample'
+import ButtonGroupVerticalExampleRaw from './examples/ButtonGroupVerticalExample.tsx?raw'
+
+## How to use React Button Group Component.
+
+Wrap a series of `<CButton>` components in `<CButtonGroup>`.
+
+<Example code={ButtonGroupExampleRaw} lang="tsx" name="ButtonGroupExample" componentName="React Button Group">
+  <ButtonGroupExample client:only="react" />
+</Example>
+
+<Callout color="info" title={<>Ensure the correct <code>role</code> and provide a label</>}>
+  For assistive technologies (ex. screen readers) to communicate that a series of buttons are grouped, a proper `role` attribute has to be provided. For button groups, this should be `role="group"`, while toolbars should have a `role="toolbar"`.
+  
+  Besides, groups and toolbars should be provided an understandable label, as most assistive technologies will otherwise not declare them, despite the appearance of the specific role attribute. In the following examples provided here, we apply `aria-label`, but options such as `aria-labelledby` can also be used.
+</Callout>
+
+These classes can also be added to groups of links, as an alternative to the [`CNav`](./../navs-tabs/#base-nav) components.
+
+<Example code={ButtonGroup2ExampleRaw} lang="tsx" name="ButtonGroup2Example" componentName="React Button Group">
+  <ButtonGroup2Example client:only="react" />
+</Example>
+
+## Mixed styles
+
+<Example code={ButtonGroupMixedStylesExampleRaw} lang="tsx" name="ButtonGroupMixedStylesExample" componentName="React Button Group">
+  <ButtonGroupMixedStylesExample client:only="react" />
+</Example>
+
+## Outlined styles
+
+<Example code={ButtonGroupOutlinedStylesExampleRaw} lang="tsx" name="ButtonGroupOutlinedStylesExample" componentName="React Button Group">
+  <ButtonGroupOutlinedStylesExample client:only="react" />
+</Example>
+
+## Checkbox and radio button groups
+
+Combine button-like checkbox and radio toggle buttons into a seamless looking button group.
+
+<Example code={ButtonGroupCheckboxAndRadioExampleRaw} lang="tsx" name="ButtonGroupCheckboxAndRadioExample" componentName="React Button Group">
+  <ButtonGroupCheckboxAndRadioExample client:only="react" />
+</Example>
+
+<Example code={ButtonGroupCheckboxAndRadio2ExampleRaw} lang="tsx" name="ButtonGroupCheckboxAndRadio2Example" componentName="React Button Group">
+  <ButtonGroupCheckboxAndRadio2Example client:only="react" />
+</Example>
+
+## Button toolbar
+
+Join sets of button groups into button toolbars for more complicated components. Use utility classes as needed to space out groups, buttons, and more.
+
+<Example code={ButtonToolbarExampleRaw} lang="tsx" name="ButtonToolbarExample" componentName="React Button Group">
+  <ButtonToolbarExample client:only="react" />
+</Example>
+
+Feel free to combine input groups with button groups in your toolbars. Similar to the example above, you’ll likely need some utilities through to space items correctly.
+
+<Example code={ButtonToolbar2ExampleRaw} lang="tsx" name="ButtonToolbar2Example" componentName="React Button Group">
+  <ButtonToolbar2Example client:only="react" />
+</Example>
+
+## Sizing
+
+Alternatively, of implementing button sizing classes to each button in a group, set `size` property to all `<CButtonGroup>`'s, including each one when nesting multiple groups.
+
+<Example code={ButtonGroupSizingExampleRaw} lang="tsx" name="ButtonGroupSizingExample" componentName="React Button Group">
+  <ButtonGroupSizingExample client:only="react" />
+</Example>
+
+## Nesting
+
+Put a `<CButtonGroup>` inside another `<CButtonGroup>` when you need dropdown menus combined with a series of buttons.
+
+<Example code={ButtonGroupNestingExampleRaw} lang="tsx" name="ButtonGroupNestingExample" componentName="React Button Group">
+  <ButtonGroupNestingExample client:only="react" />
+</Example>
+
+## Vertical variation
+
+Create a set of buttons that appear vertically stacked rather than horizontally. **Split button dropdowns are not supported here.**
+
+<Example code={ButtonGroupVerticalExampleRaw} lang="tsx" name="ButtonGroupVerticalExample" componentName="React Button Group">
+  <ButtonGroupVerticalExample client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CButtonGroup /&gt;](./api/#cbuttongroup)
+- [&lt;CButtonToolbar /&gt;](./api/#cbuttontoolbar)

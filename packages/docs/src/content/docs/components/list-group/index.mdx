@@ -1,0 +1,146 @@
+---
+title: "React List Group Component"
+name: "List group"
+description: "React List Group component allows displaying a series of content. Learn how to use react list group to build complex list structure on your website."
+otherFrameworks:
+  - list-group
+---
+
+import { ListGroupExample } from './examples/ListGroupExample'
+import ListGroupExampleRaw from './examples/ListGroupExample.tsx?raw'
+import { ListGroupActiveItemsExample } from './examples/ListGroupActiveItemsExample'
+import ListGroupActiveItemsExampleRaw from './examples/ListGroupActiveItemsExample.tsx?raw'
+import { ListGroupDisabledItemsExample } from './examples/ListGroupDisabledItemsExample'
+import ListGroupDisabledItemsExampleRaw from './examples/ListGroupDisabledItemsExample.tsx?raw'
+import { ListGroupLinksAndButtonsExample } from './examples/ListGroupLinksAndButtonsExample'
+import ListGroupLinksAndButtonsExampleRaw from './examples/ListGroupLinksAndButtonsExample.tsx?raw'
+import { ListGroupLinksAndButtons2Example } from './examples/ListGroupLinksAndButtons2Example'
+import ListGroupLinksAndButtons2ExampleRaw from './examples/ListGroupLinksAndButtons2Example.tsx?raw'
+import { ListGroupFlushExample } from './examples/ListGroupFlushExample'
+import ListGroupFlushExampleRaw from './examples/ListGroupFlushExample.tsx?raw'
+import { ListGroupHorizontalExample } from './examples/ListGroupHorizontalExample'
+import ListGroupHorizontalExampleRaw from './examples/ListGroupHorizontalExample.tsx?raw'
+import ListGroupHorizontalExampleJsRaw from './examples/ListGroupHorizontalExample.jsx?raw'
+import { ListGroupContextualClassesExample } from './examples/ListGroupContextualClassesExample'
+import ListGroupContextualClassesExampleRaw from './examples/ListGroupContextualClassesExample.tsx?raw'
+import { ListGroupContextualClasses2Example } from './examples/ListGroupContextualClasses2Example'
+import ListGroupContextualClasses2ExampleRaw from './examples/ListGroupContextualClasses2Example.tsx?raw'
+import { ListGroupWithBadgesExample } from './examples/ListGroupWithBadgesExample'
+import ListGroupWithBadgesExampleRaw from './examples/ListGroupWithBadgesExample.tsx?raw'
+import { ListGroupCustomContentExample } from './examples/ListGroupCustomContentExample'
+import ListGroupCustomContentExampleRaw from './examples/ListGroupCustomContentExample.tsx?raw'
+import { ListGroupCheckboxesAndRadiosExample } from './examples/ListGroupCheckboxesAndRadiosExample'
+import ListGroupCheckboxesAndRadiosExampleRaw from './examples/ListGroupCheckboxesAndRadiosExample.tsx?raw'
+import { ListGroupCheckboxesAndRadios2Example } from './examples/ListGroupCheckboxesAndRadios2Example'
+import ListGroupCheckboxesAndRadios2ExampleRaw from './examples/ListGroupCheckboxesAndRadios2Example.tsx?raw'
+import { ListGroupCheckboxesAndRadios3Example } from './examples/ListGroupCheckboxesAndRadios3Example'
+import ListGroupCheckboxesAndRadios3ExampleRaw from './examples/ListGroupCheckboxesAndRadios3Example.tsx?raw'
+
+## Basic example
+
+The default list group is an unordered list with items and the proper CSS classes. Build upon it with the options that follow, or with your CSS as required.
+
+<Example code={ListGroupExampleRaw} lang="tsx" name="ListGroupExample" componentName="React List Group">
+  <ListGroupExample client:only="react" />
+</Example>
+
+## Active items
+
+Add `active` boolean property to a `<CListGroupItem>` to show the current active selection.
+
+<Example code={ListGroupActiveItemsExampleRaw} lang="tsx" name="ListGroupActiveItemsExample" componentName="React List Group">
+  <ListGroupActiveItemsExample client:only="react" />
+</Example>
+
+## Disabled items
+
+Add `disabled` boolean property to a `<CListGroupItem>` to make it appear disabled.
+
+<Example code={ListGroupDisabledItemsExampleRaw} lang="tsx" name="ListGroupDisabledItemsExample" componentName="React List Group">
+  <ListGroupDisabledItemsExample client:only="react" />
+</Example>
+
+## Links and buttons
+
+Use `<a>`s or `<button>`s to create _actionable_ list group items with hover, disabled, and active states by adding `as="a|button"`. We separate these pseudo-classes to ensure list groups made of non-interactive elements (like `<li>`s or `<div>`s) don't provide a click or tap affordance.
+
+<Example code={ListGroupLinksAndButtonsExampleRaw} lang="tsx" name="ListGroupLinksAndButtonsExample" componentName="React List Group">
+  <ListGroupLinksAndButtonsExample client:only="react" />
+</Example>
+
+<Example code={ListGroupLinksAndButtons2ExampleRaw} lang="tsx" name="ListGroupLinksAndButtons2Example" componentName="React List Group">
+  <ListGroupLinksAndButtons2Example client:only="react" />
+</Example>
+
+## Flush
+
+Add `flush` boolean property to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards).
+
+<Example code={ListGroupFlushExampleRaw} lang="tsx" name="ListGroupFlushExample" componentName="React List Group">
+  <ListGroupFlushExample client:only="react" />
+</Example>
+
+## Horizontal
+
+Add `layout="horizontal"` to change the layout of list group items from vertical to horizontal across all breakpoints. Alternatively, choose a responsive variant `.layout="horizontal-{sm|md|lg|xl|xxl}"` to make a list group horizontal starting at that breakpoint's `min-width`. Currently **horizontal list groups cannot be combined with flush list groups.**
+
+<Example code={ListGroupHorizontalExampleRaw} codeJs={ListGroupHorizontalExampleJsRaw} lang="tsx" name="ListGroupHorizontalExample" componentName="React List Group">
+  <ListGroupHorizontalExample client:only="react" />
+</Example>
+
+## Contextual classes
+
+Use contextual classes to style list items with a stateful background and color.
+
+<Example code={ListGroupContextualClassesExampleRaw} lang="tsx" name="ListGroupContextualClassesExample" componentName="React List Group">
+  <ListGroupContextualClassesExample client:only="react" />
+</Example>
+
+Contextual classes also work with `<a>`s or `<button>`s. Note the addition of the hover styles here not present in the previous example. Also supported is the `active` state; apply it to indicate an active selection on a contextual list group item.
+
+<Example code={ListGroupContextualClasses2ExampleRaw} lang="tsx" name="ListGroupContextualClasses2Example" componentName="React List Group">
+  <ListGroupContextualClasses2Example client:only="react" />
+</Example>
+
+<Callout color="warning" type="colorAssistiveTechnologies" />
+
+## With badges
+
+Add badges to any list group item to show unread counts, activity, and more.
+
+<Example code={ListGroupWithBadgesExampleRaw} lang="tsx" name="ListGroupWithBadgesExample" componentName="React List Group">
+  <ListGroupWithBadgesExample client:only="react" />
+</Example>
+
+## Custom content
+
+Add nearly any HTML within, even for linked list groups like the one below, with the help of [flexbox utilities](https://coreui.io/bootstrap/docs/utilities/flex/).
+
+<Example code={ListGroupCustomContentExampleRaw} lang="tsx" name="ListGroupCustomContentExample" componentName="React List Group">
+  <ListGroupCustomContentExample client:only="react" />
+</Example>
+
+## Checkboxes and radios
+
+Place CoreUI's checkboxes and radios within list group items and customize as needed.
+
+<Example code={ListGroupCheckboxesAndRadiosExampleRaw} lang="tsx" name="ListGroupCheckboxesAndRadiosExample" componentName="React List Group">
+  <ListGroupCheckboxesAndRadiosExample client:only="react" />
+</Example>
+
+<Example code={ListGroupCheckboxesAndRadios2ExampleRaw} lang="tsx" name="ListGroupCheckboxesAndRadios2Example" componentName="React List Group">
+  <ListGroupCheckboxesAndRadios2Example client:only="react" />
+</Example>
+
+And if you want `<label>`s as the `.list-group-item` for large hit areas, you can do that, too.
+
+<Example code={ListGroupCheckboxesAndRadios3ExampleRaw} lang="tsx" name="ListGroupCheckboxesAndRadios3Example" componentName="React List Group">
+  <ListGroupCheckboxesAndRadios3Example client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CListGroup /&gt;](./api/#clistgroup)
+- [&lt;CListGroupItem /&gt;](./api/#clistgroupitem)

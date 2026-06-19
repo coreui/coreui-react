@@ -1,0 +1,132 @@
+---
+title: "React Bootstrap Input Group Component"
+name: "Input Group with Bootstrap Styling"
+description: "Learn how to extend CoreUI’s React input fields with Bootstrap-styled input groups—add text, buttons, selects, or custom file inputs seamlessly."
+bootstrap: true
+---
+
+import { InputGroupExample } from './examples/InputGroupExample'
+import InputGroupExampleRaw from './examples/InputGroupExample.tsx?raw'
+import { InputGroupWrappingExample } from './examples/InputGroupWrappingExample'
+import InputGroupWrappingExampleRaw from './examples/InputGroupWrappingExample.tsx?raw'
+import { InputGroupSizingExample } from './examples/InputGroupSizingExample'
+import InputGroupSizingExampleRaw from './examples/InputGroupSizingExample.tsx?raw'
+import { InputGroupCheckboxesAndRadiosExample } from './examples/InputGroupCheckboxesAndRadiosExample'
+import InputGroupCheckboxesAndRadiosExampleRaw from './examples/InputGroupCheckboxesAndRadiosExample.tsx?raw'
+import { InputGroupMultipleInputsExample } from './examples/InputGroupMultipleInputsExample'
+import InputGroupMultipleInputsExampleRaw from './examples/InputGroupMultipleInputsExample.tsx?raw'
+import { InputGroupMultipleAddonsExample } from './examples/InputGroupMultipleAddonsExample'
+import InputGroupMultipleAddonsExampleRaw from './examples/InputGroupMultipleAddonsExample.tsx?raw'
+import { InputGroupButtonAddonsExample } from './examples/InputGroupButtonAddonsExample'
+import InputGroupButtonAddonsExampleRaw from './examples/InputGroupButtonAddonsExample.tsx?raw'
+import { InputGroupButtonsWithDropdownsExample } from './examples/InputGroupButtonsWithDropdownsExample'
+import InputGroupButtonsWithDropdownsExampleRaw from './examples/InputGroupButtonsWithDropdownsExample.tsx?raw'
+import { InputGroupSegmentedButtonsExample } from './examples/InputGroupSegmentedButtonsExample'
+import InputGroupSegmentedButtonsExampleRaw from './examples/InputGroupSegmentedButtonsExample.tsx?raw'
+import { InputGroupCustomSelectExample } from './examples/InputGroupCustomSelectExample'
+import InputGroupCustomSelectExampleRaw from './examples/InputGroupCustomSelectExample.tsx?raw'
+import { InputGroupCustomFileInputExample } from './examples/InputGroupCustomFileInputExample'
+import InputGroupCustomFileInputExampleRaw from './examples/InputGroupCustomFileInputExample.tsx?raw'
+
+## How to use React Bootstrap Input Group component
+
+Use CoreUI’s `<CInputGroup>` components styled with Bootstrap to enhance form inputs by prepending or appending text, buttons, selects, and more—perfect for building rich form UIs.
+
+### Basic usage
+
+Add text or buttons on either side of the input using `<CInputGroupText>` or `<CButton>`.
+
+<Example code={InputGroupExampleRaw} lang="tsx" name="InputGroupExample" componentName="React Bootstrap Form Input Group" class="theme-bootstrap">
+  <InputGroupExample client:only="react" />
+</Example>
+
+## Wrapping content
+
+Input groups use `flex-wrap` by default, which allows wrapping when needed—especially useful for validation messages or long inputs.
+
+<Example code={InputGroupWrappingExampleRaw} lang="tsx" name="InputGroupWrappingExample" componentName="React Bootstrap Form Input Group" class="theme-bootstrap">
+  <InputGroupWrappingExample client:only="react" />
+</Example>
+
+To prevent wrapping, add `.flex-nowrap`.
+
+## Input group sizing
+
+Change size by applying `size="sm"` or `size="lg"` to `<CInputGroup>`. All inner elements will automatically adjust.
+
+<Example code={InputGroupSizingExampleRaw} lang="tsx" name="InputGroupSizingExample" componentName="React Bootstrap Form Input Group" class="theme-bootstrap">
+  <InputGroupSizingExample client:only="react" />
+</Example>
+
+> 📌 Note: Do not apply size classes to individual input elements inside the group.
+
+## Checkboxes and radio buttons
+
+Include checkboxes or radios inside your input group to align them with text fields or buttons.
+
+<Example code={InputGroupCheckboxesAndRadiosExampleRaw} lang="tsx" name="InputGroupCheckboxesAndRadiosExample" componentName="React Bootstrap Form Input Group" class="theme-bootstrap">
+  <InputGroupCheckboxesAndRadiosExample client:only="react" />
+</Example>
+
+## Multiple inputs
+
+You can group multiple inputs side by side using a single `<CInputGroup>`. Useful for username + domain, ranges, etc.
+
+<Example code={InputGroupMultipleInputsExampleRaw} lang="tsx" name="InputGroupMultipleInputsExample" componentName="React Bootstrap Form Input Group" class="theme-bootstrap">
+  <InputGroupMultipleInputsExample client:only="react" />
+</Example>
+
+## Multiple addons
+
+You can add multiple `<CInputGroupText>` elements before or after the input, or combine them with checkboxes or buttons.
+
+<Example code={InputGroupMultipleAddonsExampleRaw} lang="tsx" name="InputGroupMultipleAddonsExample" componentName="React Bootstrap Form Input Group" class="theme-bootstrap">
+  <InputGroupMultipleAddonsExample client:only="react" />
+</Example>
+
+## Input group with buttons
+
+Add buttons inside the input group to combine text entry with actions.
+
+<Example code={InputGroupButtonAddonsExampleRaw} lang="tsx" name="InputGroupButtonAddonsExample" componentName="React Bootstrap Form Input Group" class="theme-bootstrap">
+  <InputGroupButtonAddonsExample client:only="react" />
+</Example>
+
+## Buttons with dropdowns
+
+Group dropdown buttons together with your inputs using `<CDropdown>` components.
+
+<Example code={InputGroupButtonsWithDropdownsExampleRaw} lang="tsx" name="InputGroupButtonsWithDropdownsExample" componentName="React Bootstrap Form Input Group" class="theme-bootstrap">
+  <InputGroupButtonsWithDropdownsExample client:only="react" />
+</Example>
+
+## Segmented buttons
+
+You can also combine a primary button with a split dropdown inside the input group.
+
+<Example code={InputGroupSegmentedButtonsExampleRaw} lang="tsx" name="InputGroupSegmentedButtonsExample" componentName="React Bootstrap Form Input Group" class="theme-bootstrap">
+  <InputGroupSegmentedButtonsExample client:only="react" />
+</Example>
+
+## Custom form inputs
+
+CoreUI supports enhanced input groups with custom selects and file inputs. Default browser styles aren’t supported in this layout.
+
+### Select
+
+<Example code={InputGroupCustomSelectExampleRaw} lang="tsx" name="InputGroupCustomSelectExample" componentName="React Bootstrap Form Input Group" class="theme-bootstrap">
+  <InputGroupCustomSelectExample client:only="react" />
+</Example>
+
+### File upload
+
+<Example code={InputGroupCustomFileInputExampleRaw} lang="tsx" name="InputGroupCustomFileInputExample" componentName="React Bootstrap Form Input Group" class="theme-bootstrap">
+  <InputGroupCustomFileInputExample client:only="react" />
+</Example>
+
+## API reference
+
+Check out the API documentation for full details on available props.
+
+- [&lt;CInputGroup /&gt;](../api/#cinputgroup)
+- [&lt;CInputGroupText /&gt;](../api/#cinputgrouptext)

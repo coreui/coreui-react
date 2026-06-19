@@ -1,0 +1,81 @@
+---
+title: "React Pagination Component"
+name: "Pagination"
+description: "Documentation and examples for showing pagination to indicate a series of related content exists across multiple pages."
+otherFrameworks:
+  - pagination
+---
+
+import { PaginationExample } from './examples/PaginationExample'
+import PaginationExampleRaw from './examples/PaginationExample.tsx?raw'
+import { PaginationWorkingWithIconsExample } from './examples/PaginationWorkingWithIconsExample'
+import PaginationWorkingWithIconsExampleRaw from './examples/PaginationWorkingWithIconsExample.tsx?raw'
+import { PaginationDisabledAndActiveExample } from './examples/PaginationDisabledAndActiveExample'
+import PaginationDisabledAndActiveExampleRaw from './examples/PaginationDisabledAndActiveExample.tsx?raw'
+import { PaginationSizingLargeExample } from './examples/PaginationSizingLargeExample'
+import PaginationSizingLargeExampleRaw from './examples/PaginationSizingLargeExample.tsx?raw'
+import { PaginationSizingSmallExample } from './examples/PaginationSizingSmallExample'
+import PaginationSizingSmallExampleRaw from './examples/PaginationSizingSmallExample.tsx?raw'
+import { PaginationAlignmentExample } from './examples/PaginationAlignmentExample'
+import PaginationAlignmentExampleRaw from './examples/PaginationAlignmentExample.tsx?raw'
+import { PaginationAlignment2Example } from './examples/PaginationAlignment2Example'
+import PaginationAlignment2ExampleRaw from './examples/PaginationAlignment2Example.tsx?raw'
+
+## Overview
+
+We use a large block of connected links for our pagination, making links hard to miss and easily scalable—all while providing large hit areas. Pagination is built with list HTML elements so screen readers can announce the number of available links. Use a wrapping `<nav>` element to identify it as a navigation section to screen readers and other assistive technologies.
+
+In addition, as pages likely have more than one such navigation section, it's advisable to provide a descriptive `aria-label` for the `<nav>` to reflect its purpose. For example, if the pagination component is used to navigate between a set of search results, an appropriate label could be `aria-label="Search results pages"`.
+
+<Example code={PaginationExampleRaw} lang="tsx" name="PaginationExample" componentName="React Pagination">
+  <PaginationExample client:only="react" />
+</Example>
+
+## Working with icons
+
+Looking to use an icon or symbol in place of text for some pagination links? Be sure to provide proper screen reader support with `aria` attributes.
+
+<Example code={PaginationWorkingWithIconsExampleRaw} lang="tsx" name="PaginationWorkingWithIconsExample" componentName="React Pagination">
+  <PaginationWorkingWithIconsExample client:only="react" />
+</Example>
+
+## Disabled and active states
+
+Pagination links are customizable for different circumstances. Use `disabled` for links that appear un-clickable and `.active` to indicate the current page.
+
+While the `disabled` prop uses `pointer-events: none` to _try_ to disable the link functionality of `<a>`s, that CSS property is not yet standardized and doesn't account for keyboard navigation. As such, we always add `tabindex="-1"` on disabled links and use custom JavaScript to fully disable their functionality.
+
+<Example code={PaginationDisabledAndActiveExampleRaw} lang="tsx" name="PaginationDisabledAndActiveExample" componentName="React Pagination">
+  <PaginationDisabledAndActiveExample client:only="react" />
+</Example>
+
+## Sizing
+
+Fancy larger or smaller pagination? Add `size="lg"` or `size="sm"` for additional sizes.
+
+<Example code={PaginationSizingLargeExampleRaw} lang="tsx" name="PaginationSizingLargeExample" componentName="React Pagination">
+  <PaginationSizingLargeExample client:only="react" />
+</Example>
+
+<Example code={PaginationSizingSmallExampleRaw} lang="tsx" name="PaginationSizingSmallExample" componentName="React Pagination">
+  <PaginationSizingSmallExample client:only="react" />
+</Example>
+
+## Alignment
+
+Change the alignment of pagination components with `align` property.
+
+<Example code={PaginationAlignmentExampleRaw} lang="tsx" name="PaginationAlignmentExample" componentName="React Pagination">
+  <PaginationAlignmentExample client:only="react" />
+</Example>
+
+<Example code={PaginationAlignment2ExampleRaw} lang="tsx" name="PaginationAlignment2Example" componentName="React Pagination">
+  <PaginationAlignment2Example client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CPagination /&gt;](./api/#coffcanvas)
+- [&lt;CPaginationItem /&gt;](./api/#coffcanvasbody)
