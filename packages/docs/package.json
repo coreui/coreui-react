@@ -1,5 +1,6 @@
 {
   "name": "@coreui/react-docs",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -15,12 +16,16 @@
     "@astrojs/react": "^5.0.0",
     "@coreui/astro-docs": "link:../../../coreui-astro-docs/packages/astro-docs",
     "@coreui/chartjs": "^4.0.0",
+    "@coreui/icons": "^3.1.0",
+    "@coreui/internal-links": "^5.1.0",
+    "@coreui/utils": "^2.0.2",
     "@popperjs/core": "^2.11.8",
     "astro": "^6.4.0",
     "chart.js": "^4.4.2",
     "prop-types": "^15.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-imask": "^7.6.1",
     "sass": "^1.77.0"
   },
   "devDependencies": {

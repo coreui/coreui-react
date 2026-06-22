@@ -3,6 +3,9 @@ import react from '@astrojs/react'
 import mdx from '@astrojs/mdx'
 import { coreuiDocs } from '@coreui/astro-docs/integration'
 import { fileURLToPath } from 'node:url'
+import { createRequire } from 'node:module'
+
+const require = createRequire(import.meta.url)
 
 // Live-src: point @coreui/react and its icon/chart submodules at their source in this
 // repo. The icon data set (@coreui/icons) and chart.js stay published deps.
@@ -11,7 +14,7 @@ const iconsReactSrc = fileURLToPath(new URL('../coreui-icons-react/src/index.ts'
 const reactChartjsSrc = fileURLToPath(new URL('../coreui-react-chartjs/src/index.ts', import.meta.url))
 // @coreui/chartjs ships CJS `main` + a separate esm build; point imports at the esm
 // so the named `customTooltips` export resolves under SSR.
-const chartjsEsm = fileURLToPath(new URL('./node_modules/@coreui/chartjs/dist/js/coreui-chartjs.esm.js', import.meta.url))
+const chartjsEsm = require.resolve('@coreui/chartjs/dist/js/coreui-chartjs.esm.js')
 // Depth-independent imports for example + generated API data, so docs pages can
 // move freely without rewriting relative paths.
 const examples = fileURLToPath(new URL('./src/examples', import.meta.url))
