@@ -30,7 +30,7 @@ import TabsControlledExampleJsRaw from './examples/TabsControlledExample.jsx?raw
 
 The basic React tabs example uses the `variant="tabs"` props to generate a tabbed interface.
 
-<Example code={TabsExampleRaw} lang="tsx" name="TabsExample" componentName="React Tabs">
+<Example code={TabsExampleRaw} name="TabsExample" componentName="React Tabs">
   <TabsExample client:only="react" />
 </Example>
 
@@ -42,7 +42,7 @@ Change the style of `<CTabs>`'s component with modifiers and utilities. Mix and 
 
 If you don’t provide the `variant` prop, the component will default to a basic style.
 
-<Example code={TabsUnstyledExampleRaw} lang="tsx" name="TabsUnstyledExample" componentName="React Tabs">
+<Example code={TabsUnstyledExampleRaw} name="TabsUnstyledExample" componentName="React Tabs">
   <TabsUnstyledExample client:only="react" />
 </Example>
 
@@ -50,7 +50,7 @@ If you don’t provide the `variant` prop, the component will default to a basic
 
 Take that same code, but use `variant="pills"` instead:
 
-<Example code={TabsPillsExampleRaw} lang="tsx" name="TabsPillsExample" componentName="React Tabs">
+<Example code={TabsPillsExampleRaw} name="TabsPillsExample" componentName="React Tabs">
   <TabsPillsExample client:only="react" />
 </Example>
 
@@ -58,7 +58,7 @@ Take that same code, but use `variant="pills"` instead:
 
 Take that same code, but use `variant="underline"` instead:
 
-<Example code={TabsUnderlineExampleRaw} lang="tsx" name="TabsUnderlineExample" componentName="React Tabs">
+<Example code={TabsUnderlineExampleRaw} name="TabsUnderlineExample" componentName="React Tabs">
   <TabsUnderlineExample client:only="react" />
 </Example>
 
@@ -66,7 +66,7 @@ Take that same code, but use `variant="underline"` instead:
 
 Take that same code, but use `variant="underline-border"` instead:
 
-<Example code={TabsUnderlineBorderExampleRaw} lang="tsx" name="TabsUnderlineBorderExample" componentName="React Tabs">
+<Example code={TabsUnderlineBorderExampleRaw} name="TabsUnderlineBorderExample" componentName="React Tabs">
   <TabsUnderlineBorderExample client:only="react" />
 </Example>
 
@@ -74,7 +74,7 @@ Take that same code, but use `variant="underline-border"` instead:
 
 Use the `variant="enclosed"` class to give your navigation items a subtle border and rounded styling.
 
-<Example code={TabsEnclosedExampleRaw} lang="tsx" name="TabsEnclosedExample" componentName="React Tabs">
+<Example code={TabsEnclosedExampleRaw} name="TabsEnclosedExample" componentName="React Tabs">
   <TabsEnclosedExample client:only="react" />
 </Example>
 
@@ -82,7 +82,7 @@ Use the `variant="enclosed"` class to give your navigation items a subtle border
 
 Use the `variant="enclosed-pills"` to achieve a pill-style appearance for each nav item, using pill-shaped borders and smoother outlines.
 
-<Example code={TabsEnclosedPillsExampleRaw} lang="tsx" name="TabsEnclosedPillsExample" componentName="React Tabs">
+<Example code={TabsEnclosedPillsExampleRaw} name="TabsEnclosedPillsExample" componentName="React Tabs">
   <TabsEnclosedPillsExample client:only="react" />
 </Example>
 
@@ -90,13 +90,13 @@ Use the `variant="enclosed-pills"` to achieve a pill-style appearance for each n
 
 Force your `<CTabs>`'s contents to extend the full available width one of two modifier classes. To proportionately fill all available space use `layout="fill"`. Notice that all horizontal space is occupied, but not every nav item has the same width.
 
-<Example code={TabsUnstyledFillAndJustifyExampleRaw} lang="tsx" name="TabsUnstyledFillAndJustifyExample" componentName="React Tabs">
+<Example code={TabsUnstyledFillAndJustifyExampleRaw} name="TabsUnstyledFillAndJustifyExample" componentName="React Tabs">
   <TabsUnstyledFillAndJustifyExample client:only="react" />
 </Example>
 
 For equal-width elements, use `layout="justified"`. All horizontal space will be occupied by nav links, but unlike the `layout="fill"` above, every nav item will be the same width.
 
-<Example code={TabsUnstyledFillAndJustify2ExampleRaw} lang="tsx" name="TabsUnstyledFillAndJustify2Example" componentName="React Tabs">
+<Example code={TabsUnstyledFillAndJustify2ExampleRaw} name="TabsUnstyledFillAndJustify2Example" componentName="React Tabs">
   <TabsUnstyledFillAndJustify2Example client:only="react" />
 </Example>
 
@@ -118,7 +118,7 @@ This is useful when you need to synchronize the tab state with your application 
 
 > 💡 If you prefer the tabs to manage their own state, use `defaultActiveItemKey` instead.
 
-<Example code={TabsControlledExampleRaw} codeJs={TabsControlledExampleJsRaw} lang="tsx" name="TabsControlledExample" componentName="React Tabs">
+<Example code={TabsControlledExampleRaw} codeJs={TabsControlledExampleJsRaw} name="TabsControlledExample" componentName="React Tabs">
   <TabsControlledExample client:only="react" />
 </Example>
 

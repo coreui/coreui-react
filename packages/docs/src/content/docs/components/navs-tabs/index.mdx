@@ -49,13 +49,13 @@ Navigation available in CoreUI for React share general markup and styles, from t
 
 The base `<CNav>` component is built with flexbox and provide a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling.
 
-<Example code={NavExampleRaw} lang="tsx" name="NavExample" componentName="React Nav">
+<Example code={NavExampleRaw} name="NavExample" componentName="React Nav">
   <NavExample client:only="react" />
 </Example>
 
 Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, `<ol>` if the order of your items is important, or roll your own with a `<nav>` element. Because the .nav uses display: flex, the nav links behave the same as nav items would, but without the extra markup.
 
-<Example code={Nav2ExampleRaw} lang="tsx" name="Nav2Example" componentName="React Nav">
+<Example code={Nav2ExampleRaw} name="Nav2Example" componentName="React Nav">
   <Nav2Example client:only="react" />
 </Example>
 
@@ -69,13 +69,13 @@ Change the horizontal alignment of your nav with [flexbox utilities](https://cor
 
 Centered with `.justify-content-center`:
 
-<Example code={NavHorizontalAlignmentExampleRaw} lang="tsx" name="NavHorizontalAlignmentExample" componentName="React Nav">
+<Example code={NavHorizontalAlignmentExampleRaw} name="NavHorizontalAlignmentExample" componentName="React Nav">
   <NavHorizontalAlignmentExample client:only="react" />
 </Example>
 
 Right-aligned with `.justify-content-end`:
 
-<Example code={NavHorizontalAlignment2ExampleRaw} lang="tsx" name="NavHorizontalAlignment2Example" componentName="React Nav">
+<Example code={NavHorizontalAlignment2ExampleRaw} name="NavHorizontalAlignment2Example" componentName="React Nav">
   <NavHorizontalAlignment2Example client:only="react" />
 </Example>
 
@@ -83,7 +83,7 @@ Right-aligned with `.justify-content-end`:
 
 Stack your navigation by changing the flex item direction with the `.flex-column` utility. Need to stack them on some viewports but not others? Use the responsive versions (e.g., `.flex-sm-column`).
 
-<Example code={NavVerticalExampleRaw} lang="tsx" name="NavVerticalExample" componentName="React Nav">
+<Example code={NavVerticalExampleRaw} name="NavVerticalExample" componentName="React Nav">
   <NavVerticalExample client:only="react" />
 </Example>
 
@@ -91,7 +91,7 @@ Stack your navigation by changing the flex item direction with the `.flex-column
 
 Takes the basic nav from above and adds the `variant="tabs"` class to generate a tabbed interface
 
-<Example code={NavTabsExampleRaw} lang="tsx" name="NavTabsExample" componentName="React Nav">
+<Example code={NavTabsExampleRaw} name="NavTabsExample" componentName="React Nav">
   <NavTabsExample client:only="react" />
 </Example>
 
@@ -99,7 +99,7 @@ Takes the basic nav from above and adds the `variant="tabs"` class to generate a
 
 Take that same code, but use `variant="pills"` instead:
 
-<Example code={NavPillsExampleRaw} lang="tsx" name="NavPillsExample" componentName="React Nav">
+<Example code={NavPillsExampleRaw} name="NavPillsExample" componentName="React Nav">
   <NavPillsExample client:only="react" />
 </Example>
 
@@ -107,7 +107,7 @@ Take that same code, but use `variant="pills"` instead:
 
 Take that same code, but use `variant="underline"` instead:
 
-<Example code={NavUnderlineExampleRaw} lang="tsx" name="NavUnderlineExample" componentName="React Nav">
+<Example code={NavUnderlineExampleRaw} name="NavUnderlineExample" componentName="React Nav">
   <NavUnderlineExample client:only="react" />
 </Example>
 
@@ -115,7 +115,7 @@ Take that same code, but use `variant="underline"` instead:
 
 Take that same code, but use `variant="underline-border"` instead:
 
-<Example code={NavUnderlineBorderExampleRaw} lang="tsx" name="NavUnderlineBorderExample" componentName="React Nav">
+<Example code={NavUnderlineBorderExampleRaw} name="NavUnderlineBorderExample" componentName="React Nav">
   <NavUnderlineBorderExample client:only="react" />
 </Example>
 
@@ -123,7 +123,7 @@ Take that same code, but use `variant="underline-border"` instead:
 
 Use the `variant="enclosed"` class to give your navigation items a subtle border and rounded styling.
 
-<Example code={NavEnclosedExampleRaw} lang="tsx" name="NavEnclosedExample" componentName="React Nav">
+<Example code={NavEnclosedExampleRaw} name="NavEnclosedExample" componentName="React Nav">
   <NavEnclosedExample client:only="react" />
 </Example>
 
@@ -131,7 +131,7 @@ Use the `variant="enclosed"` class to give your navigation items a subtle border
 
 Use the `variant="enclosed-pills"` to achieve a pill-style appearance for each nav item, using pill-shaped borders and smoother outlines.
 
-<Example code={NavEnclosedPillsExampleRaw} lang="tsx" name="NavEnclosedPillsExample" componentName="React Nav">
+<Example code={NavEnclosedPillsExampleRaw} name="NavEnclosedPillsExample" componentName="React Nav">
   <NavEnclosedPillsExample client:only="react" />
 </Example>
 
@@ -140,13 +140,13 @@ Use the `variant="enclosed-pills"` to achieve a pill-style appearance for each n
 
 Force your `<CNav>`'s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your `.nav-item`s, use `layout="fill"`. Notice that all horizontal space is occupied, but not every nav item has the same width.
 
-<Example code={NavFillAndJustifyExampleRaw} lang="tsx" name="NavFillAndJustifyExample" componentName="React Nav">
+<Example code={NavFillAndJustifyExampleRaw} name="NavFillAndJustifyExample" componentName="React Nav">
   <NavFillAndJustifyExample client:only="react" />
 </Example>
 
 For equal-width elements, use `layout="justified"`. All horizontal space will be occupied by nav links, but unlike the .nav-fill above, every nav item will be the same width.
 
-<Example code={NavFillAndJustify2ExampleRaw} lang="tsx" name="NavFillAndJustify2Example" componentName="React Nav">
+<Example code={NavFillAndJustify2ExampleRaw} name="NavFillAndJustify2Example" componentName="React Nav">
   <NavFillAndJustify2Example client:only="react" />
 </Example>
 
@@ -154,7 +154,7 @@ For equal-width elements, use `layout="justified"`. All horizontal space will be
 
 If you need responsive nav variations, consider using a series of [flexbox utilities](https://coreui.io/bootstrap/docs/utilities/flex). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, our nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
 
-<Example code={NavWorkingWithFlexUtilitiesExampleRaw} lang="tsx" name="NavWorkingWithFlexUtilitiesExample" componentName="React Nav">
+<Example code={NavWorkingWithFlexUtilitiesExampleRaw} name="NavWorkingWithFlexUtilitiesExample" componentName="React Nav">
   <NavWorkingWithFlexUtilitiesExample client:only="react" />
 </Example>
 
@@ -170,13 +170,13 @@ Add dropdown menus with a little extra HTML.
 
 ### Tabs with dropdowns
 
-<Example code={NavTabsWithDropdownExampleRaw} lang="tsx" name="NavTabsWithDropdownExample" componentName="React Nav">
+<Example code={NavTabsWithDropdownExampleRaw} name="NavTabsWithDropdownExample" componentName="React Nav">
   <NavTabsWithDropdownExample client:only="react" />
 </Example>
 
 ### Pills with dropdowns
 
-<Example code={NavPillsWithDropdownExampleRaw} lang="tsx" name="NavPillsWithDropdownExample" componentName="React Nav">
+<Example code={NavPillsWithDropdownExampleRaw} name="NavPillsWithDropdownExample" componentName="React Nav">
   <NavPillsWithDropdownExample client:only="react" />
 </Example>
 
@@ -186,13 +186,13 @@ Dynamic tabbed interfaces, as described in the [<abbr title="Web Accessibility I
 
 Note that dynamic tabbed interfaces should not contain dropdown menus, as this causes both usability and accessibility issues. From a usability perspective, the fact that the currently displayed tab's trigger element is not immediately visible (as it's inside the closed dropdown menu) can cause confusion. From an accessibility point of view, there is currently no sensible way to map this sort of construct to a standard WAI ARIA pattern, meaning that it cannot be easily made understandable to users of assistive technologies.
 
-<Example code={NavTabPanesExampleRaw} lang="tsx" name="NavTabPanesExample" componentName="React Nav">
+<Example code={NavTabPanesExampleRaw} name="NavTabPanesExample" componentName="React Nav">
   <NavTabPanesExample client:only="react" />
 </Example>
 
 The tabs also works with pills.
 
-<Example code={NavTabPanes2ExampleRaw} lang="tsx" name="NavTabPanes2Example" componentName="React Nav">
+<Example code={NavTabPanes2ExampleRaw} name="NavTabPanes2Example" componentName="React Nav">
   <NavTabPanes2Example client:only="react" />
 </Example>
 

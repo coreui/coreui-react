@@ -26,7 +26,7 @@ React Bootstrap validation lets you provide custom or native HTML5 feedback styl
 
 Disable the browser’s native validation UI with the `noValidate` prop on `<CForm>`, and use the `validated` prop to enable feedback based on custom logic. Try submitting the form below to see how validation classes like `:invalid` and `:valid` are applied.
 
-<Example code={ValidationExampleRaw} codeJs={ValidationExampleJsRaw} lang="tsx" name="ValidationExample" componentName="React Bootstrap Form Validation" class="theme-bootstrap">
+<Example code={ValidationExampleRaw} codeJs={ValidationExampleJsRaw} name="ValidationExample" componentName="React Bootstrap Form Validation" class="theme-bootstrap">
   <ValidationExample client:only="react" />
 </Example>
 
@@ -34,7 +34,7 @@ Disable the browser’s native validation UI with the `noValidate` prop on `<CFo
 
 If you prefer to rely on native browser validation, skip `noValidate` and `validated`. Submit the form and let the browser handle feedback based on built-in rules.
 
-<Example code={ValidationBrowserDefaultsExampleRaw} lang="tsx" name="ValidationBrowserDefaultsExample" componentName="React Bootstrap Form Validation" class="theme-bootstrap">
+<Example code={ValidationBrowserDefaultsExampleRaw} name="ValidationBrowserDefaultsExample" componentName="React Bootstrap Form Validation" class="theme-bootstrap">
   <ValidationBrowserDefaultsExample client:only="react" />
 </Example>
 
@@ -42,7 +42,7 @@ If you prefer to rely on native browser validation, skip `noValidate` and `valid
 
 Use the `valid` and `invalid` props directly on components like `<CFormInput>` to apply validation styles manually, which is useful for server-side validation or complex form logic.
 
-<Example code={ValidationCustomExampleRaw} lang="tsx" name="ValidationCustomExample" componentName="React Bootstrap Form Validation" class="theme-bootstrap">
+<Example code={ValidationCustomExampleRaw} name="ValidationCustomExample" componentName="React Bootstrap Form Validation" class="theme-bootstrap">
   <ValidationCustomExample client:only="react" />
 </Example>
 
@@ -55,7 +55,7 @@ These CoreUI components support Bootstrap validation classes:
 - `<CFormSelect>`
 - `<CFormTextarea>`
 
-<Example code={ValidationSupportedElementsExampleRaw} lang="tsx" name="ValidationSupportedElementsExample" componentName="React Bootstrap Form Validation" class="theme-bootstrap">
+<Example code={ValidationSupportedElementsExampleRaw} name="ValidationSupportedElementsExample" componentName="React Bootstrap Form Validation" class="theme-bootstrap">
   <ValidationSupportedElementsExample client:only="react" />
 </Example>
 
@@ -63,7 +63,7 @@ These CoreUI components support Bootstrap validation classes:
 
 For compact layouts, validation messages can appear as tooltips. Make sure the parent container has `position: relative` to position tooltips correctly.
 
-<Example code={ValidationTooltipsExampleRaw} codeJs={ValidationTooltipsExampleJsRaw} lang="tsx" name="ValidationTooltipsExample" componentName="React Bootstrap Form Validation" class="theme-bootstrap">
+<Example code={ValidationTooltipsExampleRaw} codeJs={ValidationTooltipsExampleJsRaw} name="ValidationTooltipsExample" componentName="React Bootstrap Form Validation" class="theme-bootstrap">
   <ValidationTooltipsExample client:only="react" />
 </Example>
 

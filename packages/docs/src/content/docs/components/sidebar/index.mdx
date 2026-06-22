@@ -51,7 +51,7 @@ Sidebar comes with built-in support for a handful of sub-components. Choose from
 
 Below is a more complete sidebar example shown by default on desktop devices. It combines several optional features in a single demo, including narrow visibility helpers, tree navigation, nested groups, a custom group indicator, badges, and a footer dropdown.
 
-<Example code={SidebarExampleRaw} lang="tsx" name="SidebarExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
+<Example code={SidebarExampleRaw} name="SidebarExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
   <SidebarExample client:only="react" />
 </Example>
 
@@ -61,7 +61,7 @@ Add the `narrow` prop to make the sidebar narrow.
 
 Use `.d-sidebar-narrow` to show content only in the narrow state and `.d-sidebar-narrow-none` to hide content in the narrow state. These utility classes replace older brand-specific visibility helpers.
 
-<Example code={SidebarNarrowExampleRaw} lang="tsx" name="SidebarNarrowExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
+<Example code={SidebarNarrowExampleRaw} name="SidebarNarrowExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
   <SidebarNarrowExample client:only="react" />
 </Example>
 
@@ -71,7 +71,7 @@ Add the `unfoldable` prop to make the sidebar narrow and expand it on hover.
 
 Use `.d-sidebar-narrow-unfoldable` and `.d-sidebar-narrow-unfoldable-none` to control content visibility for unfoldable sidebars.
 
-<Example code={SidebarUnfoldableExampleRaw} lang="tsx" name="SidebarUnfoldableExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
+<Example code={SidebarUnfoldableExampleRaw} name="SidebarUnfoldableExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
   <SidebarUnfoldableExample client:only="react" />
 </Example>
 
@@ -112,7 +112,7 @@ Add the `compact` prop to `CSidebarNav` to reduce the vertical padding across th
 
 Use the `compact` prop on `CNavGroup` to compact only a nested section.
 
-<Example code={SidebarCompactExampleRaw} lang="tsx" name="SidebarCompactExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
+<Example code={SidebarCompactExampleRaw} name="SidebarCompactExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
   <SidebarCompactExample client:only="react" />
 </Example>
 
@@ -120,7 +120,7 @@ Use the `compact` prop on `CNavGroup` to compact only a nested section.
 
 Add `variant="tree"` to `CSidebarNav` to render nested groups as a tree. Nested groups automatically keep their hierarchy, making deeper navigation levels easier to scan.
 
-<Example code={SidebarTreeExampleRaw} lang="tsx" name="SidebarTreeExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
+<Example code={SidebarTreeExampleRaw} name="SidebarTreeExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
   <SidebarTreeExample client:only="react" />
 </Example>
 
@@ -128,7 +128,7 @@ Add `variant="tree"` to `CSidebarNav` to render nested groups as a tree. Nested 
 
 By default, `CNavGroup` renders the standard group indicator through the `.nav-group-toggle` styles, so no additional markup is required.
 
-<Example code={SidebarGroupIndicatorExampleRaw} lang="tsx" name="SidebarGroupIndicatorExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
+<Example code={SidebarGroupIndicatorExampleRaw} name="SidebarGroupIndicatorExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
   <SidebarGroupIndicatorExample client:only="react" />
 </Example>
 
@@ -138,7 +138,7 @@ To replace the default indicator, pass custom indicator markup inside the `toggl
 
 Use `.show` and `.hide` classes inside `.nav-group-toggle-indicator` to control which icon is visible when the group is expanded or collapsed, or render a single icon conditionally from the `visible` state.
 
-<Example code={SidebarCustomIndicatorExampleRaw} lang="tsx" name="SidebarCustomIndicatorExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
+<Example code={SidebarCustomIndicatorExampleRaw} name="SidebarCustomIndicatorExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
   <SidebarCustomIndicatorExample client:only="react" />
 </Example>
 
@@ -150,7 +150,7 @@ Use `.show` and `.hide` classes inside `.nav-group-toggle-indicator` to control 
 
 This makes it possible to keep a section open even when the user clicks to collapse it—useful for a route-aware sidebar that must keep the active section expanded. Toggle the lock and try to collapse the group: while locked, the parent rejects the change and the group stays open.
 
-<Example code={SidebarControlledGroupExampleRaw} lang="tsx" name="SidebarControlledGroupExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
+<Example code={SidebarControlledGroupExampleRaw} name="SidebarControlledGroupExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
   <SidebarControlledGroupExample client:only="react" />
 </Example>
 
@@ -158,7 +158,7 @@ This makes it possible to keep a section open even when the user clicks to colla
 
 Change the appearance of sidebars with `colorScheme="dark"`.
 
-<Example code={SidebarDarkExampleRaw} lang="tsx" name="SidebarDarkExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
+<Example code={SidebarDarkExampleRaw} name="SidebarDarkExample" componentName="React Sidebar" class="bg-body-secondary p-0 rounded-bottom-0 overflow-hidden">
   <SidebarDarkExample client:only="react" />
 </Example>
 

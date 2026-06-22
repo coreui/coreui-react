@@ -31,7 +31,7 @@ The chip set forwards `selectable`, `filter`, `removable`, `disabled`, `removeIc
 
 Pass a `chips` array to render the chips from data. Each item is a string or an object with a `value`, an optional `label`, and any `CChip` props (so per-chip overrides work).
 
-<Example code={ChipSetExampleRaw} lang="tsx" name="ChipSetExample" componentName="React Chip Set">
+<Example code={ChipSetExampleRaw} name="ChipSetExample" componentName="React Chip Set">
   <ChipSetExample client:only="react" />
 </Example>
 
@@ -50,7 +50,7 @@ You can also compose `CChip` children instead of passing `chips`:
 
 Set `selectable` to make every chip in the set selectable. With the default `selectionMode` of `multiple`, any number of chips can be active at once — useful for filters. Use `selected` / `defaultSelected` / `onSelect` to control the selection.
 
-<Example code={ChipSetSelectableExampleRaw} lang="tsx" name="ChipSetSelectableExample" componentName="React Chip Set">
+<Example code={ChipSetSelectableExampleRaw} name="ChipSetSelectableExample" componentName="React Chip Set">
   <ChipSetSelectableExample client:only="react" />
 </Example>
 
@@ -58,7 +58,7 @@ Set `selectable` to make every chip in the set selectable. With the default `sel
 
 Use `selectionMode="single"` to allow only one selected chip at a time — selecting a chip deselects its siblings. This is useful for choice chips.
 
-<Example code={ChipSetSingleExampleRaw} lang="tsx" name="ChipSetSingleExample" componentName="React Chip Set">
+<Example code={ChipSetSingleExampleRaw} name="ChipSetSingleExample" componentName="React Chip Set">
   <ChipSetSingleExample client:only="react" />
 </Example>
 
@@ -66,7 +66,7 @@ Use `selectionMode="single"` to allow only one selected chip at a time — selec
 
 Set `filter` to turn the chips into filter chips. A check icon is shown on each selected chip and removed when it is deselected. `filter` implies `selectable`, so you don't need to set both.
 
-<Example code={ChipSetFilterExampleRaw} lang="tsx" name="ChipSetFilterExample" componentName="React Chip Set">
+<Example code={ChipSetFilterExampleRaw} name="ChipSetFilterExample" componentName="React Chip Set">
   <ChipSetFilterExample client:only="react" />
 </Example>
 
@@ -78,7 +78,7 @@ Set `removable` to add a remove button to every chip. When a chip is removed, fo
 
 With `defaultChips` the set keeps the list **uncontrolled** and removes chips for you (`onRemove` just notifies):
 
-<Example code={ChipSetRemovableExampleRaw} lang="tsx" name="ChipSetRemovableExample" componentName="React Chip Set">
+<Example code={ChipSetRemovableExampleRaw} name="ChipSetRemovableExample" componentName="React Chip Set">
   <ChipSetRemovableExample client:only="react" />
 </Example>
 

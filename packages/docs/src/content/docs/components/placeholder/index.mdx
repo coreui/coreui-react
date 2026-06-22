@@ -27,7 +27,7 @@ Placeholders can be used to enhance the experience of your application. They're 
 
 In the example below, we take a typical card component and recreate it with placeholders applied to create a "loading card". Size and proportions are the same between the two.
 
-<Example code={PlaceholderExampleRaw} lang="tsx" name="PlaceholderExample" componentName="React Placeholder" class="d-flex justify-content-around">
+<Example code={PlaceholderExampleRaw} name="PlaceholderExample" componentName="React Placeholder" class="d-flex justify-content-around">
   <PlaceholderExample client:only="react" />
 </Example>
 
@@ -37,7 +37,7 @@ Create placeholders with the `<CPlaceholder>` component and a grid column propx 
 
 We apply additional styling to `CButton`s via `::before` to ensure the `height` is respected. You may extend this pattern for other situations as needed, or add a `&nbsp;` within the element to reflect the height when actual text is rendered in its place.
 
-<Example code={Placeholder2ExampleRaw} lang="tsx" name="Placeholder2Example" componentName="React Placeholder">
+<Example code={Placeholder2ExampleRaw} name="Placeholder2Example" componentName="React Placeholder">
   <Placeholder2Example client:only="react" />
 </Example>
 
@@ -52,7 +52,7 @@ We apply additional styling to `CButton`s via `::before` to ensure the `height` 
 
 You can change the `width` through grid column classes, width utilities, or inline styles.
 
-<Example code={PlaceholderWidthExampleRaw} lang="tsx" name="PlaceholderWidthExample" componentName="React Placeholder">
+<Example code={PlaceholderWidthExampleRaw} name="PlaceholderWidthExample" componentName="React Placeholder">
   <PlaceholderWidthExample client:only="react" />
 </Example>
 
@@ -60,7 +60,7 @@ You can change the `width` through grid column classes, width utilities, or inli
 
 By default, the `<CPlaceholder>` uses `currentColor`. This can be overridden with a custom color or utility class.
 
-<Example code={PlaceholderColorExampleRaw} lang="tsx" name="PlaceholderColorExample" componentName="React Placeholder">
+<Example code={PlaceholderColorExampleRaw} name="PlaceholderColorExample" componentName="React Placeholder">
   <PlaceholderColorExample client:only="react" />
 </Example>
 
@@ -68,7 +68,7 @@ By default, the `<CPlaceholder>` uses `currentColor`. This can be overridden wit
 
 The size of `<CPlaceholder>`s are based on the typographic style of the parent element. Customize them with `size` prop: `lg`, `sm`, or `xs`.
 
-<Example code={PlaceholderSizingExampleRaw} lang="tsx" name="PlaceholderSizingExample" componentName="React Placeholder">
+<Example code={PlaceholderSizingExampleRaw} name="PlaceholderSizingExample" componentName="React Placeholder">
   <PlaceholderSizingExample client:only="react" />
 </Example>
 
@@ -76,7 +76,7 @@ The size of `<CPlaceholder>`s are based on the typographic style of the parent e
 
 Animate placeholders with `animation="glow"` or `animation="wave"` to better convey the perception of something being _actively_ loaded.
 
-<Example code={PlaceholderAnimationExampleRaw} lang="tsx" name="PlaceholderAnimationExample" componentName="React Placeholder">
+<Example code={PlaceholderAnimationExampleRaw} name="PlaceholderAnimationExample" componentName="React Placeholder">
   <PlaceholderAnimationExample client:only="react" />
 </Example>
 

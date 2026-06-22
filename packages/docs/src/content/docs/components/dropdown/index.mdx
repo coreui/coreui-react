@@ -73,19 +73,19 @@ Bind the dropdown's toggle and the dropdown menu inside `<CDropdown>`, or differ
 
 Here's how you can put them to work with either `<button>` elements:
 
-<Example code={DropdownSingleButtonExampleRaw} lang="tsx" name="DropdownSingleButtonExample" componentName="React Dropdown">
+<Example code={DropdownSingleButtonExampleRaw} name="DropdownSingleButtonExample" componentName="React Dropdown">
   <DropdownSingleButtonExample client:only="react" />
 </Example>
 
 And with `<a>` elements:
 
-<Example code={DropdownSingleButton2ExampleRaw} lang="tsx" name="DropdownSingleButton2Example" componentName="React Dropdown">
+<Example code={DropdownSingleButton2ExampleRaw} name="DropdownSingleButton2Example" componentName="React Dropdown">
   <DropdownSingleButton2Example client:only="react" />
 </Example>
 
 The best part is you can do this with any button variant, too:
 
-<Example code={DropdownSingleButton3ExampleRaw} lang="tsx" name="DropdownSingleButton3Example" componentName="React Dropdown">
+<Example code={DropdownSingleButton3ExampleRaw} name="DropdownSingleButton3Example" componentName="React Dropdown">
   <DropdownSingleButton3Example client:only="react" />
 </Example>
 
@@ -95,7 +95,7 @@ Similarly, create split button dropdowns with virtually the same markup as singl
 
 We use this extra class to reduce the horizontal `padding` on either side of the caret by 25% and remove the `margin-left` that's attached for normal button dropdowns. Those additional changes hold the caret centered in the split button and implement a more properly sized hit area next to the main button.
 
-<Example code={DropdownSplitButtonExampleRaw} lang="tsx" name="DropdownSplitButtonExample" componentName="React Dropdown">
+<Example code={DropdownSplitButtonExampleRaw} name="DropdownSplitButtonExample" componentName="React Dropdown">
   <DropdownSplitButtonExample client:only="react" />
 </Example>
 
@@ -103,11 +103,11 @@ We use this extra class to reduce the horizontal `padding` on either side of the
 
 Button dropdowns work with buttons of all sizes, including default and split dropdown buttons.
 
-<Example code={DropdownSizingLargeExampleRaw} lang="tsx" name="DropdownSizingLargeExample" componentName="React Dropdown">
+<Example code={DropdownSizingLargeExampleRaw} name="DropdownSizingLargeExample" componentName="React Dropdown">
   <DropdownSizingLargeExample client:only="react" />
 </Example>
 
-<Example code={DropdownSizingSmallExampleRaw} lang="tsx" name="DropdownSizingSmallExample" componentName="React Dropdown">
+<Example code={DropdownSizingSmallExampleRaw} name="DropdownSizingSmallExample" componentName="React Dropdown">
   <DropdownSizingSmallExample client:only="react" />
 </Example>
 
@@ -115,13 +115,13 @@ Button dropdowns work with buttons of all sizes, including default and split dro
 
 Opt into darker dropdowns to match a dark navbar or custom style by set `dark` property. No changes are required to the dropdown items.
 
-<Example code={DropdownDarkExampleRaw} lang="tsx" name="DropdownDarkExample" componentName="React Dropdown">
+<Example code={DropdownDarkExampleRaw} name="DropdownDarkExample" componentName="React Dropdown">
   <DropdownDarkExample client:only="react" />
 </Example>
 
 And putting it to use in a navbar:
 
-<Example code={DropdownDark2ExampleRaw} lang="tsx" name="DropdownDark2Example" componentName="React Dropdown">
+<Example code={DropdownDark2ExampleRaw} name="DropdownDark2Example" componentName="React Dropdown">
   <DropdownDark2Example client:only="react" />
 </Example>
 
@@ -136,7 +136,7 @@ And putting it to use in a navbar:
 
 Make the dropdown menu centered below the toggle by adding `direction="center"` to the `<CDropdown>` component.
 
-<Example code={DropdownCenteredExampleRaw} lang="tsx" name="DropdownCenteredExample" componentName="React Dropdown">
+<Example code={DropdownCenteredExampleRaw} name="DropdownCenteredExample" componentName="React Dropdown">
   <DropdownCenteredExample client:only="react" />
 </Example>
 
@@ -144,7 +144,7 @@ Make the dropdown menu centered below the toggle by adding `direction="center"` 
 
 Trigger dropdown menus above elements by adding `direction="dropup"` to the `<CDropdown>` component.
 
-<Example code={DropdownDropupExampleRaw} lang="tsx" name="DropdownDropupExample" componentName="React Dropdown">
+<Example code={DropdownDropupExampleRaw} name="DropdownDropupExample" componentName="React Dropdown">
   <DropdownDropupExample client:only="react" />
 </Example>
 
@@ -152,7 +152,7 @@ Trigger dropdown menus above elements by adding `direction="dropup"` to the `<CD
 
 Make the dropup menu centered above the toggle by adding `direction="dropup-center"` to the `<CDropdown>` component.
 
-<Example code={DropdownDropupCenteredExampleRaw} lang="tsx" name="DropdownDropupCenteredExample" componentName="React Dropdown">
+<Example code={DropdownDropupCenteredExampleRaw} name="DropdownDropupCenteredExample" componentName="React Dropdown">
   <DropdownDropupCenteredExample client:only="react" />
 </Example>
 
@@ -160,7 +160,7 @@ Make the dropup menu centered above the toggle by adding `direction="dropup-cent
 
 Trigger dropdown menus at the right of the elements by adding `direction="dropend"` to the `<CDropdown>` component.
 
-<Example code={DropdownDropendExampleRaw} lang="tsx" name="DropdownDropendExample" componentName="React Dropdown">
+<Example code={DropdownDropendExampleRaw} name="DropdownDropendExample" componentName="React Dropdown">
   <DropdownDropendExample client:only="react" />
 </Example>
 
@@ -168,7 +168,7 @@ Trigger dropdown menus at the right of the elements by adding `direction="dropen
 
 Trigger dropdown menus at the left of the elements by adding `direction="dropstart"` to the `<CDropdown>` component.
 
-<Example code={DropdownDropstartExampleRaw} lang="tsx" name="DropdownDropstartExample" componentName="React Dropdown">
+<Example code={DropdownDropstartExampleRaw} name="DropdownDropstartExample" componentName="React Dropdown">
   <DropdownDropstartExample client:only="react" />
 </Example>
 
@@ -176,13 +176,13 @@ Trigger dropdown menus at the left of the elements by adding `direction="dropsta
 
 Historically dropdown menu contents _had_ to be links, but that's no longer the case with v4. Now you can optionally use `<button>` elements in your dropdowns instead of just `<a>`s.
 
-<Example code={DropdownMenuItemsExampleRaw} lang="tsx" name="DropdownMenuItemsExample" componentName="React Dropdown">
+<Example code={DropdownMenuItemsExampleRaw} name="DropdownMenuItemsExample" componentName="React Dropdown">
   <DropdownMenuItemsExample client:only="react" />
 </Example>
 
 You can also create non-interactive dropdown items with `<CDropdownItemPlain>`.
 
-<Example code={DropdownMenuItems2ExampleRaw} lang="tsx" name="DropdownMenuItems2Example" componentName="React Dropdown">
+<Example code={DropdownMenuItems2ExampleRaw} name="DropdownMenuItems2Example" componentName="React Dropdown">
   <DropdownMenuItems2Example client:only="react" />
 </Example>
 
@@ -192,7 +192,7 @@ Set boolean property `active` to **style item as active**.
 
 In the following example we use `div` instead of `<CDropdownMenu>` to show `<CDropdownMenu>` content.
 
-<Example code={DropdownMenuItemsActiveExampleRaw} lang="tsx" name="DropdownMenuItemsActiveExample" componentName="React Dropdown">
+<Example code={DropdownMenuItemsActiveExampleRaw} name="DropdownMenuItemsActiveExample" componentName="React Dropdown">
   <DropdownMenuItemsActiveExample client:only="react" />
 </Example>
 
@@ -202,7 +202,7 @@ Add `disabled` boolean property to items in the dropdown to **style them as disa
 
 In the following example we use `div` instead of `<CDropdownMenu>` to show `<CDropdownMenu>` content.
 
-<Example code={DropdownMenuItemsDisabledExampleRaw} lang="tsx" name="DropdownMenuItemsDisabledExample" componentName="React Dropdown">
+<Example code={DropdownMenuItemsDisabledExampleRaw} name="DropdownMenuItemsDisabledExample" componentName="React Dropdown">
   <DropdownMenuItemsDisabledExample client:only="react" />
 </Example>
 
@@ -214,7 +214,7 @@ By default, a dropdown menu is automatically positioned 100% from the top and al
   <strong>Heads up!</strong> Dropdowns are positioned thanks to Popper.
 </Callout>
 
-<Example code={DropdownMenuAlignmentExampleRaw} lang="tsx" name="DropdownMenuAlignmentExample" componentName="React Dropdown">
+<Example code={DropdownMenuAlignmentExampleRaw} name="DropdownMenuAlignmentExample" componentName="React Dropdown">
   <DropdownMenuAlignmentExample client:only="react" />
 </Example>
 
@@ -224,13 +224,13 @@ If you use responsive alignment, dynamic positioning is disabled.
 
 To align **right** the dropdown menu with the given breakpoint or larger, add `aligment="xs|sm|md|lg|xl|xxl: end"`.
 
-<Example code={DropdownResponsiveAlignmentExampleRaw} lang="tsx" name="DropdownResponsiveAlignmentExample" componentName="React Dropdown">
+<Example code={DropdownResponsiveAlignmentExampleRaw} name="DropdownResponsiveAlignmentExample" componentName="React Dropdown">
   <DropdownResponsiveAlignmentExample client:only="react" />
 </Example>
 
 To align **left** the dropdown menu with the given breakpoint or larger, add `aligment="xs|sm|md|lg|xl|xxl: start"`.
 
-<Example code={DropdownResponsiveAlignment2ExampleRaw} lang="tsx" name="DropdownResponsiveAlignment2Example" componentName="React Dropdown">
+<Example code={DropdownResponsiveAlignment2ExampleRaw} name="DropdownResponsiveAlignment2Example" componentName="React Dropdown">
   <DropdownResponsiveAlignment2Example client:only="react" />
 </Example>
 
@@ -243,7 +243,7 @@ Add a header to label sections of actions in any dropdown menu.
 
 In the following example we use `div` instead of `<CDropdownMenu>` to show `<CDropdownMenu>` content.
 
-<Example code={DropdownMenuContentHeadersExampleRaw} lang="tsx" name="DropdownMenuContentHeadersExample" componentName="React Dropdown">
+<Example code={DropdownMenuContentHeadersExampleRaw} name="DropdownMenuContentHeadersExample" componentName="React Dropdown">
   <DropdownMenuContentHeadersExample client:only="react" />
 </Example>
 
@@ -253,7 +253,7 @@ Separate groups of related menu items with a divider.
 
 In the following example we use `div` instead of `<CDropdownMenu>` to show `<CDropdownMenu>` content.
 
-<Example code={DropdownMenuContentDividersExampleRaw} lang="tsx" name="DropdownMenuContentDividersExample" componentName="React Dropdown">
+<Example code={DropdownMenuContentDividersExampleRaw} name="DropdownMenuContentDividersExample" componentName="React Dropdown">
   <DropdownMenuContentDividersExample client:only="react" />
 </Example>
 
@@ -261,7 +261,7 @@ In the following example we use `div` instead of `<CDropdownMenu>` to show `<CDr
 
 Place any freeform text within a dropdown menu with text. Note that you'll likely need additional sizing styles to constrain the menu width.
 
-<Example code={DropdownMenuContentTextExampleRaw} lang="tsx" name="DropdownMenuContentTextExample" componentName="React Dropdown">
+<Example code={DropdownMenuContentTextExampleRaw} name="DropdownMenuContentTextExample" componentName="React Dropdown">
   <DropdownMenuContentTextExample client:only="react" />
 </Example>
 
@@ -269,7 +269,7 @@ Place any freeform text within a dropdown menu with text. Note that you'll likel
 
 Put a form within a dropdown menu, or make it into a dropdown menu.
 
-<Example code={DropdownMenuContentFormsExampleRaw} lang="tsx" name="DropdownMenuContentFormsExample" componentName="React Dropdown">
+<Example code={DropdownMenuContentFormsExampleRaw} name="DropdownMenuContentFormsExample" componentName="React Dropdown">
   <DropdownMenuContentFormsExample client:only="react" />
 </Example>
 
@@ -277,7 +277,7 @@ Put a form within a dropdown menu, or make it into a dropdown menu.
 
 Use `offset` to displace the dropdown from its default position. The value is a string with two numbers separated by a comma, e.g. `offset={[10, 20]}`. Use `portal` property to render dropdowns in `body` instead of the parent element. This helps to avoid any overflow or z-index issues.
 
-<Example code={DropdownOptionsExampleRaw} lang="tsx" name="DropdownOptionsExample" componentName="React Dropdown">
+<Example code={DropdownOptionsExampleRaw} name="DropdownOptionsExample" componentName="React Dropdown">
   <DropdownOptionsExample client:only="react" />
 </Example>
 
@@ -290,7 +290,7 @@ By default, dropdowns are closed when clicking outside of the dropdown menu or t
 - `'inside'` - Close only when clicking inside the React.js dropdown menu.
 - `'outside'` - Close only when clicking outside the React.js dropdown menu.
 
-<Example code={DropdownOptionsAutoCloseBehaviorExampleRaw} lang="tsx" name="DropdownOptionsAutoCloseBehaviorExample" componentName="React Dropdown">
+<Example code={DropdownOptionsAutoCloseBehaviorExampleRaw} name="DropdownOptionsAutoCloseBehaviorExample" componentName="React Dropdown">
   <DropdownOptionsAutoCloseBehaviorExample client:only="react" />
 </Example>
 

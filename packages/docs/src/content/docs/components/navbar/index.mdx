@@ -72,7 +72,7 @@ Here's an example of all the sub-components included in a responsive light-theme
 
 ## Basic usage
 
-<Example code={NavbarExampleRaw} lang="tsx" name="NavbarExample" componentName="React Navbar">
+<Example code={NavbarExampleRaw} name="NavbarExample" componentName="React Navbar">
   <NavbarExample client:only="react" />
 </Example>
 
@@ -80,17 +80,17 @@ Here's an example of all the sub-components included in a responsive light-theme
 
 The `<CNavbarBrand>` can be applied to most elements, but an anchor works best, as some elements might require utility classes or custom styles.
 
-<Example code={NavbarBrandExampleRaw} lang="tsx" name="NavbarBrandExample" componentName="React Navbar">
+<Example code={NavbarBrandExampleRaw} name="NavbarBrandExample" componentName="React Navbar">
   <NavbarBrandExample client:only="react" />
 </Example>
 
 Adding images to the `<CNavbarBrand>` will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.
 
-<Example code={NavbarBrand2ExampleRaw} lang="tsx" name="NavbarBrand2Example" componentName="React Navbar">
+<Example code={NavbarBrand2ExampleRaw} name="NavbarBrand2Example" componentName="React Navbar">
   <NavbarBrand2Example client:only="react" />
 </Example>
 
-<Example code={NavbarBrand3ExampleRaw} lang="tsx" name="NavbarBrand3Example" componentName="React Navbar">
+<Example code={NavbarBrand3ExampleRaw} name="NavbarBrand3Example" componentName="React Navbar">
   <NavbarBrand3Example client:only="react" />
 </Example>
 
@@ -98,19 +98,19 @@ Adding images to the `<CNavbarBrand>` will likely always require custom styles o
 
 `<CNavbar>` navigation is based on `<CNavbarNav>`. **Navigation in navbars will also grow to occupy as much horizontal space as possible** to keep your navbar contents securely aligned.
 
-<Example code={NavbarNavExampleRaw} lang="tsx" name="NavbarNavExample" componentName="React Navbar">
+<Example code={NavbarNavExampleRaw} name="NavbarNavExample" componentName="React Navbar">
   <NavbarNavExample client:only="react" />
 </Example>
 
 And because we use classes for our navs, you can avoid the list-based approach entirely if you like.
 
-<Example code={NavbarNav2ExampleRaw} lang="tsx" name="NavbarNav2Example" componentName="React Navbar">
+<Example code={NavbarNav2ExampleRaw} name="NavbarNav2Example" componentName="React Navbar">
   <NavbarNav2Example client:only="react" />
 </Example>
 
 You can also use dropdowns in your navbar. Please note that `<CDropdown>` component requires `variant="nav-item"`.
 
-<Example code={NavbarNav3ExampleRaw} lang="tsx" name="NavbarNav3Example" componentName="React Navbar">
+<Example code={NavbarNav3ExampleRaw} name="NavbarNav3Example" componentName="React Navbar">
   <NavbarNav3Example client:only="react" />
 </Example>
 
@@ -118,25 +118,25 @@ You can also use dropdowns in your navbar. Please note that `<CDropdown>` compon
 
 Place various form controls and components within a navbar:
 
-<Example code={NavbarFormsExampleRaw} lang="tsx" name="NavbarFormsExample" componentName="React Navbar">
+<Example code={NavbarFormsExampleRaw} name="NavbarFormsExample" componentName="React Navbar">
   <NavbarFormsExample client:only="react" />
 </Example>
 
 Immediate child elements of `<CNavbar>` use flex layout and will default to `justify-content: space-between`. Use additional [flex utilities](https://coreui.io/bootstrap/docs/utilities/flex/) as needed to adjust this behavior.
 
-<Example code={NavbarForms2ExampleRaw} lang="tsx" name="NavbarForms2Example" componentName="React Navbar">
+<Example code={NavbarForms2ExampleRaw} name="NavbarForms2Example" componentName="React Navbar">
   <NavbarForms2Example client:only="react" />
 </Example>
 
 Input groups work, too. If your navbar is an entire form, or mostly a form, you can use the `<CForm>` element as the container and save some HTML.
 
-<Example code={NavbarForms3ExampleRaw} lang="tsx" name="NavbarForms3Example" componentName="React Navbar">
+<Example code={NavbarForms3ExampleRaw} name="NavbarForms3Example" componentName="React Navbar">
   <NavbarForms3Example client:only="react" />
 </Example>
 
 Various buttons are supported as part of these navbar forms, too. This is also a great reminder that vertical alignment utilities can be used to align different sized elements.
 
-<Example code={NavbarForms4ExampleRaw} lang="tsx" name="NavbarForms4Example" componentName="React Navbar">
+<Example code={NavbarForms4ExampleRaw} name="NavbarForms4Example" componentName="React Navbar">
   <NavbarForms4Example client:only="react" />
 </Example>
 
@@ -144,7 +144,7 @@ Various buttons are supported as part of these navbar forms, too. This is also a
 
 Navbars may contain bits of text with the help of `<CNavbarText>`. This class adjusts vertical alignment and horizontal spacing for strings of text.
 
-<Example code={NavbarTextRaw} lang="tsx" name="NavbarText" componentName="React Navbar">
+<Example code={NavbarTextRaw} name="NavbarText" componentName="React Navbar">
   <NavbarText client:only="react" />
 </Example>
 
@@ -152,7 +152,7 @@ Navbars may contain bits of text with the help of `<CNavbarText>`. This class ad
 
 Theming the navbar has never been easier thanks to the combination of theming classes and `background-color` utilities. Set `colorScheme="light"` for use with light background colors, or `colorScheme="dark"` for dark background colors. Then, customize with `.bg-*` utilities.
 
-<Example code={NavbarColorSchemesExampleRaw} lang="tsx" name="NavbarColorSchemesExample" componentName="React Navbar">
+<Example code={NavbarColorSchemesExampleRaw} name="NavbarColorSchemesExample" componentName="React Navbar">
   <NavbarColorSchemesExample client:only="react" />
 </Example>
 
@@ -160,13 +160,13 @@ Theming the navbar has never been easier thanks to the combination of theming cl
 
 Although it's not required, you can wrap a `<CNavbar>` in a `<CContainer>` to center it on a page–though note that an inner container is still required. Or you can add a container inside the `<CNavbar>` to only center the contents of a [fixed or static top navbar](#placement).
 
-<Example code={NavbarContainersExampleRaw} lang="tsx" name="NavbarContainersExample" componentName="React Navbar">
+<Example code={NavbarContainersExampleRaw} name="NavbarContainersExample" componentName="React Navbar">
   <NavbarContainersExample client:only="react" />
 </Example>
 
 Use any of the responsive containers to change how wide the content in your navbar is presented.
 
-<Example code={NavbarContainers2ExampleRaw} lang="tsx" name="NavbarContainers2Example" componentName="React Navbar">
+<Example code={NavbarContainers2ExampleRaw} name="NavbarContainers2Example" componentName="React Navbar">
   <NavbarContainers2Example client:only="react" />
 </Example>
 
@@ -176,19 +176,19 @@ Use our `placement` properly to place navbars in non-static positions. Choose fr
 
 Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully supported in every browser](https://caniuse.com/css-sticky)**.
 
-<Example code={NavbarPlacementExampleRaw} lang="tsx" name="NavbarPlacementExample" componentName="React Navbar">
+<Example code={NavbarPlacementExampleRaw} name="NavbarPlacementExample" componentName="React Navbar">
   <NavbarPlacementExample client:only="react" />
 </Example>
 
-<Example code={NavbarPlacementFixedTopExampleRaw} lang="tsx" name="NavbarPlacementFixedTopExample" componentName="React Navbar" class="p-4 overflow-hidden">
+<Example code={NavbarPlacementFixedTopExampleRaw} name="NavbarPlacementFixedTopExample" componentName="React Navbar" class="p-4 overflow-hidden">
   <NavbarPlacementFixedTopExample client:only="react" />
 </Example>
 
-<Example code={NavbarPlacementFixedBottomExampleRaw} lang="tsx" name="NavbarPlacementFixedBottomExample" componentName="React Navbar" class="p-4">
+<Example code={NavbarPlacementFixedBottomExampleRaw} name="NavbarPlacementFixedBottomExample" componentName="React Navbar" class="p-4">
   <NavbarPlacementFixedBottomExample client:only="react" />
 </Example>
 
-<Example code={NavbarPlacementStickyTopExampleRaw} lang="tsx" name="NavbarPlacementStickyTopExample" componentName="React Navbar" class="p-4 overflow-hidden">
+<Example code={NavbarPlacementStickyTopExampleRaw} name="NavbarPlacementStickyTopExample" componentName="React Navbar" class="p-4 overflow-hidden">
   <NavbarPlacementStickyTopExample client:only="react" />
 </Example>
 
@@ -204,19 +204,19 @@ Navbar togglers are left-aligned by default, but should they follow a sibling el
 
 With no `<CNavbarBrand>` shown at the smallest breakpoint:
 
-<Example code={NavbarResponsiveTogglerExampleRaw} lang="tsx" name="NavbarResponsiveTogglerExample" componentName="React Navbar">
+<Example code={NavbarResponsiveTogglerExampleRaw} name="NavbarResponsiveTogglerExample" componentName="React Navbar">
   <NavbarResponsiveTogglerExample client:only="react" />
 </Example>
 
 With a brand name shown on the left and toggler on the right:
 
-<Example code={NavbarResponsiveToggler2ExampleRaw} lang="tsx" name="NavbarResponsiveToggler2Example" componentName="React Navbar">
+<Example code={NavbarResponsiveToggler2ExampleRaw} name="NavbarResponsiveToggler2Example" componentName="React Navbar">
   <NavbarResponsiveToggler2Example client:only="react" />
 </Example>
 
 With a toggler on the left and brand name on the right:
 
-<Example code={NavbarResponsiveToggler3ExampleRaw} lang="tsx" name="NavbarResponsiveToggler3Example" componentName="React Navbar">
+<Example code={NavbarResponsiveToggler3ExampleRaw} name="NavbarResponsiveToggler3Example" componentName="React Navbar">
   <NavbarResponsiveToggler3Example client:only="react" />
 </Example>
 
@@ -224,7 +224,7 @@ With a toggler on the left and brand name on the right:
 
 Sometimes you want to use the collapse plugin to trigger a container element for content that structurally sits outside of the `<CNavbar>`.
 
-<Example code={NavbarResponsiveExternalContentExampleRaw} lang="tsx" name="NavbarResponsiveExternalContentExample" componentName="React Navbar">
+<Example code={NavbarResponsiveExternalContentExampleRaw} name="NavbarResponsiveExternalContentExample" componentName="React Navbar">
   <NavbarResponsiveExternalContentExample client:only="react" />
 </Example>
 
@@ -234,13 +234,13 @@ Transform your expanding and collapsing navbar into an offcanvas drawer with the
 
 In the example below, to create an offcanvas navbar that is always collapsed across all breakpoints, omit the `expand="*"` prop entirely.
 
-<Example code={NavbarResponsiveOffcanvasExampleRaw} lang="tsx" name="NavbarResponsiveOffcanvasExample" componentName="React Navbar">
+<Example code={NavbarResponsiveOffcanvasExampleRaw} name="NavbarResponsiveOffcanvasExample" componentName="React Navbar">
   <NavbarResponsiveOffcanvasExample client:only="react" />
 </Example>
 
 To create an offcanvas navbar that expands into a normal navbar at a specific breakpoint like `xxl`, use `expand="xxl"` property.
 
-<Example code={NavbarResponsiveOffcanvas2ExampleRaw} lang="tsx" name="NavbarResponsiveOffcanvas2Example" componentName="React Navbar">
+<Example code={NavbarResponsiveOffcanvas2ExampleRaw} name="NavbarResponsiveOffcanvas2Example" componentName="React Navbar">
   <NavbarResponsiveOffcanvas2Example client:only="react" />
 </Example>
 

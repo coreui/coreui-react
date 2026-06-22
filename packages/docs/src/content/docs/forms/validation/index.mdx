@@ -23,7 +23,7 @@ For custom CoreUI form validation messages, you'll need to add the `noValidate` 
 
 Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback.
 
-<Example code={ValidationExampleRaw} codeJs={ValidationExampleJsRaw} lang="tsx" name="ValidationExample" componentName="React Form Validation">
+<Example code={ValidationExampleRaw} codeJs={ValidationExampleJsRaw} name="ValidationExample" componentName="React Form Validation">
   <ValidationExample client:only="react" />
 </Example>
 
@@ -33,7 +33,7 @@ Not interested in custom validation feedback messages or writing JavaScript to c
 
 While these feedback styles cannot be styled with CSS, you can still customize the feedback text through JavaScript.
 
-<Example code={ValidationBrowserDefaultsExampleRaw} lang="tsx" name="ValidationBrowserDefaultsExample" componentName="React Form Validation">
+<Example code={ValidationBrowserDefaultsExampleRaw} name="ValidationBrowserDefaultsExample" componentName="React Form Validation">
   <ValidationBrowserDefaultsExample client:only="react" />
 </Example>
 
@@ -43,7 +43,7 @@ In case you require custom or server-side validation, you can indicate invalid a
 
 For invalid fields, ensure that the invalid feedback/error message is associated with the relevant form field using `aria-describedby` (noting that this attribute allows more than one `id` to be referenced, in case the field already points to additional form text).
 
-<Example code={ValidationCustomExampleRaw} lang="tsx" name="ValidationCustomExample" componentName="React Form Validation">
+<Example code={ValidationCustomExampleRaw} name="ValidationCustomExample" componentName="React Form Validation">
   <ValidationCustomExample client:only="react" />
 </Example>
 
@@ -56,7 +56,7 @@ Validation styles are available for the following form controls and components:
 - `<CFormSelect>`s
 - `<CFormTextarea>`s
 
-<Example code={ValidationSupportedElementsExampleRaw} lang="tsx" name="ValidationSupportedElementsExample" componentName="React Form Validation">
+<Example code={ValidationSupportedElementsExampleRaw} name="ValidationSupportedElementsExample" componentName="React Form Validation">
   <ValidationSupportedElementsExample client:only="react" />
 </Example>
 
@@ -64,6 +64,6 @@ Validation styles are available for the following form controls and components:
 
 If your form layout allows it, you can swap the text for the tooltip to display validation feedback in a styled tooltip. Be sure to have a parent with `position: relative` on it for tooltip positioning. In the example below, our column classes have this already, but your project may require an alternative setup.
 
-<Example code={ValidationTooltipsExampleRaw} codeJs={ValidationTooltipsExampleJsRaw} lang="tsx" name="ValidationTooltipsExample" componentName="React Form Validation">
+<Example code={ValidationTooltipsExampleRaw} codeJs={ValidationTooltipsExampleJsRaw} name="ValidationTooltipsExample" componentName="React Form Validation">
   <ValidationTooltipsExample client:only="react" />
 </Example>

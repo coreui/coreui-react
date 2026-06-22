@@ -33,7 +33,7 @@ Progress components are built with two HTML elements, some CSS to set the width,
 
 ## Basic usage
 
-<Example code={ProgressExampleRaw} lang="tsx" name="ProgressExample" componentName="React Progress">
+<Example code={ProgressExampleRaw} name="ProgressExample" componentName="React Progress">
   <ProgressExample client:only="react" />
 </Example>
 
@@ -41,13 +41,13 @@ Progress components are built with two HTML elements, some CSS to set the width,
 
 Add labels to your progress bars by placing text within the `<CProgressBar>`.
 
-<Example code={ProgressLabelsExampleRaw} lang="tsx" name="ProgressLabelsExample" componentName="React Progress">
+<Example code={ProgressLabelsExampleRaw} name="ProgressLabelsExample" componentName="React Progress">
   <ProgressLabelsExample client:only="react" />
 </Example>
 
 Please note that the default setting for the content within the `<CProgressBar />` is to be limited by the `overflow: hidden property`, preventing it from extending beyond the bar's boundaries. If the progress bar is shorter than its label, the content will be truncated and could be difficult to read. To modify this behavior, you can utilize the `.overflow-visible` class from the overflow utilities. However, it is important to specify a specific text color to ensure readability. It's worth noting that this approach currently does not consider color modes.
 
-<Example code={ProgressLabels2ExampleRaw} lang="tsx" name="ProgressLabels2Example" componentName="React Progress">
+<Example code={ProgressLabels2ExampleRaw} name="ProgressLabels2Example" componentName="React Progress">
   <ProgressLabels2Example client:only="react" />
 </Example>
 
@@ -61,11 +61,11 @@ Since **v4.9.0** you can also use the `progressBarClassName` property directly o
 
 We only set a `height` value on the `<CProgress>`, so if you change that value the inner `<CProgressBar>` will automatically resize accordingly.
 
-<Example code={ProgressHeightExampleRaw} lang="tsx" name="ProgressHeightExample" componentName="React Progress">
+<Example code={ProgressHeightExampleRaw} name="ProgressHeightExample" componentName="React Progress">
   <ProgressHeightExample client:only="react" />
 </Example>
 
-<Example code={ProgressHeight2ExampleRaw} lang="tsx" name="ProgressHeight2Example" componentName="React Progress">
+<Example code={ProgressHeight2ExampleRaw} name="ProgressHeight2Example" componentName="React Progress">
   <ProgressHeight2Example client:only="react" />
 </Example>
 
@@ -73,13 +73,13 @@ We only set a `height` value on the `<CProgress>`, so if you change that value t
 
 Use `color` prop to change the appearance of individual progress bars.
 
-<Example code={ProgressBackgroundsExampleRaw} lang="tsx" name="ProgressBackgroundsExample" componentName="React Progress">
+<Example code={ProgressBackgroundsExampleRaw} name="ProgressBackgroundsExample" componentName="React Progress">
   <ProgressBackgroundsExample client:only="react" />
 </Example>
 
 Ensure that when you incorporate labels into progress bars featuring a custom background color, you also select an appropriate text color to ensure readability and maintain adequate contrast for the labels.
 
-<Example code={ProgressBackgrounds2ExampleRaw} lang="tsx" name="ProgressBackgrounds2Example" componentName="React Progress">
+<Example code={ProgressBackgrounds2ExampleRaw} name="ProgressBackgrounds2Example" componentName="React Progress">
   <ProgressBackgrounds2Example client:only="react" />
 </Example>
 
@@ -100,7 +100,7 @@ Include multiple progress bars in a progress component if you need. In **v4.9.0*
   In version 4.9.0, we introduced a new `<CProgressStacked>` component to more logically wrap multiple progress bars into a single stacked progress bar. The previous structure will continue to work until the next major version.
 </Callout>
 
-<Example code={ProgressMultipleBarsExampleRaw} lang="tsx" name="ProgressMultipleBarsExample" componentName="React Progress">
+<Example code={ProgressMultipleBarsExampleRaw} name="ProgressMultipleBarsExample" componentName="React Progress">
   <ProgressMultipleBarsExample client:only="react" />
 </Example>
 
@@ -117,7 +117,7 @@ Include multiple progress bars in a progress component if you need. In **v4.9.0*
 
 Add `variant="striped"` to any `<CProgressBar>` to apply a stripe via CSS gradient over the progress bar's background color.
 
-<Example code={ProgressStripedExampleRaw} lang="tsx" name="ProgressStripedExample" componentName="React Progress">
+<Example code={ProgressStripedExampleRaw} name="ProgressStripedExample" componentName="React Progress">
   <ProgressStripedExample client:only="react" />
 </Example>
 
@@ -125,7 +125,7 @@ Add `variant="striped"` to any `<CProgressBar>` to apply a stripe via CSS gradie
 
 The striped gradient can also be animated. Add `animated` property to `<CProgressBar>` to animate the stripes right to left via CSS3 animations.
 
-<Example code={ProgressAnimatedStripedExampleRaw} lang="tsx" name="ProgressAnimatedStripedExample" componentName="React Progress">
+<Example code={ProgressAnimatedStripedExampleRaw} name="ProgressAnimatedStripedExample" componentName="React Progress">
   <ProgressAnimatedStripedExample client:only="react" />
 </Example>
 

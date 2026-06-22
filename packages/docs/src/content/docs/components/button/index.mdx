@@ -46,7 +46,7 @@ import ButtonBlock4ExampleRaw from './examples/ButtonBlock4Example.tsx?raw'
 
 CoreUI includes a bunch of predefined buttons components, each serving its own semantic purpose. React buttons show what action will happen when the user clicks or touches it. CoreUI buttons are used to initialize operations, both in the background or foreground of an experience.
 
-<Example code={ButtonExampleRaw} lang="tsx" name="ButtonExample" componentName="React Button">
+<Example code={ButtonExampleRaw} name="ButtonExample" componentName="React Button">
   <ButtonExample client:only="react" />
 </Example>
 
@@ -62,7 +62,7 @@ The `<CButton>` component are designed for `<button>` , `<a>` or `<input>` eleme
 
 If you're using `<CButton>` component as `<a>` elements that are used to trigger functionality ex. collapsing content, these links should be given a `role="button"` to adequately communicate their meaning to assistive technologies such as screen readers.
 
-<Example code={ButtonComponentsExampleRaw} lang="tsx" name="ButtonComponentsExample" componentName="React Button">
+<Example code={ButtonComponentsExampleRaw} name="ButtonComponentsExample" componentName="React Button">
   <ButtonComponentsExample client:only="react" />
 </Example>
 
@@ -72,7 +72,7 @@ If you're using `<CButton>` component as `<a>` elements that are used to trigger
 
 The `variant="outline` property provides a neutral outline button style without any color modifiers. It’s useful as a foundation for minimal buttons without background color or strong visual emphasis.
 
-<Example code={ButtonOutlineBaseClassExampleRaw} lang="tsx" name="ButtonOutlineBaseClassExample" componentName="React Button">
+<Example code={ButtonOutlineBaseClassExampleRaw} name="ButtonOutlineBaseClassExample" componentName="React Button">
   <ButtonOutlineBaseClassExample client:only="react" />
 </Example>
 
@@ -82,7 +82,7 @@ These React buttons use a transparent background, subtle border, and inherit tex
 
 If you need a button, but without the strong background colors, set `color` and `variant=" outline"` props to remove all background colors.
 
-<Example code={ButtonOutlineExampleRaw} lang="tsx" name="ButtonOutlineExample" componentName="React Button">
+<Example code={ButtonOutlineExampleRaw} name="ButtonOutlineExample" componentName="React Button">
   <ButtonOutlineExample client:only="react" />
 </Example>
 
@@ -101,13 +101,13 @@ Use the `variant="ghost"` property to create ultra-minimalist buttons with no bo
 
 They’re perfect for interfaces where you want buttons to be present but visually unobtrusive—such as action buttons in modals, cards, or toolbars.
 
-<Example code={ButtonGhostBaseClassExampleRaw} lang="tsx" name="ButtonGhostBaseClassExample" componentName="React Button">
+<Example code={ButtonGhostBaseClassExampleRaw} name="ButtonGhostBaseClassExample" componentName="React Button">
   <ButtonGhostBaseClassExample client:only="react" />
 </Example>
 
 To apply theme colors to React ghost buttons, use the `color` and `variant="ghost"` properties. By default, these variants color only the text. On hover or focus, they add a background that corresponds to the theme color.
 
-<Example code={ButtonGhostExampleRaw} lang="tsx" name="ButtonGhostExample" componentName="React Button">
+<Example code={ButtonGhostExampleRaw} name="ButtonGhostExample" componentName="React Button">
   <ButtonGhostExample client:only="react" />
 </Example>
 
@@ -115,17 +115,17 @@ To apply theme colors to React ghost buttons, use the `color` and `variant="ghos
 
 Larger or smaller react buttons? Add `size="lg"` or `size="sm"` for additional sizes.
 
-<Example code={ButtonSizesExampleRaw} lang="tsx" name="ButtonSizesExample" componentName="React Button">
+<Example code={ButtonSizesExampleRaw} name="ButtonSizesExample" componentName="React Button">
   <ButtonSizesExample client:only="react" />
 </Example>
 
-<Example code={ButtonSizes2ExampleRaw} lang="tsx" name="ButtonSizes2Example" componentName="React Button">
+<Example code={ButtonSizes2ExampleRaw} name="ButtonSizes2Example" componentName="React Button">
   <ButtonSizes2Example client:only="react" />
 </Example>
 
 You can even roll your own custom sizing with CSS variables:
 
-<Example code={ButtonSizes3ExampleRaw} codeJs={ButtonSizes3ExampleJsRaw} lang="tsx" name="ButtonSizes3Example" componentName="React Button">
+<Example code={ButtonSizes3ExampleRaw} codeJs={ButtonSizes3ExampleJsRaw} name="ButtonSizes3Example" componentName="React Button">
   <ButtonSizes3Example client:only="react" />
 </Example>
 
@@ -133,13 +133,13 @@ You can even roll your own custom sizing with CSS variables:
 
 ### Pill buttons
 
-<Example code={ButtonShapePillExampleRaw} lang="tsx" name="ButtonShapePillExample" componentName="React Button">
+<Example code={ButtonShapePillExampleRaw} name="ButtonShapePillExample" componentName="React Button">
   <ButtonShapePillExample client:only="react" />
 </Example>
 
 ### Square buttons
 
-<Example code={ButtonShapeSquareExampleRaw} lang="tsx" name="ButtonShapeSquareExample" componentName="React Button">
+<Example code={ButtonShapeSquareExampleRaw} name="ButtonShapeSquareExample" componentName="React Button">
   <ButtonShapeSquareExample client:only="react" />
 </Example>
 
@@ -147,7 +147,7 @@ You can even roll your own custom sizing with CSS variables:
 
 Add the `disabled` boolean prop to any `<CButton>` component to make buttons look inactive. Disabled button has `pointer-events: none` applied to, disabling hover and active states from triggering.
 
-<Example code={ButtonDisabledExampleRaw} lang="tsx" name="ButtonDisabledExample" componentName="React Button">
+<Example code={ButtonDisabledExampleRaw} name="ButtonDisabledExample" componentName="React Button">
   <ButtonDisabledExample client:only="react" />
 </Example>
 
@@ -155,7 +155,7 @@ Disabled buttons using the `<a>` component act a little different:
 
 `<a>`s don't support the `disabled` attribute, so CoreUI has to add `.disabled` className to make buttons look inactive. CoreUI also has to add to the disabled button component `aria-disabled="true"` attribute to show the state of the component to assistive technologies.
 
-<Example code={ButtonDisabled2ExampleRaw} lang="tsx" name="ButtonDisabled2Example" componentName="React Button">
+<Example code={ButtonDisabled2ExampleRaw} name="ButtonDisabled2Example" componentName="React Button">
   <ButtonDisabled2Example client:only="react" />
 </Example>
 
@@ -165,25 +165,25 @@ The `.disabled` class uses `pointer-events: none` to try to disable the link fun
 
 Create buttons that span the full width of a parent—by using utilities.
 
-<Example code={ButtonBlockExampleRaw} lang="tsx" name="ButtonBlockExample" componentName="React Button">
+<Example code={ButtonBlockExampleRaw} name="ButtonBlockExample" componentName="React Button">
   <ButtonBlockExample client:only="react" />
 </Example>
 
 Here we create a responsive variation, starting with vertically stacked buttons until the `md` breakpoint, where `.d-md-block` replaces the `.d-grid` class, thus nullifying the `gap-2` utility. Resize your browser to see them change.
 
-<Example code={ButtonBlock2ExampleRaw} lang="tsx" name="ButtonBlock2Example" componentName="React Button">
+<Example code={ButtonBlock2ExampleRaw} name="ButtonBlock2Example" componentName="React Button">
   <ButtonBlock2Example client:only="react" />
 </Example>
 
 You can adjust the width of your block buttons with grid column width classes. For example, for a half-width "block button", use `.col-6`. Center it horizontally with `.mx-auto`, too.
 
-<Example code={ButtonBlock3ExampleRaw} lang="tsx" name="ButtonBlock3Example" componentName="React Button">
+<Example code={ButtonBlock3ExampleRaw} name="ButtonBlock3Example" componentName="React Button">
   <ButtonBlock3Example client:only="react" />
 </Example>
 
 Additional utilities can be used to adjust the alignment of buttons when horizontal. Here we've taken our previous responsive example and added some flex utilities and a margin utility on the button to right align the buttons when they're no longer stacked.
 
-<Example code={ButtonBlock4ExampleRaw} lang="tsx" name="ButtonBlock4Example" componentName="React Button">
+<Example code={ButtonBlock4ExampleRaw} name="ButtonBlock4Example" componentName="React Button">
   <ButtonBlock4Example client:only="react" />
 </Example>
 

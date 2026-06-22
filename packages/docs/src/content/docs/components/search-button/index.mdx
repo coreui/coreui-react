@@ -27,7 +27,7 @@ The CoreUI React Search Button component is a trigger element designed for searc
 
 Use `<CSearchButton />` as the entry point for a controlled search interface. Use `onTrigger` as the main activation callback for both direct interaction and keyboard shortcuts.
 
-<Example code={SearchButtonExampleRaw} lang="tsx" name="SearchButtonExample" componentName="React Search Button">
+<Example code={SearchButtonExampleRaw} name="SearchButtonExample" componentName="React Search Button">
   <SearchButtonExample client:only="react" />
 </Example>
 
@@ -39,7 +39,7 @@ Configure the shortcut with the `shortcut` prop. On macOS, the component prefers
   Shortcuts such as `meta+f`, `ctrl+f`, `meta+s`, or `ctrl+s` can override native browser or system shortcuts. Prefer safer combinations such as `meta+/` and `ctrl+/` unless replacing the default behavior is intentional.
 </Callout>
 
-<Example code={SearchButtonCustomShortcutExampleRaw} lang="tsx" name="SearchButtonCustomShortcutExample" componentName="React Search Button">
+<Example code={SearchButtonCustomShortcutExampleRaw} name="SearchButtonCustomShortcutExample" componentName="React Search Button">
   <SearchButtonCustomShortcutExample client:only="react" />
 </Example>
 
@@ -47,7 +47,7 @@ Configure the shortcut with the `shortcut` prop. On macOS, the component prefers
 
 The component works naturally with controlled React state and also supports a dedicated `onTrigger` callback. This demo uses `meta+shift+o` / `ctrl+shift+o` to avoid colliding with other live examples on the page.
 
-<Example code={SearchButtonOffcanvasExampleRaw} lang="tsx" name="SearchButtonOffcanvasExample" componentName="React Search Button">
+<Example code={SearchButtonOffcanvasExampleRaw} name="SearchButtonOffcanvasExample" componentName="React Search Button">
   <SearchButtonOffcanvasExample client:only="react" />
 </Example>
 

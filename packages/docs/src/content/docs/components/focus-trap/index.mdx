@@ -40,7 +40,7 @@ Focus traps are a critical accessibility pattern required by WCAG 2.1 guidelines
 
 The most basic implementation wraps a single element and activates the focus trap:
 
-<Example code={FocusTrapBasicExampleRaw} lang="tsx" name="FocusTrapBasicExample" componentName="React Focus Trap">
+<Example code={FocusTrapBasicExampleRaw} name="FocusTrapBasicExample" componentName="React Focus Trap">
   <FocusTrapBasicExample client:only="react" />
 </Example>
 
@@ -58,7 +58,7 @@ For these components, focus trapping is handled automatically with proper focus 
 
 CModal includes built-in focus trapping, so you don't need to add CFocusTrap manually:
 
-<Example code={FocusTrapModalExampleRaw} lang="tsx" name="FocusTrapModalExample" componentName="React Focus Trap Modal">
+<Example code={FocusTrapModalExampleRaw} name="FocusTrapModalExample" componentName="React Focus Trap Modal">
   <FocusTrapModalExample client:only="react" />
 </Example>
 
@@ -66,7 +66,7 @@ CModal includes built-in focus trapping, so you don't need to add CFocusTrap man
 
 You can enhance CDropdown with CFocusTrap for improved keyboard accessibility:
 
-<Example code={FocusTrapDropdownExampleRaw} lang="tsx" name="FocusTrapDropdownExample" componentName="React Focus Trap Dropdown">
+<Example code={FocusTrapDropdownExampleRaw} name="FocusTrapDropdownExample" componentName="React Focus Trap Dropdown">
   <FocusTrapDropdownExample client:only="react" />
 </Example>
 
@@ -74,7 +74,7 @@ You can enhance CDropdown with CFocusTrap for improved keyboard accessibility:
 
 COffcanvas includes built-in focus trapping for slide-out navigation panels:
 
-<Example code={FocusTrapSidebarExampleRaw} lang="tsx" name="FocusTrapSidebarExample" componentName="React Focus Trap Sidebar">
+<Example code={FocusTrapSidebarExampleRaw} name="FocusTrapSidebarExample" componentName="React Focus Trap Sidebar">
   <FocusTrapSidebarExample client:only="react" />
 </Example>
 
@@ -87,7 +87,7 @@ The `focusFirstElement` prop controls the initial focus behavior:
 - `focusFirstElement={true}`: Focuses the first tabbable element (good for menus, forms)
 - `focusFirstElement={false}`: Focuses the container element (good for panels, scrollable regions)
 
-<Example code={FocusTrapFocusControlExampleRaw} lang="tsx" name="FocusTrapFocusControlExample" componentName="React Focus Trap Focus Control">
+<Example code={FocusTrapFocusControlExampleRaw} name="FocusTrapFocusControlExample" componentName="React Focus Trap Focus Control">
   <FocusTrapFocusControlExample client:only="react" />
 </Example>
 
@@ -95,7 +95,7 @@ The `focusFirstElement` prop controls the initial focus behavior:
 
 The `restoreFocus` prop controls whether focus returns to the previously focused element when the trap deactivates. Focus on a button, then activate the trap. When you deactivate it, notice where focus returns based on the `restoreFocus` setting:
 
-<Example code={FocusTrapRestoreFocusExampleRaw} lang="tsx" name="FocusTrapRestoreFocusExample" componentName="React Focus Trap Restore Focus">
+<Example code={FocusTrapRestoreFocusExampleRaw} name="FocusTrapRestoreFocusExample" componentName="React Focus Trap Restore Focus">
   <FocusTrapRestoreFocusExample client:only="react" />
 </Example>
 
@@ -103,7 +103,7 @@ The `restoreFocus` prop controls whether focus returns to the previously focused
 
 Use the `onActivate` and `onDeactivate` callbacks to trigger additional behavior such as screen reader announcements, analytics events, updating application state, or managing other UI components:
 
-<Example code={FocusTrapEventsExampleRaw} codeJs={FocusTrapEventsExampleJsRaw} lang="tsx" name="FocusTrapEventsExample" componentName="React Focus Trap Events">
+<Example code={FocusTrapEventsExampleRaw} codeJs={FocusTrapEventsExampleJsRaw} name="FocusTrapEventsExample" componentName="React Focus Trap Events">
   <FocusTrapEventsExample client:only="react" />
 </Example>
 
@@ -111,7 +111,7 @@ Use the `onActivate` and `onDeactivate` callbacks to trigger additional behavior
 
 Focus traps can be conditionally activated based on application state:
 
-<Example code={FocusTrapConditionalExampleRaw} lang="tsx" name="FocusTrapConditionalExample" componentName="React Focus Trap Conditional">
+<Example code={FocusTrapConditionalExampleRaw} name="FocusTrapConditionalExample" componentName="React Focus Trap Conditional">
   <FocusTrapConditionalExample client:only="react" />
 </Example>
 

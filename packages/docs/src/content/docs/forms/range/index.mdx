@@ -19,7 +19,7 @@ import FormRangeStepsExampleRaw from './examples/FormRangeStepsExample.tsx?raw'
 
 Create custom `<input type="range">` controls with `<CFormRange>`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only Edge Legacy and Firefox supports "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.
 
-<Example code={FormRangeExampleRaw} lang="tsx" name="FormRangeExample" componentName="React Form Range">
+<Example code={FormRangeExampleRaw} name="FormRangeExample" componentName="React Form Range">
   <FormRangeExample client:only="react" />
 </Example>
 
@@ -27,7 +27,7 @@ Create custom `<input type="range">` controls with `<CFormRange>`. The track (th
 
 Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
 
-<Example code={FormRangeDisabledExampleRaw} lang="tsx" name="FormRangeDisabledExample" componentName="React Form Range">
+<Example code={FormRangeDisabledExampleRaw} name="FormRangeDisabledExample" componentName="React Form Range">
   <FormRangeDisabledExample client:only="react" />
 </Example>
 
@@ -35,7 +35,7 @@ Add the `disabled` boolean attribute on an input to give it a grayed out appeara
 
 Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
 
-<Example code={FormRangeMinAndMaxExampleRaw} lang="tsx" name="FormRangeMinAndMaxExample" componentName="React Form Range">
+<Example code={FormRangeMinAndMaxExampleRaw} name="FormRangeMinAndMaxExample" componentName="React Form Range">
   <FormRangeMinAndMaxExample client:only="react" />
 </Example>
 
@@ -43,7 +43,7 @@ Range inputs have implicit values for `min` and `max`—`0` and `100`, respectiv
 
 By default, range inputs "snap" to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `step={0.5}`.
 
-<Example code={FormRangeStepsExampleRaw} lang="tsx" name="FormRangeStepsExample" componentName="React Form Range">
+<Example code={FormRangeStepsExampleRaw} name="FormRangeStepsExample" componentName="React Form Range">
   <FormRangeStepsExample client:only="react" />
 </Example>
 

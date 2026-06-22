@@ -27,7 +27,7 @@ We use a large block of connected links for our pagination, making links hard to
 
 In addition, as pages likely have more than one such navigation section, it's advisable to provide a descriptive `aria-label` for the `<nav>` to reflect its purpose. For example, if the pagination component is used to navigate between a set of search results, an appropriate label could be `aria-label="Search results pages"`.
 
-<Example code={PaginationExampleRaw} lang="tsx" name="PaginationExample" componentName="React Pagination">
+<Example code={PaginationExampleRaw} name="PaginationExample" componentName="React Pagination">
   <PaginationExample client:only="react" />
 </Example>
 
@@ -35,7 +35,7 @@ In addition, as pages likely have more than one such navigation section, it's ad
 
 Looking to use an icon or symbol in place of text for some pagination links? Be sure to provide proper screen reader support with `aria` attributes.
 
-<Example code={PaginationWorkingWithIconsExampleRaw} lang="tsx" name="PaginationWorkingWithIconsExample" componentName="React Pagination">
+<Example code={PaginationWorkingWithIconsExampleRaw} name="PaginationWorkingWithIconsExample" componentName="React Pagination">
   <PaginationWorkingWithIconsExample client:only="react" />
 </Example>
 
@@ -45,7 +45,7 @@ Pagination links are customizable for different circumstances. Use `disabled` fo
 
 While the `disabled` prop uses `pointer-events: none` to _try_ to disable the link functionality of `<a>`s, that CSS property is not yet standardized and doesn't account for keyboard navigation. As such, we always add `tabindex="-1"` on disabled links and use custom JavaScript to fully disable their functionality.
 
-<Example code={PaginationDisabledAndActiveExampleRaw} lang="tsx" name="PaginationDisabledAndActiveExample" componentName="React Pagination">
+<Example code={PaginationDisabledAndActiveExampleRaw} name="PaginationDisabledAndActiveExample" componentName="React Pagination">
   <PaginationDisabledAndActiveExample client:only="react" />
 </Example>
 
@@ -53,11 +53,11 @@ While the `disabled` prop uses `pointer-events: none` to _try_ to disable the li
 
 Fancy larger or smaller pagination? Add `size="lg"` or `size="sm"` for additional sizes.
 
-<Example code={PaginationSizingLargeExampleRaw} lang="tsx" name="PaginationSizingLargeExample" componentName="React Pagination">
+<Example code={PaginationSizingLargeExampleRaw} name="PaginationSizingLargeExample" componentName="React Pagination">
   <PaginationSizingLargeExample client:only="react" />
 </Example>
 
-<Example code={PaginationSizingSmallExampleRaw} lang="tsx" name="PaginationSizingSmallExample" componentName="React Pagination">
+<Example code={PaginationSizingSmallExampleRaw} name="PaginationSizingSmallExample" componentName="React Pagination">
   <PaginationSizingSmallExample client:only="react" />
 </Example>
 
@@ -65,11 +65,11 @@ Fancy larger or smaller pagination? Add `size="lg"` or `size="sm"` for additiona
 
 Change the alignment of pagination components with `align` property.
 
-<Example code={PaginationAlignmentExampleRaw} lang="tsx" name="PaginationAlignmentExample" componentName="React Pagination">
+<Example code={PaginationAlignmentExampleRaw} name="PaginationAlignmentExample" componentName="React Pagination">
   <PaginationAlignmentExample client:only="react" />
 </Example>
 
-<Example code={PaginationAlignment2ExampleRaw} lang="tsx" name="PaginationAlignment2Example" componentName="React Pagination">
+<Example code={PaginationAlignment2ExampleRaw} name="PaginationAlignment2Example" componentName="React Pagination">
   <PaginationAlignment2Example client:only="react" />
 </Example>
 
