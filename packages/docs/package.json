@@ -14,7 +14,7 @@
   "dependencies": {
     "@astrojs/mdx": "^6.0.0",
     "@astrojs/react": "^5.0.0",
-    "@coreui/astro-docs": "0.1.0-beta.3",
+    "@coreui/astro-docs": "0.1.0-beta.4",
     "@coreui/chartjs": "^4.0.0",
     "@coreui/coreui": "^5.8.0",
     "@coreui/icons": "^3.1.0",
