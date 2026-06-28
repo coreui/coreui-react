@@ -3,7 +3,7 @@ import { CButton, CButtonGroup, CButtonToolbar } from '@coreui/react'
 
 export const ButtonToolbarExample = () => {
   return (
-    <CButtonToolbar role="group" aria-label="Toolbar with button groups">
+    <CButtonToolbar role="toolbar" aria-label="Toolbar with button groups">
       <CButtonGroup className="me-2" role="group" aria-label="First group">
         <CButton color="primary">1</CButton>
         <CButton color="primary">2</CButton>

@@ -11,7 +11,7 @@ import {
 export const ButtonToolbar2Example = () => {
   return (
     <>
-      <CButtonToolbar className="mb-3" role="group" aria-label="Toolbar with button groups">
+      <CButtonToolbar className="mb-3" role="toolbar" aria-label="Toolbar with button groups">
         <CButtonGroup className="me-2" role="group" aria-label="First group">
           <CButton color="secondary" variant="outline">
             1
