@@ -29,7 +29,7 @@ export const AccordionExample = () => {
       <CAccordionItem itemKey={3}>
         <CAccordionHeader>Accordion Item #3</CAccordionHeader>
         <CAccordionBody>
-          <strong>This is the second item&#39;s accordion body.</strong> It is hidden by default,
+          <strong>This is the third item&#39;s accordion body.</strong> It is hidden by default,
           until the collapse plugin adds the appropriate classes that we use to style each element.
           These classes control the overall appearance, as well as the showing and hiding via CSS
           transitions. You can modify any of this with custom CSS or overriding our default
