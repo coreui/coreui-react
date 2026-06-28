@@ -10,7 +10,7 @@ export const AlertDismissingExample = () => {
         alert('👋 Well, hi there! Thanks for dismissing me.')
       }}
     >
-      <strong>Go right ahead</strong> and click that dimiss over there on the right.
+      <strong>Go right ahead</strong> and click that dismiss over there on the right.
     </CAlert>
   )
 }
