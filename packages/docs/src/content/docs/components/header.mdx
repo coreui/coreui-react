@@ -93,11 +93,12 @@ React headers use local CSS variables on `.header` for enhanced real-time custom
 #### How to use CSS variables
 
 ```jsx
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+const customVars = {
+  '--cui-header-color': '#333',
+  '--cui-header-bg': '#f8f9fa',
 }
-return <CHeader style={vars}>...</CHeader>
+
+return <CHeader style={customVars} />
 ```
 
 ### SASS variables

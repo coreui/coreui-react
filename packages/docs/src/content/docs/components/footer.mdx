@@ -34,11 +34,12 @@ React footers use local CSS variables on `.footer` for enhanced real-time custom
 #### How to use CSS variables
 
 ```jsx
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+const customVars = {
+  '--cui-footer-color': '#333',
+  '--cui-footer-bg': '#f8f9fa',
 }
-return <CFooter style={vars}>...</CFooter>
+
+return <CFooter style={customVars} />
 ```
 
 ### SASS variables

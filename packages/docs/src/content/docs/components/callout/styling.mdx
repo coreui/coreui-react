@@ -13,11 +13,12 @@ React Calout supports CSS variables for easy customization. These variables are 
 #### How to use CSS variables
 
 ```jsx
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+const customVars = {
+  '--cui-callout-border-color': '#333',
+  '--cui-callout-padding-x': '1rem',
 }
-return <CCallout style={vars}>...</CCallout>
+
+return <CCallout style={customVars} />
 ```
 
 ### SASS variables
