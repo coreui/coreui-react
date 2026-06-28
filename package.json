@@ -8,7 +8,7 @@
     "charts:test": "lerna run --scope \"@coreui/react-chartjs\" test --stream",
     "charts:test:update": "lerna run --scope \"@coreui/react-chartjs\" test:update --stream",
     "docs:api": "lerna run --scope \"@coreui/react-docs\" api --stream",
-    "docs:dev": "lerna run --scope \"@coreui/react-docs\" develop --stream",
+    "docs:dev": "lerna run --scope \"@coreui/react-docs\" dev --stream",
     "docs:build": "lerna run --scope \"@coreui/react-docs\" build --stream",
     "docs:clean": "lerna run --scope \"@coreui/react-docs\" clean",
     "icons:build": "lerna run --scope \"@coreui/icons-react\" build --stream",
