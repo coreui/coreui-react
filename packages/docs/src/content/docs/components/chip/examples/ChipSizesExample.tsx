@@ -15,7 +15,7 @@ export const ChipSizesExample = () => {
           Small with icon
         </CChip>
         <CChip size="sm">
-          <img className="chip-img" src={'/images/avatars/1.jpg'} alt="" width="16" height="16" />
+          <img className="chip-img" src={'/assets/img/avatars/1.jpg'} alt="" width="16" height="16" />
           Small with avatar
         </CChip>
         <CChip size="sm">
@@ -38,7 +38,7 @@ export const ChipSizesExample = () => {
           Default with icon 1
         </CChip>
         <CChip>
-          <img className="chip-img" src={'/images/avatars/1.jpg'} alt="" width="16" height="16" />
+          <img className="chip-img" src={'/assets/img/avatars/1.jpg'} alt="" width="16" height="16" />
           Default with avatar
         </CChip>
         <CChip>
@@ -59,7 +59,7 @@ export const ChipSizesExample = () => {
           Small with icon 1
         </CChip>
         <CChip size="lg">
-          <img className="chip-img" src={'/images/avatars/1.jpg'} alt="" width="16" height="16" />
+          <img className="chip-img" src={'/assets/img/avatars/1.jpg'} alt="" width="16" height="16" />
           Large with avatar
         </CChip>
         <CChip size="lg">

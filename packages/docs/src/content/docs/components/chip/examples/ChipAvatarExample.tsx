@@ -5,11 +5,11 @@ export const ChipAvatarExample = () => {
   return (
     <div className="d-flex flex-wrap gap-1">
       <CChip>
-        <img className="chip-img" src={'/images/avatars/1.jpg'} alt="" width="16" height="16" />
+        <img className="chip-img" src={'/assets/img/avatars/1.jpg'} alt="" width="16" height="16" />
         Chip with avatar
       </CChip>
       <CChip>
-        <img className="chip-img" src={'/images/avatars/1.jpg'} alt="" width="16" height="16" />
+        <img className="chip-img" src={'/assets/img/avatars/1.jpg'} alt="" width="16" height="16" />
         Chip with avatar 2
       </CChip>
       <CChip>

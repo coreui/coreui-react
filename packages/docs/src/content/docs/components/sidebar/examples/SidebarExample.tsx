@@ -186,7 +186,7 @@ export const SidebarExample = () => {
             className="w-100 d-flex gap-2 p-1 align-items-center"
             variant="ghost"
           >
-            <CAvatar shape="rounded" size="md" src="/images/avatars/7.jpg" />
+            <CAvatar shape="rounded" size="md" src="/assets/img/avatars/7.jpg" />
             <div className="small text-start d-sidebar-narrow-none">
               <div className="fw-semibold">Lena Scaffold</div>
               <div>lena@acme.com</div>
@@ -195,7 +195,7 @@ export const SidebarExample = () => {
           </CDropdownToggle>
           <CDropdownMenu className="w-100">
             <div className="d-flex gap-2 px-2">
-              <CAvatar shape="rounded" size="md" src="/images/avatars/7.jpg" />
+              <CAvatar shape="rounded" size="md" src="/assets/img/avatars/7.jpg" />
               <div className="small text-start">
                 <div className="fw-semibold">Lena Scaffold</div>
                 <div>lena@acme.com</div>
