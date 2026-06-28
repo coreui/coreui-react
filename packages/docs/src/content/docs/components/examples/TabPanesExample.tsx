@@ -7,9 +7,9 @@ import {
   CRow,
   CTabContent,
   CTabPane } from '@coreui/react'
-import {CIcon, CIconSvg} from '@coreui/icons-react/src/index'
-import { cilList, cilShieldAlt } from '@coreui/icons'
-import * as icon from '@coreui/icons';
+import { LinearExample } from './LinearExample'
+import { BrandExample } from './BrandExample'
+import { FlagsExample } from './FlagsExample'
 
 export const TabPanesExample = () => {
   const [activeKey, setActiveKey] = useState(1)
