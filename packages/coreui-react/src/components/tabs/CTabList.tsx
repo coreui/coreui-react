@@ -37,7 +37,7 @@ export const CTabList = forwardRef<HTMLDivElement, CTabListProps>(
       ) {
         event.preventDefault()
         const target = event.target as HTMLElement
-        // eslint-disable-next-line unicorn/prefer-spread
+
         const items: HTMLElement[] = Array.from(
           tabListRef.current.querySelectorAll('.nav-link:not(.disabled):not(:disabled)')
         )

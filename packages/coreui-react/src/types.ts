@@ -1,15 +1,7 @@
 export type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
 
 export type Colors =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'danger'
-  | 'warning'
-  | 'info'
-  | 'dark'
-  | 'light'
-  | string
+  'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
 
 export type Placements =
   | 'auto'
