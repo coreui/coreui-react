@@ -2,11 +2,11 @@ import React from 'react'
 import { CFormInput } from '@coreui/react'
 import { IMaskMixin } from 'react-imask'
 
-export const InputMaskExample = () => {
-  const CFormInputWithMask = IMaskMixin(({ inputRef, ...props }) => (
-    <CFormInput {...props} ref={inputRef} />
-  ))
+const CFormInputWithMask = IMaskMixin(({ inputRef, ...props }) => (
+  <CFormInput {...props} ref={inputRef} />
+))
 
+export const InputMaskExample = () => {
   return (
     <CFormInputWithMask
       mask={Date}

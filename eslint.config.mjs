@@ -111,7 +111,12 @@ export default typescriptEslint.config(
   {
     files: ['packages/docs/**'],
     rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-var-requires': 'off',
+      'react/no-unescaped-entities': 'off',
+      'react-hooks/refs': 'off',
+      'react-hooks/set-state-in-effect': 'off',
+      'unicorn/consistent-function-scoping': 'off',
       'unicorn/prefer-module': 'off',
     },
   },

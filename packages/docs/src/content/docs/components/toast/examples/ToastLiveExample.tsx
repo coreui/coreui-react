@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react'
 import { CButton, CToast, CToastBody, CToaster, CToastHeader } from '@coreui/react'
 
 export const ToastLiveExample = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [toast, addToast] = useState<any>()
   const toaster = useRef(null)
   const exampleToast = (
