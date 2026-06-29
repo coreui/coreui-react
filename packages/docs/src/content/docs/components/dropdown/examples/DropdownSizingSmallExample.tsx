@@ -12,7 +12,9 @@ export const DropdownSizingSmallExample = () => {
   return (
     <>
       <CDropdown variant="btn-group">
-        <CDropdownToggle color="secondary" size="sm">Small button</CDropdownToggle>
+        <CDropdownToggle color="secondary" size="sm">
+          Small button
+        </CDropdownToggle>
         <CDropdownMenu>
           <CDropdownItem href="#">Action</CDropdownItem>
           <CDropdownItem href="#">Another action</CDropdownItem>
@@ -23,7 +25,9 @@ export const DropdownSizingSmallExample = () => {
       </CDropdown>
 
       <CDropdown variant="btn-group">
-        <CButton color="secondary" size="sm">Small split button</CButton>
+        <CButton color="secondary" size="sm">
+          Small split button
+        </CButton>
         <CDropdownToggle color="secondary" size="sm" split />
         <CDropdownMenu>
           <CDropdownItem href="#">Action</CDropdownItem>

@@ -13,7 +13,9 @@ export const NavPillsWithDropdownExample = () => {
   return (
     <CNav variant="pills">
       <CNavItem>
-        <CNavLink href="#" active>Active</CNavLink>
+        <CNavLink href="#" active>
+          Active
+        </CNavLink>
       </CNavItem>
       <CDropdown variant="nav-item">
         <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
@@ -27,7 +29,9 @@ export const NavPillsWithDropdownExample = () => {
         <CNavLink href="#">Link</CNavLink>
       </CNavItem>
       <CNavItem>
-        <CNavLink href="#" disabled>Disabled</CNavLink>
+        <CNavLink href="#" disabled>
+          Disabled
+        </CNavLink>
       </CNavItem>
     </CNav>
   )

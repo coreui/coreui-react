@@ -15,12 +15,19 @@ export const OffcanvasStaticBackdropExample = () => {
       <CButton color="primary" onClick={() => setVisible(true)}>
         Toggle static offcanvas
       </CButton>
-      <COffcanvas backdrop="static" placement="start" visible={visible} onHide={() => setVisible(false)}>
+      <COffcanvas
+        backdrop="static"
+        placement="start"
+        visible={visible}
+        onHide={() => setVisible(false)}
+      >
         <COffcanvasHeader>
           <COffcanvasTitle>Backdrop with scrolling</COffcanvasTitle>
           <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
         </COffcanvasHeader>
-        <COffcanvasBody>Try scrolling the rest of the page to see this option in action.</COffcanvasBody>
+        <COffcanvasBody>
+          Try scrolling the rest of the page to see this option in action.
+        </COffcanvasBody>
       </COffcanvas>
     </>
   )

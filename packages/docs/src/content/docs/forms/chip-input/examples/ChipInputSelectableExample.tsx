@@ -13,7 +13,7 @@ export const ChipInputSelectableExample = () => {
         placeholder="Select chips"
       />
       <p className="mt-2 mb-0 small text-body-secondary">
-        Selected: {selected.length ? selected.join(', ') : 'None'}
+        Selected: {selected.length > 0 ? selected.join(', ') : 'None'}
       </p>
     </>
   )

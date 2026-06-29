@@ -7,7 +7,15 @@ export const Placeholder2Example = () => {
       <p aria-hidden="true">
         <CPlaceholder xs={6} />
       </p>
-      <CPlaceholder as={CButton} color="primary" aria-hidden="true" disabled href="#" tabIndex={-1} xs={4} />
+      <CPlaceholder
+        as={CButton}
+        color="primary"
+        aria-hidden="true"
+        disabled
+        href="#"
+        tabIndex={-1}
+        xs={4}
+      />
     </>
   )
 }

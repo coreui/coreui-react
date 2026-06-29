@@ -5,7 +5,9 @@ export const DropdownMenuItemsDisabledExample = () => {
   return (
     <CDropdownMenu>
       <CDropdownItem href="#">Regular link</CDropdownItem>
-      <CDropdownItem href="#" disabled>Disabled link</CDropdownItem>
+      <CDropdownItem href="#" disabled>
+        Disabled link
+      </CDropdownItem>
       <CDropdownItem href="#">Another link</CDropdownItem>
     </CDropdownMenu>
   )

@@ -6,12 +6,7 @@ export const NavbarBrand2Example = () => {
     <CNavbar className="bg-body-tertiary">
       <CContainer fluid>
         <CNavbarBrand href="#">
-          <img
-            src={'/assets/brand/coreui-signet.svg'}
-            alt="CoreUI Signet"
-            width="22"
-            height="24"
-          />
+          <img src={'/assets/brand/coreui-signet.svg'} alt="CoreUI Signet" width="22" height="24" />
         </CNavbarBrand>
       </CContainer>
     </CNavbar>

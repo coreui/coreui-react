@@ -1,12 +1,5 @@
 import { useState } from 'react'
-import { 
-  CCol,
-  CNav,
-  CNavItem,
-  CNavLink,
-  CRow,
-  CTabContent,
-  CTabPane } from '@coreui/react'
+import { CCol, CNav, CNavItem, CNavLink, CRow, CTabContent, CTabPane } from '@coreui/react'
 import { LinearExample } from './LinearExample'
 import { BrandExample } from './BrandExample'
 import { FlagsExample } from './FlagsExample'
@@ -53,7 +46,7 @@ export const TabPanesExample = () => {
           </CNavLink>
         </CNavItem>
       </CNav>
-      <CTabContent className="pt-4" style={{"--cui-light": "#f0f4f7"}}>
+      <CTabContent className="pt-4" style={{ '--cui-light': '#f0f4f7' }}>
         <CTabPane role="tabpanel" aria-labelledby="home-tab" visible={activeKey === 1}>
           {activeKey === 1 && <LinearExample />}
         </CTabPane>

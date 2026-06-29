@@ -8,10 +8,16 @@ export const ListGroupCheckboxesAndRadios3Example = () => {
         <CFormCheck hitArea="full" label="First checkbox" value="" id="firstCheckboxStretched" />
       </CListGroupItem>
       <CListGroupItem>
-        <CFormCheck hitArea="full" label="Second checkbox" value="" id="secondCheckboxStretched" defaultChecked/>
+        <CFormCheck
+          hitArea="full"
+          label="Second checkbox"
+          value=""
+          id="secondCheckboxStretched"
+          defaultChecked
+        />
       </CListGroupItem>
       <CListGroupItem>
-        <CFormCheck hitArea="full" label="Third checkbox" value="" id="thirdCheckboxStretched"/>
+        <CFormCheck hitArea="full" label="Third checkbox" value="" id="thirdCheckboxStretched" />
       </CListGroupItem>
     </CListGroup>
   )

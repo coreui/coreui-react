@@ -9,7 +9,7 @@ export const FocusTrapBasicExample = () => {
       <CButton color="primary" onClick={() => setTrapActive(!trapActive)}>
         {trapActive ? 'Deactivate' : 'Activate'} Focus Trap
       </CButton>
-      
+
       <div className="mt-3 p-3 border rounded">
         <CFocusTrap active={trapActive}>
           <div className="p-3 bg-light border rounded">
@@ -23,7 +23,7 @@ export const FocusTrapBasicExample = () => {
           </div>
         </CFocusTrap>
       </div>
-      
+
       <div className="mt-3 p-3 border rounded">
         <h5>Outside Trapped Area</h5>
         <p>These elements are not accessible via Tab when focus trap is active.</p>

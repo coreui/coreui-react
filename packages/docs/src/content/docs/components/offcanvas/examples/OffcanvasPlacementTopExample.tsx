@@ -21,8 +21,8 @@ export const OffcanvasPlacementTopExample = () => {
           <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
         </COffcanvasHeader>
         <COffcanvasBody>
-          Content for the offcanvas goes here. You can place just about any React component or custom elements
-          here.
+          Content for the offcanvas goes here. You can place just about any React component or
+          custom elements here.
         </COffcanvasBody>
       </COffcanvas>
     </>

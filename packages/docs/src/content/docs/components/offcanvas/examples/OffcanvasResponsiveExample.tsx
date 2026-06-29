@@ -19,7 +19,12 @@ export const OffcanvasResponsiveExample = () => {
       <CAlert className="d-none d-lg-block" color="info">
         Resize your browser to show the responsive offcanvas toggle.
       </CAlert>
-      <COffcanvas backdrop="static" placement="start" visible={visible} onHide={() => setVisible(false)}>
+      <COffcanvas
+        backdrop="static"
+        placement="start"
+        visible={visible}
+        onHide={() => setVisible(false)}
+      >
         <COffcanvasHeader>
           <COffcanvasTitle>Responsive offcanvas</COffcanvasTitle>
           <CCloseButton className="text-reset" onClick={() => setVisible(false)} />

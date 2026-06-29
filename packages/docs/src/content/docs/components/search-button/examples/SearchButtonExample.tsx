@@ -22,7 +22,11 @@ export const SearchButtonExample = () => {
         aria-controls="search-button-modal"
         shortcut="meta+/,ctrl+/"
       />
-      <CModal visible={visible} onClose={() => setVisible(false)} aria-labelledby="search-button-modal-title">
+      <CModal
+        visible={visible}
+        onClose={() => setVisible(false)}
+        aria-labelledby="search-button-modal-title"
+      >
         <CModalHeader>
           <CModalTitle id="search-button-modal-title" className="w-100">
             <CFormInput type="search" placeholder="Search" aria-label="Search" />
@@ -31,19 +35,31 @@ export const SearchButtonExample = () => {
         <CModalBody>
           <p className="text-body-secondary small mb-2">Recent searches</p>
           <CListGroup flush>
-            <CListGroupItem as="button" type="button" className="d-flex justify-content-between align-items-center">
+            <CListGroupItem
+              as="button"
+              type="button"
+              className="d-flex justify-content-between align-items-center"
+            >
               CoreUI components overview
               <CBadge color="secondary" shape="rounded-pill">
                 Open
               </CBadge>
             </CListGroupItem>
-            <CListGroupItem as="button" type="button" className="d-flex justify-content-between align-items-center">
+            <CListGroupItem
+              as="button"
+              type="button"
+              className="d-flex justify-content-between align-items-center"
+            >
               Modal dialog examples
               <CBadge color="secondary" shape="rounded-pill">
                 Open
               </CBadge>
             </CListGroupItem>
-            <CListGroupItem as="button" type="button" className="d-flex justify-content-between align-items-center">
+            <CListGroupItem
+              as="button"
+              type="button"
+              className="d-flex justify-content-between align-items-center"
+            >
               Sidebar navigation customization
               <CBadge color="secondary" shape="rounded-pill">
                 Open

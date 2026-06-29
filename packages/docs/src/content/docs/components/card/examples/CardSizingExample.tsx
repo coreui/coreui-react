@@ -11,7 +11,9 @@ export const CardSizingExample = () => {
             <CCardText>
               With supporting text below as a natural lead-in to additional content.
             </CCardText>
-            <CButton color="primary" href="#">Go somewhere</CButton>
+            <CButton color="primary" href="#">
+              Go somewhere
+            </CButton>
           </CCardBody>
         </CCard>
       </CCol>
@@ -22,7 +24,9 @@ export const CardSizingExample = () => {
             <CCardText>
               With supporting text below as a natural lead-in to additional content.
             </CCardText>
-            <CButton color="primary" href="#">Go somewhere</CButton>
+            <CButton color="primary" href="#">
+              Go somewhere
+            </CButton>
           </CCardBody>
         </CCard>
       </CCol>

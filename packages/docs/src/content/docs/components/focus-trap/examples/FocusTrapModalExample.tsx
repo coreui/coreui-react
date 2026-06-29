@@ -1,12 +1,5 @@
 import React, { useState } from 'react'
-import {
-  CButton,
-  CModal,
-  CModalBody,
-  CModalFooter,
-  CModalHeader,
-  CModalTitle,
-} from '@coreui/react'
+import { CButton, CModal, CModalBody, CModalFooter, CModalHeader, CModalTitle } from '@coreui/react'
 
 export const FocusTrapModalExample = () => {
   const [modalVisible, setModalVisible] = useState(false)
@@ -23,19 +16,23 @@ export const FocusTrapModalExample = () => {
         </CModalHeader>
         <CModalBody>
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email</label>
-            <input 
-              type="email" 
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
+            <input
+              type="email"
               id="email"
-              className="form-control" 
+              className="form-control"
               placeholder="Enter your email"
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="message" className="form-label">Message</label>
-            <textarea 
+            <label htmlFor="message" className="form-label">
+              Message
+            </label>
+            <textarea
               id="message"
-              className="form-control" 
+              className="form-control"
               rows={3}
               placeholder="Enter your message"
             />

@@ -5,7 +5,9 @@ export const NavUnderlineExample = () => {
   return (
     <CNav variant="underline">
       <CNavItem>
-        <CNavLink href="#" active>Active</CNavLink>
+        <CNavLink href="#" active>
+          Active
+        </CNavLink>
       </CNavItem>
       <CNavItem>
         <CNavLink href="#">Link</CNavLink>
@@ -14,7 +16,9 @@ export const NavUnderlineExample = () => {
         <CNavLink href="#">Link</CNavLink>
       </CNavItem>
       <CNavItem>
-        <CNavLink href="#" disabled>Disabled</CNavLink>
+        <CNavLink href="#" disabled>
+          Disabled
+        </CNavLink>
       </CNavItem>
     </CNav>
   )

@@ -1,5 +1,12 @@
 import React from 'react'
-import { CSidebar, CSidebarBrand, CSidebarHeader, CSidebarNav, CNavItem, CTooltip } from '@coreui/react'
+import {
+  CSidebar,
+  CSidebarBrand,
+  CSidebarHeader,
+  CSidebarNav,
+  CNavItem,
+  CTooltip,
+} from '@coreui/react'
 
 import CIcon from '@coreui/icons-react'
 import { cilCart, cilCloudDownload, cilSpeedometer } from '@coreui/icons'

@@ -17,20 +17,28 @@ export const CardNavigationExample = () => {
       <CCardHeader>
         <CNav variant="tabs" className="card-header-tabs">
           <CNavItem>
-            <CNavLink href="#" active>Active</CNavLink>
+            <CNavLink href="#" active>
+              Active
+            </CNavLink>
           </CNavItem>
           <CNavItem>
             <CNavLink href="#">Link</CNavLink>
           </CNavItem>
           <CNavItem>
-            <CNavLink href="#" disabled>Disabled</CNavLink>
+            <CNavLink href="#" disabled>
+              Disabled
+            </CNavLink>
           </CNavItem>
         </CNav>
       </CCardHeader>
       <CCardBody>
         <CCardTitle>Special title treatment</CCardTitle>
-        <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
-        <CButton color="primary" href="#">Go somewhere</CButton>
+        <CCardText>
+          With supporting text below as a natural lead-in to additional content.
+        </CCardText>
+        <CButton color="primary" href="#">
+          Go somewhere
+        </CButton>
       </CCardBody>
     </CCard>
   )

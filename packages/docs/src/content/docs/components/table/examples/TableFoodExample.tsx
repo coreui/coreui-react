@@ -32,12 +32,7 @@ export const TableFoodExample = () => {
       _props: { scope: 'col' },
     },
   ]
-  const footer = [
-    'Footer',
-    'Footer',
-    'Footer',
-    'Footer',
-  ]
+  const footer = ['Footer', 'Footer', 'Footer', 'Footer']
   const items = [
     {
       id: 1,
@@ -60,5 +55,7 @@ export const TableFoodExample = () => {
       _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
     },
   ]
-  return <CTable columns={columns} footer={footer} items={items} tableHeadProps={{ color: 'light' }} />
+  return (
+    <CTable columns={columns} footer={footer} items={items} tableHeadProps={{ color: 'light' }} />
+  )
 }

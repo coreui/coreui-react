@@ -26,7 +26,9 @@ export const OffcanvasBodyScrollingExample = () => {
           <COffcanvasTitle>Offcanvas with body scrolling</COffcanvasTitle>
           <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
         </COffcanvasHeader>
-        <COffcanvasBody>Try scrolling the rest of the page to see this option in action.</COffcanvasBody>
+        <COffcanvasBody>
+          Try scrolling the rest of the page to see this option in action.
+        </COffcanvasBody>
       </COffcanvas>
     </>
   )

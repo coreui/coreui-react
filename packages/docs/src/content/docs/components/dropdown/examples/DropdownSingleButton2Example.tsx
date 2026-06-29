@@ -4,7 +4,9 @@ import { CDropdown, CDropdownItem, CDropdownMenu, CDropdownToggle } from '@coreu
 export const DropdownSingleButton2Example = () => {
   return (
     <CDropdown>
-      <CDropdownToggle href="#" color="secondary">Dropdown button</CDropdownToggle>
+      <CDropdownToggle href="#" color="secondary">
+        Dropdown button
+      </CDropdownToggle>
       <CDropdownMenu>
         <CDropdownItem href="#">Action</CDropdownItem>
         <CDropdownItem href="#">Another action</CDropdownItem>

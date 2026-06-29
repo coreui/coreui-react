@@ -7,7 +7,7 @@ export const FocusTrapEventsExample = () => {
 
   const addEvent = useCallback((event: string) => {
     const timestamp = new Date().toLocaleTimeString()
-    setEvents(prev => [`${timestamp}: ${event}`, ...prev.slice(0, 4)])
+    setEvents((prev) => [`${timestamp}: ${event}`, ...prev.slice(0, 4)])
   }, [])
 
   const handleActivate = useCallback(() => {
@@ -23,17 +23,14 @@ export const FocusTrapEventsExample = () => {
   return (
     <div>
       <div className="mb-3">
-        <CButton 
-          color="primary" 
-          onClick={() => setIsActive(!isActive)}
-        >
+        <CButton color="primary" onClick={() => setIsActive(!isActive)}>
           {isActive ? 'Deactivate' : 'Activate'} Focus Trap
         </CButton>
       </div>
 
       <div className="row g-3">
         <div className="col-md-8">
-          <CFocusTrap 
+          <CFocusTrap
             active={isActive}
             onActivate={handleActivate}
             onDeactivate={handleDeactivate}
@@ -44,42 +41,36 @@ export const FocusTrapEventsExample = () => {
               <p className="mb-3">
                 This area demonstrates event callbacks when the focus trap activates/deactivates.
               </p>
-              
+
               <div className="mb-3">
-                <label htmlFor="username" className="form-label">Username</label>
-                <input 
-                  type="text" 
+                <label htmlFor="username" className="form-label">
+                  Username
+                </label>
+                <input
+                  type="text"
                   id="username"
-                  className="form-control" 
+                  className="form-control"
                   placeholder="Enter username"
                 />
               </div>
-              
+
               <div className="mb-3">
-                <label htmlFor="email" className="form-label">Email</label>
-                <input 
-                  type="email" 
-                  id="email"
-                  className="form-control" 
-                  placeholder="Enter email"
-                />
+                <label htmlFor="email" className="form-label">
+                  Email
+                </label>
+                <input type="email" id="email" className="form-control" placeholder="Enter email" />
               </div>
-              
+
               <div className="d-flex gap-2">
-                <CButton color="success">
-                  Submit
-                </CButton>
-                <CButton 
-                  color="secondary" 
-                  onClick={() => setIsActive(false)}
-                >
+                <CButton color="success">Submit</CButton>
+                <CButton color="secondary" onClick={() => setIsActive(false)}>
                   Close
                 </CButton>
               </div>
             </div>
           </CFocusTrap>
         </div>
-        
+
         <div className="col-md-4">
           <div className="border rounded p-3">
             <h6>Event Log</h6>
@@ -88,11 +79,7 @@ export const FocusTrapEventsExample = () => {
             ) : (
               <div>
                 {events.map((event, index) => (
-                  <CAlert 
-                    key={index} 
-                    color="info" 
-                    className="small py-2 mb-1"
-                  >
+                  <CAlert key={index} color="info" className="small py-2 mb-1">
                     {event}
                   </CAlert>
                 ))}

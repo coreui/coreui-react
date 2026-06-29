@@ -1,5 +1,11 @@
 import React from 'react'
-import { CCloseButton, COffcanvas, COffcanvasBody, COffcanvasHeader, COffcanvasTitle } from '@coreui/react'
+import {
+  CCloseButton,
+  COffcanvas,
+  COffcanvasBody,
+  COffcanvasHeader,
+  COffcanvasTitle,
+} from '@coreui/react'
 
 export const OffcanvasDarkExample = () => {
   return (
@@ -9,8 +15,8 @@ export const OffcanvasDarkExample = () => {
         <CCloseButton className="text-reset" />
       </COffcanvasHeader>
       <COffcanvasBody>
-        Content for the offcanvas goes here. You can place just about any React component or custom elements
-        here.
+        Content for the offcanvas goes here. You can place just about any React component or custom
+        elements here.
       </COffcanvasBody>
     </COffcanvas>
   )

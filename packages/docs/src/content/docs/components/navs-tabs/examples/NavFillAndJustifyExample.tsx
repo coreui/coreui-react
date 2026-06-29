@@ -5,7 +5,9 @@ export const NavFillAndJustifyExample = () => {
   return (
     <CNav variant="pills" layout="fill">
       <CNavItem>
-        <CNavLink href="#" active>Active</CNavLink>
+        <CNavLink href="#" active>
+          Active
+        </CNavLink>
       </CNavItem>
       <CNavItem>
         <CNavLink href="#">Link</CNavLink>
@@ -14,7 +16,9 @@ export const NavFillAndJustifyExample = () => {
         <CNavLink href="#">Link</CNavLink>
       </CNavItem>
       <CNavItem>
-        <CNavLink href="#" disabled>Disabled</CNavLink>
+        <CNavLink href="#" disabled>
+          Disabled
+        </CNavLink>
       </CNavItem>
     </CNav>
   )

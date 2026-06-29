@@ -32,7 +32,12 @@ export const SearchButtonOffcanvasExample = () => {
           <CCloseButton className="text-reset" onClick={() => setVisible(false)} />
         </COffcanvasHeader>
         <COffcanvasBody>
-          <CFormInput type="search" className="mb-3" placeholder="Search..." aria-label="Search in panel" />
+          <CFormInput
+            type="search"
+            className="mb-3"
+            placeholder="Search..."
+            aria-label="Search in panel"
+          />
           <p className="mb-0">Use this space for filters, recent searches, or command shortcuts.</p>
         </COffcanvasBody>
       </COffcanvas>
