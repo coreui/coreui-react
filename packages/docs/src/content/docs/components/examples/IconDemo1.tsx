@@ -1,8 +1,4 @@
-import { useState } from 'react'
-import { CCol, CNav, CNavItem, CNavLink, CRow, CTabContent, CTabPane } from '@coreui/react'
-import { CIcon, CIconSvg } from '@coreui/icons-react/src/index'
-import { cilList, cilShieldAlt } from '@coreui/icons'
-import * as icon from '@coreui/icons'
+import { CIconSvg } from '@coreui/icons-react/src/index'
 
 export const IconDemo1 = () => (
   <>

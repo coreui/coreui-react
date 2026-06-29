@@ -4,6 +4,7 @@ import eslintPluginUnicorn from 'eslint-plugin-unicorn'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import eslintPluginReact from 'eslint-plugin-react'
 import eslintPluginReactHooks from 'eslint-plugin-react-hooks'
+import eslintPluginUnusedImports from 'eslint-plugin-unused-imports'
 import globals from 'globals'
 import typescriptEslint from 'typescript-eslint'
 
@@ -19,6 +20,7 @@ export default typescriptEslint.config(
     ],
     plugins: {
       'react-hooks': eslintPluginReactHooks,
+      'unused-imports': eslintPluginUnusedImports,
     },
     files: ['packages/**/src/**/*.{js,ts,tsx}'],
     languageOptions: {
@@ -43,6 +45,12 @@ export default typescriptEslint.config(
     },
     rules: {
       ...eslintPluginReactHooks.configs.recommended.rules,
+      '@typescript-eslint/no-unused-vars': 'off',
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': [
+        'error',
+        { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
+      ],
       'no-console': 'off',
       'no-debugger': 'off',
       // the library compiles with the classic JSX transform (tsconfig "jsx": "react"),

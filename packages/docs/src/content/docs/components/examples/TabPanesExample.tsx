@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CCol, CNav, CNavItem, CNavLink, CRow, CTabContent, CTabPane } from '@coreui/react'
+import { CNav, CNavItem, CNavLink, CTabContent, CTabPane } from '@coreui/react'
 import { LinearExample } from './LinearExample'
 import { BrandExample } from './BrandExample'
 import { FlagsExample } from './FlagsExample'

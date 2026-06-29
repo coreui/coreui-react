@@ -1,14 +1,4 @@
-import {
-  CBadge,
-  CTable,
-  CTableBody,
-  CTableCaption,
-  CTableDataCell,
-  CTableFoot,
-  CTableHead,
-  CTableHeaderCell,
-  CTableRow,
-} from '@coreui/react'
+import { CTable } from '@coreui/react'
 
 export const ActiveTableDarkExample = () => {
   const columns = [

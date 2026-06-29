@@ -1,7 +1,5 @@
-import { useState } from 'react'
-import { CCol, CNav, CNavItem, CNavLink, CRow, CTabContent, CTabPane } from '@coreui/react'
-import { CIcon, CIconSvg } from '@coreui/icons-react/src/index'
-import { cilList, cilShieldAlt } from '@coreui/icons'
+import { CCol, CRow } from '@coreui/react'
+import { CIcon } from '@coreui/icons-react/src/index'
 import * as icon from '@coreui/icons'
 
 export const LinearExample = () => {

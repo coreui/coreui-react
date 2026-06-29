@@ -1,10 +1,7 @@
 import {
-  CBadge,
   CTable,
   CTableBody,
-  CTableCaption,
   CTableDataCell,
-  CTableFoot,
   CTableHead,
   CTableHeaderCell,
   CTableRow,

@@ -1,14 +1,4 @@
-import {
-  CButton,
-  CForm,
-  CFormCheck,
-  CFormInput,
-  CFormLabel,
-  CFormSelect,
-  CFormText,
-  CCol,
-  CRow,
-} from '@coreui/react'
+import { CButton, CForm, CFormCheck, CFormInput, CFormLabel, CFormSelect } from '@coreui/react'
 
 export const OverviewDemo3 = () => (
   <>
