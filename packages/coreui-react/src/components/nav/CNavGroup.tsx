@@ -183,7 +183,7 @@ export const CNavGroup: PolymorphicRefForwardingComponent<'li', CNavGroupProps> 
 
     const onExiting = () => {
       // @ts-expect-error reflow is necessary to get correct height of the element
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
       const reflow = navItemsRef.current?.offsetHeight
       setHeight(0)
     }

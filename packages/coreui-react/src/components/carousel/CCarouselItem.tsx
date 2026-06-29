@@ -51,7 +51,7 @@ export const CCarouselItem = forwardRef<HTMLDivElement, CCarouselItemProps>(
         setTimeout(() => {
           if (count !== 0) {
             // @ts-expect-error reflow is necessary to proper transition
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
             const reflow = carouselItemRef.current?.offsetHeight
             setDirectionClassName(`carousel-item-${direction === 'next' ? 'start' : 'end'}`)
           }
