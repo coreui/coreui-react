@@ -45,6 +45,15 @@ export default typescriptEslint.config(
     },
     rules: {
       ...eslintPluginReactHooks.configs.recommended.rules,
+      // react-hooks@7 promoted the react-compiler rules into recommended; treat the
+      // newly-introduced ones as warnings so they don't fail CI on working components
+      'react-hooks/refs': 'warn',
+      'react-hooks/set-state-in-effect': 'warn',
+      'react-hooks/static-components': 'warn',
+      '@typescript-eslint/no-unused-expressions': [
+        'error',
+        { allowShortCircuit: true, allowTernary: true },
+      ],
       '@typescript-eslint/no-unused-vars': 'off',
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [

@@ -52,7 +52,7 @@ export const CCarouselItem = forwardRef<HTMLDivElement, CCarouselItemProps>(
           if (count !== 0) {
             // @ts-expect-error reflow is necessary to proper transition
 
-            const reflow = carouselItemRef.current?.offsetHeight
+            const _reflow = carouselItemRef.current?.offsetHeight
             setDirectionClassName(`carousel-item-${direction === 'next' ? 'start' : 'end'}`)
           }
         }, 0)

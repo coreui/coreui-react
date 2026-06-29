@@ -1,4 +1,4 @@
-import React, { forwardRef, TableHTMLAttributes, useMemo } from 'react'
+import React, { forwardRef, ReactNode, TableHTMLAttributes, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -210,7 +210,7 @@ export const CTable = forwardRef<HTMLTableElement, CTableProps>(
                           })}
                           key={index}
                         >
-                          {item[colName]}
+                          {item[colName] as ReactNode}
                         </CTableDataCell>
                       ) : null
                     })}

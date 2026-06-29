@@ -17,6 +17,7 @@ export type FooterItem = {
 }
 
 export type Item = {
-  [key: string]: number | string | any
+  _cellProps?: Record<string, CTableDataCellProps | undefined>
   _props?: CTableRowProps
+  [key: string]: unknown
 }
