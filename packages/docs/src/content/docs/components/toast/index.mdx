@@ -1,0 +1,96 @@
+---
+title: "React Toast Component"
+name: "Toast"
+description: "Push notifications to your visitors with a toast, a lightweight and easily customizable alert message."
+otherFrameworks:
+  - toast
+---
+
+import { ToastExample } from './examples/ToastExample'
+import ToastExampleRaw from './examples/ToastExample.tsx?raw'
+import { ToastLiveExample } from './examples/ToastLiveExample'
+import ToastLiveExampleRaw from './examples/ToastLiveExample.tsx?raw'
+import ToastLiveExampleJsRaw from './examples/ToastLiveExample.jsx?raw'
+import { ToastTranslucentExample } from './examples/ToastTranslucentExample'
+import ToastTranslucentExampleRaw from './examples/ToastTranslucentExample.tsx?raw'
+import { ToastStackingExample } from './examples/ToastStackingExample'
+import ToastStackingExampleRaw from './examples/ToastStackingExample.tsx?raw'
+import { ToastCustomContentExample } from './examples/ToastCustomContentExample'
+import ToastCustomContentExampleRaw from './examples/ToastCustomContentExample.tsx?raw'
+import { ToastCustomContent2Example } from './examples/ToastCustomContent2Example'
+import ToastCustomContent2ExampleRaw from './examples/ToastCustomContent2Example.tsx?raw'
+import { ToastColorSchemesExample } from './examples/ToastColorSchemesExample'
+import ToastColorSchemesExampleRaw from './examples/ToastColorSchemesExample.tsx?raw'
+
+React toasts are lightweight notifications designed to mimic the push notifications that have been popularized by mobile and desktop operating systems. They’re built with flexbox, so they’re easy to align and position.
+
+## Overview
+
+Things to know when using the toast plugin:
+
+- Toasts are opt-in for performance reasons, so **you must initialize them yourself**.
+- Toasts will automatically hide if you do not specify `autohide: false`.
+
+## Examples
+
+### Basic
+
+To encourage extensible and predictable toasts, we recommend a header and body. Toast headers use `display: flex`, allowing easy alignment of content thanks to our margin and flexbox utilities.
+
+Toasts are as flexible as you need and have very little required markup. At a minimum, we require a single element to contain your "toasted" content and strongly encourage a dismiss button.
+
+<Example code={ToastExampleRaw} name="ToastExample" componentName="React Toast">
+  <ToastExample client:only="react" />
+</Example>
+
+<Example code={ToastLiveExampleRaw} codeJs={ToastLiveExampleJsRaw} name="ToastLiveExample" componentName="React Toast">
+  <ToastLiveExample client:only="react" />
+</Example>
+
+### Translucent
+
+Toasts are slightly translucent to blend in with what's below them.
+
+<Example code={ToastTranslucentExampleRaw} name="ToastTranslucentExample" componentName="React Toast" class="bg-dark">
+  <ToastTranslucentExample client:only="react" />
+</Example>
+
+### Stacking
+
+You can stack toasts by wrapping them in a toast container, which will vertically add some spacing.
+
+<Example code={ToastStackingExampleRaw} name="ToastStackingExample" componentName="React Toast">
+  <ToastStackingExample client:only="react" />
+</Example>
+
+### Custom content
+
+Customize your toasts by removing sub-components, tweaking them with [utilities](https://coreui.io/bootstrap/docs/utilities/api), or by adding your own markup. Here we've created a simpler toast by removing the default `<CToastHeader>`, adding a custom hide icon from [CoreUI Icons](https://coreui.io/icons/), and using some [flexbox utilities](https://coreui.io/bootstrap/docs/utilities/flex) to adjust the layout.
+
+<Example code={ToastCustomContentExampleRaw} name="ToastCustomContentExample" componentName="React Toast">
+  <ToastCustomContentExample client:only="react" />
+</Example>
+
+Alternatively, you can also add additional controls and components to toasts.
+
+<Example code={ToastCustomContent2ExampleRaw} name="ToastCustomContent2Example" componentName="React Toast">
+  <ToastCustomContent2Example client:only="react" />
+</Example>
+
+### Color schemes
+
+Building on the above example, you can create different toast color schemes with our [color](https://coreui.io/bootstrap/docs/utilities/colors) and [background](https://coreui.io/bootstrap/docs//utilities/background) utilities. Here we've set `color="primary"` and added `.text-white` class to the `<Ctoast>`, and then set `white` property to our close button. For a crisp edge, we remove the default border with `.border-0`.
+
+<Example code={ToastColorSchemesExampleRaw} name="ToastColorSchemesExample" componentName="React Toast">
+  <ToastColorSchemesExample client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CToast /&gt;](./api/#ctoast)
+- [&lt;CToastHeader /&gt;](./api/#ctoastheader)
+- [&lt;CToastBody /&gt;](./api/#ctoastbody)
+- [&lt;CToastClose /&gt;](./api/#ctoastclose)
+- [&lt;CToaster /&gt;](./api/#ctoaster)

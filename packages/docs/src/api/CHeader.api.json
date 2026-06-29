@@ -1,0 +1,30 @@
+{
+  "name": "CHeader",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "container",
+      "type": "boolean | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"xxl\" | \"fluid\" | undefined",
+      "default": null,
+      "description": "Defines optional container wrapping children elements.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "position",
+      "type": "\"fixed\" | \"sticky\" | undefined",
+      "default": null,
+      "description": "Place header in non-static positions.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CHeader } from '@coreui/react'"
+}

@@ -1,0 +1,48 @@
+---
+title: "React Collapse Component"
+name: "Collapse"
+description: "React collapse component toggles the visibility of content across your project with a few classes and some scripts. Useful for a large amount of content."
+otherFrameworks:
+  - collapse
+---
+
+import { CollapseExample } from './examples/CollapseExample'
+import CollapseExampleRaw from './examples/CollapseExample.tsx?raw'
+import { CollapseHorizontalExample } from './examples/CollapseHorizontalExample'
+import CollapseHorizontalExampleRaw from './examples/CollapseHorizontalExample.tsx?raw'
+import { CollapseMultipleTargetsExample } from './examples/CollapseMultipleTargetsExample'
+import CollapseMultipleTargetsExampleRaw from './examples/CollapseMultipleTargetsExample.tsx?raw'
+
+## How it works
+
+The collapse component is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. Collapsing an element will animate the `height` from its current value to `0`. Given how CSS handles animations, you cannot use `padding` on a `.collapse` element. Instead, use the class as an independent wrapping element.
+
+## Example
+
+You can use a link or a button component.
+
+<Example code={CollapseExampleRaw} name="CollapseExample" componentName="React Collapse">
+  <CollapseExample client:only="react" />
+</Example>
+
+## Horizontal
+
+The collapse plugin also supports horizontal collapsing. Add the `horizontal` property to transition the `width` instead of `height` and set a `width` on the immediate child element.
+
+<Example code={CollapseHorizontalExampleRaw} name="CollapseHorizontalExample" componentName="React Collapse">
+  <CollapseHorizontalExample client:only="react" />
+</Example>
+
+## Multiple targets
+
+A `<CButton>` can show and hide multiple elements.
+
+<Example code={CollapseMultipleTargetsExampleRaw} name="CollapseMultipleTargetsExample" componentName="React Collapse">
+  <CollapseMultipleTargetsExample client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CCollapse /&gt;](./api/#ccollapse)

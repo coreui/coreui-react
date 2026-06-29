@@ -1,0 +1,54 @@
+{
+  "name": "CTabPanel",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "itemKey",
+      "type": "string | number",
+      "default": null,
+      "description": "Item key.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onHide",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the component requests to be hidden.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onShow",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the component requests to be shown.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "transition",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Enable fade in and fade out transition.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Toggle the visibility of component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CTabPanel } from '@coreui/react'"
+}

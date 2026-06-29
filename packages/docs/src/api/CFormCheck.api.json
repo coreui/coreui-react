@@ -1,0 +1,134 @@
+{
+  "name": "CFormCheck",
+  "props": [
+    {
+      "name": "button",
+      "type": "ButtonObject | undefined",
+      "default": null,
+      "description": "Create button-like checkboxes and radio buttons.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "feedback",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Provide valuable, actionable feedback.",
+      "since": "4.2.0",
+      "deprecated": null
+    },
+    {
+      "name": "feedbackInvalid",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Provide valuable, actionable feedback.",
+      "since": "4.2.0",
+      "deprecated": null
+    },
+    {
+      "name": "feedbackValid",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.",
+      "since": "4.2.0",
+      "deprecated": null
+    },
+    {
+      "name": "floatingLabel",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.",
+      "since": "4.2.0",
+      "deprecated": null
+    },
+    {
+      "name": "hitArea",
+      "type": "\"full\" | undefined",
+      "default": null,
+      "description": "Sets hit area to the full area of the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "id",
+      "type": "string | undefined",
+      "default": null,
+      "description": "The id global attribute defines an identifier (ID) that must be unique in the whole document.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "indeterminate",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Input Checkbox indeterminate Property.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "inline",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Group checkboxes or radios on the same horizontal row.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "invalid",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Set component validation state to invalid.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "label",
+      "type": "ReactNode",
+      "default": null,
+      "description": "The element represents a caption for a component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "reverse",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Put checkboxes or radios on the opposite side.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "tooltipFeedback",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Display validation feedback in a styled tooltip.",
+      "since": "4.2.0",
+      "deprecated": null
+    },
+    {
+      "name": "type",
+      "type": "\"checkbox\" | \"radio\" | undefined",
+      "default": "checkbox",
+      "description": "Specifies the type of component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "valid",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Set component validation state to valid.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CFormCheck } from '@coreui/react'"
+}

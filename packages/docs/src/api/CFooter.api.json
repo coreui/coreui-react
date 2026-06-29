@@ -1,0 +1,22 @@
+{
+  "name": "CFooter",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "position",
+      "type": "\"fixed\" | \"sticky\" | undefined",
+      "default": null,
+      "description": "Place footer in non-static positions.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CFooter } from '@coreui/react'"
+}

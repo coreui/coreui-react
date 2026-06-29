@@ -1,0 +1,205 @@
+---
+title: "React Bootstrap Navbar Component"
+name: "Navbar with Bootstrap Styling"
+description: "Learn how to use the React Bootstrap Navbar component from CoreUI to create responsive navigation headers with branding, dropdowns, collapsible content, and placement options."
+bootstrap: true
+---
+
+import { NavbarExample } from './examples/NavbarExample'
+import NavbarExampleRaw from './examples/NavbarExample.tsx?raw'
+import { NavbarBrandExample } from './examples/NavbarBrandExample'
+import NavbarBrandExampleRaw from './examples/NavbarBrandExample.tsx?raw'
+import { NavbarBrand2Example } from './examples/NavbarBrand2Example'
+import NavbarBrand2ExampleRaw from './examples/NavbarBrand2Example.tsx?raw'
+import { NavbarBrand3Example } from './examples/NavbarBrand3Example'
+import NavbarBrand3ExampleRaw from './examples/NavbarBrand3Example.tsx?raw'
+import { NavbarNavExample } from './examples/NavbarNavExample'
+import NavbarNavExampleRaw from './examples/NavbarNavExample.tsx?raw'
+import { NavbarNav2Example } from './examples/NavbarNav2Example'
+import NavbarNav2ExampleRaw from './examples/NavbarNav2Example.tsx?raw'
+import { NavbarNav3Example } from './examples/NavbarNav3Example'
+import NavbarNav3ExampleRaw from './examples/NavbarNav3Example.tsx?raw'
+import { NavbarFormsExample } from './examples/NavbarFormsExample'
+import NavbarFormsExampleRaw from './examples/NavbarFormsExample.tsx?raw'
+import { NavbarForms2Example } from './examples/NavbarForms2Example'
+import NavbarForms2ExampleRaw from './examples/NavbarForms2Example.tsx?raw'
+import { NavbarForms3Example } from './examples/NavbarForms3Example'
+import NavbarForms3ExampleRaw from './examples/NavbarForms3Example.tsx?raw'
+import { NavbarForms4Example } from './examples/NavbarForms4Example'
+import NavbarForms4ExampleRaw from './examples/NavbarForms4Example.tsx?raw'
+import { NavbarText } from './examples/NavbarText'
+import NavbarTextRaw from './examples/NavbarText.tsx?raw'
+import { NavbarColorSchemesExample } from './examples/NavbarColorSchemesExample'
+import NavbarColorSchemesExampleRaw from './examples/NavbarColorSchemesExample.tsx?raw'
+import { NavbarContainersExample } from './examples/NavbarContainersExample'
+import NavbarContainersExampleRaw from './examples/NavbarContainersExample.tsx?raw'
+import { NavbarContainers2Example } from './examples/NavbarContainers2Example'
+import NavbarContainers2ExampleRaw from './examples/NavbarContainers2Example.tsx?raw'
+import { NavbarPlacementExample } from './examples/NavbarPlacementExample'
+import NavbarPlacementExampleRaw from './examples/NavbarPlacementExample.tsx?raw'
+import { NavbarPlacementFixedTopExample } from './examples/NavbarPlacementFixedTopExample'
+import NavbarPlacementFixedTopExampleRaw from './examples/NavbarPlacementFixedTopExample.tsx?raw'
+import { NavbarPlacementFixedBottomExample } from './examples/NavbarPlacementFixedBottomExample'
+import NavbarPlacementFixedBottomExampleRaw from './examples/NavbarPlacementFixedBottomExample.tsx?raw'
+import { NavbarPlacementStickyTopExample } from './examples/NavbarPlacementStickyTopExample'
+import NavbarPlacementStickyTopExampleRaw from './examples/NavbarPlacementStickyTopExample.tsx?raw'
+import { NavbarResponsiveTogglerExample } from './examples/NavbarResponsiveTogglerExample'
+import NavbarResponsiveTogglerExampleRaw from './examples/NavbarResponsiveTogglerExample.tsx?raw'
+import { NavbarResponsiveToggler2Example } from './examples/NavbarResponsiveToggler2Example'
+import NavbarResponsiveToggler2ExampleRaw from './examples/NavbarResponsiveToggler2Example.tsx?raw'
+import { NavbarResponsiveToggler3Example } from './examples/NavbarResponsiveToggler3Example'
+import NavbarResponsiveToggler3ExampleRaw from './examples/NavbarResponsiveToggler3Example.tsx?raw'
+import { NavbarResponsiveExternalContentExample } from './examples/NavbarResponsiveExternalContentExample'
+import NavbarResponsiveExternalContentExampleRaw from './examples/NavbarResponsiveExternalContentExample.tsx?raw'
+import { NavbarResponsiveOffcanvasExample } from './examples/NavbarResponsiveOffcanvasExample'
+import NavbarResponsiveOffcanvasExampleRaw from './examples/NavbarResponsiveOffcanvasExample.tsx?raw'
+import { NavbarResponsiveOffcanvas2Example } from './examples/NavbarResponsiveOffcanvas2Example'
+import NavbarResponsiveOffcanvas2ExampleRaw from './examples/NavbarResponsiveOffcanvas2Example.tsx?raw'
+
+## Supported subcomponents in React Bootstrap Navbar
+
+The React Bootstrap Navbar component includes flexible subcomponents for building responsive headers:
+
+- `<CNavbarBrand>` – branding/logo.
+- `<CNavbarNav>` – navigation links and dropdowns.
+- `<CNavbarToggler>` – toggles content collapse.
+- `<CNavbarText>` – inline text.
+- `<CCollapse>` – groups and hides navbar content.
+
+## Basic usage of React Bootstrap Navbar
+
+<Example code={NavbarExampleRaw} name="NavbarExample" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarExample client:only="react" />
+</Example>
+
+### Branding
+
+Use `<CNavbarBrand>` to display your brand name or logo.
+
+<Example code={NavbarBrandExampleRaw} name="NavbarBrandExample" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarBrandExample client:only="react" />
+</Example>
+<Example code={NavbarBrand2ExampleRaw} name="NavbarBrand2Example" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarBrand2Example client:only="react" />
+</Example>
+<Example code={NavbarBrand3ExampleRaw} name="NavbarBrand3Example" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarBrand3Example client:only="react" />
+</Example>
+
+### Navigation links and dropdowns
+
+Navigation inside the React Bootstrap Navbar uses `<CNavbarNav>`.
+
+<Example code={NavbarNavExampleRaw} name="NavbarNavExample" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarNavExample client:only="react" />
+</Example>
+<Example code={NavbarNav2ExampleRaw} name="NavbarNav2Example" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarNav2Example client:only="react" />
+</Example>
+<Example code={NavbarNav3ExampleRaw} name="NavbarNav3Example" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarNav3Example client:only="react" />
+</Example>
+
+### Forms in navbars
+
+Include inputs, buttons, or entire forms in your navbar layout.
+
+<Example code={NavbarFormsExampleRaw} name="NavbarFormsExample" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarFormsExample client:only="react" />
+</Example>
+<Example code={NavbarForms2ExampleRaw} name="NavbarForms2Example" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarForms2Example client:only="react" />
+</Example>
+<Example code={NavbarForms3ExampleRaw} name="NavbarForms3Example" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarForms3Example client:only="react" />
+</Example>
+<Example code={NavbarForms4ExampleRaw} name="NavbarForms4Example" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarForms4Example client:only="react" />
+</Example>
+
+### Text in navbars
+
+Use `<CNavbarText>` for inline text blocks.
+
+<Example code={NavbarTextRaw} name="NavbarText" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarText client:only="react" />
+</Example>
+
+## React Bootstrap Navbar color schemes
+
+Use `colorScheme="light"` or `colorScheme="dark"` combined with `.bg-*` utilities for full control of background and text colors.
+
+<Example code={NavbarColorSchemesExampleRaw} name="NavbarColorSchemesExample" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarColorSchemesExample client:only="react" />
+</Example>
+
+## Containers
+
+Wrap your navbar in a `<CContainer>` to center its content or apply spacing.
+
+<Example code={NavbarContainersExampleRaw} name="NavbarContainersExample" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarContainersExample client:only="react" />
+</Example>
+<Example code={NavbarContainers2ExampleRaw} name="NavbarContainers2Example" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarContainers2Example client:only="react" />
+</Example>
+
+## Navbar placement
+
+Use the `placement` prop to fix navbars to the top or bottom or make them sticky.
+
+<Example code={NavbarPlacementExampleRaw} name="NavbarPlacementExample" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarPlacementExample client:only="react" />
+</Example>
+<Example code={NavbarPlacementFixedTopExampleRaw} name="NavbarPlacementFixedTopExample" componentName="React Bootstrap Navbar" class="theme-bootstrap p-4 overflow-hidden">
+  <NavbarPlacementFixedTopExample client:only="react" />
+</Example>
+<Example code={NavbarPlacementFixedBottomExampleRaw} name="NavbarPlacementFixedBottomExample" componentName="React Bootstrap Navbar" class="theme-bootstrap p-4">
+  <NavbarPlacementFixedBottomExample client:only="react" />
+</Example>
+<Example code={NavbarPlacementStickyTopExampleRaw} name="NavbarPlacementStickyTopExample" componentName="React Bootstrap Navbar" class="theme-bootstrap p-4 overflow-hidden">
+  <NavbarPlacementStickyTopExample client:only="react" />
+</Example>
+
+## Responsive behaviors in React Bootstrap Navbar
+
+Use `expand` prop to control when the navbar collapses:
+
+<Example code={NavbarResponsiveTogglerExampleRaw} name="NavbarResponsiveTogglerExample" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarResponsiveTogglerExample client:only="react" />
+</Example>
+<Example code={NavbarResponsiveToggler2ExampleRaw} name="NavbarResponsiveToggler2Example" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarResponsiveToggler2Example client:only="react" />
+</Example>
+<Example code={NavbarResponsiveToggler3ExampleRaw} name="NavbarResponsiveToggler3Example" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarResponsiveToggler3Example client:only="react" />
+</Example>
+
+### External content
+
+You can toggle external containers using collapse plugins.
+
+<Example code={NavbarResponsiveExternalContentExampleRaw} name="NavbarResponsiveExternalContentExample" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarResponsiveExternalContentExample client:only="react" />
+</Example>
+
+### Offcanvas navbars
+
+Turn the responsive navbar into an offcanvas drawer with `expand="*"` or `expand="xxl"`.
+
+<Example code={NavbarResponsiveOffcanvasExampleRaw} name="NavbarResponsiveOffcanvasExample" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarResponsiveOffcanvasExample client:only="react" />
+</Example>
+<Example code={NavbarResponsiveOffcanvas2ExampleRaw} name="NavbarResponsiveOffcanvas2Example" componentName="React Bootstrap Navbar" class="theme-bootstrap">
+  <NavbarResponsiveOffcanvas2Example client:only="react" />
+</Example>
+
+## API reference
+
+Explore the full API for React Bootstrap Navbar components:
+
+- [&lt;CNavbar /&gt;](../api/#cnavbar)
+- [&lt;CNavbarBrand /&gt;](../api/#cnavbarbrand)
+- [&lt;CNavbarNav /&gt;](../api/#cnavbarnav)
+- [&lt;CNavbarText /&gt;](../api/#cnavbartext)
+- [&lt;CNavbarToggler /&gt;](../api/#cnavbartoggler)

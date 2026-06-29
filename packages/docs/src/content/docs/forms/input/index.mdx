@@ -1,0 +1,100 @@
+---
+title: "React Form Input Component"
+name: "Form control"
+description: "React input components. Give textual form `<input>`s an upgrade with custom styles, sizing, focus states, validation, and more."
+otherFrameworks:
+  - input
+---
+
+import { FormInputExample } from './examples/FormInputExample'
+import FormInputExampleRaw from './examples/FormInputExample.tsx?raw'
+import { FormInputSizingExample } from './examples/FormInputSizingExample'
+import FormInputSizingExampleRaw from './examples/FormInputSizingExample.tsx?raw'
+import { FormInputDisabledExample } from './examples/FormInputDisabledExample'
+import FormInputDisabledExampleRaw from './examples/FormInputDisabledExample.tsx?raw'
+import { FormInputReadonlyExample } from './examples/FormInputReadonlyExample'
+import FormInputReadonlyExampleRaw from './examples/FormInputReadonlyExample.tsx?raw'
+import { FormInputReadonlyPlainTextExample } from './examples/FormInputReadonlyPlainTextExample'
+import FormInputReadonlyPlainTextExampleRaw from './examples/FormInputReadonlyPlainTextExample.tsx?raw'
+import { FormInputReadonlyPlainText2Example } from './examples/FormInputReadonlyPlainText2Example'
+import FormInputReadonlyPlainText2ExampleRaw from './examples/FormInputReadonlyPlainText2Example.tsx?raw'
+import { FormInputFileExample } from './examples/FormInputFileExample'
+import FormInputFileExampleRaw from './examples/FormInputFileExample.tsx?raw'
+import { FormInputColorExample } from './examples/FormInputColorExample'
+import FormInputColorExampleRaw from './examples/FormInputColorExample.tsx?raw'
+
+## Example
+
+<Example code={FormInputExampleRaw} name="FormInputExample" componentName="React Form Input">
+  <FormInputExample client:only="react" />
+</Example>
+
+If you need to add custom classNames to form's components, or need to add some custom elements you can add each form component separately. Please check the example below.
+
+```jsx
+<CForm>
+  <CFormLabel htmlFor="exampleFormControlInput1">Email address</CFormLabel>
+  <CFormInput type="email" id="exampleFormControlInput1" placeholder="name@example.com" aria-describedby="exampleFormControlInputHelpInline" />
+  <CFormText as="span" id="exampleFormControlInputHelpInline">
+    Must be 8-20 characters long.
+  </CFormText>
+</CForm>
+```
+
+## Sizing
+
+Set heights using `size` property like `size="lg"` and `size="sm"`.
+
+<Example code={FormInputSizingExampleRaw} name="FormInputSizingExample" componentName="React Form Input">
+  <FormInputSizingExample client:only="react" />
+</Example>
+
+## Disabled
+
+Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
+
+<Example code={FormInputDisabledExampleRaw} name="FormInputDisabledExample" componentName="React Form Input">
+  <FormInputDisabledExample client:only="react" />
+</Example>
+
+## Readonly
+
+Add the `readOnly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
+
+<Example code={FormInputReadonlyExampleRaw} name="FormInputReadonlyExample" componentName="React Form Input">
+  <FormInputReadonlyExample client:only="react" />
+</Example>
+
+## Readonly plain text
+
+If you want to have `<input readonly>` elements in your form styled as plain text, use the `plainText` boolean property to remove the default form field styling and preserve the correct margin and padding.
+
+<Example code={FormInputReadonlyPlainTextExampleRaw} name="FormInputReadonlyPlainTextExample" componentName="React Form Input">
+  <FormInputReadonlyPlainTextExample client:only="react" />
+</Example>
+
+<Example code={FormInputReadonlyPlainText2ExampleRaw} name="FormInputReadonlyPlainText2Example" componentName="React Form Input">
+  <FormInputReadonlyPlainText2Example client:only="react" />
+</Example>
+
+## File input
+
+<Example code={FormInputFileExampleRaw} name="FormInputFileExample" componentName="React Form Input">
+  <FormInputFileExample client:only="react" />
+</Example>
+
+## Color
+
+<Example code={FormInputColorExampleRaw} name="FormInputColorExample" componentName="React Form Input">
+  <FormInputColorExample client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CFormInput /&gt;](./api/#cforminput)
+- [&lt;CFormFeedback /&gt;](./api/#cformfeedback)
+- [&lt;CFormLabel /&gt;](./api/#cformlabel)
+- [&lt;CFormText /&gt;](./api/#cformtext)
+

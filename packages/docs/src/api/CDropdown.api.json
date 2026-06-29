@@ -1,0 +1,142 @@
+{
+  "name": "CDropdown",
+  "props": [
+    {
+      "name": "alignment",
+      "type": "'start' | 'end' | { xs: 'start' | 'end' } | { sm: 'start' | 'end' } |\n{ md: 'start' | 'end' } | { lg: 'start' | 'end' } | { xl: 'start' | 'end'} |\n{ xxl: 'start' | 'end'}",
+      "default": null,
+      "description": "Specifies the alignment of the React Dropdown Menu within this React Dropdown.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "as",
+      "type": "(ElementType & \"symbol\") | (ElementType & \"object\") | (ElementType & \"div\") | (ElementType & \"slot\") | (ElementType & \"style\") | ... 175 more ... | undefined",
+      "default": "div",
+      "description": "Determines the root node component (native HTML element or a custom React\ncomponent) for the React Dropdown.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "autoClose",
+      "type": "boolean | \"inside\" | \"outside\" | undefined",
+      "default": true,
+      "description": "Configures automatic closing behavior for the React Dropdown:\n- `true` - Close on clicks inside or outside of the React Dropdown Menu.\n- `false` - Disable auto-close; manually call `hide` or `toggle` (also not closed by `Escape`).\n- `'inside'` - Close only when clicking inside the React Dropdown Menu.\n- `'outside'` - Close only when clicking outside the React Dropdown Menu.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Adds custom classes to the React Dropdown root element.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "container",
+      "type": "Element | DocumentFragment | (() => Element | DocumentFragment | null) | null | undefined",
+      "default": null,
+      "description": "Appends the React Dropdown Menu to a specific element. You can pass an HTML\nelement or a function returning an element. Defaults to `document.body`.",
+      "since": "4.11.0",
+      "deprecated": null
+    },
+    {
+      "name": "dark",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Applies a darker color scheme to the React Dropdown Menu, often used within\ndark navbars.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "direction",
+      "type": "\"center\" | \"dropup\" | \"dropup-center\" | \"dropend\" | \"dropstart\" | undefined",
+      "default": null,
+      "description": "Specifies the direction of the React Dropdown.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "offset",
+      "type": "[number, number] | undefined",
+      "default": "[0, 2]",
+      "description": "Defines x and y offsets ([x, y]) for the React Dropdown Menu relative to\nits target.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onHide",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback fired right before the React Dropdown becomes hidden.",
+      "since": "4.9.0",
+      "deprecated": null
+    },
+    {
+      "name": "onShow",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback fired immediately after the React Dropdown is displayed.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "placement",
+      "type": "'auto' | 'auto-start' | 'auto-end' | 'top-end' | 'top' | 'top-start' | 'bottom-end' | 'bottom' | 'bottom-start' | 'right-start' | 'right' | 'right-end' | 'left-start' | 'left' | 'left-end'",
+      "default": "bottom-start",
+      "description": "Determines the placement of the React Dropdown Menu after Popper.js\nmodifiers.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "popper",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Enables or disables dynamic positioning via Popper.js for the React\nDropdown Menu.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "popperConfig",
+      "type": "Partial<Options> | ((defaultPopperConfig: Partial<Options>) => Partial<Options>) | undefined",
+      "default": null,
+      "description": "Provides a custom Popper.js configuration or a function that returns a\nmodified Popper.js configuration for advanced positioning of the React\nDropdown Menu. [Read more](https://popper.js.org/docs/v2/constructors/#options)",
+      "since": "5.5.0",
+      "deprecated": null
+    },
+    {
+      "name": "portal",
+      "type": "boolean | undefined",
+      "default": false,
+      "description": "Renders the React Dropdown Menu using a React Portal, allowing it to escape\nthe DOM hierarchy for improved positioning.",
+      "since": "4.8.0",
+      "deprecated": null
+    },
+    {
+      "name": "reference",
+      "type": "HTMLElement | \"parent\" | \"toggle\" | RefObject<HTMLElement | null> | undefined",
+      "default": "toggle",
+      "description": "Sets the reference element for positioning the React Dropdown Menu.\n- `toggle` - The React Dropdown Toggle button (default).\n- `parent` - The React Dropdown wrapper element.\n- `HTMLElement` - A custom HTML element.\n- `React.RefObject` - A custom reference element.",
+      "since": "5.9.0",
+      "deprecated": null
+    },
+    {
+      "name": "variant",
+      "type": "\"btn-group\" | \"dropdown\" | \"input-group\" | \"nav-item\" | undefined",
+      "default": "dropdown",
+      "description": "Defines the visual variant of the React Dropdown",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean | undefined",
+      "default": false,
+      "description": "Controls the visibility of the React Dropdown Menu:\n- `true` - Visible\n- `false` - Hidden",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CDropdown } from '@coreui/react'"
+}

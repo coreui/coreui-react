@@ -1,0 +1,62 @@
+{
+  "name": "CWidgetStatsC",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "color",
+      "type": "'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "icon",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Icon node for your component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "inverse",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Colors have been inverted from their default dark shade.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "progress",
+      "type": "'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string",
+      "default": null,
+      "description": "Sets the color context of the progress bar to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Title node for your component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "value",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Value node for your component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CWidgetStatsC } from '@coreui/react'"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "CForm",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "validated",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Mark a form as validated. If you set it `true`, all validation styles will be applied to the forms component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CForm } from '@coreui/react'"
+}

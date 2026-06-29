@@ -1,0 +1,22 @@
+{
+  "name": "CFormLabel",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "customClassName",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want to be applied to the component, and override standard className value.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CFormLabel } from '@coreui/react'"
+}

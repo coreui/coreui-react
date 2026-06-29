@@ -1,0 +1,83 @@
+---
+title: "React Bootstrap Placeholder Component"
+name: "Placeholder with Bootstrap Styling"
+description: "Learn how to use the React Bootstrap Placeholder component from CoreUI to create animated loading placeholders that simulate content before it loads."
+bootstrap: true
+---
+
+import { PlaceholderExample } from './examples/PlaceholderExample'
+import PlaceholderExampleRaw from './examples/PlaceholderExample.tsx?raw'
+import { Placeholder2Example } from './examples/Placeholder2Example'
+import Placeholder2ExampleRaw from './examples/Placeholder2Example.tsx?raw'
+import { PlaceholderWidthExample } from './examples/PlaceholderWidthExample'
+import PlaceholderWidthExampleRaw from './examples/PlaceholderWidthExample.tsx?raw'
+import { PlaceholderColorExample } from './examples/PlaceholderColorExample'
+import PlaceholderColorExampleRaw from './examples/PlaceholderColorExample.tsx?raw'
+import { PlaceholderSizingExample } from './examples/PlaceholderSizingExample'
+import PlaceholderSizingExampleRaw from './examples/PlaceholderSizingExample.tsx?raw'
+import { PlaceholderAnimationExample } from './examples/PlaceholderAnimationExample'
+import PlaceholderAnimationExampleRaw from './examples/PlaceholderAnimationExample.tsx?raw'
+
+## About React Bootstrap Placeholder
+
+The React Bootstrap Placeholder component lets you create skeleton loading effects using only HTML and CSS. It's useful for improving perceived performance while content is loading.
+
+React placeholders are fully customizable using utility classes and support animations, sizing, colors, and layout variations.
+
+## React Bootstrap Placeholder example
+
+Here we simulate a "loading card" layout using placeholder elements. The dimensions match the final content layout for a seamless transition.
+
+<Example code={PlaceholderExampleRaw} name="PlaceholderExample" componentName="React Bootstrap Placeholder" class="theme-bootstrap d-flex justify-content-around">
+  <PlaceholderExample client:only="react" />
+</Example>
+
+## How React Bootstrap Placeholder works
+
+Use the `<CPlaceholder>` component and specify width using grid props like `xs={6}` or utility classes. You can place it inside existing elements or use it standalone.
+
+<Example code={Placeholder2ExampleRaw} name="Placeholder2Example" componentName="React Bootstrap Placeholder" class="theme-bootstrap">
+  <Placeholder2Example client:only="react" />
+</Example>
+
+<Callout className="mb-4" color="info">
+  The use of <code>aria-hidden="true"</code> hides the placeholder from screen readers. You may need JavaScript to toggle content and notify assistive technologies of updates.
+</Callout>
+
+### Width
+
+Set the width of placeholders with utility classes, inline styles, or grid props.
+
+<Example code={PlaceholderWidthExampleRaw} name="PlaceholderWidthExample" componentName="React Bootstrap Placeholder" class="theme-bootstrap">
+  <PlaceholderWidthExample client:only="react" />
+</Example>
+
+### Color
+
+By default, placeholders use `currentColor`, but you can apply any color using Bootstrap utility classes.
+
+<Example code={PlaceholderColorExampleRaw} name="PlaceholderColorExample" componentName="React Bootstrap Placeholder" class="theme-bootstrap">
+  <PlaceholderColorExample client:only="react" />
+</Example>
+
+### Sizing
+
+Use the `size` prop (`lg`, `sm`, or `xs`) to adjust the height and line spacing of placeholders to match the parent typography.
+
+<Example code={PlaceholderSizingExampleRaw} name="PlaceholderSizingExample" componentName="React Bootstrap Placeholder" class="theme-bootstrap">
+  <PlaceholderSizingExample client:only="react" />
+</Example>
+
+### Animation
+
+Make React Bootstrap Placeholder elements feel dynamic by using `animation="glow"` or `animation="wave"`.
+
+<Example code={PlaceholderAnimationExampleRaw} name="PlaceholderAnimationExample" componentName="React Bootstrap Placeholder" class="theme-bootstrap">
+  <PlaceholderAnimationExample client:only="react" />
+</Example>
+
+## API reference
+
+Review the available props for the React Bootstrap Placeholder component:
+
+- [&lt;CPlaceholder /&gt;](../api/#cplaceholder)

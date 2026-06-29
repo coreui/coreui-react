@@ -1,0 +1,259 @@
+---
+title: "React Icons Component"
+name: "Icon"
+description: "React icons library is a great resource for React developers, who can use its customizable SVG icons in their applications. It offers an extensive library of icons to choose from, which can be easily inserted into projects with just a few lines of code. Not only that, but users are also able to customize the appearance of these icons by setting various props on them. This provides developers with an efficient and flexible way to integrate useful graphical elements into their web pages without doing any extra work."
+---
+
+import CIconData from '@api/CIcon.api.json'
+import CIconSvgData from '@api/CIconSvg.api.json'
+
+import { LinearExample } from './examples/LinearExample'
+import LinearExampleRaw from './examples/LinearExample.tsx?raw'
+import { BrandExample } from './examples/BrandExample'
+import BrandExampleRaw from './examples/BrandExample.tsx?raw'
+import { FlagsExample } from './examples/FlagsExample'
+import FlagsExampleRaw from './examples/FlagsExample.tsx?raw'
+import { TabPanesExample } from './examples/TabPanesExample'
+import TabPanesExampleRaw from './examples/TabPanesExample.tsx?raw'
+import { IconDemo0 } from './examples/IconDemo0'
+import IconDemo0Raw from './examples/IconDemo0.tsx?raw'
+import { IconDemo1 } from './examples/IconDemo1'
+import IconDemo1Raw from './examples/IconDemo1.tsx?raw'
+
+import {CIcon, CIconSvg} from '@coreui/icons-react/src/index'
+import { cilList, cilShieldAlt } from '@coreui/icons'
+import * as icon from '@coreui/icons';
+
+## Installation
+
+To start using CoreUI React Icons in your project, you need to install it as a dependency. Follow the instructions below based on your package manager of choice:
+
+### Npm
+
+```bash
+npm install @coreui/icons @coreui/icons-react 
+```
+
+### Yarn
+
+```bash
+yarn add @coreui/icons @coreui/icons-react 
+```
+
+## Usage
+
+Import react icons using one of these two options:
+
+### Single react icon
+
+To use a single react icon, import the `<CIcon>` component and the desired icon(s) from the `@coreui/icons` library. Then, include the `<CIcon>` component in your code and specify the icon prop with the imported icon variable. Additionally, you can set the desired size for the icon using the `size` prop.
+
+<Example>
+  <IconDemo0 client:only="react" />
+</Example>
+
+```jsx
+import { CIcon } from '@coreui/icons-react';
+import { cilList, cilShieldAlt } from '@coreui/icons';
+
+...
+<CIcon icon={cilList} size="xl"/>
+<CIcon icon={cilShieldAlt} size="xl"/>
+...
+```
+
+### All react icons
+
+To use all icons available in the CoreUI React Icons package, import the CIcon component and the entire `@coreui/icons` library using the `* as` syntax. Then, reference the desired icon within the `icon` prop.
+
+```jsx
+import CIcon from '@coreui/icons-react';
+import * as icon from '@coreui/icons';
+
+...
+render() {
+  return (
+    <CIcon icon={icon.cilList} size="xxl"/>
+  )
+}
+...
+```
+
+### Color
+
+The CoreUI React Icon component offers versatile color customization options, empowering you to personalize the icons in multiple ways. You can effortlessly modify the colors by utilizing either class names or CSS variables, providing flexibility and ease in creating visually stunning and cohesive icon designs.
+
+#### Utility classes
+
+With some [color utility classes](https://coreui.io/bootstrap/docs/utilities/colors/), you may use color to convey message.
+
+```jsx preview
+<CIcon icon={cilList} size="xl" />
+<CIcon icon={cilList} className="text-primary" size="xl" />
+<CIcon icon={cilList} className="text-secondary" size="xl" />
+<CIcon icon={cilList} className="text-success" size="xl" />
+<CIcon icon={cilList} className="text-danger" size="xl" />
+<CIcon icon={cilList} className="text-warning" size="xl" />
+<CIcon icon={cilList} className="text-info" size="xl" />
+```
+
+#### CSS Variables
+
+CoreUI React Icons leverage local CSS variables, such as `--ci-primary-color` and `--ci-secondary-color` (for Duotone icons), to facilitate real-time customization. This allows developers to easily customize the icons by providing their own custom CSS variables.
+
+```jsx preview
+<CIcon icon={cilList} size="xl" style={{'--ci-primary-color': 'red'}} />
+<CIcon icon={cilList} size="xl" style={{'--ci-primary-color': 'green'}} />
+```
+
+### Sizing
+
+Set heights of react icons using size property like size="lg" and size="sm".
+
+```jsx preview
+<CIcon icon={cilList} size="sm" />
+<CIcon icon={cilList} />
+<CIcon icon={cilList} size="lg" />
+<CIcon icon={cilList} size="xl" />
+<CIcon icon={cilList} size="xxl" />
+<CIcon icon={cilList} size="3xl" />
+```
+
+### Custom SVG Icons
+
+The `<CIconSvg`> component allows you to add custom SVG icons to your application. In case you want to use custom SVG icons, this component provides the flexibility to include bespoke SVG graphics that align with your design requirements.
+
+<Example>
+  <IconDemo1 client:only="react" />
+</Example>
+
+```jsx
+import { CIconSvg } from '@coreui/icons-react';
+
+...
+<CIconSvg size="4xl">
+  <svg
+    viewBox="0 0 102 116"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  >
+    <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
+      <g fill="#3C4B64" fillRule="nonzero">
+        <path
+          d="M96,25.091 L57,2.5743 C53.2871871,0.430706461 48.7128129,0.430706461 45,2.5743 L6,25.091 C2.292246,27.239646 0.00690676667,31.1979678 0,35.4833 L0,80.5167 C0.00688629146,84.8020377 2.29223099,88.760369 6,90.909 L45,113.4256 C48.7127742,115.569338 53.2872258,115.569338 57,113.4256 L96,90.909 C99.707769,88.760369 101.993114,84.8020377 102,80.5167 L102,35.4833 C101.993093,31.1979678 99.707754,27.239646 96,25.091 Z M94,80.5167 C94,81.9457261 93.2375729,83.266187 92,83.9807 L53,106.4974 C51.7623957,107.211931 50.2376043,107.211931 49,106.4974 L10,83.9807 C8.76242713,83.266187 8,81.9457261 8,80.5167 L8,35.4833 C8,34.0542382 8.76239619,32.7337309 10,32.0192 L49,9.5025 C50.2376043,8.78796882 51.7623957,8.78796882 53,9.5025 L92,32.0192 C93.2376038,32.7337309 94,34.0542382 94,35.4833 L94,80.5167 Z"
+          id="Shape"
+        />
+        <path
+          d="M74.0216,71.0379 L71.1556,71.0379 C70.4827717,71.0379163 69.8208181,71.2076524 69.231,71.5314 L51.95,81.0167 L32,69.4981 L32,46.5206 L51.95,35.002 L69.2394,44.457 C69.8278903,44.7788245 70.4878603,44.9474965 71.1586,44.9475 L74.0218,44.9475 C75.1263695,44.9475 76.0218,44.0520695 76.0218,42.9475 L76.0218,40.2357 C76.0218,39.5046907 75.6230914,38.8318844 74.9818,38.481 L55.793,27.9854 C53.3404536,26.651551 50.3714915,26.6856213 47.9502,28.0754 L28,39.5929 C25.5282949,41.025705 24.0048155,43.6646378 24,46.5216 L24,69.4976 C24,72.3557593 25.5247614,74.9968204 28,76.4259 L47.95,87.9444 C50.3719491,89.3331078 53.3408366,89.3663802 55.7933,88.0323 L74.9833,77.5012 C75.623333,77.1499602 76.021125,76.4778764 76.0211,75.7478 L76.0211,73.0378 C76.0210448,71.9334648 75.1259352,71.0381761 74.0216,71.0379 L74.0216,71.0379 Z"
+          id="Path"
+        />
+      </g>
+    </g>
+  </svg>
+</CIconSvg>
+...
+```
+
+## Accessibility
+
+It's crucial for react icons to be seen by as many people as possible because they have the power to communicate a variety of meaningful information.
+
+People who are blind, have low vision, or have other visual impairments make up approximately 10% of the world's population, and more than 5% of people worldwide have hearing loss that makes them unable to function normally.
+
+Therefore, it's crucial to make sure that the assistive equipment for people with disabilities, such as screen readers, either ignores or better understands the react icons you use online.
+
+Icons are used in one of two ways on websites, apps, and other digital spaces.
+
+#### Decorative Icons
+
+It is not necessary to declare an icon to visitors when they are using your website or app if you are utilizing it to offer extra decoration or branding.
+
+Additionally, if you use an icon to visually emphasize or add flair to content that is already present in your HTML, an assistive technology user does not need to see it again.
+
+In certain circumstances, the details of the icon ought to be concealed from the screenreader so as not to obstruct the intended message.
+
+#### Semantic Icons
+
+You need to make sure that consumers understand the meaning an icon is intended to represent by giving them text-based alternatives.
+
+This applies to both the content you're using icons to represent (such as the status of your shopping cart or the number of unread messages), as well react icons as interactive controls (such as buttons, form elements, toggles, etc.).
+
+### CoreUI React Icons and Accessibility
+
+Our React Icon component automatically takes care of accessibility concerns by adding appropriate elements.
+
+#### Decorative icons
+
+If your icons are only for decorative purposes, the CoreUI React Icon Component will ensure that assistive technology ignores the icon. In addition to referencing an icon as normal, the `aria-hidden=true` attribute has been introduced, so there is nothing else you need to do.
+
+If your markup looks like this:
+
+```jsx
+<CButton>
+  <CIcon icon={cilCloudDownload} />
+</CButton>
+```
+
+By including the `aria-hidden` attribute, CoreUI React Icon Component will afterwards automatically hide it from screenreaders.
+
+```html
+<button class="btn btn-primary" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon" role="img" aria-hidden="true">
+    <polygon fill="var(--ci-primary-color, currentColor)" points="272 434.744 272 209.176 240 209.176 240 434.744 188.118 382.862 165.49 405.489 256 496 346.51 405.489 323.882 382.862 272 434.744" class="ci-primary"></polygon><path fill="var(--ci-primary-color, currentColor)" d="M400,161.176c0-79.4-64.6-144-144-144s-144,64.6-144,144a96,96,0,0,0,0,192h80v-32H112a64,64,0,0,1,0-128h32v-32a112,112,0,0,1,224,0v32h32a64,64,0,0,1,0,128H320v32h80a96,96,0,0,0,0-192Z" class="ci-primary"></path>
+  </svg>
+</button>
+```
+
+#### Semantic icons
+
+The description that you must set using the title property will be used by CoreUI React Icon Component to generate alternative text for the semantic icon.
+
+Thus, if your markup appears as follows:
+
+```jsx
+<CButton>
+  <CIcon icon={cilCloudDownload} title="Download file" />
+</CButton>
+```
+
+CoreUI React Icon Component will make the necessary adjustments so that only screenreaders can "see" the supporting elements that convey the message.
+
+```html
+<button class="btn btn-primary" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon" role="img" aria-hidden="true">
+    <polygon fill="var(--ci-primary-color, currentColor)" points="272 434.744 272 209.176 240 209.176 240 434.744 188.118 382.862 165.49 405.489 256 496 346.51 405.489 323.882 382.862 272 434.744" class="ci-primary"></polygon><path fill="var(--ci-primary-color, currentColor)" d="M400,161.176c0-79.4-64.6-144-144-144s-144,64.6-144,144a96,96,0,0,0,0,192h80v-32H112a64,64,0,0,1,0-128h32v-32a112,112,0,0,1,224,0v32h32a64,64,0,0,1,0,128H320v32h80a96,96,0,0,0,0-192Z" class="ci-primary"></path>
+  </svg>
+  <span class="visually-hidden">Download file</span>
+</button>
+```
+
+## Available react icons
+
+The CoreUI React Icons package includes a comprehensive library of more than 1500 icons, available in various formats such as SVG, PNG, and Webfonts. These popular icons are meticulously crafted symbols representing common actions and items. You can utilize them in your digital products, whether they are web or mobile applications, to enhance their visual appeal and user experience.
+
+By leveraging the capabilities of the React Icons component from CoreUI, you can easily incorporate visually appealing icons into their React applications, allowing for more engaging and intuitive user interfaces.
+
+
+
+
+
+<TabPanesExample client:only="react" />
+
+React Icons also provides a variety of customization options, such as the ability to change the size, color, and style of the icons, as well as the ability to add additional CSS classes to the icons. You can find more information on these customization options in the documentation.
+
+## Premium icons
+
+If you find yourself in need of a greater selection of icons, we've got you covered with our [premium icon pack](https://coreui.io/icons/all/). This incredible package boasts an extensive collection of over 4,000 meticulously crafted icons, ensuring that you'll find the perfect representation for any concept or idea. Explore the vast range of options and unlock a world of visual possibilities. 
+
+So if you need more icons our PRO package will be a great choice for you.
+
+## API
+
+### CIcon
+
+<Api data={CIconData} />
+
+### CIconSvg
+
+<Api data={CIconSvgData} />

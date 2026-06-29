@@ -1,0 +1,94 @@
+{
+  "name": "CIcon",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "content",
+      "type": "string | string[] | undefined",
+      "default": null,
+      "description": "Use `icon={...}` instead of",
+      "since": null,
+      "deprecated": "3.0"
+    },
+    {
+      "name": "customClassName",
+      "type": "string | string[] | undefined",
+      "default": null,
+      "description": "Use for replacing default CIcon component classes. Prop is overriding the 'size' prop.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "height",
+      "type": "number | undefined",
+      "default": null,
+      "description": "The height attribute defines the vertical length of an icon.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "icon",
+      "type": "string | string[] | undefined",
+      "default": null,
+      "description": "Name of the icon placed in React object or SVG content.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "name",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Use `icon=\"...\"` instead of",
+      "since": null,
+      "deprecated": "3.0"
+    },
+    {
+      "name": "size",
+      "type": "\"custom\" | \"custom-size\" | \"sm\" | \"lg\" | \"xl\" | \"xxl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"6xl\" | \"7xl\" | \"8xl\" | \"9xl\" | undefined",
+      "default": null,
+      "description": "Size of the icon. Available sizes: 'sm', 'lg', 'xl', 'xxl', '3xl...9xl', 'custom', 'custom-size'.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "title",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Title tag content.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "use",
+      "type": "string | undefined",
+      "default": null,
+      "description": "If defined component will be rendered using 'use' tag.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "viewBox",
+      "type": "string | undefined",
+      "default": null,
+      "description": "The viewBox attribute defines the position and dimension of an SVG viewport.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "width",
+      "type": "number | undefined",
+      "default": null,
+      "description": "The width attribute defines the horizontal length of an icon.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CIcon } from '@coreui/react'"
+}

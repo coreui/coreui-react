@@ -1,0 +1,30 @@
+{
+  "name": "CButtonGroup",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"lg\" | undefined",
+      "default": null,
+      "description": "Size the component small or large.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "vertical",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Create a set of buttons that appear vertically stacked rather than horizontally. Split button dropdowns are not supported here.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CButtonGroup } from '@coreui/react'"
+}

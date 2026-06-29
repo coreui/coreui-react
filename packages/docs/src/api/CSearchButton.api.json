@@ -1,0 +1,62 @@
+{
+  "name": "CSearchButton",
+  "props": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Content to customize the full button body.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "icon",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Custom icon displayed before the placeholder text.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onTrigger",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the component is activated by click or keyboard shortcut.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "placeholder",
+      "type": "ReactNode",
+      "default": "Search",
+      "description": "Placeholder content rendered inside `.search-button-placeholder`.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "preventDefault",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Prevent the browser's default behavior when the configured shortcut matches.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "shortcut",
+      "type": "string | undefined",
+      "default": "meta+/,ctrl+/",
+      "description": "Comma-separated shortcut list. The component matches all configured shortcuts and renders the platform-preferred one.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CSearchButton } from '@coreui/react'"
+}

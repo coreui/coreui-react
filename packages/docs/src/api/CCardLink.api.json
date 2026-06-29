@@ -1,0 +1,22 @@
+{
+  "name": "CCardLink",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "href",
+      "type": "string | undefined",
+      "default": null,
+      "description": "The href attribute specifies the URL of the page the link goes to.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CCardLink } from '@coreui/react'"
+}

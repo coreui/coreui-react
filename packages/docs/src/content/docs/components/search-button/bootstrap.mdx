@@ -1,0 +1,43 @@
+---
+title: "React Bootstrap Search Button Component"
+name: "Search Button with Bootstrap Styling"
+description: "Learn how to use the React Bootstrap Search Button component from CoreUI to create keyboard-aware search entry points, command palettes, modals, and offcanvas panels."
+bootstrap: true
+---
+
+import { SearchButtonExample } from './examples/SearchButtonExample'
+import SearchButtonExampleRaw from './examples/SearchButtonExample.tsx?raw'
+import { SearchButtonCustomShortcutExample } from './examples/SearchButtonCustomShortcutExample'
+import SearchButtonCustomShortcutExampleRaw from './examples/SearchButtonCustomShortcutExample.tsx?raw'
+import { SearchButtonOffcanvasExample } from './examples/SearchButtonOffcanvasExample'
+import SearchButtonOffcanvasExampleRaw from './examples/SearchButtonOffcanvasExample.tsx?raw'
+
+## Using the React Bootstrap Search Button component
+
+The React Bootstrap Search Button component provides a keyboard-aware trigger for search interfaces and command-style actions. It keeps native button behavior, shows a platform-appropriate shortcut hint, and uses `onTrigger` as the shared activation callback.
+
+<Example code={SearchButtonExampleRaw} name="SearchButtonExample" componentName="React Bootstrap Search Button" class="theme-bootstrap">
+  <SearchButtonExample client:only="react" />
+</Example>
+
+## Custom shortcut
+
+Pass the `shortcut` prop to customize the visible key combination and the keyboard trigger behavior.
+
+<Example code={SearchButtonCustomShortcutExampleRaw} name="SearchButtonCustomShortcutExample" componentName="React Bootstrap Search Button" class="theme-bootstrap">
+  <SearchButtonCustomShortcutExample client:only="react" />
+</Example>
+
+## Launch an offcanvas
+
+Use the component as the trigger for a controlled React Bootstrap-style offcanvas panel.
+
+<Example code={SearchButtonOffcanvasExampleRaw} name="SearchButtonOffcanvasExample" componentName="React Bootstrap Search Button" class="theme-bootstrap">
+  <SearchButtonOffcanvasExample client:only="react" />
+</Example>
+
+## API reference
+
+Check the API documentation below for the full list of props available in the React Bootstrap Search Button component:
+
+- [&lt;CSearchButton /&gt;](../api/#csearchbutton)

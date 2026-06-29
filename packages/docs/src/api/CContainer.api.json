@@ -1,0 +1,62 @@
+{
+  "name": "CContainer",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "fluid",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Set container 100% wide, spanning the entire width of the viewport.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "lg",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Set container 100% wide until large breakpoint.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "md",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Set container 100% wide until medium breakpoint.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "sm",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Set container 100% wide until small breakpoint.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xl",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Set container 100% wide until X-large breakpoint.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xxl",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Set container 100% wide until XX-large breakpoint.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CContainer } from '@coreui/react'"
+}

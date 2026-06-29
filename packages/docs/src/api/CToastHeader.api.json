@@ -1,0 +1,22 @@
+{
+  "name": "CToastHeader",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "closeButton",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Automatically add a close button to the header.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CToastHeader } from '@coreui/react'"
+}

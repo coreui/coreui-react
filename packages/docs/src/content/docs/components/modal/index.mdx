@@ -1,0 +1,193 @@
+---
+title: "React Modal Component"
+name: "Modal"
+description: "React Modal component offers a lightweight, multi-purpose popup to add dialogs to yours. Learn how to customize CoreUI React modal components easily. Multiple examples and tutorial."
+otherFrameworks:
+  - modal
+---
+
+import { ModalLiveDemoExample } from './examples/ModalLiveDemoExample'
+import ModalLiveDemoExampleRaw from './examples/ModalLiveDemoExample.tsx?raw'
+import { ModalStaticBackdropExample } from './examples/ModalStaticBackdropExample'
+import ModalStaticBackdropExampleRaw from './examples/ModalStaticBackdropExample.tsx?raw'
+import { ModalScrollingLongContentExample } from './examples/ModalScrollingLongContentExample'
+import ModalScrollingLongContentExampleRaw from './examples/ModalScrollingLongContentExample.tsx?raw'
+import { ModalScrollingLongContent2Example } from './examples/ModalScrollingLongContent2Example'
+import ModalScrollingLongContent2ExampleRaw from './examples/ModalScrollingLongContent2Example.tsx?raw'
+import { ModalVerticallyCenteredExample } from './examples/ModalVerticallyCenteredExample'
+import ModalVerticallyCenteredExampleRaw from './examples/ModalVerticallyCenteredExample.tsx?raw'
+import { ModalVerticallyCenteredScrollableExample } from './examples/ModalVerticallyCenteredScrollableExample'
+import ModalVerticallyCenteredScrollableExampleRaw from './examples/ModalVerticallyCenteredScrollableExample.tsx?raw'
+import { ModalTooltipsAndPopoversExample } from './examples/ModalTooltipsAndPopoversExample'
+import ModalTooltipsAndPopoversExampleRaw from './examples/ModalTooltipsAndPopoversExample.tsx?raw'
+import { ModalToggleBetweenModalsExample } from './examples/ModalToggleBetweenModalsExample'
+import ModalToggleBetweenModalsExampleRaw from './examples/ModalToggleBetweenModalsExample.tsx?raw'
+import { ModalOptionalSizesExample } from './examples/ModalOptionalSizesExample'
+import ModalOptionalSizesExampleRaw from './examples/ModalOptionalSizesExample.tsx?raw'
+import { ModalFullscreenExample } from './examples/ModalFullscreenExample'
+import ModalFullscreenExampleRaw from './examples/ModalFullscreenExample.tsx?raw'
+
+## Introduction to Modal Component
+
+A modal component is a fundamental part of modern UI design, providing a focused dialog that appears above the main content to capture user attention. In React applications, modal components are used to display important information, collect user input through form elements, or prompt users to take specific actions. When a modal is active, it typically prevents interaction with the rest of the page, ensuring users complete or dismiss the modal dialog before returning to the main UI. This approach helps manage user focus and streamlines workflows, making modal dialogs an essential tool for improving user experience. Modal components can display a variety of elements, such as text, forms, or notifications, and their appearance and behavior can be customized through React props to fit the needs of your application.
+
+## How to use React Modal Component?
+
+### Static modal component example
+
+Below is a static react modal component example (meaning its `position` and `display` have been overridden). Included are the modal header, modal body (required for `padding`), and modal footer (optional). We ask that you include react modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.
+
+<Example>
+  <div className="modal position-static d-block" tabIndex="-1">
+    <div className="modal-dialog">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h5 className="modal-title">React Modal title</h5>
+          <button type="button" className="btn-close" aria-label="Close"></button>
+        </div>
+        <div className="modal-body">
+          <p>React Modal body text goes here.</p>
+        </div>
+        <div className="modal-footer">
+          <button type="button" className="btn btn-secondary">Close</button>
+          <button type="button" className="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</Example>
+```jsx
+<CModal>
+  <CModalHeader>
+    <CModalTitle>React Modal title</CModalTitle>
+  </CModalHeader>
+  <CModalBody>
+    <p>React Modal body text goes here.</p>
+  </CModalBody>
+  <CModalFooter>
+    <CButton color="secondary">Close</CButton>
+    <CButton color="primary">Save changes</CButton>
+  </CModalFooter>
+</CModal>
+```
+
+You can also create a custom modal component in React, allowing you to pass props such as `visible` and `onClose` for greater flexibility and reusability.
+
+### Live demo
+
+Toggle a working React modal component demo by clicking the button below. It will slide down and fade in from the top of the page. Integrating modal components is a common practice in modern web apps to improve user interaction and workflow.
+
+<Example code={ModalLiveDemoExampleRaw} name="ModalLiveDemoExample" componentName="React Modal">
+  <ModalLiveDemoExample client:only="react" />
+</Example>
+
+### Static backdrop
+
+If you set a `backdrop` to `static`, your React modal component will behave as though the backdrop is static, meaning it will not close when clicking outside it. Click the button below to try it.
+
+<Example code={ModalStaticBackdropExampleRaw} name="ModalStaticBackdropExample" componentName="React Modal">
+  <ModalStaticBackdropExample client:only="react" />
+</Example>
+
+### Scrolling long content
+
+When modals become too long for the user's viewport or device, they scroll independent of the page itself. Try the demo below to see what we mean.
+
+<Example code={ModalScrollingLongContentExampleRaw} name="ModalScrollingLongContentExample" componentName="React Modal">
+  <ModalScrollingLongContentExample client:only="react" />
+</Example>
+
+You can also create a scrollable react modal component that allows scroll the modal body by adding `scrollable` prop.
+
+<Example code={ModalScrollingLongContent2ExampleRaw} name="ModalScrollingLongContent2Example" componentName="React Modal">
+  <ModalScrollingLongContent2Example client:only="react" />
+</Example>
+
+### Vertically centered
+
+Add `alignment="center` to `<CModal>` to vertically center the React modal.
+
+<Example code={ModalVerticallyCenteredExampleRaw} name="ModalVerticallyCenteredExample" componentName="React Modal">
+  <ModalVerticallyCenteredExample client:only="react" />
+</Example>
+
+<Example code={ModalVerticallyCenteredScrollableExampleRaw} name="ModalVerticallyCenteredScrollableExample" componentName="React Modal">
+  <ModalVerticallyCenteredScrollableExample client:only="react" />
+</Example>
+
+### Tooltips and popovers
+
+`<CTooltips>` and `<CPopovers>` can be placed within react modals as needed. When modal components are closed, any tooltips and popovers within are also automatically dismissed.
+
+<Example code={ModalTooltipsAndPopoversExampleRaw} name="ModalTooltipsAndPopoversExample" componentName="React Modal">
+  <ModalTooltipsAndPopoversExample client:only="react" />
+</Example>
+
+### Toggle between modals
+
+Toggle between multiple modals with some clever placement of the `visible` props. **Please note multiple modals cannot be opened at the same time** — this method simply toggles between two separate modals.
+
+<Example code={ModalToggleBetweenModalsExampleRaw} name="ModalToggleBetweenModalsExample" componentName="React Modal">
+  <ModalToggleBetweenModalsExample client:only="react" />
+</Example>
+
+### Change animation
+
+The variable `$modal-fade-transform` determines the transform state of React Modal component before the modal fade-in animation, whereas the variable `$modal-show-transform` determines the transform state of Modal component after the modal fade-in animation.
+
+If you want a zoom-in animation, for example, set `$modal-fade-transform: scale(.8)`.
+
+### Remove animation
+
+For modals that simply appear rather than fade into view, set `transition` to `false`.
+
+```jsx
+<CModal transition={false}>...</CModal>
+```
+
+### Accessibility
+
+Be sure to add `aria-labelledby="..."`, referencing the modal title, to `<CModal />` Additionally, you may give a description of your modal dialog with `aria-describedby` on `<CModal>`. Note that you don’t need to add `role="dialog`, `aria-hidden="true"`, and `aria-modal="true"` since we already add it.
+
+## Optional sizes
+
+Modals have three optional sizes, available via modifier classes to be placed on a `<CModal>`. These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
+
+
+| Size        | Property size | Modal max-width |
+| ----------- | ------------- | --------------- |
+| Small       | `'sm'`        | `300px`         |
+| Default     | None          | `500px`         |
+| Large       | `'lg'`        | `800px`         |
+| Extra large | `'xl'`        | `1140px`        |
+
+<Example code={ModalOptionalSizesExampleRaw} name="ModalOptionalSizesExample" componentName="React Modal">
+  <ModalOptionalSizesExample client:only="react" />
+</Example>
+
+## Fullscreen Modal
+
+Another override is the option to pop up a React modal component that covers the user viewport, available via property `fullscreen`.
+
+| Fullscreen | Availability   |
+| ---------- | -------------- |
+| `true`     | Always         |
+| `'sm'`     | Below `576px`  |
+| `'md'`     | Below `768px`  |
+| `'lg'`     | Below `992px`  |
+| `'xl'`     | Below `1200px` |
+| `'xxl'`    | Below `1400px` |
+
+<Example code={ModalFullscreenExampleRaw} name="ModalFullscreenExample" componentName="React Modal">
+  <ModalFullscreenExample client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CModal /&gt;](./api/#cmodal)
+- [&lt;CModalBody /&gt;](./api/#cmodalbody)
+- [&lt;CModalFooter /&gt;](./api/#cmodalfooter)
+- [&lt;CModalHeader /&gt;](./api/#cmodalheader)
+- [&lt;CModalTitle /&gt;](./api/#cmodaltitle)

@@ -1,0 +1,44 @@
+---
+title: "React Close Button Component"
+name: "Close Button"
+description: "A generic close button component for dismissing content like modals and alerts."
+otherFrameworks:
+  - close-button
+---
+
+import { CloseButtonExample } from './examples/CloseButtonExample'
+import CloseButtonExampleRaw from './examples/CloseButtonExample.tsx?raw'
+import { CloseButtonDisabledExample } from './examples/CloseButtonDisabledExample'
+import CloseButtonDisabledExampleRaw from './examples/CloseButtonDisabledExample.tsx?raw'
+import { CloseButtonDarkExample } from './examples/CloseButtonDarkExample'
+import CloseButtonDarkExampleRaw from './examples/CloseButtonDarkExample.tsx?raw'
+
+## Example
+
+Provide an option to dismiss or close a component with `<CCloseButton>`. Default styling is limited, but highly customizable. Modify the Sass variables to replace the default `background-image`.
+
+<Example code={CloseButtonExampleRaw} name="CloseButtonExample" componentName="React Close Button">
+  <CloseButtonExample client:only="react" />
+</Example>
+
+## Disabled state
+
+Disabled close buttons change their `opacity`. We've also applied `pointer-events: none` and `user-select: none` to preventing hover and active states from triggering.
+
+<Example code={CloseButtonDisabledExampleRaw} name="CloseButtonDisabledExample" componentName="React Close Button">
+  <CloseButtonDisabledExample client:only="react" />
+</Example>
+
+## Dark variant
+
+Add `dark` boolean property to the `<CCloseButton>`, to invert the close button. This uses the filter property to invert the background-image without overriding its value.
+
+<Example code={CloseButtonDarkExampleRaw} name="CloseButtonDarkExample" componentName="React Close Button" class="bg-dark">
+  <CloseButtonDarkExample client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CCloseButton /&gt;](./api/#cclosebutton)

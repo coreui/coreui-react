@@ -1,0 +1,56 @@
+---
+title: "React Image Component"
+name: "Image"
+description: "React image component with responsive behavior (so it's never become larger than their parent element) and special styles."
+otherFrameworks:
+  - image
+---
+
+import { ImageResponsiveExample } from './examples/ImageResponsiveExample'
+import ImageResponsiveExampleRaw from './examples/ImageResponsiveExample.tsx?raw'
+import { ImageThumbnailExample } from './examples/ImageThumbnailExample'
+import ImageThumbnailExampleRaw from './examples/ImageThumbnailExample.tsx?raw'
+import { ImageAligningExample } from './examples/ImageAligningExample'
+import ImageAligningExampleRaw from './examples/ImageAligningExample.tsx?raw'
+import { ImageAligning2Example } from './examples/ImageAligning2Example'
+import ImageAligning2ExampleRaw from './examples/ImageAligning2Example.tsx?raw'
+import { ImageAligning3Example } from './examples/ImageAligning3Example'
+import ImageAligning3ExampleRaw from './examples/ImageAligning3Example.tsx?raw'
+
+## Responsive images
+
+Images in CoreUI for React.js are made responsive with `fluid` property. This applies `max-width: 100%;` and `height: auto;` to the image so that it scales with the parent element.
+
+<Example code={ImageResponsiveExampleRaw} name="ImageResponsiveExample" componentName="React Image">
+  <ImageResponsiveExample client:only="react" />
+</Example>
+
+## Image thumbnails
+
+In addition to our [border-radius utilities](https://coreui.io/bootstrap/docs/utilities/borders), you can use prop`thumbnail` to give an image a rounded 1px border appearance.
+
+<Example code={ImageThumbnailExampleRaw} name="ImageThumbnailExample" componentName="React Image">
+  <ImageThumbnailExample client:only="react" />
+</Example>
+
+## Aligning images
+
+Align images with the `align` property.
+
+<Example code={ImageAligningExampleRaw} name="ImageAligningExample" componentName="React Image">
+  <ImageAligningExample client:only="react" />
+</Example>
+
+<Example code={ImageAligning2ExampleRaw} name="ImageAligning2Example" componentName="React Image">
+  <ImageAligning2Example client:only="react" />
+</Example>
+
+<Example code={ImageAligning3ExampleRaw} name="ImageAligning3Example" componentName="React Image">
+  <ImageAligning3Example client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CImage /&gt;](./api/#cimage)

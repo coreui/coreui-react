@@ -1,0 +1,22 @@
+{
+  "name": "CDropdownHeader",
+  "props": [
+    {
+      "name": "as",
+      "type": "(ElementType & \"symbol\") | (ElementType & \"object\") | (ElementType & \"h6\") | (ElementType & \"slot\") | (ElementType & \"style\") | ... 175 more ... | undefined",
+      "default": "h6",
+      "description": "Component used for the root node. Either a string to use a HTML element or a component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CDropdownHeader } from '@coreui/react'"
+}

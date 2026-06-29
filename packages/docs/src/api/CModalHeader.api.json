@@ -1,0 +1,22 @@
+{
+  "name": "CModalHeader",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "closeButton",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Add a close button component to the header.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CModalHeader } from '@coreui/react'"
+}

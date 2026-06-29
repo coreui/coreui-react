@@ -1,0 +1,76 @@
+---
+title: "React Bootstrap Pagination Component"
+name: "Pagination with Bootstrap Styling"
+description: "Learn how to use the React Bootstrap Pagination component from CoreUI to create accessible and responsive navigation between pages, including sizing, alignment, and icon support."
+bootstrap: true
+---
+
+import { PaginationExample } from './examples/PaginationExample'
+import PaginationExampleRaw from './examples/PaginationExample.tsx?raw'
+import { PaginationWorkingWithIconsExample } from './examples/PaginationWorkingWithIconsExample'
+import PaginationWorkingWithIconsExampleRaw from './examples/PaginationWorkingWithIconsExample.tsx?raw'
+import { PaginationDisabledAndActiveExample } from './examples/PaginationDisabledAndActiveExample'
+import PaginationDisabledAndActiveExampleRaw from './examples/PaginationDisabledAndActiveExample.tsx?raw'
+import { PaginationSizingLargeExample } from './examples/PaginationSizingLargeExample'
+import PaginationSizingLargeExampleRaw from './examples/PaginationSizingLargeExample.tsx?raw'
+import { PaginationSizingSmallExample } from './examples/PaginationSizingSmallExample'
+import PaginationSizingSmallExampleRaw from './examples/PaginationSizingSmallExample.tsx?raw'
+import { PaginationAlignmentExample } from './examples/PaginationAlignmentExample'
+import PaginationAlignmentExampleRaw from './examples/PaginationAlignmentExample.tsx?raw'
+import { PaginationAlignment2Example } from './examples/PaginationAlignment2Example'
+import PaginationAlignment2ExampleRaw from './examples/PaginationAlignment2Example.tsx?raw'
+
+## Overview of React Bootstrap Pagination
+
+The React Bootstrap Pagination component helps you build navigation for multi-page content, such as search results or article listings. It's based on semantic HTML with `<ul>` and `<li>` elements, ensuring accessibility and screen reader compatibility.
+
+Wrap the component in a `<nav>` element and use a descriptive `aria-label` like `aria-label="Search results pages"` for clarity.
+
+<Example code={PaginationExampleRaw} name="PaginationExample" componentName="React Bootstrap Pagination" class="theme-bootstrap">
+  <PaginationExample client:only="react" />
+</Example>
+
+## Using icons in pagination
+
+You can replace text in pagination buttons with icons or symbols. Make sure to include proper `aria-labels` for accessibility.
+
+<Example code={PaginationWorkingWithIconsExampleRaw} name="PaginationWorkingWithIconsExample" componentName="React Bootstrap Pagination" class="theme-bootstrap">
+  <PaginationWorkingWithIconsExample client:only="react" />
+</Example>
+
+## Disabled and active pagination items
+
+Use the `disabled` prop to indicate non-interactive items and the `.active` class to highlight the current page. CoreUI handles keyboard accessibility with `tabindex="-1"` and JS-based interaction disabling.
+
+<Example code={PaginationDisabledAndActiveExampleRaw} name="PaginationDisabledAndActiveExample" componentName="React Bootstrap Pagination" class="theme-bootstrap">
+  <PaginationDisabledAndActiveExample client:only="react" />
+</Example>
+
+## Pagination sizing
+
+Adjust the size of the React Bootstrap Pagination component with the `size` prop. Available values: `lg` (large), `sm` (small).
+
+<Example code={PaginationSizingLargeExampleRaw} name="PaginationSizingLargeExample" componentName="React Bootstrap Pagination" class="theme-bootstrap">
+  <PaginationSizingLargeExample client:only="react" />
+</Example>
+<Example code={PaginationSizingSmallExampleRaw} name="PaginationSizingSmallExample" componentName="React Bootstrap Pagination" class="theme-bootstrap">
+  <PaginationSizingSmallExample client:only="react" />
+</Example>
+
+## Pagination alignment
+
+Change pagination alignment using the `align` prop: `"start"`, `"center"`, or `"end"`.
+
+<Example code={PaginationAlignmentExampleRaw} name="PaginationAlignmentExample" componentName="React Bootstrap Pagination" class="theme-bootstrap">
+  <PaginationAlignmentExample client:only="react" />
+</Example>
+<Example code={PaginationAlignment2ExampleRaw} name="PaginationAlignment2Example" componentName="React Bootstrap Pagination" class="theme-bootstrap">
+  <PaginationAlignment2Example client:only="react" />
+</Example>
+
+## API reference
+
+Here’s the API reference for the React Bootstrap Pagination component:
+
+- [&lt;CPagination /&gt;](../api/#cpagination)
+- [&lt;CPaginationItem /&gt;](../api/#cpaginationitem)

@@ -1,0 +1,92 @@
+---
+title: "React Floating labels"
+name: "Floating labels"
+description: "React floating label component. Create beautifully simple form labels that float over your input fields."
+otherFrameworks:
+  - floating-labels
+---
+
+import { FloatingLabelsExample } from './examples/FloatingLabelsExample'
+import FloatingLabelsExampleRaw from './examples/FloatingLabelsExample.tsx?raw'
+import { FloatingLabels2Example } from './examples/FloatingLabels2Example'
+import FloatingLabels2ExampleRaw from './examples/FloatingLabels2Example.tsx?raw'
+import { FloatingLabelsValidationExample } from './examples/FloatingLabelsValidationExample'
+import FloatingLabelsValidationExampleRaw from './examples/FloatingLabelsValidationExample.tsx?raw'
+import { FloatingLabelsTextareaExample } from './examples/FloatingLabelsTextareaExample'
+import FloatingLabelsTextareaExampleRaw from './examples/FloatingLabelsTextareaExample.tsx?raw'
+import { FloatingLabelsTextarea2Example } from './examples/FloatingLabelsTextarea2Example'
+import FloatingLabelsTextarea2ExampleRaw from './examples/FloatingLabelsTextarea2Example.tsx?raw'
+import { FloatingLabelsSelectExample } from './examples/FloatingLabelsSelectExample'
+import FloatingLabelsSelectExampleRaw from './examples/FloatingLabelsSelectExample.tsx?raw'
+import { FloatingLabelsLayoutExample } from './examples/FloatingLabelsLayoutExample'
+import FloatingLabelsLayoutExampleRaw from './examples/FloatingLabelsLayoutExample.tsx?raw'
+
+## Example
+
+Use `floatingLabel` property on `<CFormInput>`, `<CFormSelect>` or `<CFormTextarea>` to enable floating labels with textual form fields. A `placeholder` is required on each `<CFormInput>`, `<CFormSelect>` and `<CFormTextarea>` as our method of CSS-only floating labels uses the `:placeholder-shown` pseudo-element.
+
+<Example code={FloatingLabelsExampleRaw} name="FloatingLabelsExample" componentName="React Form Floating Labels">
+  <FloatingLabelsExample client:only="react" />
+</Example>
+
+You can create the same form control by wrapping a pair of `<CFormInput>` and `<CFormLabel>` elements in `<CFormFloating>` to enable floating labels with textual form fields. A `placeholder` is required on each `<CFormInput>` as our method of CSS-only floating labels uses the `:placeholder-shown` pseudo-element. Also, note that the `<CFormInput>` must come first so we can utilize a sibling selector (e.g., `~`).
+
+```jsx
+<CFormFloating className="mb-3">
+  <CFormInput type="email" id="floatingInput" placeholder="name@example.com" />
+  <CFormLabel htmlFor="floatingInput">Email address</CFormLabel>
+</CFormFloating>
+<CFormFloating>
+  <CFormInput type="password" id="floatingPassword" placeholder="Password" />
+  <CFormLabel htmlFor="exampleFormControlTextarea1">Password</CFormLabel>
+</CFormFloating>
+```
+
+When there's a `value` already defined, `<CFormLabel>`s will automatically adjust to their floated position.
+
+<Example code={FloatingLabels2ExampleRaw} name="FloatingLabels2Example" componentName="React Form Floating Labels">
+  <FloatingLabels2Example client:only="react" />
+</Example>
+
+
+Form validation styles also work as expected.
+
+<Example code={FloatingLabelsValidationExampleRaw} name="FloatingLabelsValidationExample" componentName="React Form Floating Labels">
+  <FloatingLabelsValidationExample client:only="react" />
+</Example>
+
+## Textareas
+
+By default, `<CFormTextarea>`s will be the same height as `<CFormInput>`s.
+
+<Example code={FloatingLabelsTextareaExampleRaw} name="FloatingLabelsTextareaExample" componentName="React Form Floating Labels">
+  <FloatingLabelsTextareaExample client:only="react" />
+</Example>
+
+To set a custom height on your `<CFormTextarea>`, do not use the `rows` attribute. Instead, set an explicit `height` (either inline or via custom CSS).
+
+<Example code={FloatingLabelsTextarea2ExampleRaw} name="FloatingLabelsTextarea2Example" componentName="React Form Floating Labels">
+  <FloatingLabelsTextarea2Example client:only="react" />
+</Example>
+
+## Selects
+
+Other than `<CFormInput>`, floating labels are only available on `<CFormSelect>`s. They work in the same way, but unlike `<CFormInput>`s, they'll always show the `<CFormLabel>` in its floated state. **Selects with `size` and `multiple` are not supported.**
+
+<Example code={FloatingLabelsSelectExampleRaw} name="FloatingLabelsSelectExample" componentName="React Form Floating Labels">
+  <FloatingLabelsSelectExample client:only="react" />
+</Example>
+
+## Layout
+
+When working with the CoreUI for Bootstrap grid system, be sure to place form elements within column classes.
+
+<Example code={FloatingLabelsLayoutExampleRaw} name="FloatingLabelsLayoutExample" componentName="React Form Floating Labels">
+  <FloatingLabelsLayoutExample client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CFormFloating /&gt;](./api/#cformfloating)

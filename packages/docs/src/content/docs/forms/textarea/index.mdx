@@ -1,0 +1,53 @@
+---
+title: "React Form Textarea Component"
+name: "Form Textarea"
+description: "React textarea components. Give textual form `<textarea>`s an upgrade with custom styles, sizing, focus states, validation, and more."
+otherFrameworks:
+  - textarea
+---
+
+import { FormTextareaExample } from './examples/FormTextareaExample'
+import FormTextareaExampleRaw from './examples/FormTextareaExample.tsx?raw'
+import { FormTextareaDisabledExample } from './examples/FormTextareaDisabledExample'
+import FormTextareaDisabledExampleRaw from './examples/FormTextareaDisabledExample.tsx?raw'
+import { FormTextareaReadonlyExample } from './examples/FormTextareaReadonlyExample'
+import FormTextareaReadonlyExampleRaw from './examples/FormTextareaReadonlyExample.tsx?raw'
+
+## Example
+
+<Example code={FormTextareaExampleRaw} name="FormTextareaExample" componentName="React Form Textarea">
+  <FormTextareaExample client:only="react" />
+</Example>
+
+If you need to add custom classNames to form's components, or need to add some custom elements you can add each form component separately. Please check the example below.
+
+```jsx
+<CFormLabel htmlFor="exampleFormControlTextarea1">Example textarea</CFormLabel>
+<CFormTextarea id="exampleFormControlTextarea1" rows={3}></CFormTextarea>
+<CFormText as="span" id="passwordHelpInline">Must be 8-20 words long.</CFormText>
+```
+
+## Disabled
+
+Add the `disabled` boolean attribute on an textarea to give it a grayed out appearance and remove pointer events.
+
+<Example code={FormTextareaDisabledExampleRaw} name="FormTextareaDisabledExample" componentName="React Form Textarea">
+  <FormTextareaDisabledExample client:only="react" />
+</Example>
+
+## Readonly
+
+Add the `readOnly` boolean attribute on an textarea to prevent modification of the textarea's value. Read-only textareas appear lighter (just like disabled textareas), but retain the standard cursor.
+
+<Example code={FormTextareaReadonlyExampleRaw} name="FormTextareaReadonlyExample" componentName="React Form Textarea">
+  <FormTextareaReadonlyExample client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CFormTextarea /&gt;](./api/#cformtextarea)
+- [&lt;CFormFeedback /&gt;](./api/#cformfeedback)
+- [&lt;CFormLabel /&gt;](./api/#cformlabel)
+- [&lt;CFormText /&gt;](./api/#cformtext)

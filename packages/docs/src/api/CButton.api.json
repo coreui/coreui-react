@@ -1,0 +1,94 @@
+{
+  "name": "CButton",
+  "props": [
+    {
+      "name": "active",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Toggle the active state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "as",
+      "type": "(ElementType & \"symbol\") | (ElementType & \"object\") | (ElementType & \"button\") | (ElementType & \"cite\") | (ElementType & \"data\") | ... 175 more ... | undefined",
+      "default": "button",
+      "description": "Component used for the root node. Either a string to use a HTML element or a component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "color",
+      "type": "'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "disabled",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Toggle the disabled state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "href",
+      "type": "string | undefined",
+      "default": null,
+      "description": "The href attribute specifies the URL of the page the link goes to.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "role",
+      "type": "string | undefined",
+      "default": null,
+      "description": "The role attribute describes the role of an element in programs that can make use of it, such as screen readers or magnifiers.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "shape",
+      "type": "'rounded' | 'rounded-top' | 'rounded-end' | 'rounded-bottom' | 'rounded-start' | 'rounded-circle' | 'rounded-pill' | 'rounded-0' | 'rounded-1' | 'rounded-2' | 'rounded-3' | string",
+      "default": null,
+      "description": "Select the shape of the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"lg\" | undefined",
+      "default": null,
+      "description": "Size the component small or large.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "type",
+      "type": "\"button\" | \"submit\" | \"reset\" | undefined",
+      "default": "button",
+      "description": "Specifies the type of button. Always specify the type attribute for the `<button>` element.\nDifferent browsers may use different default types for the `<button>` element.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "variant",
+      "type": "\"outline\" | \"ghost\" | undefined",
+      "default": null,
+      "description": "Set the button variant to an outlined button or a ghost button.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CButton } from '@coreui/react'"
+}

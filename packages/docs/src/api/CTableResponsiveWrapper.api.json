@@ -1,0 +1,14 @@
+{
+  "name": "CTableResponsiveWrapper",
+  "props": [
+    {
+      "name": "responsive",
+      "type": "boolean | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"xxl\" | undefined",
+      "default": null,
+      "description": "Make any table responsive across all viewports or pick a maximum breakpoint with which to have a responsive table up to.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CTableResponsiveWrapper } from '@coreui/react'"
+}

@@ -1,0 +1,166 @@
+---
+title: "React Bootstrap Navs and Tabs Component"
+name: "Navs and Tabs with Bootstrap Styling"
+description: "Learn how to use the React Bootstrap Navs and Tabs component from CoreUI to build navigations, tabbed interfaces, dropdowns, and more with responsive and accessible markup."
+bootstrap: true
+---
+
+import { NavExample } from './examples/NavExample'
+import NavExampleRaw from './examples/NavExample.tsx?raw'
+import { Nav2Example } from './examples/Nav2Example'
+import Nav2ExampleRaw from './examples/Nav2Example.tsx?raw'
+import { NavHorizontalAlignmentExample } from './examples/NavHorizontalAlignmentExample'
+import NavHorizontalAlignmentExampleRaw from './examples/NavHorizontalAlignmentExample.tsx?raw'
+import { NavHorizontalAlignment2Example } from './examples/NavHorizontalAlignment2Example'
+import NavHorizontalAlignment2ExampleRaw from './examples/NavHorizontalAlignment2Example.tsx?raw'
+import { NavVerticalExample } from './examples/NavVerticalExample'
+import NavVerticalExampleRaw from './examples/NavVerticalExample.tsx?raw'
+import { NavTabsExample } from './examples/NavTabsExample'
+import NavTabsExampleRaw from './examples/NavTabsExample.tsx?raw'
+import { NavPillsExample } from './examples/NavPillsExample'
+import NavPillsExampleRaw from './examples/NavPillsExample.tsx?raw'
+import { NavUnderlineExample } from './examples/NavUnderlineExample'
+import NavUnderlineExampleRaw from './examples/NavUnderlineExample.tsx?raw'
+import { NavUnderlineBorderExample } from './examples/NavUnderlineBorderExample'
+import NavUnderlineBorderExampleRaw from './examples/NavUnderlineBorderExample.tsx?raw'
+import { NavFillAndJustifyExample } from './examples/NavFillAndJustifyExample'
+import NavFillAndJustifyExampleRaw from './examples/NavFillAndJustifyExample.tsx?raw'
+import { NavFillAndJustify2Example } from './examples/NavFillAndJustify2Example'
+import NavFillAndJustify2ExampleRaw from './examples/NavFillAndJustify2Example.tsx?raw'
+import { NavWorkingWithFlexUtilitiesExample } from './examples/NavWorkingWithFlexUtilitiesExample'
+import NavWorkingWithFlexUtilitiesExampleRaw from './examples/NavWorkingWithFlexUtilitiesExample.tsx?raw'
+import { NavTabsWithDropdownExample } from './examples/NavTabsWithDropdownExample'
+import NavTabsWithDropdownExampleRaw from './examples/NavTabsWithDropdownExample.tsx?raw'
+import { NavPillsWithDropdownExample } from './examples/NavPillsWithDropdownExample'
+import NavPillsWithDropdownExampleRaw from './examples/NavPillsWithDropdownExample.tsx?raw'
+import { NavTabPanesExample } from './examples/NavTabPanesExample'
+import NavTabPanesExampleRaw from './examples/NavTabPanesExample.tsx?raw'
+import { NavTabPanes2Example } from './examples/NavTabPanes2Example'
+import NavTabPanes2ExampleRaw from './examples/NavTabPanes2Example.tsx?raw'
+
+## React Bootstrap Base Nav
+
+The React Bootstrap Navs and Tabs component provides a flexible base for building navigations. The `<CNav>` component is built with flexbox and supports active, disabled, tabbed, and pill-styled variations.
+
+<Example code={NavExampleRaw} name="NavExample" componentName="React Bootstrap Nav" class="theme-bootstrap">
+  <NavExample client:only="react" />
+</Example>
+
+You can structure navigation with `<ul>`, `<ol>`, or even `<nav>`, as seen here:
+
+<Example code={Nav2ExampleRaw} name="Nav2Example" componentName="React Bootstrap Nav" class="theme-bootstrap">
+  <Nav2Example client:only="react" />
+</Example>
+
+## React Bootstrap Nav Styles
+
+### Horizontal alignment
+
+Use flexbox utilities to align nav items center or right.
+
+<Example code={NavHorizontalAlignmentExampleRaw} name="NavHorizontalAlignmentExample" componentName="React Bootstrap Nav" class="theme-bootstrap">
+  <NavHorizontalAlignmentExample client:only="react" />
+</Example>
+<Example code={NavHorizontalAlignment2ExampleRaw} name="NavHorizontalAlignment2Example" componentName="React Bootstrap Nav" class="theme-bootstrap">
+  <NavHorizontalAlignment2Example client:only="react" />
+</Example>
+
+### Vertical navs
+
+Stack items vertically using `.flex-column`.
+
+<Example code={NavVerticalExampleRaw} name="NavVerticalExample" componentName="React Bootstrap Nav" class="theme-bootstrap">
+  <NavVerticalExample client:only="react" />
+</Example>
+
+### Tabs
+
+Switch to tabbed navigation with `variant="tabs"`.
+
+<Example code={NavTabsExampleRaw} name="NavTabsExample" componentName="React Bootstrap Nav" class="theme-bootstrap">
+  <NavTabsExample client:only="react" />
+</Example>
+
+### Pills
+
+Use `variant="pills"` for pill-style nav links.
+
+<Example code={NavPillsExampleRaw} name="NavPillsExample" componentName="React Bootstrap Nav" class="theme-bootstrap">
+  <NavPillsExample client:only="react" />
+</Example>
+
+### Underline
+
+Switch to underline style using `variant="underline"`.
+
+<Example code={NavUnderlineExampleRaw} name="NavUnderlineExample" componentName="React Bootstrap Nav" class="theme-bootstrap">
+  <NavUnderlineExample client:only="react" />
+</Example>
+
+### Underline border
+
+Apply `variant="underline-border"` to create a bordered underline nav.
+
+<Example code={NavUnderlineBorderExampleRaw} name="NavUnderlineBorderExample" componentName="React Bootstrap Nav" class="theme-bootstrap">
+  <NavUnderlineBorderExample client:only="react" />
+</Example>
+
+### Fill and justify navs
+
+Use `layout="fill"` to fill available space, or `layout="justified"` for equal width nav items.
+
+<Example code={NavFillAndJustifyExampleRaw} name="NavFillAndJustifyExample" componentName="React Bootstrap Nav" class="theme-bootstrap">
+  <NavFillAndJustifyExample client:only="react" />
+</Example>
+<Example code={NavFillAndJustify2ExampleRaw} name="NavFillAndJustify2Example" componentName="React Bootstrap Nav" class="theme-bootstrap">
+  <NavFillAndJustify2Example client:only="react" />
+</Example>
+
+## Flex utility-based responsive navs
+
+Combine responsive flex utilities for fully adaptive nav layouts.
+
+<Example code={NavWorkingWithFlexUtilitiesExampleRaw} name="NavWorkingWithFlexUtilitiesExample" componentName="React Bootstrap Nav" class="theme-bootstrap">
+  <NavWorkingWithFlexUtilitiesExample client:only="react" />
+</Example>
+
+## Accessibility in React Bootstrap Navs and Tabs
+
+- Use `role="navigation"` on a parent container.
+- Don’t use `role="tablist"` unless you’re building dynamic tab panels.
+- CoreUI handles dynamic tab ARIA attributes automatically.
+
+## React Bootstrap Navs with Dropdowns
+
+### Tabs with dropdowns
+
+<Example code={NavTabsWithDropdownExampleRaw} name="NavTabsWithDropdownExample" componentName="React Bootstrap Nav" class="theme-bootstrap">
+  <NavTabsWithDropdownExample client:only="react" />
+</Example>
+
+### Pills with dropdowns
+
+<Example code={NavPillsWithDropdownExampleRaw} name="NavPillsWithDropdownExample" componentName="React Bootstrap Nav" class="theme-bootstrap">
+  <NavPillsWithDropdownExample client:only="react" />
+</Example>
+
+## React Bootstrap Tab Panes
+
+Build dynamic tabbed interfaces using `<CTabContent>` and `<CTabPane>`. These components follow ARIA best practices.
+
+<Example code={NavTabPanesExampleRaw} name="NavTabPanesExample" componentName="React Bootstrap Nav" class="theme-bootstrap">
+  <NavTabPanesExample client:only="react" />
+</Example>
+<Example code={NavTabPanes2ExampleRaw} name="NavTabPanes2Example" componentName="React Bootstrap Nav" class="theme-bootstrap">
+  <NavTabPanes2Example client:only="react" />
+</Example>
+
+## API reference
+
+Explore the full list of props and components used in React Bootstrap Navs and Tabs:
+
+- [&lt;CNav /&gt;](../api/#cnav)
+- [&lt;CNavItem /&gt;](../api/#cnavitem)
+- [&lt;CNavLink /&gt;](../api/#cnavlink)
+- [&lt;CTabContent /&gt;](../api/#ctabcontent)
+- [&lt;CTabPane /&gt;](../api/#ctabpane)

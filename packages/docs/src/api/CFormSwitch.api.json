@@ -1,0 +1,70 @@
+{
+  "name": "CFormSwitch",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "id",
+      "type": "string | undefined",
+      "default": null,
+      "description": "The id global attribute defines an identifier (ID) that must be unique in the whole document.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "invalid",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Set component validation state to invalid.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "label",
+      "type": "ReactNode",
+      "default": null,
+      "description": "The element represents a caption for a component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "reverse",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Put switch on the opposite side.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "size",
+      "type": "\"lg\" | \"xl\" | undefined",
+      "default": null,
+      "description": "Size the component large or extra large. Works only with `switch`.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "type",
+      "type": "\"checkbox\" | \"radio\" | undefined",
+      "default": "checkbox",
+      "description": "Specifies the type of component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "valid",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Set component validation state to valid.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CFormSwitch } from '@coreui/react'"
+}

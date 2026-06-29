@@ -12,7 +12,7 @@ This is a **Lerna monorepo** with the following key packages:
 - `packages/coreui-react/` - Main React components library (TypeScript)
 - `packages/coreui-icons-react/` - Icon components for React
 - `packages/coreui-react-chartjs/` - Chart.js integration for React
-- `packages/docs/` - Gatsby-based documentation site
+- `packages/docs/` - Astro-based documentation site
 
 ## Development Commands
 

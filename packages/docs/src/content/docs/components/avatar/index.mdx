@@ -1,0 +1,85 @@
+---
+title: "React Avatar Component"
+name: "Avatar"
+description: "The React Avatar component is used to display circular user profile pictures. React avatars can portray people or objects and support images, icons, or letters."
+otherFrameworks:
+  - avatar
+---
+
+import { AvatarImage } from './examples/AvatarImage'
+import AvatarImageRaw from './examples/AvatarImage.tsx?raw'
+import { AvatarLetter } from './examples/AvatarLetter'
+import AvatarLetterRaw from './examples/AvatarLetter.tsx?raw'
+import { AvatarIcon } from './examples/AvatarIcon'
+import AvatarIconRaw from './examples/AvatarIcon.tsx?raw'
+import { AvatarRounded } from './examples/AvatarRounded'
+import AvatarRoundedRaw from './examples/AvatarRounded.tsx?raw'
+import { AvatarSquare } from './examples/AvatarSquare'
+import AvatarSquareRaw from './examples/AvatarSquare.tsx?raw'
+import { AvatarSizes } from './examples/AvatarSizes'
+import AvatarSizesRaw from './examples/AvatarSizes.tsx?raw'
+import { AvatarWithStatus } from './examples/AvatarWithStatus'
+import AvatarWithStatusRaw from './examples/AvatarWithStatus.tsx?raw'
+
+## Image avatars
+
+Showcase React avatars using images. These avatars are typically circular and can display user profile pictures.
+
+<Example code={AvatarImageRaw} name="AvatarImage" componentName="React Avatar">
+  <AvatarImage client:only="react" />
+</Example>
+
+## Letter avatars
+
+Use letters inside avatars to represent users or objects when images are not available. This can be useful for displaying initials.
+
+<Example code={AvatarLetterRaw} name="AvatarLetter" componentName="React Avatar">
+  <AvatarLetter client:only="react" />
+</Example>
+
+## Icons avatars 
+
+Incorporate icons within React avatars, allowing for a visual representation using scalable vector graphics (SVG).
+
+<Example code={AvatarIconRaw} name="AvatarIcon" componentName="React Avatar">
+  <AvatarIcon client:only="react" />
+</Example>
+
+## Rounded avatars
+
+Use the `shape="rounded"` prop to make react avatars squared with rounded corners.
+
+<Example code={AvatarRoundedRaw} name="AvatarRounded" componentName="React Avatar">
+  <AvatarRounded client:only="react" />
+</Example>
+
+## Square avatars
+
+Use the `shape="rounded-0"` prop to make react avatars squared.
+
+<Example code={AvatarSquareRaw} name="AvatarSquare" componentName="React Avatar">
+  <AvatarSquare client:only="react" />
+</Example>
+
+## Sizes
+
+Fancy larger or smaller react avatar component? Add `size="xl"`, `size="lg"`, `size="md"` or `size="sm"` for additional sizes.
+
+<Example code={AvatarSizesRaw} name="AvatarSizes" componentName="React Avatar">
+  <AvatarSizes client:only="react" />
+</Example>
+
+## Avatars with status
+
+Add a status indicator to avatars using the `status` property to show online or offline status.
+
+<Example code={AvatarWithStatusRaw} name="AvatarWithStatus" componentName="React Avatar">
+  <AvatarWithStatus client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CAvatar /&gt;](./api/#cavatar)
+

@@ -8,7 +8,7 @@
     "charts:test": "lerna run --scope \"@coreui/react-chartjs\" test --stream",
     "charts:test:update": "lerna run --scope \"@coreui/react-chartjs\" test:update --stream",
     "docs:api": "lerna run --scope \"@coreui/react-docs\" api --stream",
-    "docs:dev": "lerna run --scope \"@coreui/react-docs\" develop --stream",
+    "docs:dev": "lerna run --scope \"@coreui/react-docs\" dev --stream",
     "docs:build": "lerna run --scope \"@coreui/react-docs\" build --stream",
     "docs:clean": "lerna run --scope \"@coreui/react-docs\" clean",
     "icons:build": "lerna run --scope \"@coreui/icons-react\" build --stream",
@@ -22,25 +22,18 @@
     "test:update": "npm-run-all charts:test:update icons:test:update lib:test:update"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^8.61.0",
+    "@typescript-eslint/parser": "^8.62.0",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-unicorn": "^62.0.0",
+    "eslint-plugin-unused-imports": "^4.4.1",
     "globals": "^16.5.0",
     "lerna": "^9.0.7",
     "npm-run-all": "^4.1.5",
-    "prettier": "^3.8.4",
-    "typescript-eslint": "^8.61.0"
-  },
-  "overrides": {
-    "gatsby-remark-external-links": {
-      "unist-util-find": "1.0.2"
-    }
-  },
-  "resolutions": {
-    "**/gatsby-remark-external-links/unist-util-find": "1.0.2"
+    "prettier": "^3.9.1",
+    "typescript-eslint": "^8.62.0"
   }
 }

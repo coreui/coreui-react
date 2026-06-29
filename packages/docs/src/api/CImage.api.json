@@ -1,0 +1,46 @@
+{
+  "name": "CImage",
+  "props": [
+    {
+      "name": "align",
+      "type": "\"start\" | \"center\" | \"end\" | undefined",
+      "default": null,
+      "description": "Set the horizontal aligment.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "fluid",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Make image responsive.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "rounded",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Make image rounded.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "thumbnail",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Give an image a rounded 1px border appearance.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CImage } from '@coreui/react'"
+}

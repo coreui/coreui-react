@@ -1,0 +1,198 @@
+{
+  "name": "CChipInput",
+  "props": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Declarative `CChip` children used as the initial chips. Their values seed the uncontrolled value when `defaultValue` is not provided (parity with the vanilla Chip Input).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "chipClassName",
+      "type": "ChipClassName | undefined",
+      "default": null,
+      "description": "Adds custom classes to chips rendered by the React Chip Input component. Accepts a static className or a resolver function based on chip value.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Adds custom classes to the React Chip Input component root element.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "createOnBlur",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Creates a new chip when the React Chip Input component loses focus with a pending value.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "defaultValue",
+      "type": "string[] | undefined",
+      "default": "[]",
+      "description": "Sets the initial uncontrolled values rendered by the React Chip Input component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "disabled",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Disables the React Chip Input component and prevents adding, removing, or selecting chips.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "filter",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Renders the chips as filter chips, each showing a leading check icon while selected. Implies `selectable`.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "id",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Sets the `id` of the internal text input rendered by the React Chip Input component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "label",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Renders an inline label inside the React Chip Input component container.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "maxChips",
+      "type": "number | null | undefined",
+      "default": null,
+      "description": "Sets the maximum number of chips that can be created in the React Chip Input component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "name",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Sets the name of the hidden input used by the React Chip Input component for form submission.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onAdd",
+      "type": "((value: string) => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the React Chip Input component adds a new chip.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onChange",
+      "type": "((values: string[]) => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the value list of the React Chip Input component changes.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onInput",
+      "type": "((value: string) => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the internal text input value changes in the React Chip Input component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onRemove",
+      "type": "((value: string) => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the React Chip Input component removes a chip.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onSelect",
+      "type": "((selected: string[]) => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the selected chip values change in the React Chip Input component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "placeholder",
+      "type": "string | undefined",
+      "default": "",
+      "description": "Sets placeholder text for the internal input of the React Chip Input component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Makes the React Chip Input component readonly while keeping values visible.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "removable",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Displays remove buttons on chips managed by the React Chip Input component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "selectable",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Enables chip selection behavior in the React Chip Input component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "selectionMode",
+      "type": "\"single\" | \"multiple\" | undefined",
+      "default": null,
+      "description": "Sets how many chips can be selected at once in the React Chip Input component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "separator",
+      "type": "string | null | undefined",
+      "default": ",",
+      "description": "Sets the separator character used to create chips while typing or pasting in the React Chip Input component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"lg\" | undefined",
+      "default": null,
+      "description": "Sets the size of the React Chip Input component to small or large.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "value",
+      "type": "string[] | undefined",
+      "default": null,
+      "description": "Controls the values rendered by the React Chip Input component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CChipInput } from '@coreui/react'"
+}

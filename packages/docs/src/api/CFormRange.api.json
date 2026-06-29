@@ -1,0 +1,78 @@
+{
+  "name": "CFormRange",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "disabled",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Toggle the disabled state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "label",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Add a caption for a component.",
+      "since": "4.2.0",
+      "deprecated": null
+    },
+    {
+      "name": "max",
+      "type": "number | undefined",
+      "default": null,
+      "description": "Specifies the maximum value for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "min",
+      "type": "number | undefined",
+      "default": null,
+      "description": "Specifies the minimum value for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onChange",
+      "type": "ChangeEventHandler<HTMLInputElement> | undefined",
+      "default": null,
+      "description": "Method called immediately after the `value` prop changes.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Toggle the readonly state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "step",
+      "type": "number | undefined",
+      "default": null,
+      "description": "Specifies the interval between legal numbers in the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "value",
+      "type": "string | number | string[] | undefined",
+      "default": null,
+      "description": "The `value` attribute of component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CFormRange } from '@coreui/react'"
+}

@@ -1,0 +1,38 @@
+{
+  "name": "CTabs",
+  "props": [
+    {
+      "name": "activeItemKey",
+      "type": "string | number | undefined",
+      "default": null,
+      "description": "Controls the currently active tab.\n\nWhen provided, the component operates in a controlled mode.\nYou must handle tab switching manually by updating this prop.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "defaultActiveItemKey",
+      "type": "string | number | undefined",
+      "default": null,
+      "description": "Sets the initially active tab when the component mounts.\n\nAfter initialization, the component manages active tab changes internally.\n\nUse `defaultActiveItemKey` for uncontrolled usage.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string | number) => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the active tab changes.\n\n- In controlled mode (`activeItemKey` provided), you must update `activeItemKey` yourself based on the value received.\n- In uncontrolled mode, this callback is called after internal state updates.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CTabs } from '@coreui/react'"
+}

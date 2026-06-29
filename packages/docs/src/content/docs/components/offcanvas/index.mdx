@@ -1,0 +1,127 @@
+---
+title: "React Offcanvas Component"
+name: "Offcanvas"
+description: "React alert component allows build hidden sidebars into your project for navigation, shopping carts."
+otherFrameworks:
+  - offcanvas
+---
+
+import { OffcanvasExample } from './examples/OffcanvasExample'
+import OffcanvasExampleRaw from './examples/OffcanvasExample.tsx?raw'
+import { OffcanvasLiveExample } from './examples/OffcanvasLiveExample'
+import OffcanvasLiveExampleRaw from './examples/OffcanvasLiveExample.tsx?raw'
+import { OffcanvasBodyScrollingExample } from './examples/OffcanvasBodyScrollingExample'
+import OffcanvasBodyScrollingExampleRaw from './examples/OffcanvasBodyScrollingExample.tsx?raw'
+import { OffcanvasBodyScrollingAndBackdropExample } from './examples/OffcanvasBodyScrollingAndBackdropExample'
+import OffcanvasBodyScrollingAndBackdropExampleRaw from './examples/OffcanvasBodyScrollingAndBackdropExample.tsx?raw'
+import { OffcanvasStaticBackdropExample } from './examples/OffcanvasStaticBackdropExample'
+import OffcanvasStaticBackdropExampleRaw from './examples/OffcanvasStaticBackdropExample.tsx?raw'
+import { OffcanvasDarkExample } from './examples/OffcanvasDarkExample'
+import OffcanvasDarkExampleRaw from './examples/OffcanvasDarkExample.tsx?raw'
+import { OffcanvasResponsiveExample } from './examples/OffcanvasResponsiveExample'
+import OffcanvasResponsiveExampleRaw from './examples/OffcanvasResponsiveExample.tsx?raw'
+import { OffcanvasPlacementTopExample } from './examples/OffcanvasPlacementTopExample'
+import OffcanvasPlacementTopExampleRaw from './examples/OffcanvasPlacementTopExample.tsx?raw'
+import { OffcanvasPlacementRightExample } from './examples/OffcanvasPlacementRightExample'
+import OffcanvasPlacementRightExampleRaw from './examples/OffcanvasPlacementRightExample.tsx?raw'
+import { OffcanvasPlacementBottomExample } from './examples/OffcanvasPlacementBottomExample'
+import OffcanvasPlacementBottomExampleRaw from './examples/OffcanvasPlacementBottomExample.tsx?raw'
+
+## Examples
+
+### Offcanvas components
+
+Below is an offcanvas example that is shown by default (via `visible={true}`). Offcanvas includes support for a header with a close button and an optional body class for some initial `padding`. We suggest that you include offcanvas headers with dismiss actions whenever possible, or provide an explicit dismiss action.
+
+<Example code={OffcanvasExampleRaw} name="OffcanvasExample" componentName="React Offcanvas" class="docs-example-offcanvas bg-body-tertiary p-0 overflow-hidden">
+  <OffcanvasExample client:only="react" />
+</Example>
+
+### Live demo
+
+Use the buttons below to show and hide an offcanvas component.
+
+- `visible={false}` hides content (default)
+- `visible` or `visible={true}` shows content
+
+<Example code={OffcanvasLiveExampleRaw} name="OffcanvasLiveExample" componentName="React Offcanvas">
+  <OffcanvasLiveExample client:only="react" />
+</Example>
+
+### Body scrolling
+
+Scrolling the `<body>` element is disabled when an offcanvas and its backdrop are visible. Use the scroll property to toggle `<body>` scrolling and backdrop to toggle the backdrop.
+
+<Example code={OffcanvasBodyScrollingExampleRaw} name="OffcanvasBodyScrollingExample" componentName="React Offcanvas">
+  <OffcanvasBodyScrollingExample client:only="react" />
+</Example>
+
+### Body scrolling and backdrop
+
+You can also enable `<body>` scrolling with a visible backdrop.
+
+<Example code={OffcanvasBodyScrollingAndBackdropExampleRaw} name="OffcanvasBodyScrollingAndBackdropExample" componentName="React Offcanvas">
+  <OffcanvasBodyScrollingAndBackdropExample client:only="react" />
+</Example>
+
+### Static backdrop
+
+If you set a `backdrop` to `static`, your React offcanvas component will not close when clicking outside of it.
+
+<Example code={OffcanvasStaticBackdropExampleRaw} name="OffcanvasStaticBackdropExample" componentName="React Offcanvas">
+  <OffcanvasStaticBackdropExample client:only="react" />
+</Example>
+
+## Dark offcanvas
+
+Change the appearance of offcanvases with `dark` boolean property to better match them to different contexts like dark navbars.
+
+<Example code={OffcanvasDarkExampleRaw} name="OffcanvasDarkExample" componentName="React Offcanvas" class="docs-example-offcanvas bg-body-secondary p-0 overflow-hidden">
+  <OffcanvasDarkExample client:only="react" />
+</Example>
+
+## Responsive
+
+Responsive offcanvas properties hide content outside the viewport from a specified breakpoint and down.
+Above that breakpoint, the contents within will behave as usual.
+For example, `responsive="lg"` hides content in an offcanvas below the lg breakpoint, but shows the content above the lg breakpoint.
+
+<Example code={OffcanvasResponsiveExampleRaw} name="OffcanvasResponsiveExample" componentName="React Offcanvas">
+  <OffcanvasResponsiveExample client:only="react" />
+</Example>
+
+## Placement
+
+There's no default placement for offcanvas components, so you must add one of the modifier classes below;
+
+- `placement="start"` places offcanvas on the left of the viewport (shown above)
+- `placement="end"` places offcanvas on the right of the viewport
+- `placement="top"` places offcanvas on the top of the viewport
+- `placement="bottom"` places offcanvas on the bottom of the viewport
+
+Try the top, right, and bottom examples out below.
+
+<Example code={OffcanvasPlacementTopExampleRaw} name="OffcanvasPlacementTopExample" componentName="React Offcanvas">
+  <OffcanvasPlacementTopExample client:only="react" />
+</Example>
+
+<Example code={OffcanvasPlacementRightExampleRaw} name="OffcanvasPlacementRightExample" componentName="React Offcanvas">
+  <OffcanvasPlacementRightExample client:only="react" />
+</Example>
+
+<Example code={OffcanvasPlacementBottomExampleRaw} name="OffcanvasPlacementBottomExample" componentName="React Offcanvas">
+  <OffcanvasPlacementBottomExample client:only="react" />
+</Example>
+
+## Accessibility
+
+Since the offcanvas panel is conceptually a modal dialog, be sure to add `aria-labelledby="..."`—referencing the offcanvas title—to `<COffcanvas>`. Note that you don’t need to add `role="dialog"` since we already add it automatically.
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;COffcanvas /&gt;](./api/#coffcanvas)
+- [&lt;COffcanvasBody /&gt;](./api/#coffcanvasbody)
+- [&lt;COffcanvasHeader /&gt;](./api/#coffcanvasheader)
+- [&lt;COffcanvasTitle /&gt;](./api/#coffcanvastitle)

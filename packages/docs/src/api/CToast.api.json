@@ -1,0 +1,70 @@
+{
+  "name": "CToast",
+  "props": [
+    {
+      "name": "animation",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Apply a CSS fade transition to the toast.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "autohide",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Auto hide the toast.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "color",
+      "type": "'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "delay",
+      "type": "number | undefined",
+      "default": 5000,
+      "description": "Delay hiding the toast (ms).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onClose",
+      "type": "((index: number | null) => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the component requests to be closed.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onShow",
+      "type": "((index: number | null) => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the component requests to be shown.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean | undefined",
+      "default": false,
+      "description": "Toggle the visibility of component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CToast } from '@coreui/react'"
+}

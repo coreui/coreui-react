@@ -1,0 +1,5 @@
+{
+  "name": "CTableCaption",
+  "props": [],
+  "imports": "import { CTableCaption } from '@coreui/react'"
+}

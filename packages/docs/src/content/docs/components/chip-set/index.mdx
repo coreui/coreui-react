@@ -1,0 +1,125 @@
+---
+title: "React Chip Set Component"
+name: "Chip Set"
+description: "React Chip Set component groups chips into an accessible, keyboard-navigable container with single or multiple selection."
+preRelease: true
+---
+
+import { ChipSetExample } from './examples/ChipSetExample'
+import ChipSetExampleRaw from './examples/ChipSetExample.tsx?raw'
+import { ChipSetSelectableExample } from './examples/ChipSetSelectableExample'
+import ChipSetSelectableExampleRaw from './examples/ChipSetSelectableExample.tsx?raw'
+import { ChipSetSingleExample } from './examples/ChipSetSingleExample'
+import ChipSetSingleExampleRaw from './examples/ChipSetSingleExample.tsx?raw'
+import { ChipSetFilterExample } from './examples/ChipSetFilterExample'
+import ChipSetFilterExampleRaw from './examples/ChipSetFilterExample.tsx?raw'
+import { ChipSetRemovableExample } from './examples/ChipSetRemovableExample'
+import ChipSetRemovableExampleRaw from './examples/ChipSetRemovableExample.tsx?raw'
+
+## Overview
+
+The CoreUI **React Chip Set component** groups multiple [chips](/components/chip/) into a single container that manages roving focus, keyboard navigation, and selection. While an individual chip handles its own state (selection, removal), the chip set is responsible for everything that spans the whole group:
+
+- Arrow-key navigation between chips, with `Home`/`End` jumping to the edges.
+- Moving focus to a neighboring chip after one is removed.
+- Single or multiple selection through the `selectionMode` prop.
+- A flexible, wrapping layout with a configurable gap.
+
+The chip set forwards `selectable`, `filter`, `removable`, `disabled`, `removeIcon`, `selectedIcon`, and `ariaRemoveLabel` to every chip it manages, so you set them once on the set. Each `CChip` is identified by its `value` prop.
+
+## Basic chip set
+
+Pass a `chips` array to render the chips from data. Each item is a string or an object with a `value`, an optional `label`, and any `CChip` props (so per-chip overrides work).
+
+<Example code={ChipSetExampleRaw} name="ChipSetExample" componentName="React Chip Set">
+  <ChipSetExample client:only="react" />
+</Example>
+
+You can also compose `CChip` children instead of passing `chips`:
+
+```jsx
+<CChipSet>
+  <CChip value="apple">Apple</CChip>
+  <CChip value="banana">Banana</CChip>
+  <CChip value="cherry">Cherry</CChip>
+  <CChip value="date">Date</CChip>
+</CChipSet>
+```
+
+## Selectable chips
+
+Set `selectable` to make every chip in the set selectable. With the default `selectionMode` of `multiple`, any number of chips can be active at once — useful for filters. Use `selected` / `defaultSelected` / `onSelect` to control the selection.
+
+<Example code={ChipSetSelectableExampleRaw} name="ChipSetSelectableExample" componentName="React Chip Set">
+  <ChipSetSelectableExample client:only="react" />
+</Example>
+
+### Single selection
+
+Use `selectionMode="single"` to allow only one selected chip at a time — selecting a chip deselects its siblings. This is useful for choice chips.
+
+<Example code={ChipSetSingleExampleRaw} name="ChipSetSingleExample" componentName="React Chip Set">
+  <ChipSetSingleExample client:only="react" />
+</Example>
+
+## Filter chips
+
+Set `filter` to turn the chips into filter chips. A check icon is shown on each selected chip and removed when it is deselected. `filter` implies `selectable`, so you don't need to set both.
+
+<Example code={ChipSetFilterExampleRaw} name="ChipSetFilterExample" componentName="React Chip Set">
+  <ChipSetFilterExample client:only="react" />
+</Example>
+
+Customize the check with the `selectedIcon` prop, the same way you customize the remove icon.
+
+## Removable chips
+
+Set `removable` to add a remove button to every chip. When a chip is removed, focus moves to a neighboring chip.
+
+With `defaultChips` the set keeps the list **uncontrolled** and removes chips for you (`onRemove` just notifies):
+
+<Example code={ChipSetRemovableExampleRaw} name="ChipSetRemovableExample" componentName="React Chip Set">
+  <ChipSetRemovableExample client:only="react" />
+</Example>
+
+For a **controlled** list use `chips` and drop the chip from your data in `onRemove`:
+
+```jsx
+const [chips, setChips] = useState(['Apple', 'Banana', 'Cherry'])
+
+return (
+  <CChipSet
+    removable
+    chips={chips}
+    onRemove={(value) => setChips((prev) => prev.filter((chip) => chip !== value))}
+  />
+)
+```
+
+## Keyboard behavior
+
+When a chip inside a chip set is focused:
+
+| Key | Action |
+| --- | --- |
+| `Enter` / `Space` | Toggle selection of the focused chip (when `selectable` is enabled) |
+| `Backspace` / `Delete` | Remove the focused chip (when `removable` is enabled) |
+| `ArrowLeft` | Move focus to the previous chip |
+| `ArrowRight` | Move focus to the next chip |
+| `Home` | Move focus to the first chip |
+| `End` | Move focus to the last chip |
+
+Disabled chips are skipped while navigating. In right-to-left layouts the arrow keys are mirrored — `ArrowLeft` moves to the next chip and `ArrowRight` to the previous one — while `Home` and `End` always jump to the first and last chip.
+
+## Accessibility
+
+- The chip set manages roving focus, so the arrow keys move focus between chips rather than relying on the browser's default tab order.
+- Add a descriptive `aria-label` to the chip set when the group has a meaningful role (e.g., "Applied filters").
+- Selection state is reflected on each chip via `aria-selected`; see the [Chip](/components/chip/) accessibility notes.
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CChipSet /&gt;](./api/#cchipset)
+- [&lt;CChip /&gt;](/components/chip/api/#cchip)

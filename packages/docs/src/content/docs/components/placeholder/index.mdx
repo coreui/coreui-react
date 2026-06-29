@@ -1,0 +1,87 @@
+---
+title: "React Placeholder Component"
+name: "Placeholder"
+description: "Use loading react placeholders for your components or pages to indicate something may still be loading."
+otherFrameworks:
+  - placeholder
+---
+
+import { PlaceholderExample } from './examples/PlaceholderExample'
+import PlaceholderExampleRaw from './examples/PlaceholderExample.tsx?raw'
+import { Placeholder2Example } from './examples/Placeholder2Example'
+import Placeholder2ExampleRaw from './examples/Placeholder2Example.tsx?raw'
+import { PlaceholderWidthExample } from './examples/PlaceholderWidthExample'
+import PlaceholderWidthExampleRaw from './examples/PlaceholderWidthExample.tsx?raw'
+import { PlaceholderColorExample } from './examples/PlaceholderColorExample'
+import PlaceholderColorExampleRaw from './examples/PlaceholderColorExample.tsx?raw'
+import { PlaceholderSizingExample } from './examples/PlaceholderSizingExample'
+import PlaceholderSizingExampleRaw from './examples/PlaceholderSizingExample.tsx?raw'
+import { PlaceholderAnimationExample } from './examples/PlaceholderAnimationExample'
+import PlaceholderAnimationExampleRaw from './examples/PlaceholderAnimationExample.tsx?raw'
+
+## About
+
+Placeholders can be used to enhance the experience of your application. They're built only with HTML and CSS, meaning you don't need any JavaScript to create them. You will, however, need some custom JavaScript to toggle their visibility. Their appearance, color, and sizing can be easily customized with our utility classes.
+
+## Example
+
+In the example below, we take a typical card component and recreate it with placeholders applied to create a "loading card". Size and proportions are the same between the two.
+
+<Example code={PlaceholderExampleRaw} name="PlaceholderExample" componentName="React Placeholder" class="d-flex justify-content-around">
+  <PlaceholderExample client:only="react" />
+</Example>
+
+## How it works
+
+Create placeholders with the `<CPlaceholder>` component and a grid column propx (e.g., `xs={6}`) to set the `width`. They can replace the text inside an element or be added as a modifier class to an existing component.
+
+We apply additional styling to `CButton`s via `::before` to ensure the `height` is respected. You may extend this pattern for other situations as needed, or add a `&nbsp;` within the element to reflect the height when actual text is rendered in its place.
+
+<Example code={Placeholder2ExampleRaw} name="Placeholder2Example" componentName="React Placeholder">
+  <Placeholder2Example client:only="react" />
+</Example>
+
+<Callout className="mb-4" color="info">
+  The use of <code>aria-hidden="true"</code> only indicates that the element should be hidden to
+  screen readers. The <strong>loading</strong> behavior of the placeholder depends on how authors
+  will actually use the placeholder styles, how they plan to update things, etc. Some JavaScript
+  code may be needed to *swap* the state of the placeholder and inform AT users of the update.
+</Callout>
+
+### Width
+
+You can change the `width` through grid column classes, width utilities, or inline styles.
+
+<Example code={PlaceholderWidthExampleRaw} name="PlaceholderWidthExample" componentName="React Placeholder">
+  <PlaceholderWidthExample client:only="react" />
+</Example>
+
+### Color
+
+By default, the `<CPlaceholder>` uses `currentColor`. This can be overridden with a custom color or utility class.
+
+<Example code={PlaceholderColorExampleRaw} name="PlaceholderColorExample" componentName="React Placeholder">
+  <PlaceholderColorExample client:only="react" />
+</Example>
+
+### Sizing
+
+The size of `<CPlaceholder>`s are based on the typographic style of the parent element. Customize them with `size` prop: `lg`, `sm`, or `xs`.
+
+<Example code={PlaceholderSizingExampleRaw} name="PlaceholderSizingExample" componentName="React Placeholder">
+  <PlaceholderSizingExample client:only="react" />
+</Example>
+
+### Animation
+
+Animate placeholders with `animation="glow"` or `animation="wave"` to better convey the perception of something being _actively_ loaded.
+
+<Example code={PlaceholderAnimationExampleRaw} name="PlaceholderAnimationExample" componentName="React Placeholder">
+  <PlaceholderAnimationExample client:only="react" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CPlaceholder /&gt;](./api/#cplaceholder)

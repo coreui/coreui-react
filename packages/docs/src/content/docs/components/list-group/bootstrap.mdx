@@ -1,0 +1,139 @@
+---
+title: "React Bootstrap List Group Component"
+name: "List Group with Bootstrap Styling"
+description: "Learn how to use the React Bootstrap List Group component from CoreUI to display flexible and interactive lists with badges, buttons, contextual styles, and more."
+bootstrap: true
+---
+
+import { ListGroupExample } from './examples/ListGroupExample'
+import ListGroupExampleRaw from './examples/ListGroupExample.tsx?raw'
+import { ListGroupActiveItemsExample } from './examples/ListGroupActiveItemsExample'
+import ListGroupActiveItemsExampleRaw from './examples/ListGroupActiveItemsExample.tsx?raw'
+import { ListGroupDisabledItemsExample } from './examples/ListGroupDisabledItemsExample'
+import ListGroupDisabledItemsExampleRaw from './examples/ListGroupDisabledItemsExample.tsx?raw'
+import { ListGroupLinksAndButtonsExample } from './examples/ListGroupLinksAndButtonsExample'
+import ListGroupLinksAndButtonsExampleRaw from './examples/ListGroupLinksAndButtonsExample.tsx?raw'
+import { ListGroupLinksAndButtons2Example } from './examples/ListGroupLinksAndButtons2Example'
+import ListGroupLinksAndButtons2ExampleRaw from './examples/ListGroupLinksAndButtons2Example.tsx?raw'
+import { ListGroupFlushExample } from './examples/ListGroupFlushExample'
+import ListGroupFlushExampleRaw from './examples/ListGroupFlushExample.tsx?raw'
+import { ListGroupHorizontalExample } from './examples/ListGroupHorizontalExample'
+import ListGroupHorizontalExampleRaw from './examples/ListGroupHorizontalExample.tsx?raw'
+import ListGroupHorizontalExampleJsRaw from './examples/ListGroupHorizontalExample.jsx?raw'
+import { ListGroupContextualClassesExample } from './examples/ListGroupContextualClassesExample'
+import ListGroupContextualClassesExampleRaw from './examples/ListGroupContextualClassesExample.tsx?raw'
+import { ListGroupContextualClasses2Example } from './examples/ListGroupContextualClasses2Example'
+import ListGroupContextualClasses2ExampleRaw from './examples/ListGroupContextualClasses2Example.tsx?raw'
+import { ListGroupWithBadgesExample } from './examples/ListGroupWithBadgesExample'
+import ListGroupWithBadgesExampleRaw from './examples/ListGroupWithBadgesExample.tsx?raw'
+import { ListGroupCustomContentExample } from './examples/ListGroupCustomContentExample'
+import ListGroupCustomContentExampleRaw from './examples/ListGroupCustomContentExample.tsx?raw'
+import { ListGroupCheckboxesAndRadiosExample } from './examples/ListGroupCheckboxesAndRadiosExample'
+import ListGroupCheckboxesAndRadiosExampleRaw from './examples/ListGroupCheckboxesAndRadiosExample.tsx?raw'
+import { ListGroupCheckboxesAndRadios2Example } from './examples/ListGroupCheckboxesAndRadios2Example'
+import ListGroupCheckboxesAndRadios2ExampleRaw from './examples/ListGroupCheckboxesAndRadios2Example.tsx?raw'
+import { ListGroupCheckboxesAndRadios3Example } from './examples/ListGroupCheckboxesAndRadios3Example'
+import ListGroupCheckboxesAndRadios3ExampleRaw from './examples/ListGroupCheckboxesAndRadios3Example.tsx?raw'
+
+## Basic usage of React Bootstrap List Group
+
+The React Bootstrap List Group component allows you to display a list of content using Bootstrap-styled list items. The default setup uses an unordered list with proper classes.
+
+<Example code={ListGroupExampleRaw} name="ListGroupExample" componentName="React Bootstrap List Group" class="theme-bootstrap">
+  <ListGroupExample client:only="react" />
+</Example>
+
+## Active items
+
+Add the `active` prop to a `<CListGroupItem>` to visually mark it as the selected item.
+
+<Example code={ListGroupActiveItemsExampleRaw} name="ListGroupActiveItemsExample" componentName="React Bootstrap List Group" class="theme-bootstrap">
+  <ListGroupActiveItemsExample client:only="react" />
+</Example>
+
+## Disabled items
+
+Use the `disabled` prop to disable interaction with a list item.
+
+<Example code={ListGroupDisabledItemsExampleRaw} name="ListGroupDisabledItemsExample" componentName="React Bootstrap List Group" class="theme-bootstrap">
+  <ListGroupDisabledItemsExample client:only="react" />
+</Example>
+
+## List group as links or buttons
+
+You can use `<a>` or `<button>` elements for actionable React Bootstrap List Group items. Add the `as="a"` or `as="button"` prop as needed.
+
+<Example code={ListGroupLinksAndButtonsExampleRaw} name="ListGroupLinksAndButtonsExample" componentName="React Bootstrap List Group" class="theme-bootstrap">
+  <ListGroupLinksAndButtonsExample client:only="react" />
+</Example>
+<Example code={ListGroupLinksAndButtons2ExampleRaw} name="ListGroupLinksAndButtons2Example" componentName="React Bootstrap List Group" class="theme-bootstrap">
+  <ListGroupLinksAndButtons2Example client:only="react" />
+</Example>
+
+## Flush list group
+
+Remove borders and padding using the `flush` prop. This is especially useful inside Bootstrap-styled cards.
+
+<Example code={ListGroupFlushExampleRaw} name="ListGroupFlushExample" componentName="React Bootstrap List Group" class="theme-bootstrap">
+  <ListGroupFlushExample client:only="react" />
+</Example>
+
+## Horizontal list group
+
+Add `layout="horizontal"` to display the list items horizontally. For responsive behavior, use values like `horizontal-md`, `horizontal-lg`, etc.
+
+<Example code={ListGroupHorizontalExampleRaw} codeJs={ListGroupHorizontalExampleJsRaw} name="ListGroupHorizontalExample" componentName="React Bootstrap List Group" class="theme-bootstrap">
+  <ListGroupHorizontalExample client:only="react" />
+</Example>
+
+> ⚠️ Horizontal list groups cannot be used in combination with `flush`.
+
+## Contextual styling for list items
+
+Use Bootstrap contextual classes such as `color="primary"`, `color="success"`, etc. to style list items based on intent or state.
+
+<Example code={ListGroupContextualClassesExampleRaw} name="ListGroupContextualClassesExample" componentName="React Bootstrap List Group" class="theme-bootstrap">
+  <ListGroupContextualClassesExample client:only="react" />
+</Example>
+<Example code={ListGroupContextualClasses2ExampleRaw} name="ListGroupContextualClasses2Example" componentName="React Bootstrap List Group" class="theme-bootstrap">
+  <ListGroupContextualClasses2Example client:only="react" />
+</Example>
+
+<Callout color="warning" type="colorAssistiveTechnologies" />
+
+## List group with badges
+
+Combine list items with badges to indicate notifications, counts, or statuses.
+
+<Example code={ListGroupWithBadgesExampleRaw} name="ListGroupWithBadgesExample" componentName="React Bootstrap List Group" class="theme-bootstrap">
+  <ListGroupWithBadgesExample client:only="react" />
+</Example>
+
+## Custom content inside list group
+
+React Bootstrap List Groups support custom content such as headings, paragraphs, or even full layouts using [Flex utilities](https://coreui.io/bootstrap/docs/utilities/flex/).
+
+<Example code={ListGroupCustomContentExampleRaw} name="ListGroupCustomContentExample" componentName="React Bootstrap List Group" class="theme-bootstrap">
+  <ListGroupCustomContentExample client:only="react" />
+</Example>
+
+## List group with checkboxes and radios
+
+Embed checkboxes or radio buttons inside list items for interactive list selection.
+
+<Example code={ListGroupCheckboxesAndRadiosExampleRaw} name="ListGroupCheckboxesAndRadiosExample" componentName="React Bootstrap List Group" class="theme-bootstrap">
+  <ListGroupCheckboxesAndRadiosExample client:only="react" />
+</Example>
+<Example code={ListGroupCheckboxesAndRadios2ExampleRaw} name="ListGroupCheckboxesAndRadios2Example" componentName="React Bootstrap List Group" class="theme-bootstrap">
+  <ListGroupCheckboxesAndRadios2Example client:only="react" />
+</Example>
+<Example code={ListGroupCheckboxesAndRadios3ExampleRaw} name="ListGroupCheckboxesAndRadios3Example" componentName="React Bootstrap List Group" class="theme-bootstrap">
+  <ListGroupCheckboxesAndRadios3Example client:only="react" />
+</Example>
+
+## API reference
+
+Explore the full API for the React Bootstrap List Group components:
+
+- [&lt;CListGroup /&gt;](../api/#clistgroup)
+- [&lt;CListGroupItem /&gt;](../api/#clistgroupitem)

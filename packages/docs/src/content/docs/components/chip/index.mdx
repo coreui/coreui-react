@@ -1,0 +1,156 @@
+---
+title: "React Chip Component"
+name: "Chip"
+description: "React Chip component for CoreUI lets you build compact, interactive labels, tags, filters, and selections with icons, avatars, remove buttons, and keyboard support."
+preRelease: true
+otherFrameworks:
+  - chip
+---
+
+import { ChipExample } from './examples/ChipExample'
+import ChipExampleRaw from './examples/ChipExample.tsx?raw'
+import { ChipOutlineExample } from './examples/ChipOutlineExample'
+import ChipOutlineExampleRaw from './examples/ChipOutlineExample.tsx?raw'
+import { ChipIconExample } from './examples/ChipIconExample'
+import ChipIconExampleRaw from './examples/ChipIconExample.tsx?raw'
+import { ChipAvatarExample } from './examples/ChipAvatarExample'
+import ChipAvatarExampleRaw from './examples/ChipAvatarExample.tsx?raw'
+import { ChipVariantsExample } from './examples/ChipVariantsExample'
+import ChipVariantsExampleRaw from './examples/ChipVariantsExample.tsx?raw'
+import { ChipOutlineVariantsExample } from './examples/ChipOutlineVariantsExample'
+import ChipOutlineVariantsExampleRaw from './examples/ChipOutlineVariantsExample.tsx?raw'
+import { ChipActiveStateExample } from './examples/ChipActiveStateExample'
+import ChipActiveStateExampleRaw from './examples/ChipActiveStateExample.tsx?raw'
+import { ChipSizesExample } from './examples/ChipSizesExample'
+import ChipSizesExampleRaw from './examples/ChipSizesExample.tsx?raw'
+import { ChipInteractiveExample } from './examples/ChipInteractiveExample'
+import ChipInteractiveExampleRaw from './examples/ChipInteractiveExample.tsx?raw'
+import { ChipDismissButtonExample } from './examples/ChipDismissButtonExample'
+import ChipDismissButtonExampleRaw from './examples/ChipDismissButtonExample.tsx?raw'
+
+## Overview
+
+The CoreUI **React Chip component** lets you build compact, interactive UI elements for labels, tags, filters, and selections. Chips support icons, avatars, removal, keyboard navigation, and theme-aware styling.
+
+Chips are similar to badges, but they have a single size and more defined visual styles useful for indicating state and selection.
+
+- Chips are statically sized and do not scale with the parent element by default.
+- Chips can have icons, avatars, and remove buttons.
+- Chips can be active or disabled.
+- Chips automatically gain focus when they are `selectable` or `removable`.
+- Chips support keyboard navigation and selection in their container.
+
+See examples of all of this in action below.
+
+## When to use chips
+
+Use the React Chip component when you need:
+
+- Multi-select filters in search or form interfaces
+- Removable tags for selected items or applied filters
+- Keyboard-navigable selection groups
+- Compact status indicators with icon or avatar support
+
+## Basic chips
+
+Use `CChip` for standalone chips.
+
+<Example code={ChipExampleRaw} name="ChipExample" componentName="React Chip">
+  <ChipExample client:only="react" />
+</Example>
+
+## Outline chips
+
+Use `variant="outline"` to remove all background images and colors on any chip.
+
+<Example code={ChipOutlineExampleRaw} name="ChipOutlineExample" componentName="React Chip">
+  <ChipOutlineExample client:only="react" />
+</Example>
+
+## Chips with icons
+
+Wrap `CIcon` in a `<span className="chip-icon">` to render a leading icon.
+
+<Example code={ChipIconExampleRaw} name="ChipIconExample" componentName="React Chip">
+  <ChipIconExample client:only="react" />
+</Example>
+
+## Chips with avatars
+
+Use `.chip-img` for an image-like avatar or combine `CChip` with `CAvatar`.
+
+<Example code={ChipAvatarExampleRaw} name="ChipAvatarExample" componentName="React Chip">
+  <ChipAvatarExample client:only="react" />
+</Example>
+
+## Variants
+
+Apply color variants to your chips. Chips are subtle by default as this allows for a clear themed active state.
+
+<Example code={ChipVariantsExampleRaw} name="ChipVariantsExample" componentName="React Chip">
+  <ChipVariantsExample client:only="react" />
+</Example>
+
+<Example code={ChipOutlineVariantsExampleRaw} name="ChipOutlineVariantsExample" componentName="React Chip">
+  <ChipOutlineVariantsExample client:only="react" />
+</Example>
+
+### Active state
+
+Add `active` to make chips use the solid appearance. This is useful for toggle-style chip selections.
+
+<Example code={ChipActiveStateExampleRaw} name="ChipActiveStateExample" componentName="React Chip">
+  <ChipActiveStateExample client:only="react" />
+</Example>
+
+## Sizes
+
+Use `size="sm"` or `size="lg"` for different sizes.
+
+<Example code={ChipSizesExampleRaw} name="ChipSizesExample" componentName="React Chip">
+  <ChipSizesExample client:only="react" />
+</Example>
+
+## Interactive chips
+
+Use `selectable`, `removable`, `selected`, and `disabled` to match the interactive chip examples from CoreUI.
+
+<Example code={ChipInteractiveExampleRaw} name="ChipInteractiveExample" componentName="React Chip">
+  <ChipInteractiveExample client:only="react" />
+</Example>
+
+To group chips and coordinate their selection — including filter chips with a leading check icon — wrap them in a [`CChipSet`](/components/chip-set/).
+
+## Remove button
+
+If `removable` is enabled, the remove button is rendered automatically.
+
+<Example code={ChipDismissButtonExampleRaw} name="ChipDismissButtonExample" componentName="React Chip">
+  <ChipDismissButtonExample client:only="react" />
+</Example>
+
+## Keyboard behavior
+
+A standalone chip handles its own selection and removal from the keyboard when it is `selectable` and/or `removable`. Roving focus between chips (arrow keys, `Home`/`End`) is provided by the parent [`CChipSet`](/components/chip-set/) container.
+
+### When a chip is focused
+
+| Key | Action |
+| --- | --- |
+| `Enter` / `Space` | Toggle selection (only when `selectable` is enabled) |
+| `Backspace` / `Delete` | Close chip when `removable` is enabled |
+
+When chips are grouped in a [`CChipSet`](/components/chip-set/), the arrow keys, `Home`, and `End` move focus between chips, and focus moves to a neighboring chip after one is removed.
+
+### Mouse interaction
+
+| Action | Effect |
+| --- | --- |
+| Click chip | Toggle selection (only when `selectable` is enabled) |
+| Click remove | Close chip (only when `removable` is enabled) |
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CChip /&gt;](./api/#cchip)

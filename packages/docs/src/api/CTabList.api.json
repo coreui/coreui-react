@@ -1,0 +1,30 @@
+{
+  "name": "CTabList",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "layout",
+      "type": "\"fill\" | \"justified\" | undefined",
+      "default": null,
+      "description": "Specify a layout type for component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "variant",
+      "type": "\"enclosed\" | \"enclosed-pills\" | \"pills\" | \"tabs\" | \"underline\" | \"underline-border\" | undefined",
+      "default": null,
+      "description": "Set the nav variant to tabs or pills.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CTabList } from '@coreui/react'"
+}

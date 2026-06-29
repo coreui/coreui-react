@@ -1,69 +1,35 @@
 {
   "name": "@coreui/react-docs",
-  "version": "5.12.0",
+  "version": "0.0.0",
   "private": true,
-  "description": "",
-  "homepage": "https://coreui.io/react/",
-  "bugs": {
-    "url": "https://github.com/coreui/coreui-react/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/coreui/coreui-react.git"
-  },
-  "license": "MIT",
-  "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
+  "type": "module",
   "scripts": {
-    "api": "rimraf \"content/api/*\" & node build/api.mjs",
-    "build": "gatsby build --prefix-paths",
-    "develop": "gatsby develop",
-    "dist": "run-s api build",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "gatsby develop",
-    "serve": "gatsby serve --prefix-paths",
-    "clean": "gatsby clean"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "clean": "rm -rf dist",
+    "api": "node node_modules/@coreui/astro-docs-api-generator/bin/coreui-docs-api.mjs"
   },
   "dependencies": {
+    "@astrojs/mdx": "^6.0.3",
+    "@astrojs/react": "^5.0.7",
+    "@coreui/astro-docs": "0.1.0-beta.10",
     "@coreui/chartjs": "^4.2.0",
     "@coreui/coreui": "^5.8.0",
     "@coreui/icons": "^3.1.0",
-    "@coreui/icons-react": "^2.3.0",
-    "@coreui/internal-links": "^5.1.0",
-    "@coreui/react-chartjs": "^3.0.0",
+    "@coreui/internal-links": "^5.2.0",
     "@coreui/utils": "^2.0.2",
-    "@docsearch/css": "^4.6.3",
-    "@docsearch/react": "^4.6.3",
-    "@mdx-js/mdx": "^3.1.1",
-    "@mdx-js/react": "^3.1.1",
-    "@stackblitz/sdk": "^1.11.0",
-    "gatsby": "^5.16.1",
-    "gatsby-plugin-google-tagmanager": "^5.16.0",
-    "gatsby-plugin-image": "^3.16.0",
-    "gatsby-plugin-manifest": "^5.16.0",
-    "gatsby-plugin-mdx": "^5.16.0",
-    "gatsby-plugin-sass": "^6.16.0",
-    "gatsby-plugin-sharp": "^5.16.0",
-    "gatsby-plugin-sitemap": "^6.16.0",
-    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.32",
-    "gatsby-remark-autolink-headers": "^6.16.0",
-    "gatsby-remark-external-links": "^0.0.4",
-    "gatsby-source-filesystem": "^5.16.0",
-    "gatsby-transformer-sharp": "^5.16.0",
-    "glob": "^13.0.6",
-    "globby": "^16.2.0",
-    "prism-react-renderer": "^2.4.1",
-    "prismjs": "^1.30.0",
+    "@popperjs/core": "^2.11.8",
+    "astro": "^6.4.8",
+    "chart.js": "^4.5.1",
     "prop-types": "^15.8.1",
-    "react": "^18.3.1",
-    "react-docgen-typescript": "^2.4.0",
-    "react-dom": "^18.3.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "react-imask": "^7.6.1",
-    "react-markdown": "^10.1.0",
-    "rimraf": "^6.1.3",
-    "sass": "^1.101.0",
-    "showdown": "^2.1.0"
+    "sass": "^1.101.0"
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "@coreui/astro-docs-api-generator": "0.1.0-beta.1",
+    "typescript": "^5.9.3"
   }
 }

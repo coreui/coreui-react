@@ -1,0 +1,108 @@
+---
+title: "React Form Layout"
+name: "Layout"
+description: "Give your forms some structure—from inline to horizontal to custom grid implementations—with our form layout options."
+---
+
+import { LayoutFormGridExample } from './examples/LayoutFormGridExample'
+import LayoutFormGridExampleRaw from './examples/LayoutFormGridExample.tsx?raw'
+import { LayoutGuttersExample } from './examples/LayoutGuttersExample'
+import LayoutGuttersExampleRaw from './examples/LayoutGuttersExample.tsx?raw'
+import { LayoutGutters2Example } from './examples/LayoutGutters2Example'
+import LayoutGutters2ExampleRaw from './examples/LayoutGutters2Example.tsx?raw'
+import { LayoutHorizontalFormExample } from './examples/LayoutHorizontalFormExample'
+import LayoutHorizontalFormExampleRaw from './examples/LayoutHorizontalFormExample.tsx?raw'
+import { LayoutHorizontalFormLabelSizingExample } from './examples/LayoutHorizontalFormLabelSizingExample'
+import LayoutHorizontalFormLabelSizingExampleRaw from './examples/LayoutHorizontalFormLabelSizingExample.tsx?raw'
+import { LayoutColumnSizingExample } from './examples/LayoutColumnSizingExample'
+import LayoutColumnSizingExampleRaw from './examples/LayoutColumnSizingExample.tsx?raw'
+import { LayoutAutoSizingExample } from './examples/LayoutAutoSizingExample'
+import LayoutAutoSizingExampleRaw from './examples/LayoutAutoSizingExample.tsx?raw'
+import { LayoutAutoSizing2Example } from './examples/LayoutAutoSizing2Example'
+import LayoutAutoSizing2ExampleRaw from './examples/LayoutAutoSizing2Example.tsx?raw'
+import { LayoutInlineFormsExample } from './examples/LayoutInlineFormsExample'
+import LayoutInlineFormsExampleRaw from './examples/LayoutInlineFormsExample.tsx?raw'
+
+## Forms
+
+Every group of form fields should reside in a `<CForm>` element. CoreUI provides no default styling for the `<CForm>` element, but there are some powerful browser features that are provided by default.
+
+- New to browser forms? Consider reviewing [the MDN form docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) for an overview and complete list of available attributes.
+- `<CButton>`s within a `<CForm>` default to `type="submit"`, so strive to be specific and always include a `type`.
+- You can disable every form element within a form with the `disabled` attribute on the `<CForm>`.
+
+Since CoreUI applies `display: block` and `width: 100%` to almost all our form controls, forms will by default stack vertically. Additional classes can be used to vary this layout on a per-form basis.
+
+## Utilities
+
+[Margin utilities](https://coreui.io/bootstrap/docs/utilities/spacing/) are the easiest way to add some structure to forms. They provide basic grouping of labels, controls, optional form text, and form validation messaging. We recommend sticking to `margin-bottom` utilities, and using a single direction throughout the form for consistency.
+
+## Form grid
+
+More complex forms can be built using our grid classes. Use these for form layouts that require multiple columns, varied widths, and additional alignment options.
+
+<Example code={LayoutFormGridExampleRaw} name="LayoutFormGridExample" componentName="React Form Layout">
+  <LayoutFormGridExample client:only="react" />
+</Example>
+
+## Gutters
+
+By adding [gutter modifier classes](https://coreui.io/bootstrap/docs/layout/gutters/), you can have control over the gutter width in as well the inline as block direction.
+
+<Example code={LayoutGuttersExampleRaw} name="LayoutGuttersExample" componentName="React Form Layout">
+  <LayoutGuttersExample client:only="react" />
+</Example>
+
+More complex layouts can also be created with the grid system.
+
+<Example code={LayoutGutters2ExampleRaw} name="LayoutGutters2Example" componentName="React Form Layout">
+  <LayoutGutters2Example client:only="react" />
+</Example>
+
+## Horizontal form
+
+Create horizontal forms with the grid by adding the `.row` class to form groups and using the `.col-*-*` classes to specify the width of your labels and controls. Be sure to add `.col-form-label` to your `<CFormLabel>`s as well so they're vertically centered with their associated form controls.
+
+At times, you maybe need to use margin or padding utilities to create that perfect alignment you need. For example, we've removed the `padding-top` on our stacked radio inputs label to better align the text baseline.
+
+<Example code={LayoutHorizontalFormExampleRaw} name="LayoutHorizontalFormExample" componentName="React Form Layout">
+  <LayoutHorizontalFormExample client:only="react" />
+</Example>
+
+### Horizontal form label sizing
+
+Be sure to use `.col-form-label-sm` or `.col-form-label-lg` to your `<CFormLabel>`s or `<legend>`s to correctly follow the size of `.form-control-lg` and `.form-control-sm`.
+
+<Example code={LayoutHorizontalFormLabelSizingExampleRaw} name="LayoutHorizontalFormLabelSizingExample" componentName="React Form Layout">
+  <LayoutHorizontalFormLabelSizingExample client:only="react" />
+</Example>
+
+## Column sizing
+
+As shown in the previous examples, our grid system allows you to place any number of `<CCol>`s within a `<CRow>`. They'll split the available width equally between them. You may also pick a subset of your columns to take up more or less space, while the remaining `<CCol>`s equally split the rest, with specific column classes like `<CCol sm={7} >`.
+
+<Example code={LayoutColumnSizingExampleRaw} name="LayoutColumnSizingExample" componentName="React Form Layout">
+  <LayoutColumnSizingExample client:only="react" />
+</Example>
+
+## Auto-sizing
+
+The example below uses a flexbox utility to vertically center the contents and changes `<CCol>` to `<CCol xs="auto">` so that your columns only take up as much space as needed. Put another way, the column sizes itself based on the contents.
+
+<Example code={LayoutAutoSizingExampleRaw} name="LayoutAutoSizingExample" componentName="React Form Layout">
+  <LayoutAutoSizingExample client:only="react" />
+</Example>
+
+You can then remix that once again with size-specific column classes.
+
+<Example code={LayoutAutoSizing2ExampleRaw} name="LayoutAutoSizing2Example" componentName="React Form Layout">
+  <LayoutAutoSizing2Example client:only="react" />
+</Example>
+
+## Inline forms
+
+Use the `<CCol xs="auto">` class to create horizontal layouts. By adding [gutter modifier classes](https://coreui.io/bootstrap/docs/layout/gutters/), we will have gutters in horizontal and vertical directions. The `.align-items-center` aligns the form elements to the middle, making the `<CFormCheck>` align properly.
+
+<Example code={LayoutInlineFormsExampleRaw} name="LayoutInlineFormsExample" componentName="React Form Layout">
+  <LayoutInlineFormsExample client:only="react" />
+</Example>

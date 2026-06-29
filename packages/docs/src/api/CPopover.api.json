@@ -1,0 +1,118 @@
+{
+  "name": "CPopover",
+  "props": [
+    {
+      "name": "animation",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Adds a fade transition animation to the React Popover.",
+      "since": "4.9.0",
+      "deprecated": null
+    },
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "Custom class name(s) for additional styling.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "container",
+      "type": "Element | DocumentFragment | (() => Element | DocumentFragment | null) | null | undefined",
+      "default": "document.body",
+      "description": "Defines the container element to which the React Popover is appended.\nAccepts:\n- A DOM element (`HTMLElement` or `DocumentFragment`)\n- A function that returns a single element\n- `null` (defaults to `document.body`)",
+      "since": "4.11.0",
+      "deprecated": null
+    },
+    {
+      "name": "content",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Main content of the React Popover. It can be a string or any valid React node.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "delay",
+      "type": "number | { show: number; hide: number; } | undefined",
+      "default": 0,
+      "description": "Delay (in milliseconds) before showing or hiding the React Popover.\n- If a number is provided, that delay applies to both \"show\" and \"hide\".\n- If an object is provided, use separate values for \"show\" and \"hide\".",
+      "since": "4.9.0",
+      "deprecated": null
+    },
+    {
+      "name": "fallbackPlacements",
+      "type": "'top', 'right', 'bottom', 'left' | ('top', 'right', 'bottom', 'left')[]",
+      "default": "['top', 'right', 'bottom', 'left']",
+      "description": "Specifies the fallback placements when the preferred `placement` cannot be met.",
+      "since": "4.9.0",
+      "deprecated": null
+    },
+    {
+      "name": "offset",
+      "type": "[number, number] | undefined",
+      "default": "[0, 8]",
+      "description": "Offset of the React Popover relative to its toggle element, in the form `[x, y]`.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onHide",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Invoked when the React Popover is about to hide.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "onShow",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Invoked when the React Popover is about to show.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "placement",
+      "type": "\"auto\" | \"top\" | \"bottom\" | \"right\" | \"left\" | undefined",
+      "default": "top",
+      "description": "Placement of the React Popover. Popper.js may override this based on available space.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "popperConfig",
+      "type": "Partial<Options> | ((defaultPopperConfig: Partial<Options>) => Partial<Options>) | undefined",
+      "default": null,
+      "description": "Allows customization of the Popper.js configuration for the React Popover.\nCan be an object or a function returning a modified configuration.\n[Learn more](https://popper.js.org/docs/v2/constructors/#options)",
+      "since": "5.5.0",
+      "deprecated": null
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "default": null,
+      "description": "Title for the React Popover header. Can be a string or any valid React node.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "trigger",
+      "type": "'hover' | 'focus' | 'click' | ('hover' | 'focus' | 'click')[]",
+      "default": "click",
+      "description": "Determines which events trigger the visibility of the React Popover. Can be a single trigger or an array of triggers.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Controls the visibility of the React Popover.\n- `true` shows the popover.\n- `false` hides the popover.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CPopover } from '@coreui/react'"
+}

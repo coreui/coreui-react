@@ -1,0 +1,62 @@
+{
+  "name": "CCol",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the base component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "lg",
+      "type": "{ 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}",
+      "default": null,
+      "description": "The number of columns/offset/order on large devices (<1200px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "md",
+      "type": "{ 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}",
+      "default": null,
+      "description": "The number of columns/offset/order on medium devices (<992px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "sm",
+      "type": "{ 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}",
+      "default": null,
+      "description": "The number of columns/offset/order on small devices (<768px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xl",
+      "type": "{ 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}",
+      "default": null,
+      "description": "The number of columns/offset/order on X-Large devices (<1400px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xs",
+      "type": "{ 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}",
+      "default": null,
+      "description": "The number of columns/offset/order on extra small devices (<576px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xxl",
+      "type": "{ 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }}",
+      "default": null,
+      "description": "The number of columns/offset/order on XX-Large devices (≥1400px).",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CCol } from '@coreui/react'"
+}

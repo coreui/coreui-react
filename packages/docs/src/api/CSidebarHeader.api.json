@@ -1,0 +1,14 @@
+{
+  "name": "CSidebarHeader",
+  "props": [
+    {
+      "name": "className",
+      "type": "string | undefined",
+      "default": null,
+      "description": "A string of all className you want applied to the component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "imports": "import { CSidebarHeader } from '@coreui/react'"
+}

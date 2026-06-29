@@ -1,0 +1,119 @@
+---
+title: "React Bootstrap Offcanvas Component"
+name: "Offcanvas with Bootstrap Styling"
+description: "Learn how to use the React Bootstrap Offcanvas component from CoreUI to create hidden sidebars and sliding panels for navigation, shopping carts, or any additional UI element."
+bootstrap: true
+---
+
+import { OffcanvasExample } from './examples/OffcanvasExample'
+import OffcanvasExampleRaw from './examples/OffcanvasExample.tsx?raw'
+import { OffcanvasLiveExample } from './examples/OffcanvasLiveExample'
+import OffcanvasLiveExampleRaw from './examples/OffcanvasLiveExample.tsx?raw'
+import { OffcanvasBodyScrollingExample } from './examples/OffcanvasBodyScrollingExample'
+import OffcanvasBodyScrollingExampleRaw from './examples/OffcanvasBodyScrollingExample.tsx?raw'
+import { OffcanvasBodyScrollingAndBackdropExample } from './examples/OffcanvasBodyScrollingAndBackdropExample'
+import OffcanvasBodyScrollingAndBackdropExampleRaw from './examples/OffcanvasBodyScrollingAndBackdropExample.tsx?raw'
+import { OffcanvasStaticBackdropExample } from './examples/OffcanvasStaticBackdropExample'
+import OffcanvasStaticBackdropExampleRaw from './examples/OffcanvasStaticBackdropExample.tsx?raw'
+import { OffcanvasDarkExample } from './examples/OffcanvasDarkExample'
+import OffcanvasDarkExampleRaw from './examples/OffcanvasDarkExample.tsx?raw'
+import { OffcanvasResponsiveExample } from './examples/OffcanvasResponsiveExample'
+import OffcanvasResponsiveExampleRaw from './examples/OffcanvasResponsiveExample.tsx?raw'
+import { OffcanvasPlacementTopExample } from './examples/OffcanvasPlacementTopExample'
+import OffcanvasPlacementTopExampleRaw from './examples/OffcanvasPlacementTopExample.tsx?raw'
+import { OffcanvasPlacementRightExample } from './examples/OffcanvasPlacementRightExample'
+import OffcanvasPlacementRightExampleRaw from './examples/OffcanvasPlacementRightExample.tsx?raw'
+import { OffcanvasPlacementBottomExample } from './examples/OffcanvasPlacementBottomExample'
+import OffcanvasPlacementBottomExampleRaw from './examples/OffcanvasPlacementBottomExample.tsx?raw'
+
+## React Bootstrap Offcanvas examples
+
+The React Bootstrap Offcanvas component allows you to build sidebar-like panels that slide into view from any edge of the screen. These panels are great for navigation menus, shopping carts, and more.
+
+### Static offcanvas component
+
+Here’s a React Bootstrap Offcanvas that is shown by default using `visible={true}`. It includes a header with a close button and a padded body.
+
+<Example code={OffcanvasExampleRaw} name="OffcanvasExample" componentName="React Bootstrap Offcanvas" class="theme-bootstrap docs-example-offcanvas bg-body-tertiary p-0 overflow-hidden">
+  <OffcanvasExample client:only="react" />
+</Example>
+
+### Live demo
+
+Click the buttons to toggle visibility of the offcanvas.
+
+<Example code={OffcanvasLiveExampleRaw} name="OffcanvasLiveExample" componentName="React Bootstrap Offcanvas" class="theme-bootstrap">
+  <OffcanvasLiveExample client:only="react" />
+</Example>
+
+### Scrollable body
+
+Use the `scroll` prop to allow page scrolling while the offcanvas is visible. Combine it with `backdrop` to control overlay behavior.
+
+<Example code={OffcanvasBodyScrollingExampleRaw} name="OffcanvasBodyScrollingExample" componentName="React Bootstrap Offcanvas" class="theme-bootstrap">
+  <OffcanvasBodyScrollingExample client:only="react" />
+</Example>
+
+### Scrollable body with backdrop
+
+<Example code={OffcanvasBodyScrollingAndBackdropExampleRaw} name="OffcanvasBodyScrollingAndBackdropExample" componentName="React Bootstrap Offcanvas" class="theme-bootstrap">
+  <OffcanvasBodyScrollingAndBackdropExample client:only="react" />
+</Example>
+
+### Static backdrop
+
+Prevent closing the React Bootstrap Offcanvas on backdrop click by setting `backdrop="static"`.
+
+<Example code={OffcanvasStaticBackdropExampleRaw} name="OffcanvasStaticBackdropExample" componentName="React Bootstrap Offcanvas" class="theme-bootstrap">
+  <OffcanvasStaticBackdropExample client:only="react" />
+</Example>
+
+## Dark variant
+
+Add the `dark` prop to match the React Bootstrap Offcanvas with dark themes or layouts.
+
+<Example code={OffcanvasDarkExampleRaw} name="OffcanvasDarkExample" componentName="React Bootstrap Offcanvas" class="theme-bootstrap docs-example-offcanvas bg-body-secondary p-0 overflow-hidden">
+  <OffcanvasDarkExample client:only="react" />
+</Example>
+
+## Responsive behavior
+
+Use the `responsive` prop to show the offcanvas below specific breakpoints (e.g., `responsive="lg"`). Above that breakpoint, the offcanvas behaves as a regular visible container.
+
+<Example code={OffcanvasResponsiveExampleRaw} name="OffcanvasResponsiveExample" componentName="React Bootstrap Offcanvas" class="theme-bootstrap">
+  <OffcanvasResponsiveExample client:only="react" />
+</Example>
+
+## Placement options for React Bootstrap Offcanvas
+
+Choose the offcanvas placement with the `placement` prop:
+
+- `placement="start"` – left
+- `placement="end"` – right
+- `placement="top"` – top
+- `placement="bottom"` – bottom
+
+Examples:
+
+<Example code={OffcanvasPlacementTopExampleRaw} name="OffcanvasPlacementTopExample" componentName="React Bootstrap Offcanvas" class="theme-bootstrap">
+  <OffcanvasPlacementTopExample client:only="react" />
+</Example>
+<Example code={OffcanvasPlacementRightExampleRaw} name="OffcanvasPlacementRightExample" componentName="React Bootstrap Offcanvas" class="theme-bootstrap">
+  <OffcanvasPlacementRightExample client:only="react" />
+</Example>
+<Example code={OffcanvasPlacementBottomExampleRaw} name="OffcanvasPlacementBottomExample" componentName="React Bootstrap Offcanvas" class="theme-bootstrap">
+  <OffcanvasPlacementBottomExample client:only="react" />
+</Example>
+
+## Accessibility considerations
+
+React Bootstrap Offcanvas behaves like a modal. Use `aria-labelledby` to link the offcanvas title to assistive technologies. CoreUI automatically adds `role="dialog"` and other ARIA attributes for accessibility.
+
+## API reference
+
+Review the full API for the React Bootstrap Offcanvas component and its parts:
+
+- [&lt;COffcanvas /&gt;](../api/#coffcanvas)
+- [&lt;COffcanvasBody /&gt;](../api/#coffcanvasbody)
+- [&lt;COffcanvasHeader /&gt;](../api/#coffcanvasheader)
+- [&lt;COffcanvasTitle /&gt;](../api/#coffcanvastitle)
