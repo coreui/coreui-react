@@ -18,20 +18,20 @@ import { VerticalAlignmentExample } from './examples/VerticalAlignmentExample'
 import VerticalAlignmentExampleRaw from './examples/VerticalAlignmentExample.tsx?raw'
 import { TableFoodExample } from './examples/TableFoodExample'
 import TableFoodExampleRaw from './examples/TableFoodExample.tsx?raw'
-import { TableDemo0 } from './examples/TableDemo0'
-import TableDemo0Raw from './examples/TableDemo0.tsx?raw'
-import { TableDemo1 } from './examples/TableDemo1'
-import TableDemo1Raw from './examples/TableDemo1.tsx?raw'
-import { TableDemo2 } from './examples/TableDemo2'
-import TableDemo2Raw from './examples/TableDemo2.tsx?raw'
-import { TableDemo3 } from './examples/TableDemo3'
-import TableDemo3Raw from './examples/TableDemo3.tsx?raw'
-import { TableDemo4 } from './examples/TableDemo4'
-import TableDemo4Raw from './examples/TableDemo4.tsx?raw'
-import { TableDemo5 } from './examples/TableDemo5'
-import TableDemo5Raw from './examples/TableDemo5.tsx?raw'
-import { TableDemo6 } from './examples/TableDemo6'
-import TableDemo6Raw from './examples/TableDemo6.tsx?raw'
+import { TableNestingExample } from './examples/TableNestingExample'
+import TableNestingExampleRaw from './examples/TableNestingExample.tsx?raw'
+import { TableResponsiveExample } from './examples/TableResponsiveExample'
+import TableResponsiveExampleRaw from './examples/TableResponsiveExample.tsx?raw'
+import { TableResponsiveSmExample } from './examples/TableResponsiveSmExample'
+import TableResponsiveSmExampleRaw from './examples/TableResponsiveSmExample.tsx?raw'
+import { TableResponsiveMdExample } from './examples/TableResponsiveMdExample'
+import TableResponsiveMdExampleRaw from './examples/TableResponsiveMdExample.tsx?raw'
+import { TableResponsiveLgExample } from './examples/TableResponsiveLgExample'
+import TableResponsiveLgExampleRaw from './examples/TableResponsiveLgExample.tsx?raw'
+import { TableResponsiveXlExample } from './examples/TableResponsiveXlExample'
+import TableResponsiveXlExampleRaw from './examples/TableResponsiveXlExample.tsx?raw'
+import { TableResponsiveXxlExample } from './examples/TableResponsiveXxlExample'
+import TableResponsiveXxlExampleRaw from './examples/TableResponsiveXxlExample.tsx?raw'
 
 ## How to use React Table Component
 
@@ -720,7 +720,7 @@ You can also put all table components together manually as hitherto.
 Border styles, active styles, and react table component variants are not inherited by nested tables.
 
 <Example>
-  <TableDemo0 client:only="react" />
+  <TableNestingExample client:only="react" />
 </Example>
 
 ```jsx
@@ -934,7 +934,7 @@ return <CTable captionTop="List of users" columns={columns} items={items} />
 Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by adding a `responsive` property. Or, pick a maximum breakpoint with which to have a responsive table up to by using `responsive="{-sm|-md|-lg|-xl|-xxl}"`.
 
 <Example>
-  <TableDemo1 client:only="react" />
+  <TableResponsiveExample client:only="react" />
 </Example>
 
 ```jsx
@@ -944,7 +944,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 ```
 
 <Example>
-  <TableDemo2 client:only="react" />
+  <TableResponsiveSmExample client:only="react" />
 </Example>
 
 ```jsx
@@ -954,7 +954,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 ```
 
 <Example>
-  <TableDemo3 client:only="react" />
+  <TableResponsiveMdExample client:only="react" />
 </Example>
 
 ```jsx
@@ -964,7 +964,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 ```
 
 <Example>
-  <TableDemo4 client:only="react" />
+  <TableResponsiveLgExample client:only="react" />
 </Example>
 
 ```jsx
@@ -974,7 +974,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 ```
 
 <Example>
-  <TableDemo5 client:only="react" />
+  <TableResponsiveXlExample client:only="react" />
 </Example>
 
 ```jsx
@@ -984,7 +984,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 ```
 
 <Example>
-  <TableDemo6 client:only="react" />
+  <TableResponsiveXxlExample client:only="react" />
 </Example>
 
 ```jsx

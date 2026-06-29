@@ -10,9 +10,9 @@ import {
   CTableRow,
 } from '@coreui/react'
 
-export const TableDemo1 = () => (
+export const TableResponsiveXlExample = () => (
 <>
-<CTable responsive>
+<CTable responsive="xl">
     <CTableHead>
       <CTableRow>
         <CTableHeaderCell scope="col">#</CTableHeaderCell>

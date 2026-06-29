@@ -17,20 +17,20 @@ import { VerticalAlignmentExample } from './examples/VerticalAlignmentExample'
 import VerticalAlignmentExampleRaw from './examples/VerticalAlignmentExample.tsx?raw'
 import { TableFoodExample } from './examples/TableFoodExample'
 import TableFoodExampleRaw from './examples/TableFoodExample.tsx?raw'
-import { BootstrapDemo0 } from './examples/BootstrapDemo0'
-import BootstrapDemo0Raw from './examples/BootstrapDemo0.tsx?raw'
-import { BootstrapDemo1 } from './examples/BootstrapDemo1'
-import BootstrapDemo1Raw from './examples/BootstrapDemo1.tsx?raw'
-import { BootstrapDemo2 } from './examples/BootstrapDemo2'
-import BootstrapDemo2Raw from './examples/BootstrapDemo2.tsx?raw'
-import { BootstrapDemo3 } from './examples/BootstrapDemo3'
-import BootstrapDemo3Raw from './examples/BootstrapDemo3.tsx?raw'
-import { BootstrapDemo4 } from './examples/BootstrapDemo4'
-import BootstrapDemo4Raw from './examples/BootstrapDemo4.tsx?raw'
-import { BootstrapDemo5 } from './examples/BootstrapDemo5'
-import BootstrapDemo5Raw from './examples/BootstrapDemo5.tsx?raw'
-import { BootstrapDemo6 } from './examples/BootstrapDemo6'
-import BootstrapDemo6Raw from './examples/BootstrapDemo6.tsx?raw'
+import { TableNestingExample } from './examples/TableNestingExample'
+import TableNestingExampleRaw from './examples/TableNestingExample.tsx?raw'
+import { TableResponsiveExample } from './examples/TableResponsiveExample'
+import TableResponsiveExampleRaw from './examples/TableResponsiveExample.tsx?raw'
+import { TableResponsiveSmExample } from './examples/TableResponsiveSmExample'
+import TableResponsiveSmExampleRaw from './examples/TableResponsiveSmExample.tsx?raw'
+import { TableResponsiveMdExample } from './examples/TableResponsiveMdExample'
+import TableResponsiveMdExampleRaw from './examples/TableResponsiveMdExample.tsx?raw'
+import { TableResponsiveLgExample } from './examples/TableResponsiveLgExample'
+import TableResponsiveLgExampleRaw from './examples/TableResponsiveLgExample.tsx?raw'
+import { TableResponsiveXlExample } from './examples/TableResponsiveXlExample'
+import TableResponsiveXlExampleRaw from './examples/TableResponsiveXlExample.tsx?raw'
+import { TableResponsiveXxlExample } from './examples/TableResponsiveXxlExample'
+import TableResponsiveXxlExampleRaw from './examples/TableResponsiveXxlExample.tsx?raw'
 
 ## How to use React Bootstrap Table component
 
@@ -717,7 +717,7 @@ You can also put all table components together manually as hitherto.
 Border styles, active styles, and react table component variants are not inherited by nested tables.
 
 <Example className="theme-bootstrap">
-  <BootstrapDemo0 client:only="react" />
+  <TableNestingExample client:only="react" />
 </Example>
 
 ```jsx
@@ -931,7 +931,7 @@ return <CTable captionTop="List of users" columns={columns} items={items} />
 Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by adding a `responsive` property. Or, pick a maximum breakpoint with which to have a responsive table up to by using `responsive="{-sm|-md|-lg|-xl|-xxl}"`.
 
 <Example className="theme-bootstrap">
-  <BootstrapDemo1 client:only="react" />
+  <TableResponsiveExample client:only="react" />
 </Example>
 
 ```jsx
@@ -941,7 +941,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 ```
 
 <Example className="theme-bootstrap">
-  <BootstrapDemo2 client:only="react" />
+  <TableResponsiveSmExample client:only="react" />
 </Example>
 
 ```jsx
@@ -951,7 +951,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 ```
 
 <Example className="theme-bootstrap">
-  <BootstrapDemo3 client:only="react" />
+  <TableResponsiveMdExample client:only="react" />
 </Example>
 
 ```jsx
@@ -961,7 +961,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 ```
 
 <Example className="theme-bootstrap">
-  <BootstrapDemo4 client:only="react" />
+  <TableResponsiveLgExample client:only="react" />
 </Example>
 
 ```jsx
@@ -971,7 +971,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 ```
 
 <Example className="theme-bootstrap">
-  <BootstrapDemo5 client:only="react" />
+  <TableResponsiveXlExample client:only="react" />
 </Example>
 
 ```jsx
@@ -981,7 +981,7 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 ```
 
 <Example className="theme-bootstrap">
-  <BootstrapDemo6 client:only="react" />
+  <TableResponsiveXxlExample client:only="react" />
 </Example>
 
 ```jsx

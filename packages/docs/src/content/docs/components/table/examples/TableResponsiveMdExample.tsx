@@ -10,9 +10,9 @@ import {
   CTableRow,
 } from '@coreui/react'
 
-export const BootstrapDemo2 = () => (
+export const TableResponsiveMdExample = () => (
 <>
-<CTable responsive="sm">
+<CTable responsive="md">
     <CTableHead>
       <CTableRow>
         <CTableHeaderCell scope="col">#</CTableHeaderCell>

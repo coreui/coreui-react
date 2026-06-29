@@ -10,7 +10,7 @@ import {
   CTableRow,
 } from '@coreui/react'
 
-export const TableDemo0 = () => (
+export const TableNestingExample = () => (
 <>
 <CTable striped>
     <CTableHead>
