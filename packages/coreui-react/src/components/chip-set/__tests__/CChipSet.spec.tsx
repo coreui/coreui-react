@@ -29,7 +29,7 @@ test('CChipSet passes selectable down to its chips', async () => {
 })
 
 test('CChipSet allows multiple selected chips by default', async () => {
-  const onSelect = jest.fn()
+  const onSelect = vi.fn()
   const { getByText } = render(
     <CChipSet selectable={true} onSelect={onSelect}>
       <CChip value="a">A</CChip>
@@ -46,7 +46,7 @@ test('CChipSet allows multiple selected chips by default', async () => {
 })
 
 test('CChipSet deselects siblings in single selection mode', async () => {
-  const onSelect = jest.fn()
+  const onSelect = vi.fn()
   const { getByText } = render(
     <CChipSet selectable={true} selectionMode="single" onSelect={onSelect}>
       <CChip value="a">A</CChip>
@@ -138,7 +138,7 @@ test('CChipSet mirrors arrow keys in RTL', async () => {
 })
 
 test('CChipSet fires onRemove so the parent can drop the chip', async () => {
-  const onRemove = jest.fn()
+  const onRemove = vi.fn()
 
   const Example = () => {
     const [values, setValues] = React.useState(['a', 'b'])
@@ -170,7 +170,7 @@ test('CChipSet fires onRemove so the parent can drop the chip', async () => {
 })
 
 test('CChipSet with defaultChips removes the chip itself (uncontrolled list)', async () => {
-  const onRemove = jest.fn()
+  const onRemove = vi.fn()
   const { getByText, queryByText } = render(
     <CChipSet removable defaultChips={['a', { value: 'b', label: 'B' }]} onRemove={onRemove} />
   )

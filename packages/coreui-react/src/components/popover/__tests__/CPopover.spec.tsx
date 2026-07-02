@@ -17,7 +17,7 @@ afterEach(() => {
 })
 
 test('CPopover stays visible when re-hovered during the hide delay', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
   render(
     <CPopover trigger="hover" delay={{ show: 0, hide: 300 }} content="content">
@@ -32,31 +32,31 @@ test('CPopover stays visible when re-hovered during the hide delay', async () =>
   })
 
   act(() => {
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   expect(document.querySelector('.popover')).toHaveClass('show')
 
   act(() => {
     fireEvent.mouseOut(btn)
-    jest.advanceTimersByTime(100)
+    vi.advanceTimersByTime(100)
   })
 
   act(() => {
     fireEvent.mouseOver(btn)
-    jest.advanceTimersByTime(1000)
+    vi.advanceTimersByTime(1000)
   })
 
   expect(document.querySelector('.popover')).toHaveClass('show')
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })
 
 test('CPopover preserves event handlers of the child element', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
-  const onClick = jest.fn()
-  const onMouseEnter = jest.fn()
+  const onClick = vi.fn()
+  const onMouseEnter = vi.fn()
 
   render(
     <CPopover trigger={['hover', 'click']} content="content">
@@ -70,18 +70,18 @@ test('CPopover preserves event handlers of the child element', async () => {
 
   act(() => {
     fireEvent.mouseOver(btn)
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   act(() => {
     fireEvent.click(btn)
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   expect(onMouseEnter).toHaveBeenCalledTimes(1)
   expect(onClick).toHaveBeenCalledTimes(1)
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })
 
 test('loads and displays CPopover component', async () => {
@@ -94,7 +94,7 @@ test('loads and displays CPopover component', async () => {
 })
 
 test('CPopover customize', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
   render(
     <CPopover content="content" title="title" trigger="click" placement="right">
@@ -107,7 +107,7 @@ test('CPopover customize', async () => {
 
   act(() => {
     fireEvent.click(btn)
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   expect(document.querySelector('.popover')).toBeInTheDocument()
@@ -119,14 +119,14 @@ test('CPopover customize', async () => {
   expect(document.querySelector('.popover-header')?.innerHTML).toBe('title')
   expect(document.querySelector('.popover-body')?.innerHTML).toBe('content')
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })
 
 test('CPopover onShow and onHide', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
-  const onShow = jest.fn()
-  const onHide = jest.fn()
+  const onShow = vi.fn()
+  const onHide = vi.fn()
 
   render(
     <CPopover
@@ -152,7 +152,7 @@ test('CPopover onShow and onHide', async () => {
   })
 
   act(() => {
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   expect(onShow).toHaveBeenCalledTimes(1)
@@ -163,11 +163,11 @@ test('CPopover onShow and onHide', async () => {
   })
 
   act(() => {
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   expect(onShow).toHaveBeenCalledTimes(1)
   expect(onHide).toHaveBeenCalledTimes(1)
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })

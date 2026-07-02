@@ -30,9 +30,9 @@ test('COffcanvas customize one', async () => {
 })
 
 test('COffcanvas customize and event on click backdrop', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
-  const onHide = jest.fn()
+  const onHide = vi.fn()
   const { container } = render(
     <COffcanvas
       className="bazinga"
@@ -60,7 +60,7 @@ test('COffcanvas customize and event on click backdrop', async () => {
   if (backdrop !== null) {
     act(() => {
       fireEvent.click(backdrop)
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
   }
 
@@ -69,18 +69,18 @@ test('COffcanvas customize and event on click backdrop', async () => {
   expect(container.firstChild).toHaveClass('hiding')
 
   act(() => {
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   expect(container.firstChild).not.toHaveClass('show')
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })
 
 test('COffcanvas customize and event on keypress', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
-  const onHide = jest.fn()
+  const onHide = vi.fn()
   const { container } = render(
     <COffcanvas
       className="bazinga"
@@ -112,7 +112,7 @@ test('COffcanvas customize and event on keypress', async () => {
         keyCode: 27,
         charCode: 27,
       })
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
   }
 
@@ -121,10 +121,10 @@ test('COffcanvas customize and event on keypress', async () => {
   expect(container.firstChild).toHaveClass('hiding')
 
   act(() => {
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   expect(container.firstChild).not.toHaveClass('show')
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })

@@ -27,7 +27,7 @@ test('loads and displays CTooltip component', async () => {
 })
 
 test('CTooltip customize', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
   render(
     <CTooltip trigger="hover" placement="right" content="content">
@@ -39,16 +39,16 @@ test('CTooltip customize', async () => {
 
   act(() => {
     fireEvent.mouseOver(link)
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   expect(document.querySelector('.tooltip')).toBeInTheDocument()
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })
 
 test('CTooltip stays visible when re-hovered during the hide delay', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
   render(
     <CTooltip trigger="hover" delay={{ show: 0, hide: 300 }} content="content">
@@ -63,28 +63,28 @@ test('CTooltip stays visible when re-hovered during the hide delay', async () =>
   })
 
   act(() => {
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   expect(document.querySelector('.tooltip')).toHaveClass('show')
 
   act(() => {
     fireEvent.mouseOut(link)
-    jest.advanceTimersByTime(100)
+    vi.advanceTimersByTime(100)
   })
 
   act(() => {
     fireEvent.mouseOver(link)
-    jest.advanceTimersByTime(1000)
+    vi.advanceTimersByTime(1000)
   })
 
   expect(document.querySelector('.tooltip')).toHaveClass('show')
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })
 
 test('CTooltip cancels the pending show timer when pointer leaves before the show delay', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
   render(
     <CTooltip trigger="hover" delay={{ show: 300, hide: 0 }} content="content">
@@ -96,25 +96,25 @@ test('CTooltip cancels the pending show timer when pointer leaves before the sho
 
   act(() => {
     fireEvent.mouseOver(link)
-    jest.advanceTimersByTime(100)
+    vi.advanceTimersByTime(100)
   })
 
   act(() => {
     fireEvent.mouseOut(link)
-    jest.advanceTimersByTime(1000)
+    vi.advanceTimersByTime(1000)
   })
 
   expect(document.querySelector('.tooltip.show')).toBeNull()
   expect(link).not.toHaveAttribute('aria-describedby')
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })
 
 test('CTooltip preserves event handlers of the child element', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
-  const onClick = jest.fn()
-  const onMouseEnter = jest.fn()
+  const onClick = vi.fn()
+  const onMouseEnter = vi.fn()
 
   render(
     <CTooltip trigger={['hover', 'click']} content="content">
@@ -128,25 +128,25 @@ test('CTooltip preserves event handlers of the child element', async () => {
 
   act(() => {
     fireEvent.mouseOver(btn)
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   act(() => {
     fireEvent.click(btn)
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   expect(onMouseEnter).toHaveBeenCalledTimes(1)
   expect(onClick).toHaveBeenCalledTimes(1)
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })
 
 test('CTooltip onShow and onHide', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
-  const onShow = jest.fn()
-  const onHide = jest.fn()
+  const onShow = vi.fn()
+  const onHide = vi.fn()
 
   render(
     <CTooltip trigger="click" placement="right" content="content" onShow={onShow} onHide={onHide}>
@@ -164,7 +164,7 @@ test('CTooltip onShow and onHide', async () => {
   })
 
   act(() => {
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   expect(onShow).toHaveBeenCalledTimes(1)
@@ -175,11 +175,11 @@ test('CTooltip onShow and onHide', async () => {
   })
 
   act(() => {
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   expect(onShow).toHaveBeenCalledTimes(1)
   expect(onHide).toHaveBeenCalledTimes(1)
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })

@@ -21,7 +21,7 @@ test('CLink customize', async () => {
 })
 
 test('CLink click on button', async () => {
-  const onClick = jest.fn()
+  const onClick = vi.fn()
   render(
     <CLink onClick={onClick} className="bazinga">
       Test
@@ -36,7 +36,7 @@ test('CLink click on button', async () => {
 })
 
 test('CLink click on disabled button', async () => {
-  const click = jest.fn()
+  const click = vi.fn()
   render(
     <CLink onClick={click} className="bazinga" as="button" disabled>
       Test

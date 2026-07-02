@@ -52,7 +52,7 @@ test('CNavGroup follows the visible prop in controlled mode', async () => {
 })
 
 test('CNavGroup stays open when the parent rejects the collapse (controlled)', async () => {
-  const onVisibleChange = jest.fn()
+  const onVisibleChange = vi.fn()
   const { container } = render(
     <CNavGroup toggler="anchorText" visible={true} onVisibleChange={onVisibleChange} />
   )

@@ -26,7 +26,7 @@ test('CModal customize', async () => {
 })
 
 test('CModal dialog close on press ESC', async () => {
-  const onClose = jest.fn()
+  const onClose = vi.fn()
   render(
     <CModal onClose={onClose} portal={false} visible>
       Test
@@ -49,7 +49,7 @@ test('CModal dialog close on press ESC', async () => {
 })
 
 test('CModal calls onClosePrevented only when closing is actually prevented', async () => {
-  const onClosePrevented = jest.fn()
+  const onClosePrevented = vi.fn()
 
   render(
     <CModal backdrop="static" onClosePrevented={onClosePrevented} portal={false} visible>
@@ -69,7 +69,7 @@ test('CModal calls onClosePrevented only when closing is actually prevented', as
 })
 
 test('CModal does not close when a press started inside the dialog is released over the backdrop area', async () => {
-  const onClose = jest.fn()
+  const onClose = vi.fn()
 
   render(
     <CModal onClose={onClose} portal={false} visible>
@@ -92,7 +92,7 @@ test('CModal does not close when a press started inside the dialog is released o
 })
 
 // test('CModal dialog closes when clicking outside the modal', async () => {
-//   const onClose = jest.fn()
+//   const onClose = vi.fn()
 
 //   render(
 //     <CModal onClose={onClose} portal={false} visible>

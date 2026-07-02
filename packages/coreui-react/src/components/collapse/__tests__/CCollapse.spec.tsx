@@ -15,7 +15,7 @@ test('CCollapse customize', async () => {
 })
 
 test('CCollapse use case test', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
   const { rerender } = render(<CCollapse visible={false}>Test</CCollapse>)
 
@@ -32,7 +32,7 @@ test('CCollapse use case test', async () => {
   expect(screen.getByText('Test')).toHaveClass('collapsing')
 
   act(() => {
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   expect(screen.getByText('Test')).toHaveClass('collapse')
@@ -48,12 +48,12 @@ test('CCollapse use case test', async () => {
   expect(screen.getByText('Test')).toHaveClass('collapsing')
 
   act(() => {
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   expect(screen.getByText('Test')).toHaveClass('collapse')
   expect(screen.getByText('Test')).not.toHaveClass('show')
   expect(screen.getByText('Test')).not.toHaveClass('collapsing')
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })

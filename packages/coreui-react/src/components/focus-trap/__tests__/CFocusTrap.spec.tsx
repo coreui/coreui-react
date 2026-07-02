@@ -40,8 +40,8 @@ describe('CFocusTrap', () => {
   })
 
   test('CFocusTrap with custom props', () => {
-    const onActivate = jest.fn()
-    const onDeactivate = jest.fn()
+    const onActivate = vi.fn()
+    const onDeactivate = vi.fn()
 
     const { container } = render(
       <CFocusTrap
@@ -60,7 +60,7 @@ describe('CFocusTrap', () => {
   })
 
   test('focuses container when focusFirstElement is false (default)', () => {
-    const mockFocus = jest.fn()
+    const mockFocus = vi.fn()
     const originalFocus = HTMLElement.prototype.focus
     HTMLElement.prototype.focus = mockFocus
 
@@ -82,7 +82,7 @@ describe('CFocusTrap', () => {
   })
 
   test('handles container with no tabbable elements', () => {
-    const mockFocus = jest.fn()
+    const mockFocus = vi.fn()
     const originalFocus = HTMLElement.prototype.focus
     HTMLElement.prototype.focus = mockFocus
 
@@ -100,7 +100,7 @@ describe('CFocusTrap', () => {
   })
 
   test('calls onActivate callback when trap becomes active', () => {
-    const onActivate = jest.fn()
+    const onActivate = vi.fn()
 
     const { rerender } = render(<TestComponent active={false} onActivate={onActivate} />)
     expect(onActivate).not.toHaveBeenCalled()
@@ -111,7 +111,7 @@ describe('CFocusTrap', () => {
   })
 
   test('calls onDeactivate callback when trap becomes inactive', () => {
-    const onDeactivate = jest.fn()
+    const onDeactivate = vi.fn()
 
     const { rerender } = render(<TestComponent active={true} onDeactivate={onDeactivate} />)
     expect(onDeactivate).not.toHaveBeenCalled()
@@ -122,7 +122,7 @@ describe('CFocusTrap', () => {
   })
 
   test('cleans up event listeners on unmount', () => {
-    const removeEventListenerSpy = jest.spyOn(document, 'removeEventListener')
+    const removeEventListenerSpy = vi.spyOn(document, 'removeEventListener')
 
     const { unmount } = render(<TestComponent active={true} />)
 
@@ -134,7 +134,7 @@ describe('CFocusTrap', () => {
   })
 
   test('focuses first element when focusFirstElement is true', () => {
-    const mockFocus = jest.fn()
+    const mockFocus = vi.fn()
     const originalFocus = HTMLElement.prototype.focus
     HTMLElement.prototype.focus = mockFocus
 
@@ -176,7 +176,7 @@ describe('CFocusTrap', () => {
     focusButton.dataset.testid = 'focus-button'
     document.body.appendChild(focusButton)
 
-    const mockFocus = jest.fn()
+    const mockFocus = vi.fn()
     focusButton.focus = mockFocus
 
     // Mock document.activeElement
@@ -206,7 +206,7 @@ describe('CFocusTrap', () => {
     focusButton.dataset.testid = 'focus-button'
     document.body.appendChild(focusButton)
 
-    const mockFocus = jest.fn()
+    const mockFocus = vi.fn()
     focusButton.focus = mockFocus
 
     // Mock document.activeElement

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import type { Mock } from 'vitest'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { createPopper } from '@popperjs/core'
@@ -12,11 +13,11 @@ import {
   CDropdownDivider,
 } from '../index'
 
-jest.mock('@popperjs/core', () => {
-  const actual = jest.requireActual('@popperjs/core')
+vi.mock('@popperjs/core', async () => {
+  const actual = await vi.importActual<typeof import('@popperjs/core')>('@popperjs/core')
   return {
     ...actual,
-    createPopper: jest.fn(actual.createPopper),
+    createPopper: vi.fn(actual.createPopper),
   }
 })
 
@@ -49,16 +50,16 @@ test('CDropdown customize', async () => {
 })
 
 // test('CDropdown change visible prop', async () => {
-//   jest.useFakeTimers()
+//   vi.useFakeTimers()
 //   const { rerender } = render(<CDropdown visible={false}>Test</CDropdown>)
 //   expect(screen.getByText('Test')).not.toHaveClass('show')
 //   rerender(<CDropdown visible={true}>Test</CDropdown>)
-//   jest.runAllTimers()
+//   vi.runAllTimers()
 //   expect(screen.getByText('Test')).toHaveClass('show')
 //   rerender(<CDropdown visible={false}>Test</CDropdown>)
 //   expect(screen.getByText('Test')).not.toHaveClass('show')
-//   jest.runAllTimers()
-//   jest.useRealTimers()
+//   vi.runAllTimers()
+//   vi.useRealTimers()
 // })
 
 test('CDropdown opens on toggle click and closes on clicking outside', async () => {
@@ -108,7 +109,7 @@ test('CDropdown opens on toggle click and closes on clicking outside', async () 
 })
 
 test('CDropdown keeps absolute positioning attached to a replaced toggler', async () => {
-  const createPopperMock = createPopper as jest.Mock
+  const createPopperMock = createPopper as Mock
   createPopperMock.mockClear()
 
   const DropdownApp = ({ togglerKey }: { togglerKey: string }) => (
@@ -136,7 +137,7 @@ test('CDropdown keeps absolute positioning attached to a replaced toggler', asyn
   expect(createPopperMock.mock.calls[0][0]).toBe(screen.getByTestId('toggler-first'))
 
   const firstPopper = createPopperMock.mock.results[0].value
-  const destroySpy = jest.spyOn(firstPopper, 'destroy')
+  const destroySpy = vi.spyOn(firstPopper, 'destroy')
 
   rerender(<DropdownApp togglerKey="second" />)
 
@@ -154,7 +155,7 @@ test('CDropdown keeps absolute positioning attached to a replaced toggler', asyn
 })
 
 test('CDropdown example', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
   const { container } = render(
     <CDropdown>
       <CDropdownToggle>Test</CDropdownToggle>

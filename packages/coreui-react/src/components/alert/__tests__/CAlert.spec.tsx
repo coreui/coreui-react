@@ -36,9 +36,9 @@ test('CAlert customize', async () => {
 })
 
 test('CAlert click close button', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
-  const onClose = jest.fn()
+  const onClose = vi.fn()
   render(
     <CAlert color="primary" dismissible onClose={onClose}>
       Test
@@ -52,11 +52,11 @@ test('CAlert click close button', async () => {
   if (btn !== null) {
     act(() => {
       fireEvent.click(btn)
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
   }
 
   expect(onClose).toHaveBeenCalledTimes(1)
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })
