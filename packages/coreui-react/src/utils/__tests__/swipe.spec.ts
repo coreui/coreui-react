@@ -28,9 +28,9 @@ describe('Swipe', () => {
   })
 
   it('calls onLeft when swiping left past the threshold', () => {
-    const onLeft = jest.fn()
-    const onRight = jest.fn()
-    const onEnd = jest.fn()
+    const onLeft = vi.fn()
+    const onRight = vi.fn()
+    const onEnd = vi.fn()
     new Swipe(element, { onLeft, onRight, onEnd })
 
     element.dispatchEvent(touchEvent('touchstart', 200))
@@ -43,8 +43,8 @@ describe('Swipe', () => {
   })
 
   it('calls onRight when swiping right past the threshold', () => {
-    const onLeft = jest.fn()
-    const onRight = jest.fn()
+    const onLeft = vi.fn()
+    const onRight = vi.fn()
     new Swipe(element, { onLeft, onRight })
 
     element.dispatchEvent(touchEvent('touchstart', 100))
@@ -56,8 +56,8 @@ describe('Swipe', () => {
   })
 
   it('ignores swipes below the threshold', () => {
-    const onLeft = jest.fn()
-    const onRight = jest.fn()
+    const onLeft = vi.fn()
+    const onRight = vi.fn()
     new Swipe(element, { onLeft, onRight })
 
     element.dispatchEvent(touchEvent('touchstart', 200))
@@ -69,7 +69,7 @@ describe('Swipe', () => {
   })
 
   it('stops detecting swipes after dispose', () => {
-    const onLeft = jest.fn()
+    const onLeft = vi.fn()
     const swipe = new Swipe(element, { onLeft })
     swipe.dispose()
 

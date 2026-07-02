@@ -60,7 +60,7 @@ test('loads and displays CCarousel component', async () => {
 })
 
 test('CCarousel does not stack cycle timeouts when pause is disabled', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
   render(
     <CCarousel interval={1000} pause={false}>
@@ -71,19 +71,19 @@ test('CCarousel does not stack cycle timeouts when pause is disabled', async () 
   )
 
   const carousel = document.querySelector('.carousel') as HTMLElement
-  const baseTimerCount = jest.getTimerCount()
+  const baseTimerCount = vi.getTimerCount()
 
   fireEvent.mouseLeave(carousel)
   fireEvent.mouseLeave(carousel)
   fireEvent.mouseLeave(carousel)
 
-  expect(jest.getTimerCount()).toBe(baseTimerCount)
+  expect(vi.getTimerCount()).toBe(baseTimerCount)
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })
 
 test('CCarousel clears the pending cycle timeout on unmount', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
   const { unmount } = render(
     <CCarousel interval={1000}>
@@ -92,14 +92,14 @@ test('CCarousel clears the pending cycle timeout on unmount', async () => {
     </CCarousel>
   )
 
-  const baseTimerCount = jest.getTimerCount()
+  const baseTimerCount = vi.getTimerCount()
   expect(baseTimerCount).toBeGreaterThan(0)
 
   unmount()
 
-  expect(jest.getTimerCount()).toBe(baseTimerCount - 1)
+  expect(vi.getTimerCount()).toBe(baseTimerCount - 1)
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })
 
 test('CCarousel click on indicator', async () => {
@@ -146,7 +146,7 @@ test('CCarousel click on indicator', async () => {
 })
 
 test('CCarousel click on button', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
   const { container } = render(
     <CCarousel controls indicators>
       <CCarouselItem>

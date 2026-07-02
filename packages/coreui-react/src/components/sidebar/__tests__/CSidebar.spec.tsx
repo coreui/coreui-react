@@ -1,4 +1,5 @@
 import * as React from 'react'
+import type { MockInstance } from 'vitest'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import {
@@ -46,14 +47,14 @@ test('CSidebar customize hide', async () => {
 })
 
 test('CSidebar removes the exact transitionend listener reference on cleanup', async () => {
-  const addSpy = jest.spyOn(HTMLElement.prototype, 'addEventListener')
-  const removeSpy = jest.spyOn(HTMLElement.prototype, 'removeEventListener')
+  const addSpy = vi.spyOn(HTMLElement.prototype, 'addEventListener')
+  const removeSpy = vi.spyOn(HTMLElement.prototype, 'removeEventListener')
 
   const { container, unmount } = render(<CSidebar>Test</CSidebar>)
   const sidebar = container.querySelector('.sidebar')
   unmount()
 
-  const handlersOn = (spy: jest.SpyInstance) =>
+  const handlersOn = (spy: MockInstance) =>
     spy.mock.calls
       .map((args, index) => ({ args, context: spy.mock.contexts[index] }))
       .filter(({ args, context }) => args[0] === 'transitionend' && context === sidebar)

@@ -28,8 +28,8 @@ test('CFormInput customize', async () => {
 })
 
 test('CFormInput change input', async () => {
-  jest.useFakeTimers()
-  const onChange = jest.fn()
+  vi.useFakeTimers()
+  const onChange = vi.fn()
   render(<CFormInput onChange={onChange} />)
   expect(onChange).toHaveBeenCalledTimes(0)
   const input = document.querySelector('input')

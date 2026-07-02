@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CFocusTrap CFocusTrap with custom props 1`] = `
+exports[`CFocusTrap > CFocusTrap with custom props 1`] = `
 <div>
   <div
     data-testid="custom-container"
@@ -10,7 +10,7 @@ exports[`CFocusTrap CFocusTrap with custom props 1`] = `
 </div>
 `;
 
-exports[`CFocusTrap loads and displays CFocusTrap component 1`] = `
+exports[`CFocusTrap > loads and displays CFocusTrap component 1`] = `
 <div>
   <div
     data-testid="test-content"

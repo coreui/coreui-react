@@ -18,7 +18,7 @@ test('CChipInput renders internal label', async () => {
 })
 
 test('CChipInput adds chip on enter', async () => {
-  const onChange = jest.fn()
+  const onChange = vi.fn()
   const { container } = render(<CChipInput onChange={onChange} />)
 
   const input = container.querySelector('.chip-input-field') as HTMLInputElement
@@ -41,7 +41,7 @@ test('CChipInput handles separators', async () => {
 })
 
 test('CChipInput removes chip via remove button', async () => {
-  const onRemove = jest.fn()
+  const onRemove = vi.fn()
   const { container } = render(<CChipInput defaultValue={['React']} onRemove={onRemove} />)
 
   const removeButton = container.querySelector('.chip-remove') as HTMLButtonElement
@@ -52,7 +52,7 @@ test('CChipInput removes chip via remove button', async () => {
 })
 
 test('CChipInput selectable chips', async () => {
-  const onSelect = jest.fn()
+  const onSelect = vi.fn()
   const { container } = render(
     <CChipInput defaultValue={['React']} selectable onSelect={onSelect} />
   )

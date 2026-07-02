@@ -25,9 +25,9 @@ test('CToast customize', async () => {
 })
 
 test('CToast click on dismiss button', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
-  const onClose = jest.fn()
+  const onClose = vi.fn()
   const { container } = render(
     <CToast
       className="bazinga"
@@ -67,7 +67,7 @@ test('CToast click on dismiss button', async () => {
   if (btn !== null) {
     act(() => {
       fireEvent.click(btn)
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
   }
 
@@ -76,11 +76,11 @@ test('CToast click on dismiss button', async () => {
     expect(container.firstChild).toBeNull()
   })
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })
 
 test('CToast test autohide', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
   const { container } = render(
     <CToast autohide={true} delay={1000} visible={true}>
@@ -93,12 +93,12 @@ test('CToast test autohide', async () => {
   })
 
   act(() => {
-    jest.advanceTimersByTime(1000)
+    vi.advanceTimersByTime(1000)
   })
 
   await waitFor(() => {
     expect(container.firstChild).toBeNull()
   })
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })

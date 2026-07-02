@@ -35,7 +35,7 @@ test('CChip customize', async () => {
 })
 
 test('CChip removable', async () => {
-  const onRemove = jest.fn()
+  const onRemove = vi.fn()
   const { container } = render(
     <CChip removable={true} ariaRemoveLabel="Remove test" onRemove={onRemove}>
       Test
@@ -50,8 +50,8 @@ test('CChip removable', async () => {
 })
 
 test('CChip selectable', async () => {
-  const onSelect = jest.fn()
-  const onDeselect = jest.fn()
+  const onSelect = vi.fn()
+  const onDeselect = vi.fn()
   const { getByText } = render(
     <CChip selectable={true} onSelect={onSelect} onDeselect={onDeselect}>
       Selectable
@@ -72,7 +72,7 @@ test('CChip selectable', async () => {
 })
 
 test('CChip filter shows a check icon while selected and implies selectable', async () => {
-  const onSelect = jest.fn()
+  const onSelect = vi.fn()
   const { getByText, container } = render(
     <CChip filter={true} onSelect={onSelect}>
       Filter
@@ -103,7 +103,7 @@ test('CChip filter renders a custom selectedIcon', async () => {
 })
 
 test('CChip delete triggers remove callback', async () => {
-  const onRemove = jest.fn()
+  const onRemove = vi.fn()
   const { getByText } = render(
     <div>
       <CChip removable={true} onRemove={onRemove}>

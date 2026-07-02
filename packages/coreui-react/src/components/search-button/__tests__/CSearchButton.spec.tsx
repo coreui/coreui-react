@@ -38,8 +38,8 @@ test('CSearchButton customize', async () => {
 })
 
 test('CSearchButton triggers click on matching shortcut', async () => {
-  const onClick = jest.fn()
-  const onTrigger = jest.fn()
+  const onClick = vi.fn()
+  const onTrigger = vi.fn()
 
   render(<CSearchButton onClick={onClick} onTrigger={onTrigger} shortcut="meta+k,ctrl+k" />)
 
@@ -50,7 +50,7 @@ test('CSearchButton triggers click on matching shortcut', async () => {
 })
 
 test('CSearchButton ignores plain typing in editable fields', async () => {
-  const onClick = jest.fn()
+  const onClick = vi.fn()
 
   render(
     <>
@@ -83,8 +83,8 @@ test('CSearchButton highlights active shortcut keys', async () => {
 })
 
 test('CSearchButton triggers onTrigger on click', async () => {
-  const onClick = jest.fn()
-  const onTrigger = jest.fn()
+  const onClick = vi.fn()
+  const onTrigger = vi.fn()
 
   render(<CSearchButton onClick={onClick} onTrigger={onTrigger} />)
 

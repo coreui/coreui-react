@@ -16,7 +16,7 @@ test('CModalHeader customize', async () => {
 })
 
 test('CModalHeader has a close button', async () => {
-  const onDismiss = jest.fn()
+  const onDismiss = vi.fn()
   render(<CModalHeader className="bazinga">Test</CModalHeader>)
   expect(onDismiss).toHaveBeenCalledTimes(0)
   const btn = document.querySelector('.btn-close')

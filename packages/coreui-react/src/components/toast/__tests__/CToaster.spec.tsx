@@ -10,7 +10,7 @@ test('loads and displays CToaster component', async () => {
 })
 
 test('CToaster customize', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
   let toast = <></>
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const addToast = function (t: any) {
@@ -40,9 +40,9 @@ test('CToaster customize', async () => {
   if (btn !== null) {
     fireEvent.click(btn)
   }
-  jest.runAllTimers()
+  vi.runAllTimers()
   expect(container.firstChild).toHaveClass('bazinga')
   expect(container.firstChild).toHaveClass('toaster')
   expect(container.firstChild).toHaveClass('toast-container')
-  jest.useRealTimers()
+  vi.useRealTimers()
 })

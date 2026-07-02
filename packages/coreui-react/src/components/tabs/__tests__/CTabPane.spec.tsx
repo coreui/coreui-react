@@ -27,7 +27,7 @@ test('CTabPane customize', async () => {
 })
 
 test('CTabContent use case test', async () => {
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 
   const { rerender } = render(
     <CTabContent>
@@ -44,7 +44,7 @@ test('CTabContent use case test', async () => {
         <CTabPane visible={true}>Test</CTabPane>
       </CTabContent>
     )
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   await waitFor(() => {
@@ -58,11 +58,11 @@ test('CTabContent use case test', async () => {
         <CTabPane visible={false}>Test</CTabPane>
       </CTabContent>
     )
-    jest.runAllTimers()
+    vi.runAllTimers()
   })
 
   expect(screen.getByText('Test')).not.toHaveClass('show')
   expect(screen.getByText('Test')).not.toHaveClass('active')
 
-  jest.useRealTimers()
+  vi.useRealTimers()
 })
