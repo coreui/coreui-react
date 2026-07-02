@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { act, render, fireEvent } from '@testing-library/react'
+import { act, render, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { CAlert } from '../index'
 
@@ -45,6 +45,15 @@ describe('CAlert', () => {
       expect(container.querySelector('.btn-close')).toBeInTheDocument()
     })
 
+    it('should set a custom close button label', () => {
+      const { container } = render(
+        <CAlert color="primary" dismissible ariaCloseLabel="Zamknij">
+          Test
+        </CAlert>
+      )
+      expect(container.querySelector('.btn-close')).toHaveAttribute('aria-label', 'Zamknij')
+    })
+
     it('should close an alert', () => {
       vi.useFakeTimers()
       const onClose = vi.fn()
@@ -61,6 +70,35 @@ describe('CAlert', () => {
 
       expect(onClose).toHaveBeenCalledTimes(1)
       vi.useRealTimers()
+    })
+
+    it('should emit closed after the transition', async () => {
+      const onClosed = vi.fn()
+      const { container } = render(
+        <CAlert color="primary" dismissible onClosed={onClosed}>
+          Test
+        </CAlert>
+      )
+
+      fireEvent.click(container.querySelector('.btn-close')!)
+
+      await waitFor(() => expect(onClosed).toHaveBeenCalledTimes(1))
+    })
+  })
+
+  describe('transition', () => {
+    it('should apply the fade class', () => {
+      const { container } = render(<CAlert color="primary">Test</CAlert>)
+      expect(container.firstChild).toHaveClass('fade')
+    })
+
+    it('should not apply the fade class when transition is disabled', () => {
+      const { container } = render(
+        <CAlert color="primary" transition={false}>
+          Test
+        </CAlert>
+      )
+      expect(container.firstChild).not.toHaveClass('fade')
     })
   })
 
