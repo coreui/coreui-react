@@ -3,18 +3,25 @@ import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { CAlertHeading } from '../index'
 
-test('loads and displays CAlertHeading component', async () => {
-  const { container } = render(<CAlertHeading>Test</CAlertHeading>)
-  expect(container).toMatchSnapshot()
-})
+describe('CAlertHeading', () => {
+  it('should render an alert heading', () => {
+    const { container } = render(<CAlertHeading>Test</CAlertHeading>)
+    expect(container.firstChild).toHaveClass('alert-heading')
+    expect(container.firstChild?.nodeName).toBe('H4')
+  })
 
-test('CAlertHeading customize', async () => {
-  const { container } = render(
-    <CAlertHeading as="h3" className="bazinga">
-      Test
-    </CAlertHeading>
-  )
-  expect(container).toMatchSnapshot()
-  expect(container.firstChild).toHaveClass('bazinga')
-  expect(container.firstChild).toHaveClass('alert-heading')
+  it('should render its content', () => {
+    const { getByText } = render(<CAlertHeading>Hello World!</CAlertHeading>)
+    expect(getByText('Hello World!')).toBeInTheDocument()
+  })
+
+  it('should apply a custom class name', () => {
+    const { container } = render(<CAlertHeading className="bazinga">Test</CAlertHeading>)
+    expect(container.firstChild).toHaveClass('bazinga')
+  })
+
+  it('should render as a custom element', () => {
+    const { container } = render(<CAlertHeading as="h2">Test</CAlertHeading>)
+    expect(container.firstChild?.nodeName).toBe('H2')
+  })
 })
