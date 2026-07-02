@@ -2,6 +2,14 @@
   "name": "CAlert",
   "props": [
     {
+      "name": "ariaCloseLabel",
+      "type": "string | undefined",
+      "default": "Close",
+      "description": "Sets the `aria-label` of the dismissible close button.",
+      "since": "5.13.0",
+      "deprecated": null
+    },
+    {
       "name": "className",
       "type": "string | undefined",
       "default": null,

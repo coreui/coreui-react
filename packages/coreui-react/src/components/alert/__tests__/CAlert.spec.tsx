@@ -45,6 +45,15 @@ describe('CAlert', () => {
       expect(container.querySelector('.btn-close')).toBeInTheDocument()
     })
 
+    it('should set a custom close button label', () => {
+      const { container } = render(
+        <CAlert color="primary" dismissible ariaCloseLabel="Zamknij">
+          Test
+        </CAlert>
+      )
+      expect(container.querySelector('.btn-close')).toHaveAttribute('aria-label', 'Zamknij')
+    })
+
     it('should close an alert', () => {
       vi.useFakeTimers()
       const onClose = vi.fn()

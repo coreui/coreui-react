@@ -11,6 +11,12 @@ import type { Colors } from '../../types'
 
 export interface CAlertProps extends HTMLAttributes<HTMLDivElement> {
   /**
+   * Sets the `aria-label` of the dismissible close button.
+   *
+   * @since 5.13.0
+   */
+  ariaCloseLabel?: string
+  /**
    * A string of all className you want applied to the component.
    */
   className?: string
@@ -54,6 +60,7 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
   (
     {
       children,
+      ariaCloseLabel = 'Close',
       className,
       color = 'primary',
       dismissible,
@@ -101,7 +108,9 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
             ref={forkedRef}
           >
             {children}
-            {dismissible && <CCloseButton onClick={() => setVisible(false)} />}
+            {dismissible && (
+              <CCloseButton aria-label={ariaCloseLabel} onClick={() => setVisible(false)} />
+            )}
           </div>
         )}
       </Transition>
@@ -110,6 +119,7 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
 )
 
 CAlert.propTypes = {
+  ariaCloseLabel: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
   color: colorPropType.isRequired,
