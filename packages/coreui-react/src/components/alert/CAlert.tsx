@@ -29,6 +29,18 @@ export interface CAlertProps extends HTMLAttributes<HTMLDivElement> {
    */
   onClose?: () => void
   /**
+   * Callback fired when the component has been closed and the CSS transition has completed.
+   *
+   * @since 5.13.0
+   */
+  onClosed?: () => void
+  /**
+   * Set whether the alert fades in and out when it is shown and hidden. Set to `false` to make it appear and disappear without a fade animation.
+   *
+   * @since 5.13.0
+   */
+  transition?: boolean
+  /**
    * Set the alert variant to a solid.
    */
   variant?: 'solid' | string
@@ -45,9 +57,11 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
       className,
       color = 'primary',
       dismissible,
+      transition = true,
       variant,
       visible = true,
       onClose,
+      onClosed,
       ...rest
     },
     ref
@@ -66,7 +80,8 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
         mountOnEnter
         nodeRef={alertRef}
         onExit={onClose}
-        timeout={150}
+        onExited={onClosed}
+        timeout={transition ? 150 : 0}
         unmountOnExit
       >
         {(state) => (
@@ -75,7 +90,8 @@ export const CAlert = forwardRef<HTMLDivElement, CAlertProps>(
               'alert',
               variant === 'solid' ? `bg-${color} text-white` : `alert-${color}`,
               {
-                'alert-dismissible fade': dismissible,
+                'alert-dismissible': dismissible,
+                fade: transition,
                 show: state === 'entered',
               },
               className
@@ -99,6 +115,8 @@ CAlert.propTypes = {
   color: colorPropType.isRequired,
   dismissible: PropTypes.bool,
   onClose: PropTypes.func,
+  onClosed: PropTypes.func,
+  transition: PropTypes.bool,
   variant: PropTypes.string,
   visible: PropTypes.bool,
 }

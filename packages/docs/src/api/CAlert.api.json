@@ -34,6 +34,22 @@
       "deprecated": null
     },
     {
+      "name": "onClosed",
+      "type": "(() => void) | undefined",
+      "default": null,
+      "description": "Callback fired when the component has been closed and the CSS transition has completed.",
+      "since": "5.13.0",
+      "deprecated": null
+    },
+    {
+      "name": "transition",
+      "type": "boolean | undefined",
+      "default": true,
+      "description": "Set whether the alert fades in and out when it is shown and hidden. Set to `false` to make it appear and disappear without a fade animation.",
+      "since": "5.13.0",
+      "deprecated": null
+    },
+    {
       "name": "variant",
       "type": "string | undefined",
       "default": null,
