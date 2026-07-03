@@ -4,6 +4,12 @@ import classNames from 'classnames'
 
 export interface CCloseButtonProps extends HTMLAttributes<HTMLButtonElement> {
   /**
+   * Sets the `aria-label` attribute of the close button.
+   *
+   * @default 'Close'
+   */
+  'aria-label'?: string
+  /**
    * A string of all className you want applied to the base component.
    */
   className?: string
@@ -24,7 +30,7 @@ export interface CCloseButtonProps extends HTMLAttributes<HTMLButtonElement> {
 }
 
 export const CCloseButton = forwardRef<HTMLButtonElement, CCloseButtonProps>(
-  ({ className, dark, disabled, white, ...rest }, ref) => {
+  ({ 'aria-label': ariaLabel = 'Close', className, dark, disabled, white, ...rest }, ref) => {
     return (
       <button
         type="button"
@@ -37,7 +43,7 @@ export const CCloseButton = forwardRef<HTMLButtonElement, CCloseButtonProps>(
           disabled,
           className
         )}
-        aria-label="Close"
+        aria-label={ariaLabel}
         disabled={disabled}
         {...(dark && { 'data-coreui-theme': 'dark' })}
         {...rest}
@@ -48,6 +54,7 @@ export const CCloseButton = forwardRef<HTMLButtonElement, CCloseButtonProps>(
 )
 
 CCloseButton.propTypes = {
+  'aria-label': PropTypes.string,
   className: PropTypes.string,
   dark: PropTypes.bool,
   disabled: PropTypes.bool,

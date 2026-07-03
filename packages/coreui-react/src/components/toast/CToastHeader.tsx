@@ -6,6 +6,12 @@ import { CToastClose } from './CToastClose'
 
 export interface CToastHeaderProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
+   * Sets the `aria-label` of the close button.
+   *
+   * @since 5.13.0
+   */
+  ariaCloseLabel?: string
+  /**
    * A string of all className you want applied to the base component.
    */
   className?: string
@@ -16,17 +22,18 @@ export interface CToastHeaderProps extends Omit<HTMLAttributes<HTMLDivElement>, 
 }
 
 export const CToastHeader = forwardRef<HTMLDivElement, CToastHeaderProps>(
-  ({ children, className, closeButton, ...rest }, ref) => {
+  ({ children, ariaCloseLabel, className, closeButton, ...rest }, ref) => {
     return (
       <div className={classNames('toast-header', className)} {...rest} ref={ref}>
         {children}
-        {closeButton && <CToastClose />}
+        {closeButton && <CToastClose aria-label={ariaCloseLabel} />}
       </div>
     )
   }
 )
 
 CToastHeader.propTypes = {
+  ariaCloseLabel: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
   closeButton: PropTypes.bool,

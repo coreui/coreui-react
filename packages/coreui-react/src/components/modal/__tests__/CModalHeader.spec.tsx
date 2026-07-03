@@ -15,6 +15,11 @@ test('CModalHeader customize', async () => {
   expect(container.firstChild).toHaveClass('modal-header')
 })
 
+test('CModalHeader sets the aria-label of the close button via ariaCloseLabel', async () => {
+  render(<CModalHeader ariaCloseLabel="Dismiss">Test</CModalHeader>)
+  expect(document.querySelector('.btn-close')).toHaveAttribute('aria-label', 'Dismiss')
+})
+
 test('CModalHeader has a close button', async () => {
   const onDismiss = vi.fn()
   render(<CModalHeader className="bazinga">Test</CModalHeader>)

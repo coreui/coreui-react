@@ -2,6 +2,14 @@
   "name": "CToastClose",
   "props": [
     {
+      "name": "aria-label",
+      "type": "string | undefined",
+      "default": "'Close'",
+      "description": "Sets the `aria-label` attribute of the close button.",
+      "since": null,
+      "deprecated": null
+    },
+    {
       "name": "as",
       "type": "(ElementType & string) | (ElementType & ComponentClass<any, any>) | (ElementType & FunctionComponent<any>) | undefined",
       "default": null,
