@@ -52,6 +52,11 @@ describe('CButton', () => {
       expect(container.firstChild).toHaveClass('active')
     })
 
+    it('should set aria-pressed when active', () => {
+      const { container } = render(<CButton active>Test</CButton>)
+      expect(container.firstChild).toHaveAttribute('aria-pressed', 'true')
+    })
+
     it('should be disabled', () => {
       const { container } = render(<CButton disabled>Test</CButton>)
       expect(container.firstChild).toBeDisabled()
@@ -85,6 +90,12 @@ describe('CButton', () => {
     it('should render as a custom element', () => {
       const { container } = render(<CButton as="span">Test</CButton>)
       expect(container.firstChild?.nodeName).toBe('SPAN')
+    })
+
+    it('should render as an input with the button type', () => {
+      const { container } = render(<CButton as="input" type="submit" value="Submit" />)
+      expect(container.firstChild?.nodeName).toBe('INPUT')
+      expect(container.firstChild).toHaveAttribute('type', 'submit')
     })
 
     it('should render as a link when href is set', () => {

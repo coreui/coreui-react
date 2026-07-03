@@ -1,8 +1,8 @@
-import React, { ElementType, forwardRef } from 'react'
+import React, { ElementType, forwardRef, MouseEvent } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { CLink, CLinkProps } from '../link/CLink'
+import { CLinkProps } from '../link/CLink'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { colorPropType } from '../../props'
@@ -65,13 +65,27 @@ export const CButton: PolymorphicRefForwardingComponent<'button', CButtonProps> 
   CButtonProps
 >(
   (
-    { children, as = 'button', className, color, shape, size, type = 'button', variant, ...rest },
+    {
+      children,
+      active,
+      as = 'button',
+      className,
+      color,
+      disabled,
+      href,
+      onClick,
+      shape,
+      size,
+      type = 'button',
+      variant,
+      ...rest
+    },
     ref
   ) => {
+    const Component = href ? 'a' : as
+
     return (
-      <CLink
-        as={rest.href ? 'a' : as}
-        {...(!rest.href && { type: type })}
+      <Component
         className={classNames(
           'btn',
           {
@@ -79,15 +93,26 @@ export const CButton: PolymorphicRefForwardingComponent<'button', CButtonProps> 
             [`btn-${variant}`]: variant && !color,
             [`btn-${color}`]: !variant && color,
             [`btn-${size}`]: size,
+            active,
+            disabled,
           },
           shape,
           className
         )}
+        {...((Component === 'button' || Component === 'input') && { type, disabled })}
+        {...(active && { 'aria-pressed': true })}
+        {...(Component === 'a' && href && { href })}
+        {...(Component === 'a' && disabled && { 'aria-disabled': true, tabIndex: -1 })}
+        onClick={(event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+          if (!disabled) {
+            onClick?.(event)
+          }
+        }}
         {...rest}
         ref={ref}
       >
         {children}
-      </CLink>
+      </Component>
     )
   }
 )
