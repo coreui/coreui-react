@@ -7,6 +7,12 @@ import { CModalContext } from './CModalContext'
 
 export interface CModalHeaderProps extends HTMLAttributes<HTMLDivElement> {
   /**
+   * Sets the `aria-label` of the close button.
+   *
+   * @since 5.13.0
+   */
+  ariaCloseLabel?: string
+  /**
    * A string of all className you want applied to the base component.
    */
   className?: string
@@ -17,19 +23,22 @@ export interface CModalHeaderProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const CModalHeader = forwardRef<HTMLDivElement, CModalHeaderProps>(
-  ({ children, className, closeButton = true, ...rest }, ref) => {
+  ({ children, ariaCloseLabel, className, closeButton = true, ...rest }, ref) => {
     const { setVisible } = useContext(CModalContext)
 
     return (
       <div className={classNames('modal-header', className)} {...rest} ref={ref}>
         {children}
-        {closeButton && <CCloseButton onClick={() => setVisible(false)} />}
+        {closeButton && (
+          <CCloseButton aria-label={ariaCloseLabel} onClick={() => setVisible(false)} />
+        )}
       </div>
     )
   }
 )
 
 CModalHeader.propTypes = {
+  ariaCloseLabel: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
   closeButton: PropTypes.bool,

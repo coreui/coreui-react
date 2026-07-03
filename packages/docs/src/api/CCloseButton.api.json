@@ -2,6 +2,14 @@
   "name": "CCloseButton",
   "props": [
     {
+      "name": "aria-label",
+      "type": "string | undefined",
+      "default": "Close",
+      "description": "Sets the `aria-label` attribute of the close button.",
+      "since": null,
+      "deprecated": null
+    },
+    {
       "name": "className",
       "type": "string | undefined",
       "default": null,

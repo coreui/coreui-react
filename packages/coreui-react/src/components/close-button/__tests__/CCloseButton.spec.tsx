@@ -12,6 +12,11 @@ test('loads and displays CCloseButton component', async () => {
   expect(container).toMatchSnapshot()
 })
 
+test('CCloseButton allows overriding the default aria-label', async () => {
+  render(<CCloseButton aria-label="Dismiss" />)
+  expect(document.querySelector('button')).toHaveAttribute('aria-label', 'Dismiss')
+})
+
 test('CCloseButton customize', async () => {
   const { container } = render(<CCloseButton white={true} disabled={true} className="bazinga" />)
   const button = document.querySelector('button')
