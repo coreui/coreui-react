@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, createEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { CButton } from '../index'
 
@@ -52,6 +52,50 @@ describe('CButton', () => {
       expect(container.firstChild).toHaveClass('active')
     })
 
+    it('should forward the aria-pressed attribute', () => {
+      // toggle buttons opt in to aria-pressed themselves (it is not implied by active)
+      const { container } = render(
+        <CButton active aria-pressed={true}>
+          Test
+        </CButton>
+      )
+      expect(container.firstChild).toHaveAttribute('aria-pressed', 'true')
+    })
+
+    it('should toggle the active state on click', () => {
+      const { container } = render(<CButton toggle>Test</CButton>)
+      const button = container.firstChild as HTMLElement
+      expect(button).not.toHaveClass('active')
+      expect(button).toHaveAttribute('aria-pressed', 'false')
+      fireEvent.click(button)
+      expect(button).toHaveClass('active')
+      expect(button).toHaveAttribute('aria-pressed', 'true')
+      fireEvent.click(button)
+      expect(button).not.toHaveClass('active')
+      expect(button).toHaveAttribute('aria-pressed', 'false')
+    })
+
+    it('should seed the toggle state from the active prop', () => {
+      const { container } = render(
+        <CButton toggle active>
+          Test
+        </CButton>
+      )
+      expect(container.firstChild).toHaveClass('active')
+      expect(container.firstChild).toHaveAttribute('aria-pressed', 'true')
+    })
+
+    it('should prevent the default action on a toggle click', () => {
+      const { container } = render(
+        <CButton as="a" href="#" toggle>
+          Test
+        </CButton>
+      )
+      const event = createEvent.click(container.firstChild as HTMLElement)
+      fireEvent(container.firstChild as HTMLElement, event)
+      expect(event.defaultPrevented).toBe(true)
+    })
+
     it('should be disabled', () => {
       const { container } = render(<CButton disabled>Test</CButton>)
       expect(container.firstChild).toBeDisabled()
@@ -85,6 +129,12 @@ describe('CButton', () => {
     it('should render as a custom element', () => {
       const { container } = render(<CButton as="span">Test</CButton>)
       expect(container.firstChild?.nodeName).toBe('SPAN')
+    })
+
+    it('should render as an input with the button type', () => {
+      const { container } = render(<CButton as="input" type="submit" value="Submit" />)
+      expect(container.firstChild?.nodeName).toBe('INPUT')
+      expect(container.firstChild).toHaveAttribute('type', 'submit')
     })
 
     it('should render as a link when href is set', () => {

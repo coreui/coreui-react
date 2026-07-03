@@ -66,6 +66,14 @@
       "deprecated": null
     },
     {
+      "name": "toggle",
+      "type": "boolean | undefined",
+      "default": null,
+      "description": "Make the button behave as a toggle button. It manages its own active/pressed state, toggling it on click and reflecting it via the `aria-pressed` attribute.",
+      "since": "5.13.0",
+      "deprecated": null
+    },
+    {
       "name": "type",
       "type": "\"button\" | \"submit\" | \"reset\" | undefined",
       "default": null,

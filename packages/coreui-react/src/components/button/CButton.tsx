@@ -1,8 +1,8 @@
-import React, { ElementType, forwardRef } from 'react'
+import React, { ElementType, forwardRef, MouseEvent, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { CLink, CLinkProps } from '../link/CLink'
+import { CLinkProps } from '../link/CLink'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 import { colorPropType } from '../../props'
@@ -50,6 +50,12 @@ export interface CButtonProps extends Omit<CLinkProps, 'size'> {
    */
   size?: 'sm' | 'lg'
   /**
+   * Make the button behave as a toggle button. It manages its own active/pressed state, toggling it on click and reflecting it via the `aria-pressed` attribute.
+   *
+   * @since 5.13.0
+   */
+  toggle?: boolean
+  /**
    * Specifies the type of button. Always specify the type attribute for the `<button>` element.
    * Different browsers may use different default types for the `<button>` element.
    */
@@ -65,13 +71,33 @@ export const CButton: PolymorphicRefForwardingComponent<'button', CButtonProps> 
   CButtonProps
 >(
   (
-    { children, as = 'button', className, color, shape, size, type = 'button', variant, ...rest },
+    {
+      children,
+      active,
+      as = 'button',
+      className,
+      color,
+      disabled,
+      href,
+      onClick,
+      shape,
+      size,
+      toggle,
+      type = 'button',
+      variant,
+      ...rest
+    },
     ref
   ) => {
+    const Component = href ? 'a' : as
+    const [_active, setActive] = useState(active)
+
+    useEffect(() => {
+      setActive(active)
+    }, [active])
+
     return (
-      <CLink
-        as={rest.href ? 'a' : as}
-        {...(!rest.href && { type: type })}
+      <Component
         className={classNames(
           'btn',
           {
@@ -79,26 +105,44 @@ export const CButton: PolymorphicRefForwardingComponent<'button', CButtonProps> 
             [`btn-${variant}`]: variant && !color,
             [`btn-${color}`]: !variant && color,
             [`btn-${size}`]: size,
+            active: _active,
+            disabled,
           },
           shape,
           className
         )}
+        {...((Component === 'button' || Component === 'input') && { type, disabled })}
+        {...(toggle && { 'aria-pressed': !!_active })}
+        {...(Component === 'a' && href && { href })}
+        {...(Component === 'a' && disabled && { 'aria-disabled': true, tabIndex: -1 })}
+        onClick={(event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+          if (!disabled) {
+            if (toggle) {
+              event.preventDefault()
+              setActive((prevActive) => !prevActive)
+            }
+
+            onClick?.(event)
+          }
+        }}
         {...rest}
         ref={ref}
       >
         {children}
-      </CLink>
+      </Component>
     )
   }
 )
 
 CButton.propTypes = {
+  active: PropTypes.bool,
   as: PropTypes.elementType,
   children: PropTypes.node,
   className: PropTypes.string,
   color: colorPropType,
   shape: PropTypes.string,
   size: PropTypes.oneOf(['sm', 'lg']),
+  toggle: PropTypes.bool,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   variant: PropTypes.oneOf(['outline', 'ghost']),
 }
