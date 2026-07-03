@@ -8,7 +8,7 @@ import { CDropdownContext } from './CDropdownContext'
 import { triggerPropType } from '../../props'
 import type { Triggers } from '../../types'
 
-export interface CDropdownToggleProps extends Omit<CButtonProps, 'type'> {
+export interface CDropdownToggleProps extends Omit<CButtonProps, 'toggle' | 'type'> {
   /**
    * Enables pseudo element caret on toggler.
    */

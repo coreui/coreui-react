@@ -2,14 +2,6 @@
   "name": "CToastClose",
   "props": [
     {
-      "name": "active",
-      "type": "boolean | undefined",
-      "default": null,
-      "description": "Toggle the active state for the component.",
-      "since": null,
-      "deprecated": null
-    },
-    {
       "name": "as",
       "type": "(ElementType & string) | (ElementType & ComponentClass<any, any>) | (ElementType & FunctionComponent<any>) | undefined",
       "default": null,
@@ -38,54 +30,6 @@
       "type": "boolean | undefined",
       "default": null,
       "description": "Toggle the disabled state for the component.",
-      "since": null,
-      "deprecated": null
-    },
-    {
-      "name": "href",
-      "type": "string | undefined",
-      "default": null,
-      "description": "The href attribute specifies the URL of the page the link goes to.",
-      "since": null,
-      "deprecated": null
-    },
-    {
-      "name": "shape",
-      "type": "'rounded' | 'rounded-top' | 'rounded-end' | 'rounded-bottom' | 'rounded-start' | 'rounded-circle' | 'rounded-pill' | 'rounded-0' | 'rounded-1' | 'rounded-2' | 'rounded-3' | string",
-      "default": null,
-      "description": "Select the shape of the component.",
-      "since": null,
-      "deprecated": null
-    },
-    {
-      "name": "size",
-      "type": "\"sm\" | \"lg\" | undefined",
-      "default": null,
-      "description": "Size the component small or large.",
-      "since": null,
-      "deprecated": null
-    },
-    {
-      "name": "toggle",
-      "type": "boolean | undefined",
-      "default": null,
-      "description": "Make the button behave as a toggle button. It manages its own active/pressed state, toggling it on click and reflecting it via the `aria-pressed` attribute.",
-      "since": "5.13.0",
-      "deprecated": null
-    },
-    {
-      "name": "type",
-      "type": "\"button\" | \"submit\" | \"reset\" | undefined",
-      "default": null,
-      "description": "Specifies the type of button. Always specify the type attribute for the `<button>` element.\nDifferent browsers may use different default types for the `<button>` element.",
-      "since": null,
-      "deprecated": null
-    },
-    {
-      "name": "variant",
-      "type": "\"outline\" | \"ghost\" | undefined",
-      "default": null,
-      "description": "Set the button variant to an outlined button or a ghost button.",
       "since": null,
       "deprecated": null
     },

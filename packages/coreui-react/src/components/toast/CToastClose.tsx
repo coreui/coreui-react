@@ -1,15 +1,12 @@
 import React, { ElementType, forwardRef, useContext } from 'react'
 import PropTypes from 'prop-types'
 
-import { CButtonProps } from '../button/CButton'
 import { CCloseButton, CCloseButtonProps } from '../close-button/CCloseButton'
 import { CToastContext } from './CToastContext'
 
 import { PolymorphicRefForwardingComponent } from '../../helpers'
 
-type CombineButtonProps = CCloseButtonProps & CButtonProps
-
-export interface CToastCloseProps extends Omit<CombineButtonProps, 'as'> {
+export interface CToastCloseProps extends CCloseButtonProps {
   /**
    * Component used for the root node. Either a string to use a HTML element or a component.
    */
