@@ -21,10 +21,11 @@
     "test": "npm-run-all charts:test icons:test lib:test",
     "test:update": "npm-run-all charts:test:update icons:test:update lib:test:update"
   },
-  "resolutions": {
+  "overrides": {
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
+  "packageManager": "npm@11.6.4",
   "devDependencies": {
     "@typescript-eslint/parser": "^8.62.0",
     "eslint": "^9.39.4",
