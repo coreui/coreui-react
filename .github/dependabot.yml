@@ -1,0 +1,66 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: tuesday
+      time: "12:00"
+      timezone: Europe/Athens
+    cooldown:
+      default-days: 7
+    labels:
+      - dependencies
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: tuesday
+      time: "12:00"
+      timezone: Europe/Athens
+    open-pull-requests-limit: 10
+    reviewers:
+      - mrholek
+    labels:
+      - dependencies
+    cooldown:
+      default-days: 7
+    versioning-strategy: increase
+    rebase-strategy: disabled
+    ignore:
+      # react/react-dom are pinned to 18.3.1 via package.json "overrides"
+      - dependency-name: "react"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "react-dom"
+        update-types:
+          - "version-update:semver-major"
+      # docs engine — Astro majors are coordinated migrations, bumped by hand
+      - dependency-name: "astro"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@astrojs/*"
+        update-types:
+          - "version-update:semver-major"
+      # linter churn — new rules break CI; bump deliberately
+      - dependency-name: "eslint*"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "typescript-eslint"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "@typescript-eslint/*"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"
