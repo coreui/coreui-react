@@ -29,7 +29,8 @@
   "types": "dist/esm/index.d.ts",
   "files": [
     "dist/",
-    "src/"
+    "src/",
+    "!src/**/__tests__"
   ],
   "sideEffects": false,
   "scripts": {
