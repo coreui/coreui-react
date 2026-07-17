@@ -183,3 +183,67 @@ test('CTooltip onShow and onHide', async () => {
 
   vi.useRealTimers()
 })
+
+test('CTooltip is dismissed when the Escape key is pressed', async () => {
+  vi.useFakeTimers()
+
+  render(
+    <CTooltip trigger="hover" content="content">
+      <CLink>Test</CLink>
+    </CTooltip>
+  )
+
+  const link = screen.getByText('Test')
+
+  act(() => {
+    fireEvent.mouseOver(link)
+  })
+
+  act(() => {
+    vi.runAllTimers()
+  })
+
+  expect(document.querySelector('.tooltip')).toHaveClass('show')
+  expect(link).toHaveAttribute('aria-describedby')
+
+  act(() => {
+    fireEvent.keyDown(document, { key: 'Escape' })
+    vi.runAllTimers()
+  })
+
+  expect(document.querySelector('.tooltip.show')).toBeNull()
+  expect(link).not.toHaveAttribute('aria-describedby')
+
+  vi.useRealTimers()
+})
+
+test('CTooltip is not dismissed when a non-Escape key is pressed', async () => {
+  vi.useFakeTimers()
+
+  render(
+    <CTooltip trigger="hover" content="content">
+      <CLink>Test</CLink>
+    </CTooltip>
+  )
+
+  const link = screen.getByText('Test')
+
+  act(() => {
+    fireEvent.mouseOver(link)
+  })
+
+  act(() => {
+    vi.runAllTimers()
+  })
+
+  expect(document.querySelector('.tooltip')).toHaveClass('show')
+
+  act(() => {
+    fireEvent.keyDown(document, { key: 'Enter' })
+    vi.runAllTimers()
+  })
+
+  expect(document.querySelector('.tooltip')).toHaveClass('show')
+
+  vi.useRealTimers()
+})

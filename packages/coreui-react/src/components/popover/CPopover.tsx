@@ -266,6 +266,26 @@ export const CPopover = forwardRef<HTMLDivElement, CPopoverProps>(
       }
     }, [_visible])
 
+    useEffect(() => {
+      if (!_visible) {
+        return
+      }
+
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === 'Escape') {
+          event.preventDefault()
+          event.stopPropagation()
+          handleHide()
+        }
+      }
+
+      document.addEventListener('keydown', handleKeyDown, true)
+
+      return () => {
+        document.removeEventListener('keydown', handleKeyDown, true)
+      }
+    }, [_visible])
+
     const child = children as React.ReactElement<
       React.HTMLAttributes<HTMLElement> & { ref?: React.Ref<HTMLElement> }
     >

@@ -171,3 +171,67 @@ test('CPopover onShow and onHide', async () => {
 
   vi.useRealTimers()
 })
+
+test('CPopover is dismissed when the Escape key is pressed', async () => {
+  vi.useFakeTimers()
+
+  render(
+    <CPopover trigger="hover" content="content">
+      <CButton color="primary">Test</CButton>
+    </CPopover>
+  )
+
+  const btn = screen.getByRole('button', { name: /test/i })
+
+  act(() => {
+    fireEvent.mouseOver(btn)
+  })
+
+  act(() => {
+    vi.runAllTimers()
+  })
+
+  expect(document.querySelector('.popover')).toHaveClass('show')
+  expect(btn).toHaveAttribute('aria-describedby')
+
+  act(() => {
+    fireEvent.keyDown(document, { key: 'Escape' })
+    vi.runAllTimers()
+  })
+
+  expect(document.querySelector('.popover.show')).toBeNull()
+  expect(btn).not.toHaveAttribute('aria-describedby')
+
+  vi.useRealTimers()
+})
+
+test('CPopover is not dismissed when a non-Escape key is pressed', async () => {
+  vi.useFakeTimers()
+
+  render(
+    <CPopover trigger="hover" content="content">
+      <CButton color="primary">Test</CButton>
+    </CPopover>
+  )
+
+  const btn = screen.getByRole('button', { name: /test/i })
+
+  act(() => {
+    fireEvent.mouseOver(btn)
+  })
+
+  act(() => {
+    vi.runAllTimers()
+  })
+
+  expect(document.querySelector('.popover')).toHaveClass('show')
+
+  act(() => {
+    fireEvent.keyDown(document, { key: 'Enter' })
+    vi.runAllTimers()
+  })
+
+  expect(document.querySelector('.popover')).toHaveClass('show')
+
+  vi.useRealTimers()
+})
