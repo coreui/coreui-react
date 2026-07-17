@@ -30,10 +30,6 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
-    # Non-blocking for now: a handful of react-hooks v7 findings and one
-    # deferred public type are still open. Drop continue-on-error once the
-    # remaining errors are resolved to make lint a required check.
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
