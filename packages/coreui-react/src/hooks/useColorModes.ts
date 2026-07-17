@@ -51,13 +51,17 @@ export const useColorModes = (
   }, [colorMode])
 
   useEffect(() => {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    const mql = window.matchMedia('(prefers-color-scheme: dark)')
+    const handleChange = () => {
       const storedTheme = getStoredTheme(localStorageItemName)
       if (storedTheme !== 'light' && storedTheme !== 'dark' && colorMode) {
         setTheme(colorMode)
       }
-    })
-  })
+    }
+
+    mql.addEventListener('change', handleChange)
+    return () => mql.removeEventListener('change', handleChange)
+  }, [colorMode, localStorageItemName])
 
   return {
     colorMode,
