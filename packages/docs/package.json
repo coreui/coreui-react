@@ -11,16 +11,16 @@
     "api": "node node_modules/@coreui/astro-docs-api-generator/bin/coreui-docs-api.mjs"
   },
   "dependencies": {
-    "@astrojs/mdx": "^6.0.3",
-    "@astrojs/react": "^5.0.7",
-    "@coreui/astro-docs": "0.1.0-beta.12",
+    "@astrojs/mdx": "^7.0.3",
+    "@astrojs/react": "^6.0.1",
+    "@coreui/astro-docs": "0.1.0",
     "@coreui/chartjs": "^4.2.0",
     "@coreui/coreui": "^5.8.0",
     "@coreui/icons": "^3.1.0",
     "@coreui/internal-links": "^5.2.0",
     "@coreui/utils": "^2.0.2",
     "@popperjs/core": "^2.11.8",
-    "astro": "^6.4.8",
+    "astro": "^7.1.1",
     "chart.js": "^4.5.1",
     "prop-types": "^15.8.1",
     "react": "^19.2.7",
@@ -29,7 +29,7 @@
     "sass": "^1.101.0"
   },
   "devDependencies": {
-    "@coreui/astro-docs-api-generator": "0.1.0-beta.1",
+    "@coreui/astro-docs-api-generator": "0.1.0",
     "typescript": "^5.9.3"
   }
 }
