@@ -44,6 +44,8 @@
       badge:
         color: success
         text: New
+    - title: Floating Labels
+      to: /forms/floating-labels/
     - title: Input
       to: /forms/input/
     - title: Input Mask
@@ -60,8 +62,6 @@
       to: /forms/switch/
     - title: Textarea
       to: /forms/textarea/
-    - title: Floating Labels
-      to: /forms/floating-labels/
     - title: Layout
       to: /forms/layout/
     - title: Validation
