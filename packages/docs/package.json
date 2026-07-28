@@ -20,13 +20,13 @@
     "@coreui/internal-links": "^5.2.0",
     "@coreui/utils": "^2.0.2",
     "@popperjs/core": "^2.11.8",
-    "astro": "^7.1.2",
+    "astro": "^7.1.3",
     "chart.js": "^4.5.1",
     "prop-types": "^15.8.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-imask": "^7.6.1",
-    "sass": "^1.101.0"
+    "sass": "^1.101.3"
   },
   "devDependencies": {
     "@coreui/astro-docs-api-generator": "0.1.0",
