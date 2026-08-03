@@ -8,19 +8,40 @@ import CContainerData from '@api/CContainer.api.json'
 import CRowData from '@api/CRow.api.json'
 import CColData from '@api/CCol.api.json'
 
+import { GridExample } from './examples/GridExample'
+import GridExampleRaw from './examples/GridExample.tsx?raw'
+import { GridEqualWidthExample } from './examples/GridEqualWidthExample'
+import GridEqualWidthExampleRaw from './examples/GridEqualWidthExample.tsx?raw'
+import { GridSettingOneColumnWidthExample } from './examples/GridSettingOneColumnWidthExample'
+import GridSettingOneColumnWidthExampleRaw from './examples/GridSettingOneColumnWidthExample.tsx?raw'
+import { GridVariableWidthContentExample } from './examples/GridVariableWidthContentExample'
+import GridVariableWidthContentExampleRaw from './examples/GridVariableWidthContentExample.tsx?raw'
+import { GridAllBreakpointsExample } from './examples/GridAllBreakpointsExample'
+import GridAllBreakpointsExampleRaw from './examples/GridAllBreakpointsExample.tsx?raw'
+import { GridStackedToHorizontalExample } from './examples/GridStackedToHorizontalExample'
+import GridStackedToHorizontalExampleRaw from './examples/GridStackedToHorizontalExample.tsx?raw'
+import { GridMixAndMatchExample } from './examples/GridMixAndMatchExample'
+import GridMixAndMatchExampleRaw from './examples/GridMixAndMatchExample.tsx?raw'
+import { GridRowColumns2Example } from './examples/GridRowColumns2Example'
+import GridRowColumns2ExampleRaw from './examples/GridRowColumns2Example.tsx?raw'
+import { GridRowColumns3Example } from './examples/GridRowColumns3Example'
+import GridRowColumns3ExampleRaw from './examples/GridRowColumns3Example.tsx?raw'
+import { GridRowColumnsAutoExample } from './examples/GridRowColumnsAutoExample'
+import GridRowColumnsAutoExampleRaw from './examples/GridRowColumnsAutoExample.tsx?raw'
+import { GridRowColumns4Example } from './examples/GridRowColumns4Example'
+import GridRowColumns4ExampleRaw from './examples/GridRowColumns4Example.tsx?raw'
+import { GridRowColumns4ColExample } from './examples/GridRowColumns4ColExample'
+import GridRowColumns4ColExampleRaw from './examples/GridRowColumns4ColExample.tsx?raw'
+import { GridRowColumnsResponsiveExample } from './examples/GridRowColumnsResponsiveExample'
+import GridRowColumnsResponsiveExampleRaw from './examples/GridRowColumnsResponsiveExample.tsx?raw'
+
 ## Example
 
 CoreUI's grid system uses a series of containers, rows, and columns to layout and align content. It's built with [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) and is fully responsive. Below is an example and an in-depth explanation for how the grid system comes together.
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow>
-    <CCol sm="auto">One of three columns</CCol>
-    <CCol sm="auto">One of three columns</CCol>
-    <CCol sm="auto">One of three columns</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={GridExampleRaw} name="GridExample" componentName="React Grid">
+  <GridExample client:only="react" />
+</Example>
 
 The above example creates three equal-width columns across all devices and viewports using our predefined grid classes. Those columns are centered in the page with the parent `<CContainer>`.
 
@@ -136,63 +157,25 @@ Utilize breakpoint-specific column classes for easy column sizing without an exp
 For example, here are two grid layouts that apply to every device and viewport, from `xs` to `xxl`. Add any number of unit-less classes for each breakpoint you need and every column will be the same width.
 
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow>
-    <CCol>1 of 2</CCol>
-    <CCol>2 of 2</CCol>
-  </CRow>
-  <CRow>
-    <CCol>1 of 3</CCol>
-    <CCol>2 of 3</CCol>
-    <CCol>3 of 3</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={GridEqualWidthExampleRaw} name="GridEqualWidthExample" componentName="React Grid">
+  <GridEqualWidthExample client:only="react" />
+</Example>
 
 ### Setting one column width
 
 Auto-layout for flexbox grid columns also means you can set the width of one column and have the sibling columns automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths. Note that the other columns will resize no matter the width of the center column.
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow>
-    <CCol>1 of 3</CCol>
-    <CCol xs={6}>2 of 3 (wider)</CCol>
-    <CCol>3 of 3</CCol>
-  </CRow>
-  <CRow>
-    <CCol>1 of 3</CCol>
-    <CCol xs={6}>2 of 3 (wider)</CCol>
-    <CCol>3 of 3</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={GridSettingOneColumnWidthExampleRaw} name="GridSettingOneColumnWidthExample" componentName="React Grid">
+  <GridSettingOneColumnWidthExample client:only="react" />
+</Example>
 
 ### Variable width content
 
 Use `<CCol {breakpoint}="auto"` props to size columns based on the natural width of their content.
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <div className="row justify-content-md-center">
-    <CCol xs lg={2}>
-      1 of 3
-    </CCol>
-    <CCol md="auto">Variable width content</CCol>
-    <CCol xs lg={2}>
-      3 of 3
-    </CCol>
-  </div>
-  <CRow>
-    <CCol>1 of 3</CCol>
-    <CCol md="auto">Variable width content</CCol>
-    <CCol xs lg={2}>
-      3 of 3
-    </CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={GridVariableWidthContentExampleRaw} name="GridVariableWidthContentExample" componentName="React Grid">
+  <GridVariableWidthContentExample client:only="react" />
+</Example>
 
 ## Responsive classes
 
@@ -202,68 +185,25 @@ CoreUI's grid includes six tiers of predefined classes for building complex resp
 
 For grids that are the same from the smallest of devices to the largest, use the `<CCol>` and `<CCol xs={*}>` classes. Specify a numbered class when you need a particularly sized column; otherwise, feel free to stick to `<CCol>`.
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow>
-    <CCol>col</CCol>
-    <CCol>col</CCol>
-    <CCol>col</CCol>
-    <CCol>col</CCol>
-  </CRow>
-  <CRow>
-    <CCol xs={8}>col-8</CCol>
-    <CCol xs={4}>col-4</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={GridAllBreakpointsExampleRaw} name="GridAllBreakpointsExample" componentName="React Grid">
+  <GridAllBreakpointsExample client:only="react" />
+</Example>
 
 ### Stacked to horizontal
 
 Using a single set of `<CCol sm={*}>` classes, you can create a basic grid system that starts out stacked and becomes horizontal at the small breakpoint (`sm`).
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow>
-    <CCol sm={8}>col-sm-8</CCol>
-    <CCol sm={4}>col-sm-4</CCol>
-  </CRow>
-  <CRow>
-    <CCol sm>col-sm</CCol>
-    <CCol sm>col-sm</CCol>
-    <CCol sm>col-sm</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={GridStackedToHorizontalExampleRaw} name="GridStackedToHorizontalExample" componentName="React Grid">
+  <GridStackedToHorizontalExample client:only="react" />
+</Example>
 
 ### Mix and match
 
 Don't want your columns to simply stack in some grid tiers? Use a combination of different classes for each tier as needed. See the example below for a better idea of how it all works.
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow>
-    <CCol md={8}>.col-md-8</CCol>
-    <CCol xs={6} md={4}>
-      .col-6 .col-md-4
-    </CCol>
-  </CRow>
-  <CRow>
-    <CCol xs={6} md={4}>
-      .col-6 .col-md-4
-    </CCol>
-    <CCol xs={6} md={4}>
-      .col-6 .col-md-4
-    </CCol>
-    <CCol xs={6} md={4}>
-      .col-6 .col-md-4
-    </CCol>
-  </CRow>
-  <CRow>
-    <CCol xs={6}>.col-6</CCol>
-    <CCol xs={6}>.col-6</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={GridMixAndMatchExampleRaw} name="GridMixAndMatchExample" componentName="React Grid">
+  <GridMixAndMatchExample client:only="react" />
+</Example>
 
 ### Row columns
 
@@ -271,71 +211,29 @@ Use the responsive `{breakpoint}={{ cols: * }}` classes to quickly set the numbe
 
 Use these row columns classes to quickly create basic grid layouts or to control your card layouts.
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow xs={{ cols: 2 }}>
-    <CCol>Column</CCol>
-    <CCol>Column</CCol>
-    <CCol>Column</CCol>
-    <CCol>Column</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={GridRowColumns2ExampleRaw} name="GridRowColumns2Example" componentName="React Grid">
+  <GridRowColumns2Example client:only="react" />
+</Example>
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow xs={{ cols: 3 }}>
-    <CCol>Column</CCol>
-    <CCol>Column</CCol>
-    <CCol>Column</CCol>
-    <CCol>Column</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={GridRowColumns3ExampleRaw} name="GridRowColumns3Example" componentName="React Grid">
+  <GridRowColumns3Example client:only="react" />
+</Example>
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow xs={{ cols: 'auto' }}>
-    <CCol>Column</CCol>
-    <CCol>Column</CCol>
-    <CCol>Column</CCol>
-    <CCol>Column</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={GridRowColumnsAutoExampleRaw} name="GridRowColumnsAutoExample" componentName="React Grid">
+  <GridRowColumnsAutoExample client:only="react" />
+</Example>
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow xs={{ cols: 4 }}>
-    <CCol>Column</CCol>
-    <CCol>Column</CCol>
-    <CCol>Column</CCol>
-    <CCol>Column</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={GridRowColumns4ExampleRaw} name="GridRowColumns4Example" componentName="React Grid">
+  <GridRowColumns4Example client:only="react" />
+</Example>
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow xs={{ cols: 4 }}>
-    <CCol>Column</CCol>
-    <CCol>Column</CCol>
-    <CCol xs={6}>Column</CCol>
-    <CCol>Column</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={GridRowColumns4ColExampleRaw} name="GridRowColumns4ColExample" componentName="React Grid">
+  <GridRowColumns4ColExample client:only="react" />
+</Example>
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow xs={{ cols: 1 }} sm={{ cols: 2 }} md={{ cols: 4 }}>
-    <CCol>Column</CCol>
-    <CCol>Column</CCol>
-    <CCol>Column</CCol>
-    <CCol>Column</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={GridRowColumnsResponsiveExampleRaw} name="GridRowColumnsResponsiveExample" componentName="React Grid">
+  <GridRowColumnsResponsiveExample client:only="react" />
+</Example>
 
 ## API
 
