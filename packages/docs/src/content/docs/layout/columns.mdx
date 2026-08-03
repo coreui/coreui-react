@@ -6,6 +6,31 @@ description: "Learn how to modify columns with a handful of options for alignmen
 
 import CColData from '@api/CCol.api.json'
 
+import { ColumnsVerticalAlignmentExample } from './examples/ColumnsVerticalAlignmentExample'
+import ColumnsVerticalAlignmentExampleRaw from './examples/ColumnsVerticalAlignmentExample.tsx?raw'
+import { ColumnsVerticalAlignmentSelfExample } from './examples/ColumnsVerticalAlignmentSelfExample'
+import ColumnsVerticalAlignmentSelfExampleRaw from './examples/ColumnsVerticalAlignmentSelfExample.tsx?raw'
+import { ColumnsHorizontalAlignmentExample } from './examples/ColumnsHorizontalAlignmentExample'
+import ColumnsHorizontalAlignmentExampleRaw from './examples/ColumnsHorizontalAlignmentExample.tsx?raw'
+import { ColumnsWrappingExample } from './examples/ColumnsWrappingExample'
+import ColumnsWrappingExampleRaw from './examples/ColumnsWrappingExample.tsx?raw'
+import { ColumnsBreaksExample } from './examples/ColumnsBreaksExample'
+import ColumnsBreaksExampleRaw from './examples/ColumnsBreaksExample.tsx?raw'
+import { ColumnsBreaksResponsiveExample } from './examples/ColumnsBreaksResponsiveExample'
+import ColumnsBreaksResponsiveExampleRaw from './examples/ColumnsBreaksResponsiveExample.tsx?raw'
+import { ColumnsOrderExample } from './examples/ColumnsOrderExample'
+import ColumnsOrderExampleRaw from './examples/ColumnsOrderExample.tsx?raw'
+import { ColumnsOrderFirstLastExample } from './examples/ColumnsOrderFirstLastExample'
+import ColumnsOrderFirstLastExampleRaw from './examples/ColumnsOrderFirstLastExample.tsx?raw'
+import { ColumnsOffsetExample } from './examples/ColumnsOffsetExample'
+import ColumnsOffsetExampleRaw from './examples/ColumnsOffsetExample.tsx?raw'
+import { ColumnsOffsetResetExample } from './examples/ColumnsOffsetResetExample'
+import ColumnsOffsetResetExampleRaw from './examples/ColumnsOffsetResetExample.tsx?raw'
+import { ColumnsMarginUtilitiesExample } from './examples/ColumnsMarginUtilitiesExample'
+import ColumnsMarginUtilitiesExampleRaw from './examples/ColumnsMarginUtilitiesExample.tsx?raw'
+import { ColumnsStandaloneExample } from './examples/ColumnsStandaloneExample'
+import ColumnsStandaloneExampleRaw from './examples/ColumnsStandaloneExample.tsx?raw'
+
 ## How they work
 
 - **Columns build on the grid's flexbox architecture.** Flexbox means we have options for changing individual columns and [modifying groups of columns at the row level](./../grid#row-columns). You choose how columns grow, shrink, or otherwise change.
@@ -20,135 +45,41 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
 
 ### Vertical alignment
 
-```jsx preview className="docs-example-row docs-example-row-flex-cols"
-<CContainer>
-  <CRow className="align-items-start">
-    <CCol>One of three columns</CCol>
-    <CCol>One of three columns</CCol>
-    <CCol>One of three columns</CCol>
-  </CRow>
-  <CRow className="align-items-center">
-    <CCol>One of three columns</CCol>
-    <CCol>One of three columns</CCol>
-    <CCol>One of three columns</CCol>
-  </CRow>
-  <CRow className="align-items-end">
-    <CCol>One of three columns</CCol>
-    <CCol>One of three columns</CCol>
-    <CCol>One of three columns</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row docs-example-row-flex-cols" code={ColumnsVerticalAlignmentExampleRaw} name="ColumnsVerticalAlignmentExample" componentName="React Columns">
+  <ColumnsVerticalAlignmentExample client:only="react" />
+</Example>
 
-```jsx preview className="docs-example-row docs-example-row-flex-cols"
-<CContainer>
-  <CRow>
-    <CCol className="align-self-start">One of three columns</CCol>
-    <CCol className="align-self-center">One of three columns</CCol>
-    <CCol className="align-self-end">One of three columns</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row docs-example-row-flex-cols" code={ColumnsVerticalAlignmentSelfExampleRaw} name="ColumnsVerticalAlignmentSelfExample" componentName="React Columns">
+  <ColumnsVerticalAlignmentSelfExample client:only="react" />
+</Example>
 
 ### Horizontal alignment
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow className="justify-content-start">
-    <CCol xs={4}>One of two columns</CCol>
-    <CCol xs={4}>One of two columns</CCol>
-  </CRow>
-  <CRow className="justify-content-center">
-    <CCol xs={4}>One of two columns</CCol>
-    <CCol xs={4}>One of two columns</CCol>
-  </CRow>
-  <CRow className="justify-content-end">
-    <CCol xs={4}>One of two columns</CCol>
-    <CCol xs={4}>One of two columns</CCol>
-  </CRow>
-  <CRow className="justify-content-around">
-    <CCol xs={4}>One of two columns</CCol>
-    <CCol xs={4}>One of two columns</CCol>
-  </CRow>
-  <CRow className="justify-content-between">
-    <CCol xs={4}>One of two columns</CCol>
-    <CCol xs={4}>One of two columns</CCol>
-  </CRow>
-  <CRow className="justify-content-evenly">
-    <CCol xs={4}>One of two columns</CCol>
-    <CCol xs={4}>One of two columns</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={ColumnsHorizontalAlignmentExampleRaw} name="ColumnsHorizontalAlignmentExample" componentName="React Columns">
+  <ColumnsHorizontalAlignmentExample client:only="react" />
+</Example>
 
 ### Column wrapping
 
 If more than 12 columns are placed within a single row, each group of extra columns will, as one unit, wrap onto a new line.
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow>
-    <CCol xs={9}>.col-9</CCol>
-    <CCol xs={4}>
-      .col-4
-      <br />
-      Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one
-      contiguous unit.
-    </CCol>
-    <CCol xs={6}>
-      .col-6
-      <br />
-      Subsequent columns continue along the new line.
-    </CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={ColumnsWrappingExampleRaw} name="ColumnsWrappingExample" componentName="React Columns">
+  <ColumnsWrappingExample client:only="react" />
+</Example>
 
 ### Column breaks
 
 Breaking columns to a new line in flexbox requires a small hack: add an element with `width: 100%` wherever you want to wrap your columns to a new line. Normally this is accomplished with multiple `<CRow>`s, but not every implementation method can account for this.
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow>
-    <CCol xs={6} sm={3}>
-      .col-6 .col-sm-3
-    </CCol>
-    <CCol xs={6} sm={3}>
-      .col-6 .col-sm-3
-    </CCol>
-    <div className="w-100"></div>
-    <CCol xs={6} sm={3}>
-      .col-6 .col-sm-3
-    </CCol>
-    <CCol xs={6} sm={3}>
-      .col-6 .col-sm-3
-    </CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={ColumnsBreaksExampleRaw} name="ColumnsBreaksExample" componentName="React Columns">
+  <ColumnsBreaksExample client:only="react" />
+</Example>
 
 You may also apply this break at specific breakpoints with our [responsive display utilities](https://coreui.io/bootstrap/docs/utilities/display).
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow>
-    <CCol xs={6} sm={4}>
-      .col-6 .col-sm-4
-    </CCol>
-    <CCol xs={6} sm={4}>
-      .col-6 .col-sm-4
-    </CCol>
-    <div className="w-100 d-none d-md-block"></div>
-    <CCol xs={6} sm={4}>
-      .col-6 .col-sm-4
-    </CCol>
-    <CCol xs={6} sm={4}>
-      .col-6 .col-sm-4
-    </CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={ColumnsBreaksResponsiveExampleRaw} name="ColumnsBreaksResponsiveExample" componentName="React Columns">
+  <ColumnsBreaksResponsiveExample client:only="react" />
+</Example>
 
 ## Reordering
 
@@ -156,27 +87,15 @@ You may also apply this break at specific breakpoints with our [responsive displ
 
 Use `xs|sm|md|lg|xl|xxl={{ order: 1-5 }}` props for controlling the **visual order** of your content. These props are responsive, so you can set the `order` by breakpoint (e.g., `xs={{ order: 1}} md={{ order: 2}}`). Includes support for `1` through `5` across all six grid tiers.
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow>
-    <CCol>First in DOM, no order applied</CCol>
-    <CCol xs={{ span: true, order: 5 }}>Second in DOM, with a larger order</CCol>
-    <CCol xs={{ span: true, order: 1 }}>Third in DOM, with an order of 1</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={ColumnsOrderExampleRaw} name="ColumnsOrderExample" componentName="React Columns">
+  <ColumnsOrderExample client:only="react" />
+</Example>
 
 There are also responsive `xs|sm|md|lg|xl|xxl={{ order: 'first' }}` and `xs|sm|md|lg|xl|xxl={{ order: 'last' }}` props that change the `order` of an element by applying `order: -1` and `order: 6`, respectively. These values can also be intermixed with the numbered `xs|sm|md|lg|xl|xxl={{ order: 1-5 }}` values as needed.
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow>
-    <CCol xs={{ span: true, order: 'last' }}>First in DOM, ordered last</CCol>
-    <CCol>Second in DOM, unordered</CCol>
-    <CCol xs={{ span: true, order: 'first' }}>Third in DOM, ordered first</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={ColumnsOrderFirstLastExampleRaw} name="ColumnsOrderFirstLastExample" componentName="React Columns">
+  <ColumnsOrderFirstLastExample client:only="react" />
+</Example>
 
 ### Offsetting columns
 
@@ -186,84 +105,29 @@ You can offset grid columns in two ways: our responsive `xs|sm|md|lg|xl|xxl={{ o
 
 Move columns to the right using `md={{ offset: * }}` props. These props increase the left margin of a column by `*` columns. For example, `md={{ offset: 4 }}` moves `.col-md-4` over four columns.
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow>
-    <CCol md={4}>.col-md-4</CCol>
-    <CCol md={{ span: 4, offset: 4 }}>.col-md-4 .offset-md-4</CCol>
-  </CRow>
-  <CRow>
-    <CCol md={{ span: 3, offset: 3 }}>.col-md-3 .offset-md-3</CCol>
-    <CCol md={{ span: 3, offset: 3 }}>.col-md-3 .offset-md-3</CCol>
-  </CRow>
-  <CRow>
-    <CCol md={{ span: 6, offset: 3 }}>.col-md-6 .offset-md-3</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={ColumnsOffsetExampleRaw} name="ColumnsOffsetExample" componentName="React Columns">
+  <ColumnsOffsetExample client:only="react" />
+</Example>
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow>
-    <CCol sm={5} md={6}>
-      .col-sm-5 .col-md-6
-    </CCol>
-    <CCol sm={{ span: 5, offset: 2 }} md={{ span: 6, offset: 0 }}>
-      .col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0
-    </CCol>
-  </CRow>
-  <CRow>
-    <CCol sm={6} md={5} lg={6}>
-      .col-sm-6 .col-md-5 .col-lg-6
-    </CCol>
-    <CCol sm={6} md={{ span: 5, offset: 2 }} lg={{ span: 6, offset: 0 }}>
-      .col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0
-    </CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={ColumnsOffsetResetExampleRaw} name="ColumnsOffsetResetExample" componentName="React Columns">
+  <ColumnsOffsetResetExample client:only="react" />
+</Example>
 
 #### Margin utilities
 
 You can use margin utilities like `.me-auto` to force sibling columns away from one another.
 
-```jsx preview className="docs-example-row"
-<CContainer>
-  <CRow>
-    <CCol md={4}>.col-md-4</CCol>
-    <CCol md={4} className="ms-auto">
-      .col-md-4 .ms-auto
-    </CCol>
-  </CRow>
-  <CRow>
-    <CCol md={3} className="ms-md-auto">
-      .col-md-3 .ms-md-auto
-    </CCol>
-    <CCol md={3} className="ms-md-auto">
-      .col-md-3 .ms-md-auto
-    </CCol>
-  </CRow>
-  <CRow>
-    <CCol xs="auto" className="me-auto">
-      .col-auto .me-auto
-    </CCol>
-    <CCol xs="auto">.col-auto</CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-row" code={ColumnsMarginUtilitiesExampleRaw} name="ColumnsMarginUtilitiesExample" componentName="React Columns">
+  <ColumnsMarginUtilitiesExample client:only="react" />
+</Example>
 
 ## Standalone column component
 
 The `<CCol>` component can also be used outside a `<CRow>` to give an element a specific width. Whenever column component are used as non direct children of a row, the paddings are omitted.
 
-```jsx preview
-<CCol xs={3} className="bg-light p-3 border">
-  .col-3: width of 25%
-</CCol>
-<CCol sm={9} className="bg-light p-3 border">
-  .col-sm-9: width of 75% above sm breakpoint
-</CCol>
-```
+<Example code={ColumnsStandaloneExampleRaw} name="ColumnsStandaloneExample" componentName="React Columns">
+  <ColumnsStandaloneExample client:only="react" />
+</Example>
 
 ## API
 

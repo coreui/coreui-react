@@ -8,6 +8,19 @@ import CContainerData from '@api/CContainer.api.json'
 import CRowData from '@api/CRow.api.json'
 import CColData from '@api/CCol.api.json'
 
+import { GuttersHorizontalExample } from './examples/GuttersHorizontalExample'
+import GuttersHorizontalExampleRaw from './examples/GuttersHorizontalExample.tsx?raw'
+import { GuttersHorizontalOverflowHiddenExample } from './examples/GuttersHorizontalOverflowHiddenExample'
+import GuttersHorizontalOverflowHiddenExampleRaw from './examples/GuttersHorizontalOverflowHiddenExample.tsx?raw'
+import { GuttersVerticalExample } from './examples/GuttersVerticalExample'
+import GuttersVerticalExampleRaw from './examples/GuttersVerticalExample.tsx?raw'
+import { GuttersHorizontalVerticalExample } from './examples/GuttersHorizontalVerticalExample'
+import GuttersHorizontalVerticalExampleRaw from './examples/GuttersHorizontalVerticalExample.tsx?raw'
+import { GuttersRowColumnsExample } from './examples/GuttersRowColumnsExample'
+import GuttersRowColumnsExampleRaw from './examples/GuttersRowColumnsExample.tsx?raw'
+import { GuttersNoGuttersExample } from './examples/GuttersNoGuttersExample'
+import GuttersNoGuttersExampleRaw from './examples/GuttersNoGuttersExample.tsx?raw'
+
 ## How they work
 
 - **Gutters are the gaps between column content, created by horizontal `padding`.** We set `padding-right` and `padding-left` on each column, and use negative `margin` to offset that at the start and end of each row to align content.
@@ -20,120 +33,39 @@ import CColData from '@api/CCol.api.json'
 
 `{breakpoint}={{ gutterX: * }}` props can be used to control the horizontal gutter widths. The `<CContainer>` or `<CContainer fluid>` parent may need to be adjusted if larger gutters are used too to avoid unwanted overflow, using a matching padding utility. For example, in the following example we've increased the padding with `.px-4`:
 
-```jsx preview className="docs-example m-0 border-0 docs-example-cols"
-<CContainer className="px-4">
-  <CRow xs={{ gutterX: 5 }}>
-    <CCol>
-      <div className="p-3">Custom column padding</div>
-    </CCol>
-    <CCol>
-      <div className="p-3">Custom column padding</div>
-    </CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-cols" code={GuttersHorizontalExampleRaw} name="GuttersHorizontalExample" componentName="React Gutters">
+  <GuttersHorizontalExample client:only="react" />
+</Example>
 
 An alternative solution is to add a wrapper around the `<CRow>` with the `.overflow-hidden` class:
 
-```jsx preview className="docs-example m-0 border-0 docs-example-cols"
-<CContainer className="overflow-hidden">
-  <CRow xs={{ gutterX: 5 }}>
-    <CCol>
-      <div className="p-3">Custom column padding</div>
-    </CCol>
-    <CCol>
-      <div className="p-3">Custom column padding</div>
-    </CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-cols" code={GuttersHorizontalOverflowHiddenExampleRaw} name="GuttersHorizontalOverflowHiddenExample" componentName="React Gutters">
+  <GuttersHorizontalOverflowHiddenExample client:only="react" />
+</Example>
 
 ## Vertical gutters
 
 `{breakpoint}={{ gutterY: * }}` props can be used to control the vertical gutter widths. Like the horizontal gutters, the vertical gutters can cause some overflow below the `<CRow>` at the end of a page. If this occurs, you add a wrapper around `<CRow>` with the `.overflow-hidden` class:
 
-```jsx preview className="docs-example m-0 border-0 docs-example-cols"
-<CContainer className="overflow-hidden">
-  <CRow xs={{ gutterY: 5 }}>
-    <CCol xs={{ span: 6 }}>
-      <div className="p-3">Custom column padding</div>
-    </CCol>
-    <CCol xs={{ span: 6 }}>
-      <div className="p-3">Custom column padding</div>
-    </CCol>
-    <CCol xs={{ span: 6 }}>
-      <div className="p-3">Custom column padding</div>
-    </CCol>
-    <CCol xs={{ span: 6 }}>
-      <div className="p-3">Custom column padding</div>
-    </CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-cols" code={GuttersVerticalExampleRaw} name="GuttersVerticalExample" componentName="React Gutters">
+  <GuttersVerticalExample client:only="react" />
+</Example>
 
 ## Horizontal & vertical gutters
 
 `{breakpoint}={{ gutter: * }}` props can be used to control the horizontal gutter widths, for the following example we use a smaller gutter width, so there won't be a need to add the `.overflow-hidden` wrapper class.
 
-```jsx preview className="docs-example m-0 border-0 docs-example-cols"
-<CContainer>
-  <CRow xs={{ gutter: 2 }}>
-    <CCol xs={{ span: 6 }}>
-      <div className="p-3">Custom column padding</div>
-    </CCol>
-    <CCol xs={{ span: 6 }}>
-      <div className="p-3">Custom column padding</div>
-    </CCol>
-    <CCol xs={{ span: 6 }}>
-      <div className="p-3">Custom column padding</div>
-    </CCol>
-    <CCol xs={{ span: 6 }}>
-      <div className="p-3">Custom column padding</div>
-    </CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-cols" code={GuttersHorizontalVerticalExampleRaw} name="GuttersHorizontalVerticalExample" componentName="React Gutters">
+  <GuttersHorizontalVerticalExample client:only="react" />
+</Example>
 
 ## Row columns gutters
 
 Gutter props can also be added to [row columns](../grid#row-columns). In the following example, we use responsive row columns and responsive gutter props.
 
-```jsx preview className="docs-example m-0 border-0 docs-example-cols"
-<CContainer>
-  <CRow xs={{ cols:2, gutter: 2 }} lg={{ cols: 5, gutter: 3}}>
-    <CCol>
-      <div className="p-3">Row column</div>
-    </CCol>
-    <CCol>
-      <div className="p-3">Row column</div>
-    </CCol>
-    <CCol>
-      <div className="p-3">Row column</div>
-    </CCol>
-    <CCol>
-      <div className="p-3">Row column</div>
-    </CCol>
-    <CCol>
-      <div className="p-3">Row column</div>
-    </CCol>
-    <CCol>
-      <div className="p-3">Row column</div>
-    </CCol>
-    <CCol>
-      <div className="p-3">Row column</div>
-    </CCol>
-    <CCol>
-      <div className="p-3">Row column</div>
-    </CCol>
-    <CCol>
-      <div className="p-3">Row column</div>
-    </CCol>
-    <CCol>
-      <div className="p-3">Row column</div>
-    </CCol>
-  </CRow>
-</CContainer>
-```
+<Example className="docs-example-cols" code={GuttersRowColumnsExampleRaw} name="GuttersRowColumnsExample" componentName="React Gutters">
+  <GuttersRowColumnsExample client:only="react" />
+</Example>
 
 ## No gutters
 
@@ -143,12 +75,9 @@ The gutters between columns in our predefined grid props can be removed with `{b
 
 In practice, here's how it looks. Note you can continue to use this with all other predefined grid props (including column widths, responsive tiers, reorders, and more).
 
-```jsx preview className="docs-example m-0 border-0 docs-example-row"
-<CRow xs={{ gutter: 0 }}>
-  <CCol sm={6} md={8}>.col-sm-6 .col-md-8</CCol>
-  <CCol xs={6} md={4}>.col-6 .col-md-4</CCol>
-</CRow>
-```
+<Example className="docs-example-row" code={GuttersNoGuttersExampleRaw} name="GuttersNoGuttersExample" componentName="React Gutters">
+  <GuttersNoGuttersExample client:only="react" />
+</Example>
 
 ## Change the gutters
 

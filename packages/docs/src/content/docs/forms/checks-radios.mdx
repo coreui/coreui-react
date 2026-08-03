@@ -7,112 +7,126 @@ description: "Create consistent cross-browser and cross-device checkboxes and ra
 import CFormCheckData from '@api/CFormCheck.api.json'
 import CFormSwitchData from '@api/CFormSwitch.api.json'
 
+import { ChecksRadiosChecksExample } from './examples/ChecksRadiosChecksExample'
+import ChecksRadiosChecksExampleRaw from './examples/ChecksRadiosChecksExample.tsx?raw'
+import { ChecksRadiosIndeterminateExample } from './examples/ChecksRadiosIndeterminateExample'
+import ChecksRadiosIndeterminateExampleRaw from './examples/ChecksRadiosIndeterminateExample.tsx?raw'
+import { ChecksRadiosDisabledExample } from './examples/ChecksRadiosDisabledExample'
+import ChecksRadiosDisabledExampleRaw from './examples/ChecksRadiosDisabledExample.tsx?raw'
+import { ChecksRadiosRadiosExample } from './examples/ChecksRadiosRadiosExample'
+import ChecksRadiosRadiosExampleRaw from './examples/ChecksRadiosRadiosExample.tsx?raw'
+import { ChecksRadiosRadiosDisabledExample } from './examples/ChecksRadiosRadiosDisabledExample'
+import ChecksRadiosRadiosDisabledExampleRaw from './examples/ChecksRadiosRadiosDisabledExample.tsx?raw'
+import { ChecksRadiosSwitchesExample } from './examples/ChecksRadiosSwitchesExample'
+import ChecksRadiosSwitchesExampleRaw from './examples/ChecksRadiosSwitchesExample.tsx?raw'
+import { ChecksRadiosSwitchSizesExample } from './examples/ChecksRadiosSwitchSizesExample'
+import ChecksRadiosSwitchSizesExampleRaw from './examples/ChecksRadiosSwitchSizesExample.tsx?raw'
+import { ChecksRadiosStackedExample } from './examples/ChecksRadiosStackedExample'
+import ChecksRadiosStackedExampleRaw from './examples/ChecksRadiosStackedExample.tsx?raw'
+import { ChecksRadiosStackedRadiosExample } from './examples/ChecksRadiosStackedRadiosExample'
+import ChecksRadiosStackedRadiosExampleRaw from './examples/ChecksRadiosStackedRadiosExample.tsx?raw'
+import { ChecksRadiosInlineExample } from './examples/ChecksRadiosInlineExample'
+import ChecksRadiosInlineExampleRaw from './examples/ChecksRadiosInlineExample.tsx?raw'
+import { ChecksRadiosInlineRadiosExample } from './examples/ChecksRadiosInlineRadiosExample'
+import ChecksRadiosInlineRadiosExampleRaw from './examples/ChecksRadiosInlineRadiosExample.tsx?raw'
+import { ChecksRadiosWithoutLabelsExample } from './examples/ChecksRadiosWithoutLabelsExample'
+import ChecksRadiosWithoutLabelsExampleRaw from './examples/ChecksRadiosWithoutLabelsExample.tsx?raw'
+import { ChecksRadiosCheckboxToggleButtonsExample } from './examples/ChecksRadiosCheckboxToggleButtonsExample'
+import ChecksRadiosCheckboxToggleButtonsExampleRaw from './examples/ChecksRadiosCheckboxToggleButtonsExample.tsx?raw'
+import { ChecksRadiosCheckboxToggleButtonsCheckedExample } from './examples/ChecksRadiosCheckboxToggleButtonsCheckedExample'
+import ChecksRadiosCheckboxToggleButtonsCheckedExampleRaw from './examples/ChecksRadiosCheckboxToggleButtonsCheckedExample.tsx?raw'
+import { ChecksRadiosCheckboxToggleButtonsDisabledExample } from './examples/ChecksRadiosCheckboxToggleButtonsDisabledExample'
+import ChecksRadiosCheckboxToggleButtonsDisabledExampleRaw from './examples/ChecksRadiosCheckboxToggleButtonsDisabledExample.tsx?raw'
+import { ChecksRadiosRadioToggleButtonsExample } from './examples/ChecksRadiosRadioToggleButtonsExample'
+import ChecksRadiosRadioToggleButtonsExampleRaw from './examples/ChecksRadiosRadioToggleButtonsExample.tsx?raw'
+import { ChecksRadiosOutlinedStylesExample } from './examples/ChecksRadiosOutlinedStylesExample'
+import ChecksRadiosOutlinedStylesExampleRaw from './examples/ChecksRadiosOutlinedStylesExample.tsx?raw'
+
 ## Approach
 
 Browser default checkboxes and radios are replaced with the help of `<CFormCheck>`. Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
 
 ## Checks
 
-```jsx preview
-<CFormCheck id="flexCheckDefault" label="Default checkbox"/>
-<CFormCheck id="flexCheckChecked" label="Checked checkbox" defaultChecked />
-```
+<Example code={ChecksRadiosChecksExampleRaw} name="ChecksRadiosChecksExample" componentName="React Checks & Radios">
+  <ChecksRadiosChecksExample client:only="react" />
+</Example>
 
 ## Indeterminate
 
 Checkboxes can utilize the `:indeterminate` pseudo-class when manually set via `indeterminate` property.
 
-```jsx preview
-<CFormCheck id="flexCheckIndeterminate" label="Indeterminate checkbox" indeterminate />
-```
+<Example code={ChecksRadiosIndeterminateExampleRaw} name="ChecksRadiosIndeterminateExample" componentName="React Checks & Radios">
+  <ChecksRadiosIndeterminateExample client:only="react" />
+</Example>
 
 ### Disabled
 
 Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input's state.
 
-```jsx preview
-<CFormCheck label="Disabled checkbox" disabled/>
-<CFormCheck label="Disabled checked checkbox" defaultChecked disabled/>
-```
+<Example code={ChecksRadiosDisabledExampleRaw} name="ChecksRadiosDisabledExample" componentName="React Checks & Radios">
+  <ChecksRadiosDisabledExample client:only="react" />
+</Example>
 
 ## Radios
 
 Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input's state.
 
-```jsx preview
-<CFormCheck type="radio" name="flexRadioDefault" id="flexRadioDefault1" label="Default radio"/>
-<CFormCheck type="radio" name="flexRadioDefault" id="flexRadioDefault2" label="Checked radio" defaultChecked/>
-```
+<Example code={ChecksRadiosRadiosExampleRaw} name="ChecksRadiosRadiosExample" componentName="React Checks & Radios">
+  <ChecksRadiosRadiosExample client:only="react" />
+</Example>
 
 ### Disabled
 
-```jsx preview
-<CFormCheck type="radio" name="flexRadioDisabled" id="flexRadioDisabled" label="Disabled radio" disabled/>
-<CFormCheck type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" label="Disabled checked radio" defaultChecked disabled/>
-```
+<Example code={ChecksRadiosRadiosDisabledExampleRaw} name="ChecksRadiosRadiosDisabledExample" componentName="React Checks & Radios">
+  <ChecksRadiosRadiosDisabledExample client:only="react" />
+</Example>
 
 ## Switches
 
 A switch has the markup of a custom checkbox but uses the `switch` boolean properly to render a toggle switch. Switches also support the `disabled` attribute.
 
-```jsx preview
-<CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefault"/>
-<CFormSwitch label="Checked switch checkbox input" id="formSwitchCheckChecked" defaultChecked/>
-<CFormSwitch label="Disabled switch checkbox input" id="formSwitchCheckDisabled" disabled/>
-<CFormSwitch label="Disabled checked switch checkbox input" id="formSwitchCheckCheckedDisabled" defaultChecked disabled/>
-```
+<Example code={ChecksRadiosSwitchesExampleRaw} name="ChecksRadiosSwitchesExample" componentName="React Checks & Radios">
+  <ChecksRadiosSwitchesExample client:only="react" />
+</Example>
 
 ### Sizes
 
-```jsx preview
-<CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefault"/>
-<CFormSwitch size="lg" label="Large switch checkbox input" id="formSwitchCheckDefaultLg"/>
-<CFormSwitch size="xl" label="Extra large switch checkbox input" id="formSwitchCheckDefaultXL"/>
-```
+<Example code={ChecksRadiosSwitchSizesExampleRaw} name="ChecksRadiosSwitchSizesExample" componentName="React Checks & Radios">
+  <ChecksRadiosSwitchSizesExample client:only="react" />
+</Example>
 
 ## Default (stacked)
 
 By default, any number of checkboxes and radios that are immediate sibling will be vertically stacked and appropriately spaced.
 
-```jsx preview
-<CFormCheck id="defaultCheck1" label="Default checkbox"/>
-<CFormCheck id="defaultCheck2" label="Disabled checkbox" disabled/>
-```
+<Example code={ChecksRadiosStackedExampleRaw} name="ChecksRadiosStackedExample" componentName="React Checks & Radios">
+  <ChecksRadiosStackedExample client:only="react" />
+</Example>
 
-```jsx preview
-<CFormCheck type="radio" name="exampleRadios" id="exampleRadios1" value="option1" label="Default radio" defaultChecked/>
-<CFormCheck type="radio" name="exampleRadios" id="exampleRadios2" value="option2" label="Second default radio"/>
-<CFormCheck type="radio" name="exampleRadios" id="exampleRadios3" value="option3" label="Disabled radio" disabled/>
-```
+<Example code={ChecksRadiosStackedRadiosExampleRaw} name="ChecksRadiosStackedRadiosExample" componentName="React Checks & Radios">
+  <ChecksRadiosStackedRadiosExample client:only="react" />
+</Example>
 
 ## Inline
 
 Group checkboxes or radios on the same horizontal row by adding `inline` boolean property to any `<CFormCheck>`.
 
-```jsx preview
-<CFormCheck inline id="inlineCheckbox1" value="option1" label="1"/>
-<CFormCheck inline id="inlineCheckbox2" value="option2" label="2"/>
-<CFormCheck inline id="inlineCheckbox3" value="option3" label="3 (disabled)" disabled/>
-```
+<Example code={ChecksRadiosInlineExampleRaw} name="ChecksRadiosInlineExample" componentName="React Checks & Radios">
+  <ChecksRadiosInlineExample client:only="react" />
+</Example>
 
-```jsx preview
-<CFormCheck inline type="radio" name="inlineRadioOptions" id="inlineCheckbox1" value="option1" label="1"/>
-<CFormCheck inline type="radio" name="inlineRadioOptions" id="inlineCheckbox2" value="option2" label="2"/>
-<CFormCheck inline type="radio" name="inlineRadioOptions" id="inlineCheckbox3" value="option3" label="3 (disabled)" disabled/>
-```
+<Example code={ChecksRadiosInlineRadiosExampleRaw} name="ChecksRadiosInlineRadiosExample" componentName="React Checks & Radios">
+  <ChecksRadiosInlineRadiosExample client:only="react" />
+</Example>
 
 ## Without labels
 
 Remember to still provide some form of accessible name for assistive technologies (for instance, using `aria-label`).
 
-```jsx preview
-<div>
-  <CFormCheck id="checkboxNoLabel" value="" aria-label="..."/>
-</div>
-<div>
-  <CFormCheck type="radio" name="radioNoLabel" id="radioNoLabel" value="" aria-label="..."/>
-</div>
-```
+<Example code={ChecksRadiosWithoutLabelsExampleRaw} name="ChecksRadiosWithoutLabelsExample" componentName="React Checks & Radios">
+  <ChecksRadiosWithoutLabelsExample client:only="react" />
+</Example>
 
 ## Toggle buttons
 
@@ -120,55 +134,31 @@ Create button-like checkboxes and radio buttons by using `button` boolean proper
 
 ### Checkbox toggle buttons
 
-```jsx preview
-<CFormCheck button={{ color: 'primary' }} id="btn-check" autoComplete="off" label="Single toggle" />
-```
+<Example code={ChecksRadiosCheckboxToggleButtonsExampleRaw} name="ChecksRadiosCheckboxToggleButtonsExample" componentName="React Checks & Radios">
+  <ChecksRadiosCheckboxToggleButtonsExample client:only="react" />
+</Example>
 
-```jsx preview
-<CFormCheck
-  button={{ color: 'primary' }}
-  id="btn-check-2"
-  autoComplete="off"
-  label="Checked"
-  defaultChecked
-/>
-```
+<Example code={ChecksRadiosCheckboxToggleButtonsCheckedExampleRaw} name="ChecksRadiosCheckboxToggleButtonsCheckedExample" componentName="React Checks & Radios">
+  <ChecksRadiosCheckboxToggleButtonsCheckedExample client:only="react" />
+</Example>
 
-```jsx preview
-<CFormCheck
-  button={{ color: 'primary' }}
-  id="btn-check-3"
-  autoComplete="off"
-  label="Disabled"
-  disabled
-/>
-```
+<Example code={ChecksRadiosCheckboxToggleButtonsDisabledExampleRaw} name="ChecksRadiosCheckboxToggleButtonsDisabledExample" componentName="React Checks & Radios">
+  <ChecksRadiosCheckboxToggleButtonsDisabledExample client:only="react" />
+</Example>
 
 ### Radio toggle buttons
 
-```jsx preview
-<CFormCheck button={{ color: 'secondary' }} type="radio" name="options" id="option1" autoComplete="off" label="Checked" defaultChecked/>
-<CFormCheck button={{ color: 'secondary' }} type="radio" name="options" id="option2" autoComplete="off" label="Radio"/>
-<CFormCheck button={{ color: 'secondary' }} type="radio" name="options" id="option3" autoComplete="off" label="Radio" disabled/>
-<CFormCheck button={{ color: 'secondary' }} type="radio" name="options" id="option4" autoComplete="off" label="Radio"/>
-```
+<Example code={ChecksRadiosRadioToggleButtonsExampleRaw} name="ChecksRadiosRadioToggleButtonsExample" componentName="React Checks & Radios">
+  <ChecksRadiosRadioToggleButtonsExample client:only="react" />
+</Example>
 
 ### Outlined styles
 
 Different variants of button, such at the various outlined styles, are supported.
 
-```jsx preview
-<div>
-  <CFormCheck button={{ color: 'primary', variant: 'outline' }} id="btn-check-outlined" autoComplete="off" label="Single toggle"/>
-</div>
-<div>
-  <CFormCheck button={{ color: 'secondary', variant: 'outline' }} id="btn-check-2-outlined" autoComplete="off" label="Checked" defaultChecked/>
-</div>
-<div>
-  <CFormCheck button={{ color: 'success', variant: 'outline' }} type="radio" name="options-outlined" id="success-outlined" autoComplete="off" label="Radio" defaultChecked/>
-  <CFormCheck button={{ color: 'danger', variant: 'outline' }} type="radio" name="options-outlined" id="danger-outlined" autoComplete="off" label="Radio"/>
-</div>
-```
+<Example code={ChecksRadiosOutlinedStylesExampleRaw} name="ChecksRadiosOutlinedStylesExample" componentName="React Checks & Radios">
+  <ChecksRadiosOutlinedStylesExample client:only="react" />
+</Example>
 
 ## API
 
