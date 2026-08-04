@@ -32,32 +32,25 @@ updates:
     versioning-strategy: increase
     rebase-strategy: disabled
     ignore:
-      # react/react-dom are pinned to 18.3.1 via package.json "overrides"
-      - dependency-name: "react"
+      # only minors and patches are automated; majors are coordinated upgrades taken
+      # by hand — a single unusable one (typescript 7, blocked by typescript-eslint's
+      # peer range) otherwise holds the whole group PR hostage
+      - dependency-name: "*"
         update-types:
           - "version-update:semver-major"
-      - dependency-name: "react-dom"
+      # 0.x packages — a minor release is a breaking release
+      - dependency-name: "@coreui/astro-docs*"
         update-types:
-          - "version-update:semver-major"
-      # docs engine — Astro majors are coordinated migrations, bumped by hand
-      - dependency-name: "astro"
-        update-types:
-          - "version-update:semver-major"
-      - dependency-name: "@astrojs/*"
-        update-types:
-          - "version-update:semver-major"
+          - "version-update:semver-minor"
       # linter churn — new rules break CI; bump deliberately
       - dependency-name: "eslint*"
         update-types:
-          - "version-update:semver-major"
           - "version-update:semver-minor"
       - dependency-name: "typescript-eslint"
         update-types:
-          - "version-update:semver-major"
           - "version-update:semver-minor"
       - dependency-name: "@typescript-eslint/*"
         update-types:
-          - "version-update:semver-major"
           - "version-update:semver-minor"
     groups:
       production-dependencies:
