@@ -34,6 +34,7 @@
 - [Frameworks](#frameworks)
 - [Templates](#templates)
 - [Data Grid](#data-grid)
+- [Scheduler](#scheduler)
 - [Contributing](#contributing)
 - [Community](#community)
 - [Versioning](#versioning)
@@ -205,6 +206,19 @@ One license also covers JavaScript, Vue and Angular. It's a separate add-on, not
 
 - [React Data Grid](https://coreui.io/data-grid/react/?src=readme-react-github)
 - [Documentation](https://coreui.io/data-grid/react/docs/getting-started/introduction/?src=readme-react-github)
+
+## Scheduler
+
+CoreUI React Scheduler ships six views — day, week, month, agenda, resources, and timeline — with drag & drop, RFC 5545 recurrence, and DST-safe time handling, using the same markup and stylesheet you already use.
+
+```bash
+npm install @coreui/react-scheduler
+```
+
+One license also covers JavaScript, Vue and Angular. It's a separate add-on, not part of CoreUI PRO.
+
+- [React Scheduler](https://coreui.io/scheduler/react/?src=readme-react-github)
+- [Documentation](https://coreui.io/scheduler/react/docs/getting-started/introduction/?src=readme-react-github)
 
 ## Contributing
 
