@@ -220,15 +220,15 @@ By default, a dropdown menu is automatically positioned 100% from the top and al
 
 ### Responsive alignment
 
-If you use responsive alignment, dynamic positioning is disabled.
+If you use responsive alignment, dynamic positioning is disabled — the classes place the menu themselves. Set `variant="btn-group"` so that the dropdown wraps just the toggle; with the default variant it is a full-width block, and the menu aligns to the edge of the container instead of the button.
 
-To align **right** the dropdown menu with the given breakpoint or larger, add `aligment="xs|sm|md|lg|xl|xxl: end"`.
+To align **right** the dropdown menu with the given breakpoint or larger, add `alignment={{ lg: 'end' }}`, replacing `lg` with any of `xs`, `sm`, `md`, `lg`, `xl`, `xxl`.
 
 <Example code={DropdownResponsiveAlignmentExampleRaw} name="DropdownResponsiveAlignmentExample" componentName="React Dropdown">
   <DropdownResponsiveAlignmentExample client:only="react" />
 </Example>
 
-To align **left** the dropdown menu with the given breakpoint or larger, add `aligment="xs|sm|md|lg|xl|xxl: start"`.
+To align **left** the dropdown menu with the given breakpoint or larger, add `alignment={{ xs: 'end', lg: 'start' }}`. Every entry of the map adds its own class, so this one is right aligned by default and left aligned from `lg` up.
 
 <Example code={DropdownResponsiveAlignment2ExampleRaw} name="DropdownResponsiveAlignment2Example" componentName="React Dropdown">
   <DropdownResponsiveAlignment2Example client:only="react" />
