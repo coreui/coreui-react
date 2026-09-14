@@ -128,3 +128,14 @@ test('COffcanvas customize and event on keypress', async () => {
 
   vi.useRealTimers()
 })
+
+test('COffcanvas restores body scroll when unmounted while visible', () => {
+  const { unmount } = render(<COffcanvas visible={true} />)
+
+  expect(document.body.style.overflow).toBe('hidden')
+
+  unmount()
+
+  expect(document.body.style.overflow).toBe('')
+  expect(document.body.style.paddingRight).toBe('')
+})
