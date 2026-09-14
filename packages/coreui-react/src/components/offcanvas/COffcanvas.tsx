@@ -89,12 +89,16 @@ export const COffcanvas = forwardRef<HTMLDivElement, COffcanvasProps>(
       if (_visible && !scroll) {
         document.body.style.overflow = 'hidden'
         document.body.style.paddingRight = '0px'
-        return
-      }
-
-      if (!scroll) {
+      } else if (!scroll) {
         document.body.style.removeProperty('overflow')
         document.body.style.removeProperty('padding-right')
+      }
+
+      return () => {
+        if (!scroll) {
+          document.body.style.removeProperty('overflow')
+          document.body.style.removeProperty('padding-right')
+        }
       }
     }, [_visible])
 
