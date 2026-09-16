@@ -440,8 +440,6 @@ export const CChipInput = forwardRef<HTMLDivElement, CChipInputProps>(
           },
           className
         )}
-        aria-disabled={disabled ? true : undefined}
-        aria-readonly={readOnly ? true : undefined}
         onClick={handleContainerClick}
         onKeyDown={handleContainerKeyDown}
         {...rest}
