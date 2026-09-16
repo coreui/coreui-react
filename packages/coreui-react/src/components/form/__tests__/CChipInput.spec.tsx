@@ -126,3 +126,23 @@ test('CChipInput seeds initial chips from CChip children', () => {
   expect(getByText('React')).toBeInTheDocument()
   expect(getByText('Vue')).toBeInTheDocument()
 })
+
+test('CChipInput leaves the disabled semantics to the input', () => {
+  const { container } = render(<CChipInput disabled />)
+
+  const root = container.querySelector('.chip-input') as HTMLElement
+  const input = container.querySelector('.chip-input-field') as HTMLInputElement
+
+  expect(root).not.toHaveAttribute('aria-disabled')
+  expect(input).toBeDisabled()
+})
+
+test('CChipInput leaves the readonly semantics to the input', () => {
+  const { container } = render(<CChipInput readOnly />)
+
+  const root = container.querySelector('.chip-input') as HTMLElement
+  const input = container.querySelector('.chip-input-field') as HTMLInputElement
+
+  expect(root).not.toHaveAttribute('aria-readonly')
+  expect(input).toHaveAttribute('readonly')
+})
