@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.4",
-    "@astrojs/react": "^6.0.1",
+    "@astrojs/react": "^6.0.5",
     "@coreui/astro-docs": "0.1.14",
     "@coreui/chartjs": "^4.2.0",
     "@coreui/coreui": "^5.9.0",
@@ -20,13 +20,13 @@
     "@coreui/internal-links": "^5.2.0",
     "@coreui/utils": "^2.0.2",
     "@popperjs/core": "^2.11.8",
-    "astro": "^7.1.2",
+    "astro": "^7.3.2",
     "chart.js": "^4.5.1",
     "prop-types": "^15.8.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-imask": "^7.6.1",
-    "sass": "^1.102.0"
+    "sass": "^1.104.1"
   },
   "devDependencies": {
     "@coreui/astro-docs-api-generator": "0.2.2",
