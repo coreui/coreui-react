@@ -1,6 +1,6 @@
 {
   "name": "@coreui/react",
-  "version": "5.13.0",
+  "version": "5.13.1",
   "description": "UI Components Library for React.js",
   "keywords": [
     "react",
@@ -42,7 +42,7 @@
     "test:update": "vitest run --coverage -u"
   },
   "dependencies": {
-    "@coreui/coreui": "^5.9.0",
+    "@coreui/coreui": "^5.9.1",
     "@popperjs/core": "^2.11.8",
     "prop-types": "^15.8.1"
   },
