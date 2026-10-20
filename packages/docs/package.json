@@ -29,7 +29,7 @@
     "sass": "^1.105.1"
   },
   "devDependencies": {
-    "@coreui/astro-docs-api-generator": "0.2.2",
+    "@coreui/astro-docs-api-generator": "0.2.3",
     "typescript": "^5.9.3"
   }
 }
