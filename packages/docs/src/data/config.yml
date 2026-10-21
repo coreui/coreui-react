@@ -34,5 +34,5 @@ ads:
 # DocSearch (Algolia) — the public, search-only keys of the live React docs.
 search:
   appId: JIOZIZPLMM
-  apiKey: 6e3f7692d2589d042bb40426b75df1b7
+  apiKey: 44de5cebe80dc8b7b4a414292d8c6070
   indexName: coreui-react
