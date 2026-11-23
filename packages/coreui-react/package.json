@@ -42,7 +42,7 @@
     "test:update": "vitest run --coverage -u"
   },
   "dependencies": {
-    "@coreui/coreui": "^5.9.1",
+    "@coreui/coreui": "^5.10.0",
     "@popperjs/core": "^2.11.8",
     "prop-types": "^15.8.1"
   },
