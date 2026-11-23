@@ -25,6 +25,18 @@ test('CModal customize', async () => {
   expect(container).toMatchSnapshot()
 })
 
+test('CModal accepts the xxl size', async () => {
+  const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {})
+  render(
+    <CModal portal={false} size="xxl" visible>
+      Test
+    </CModal>
+  )
+  expect(screen.getByText('Test').closest('.modal-dialog')).toHaveClass('modal-xxl')
+  expect(consoleError).not.toHaveBeenCalled()
+  consoleError.mockRestore()
+})
+
 test('CModal dialog close on press ESC', async () => {
   const onClose = vi.fn()
   render(

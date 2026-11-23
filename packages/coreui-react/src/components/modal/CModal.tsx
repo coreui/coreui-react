@@ -77,9 +77,9 @@ export interface CModalProps extends HTMLAttributes<HTMLDivElement> {
    */
   scrollable?: boolean
   /**
-   * Size the component small, large, or extra large.
+   * Size the component small, large, extra large, or extra extra large. The `xxl` size is available since 5.14.0.
    */
-  size?: 'sm' | 'lg' | 'xl'
+  size?: 'sm' | 'lg' | 'xl' | 'xxl'
   /**
    * Remove animation to create modal that simply appear rather than fade in to view.
    */
@@ -292,7 +292,7 @@ CModal.propTypes = {
   onShow: PropTypes.func,
   portal: PropTypes.bool,
   scrollable: PropTypes.bool,
-  size: PropTypes.oneOf(['sm', 'lg', 'xl']),
+  size: PropTypes.oneOf(['sm', 'lg', 'xl', 'xxl']),
   transition: PropTypes.bool,
   unmountOnClose: PropTypes.bool,
   visible: PropTypes.bool,
