@@ -17,6 +17,7 @@ export interface SwipeCallbacks {
 class Swipe {
   private readonly element: HTMLElement
   private readonly callbacks: SwipeCallbacks
+  private startX = 0
   private deltaX = 0
   private readonly supportPointerEvents = Boolean(window.PointerEvent)
 
@@ -45,24 +46,26 @@ class Swipe {
   }
 
   private readonly start = (event: PointerEvent | TouchEvent): void => {
+    this.deltaX = 0
+
     if (!this.supportPointerEvents) {
-      this.deltaX = (event as TouchEvent).touches[0].clientX
+      this.startX = (event as TouchEvent).touches[0].clientX
       return
     }
 
     if (this.eventIsPointerPenTouch(event as PointerEvent)) {
-      this.deltaX = (event as PointerEvent).clientX
+      this.startX = (event as PointerEvent).clientX
     }
   }
 
   private readonly move = (event: TouchEvent): void => {
     this.deltaX =
-      event.touches && event.touches.length > 1 ? 0 : event.touches[0].clientX - this.deltaX
+      event.touches && event.touches.length > 1 ? 0 : event.touches[0].clientX - this.startX
   }
 
   private readonly end = (event: PointerEvent | TouchEvent): void => {
     if (this.eventIsPointerPenTouch(event as PointerEvent)) {
-      this.deltaX = (event as PointerEvent).clientX - this.deltaX
+      this.deltaX = (event as PointerEvent).clientX - this.startX
     }
 
     this.handleSwipe()
