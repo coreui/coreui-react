@@ -20,9 +20,9 @@ export interface CModalDialogProps extends HTMLAttributes<HTMLDivElement> {
    */
   scrollable?: boolean
   /**
-   * Size the component small, large, or extra large.
+   * Size the component small, large, extra large, or extra extra large. The `xxl` size is available since 5.14.0.
    */
-  size?: 'sm' | 'lg' | 'xl'
+  size?: 'sm' | 'lg' | 'xl' | 'xxl'
 }
 
 export const CModalDialog = forwardRef<HTMLDivElement, CModalDialogProps>(
@@ -59,7 +59,7 @@ CModalDialog.propTypes = {
     PropTypes.oneOf<'sm' | 'md' | 'lg' | 'xl' | 'xxl'>(['sm', 'md', 'lg', 'xl', 'xxl']),
   ]),
   scrollable: PropTypes.bool,
-  size: PropTypes.oneOf(['sm', 'lg', 'xl']),
+  size: PropTypes.oneOf(['sm', 'lg', 'xl', 'xxl']),
 }
 
 CModalDialog.displayName = 'CModalDialog'

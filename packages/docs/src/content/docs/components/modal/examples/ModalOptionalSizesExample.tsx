@@ -2,11 +2,15 @@ import React, { useState } from 'react'
 import { CButton, CModal, CModalBody, CModalHeader, CModalTitle } from '@coreui/react'
 
 export const ModalOptionalSizesExample = () => {
+  const [visibleXXL, setVisibleXXL] = useState(false)
   const [visibleXL, setVisibleXL] = useState(false)
   const [visibleLg, setVisibleLg] = useState(false)
   const [visibleSm, setVisibleSm] = useState(false)
   return (
     <>
+      <CButton color="primary" onClick={() => setVisibleXXL(!visibleXXL)}>
+        Extra extra large modal
+      </CButton>
       <CButton color="primary" onClick={() => setVisibleXL(!visibleXL)}>
         Extra large modal
       </CButton>
@@ -16,6 +20,17 @@ export const ModalOptionalSizesExample = () => {
       <CButton color="primary" onClick={() => setVisibleSm(!visibleSm)}>
         Small modal
       </CButton>
+      <CModal
+        size="xxl"
+        visible={visibleXXL}
+        onClose={() => setVisibleXXL(false)}
+        aria-labelledby="OptionalSizesExample4"
+      >
+        <CModalHeader>
+          <CModalTitle id="OptionalSizesExample4">Extra extra large modal</CModalTitle>
+        </CModalHeader>
+        <CModalBody>...</CModalBody>
+      </CModal>
       <CModal
         size="xl"
         visible={visibleXL}

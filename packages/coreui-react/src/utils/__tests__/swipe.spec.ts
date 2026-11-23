@@ -6,6 +6,13 @@ const touchEvent = (type: string, clientX: number): Event => {
   return event
 }
 
+const pointerEvent = (type: string, clientX: number): Event => {
+  const event = new Event(type) as Event & { clientX: number; pointerType: string }
+  event.clientX = clientX
+  event.pointerType = 'touch'
+  return event
+}
+
 describe('Swipe', () => {
   let element: HTMLElement
   const originalPointerEvent = window.PointerEvent
@@ -65,6 +72,72 @@ describe('Swipe', () => {
     element.dispatchEvent(touchEvent('touchend', 180))
 
     expect(onLeft).not.toHaveBeenCalled()
+    expect(onRight).not.toHaveBeenCalled()
+  })
+
+  it('does not treat a tap as a swipe', () => {
+    const onLeft = vi.fn()
+    const onRight = vi.fn()
+    new Swipe(element, { onLeft, onRight })
+
+    element.dispatchEvent(touchEvent('touchstart', 200))
+    element.dispatchEvent(touchEvent('touchend', 200))
+
+    expect(onLeft).not.toHaveBeenCalled()
+    expect(onRight).not.toHaveBeenCalled()
+  })
+
+  it('keeps the swipe direction across several touchmove events', () => {
+    const onLeft = vi.fn()
+    const onRight = vi.fn()
+    new Swipe(element, { onLeft, onRight })
+
+    element.dispatchEvent(touchEvent('touchstart', 300))
+    element.dispatchEvent(touchEvent('touchmove', 250))
+    element.dispatchEvent(touchEvent('touchmove', 200))
+    element.dispatchEvent(touchEvent('touchend', 200))
+
+    expect(onLeft).toHaveBeenCalledTimes(1)
+    expect(onRight).not.toHaveBeenCalled()
+  })
+
+  it('starts each gesture from zero after a cancelled touch', () => {
+    const onLeft = vi.fn()
+    const onRight = vi.fn()
+    new Swipe(element, { onLeft, onRight })
+
+    element.dispatchEvent(touchEvent('touchstart', 300))
+    element.dispatchEvent(touchEvent('touchmove', 200))
+    element.dispatchEvent(touchEvent('touchstart', 200))
+    element.dispatchEvent(touchEvent('touchend', 200))
+
+    expect(onLeft).not.toHaveBeenCalled()
+    expect(onRight).not.toHaveBeenCalled()
+  })
+
+  it('does not treat a pointer tap as a swipe', () => {
+    ;(window as unknown as { PointerEvent?: unknown }).PointerEvent = class {}
+    const onLeft = vi.fn()
+    const onRight = vi.fn()
+    new Swipe(element, { onLeft, onRight })
+
+    element.dispatchEvent(pointerEvent('pointerdown', 300))
+    element.dispatchEvent(pointerEvent('pointerup', 300))
+
+    expect(onLeft).not.toHaveBeenCalled()
+    expect(onRight).not.toHaveBeenCalled()
+  })
+
+  it('calls onLeft when a pointer swipes left past the threshold', () => {
+    ;(window as unknown as { PointerEvent?: unknown }).PointerEvent = class {}
+    const onLeft = vi.fn()
+    const onRight = vi.fn()
+    new Swipe(element, { onLeft, onRight })
+
+    element.dispatchEvent(pointerEvent('pointerdown', 300))
+    element.dispatchEvent(pointerEvent('pointerup', 200))
+
+    expect(onLeft).toHaveBeenCalledTimes(1)
     expect(onRight).not.toHaveBeenCalled()
   })
 

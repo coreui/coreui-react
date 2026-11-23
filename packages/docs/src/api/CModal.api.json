@@ -99,9 +99,9 @@
     },
     {
       "name": "size",
-      "type": "\"sm\" | \"lg\" | \"xl\" | undefined",
+      "type": "\"sm\" | \"lg\" | \"xl\" | \"xxl\" | undefined",
       "default": null,
-      "description": "Size the component small, large, or extra large.",
+      "description": "Size the component small, large, extra large, or extra extra large. The `xxl` size is available since 5.14.0.",
       "since": null,
       "deprecated": null
     },
